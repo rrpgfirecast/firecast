@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmhammer1_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmhammer1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmhammer1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/HammerFrente.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			
+			<layout left="409" top="50" width="387" height="44" compilerOrder="3">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="387" height="45" field="hammName" compilerOrder="4"/>
+            </layout>;
+			
+            <!-- Backgrounds -->
+            <layout left="61" top="133" width="40" height="50" compilerOrder="7">
+                <checkBox field="hammMilitary" compilerOrder="8"/>
+            </layout>;
+            <layout left="162" top="133" width="40" height="50" compilerOrder="9">
+                <checkBox field="hammOutaw" compilerOrder="10"/>
+            </layout>;
+            <layout left="264" top="133" width="40" height="50" compilerOrder="11">
+                <checkBox field="hammUrban" compilerOrder="12"/>
+            </layout>;
+            <layout left="61" top="152" width="40" height="50" compilerOrder="17">
+                <checkBox field="hammMonastic" compilerOrder="18"/>
+            </layout>;
+			 <layout left="162" top="152" width="40" height="50" compilerOrder="13">
+                <checkBox field="hammPrivileged" compilerOrder="14"/>
+            </layout>;
+            <layout left="264" top="152" width="40" height="50" compilerOrder="15">
+                <checkBox field="hammWilderness" compilerOrder="16"/>
+            </layout>;
+           
+			<!-- Demeanor -->
+            <layout left="61" top="201" width="40" height="50" compilerOrder="19">
+                <checkBox field="hammAbove" compilerOrder="20"/>
+            </layout>;
+			<layout left="61" top="221" width="40" height="50" compilerOrder="21">
+                <checkBox field="hammPerfectionist" compilerOrder="22"/>
+            </layout>;
+			<layout left="61" top="241" width="40" height="50" compilerOrder="25">
+                <checkBox field="hammChilly" compilerOrder="26"/>
+            </layout>;
+            <layout left="163" top="201" width="40" height="50" compilerOrder="23">
+                <checkBox field="hammRebelious" compilerOrder="24"/>
+            </layout>;
+            <layout left="163" top="221" width="40" height="50" compilerOrder="27">
+                <checkBox field="hammFlippant" compilerOrder="28"/>
+            </layout>;
+            <layout left="163" top="241" width="40" height="50" compilerOrder="29">
+                <checkBox field="hammStandoffish" compilerOrder="30"/>
+            </layout>;
+           
+			<!-- Statuses -->
+            <layout left="881" top="267" width="40" height="50" compilerOrder="43">
+                <checkBox field="hammEmpowered" compilerOrder="44"/>
+            </layout>;
+            <layout left="881" top="287" width="40" height="50" compilerOrder="45">
+                <checkBox field="hammFavored" compilerOrder="46"/>
+            </layout>;
+            <layout left="881" top="307" width="40" height="50" compilerOrder="47">
+                <checkBox field="hammInspired" compilerOrder="48"/>
+            </layout>;
+			 <layout left="881" top="327" width="40" height="50" compilerOrder="49">
+                <checkBox field="hammPrepared" compilerOrder="50"/>
+            </layout>;
+			 <layout left="1025" top="267" width="40" height="50" compilerOrder="51">
+                <checkBox field="hammDoomed" compilerOrder="52"/>
+            </layout>;
+            <layout left="1025" top="287" width="40" height="50" compilerOrder="55">
+                <checkBox field="hammImpaired" compilerOrder="56"/>
+            </layout>;
+			<layout left="1025" top="307" width="40" height="50" compilerOrder="57">
+                <checkBox field="hammTrapped" compilerOrder="58"/>
+            </layout>;
+			<layout left="1025" top="327" width="40" height="50" compilerOrder="53">
+                <checkBox field="hammStunned" compilerOrder="54"/>
+            </layout>;
+			
+			<!-- Fighting Style e Training -->
+			<layout left="73" top="297" width="285" height="44" compilerOrder="5">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="285" height="45" field="Fight_Style" compilerOrder="6"/>
+            </layout>;
+			
+            <layout left="417" top="323" width="50" height="60" compilerOrder="33">
+                <checkBox field="hammWater" compilerOrder="34"/>
+            </layout>;
+			<layout left="491" top="323" width="50" height="60" compilerOrder="31">
+                <checkBox field="hammEarth" compilerOrder="32"/>
+            </layout>;
+			<layout left="565" top="323" width="50" height="60" compilerOrder="35">
+                <checkBox field="hammFire" compilerOrder="36"/>
+            </layout>;
+            <layout left="640" top="323" width="50" height="60" compilerOrder="39">
+                <checkBox field="hammAir" compilerOrder="40"/>
+            </layout>;
+			 <layout left="714" top="323" width="50" height="60" compilerOrder="37">
+                <checkBox field="hammMartial" compilerOrder="38"/>
+            </layout>;
+            <layout left="788" top="323" width="50" height="60" compilerOrder="41">
+                <checkBox field="hammMech" compilerOrder="42"/>
+            </layout>;
+			
+			<!-- Stats e Conditions -->
+			<layout left="113" top="442" width="34" height="44" compilerOrder="59">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="hammCreativity" compilerOrder="60"/>
+            </layout>;
+            <layout left="113" top="494" width="34" height="44" compilerOrder="61">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="hammFocus" compilerOrder="62"/>
+            </layout>;
+			<layout left="113" top="545" width="34" height="44" compilerOrder="63">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="hammHarmony" compilerOrder="64"/>
+            </layout>;
+			 <layout left="113" top="597" width="34" height="44" compilerOrder="65">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="hammPassion" compilerOrder="66"/>
+            </layout>;
+			<layout left="852" top="445" width="19" height="20" compilerOrder="77">
+                <checkBox field="hammAfraid" compilerOrder="78"/>
+            </layout>;
+            <layout left="852" top="493" width="19" height="20" compilerOrder="79">
+                <checkBox field="hammAngry" compilerOrder="80"/>
+            </layout>;
+            <layout left="852" top="543" width="19" height="20" compilerOrder="81">
+                <checkBox field="hammGuilty" compilerOrder="82"/>
+            </layout>;
+			 <layout left="852" top="594" width="19" height="20" compilerOrder="83">
+                <checkBox field="hammInsecure" compilerOrder="84"/>
+            </layout>;
+            <layout left="852" top="645" width="19" height="20" compilerOrder="85">
+                <checkBox field="hammTroubled" compilerOrder="86"/>
+            </layout>;
+			
+			<!-- Center -->
+            <layout left="479" top="589" width="23" height="25" compilerOrder="115">
+                <checkBox field="hammCenter0" compilerOrder="116"/>
+            </layout>;
+            <layout left="519" top="589" width="23" height="25" compilerOrder="117">
+                <checkBox field="hammCenter1" compilerOrder="118"/>
+            </layout>;
+            <layout left="558" top="589" width="23" height="25" compilerOrder="119">
+                <checkBox field="hammCenter2" compilerOrder="120"/>
+            </layout>;
+            <layout left="598" top="589" width="23" height="25" compilerOrder="121">
+                <checkBox field="hammCenter3" compilerOrder="122"/>
+            </layout>;
+            <layout left="638" top="589" width="23" height="25" compilerOrder="123">
+                <checkBox field="hammCenter4" compilerOrder="124"/>
+            </layout>;
+            <layout left="678" top="589" width="23" height="25" compilerOrder="125">
+                <checkBox field="hammCenter5" compilerOrder="126"/>
+            </layout>;
+            <layout left="718" top="589" width="23" height="25" compilerOrder="127">
+                <checkBox field="hammCenter6" compilerOrder="128"/>
+            </layout>;
+			
+			<!-- Balance -->
+			<radioButton left="479" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="519" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="558" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="598" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="638" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="678" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="718" top="546" width="23" height="25" groupName="balanceUp"/>
+			
+			
+			<radioButton left="479" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="519" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="558" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="598" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="638" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="678" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="718" top="626" width="23" height="25" groupName="balanceDown"/>
+           
+		   <!-- Fatigue -->
+		    <layout left="108" top="707" width="23" height="25" compilerOrder="67">
+                <checkBox field="hammFatigue0" compilerOrder="68"/>
+            </layout>;
+		    <layout left="140" top="707" width="23" height="25" compilerOrder="69">
+                <checkBox field="hammFatigue1" compilerOrder="70"/>
+            </layout>;
+            <layout left="171" top="707" width="23" height="25" compilerOrder="71">
+                <checkBox field="hammFatigue2" compilerOrder="72"/>
+            </layout>;
+            <layout left="203" top="707" width="23" height="25" compilerOrder="73">
+                <checkBox field="hammFatigue3" compilerOrder="74"/>
+            </layout>;
+            <layout left="233" top="707" width="36" height="40" compilerOrder="75">
+                <checkBox field="hammFatigue4" compilerOrder="76"/>
+            </layout>;
+			
+			<!-- Moves -->
+            <layout left="628" top="833" width="23" height="17" compilerOrder="129">
+                <checkBox left="0" top="0" width="23" height="18" field="hammMoves0" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="626" top="935" width="23" height="17" compilerOrder="131">
+                <checkBox left="0" top="0" width="23" height="18" field="hammMoves1" compilerOrder="132"/>
+            </layout>&#xD;
+			<layout left="627" top="1116" width="23" height="17" compilerOrder="133">
+                <checkBox left="0" top="0" width="23" height="18" field="hammMoves2" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="626" top="1195" width="23" height="17" compilerOrder="135">
+                <checkBox left="0" top="0" width="23" height="18" field="hammMoves3" compilerOrder="136"/>
+            </layout>&#xD;
+			<layout left="627" top="1016" width="23" height="17" compilerOrder="137">
+                <checkBox left="0" top="0" width="23" height="18" field="hammMoves4" compilerOrder="138"/>
+            </layout>&#xD;
+			
+            <layout left="242" top="947" width="326" height="26" compilerOrder="1">
+                <edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="326" height="27" field="Name_your_adversary" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="88" top="1011" width="23" height="17" compilerOrder="139">
+                <checkBox left="0" top="0" width="23" height="16" field="hammBox0" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="254" top="1011" width="23" height="17" compilerOrder="141">
+                <checkBox left="0" top="0" width="23" height="16" field="hammBox1" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="421" top="1011" width="23" height="17" compilerOrder="143">
+                <checkBox left="0" top="0" width="23" height="16" field="hammBox2" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="88" top="1030" width="23" height="17" compilerOrder="145">
+                <checkBox left="0" top="0" width="23" height="16" field="hammBox3" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="254" top="1030" width="23" height="17" compilerOrder="147">
+                <checkBox left="0" top="0" width="23" height="16" field="hammBox4" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="421" top="1030" width="23" height="17" compilerOrder="149">
+                <checkBox left="0" top="0" width="23" height="16" field="hammBox5" compilerOrder="150"/>
+            </layout>&#xD;
+            
+        </rectangle>
+    </scrollBox>
+</form>

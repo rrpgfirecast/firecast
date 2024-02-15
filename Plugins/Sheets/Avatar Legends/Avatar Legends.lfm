@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAvatarLegends" formType="sheetTemplate" dataType="Echo.Avatar.Legends" title="Avatar Legends" align="client" theme="dark">
+    <tabControl align="client" name="tabs" visible="true">
+        <tab title="Adamant (Frente)" name="adamantFrente" visible="true">
+            <import file="Adamant (Frente).lfm"/>
+        </tab>
+        <tab title="Adamant (Verso)" name="adamantVerso" visible="true">
+            <import file="Adamant (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Bold (Frente)" name="boldFrente" visible="false">
+            <import file="Bold (Frente).lfm"/>
+        </tab>
+        <tab title="Bold (Verso)" name="boldVerso" visible="false">
+            <import file="Bold (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Destined (Frente)" name="destinedFrente" visible="false">
+            <import file="Destined (Frente).lfm"/>
+        </tab>
+        <tab title="Destined (Verso)" name="destinedVerso" visible="false">
+            <import file="Destined (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Elder (Frente)" name="elderFrente" visible="false">
+            <import file="Elder (Frente).lfm"/>
+        </tab>
+        <tab title="Elder (Verso)" name="elderVerso" visible="false">
+            <import file="Elder (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Foundling (Frente)" name="foundlingFrente" visible="false">
+            <import file="Foundling (Frente).lfm"/>
+        </tab>
+        <tab title="Foundling (Verso)" name="foundlingVerso" visible="false">
+            <import file="Foundling (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Guardian (Frente)" name="guardianFrente" visible="false">
+            <import file="Guardian (Frente).lfm"/>
+        </tab>
+        <tab title="Guardian (Verso)" name="guardianVerso" visible="false">
+            <import file="Guardian (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Hammer (Frente)" name="hammerFrente" visible="false">
+            <import file="Hammer (Frente).lfm"/>
+        </tab>
+        <tab title="Hammer (Verso)" name="hammerVerso" visible="false">
+            <import file="Hammer (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Icon (Frente)" name="iconFrente" visible="false">
+            <import file="Icon (Frente).lfm"/>
+        </tab>
+        <tab title="Icon (Verso)" name="iconVerso" visible="false">
+            <import file="Icon (Verso).lfm"/>
+        </tab>
+
+		<tab title="Idealist (Frente)" name="idealistFrente" visible="false">
+            <import file="Idealist (Frente).lfm"/>
+        </tab>
+        <tab title="Idealist (Verso)" name="idealistVerso" visible="false">
+            <import file="Idealist (Verso).lfm"/>
+        </tab>
+
+		<tab title="Pillar (Frente)" name="pillarFrente" visible="false">
+            <import file="Pillar (Frente).lfm"/>
+        </tab>
+        <tab title="Pillar (Verso)" name="pillarVerso" visible="false">
+            <import file="Pillar (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Prodigy (Frente)" name="prodigyFrente" visible="false">
+            <import file="Prodigy (Frente).lfm"/>
+        </tab>
+        <tab title="Prodigy (Verso)" name="prodigyVerso" visible="false">
+            <import file="Prodigy (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Razor (Frente)" name="razorFrente" visible="false">
+            <import file="Razor (Frente).lfm"/>
+        </tab>
+        <tab title="Razor (Verso)" name="razorVerso" visible="false">
+            <import file="Razor (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Rogue (Frente)" name="rogueFrente" visible="false">
+            <import file="Rogue (Frente).lfm"/>
+        </tab>
+        <tab title="Rogue (Verso)" name="rogueVerso" visible="false">
+            <import file="Rogue (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Successor (Frente)" name="successorFrente" visible="false">
+            <import file="Successor (Frente).lfm"/>
+        </tab>
+        <tab title="Successor (Verso)" name="successorVerso" visible="false">
+            <import file="Successor (Verso).lfm"/>
+        </tab>
+		
+		<tab title="Background e Playbook" name="background" visible="true">
+            <import file="Background.lfm"/>
+        </tab>
+		
+		<tab title="Anotações" name="notas" visible="true">
+            <import file="Notes.lfm"/>
+        </tab>
+		
+    </tabControl>
+
+</form>

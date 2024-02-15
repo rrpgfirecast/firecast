@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmidealist1_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmidealist1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmidealist1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/IdealistFrente.jpg" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			
+			<layout left="404" top="50" width="387" height="44" compilerOrder="3">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="387" height="45" field="ideaName" compilerOrder="4"/>
+            </layout>;
+			
+             <!-- Backgrounds -->
+            <layout left="61" top="133" width="40" height="50" compilerOrder="7">
+                <checkBox field="ideaMilitary" compilerOrder="8"/>
+            </layout>;
+            <layout left="162" top="133" width="40" height="50" compilerOrder="9">
+                <checkBox field="ideaOutaw" compilerOrder="10"/>
+            </layout>;
+            <layout left="264" top="133" width="40" height="50" compilerOrder="11">
+                <checkBox field="ideaUrban" compilerOrder="12"/>
+            </layout>;
+            <layout left="61" top="152" width="40" height="50" compilerOrder="17">
+                <checkBox field="ideaMonastic" compilerOrder="18"/>
+            </layout>;
+			 <layout left="162" top="152" width="40" height="50" compilerOrder="13">
+                <checkBox field="ideaPrivileged" compilerOrder="14"/>
+            </layout>;
+            <layout left="264" top="152" width="40" height="50" compilerOrder="15">
+                <checkBox field="ideaWilderness" compilerOrder="16"/>
+            </layout>;
+           
+			<!-- Demeanor -->
+            <layout left="61" top="204" width="40" height="50" compilerOrder="19">
+                <checkBox field="ideaAbove" compilerOrder="20"/>
+            </layout>;
+			<layout left="61" top="224" width="40" height="50" compilerOrder="21">
+                <checkBox field="ideaPerfectionist" compilerOrder="22"/>
+            </layout>;
+			<layout left="61" top="244" width="40" height="50" compilerOrder="25">
+                <checkBox field="ideaChilly" compilerOrder="26"/>
+            </layout>;
+            <layout left="204" top="204" width="40" height="50" compilerOrder="23">
+                <checkBox field="ideaRebelious" compilerOrder="24"/>
+            </layout>;
+            <layout left="204" top="224" width="40" height="50" compilerOrder="27">
+                <checkBox field="ideaFlippant" compilerOrder="28"/>
+            </layout>;
+            <layout left="204" top="244" width="40" height="50" compilerOrder="29">
+                <checkBox field="ideaStandoffish" compilerOrder="30"/>
+            </layout>;
+           
+           
+			<!-- Statuses -->
+            <layout left="881" top="267" width="40" height="50" compilerOrder="43">
+                <checkBox field="ideaEmpowered" compilerOrder="44"/>
+            </layout>;
+            <layout left="881" top="287" width="40" height="50" compilerOrder="45">
+                <checkBox field="ideaFavored" compilerOrder="46"/>
+            </layout>;
+            <layout left="881" top="307" width="40" height="50" compilerOrder="47">
+                <checkBox field="ideaInspired" compilerOrder="48"/>
+            </layout>;
+			 <layout left="881" top="327" width="40" height="50" compilerOrder="49">
+                <checkBox field="ideaPrepared" compilerOrder="50"/>
+            </layout>;
+			 <layout left="1025" top="267" width="40" height="50" compilerOrder="51">
+                <checkBox field="ideaDoomed" compilerOrder="52"/>
+            </layout>;
+            <layout left="1025" top="287" width="40" height="50" compilerOrder="55">
+                <checkBox field="ideaImpaired" compilerOrder="56"/>
+            </layout>;
+			<layout left="1025" top="307" width="40" height="50" compilerOrder="57">
+                <checkBox field="ideaTrapped" compilerOrder="58"/>
+            </layout>;
+			<layout left="1025" top="327" width="40" height="50" compilerOrder="53">
+                <checkBox field="ideaStunned" compilerOrder="54"/>
+            </layout>;
+			
+			<!-- Fighting Style e Training -->
+			<layout left="73" top="297" width="285" height="44" compilerOrder="5">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="285" height="45" field="Fight_Style" compilerOrder="6"/>
+            </layout>;
+			
+            <layout left="417" top="323" width="50" height="60" compilerOrder="33">
+                <checkBox field="ideaWater" compilerOrder="34"/>
+            </layout>;
+			<layout left="491" top="323" width="50" height="60" compilerOrder="31">
+                <checkBox field="ideaEarth" compilerOrder="32"/>
+            </layout>;
+			<layout left="565" top="323" width="50" height="60" compilerOrder="35">
+                <checkBox field="ideaFire" compilerOrder="36"/>
+            </layout>;
+            <layout left="640" top="323" width="50" height="60" compilerOrder="39">
+                <checkBox field="ideaAir" compilerOrder="40"/>
+            </layout>;
+			 <layout left="714" top="323" width="50" height="60" compilerOrder="37">
+                <checkBox field="ideaMartial" compilerOrder="38"/>
+            </layout>;
+            <layout left="788" top="323" width="50" height="60" compilerOrder="41">
+                <checkBox field="ideaMech" compilerOrder="42"/>
+            </layout>;
+			
+			<!-- Stats e Conditions -->
+			<layout left="113" top="442" width="34" height="44" compilerOrder="59">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="ideaCreativity" compilerOrder="60"/>
+            </layout>;
+            <layout left="113" top="494" width="34" height="44" compilerOrder="61">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="ideaFocus" compilerOrder="62"/>
+            </layout>;
+			<layout left="113" top="545" width="34" height="44" compilerOrder="63">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="ideaHarmony" compilerOrder="64"/>
+            </layout>;
+			 <layout left="113" top="597" width="34" height="44" compilerOrder="65">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="ideaPassion" compilerOrder="66"/>
+            </layout>;
+			<layout left="852" top="445" width="19" height="20" compilerOrder="77">
+                <checkBox field="ideaAfraid" compilerOrder="78"/>
+            </layout>;
+            <layout left="852" top="493" width="19" height="20" compilerOrder="79">
+                <checkBox field="ideaAngry" compilerOrder="80"/>
+            </layout>;
+            <layout left="852" top="543" width="19" height="20" compilerOrder="81">
+                <checkBox field="ideaGuilty" compilerOrder="82"/>
+            </layout>;
+			 <layout left="852" top="594" width="19" height="20" compilerOrder="83">
+                <checkBox field="ideaInsecure" compilerOrder="84"/>
+            </layout>;
+            <layout left="852" top="645" width="19" height="20" compilerOrder="85">
+                <checkBox field="ideaTroubled" compilerOrder="86"/>
+            </layout>;
+			
+			<!-- Center -->
+            <layout left="479" top="589" width="23" height="25" compilerOrder="115">
+                <checkBox field="ideaCenter0" compilerOrder="116"/>
+            </layout>;
+            <layout left="519" top="589" width="23" height="25" compilerOrder="117">
+                <checkBox field="ideaCenter1" compilerOrder="118"/>
+            </layout>;
+            <layout left="558" top="589" width="23" height="25" compilerOrder="119">
+                <checkBox field="ideaCenter2" compilerOrder="120"/>
+            </layout>;
+            <layout left="598" top="589" width="23" height="25" compilerOrder="121">
+                <checkBox field="ideaCenter3" compilerOrder="122"/>
+            </layout>;
+            <layout left="638" top="589" width="23" height="25" compilerOrder="123">
+                <checkBox field="ideaCenter4" compilerOrder="124"/>
+            </layout>;
+            <layout left="678" top="589" width="23" height="25" compilerOrder="125">
+                <checkBox field="ideaCenter5" compilerOrder="126"/>
+            </layout>;
+            <layout left="718" top="589" width="23" height="25" compilerOrder="127">
+                <checkBox field="ideaCenter6" compilerOrder="128"/>
+            </layout>;
+			
+			<!-- Balance -->
+			<radioButton left="479" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="519" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="558" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="598" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="638" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="678" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="718" top="546" width="23" height="25" groupName="balanceUp"/>
+			
+			
+			<radioButton left="479" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="519" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="558" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="598" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="638" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="678" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="718" top="626" width="23" height="25" groupName="balanceDown"/>
+           
+		   <!-- Fatigue -->
+		    <layout left="108" top="707" width="23" height="25" compilerOrder="67">
+                <checkBox field="ideaFatigue0" compilerOrder="68"/>
+            </layout>;
+		    <layout left="140" top="707" width="23" height="25" compilerOrder="69">
+                <checkBox field="ideaFatigue1" compilerOrder="70"/>
+            </layout>;
+            <layout left="171" top="707" width="23" height="25" compilerOrder="71">
+                <checkBox field="ideaFatigue2" compilerOrder="72"/>
+            </layout>;
+            <layout left="203" top="707" width="23" height="25" compilerOrder="73">
+                <checkBox field="ideaFatigue3" compilerOrder="74"/>
+            </layout>;
+            <layout left="233" top="707" width="36" height="40" compilerOrder="75">
+                <checkBox field="ideaFatigue4" compilerOrder="76"/>
+            </layout>;
+			
+			<!-- Moves -->
+            <layout left="627" top="836" width="23" height="19" compilerOrder="167">
+                <checkBox left="0" top="0" width="23" height="18" field="ideaMoves0" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="627" top="895" width="23" height="19" compilerOrder="169">
+                <checkBox left="0" top="0" width="23" height="18" field="ideaMoves1" compilerOrder="170"/>
+            </layout>&#xD;
+			<layout left="627" top="1056" width="23" height="19" compilerOrder="171">
+                <checkBox left="0" top="0" width="23" height="18" field="ideaMoves2" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="627" top="1195" width="23" height="19" compilerOrder="173">
+                <checkBox left="0" top="0" width="23" height="18" field="ideaMoves3" compilerOrder="174"/>
+            </layout>&#xD;
+			<layout left="627" top="1335" width="23" height="19" compilerOrder="175">
+                <checkBox left="0" top="0" width="23" height="18" field="ideaMoves4" compilerOrder="176"/>
+            </layout>&#xD;
+			
+			<!-- Never turn my back -->
+            <layout left="87" top="943" width="23" height="19" compilerOrder="177">
+                <checkBox left="0" top="0" width="23" height="16" field="never1" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="337" top="943" width="23" height="19" compilerOrder="179">
+                <checkBox left="0" top="0" width="23" height="16" field="never2" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="87" top="963" width="23" height="19" compilerOrder="181">
+                <checkBox left="0" top="0" width="23" height="16" field="never3" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="337" top="963" width="23" height="19" compilerOrder="183">
+                <checkBox left="0" top="0" width="23" height="16" field="never4" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="87" top="982" width="23" height="19" compilerOrder="185">
+                <checkBox left="0" top="0" width="23" height="16" field="never5" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="337" top="982" width="23" height="19" compilerOrder="187">
+                <checkBox left="0" top="0" width="23" height="16" field="never6" compilerOrder="188"/>
+            </layout>&#xD;
+            
+            <layout left="89" top="1215" width="231" height="27" compilerOrder="1">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_1" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="345" top="1215" width="231" height="27" compilerOrder="21">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_1" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="89" top="1242" width="231" height="27" compilerOrder="3">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_2" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="345" top="1242" width="231" height="27" compilerOrder="23">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_2" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="89" top="1271" width="231" height="27" compilerOrder="5">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_3" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="345" top="1271" width="231" height="27" compilerOrder="25">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_3" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="89" top="1299" width="231" height="27" compilerOrder="7">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_4" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="345" top="1299" width="231" height="27" compilerOrder="27">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_4" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="89" top="1326" width="231" height="27" compilerOrder="9">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_5" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="345" top="1326" width="231" height="27" compilerOrder="29">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_5" compilerOrder="30"/>
+            </layout>&#xD;
+            
+            <layout left="89" top="1355" width="231" height="27" compilerOrder="11">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_6" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="345" top="1355" width="231" height="27" compilerOrder="31">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_6" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="89" top="1383" width="231" height="27" compilerOrder="13">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_7" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="345" top="1383" width="231" height="27" compilerOrder="33">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_7" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="89" top="1410" width="231" height="27" compilerOrder="15">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_8" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="345" top="1410" width="231" height="27" compilerOrder="35">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_8" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="89" top="1439" width="231" height="27" compilerOrder="17">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_9" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="345" top="1439" width="231" height="27" compilerOrder="37">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_9" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="89" top="1467" width="231" height="27" compilerOrder="19">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="erasing_their_name_from_your_list_of_allies_10" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="345" top="1467" width="231" height="27" compilerOrder="39">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="28" field="_10" compilerOrder="40"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
