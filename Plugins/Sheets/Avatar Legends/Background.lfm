@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBackground" align="client" theme="dark" margins="{top=1}">
+ <scrollBox align="client">
+ 
+		<richEdit align="left" width="900" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		<rectangle left="904" width="402" height="402" color="#333333" strokeColor="white" strokeSize="1"/>
+		<image left="905" top="001" height="400" width="400" style="autoFit" field="imgPersonagem" editable="true" optimize="true" animate="true"/>
+		
+		<rectangle left="904" top="409" width="402" height="45" color="#333333" strokeColor="white" strokeSize="1">
+			<label fontStyle="bold" width="402" horzTextAlign="center" text="PLAYBOOK"/>
+		
+			<comboBox align="bottom" margins="{left = 130, right = 130, bottom = 5}" horzTextAlign="center" fontColor="white" field="playbook" items="{'Adamant', 'Bold', 'Destined', 'Elder', 'Foundling', 'Guardian', 'Hammer',
+			'Icon', 'Idealist', 'Pillar', 'Prodigy', 'Razor', 'Rogue', 'Successor'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
+			'13', '14'}"/>
+				
+			<dataLink field="playbook" defaultValue="1">
+				<event name="onChange">
+						if sheet.playbook == "1" then
+							self.adamantFrente.visible = true
+							self.adamantVerso.visible = true
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "2" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = true
+							self.boldVerso.visible = true
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "3" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = true
+							self.destinedVerso.visible = true
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "4" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = true
+							self.elderVerso.visible = true
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "5" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = true
+							self.foundlingVerso.visible = true
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "6" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = true
+							self.guardianVerso.visible = true
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "7" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = true
+							self.hammerVerso.visible = true
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "8" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = true
+							self.iconVerso.visible = true
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "9" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = true
+							self.idealistVerso.visible = true
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "10" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = true
+							self.pillarVerso.visible = true
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "11" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = true
+							self.prodigyVerso.visible = true
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "12" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = true
+							self.razorVerso.visible = true
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "13" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = true
+							self.rogueVerso.visible = true
+							self.successorFrente.visible = false
+							self.successorVerso.visible = false
+						end
+						if sheet.playbook == "14" then
+							self.adamantFrente.visible = false
+							self.adamantVerso.visible = false
+							self.boldFrente.visible = false
+							self.boldVerso.visible = false
+							self.destinedFrente.visible = false
+							self.destinedVerso.visible = false
+							self.elderFrente.visible = false
+							self.elderVerso.visible = false
+							self.foundlingFrente.visible = false
+							self.foundlingVerso.visible = false
+							self.guardianFrente.visible = false
+							self.guardianVerso.visible = false
+							self.hammerFrente.visible = false
+							self.hammerVerso.visible = false
+							self.iconFrente.visible = false
+							self.iconVerso.visible = false
+							self.idealistFrente.visible = false
+							self.idealistVerso.visible = false
+							self.pillarFrente.visible = false
+							self.pillarVerso.visible = false
+							self.prodigyFrente.visible = false
+							self.prodigyVerso.visible = false
+							self.razorFrente.visible = false
+							self.razorVerso.visible = false
+							self.rogueFrente.visible = false
+							self.rogueVerso.visible = false
+							self.successorFrente.visible = true
+							self.successorVerso.visible = true
+						end
+				</event>
+			</dataLink>
+			
+		</rectangle>
+		
+ </scrollBox>
+</form>

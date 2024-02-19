@@ -40,6 +40,7 @@
 	<element name="re" path="GURPS/re.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/GURPS/re.lua"/>
 	<element name="rg" path="GURPS/rg.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/GURPS/rg.lua"/>
 	<element name="explosao" path="Lenda%20dos%205%20Aneis/explosao.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Lenda%20dos%205%20Aneis/explosao.lua"/>
+	<element name="l5r 5e" path="Lenda%20dos%205%20Aneis/l5r%205e.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Lenda%20dos%205%20Aneis/l5r%205e.lua"/>
 	<element name="l5r" path="Lenda%20dos%205%20Aneis/l5r.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Lenda%20dos%205%20Aneis/l5r.lua"/>
 	<element name="ua" path="O%20Um%20Anel/ua.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/O%20Um%20Anel/ua.lua"/>
 	<element name="ore" path="ORE/ore.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/ORE/ore.lua"/>

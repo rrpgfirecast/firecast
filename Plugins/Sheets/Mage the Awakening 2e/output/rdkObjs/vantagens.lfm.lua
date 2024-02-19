@@ -138,7 +138,7 @@ local function constructNew_vantagens()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.nomeCheckVant_01:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             				sheet.fldCheckVant_01 = not sheet.fldCheckVant_01;
             				
@@ -153,7 +153,7 @@ local function constructNew_vantagens()
         end, obj);
 
     obj._e_event1 = obj.nomeCheckVant_02:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             				sheet.fldCheckVant_02 = not sheet.fldCheckVant_02;
             				
@@ -174,7 +174,7 @@ local function constructNew_vantagens()
         end, obj);
 
     obj._e_event2 = obj.nomeCheckVant_03:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             				sheet.fldCheckVant_03 = not sheet.fldCheckVant_03;
             				
@@ -197,7 +197,7 @@ local function constructNew_vantagens()
         end, obj);
 
     obj._e_event3 = obj.nomeCheckVant_04:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             				sheet.fldCheckVant_04 = not sheet.fldCheckVant_04;
             				
@@ -222,7 +222,7 @@ local function constructNew_vantagens()
         end, obj);
 
     obj._e_event4 = obj.nomeCheckVant_05:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             				sheet.fldCheckVant_05 = not sheet.fldCheckVant_05;
             				
@@ -241,7 +241,7 @@ local function constructNew_vantagens()
         end, obj);
 
     obj._e_event5 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             NDB.deleteNode(sheet);
         end, obj);
 

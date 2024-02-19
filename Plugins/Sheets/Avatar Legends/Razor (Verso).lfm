@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmrazor2_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmrazor2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmrazor2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/RazorVerso.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+           
+		   <!-- Looks -->
+		   <layout left="85" top="136" width="497" height="52" compilerOrder="1">
+                <textEditor left="0" top="0" width="497" height="52" fontSize="19" fontColor="#000000" field="razLooks" transparent="true" compilerOrder="2"/>
+            </layout>&#xD;
+			
+			<!-- Home Town -->
+            <layout left="175" top="195" width="423" height="22" compilerOrder="99">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="423" height="23" field="razHometown" compilerOrder="100"/>
+            </layout>&#xD;
+			
+			<!-- Connections -->
+			<layout left="83" top="674" width="102" height="20" compilerOrder="3">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="102" height="21" field="razConnection1" compilerOrder="4"/>
+            </layout>&#xD;
+			<layout left="115" top="752" width="110" height="20" compilerOrder="5">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="110" height="21" field="razConnection2" compilerOrder="6"/>
+            </layout>&#xD;
+			
+
+			<!-- Mistakes -->
+			<layout left="88" top="467" width="23" height="13" compilerOrder="101">
+                <checkBox left="0" top="0" width="23" height="14" field="razMistake1" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="88" top="487" width="23" height="13" compilerOrder="103">
+                <checkBox left="0" top="0" width="23" height="14" field="razMistake2" compilerOrder="104"/>
+            </layout>&#xD;
+			<layout left="88" top="507" width="23" height="13" compilerOrder="105">
+                <checkBox left="0" top="0" width="23" height="14" field="razMistake3" compilerOrder="106"/>
+            </layout>&#xD;
+			<layout left="88" top="527" width="23" height="13" compilerOrder="107">
+                <checkBox left="0" top="0" width="23" height="14" field="razMistake4" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="88" top="547" width="23" height="13" compilerOrder="109">
+                <checkBox left="0" top="0" width="23" height="14" field="razMistake5" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="88" top="567" width="23" height="13" compilerOrder="111">
+                <checkBox left="0" top="0" width="23" height="14" field="razMistake6" compilerOrder="112"/>
+            </layout>&#xD;
+		
+			
+			<layout left="695" top="292" width="421" height="25" compilerOrder="103">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="razTechnique0" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="1046" top="297" width="23" height="24" compilerOrder="59">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech0_0" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="1091" top="297" width="23" height="24" compilerOrder="61">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech0_1" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="1143" top="297" width="23" height="24" compilerOrder="63">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech0_2" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="796" top="321" width="23" height="24" compilerOrder="23">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech0_3" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="623" top="321" width="23" height="24" compilerOrder="27">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech0_4" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="960" top="321" width="23" height="24" compilerOrder="25">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech0_5" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="635" top="365" width="518" height="96" compilerOrder="97">
+                <textEditor left="0" top="0" width="518" height="96" fontSize="18" fontColor="#000000" field="razTechDesc0" transparent="true" compilerOrder="98"/>
+            </layout>&#xD;
+			
+			<layout left="695" top="492" width="421" height="25" compilerOrder="105">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="razTechnique1" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="1046" top="497" width="23" height="24" compilerOrder="65">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech1_0" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="1092" top="497" width="23" height="24" compilerOrder="67">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech1_1" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="1143" top="497" width="23" height="24" compilerOrder="69">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech1_2" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="796" top="521" width="23" height="24" compilerOrder="29">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech1_3" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="623" top="521" width="23" height="24" compilerOrder="33">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech1_4" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="960" top="521" width="23" height="24" compilerOrder="31">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech1_5" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="635" top="565" width="518" height="96" compilerOrder="121">
+                <textEditor left="0" top="0" width="518" height="96" fontSize="19" fontColor="#000000" field="razTechDesc1" transparent="true" compilerOrder="122"/>
+            </layout>&#xD;
+			
+            <layout left="695" top="692" width="421" height="25" compilerOrder="107">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="razTechnique2" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="1046" top="697" width="23" height="24" compilerOrder="71">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech2_0" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="1092" top="697" width="23" height="24" compilerOrder="73">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech2_1" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="1143" top="697" width="23" height="24" compilerOrder="75">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech2_2" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="796" top="721" width="23" height="24" compilerOrder="35">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech2_3" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="623" top="721" width="23" height="24" compilerOrder="39">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech2_4" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="960" top="721" width="23" height="24" compilerOrder="37">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech2_5" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="635" top="765" width="518" height="96" compilerOrder="123">
+                <textEditor left="0" top="0" width="518" height="96" fontSize="19" fontColor="#000000" field="razTechDesc2" transparent="true" compilerOrder="124"/>
+            </layout>&#xD;
+			
+			<layout left="695" top="892" width="421" height="25" compilerOrder="109">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="razTechnique3" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="1046" top="897" width="23" height="24" compilerOrder="77">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech3_0" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="1092" top="897" width="23" height="24" compilerOrder="79">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech3_1" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="1143" top="897" width="23" height="24" compilerOrder="81">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech3_2" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="796" top="920" width="23" height="24" compilerOrder="41">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech3_3" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="623" top="920" width="23" height="24" compilerOrder="45">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech3_4" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="960" top="920" width="23" height="24" compilerOrder="43">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech3_5" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="635" top="960" width="518" height="96" compilerOrder="125">
+                <textEditor left="0" top="0" width="518" height="96" fontSize="19" fontColor="#000000" field="razTechDesc3" transparent="true" compilerOrder="126"/>
+            </layout>&#xD;
+			
+			<layout left="695" top="1092" width="421" height="25" compilerOrder="111">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="razTechnique4" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="1046" top="1097" width="23" height="24" compilerOrder="83">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech4_0" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="1092" top="1097" width="23" height="24" compilerOrder="85">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech4_1" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="1143" top="1097" width="23" height="24" compilerOrder="87">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech4_2" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="796" top="1121" width="23" height="24" compilerOrder="47">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech4_3" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="623" top="1121" width="23" height="24" compilerOrder="51">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech4_4" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="960" top="1121" width="23" height="24" compilerOrder="49">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech4_5" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="635" top="1165" width="518" height="96" compilerOrder="127">
+                <textEditor left="0" top="0" width="518" height="96" fontSize="19" fontColor="#000000" field="razTechDesc4" transparent="true" compilerOrder="128"/>
+            </layout>&#xD;
+			
+			
+			
+			<!-- Growth -->
+            <layout left="190" top="1197" width="23" height="22" compilerOrder="113">
+                <checkBox left="0" top="0" width="23" height="23" field="razGrowth1" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="214" top="1197" width="23" height="22" compilerOrder="115">
+                <checkBox left="0" top="0" width="23" height="23" field="razGrowth2" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="238" top="1197" width="23" height="22" compilerOrder="117">
+                <checkBox left="0" top="0" width="23" height="23" field="razGrowth3" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="262" top="1197" width="23" height="22" compilerOrder="119">
+                <checkBox left="0" top="0" width="23" height="23" field="razGrowth4" compilerOrder="120"/>
+            </layout>&#xD;
+			
+			<layout left="330" top="1374" width="23" height="17" compilerOrder="7">
+                <checkBox left="0" top="0" width="23" height="18" field="razGrowth2_0" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="347" top="1374" width="23" height="17" compilerOrder="9">
+                <checkBox left="0" top="0" width="23" height="18" field="razGrowth2_1" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="353" top="1394" width="23" height="17" compilerOrder="11">
+                <checkBox left="0" top="0" width="23" height="18" field="razGrowth2_2" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="370" top="1394" width="23" height="17" compilerOrder="13">
+                <checkBox left="0" top="0" width="23" height="18" field="razGrowth2_3" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="254" top="1434" width="23" height="17" compilerOrder="19">
+                <checkBox left="0" top="0" width="23" height="18" field="razGrowth2_4" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="272" top="1434" width="23" height="17" compilerOrder="21">
+                <checkBox left="0" top="0" width="23" height="18" field="razGrowth2_5" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="297" top="1455" width="23" height="17" compilerOrder="15">
+                <checkBox left="0" top="0" width="23" height="18" field="razGrowth2_6" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="315" top="1455" width="23" height="17" compilerOrder="17">
+                <checkBox left="0" top="0" width="23" height="18" field="razGrowth2_7" compilerOrder="18"/>
+            </layout>&#xD;
+			
+			
+			<layout left="695" top="1292" width="421" height="25" compilerOrder="113">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="razTechnique5" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="1046" top="1297" width="23" height="24" compilerOrder="89">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech5_0" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="1092" top="1297" width="23" height="24" compilerOrder="91">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech5_1" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="1143" top="1297" width="23" height="24" compilerOrder="93">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech5_2" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="796" top="1321" width="23" height="24" compilerOrder="53">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech5_3" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="623" top="1321" width="23" height="24" compilerOrder="57">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech5_4" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="960" top="1321" width="23" height="24" compilerOrder="55">
+                <checkBox left="0" top="0" width="23" height="24" field="razTech5_5" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="635" top="1365" width="518" height="96" compilerOrder="129">
+                <textEditor left="0" top="0" width="518" height="96" fontSize="19" fontColor="#000000" field="razTechDesc5" transparent="true" compilerOrder="130"/>
+            </layout>&#xD;
+			
+			
+            
+        </rectangle>
+    </scrollBox>
+</form>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmhammer2_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmhammer2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmhammer2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/HammerVerso.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            
+			<!-- Looks -->
+			<layout left="76" top="132" width="414" height="52" compilerOrder="1">
+                <textEditor left="0" top="0" width="414" height="52" fontSize="24" fontColor="#000000" field="hammLooks" transparent="true" compilerOrder="2"/>
+            </layout>&#xD;
+			
+			<!-- Home town -->
+            <layout left="174" top="194" width="333" height="23" compilerOrder="127">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="333" height="24" field="hammHometown" compilerOrder="128"/>
+            </layout>&#xD;
+			
+			<!-- Connections -->
+			<layout left="80" top="468" width="141" height="20" compilerOrder="3">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="21" field="hammConnection1" compilerOrder="4"/>
+            </layout>&#xD;
+			<layout left="133" top="542" width="141" height="20" compilerOrder="5">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="21" field="hammConnection2" compilerOrder="6"/>
+            </layout>&#xD;
+			
+			<!-- Technique 1 -->
+            <layout left="599" top="288" width="421" height="25" compilerOrder="103">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="hammTechnique0" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="1046" top="293" width="23" height="24" compilerOrder="67">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech0_0" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="1091" top="293" width="23" height="24" compilerOrder="69">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech0_1" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="1143" top="293" width="23" height="24" compilerOrder="71">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech0_2" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="699" top="321" width="23" height="24" compilerOrder="31">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech0_3" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="526" top="321" width="23" height="24" compilerOrder="33">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech0_4" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="863" top="321" width="23" height="24" compilerOrder="35">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech0_5" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="540" top="365" width="613" height="99" compilerOrder="115">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="hammTechDesc0" transparent="true" compilerOrder="116"/>
+            </layout>&#xD;
+			
+            <!-- Technique 2 -->
+            <layout left="599" top="489" width="421" height="25" compilerOrder="105">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="hammTechnique1" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="1046" top="495" width="23" height="24" compilerOrder="73">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech1_0" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="1091" top="495" width="23" height="24" compilerOrder="75">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech1_1" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="1143" top="495" width="23" height="24" compilerOrder="77">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech1_2" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="699" top="521" width="23" height="24" compilerOrder="39">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech1_3" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="526" top="521" width="23" height="24" compilerOrder="37">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech1_4" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="863" top="521" width="23" height="24" compilerOrder="41">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech1_5" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="540" top="565" width="613" height="99" compilerOrder="117">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="hammTechDesc1" transparent="true" compilerOrder="118"/>
+            </layout>&#xD;
+			
+			<!-- Technique 3 -->
+            <layout left="599" top="690" width="421" height="25" compilerOrder="107">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="hammTechnique2" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="1046" top="695" width="23" height="24" compilerOrder="79">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech2_0" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="1091" top="695" width="23" height="24" compilerOrder="81">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech2_1" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="1143" top="695" width="23" height="24" compilerOrder="83">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech2_2" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="699" top="721" width="23" height="24" compilerOrder="45">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech2_3" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="526" top="721" width="23" height="24" compilerOrder="43">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech2_4" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="863" top="721" width="23" height="24" compilerOrder="47">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech2_5" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="540" top="765" width="613" height="99" compilerOrder="119">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="hammTechDesc2" transparent="true" compilerOrder="120"/>
+            </layout>&#xD;
+			
+			<!-- Technique 4 -->
+            <layout left="599" top="891" width="421" height="25" compilerOrder="109">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="hammTechnique3" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="1046" top="895" width="23" height="24" compilerOrder="85">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech3_0" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="1091" top="895" width="23" height="24" compilerOrder="87">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech3_1" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="1143" top="895" width="23" height="24" compilerOrder="89">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech3_2" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="699" top="921" width="23" height="24" compilerOrder="51">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech3_3" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="526" top="921" width="23" height="24" compilerOrder="49">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech3_4" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="863" top="921" width="23" height="24" compilerOrder="53">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech3_5" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="537" top="965" width="613" height="99" compilerOrder="121">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="hammTechDesc3" transparent="true" compilerOrder="122"/>
+            </layout>&#xD;
+			
+			<!-- Growth -->
+            <layout left="187" top="988" width="22" height="23" compilerOrder="7">
+                <checkBox left="0" top="0" width="22" height="24" field="hammGrowth1" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="212" top="988" width="22" height="23" compilerOrder="9">
+                <checkBox left="0" top="0" width="22" height="24" field="hammGrowth2" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="236" top="988" width="22" height="23" compilerOrder="11">
+                <checkBox left="0" top="0" width="22" height="24" field="hammGrowth3" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="260" top="988" width="22" height="23" compilerOrder="13">
+                <checkBox left="0" top="0" width="22" height="24" field="hammGrowth4" compilerOrder="14"/>
+            </layout>&#xD;
+			
+			<layout left="330" top="1184" width="23" height="17" compilerOrder="15">
+                <checkBox left="0" top="0" width="23" height="18" field="hammGrowth2_0" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="347" top="1184" width="23" height="17" compilerOrder="17">
+                <checkBox left="0" top="0" width="23" height="18" field="hammGrowth2_1" compilerOrder="18"/>
+            </layout>&#xD;
+			<layout left="353" top="1204" width="23" height="17" compilerOrder="19">
+                <checkBox left="0" top="0" width="23" height="18" field="hammGrowth2_2" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="370" top="1204" width="23" height="17" compilerOrder="21">
+                <checkBox left="0" top="0" width="23" height="18" field="hammGrowth2_3" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="254" top="1243" width="23" height="17" compilerOrder="27">
+                <checkBox left="0" top="0" width="23" height="18" field="hammGrowth2_4" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="271" top="1243" width="23" height="17" compilerOrder="29">
+                <checkBox left="0" top="0" width="23" height="18" field="hammGrowth2_5" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="297" top="1264" width="23" height="17" compilerOrder="23">
+                <checkBox left="0" top="0" width="23" height="18" field="hammGrowth2_6" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="314" top="1264" width="23" height="17" compilerOrder="25">
+                <checkBox left="0" top="0" width="23" height="18" field="hammGrowth2_7" compilerOrder="26"/>
+            </layout>&#xD;
+			
+			<!-- Technique 5 -->
+            <layout left="599" top="1092" width="421" height="25" compilerOrder="111">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="hammTechnique4" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="1046" top="1095" width="23" height="24" compilerOrder="91">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech4_0" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="1091" top="1095" width="23" height="24" compilerOrder="93">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech4_1" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="1143" top="1095" width="23" height="24" compilerOrder="95">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech4_2" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="699" top="1121" width="23" height="24" compilerOrder="57">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech4_3" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="526" top="1121" width="23" height="24" compilerOrder="55">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech4_4" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="863" top="1121" width="23" height="24" compilerOrder="59">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech4_5" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="539" top="1165" width="613" height="99" compilerOrder="123">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="hammTechDesc4" transparent="true" compilerOrder="124"/>
+            </layout>&#xD;
+			
+			
+            <!-- Technique 6 -->
+            <layout left="599" top="1293" width="421" height="25" compilerOrder="113">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="hammTechnique5" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="1046" top="1295" width="23" height="24" compilerOrder="97">
+                <checkBox left="0" top="0" width="23" height="21" field="hammTech5_0" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="1091" top="1295" width="23" height="24" compilerOrder="99">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech5_1" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="1143" top="1295" width="23" height="24" compilerOrder="101">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech5_2" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="699" top="1321" width="23" height="24" compilerOrder="63">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech5_3" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="526" top="1321" width="23" height="24" compilerOrder="61">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech5_4" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="863" top="1321" width="23" height="24" compilerOrder="65">
+                <checkBox left="0" top="0" width="23" height="24" field="hammTech5_5" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="542" top="1365" width="613" height="99" compilerOrder="125">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="hammTechDesc5" transparent="true" compilerOrder="126"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

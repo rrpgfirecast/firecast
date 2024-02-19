@@ -39,6 +39,26 @@
 			end
 		end
 
+		function self:listAllDataTypes()
+			local installed = Firecast.Plugins.getInstalledDataTypes()
+			local dataTypes = {}
+
+			local i = 0
+            for key,value in pairs(installed) do
+            	if value.formType == "sheetTemplate" then
+			    	i = i + 1
+					dataTypes[i] = value.dataType
+				end
+			end
+
+			self.dt.items = dataTypes
+			self.dt.values = dataTypes
+
+			if sheet.dataType then
+				self.dt.text = sheet.dataType
+			end
+		end
+
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
 				dest[#dest + 1] = bibItem;
@@ -87,8 +107,8 @@
 
 			<checkBox align="top" height="25" text="Dar ficha aos jogadores." field="giveSheet"/>
 			<layout align="top" height="25">
-				<label align="left" width="90" text="DataType" horzTextAlign="center"/>
-				<edit align="left" width="150" field="dataType"/>
+				<label align="left" width="70" text="DataType" horzTextAlign="center"/>
+				<comboBox name="dt" align="client" width="200" field="dataType"/>
 			</layout>
 
 			<horzLine align="top" height="5"/>
@@ -226,6 +246,7 @@
 	<event name="onScopeNodeChanged">
 	    if sheet ~= nil then   
 	        self:listAllCharacters()
+	        self:listAllDataTypes()
 	    end;
 	</event>
 </popupForm>

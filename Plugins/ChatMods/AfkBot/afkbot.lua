@@ -376,12 +376,17 @@ Firecast.Messaging.listen("MesaJoined",
 			end
 		end
 
-		-- Adicionar automaticamente ao offchat
+		-- Adicionar automaticamente ao offchat depois de 3 segundos
 		if afktemp[message.mesa.codigoInterno].offchat ~= nil then
-			afktemp[message.mesa.codigoInterno].offchat:asyncInvite({message.jogador.login})
-			if message.jogador.isJogador then
-				message.jogador:requestSetVoz(true);
-			end
+			setTimeout(
+					function()
+						afktemp[message.mesa.codigoInterno].offchat:asyncInvite({message.jogador.login})
+						if message.jogador.isJogador then
+							message.jogador:requestSetVoz(true);
+						end
+					end, 3000
+				)
+			
 		end
 	end);
 
@@ -573,8 +578,12 @@ Firecast.Messaging.listen("ChatMessage",
 					end
 					-- add all to off chat
 					if (#logins > 1)  then
-						local promise = message.mesa:asyncCreateGroupPVT(logins);
-						afktemp[codigoInterno].offchat = await(promise);
+						if afktemp[codigoInterno].offchat ~= nil then
+							afktemp[codigoInterno].offchat:asyncInvite(logins)
+						else
+							local promise = message.mesa:asyncCreateGroupPVT(logins);
+							afktemp[codigoInterno].offchat = await(promise);
+						end
 					end
 					-- clear chat
 					message.chat:enviarMensagem("/clear")
@@ -630,7 +639,6 @@ Firecast.Messaging.listen("ChatMessage",
 			--message.chat:escrever(string.sub(txt,string.len(" >> Turno de ")+1));
 		end;
 	end);
-
 
 -- Copia o Log pra uma ficha
 Firecast.Messaging.listen("ChatMessageEx",

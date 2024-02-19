@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmdestined2_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmdestined2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmdestined2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/DestinedVerso.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            
+			<layout left="87" top="490" width="23" height="19" compilerOrder="127">
+                <checkBox left="0" top="0" width="23" height="17" field="Check_Box32_0" compilerOrder="128"/>
+            </layout>&#xD;
+			<layout left="87" top="514" width="23" height="19" compilerOrder="129">
+                <checkBox left="0" top="0" width="23" height="17" field="Check_Box32_1" compilerOrder="130"/>
+            </layout>&#xD;
+			<layout left="88" top="556" width="23" height="19" compilerOrder="131">
+                <checkBox left="0" top="0" width="23" height="17" field="Check_Box32_2" compilerOrder="132"/>
+            </layout>&#xD;
+			<layout left="88" top="580" width="23" height="19" compilerOrder="133">
+                <checkBox left="0" top="0" width="23" height="17" field="Check_Box32_3" compilerOrder="134"/>
+            </layout>&#xD;
+			
+			<!-- Connections -->
+			<layout left="83" top="137" width="505" height="52" compilerOrder="1">
+                <textEditor left="0" top="0" width="505" height="52" fontSize="24" fontColor="#000000" field="destConnections1" transparent="true" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="174" top="194" width="425" height="23" compilerOrder="135">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="425" height="24" field="destConnections2" compilerOrder="136"/>
+            </layout>&#xD;
+		
+			<!-- Technique 0 -->
+            <layout left="693" top="288" width="330" height="25" compilerOrder="103">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="330" height="26" field="destTechnique0" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="1049" top="296" width="23" height="24" compilerOrder="67">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech0_1" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="1095" top="296" width="23" height="24" compilerOrder="69">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech0_2" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="1147" top="296" width="23" height="24" compilerOrder="71">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech0_3" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="620" top="321" width="23" height="24" compilerOrder="31">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech0_4" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="959" top="321" width="23" height="24" compilerOrder="35">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech0_5" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="793" top="321" width="23" height="24" compilerOrder="33">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech0_6" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="630" top="365" width="529" height="95" compilerOrder="105">
+                <textEditor left="0" top="0" width="529" height="95" fontSize="19" fontColor="#000000" field="destTechDesc0" transparent="true" compilerOrder="106"/>
+            </layout>&#xD;
+            
+			<!-- Technique 1 -->
+            <layout left="693" top="490" width="330" height="25" compilerOrder="107">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="330" height="26" field="destTechnique1" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="1049" top="496" width="23" height="24" compilerOrder="73">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech1_1" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="1095" top="496" width="23" height="24" compilerOrder="75">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech1_2" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="1147" top="496" width="23" height="24" compilerOrder="77">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech1_3" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="793" top="521" width="23" height="24" compilerOrder="39">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech1_4" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="620" top="521" width="23" height="24" compilerOrder="37">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech1_5" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="959" top="521" width="23" height="24" compilerOrder="41">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech1_6" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="630" top="565" width="529" height="95" compilerOrder="117">
+                <textEditor left="0" top="0" width="529" height="95" fontSize="19" fontColor="#000000" field="destTechDesc1" transparent="true" compilerOrder="118"/>
+            </layout>&#xD;
+            
+			<!-- Technique 2 -->
+            <layout left="693" top="691" width="330" height="25" compilerOrder="109">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="330" height="26" field="destTechnique2" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="139" top="693" width="115" height="20" compilerOrder="3">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="115" height="21" field="Texto12_0" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="1049" top="695" width="23" height="24" compilerOrder="79">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech2_1" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="1095" top="695" width="23" height="24" compilerOrder="81">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech2_2" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="1147" top="695" width="23" height="24" compilerOrder="83">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech2_3" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="793" top="721" width="23" height="24" compilerOrder="45">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech2_4" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="620" top="721" width="23" height="24" compilerOrder="43">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech2_5" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="959" top="721" width="23" height="24" compilerOrder="47">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech2_6" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="630" top="765" width="529" height="95" compilerOrder="119">
+                <textEditor left="0" top="0" width="529" height="95" fontSize="19" fontColor="#000000" field="destTechDesc2" transparent="true" compilerOrder="120"/>
+            </layout>&#xD;
+			
+			<!-- Technique 3 -->
+            <layout left="172" top="772" width="112" height="20" compilerOrder="5">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="112" height="21" field="Texto12_1" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="693" top="893" width="330" height="25" compilerOrder="111">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="330" height="26" field="destTechnique3" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="1049" top="895" width="23" height="24" compilerOrder="85">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech3_1" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="1095" top="895" width="23" height="24" compilerOrder="87">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech3_2" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="1147" top="895" width="23" height="24" compilerOrder="89">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech3_3" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="793" top="921" width="23" height="24" compilerOrder="51">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech3_4" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="620" top="921" width="23" height="24" compilerOrder="49">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech3_5" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="959" top="921" width="23" height="24" compilerOrder="53">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech3_6" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="630" top="965" width="529" height="95" compilerOrder="121">
+                <textEditor left="0" top="0" width="529" height="95" fontSize="19" fontColor="#000000" field="destTechDesc3" transparent="true" compilerOrder="122"/>
+            </layout>&#xD;
+			
+			<!-- Technique 4 -->
+            <layout left="693" top="1094" width="330" height="25" compilerOrder="113">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="330" height="26" field="destTechnique4" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="1049" top="1095" width="23" height="24" compilerOrder="91">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech4_1" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="1095" top="1095" width="23" height="24" compilerOrder="93">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech4_2" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="1147" top="1095" width="23" height="24" compilerOrder="95">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech4_3" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="793" top="1121" width="23" height="24" compilerOrder="57">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech4_4" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="620" top="1121" width="23" height="24" compilerOrder="55">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech4_5" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="959" top="1121" width="23" height="24" compilerOrder="59">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech4_6" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="630" top="1165" width="529" height="95" compilerOrder="123">
+                <textEditor left="0" top="0" width="529" height="95" fontSize="19" fontColor="#000000" field="destTechDesc4" transparent="true" compilerOrder="124"/>
+            </layout>&#xD;
+			
+			<!-- Growth -->
+            <layout left="190" top="1235" width="22" height="23" compilerOrder="7">
+                <checkBox left="0" top="0" width="22" height="24" field="destGrowth1" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="214" top="1235" width="22" height="23" compilerOrder="9">
+                <checkBox left="0" top="0" width="22" height="24" field="destGrowth2" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="238" top="1235" width="22" height="23" compilerOrder="11">
+                <checkBox left="0" top="0" width="22" height="24" field="destGrowth3" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="262" top="1235" width="22" height="23" compilerOrder="13">
+                <checkBox left="0" top="0" width="22" height="24" field="destGrowth4" compilerOrder="14"/>
+            </layout>&#xD;
+			
+			<layout left="331" top="1413" width="23" height="17" compilerOrder="15">
+                <checkBox left="0" top="0" width="23" height="18" field="destGrowth2_0" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="348" top="1413" width="23" height="17" compilerOrder="17">
+                <checkBox left="0" top="0" width="23" height="18" field="destGrowth2_1" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="354" top="1433" width="23" height="17" compilerOrder="19">
+                <checkBox left="0" top="0" width="23" height="18" field="destGrowth2_2" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="371" top="1433" width="23" height="17" compilerOrder="21">
+                <checkBox left="0" top="0" width="23" height="18" field="destGrowth2_3" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="255" top="1473" width="23" height="17" compilerOrder="27">
+                <checkBox left="0" top="0" width="23" height="18" field="destGrowth2_4" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="273" top="1473" width="23" height="17" compilerOrder="29">
+                <checkBox left="0" top="0" width="23" height="18" field="destGrowth2_5" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="298" top="1493" width="23" height="17" compilerOrder="23">
+                <checkBox left="0" top="0" width="23" height="18" field="destGrowth2_6" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="315" top="1493" width="23" height="17" compilerOrder="25">
+                <checkBox left="0" top="0" width="23" height="18" field="destGrowth2_7" compilerOrder="26"/>
+            </layout>&#xD;
+			
+			<!-- Technique 5 -->
+            <layout left="693" top="1296" width="330" height="25" compilerOrder="115">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="330" height="26" field="destTechnique5" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="1049" top="1295" width="18" height="24" compilerOrder="97">
+                <checkBox left="0" top="0" width="18" height="24" field="destTech5_1" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="1095" top="1295" width="18" height="24" compilerOrder="99">
+                <checkBox left="0" top="0" width="18" height="24" field="destTech5_2" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="1147" top="1295" width="18" height="24" compilerOrder="101">
+                <checkBox left="0" top="0" width="18" height="24" field="destTech5_3" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="793" top="1321" width="23" height="24" compilerOrder="63">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech5_4" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="620" top="1321" width="23" height="24" compilerOrder="61">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech5_5" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="959" top="1321" width="23" height="24" compilerOrder="65">
+                <checkBox left="0" top="0" width="23" height="24" field="destTech5_6" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="630" top="1365" width="529" height="95" compilerOrder="125">
+                <textEditor left="0" top="0" width="529" height="95" fontSize="19" fontColor="#000000" field="destTechDesc5" transparent="true" compilerOrder="126"/>
+            </layout>&#xD;
+            
+        </rectangle>
+    </scrollBox>
+</form>

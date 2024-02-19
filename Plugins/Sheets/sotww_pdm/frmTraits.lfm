@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTraits" height="70" margins="{top=10,bottom=0}">       
+
+    <edit align="client" field="Traco"  horzTextAlign="center" margins="{right=2}"/>
+    <textEditor field="descTraco" align="bottom"/>
+       
+    <button align="right" text="Delete" width="60" onClick="NDB.deleteNode(sheet);"/>
+    <button align="left" text="Chat" width="60" onClick="enviarTraco();"/>
+
+    <script>
+        local function enviarTraco()
+            local traco = sheet.Traco;
+            local descTraco = sheet.descTraco;
+            
+            local mesaDeRPG = Firecast.getMesaDe(sheet);
+            if sheet.Traco ~= nil then
+                mesaDeRPG.chat:enviarMensagem(traco);
+                if sheet.descTraco ~= nil then
+                    mesaDeRPG.chat:enviarMensagem(descTraco);
+                end;
+            end;        
+        end;
+    </script>
+</form>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmpillar2_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmpillar2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmpillar2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/PillarVerso.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            
+			<!-- Looks -->
+			<layout left="75" top="134" width="414" height="52" compilerOrder="1">
+                <textEditor left="0" top="0" width="414" height="52" fontSize="24" fontColor="#000000" field="pillLooks" transparent="true" compilerOrder="2"/>
+            </layout>&#xD;
+			
+			<!-- Home Town -->
+            <layout left="174" top="194" width="333" height="23" compilerOrder="127">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="333" height="24" field="pillHomeTown" compilerOrder="128"/>
+            </layout>&#xD;
+			
+			<!-- Connections -->
+			<layout left="79" top="443" width="141" height="20" compilerOrder="3">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="21" field="pillConnections1" compilerOrder="4"/>
+            </layout>&#xD;
+			<layout left="76" top="521" width="141" height="20" compilerOrder="5">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="21" field="pillConnections2" compilerOrder="6"/>
+            </layout>&#xD;
+			
+			
+            <layout left="598" top="314" width="421" height="25" compilerOrder="103">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="pillTechnique0" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="1045" top="320" width="23" height="24" compilerOrder="67">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech0_0" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="1090" top="320" width="23" height="24" compilerOrder="69">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech0_1" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="1142" top="320" width="23" height="24" compilerOrder="71">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech0_2" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="699" top="344" width="23" height="24" compilerOrder="31">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech0_3" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="526" top="344" width="23" height="24" compilerOrder="35">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech0_4" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="863" top="344" width="23" height="24" compilerOrder="33">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech0_5" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="539" top="379" width="613" height="99" compilerOrder="115">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="pillTechDesc0" transparent="true" compilerOrder="116"/>
+            </layout>&#xD;
+			
+
+            <layout left="598" top="513" width="421" height="25" compilerOrder="105">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="pillTechnique1" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="1045" top="520" width="23" height="24" compilerOrder="73">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech1_0" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="1090" top="520" width="23" height="24" compilerOrder="75">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech1_1" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="1142" top="520" width="23" height="24" compilerOrder="77">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech1_2" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="699" top="542" width="23" height="24" compilerOrder="39">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech1_3" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="526" top="542" width="23" height="24" compilerOrder="37">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech1_4" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="863" top="542" width="23" height="24" compilerOrder="41">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech1_5" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="539" top="575" width="613" height="99" compilerOrder="117">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="pillTechDesc1" transparent="true" compilerOrder="118"/>
+            </layout>&#xD;
+			
+			
+            <layout left="598" top="713" width="421" height="25" compilerOrder="107">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="pillTechnique2" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="1045" top="720" width="23" height="20" compilerOrder="79">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech2_0" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="1090" top="720" width="23" height="24" compilerOrder="81">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech2_1" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="1142" top="720" width="23" height="24" compilerOrder="83">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech2_2" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="699" top="742" width="23" height="24" compilerOrder="45">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech2_3" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="526" top="742" width="23" height="24" compilerOrder="43">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech2_4" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="863" top="742" width="23" height="24" compilerOrder="47">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech2_5" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="539" top="772" width="613" height="99" compilerOrder="119">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="pillTechDesc2" transparent="true" compilerOrder="120"/>
+            </layout>&#xD;
+			
+			
+            <layout left="598" top="913" width="421" height="25" compilerOrder="109">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="pillTechnique3" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="1045" top="920" width="23" height="24" compilerOrder="85">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech3_0" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="1090" top="920" width="23" height="24" compilerOrder="87">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech3_1" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="1142" top="920" width="23" height="24" compilerOrder="89">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech3_2" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="699" top="943" width="23" height="24" compilerOrder="51">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech3_3" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="526" top="943" width="23" height="24" compilerOrder="49">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech3_4" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="863" top="943" width="23" height="24" compilerOrder="53">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech3_5" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="536" top="981" width="613" height="99" compilerOrder="121">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="Texto_Tech_description_3" transparent="true" compilerOrder="122"/>
+            </layout>&#xD;
+			
+			
+            <layout left="189" top="995" width="22" height="23" compilerOrder="7">
+                <checkBox left="0" top="0" width="22" height="24" field="pillGrowth1" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="213" top="995" width="22" height="23" compilerOrder="9">
+                <checkBox left="0" top="0" width="22" height="24" field="pillGrowth2" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="237" top="995" width="22" height="23" compilerOrder="11">
+                <checkBox left="0" top="0" width="22" height="24" field="pillGrowth3" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="261" top="995" width="22" height="23" compilerOrder="13">
+                <checkBox left="0" top="0" width="22" height="24" field="pillGrowth4" compilerOrder="14"/>
+            </layout>&#xD;
+			
+			<layout left="331" top="1192" width="23" height="17" compilerOrder="15">
+                <checkBox left="0" top="0" width="23" height="18" field="pillGrowth2_0" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="348" top="1192" width="23" height="17" compilerOrder="17">
+                <checkBox left="0" top="0" width="23" height="18" field="pillGrowth2_1" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="354" top="1212" width="23" height="17" compilerOrder="19">
+                <checkBox left="0" top="0" width="23" height="18" field="pillGrowth2_2" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="371" top="1212" width="23" height="17" compilerOrder="21">
+                <checkBox left="0" top="0" width="23" height="18" field="pillGrowth2_3" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="255" top="1252" width="23" height="17" compilerOrder="27">
+                <checkBox left="0" top="0" width="23" height="18" field="pillGrowth2_4" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="272" top="1252" width="23" height="17" compilerOrder="29">
+                <checkBox left="0" top="0" width="23" height="18" field="pillGrowth2_5" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="298" top="1273" width="23" height="17" compilerOrder="23">
+                <checkBox left="0" top="0" width="23" height="18" field="pillGrowth2_6" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="315" top="1273" width="23" height="17" compilerOrder="25">
+                <checkBox left="0" top="0" width="23" height="18" field="pillGrowth2_7" compilerOrder="26"/>
+            </layout>&#xD;
+			
+			
+            <layout left="598" top="1113" width="421" height="25" compilerOrder="111">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="pillTechnique4" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="1045" top="1120" width="23" height="24" compilerOrder="91">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech4_5" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="1090" top="1120" width="23" height="24" compilerOrder="93">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech4_4" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="1142" top="1120" width="23" height="24" compilerOrder="95">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech4_3" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="699" top="1144" width="23" height="24" compilerOrder="57">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech4_2" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="526" top="1144" width="23" height="24" compilerOrder="55">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech4_1" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="863" top="1144" width="23" height="24" compilerOrder="59">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech4_0" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="538" top="1173" width="613" height="99" compilerOrder="123">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="pillTechDesc4" transparent="true" compilerOrder="124"/>
+            </layout>&#xD;
+			
+
+            <layout left="598" top="1313" width="421" height="25" compilerOrder="113">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="pillTechnique5" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="1045" top="1319" width="23" height="24" compilerOrder="97">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech5_0" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="1090" top="1319" width="23" height="24" compilerOrder="99">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech5_1" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="1142" top="1319" width="23" height="24" compilerOrder="101">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech5_2" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="699" top="1344" width="23" height="24" compilerOrder="63">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech5_3" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="526" top="1344" width="23" height="24" compilerOrder="61">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech5_4" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="863" top="1344" width="23" height="24" compilerOrder="65">
+                <checkBox left="0" top="0" width="23" height="24" field="pillTech5_5" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="541" top="1374" width="613" height="99" compilerOrder="125">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="pillTechDesc5" transparent="true" compilerOrder="126"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6e">
+    <id>avatar_legends_playbooks</id>
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <name>Avatar Legends</name>
+        <description>Um compilado de todos os Playbooks do sistema Avatar Legends, baseado em Powered by the Apocalypse.</description>
+        <author>Echo (MikashiNomura)</author>
+    </info>
+</module>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6d" originalPluginFileName="sotww_pdm.rpk" compilationDate="04012024165330" sdkApiVersion="87" compilationDigest="4789fd8d61211b0ee6a4a3641faa9aad8196f7ee">
+    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
+    <id>br.com.czagalo.SotWW_Monsters_N_NPCs</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>1.1</version>
+
+    <settings>
+        <automaticStringLocalization>true</automaticStringLocalization>
+    </settings>
+
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>SotWW - Monsters and NPCs</name>
+        <description>Ficha para monstros e pdms, com rolagem de dados.</description>
+        <author>Célio Zagalo</author>
+        <site>https://www.instagram.com/czagalo/</site>
+        <contact>E-Mail: acazagalo@gmail.com</contact>
+    </info>
+    <dataTypes>
+        <dataType title="SotWW - Monsters and NPCs" name="frmFichaPDM" lfmFile="sheet.lfm">br.com.czagalo.SotWW_Monsters_and_NPCs</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="br.com.czagalo.SotWW_Monsters_and_NPCs" formType="sheetTemplate" lfmFile="sheet.lfm" formName="frmFichaPDM">
+                <info title="SotWW - Monsters and NPCs"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>SotWW - Monsters and NPCs</name>
+    <description>Ficha para monstros e pdms, com rolagem de dados.</description>
+    <author>Célio Zagalo</author>
+    <site>https://www.instagram.com/czagalo/</site>
+    <contact>E-Mail: acazagalo@gmail.com</contact>
+</module>

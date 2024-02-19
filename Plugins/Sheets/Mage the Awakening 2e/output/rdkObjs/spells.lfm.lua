@@ -72,7 +72,7 @@ local function constructNew_spells()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             NDB.deleteNode(sheet);
         end, obj);
 
