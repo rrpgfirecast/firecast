@@ -1,77 +1,80 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmGerenciarSimpleMacros" title="@@macros.ui.manageMacros" width="450" height="450" resizable="true">
+<popupForm name="frmGerenciarSimpleMacros" title="@@macros.ui.manageMacros" width="450" height="480" resizable="true">
 	<import file="../interfaceUtils.xml"/>
+
+	<style>
+		.dynSize {
+			g-dyn-width-txt: true;
+			g-dyn-height-txt: true;
+		}
+	</style>
 
 	<!-- Popup de Edição da Macro -->
 	<popup name="popEditMacro" autoScopeNode="false">
 		<event name="onClose">
 			self.popEditMacro:setNodeObject(nil);
-		</event>
+		</event>	
 		
-		<scrollBox align="client">
-			<layout align="top" height="25" padding="{left=2, right=2}">
-				<label text="@@macros.ui.editLabel" align="client" margins="{right=2}" horzTextAlign="center" fontSize="16"/>
-				<button text="@@macros.ui.closeButton" align="right" width="80" onClick="self.popEditMacro:close();"/>			
-			</layout>
-			
-			<horzLine align="top" margins="{top=4, bottom=2, left=16, right=16}" strokeColor="white"/>
-			
-			<flowLayout align="top" autoHeight="true" margins="{left=5,right=5, top=8}">
-				<label text="@@macros.ui.nameLabel" autoSize="true"/>
-				<label text="@@macros.ui.nameLabel.Orientation" autoSize="true" fontSize="12" fontColor="gray" wordWrap="false"/>
-				<flowLineBreak/>
-				
-				<flowPart minWidth="100" maxWidth="250" height="30" margins="{bottom=12, top=-2}">					
-					<edit name="edtNomeDaMacro" align="client" field="macro" textPrompt="@@macros.ui.macroName.example"/>
-				</flowPart>			
-				<flowLineBreak/>
-				
-				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="S" text="@@macros.ui.macroType.simple"/>
-				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="L" text="@@macros.ui.macroType.lua" margins="{bottom=12, right=8}"/>
-				<button text="??" width="45" onClick="GUI.openInBrowser('https://firecast.app/sdk3/RRPG%20SDK%203.html?Macros.html');"/>
-				<flowLineBreak/>
-				
-				<label text="@@macros.ui.actionsTitle" autoSize="true" vertTextAlign="trailing"/>
-				<label name="labExtraInfoAcoes" text="@@macros.ui.macroType.onePerLine" autoSize="true" fontSize="12" fontColor="gray" wordWrap="false" vertTextAlign="trailing"/>				
-				<flowLineBreak/>				
-				
-				<flowPart name="flpCode" minWidth="100" maxWidth="1200" height="100" margins="{bottom=12, top=-2}">					
-					<textEditor align="client" field="acoes" wordWrap="false"/>
-				</flowPart>			
+		<scrollBox align="client" g-cnt-gutter="16" g-cnt-line-spacing="8" padding="{top=4, bottom=4, left=4}">	
+			<row g-cnt-min-grid-width="120" g-cnt-vert-align="center">
+				<label g="col" text="@@macros.ui.editLabel" horzTextAlign="center" fontSize="16" g-offset="2" g-width="10" g-dyn-height-txt="true"  />
+				<button g="block" text="@@macros.ui.closeButton" onClick="self.popEditMacro:close();" class="dynSize" g-min-width="80" />					
+			</row>
+					
+			<horzLine g="col" g-width="12" margins="{top=4, bottom=2}" strokeColor="white"/>		
 						
+			<row g-margin-top="4">
+				<col g-width="12" g-cnt-gutter="0">
+					<label g="block" text="@@macros.ui.nameLabel" class="dynSize"/>
+					<label g="block" text="@@macros.ui.nameLabel.Orientation" fontSize="12" fontColor="gray" wordWrap="false" class="dynSize"/>	
+				</col>
 				
-				<flowLineBreak/>	
-				<button text="@@macros.ui.deleteMacro" width="150" margins="{top=8, right=15, bottom=15}" height="30">
-					<event name="OnClick">
-						Dialogs.confirmYesNo(lang("macros.ui.deleteConfirmation"),
-							function (confirmado)
-								if confirmado then
-									local node = self.popEditMacro:getNodeObject();								
-									self.popEditMacro:close();						
-									
-									if node ~= nil then
-										NDB.deleteNode(node);
-										globalMacrosInvalido = true;
-									end;
+				<edit g="col" name="edtNomeDaMacro" field="macro" textPrompt="@@macros.ui.macroName.example" g-margin-top="6"
+					  g-width="12" g-min-height="30" g-max-width="400" g-dyn-height-txt="true" g-break-line-before="true"/>				
+			</row>
+						
+			<row g-margin-top="4" g-vert-align="center" g-cnt-line-spacing="4">
+				<radioButton g="block" class="dynSize" groupName="tipoMacro" field="tipoMacro" fieldValue="S" text="@@macros.ui.macroType.simple"/>
+				<radioButton g="block" class="dynSize" groupName="tipoMacro" field="tipoMacro" fieldValue="L" text="@@macros.ui.macroType.lua" margins="{right=8}"/>
+				<button g="block" class="dynSize" text="???" onClick="GUI.openInBrowser('https://firecast.app/sdk3/RRPG%20SDK%203.html?Macros.html');"/>
+			</row>																	
+
+			<row g-vert-tile="true" g-min-height="160" g-cnt-vert-align="bottom">
+				<col g-cnt-gutter="0" g-width="12">
+					<label g="block" class="dynSize" text="@@macros.ui.actionsTitle" vertTextAlign="trailing"/>
+					<label g="block" class="dynSize" name="labExtraInfoAcoes" text="@@macros.ui.macroType.onePerLine" fontSize="12" fontColor="gray" wordWrap="false" vertTextAlign="trailing"/>				
+				</col>
+				
+				<textEditor g="col" g-width="12" field="acoes" wordWrap="false" g-vert-tile="true" g-margin-top="6"/>						
+			</row>
+			
+			<button g="block" g-margin-top="4" class="dynSize" text="@@macros.ui.deleteMacro" g-min-width="100" g-min-height="30">
+				<event name="OnClick">
+					Dialogs.confirmYesNo(lang("macros.ui.deleteConfirmation"),
+						function (confirmado)
+							if confirmado then
+								local node = self.popEditMacro:getNodeObject();								
+								self.popEditMacro:close();						
+								
+								if node ~= nil then
+									NDB.deleteNode(node);
+									globalMacrosInvalido = true;
 								end;
-							end);
-					</event>
-				</button>
-				
-			</flowLayout>
+							end;
+						end);
+				</event>
+			</button>				
 		</scrollBox>
 		
 		<dataLink fields="{'macro', 'acoes'}" onChange="globalMacrosInvalido = true;"/>		
+		
 		<dataLink field="tipoMacro" defaultValue="S">
 			<event name="onChange">
 				self.labExtraInfoAcoes.visible = self.popEditMacro:getNodeObject().tipoMacro ~= "L"; 
 			</event>
 		</dataLink>
-		<dataLink field="macro" onChange="self.popEditMacro:getNodeObject().macro = globalPrepareMacroName(self.popEditMacro:getNodeObject().macro);"/>
 		
-		<event name="OnResize">	
-			self.flpCode.height = self.popEditMacro.height - 220;
-		</event>
+		<dataLink field="macro" onChange="self.popEditMacro:getNodeObject().macro = globalPrepareMacroName(self.popEditMacro:getNodeObject().macro);"/>
 		
 		<event name="onCalculateSize"><![CDATA[
 			local w = (self.width or 0) * 0.8;
@@ -108,68 +111,47 @@
 					end, 10);
 			end;
 		end;
+		
 	]]>
 	</script>	
 		
 		
 	<!-- Tabs da janela -->	
-	<tabControl align="client">
+	<tabControl align="client" g-cnt-gutter="16">
 		<tab title="@@macros.ui.title.macrosForEveryoneOnRoom" name="tabMacroMesa">
-			<dataScopeBox name="dsbMacrosMesaGlobal" align="client">
-				<layout align="client" margins="{left=2, top=2, right=2, bottom=2}">
-						<layout align="top" height="25" margins="{left=2, right=2, bottom=8}">
-							<label name="labTitMesa2" text="@@macros.ui.room" align="client" horzTextAlign="center" fontSize="16" fontStyle="bold"/>										
-						</layout>					
-				
-					<layout align="top" height="28" margins="{bottom=5, top=5, left=5}">
-						<button text="@@macros.ui.roomMacro.newTitle" align="left" width="150" onClick="self.editarMacroNode(self.rclMacrosDaMesaGlobal:append());"/>
-					</layout>
-					
-					<recordList name="rclMacrosDaMesaGlobal" align="client" field="macros" 
-								templateForm="frmGerenciarSimpleMacrosItem" selectable="true"/>
-				</layout>
+			<dataScopeBox name="dsbMacrosMesaGlobal" align="client" padding="{top=4, bottom=2}">																
+				<scrollBox g="row" g-vert-tile="true">
+					<label g="col" g-width="12" g-dyn-height-txt="true" name="labTitMesa2" text="@@macros.ui.room" horzTextAlign="center" fontSize="16" fontStyle="bold"/>														
+					<button g="col" class="dynSize" g-margin-top="12" g-min-height="30" text="@@macros.ui.roomMacro.newTitle" wordWrap="true" onClick="self.editarMacroNode(self.rclMacrosDaMesaGlobal:append());"/>		
+					<gridRecordList g="col" g-width="12" g-margin-top="4" name="rclMacrosDaMesaGlobal" field="macros" templateForm="frmGerenciarSimpleMacrosItem" selectable="true" />						
+				</scrollBox>
 			</dataScopeBox>
 		</tab>
 	
 		<tab title="@@macros.ui.myMacros.title">
 			<tabControl align="client">
-				<tab title="@@macros.ui.myMacros.global.title">
-					<layout align="client" margins="{left=2, top=2, right=2, bottom=2}">
-						<layout align="top" height="28" margins="{bottom=5, top=5, left=5}">
-							<button text="@@macros.ui.myMacros.global.new.title" align="left" width="150" onClick="self.editarMacroNode(self.rclMacrosGlobais:append());"/>
-						</layout>
-						
-						<recordList name="rclMacrosGlobais" align="client" field="macros" 
-									templateForm="frmGerenciarSimpleMacrosItem" selectable="true"/>
-					</layout>
+				<tab name="tabMyGlobal" title="@@macros.ui.myMacros.global.title">
+					<scrollBox g="row" g-vert-tile="true">
+						<button g="col" class="dynSize" g-min-height="30" text="@@macros.ui.myMacros.global.new.title" wordWrap="true" onClick="self.editarMacroNode(self.rclMacrosGlobais:append());" g-margin-top="8"/>		
+						<gridRecordList g="col" g-width="12" g-margin-top="4" g-vert-tile="true" name="rclMacrosGlobais" field="macros" templateForm="frmGerenciarSimpleMacrosItem" selectable="true"/>				
+					</scrollBox>
 				</tab>
 				
 				<tab name="tabMacrosDaMesa" title="@@macros.ui.myMacros.thisroom.title">
-					<dataScopeBox name="dsbMacrosDaMesa" align="client">
-						<layout align="client" margins="{left=2, top=2, right=2, bottom=2}">
-							<layout align="top" height="25" margins="{left=2, right=2, bottom=8}">
-								<label name="labTitMesa" text="@@macros.ui.room" align="client" horzTextAlign="center" fontSize="16" fontStyle="bold"/>			
-								
-							</layout>				
-								
-						
-							<layout align="top" height="28" margins="{bottom=3}">
-								<button text="@@macros.ui.myMacros.thisroom.new.title" align="left" width="180" onClick="self.editarMacroNode(self.rclMacrosDaMesa:append());"/>
-							</layout>
-							
-							<recordList name="rclMacrosDaMesa" align="client" field="macros" 
-										templateForm="frmGerenciarSimpleMacrosItem" selectable="true"/>
-						</layout>				
-					</dataScopeBox>
+					<scrollBox g="row" g-vert-tile="true">
+						<dataScopeBox name="dsbMacrosDaMesa" g="row" padding="{top=8, bottom=2}" g-vert-tile="true">
+							<label g="col" g-width="12" g-dyn-height-txt="true" name="labTitMesa" text="@@macros.ui.room" horzTextAlign="center" fontSize="16" fontStyle="bold"/>	
+							<button g="col" class="dynSize" g-margin-top="12" g-min-height="30" text="@@macros.ui.myMacros.thisroom.new.title" wordWrap="true" onClick="self.editarMacroNode(self.rclMacrosDaMesa:append());"/>							
+							<gridRecordList g="col" g-width="12" g-margin-top="4" g-vert-tile="true" name="rclMacrosDaMesa" field="macros" templateForm="frmGerenciarSimpleMacrosItem" selectable="true" />												
+						</dataScopeBox>
+					</scrollBox>
 				</tab>
 			</tabControl>
 		</tab>
-	
-
 	</tabControl>	
 	
 	<event name="onShow">	
-    globalNeedSimpleMacrosNDB();
+		globalNeedSimpleMacrosNDB();
 	
 		if globalSimpleMacrosNDB.global == nil then
 			globalSimpleMacrosNDB.global = {};
@@ -189,7 +171,7 @@
 			end;	
 			
 			self.dsbMacrosDaMesa.node = globalSimpleMacrosNDB.mesas[self._mesa.codigoInterno];
-			self.labTitMesa.text = "Mesa: " .. self._mesa.nome;
+			self.labTitMesa.text = lang("macros.ui.room") .. ": " .. self._mesa.nome;
 			self.labTitMesa2.text = self.labTitMesa.text;
 			
 			local opcoes = {};
@@ -211,7 +193,7 @@
 					else
 						self.tabMacroMesa.visible = false;
 					end;
-				end, opcoes)
+				end, opcoes);
 			
 		else
 			self.tabMacrosDaMesa.visible = false;

@@ -1,27 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmSelImagemURL" title="@@selimage.title" height="300" width="300" resizable="true">
+<popupForm name="frmSelImagemURL" title="@@selimage.title" height="600" width="690" resizable="true">
 	<import file="../interfaceUtils.xml"/>
 
 	<script> <![CDATA[		
-		function self:adaptarTamanhoDaTela()
-			local sw, sh = System.getScreenSize();
-			local dw = 650;
-			local dh = 600;
-		
-			if dw > sw - 15 then
-				dw = sw - 15;
-			end;
-			
-			if dh > sh - 15 then
-				dh = sh - 15;
-			end;
-						
-			self.width = dw;
-			self.height = dh;
-		end;
-	
-		self:adaptarTamanhoDaTela();
-	
 		local cUser = Firecast.getCurrentUser();
 		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;			
 		
