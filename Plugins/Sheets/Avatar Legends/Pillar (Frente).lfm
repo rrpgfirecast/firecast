@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmpillar1_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmpillar1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmpillar1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/PillarFrente.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			
+			<layout left="359" top="50" width="387" height="44" compilerOrder="3">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="387" height="45" field="pillarName" compilerOrder="4"/>
+            </layout>;
+			
+            <!-- Backgrounds -->
+            <layout left="61" top="133" width="40" height="50" compilerOrder="7">
+                <checkBox field="pillMilitary" compilerOrder="8"/>
+            </layout>;
+            <layout left="162" top="133" width="40" height="50" compilerOrder="9">
+                <checkBox field="pillOutaw" compilerOrder="10"/>
+            </layout>;
+            <layout left="264" top="133" width="40" height="50" compilerOrder="11">
+                <checkBox field="pillUrban" compilerOrder="12"/>
+            </layout>;
+            <layout left="61" top="152" width="40" height="50" compilerOrder="17">
+                <checkBox field="pillMonastic" compilerOrder="18"/>
+            </layout>;
+			 <layout left="162" top="152" width="40" height="50" compilerOrder="13">
+                <checkBox field="pillPrivileged" compilerOrder="14"/>
+            </layout>;
+            <layout left="264" top="152" width="40" height="50" compilerOrder="15">
+                <checkBox field="pillWilderness" compilerOrder="16"/>
+            </layout>;
+           
+			<!-- Demeanor -->
+            <layout left="61" top="204" width="40" height="50" compilerOrder="19">
+                <checkBox field="pillAbove" compilerOrder="20"/>
+            </layout>;
+			<layout left="61" top="224" width="40" height="50" compilerOrder="21">
+                <checkBox field="pillPerfectionist" compilerOrder="22"/>
+            </layout>;
+			<layout left="61" top="244" width="40" height="50" compilerOrder="25">
+                <checkBox field="pillChilly" compilerOrder="26"/>
+            </layout>;
+            <layout left="190" top="204" width="40" height="50" compilerOrder="23">
+                <checkBox field="pillRebelious" compilerOrder="24"/>
+            </layout>;
+            <layout left="190" top="224" width="40" height="50" compilerOrder="27">
+                <checkBox field="pillFlippant" compilerOrder="28"/>
+            </layout>;
+            <layout left="190" top="244" width="40" height="50" compilerOrder="29">
+                <checkBox field="pillStandoffish" compilerOrder="30"/>
+            </layout>;
+           
+           
+			<!-- Statuses -->
+            <layout left="881" top="267" width="40" height="50" compilerOrder="43">
+                <checkBox field="pillEmpowered" compilerOrder="44"/>
+            </layout>;
+            <layout left="881" top="287" width="40" height="50" compilerOrder="45">
+                <checkBox field="pillFavored" compilerOrder="46"/>
+            </layout>;
+            <layout left="881" top="307" width="40" height="50" compilerOrder="47">
+                <checkBox field="pillInspired" compilerOrder="48"/>
+            </layout>;
+			 <layout left="881" top="327" width="40" height="50" compilerOrder="49">
+                <checkBox field="pillPrepared" compilerOrder="50"/>
+            </layout>;
+			 <layout left="1025" top="267" width="40" height="50" compilerOrder="51">
+                <checkBox field="pillDoomed" compilerOrder="52"/>
+            </layout>;
+            <layout left="1025" top="287" width="40" height="50" compilerOrder="55">
+                <checkBox field="pillImpaired" compilerOrder="56"/>
+            </layout>;
+			<layout left="1025" top="307" width="40" height="50" compilerOrder="57">
+                <checkBox field="pillTrapped" compilerOrder="58"/>
+            </layout>;
+			<layout left="1025" top="327" width="40" height="50" compilerOrder="53">
+                <checkBox field="pillStunned" compilerOrder="54"/>
+            </layout>;
+			
+			<!-- Fighting Style e Training -->
+			<layout left="73" top="297" width="285" height="44" compilerOrder="5">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="285" height="45" field="Fight_Style" compilerOrder="6"/>
+            </layout>;
+			
+            <layout left="417" top="323" width="50" height="60" compilerOrder="33">
+                <checkBox field="pillWater" compilerOrder="34"/>
+            </layout>;
+			<layout left="491" top="323" width="50" height="60" compilerOrder="31">
+                <checkBox field="pillEarth" compilerOrder="32"/>
+            </layout>;
+			<layout left="565" top="323" width="50" height="60" compilerOrder="35">
+                <checkBox field="pillFire" compilerOrder="36"/>
+            </layout>;
+            <layout left="640" top="323" width="50" height="60" compilerOrder="39">
+                <checkBox field="pillAir" compilerOrder="40"/>
+            </layout>;
+			 <layout left="714" top="323" width="50" height="60" compilerOrder="37">
+                <checkBox field="pillMartial" compilerOrder="38"/>
+            </layout>;
+            <layout left="788" top="323" width="50" height="60" compilerOrder="41">
+                <checkBox field="pillMech" compilerOrder="42"/>
+            </layout>;
+			
+			<!-- Stats e Conditions -->
+			<layout left="113" top="442" width="34" height="44" compilerOrder="59">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="pillCreativity" compilerOrder="60"/>
+            </layout>;
+            <layout left="113" top="494" width="34" height="44" compilerOrder="61">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="pillFocus" compilerOrder="62"/>
+            </layout>;
+			<layout left="113" top="545" width="34" height="44" compilerOrder="63">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="pillHarmony" compilerOrder="64"/>
+            </layout>;
+			 <layout left="113" top="597" width="34" height="44" compilerOrder="65">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="pillPassion" compilerOrder="66"/>
+            </layout>;
+			<layout left="852" top="445" width="19" height="20" compilerOrder="77">
+                <checkBox field="pillAfraid" compilerOrder="78"/>
+            </layout>;
+            <layout left="852" top="493" width="19" height="20" compilerOrder="79">
+                <checkBox field="pillAngry" compilerOrder="80"/>
+            </layout>;
+            <layout left="852" top="543" width="19" height="20" compilerOrder="81">
+                <checkBox field="pillGuilty" compilerOrder="82"/>
+            </layout>;
+			 <layout left="852" top="594" width="19" height="20" compilerOrder="83">
+                <checkBox field="pillInsecure" compilerOrder="84"/>
+            </layout>;
+            <layout left="852" top="645" width="19" height="20" compilerOrder="85">
+                <checkBox field="pillTroubled" compilerOrder="86"/>
+            </layout>;
+			
+			<!-- Center -->
+            <layout left="479" top="589" width="23" height="25" compilerOrder="115">
+                <checkBox field="pillCenter0" compilerOrder="116"/>
+            </layout>;
+            <layout left="519" top="589" width="23" height="25" compilerOrder="117">
+                <checkBox field="pillCenter1" compilerOrder="118"/>
+            </layout>;
+            <layout left="558" top="589" width="23" height="25" compilerOrder="119">
+                <checkBox field="pillCenter2" compilerOrder="120"/>
+            </layout>;
+            <layout left="598" top="589" width="23" height="25" compilerOrder="121">
+                <checkBox field="pillCenter3" compilerOrder="122"/>
+            </layout>;
+            <layout left="638" top="589" width="23" height="25" compilerOrder="123">
+                <checkBox field="pillCenter4" compilerOrder="124"/>
+            </layout>;
+            <layout left="678" top="589" width="23" height="25" compilerOrder="125">
+                <checkBox field="pillCenter5" compilerOrder="126"/>
+            </layout>;
+            <layout left="718" top="589" width="23" height="25" compilerOrder="127">
+                <checkBox field="pillCenter6" compilerOrder="128"/>
+            </layout>;
+			
+			<!-- Balance -->
+			<radioButton left="479" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="519" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="558" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="598" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="638" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="678" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="718" top="546" width="23" height="25" groupName="balanceUp"/>
+			
+			
+			<radioButton left="479" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="519" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="558" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="598" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="638" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="678" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="718" top="626" width="23" height="25" groupName="balanceDown"/>
+           
+		   <!-- Fatigue -->
+		    <layout left="108" top="707" width="23" height="25" compilerOrder="67">
+                <checkBox field="pillFatigue0" compilerOrder="68"/>
+            </layout>;
+		    <layout left="140" top="707" width="23" height="25" compilerOrder="69">
+                <checkBox field="pillFatigue1" compilerOrder="70"/>
+            </layout>;
+            <layout left="171" top="707" width="23" height="25" compilerOrder="71">
+                <checkBox field="pillFatigue2" compilerOrder="72"/>
+            </layout>;
+            <layout left="203" top="707" width="23" height="25" compilerOrder="73">
+                <checkBox field="pillFatigue3" compilerOrder="74"/>
+            </layout>;
+            <layout left="233" top="707" width="36" height="40" compilerOrder="75">
+                <checkBox field="pillFatigue4" compilerOrder="76"/>
+            </layout>;
+			
+			<!-- Moves -->
+            <layout left="813" top="835" width="23" height="19" compilerOrder="129">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box_Moves_0" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="813" top="895" width="23" height="19" compilerOrder="131">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box_Moves_1" compilerOrder="132"/>
+            </layout>&#xD;
+			<layout left="813" top="1216" width="23" height="19" compilerOrder="133">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box_Moves_2" compilerOrder="134"/>
+            </layout>&#xD;
+			<layout left="813" top="1316" width="23" height="19" compilerOrder="135">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box_Moves_3" compilerOrder="136"/>
+            </layout>&#xD;
+			<layout left="813" top="1016" width="23" height="19" compilerOrder="137">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box_Moves_4" compilerOrder="138"/>
+            </layout>&#xD;
+			
+			<!-- Squad Leader -->
+            <layout left="436" top="898" width="23" height="19" compilerOrder="139">
+                <checkBox left="0" top="0" width="23" height="18" field="squad1" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="88" top="935" width="241" height="26" compilerOrder="1">
+                <edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="241" height="27" field="Which_are_the_most_well_known_traits_of_your" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="436" top="937" width="23" height="19" compilerOrder="141">
+                <checkBox left="0" top="0" width="23" height="18" field="squad2" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="436" top="976" width="23" height="19" compilerOrder="143">
+                <checkBox left="0" top="0" width="23" height="18" field="squad3" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="436" top="1015" width="23" height="19" compilerOrder="145">
+                <checkBox left="0" top="0" width="23" height="18" field="squad4" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="435" top="1056" width="23" height="19" compilerOrder="147">
+                <checkBox left="0" top="0" width="23" height="18" field="squad5" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="435" top="1099" width="23" height="19" compilerOrder="149">
+                <checkBox left="0" top="0" width="23" height="18" field="squad6" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="436" top="1206" width="23" height="19" compilerOrder="151">
+                <checkBox left="0" top="0" width="23" height="17" field="squad7" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="436" top="1264" width="23" height="19" compilerOrder="153">
+                <checkBox left="0" top="0" width="23" height="17" field="squad8" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="436" top="1306" width="23" height="19" compilerOrder="155">
+                <checkBox left="0" top="0" width="23" height="17" field="squad9" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="436" top="1364" width="23" height="19" compilerOrder="157">
+                <checkBox left="0" top="0" width="23" height="17" field="squad10" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="436" top="1406" width="23" height="19" compilerOrder="159">
+                <checkBox left="0" top="0" width="23" height="17" field="squad11" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="436" top="1464" width="23" height="19" compilerOrder="161">
+                <checkBox left="0" top="0" width="23" height="17" field="squad12" compilerOrder="162"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

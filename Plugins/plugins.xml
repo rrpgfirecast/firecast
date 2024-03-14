@@ -396,6 +396,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="avatar_legends_playbooks" name="Avatar Legends" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Avatar%20Legends/output/Avatar%20Legends.rpk?raw=true" fileName="Avatar Legends.rpk" repositoryPath="Sheets/Avatar Legends/" author="Echo (MikashiNomura)" description="Um compilado de todos os Playbooks do sistema Avatar Legends, baseado em Powered by the Apocalypse." version="1.0" compilationDate="09022024004725" compilationDigest="f529708661c6b0f725b46fc310aa4446e4f6f908">
+        <info lang="pt-BR" name="Avatar Legends" description="Um compilado de todos os Playbooks do sistema Avatar Legends, baseado em Powered by the Apocalypse." author="Echo (MikashiNomura)"/>
+        <dataTypes>
+            <dataType id="Echo.Avatar.Legends" title="Avatar Legends" formType="sheetTemplate">
+                <info title="Avatar Legends"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="BibliotecaRPGmeister" name="RPGM" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/BibliotecaRPGmeister/output/BibliotecaRPGmeister.rpk?raw=true" fileName="BibliotecaRPGmeister.rpk" repositoryPath="Sheets/BibliotecaRPGmeister/" author="Ambesek" description="Biblioteca com o material da mesa RPGmeister. Tanto para facilitar para abrir os links do dropbox quanto para permitir o uso por jogadores mobile." version="0.2" compilationDate="03032023113335" compilationDigest="cc78992a84d0a5d7bc401c46c71fa552f62d5608">
         <info lang="pt-BR" name="RPGM" description="Biblioteca com o material da mesa RPGmeister. Tanto para facilitar para abrir os links do dropbox quanto para permitir o uso por jogadores mobile." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
