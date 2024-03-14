@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidade" height="30" margins="{top=1,right=5,left=5}">
+	<rectangle align="client" color="#212121" hitTest="false" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=2,left=2,bottom=2}">
+		<edit align="client" field="nome"/>
+
+		<button align="right" width="25" height="25" text="i">
+			<event name="onClick">	
+				local pop = self:findControlByName("popHabilidade");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("right", self);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir");
+				end;		
+			</event>
+		</button>
+		<button align="right" width="25" height="25" text="🗑️">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

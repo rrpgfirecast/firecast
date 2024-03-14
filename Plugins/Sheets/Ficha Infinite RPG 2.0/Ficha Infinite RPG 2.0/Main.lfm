@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMain" formType="sheetTemplate" dataType="Ambesek.Infinite.RPG2" title="Ficha Infinite RPG 2.0" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+
+        local function roll(mod, text)
+            mod = tonumber(mod) or 0
+
+            local rolagem = Firecast.interpretarRolagem("2d10+"..mod);
+
+            local mesa = Firecast.getMesaDe(sheet);
+            mesa.activeChat:rolarDados(rolagem, text);
+        end
+
+        -- DEBUG FUNCTIONS
+
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+        
+        local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+        ]]> 
+    </script>
+    <template name="Rolagem">
+        <button text="🎲" align="left" width="25" horzTextAlign="center">
+            <event name="onClick">
+                local mod = $(node).$(field) or "1d1"
+
+                local rolagem = Firecast.interpretarRolagem(mod);
+
+                local mesa = Firecast.getMesaDe(sheet);
+                mesa.activeChat:rolarDados(rolagem, $(text));
+            </event>
+        </button>
+        <edit field="$(field)" align="client"/>
+    </template>
+    <template name="Estagio">
+        <layout align="top" height="200" margins="{top=5}" name="estagio$(field)$(id)" visible="false">
+            <layout align="top" height="25" margins="{top=5}">
+                <layout align="left" width="275">
+                    <HorzLabelEdit text="Nome" field="nEst$(id)" width="50"/>
+                </layout>
+            </layout>
+
+            <layout align="top" height="25" margins="{top=5}">
+                <layout align="left" width="150" margins="{left=5}">
+                    <Rolagem text="self.box$(field).node.nEst$(id)" field="rEst$(id)" node="self.box$(field).node"/>
+                </layout>
+                <layout align="left" width="120">
+                    <HorzLabelCbBox text="" width="0" field="atr$(id)" items="{'Proeza','Coordenação','Vigor','Intelecto','Atenção','Vontade','-'}" values="{'proeza','coordenacao','vigor','intelecto','atencao','vontade','-'}"/>
+                </layout>
+            </layout>
+
+            <textEditor align="client" height="25" field="details$(id)" margins="{right=5,left=5,bottom=5,top=5}"/>
+        </layout>
+    </template>
+    <template name="Poder">
+        <layout align="top" height="25">
+            <button align="left" width="25" text="+" onClick="self.rcl$(field):append()"/>
+            <label align="client" text="$(text)" margins="{left=5}"/>
+        </layout>
+        <layout align="client">
+            <layout align="left" width="200" margins="{right=10}">
+                <recordList align="top" autoHeight="true" name="rcl$(field)" field="rcl$(field)" templateForm="frmPoder" layout="vertical" selectable="true">
+                    <event name="onCompare"><![CDATA[
+                        -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+                        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+                        ]]>
+                    </event>
+                    <event name="onSelect"><![CDATA[
+                            local node = self.rcl$(field).selectedNode;
+                            self.box$(field).node = node; 
+                            self.box$(field).visible = (node ~= nil);
+                        ]]>
+                    </event>
+                    <event name="onEndEnumeration">
+                        if self.rcl$(field).selectedNode == nil and sheet ~= nil then
+                            local nodes = NDB.getChildNodes(sheet.rcl$(field));               
+
+                            if #nodes > 0 then
+                                self.rcl$(field).selectedNode = nodes[1];
+                            end;
+                        end;
+                    </event>
+                </recordList>
+            </layout>
+
+            <dataScopeBox align="client" name="box$(field)" visible="false">
+                <rectangle align="left" width="300" color="black" strokeColor="white" strokeSize="1" margins="{right=10}">
+                    <rectangle align="top" height="150" color="black" strokeColor="white" strokeSize="1" margins="{left=5, right=5, top=5, bottom=5}">
+                        <label top="65" width="300" height="20" text="Icone" horzTextAlign="center"/>
+                        <image align="client" field="icon" editable="true" style="autoFit" animate="true" margins="{left=2, right=2, top=2, bottom=2}">
+                            <event name="OnStartDrag">
+                                if drag then
+                                    drag:addData("imageURL", self.box$(field).node.icon)
+                                end
+                            </event>
+                        </image>
+                    </rectangle>
+
+                    <label align="top" height="25" text="Estagios" horzTextAlign="center"/>
+
+                    <scrollBox align="client">
+                        <Estagio id="1" field="$(field)"/>
+                        <Estagio id="2" field="$(field)"/>
+                        <Estagio id="3" field="$(field)"/>
+                        <Estagio id="4" field="$(field)"/>
+                        <Estagio id="5" field="$(field)"/>
+                    </scrollBox>
+                </rectangle>
+
+                <rectangle align="left" width="300" color="black" strokeColor="white" strokeSize="1" margins="{right=10}">
+                    <layout align="top" height="25" margins="{left=5,top=5,right=5}">
+                        <button align="left" width="25" text="+" onClick="self.rcl$(field)Hab:append()"/>
+                        <label align="client" text="Habilidades" margins="{left=5}"/>
+                    </layout>
+                    <recordList align="top" autoHeight="true" name="rcl$(field)Hab" field="rcl$(field)Hab" templateForm="frmHabilidade" layout="vertical" selectable="true">
+                        <event name="onCompare"><![CDATA[
+                            -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+                            return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+
+                <rectangle align="client" color="black" strokeColor="white" strokeSize="1" margins="{right=10}">
+                    <layout align="top" height="25" margins="{top=5}">
+                        <layout align="left" width="200">
+                            <HorzLabelEdit text="Nome" field="nome"/>
+                        </layout>
+                        <layout align="left" width="100">
+                            <HorzLabelEdit text="XP" field="xp" width="50"/>
+                        </layout>
+                        <layout align="left" width="100">
+                            <HorzLabelLabel text="Nível" field="nivel" width="50"/>
+                        </layout>
+                    </layout>
+                    <layout align="top" height="25" margins="{top=5}">
+                        <layout align="left" width="100" margins="{left=5}">
+                            <Rolagem text="self.box$(field).node.nome" field="r1" node="self.box$(field).node"/>
+                        </layout>
+                        <layout align="left" width="100">
+                            <Rolagem text="self.box$(field).node.nome" field="r2" node="self.box$(field).node"/>
+                        </layout>
+
+                        <dataLink fields="{'xp'}">
+                            <event name="onChange">
+                                if sheet==nil then return end
+
+                                local xp = tonumber(self.box$(field).node.xp) or 0
+                                local nivel = 0
+                                local xpTable = {50,100,150,200,300}
+                                for i=1, #xpTable, 1 do
+                                    if xp >= xpTable[i] then
+                                        nivel = i
+                                        xp = xp - xpTable[i]
+                                    else
+                                        break
+                                    end
+                                end
+
+                                self.estagio$(field)1.visible = nivel>=1
+                                self.estagio$(field)1.top = 0
+                                self.estagio$(field)2.visible = nivel>=2
+                                self.estagio$(field)2.top = 205
+                                self.estagio$(field)3.visible = nivel>=3
+                                self.estagio$(field)3.top = 410
+                                self.estagio$(field)4.visible = nivel>=4
+                                self.estagio$(field)4.top = 615
+                                self.estagio$(field)5.visible = nivel>=5
+                                self.estagio$(field)5.top = 820
+
+                                self.box$(field).node.nivel = nivel
+
+                                -- spent xp sum
+                                local objetos = NDB.getChildNodes(sheet.rcl$(field));
+                                local soma = 0;
+
+                                for i=1, #objetos, 1 do 
+                                    soma = soma + (tonumber(objetos[i].xp) or 0);
+                                end;
+
+                                sheet.xp$(text) = soma;
+                            </event>
+                        </dataLink>
+                    </layout>
+                    <textEditor align="client" height="25" field="details" margins="{right=5,left=5,bottom=5,top=5}"/>
+                </rectangle>
+            </dataScopeBox>
+        </layout>
+    </template>
+
+    <popup name="popHabilidade" width="600" height="450" backOpacity="0.4" autoScopeNode="false">
+        <layout align="top" height="25" margins="{top=5}">
+            <HorzLabelEdit text="Nome" field="nome"/>
+        </layout>
+        <layout align="top" height="25">
+            <HorzLabelEdit text="Custo" field="custo"/>
+        </layout>
+        <layout align="top" height="25" margins="{left=5,right=5}">
+            <Rolagem text="self.popHabilidade.node.nome" field="r1" node="self.popHabilidade.node"/>            
+        </layout>
+        <textEditor align="client" height="25" field="details" margins="{right=5,left=5,bottom=5,top=5}"/>
+    </popup>
+
+    <tabControl align="client">
+        <tab title="Principal">
+            <import file="Principal.xml"/>
+        </tab>
+        <tab title="Poderes">
+            <Poder text="Poderes" field="poderes"/>
+        </tab>
+        <tab title="Maestrias">
+            <Poder text="Maestrias" field="maestrias"/>
+        </tab>
+        <tab title="Equipamentos">
+            <import file="Equipamento.xml"/>
+        </tab>
+        <tab title="Descrição">
+            <import file="Description.lfm"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="Notes.lfm"/>
+        </tab>
+        <tab title="Creditos">
+            <import file="Credits.lfm"/>
+        </tab>
+    </tabControl>
+    <event name="onNodeReady">
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Infinite%20RPG%202.0/output/Ficha%20Infinite%20RPG%202.0.rpk?raw=true",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Infinite%20RPG/output/Ficha%20Infinite%20RPG.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+</form>
