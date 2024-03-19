@@ -125,32 +125,35 @@
         end;
 
         local function prepareAtaque()
-            if sheet.piloto == nil then return end;
-            if sheet==nil then return end;
+            if sheet.piloto == nil then return end
+            if sheet==nil then return end
 
-            local armas = NDB.getChildNodes(sheet.listaAtaqs);
-            if #armas < 1 then return end;
-            local atk = {};
-            local index = 0;
-            local mesa = Firecast.getMesaDe(sheet);
+            local armas = NDB.getChildNodes(sheet.listaAtaqs)
+            if #armas < 1 then return end
+            local atk = {}
+            local index = 0
+            local mesa = Firecast.getMesaDe(sheet)
 
             -- Penalidades ou bonus por ataque em movimento vs parado
             local pen = 0;
-            local ataquePen = tonumber(sheet.ataquePen) or 0;
+            local ataquePen = tonumber(sheet.ataquePen) or 0
             if sheet.atkTotal and ataquePen < 0 then
                 pen = ataquePen;
             elseif not sheet.atkTotal and ataquePen > 0 then
                 pen = ataquePen;
             end;
             -- Destreza do piloto
-            local des = tonumber(sheet.piloto.efetModDes) or 0;
+            local des = 0
+            if sheet.piloto then
+                des = tonumber(sheet.piloto.efetModDes) or 0
+            end
 
             -- Penalides por dano na estrutura
-            local qPen = 0;
-            local qPenDano = "";
+            local qPen = 0
+            local qPenDano = ""
             if sheet.quebrado then
-                qPen = -2;
-                qPenDano = "-2";
+                qPen = -2
+                qPenDano = "-2"
             end;
 
             -- Bonus temporarios
@@ -159,28 +162,39 @@
 
             for i=1, #armas, 1 do
                 if armas[i].ativo then
-                    index = index + 1;
-                    atk[index] = {};
-                    atk[index].mesa = mesa;
-                    atk[index].bonus = (tonumber(armas[i].ataque) or 0) + pen + des + qPen + tempAtaq;
-                    atk[index].dano = (armas[i].dano or "1d1") .. qPenDano .. tempDano;
-                    atk[index].nome = armas[i].nome or "arma";
-                    atk[index].margem = tonumber(armas[i].margem) or 20;
+                    index = index + 1
+                    atk[index] = {}
+                    atk[index].mesa = mesa
+                    atk[index].bonus = (tonumber(armas[i].ataque) or 0) + pen + des + qPen + tempAtaq
+                    atk[index].dano = (armas[i].dano or "1d1") .. qPenDano .. tempDano
+                    atk[index].nome = armas[i].nome or "arma"
+                    atk[index].margem = tonumber(armas[i].margem) or 20
 
-                    local ammo = tonumber(armas[i].municao);
+                    local ammo = tonumber(armas[i].municao)
                     if ammo ~= nil then
-                        ammo = ammo -1;
+                        ammo = ammo -1
                         if ammo==0 then
-                            mesa.activeChat:enviarMensagem("Ataque " .. index .. " com " .. atk[index].nome .. " de " .. (sheet.nome or "Veículo") .. " última munição.");
+                            mesa.activeChat:enviarMensagem("Ataque " .. index .. " com " .. atk[index].nome .. " de " .. (sheet.nome or "Veículo") .. " última munição.")
                         elseif ammo < 0 then
                             mesa.activeChat:enviarMensagem("Ataque " .. index .. " com " .. atk[index].nome .. " de " .. (sheet.nome or "Veículo") .. " sem munição.");
-                        end;
-                        armas[i].municao = ammo;
+                        end
+                        armas[i].municao = ammo
                     end;
-                end;
+
+                    local coice = tonumber(armas[i].coice)
+                    if coice ~= nil then 
+                        local atk = (tonumber(armas[i].ataque) or 0)
+                        armas[i].ataque = atk - coice
+                    end
+                else 
+                    local recarga = tonumber(armas[i].recarga)
+                    if recarga ~= nil then 
+                        armas[i].municao = recarga
+                    end
+                end
             end;
 
-            rollAtaque(atk, 1, index);
+            rollAtaque(atk, 1, index)
         end;
 
         function recursiveEnumPersonagensEmBibItem(bibItem, dest, dono)
@@ -352,6 +366,11 @@
 
             <VertLabelEdit text="+%" field="deslMult" width="100" fontSize="13"/>
             <VertLabelEdit text="Fixo (q)" field="deslAdd" width="100" fontSize="13"/>
+
+            <layout align="client">
+                <button align="top" height="25" text="C" hint="Copiar." onClick="System.setClipboardText(NDB.exportXML(self.addPop.node))"/>
+                <button align="top" height="25" text="V" hint="Colar." onClick="NDB.importXML(self.addPop.node, System.getClipboardText())"/>
+            </layout>
         </layout>
 
         <label align="top" text="Preço" height="25" horzTextAlign="center"/>
@@ -441,6 +460,14 @@
         </flowLayout>
         <textEditor align="client" field="descricao" class=""/>
     </popup>
+    <popup name="weaponPop" width="210" height="210" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="50">
+            <VertLabelEdit text="Coice" field="coice" width="100" fontSize="11" hint="Quanto essa arma perde de ataque a cada uso consecutivo. "/>
+            <VertLabelEdit text="Recarga" field="recarga" width="100" fontSize="11" hint="Quanto essa arma recarrega após ficar sem ser utilizada em um ataque."/>
+        </layout>
+
+        <textEditor align="client" field="detalhes"/>
+    </popup>
 
     <tabControl align="client">
         <tab title="Geral">
@@ -468,6 +495,10 @@
             for i=1, #nodes, 1 do
                 nodes[i].level = level;
             end
+            nodes = NDB.getChildNodes(sheet.listaOutros); 
+            for i=1, #nodes, 1 do
+                nodes[i].level = level;
+            end
         </event>
     </dataLink>
 
@@ -482,6 +513,10 @@
                 nodes[i].tamanho = tamanho;
             end;
             nodes = NDB.getChildNodes(sheet.listaEquips); 
+            for i=1, #nodes, 1 do
+                nodes[i].tamanho = tamanho;
+            end
+            nodes = NDB.getChildNodes(sheet.listaOutros); 
             for i=1, #nodes, 1 do
                 nodes[i].tamanho = tamanho;
             end
@@ -563,9 +598,10 @@
             local tamTable = {2,1,0,-1,-2,-4,-8}
             local tamanho = tamTable[tam]
 
-            if sheet.quebrado then caeMult = caeMult * 0.5 end;
+            local pen = 0
+            if sheet.quebrado then pen = -2 end;
 
-            sheet.cae = math.floor((caeBase + caeAdd) * caeMult + caeOutros + tamanho + caTemp);
+            sheet.cae = math.floor((caeBase + caeAdd) * caeMult) + caeOutros + tamanho + caTemp + pen
         </event>
     </dataLink>
     <dataLink fields="{'cacBase','cacAdd','cacMult','cacOutros','quebrado','tamanho','tempCA'}">
@@ -582,9 +618,10 @@
             local tamTable = {2,1,0,-1,-2,-4,-8}
             local tamanho = tamTable[tam]
 
-            if sheet.quebrado then cacMult = cacMult * 0.5 end;
+            local pen = 0
+            if sheet.quebrado then pen = -2 end;
 
-            sheet.cac = math.floor((cacBase + cacAdd) * cacMult + cacOutros + tamanho + caTemp);
+            sheet.cac = math.floor((cacBase + cacAdd) * cacMult) + cacOutros + tamanho + caTemp + pen
         </event>
     </dataLink>
     <dataLink fields="{'protBase','protAdd','protMult','protOutros','quebrado'}">
@@ -596,9 +633,10 @@
             local protMult = tonumber(sheet.protMult) or 1;
             local protOutros = tonumber(sheet.protOutros) or 0;
 
-            if sheet.quebrado then protMult = protMult * 0.5 end;
+            local pen = 0
+            if sheet.quebrado then pen = -2 end;
 
-            sheet.protecao = math.floor((protBase + protAdd) * protMult + protOutros);
+            sheet.protecao = math.floor((protBase + protAdd) * protMult + protOutros + pen);
         </event>
     </dataLink>
 

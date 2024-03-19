@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmInventory" align="client">
-	<popup name="popupConfig" width="210" height="110" backOpacity="0.4" autoScopeNode="false" padding="{top=5,bottom=5,left=5,right=5}">
+	<popup name="popupConfig" width="210" height="310" backOpacity="0.4" autoScopeNode="false" padding="{top=5,bottom=5,left=5,right=5}">
 		<layout align="top" height="25">
 			<label align="client" width="50" field="name" horzTextAlign="center"/>
 		</layout>
@@ -76,6 +76,8 @@
 				</event>
 			</button>
 		</layout>
+
+		<textEditor align="client" field="detalhes"/>
 	</popup>
 	<scrollBox align="client">
 		<rectangle align="top" height="35" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
@@ -98,7 +100,7 @@
                 </rectangle>
 			</layout>
 		</rectangle>
-		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+		<flowLayout align="top" autoHeight="true" maxColumns="4" horzAlign="center" orientation="vertical" avoidScale="true">
 			<ListaFlexivel nome="NAVES" rclName="rclInventarioNaves" rclField="rclInventarioNaves" frm="frmInventaryItem"/>
 			<ListaFlexivel nome="MECHAS" rclName="rclInventarioMechas" rclField="rclInventarioMechas" frm="frmInventaryItem"/>
 			<ListaFlexivel nome="VEICULOS" rclName="rclInventarioVeiculos" rclField="rclInventarioVeiculos" frm="frmInventaryItem"/>
