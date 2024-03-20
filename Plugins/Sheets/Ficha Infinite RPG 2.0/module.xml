@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6e">
+    <id>Ambesek.Infinite.RPG2</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>2.0.3</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha Infinite RPG 2.0</name>
+        <description>Ficha para o sistema Infinite RPG 2.0. </description>
+        <author>Ambesek</author>
+        <site/>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
+</module>

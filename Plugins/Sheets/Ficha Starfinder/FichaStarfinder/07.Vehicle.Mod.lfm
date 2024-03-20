@@ -74,6 +74,10 @@
 			for i=1, #nodes, 1 do
 				preco = preco + (tonumber(nodes[i].precoTotal) or 0);
 			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
+			for i=1, #nodes, 1 do
+				preco = preco + (tonumber(nodes[i].precoTotal) or 0);
+			end
 			node.precoMod = preco;
 		</event>
 	</dataLink>
@@ -89,6 +93,10 @@
 				mult = mult + ((tonumber(nodes[i].precoMult) or 0)/100);
 			end
 			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].precoMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
 			for i=1, #nodes, 1 do
 				mult = mult + ((tonumber(nodes[i].precoMult) or 0)/100);
 			end
@@ -110,6 +118,10 @@
 			for i=1, #nodes, 1 do
 				desl = desl + (tonumber(nodes[i].deslAdd) or 0);
 			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
+			for i=1, #nodes, 1 do
+				desl = desl + (tonumber(nodes[i].deslAdd) or 0);
+			end
 			node.deslAdd = desl;
 		</event>
 	</dataLink>
@@ -124,6 +136,10 @@
 				mult = mult + ((tonumber(nodes[i].deslMult) or 0)/100);
 			end
 			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].deslMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
 			for i=1, #nodes, 1 do
 				mult = mult + ((tonumber(nodes[i].deslMult) or 0)/100);
 			end
@@ -145,6 +161,10 @@
 			for i=1, #nodes, 1 do
 				pil = pil + (tonumber(nodes[i].pilotarAdd) or 0);
 			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
+			for i=1, #nodes, 1 do
+				pil = pil + (tonumber(nodes[i].pilotarAdd) or 0);
+			end
 			node.pilotarAdd = pil;
 		</event>
 	</dataLink>
@@ -160,6 +180,10 @@
 				atk = atk + (tonumber(nodes[i].ataqueAdd) or 0);
 			end
 			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				atk = atk + (tonumber(nodes[i].ataqueAdd) or 0);
+			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
 			for i=1, #nodes, 1 do
 				atk = atk + (tonumber(nodes[i].ataqueAdd) or 0);
 			end
@@ -181,6 +205,10 @@
 			for i=1, #nodes, 1 do
 				aux = aux + (tonumber(nodes[i].protAdd) or 0);
 			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].protAdd) or 0);
+			end
 			node.protAdd = aux;
 		</event>
 	</dataLink>
@@ -195,6 +223,10 @@
 				mult = mult + ((tonumber(nodes[i].protMult) or 0)/100);
 			end
 			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].protMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
 			for i=1, #nodes, 1 do
 				mult = mult + ((tonumber(nodes[i].protMult) or 0)/100);
 			end
@@ -216,6 +248,10 @@
 			for i=1, #nodes, 1 do
 				aux = aux + (tonumber(nodes[i].cacAdd) or 0);
 			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].cacAdd) or 0);
+			end
 			node.cacAdd = aux;
 		</event>
 	</dataLink>
@@ -230,6 +266,10 @@
 				mult = mult + ((tonumber(nodes[i].cacMult) or 0)/100);
 			end
 			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].cacMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
 			for i=1, #nodes, 1 do
 				mult = mult + ((tonumber(nodes[i].cacMult) or 0)/100);
 			end
@@ -251,6 +291,10 @@
 			for i=1, #nodes, 1 do
 				aux = aux + (tonumber(nodes[i].caeAdd) or 0);
 			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].caeAdd) or 0);
+			end
 			node.caeAdd = aux;
 		</event>
 	</dataLink>
@@ -265,6 +309,10 @@
 				mult = mult + ((tonumber(nodes[i].caeMult) or 0)/100);
 			end
 			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].caeMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
 			for i=1, #nodes, 1 do
 				mult = mult + ((tonumber(nodes[i].caeMult) or 0)/100);
 			end
@@ -286,6 +334,10 @@
 			for i=1, #nodes, 1 do
 				aux = aux + (tonumber(nodes[i].pvAdd) or 0);
 			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].pvAdd) or 0);
+			end
 			node.pvAdd = aux;
 		</event>
 	</dataLink>
@@ -300,6 +352,10 @@
 				mult = mult + ((tonumber(nodes[i].pvMult) or 0)/100);
 			end
 			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].pvMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaOutros); 
 			for i=1, #nodes, 1 do
 				mult = mult + ((tonumber(nodes[i].pvMult) or 0)/100);
 			end

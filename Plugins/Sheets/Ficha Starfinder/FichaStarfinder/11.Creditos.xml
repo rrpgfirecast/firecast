@@ -209,7 +209,7 @@
 				local stream = Utils.newMemoryStream();
 				local bytes = stream:write(export);
 
-				Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+				Dialogs.saveFile("Salvar Ficha como XML", stream, (sheet.nome or "ficha") .. ".xml", "application/xml",
 					function()
 						stream:close();
 						showMessage("Ficha Exportada.");

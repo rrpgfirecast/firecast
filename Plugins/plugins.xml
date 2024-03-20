@@ -127,6 +127,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="Ambesek.Infinite.RPG2" name="Ficha Infinite RPG 2.0" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Infinite%20RPG%202.0/output/Ficha%20Infinite%20RPG%202.0.rpk?raw=true" fileName="Ficha Infinite RPG 2.0.rpk" repositoryPath="Sheets/Ficha Infinite RPG 2.0/" author="Ambesek" description="Ficha para o sistema Infinite RPG 2.0." version="2.0.3" compilationDate="14032024220514" compilationDigest="fecd3d7d66264169175fc93d5e82d08dcc2dd831">
+        <info lang="pt-BR" name="Ficha Infinite RPG 2.0" description="Ficha para o sistema Infinite RPG 2.0." author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.Infinite.RPG2" title="Ficha Infinite RPG 2.0" formType="sheetTemplate">
+                <info title="Ficha Infinite RPG 2.0"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Language.Tool" name="Grammar Checker" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/GrammarChecker/output/GrammarChecker.rpk?raw=true" fileName="GrammarChecker.rpk" repositoryPath="TablesDock/GrammarChecker/" author="Ambesek" description="Verificador de gramatica usando o language tool." version="1.0.1" compilationDate="19042023040020" compilationDigest="5d0ec55b37cc1e0fe61bfa5c937b66a1b67745ec">
         <info lang="pt-BR" name="Grammar Checker" description="Verificador de gramatica usando o language tool." author="Ambesek"/>
         <dataTypes>
@@ -284,7 +292,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.11" compilationDate="20122023042427" compilationDigest="07418e528a6545f8f10c8ee7cd5682ddac9f1b6c">
+    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.12" compilationDate="20122023042427" compilationDigest="07418e528a6545f8f10c8ee7cd5682ddac9f1b6c">
         <info lang="pt-BR" name="Ficha Starfinder" description="Ficha feita para o sistema Starfinder." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Starfinder.CompanhiaMercenaria" title="Ficha Starfinder (Companhia de Mercenarios)" formType="sheetTemplate">

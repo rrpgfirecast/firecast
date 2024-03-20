@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoder" height="30" margins="{top=1}">
+	<rectangle align="client" color="#212121" hitTest="false" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=2,left=2,bottom=2}">
+		<label align="client" field="nome" horzTextAlign="center" margins="{left=5}"/>
+
+		<button align="right" width="25" height="25" text="🗑️">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

@@ -30,7 +30,7 @@
 			</layout>
 			<layout align="left" width="150" margins="{right=5}">
                 <label align="left" width="100" text="Reputação" horzTextAlign="center"/>
-                <rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+                <rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}" name="reputacao">
                     <label align="client" field="reputacao"/>
                 </rectangle>
 			</layout>
