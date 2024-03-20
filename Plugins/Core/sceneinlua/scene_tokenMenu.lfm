@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmTokenMenu" width="235" height="120" title="Menu do Token" drawContainer="false"> 
+<popupForm name="frmTokenMenu" width="235" height="120" title="Menu do Token" drawContainer="false" movable="false"> 
 	<import file="sceneTags.xml"/>
 
 	<script>
@@ -659,11 +659,5 @@
 			event.keyCode = 0;
 			event.key = "";
 		end;
-	</event>
-	
-	<event name="onHide">
-		--theSelection = nil;
-		--self.theSelection = nil;
-	</event>
-	
+	</event>	
 </popupForm>

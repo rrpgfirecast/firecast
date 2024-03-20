@@ -1,14 +1,7 @@
 local objs = require("rrpgObjs.lua");
 local Async = require("async.lua");
-local System = require("system.lua");
 
-local lDialogs;
-
-if System.checkAPIVersion(87, 4) then
-	lDialogs = objs.objectFromHandle(_obj_newObject("TLuaDialogsServices"));
-else
-	lDialogs = {};
-end
+local lDialogs = objs.objectFromHandle(_obj_newObject("TLuaDialogsServices"));
 
 local function newDialogObject(className)
 	return objs.objectFromHandle(_obj_newObject(className));
@@ -517,12 +510,8 @@ function lDialogs.chooseMultiple(prompt, options, callback)
 end;
 
 function lDialogs.asyncSelectTalemarkColor(initialColor)
-	if System.checkAPIVersion(87, 4) then
-		local promiseHandle = _obj_invokeEx(lDialogs.handle, "AsyncSelectTalemarkColor", initialColor);
-		return Async.Promise.wrap(promiseHandle);
-	else
-		return Async.Promise.failed("No API Support");
-	end;
+	local promiseHandle = _obj_invokeEx(lDialogs.handle, "AsyncSelectTalemarkColor", initialColor);
+	return Async.Promise.wrap(promiseHandle);
 end;
 
 dialogs = lDialogs;

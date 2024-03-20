@@ -97,11 +97,9 @@ local function __unsetupTemporizador(timerId, temporizador)
 	if (temporizador ~= nil) and (temporizador.timer ~= nil) then
 		local timer = temporizador.timer;
 		timer.enabled = false;
-		--timer:removeEventListener(temporizador.onTimerEventListenerId);
 		temporizador.callback = nil;
 		temporizador.parametros = nil;
 		temporizador.timer = nil; -- liberar para o garbage collector		
-		--timer:destroy();
 	end;
 end;
 
