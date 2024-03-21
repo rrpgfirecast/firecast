@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<!-- SCRIPTS -->
+	<script>  require("common.lua"); </script>
+	<!-- TEMPLATES -->
+	<template name="tidy5ELabel">
+		<!-- 
+			clickable = clickable or 'false';
+			cursor = 'default';
+			if clickable == 'true' then cursor = 'handPoint'; end;
+			minW  = 2 * (border or 0) + width;
+			minSW = 2 * (border or 0) + width / 2;
+			maxW  = 2 * (border or 0) + width * 2;
+			if color and color ~= "" then
+				minW = minW - 1;
+				minSW = minSW - 1;
+				maxW = maxW - 1;
+		 -->
+			<flowPart width="1" adjustHeightToLine="true"> <rectangle align="client" color="$(color)"/> </flowPart>
+		<!-- 
+		 end;
+		 -->
+		<flowPart name="fp$(nome)" minWidth="$(minW)" minScaledWidth="$(minSW)" maxWidth="$(maxW)" avoidScale="true" adjustHeightToLine="true"
+			padding="{left=$(borders or 0), right=$(borders or 0)}" vertAlign="center">
+			<label name="label$(nome)" align="client" hitTest="$(clickable)" canFocus="$(clickable)" cursor="$(cursor)"
+				text="$(texto or nome)" horzTextAlign="$(horzAlign or 'center')" vertTextAlign="$(vertTextAlign or 'center')" fontColor="$(fontColor or 'White')">
+				<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+				<!-- if clickable == 'true' then -->
+					<event name="onClick"><![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'label$(nome)', node = sheet, form = self, event='onClick', contexto = '$(context)'}, nil, false);]]> </event>
+					<event name="onMenu"> <![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'label$(nome)', node = sheet, form = self, event='onMenu', contexto = '$(context)'}, nil, true); ]]> </event>
+				<!-- end; -->
+			</label>
+		</flowPart>
+	</template>
+	<template name="tidy5ELabelField">
+		<!-- 
+			clickable = clickable or 'false';
+			cursor = 'default';
+			if clickable == 'true' then cursor = 'handPoint'; end;
+			minW  = 2 * (border or 0) + width;
+			minSW = 2 * (border or 0) + width / 2;
+			maxW  = 2 * (border or 0) + width * 2;
+			if color and color ~= "" then
+				minW = minW - 1;
+				minSW = minSW - 1;
+				maxW = maxW - 1;
+		 -->
+			<flowPart width="1" adjustHeightToLine="true"> <rectangle align="client" color="$(color)"/> </flowPart>
+		<!-- 
+		 end;
+		 -->
+		<flowPart name="fp$(nome)" minWidth="$(minW)" minScaledWidth="$(minSW)" maxWidth="$(maxW)" avoidScale="true" adjustHeightToLine="true"
+			padding="{left=$(borders or 0), right=$(borders or 0)}" vertAlign="center">
+			<edit name="labelField$(nome)" align="client" hitTest="$(clickable)" canFocus="$(clickable)" cursor="$(cursor)"
+				field="$(field)" horzTextAlign="$(horzAlign or 'center')" vertTextAlign="$(vertTextAlign or 'center')" readOnly="true" transparent="true" fontColor="$(fontColor or 'White')">
+				<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+				<!-- if clickable == 'true' then -->
+					<event name="onClick"><![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'labelField$(nome)', node = sheet, form = self, event='onClick', contexto = '$(context)'}, nil, false);]]> </event>
+					<event name="onMenu"> <![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'labelField$(nome)', node = sheet, form = self, event='onMenu', contexto = '$(context)'}, nil, true); ]]> </event>
+				<!-- end; -->
+			</edit>
+		</flowPart>
+	</template>
+	<template name="tidy5EEdit">
+		<!-- 
+			clickable = clickable or 'true';
+			cursor = 'default';
+			if clickable == 'true' then cursor = 'handPoint'; end;
+			minW  = 2 * (border or 0) + width;
+			minSW = 2 * (border or 0) + width / 2;
+			maxW  = 2 * (border or 0) + width * 2;
+			if color and color ~= "" then
+				minW = minW - 1;
+				minSW = minSW - 1;
+				maxW = maxW - 1;
+		 -->
+			<flowPart width="1" adjustHeightToLine="true"> <rectangle align="client" color="$(color)"/> </flowPart>
+		<!-- 
+		 end;
+		 -->
+		<flowPart name="fp$(nome)" minWidth="$(minW)" minScaledWidth="$(minSW)" maxWidth="$(maxW)" avoidScale="true" adjustHeightToLine="true"
+			padding="{left=$(borders or 0), right=$(borders or 0)}" vertAlign="center">
+			<edit name="edit$(nome)" align="client" hitTest="$(clickable)" canFocus="$(clickable)" cursor="$(cursor)"
+				field="$(field)" horzTextAlign="$(horzAlign or 'center')" vertTextAlign="$(vertTextAlign or 'center')" transparent="true" fontColor="$(fontColor or 'White')" hint="$(hint or nome)">
+				<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+				<!-- if clickable == 'true' then -->
+					<event name="onClick"><![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'edit$(nome)', node = sheet, form = self, event='onClick', contexto = '$(context)'}, nil, false);]]> </event>
+					<event name="onMenu"> <![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'edit$(nome)', node = sheet, form = self, event='onMenu', contexto = '$(context)'}, nil, true); ]]> </event>
+				<!-- end; -->
+			</edit>
+		</flowPart>
+	</template>
+	<template name="tidy5ENumber">
+		<!-- 
+			clickable = clickable or 'true';
+			cursor = 'default';
+			if clickable == 'true' then cursor = 'handPoint'; end;
+			minW  = 2 * (border or 0) + width;
+			minSW = 2 * (border or 0) + width / 2;
+			maxW  = 2 * (border or 0) + width * 2;
+			if color and color ~= "" then
+				minW = minW - 1;
+				minSW = minSW - 1;
+				maxW = maxW - 1;
+		 -->
+			<flowPart width="1" adjustHeightToLine="true"> <rectangle align="client" color="$(color)"/> </flowPart>
+		<!-- 
+		 end;
+		 -->
+		<flowPart name="fp$(nome)" minWidth="$(minW)" minScaledWidth="$(minSW)" maxWidth="$(maxW)" avoidScale="true" adjustHeightToLine="true"
+			padding="{left=$(borders or 0), right=$(borders or 0)}" vertAlign="center">
+			<edit name="edit$(nome)" align="client" hitTest="$(clickable)" canFocus="$(clickable)" cursor="$(cursor)" type="number"
+				field="$(field)" horzTextAlign="$(horzAlign or 'center')" vertTextAlign="$(vertTextAlign or 'center')" transparent="true" fontColor="$(fontColor or 'White')" hint="$(hint or nome)">
+				<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+				<!-- if clickable == 'true' then -->
+					<event name="onClick"><![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'edit$(nome)', node = sheet, form = self, event='onClick', contexto = '$(context)'}, nil, false);]]> </event>
+					<event name="onMenu"> <![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'edit$(nome)', node = sheet, form = self, event='onMenu', contexto = '$(context)'}, nil, true); ]]> </event>
+				<!-- end; -->
+			</edit>
+		</flowPart>
+	</template>
+	<template name="tidy5ECheckBox">
+		<!-- 
+			clickable = clickable or 'true';
+			cursor = 'default';
+			if clickable == 'true' then cursor = 'handPoint'; end;
+			if color and color ~= "" then
+		 -->
+			<flowPart width="1" adjustHeightToLine="true"> <rectangle align="client" color="$(color)"/> </flowPart>
+		<!--
+		 end;
+		 -->
+		<flowPart name="fp$(nome)" width="$(width + 2 * (borders or 0))" avoidScale="true" adjustHeightToLine="true"
+			padding="{left=$(borders or 0), right=$(borders or 0)}" vertAlign="center">
+			<imageCheckBox name="chb$(nome)" align="left" width="$(width)" hitTest="$(clickable)" canFocus="$(clickable)" cursor="$(cursor)"
+				checkedImage="$(checkedImage or '/images/checkbox1_checked.png')" uncheckedImage="$(uncheckedImage or '/images/checkbox1_unchecked.png')"
+				field="$(field)" hint="$(hint or nome)">
+				<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+				<!-- if clickable == 'true' then -->
+					<event name="onClick"><![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'chb$(nome)', node = sheet, form = self, event='onClick', contexto = '$(context)'}, nil, false);]]> </event>
+					<event name="onMenu"> <![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'chb$(nome)', node = sheet, form = self, event='onMenu', contexto = '$(context)'}, nil, true); ]]> </event>
+				<!-- end; -->
+			</imageCheckBox>
+		</flowPart>
+	</template>
+	<template name="tidy5EImagemF">
+		<!-- 
+			clickable = clickable or 'false';
+			cursor = 'default';
+			if clickable == 'true' then cursor = 'handPoint'; end;
+			if color and color ~= "" then
+		 -->
+			<flowPart width="1" adjustHeightToLine="true"> <rectangle align="client" color="$(color)"/> </flowPart>
+		<!--
+		 end;
+		 -->
+		<flowPart name="fp$(nome)" width="$(width + 2 * (borders or 0))" avoidScale="true" adjustHeightToLine="true"
+			padding="{left=$(borders or 0), right=$(borders or 0)}" vertAlign="center">
+			<image name="img$(nome)" align="left" width="$(width)" hitTest="$(clickable)" canFocus="$(clickable)" cursor="$(cursor)"
+				field="$(field)" hint="$(hint or nome)">
+				<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+				<!-- if clickable == 'true' then -->
+					<event name="onClick"> <![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'img$(nome)', node = sheet, form = self, event='onClick', contexto = '$(context)'}, nil, false);]]> </event>
+					<event name="onMenu">  <![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'img$(nome)', node = sheet, form = self, event='onMenu', contexto = '$(context)'}, nil, true); ]]> </event>
+				<!-- end; -->
+			</image>
+		</flowPart>
+	</template>
+	<template name="tidy5EImagem">
+		<!-- 
+			clickable = clickable or 'false';
+			cursor = 'default';
+			if clickable == 'true' then cursor = 'handPoint'; end;
+			if color and color ~= "" then
+		 -->
+			<flowPart width="1" adjustHeightToLine="true"> <rectangle align="client" color="$(color)"/> </flowPart>
+		<!--
+		 end;
+		 -->
+		<flowPart name="fp$(nome)" width="$(width + 2 * (borders or 0))" avoidScale="true" adjustHeightToLine="true"
+			padding="{left=$(borders or 0), right=$(borders or 0)}" vertAlign="center">
+			<image name="img$(nome)" align="left" width="$(width)" hitTest="$(clickable)" canFocus="$(clickable)" cursor="$(cursor)"
+				url="$(url)" style="$(style or 'proportional')" hint="$(hint or nome)">
+				<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+				<!-- if clickable == 'true' then -->
+					<event name="onClick"> <![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'img$(nome)', node = sheet, form = self, event='onClick', contexto = '$(context)'}, nil, false);]]> </event>
+					<event name="onMenu">  <![CDATA[common.onClick(sheet, common.eventFunc, {tag = 'img$(nome)', node = sheet, form = self, event='onMenu', contexto = '$(context)' }, nil, true); ]]> </event>
+				<!-- end; -->
+			</image>
+		</flowPart>
+	</template>
+</group>

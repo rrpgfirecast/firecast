@@ -449,6 +449,15 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="br.com.rrpg.DnD5_SDK3_Alt" name="D&amp;D 5e (Alternativa)" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e%20Alternativa/output/DnD5e%20Alternativa.rpk?raw=true" fileName="DnD5e Alternativa.rpk" repositoryPath="Sheets/DnD5e Alternativa/" author="Firecast + Autor desconhecido" description="Modelo alternativa de ficha de D&amp;D 5ª edição" version="1.0" compilationDate="21032024123126" compilationDigest="437aeaba2ed0c0943a7667e3643571ad8fae1a92">
+        <info lang="en" name="D&amp;D 5th Edition (Alternative version)" description="Alternative D&amp;D 5th edition character sheet for firecast" author="Firecast + Unknown author"/>
+        <info lang="pt-BR" name="D&amp;D 5e (Alternativa)" description="Modelo alternativa de ficha de D&amp;D 5ª edição" author="Firecast + Autor desconhecido" site="https://firecast.app/"/>
+        <dataTypes>
+            <dataType id="br.com.rrpg.DnD5_S3_Alt" title="D&amp;amp;D 5e (Alternativa)" formType="sheetTemplate">
+                <info title="D&amp;amp;D 5e (Alternativa)"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="br.com.rrpg.DTF_SDK3" name="Demônio a Queda" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Dem%C3%B4nio%20A%20Queda/output/Ficha%20Dem%C3%B4nio%20A%20Queda.rpk?raw=true" fileName="Ficha Demônio A Queda.rpk" repositoryPath="Sheets/Ficha Demônio A Queda/" author="AlvagorH" description="Adiciona suporte para a ficha Demônio a Queda" version="1.1" compilationDate="03032023114042" compilationDigest="937646e196a3e10b52f5c9d57368cd20aeb9f666">
         <info lang="pt-BR" name="Demônio a Queda" description="Adiciona suporte para a ficha Demônio a Queda" author="AlvagorH" site="http://www.yourwebsite.com"/>
         <dataTypes>

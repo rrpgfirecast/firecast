@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNivelDeMagia">
+	<import file="tidy5e-templates.xml"/>
+
+	<!-- FUNÇÕES -->
+	<script> <![CDATA[
+		require("common.lua");
+		local function atualizaTamanho()
+			local margins = self.rect.margins;
+			local padding = self.rect.padding;
+
+			local h1 = self.layItem:getHeight() + 2 + margins.top + margins.bottom + padding.top + padding.bottom;
+			local h2 = self.rclMagias:getHeight();
+			self.fpRect:setHeight(h1);
+			self.fpMagias:setHeight(h2);
+			self:setHeight(h1 + h2);
+		end;
+	]]> </script>
+
+
+
+	<!-- UI -->
+	<flowLayout name="outLay" align="client" horzAlign="center">
+		<flowPart name="fpRect" minWidth="691" minScaledWidth="371" maxWidth="1431" adjustHeightToLine="true">
+			<rectangle name="rect" align="client" color="DarkGray" margins="{top=2, bottom=2, left=10, right=10}" padding="{top=3, bottom=3}" xradius="2" yradius="2">
+				<flowLayout name="layItem" align="top" onResize="atualizaTamanho();" autoHeight="true" horzAlign="center">
+					<flowLayout minWidth="200" minScaledWidth="105" maxWidth="390" avoidScale="true" adjustHeightToLine="true" vertAlign="center">
+						<tidy5ELabelField	nome="Nome"				width="72"	field="nome" horzAlign="leading"				fontColor="#555555"/>
+						<tidy5ENumber		nome="EspacosAtuais"	width="8"	field="espacosAtuais"	hint="Espaços Atuais"	fontColor="#555555"/>
+						<tidy5ELabel		nome="slash" 			width="5"	texto="/"										fontColor="#555555"/>
+						<tidy5ENumber		nome="EspacosTotais"	width="8"	field="espacosTotais"	hint="Espaços Máximos"	fontColor="#555555"/>
+						<tidy5ECheckBox		nome="MagiaDePacto"		width="12"	field="magiaDePacto"	hint="Recupera com Descanso Curto"/>
+					</flowLayout>
+					<flowLayout minWidth="50" minScaledWidth="25" maxWidth="100" adjustHeightToLine="true" vertAlign="center" horzAlign="center">
+						<tidy5EImagem	nome="Componentes"		width="32"	url="/images/components.png" hint="Componentes"/>
+					</flowLayout>
+					<flowLayout minWidth="100" minScaledWidth="50" maxWidth="200" adjustHeightToLine="true" vertAlign="center" horzAlign="center">
+						<tidy5EImagem	nome="EscolaDeMagia"	width="32"	url="/images/school-of-magic.png" hint="Escola de Magia"/>
+					</flowLayout>
+					<tidy5ELabel		nome="Alvo"				width="100"														fontColor="#555555"/>
+					<tidy5ELabel		nome="Uso"				width="100"														fontColor="#555555"/>
+
+					<flowLayout minWidth="141" minScaledWidth="91" avoidScale="true" adjustHeightToLine="true" horzAlign="center" vertAlign="center" padding="{left=15, right=15}">
+						<tidy5EImagem	nome="Adicionar"		width="32"  clickable="true" url="/images/add.png" context="criaMagia" hint="Adicionar Magia"/>
+					</flowLayout>
+				</flowLayout>
+				<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+			</rectangle>
+		</flowPart>
+		<flowLineBreak/>
+		<flowPart name="fpMagias" minWidth="691" minScaledWidth="371" maxWidth="1431" adjustHeightToLine="true">
+			<recordList name="rclMagias" align="top" onResize="atualizaTamanho();" field="magias" templateForm="frmItemDeMagia" autoHeight="true"/>
+		</flowPart>
+	</flowLayout>
+
+
+
+	<!-- DATALINKS -->
+	<dataLink fields="{'descansoLongo', 'descansoCurto'}">
+		<event name="onChange">
+			if sheet.descansoLongo or (sheet.descansoCurto and sheet.magiaDePacto) then
+				sheet.espacosAtuais = sheet.espacosTotais;
+			end;
+		</event>
+	</dataLink>
+	<dataLink field="nome">
+		<event name="onChange">
+			if sheet.nome == "Truques" then
+				self.editEspacosAtuais:setVisible(false);
+				self.labelslash:setVisible(false);
+				self.editEspacosTotais:setVisible(false);
+				self.chbMagiaDePacto:setVisible(false);
+			end;
+		</event>
+	</dataLink>
+</form>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6e">
+	<!--O id identifica seu módulo globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+	<id>br.com.rrpg.DnD5_SDK3_Alt</id>
+	<!--version é a versão do seu módulo. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+	<version>1.0</version>
+		    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>D&amp;D 5e (Alternativa)</name>
+        <description>Modelo alternativa de ficha de D&amp;D 5ª edição</description>
+        <author>Firecast + Autor desconhecido</author>
+        <site>https://firecast.app/</site>
+        <contact>contato@rrpg.com.br</contact>
+    </info>
+	
+    <info lang="en">        
+        <name>D&amp;D 5th Edition (Alternative version)</name>        
+        <description>Alternative D&amp;D 5th edition character sheet for firecast</description>
+        <author>Firecast + Unknown author</author>
+    </info>	
+</module>

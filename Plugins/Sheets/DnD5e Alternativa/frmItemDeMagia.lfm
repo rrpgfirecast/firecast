@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemDeMagia">
+	<import file="tidy5e-templates.xml"/>
+
+	<!-- FUNÇÕES -->
+	<script> <![CDATA[
+		require("common.lua");
+		local function atualizaTamanho()
+			local margins = self.rect.margins;
+			local padding = self.rect.padding;
+
+			local h = self.layItem:getHeight() + 2 + margins.top + margins.bottom + padding.top + padding.bottom;
+			self.fpRect:setHeight(h);
+			self:setHeight(h);
+		end;
+	]]> </script>
+
+
+
+	<!-- UI -->
+	<flowLayout name="outLay" align="client" horzAlign="center">
+		<flowPart name="fpRect" minWidth="691" minScaledWidth="371" maxWidth="1431" adjustHeightToLine="true">
+			<rectangle name="rect" align="client" color="DimGray" margins="{top=2, bottom=2, left=10, right=10}" padding="{top=3, bottom=3}" xradius="2" yradius="2">
+				<flowLayout name="layItem" align="top" onResize="atualizaTamanho();" autoHeight="true" horzAlign="center">
+					<flowLayout minWidth="200" minScaledWidth="105" maxWidth="390" avoidScale="true" adjustHeightToLine="true" vertAlign="center">
+						<tidy5EImagemF		nome="Icone"			 width="32"  field="icone" clickable="true" context="rolaMagia"/>
+						<tidy5ELabelField	nome="Nome"				 width="126" field="nome" horzAlign="leading"/>
+						<tidy5ECheckBox		nome="Preparado"		 width="32"  field="preparadoValor" borders="5" checkedImage="/images/spell-prepared.png" uncheckedImage="/images/spell-unprepared.png"/>
+					</flowLayout>
+					<tidy5ELabelField	nome="Componentes"		 width="50"  field="componentes"		color="gray"/>
+					<tidy5ELabelField	nome="EscolaDeMagia"	 width="100" field="escolaDeMagia"		color="gray"/>
+					<tidy5ELabelField	nome="AlvoAreaDeEfeito"	 width="100" field="alvoAreaDeEfeito"	color="gray"/>
+					<tidy5ELabelField	nome="TempoDeConjuracao" width="100" field="tempoConjuracao"	color="gray"/>
+
+					<flowPart width="1" adjustHeightToLine="true"> <rectangle align="client" color="gray"/> </flowPart>
+
+					<flowLayout name="fpButoes" minWidth="140" minScaledWidth="90" avoidScale="true" adjustHeightToLine="true" horzAlign="center" vertAlign="center" padding="{left=15, right=15}">
+						<tidy5ECheckBox	nome="Favorito"		 width="32"	 field="favorito" checkedImage="/images/vertical-banner-selected.png" uncheckedImage="/images/vertical-banner-unselected.png"/>
+						<tidy5EImagem	nome="Editar"		 width="32"  clickable="true" url="/images/pencil.png" context="editaMagia"/>
+						<tidy5EImagem	nome="Deletar"		 width="32"  clickable="true" url="/images/trash-can.png" context="apagaMagia"/>
+					</flowLayout>
+				</flowLayout>
+				<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+			</rectangle>
+		</flowPart>
+	</flowLayout>
+
+
+
+	<!-- VARIAVEIS -->
+
+	<!-- DESCRIÇÃO -->
+		<dataLink field="icone" defaultValue="/images/spell-icon.png"/>
+		<dataLink field="nome" defaultValue="NOME"/>
+		<dataLink field="descricao" defaultValue=""/>
+	<!-- DETALHES -->
+		<!-- DETALHES DA MAGIA -->
+			<dataLink field="nivel" defaultValue="0"> <event name="onChange">
+				sheet.nivel = tonumber(sheet.nivel);
+				if not sheet.nivel then sheet.nivelTexto = '';
+				elseif sheet.nivel == 0 then sheet.nivelTexto = 'Truque';
+				else sheet.nivelTexto = sheet.nivel .. 'º nível';
+				end;
+			</event> </dataLink>
+			<dataLink field="escolaDeMagia" defaultValue=""/>
+
+			<dataLink field="componentesV" defaultValue=""/>
+			<dataLink field="componentesS" defaultValue=""/>
+			<dataLink field="componentesM" defaultValue=""/>
+			<dataLink field="componentesConcentracao" defaultValue=""/>
+			<dataLink field="componentesRitual" defaultValue=""/>
+			<dataLink field="componentesMaterial" defaultValue=""/>
+			<dataLink fields="{'componentesV', 'componentesS', 'componentesM', 'componentesConcentracao', 'componentesRitual'}"> <event name="onChange"> <![CDATA[
+				local label = '';
+				if sheet.componentesV then label = label .. 'V'; end;
+				if label ~= '' and sheet.componentesS then label = label .. ' '; end;
+				if sheet.componentesS then label = label .. 'S'; end;
+				if label ~= '' and sheet.componentesM then label = label .. ' '; end;
+				if sheet.componentesM then label = label .. 'M'; end;
+				if label ~= '' and sheet.componentesConcentracao then label = label .. ' '; end;
+				if sheet.componentesConcentracao then label = label .. 'C'; end;
+				if label ~= '' and sheet.componentesRitual then label = label .. ' '; end;
+				if sheet.componentesRitual then label = label .. 'R'; end;
+				sheet.componentes = label;
+			]]> </event> </dataLink>
+
+			<dataLink field="preparadoValor" defaultValue=""/>
+			<dataLink field="preparadoTipo" defaultValue="Preparada"> <event name="onChange">
+				self.chbPreparado:setVisible(sheet.preparadoTipo == 'Preparada' or sheet.preparadoTipo == 'Sempre Preparada');
+				self.chbPreparado:setEnabled(sheet.preparadoTipo == 'Preparada');
+				if sheet.preparadoTipo == 'Sempre Preparada' then sheet.preparadoValor = true; end;
+			</event> </dataLink>
+		<!-- DETALHES DE CONJURAÇÃO -->
+			<dataLink field="tempoConjuracaoValor" defaultValue="1"/>
+			<dataLink field="tempoConjuracaoUnidade" defaultValue="Ação"/>
+			<dataLink fields="{'tempoConjuracaoValor', 'tempoConjuracaoUnidade'}"> <event name="onChange"> <![CDATA[
+				local label = '';
+				if sheet.tempoConjuracaoValor then label = sheet.tempoConjuracaoValor; end;
+				if sheet.tempoConjuracaoValor and sheet.tempoConjuracaoUnidade then label = label .. ' '; end;
+				if sheet.tempoConjuracaoUnidade then label = label .. sheet.tempoConjuracaoUnidade; end;
+				sheet.tempoConjuracao = label;
+			]]> </event> </dataLink>
+			<dataLink field="condicaoAtivacao" defaultValue=""/>
+
+			<dataLink field="alvoValor" defaultValue="1"/>
+			<dataLink field="alvoUnidade" defaultValue=""/>
+			<dataLink field="alvoTipo" defaultValue="Criatura"/>
+			<dataLink fields="{'alvoValor', 'alvoUnidade', 'alvoTipo'}"> <event name="onChange"> <![CDATA[
+				local label = '';
+				if sheet.alvoTipo == 'Pessoal' then
+					label = "Pessoal";
+				else
+					if sheet.alvoValor then label = sheet.alvoValor; end;
+					if label ~= '' and sheet.alvoUnidade then label = label .. ' '; end;
+					if sheet.alvoUnidade then label = label .. sheet.alvoUnidade; end;
+					if label ~= '' and sheet.alvoTipo then label = label .. ' '; end;
+					if sheet.alvoTipo then label = label .. sheet.alvoTipo; end;
+				end;
+				sheet.alvoAreaDeEfeito = label;
+			]]> </event> </dataLink>
+
+			<dataLink field="alcanceCurto" defaultValue="18"/>
+			<dataLink field="alcanceLongo" defaultValue=""/>
+			<dataLink field="alcanceUnidade" defaultValue="Metros"/>
+
+			<dataLink field="duracaoValor" defaultValue="1"/>
+			<dataLink field="duracaoUnidade" defaultValue="Minuto"/>
+
+			<dataLink field="contadorUsos" defaultValue="0"/>
+			<dataLink field="contadorUsosTotal" defaultValue="-"/>
+			<dataLink field="contadorNome" defaultValue=""/>
+		<!-- EFEITOS DA MAGIA -->
+			<dataLink field="ataqueTipo" defaultValue="Sem Ataque"/>
+			<dataLink field="ataqueAtributo" defaultValue="Conjuração"/>
+			<dataLink field="ataqueBonus" defaultValue="0"/>
+			<dataLink field="cdResistenciaAtributo" defaultValue=""/>
+			<dataLink field="cdResistenciaValor" defaultValue="10"/>
+			<dataLink field="cdResistenciaTipo" defaultValue="Conjuração"/>
+			<dataLink field="mensagem" defaultValue=""/>
+</form>

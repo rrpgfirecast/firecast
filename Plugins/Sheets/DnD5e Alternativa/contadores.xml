@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<scrollBox align="client">
+		<button text="Add" align="top" onClick="self.rclContadores:append()"/>
+		<button text="Import from Macro" align="top">
+			<event name="onClick">
+				for key,_ in pairs(sheet.macroSavedSkills) do
+					val = sheet.macroSavedSkills[key];
+					if common.getContador(key) == nil then
+						local contador = self.rclContadores:append();
+						contador.name = val.nome;
+						contador.valCur = val.min;
+						contador.valMax = val.max;
+						if val.reset == "Descanso Curto" then contador["resetsDescanso Curto"] = "Completa"; contador["resetsDescanso Longo"] = "Completa"; end;
+						if val.reset == "Descanso Longo" then contador["resetsDescanso Longo"] = "Completa"; end;
+						if val.reset == "Dado de Vida" then contador["resetsDescanso Longo"] = "Recupera Metade (⌃)"; end;
+					end;
+				end;
+			</event>
+		</button>
+		<recordList name="rclContadores" align="top" field="contadores" templateForm="frmContador"
+			autoHeight="true" minHeight="5" hitTest="false" margins="{top=10, bottom=10, left=10, right=10}">
+			<event name="onCompare"> return Utils.compareStringPtBr(nodeA.name, nodeB.name); </event>
+			<event name="onItemAdded">
+				if sheet ~= nil then
+					sheet.contadoresMudaram = true;
+					sheet.contadoresMudaram = false;
+				end;
+			</event>
+			<event name="onItemRemoved">
+				if sheet ~= nil then
+					sheet.contadoresMudaram = true;
+					sheet.contadoresMudaram = false;
+				end;
+			</event>
+		</recordList>
+	</scrollBox>
+	<dataLink fields="{'descansoLongo', 'descansoCurto'}">
+		<event name="onChange">
+			local contadores = NDB.getChildNodes(sheet.contadores);
+			for i=1,#contadores,1 do
+				contadores[i].descansoLongo = sheet.descansoLongo;
+				contadores[i].descansoCurto = sheet.descansoCurto;
+			end;
+		</event>
+	</dataLink>
+</rectangle>
