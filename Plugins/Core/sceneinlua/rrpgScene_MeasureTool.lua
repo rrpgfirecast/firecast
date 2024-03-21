@@ -250,7 +250,7 @@ SceneLib.registerPlugin(
 				isMeasuring = true;
 				isPanningRightButton = false;
 				
-				local emendarMedida = (event.ctrlKey or event.shiftKey) and (currMeasure ~= nil);
+				local emendarMedida = (event.ctrlOrCmdKey or event.shiftKey) and (currMeasure ~= nil);
 				
 				if emendarMedida then
 					if currMeasure.distance > 0 then

@@ -165,7 +165,7 @@ function SC3UNDO_AtivarUndoHotKey(scene, ativar)
 		
 		ht.keyDownListener = scene.viewport:listen("onKeyDown",
 			function(event)
-				if (event.keyCode == VK.vkZ) and event.ctrlKey then 
+				if (event.keyCode == VK.vkZ) and event.ctrlOrCmdKey then
 					SC3UNDO_Undo(scene);
 					event.keyCode = 0;
 					event.key = "";	
