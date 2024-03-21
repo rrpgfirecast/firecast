@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<!-- Niveis de magia -->
+	<recordList name="rclMagiasNiveis" field="magias.niveis" templateForm="frmNivelDeMagia" align="client"/>
+	<dataLink fields="{'descansoLongo', 'descansoCurto'}">
+		<event name="onChange">
+			sheet.magias = sheet.magias or {};
+			local niveis = NDB.getChildNodes(sheet.magias.niveis);
+
+			for nvl=1,#niveis do
+				niveis[nvl].descansoLongo = sheet.descansoLongo;
+				niveis[nvl].descansoCurto = sheet.descansoCurto;
+			end;
+		</event>
+	</dataLink>
+
+	<!-- Cabeçalho no pé da pagina -->
+	<flowLayout align="bottom" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" horzAlign="justify">
+		<flowPart width="1"/>
+		<upperGridMagic2ComboBox height="40" minWidth="165" field="magias.habilidadeDeConjuracao" titulo="HABILIDADE DE CONJURAÇÃO" items="{'', 'FORÇA', 'DESTREZA', 'CONSTITUIÇÃO', 'INTELIGÊNCIA', 'SABEDORIA', 'CARISMA'}" values="{'', 'forca', 'destreza', 'constituicao', 'inteligencia', 'sabedoria', 'carisma'}"/>
+		<upperGridMagic2Box      height="40" minWidth="100" field="magias.cdDaMagia"              titulo="CD DA MAGIA"/>
+		<upperGridMagic2Box      height="40" minWidth="160" field="magias.bonusAtaqueSTR"         titulo="BÔNUS DE ATAQUE DE MAGIA"/>
+		<flowPart width="1"/>
+	</flowLayout>
+
+
+	<!-- POPUP -->
+	<import file="tidy5e-templates.xml"/>
+	<style>
+		.popupEditRect {
+			align: top;
+			color: DimGray;
+			margins: {top=2, bottom=2};
+			padding: {top=3, bottom=3, left=3, right=3};
+			xradius: 2;
+			yradius: 2;
+		}
+		.popupEditDetailTitle {
+			align: top;
+			fontSize: 16.0;
+			height: 30;
+			fontStyle: bold;
+		}
+	</style>
+	<popup name="popupEdit" visible="false" width="700" height="700" autoScopeNode="false">
+		<layout align="top" height="100">
+			<image align="left" field="icone" editable="true"/>
+			<flowLayout align="client">
+				<tidy5EEdit			nome="PENome"	width="100" field="nome" 			horzAlign="leading"/>
+				<flowLineBreak/>
+				<rectangle width="10000" color="grey" height="1"/>
+				<flowLineBreak/>
+				<tidy5ELabelField	nome="PENivel"	width="141"	field="nivelTexto"		horzAlign="leading"/>
+				<tidy5ELabelField	nome="PEEscola"	width="148"	field="escolaDeMagia"	horzAlign="leading"	color="gray"/>
+				<tidy5ELabelField	nome="PETempo"	width="148"	field="tempoConjuracao"	horzAlign="leading"	color="gray"/>
+			</flowLayout>
+		</layout>
+		<tabControl align="client" name="tcPopupEdit">
+			<tab title="Descrição">
+				<layout align="client" margins="{top=5, bottom=5, left=5, right=5}">
+					<label class="popupEditDetailTitle" text="Mecânicas / Flavour"/>
+					<textEditor align="client" field="descricao"/>
+				</layout>
+			</tab>
+			<tab title="Detalhes">
+				<scrollBox align="client" padding="{top=5, bottom=5, left=5, right=5}">
+					<label class="popupEditDetailTitle" text="Detalhes da Magia"/>
+						<!-- Nível da Magia -->
+						<rectangle class="popupEditRect" height="30">
+							<label align="left" fontStyle="bold" text="Nível da Magia"/>
+							<comboBox align="right" width="115" field="nivel" items="{'Truque', '1º nível', '2º nível', '3º nível', '4º nível', '5º nível', '6º nível', '7º nível', '8º nível', '9º nível'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}"/>
+						</rectangle>
+						<!-- Escola de Magia -->
+						<rectangle class="popupEditRect" height="30">
+							<label align="left" fontStyle="bold" text="Escola de Magia"/>
+							<comboBox align="right" width="115" field="escolaDeMagia" items="{'', 'Abjuração', 'Conjuração', 'Adivinhação', 'Encantamento', 'Evocação', 'Ilusão', 'Necromância', 'Transmutação'}"/>
+						</rectangle>
+						<!-- Componentes -->
+						<rectangle class="popupEditRect" height="90">
+							<label align="top" fontStyle="bold" text="Componentes da Magia" height="24"/>
+							<!-- V S M (materiais) -->
+							<layout align="top" height="30">
+								<layout align="left" width="34">
+									<label align="client" horzTextAlign="trailing" text="V"/>
+									<checkBox align="right" width="20" field="componentesV"/>
+								</layout>
+								<layout align="left" width="30">
+									<label align="client" horzTextAlign="trailing" text="S"/>
+									<checkBox align="right" width="20" field="componentesS"/>
+								</layout>
+								<layout align="left" width="32">
+									<label align="client" horzTextAlign="trailing" text="M"/>
+									<checkBox align="right" width="20" field="componentesM"/>
+								</layout>
+								<edit name="popupEditCompM" align="client" field="componentesMaterial" enabled="false"/>
+								<dataLink field="componentesM"> <event name="onChange">
+									local node = self.popupEdit:getNodeObject();
+									self.popupEditCompM:setEnabled(node.componentesM or false);
+								</event> </dataLink>
+							</layout>
+							<!-- Concentração e/ou Ritual -->
+							<layout align="top" height="30">
+								<layout align="left" width="100">
+									<label align="client" horzTextAlign="trailing" text="Concentração"/>
+									<checkBox align="right" width="20" field="componentesConcentracao"/>
+								</layout>
+								<layout align="left" width="55">
+									<label align="client" horzTextAlign="trailing" text="Ritual"/>
+									<checkBox align="right" width="20" field="componentesRitual"/>
+								</layout>
+							</layout>
+						</rectangle>
+						<!-- Tipo de Magia -->
+						<rectangle class="popupEditRect" height="30">
+							<label align="left" fontStyle="bold" text="Tipo de Magia"/>
+							<flowLayout align="client" horzAlign="trailing">
+								<flowPart name="layPrepValor" width="100" minScaledWidth="50" height="24">
+									<label name="layPrepValorLab" align="client" text="Preparado" horzTextAlign="trailing"/>
+									<checkBox name="layPrepValorChb" align="right" width="20" field="preparadoValor"/>
+								</flowPart>
+								<flowPart width="140" minScaledWidth="70" height="24">
+									<comboBox align="client" field="preparadoTipo" items="{'Preparada', 'Sempre Preparada', 'Conhecida', 'A vontade', 'Inata'}"/>
+								</flowPart>
+							</flowLayout>
+							<dataLink field="preparadoTipo"> <event name="onChange">
+								local node = self.popupEdit:getNodeObject();
+								self.layPrepValor:setVisible(node.preparadoTipo == 'Preparada' or node.preparadoTipo == 'Sempre Preparada');
+								self.layPrepValor:setEnabled(node.preparadoTipo == 'Preparada');
+							</event></dataLink>
+						</rectangle>
+					<label class="popupEditDetailTitle" text="Detalhes de Conjuração"/>
+						<!-- Tempo de Conjuração -->
+						<rectangle class="popupEditRect" height="30">
+							<flowLayout align="client">
+								<flowPart minWidth="173" maxWidth="865" height="24">
+									<label align="client" fontStyle="bold" text="Tempo de Conjuração"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="97" maxWidth="485" height="24">
+									<edit align="client" field="tempoConjuracaoValor" horzTextAlign="trailing" type="float"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="158" maxWidth="790" height="24">
+									<comboBox align="client" field="tempoConjuracaoUnidade" items="{'', 'Ação', 'Ação Bônus', 'Ação de Tripulação', 'Dias', 'Horas', 'Ação Lendária', 'Minutos', 'Nada', 'Reação', 'Especial', 'Ação de Lar'}"/>
+								</flowPart>
+							</flowLayout>
+						</rectangle>
+						<!-- Condição de Ativação -->
+						<rectangle class="popupEditRect" height="30">
+							<flowLayout align="client">
+								<flowPart minWidth="173" maxWidth="865" height="24">
+									<label align="client" fontStyle="bold" text="Condição de Ativação (Reação)"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="258" maxWidth="1290" height="24">
+									<edit name="popupEditCondAtiv" align="client" field="condicaoAtivacao"/>
+								</flowPart>
+								<dataLink field="tempoConjuracaoUnidade"> <event name="onChange">
+									local node = self.popupEdit:getNodeObject();
+									self.popupEditCondAtiv:setEnabled(node.tempoConjuracaoUnidade == 'Reação');
+								</event> </dataLink>
+							</flowLayout>
+						</rectangle>
+						<!-- Alvo -->
+						<rectangle class="popupEditRect" height="30">
+							<flowLayout align="client">
+								<flowPart minWidth="173" maxWidth="865" height="24">
+									<label align="client" fontStyle="bold" text="Alvo"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="69" maxWidth="345" height="24">
+									<edit align="client" field="alvoValor" horzTextAlign="trailing" type="float"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="92" maxWidth="460" height="24">
+									<comboBox align="client" field="alvoUnidade" items="{'', 'Nenhum', 'Pessoal', 'Toque', 'Especial', 'Qualquer', 'Pés', 'Milhas', 'Metros', 'Kilômetros'}"/>
+	 							</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="91" maxWidth="455" height="24">
+									<comboBox align="client" field="alvoTipo" items="{'', 'Aliado', 'Cone', 'Criatura', 'Cubo', 'Cilindro', 'Inimigo', 'Linha', 'Nenhum', 'Objeto', 'Raio', 'Pessoal', 'Espaço', 'Esfera', 'Quadrado', 'Parede'}"/>
+								</flowPart>
+							</flowLayout>
+						</rectangle>
+						<!-- Alcance -->
+						<rectangle class="popupEditRect" height="30">
+							<flowLayout align="client">
+								<flowPart minWidth="173" maxWidth="865" height="24">
+									<label align="client" fontStyle="bold" text="Alcance"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="68" maxWidth="340" height="24">
+									<edit name="popupEditAlcanceCurto" align="client" field="alcanceCurto" horzTextAlign="trailing" type="float"/>
+								</flowPart>
+								<flowPart minWidth="13" maxWidth="65" height="24">
+									<label align="client" text="/" horzTextAlign="center"/>
+								</flowPart>
+								<flowPart minWidth="68" maxWidth="340" height="24">
+									<edit name="popupEditAlcanceLongo" align="client" field="alcanceLongo" horzTextAlign="leading" type="float"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="106" maxWidth="530" height="24">
+									<comboBox align="client" field="alcanceUnidade" items="{'', 'Nenhum', 'Pessoal', 'Toque', 'Especial', 'Qualquer', 'Pés', 'Milhas', 'Metros', 'Kilômetros'}"/>
+								</flowPart>
+								<dataLink field="alcanceUnidade"> <event name="onChange">
+									local node = self.popupEdit:getNodeObject();
+									if node.alcanceUnidade == 'Nenhum' or node.alcanceUnidade == 'Pessoal' or node.alcanceUnidade == 'Toque' then
+										self.popupEditAlcanceCurto:setEnabled(false);
+										self.popupEditAlcanceLongo:setEnabled(false);
+									else
+										self.popupEditAlcanceCurto:setEnabled(true);
+										self.popupEditAlcanceLongo:setEnabled(true);
+									end;
+								</event> </dataLink>
+							</flowLayout>
+						</rectangle>
+						<!-- Duração -->
+						<rectangle class="popupEditRect" height="30">
+							<flowLayout align="client">
+								<flowPart minWidth="173" maxWidth="865" height="24">
+									<label align="client" fontStyle="bold" text="Duração"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="97" maxWidth="485" height="24">
+									<edit name="popupEditDuracaoUnidade" align="client" field="duracaoValor" horzTextAlign="trailing" type="float"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="158" maxWidth="790" height="24">
+									<comboBox align="client" field="duracaoUnidade" items="{'', 'Dias', 'Horas', 'Instantânea', 'Minutos', 'Meses', 'Permanente', 'Rodadas', 'Especial', 'Turnos', 'Anos'}"/>
+								</flowPart>
+								<dataLink field="duracaoUnidade"> <event name="onChange">
+									local node = self.popupEdit:getNodeObject();
+									if node.duracaoUnidade == 'Instantânea' or node.duracaoUnidade == 'Permanente' then
+										self.popupEditDuracaoUnidade:setEnabled(false);
+									else
+										self.popupEditDuracaoUnidade:setEnabled(true);
+									end;
+								</event> </dataLink>
+							</flowLayout>
+						</rectangle>
+						<!-- Recurso Necessário -->
+						<rectangle class="popupEditRect" height="30">
+							<flowLayout align="client">
+								<flowPart minWidth="173" maxWidth="865" height="24">
+									<label align="client" fontStyle="bold" text="Recurso Necessário"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="44" maxWidth="220" height="24">
+									<edit align="client" field="contadorUsos" horzTextAlign="trailing" type="number"/>
+								</flowPart>
+								<flowPart minWidth="23" maxWidth="115" height="24">
+									<label align="client" text="de" horzTextAlign="center"/>
+								</flowPart>
+								<flowPart minWidth="44" maxWidth="220" height="24">
+									<edit name="popupEditContadorUsosTotal" align="client" field="contadorUsosTotal" enabled="false"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="146" maxWidth="730" height="24">
+									<comboBox name="popupEditContadorNome" align="client" field="contadorNome"/>
+								</flowPart>
+								<dataLink field="contadorNome"> <event name="onChange">
+									local node = self.popupEdit:getNodeObject();
+									local contador = common.getContador(node, node.contadorNome or '');
+									if not contador then
+										node.contadorUsosTotal = '-';
+									else
+										node.contadorUsosTotal = contador.valMax;
+									end;
+								</event> </dataLink>
+							</flowLayout>
+						</rectangle>
+					<label class="popupEditDetailTitle" text="Efeitos da Magia"/>
+						<!-- Tipo de Ataque -->
+						<rectangle class="popupEditRect" height="30">
+							<label align="left" fontStyle="bold" text="Tipo de Ataque"/>
+							<comboBox align="right" width="230" field="ataqueTipo" items="{'Sem Ataque', 'Ataque com Arma Corpo-a-Corpo', 'Ataque com Arma a Distância', 'Ataque de Magia Corpo-a-Corpo', 'Ataque de Magia a Distância'}"/>
+						</rectangle>
+						<!-- Atributo do Ataque-->
+						<rectangle class="popupEditRect" height="30">
+							<label align="left" fontStyle="bold" text="Atributo de Ataque"/>
+							<comboBox name="popupEditAtaqueAtrib" align="right" width="230" field="ataqueAtributo" items="{'Conjuração', 'Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'}" values="{'conjuracao', 'forca', 'destreza', 'constituicao', 'inteligencia', 'sabedoria', 'carisma'}"/>
+						</rectangle>
+						<!-- Bônus de Ataque -->
+						<rectangle class="popupEditRect" height="30">
+							<label align="left" fontStyle="bold" text="Bônus de Ataque"/>
+							<edit name="popupEditAtaqueBonus" align="right" width="230" field="ataqueBonus"/>
+						</rectangle>
+						<dataLink field="ataqueTipo"> <event name="onChange">
+							local node = self.popupEdit:getNodeObject();
+							self.popupEditAtaqueAtrib:setEnabled(node.ataqueTipo ~= 'Sem Ataque');	
+							self.popupEditAtaqueBonus:setEnabled(node.ataqueTipo ~= 'Sem Ataque');
+						</event> </dataLink>
+						<!-- Dano -->
+						<rectangle name="popupEditDanoRect" class="popupEditRect" height="30">
+							<layout align="top" height="30">
+								<label align="left" fontStyle="bold" text="Fórmulas de Dano"/>
+								<button align="right" width="140" text="+ Adicionar Fórmula" onClick="self.popupEditDanoRL:append();"/>
+							</layout>
+							<flowLayout name="popupEditDanoLegenda" align="bottom" height="22" padding="{top=2}" visible="false">
+								<flowPart width="34" maxWidth="835" height="20">
+									<label align="client" text="Fórmula"/>
+								</flowPart>
+								<flowPart width="5" height="20"/>
+								<flowPart width="33" maxWidth="830" height="20">
+									<label align="client" text="Contexto"/>
+								</flowPart>
+								<flowPart width="5" height="20"/>
+								<flowPart width="27" maxWidth="685" height="20">
+									<label align="client" text="Tipo"/>
+								</flowPart>
+								<flowPart width="5" height="20"/>
+								<flowPart width="20" maxWidth="35" height="20"/>
+							</flowLayout>
+							<recordList name="popupEditDanoRL" align="bottom" autoHeight="true" templateForm="frmItemFormula" field="danos"> <event name="onEndEnumeration">
+								local node = self.popupEdit:getNodeObject();
+								local h = 30 + self.popupEditDanoRect.margins.top + self.popupEditDanoRect.margins.bottom;
+								local danos = NDB.getChildNodes(node and node.danos or {});
+								if #danos > 0 then
+									h = h + 24 + #danos * 29;
+									self.popupEditDanoLegenda:setVisible(true);
+								else
+									self.popupEditDanoLegenda:setVisible(false);
+								end;
+								self.popupEditDanoRect:setHeight(h);
+							</event> </recordList>
+						</rectangle>
+						<!-- Outras Fórmulas -->
+						<rectangle name="popupEditFormulaRect" class="popupEditRect" height="30">
+							<layout align="top" height="30">
+								<label align="left" fontStyle="bold" text="Outras Fórmulas"/>
+								<button align="right" width="140" text="+ Adicionar Fórmula"> <event name="onClick">
+									local formula = self.popupEditFormulaRL:append();
+									if formula then formula.tipoDano = "não"; end;
+								</event> </button>
+							</layout>
+							<flowLayout name="popupEditFormulaLegenda" align="bottom" height="22" padding="{top=2}" visible="false">
+								<flowPart width="34" maxWidth="835" height="20">
+									<label align="client" text="Fórmula"/>
+								</flowPart>
+								<flowPart width="5" height="20"/>
+								<flowPart width="33" maxWidth="830" height="20">
+									<label align="client" text="Contexto"/>
+								</flowPart>
+								<flowPart width="5" height="20"/>
+								<flowPart width="20" maxWidth="35" height="20"/>
+							</flowLayout>
+							<recordList name="popupEditFormulaRL" align="bottom" autoHeight="true" templateForm="frmItemFormula" field="formulas"> <event name="onEndEnumeration">
+								local node = self.popupEdit:getNodeObject();
+								local h = 30 + self.popupEditFormulaRect.margins.top + self.popupEditFormulaRect.margins.bottom;
+								local formulas = NDB.getChildNodes(node and node.formulas or {});
+								if #formulas > 0 then
+									h = h + 24 + #formulas * 29;
+									self.popupEditFormulaLegenda:setVisible(true);
+								else
+									self.popupEditFormulaLegenda:setVisible(false);
+								end;
+								self.popupEditFormulaRect:setHeight(h);
+							</event> </recordList>
+						</rectangle>
+						<!-- Teste de Resistência -->
+						<rectangle class="popupEditRect" height="30">
+							<flowLayout align="client">
+								<flowPart minWidth="173" maxWidth="865" height="24">
+									<label align="client" fontStyle="bold" text="Teste de Resistência"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="106" maxWidth="530" height="24">
+									<comboBox align="client" field="cdResistenciaAtributo" items="{'', 'Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'}" values="{'', 'forca', 'destreza', 'constituicao', 'inteligencia', 'sabedoria', 'carisma'}"/>
+								</flowPart>
+								<flowPart minWidth="61" maxWidth="305" height="24">
+									<label align="client" text="contra CD." horzTextAlign="center"/>
+								</flowPart>
+								<flowPart minWidth="30" maxWidth="150" height="24">
+									<edit name="popupEditCDvalor" align="client" type="number" field="cdResistenciaValor" enabled="false"/>
+								</flowPart>
+								<flowPart minWidth="3" height="24"/>
+								<flowPart minWidth="106" maxWidth="630" height="24">
+									<comboBox align="client" field="cdResistenciaTipo" items="{'Conjuração', 'Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma', 'Fixo'}" values="{'conjuracao', 'forca', 'destreza', 'constituicao', 'inteligencia', 'sabedoria', 'carisma', 'fixo'}"/>
+								</flowPart>
+								<dataLink field="cdResistenciaTipo"> <event name="onChange">
+									local node = self.popupEdit:getNodeObject();
+									if not node.cdResistenciaTipo then
+										node.cdResistenciaTipo = 'conjuracao';
+									elseif node.cdResistenciaTipo == "fixo" then
+										self.popupEditCDvalor:setEnabled(true);
+									else
+										local ficha = common.getTopNode(node);
+										local hab = node.cdResistenciaTipo;
+										local modHab;
+										local modProf = tonumber(ficha.bonusProficiencia) or 0;
+
+										if hab == 'conjuracao' then hab = ficha.magias.habilidadeDeConjuracao; end;
+
+										modHab = tonumber(ficha.atributos['mod' .. common.toCapitalCase(hab)]) or 0;
+
+										self.popupEditCDvalor:setEnabled(false);
+										node.cdResistenciaValor = 8 + modHab + modProf;
+									end;
+								</event> </dataLink>
+							</flowLayout>
+						</rectangle>
+						<!-- Mensagem no Chat -->
+						<rectangle class="popupEditRect" height="60">
+							<label align="top" text="Mensagem" height="27"/>
+							<edit align="top" field="mensagem" height="27"/>
+						</rectangle>
+				</scrollBox>
+			</tab>
+			<tab title="Importar">
+				<script> <![CDATA[ require("import5etools.lua"); ]]> </script>
+				<scrollBox align="client" padding="{top=5, bottom=5, left=5, right=5}">
+					<label class="popupEditDetailTitle" text="Qual a fonte da magia?"/>
+						<comboBox name="comboBoxImportSource" align="top" field="importSourceName"/>
+						<script> <![CDATA[ dload.getSourceNames(self, "spells", function(items) self.comboBoxImportSource:setItems(items); end); ]]> </script>
+						<dataLink field="importSourceName" defaultValue="PHB"> <event name="onChange">
+							local node = self.popupEdit:getNodeObject();
+							dload.getSourcePath(self, "spells", node.importSourceName, function(path) node.importSourcePath = path; end);
+						</event> </dataLink>
+						<edit align="top" field="importSourcePath" readOnly="true"/>
+					<label class="popupEditDetailTitle" text="Qual o nível da magia?"/>
+						<comboBox name="comboBoxImportLevel" align="top" field="importLevel" items="{'Qualquer', 'Truque', '1º nível', '2º nível', '3º nível', '4º nível', '5º nível', '6º nível', '7º nível', '8º nível', '9º nível'}" values="{'', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}"/>
+						<dataLink field="importLevel" defaultValue="0"/>
+					<label class="popupEditDetailTitle" text="Qual a classe da magia?"/>
+						<comboBox name="comboBoxImportClass" align="top" field="importClass"/>
+						<dataLink fields="{'importSourcePath', 'importLevel'}"> <event name="onChange">
+							local node = self.popupEdit:getNodeObject();
+							dload.spellGetClasses(self, node.importSourcePath, node.importLevel, function(items) self.comboBoxImportClass:setItems(items); end);
+						</event> </dataLink>
+					<label class="popupEditDetailTitle" text="Qual a magia?"/>
+						<comboBox name="comboBoxImportMagia" align="top" field="importName"/>
+						<dataLink fields="{'importSourcePath', 'importLevel', 'importClass'}"> <event name="onChange">
+							local node = self.popupEdit:getNodeObject();
+							dload.spellGetNames(self, node.importSourcePath, node.importLevel, node.importClass, function(items) self.comboBoxImportMagia:setItems(items); end);
+						</event> </dataLink>
+					<button class="popupEditDetailTitle" text="Importar"> <event name="onClick">
+						local node = self.popupEdit:getNodeObject();
+						dload.spellImport(self, node.importSourcePath, node.importName, node);
+					</event> </button>
+				</scrollBox>
+			</tab>
+		</tabControl>
+		<event name="onClose"> sheet.magias.selecionada = nil; </event>
+		<event name="onNodeUnready"> sheet.magias.selecionada = nil; </event>
+		<event name="onNodeReady"> self.popupEdit:getNodeObject().cdResistenciaTipo = nil;</event>
+	</popup>
+
+
+	<!-- DATALINKS -->
+	<dataLink fields="{'magias.habilidadeDeConjuracao', 'atributos.modForca', 'atributos.modDestreza', 'atributos.modConstituicao', 'atributos.modInteligencia', 'atributos.modSabedoria', 'atributos.modCarisma', 'bonusProficiencia'}">
+		<event name="onChange">	<![CDATA[
+			local hab;
+			local bonusProficiencia;
+			local modHab;
+
+			sheet.magias = sheet.magias or {};
+			sheet.atributos = sheet.atributos or {};
+
+			hab = sheet.magias.habilidadeDeConjuracao;
+
+			modHab = tonumber(sheet.atributos['mod' .. common.toCapitalCase(hab)]) or 0;
+
+			bonusProficiencia = tonumber(sheet.bonusProficiencia) or 0;
+
+			sheet.magias.cdDaMagia = 8 + modHab + bonusProficiencia;
+			sheet.magias.bonusAtaque = modHab + bonusProficiencia;
+
+			if sheet.magias.bonusAtaque >= 0 then
+				sheet.magias.bonusAtaqueSTR = "+" .. sheet.magias.bonusAtaque;
+			else
+				sheet.magias.bonusAtaqueSTR = sheet.magias.bonusAtaque;
+			end;
+
+
+			local niveis = NDB.getChildNodes(sheet.magias.niveis);
+
+			if #niveis == 0 then
+				local truques = self.rclMagiasNiveis:append();
+				truques.nome = 'Truques';
+				-- if sheet.magias.magias then
+				-- 	local magias_old = NDB.getChildNodes(sheet.magias.magias);
+				-- 	for i=1, #magias_old do
+				-- 		local magia = truques.rclMagias:append();
+				-- 		local magia_old = magias_old[i];
+				-- 		magia.nome = magia_old.nome;
+				-- 		if magia_old.tempoDeFormulacao then magia.tempoConjuracaoValor = magia_old.tempoDeFormulacao end;
+				-- 		if magia_old.alcance then magia.alvoValor = magia_old.alcance end;
+				-- 		magia.componentesV = string.find(magia_old.componentes, 'V');
+				-- 		magia.componentesS = string.find(magia_old.componentes, 'S');
+				-- 		magia.componentesM = string.find(magia_old.componentes, 'M');
+				-- 		magia.componentesConcentracao = string.find(magia_old.componentes, 'C');
+				-- 		magia.componentesRitual = string.find(magia_old.componentes, 'R');
+				-- 		if magia_old.duracao then magia.duracaoValor = magia_old.duracao end;
+				-- 		if magia_old.ataque == 'Ataque Corpo-a-Corpo' then magia.ataqueTipo = 'Ataque de Magia Corpo-a-Corpo';
+				-- 		elseif magia_old.ataque == 'Ataque a Distância' then magia.ataqueTipo = 'Ataque de Magia a Distância';
+				-- 		end;
+				-- 		if magia_old.resistencia == 'Força' then magia.cdResistenciaAtributo = 'forca';
+				-- 		elseif magia_old.resistencia == 'Destreza' then magia.cdResistenciaAtributo = 'destreza';
+				-- 		elseif magia_old.resistencia == 'Constituição' then magia.cdResistenciaAtributo = 'constituicao';
+				-- 		elseif magia_old.resistencia == 'Inteligência' then magia.cdResistenciaAtributo = 'inteligencia';
+				-- 		elseif magia_old.resistencia == 'Sabedoria' then magia.cdResistenciaAtributo = 'sabedoria';
+				-- 		elseif magia_old.resistencia == 'Carisma' then magia.cdResistenciaAtributo = 'carisma';
+				-- 		end;
+				-- 	end;
+				-- end;
+
+				for lvl=1,9 do
+					local node = self.rclMagiasNiveis:append();
+					node.nome = lvl .. 'º Nível';
+					if sheet.magias.magias then
+						node.espacosTotais = sheet.magias['espacosTotais' .. lvl];
+						node.espacosAtuais = node.espacosTotais - sheet.magias['espacosGastos' .. lvl];
+						-- local magias_old = NDB.getChildNodes(sheet.magias.magias);
+						-- for i=1, #magias_old do
+						-- 	local magia = node.rclMagias:append();
+						-- 	local magia_old = magias_old[i];
+						-- 	magia.nome = magia_old.nome;
+						-- 	if magia_old.tempoDeFormulacao then magia.tempoConjuracaoValor = magia_old.tempoDeFormulacao end;
+						-- 	if magia_old.alcance then magia.alvoValor = magia_old.alcance end;
+						-- 	magia.componentesV = string.find(magia_old.componentes, 'V');
+						-- 	magia.componentesS = string.find(magia_old.componentes, 'S');
+						-- 	magia.componentesM = string.find(magia_old.componentes, 'M');
+						-- 	magia.componentesConcentracao = string.find(magia_old.componentes, 'C');
+						-- 	magia.componentesRitual = string.find(magia_old.componentes, 'R');
+						-- 	if magia_old.duracao then magia.duracaoValor = magia_old.duracao end;
+						-- 	if magia_old.ataque == 'Ataque Corpo-a-Corpo' then magia.ataqueTipo = 'Ataque de Magia Corpo-a-Corpo';
+						-- 	elseif magia_old.ataque == 'Ataque a Distância' then magia.ataqueTipo = 'Ataque de Magia a Distância';
+						-- 	end;
+						-- 	if magia_old.resistencia == 'Força' then magia.cdResistenciaAtributo = 'forca';
+						-- 	elseif magia_old.resistencia == 'Destreza' then magia.cdResistenciaAtributo = 'destreza';
+						-- 	elseif magia_old.resistencia == 'Constituição' then magia.cdResistenciaAtributo = 'constituicao';
+						-- 	elseif magia_old.resistencia == 'Inteligência' then magia.cdResistenciaAtributo = 'inteligencia';
+						-- 	elseif magia_old.resistencia == 'Sabedoria' then magia.cdResistenciaAtributo = 'sabedoria';
+						-- 	elseif magia_old.resistencia == 'Carisma' then magia.cdResistenciaAtributo = 'carisma';
+						-- 	end;
+						-- end;
+					end;
+				end;
+			end;
+			]]>
+		</event>
+	</dataLink>
+
+	<dataLink field="magias.selecionada"><event name="onChange"> <![CDATA[
+		if sheet.magias and sheet.magias.selecionada then
+			local node;
+			local niveis = NDB.getChildNodes(sheet.magias.niveis);
+			for i=1,#niveis do
+				local nodes = NDB.getChildNodes(niveis[i].magias);
+				for j=1,#nodes do
+					if nodes[j].id == sheet.magias.selecionada then
+						node = nodes[j];
+					end;
+				end;
+			end;
+
+			if node then
+				self.popupEdit:setNodeObject(node);
+				self.popupEdit:show();
+			else
+				showMessage('nope');
+			end;
+		end;
+	]]> </event></dataLink>
+</rectangle>

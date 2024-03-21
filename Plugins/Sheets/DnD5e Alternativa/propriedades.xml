@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rectangle class='fundo'>
+	<recordList name='rclFichaPropriedades' align='client' field='propriedades.rcl' templateForm='frmFichaPropriedade'/>
+	<button align='bottom' text='Resetar Propriedades'><event name='onClick'>
+		Dialogs.confirmYesNo('Você tem certeza que deseja resetar as propriedades da ficha?', function(confirmado) if confirmado then sheet.propriedades = {}; end; end);
+	</event></button>
+	<button align='bottom' text='Adicionar Propriedade'><event name='onClick'>
+		if not sheet.propriedades then sheet.propriedades = {}; end;
+
+		local choices = {};
+		for key,val in pairs(common.ficha_propriedades) do
+			if sheet.propriedades[key] == nil then table.insert(choices, val.nome); end;
+		end;
+		table.sort(choices);
+		Dialogs.choose('Qual propriedade?', choices, function(selected, choiceIndex, choiceText)
+			for key,val in pairs(common.ficha_propriedades) do
+				if val.nome == choiceText then
+					if sheet.propriedades[key] then return;
+					end;
+
+					local node = self.rclFichaPropriedades:append();
+
+					node.id = key;
+					node.nome = val.nome;
+					node.descricao = val.descricao;
+					node.tipo = val.tipo;
+					node.min = val.min;
+					node.max = val.max;
+					node.default = val.default;
+					node.implementado = val.implementado;
+
+					sheet.propriedades[key] = true;
+					sheet.propriedades.alterou = key;
+					sheet.propriedades.alterou = nil;
+					return;
+				end;
+			end;
+		end);
+	</event></button>
+</rectangle>

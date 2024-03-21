@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentoItem2" height="40">
+	<import file="templates.xml"/>
+	<import file="styles.xml"/>
+
+	<script> 
+		<![CDATA[
+		require("common.lua");
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar este item?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(self.sheet);
+									end;
+								 end);
+		end;
+		]]>
+	</script>
+
+	<layout name="layItem" align="client" margins="{top=5, bottom=5}">
+		<button name="btnApagar"		align="left" width="25" margins="{right=2}" text="✖" onClick="askForDelete();"/>
+		<button name="btnRolarAtaque"	align="left" width="25" margins="{right=2}" text="🎲">
+			<event name="onKeyDown"> common.keyDown(sheet, event); </event>
+			<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+			<event name="onClick"> <![CDATA[common.onClick(sheet, common.rolaAtaque, { item = sheet }, nil, false);]]> </event>
+			<event name="onMenu">  <![CDATA[common.onClick(sheet, common.rolaAtaque, { item = sheet }, nil, true);]]> </event>
+		</button>
+		<edit name="editName" align="client" field="nome" vertTextAlign="leading" enabled="false"/>
+	</layout>
+
+
+	<dataLink field="nome" defaultValue="NOME"/>
+	<dataLink field="peso" defaultValue=""/>
+	<dataLink field="ataque" defaultValue=""/>
+	<dataLink field="dano" defaultValue=""/>
+	<dataLink field="tipo" defaultValue=""/>
+	<dataLink field="propriedades" defaultValue=""/>
+	<dataLink field="alcance" defaultValue=""/>
+	<dataLink field="municao" defaultValue=""/>
+	<dataLink field="qtMunicao" defaultValue=""/>
+
+	<dataLink field="imagem" defaultValue="https://clipartart.com/images/cross-sword-clipart.png"/>
+</form>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="br.com.rrpg.DnD5_S3_Alt" formType="sheetTemplate" title="D&amp;D 5e (Alternativa)" name="frmDnD5" theme="dark">
+	<import file="styles.xml"/>
+	<import file="templates.xml"/>
+
+
+	<script>
+		local function mudaNick(nome)
+			if not nome then return; end;
+			if not sheet then return; end;
+
+			if not common.isMainChar(sheet) then return; end;
+			if not common.isMyChar(sheet) then return; end;
+
+			local mesa = common.getMesa(sheet);
+			if not mesa then return; end;
+
+			if not mesa.meuJogador.isJogador then return; end;
+			if not (mesa.meuJogador.nick ~= nome) then return; end;
+
+			mesa.chat:enviarMensagem("/nick " .. nome);
+		end;
+	</script>
+	<dataLink field="nome"><event name="onChange"> mudaNick(sheet.nome); </event></dataLink>
+
+
+	<tabControl align="client" name="pgcPrincipal">
+		<tab title="Frente">
+			<import file="frente.xml"/>
+		</tab>
+
+		<tab title="Caracteristicas">
+			<import file="caracteristicas.xml"/>
+		</tab>
+
+		<tab title="Equipamento">
+			<import file="equipamento2.xml"/>
+		</tab>
+
+		<tab title="Magias">
+			<import file="magias.xml"/>
+		</tab>
+
+		<tab title="Magias2">
+			<import file="magias2.xml"/>
+		</tab>
+
+		<tab title="Contadores">
+			<import file="contadores.xml"/>
+		</tab>
+
+		<tab title="Propriedades">
+			<import file="propriedades.xml"/>
+		</tab>
+
+		<tab title="Anotações">
+			<rectangle class="fundo">
+				<checkBox align="right" width="15" field="outros.anotacoes_melhorado">
+					<event name="onChange">
+						if sheet then
+							self.anotacoesFancy:setVisible(sheet.outros.anotacoes_melhorado);
+							self.anotacoesMerda:setVisible(not (sheet.outros.anotacoes_melhorado));
+						end;
+					</event>
+				</checkBox>
+				<richEdit name="anotacoesFancy" align="client" backgroundColor="#333333" defaultFontColor="white" field="outros.anotacoes2" hideSelection="false" defaultFontSize="15" animateImages="true" margins="{left=2, right=2, top=2, bottom=2}" visible="false"/>
+				<textEditor name="anotacoesMerda" align="client" field="outros.anotacoes" class="transparente"  margins="{left=2, right=2, top=2, bottom=2}" visible="true"/>
+			</rectangle>
+		</tab>
+
+		<tab title="Outros">
+			<import file="outros.xml"/>
+		</tab>
+	</tabControl>
+</form>
