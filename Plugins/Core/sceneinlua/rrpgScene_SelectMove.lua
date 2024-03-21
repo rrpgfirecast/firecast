@@ -199,11 +199,11 @@ SceneLib.registerPlugin(
 							end;
 						end);
 				end;
-			elseif (event.keyCode == VK.vkC) and event.ctrlKey then
+			elseif (event.keyCode == VK.vkC) and event.ctrlOrCmdKey then
 				SC3CLIPBOARD_Copy(scene.items.selection);
 				event.keyCode = 0;
 				event.key = "";
-			elseif (event.keyCode == VK.vkV) and event.ctrlKey then 
+			elseif (event.keyCode == VK.vkV) and event.ctrlOrCmdKey then
 				local pivo = nil;
 				
 				if mouseDownX ~= nil and mouseDownY ~= nil then
@@ -214,7 +214,7 @@ SceneLib.registerPlugin(
 				SC3CLIPBOARD_Paste(scene, pivo);
 				event.keyCode = 0;
 				event.key = "";	
-			elseif (event.keyCode == VK.vkZ) and event.ctrlKey then 
+			elseif (event.keyCode == VK.vkZ) and event.ctrlOrCmdKey then
 				SC3UNDO_Undo(scene);
 				event.keyCode = 0;
 				event.key = "";	
@@ -334,7 +334,7 @@ SceneLib.registerPlugin(
 				elseif objMouseDown ~= nil then	
 					-- Existe um item nesta posição.	
 					
-					if event.isTouch and not event.ctrlKey and not event.shiftKey  then
+					if event.isTouch and not event.ctrlOrCmdKey and not event.shiftKey  then
 						-- Preferir PAN do que selecionar
 						
 						if objMouseDown.selected then
@@ -343,7 +343,7 @@ SceneLib.registerPlugin(
 							tipoSelMov = MOVSEL_PAN_OR_SELECT;
 						end;
 					else				
-						if not event.ctrlKey and not event.shiftKey then
+						if not event.ctrlOrCmdKey and not event.shiftKey then
 							if not objMouseDown.selected then
 								scene.items:clearSelection();
 								objMouseDown.selected = true;
@@ -363,7 +363,7 @@ SceneLib.registerPlugin(
 					scene.items:clearSelection();				
 					INERTIAL_pointerDown(scene.viewport, event);
 				else												
-					if not event.shiftKey and not event.ctrlKey then
+					if not event.shiftKey and not event.ctrlOrCmdKey then
 						scene.items:clearSelection();
 					end;	
 
@@ -379,7 +379,7 @@ SceneLib.registerPlugin(
 				if objMouseDown ~= nil then	
 					-- Existe um item nesta posição.	
 					
-					if not event.ctrlKey and not event.shiftKey then
+					if not event.ctrlOrCmdKey and not event.shiftKey then
 						if not objMouseDown.selected then
 							scene.items:clearSelection();
 							objMouseDown.selected = true;
@@ -446,7 +446,7 @@ SceneLib.registerPlugin(
 			
 				cancelarMovementTrack();
 			
-				if (event.ctrlKey or event.shiftKey) and (objMouseDown ~= nil) then
+				if (event.ctrlOrCmdKey or event.shiftKey) and (objMouseDown ~= nil) then
 					objMouseDown.selected = true;
 				end;
 				
@@ -478,7 +478,7 @@ SceneLib.registerPlugin(
 			end;
 			
 			local function iniciarSELECAO_RETANGULAR(event)
-				if not event.shiftKey and not event.ctrlKey then
+				if not event.shiftKey and not event.ctrlOrCmdKey then
 					scene.items:clearSelection();
 				end;
 																
@@ -924,7 +924,7 @@ SceneLib.registerPlugin(
 			local function finalizarMOVER(event)
 				if not mouseDownMoveu then
 								
-					if event.ctrlKey or event.shiftKey then
+					if event.ctrlOrCmdKey or event.shiftKey then
 						-- Permutar seleção
 						
 						if objMouseDown ~= nil then
@@ -984,7 +984,7 @@ SceneLib.registerPlugin(
 					oldSelectionMap[oldSelection[i]] = true;
 				end;
 											
-				if not event.shiftKey and not event.ctrlKey then
+				if not event.shiftKey and not event.ctrlOrCmdKey then
 					scene.items:clearSelection();
 				end;
 				
@@ -1167,7 +1167,7 @@ SceneLib.registerPlugin(
 				elseif (tipoSelMov == MOVSEL_ROTATE) and mouseDownMoveu then
 					finalizarROTACAO(event);
 				elseif (tipoSelMov == MOVSEL_CLICK_OPCOES) then
-					if (event.ctrlKey or event.shiftKey) and (objMouseDown ~= nil) then
+					if (event.ctrlOrCmdKey or event.shiftKey) and (objMouseDown ~= nil) then
 						objMouseDown.selected = true;
 					end;				
 				
