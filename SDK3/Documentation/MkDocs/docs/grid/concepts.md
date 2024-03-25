@@ -1,41 +1,37 @@
 # Grid system key concepts
 
-The Grid System is an engine designed to layout the controls of your character sheet (and other Lua forms) in a responsive manner, adjusting itself according to the user's screen size. It draws inspiration from the grid system found in the Bootstrap library, offering a flexible and powerful layout solution. 
+The Grid System is a tool designed to organize the tags/controls of your character sheet (and other Lua forms) in a way that adapts to different screen sizes. It is inspired by the grid system in the Bootstrap library, offering a flexible and powerful layout solution.
 
 ## Key concept: The 12-column division
 
-Forms, layouts, and all other controls are structured around a 12-column grid system, which has the following characteristics:
+Forms, layouts, and all other controls are structured around a 12-column grid system, which works as follows:
 
-- **12 virtual columns**: The content area of controls is divided into 12 virtual columns of equal size. These columns are used for alignment and sizing purposes.
+- **12 virtual columns**: The content area of controls is divided into 12 equal virtual columns. These columns are used for alignment and sizing.
   
 - **Automatic row breaks**: When the 12 virtual columns of a row are filled, the next control automatically starts on a new row.
 
-Observe the following layout:
+Here's how it looks:
 ![Controls](concepts_img/grid-12.png)
 
-Here's how the grid system divides its content into 12 virtual columns:
+And here's how the grid system divides its content:
 ![Controls](concepts_img/grid-12-divisions.png)
-
-!!! note
-    All controls have their content area divided into 12 virtual columns, which may or may not be used for alignment with the grid system.
 
 
 ## Key concept: Roles in the grid system
 
 Controls can assume one of 5 roles in the grid system:
 
-- `none`: A control that does not align using the grid system. This is the default role.
-- `row`: A control that occupies an entire line in the 12-column division.
-- `col`: A control whose width is defined in how many of "12-column" pieces it occupies.
-- `container`: A control that occupies an entire line in the 12-column division but keeps its width limited to avoid growing too wide.
-- `block`: A control whose width is defined in pixels. It does not consume 12-column spaces.
+- `none`: A control that does not align using the grid system. This is the default.
+- `row`: A control that takes up an entire line in the 12-column division.
+- `col`: A control whose width is defined by how many of the 12 columns it occupies.
+- `container`: Like rows, but the control keeps its width limited to avoid growing too wide.
+- `block`: A control whose width is defined in pixels instead of 12-column spaces.
 
 !!! note
-     All controls can be aligned using the grid system by assigning them a role through the `g` attribute.
-
+    All controls can be aligned using the grid system by assigning them a role with the [`g`](properties.md#g-or-g-role) or [`g-role`](properties.md#g-or-g-role) attributes.
 
 ### "row" role
-When in a `row` role, the control occupies an entire line of the layout.
+Controls with the `row` role take up an entire line in the layout.
 
 Example:
 ```xml
@@ -49,7 +45,7 @@ Example:
 
 ### "col" role
 
-When in a `col` role, the control's width is defined by how many of the 12-column pieces it occupies by using the `g-width` attribute.
+Controls with the `col` role have their width defined by how many of the 12 columns they occupy. This is set with the [`g-width`](properties.md#g-width) attribute.
 
 Example:
 ```xml
@@ -74,7 +70,7 @@ Example:
 ![Cols](concepts_img/cols-1.png)
 
 !!! note
-    The horizontal spaces between the aligned controls are called gutter. The default gutter value is 30 and can be customized by using the `g-gutter` and/or `g-cnt-gutter` attributes
+    The horizontal spaces between the aligned controls are called gutter. The default gutter value is 30 and can be customized by using the [`g-gutter`](properties.md#g-gutter) and/or [`g-cnt-gutter`](properties.md#g-cnt-gutter) attributes
 
 !!! note
     In the 3rd line, a single `col` with `g-width=8` is used. Although there's a free space of 4 columns in that line, the next control does not fit into it as it occupies 6 columns. This behavior ensures that controls are aligned properly and do not overlap.
@@ -83,19 +79,17 @@ Example:
 
 ### "container" role
 
-Controls with the `container` role act similarly to controls with the `row` role but with one key difference: they keep their width limited to avoid growing too wide. This can be useful for ensuring that content remains within a readable and manageable width.
+Controls with the `container` role act like rows, but they limit their width to avoid becoming too wide. This is useful for keeping content readable and manageable.
 
 ![Container](concepts_img/container-1.png)
 
-
 !!! note
-    Usually just one `container` is enough to organize the entire layout.
-
+    Usually, one `container` is enough to organize the entire layout.
 
 
 ### "block" role
 
-Controls with the `block` role are distributed in lines similarly to `col` controls, but they do not use the 12-column spaces to do so. Instead, they define their width in pixels, allowing for precise control over their size within the layout.
+Controls with the `block` role are placed in lines like `col` controls, but they don't use the 12-column spaces. Instead, they define their width in pixels, allowing precise control over their size in the layout.
 
 Example:
 
@@ -111,7 +105,7 @@ Example:
 
 ### Blocks and the 12-column spaces 
 
-`block` controls do not "consume" 12-column spaces for layout. When used together with other types of roles, they shrink the size of the 12-column spaces in the layout.
+Controls with the `block` role don't use the available 12-column spaces. Instead, they shrink the size of the 12-column spaces available in the layout.
 
 Example:
 
@@ -132,22 +126,20 @@ If we add two `col` controls to the above layout:
 
 ![Block](concepts_img/block-3.png)
 
-## Key concept: Screen size breakpoints
+## Key concept: Screen size breakdown
 
-As your Lua forms resize to fit the screen size or when resized manually by the user, they are assigned a screen size class to describe, in an abstract manner, the current screen size they are running on.
+Forms are given a screen size class based on their width in pixels, which helps define different layouts for different screen sizes.
 
-There are 5 screen size classes defined by their form width:
-
-| Screen Size Class | Description  | Form width |
-|:-----------------:| ------------ | ---------- |
-| xs                | Extra Small  | < 576      |
-| sm                | Small        | >= 576     |
-| md                | Medium       | >= 768     |
-| lg                | Large        | >= 992     |
-| xl                | Extra Large  | >= 1200    |
+| Screen Size Class | Description  | Form Width (px) |
+|:-----------------:| ------------ | ----------      |
+| xs                | Extra Small  | < 576           |
+| sm                | Small        | >= 576          |
+| md                | Medium       | >= 768          |
+| lg                | Large        | >= 992          |
+| xl                | Extra Large  | >= 1200         |
 
 
-You can use the screen size classes to assign different values that will be used according to the running screen size class.
+To specify different values for different screen sizes, add `"-xs"`, `"-sm"`, `"-md"`, `"-lg"`, or `"-xl"` to the grid attribute names. The grid system then selects the most appropriate suffix based on the screen size.
 
 Example:
 
@@ -156,7 +148,7 @@ Example:
 <layout g="col" g-width="12" g-width-md="6"/>
 ```
 
-In the example above, when the form is displayed on screen sizes `xs` and `sm`, the width of the `col` elements will be 12, occupying the full width of the row. However, when displayed on screen sizes `md` and **larger**, the width will be 6, allowing two `col` elements to be displayed side by side.
+In this example, on screen sizes `xs` and `sm`, the width of the `col` elements will be 12, taking up the full width of the row. But on screen sizes `md` and **larger**, the width will be 6, allowing two `col` elements to be displayed side by side.
 
 Running on `xs` and `sm` screen sizes:
   ![Screen Sizes Example, 1](concepts_img/screen-size-1.png)
@@ -165,4 +157,4 @@ Running on `md` and larger screen sizes:
   ![Screen Sizes Example, 2](concepts_img/screen-size-2.png)
 
 !!! note
-    Many of the grid system attributes allow you to define values per screen size class breakpoint.
+    Most grid system attributes can be customized for different screen sizes.
