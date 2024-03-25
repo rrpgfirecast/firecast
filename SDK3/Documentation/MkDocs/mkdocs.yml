@@ -6,14 +6,17 @@ nav:
     - How to create a sheet template from an editable PDF: "https://firecast.app/sdk3/RRPG%20SDK%203.html?CriarummodelodefichaapartirdeumP.html" 
   - "Book 2":
     - "Grid system":
-      - Concepts: grid/concepts.md
-    - teste: "http://rrpg.com.br"
+      - Key concepts: grid/concepts.md
+      - Properties: "grid/properties.md"        
 
 theme:
   name: readthedocs
 
 markdown_extensions:
+  - toc:
+      permalink: true
   - admonition
   - abbr
   - attr_list
   - md_in_html
+
