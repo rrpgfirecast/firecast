@@ -10,10 +10,10 @@ Forms, layouts, and all other controls are structured around a 12-column grid sy
   
 - **Automatic row breaks**: When the 12 virtual columns of a row are filled, the next control automatically starts on a new row.
 
-Here's how it looks:
+Here's how it looks:<br>
 ![Controls](concepts_img/grid-12.png)
 
-And here's how the grid system divides its content:
+And here's how the grid system divides its content:<br>
 ![Controls](concepts_img/grid-12-divisions.png)
 
 
@@ -139,7 +139,7 @@ Forms are given a screen size class based on their width in pixels, which helps 
 | xl                | Extra Large  | >= 1200         |
 
 
-To specify different values for different screen sizes, add `"-xs"`, `"-sm"`, `"-md"`, `"-lg"`, or `"-xl"` to the grid attribute names. The grid system then selects the most appropriate suffix based on the screen size.
+To specify different values for different screen sizes, append `"-xs"`, `"-sm"`, `"-md"`, `"-lg"`, or `"-xl"` to the grid attribute names. The grid system then selects the most appropriate suffix based on the screen size.
 
 Example:
 
@@ -150,11 +150,11 @@ Example:
 
 In this example, on screen sizes `xs` and `sm`, the width of the `col` elements will be 12, taking up the full width of the row. But on screen sizes `md` and **larger**, the width will be 6, allowing two `col` elements to be displayed side by side.
 
-Running on `xs` and `sm` screen sizes:
-  ![Screen Sizes Example, 1](concepts_img/screen-size-1.png)
+Running on `xs` and `sm` screen sizes:<br>
+![Screen Sizes Example, 1](concepts_img/screen-size-1.png)
 
-Running on `md` and larger screen sizes:
-  ![Screen Sizes Example, 2](concepts_img/screen-size-2.png)
+Running on `md` and larger screen sizes:<br>
+![Screen Sizes Example, 2](concepts_img/screen-size-2.png)
 
 !!! note
     Most grid system attributes can be customized for different screen sizes.
