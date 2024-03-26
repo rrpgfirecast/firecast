@@ -1,13 +1,13 @@
 site_name: Firecast SDK3 (doc)
 site_url: https://firecast.app/
 nav:
-  - "Book 1": 
+  - "Index": index.md
+  - "Grid system":
+    - Key concepts: grid/concepts.md
+    - Grid attributes: "grid/attributes.md"        
+  - "More Doc (Book 1)": 
     - Introduction: "https://firecast.app/sdk3/RRPG%20SDK%203.html"
-    - How to create a sheet template from an editable PDF: "https://firecast.app/sdk3/RRPG%20SDK%203.html?CriarummodelodefichaapartirdeumP.html" 
-  - "Book 2":
-    - "Grid system":
-      - Key concepts: grid/concepts.md
-      - Properties: "grid/properties.md"        
+    - How to create a sheet template from an editable PDF: "https://firecast.app/sdk3/RRPG%20SDK%203.html?CriarummodelodefichaapartirdeumP.html"       
 
 theme:
   name: readthedocs

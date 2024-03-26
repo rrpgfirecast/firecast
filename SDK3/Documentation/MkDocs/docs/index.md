@@ -9,7 +9,7 @@ Welcome to __Book 2__ of the Firecast SDK3 documentation! This book serves as an
 The Grid System, available with SDK3.7+, provides a way to layout the controls of your character sheet (and other Lua forms) in a responsible manner, adjusting itself according to the user's screen size.
 
 * [`Grid system key concepts`](grid/concepts.md)
-* [`Grid system properties`](grid/properties.md)
+* [`Grid attributes`](grid/attributes.md)
 
 
 
