@@ -11,10 +11,10 @@ Forms, layouts, and all other controls are structured around a 12-column grid sy
 - **Automatic row breaks**: When the 12 virtual columns of a row are filled, the next control automatically starts on a new row.
 
 Here's how it looks:<br>
-![Controls](concepts_img/grid-12.png)
+![Controls](img/grid-12.png)
 
 And here's how the grid system divides its content into 12 virtual columns:<br>
-![Controls](concepts_img/grid-12-divisions.png)
+![Controls](img/grid-12-divisions.png)
 
 
 ## Key concept: Roles in the grid system
@@ -40,7 +40,7 @@ Example:
 <layout name="r3" g="row" g-min-height="60"/>
 ```
 
-![Three rows](concepts_img/rows-1.png)
+![Three rows](img/rows-1.png)
 
 
 ### "col" role
@@ -67,7 +67,7 @@ Example:
 <layout name="c9" g="col" g-width="6"/>
 ```
 
-![Cols](concepts_img/cols-1.png)
+![Cols](img/cols-1.png)
 
 !!! note
     The horizontal spaces between the aligned controls are called gutter. The default gutter value is 30 and can be customized by using the [`g-gutter`](attributes.md#g-gutter) and/or [`g-cnt-gutter`](attributes.md#g-cnt-gutter) attributes
@@ -89,7 +89,7 @@ Example:
 <layout name="b4" g="block" width="300"/>
 ```
 
-![Block](concepts_img/block-1.png)
+![Block](img/block-1.png)
 
 
 #### Blocks and the 12-column spaces 
@@ -104,7 +104,7 @@ Example:
 <layout name="b3" g="block" width="60"/>
 ```
 
-![Block](concepts_img/block-2.png)
+![Block](img/block-2.png)
 
 If we add two `col` controls to the above layout:
 
@@ -113,7 +113,7 @@ If we add two `col` controls to the above layout:
 <layout name="c2" g="col" g-width="4"/>
 ```
 
-![Block](concepts_img/block-3.png)
+![Block](img/block-3.png)
 
 ### "container" role
 
@@ -151,11 +151,11 @@ Example:
 
 The code above produces the following layout on an extra-large screen (width=1920):
 
-![Container Example](concepts_img/container-1.png)
+![Container Example](img/container-1.png)
 
 The labels have `g-width` set to 1 and yet are too large. On larger screens, the issue would get even worse. By setting the rectangle role to `container`, we will then have the following layout on the same screen:
 
-![Container Example](concepts_img/container-2.png)
+![Container Example](img/container-2.png)
 
 !!! note
     The maximum width for a container is 1378px.
@@ -189,10 +189,10 @@ Example:
 In this example, on screen sizes `xs` and `sm`, the width of the `col` elements will be 12, taking up the full width of the row. But on screen sizes `md` and **larger**, the width will be 6, allowing two `col` elements to be displayed side by side.
 
 Running on `xs` and `sm` screen sizes:<br>
-![Screen Sizes Example, 1](concepts_img/screen-size-1.png)
+![Screen Sizes Example, 1](img/screen-size-1.png)
 
 Running on `md` and larger screen sizes:<br>
-![Screen Sizes Example, 2](concepts_img/screen-size-2.png)
+![Screen Sizes Example, 2](img/screen-size-2.png)
 
 !!! note
     Most grid system attributes can be customized for different screen sizes.
