@@ -3,7 +3,7 @@
         <layout align="left" width="765" margins="{bottom=5}">
             <layout align="top" height="200" margins="{bottom=5}">
                 <rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-                    <image align="client" field="avatarComp" editable="true" style="autoFit">
+                    <image align="client" field="avatarComp" editable="true" style="proportional">
                         <event name="OnStartDrag">
                             if drag then
                                 drag:addData("imageURL", sheet.avatarComp);

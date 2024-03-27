@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<form name='frmFichaPropriedade' height='50'>
+	<import file='templates.xml'/>
+	<import file='styles.xml'/>
+
+	<button align='left' width='25' text='✖'><event name='onClick'>
+		Dialogs.confirmYesNo('Você tem certeza que deseja remover essa propriedade?', function(confirmado) if confirmado then
+			local ficha = common.getTopNode(sheet);
+			ficha.propriedades[sheet.id] = nil;
+			ficha.propriedades.alterou = sheet.id;
+			ficha.propriedades.alterou = nil;
+			NDB.deleteNode(self.sheet);
+		end; end);
+	</event></button>
+	<flowLayout class='tile' name='flOutter' avoidScale='true' 
+				autoHeight='true' vertAlign='trailing' align='client' 
+				lineSpacing='2' horzAlign='leading'>
+		<upperGridCampoSolidoCheckBox	name='ctrlEnabled'	height='25' width='25'  field='enabled'	titulo=''		hint='Propriedade ainda não implementada'/>
+		<upperGridCampoSolido			name='ctrlNome'		height='50' width='100' field='nome'	titulo='NOME'	readOnly='true'/>
+		<upperGridCampoSolido			name='ctrlID'		height='50' width='100' field='id'		titulo='ID'		readOnly='true'/>
+		<upperGridCampoSolido			name='ctrlVal'		height='50' width='100' field='val'		titulo='VALOR'/>
+	</flowLayout>
+
+	<!-- datalinks para campos não editáveis -->
+	<dataLink field='nome'			defaultValue='Nome da propriedade não foi inicializado'/>
+	<dataLink field='descricao'		defaultValue='Descrição da propriedade não foi inicializada'><event name='onChange'>
+		self.labctrlNome:setHint(sheet.descricao);
+		self.labctrlNome:setHitTest(true);
+		self.labctrlVal:setHint(sheet.descricao);
+		self.labctrlVal:setHitTest(true);
+	</event></dataLink>
+	<dataLink field='tipo'			defaultValue='bool'><event name='onChange'>
+		if sheet.tipo == 'bool' then self.ctrlVal:setVisible(false);
+		else						 self.ctrlVal:setVisible(true);
+		end;
+
+		if sheet.tipo == 'int' then	self.edtctrlVal:setType('number');
+		else						self.edtctrlVal:setType('text');
+		end;
+	</event></dataLink>
+	<dataLink field='implementado'	defaultValue='true'><event name='onChange'>
+		local implementado = (sheet.implementado ~= false and sheet.implementado ~= 'false');
+
+		self.ctrlEnabled:setEnabled(implementado);
+		self.ctrlNome:setEnabled(implementado);
+		self.ctrlVal:setEnabled(implementado);
+
+		if implementado then self.ctrlEnabled:setHitTest(false);
+		else self.ctrlEnabled:setHitTest(true);
+		end;
+	</event></dataLink>
+	<dataLink field='min'><event name='onChange'>
+		if tonumber(sheet.min) then self.edtctrlVal:setMin(sheet.min); end;
+	</event></dataLink>
+	<dataLink field='max'><event name='onChange'>
+		if tonumber(sheet.max) then self.edtctrlVal:setMax(sheet.max); end;
+	</event></dataLink>
+	<dataLink field='default'><event name='onChange'>
+		if sheet.default and sheet.val == nil then
+			if     sheet.tipo == 'int'  then sheet.val = tonumber(sheet.default);
+			elseif sheet.tipo ~= 'bool' then sheet.val = sheet.default;
+			end;
+		end;
+	</event></dataLink>
+	<!-- datalinks para campos editáveis -->
+	<dataLink field='enabled' defaultValue='true'/>
+	<dataLink fields='{"val", "enabled"}'><event name='onChange'>
+		if sheet and sheet.id then
+			local ficha = common.getTopNode(sheet);
+
+			if sheet.val == nil or (sheet.val == '' and sheet.tipo ~= 'string') then
+				sheet.oldVal = sheet.default;
+				sheet.val = sheet.default;
+				return;
+			end;
+
+			if sheet.oldVal ~= sheet.val and sheet.tipo == 'rolagem' then
+				local roll = common.interpreta(ficha, sheet.val):gsub(' ', '');
+				local roll2 = Firecast.interpretarRolagem(roll).asString:gsub(' ', '');
+				if roll ~= roll2 then
+					showMessage('"' .. roll .. '" ("' .. sheet.val .. '") não é uma rolagem válida.');
+					showMessage(Firecast.interpretarRolagem(roll).asString);
+					showMessage(roll);
+					sheet.val = sheet.oldVal;
+					return;
+				end;
+			end;
+
+			if ficha.propriedades[sheet.id] ~= sheet.enabled or sheet.oldVal ~= sheet.val then
+				ficha.propriedades[sheet.id] = sheet.enabled;
+				ficha.propriedades.alterou = sheet.id;
+				ficha.propriedades.alterou = nil;
+				sheet.oldVal = sheet.val;
+			end;
+		end;
+	</event></dataLink>
+</form>
