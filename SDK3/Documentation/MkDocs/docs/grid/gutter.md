@@ -6,16 +6,16 @@ Gutters are measured in pixel count, with the default size set to 30 pixels.
 
 ## Defining Gutter Size
 
-- **`g-cnt-gutter`**: This attribute allows you to set the gutter size for all content controls within a control. By defining this attribute, you can ensure consistent spacing throughout the content.
+- **[`g-cnt-gutter`](attrs/g-cnt-gutter.md)**: This attribute allows you to set the gutter size for all content controls within a control. By defining this attribute, you can ensure consistent spacing throughout the content.
 
-- **`g-gutter`**: Alternatively, you can use the `g-gutter` attribute to define the gutter size for a single control. This attribute takes precedence over the `g-cnt-gutter` attribute, allowing you to customize the spacing for individual controls.
+- **`g-gutter`**: Alternatively, you can use the `g-gutter` attribute to define the gutter size for a single control. This attribute takes precedence over the [`g-cnt-gutter`](attrs/g-cnt-gutter.md) attribute, allowing you to customize the spacing for individual controls.
 
 
 ## Precedence and Inheritance
 
-- If the `g-gutter` attribute is not defined for a control, the gutter size used is the value defined by the parent `g-cnt-gutter` attribute.
-- If the parent control does not define a `g-cnt-gutter`, the grid system will recursively search for the first ancestor control that defines a value for `g-cnt-gutter` and use that value.
-- If no ancestor control defines a `g-cnt-gutter` attribute, the default gutter size of 30px will be used.
+- If the `g-gutter` attribute is not defined for a control, the gutter size used is the value defined by the parent [`g-cnt-gutter`](attrs/g-cnt-gutter.md) attribute.
+- If the parent control does not define a [`g-cnt-gutter`](attrs/g-cnt-gutter.md), the grid system will recursively search for the first ancestor control that defines a value for [`g-cnt-gutter`](attrs/g-cnt-gutter.md) and use that value.
+- If no ancestor control defines a [`g-cnt-gutter`](attrs/g-cnt-gutter.md) attribute, the default gutter size of 30px will be used.
 
 
 ## Example

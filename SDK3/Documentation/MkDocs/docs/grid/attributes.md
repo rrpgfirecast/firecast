@@ -17,7 +17,9 @@
 - [**`g-pull`**](attrs/g-pull.md): Pull offset 
 
 
-## Margins, padding, and gutter attributes
+## Spacing attributes
+
+### Margins and Padding
 
 Margins are defined individually by side, in pixel count:
 
@@ -36,9 +38,19 @@ Padding is also defined individually by side, in pixel count:
 !!! note
     When a `g-margin-*`/`g-padding-*` value is not defined, the grid system will use the corresponding side value defined in the control's `margins`/`padding` attribute.     
 
+### Gutters
+
 There are two ways to define gutter for controls, measured in pixels:
 
-- **`g-cnt-gutter`**: Sets the gutter size for all content controls, i.e., for all controls that are inside.
+- **[`g-cnt-gutter`](attrs/g-cnt-gutter.md)**: Sets the gutter size for all content controls, i.e., for all controls that are inside.
 - **`g-gutter`**: Sets the gutter size for the control only.
 
 Learn more about the gutter [here](gutter.md);
+
+### Vertical line spacing
+
+- **[`g-cnt-line-spacing`](attrs/g-cnt-line-spacing.md)**: Define an amount of pixels to insert between lines inside the control.
+
+
+
+

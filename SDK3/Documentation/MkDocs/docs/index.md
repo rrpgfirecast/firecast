@@ -14,6 +14,8 @@ The Grid System, available with SDK3.7+, provides a way to layout the controls o
 
 * [`Grid system key concepts`](grid/concepts.md)
 * [`Grid attributes`](grid/attributes.md)
+* [`Grid gutters`](grid/gutter.md)
+
 
 
 

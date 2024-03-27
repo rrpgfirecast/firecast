@@ -70,7 +70,7 @@ Example:
 ![Cols](img/cols-1.png)
 
 !!! note
-    The horizontal spaces between the aligned controls are called gutter. The default gutter value is 30 and can be customized by using the [`g-gutter`](attributes.md#g-gutter) and/or [`g-cnt-gutter`](attributes.md#g-cnt-gutter) attributes
+    The horizontal spaces between the aligned controls are called [gutter](gutter.md). The default gutter value is 30 and can be customized by using the [`g-gutter`](attributes.md#gutters) and/or [`g-cnt-gutter`](attrs/g-cnt-gutter.md) attributes
 
 !!! note
     In the 3rd line, a single `col` with `g-width=8` is used. Although there's a free space of 4 columns in that line, the next control does not fit into it as it occupies 6 columns. This behavior ensures that controls are aligned properly and do not overlap.
