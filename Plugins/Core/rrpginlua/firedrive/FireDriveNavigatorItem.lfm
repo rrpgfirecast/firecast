@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFireDriveNavigatorItem" width="90" height="90" margins="{left=2, right=2, top=2, bottom=2}" padding="{left=2, right=2, top=2, bottom=2}" hitTest="true" canFocus="true">
+<form name="frmFireDriveNavigatorItem" width="90" height="90" margins="{left=2, right=2, top=2, bottom=2}" padding="{left=2, right=2, top=2, bottom=2}" 
+	  g="block" g-min-height="90" hitTest="true" canFocus="true" cacheMode="time">
+	  
 	<script><![CDATA[
 		local _imageURL = nil;
 	

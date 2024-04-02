@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmSceneMenu" cancelable="true" drawContainer="false" width="170">
+<popupForm name="frmSceneMenu" cancelable="true" drawContainer="false" width="170" movable="false">
 	<import file="sceneTags.xml"/>
 
 	<script>

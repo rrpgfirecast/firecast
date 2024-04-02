@@ -16,7 +16,7 @@ SceneLib.registerPlugin(
 				function()					
 					local d;					
 				
-					if event.ctrlKey then
+					if event.ctrlOrCmdKey then
 						-- Zoom
 						if event.delta > 0 then
 							d = 1;
@@ -30,9 +30,14 @@ SceneLib.registerPlugin(
 						viewport.scale = viewport.scale + d * viewport.scale * 0.25;							
 						viewport.worldX = oldWorldCenterX - (viewport.width / viewport.scale) / 2; 
 						viewport.worldY = oldWorldCenterY - (viewport.height / viewport.scale) / 2; 
-					else			
-						-- Movimento vertical		
-						local offset = viewport.height / 6;
+					elseif event.shiftKey then
+                                                -- Movimento Horizontal
+                                                local offset = ((viewport.width + viewport.height) / 2) / 8;
+						offset = offset * -1 * (event.delta / 120);
+						INERTIAL_pointerWheel(viewport, offset, 0);
+                                        else
+						-- Movimento vertical
+						local offset = ((viewport.width + viewport.height) / 2) / 8;
 						offset = offset * -1 * (event.delta / 120);		
 						INERTIAL_pointerWheel(viewport, 0, offset);
 					end;					

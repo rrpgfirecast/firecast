@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmGerenciarSimpleMacrosItem" title="Gerenciar Plugins" height="30" margins="{left=4, right=4, top=1, bottom=1}">
+<form name="frmGerenciarSimpleMacrosItem" title="Gerenciar Plugins" height="30" margins="{top=1, bottom=1}" g="row" g-min-height="10" cacheMode="time">
 	<import file="../interfaceUtils.xml"/>
 	
 	
@@ -14,13 +14,14 @@
 		]]>
 	</script>
 	
-	<layout align="client" margins="{top=2, left=2}">
-		<label name="labMacro" align="client" text="(Macro Vazia)"/>
-		<button name="btnEdit" align="right" text="Editar..." margins="{left=4, right=4, top=1, bottom=1}" 
-				width="75" onClick="editarMacro();"/>
-	</layout>
+	<row margins="{top=2, left=2}" g-cnt-vert-align="center" g-cnt-gutter="4" g-cnt-line-spacing="2" g-cnt-min-grid-width="100">
+		<label name="labMacro" wordWrap="true" g="col" g-width="12" g-dyn-height-txt="true" />
+		
+		<button name="btnEdit" text="@@macros.ui.editButton" onClick="editarMacro();" padding="{left=10, right=10}"
+				g="block" g-dyn-width-txt="true" g-dyn-height-txt="true" g-min-width="75" />
+	</row>
 	
-	<horzLine align="bottom" margins="{top=2}"/>
+	<horzLine g="row" margins="{top=2}" hitTest="false"/>
 	
 	<dataLink field="macro">
 		<event name="onChange">
@@ -30,6 +31,5 @@
 	
 	<script>
 		self.labMacro.text = "(" .. lang("macros.ui.emptyMacro") ..")";
-		self.btnEdit.text = lang("macros.ui.editButton");
 	</script>
 </form>
