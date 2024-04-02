@@ -188,6 +188,40 @@ function gui.Control:tryGetGrid()
 	return rawget(self, "__cachedGrid");
 end;
 
+function gui.Control:__objindex(key) 		
+	if type(key) == "string" then
+		if key == "g" then
+			return true, self.grid.role;
+		end;	
+		
+		local gridPropName = string.match(key, "^g%-(.+)$");
+		
+		if gridPropName ~= nil then
+			return true, self.grid[gridPropName];
+		end;
+	end;
+	
+	return false;
+end;	
+
+function gui.Control:__objnewindex(key, value) 		
+	if type(key) == "string" then
+		if key == "g" then
+			self.grid.role = value;
+			return true;			
+		end;	
+		
+		local gridPropName = string.match(key, "^g%-(.+)$");
+		
+		if gridPropName ~= nil then
+			self.grid[gridPropName] = value;
+			return true;
+		end;
+	end;
+	
+	return false;
+end;	
+
 gui.Control.props["visible"] = {setter = "setVisible", getter = "getVisible", tipo = "bool"};
 gui.Control.props["align"] = {setter = "setAlign", getter = "getAlign", tipo = "enum", 
 							   values = {"none", "top", "left", "right",
@@ -1252,8 +1286,6 @@ gui.GridRecordList.props["selectedForm"] = {getter = "getSelectedForm", tipo = "
 gui.GridRecordList.props["pageCount"] = {readProp = "PageCount", tipo = "int"};
 
 gui.GridRecordList.eves["onSelect"] = "";
-gui.GridRecordList.eves["onBeginEnumeration"] = "";
-gui.GridRecordList.eves["onEndEnumeration"] = "";
 gui.GridRecordList.eves["onItemAdded"] = "node";
 gui.GridRecordList.eves["onItemRemoved"] = "node";
 gui.GridRecordList.eves["onItemFiltered"] = "node";

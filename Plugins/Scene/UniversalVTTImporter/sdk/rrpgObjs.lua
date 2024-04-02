@@ -268,7 +268,7 @@ local function __tryIndexObjWithDefinition(definition, instance, key)
 	if (v ~= nil) then
 		return true, v;
 	end;
-
+ 
 	-- Property		
 	local props = rawget(definition, "props");			
 	
@@ -295,6 +295,15 @@ local function __tryIndexObjWithDefinition(definition, instance, key)
 			end;
 		end;
 	end;	
+	
+	-- Custom object __objindex method
+	local objIndexMethod = rawget(definition, "__objindex");
+	
+	if (objIndexMethod ~= nil) and (type(objIndexMethod) == "function") then
+		return objIndexMethod(instance, key);
+	else
+		return false;
+	end;
 end;
 
 local function __tryNewIndexObjWithDefinition(definition, instance, key, value)
@@ -357,8 +366,15 @@ local function __tryNewIndexObjWithDefinition(definition, instance, key, value)
 		end;
 	end;	
 	
-	-- Could not newindex object with supplied definition
-	return false;
+	-- Custom object __objnewindex method
+	local objNewIndexMethod = rawget(definition, "__objnewindex");
+	
+	if (objNewIndexMethod ~= nil) and (type(objNewIndexMethod) == "function") then
+		return objNewIndexMethod(instance, key, value);
+	else
+		-- Could not newindex object with supplied definition	
+		return false;
+	end;	
 end;
 
 local objectMetaTable = {
