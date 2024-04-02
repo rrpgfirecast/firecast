@@ -433,9 +433,9 @@ gui.Form.props["title"] = {setter = "setTitle", getter = "getTitle", tipo = "str
 gui.Form.props["description"] = {setter = "setDescription", getter = "getDescription", tipo = "string"};	
 gui.Form.props["dataType"] = {setter = "setDataType", getter = "getDataType", tipo = "string"};
 gui.Form.props["formType"] = {setter = "setFormType", getter = "getDataType", tipo = "enum",
-						  values = {"undefined", "sheetTemplate", "tablesDock"}};
+                              values = {"undefined", "sheetTemplate", "tablesDock"}};
 gui.Form.props["theme"] = {setter = "setTheme", getter = "getTheme", tipo = "enum", 
-					   values = {"default", "light", "dark"}};
+                           values = {"default", "light", "dark", "firecast"}};
 gui.Form.props["lockWhileNodeIsLoading"] = {setter = "setLockWhileNodeIsLoading", getter = "getLockWhileNodeIsLoading", tipo = "bool"};						   
 gui.Form.props["scopeNode"] = {setter = "setScopeNode", getter = "getScopeNode", tipo = "table"};						   	
 gui.Form.props["minWidth"] = {setter = "setMinWidth", getter = "getMinWidth", tipo = "double"};	

@@ -211,7 +211,7 @@ __registerScreenSizeProp({luaName="dynWidthTxt", lfmName="dyn-width-txt", hostNa
 __registerScreenSizeProp({luaName="dynHeightTxt", lfmName="dyn-height-txt", hostName="DynHeightTxt", tipo="bool"});
 __registerScreenSizeProp({luaName="postDynWidthTxt", lfmName="post-dyn-width-txt", hostName="PostDynWidthTxt", tipo="bool"});
 __registerScreenSizeProp({luaName="finalOffsetX", lfmName="final-offset-x", hostName="FinalOffsetX", tipo="double"});
-__registerScreenSizeProp({luaName="finalOffsetY", lfmName="final-offset-y", hostName="OffsetY", tipo="double"});
+__registerScreenSizeProp({luaName="finalOffsetY", lfmName="final-offset-y", hostName="FinalOffsetY", tipo="double"});
 __registerScreenSizeProp({luaName="vertTile", lfmName="vert-tile", hostName="VertTile", tipo="bool"});
 __registerScreenSizeProp({luaName="vertTileWeight", lfmName="vert-tile-weight", hostName="VertTileWeight", tipo="double"});
 __registerScreenSizeProp({luaName="horzTile", lfmName="horz-tile", hostName="HorzTile", tipo="bool"});
