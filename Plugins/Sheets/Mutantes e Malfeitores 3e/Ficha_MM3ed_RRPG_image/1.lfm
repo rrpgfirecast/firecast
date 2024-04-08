@@ -601,7 +601,7 @@
             </layout>
             <layout left="811" top="1194" width="21" height="18">
                 <edit transparent="true" fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="18" field="PPvantagens"/>
-				    <dataLink fields="'TotalppVantagem'">
+				    <dataLink fields="{'TotalppVantagem'}">
 						<event name="onChange">
 						   sheet.PPvantagens = (tonumber(sheet.TotalppVantagem) or 0);
 						</event>
@@ -640,7 +640,7 @@
                 <edit transparent="true" fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="202" height="36" field="ALIAS" hint="Notas sobre a Identidade. "/>
             </layout>
 
-<dataLink fields="'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE', 'varFORvalor', 'varVIGvalor', 'varAGIvalor', 'varDESvalor', 'varLUTvalor', 'varINTvalor', 'varPROvalor', 'varPREvalor'">
+<dataLink fields="{'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE', 'varFORvalor', 'varVIGvalor', 'varAGIvalor', 'varDESvalor', 'varLUTvalor', 'varINTvalor', 'varPROvalor', 'varPREvalor'}">
         <event name="onChange">
                sheet.DEFesq1 = (tonumber(sheet.AGI) or 0) + (tonumber(sheet.varAGIvalor) or 0);
                sheet.DEFapa1 = (tonumber(sheet.LUT) or 0) + (tonumber(sheet.varLUTvalor) or 0);
@@ -650,7 +650,7 @@
         </event>
 </dataLink>
 
-<dataLink fields="'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE', 'varFORvalor', 'varVIGvalor', 'varAGIvalor', 'varDESvalor', 'varLUTvalor', 'varINTvalor', 'varPROvalor', 'varPREvalor'">
+<dataLink fields="{'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE', 'varFORvalor', 'varVIGvalor', 'varAGIvalor', 'varDESvalor', 'varLUTvalor', 'varINTvalor', 'varPROvalor', 'varPREvalor'}">
         <event name="onChange">
                sheet.FORtotal = (tonumber(sheet.FOR) or 0) + (tonumber(sheet.varFORvalor) or 0);
                sheet.VIGtotal = (tonumber(sheet.VIG) or 0) + (tonumber(sheet.varVIGvalor) or 0);
@@ -664,42 +664,42 @@
         </event>
 </dataLink>
 
-<dataLink fields="'DEFesq1', 'DEFesq2', 'DEFesq3'">
+<dataLink fields="{'DEFesq1', 'DEFesq2', 'DEFesq3'}">
         <event name="onChange">
                sheet.DEFesqTotal = (tonumber(sheet.DEFesq1) or 0) + (tonumber(sheet.DEFesq2) or 0) + (tonumber(sheet.DEFesq3) or 0);
         </event>
 </dataLink>
 
 
-<dataLink fields="'DEFapa1', 'DEFapa2', 'DEFapa3'">
+<dataLink fields="{'DEFapa1', 'DEFapa2', 'DEFapa3'}">
         <event name="onChange">
                sheet.DEFapaTotal = (tonumber(sheet.DEFapa1) or 0) + (tonumber(sheet.DEFapa2) or 0) + (tonumber(sheet.DEFapa3) or 0);
         </event>
 </dataLink>
 
 
-<dataLink fields="'DEFvon1', 'DEFvon2', 'DEFvon3'">
+<dataLink fields="{'DEFvon1', 'DEFvon2', 'DEFvon3'}">
         <event name="onChange">
                sheet.DEFvonTotal = (tonumber(sheet.DEFvon1) or 0) + (tonumber(sheet.DEFvon2) or 0) + (tonumber(sheet.DEFvon3) or 0);
         </event>
 </dataLink>
 
 
-<dataLink fields="'DEFforti1', 'DEFforti2', 'DEFforti3'">
+<dataLink fields="{'DEFforti1', 'DEFforti2', 'DEFforti3'}">
         <event name="onChange">
                sheet.DEFfortiTotal = (tonumber(sheet.DEFforti1) or 0) + (tonumber(sheet.DEFforti2) or 0) + (tonumber(sheet.DEFforti3) or 0);
         </event>
 </dataLink>
 
 
-<dataLink fields="'DEFres1', 'DEFres2', 'DEFres3'">
+<dataLink fields="{'DEFres1', 'DEFres2', 'DEFres3'}">
         <event name="onChange">
                sheet.DEFresTotal = (tonumber(sheet.DEFres1) or 0) + (tonumber(sheet.DEFres2) or 0) + (tonumber(sheet.DEFres3) or 0);
         </event>
 </dataLink>
 
 
-<dataLink fields="'DEFextra1', 'DEFextra2', 'DEFextra3'">
+<dataLink fields="{'DEFextra1', 'DEFextra2', 'DEFextra3'}">
         <event name="onChange">
                sheet.DEFextraTotal = (tonumber(sheet.DEFextra1) or 0) + (tonumber(sheet.DEFextra2) or 0) + (tonumber(sheet.DEFextra3) or 0);
         </event>
@@ -926,7 +926,7 @@
 				</event>
 		</dataLink>
 		
-		<dataLink fields="'DEFesq2', 'DEFapa2', 'DEFvon2', 'DEFforti2', 'DEFres2', 'DEFextra2'">
+		<dataLink fields="{'DEFesq2', 'DEFapa2', 'DEFvon2', 'DEFforti2', 'DEFres2', 'DEFextra2'}">
 				<event name="onChange">
                sheet.PPdefesas = (tonumber(sheet.DEFesq2) or 0) +
 								 (tonumber(sheet.DEFapa2) or 0) +

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFicha_MM3ed_RRPG_Consultas" align="client" theme="dark" margins="{top=1}">
  <scrollBox align="client">
  <rectangle width="893" height="1263" color="#6cb098">
@@ -37,7 +37,7 @@
 		</rectangle>
 		<label left="610" text="km/h" fontStyle="bold" top="5" width="38" height="20" horzTextAlign="center"/>
 		
-		<dataLink fields="'Velocidade1'" defaultValues="{'0'}">
+		<dataLink fields="{'Velocidade1'}" defaultValues="{'0'}">
 				<event name="onChange">
 					   sheet.VelocidadeTotal = 2^((tonumber(sheet.Velocidade1) or 0) + 2);
 				</event>
@@ -279,7 +279,7 @@
 		<!-- FIM DO TEMPO DE PROJETO -->
 		
 		
-		<dataLink fields="'custoInvento', 'tempoProjetoRapido', 'tempoProjeto'" defaultValues="{'0'}">
+		<dataLink fields="{'custoInvento', 'tempoProjetoRapido', 'tempoProjeto'}" defaultValues="{'0'}">
 			<event name="onChange">
 				if tonumber (sheet.tempoProjetoRapido) ~= nil then
 					sheet.tempoProjeto = (tonumber(sheet.custoInvento) or 0) / (2 ^ (tonumber(sheet.tempoProjetoRapido) or 0));
@@ -331,7 +331,7 @@
 		<!-- FIM DO TEMPO DE CONSTRUINDO -->
 		
 		
-		<dataLink fields="'custoInvento', 'tempoContruirRapido', 'tempoConstruir'" defaultValues="{'0'}">
+		<dataLink fields="{'custoInvento', 'tempoContruirRapido', 'tempoConstruir'}" defaultValues="{'0'}">
 			<event name="onChange">
 				if tonumber (sheet.tempoContruirRapido) ~= nil then
 					sheet.tempoConstruir = ((tonumber(sheet.custoInvento) or 0) * 4) / (2 ^ (tonumber(sheet.tempoContruirRapido) or 0));
