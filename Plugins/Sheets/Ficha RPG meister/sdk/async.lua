@@ -1,4 +1,3 @@
-local System = require("system.lua");
 local Log = require("log.lua");
 
 local _ASYNC_EXEC_AWAIT_CO_RET = "_co:await";
@@ -16,7 +15,7 @@ local _asyncExecution = {idleCoroutines = {},
 					     maxIdleCoroutines = 8};
 
 function Async.haveNativeBackendSupport()
-	return System.checkAPIVersion(87, 3)
+	return true;
 end;
 
 --- Base Promise MetaTable
@@ -83,7 +82,7 @@ setmetatable(PromiseMetatable, BasePromiseMetatable);
 PromiseMetatable.__index = PromiseMetatable; 
 
 function PromiseMetatable:peek()
-	if System.checkAPIVersion(87, 4) and (_async_promise_peek ~= nil) then
+	if _async_promise_peek ~= nil then
 		return _async_promise_peek(self.handle);
 	else
 		return false;
@@ -91,27 +90,7 @@ function PromiseMetatable:peek()
 end;
 
 function PromiseMetatable:thenDo(successCallback, errorCallback)
-	local wrappedSuccessCallback = nil;
-	local wrappedErrorCallback = nil;
-
-	if System.checkAPIVersion(87, 4) then
-		wrappedSuccessCallback = successCallback;
-		wrappedErrorCallback = errorCallback;
-	else
-		if successCallback ~= nil then
-			wrappedSuccessCallback = function(...)
-										return Async.execute(successCallback, ...);
-									 end;
-		end;
-		
-		if errorCallback ~= nil then
-			wrappedErrorCallback = function(...)
-								      return Async.execute(errorCallback, ...);
-								   end;
-		end;	
-	end;
-
-	local thenDoHandle = _async_promise_thenDo(self.handle, wrappedSuccessCallback, wrappedErrorCallback);	
+	local thenDoHandle = _async_promise_thenDo(self.handle, successCallback, errorCallback);	
 	return Promise.wrap(thenDoHandle);	
 end;
 
@@ -297,9 +276,11 @@ function _asyncExecution.entrypoint(mustExecute, fn, arguments, promiseResolutio
 			Log.w("Async.execute", tostring(ret[2]));			
 			require("dialogs.lua").showErrorMessage(ret[2]);
 		end;
+			
+		fn, arguments, promiseResolution, ret = nil, nil, nil, nil;	
 		
-		fn, arguments, promiseResolution = nil, nil, nil;	
-		mustExecute, fn, arguments, promiseResolution = coroutine.yield(_ASYNC_EXEC_IDLE_COROUTINE_RET, fn and arguments and promiseResolution); -- fn, arguments and promiseResolution are used as parameter just to avoid rdk command line linter warning
+		-- fn, arguments, promiseResolution and ret are used below as parameter just to avoid rdk command line linter warning
+		mustExecute, fn, arguments, promiseResolution = coroutine.yield(_ASYNC_EXEC_IDLE_COROUTINE_RET, fn and arguments and promiseResolution and ret); 
 	end;
 end;
 
@@ -351,17 +332,12 @@ function Promise.withError(errorMsg)
 end;
 
 function Promise.toResolve()
-	if System.checkAPIVersion(87, 4) then
-		local promiseHandle, promiseResolutionHandle = _async_promise_newToResolve();
-		
-		local promise = Promise.wrap(promiseHandle);
-		local promiseResolution = Promise.wrapPromiseResolution(promiseResolutionHandle);
+	local promiseHandle, promiseResolutionHandle = _async_promise_newToResolve();
 	
-		return promise, promiseResolution;
-	else
-		local stubPromise = Promise.__newStubPendingPromise();		
-		return stubPromise, stubPromise; -- the same stub object act as Promise and PromiseResolution at same time	
-	end;		
+	local promise = Promise.wrap(promiseHandle);
+	local promiseResolution = Promise.wrapPromiseResolution(promiseResolutionHandle);
+
+	return promise, promiseResolution;
 end;
 
 function Promise.toHandle(promise, successCallback, failureCallback)
@@ -409,30 +385,26 @@ function Promise.isPromise(value)
 end;
 
 function Promise.all(...)
-	if System.checkAPIVersion(87, 4) then
-		local normalized = {};
-		local argsTable = table.pack(...);
+	local normalized = {};
+	local argsTable = table.pack(...);
+	
+	for i = 1, #argsTable, 1 do
+		local item = argsTable[i];
 		
-		for i = 1, #argsTable, 1 do
-			local item = argsTable[i];
-			
-			if Promise.isPromise(item) then
-				normalized[#normalized + 1] = item.handle;
-			else
-				for j = 1, #item, 1 do
-					local subItem = item[j];
-					
-					if Promise.isPromise(subItem) then
-						normalized[#normalized + 1] = subItem.handle;
-					end;
+		if Promise.isPromise(item) then
+			normalized[#normalized + 1] = item.handle;
+		else
+			for j = 1, #item, 1 do
+				local subItem = item[j];
+				
+				if Promise.isPromise(subItem) then
+					normalized[#normalized + 1] = subItem.handle;
 				end;
 			end;
 		end;
-	
-		return Promise.wrap(_async_promise_newAll(normalized));	
-	else
-		return Promise.withError("No API support");
 	end;
+
+	return Promise.wrap(_async_promise_newAll(normalized));	
 end;
 
 -- Async library public API
@@ -449,8 +421,12 @@ function Async.await(promise)
 	local ret = table.pack(promise:peek());
 	
 	if ret[1] then
-		if ret[2] then
-			return table.unpack(ret, 3);
+		if ret[2] then	
+			if #ret >= 3 then
+				return table.unpack(ret, 3);
+			else
+				return nil;
+			end;
 		else
 			local traceMessage = ret[3] .. "\n" .. debug.traceback(coroutine.running(), nil, 2);	
 			reraise(traceMessage);					
@@ -460,7 +436,11 @@ function Async.await(promise)
 	ret = table.pack(coroutine.yield(_ASYNC_EXEC_AWAIT_CO_RET, promise));
 	
 	if ret[1] then
-		return table.unpack(ret, 2);
+		if #ret >= 2 then
+			return table.unpack(ret, 2);
+		else	
+			return nil;
+		end;
 	else	
 		local traceMessage = ret[2] .. "\n" .. debug.traceback(coroutine.running(), nil, 2);	
 		reraise(traceMessage);
@@ -501,6 +481,6 @@ Promise.succeeded  = Promise.resolved;
 Promise.resolve = Promise.resolved;
 Promise.reject = Promise.withError;
 await = Async.await;
-pawait = await;
+pawait = Async.pawait;
 
 return Async

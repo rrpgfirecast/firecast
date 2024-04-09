@@ -4,7 +4,6 @@ local rrpgWrappers = {};
 local localStrongRefContextoObjects = {};	
 local Locale = require("locale.lua");
 local Async = require("async.lua");
-local System = require("system.lua");
 local Utils = require('utils.lua');
 
 local SHARED_OBJECT_TYPE = "rrpgObject";
@@ -66,11 +65,7 @@ local function newTimedJobQueue(interval)
 		end;
 	end;
 	
-	function o:addAsyncJob(callback, ...)
-		if not System.checkAPIVersion(87, 4) then
-			return callback(...);
-		end;
-	
+	function o:addAsyncJob(callback, ...)	
 		local promise, resolution = Async.Promise.toResolve();
 		assert((promise ~= nil) and (resolution ~= nil));
 								
@@ -151,20 +146,16 @@ local function initMesaWrappedObjectFromHandle(handle)
 		if cachedPlayer == nil then
 			local audioLib = require("audioCore.dlua");
 		
-			if System.checkAPIVersion(87, 4) then
-				if self.isObjectAlive then				
-					local audioPlayerHandle = _obj_invokeEx(self.handle, 'CreateRoomAudioPlayer');		
+			if self.isObjectAlive then				
+				local audioPlayerHandle = _obj_invokeEx(self.handle, 'CreateRoomAudioPlayer');		
 
-					if audioPlayerHandle ~= nil then
-						cachedPlayer = audioLib._audioPlayerWrapperFromHandle(audioPlayerHandle);
-					else
-						cachedPlayer = audioLib._newNullAudioPlayerWrapper("Failed to initialize room audio player");
-					end;
+				if audioPlayerHandle ~= nil then
+					cachedPlayer = audioLib._audioPlayerWrapperFromHandle(audioPlayerHandle);
 				else
-					cachedPlayer = audioLib._newNullAudioPlayerWrapper("Not in room");
-				end
+					cachedPlayer = audioLib._newNullAudioPlayerWrapper("Failed to initialize room audio player");
+				end;
 			else
-				cachedPlayer = audioLib._newNullAudioPlayerWrapper();
+				cachedPlayer = audioLib._newNullAudioPlayerWrapper("Not in room");
 			end;
 					
 			assert(cachedPlayer ~= nil);			
@@ -231,10 +222,12 @@ local function initMesaWrappedObjectFromHandle(handle)
 	
 	function mesa:abrirNDBDeMesa(nome, callback, opcoes)
 		local ndbBib = require("ndb.lua");
-		
+				
 		if type(opcoes) ~= "table" then
-			opcoes = {};			
-		end;
+			opcoes = {};
+		else	
+			opcoes = Utils.cloneTable(opcoes, true);
+		end;				
 		
 		opcoes.criar = not not opcoes.criar;
 		
@@ -265,7 +258,7 @@ local function initMesaWrappedObjectFromHandle(handle)
 						
 						if callback ~= nil then
 							setTimeout(callback, 1, rootNode);
-						end;
+							end;
 					elseif state == "closed" then
 						jaNotificou = true;
 						
@@ -282,9 +275,10 @@ local function initMesaWrappedObjectFromHandle(handle)
 						end;
 					end;
 					
-					if jaNotificou then
+					if jaNotificou and (ndbObj ~= nil) then
 						ndbObj:removeEventListener(listenerProvider);
 						ndbObj:removeEventListener(listenerLoaded);
+						--ndbObj = nil;
 					end;						
 				end;						
 			end;
@@ -293,10 +287,8 @@ local function initMesaWrappedObjectFromHandle(handle)
 			listenerLoaded = ndbObj:addEventListener("OnLoaded", checkState);
 					
 			checkState();
-		else
-			if callback ~= nil then
-				setTimeout(callback, 1, nil);
-			end;
+		elseif callback ~= nil then
+			setTimeout(callback, 1, nil);		
 		end;
 	end;
 	
@@ -329,14 +321,34 @@ local function initMesaWrappedObjectFromHandle(handle)
 	end;
 	
 	function mesa:asyncOpenUserRoomNDB(name, options)
-		if not Async.haveNativeBackendSupport() or not System.checkAPIVersion(87, 3) then
-			return Async.Promise.withError("No API Support");
-		end;			
-		
 		return __serverRequestQueue:addAsyncJob(
 			function ()
 				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncOpenUserRoomNDB", name, options));			
 			end);	
+	end;
+	
+	function mesa:getFirecastURI()
+		return _obj_invokeEx(self.handle, "GetFirecastURI");
+	end;
+	
+	function mesa:asyncOpenPVT(login, params) 		
+		local promiseHandle = _obj_invokeEx(self.handle, "AsyncOpenPVT", login, params);
+		return Async.Promise.wrap(promiseHandle);
+	end;		
+
+	function mesa:asyncCreateGroupPVT(logins, params) 		
+		local clonedLogins = Utils.cloneTable(logins);
+		local clonedParams = Utils.cloneTable(params);
+	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				local promiseHandle = _obj_invokeEx(self.handle, "AsyncCreateGroupPVT", clonedLogins, clonedParams);
+				return Async.Promise.wrap(promiseHandle);				
+			end);	
+	end;	
+	
+	function mesa:getChats()
+		return _obj_invokeEx(self.handle, "GetChats");
 	end;
 				
 	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};					
@@ -349,6 +361,7 @@ local function initMesaWrappedObjectFromHandle(handle)
 	wObj.props["sistema"] = {getter = "getSistema", tipo = "string"};	
 	wObj.props["msgBoasVindas"] = {getter = "getMsgBoasVindas", tipo = "string"};	
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};	
+	wObj.props["firecastURI"] = {getter = "getFirecastURI", tipo = "string"};	
 	wObj.props["isRestrito18Anos"] = {getter = "getIsRestrito18Anos", tipo = "bool"};	
 	wObj.props["haVagas"] = {getter = "getHaVagas", tipo = "bool"};		
 	wObj.props["isModerada"] = {getter = "getIsModerada", tipo = "bool"};	
@@ -437,10 +450,7 @@ local function initJogadorWrappedObjectFromHandle(handle)
 	wObj.props["haveVoz"] = {getter = "getHaveVoice", tipo = "bool"};
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};
 	wObj.props["personagemPrincipal"] = {readProp="PersonagemPrincipal", tipo = "int"};
-	
-	if System.checkAPIVersion(87, 4) then
-		wObj.props["id"] = {readProp="ID", tipo = "int"};
-	end;
+	wObj.props["id"] = {readProp="ID", tipo = "int"};
 	
 	return wObj;
 end;		
@@ -466,11 +476,7 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 	
 	function bibItem:__asyncCreateBibItem(bibItemType, params)
 		assert(type(params) == "table");
-		
-		if not System.checkAPIVersion(87, 4) then
-			return Async.Promise.failed("No API Support");
-		end;
-		
+				
 		local innerPromise = __serverRequestQueue:addAsyncJob(
 			function ()
 				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncCreateBibItemObjectID", bibItemType, params));			
@@ -528,11 +534,7 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 		return bibItem:__asyncCreateBibItem('scene3', gridParams);
 	end;		
 
-	function bibItem:asyncDelete()
-		if not System.checkAPIVersion(87, 4) then
-			return Async.Promise.failed("No API Support");
-		end;
-		
+	function bibItem:asyncDelete()	
 		return __serverRequestQueue:addAsyncJob(
 			function ()
 				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncDelete"));			
@@ -544,10 +546,6 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 			error('Parameter "newParent" must be an object');
 		end;	
 	
-		if not System.checkAPIVersion(87, 4) then
-			return Async.Promise.failed("No API Support");
-		end;			
-	
 		return __serverRequestQueue:addAsyncJob(
 			function ()
 				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncMoveTo", newParent.objectID));			
@@ -558,16 +556,16 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 		if type(changes) ~= 'table' then
 			error('Parameter "changes" must be a table');
 		end;	
-	
-		if not System.checkAPIVersion(87, 4) then
-			return Async.Promise.failed("No API Support");
-		end;		
-	
+		
 		return __serverRequestQueue:addAsyncJob(
 			function ()
 				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncUpdate", changes));			
 			end);	
 	end;		
+	
+	function bibItem:getFirecastURI()
+		return _obj_invokeEx(self.handle, "GetFirecastURI");
+	end;
 	
 	function bibItem:getMesa() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "MesaObjectID")); end;
 	function bibItem:getNome() return _obj_getProp(self.handle, "Nome"); end;
@@ -598,7 +596,8 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 	wObj.props["parent"] = wObj.props["pai"];
 	wObj.props["name"] = wObj.props["nome"];	
 	wObj.props["children"] = wObj.props["filhos"];
-	wObj.props["ownerLogin"] = wObj.props["loginDono"];
+	wObj.props["firecastURI"] = {getter = "getFirecastURI", tipo = "string"};	
+	wObj.props["ownerLogin"] = wObj.props["loginDono"];	
 	wObj.props["creatorLogin"] = wObj.props["loginCriador"];
 	wObj.props["creator"] = wObj.props["criador"];
 	wObj.props["owner"] = wObj.props["dono"];
@@ -614,20 +613,12 @@ local __PersonagemWrappedObjectProps = {};
 for i = 0, 3 do
 	local barIndex = i;
 	
-	__PersonagemWrappedObjectProps["bar" .. tostring(i) .. "Val"] = {tipo = "int", getter = function (personagem)
-																							  	if System.checkAPIVersion(87, 4) then
-																									return _obj_invokeEx(personagem.handle, "GetBarVal", barIndex)
-																								else
-																									return 0;
-																								end;			
+	__PersonagemWrappedObjectProps["bar" .. tostring(i) .. "Val"] = {tipo = "int", getter = function (personagem)										
+																								return _obj_invokeEx(personagem.handle, "GetBarVal", barIndex)											
 																						    end};	
 																						  
 	__PersonagemWrappedObjectProps["bar" .. tostring(i) .. "Max"] = {tipo = "int", getter = function (personagem)
-																							  	if System.checkAPIVersion(87, 4) then
-																									return _obj_invokeEx(personagem.handle, "GetBarMax", barIndex)
-																								else
-																									return 0;
-																								end;			
+																								return _obj_invokeEx(personagem.handle, "GetBarMax", barIndex)	
 																						    end};
 end;
 
@@ -635,11 +626,7 @@ for i = 0, 1 do
 	local edtLineIndex = i;
 	
 	__PersonagemWrappedObjectProps["edtLine" .. tostring(i)] = {tipo = "string", getter = function (personagem)
-																							  	if System.checkAPIVersion(87, 4) then
-																									return _obj_invokeEx(personagem.handle, "GetEdtLine", edtLineIndex)
-																								else
-																									return "";
-																								end;			
+																								return _obj_invokeEx(personagem.handle, "GetEdtLine", edtLineIndex)	
 																						    end};			
 end;	
 		
@@ -818,6 +805,7 @@ rrpgWrappers.NullChatWrapper = {enviarMensagem = _NULL_FUNCTION,
 								asyncSendLaugh = _NULL_PROMISE_FUNCTION,
 								asyncSendAction = _NULL_PROMISE_FUNCTION,
 								asyncSendStd = _NULL_PROMISE_FUNCTION,
+								asyncInvite = _NULL_PROMISE_FUNCTION,
 								participants = {},
 								medium = {kind="undefined"}
 								};
@@ -1003,11 +991,7 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		end;			
 	end;
 			
-	function wChat:__asyncSendEx(msgDesc, params) 
-		if not System.checkAPIVersion(87, 4) then
-			return Async.Promise.failed("No API Support");
-		end;
-		
+	function wChat:__asyncSendEx(msgDesc, params) 	
 		local finalMsgDesc = Utils.cloneTable(params) or {};
 		
 		for k, v in pairs(msgDesc) do
@@ -1057,58 +1041,34 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 	end;		
 	
 	function wChat:readLogRecs() 
-		if System.checkAPIVersion(87, 4) then 
-			return _obj_invokeEx(self.handle, "ReadValidLogRecs");
-		else
-			return {};
-		end;
+		return _obj_invokeEx(self.handle, "ReadValidLogRecs");
 	end;
 	
 	function wChat:getImpersonation() 
-		if System.checkAPIVersion(87, 4) then 
-			return _obj_invokeEx(self.handle, "GetUIImpersonation");
-		else
-			return {mode="none"};
-		end;
+		return _obj_invokeEx(self.handle, "GetUIImpersonation");
 	end;	
 	
 	function wChat:setImpersonation(impersonation)
-		if System.checkAPIVersion(87, 4) then 
-			return _obj_invokeEx(self.handle, "SetUIImpersonation", impersonation);
-		else	
-			return false;
-		end;	
+		return _obj_invokeEx(self.handle, "SetUIImpersonation", impersonation);
 	end;
 	
 	function wChat:getTalemarkOptions()
-		if System.checkAPIVersion(87, 4) then 
-			return _obj_invokeEx(self.handle, "GetTalemarkOptions");
-		else
-			return {};
-		end;
+		return _obj_invokeEx(self.handle, "GetTalemarkOptions");
 	end;	
 	
+	function wChat:setTalemarkOptions(options)
+		return _obj_invokeEx(self.handle, "SetTalemarkOptions", options);
+	end;		
+		
 	function wChat:getMedium()
-		if System.checkAPIVersion(87, 4) then 
-			return _obj_invokeEx(self.handle, "GetMedium");
-		else
-			return {kind="undefined"};
-		end;
+		return _obj_invokeEx(self.handle, "GetMedium");
 	end;		
 	
 	function wChat:getParticipants() 
-		if System.checkAPIVersion(87, 4) then 
-			return _obj_invokeEx(self.handle, "GetParticipants");
-		else
-			return {};
-		end;		
+		return _obj_invokeEx(self.handle, "GetParticipants");
 	end;
 	
 	function wChat:asyncQueryLogRecs(params) 		
-		if not System.checkAPIVersion(87, 4) then
-			return Async.Promise.failed("No API Support");
-		end;		
-		
 		params = Utils.cloneTable(params or {});
 		
 		local queue = self:_getLongTimedJobQueue()
@@ -1120,16 +1080,22 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 	end;		
 	
 	function wChat:writeEx(text, talemarkOptions) 		
-		if System.checkAPIVersion(87, 4) then
-			return _obj_invokeEx(self.handle, "WriteEx", text, talemarkOptions);
-		else
-			return self:escrever(text);
-		end;		
-	end;		
+		return _obj_invokeEx(self.handle, "WriteEx", text, talemarkOptions);	
+	end;	
+				
+	function wChat:asyncInvite(logins)
+		local clonedLogins = Utils.cloneTable(logins);
+	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				local promiseHandle = _obj_invokeEx(self.handle, "AsyncInvite", clonedLogins);
+				return Async.Promise.wrap(promiseHandle);				
+			end);
+	end;
 				
 	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
 	wChat.props["impersonation"] = {getter = "getImpersonation", setter = "setImpersonation", tipo = "table"};	
-	wChat.props["talemarkOptions"] = {getter = "getTalemarkOptions", tipo = "table"};	
+	wChat.props["talemarkOptions"] = {getter = "getTalemarkOptions", setter="setTalemarkOptions", tipo = "table"};	
 	wChat.props["medium"] = {getter = "getMedium", tipo = "table" };
 	wChat.props["participants"] = {getter = "getParticipants", tipo = "table" };	
 		

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="SkillsSkill" g="col" g-width="12" g-width-lg="6" height="25">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+
+		local function showPericiaPopup()
+			local pop = self:findControlByName("popPericia")
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet)
+				pop:showPopupEx("right", self)
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir")
+			end				
+		end
+
+		local function rollTest()
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+			local node = NDB.getRoot(sheet)
+
+			local mod = math.floor(tonumber(sheet.totalPericia) or 0)
+			local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod)
+
+			local warn = ""
+			if sheet.exigeTreino and (tonumber(sheet.graduacaoPericia) or 0)==0 then
+				warn = " (não possui graduações)."
+			end
+
+			mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nomePericia or "Pericia") .. " de " .. (node.nome or "Nome") .. warn)
+		end
+
+		]]>	
+	</script>
+
+	<layout g="col" g-width="8" height="25">
+		<checkBox g="col" g-width="1" height="25" field="isClass" margins="{left=5}"/>
+		<edit g="col" g-width="8" height="25" vertTextAlign="center" field="nomePericia">
+			<event name="onUserChange">
+				local rcl = self:findControlByName("rclListaDasPericias")
+				if rcl~= nil then
+					rcl:sort()
+				end
+			</event>
+		</edit>
+		<comboBox g="col" g-width="3" height="25" vertTextAlign="center" horzTextAlign="center" field="chavePericia" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white"/>
+		<dataLink field="chavePericia">
+			<event name="onUserChange">
+				if sheet~= nil then
+					local node = NDB.getRoot(sheet)
+
+	                local atrTable = {}
+	                atrTable["1"] = tonumber(node.efetModFor) or 0
+	                atrTable["2"] = tonumber(node.efetModDes) or 0
+	                atrTable["3"] = tonumber(node.efetModCon) or 0
+	                atrTable["4"] = tonumber(node.efetModInt) or 0
+	                atrTable["5"] = tonumber(node.efetModSab) or 0
+	                atrTable["6"] = tonumber(node.efetModCar) or 0
+	                atrTable["7"] = 0
+
+					local atributoPericia = atrTable[sheet.chavePericia]
+
+
+					sheet.atributoPericia = atributoPericia
+				end
+			</event>
+		</dataLink>
+	</layout>
+
+	<layout g="col" g-width="4" height="25">
+		<rectangle g="col" g-width="2" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="totalPericia" horzTextAlign="center"/>
+		</rectangle>
+		<rectangle g="col" g-width="2" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="atributoPericia" horzTextAlign="center"/>
+		</rectangle>
+		<edit g="col" g-width="2" height="25" vertTextAlign="center" horzTextAlign="center" field="graduacaoPericia" type="float"/>
+
+		<button g="col" g-width="2" height="25" text="🎲" onClick="rollTest()" hint="Rolar Teste" textTrimming="none"/>
+		<button g="col" g-width="2" height="25" text="ℹ️" onClick="showPericiaPopup()" hint="Detalhes" textTrimming="none"/>
+		<button g="col" g-width="2" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+	</layout>
+
+	<!-- Calcule o bonus de pericia-->
+	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia','buffPericia', 'penalidade'}">
+		<event name="onUserChange">
+			if sheet== nil then return end
+
+			local pen = (tonumber(sheet.penalidade) or 0)
+
+			local mod = (tonumber(sheet.atributoPericia) or 0) +
+						(tonumber(sheet.graduacaoPericia) or 0) +
+						(tonumber(sheet.penalidesPericia) or 0) +
+						(tonumber(sheet.racialPericia) or 0) +
+						(tonumber(sheet.sinergiaPericia) or 0) +
+						(tonumber(sheet.equipamentosPericia) or 0) +
+						(tonumber(sheet.magicoPericia) or 0) +
+						(tonumber(sheet.outrosPericia) or 0) + 
+						(tonumber(sheet.talentosPericia) or 0) +
+						(tonumber(sheet.classePericia) or 0) +
+						(tonumber(sheet.competenciaPericia) or 0) +
+						(tonumber(sheet.intuicaoPericia) or 0) +
+						(tonumber(sheet.sortePericia) or 0) +
+						(tonumber(sheet.condicionalPericia) or 0) +
+						(tonumber(sheet.buffPericia) or 0)
+
+			if sheet.penalidadeArmadura then
+				mod = mod + pen
+			end
+			if sheet.penalidadeArmadura2 then
+				mod = mod + pen
+			end
+
+			sheet.totalPericia = mod
+		</event>
+	</dataLink>
+
+	<!-- Calcule os pontos totais de pericia gastos-->
+	<dataLink fields="{'graduacaoPericia', 'isClass'}">
+		<event name="onUserChange">
+			if sheet== nil then return end
+			local node = NDB.getRoot(sheet)
+			local mod = tonumber(node.idiomasGrad) or 0
+			if not node.idiomasIsClass then
+				mod = mod + (tonumber(node.idiomasGrad) or 0)
+			end
+			local path = 0
+			local nodes = NDB.getChildNodes(node.campoDasPericias) 
+			--showMessage(#nodes)
+			for i=1, #nodes, 1 do
+				local mult = 1
+				if not nodes[i].isClass then
+					mult = 2
+				end
+				mod = mod + (tonumber(nodes[i].graduacaoPericia) or 0) * mult
+				path = path + (tonumber(nodes[i].graduacaoPericia) or 0)
+			end
+
+			node.pontosPericia = mod
+			node.pontosPericiaPath = path
+		</event>
+	</dataLink>
+</form>

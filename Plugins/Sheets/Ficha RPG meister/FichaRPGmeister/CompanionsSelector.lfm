@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="CompanionsSelector" width="180" height="25">
+    <button align="left" width="25" height="25" text="🗑️" hint="Apagar">
+		<event name="onClick">
+			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse companheiro?",
+				function (confirmado)
+					if confirmado then
+						NDB.deleteNode(sheet);
+					end;
+			end);
+		</event>
+	</button>
+    <label align="client" height="25" text="Teste de label" field="nomeComp" margins="{left=5}"/>
+	<dataLink field="nomeComp" defaultValue="Nome Companheiro"/>
+</form>

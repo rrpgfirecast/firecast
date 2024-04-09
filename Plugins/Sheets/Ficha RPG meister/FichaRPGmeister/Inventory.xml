@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Inventory" align="client">
+    <scrollBox align="client" g-cnt-line-spacing="5">
+        <rectangle g="col" g-width="8" g-width-lg="4" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5" g-auto-height="true">
+	        <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+				<button text="+" g="col" g-width="1" height="25" hint="Nova Arma">
+					<event name="onClick">
+						self.rclListaDasArmas:append()
+					</event>
+				</button>
+				<label g="col" g-width="11" height="25" text="ARMAS E ESCUDOS"/>
+
+				<scrollBox g="col" g-width="12" g-vert-tile="true">
+					<gridRecordList name="rclListaDasArmas" field="campoDasArmas" templateForm="InventoryWeapon" g="col" g-width="12" g-min-height="100" g-vert-tile="true" minQt="1"/>
+				</scrollBox>
+
+		        <label g="col" g-width="1" height="25" text="⚖️" horzTextAlign="center"/>
+		        <FormatEdit gwidth="5" field="pesoArmas" formatFloat=",0.## Kg"/>
+		        <label g="col" g-width="1" height="25" text="💰" horzTextAlign="center"/>
+		        <FormatEdit gwidth="5" field="precoArmas" formatFloat=",0.## PO"/>
+	        </rectangle>
+	        <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+	        	<InventorySlot text="MOCHILA" field="mochila" field2="Mochila"/>
+	        </rectangle>
+        </rectangle>
+
+        <rectangle g="col" g-width="4" g-width-lg="2" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5" g-auto-height="true">
+	        <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+	        	<InventorySlot text="PERMANENCIAS" field="permanencias" field2="Permanencias"/>
+	        </rectangle>
+	        <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+	        	<InventorySlot text="LIVRES" field="livres" field2="Livres"/>
+	        </rectangle>
+	        <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+	        	<InventorySlot text="OUTROS" field="outros" field2="Outros"/>
+	        </rectangle>
+        </rectangle>
+
+        <rectangle g="col" g-width="4" g-width-lg="2" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5" g-auto-height="true">
+	        <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+	        	<InventorySlot text="MUNIÇÕES" field="municoes" field2="Municoes"/>
+	        </rectangle>
+	        <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+	        	<InventorySlot text="BOLSOS" field="bolsos" field2="Bolsos"/>
+	        </rectangle>
+	        <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+	        	<InventorySlot text="IMOVEIS" field="moveis" field2="Imoveis"/>
+	        </rectangle>
+        </rectangle>
+
+        <rectangle g="col" g-width="8" g-width-lg="4" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5" g-auto-height="true">
+	        <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="2">
+				<button text="+" g="col" g-width="1" height="25" hint="Novo Consumivel">
+					<event name="onClick">
+						self.rclConsumiveis:append()
+					</event>
+				</button>
+				<label g="col" g-width="11" height="25" text="CONSUMIVEIS"/>
+
+				<scrollBox g="col" g-width="12" g-vert-tile="true">
+					<gridRecordList name="rclConsumiveis" field="itensConsumiveis" templateForm="InventoryConsumable" g="col" g-width="12" g-min-height="100" g-vert-tile="true"/>
+				</scrollBox>
+
+
+		        <label g="col" g-width="1" height="25" g-offset="6" text="💰" horzTextAlign="center"/>
+		        <FormatEdit gwidth="5" field="precoItens" formatFloat=",0.## PO"/>
+	        </rectangle>
+	        <rectangle g="col" g-width="6" g-min-height="225" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+
+				<label g="col" g-width="12" height="25" text="DINHEIRO" horzTextAlign="center"/>
+				<textEditor g="col" g-width="12" g-min-height="100" g-vert-tile="true" field="dinheiro"/>
+
+				<label g="col" g-width="3" height="25" text="TOTAL"/>
+				<FormatEdit gwidth="9" field="dinheiroTotal" formatFloat=",0.## PO"/>
+
+				<TitleLabel text="GASTOS" field="gastos" formatFloat=",0.## PO"/>
+				<TitleLabel text="RESTANTE" field="dinheiroRestante" formatFloat=",0.## PO"/>
+
+				<dataLink fields="{'precoEquipamento', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoItens'}">
+					<event name="onUserChange">
+						if sheet~= nil then
+
+							-- Calculando todos gastos
+							local gastos = (tonumber(sheet.precoEquipamento) or 0) +
+											(tonumber(sheet.precoArmas) or 0) +
+											(tonumber(sheet.precoMochila) or 0) +
+											(tonumber(sheet.precoPermanencias) or 0) +
+											(tonumber(sheet.precoLivres) or 0) +
+											(tonumber(sheet.precoOutros) or 0) +
+											(tonumber(sheet.precoMunicoes) or 0) +
+											(tonumber(sheet.precoBolsos) or 0) +
+											(tonumber(sheet.precoImoveis) or 0) +
+											(tonumber(sheet.precoInventorioComp) or 0) +
+											(tonumber(sheet.precoItens) or 0);
+
+							-- Calculando dinheiro restante
+							local total = tonumber(sheet.dinheiroTotal) or 0;
+							local restante = total - gastos;
+
+							sheet.gastos = gastos;
+							sheet.dinheiroRestante = restante;
+						end;
+					</event>
+				</dataLink>
+	        </rectangle>
+	        <rectangle g="col" g-width="6" g-min-height="225" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" height="25" text="CARGA" horzTextAlign="center"/>
+
+				<TitleLabel text="LEVE" field="cargaLeve" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
+				<TitleLabel text="MÉDIA" field="cargaMedia" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
+				<TitleLabel text="PESADA" field="cargaPesada" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
+
+				<TitleLabel text="ERGUER" field="cargaErguer" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
+				<TitleLabel text="EMPURRAR" field="cargaLevantar" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
+				<TitleLabel text="LEVANTAR" field="cargaEmpurrar" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
+
+				<TitleLabel text="ATUAL" field="cargaAtual" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
+				<Title text="FORÇA EXTRA" field="cargaForca" widthL="4" widthR="8"/>
+			
+				<dataLink field="cargaPesada">
+					<event name="onUserChange">
+						if sheet~= nil then
+
+							local mod = (tonumber(sheet.cargaPesada) or 0);
+							sheet.cargaErguer = mod;
+							sheet.cargaLevantar = (2*mod);
+							sheet.cargaEmpurrar = (5*mod);
+						end;
+					</event>
+				</dataLink>
+				<dataLink fields="{'pesoEquipamento', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
+					<event name="onUserChange">
+						if sheet~=nil then
+							local carga = (tonumber(sheet.pesoEquipamento) or 0) +
+										(tonumber(sheet.pesoArmas) or 0) +
+										(tonumber(sheet.pesoMochila) or 0) +
+										(tonumber(sheet.pesoPermanencias) or 0) +
+										(tonumber(sheet.pesoLivres) or 0) +
+										(tonumber(sheet.pesoOutros) or 0) +
+										(tonumber(sheet.pesoMunicoes) or 0) +
+										(tonumber(sheet.pesoBolsos) or 0) +
+										(tonumber(sheet.pesoImoveis) or 0);
+							sheet.cargaAtual = carga;
+						end;
+					</event>
+				</dataLink>
+	        </rectangle>
+        </rectangle>
+    </scrollBox>
+</form>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<flowLayout g="col" g-width="12" autoHeight="true" maxColumns="5" horzAlign="center" orientation="vertical" name="magicList8" visible="false" avoidScale="false" padding="{left=5,right=5,top=5,bottom=5}">
+	<magicListFlow num="10"/>
+	<magicListFlow num="11"/>
+	<magicListFlow num="12"/>
+	<magicListFlow num="13"/>
+	<magicListFlow num="14"/>
+	<magicListFlow num="15"/>
+	<magicListFlow num="16"/>
+	<magicListFlow num="17"/>
+	<magicListFlow num="18"/>
+	<magicListFlow num="19"/>
+</flowLayout>

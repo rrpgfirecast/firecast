@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="Characteristics" align="client">
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="TALENTOS" rclName="campoDosTalentos" rclField="campoDosTalentos"/>
+			<ListaFlexivel nome="OUTROS" rclName="campoDosOutros" rclField="campoDosOutros"/>
+			<ListaFlexivel nome="CARACTERISTICAS RACIAIS" rclName="campoDasRacas" rclField="campoDasRacas"/>
+			<ListaFlexivel nome="CARACTERISTICAS DE CLASSE" rclName="campoDasCaracteristicasClasse" rclField="campoDasCaracteristicasClasse"/>
+		</flowLayout>
+	</scrollBox>
+</form>

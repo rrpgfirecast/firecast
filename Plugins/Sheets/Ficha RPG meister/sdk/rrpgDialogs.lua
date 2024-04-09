@@ -1,7 +1,7 @@
 local objs = require("rrpgObjs.lua");
 local Async = require("async.lua");
 
-local lDialogs = {};
+local lDialogs = objs.objectFromHandle(_obj_newObject("TLuaDialogsServices"));
 
 local function newDialogObject(className)
 	return objs.objectFromHandle(_obj_newObject(className));
@@ -509,6 +509,10 @@ function lDialogs.chooseMultiple(prompt, options, callback)
 		end);
 end;
 
+function lDialogs.asyncSelectTalemarkColor(initialColor)
+	local promiseHandle = _obj_invokeEx(lDialogs.handle, "AsyncSelectTalemarkColor", initialColor);
+	return Async.Promise.wrap(promiseHandle);
+end;
 
 dialogs = lDialogs;
 Dialogs = dialogs;

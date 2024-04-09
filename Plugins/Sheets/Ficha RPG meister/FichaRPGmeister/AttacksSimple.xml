@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="AttacksSimple" align="client">
+    <script>
+        local i
+        local max
+        local array
+        local decisivo
+        local dano
+        local danoCritico
+
+        local function nextAttack(rolado)
+            local dado = rolado.ops[1].resultados[1]
+            local mesa = Firecast.getMesaDe(sheet)
+            
+            if (dado>=decisivo) then
+                mesa.activeChat:rolarDados(rolagem, "Confirmando Critico " .. i)
+            end
+            
+            if dado>1 then
+                mesa.activeChat:rolarDados(dano, "Dano do Ataque " .. i)
+            end
+            
+            if dado>=decisivo then
+                mesa.activeChat:rolarDados(danoCritico, "Dano Extra do Critico "  .. i)
+            end
+            
+            i = i+1
+            local mod = tonumber(array[i])
+            
+            if mod~=nil then
+                rolagem = Firecast.interpretarRolagem("1d20 + " .. mod)
+                if sheet.buffAtaque ~= nil then
+                    rolagem = rolagem:concatenar(sheet.buffAtaque)
+                end
+
+                mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "Nome"), 
+                    function (rolado)
+                        nextAttack(rolado)
+                    end)
+            end
+        end
+
+        local function rollDamage(id)
+            local mesa = Firecast.getMesaDe(sheet)
+            dano = sheet["dano"..id] or "1d1"
+            dano = Firecast.interpretarRolagem(dano)
+            if sheet.buffDano ~= nil then
+                dano = dano:concatenar(sheet.buffDano)
+            end
+            
+            local armamento = sheet["nome"..id]
+            if armamento==nil then armamento = sheet["arma"..id] end
+            if armamento==nil then armamento = "arma" end
+            
+            mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "Nome"))
+        end
+
+        local function rollCritDamage(id)
+            local mesa = Firecast.getMesaDe(sheet)
+            danoCritico = sheet["danoCritico"..id] or "1d1"
+            danoCritico = Firecast.interpretarRolagem(danoCritico)
+            if sheet.buffDanoCritico ~= nil then
+                danoCritico = danoCritico:concatenar(sheet.buffDanoCritico)
+            end
+            
+            local armamento = sheet["nome"..id]
+            if armamento==nil then armamento = sheet["arma"..id] end
+            if armamento==nil then armamento = "arma" end
+            
+            mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"))
+        end
+    </script>
+    <scrollBox align="client" g-cnt-line-spacing="5">
+        <Attack num="1"/>
+        <Attack num="2"/>
+        <Attack num="3"/>
+        <Attack num="4"/>
+        <Attack num="5"/>
+        <Attack num="6"/>
+        <Attack num="7"/>
+        <Attack num="8"/>
+        <Attack num="9"/>
+        <Attack num="10"/>
+        <Attack num="11"/>
+        <Attack num="12"/>
+        <Attack num="13"/>
+        <Attack num="14"/>
+        <Attack num="15"/>
+        <Attack num="16"/>
+        <Attack num="17"/>
+        <Attack num="18"/>
+        <Attack num="19"/>
+        <Attack num="20"/>
+    </scrollBox>
+</form>
