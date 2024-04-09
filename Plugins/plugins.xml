@@ -40,7 +40,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="1.2" compilationDate="02042024204512" compilationDigest="52b335778373c18b14c65f7b3e1e461fbfbf4572">
+    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="1.2" compilationDate="09042024150153" compilationDigest="0a9256dc0aec2b38d66c6be4d84fcceeea776f2e">
         <info lang="pt-BR" name="Plugin Auto Updater" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <info lang="en" description="Check your plugins and macros, and find which ones have updates available in Firecast git. It also allows access to not installed git plugins."/>
         <dataTypes>

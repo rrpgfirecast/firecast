@@ -1,62 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmAvailable" align="client">
-	<scrollBox align="client">
-		<edit align="top" height="25" field="filter" textPrompt="Filtro">
-			<event name="onChange">
-				--write(self.scope.node);
-				if self.scope.node == nil then return end;
+	<script>
+		local currentFilterArgument = "";
+		
+		local function prepareStrForFilter(inputStr)
+			return string.lower(Utils.removerAcentos(inputStr));
+		end;
+		
+		local function executeFilterNow()			
+			currentFilterArgument = prepareStrForFilter(self.edtAvailableFilter.text);
+			self.downloadedPluginsList:reorganize();
+		end;		
+		
+		local function checkNeedExecuteFilter()	
+			local newFilterArgument = prepareStrForFilter(self.edtAvailableFilter.text);
+			
+			if newFilterArgument ~= currentFilterArgument then
+				executeFilterNow();
+			end;
+		end;
+	</script>
 
-				local nodes = NDB.getChildNodes(self.scope.node.downloadedPluginsList);
-				--local mesa = Firecast.getMesaDe(self);
-				--local login = mesa.meuJogador.login;
-				local filter = string.lower(Utils.removerAcentos(self.scope.node.filter));
-
-				-- Deixe todos visiveis 
-				if filter == nil or filter == "" then
-					for i = 1, #nodes, 1 do
-						nodes[i].priority = 0;
-						--NDB.setPermission(nodes[i], "user", login, "read", "allow");
-					end;
-				-- Deixe apenas os matchs visiveis
-				else
-					for i = 1, #nodes, 1 do
-						local name = string.lower(Utils.removerAcentos(nodes[i].name));
-						local moduleId = string.lower(Utils.removerAcentos(nodes[i].moduleId));
-						local author = string.lower(Utils.removerAcentos(nodes[i].author));
-
-						if string.find(name, filter) or string.find(moduleId, filter) or string.find(author, filter) then
-							nodes[i].priority = 1;
-							--NDB.setPermission(nodes[i], "user", login, "read", "allow");
-						else
-							nodes[i].priority = -1;
-							--NDB.setPermission(nodes[i], "user", login, "read", "deny");
-							--showMessage(NDB.getPermission(nodes[i], "user", login, "read"));
-						end;
-					end;
-				end;
-				
-			</event>
-		</edit>
-		<recordList align="client" field="downloadedPluginsList" name="downloadedPluginsList" templateForm="frmDownloadedPlugin">
+	<timer name="tmrFilter" interval="1000" onTimer="checkNeedExecuteFilter()"/>
+	<edit g="row" g-min-height="25" textPrompt="Filtro" name="edtAvailableFilter" onChange="executeFilterNow()"/>
+	
+	<scrollBox g="row" g-vert-tile="true">
+		<gridRecordList g="row" g-vert-tile="true" field="downloadedPluginsList" name="downloadedPluginsList" templateForm="frmDownloadedPlugin"
+						filterFields="{'priority', 'name', 'moduleId', 'author'}">
 			<event name="onCompare">
-				if nodeA.enabled and nodeB.enabled then
-					if (tonumber(nodeA.priority) or 0) > (tonumber(nodeB.priority) or 0) then
+				if left.enabled and right.enabled then
+					if (tonumber(left.priority) or 0) > (tonumber(right.priority) or 0) then
 						return -1;
-					elseif (tonumber(nodeB.priority) or 0) > (tonumber(nodeA.priority) or 0) then
+					elseif (tonumber(right.priority) or 0) > (tonumber(left.priority) or 0) then
 						return 1;
 					else
-						return Utils.compareStringPtBr(nodeA.name, nodeB.name);
+						return Utils.compareStringPtBr(left.name, right.name);
 					end;
-				elseif nodeA.enabled then
+				elseif left.enabled then
 					return 1;
-				elseif nodeB.enabled then
+				elseif right.enabled then
 					return -1;
 				end;
-        	</event>
-		</recordList>
-		<layout align="bottom" height="25">
-			<label align="left" width="350" field="selectedDataType"/>
-			<progressBar align="client" field="downloadProgress" margins="{left=5,right=5,top=5,bottom=5}" max="1.0"/>
-		</layout>
+			</event>
+			
+			<event name="onFilter">
+				if (currentFilterArgument == nil) or (currentFilterArgument == "") then
+					return true;
+				end;
+			
+				local name = prepareStrForFilter(node.name) or "";
+				local moduleId = prepareStrForFilter(node.moduleId) or "";
+				local author = prepareStrForFilter(node.author) or "";				
+
+				return (name ~= "" and string.find(name, currentFilterArgument, 1, true)) or 
+				       (moduleId ~= "" and string.find(moduleId, currentFilterArgument, 1, true)) or
+				       (author ~= "" and string.find(author, currentFilterArgument, 1, true));
+
+			</event>
+		</gridRecordList>
 	</scrollBox>
+	
+	<layout g="row" g-cnt-horz-align="between" g-cnt-min-grid-width-ft="0.33">
+		<label g="block" g-vert-tile="true" g-min-height="25" width="350" field="selectedDataType"/>
+		<progressBar g="col" g-width="12" g-min-height="15" g-vert-tile="true" field="downloadProgress" margins="{left=5,right=5,top=5,bottom=5}" max="1.0"/>
+	</layout>
 </form>
