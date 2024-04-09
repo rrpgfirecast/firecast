@@ -112,39 +112,6 @@ function _eve_Forms_Cached_DestruirForm(formHandle)
 	return _eve_Forms_DestruirForm(formHandle);
 end;
 
-local __strongReferencedObjects = {};
-
-function _eve_Objs_AddStrongReference(objectHandle)
-	local objectRecord = __strongReferencedObjects[objectHandle];
-	
-	if (objectRecord == nil) then
-		local objetoEncontrado = objs.tryFindFromHandle(objectHandle);
-		
-		if (objetoEncontrado == nil) then
-			objetoEncontrado = objs.objectFromHandle(objectHandle);
-			objs.registerHandle(objetoEncontrado);
-		end;
-		
-		objectRecord = {count = 0, object = objetoEncontrado};	
-		__strongReferencedObjects[objectHandle] = objectRecord;
-	end;
-	
-	objectRecord.count = objectRecord.count + 1;
-end;
-
-function _eve_Objs_SubtractStrongReference(objectHandle)
-	local objectRecord = __strongReferencedObjects[objectHandle];
-	
-	if (objectRecord ~= nil) then
-		objectRecord.count = objectRecord.count - 1;
-		
-		if (objectRecord.count <= 0) then		
-			objectRecord.object = nil;
-			__strongReferencedObjects[objectHandle] = nil;
-		end;
-	end;
-end;
-
 function timedCheckAndDestroyCachedForms()
 	_tmrDestroyCachedForms:setEnabled(false);
 

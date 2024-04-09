@@ -21,15 +21,18 @@
 			
 			for i = 1, #cns, 1 do
 				local c = cns[i];
-				local nome = globalPrepareMacroNameForFind(globalPrepareMacroName(c.macro));
 				
-				if type(nome) == "string" and nome ~= "" and c.acoes ~= "" then
-					local o = {};
-					o.macro = "/" .. c.macro;
-					o.acoes = c.acoes or "";
-					o.tipoMacro = c.tipoMacro or "S";
-					mDest[genMacrosPrepared] = o;
-					genMacrosPrepared = genMacrosPrepared + 1;
+				if c ~= nil and type(c.macro) == "string" and c.macro ~= "" then
+					local nome = globalPrepareMacroNameForFind(globalPrepareMacroName(c.macro));
+					
+					if type(nome) == "string" and nome ~= "" and c.acoes ~= "" then
+						local o = {};
+						o.macro = "/" .. c.macro;
+						o.acoes = c.acoes or "";
+						o.tipoMacro = c.tipoMacro or "S";
+						mDest[genMacrosPrepared] = o;
+						genMacrosPrepared = genMacrosPrepared + 1;
+					end;
 				end;
 			end;
 		end;

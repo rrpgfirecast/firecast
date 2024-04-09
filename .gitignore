@@ -7,3 +7,7 @@ Plugins/Sheets/Ficha GURPS 4ed Moderna/output/rdkObjs/
 Plugins/Sheets/Ficha GURPS 4ed Padrao/output/rdkObjs/
 Plugins/Sheets/Ficha GURPS 4ed Simples/output/rdkObjs/
 **/output/rdkObjs/**
+SDK3/Documentation/MkDocs/site/
+SDK3/Documentation/MkDocs/pyvenv.cfg
+SDK3/Documentation/MkDocs/Lib/
+SDK3/Documentation/MkDocs/Scripts/

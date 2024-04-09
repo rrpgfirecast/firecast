@@ -1,15 +1,7 @@
 ﻿local Async = require("async.lua");
 local Objs = require("rrpgObjs.lua");
-local System = require("system.lua");
 
-local audioLib;
-
-if System.checkAPIVersion(87, 4) then
-	audioLib = Objs.objectFromHandle(_obj_newObject("TRRPGAudioLibWrapper"));
-else
-	audioLib = Objs.newPureLuaObject();
-end;
-
+local audioLib = Objs.objectFromHandle(_obj_newObject("TRRPGAudioLibWrapper"));
 assert(audioLib ~= nil);
 
 if audioLib.props == nil then
@@ -171,10 +163,6 @@ end;
 -- AudioLib public API
 
 function audioLib.asyncLoadAudioStream(source)
-	if not System.checkAPIVersion(87, 4) then
-		return Async.Promise.failed("No API Support");		
-	end;	
-	
 	local loadPromise = Async.Promise.wrap(_obj_invokeEx(audioLib.handle, 'AsyncLoadStreamReader', source));	
 		
 	return loadPromise:thenDo(
@@ -187,12 +175,8 @@ function audioLib:getDefaultPlayer()
 	local cachedPlayer = rawget(audioLib, "__cachedDefaultAudioPlayer");
 
 	if cachedPlayer == nil then
-		if System.checkAPIVersion(87, 4) then
-			local handle = _obj_invokeEx(self.handle, 'CreateGlobalAudioPlayer');			
-			cachedPlayer = audioLib._audioPlayerWrapperFromHandle(handle);
-		else
-			cachedPlayer = audioLib._newNullAudioPlayerWrapper();
-		end;
+		local handle = _obj_invokeEx(self.handle, 'CreateGlobalAudioPlayer');			
+		cachedPlayer = audioLib._audioPlayerWrapperFromHandle(handle);		
 		
 		assert(cachedPlayer ~= nil);		
 		rawset(audioLib, "__cachedDefaultAudioPlayer", cachedPlayer);

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmTokenProps" width="420" height="300" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmTokenProps" width="400" height="400" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="interfaceUtils.xml"/>
@@ -69,12 +69,7 @@
 		local theSelection = nil;
 		local theMesa = nil;
 		local podeVerBarrinhas = false;
-		local podeVerCoisasDeFoW = false;
-		
-		if not System.isMobile() then
-			self.height = 450;
-			self.width = 310;
-		end;
+		local podeVerCoisasDeFoW = false;	
 	</script>	
 	
 	<template name="EdicaoBarrinha">
@@ -242,16 +237,20 @@
 		 </tab>	
  
 		<tab name="tabImagem" text="@@scene.inseridor.tab.imagem">
-			<label name="labTitle" left="10" top="0" width="100" height="28" horzTextAlign="leading" vertTextAlign="center" fontSize="15" fontColor="#FFCC66" text="@@scene.inseridor.tab.imagem"/>
-			<horzLine left="10" top="30" width="290" strokeColor="#FFCC6670" margins="{left=10}"/>
+			<label g="col" g-width="12" g-min-height="28" g-dyn-height-txt="true" name="labTitle" width="100" 
+				  horzTextAlign="leading" vertTextAlign="center" fontSize="15" fontColor="#FFCC66" text="@@scene.inseridor.tab.imagem" />
+				   
+			<horzLine g="col" g-width="12" width="290" strokeColor="#FFCC6670" />
 
-			<layout left="0" top="30" width="300" height="270">
-				<rectangle left="45" top="5" width="200" height="200" strokeColor="white" color="black"/>
-				<label left="45" top="95" width="200" height="20" fontSize="11" name="click" text="@@scene.inseridor.image.click" horzTextAlign="center"/>
-				<image left="45" top="5" width="200" height="200" style="autoFit" hitTest="true" editable="true" name="image" field="image"/>
+			<row g-margin-top="8" g-cnt-horz-align="center" g-cnt-line-spacing="4">							
+				<rectangle g="block" width="200" height="200" strokeColor="white" color="black" g-cnt-vert-align="center" g-cnt-horz-align="center">				
+					<label g="block" g-dyn-height-txt="true" g-dyn-width-txt="true"  fontSize="11" name="click" text="@@scene.inseridor.image.click" horzTextAlign="center"/>										
+					<image align="client" style="autoFit" hitTest="true" editable="true" name="image" field="image"/>					
+				</rectangle>													
 				
-				<button left="55" top="215" width="185" height="25" name="input" text="@@scene.inseridor.labels.input" onClick="self:openFile()"/>
-			</layout>
+				<button g="block" g-break-line-before="true" g-dyn-height-txt="true" g-dyn-width-txt="true" g-min-height="25" g-min-width="185" 
+						name="input" text="@@scene.inseridor.labels.input" onClick="self:openFile()"/>
+			</row>
 		</tab>
 		 
 		<template name="ComponenteDeLuz">

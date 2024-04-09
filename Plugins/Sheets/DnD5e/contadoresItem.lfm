@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmContador" height="60" margins="{top=10}">
+<form name="frmContador" height="60" margins="{top=10}" cacheMode="time">
 	<script>
 		<![CDATA[
 			local function askForDelete()

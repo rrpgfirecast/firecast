@@ -114,7 +114,7 @@
 
 		                        NDB.copy(item, sheet)
 
-		                        rcl:sort()
+		                        rcl:reorganize()
 
 		                        NDB.deleteNode(sheet);
 			                end

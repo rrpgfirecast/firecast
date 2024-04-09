@@ -1,5 +1,4 @@
-﻿local System = require("system.lua");
-local Objs = require("rrpgObjs.lua");
+﻿local Objs = require("rrpgObjs.lua");
 local Locale = {};
 
 function Locale.lang(txtId)
@@ -75,11 +74,7 @@ function Locale.__createNullLocalizedTexts()
 	return nullTxts;	
 end;
 
-function Locale.newLocalizedTexts()
-	if not System.checkAPIVersion(87, 4) then
-		return Locale.__createNullLocalizedTexts();
-	end;
-		
+function Locale.newLocalizedTexts()	
 	local txts = Objs.objectFromHandle(_obj_newObject("TLuaLocalizedTexts"));	
 	
 	function txts:addText(localeId, textId, text)

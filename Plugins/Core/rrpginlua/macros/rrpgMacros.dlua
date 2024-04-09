@@ -975,11 +975,19 @@ local function createMacroEnvTable(chat)
 	env.Log = cloneTable(Log);
 	env.Async = cloneTable(Async);
 	
-	if rawget(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE) == nil then
-		rawset(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE, {});		
+	if type(_obj_getSystemGlobalSymbols) == 'function' then
+		local globalSyms = _obj_getSystemGlobalSymbols();
+		
+		for k, v in pairs(globalSyms) do
+			env[k] = v;
+		end;
+	else
+		if rawget(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE) == nil then
+			rawset(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE, {});		
+		end;
+		
+		env[_FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE] = rawget(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE); 	
 	end;
-	
-	env[_FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE] = rawget(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE); 
 	
 	env.Utils = env.utils;	
 	env.NDB = env.ndb;

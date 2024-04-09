@@ -40,7 +40,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="1.2" compilationDate="04012024133607" compilationDigest="487b4bdcfca2d6adb67e2b628f4c0f4cf86d6c1e">
+    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="1.2" compilationDate="09042024150153" compilationDigest="0a9256dc0aec2b38d66c6be4d84fcceeea776f2e">
         <info lang="pt-BR" name="Plugin Auto Updater" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <info lang="en" description="Check your plugins and macros, and find which ones have updates available in Firecast git. It also allows access to not installed git plugins."/>
         <dataTypes>
@@ -60,7 +60,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.dd2vtt" name="Universal VTT Importer" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/UniversalVTTImporter/output/UniversalVTTImporter.rpk?raw=true" fileName="UniversalVTTImporter.rpk" repositoryPath="Scene/UniversalVTTImporter/" author="Ambesek" description="Importa arquivos dd2vtt pro Firecast." version="1.2" compilationDate="16052023034555" compilationDigest="3ffccdaef46f4229a06efbecf6fc21e353c9c7bf">
+    <element id="Ambesek.dd2vtt" name="Universal VTT Importer" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/UniversalVTTImporter/output/UniversalVTTImporter.rpk?raw=true" fileName="UniversalVTTImporter.rpk" repositoryPath="Scene/UniversalVTTImporter/" author="Ambesek" description="Importa arquivos dd2vtt pro Firecast." version="1.2" compilationDate="02042024204439" compilationDigest="830153e17084e1dc7b84c9ce6e4dc6d6c692fb65">
         <info lang="pt-BR" name="Universal VTT Importer" description="Importa arquivos dd2vtt pro Firecast." author="Ambesek"/>
     </element>
     <element id="Ambesek.Exalted.3rd" name="Ficha Exalted 3rd" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Exalted%203rd/output/Ficha%20Exalted%203rd.rpk?raw=true" fileName="Ficha Exalted 3rd.rpk" repositoryPath="Sheets/Ficha Exalted 3rd/" author="Ambesek" description="Plugin pra jogar Exalted 3ª edição" version="0.3.2" compilationDate="03032023114045" compilationDigest="7b8b57de13cf5bb0d5f2f862101fbd180b5152a8">
@@ -292,7 +292,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.12.1" compilationDate="20122023042427" compilationDigest="07418e528a6545f8f10c8ee7cd5682ddac9f1b6c">
+    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.12.1" compilationDate="21032024235127" compilationDigest="9e0d4e26ddb63b11beb3c7ec373ab3c9561c44dc">
         <info lang="pt-BR" name="Ficha Starfinder" description="Ficha feita para o sistema Starfinder." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Starfinder.CompanhiaMercenaria" title="Ficha Starfinder (Companhia de Mercenarios)" formType="sheetTemplate">
@@ -439,7 +439,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="29122023134825" compilationDigest="bfe1384c3ff5d4427eff98fa2e1235a8adeb9577">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="02042024204536" compilationDigest="bc6df5714bc9c7a2df2fa77262aaac5aead4727c">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>
@@ -496,7 +496,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="04012024133541" compilationDigest="6bf0978cb756d4f459ff7c33756a9ba3986f7044">
+    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="02042024204321" compilationDigest="c966aa5729d0fd5dc7f3b8b4785d475644ca2044">
         <info lang="en" name="Scene 3 Core" description="Plug-in that has basic features for the combat grid, also known as Scene 3"/>
         <info lang="pt" name="Núcleo do Scene 3" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" author="Firecast - AlyssonRPG" site="http://www.rrpg.com.br"/>
     </element>
@@ -524,6 +524,20 @@
         <dataTypes>
             <dataType id="br_ficha.note.quest" title="Ficha NoteQuest" formType="sheetTemplate">
                 <info title="Ficha NoteQuest"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="ConspiracoesRPG_Agente_Oficial" name="Conspirações" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Conspira%C3%A7%C3%B5es%20RPG/output/Conspira%C3%A7%C3%B5es%20RPG.rpk?raw=true" fileName="Conspirações RPG.rpk" repositoryPath="Sheets/Conspirações RPG/" author="Luz Negra Editora" description="Ficha de Conspirações RPG - Agente - Firecast" version="1.0" compilationDate="09042024125909" compilationDigest="839ec36dfa6fba09381df5f86d4e0ff82b593d56">
+        <info lang="pt-BR" name="Conspirações" description="Ficha de Conspirações RPG - Agente - Firecast" author="Luz Negra Editora" site="https://luznegra.com.br/"/>
+        <dataTypes>
+            <dataType id="ConspiracoesRPG_Agente_Oficial" title="Conspirações - Agente (PDF)" formType="sheetTemplate">
+                <info title="Conspirações - Agente (PDF)"/>
+            </dataType>
+            <dataType id="ConspiracoesRPG_Incauto_Oficial" title="Conspirações - Incauto (PDF)" formType="sheetTemplate">
+                <info title="Conspirações - Incauto (PDF)"/>
+            </dataType>
+            <dataType id="ConspiracoesRPG_Conspiracionista_Oficial" title="Conspirações - Conspiracionista (PDF)" formType="sheetTemplate">
+                <info title="Conspirações - Conspiracionista (PDF)"/>
             </dataType>
         </dataTypes>
     </element>
@@ -906,7 +920,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="MM3e_RRPG_Gilgante" name="M&amp;M3e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Mutantes e Malfeitores 3e/" author="Janus e Gilgante" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, aba de Logs, aba de Consultas, rolagens de pericias, defesas, ataques e iniciativa." version="2019-12-28" compilationDate="03032023122405" compilationDigest="899f3a5caed9b5741684f29dd69e7020e9fcb518">
+    <element id="MM3e_RRPG_Gilgante" name="M&amp;M3e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Mutantes e Malfeitores 3e/" author="Janus e Gilgante" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, aba de Logs, aba de Consultas, rolagens de pericias, defesas, ataques e iniciativa." version="2019-12-28" compilationDate="08042024180923" compilationDigest="24a7c0e7b6b84b60368e9e30dbc4279195b7309a">
         <info lang="pt-BR" name="M&amp;M3e" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, aba de Logs, aba de Consultas, rolagens de pericias, defesas, ataques e iniciativa." author="Janus e Gilgante" site="http://www.rrpg.com.br"/>
         <dataTypes>
             <dataType id="Ficha_MM3e_MultiAba" title="Ficha Multiaba" formType="sheetTemplate">
@@ -1000,7 +1014,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="RRPG.FIRECAST.FMXModule" name="Firecast" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/rrpginlua/output/rrpginlua.rpk?raw=true" fileName="rrpginlua.rpk" repositoryPath="Core/rrpginlua/" author="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." version="1.0" compilationDate="04012024133533" compilationDigest="06c94f323a1242cb228585d34c818e76656ba61c">
+    <element id="RRPG.FIRECAST.FMXModule" name="Firecast" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/rrpginlua/output/rrpginlua.rpk?raw=true" fileName="rrpginlua.rpk" repositoryPath="Core/rrpginlua/" author="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." version="1.0" compilationDate="04042024114904" compilationDigest="cb091c34f787ca3c8e04547b9a0a9b52865a040c">
         <info lang="pt" name="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." author="Firecast" site="http://www.rrpg.com.br"/>
         <info lang="en" description="Contains standard Firecast features. Is not possible to uninstall this plug-in."/>
         <dataTypes>
