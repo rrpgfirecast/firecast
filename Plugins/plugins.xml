@@ -527,6 +527,20 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="ConspiracoesRPG_Agente_Oficial" name="Conspirações" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Conspira%C3%A7%C3%B5es%20RPG/output/Conspira%C3%A7%C3%B5es%20RPG.rpk?raw=true" fileName="Conspirações RPG.rpk" repositoryPath="Sheets/Conspirações RPG/" author="Luz Negra Editora" description="Ficha de Conspirações RPG - Agente - Firecast" version="1.0" compilationDate="09042024125909" compilationDigest="839ec36dfa6fba09381df5f86d4e0ff82b593d56">
+        <info lang="pt-BR" name="Conspirações" description="Ficha de Conspirações RPG - Agente - Firecast" author="Luz Negra Editora" site="https://luznegra.com.br/"/>
+        <dataTypes>
+            <dataType id="ConspiracoesRPG_Agente_Oficial" title="Conspirações - Agente (PDF)" formType="sheetTemplate">
+                <info title="Conspirações - Agente (PDF)"/>
+            </dataType>
+            <dataType id="ConspiracoesRPG_Incauto_Oficial" title="Conspirações - Incauto (PDF)" formType="sheetTemplate">
+                <info title="Conspirações - Incauto (PDF)"/>
+            </dataType>
+            <dataType id="ConspiracoesRPG_Conspiracionista_Oficial" title="Conspirações - Conspiracionista (PDF)" formType="sheetTemplate">
+                <info title="Conspirações - Conspiracionista (PDF)"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="CthulhuSheet7eDarkAges_byHelldemos" name="Ficha de Call of Cthulhu Dark Ages" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu%20Dark%20Ages/output/Call%20Of%20Cthulhu%20Dark%20Ages.rpk?raw=true" fileName="Call Of Cthulhu Dark Ages.rpk" repositoryPath="Sheets/Call Of Cthulhu Dark Ages/" author="helldemos (DaviCop)" description="Ficha de Call of Cthulhu Dark Ages criada para o RRPG Firecast" version="1.1" compilationDate="03032023113338" compilationDigest="9edd3db4caa90a7535a1be78373a4bb0d79f0be3">
         <info lang="pt-BR" name="Ficha de Call of Cthulhu Dark Ages" description="Ficha de Call of Cthulhu Dark Ages criada para o RRPG Firecast" author="helldemos (DaviCop)" site="http://www.twitter.com/Davi_1437"/>
         <dataTypes>
@@ -906,7 +920,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="MM3e_RRPG_Gilgante" name="M&amp;M3e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Mutantes e Malfeitores 3e/" author="Janus e Gilgante" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, aba de Logs, aba de Consultas, rolagens de pericias, defesas, ataques e iniciativa." version="2019-12-28" compilationDate="03032023122405" compilationDigest="899f3a5caed9b5741684f29dd69e7020e9fcb518">
+    <element id="MM3e_RRPG_Gilgante" name="M&amp;M3e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Mutantes e Malfeitores 3e/" author="Janus e Gilgante" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, aba de Logs, aba de Consultas, rolagens de pericias, defesas, ataques e iniciativa." version="2019-12-28" compilationDate="08042024180923" compilationDigest="24a7c0e7b6b84b60368e9e30dbc4279195b7309a">
         <info lang="pt-BR" name="M&amp;M3e" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, aba de Logs, aba de Consultas, rolagens de pericias, defesas, ataques e iniciativa." author="Janus e Gilgante" site="http://www.rrpg.com.br"/>
         <dataTypes>
             <dataType id="Ficha_MM3e_MultiAba" title="Ficha Multiaba" formType="sheetTemplate">

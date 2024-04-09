@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7" originalPluginFileName="Conspirações RPG.rpk" compilationDate="08052023142734" sdkApiVersion="87" compilationDigest="ea7b5c22d67b0d525e53922fe48312ad006a64e1">
+    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
+    <id>ConspiracoesRPG_Agente_Oficial</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Conspirações</name>
+        <description>Ficha de Conspirações RPG - Agente - Firecast</description>
+        <author>Luz Negra Editora</author>
+        <site>https://luznegra.com.br/</site>
+        <contact>Facebook? Twitter? E-Mail?</contact>
+    </info>
+    
+    
+    
+    
+    
+    
+    
+</module>
