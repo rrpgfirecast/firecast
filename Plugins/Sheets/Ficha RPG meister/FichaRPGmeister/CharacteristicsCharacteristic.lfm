@@ -86,7 +86,7 @@
 			</event>
 		</dataLink>
 	</layout>
-	<button align="right" width="25" text="ℹ️" onClick="showHabilidadePopup()" hint="Detalhes"/>
-	<button align="right" width="25" text="🗑️" onClick="askForDelete()" hint="Apagar"/>
+	<button align="right" width="25" text="ℹ️" onClick="showHabilidadePopup()" hint="Detalhes" textTrimming="none"/>
+	<button align="right" width="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
 	<edit align="client" vertTextAlign="center" field="nomeHabilidade"/>
 </form>

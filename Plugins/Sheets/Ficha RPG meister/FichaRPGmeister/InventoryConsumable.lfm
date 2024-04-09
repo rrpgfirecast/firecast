@@ -124,8 +124,8 @@
 		</dataLink>
 	</layout>
 	
-    <button g="col" g-width="1" height="25" text="ℹ️" onClick="showItemPopup()" hint="Detalhes"/>
-    <button g="col" g-width="1" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar"/>
+    <button g="col" g-width="1" height="25" text="ℹ️" onClick="showItemPopup()" hint="Detalhes" textTrimming="none"/>
+    <button g="col" g-width="1" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
 
     <dataLink fields="{'preco'}">
 		<event name="onUserChange">

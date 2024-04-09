@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="AdvancedAttacksSelect" height="25">
-    <button g="col" g-width="2" height="25" text="🗑️" fontSize="11" g-dyn-width-txt="true" hint="Apagar">
+    <button g="col" g-width="2" height="25" text="🗑️" fontSize="11" g-dyn-width-txt="true" hint="Apagar" textTrimming="none">
 		<event name="onClick">
 			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse ataque?",
 				function (confirmado)

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister" formType="sheetTemplate" dataType="Alterar.DataType.FichaRPGmeister" title="Ficha RPGmeister" align="client" theme="dark">
+    <style>
+        label {
+                textTrimming: none;
+        }
+        button {
+                textTrimming: none;
+        }
+    </style> 
     <script>
         <![CDATA[
         local function isNewVersion(installed, downloaded)

@@ -505,7 +505,7 @@
             <layout g="col" g-width="12" g-width-lg="4" g-auto-height="true" g-vert-tile="true" margins="{right=5}" g-min-height="225">
                 <textEditor g="col" g-width="10" g-vert-tile="true" field="detalhes" g-min-height="225"/>
                 <layout g="col" g-width="2" g-vert-tile="true" g-min-height="225">
-                    <button g="col" g-width="12" height="25" text="Ataque">
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Ataque">
                         <event name="onClick">
                             if sheet == nil then return end
                             updateAll()
@@ -529,7 +529,7 @@
                             end
                         </event>
                     </button>
-                    <button g="col" g-width="12" height="25" text="Dano">
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Dano">
                         <event name="onClick">
                             if sheet == nil then return end
                             updateAll()
@@ -543,7 +543,7 @@
                             end
                         </event>
                     </button>
-                    <button g="col" g-width="12" height="25" text="Decisivo">
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Decisivo">
                         <event name="onClick">
                             if sheet == nil then return end
                             updateAll()
@@ -557,7 +557,7 @@
                             end
                         </event>
                     </button>
-                    <button g="col" g-width="12" height="25" text="Info">
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Info">
                         <event name="onClick">
                             local pop = self:findControlByName("popArma")
 
@@ -569,7 +569,7 @@
                             end
                         </event>
                     </button>
-                    <button g="col" g-width="12" height="25" text="Exibir">
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Exibir">
                         <event name="onClick">
                             if sheet == nil then return end
                             updateAll()
@@ -580,14 +580,14 @@
                             end
                         </event>
                     </button>
-                    <button g="col" g-width="12" height="25" text="Atualizar">
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Atualizar">
                         <event name="onClick">
                             updateAll()
                         </event>
                     </button>
-                    <button g="col" g-width="12" height="25" text="Copiar" hint="Copiar." onClick="System.setClipboardText(NDB.exportXML(sheet))"/>
-                    <button g="col" g-width="12" height="25" text="Colar" hint="Colar." onClick="NDB.importXML(sheet, System.getClipboardText())"/>
-                    <button g="col" g-width="12" height="25" text="Apagar">
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Copiar" hint="Copiar." onClick="System.setClipboardText(NDB.exportXML(sheet))"/>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Colar" hint="Colar." onClick="NDB.importXML(sheet, System.getClipboardText())"/>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Apagar">
                         <event name="onClick">
                             Dialogs.confirmOkCancel("Tem certeza que quer apagar essa arma?",
                                 function (confirmado)

@@ -20,7 +20,7 @@
 		<edit g="col" g-width="1" height="25" field="nc" type="number" vertTextAlign="center"/>
 		<edit g="col" g-width="2" height="25" field="alvos" vertTextAlign="center"/>
 
-		<button g="col" g-width="1" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar"/>
+		<button g="col" g-width="1" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
 	</layout>
 	<edit g="col" g-width="12" height="25" vertTextAlign="center" field="efeitos"/>
 </form>
