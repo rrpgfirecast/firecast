@@ -173,7 +173,7 @@
 				<button g="col" g-width="4" height="25" textTrimming="none" text="Tutorial" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/__Tutorial/Ficha%20RPG%20meister%20-%20Tutorial.docx?raw=true')" />
 
 				<label g="col" g-width="6" height="25" textTrimming="none" text="CONHEÇA A MESA:" fontSize="11" horzTextAlign="center"/>
-				<button g="col" g-width="6" height="25" textTrimming="none" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070')" />
+				<button g="col" g-width="6" height="25" textTrimming="none" text="RPGmeister" onClick="GUI.openInBrowser('https://vtt.firecast.app/artifacts/rooms/64070')" />
 
 				<button g="col" g-width="6" height="25" textTrimming="none" text="Exportar Ficha" >
 					<event name="onClick">
@@ -185,7 +185,7 @@
 						local stream = Utils.newMemoryStream()
 						stream:write(export)
 
-						Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+						Dialogs.saveFile("Salvar Ficha como XML", stream, (sheet.nome or "ficha") .. ".xml", "application/xml",
 							function()
 								stream:close()
 								showMessage("Ficha Exportada.")

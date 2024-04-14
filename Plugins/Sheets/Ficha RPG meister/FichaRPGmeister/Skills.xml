@@ -22,7 +22,7 @@
                                 end
                                 NDB.copy(sheet.campoDasPericias, db)
     
-                                self.rclListaDasPericias:sort()
+                                self.rclListaDasPericias:reorganize()
                             end;
                     end);
                 

@@ -98,7 +98,7 @@
 			<dataLink field="xpAtual">
 				<event name="onChange">
 					if sheet== nil then return end
-					xpAtual = (tonumber(sheet.xpAtual) or 0)
+					local xpAtual = (tonumber(sheet.xpAtual) or 0)
 					local nextXP = 0
 					local nep = 0
 					while xpAtual>=nextXP do
