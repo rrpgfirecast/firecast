@@ -30,7 +30,7 @@
 		<event name="onUserChange">
 			local rcl = self:findControlByName("rclListaDosIdiomas")
 			if rcl~= nil then
-				rcl:sort()
+				rcl:reorganize()
 			end
 		</event>
 	</edit>

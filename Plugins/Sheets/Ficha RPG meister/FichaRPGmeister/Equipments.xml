@@ -232,7 +232,7 @@
         <rectangle g="col" g-width="12" g-width-lg="5" g-min-height="300" color="black" strokeColor="white" strokeSize="1" g-vert-tile="true" padding="{left=5,right=5,top=5,bottom=5}">
 
             <button g="col" g-width="4" height="25" text="+" onClick="self.rclBuffs:append()" hint="Novo efeito"/>
-            <button g="col" g-width="4" height="25" text="Organizar" onClick="self.rclBuffs:sort()" hint="Organizar"/>
+            <button g="col" g-width="4" height="25" text="Organizar" onClick="self.rclBuffs:reorganize()" hint="Organizar"/>
             <button g="col" g-width="4" height="25" text="Exibir" hint="Exibir na mesa">
                 <event name="onClick">
                     local nodes = NDB.getChildNodes(sheet.listaDeBuffs)

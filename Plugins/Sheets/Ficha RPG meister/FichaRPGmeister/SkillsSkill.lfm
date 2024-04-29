@@ -46,30 +46,30 @@
 			<event name="onUserChange">
 				local rcl = self:findControlByName("rclListaDasPericias")
 				if rcl~= nil then
-					rcl:sort()
+					rcl:reorganize()
 				end
 			</event>
 		</edit>
 		<comboBox g="col" g-width="3" height="25" vertTextAlign="center" horzTextAlign="center" field="chavePericia" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white"/>
-		<dataLink field="chavePericia">
-			<event name="onUserChange">
-				if sheet~= nil then
-					local node = NDB.getRoot(sheet)
+		<dataLink fields="{'chavePericia','efetModFor','efetModDes','efetModCon','efetModInt','efetModSab','efetModCar'}">
+			<event name="onChange">
+				if sheet == nil then return end
+				local node = NDB.getRoot(sheet)
+				if node == nil then return end
 
-	                local atrTable = {}
-	                atrTable["1"] = tonumber(node.efetModFor) or 0
-	                atrTable["2"] = tonumber(node.efetModDes) or 0
-	                atrTable["3"] = tonumber(node.efetModCon) or 0
-	                atrTable["4"] = tonumber(node.efetModInt) or 0
-	                atrTable["5"] = tonumber(node.efetModSab) or 0
-	                atrTable["6"] = tonumber(node.efetModCar) or 0
-	                atrTable["7"] = 0
+	            local atrTable = {}
+	            atrTable["1"] = tonumber(node.efetModFor) or 0
+	            atrTable["2"] = tonumber(node.efetModDes) or 0
+	            atrTable["3"] = tonumber(node.efetModCon) or 0
+	            atrTable["4"] = tonumber(node.efetModInt) or 0
+	            atrTable["5"] = tonumber(node.efetModSab) or 0
+	            atrTable["6"] = tonumber(node.efetModCar) or 0
+	            atrTable["7"] = 0
 
-					local atributoPericia = atrTable[sheet.chavePericia]
+				local atributoPericia = atrTable[sheet.chavePericia]
 
 
-					sheet.atributoPericia = atributoPericia
-				end
+				sheet.atributoPericia = atributoPericia
 			</event>
 		</dataLink>
 	</layout>

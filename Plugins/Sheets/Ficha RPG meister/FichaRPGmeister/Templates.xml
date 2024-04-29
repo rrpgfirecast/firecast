@@ -99,6 +99,15 @@
 		<rectangle g="col" g-width="2" height="25" color="black" strokeColor="white" strokeSize="1">
 			<label align="client" field="efetMod$(atr)" horzTextAlign="center"/>
 		</rectangle>
+		<dataLink fields="{'efetMod$(atr)'}">
+			<event name="onChange">
+				if sheet==nil then return end
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias) 
+	            for i=1, #nodes, 1 do
+	                nodes[i].efetMod$(atr) = sheet.efetMod$(atr)
+	            end
+	        </event>
+		</dataLink>
     </template>
 	<template name="attributeFlow">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
@@ -278,7 +287,7 @@
 		</rectangle>
 
 		<dataLink field="desl$(mode)">
-			<event name="onUserChange">
+			<event name="onChange">
 				if sheet == nil then return end
 				if sheet.desl$(mode) == nil or sheet.desl$(mode) == "" then
 					sheet.desl$(mode)Quadrados = nil

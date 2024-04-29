@@ -380,45 +380,45 @@
 	</script>
     <template name="checkEdit">
     	<layout g="row" g-min-height="25">
-			<checkBox left="0" width="150" height="25" text="$(text)" field="$(field)" hint="$(hint)"/>
-			<edit  left="150" width="40" height="25" field="$(field)$(prompt1)"/>
+			<checkBox g="col" g-width="6" height="25" text="$(text)" field="$(field)" hint="$(hint)"/>
+			<edit  g="col" g-width="2" height="25" field="$(field)$(prompt1)"/>
 			<dataLink field="$(field)$(prompt1)" defaultValue="$(prompt1)" />
 			<!-- if (tonumber(num) or 0) > 1 then -->
-			<edit left="190" width="40" height="25"  field="$(field)$(prompt2)"/>
+			<edit g="col" g-width="2" height="25"  field="$(field)$(prompt2)"/>
 			<dataLink field="$(field)$(prompt2)" defaultValue="$(prompt2)" />
 			<!-- end -->
 			<!-- if (tonumber(num) or 0) > 2 then -->
-			<edit left="230" width="40" height="25"  field="$(field)$(prompt3)"/>
+			<edit g="col" g-width="2" height="25"  field="$(field)$(prompt3)"/>
 			<dataLink field="$(field)$(prompt3)" defaultValue="$(prompt3)" />
 			<!-- end -->
 		</layout>
 	</template>
     <template name="checkEditCustom">
     	<layout g="row" g-min-height="25">
-	        <checkBox left="0" width="15" height="25" field="$(field)" hint="$(hint)"/>
-	        <edit left="20" width="125" height="25" field="$(field)Name)"/>
-	        <edit left="150" width="40" height="25" field="$(field)$(prompt1)"/>
+	        <checkBox g="col" g-width="1" height="25" field="$(field)" hint="$(hint)"/>
+	        <edit g="col" g-width="5" height="25" field="$(field)Name)"/>
+	        <edit g="col" g-width="2" height="25" field="$(field)$(prompt1)"/>
 	        <dataLink field="$(field)$(prompt1)" defaultValue="$(prompt1)" />
 	        <!-- if (tonumber(num) or 0) > 1 then -->
-	        <edit left="190" width="40" height="25"  field="$(field)$(prompt2)"/>
+	        <edit g="col" g-width="2" height="25"  field="$(field)$(prompt2)"/>
 	        <dataLink field="$(field)$(prompt2)" defaultValue="$(prompt2)" />
 	        <!-- end -->
 	        <!-- if (tonumber(num) or 0) > 2 then -->
-	        <edit left="230" width="40" height="25"  field="$(field)$(prompt3)"/>
+	        <edit g="col" g-width="2" height="25"  field="$(field)$(prompt3)"/>
 	        <dataLink field="$(field)$(prompt3)" defaultValue="$(prompt3)" />
 	        <!-- end -->
         </layout>
     </template>
     <template name="labelEdit">
     	<layout g="row" g-min-height="25">
-    		<label left="20" width="80" height="25" text="$(text)" hint="$(hint)"/>
-            <edit left="100" width="40" height="25" field="$(field)"/>
+    		<label g="col" g-width="9" height="25" text="$(text)" hint="$(hint)"/>
+            <edit g="col" g-width="3" height="25" field="$(field)"/>
     	</layout>
     </template>
     <template name="atrUse">
     	<layout g="row" g-min-height="25">
-        	<checkBox align="left" width="100" text="$(text)" field="use$(field)" hint="Marque se o modificador desse atributo entra no ataque."/>
-        	<comboBox align="left" width="50" field="mult$(field)" items="{'0', '0.5', '1', '1.5', '2', '2.5', '3'}" hint="Quantas vezes esse atributo é aplicado ao dano."/>
+        	<checkBox g="col" g-width="9" text="$(text)" field="use$(field)" hint="Marque se o modificador desse atributo entra no ataque."/>
+        	<comboBox g="col" g-width="3" field="mult$(field)" items="{'0', '0.5', '1', '1.5', '2', '2.5', '3'}" hint="Quantas vezes esse atributo é aplicado ao dano."/>
         	<dataLink field="mult$(field)" defaultValue="0"/>
         </layout>
     </template>
