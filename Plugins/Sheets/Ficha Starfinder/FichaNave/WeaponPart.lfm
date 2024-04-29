@@ -12,7 +12,7 @@
 		end;
 
 		local function showPopup()
-			local pop = self:findControlByName("weaponPop");
+			local pop = self:findControlByName("shipWeaponPop");
 				
 			if pop ~= nil then
 				pop:setNodeObject(self.sheet);
@@ -113,7 +113,7 @@
         	<edit align="client" field="nome" margins="{top=1,bottom=1}"/>
 
         	<layout align="right" width="250" margins="{top=1,bottom=1}">
-                <layout align="left" width="200">
+                <layout align="left" width="225">
                     <comboBox align="left" width="75" field="tipoPers" name="tipoPers" margins="{top=1,bottom=1}" items="{'PJ','PdM','Generico'}" values="{'1','2','3'}"/>
                     <layout align="client">
                         <comboBox align="client" field="ficha" name="fichaComboBox" margins="{top=1,bottom=1}" items="{}" values="{}" visible="false"/>
@@ -122,8 +122,8 @@
                         <edit align="right" width="50" field="bonus" name="bonusEdit" margins="{top=1,bottom=1}" visible="false"/>
                     </layout>
                 </layout>
-        		<button align="right" width="23" text="i" onClick="showPopup();"/>
-        		<button align="right" width="23" text="X" onClick="askForDelete();"/>
+
+        		<button align="right" width="25" text="🗑️" onClick="askForDelete();"/>
         	</layout>
         </layout>
 
@@ -144,6 +144,7 @@
                 <label text="Velocidade" align="left" width="75" horzTextAlign="center" fontSize="11"/>
                 <edit align="client" field="velocidade" margins="{top=1,bottom=1}"/>
             </layout>
+            <button align="right" width="25" text="i" onClick="showPopup();"/>
         </layout>
 
         <layout align="top" height="25">
@@ -198,6 +199,7 @@
                   self:loadSheet()
               </event>
             </button>
+            <imageCheckBox align="right" width="25" checkedImage="images/on.png" uncheckedImage="images/off.png" field="ativo"/>
         </layout>
 
         <edit align="bottom" height="25" field="especial" margins="{top=1,bottom=1}"/>

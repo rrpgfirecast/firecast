@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmAugSelect" width="150" height="40" margins="{top=10}">
+<form name="frmAugSelect" align="top" height="40" margins="{top=10}">
     <script>           
         local function askForDelete()
             Dialogs.confirmYesNo("Deseja realmente apagar esse implante?",

@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmMagiasMagia" width="250" height="25" margins="{top=1}">
+<form name="frmMagiasMagia" width="250" height="25" margins="{top=1,bottom=1}">
 	<script> 
 		<![CDATA[			
 		local function askForDelete()
 			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
 								 function (confirmado)
 									if confirmado then
-										NDB.deleteNode(sheet);
-									end;
-								 end);
-		end;
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
 
 		local function showMagiaPopup()
-			local pop = self:findControlByName("popMagia");
+			local pop = self:findControlByName("popMagia")
 				
 			if pop ~= nil then
-				pop:setNodeObject(self.sheet);
-				pop:showPopupEx("bottomCenter", self);
+				pop:setNodeObject(self.sheet)
+				pop:showPopupEx("bottomCenter", self)
 			else
-				showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
-			end;				
-		end;
-
-		local function write(str)
-            local mesa = Firecast.getMesaDe(sheet);
-            if str then
-                mesa.activeChat:escrever(str);
-            else
-                mesa.activeChat:escrever("String nula");
-            end;
-        end;
+				showMessage("Ops, bug.. nao encontrei o popup de magia para exibir")
+			end				
+		end
 		]]>	
 	</script>
 
@@ -40,23 +31,23 @@
 		<label align="client" field="cd" horzTextAlign="center" fontSize="12"/>
 	</rectangle>
 
-	<button align="right" width="25" text="i" onClick="showMagiaPopup();"/>
-	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	<button align="right" width="25" text="ℹ️" onClick="showMagiaPopup()" hint="Detalhes" textTrimming="none"/>
+	<button align="right" width="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
 
 	<edit align="client" field="nomeMagia"/>
 
 	<dataLink fields="{'dispMagia','prepMagia'}">
-		<event name="onChange">
-			if sheet==nil then return end;
-			local id = sheet.id;
-			local box = self:findControlByName("boxDetalhesDaMagia");
-			local node = box.node;
+		<event name="onUserChange">
+			if sheet==nil then return end
+			local id = sheet.id
+			local box = self:findControlByName("boxDetalhesDaMagia")
+			local node = box.node
 
-			if node == nil then return end;
+			if node == nil then return end
 
 			-- Since last version did not store the id we will need to find it in old sheets.
 			if id==nil then 
-				local myRCLfield = NDB.getParent(sheet);
+				local myRCLfield = NDB.getParent(sheet)
 				if node.campoDasMagias0 == myRCLfield then sheet.id = 0
 				elseif node.campoDasMagias1 == myRCLfield then sheet.id = 1
 				elseif node.campoDasMagias2 == myRCLfield then sheet.id = 2
@@ -76,44 +67,44 @@
 				elseif node.campoDasMagias16 == myRCLfield then sheet.id = 16
 				elseif node.campoDasMagias17 == myRCLfield then sheet.id = 17
 				elseif node.campoDasMagias18 == myRCLfield then sheet.id = 18
-				elseif node.campoDasMagias19 == myRCLfield then sheet.id = 19 end;
-				id = sheet.id;
+				elseif node.campoDasMagias19 == myRCLfield then sheet.id = 19 end
+				id = sheet.id
 
-				if id==nil then return end;
-			end;
+				if id==nil then return end
+			end
 
 			-- sort list
-			local rcl = self:findControlByName("rclmagicList" .. id);
+			local rcl = self:findControlByName("rclmagicList" .. id)
 			if rcl~= nil then
-				rcl:sort();
-			end;
+				rcl:sort()
+			end
 
 			-- calculate sum os prepared and used
 
-			local preparadas = 0;
-			local usadas = 0;
-			local nodes = NDB.getChildNodes(node["campoDasMagias" .. id]); 
+			local preparadas = 0
+			local usadas = 0
+			local nodes = NDB.getChildNodes(node["campoDasMagias" .. id]) 
 			for i=1, #nodes, 1 do
-				preparadas = preparadas + (tonumber(nodes[i].dispMagia) or 0);
-				usadas = usadas + (tonumber(nodes[i].prepMagia) or 0);
+				preparadas = preparadas + (tonumber(nodes[i].dispMagia) or 0)
+				usadas = usadas + (tonumber(nodes[i].prepMagia) or 0)
 			end
-			node["prep" .. id] = preparadas;
-			node["used" .. id] = usadas;
+			node["prep" .. id] = preparadas
+			node["used" .. id] = usadas
 		</event>
 	</dataLink>
 
 	<dataLink fields="{'nomeMagia','myCD','updateCD'}">
-		<event name="onChange">
-			if sheet==nil then return end;
-			local id = sheet.id;
-			local box = self:findControlByName("boxDetalhesDaMagia");
-			local node = box.node;
+		<event name="onUserChange">
+			if sheet==nil then return end
+			local id = sheet.id
+			local box = self:findControlByName("boxDetalhesDaMagia")
+			local node = box.node
 
-			if node == nil then return end;
+			if node == nil then return end
 
 			-- Since last version did not store the id we will need to find it in old sheets.
 			if id==nil then 
-				local myRCLfield = NDB.getParent(sheet);
+				local myRCLfield = NDB.getParent(sheet)
 				if node.campoDasMagias0 == myRCLfield then sheet.id = 0
 				elseif node.campoDasMagias1 == myRCLfield then sheet.id = 1
 				elseif node.campoDasMagias2 == myRCLfield then sheet.id = 2
@@ -133,17 +124,17 @@
 				elseif node.campoDasMagias16 == myRCLfield then sheet.id = 16
 				elseif node.campoDasMagias17 == myRCLfield then sheet.id = 17
 				elseif node.campoDasMagias18 == myRCLfield then sheet.id = 18
-				elseif node.campoDasMagias19 == myRCLfield then sheet.id = 19 end;
-				id = sheet.id;
+				elseif node.campoDasMagias19 == myRCLfield then sheet.id = 19 end
+				id = sheet.id
 
-				if id==nil then return end;
-			end;
+				if id==nil then return end
+			end
 
-			local baseCD = tonumber(node["cd" .. id]) or 10;
-			local ajustCD = tonumber(node.cd) or 0;
-			local myCD = tonumber(sheet.myCD) or 0;
+			local baseCD = tonumber(node["cd" .. id]) or 10
+			local ajustCD = tonumber(node.cd) or 0
+			local myCD = tonumber(sheet.myCD) or 0
 
-			sheet.cd = baseCD + ajustCD + myCD;
+			sheet.cd = baseCD + ajustCD + myCD
 		</event>
 	</dataLink>
 </form>

@@ -1,41 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmWeapons" align="client">
-	<template name="ListaFlexivel">
-		<flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
-			<script>
-				<![CDATA[
-					rawset(self.$(rclName)Part, "_recalcHeight", 					
-						function ()
-							self.$(rclName)Part.height = self.$(rclName).height + 25;
-						end);
-				]]>
-			</script>
-
-			<layout align="top" height="25">
-				<button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
-				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
-
-                <rectangle align="right" width="40" color="#000000" strokeColor="white" strokeSize="1">
-                    <label align="client" field="$(rclField)Slots" horzTextAlign="center" vertTextAlign="center"/>
-                </rectangle>
-			</layout>
-
-			<recordList name="$(rclName)" field="$(rclField)" templateForm="frmWeaponPart" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="1">
-				<event name="onCompare">
-			        return ((tonumber(nodeA.nivelWeapon) or 0) - (tonumber(nodeB.nivelWeapon) or 0));
-			    </event>
-			</recordList>
-		</flowPart>
-	</template>	
-
 	<scrollBox align="client">
 		<flowLayout align="top" autoHeight="true" maxColumns="4" horzAlign="center" orientation="vertical" avoidScale="true">
-			<ListaFlexivel nome="Proa" rclName="campoProa" rclField="campoProa"/>
-			<ListaFlexivel nome="Popa" rclName="campoPopa" rclField="campoPopa"/>
-			<ListaFlexivel nome="Bombordo" rclName="campoBombordo" rclField="campoBombordo"/>
-			<ListaFlexivel nome="Estibordo" rclName="campoEstibordo" rclField="campoEstibordo"/>
-			<ListaFlexivel nome="Torreta" rclName="campoTorreta" rclField="campoTorreta"/>
-			<ListaFlexivel nome="Antipessoal" rclName="campoAntipessoal" rclField="campoAntipessoal"/>
+			<ListaFlexivelShipWeapon nome="Proa" rclName="campoProa" rclField="campoProa" templateForm="frmWeaponPart" system="status_proa"/>
+			<ListaFlexivelShipWeapon nome="Popa" rclName="campoPopa" rclField="campoPopa" templateForm="frmWeaponPart" system="status_popa"/>
+			<ListaFlexivelShipWeapon nome="Bombordo" rclName="campoBombordo" rclField="campoBombordo" templateForm="frmWeaponPart" system="status_bombordo"/>
+			<ListaFlexivelShipWeapon nome="Estibordo" rclName="campoEstibordo" rclField="campoEstibordo" templateForm="frmWeaponPart" system="status_estibordo"/>
+			<ListaFlexivelShipWeapon nome="Torreta" rclName="campoTorreta" rclField="campoTorreta" templateForm="frmWeaponPart" system="none"/>
+			<ListaFlexivelShipWeapon nome="Antipessoal" rclName="campoAntipessoal" rclField="campoAntipessoal" templateForm="frmWeaponPart" system="none"/>
 		</flowLayout>
 	</scrollBox>
 

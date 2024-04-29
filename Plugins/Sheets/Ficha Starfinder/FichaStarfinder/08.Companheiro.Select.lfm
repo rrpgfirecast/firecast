@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister8CS_svg" width="180" height="30" theme="dark">
-    <button width="30" height="30" text="X">
+<form name="CompanionsSelector" width="180" height="25">
+    <button align="left" width="25" height="25" text="🗑️" hint="Apagar" textTrimming="none">
 		<event name="onClick">
 			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse companheiro?",
 				function (confirmado)
@@ -10,6 +10,6 @@
 			end);
 		</event>
 	</button>
-    <label left="35" top="5" width="145" height="20" text="Teste de label" field="nomeComp"/>
-	<dataLink field="nomeComp" defaultValue="Nome"/>
+    <label align="client" height="25" text="Teste de label" field="nomeComp" margins="{left=5}"/>
+	<dataLink field="nomeComp" defaultValue="Nome Companheiro"/>
 </form>

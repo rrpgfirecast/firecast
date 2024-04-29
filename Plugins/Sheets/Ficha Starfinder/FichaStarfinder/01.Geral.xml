@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="General" align="client">
+	<script>
+        <![CDATA[
+	        local function addXP(installed, downloaded)
+				local xp = (tonumber(sheet.xpAtual) or 0) + (tonumber(sheet.xpNova) or 0)
+				
+				sheet.xpAtual = xp
+				sheet.xpNova = 0
+	        end
+
+	        local function basicRoll(text, var)
+	        	local mod = tonumber(sheet[var]) or 0
+				local rolagem = Firecast.interpretarRolagem("1d20+" .. mod)
+				if mod < 0 then
+					rolagem = Firecast.interpretarRolagem("1d20" .. mod)
+				end
+				local mesa = Firecast.getMesaDe(sheet)
+				mesa.activeChat:rolarDados(rolagem, text .. " de " .. (sheet.nome or "Nome"))
+	        end
+
+	        local function ShowPopUp(popup, location, position)
+				local pop = self:findControlByName(popup)
+				
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet)
+					pop:showPopupEx((position or "rightCenter"), location)
+				else
+					showMessage("Ops, bug.. nao encontrei o popup " .. popup .. " para exibir")
+				end
+	        end
+
+			local function updatePenalty()
+				if sheet==nil then return end;
+
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+				for i=1, #nodes, 1 do
+					nodes[i].penalidade = sheet.penalidade;
+				end;
+			end;
+        ]]> 
+    </script>
+
+    <scrollBox align="client" g-cnt-line-spacing="5">
+		<!-- Title region -->
+		<rectangle g="col" g-width="12" g-width-lg="5" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Title text="CLASSE" field="classe1"/>
+			<Title text="RAÇA" field="raca"/>
+			<Title text="TIPO" field="tipo"/>
+			<Title text="TEMA" field="tema"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="12" g-width-lg="5" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Title text="NOME" field="nome"/>
+			<Title text="TENDÊNCIA" field="tendencia"/>
+			<Title text="RELIGIÂO" field="culto"/>
+			<Title text="TITULO" field="posto"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="12" g-width-lg="2" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}" g-break-line-after="true">
+			<TitleLabel text="NEP" field="nep" widthR="3"/>
+			<layout g="col" g-width="6" height="25"/>
+			<TitleLabelFormat text="XP ATUAL" field="xpAtual" unit="XP"/>
+			<TitleButton text="ADD" field="xpNova" onClick="addXP()"/>
+			<TitleLabel text="XP ALVO" field="xpNivel" formatFloat=",0.## XP" widthR="4"/>
+
+			<comboBox field="xpVelocidade" g="col" g-width="5" height="25" items="{'Rapido', 'Medio', 'Lento', 'd20'}"/>
+
+			<dataLink fields="{'xpAtual','xpVelocidade'}">
+				<event name="onChange">
+					if sheet== nil then return end
+					local xpAtual = (tonumber(sheet.xpAtual) or 0)
+					local nextXP = 0
+					local nep = 0
+
+					if sheet.xpVelocidade == "d20" then
+						while xpAtual>=nextXP do
+							nep = nep+1
+							nextXP = nextXP + nep*1000
+						end
+					else
+						local xpTable = {}
+						if sheet.xpVelocidade == "Lento" then
+							xpTable = {3000, 7500, 14000, 23000, 35000, 53000, 77000, 115000, 160000, 235000, 330000, 475000, 665000, 955000, 1350000, 1900000, 2700000, 3850000, 5350000}
+						elseif sheet.xpVelocidade == "Medio" then
+							xpTable = {2000, 5000, 9000, 15000, 23000, 35000, 51000, 75000, 105000, 155000, 220000, 315000, 445000, 635000, 890000, 1300000, 1800000, 2550000, 3600000}
+						else
+							xpTable = {1300, 3300, 6000, 10000, 15000, 23000, 34000, 50000, 71000, 105000, 145000, 210000, 295000, 425000, 600000, 850000, 1200000, 1700000, 2400000}
+						end
+
+						nep = 1
+						nextXP = xpTable[19]
+						for i=1, 19, 1 do
+							if xpAtual >= xpTable[i] then
+								nep = i + 1
+							else
+								nextXP = xpTable[i]
+								break
+							end
+						end
+					end
+					
+					sheet.xpNivel = nextXP
+					sheet.nep = nep
+				</event>
+			</dataLink>
+		</rectangle>
+
+		<!-- Details -->
+		<layout g="col" g-width="6" g-width-lg="3" g-min-height="415" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="210">
+				<label g="col" g-width="12" text="ATRIBUTOS" horzTextAlign="center" height="25"/>
+
+				<layout g="col" g-width="11" g-min-height="175">
+					<label g="col" g-width="4" g-offset="4" text="Real" horzTextAlign="center" height="25"/>
+					<label g="col" g-width="4" text="Efetivo" horzTextAlign="center" height="25"/>
+
+					<Attribute atr="For" atrN="Força" num="1"/>
+					<Attribute atr="Des" atrN="Destreza" num="2"/>
+					<Attribute atr="Con" atrN="Constituição" num="3"/>
+					<Attribute atr="Int" atrN="Inteligência" num="4"/>
+					<Attribute atr="Sab" atrN="Sabedoria" num="5"/>
+					<Attribute atr="Car" atrN="Carisma" num="6"/>
+				</layout>
+				<button g="col" g-width="1" g-min-height="150" name="AtrBut" text=">>" margins="{top=25}" onClick="ShowPopUp('popAtributo', self.AtrBut)" hint="Detalhes" textTrimming="none"/>
+			</rectangle>
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="200">
+				<label g="col" g-width="12" text="PONTOS DE VIGOR" horzTextAlign="center" height="25"/>
+
+				<label g="col" g-width="4" text="VIDA" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="4" text="ESTAMINA" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="4" text="DETERMINAÇÃO" horzTextAlign="center" height="25"/>
+
+				<edit g="col" g-width="4" type="number" vertTextAlign="center" horzTextAlign="center" height="25" field="pv"/>
+				<edit g="col" g-width="4" type="number" vertTextAlign="center" horzTextAlign="center" height="25" field="pe"/>
+				<edit g="col" g-width="4" type="number" vertTextAlign="center" horzTextAlign="center" height="25" field="pd"/>
+
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="rd"/>
+			</rectangle>
+		</layout>
+
+		<layout g="col" g-width="6" g-width-lg="3" g-min-height="415" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="210">
+				<label g="col" g-width="12" text="DESLOCAMENTOS" horzTextAlign="center" height="25"/>
+
+				<label g="col" g-width="4" g-offset="4" text="Metros" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="4" text="Quadrados" horzTextAlign="center" height="25"/>
+
+				<Speed text="TERRESTRE" mode="Terrestre"/>
+
+				<Speed text="VOO" mode="Voo"/>
+				<label g="col" g-width="4" g-offset="4" text="Manobra" horzTextAlign="center" height="25" fontSize="11" fontStyle="italic"/>
+				<comboBox g="col" g-width="4" g-break-line-after="true" height="25" field="qualidadeVoo" fontColor="white" items="{' ', 'Desajeitado', 'Ruim', 'Média', 'Boa', 'Perfeita'}" horzTextAlign="center"/>
+
+				<Speed text="NATAÇÃO" mode="Natacao"/>
+				<Speed text="ESCALAR" mode="Escalar"/>
+				<Speed text="ESCAVAR" mode="Escavar"/>
+			</rectangle>
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
+				<Title text="BBA" field="bba"/>
+			</rectangle>
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="110">
+
+				<label g="col" g-width="12" text="RESISTÊNCIAS" horzTextAlign="center" height="25"/>
+
+				<layout g="col" g-width="11" g-min-height="75">
+					<TitleLabelButton field="trFort" text="Fortitude" onClick="basicRoll('Teste de Fortitude', 'trFort')"/>
+					<TitleLabelButton field="trRef" text="Reflexos" onClick="basicRoll('Teste de Reflexos', 'trRef')"/>
+					<TitleLabelButton field="trVon" text="Vontade" onClick="basicRoll('Teste de Vontade', 'trVon')"/>
+				</layout>
+				<button g="col" g-width="1" g-min-height="75" name="TrBut" text=">>" onClick="ShowPopUp('popResistencia', self.TrBut)" hint="Detalhes" textTrimming="none"/>
+			</rectangle>
+		</layout>
+
+		<layout g="col" g-width="6" g-width-lg="3" g-min-height="415" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="60">
+				<label g="col" g-width="12" text="INICIATIVA" horzTextAlign="center" height="25"/>
+				<TitleButtonLabel2Edit text="Iniciativa" field1="iniciativa" field2="efetModDes" field3="iniVariado" onClick="basicRoll('Teste de Iniciativa','iniciativa')"/>
+
+				<dataLink fields="{'efetModDes', 'iniVariado'}">
+					<event name="onUserChange">
+						if sheet~= nil then
+							local mod = (tonumber(sheet.efetModDes) or 0) + (tonumber(sheet.iniVariado) or 0)
+							if (mod >= 0) then
+									mod = "+" .. mod
+							end					   
+							sheet.iniciativa = mod
+						end
+					</event>
+				</dataLink>
+			</rectangle>
+
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="145">
+				<label g="col" g-width="12" text="CLASSE DE ARMADURA" horzTextAlign="center" height="25"/>
+
+				<label g="col" g-width="2" g-offset="1" text="CAE" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="2" text="CAC" horzTextAlign="center" height="25" textTrimming="none"/>
+				<label g="col" g-width="2" text="CA MC" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="2" text="Penalidade" horzTextAlign="center" height="25" textTrimming="none"/>
+				<label g="col" g-width="2" text="RM" horzTextAlign="center" height="25"/>
+
+				<RecLabel gwidth="2" field="cae" g-offset="1"/>
+				<RecLabel gwidth="2" field="cac"/>
+				<RecLabel gwidth="2" field="camc"/>
+				<RecLabel gwidth="2" field="equipamentoCorpoPen"/>
+				<edit g="col" g-width="2" field="rm" height="25"/>
+
+				<dataLink fields="{'armaduraCac', 'efetModDes', 'tamanhoCac', 'naturalCac', 'deflexaoCac', 'esquivaCac', 'sorteCac', 'outrosCac', 'variadosCac','destrezaCALimit'}">
+					<event name="onChange"><![CDATA[
+						if sheet~= nil then
+							local armaduraCac = (tonumber(sheet.armaduraCac) or 0);
+							local efetModDes = (tonumber(sheet.efetModDes) or 0);
+							local tamanhoCac = (tonumber(sheet.tamanhoCac) or 0);
+							local naturalCac = (tonumber(sheet.naturalCac) or 0);
+							local deflexaoCac = (tonumber(sheet.deflexaoCac) or 0);
+							local esquivaCac = (tonumber(sheet.esquivaCac) or 0);
+							local sorteCac = (tonumber(sheet.sorteCac) or 0);
+							local outrosCac = (tonumber(sheet.outrosCac) or 0);
+							local variadosCac = (tonumber(sheet.variadosCac) or 0);
+
+							local desMax = tonumber(sheet.destrezaCALimit) or 999;
+							if desMax < efetModDes then
+								efetModDes = desMax;
+							end;
+
+							local cac = 	10 + armaduraCac + efetModDes + tamanhoCac + naturalCac + deflexaoCac + esquivaCac + sorteCac + outrosCac + variadosCac;
+
+							sheet.cac = cac;
+							sheet.camc = 8 + cac;
+						end;
+						]]>
+					</event>
+				</dataLink>
+
+				<dataLink fields="{'armaduraCae', 'efetModDes', 'tamanhoCae', 'naturalCae', 'deflexaoCae', 'esquivaCae', 'sorteCae', 'outrosCae', 'variadosCae','destrezaCALimit'}">
+					<event name="onChange"><![CDATA[
+						if sheet~= nil then
+							local armaduraCae = (tonumber(sheet.armaduraCae) or 0);
+							local efetModDes = (tonumber(sheet.efetModDes) or 0);
+							local tamanhoCae = (tonumber(sheet.tamanhoCae) or 0);
+							local naturalCae = (tonumber(sheet.naturalCae) or 0);
+							local deflexaoCae = (tonumber(sheet.deflexaoCae) or 0);
+							local esquivaCae = (tonumber(sheet.esquivaCae) or 0);
+							local sorteCae = (tonumber(sheet.sorteCae) or 0);
+							local outrosCae = (tonumber(sheet.outrosCae) or 0);
+							local variadosCae = (tonumber(sheet.variadosCae) or 0);
+
+							local desMax = tonumber(sheet.destrezaCALimit) or 999;
+							if desMax < efetModDes then
+								efetModDes = desMax;
+							end;
+
+							local cae = 10 + armaduraCae + efetModDes + tamanhoCae + naturalCae + deflexaoCae + esquivaCae + sorteCae + outrosCae + variadosCae;
+
+							sheet.cae = cae;
+						end;
+						]]>
+					</event>
+				</dataLink>
+
+				<dataLink fields="{'equipamentoCorpoPen'}">
+					<event name="onChange"><![CDATA[
+						if sheet==nil then return end;
+						
+						local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+						for i=1, #nodes, 1 do
+							nodes[i].penalidade = sheet.equipamentoCorpoPen;
+						end;
+						]]>
+					</event>
+				</dataLink>
+
+				<button g="col" g-width="12" name="CABut" text="+" onClick="ShowPopUp('popCA', self.CABut, 'bottomCenter')" margins="{top=10}" hint="Detalhes"/>
+			</rectangle>
+
+			<rectangle g="col" g-width="6" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
+				<label g="col" g-width="12" text="BÔNUS TEMPORARIOS" horzTextAlign="center" height="25"/>
+				<Title text="ATAQUE" field="buffAtaque"/>
+				<Title text="DANO" field="buffDano"/>
+				<Title text="CRITICO" field="buffDanoCritico"/>
+				<Title text="TR" field="buffTR"/>
+				<Title text="PERICIA" field="buffPericia"/>
+			</rectangle>
+
+			<rectangle g="col" g-width="6" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="200">
+				<TitleEditor text="NOTAS" field="notas"/>
+			</rectangle>
+		</layout>
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="415">
+			<image align="client" field="avatar" editable="true" style="autoFit" >
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar)
+				</event>
+			</image>
+		</rectangle>
+	</scrollBox>
+</form>

@@ -37,8 +37,8 @@
 
 		<dataLink fields="{'margem','multiplicador'}" defaultValues="{'20','2'}"/>
 
-		<button align="right" width="23" text="i" onClick="findPopup('weaponPop');" margins="{top=1,bottom=1}"/>
-		<button align="right" width="23" text="X" onClick="askForDelete();" margins="{top=1,bottom=1}"/>
+		<button align="right" width="25" text="ℹ️" onClick="findPopup('weaponPop');"/>
+		<button align="right" width="25" text="🗑️" onClick="askForDelete();"/>
 
 	</layout>
 	

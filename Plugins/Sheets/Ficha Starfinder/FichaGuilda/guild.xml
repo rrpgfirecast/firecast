@@ -1,34 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGuild" align="client">
-    <template name="formatEdit">
-        <layout align="client">
-            <rectangle align="client" color="black" strokeColor="grey" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
-                <label align="client" field="$(field)" horzTextAlign="center" fontSize="11" formatFloat=",0.## $(unit)"/>
-                <event name="onClick">
-                    self.$(field)Label.visible = false;
-                    self.$(field)Edit.visible = true;
-                    self.$(field)Edit:setFocus();
-                </event>
-            </rectangle>
-            <edit field="$(field)" align="client" type="float" fontSize="11" name="$(field)Edit" visible="false">
-                <event name="onExit">
-                    self.$(field)Label.visible = true;
-                    self.$(field)Edit.visible = false;
-                </event>
-            </edit>
-        </layout>
-    </template>
-	<scrollBox align="client">
-		<rectangle align="top" height="35" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
-			<layout align="left" width="300" margins="{right=5}">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="12" height="35" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+			<layout g="col" g-width="3" height="25">
 				<label align="left" width="100" horzTextAlign="center" text="Nome"/>
 				<edit align="client" field="nome"/>
 			</layout>
-			<layout align="left" width="300" margins="{right=5}">
+			<layout g="col" g-width="3" height="25">
 				<label align="left" width="100" horzTextAlign="center" text="Tendência"/>
 				<edit align="client" field="tendencia"/>
 			</layout>
-			<layout align="left" width="150" margins="{right=5}">
+			<layout g="col" g-width="2" height="25">
                 <label align="left" width="100" text="Reputação" horzTextAlign="center"/>
                 <rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}" name="reputacao">
                     <label align="client" field="reputacao"/>
@@ -36,21 +18,21 @@
 			</layout>
 		</rectangle>
 
-		<layout align="top" height="300" margins="{top=5}">
-	        <rectangle align="left" width="300" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-	            <image align="client" field="emblema" editable="true" style="autoFit">
+		<layout g="col" g-width="12" g-vert-tile="true" g-auto-height="true">
+	        <rectangle g="col" g-width="4" g-vert-tile="true" g-auto-height="true" color="black" strokeColor="white" strokeSize="1">
+	            <image align="client" field="emblema" editable="true" style="proportional">
 	                <event name="OnStartDrag">
 	                    drag:addData("imageURL", sheet.emblema);
 	                </event>
 	            </image>
 	        </rectangle>
 
-	        <rectangle align="left" width="450" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+	        <rectangle g="col" g-width="4" g-vert-tile="true" g-auto-height="true" color="black" strokeColor="white" strokeSize="1">
 	        	<label align="top" height="25" text="Base" horzTextAlign="center"/>
 	        	<textEditor align="client" field="base" margins="{bottom=5,left=5,right=5}"/>
 	        </rectangle>
 
-	        <rectangle align="left" width="450" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+	        <rectangle g="col" g-width="4" g-vert-tile="true" g-auto-height="true" color="black" strokeColor="white" strokeSize="1">
 	        	<label align="top" height="25" text="Descrição" horzTextAlign="center"/>
 	        	<textEditor align="client" field="descricao" margins="{bottom=5,left=5,right=5}"/>
 	        </rectangle>

@@ -3,9 +3,9 @@
 	<scrollBox align="client">
 		<layout width="1780"/>
 		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
-			<ListaFlexivel nome="ABERTOS" rclName="rclContratosAbertos" rclField="rclContratosAbertos" frm="frmContractItem"/>
-			<ListaFlexivel nome="PRIVADOS" rclName="rclContratosPrivados" rclField="rclContratosPrivados" frm="frmContractItem"/>
-			<ListaFlexivel nome="ACEITOS" rclName="rclContratosAceitos" rclField="rclContratosAceitos" frm="frmContractItemClosed"/>
+			<ListaFlexivelGuilda nome="ABERTOS" rclName="rclContratosAbertos" rclField="rclContratosAbertos" frm="frmContractItem"/>
+			<ListaFlexivelGuilda nome="PRIVADOS" rclName="rclContratosPrivados" rclField="rclContratosPrivados" frm="frmContractItem"/>
+			<ListaFlexivelGuilda nome="ACEITOS" rclName="rclContratosAceitos" rclField="rclContratosAceitos" frm="frmContractItemClosed"/>
 		</flowLayout>
 	</scrollBox>
 </form>

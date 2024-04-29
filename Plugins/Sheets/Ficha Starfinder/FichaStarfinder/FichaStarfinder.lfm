@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaStarfinder" formType="sheetTemplate" dataType="Ambesek.FichaStarfinder" title="Ficha Starfinder" align="client" theme="dark">
+    <style>
+        label {
+                textTrimming: none;
+        }
+        button {
+                textTrimming: none;
+        }
+    </style> 
     <script>
         <![CDATA[
         local function isNewVersion(installed, downloaded)
@@ -33,16 +41,19 @@
         end;
         ]]> 
     </script>
+    
+    <import file="../FichaStarfinder/Template.xml"/>
+    <import file="../FichaStarfinder/PopUps.xml"/>
 
-    <tabControl align="client">
+    <tabControl align="client" g-cnt-gutter="5">
         <tab title="Geral">
-            <import file="01.Geral.lfm"/>
+            <import file="01.Geral.xml"/>
         </tab>
         <tab title="Ataques">
-            <import file="02.Ataques.lfm"/>
+            <import file="02.Ataques.xml"/>
         </tab>
         <tab title="Perícias">
-            <import file="03.Pericias.lfm"/>
+            <import file="03.Pericias.xml"/>
         </tab>
         <tab title="Habilidades">
             <import file="04.Habilidades.xml"/>
@@ -60,18 +71,27 @@
             <import file="07.Vehicles.xml"/>
         </tab>
 		<tab title="Companheiro">
-            <import file="08.Companheiro.lfm"/>
+            <import file="08.Companheiro.xml"/>
         </tab>
         <tab title="Descrição">
-            <import file="09.Descricao.lfm"/>
+            <import file="09.Descricao.xml"/>
         </tab>
         <tab title="Anotações">
             <import file="10.Anotacoes.xml"/>
         </tab>
 		<tab title="Creditos">
-            <import file="11.Creditos.xml"/>
+            <import file="Credits.xml"/>
         </tab>
     </tabControl>
+    <event name="onNodeReady">
+        if sheet == nil then return end
+        if sheet.campoDasPericias ~= nil then return end
+        
+        local nodes = ndb.getChildNodes(sheet.campoDasPericias)
+        if #nodes == 0 then
+            starSkills()
+        end
+    </event>
     <event name="onNodeReady">
         Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true",
             function(stream, contentType)

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister6E_svg" align="client" margins="{top=1}">
 	<scrollBox align="client">
-		<button text="+" align="top" height="25">
-			<event name="onClick">
-				self.rclImplantes:append();
-			</event>
-		</button>
-		<layout align="left" width="750">
-			<scrollBox align="left" width="150">
+		<layout g="col" g-width="12" g-width-lg="3" g-auto-height="true" g-vert-tile="true" g-min-height="200">
+			<button text="+" align="top" height="25">
+				<event name="onClick">
+					self.rclImplantes:append();
+				</event>
+			</button>
+			<scrollBox align="client">
 				<recordList align="top" autoHeight="true" name="rclImplantes" field="campoDosImplates" templateForm="frmAugSelect" layout="vertical" selectable="true" minQt="0">
 				<event name="onEndEnumeration"><![CDATA[
 					if sheet~= nil then
@@ -26,111 +26,43 @@
 				</event>
 				</recordList>
 			</scrollBox>
+		</layout>
+		<layout g="col" g-width="12" g-width-lg="9" g-auto-height="true" g-vert-tile="true" g-min-height="400">
+			<layout g="col" g-width="12" g-auto-height="true" g-vert-tile="true" g-min-height="400">
+				<dataScopeBox g="col" g-width="12" g-auto-height="true" g-vert-tile="true" name="boxDetalheDoEquipamento" visible="false" g-min-height="400">
+					<rectangle g="col" g-width="6" g-auto-height="true" g-vert-tile="true" color="black" padding="{left=5,top=5,right=5,bottom=5}" g-cnt-line-spacing="5">
+						<edit g="col" g-width="12" height="25" field="nome"/>
+						<textEditor g="col" g-width="12" g-min-height="300" field="descricao" g-vert-tile="true"/>
 
-			<layout align="left" width="600" margins="{left=5}">
+						<TitleLabelFormat text="Volume" field="peso" widthR="3" unit="V"/>
+						<TitleLabelFormat text="Preço" field="preco" widthR="3" unit="C"/>
 
-				<label left="0" top="605" width="50" height="20" text="CARGA"/>
-				<rectangle left="50" top="605" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-				<label vertTextAlign="center" horzTextAlign="center" left="50" top="605" width="91" height="20" field="pesoImplantes" formatFloat=",0.## Kg"/>
-				<label left="150" top="605" width="50" height="20" text="GASTOS"/>
-				<rectangle left="200" top="605" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-				<label vertTextAlign="center" horzTextAlign="center" left="200" top="605" width="91" height="20" field="precoImplantes"  formatFloat=",0.## PO"/>
+						<checkBox g="col" g-width="3" height="25" text="Pessoal" field="pessoal"/>
+						<AugCheckbox text="Cérebro" field="cerebro"/>
+						<AugCheckbox text="Olhos" field="olhos"/>
+						<AugCheckbox text="Ouvidos" field="ouvidos"/>
 
-				<dataScopeBox left="0" top="0" width="600" height="602" name="boxDetalheDoEquipamento" visible="false">
-					<rectangle align="client" margins="{right=200}" color="black">
-						<edit align="top" height="25" margins="{left=5,top=5,right=5}" field="nome"/>
-						<textEditor align="top" height="300" margins="{left=5,top=5,right=5}" field="descricao"/>
+						<AugCheckbox text="Garganta" field="garganta"/>
+						<AugCheckbox text="Endócrino" field="endocrino"/>
+						<AugCheckbox text="Pulmões" field="pulmoes"/>
+						<AugCheckbox text="Coração" field="coracao"/>
 
-						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
-							<label left="5" width="95" height="20" text="Vol" horzTextAlign="center"/>
-							<rectangle left="100" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="weightLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
-								<label width="75" height="25" field="peso" horzTextAlign="center" formatFloat=",0.## Kg"/>
-								<event name="onClick">
-									self.weightLabel.visible = false;
-									self.weightEdit.visible = true;
-									self.weightEdit:setFocus();
-								</event>
-							</rectangle>
-							<edit left="100" width="75" height="25" field="peso" type="float" vertTextAlign="center" name="weightEdit" visible="false">
-								<event name="onUserChange">
-									if self.boxDetalheDoEquipamento.node~= nil then
-										local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
-										local pesoEquipamento = 0;
-										local nodes = NDB.getChildNodes(node.listaDeEquipamentos); 
-										for i=1, #nodes, 1 do
-											pesoEquipamento = pesoEquipamento + (tonumber(nodes[i].peso) or 0);
-										end
-										node.pesoEquipamento = pesoEquipamento;
-									end;
-								</event>
-								<event name="onExit">
-									self.weightLabel.visible = true;
-									self.weightEdit.visible = false;
-								</event>
-							</edit>
+						<AugCheckbox text="Coluna" field="coluna"/>
+						<AugCheckbox text="Pele" field="pele"/>
+						<AugCheckbox text="Nariz" field="nariz"/>
+						<layout g="col" g-width="3" height="25"/>
 
-							<label left="200" width="95" height="20" text="Preço" horzTextAlign="center"/>
-							<rectangle left="290" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="priceLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
-								<label width="75" height="25" field="preco" horzTextAlign="center" formatFloat=",0.## PO"/>
-								<event name="onClick">
-									self.priceLabel.visible = false;
-									self.priceEdit.visible = true;
-									self.priceEdit:setFocus();
-								</event>
-							</rectangle>
-							<edit left="290" width="75" height="25" field="preco" type="float" vertTextAlign="center" name="priceEdit" visible="false">
-								<event name="onUserChange">
-									if self.boxDetalheDoEquipamento.node~= nil then
-										local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
-										local precoEquipamento = 0;
-										local nodes = NDB.getChildNodes(node.listaDeEquipamentos); 
-										for i=1, #nodes, 1 do
-											precoEquipamento = precoEquipamento + (tonumber(nodes[i].preco) or 0);
-										end
-										node.precoEquipamento = precoEquipamento;
-									end;
-								</event>
-								<event name="onExit">
-									self.priceLabel.visible = true;
-									self.priceEdit.visible = false;
-								</event>
-							</edit>
-						</layout>
+						<AugCheckbox text="Braço Direito" field="bracoD" fontSize="11"/>
+						<AugCheckbox text="Braço Esquerdo" field="bracoE" fontSize="11"/>
+						<AugCheckbox text="Mão Direita" field="maoD" fontSize="10"/>
+						<AugCheckbox text="Mão Esquerda" field="maoE" fontSize="10"/>
 
-						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pessoal" field="pessoal"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Cérebro" field="cerebro"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Olhos" field="olhos"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Ouvidos" field="ouvidos"/>
-						</layout>
+						<AugCheckbox text="Perna Direita" field="pernaD" fontSize="11"/>
+						<AugCheckbox text="Perna Esquerda" field="pernaE" fontSize="11"/>
+						<AugCheckbox text="Pé Direito" field="peD" fontSize="11"/>
+						<AugCheckbox text="Pé Esquerdo" field="peE" fontSize="11"/>
 
-						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Garganta" field="garganta"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Endócrino" field="endocrino"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pulmões" field="pulmoes"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Coração" field="coracao"/>
-						</layout>
-
-						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Coluna" field="coluna"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pele" field="pele"/>
-						</layout>
-
-						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Braço Direito" field="bracoD" fontSize="11"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Braço Esquerdo" field="bracoE" fontSize="11"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Mão Direita" field="maoD" fontSize="10"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Mão Esquerda" field="maoE" fontSize="10"/>
-						</layout>
-
-						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Perna Direita" field="pernaD" fontSize="11"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Perna Esquerda" field="pernaE" fontSize="11"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pé Direito" field="peD" fontSize="11"/>
-							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pé Esquerdo" field="peE" fontSize="11"/>
-						</layout>
-
-						<dataLink fields="{'pessoal','cerebro','olhos','ouvidos','garganta','endocrino','pulmoes','coracao','coluna','pele','bracoD','bracoE','maoD','maoE','pernaD','pernaE','peD','peE'}">
+						<dataLink fields="{'pessoal','cerebro','olhos','ouvidos','garganta','endocrino','pulmoes','coracao','coluna','pele','bracoD','bracoE','maoD','maoE','pernaD','pernaE','peD','peE', 'nariz'}">
 							<event name="onChange">
 								if self.boxDetalheDoEquipamento.node==nil then return end
 
@@ -165,6 +97,9 @@
 								end
 								if node.pele then
 									slot = slot .. "Pele "
+								end
+								if node.nariz then
+									slot = slot .. "Nariz "
 								end
 
 								if node.bracoD and node.bracoE then
@@ -204,8 +139,33 @@
 						</dataLink>
 					</rectangle>
 
-					<image left="400" top="0" width="200" height="600" src="images/slots.png" field="imgSlots" style="stretch" optimize="true"/>
+					<layout g="col" g-width="6" g-vert-tile="true" g-auto-height="true">
+						<image align="client" src="images/slots.png" style="proportional" optimize="true"/>
+						<image align="client" src="images/armL.png" style="proportional" optimize="true" name="bracoE" visible="false"/>
+						<image align="client" src="images/armR.png" style="proportional" optimize="true" name="bracoD" visible="false"/>
+						<image align="client" src="images/brain.png" style="proportional" optimize="true" name="cerebro" visible="false"/>
+						<image align="client" src="images/column.png" style="proportional" optimize="true" name="coluna" visible="false"/>
+						<image align="client" src="images/endocrine.png" style="proportional" optimize="true" name="endocrino" visible="false"/>
+						<image align="client" src="images/ears.png" style="proportional" optimize="true" name="ouvidos" visible="false"/>
+						<image align="client" src="images/eyes.png" style="proportional" optimize="true" name="olhos" visible="false"/>
+						<image align="client" src="images/feetL.png" style="proportional" optimize="true" name="peE" visible="false"/>
+						<image align="client" src="images/feetR.png" style="proportional" optimize="true" name="peD" visible="false"/>
+						<image align="client" src="images/handL.png" style="proportional" optimize="true" name="maoE" visible="false"/>
+						<image align="client" src="images/handR.png" style="proportional" optimize="true" name="maoD" visible="false"/>
+						<image align="client" src="images/heart.png" style="proportional" optimize="true" name="coracao" visible="false"/>
+						<image align="client" src="images/legL.png" style="proportional" optimize="true" name="pernaE" visible="false"/>
+						<image align="client" src="images/legR.png" style="proportional" optimize="true" name="pernaD" visible="false"/>
+						<image align="client" src="images/lungs.png" style="proportional" optimize="true" name="pulmoes" visible="false"/>
+						<image align="client" src="images/nose.png" style="proportional" optimize="true" name="nariz" visible="false"/>
+						<image align="client" src="images/skin.png" style="proportional" optimize="true" name="pele" visible="false"/>
+						<image align="client" src="images/throat.png" style="proportional" optimize="true" name="garganta" visible="false"/>
+					</layout>
 				</dataScopeBox>
+
+				<layout g="col" g-width="12" g-width-lg="6" g-min-height="25">
+					<TitleLabel text="CARGA" field="pesoImplantes" widthR="3" formatFloat=",0.## V"/>
+					<TitleLabel text="GASTOS" field="precoImplantes" widthR="3" formatFloat=",0.## C"/>
+				</layout>
 			</layout>
 		</layout>
 	</scrollBox>

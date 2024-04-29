@@ -5,7 +5,7 @@
 			<rectangle align="client" color="#0000007F"/>
 			<label left="0" top="0" width="380" height="20" text="TALENTOS" horzTextAlign="center"/>
 
-			<recordList name="rclListaDosTalentos" field="campoDosTalentos" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="265" layout="vertical">
+			<recordList name="rclListaDosTalentos" field="campoDosTalentos" templateForm="frmHabilidadesHabilidade" left="5" top="25" width="370" height="265" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
 		        </event>
@@ -16,7 +16,7 @@
 			<rectangle align="client" color="#0000007F"/>
 			<label left="0" top="0" width="380" height="20" text="PROEZAS" horzTextAlign="center"/>
 
-			<recordList name="rclListaDasProezas" field="campoDasProezas" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="265" layout="vertical">
+			<recordList name="rclListaDasProezas" field="campoDasProezas" templateForm="frmHabilidadesHabilidade" left="5" top="25" width="370" height="265" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
 		        </event>
@@ -27,7 +27,7 @@
 			<rectangle align="client" color="#0000007F"/>
 			<label left="0" top="0" width="380" height="20" text="OUTROS" horzTextAlign="center"/>
 
-			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="570" layout="vertical">
+			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmHabilidadesHabilidade" left="5" top="25" width="370" height="570" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
 		        </event>
@@ -38,7 +38,7 @@
 			<rectangle align="client" color="#0000007F"/>
 			<label left="0" top="0" width="380" height="20" text="CARACTERISTICAS DE CLASSE" horzTextAlign="center"/>
 
-			<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="570" layout="vertical">
+			<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmHabilidadesHabilidade" left="5" top="25" width="370" height="570" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
 		        </event>

@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+    <popup name="addPop" width="455" height="310" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="25">
+            <label align="left" text="Estrutura (PV)" width="210" horzTextAlign="center"/>
+
+            <label align="left" text="CAE" width="70" margins="{right=10}" horzTextAlign="center" />
+            <label align="left" text="CAC" width="70" margins="{right=10}" horzTextAlign="center" />
+            <label align="left" text="Proteção" width="70" horzTextAlign="center" />
+        </layout>
+        <layout align="top" height="50">
+            <VertLabelEdit text="+%" field="pvMult" width="100" fontSize="13"/>
+            <VertLabelEdit text="Fixo" field="pvAdd" width="100" fontSize="13"/>
+
+            <VertLabelEdit text="+%" field="caeMult" width="35" fontSize="11"/>
+            <VertLabelEdit text="Fixo" field="caeAdd" width="35" fontSize="11"/>
+            <VertLabelEdit text="+%" field="cacMult" width="35" fontSize="11"/>
+            <VertLabelEdit text="Fixo" field="cacAdd" width="35" fontSize="11"/>
+            <VertLabelEdit text="+%" field="protMult" width="35" fontSize="11"/>
+            <VertLabelEdit text="Fixo" field="protAdd" width="35" fontSize="11"/>
+        </layout>
+
+        <layout align="top" height="25">
+            <label align="left" text="Modificadores" width="210" horzTextAlign="center"/>
+
+            <label align="left" text="Deslocamento" height="210" horzTextAlign="center" />
+        </layout>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Pilotar" field="pilotarAdd" width="100" fontSize="13"/>
+            <VertLabelEdit text="Ataque" field="ataqueAdd" width="100" fontSize="13"/>
+
+            <VertLabelEdit text="+%" field="deslMult" width="100" fontSize="13"/>
+            <VertLabelEdit text="Fixo (q)" field="deslAdd" width="100" fontSize="13"/>
+
+            <layout align="client">
+                <button align="top" height="25" text="C" hint="Copiar." onClick="System.setClipboardText(NDB.exportXML(self.addPop.node))"/>
+                <button align="top" height="25" text="V" hint="Colar." onClick="NDB.importXML(self.addPop.node, System.getClipboardText())"/>
+            </layout>
+        </layout>
+
+        <label align="top" text="Preço" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelLabel text="Total" field="precoTotal" width="60" fontSize="11" format="%d C" hitTest="false"/>
+            <VertLabelEdit text="Level" field="precoPorLevel" width="60" fontSize="11"/>
+            <VertLabelLabel text="" field="precoLevel" width="60" fontSize="11" format="%d C" hitTest="false"/>
+            <VertLabelEdit text="Tam" field="precoPorTam" width="60" fontSize="11"/>
+            <VertLabelLabel text="" field="precoTam" width="60" fontSize="11" format="%d C" hitTest="false"/>
+            <VertLabelEdit text="Fixo" field="precoAdd" width="60" fontSize="11"/>
+            <VertLabelEdit text="+%" field="precoMult" width="60" fontSize="11"/>
+        </layout>
+
+        <textEditor align="client" field="detalhes"/>
+    </popup>
+    <popup name="costPop" width="325" height="60" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="precoBase" width="75" fontSize="11"/>
+            <VertLabelLabel text="Multiplicador" field="precoMult" width="75" fontSize="9" format="%.2f" hitTest="false"/>
+            <VertLabelLabel text="Adicionais" field="precoMod" width="75" fontSize="11" format="%d C" hitTest="false"/>
+            <VertLabelEdit text="Outros" field="precoOutros" width="75" fontSize="11"/>
+        </layout>
+    </popup>
+    <popup name="deslPop" width="395" height="60" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base (q)" field="deslBase" width="60" fontSize="11"/>
+            <VertLabelEdit text="Viagem (Km/h)" field="deslBaseViagem" width="60" fontSize="9"/>
+            <VertLabelLabel text="Multiplicador" field="deslMult" width="60" fontSize="9" format="%.2f" hitTest="false"/>
+            <VertLabelLabel text="Adicionais (q)" field="deslAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelEdit text="Outros (q)" field="deslOutros" width="60" fontSize="11"/>
+            <VertLabelEdit text="Outros (Km/h)" field="deslOutrosViagem" width="60" fontSize="9"/>
+        </layout>
+    </popup>
+    <popup name="modPop" width="200" height="160" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <label align="top" text="Pilotagem" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="pilBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="pilotarAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelEdit text="Outros" field="pilOutros" width="60" fontSize="11"/>
+        </layout>
+        <label align="top" text="Ataque" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="atkBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="ataqueAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelEdit text="Outros" field="atkOutros" width="60" fontSize="11"/>
+        </layout>
+    </popup>
+    <popup name="caPop" width="265" height="235" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <label align="top" text="CAE" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="caeBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="caeAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelLabel text="Multiplicador" field="caeMult" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelEdit text="Outros" field="caeOutros" width="60" fontSize="11"/>
+        </layout>
+        <label align="top" text="CAC" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="cacBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="cacAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelLabel text="Multiplicador" field="cacMult" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelEdit text="Outros" field="cacOutros" width="60" fontSize="11"/>
+        </layout>
+        <label align="top" text="Proteção" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="protBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="protAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelLabel text="Multiplicador" field="protMult" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelEdit text="Outros" field="protOutros" width="60" fontSize="11"/>
+        </layout>
+    </popup>
+    <popup name="healthPop" width="370" height="85" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <label align="top" text="Estrutura" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="pvBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="pvAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelLabel text="Multiplicador" field="pvMult" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelEdit text="Outros" field="pvOutros" width="60" fontSize="11"/>
+            <VertLabelCombo text="Cobertura" field="cobertura" width="100" fontSize="13" items="{'Nenhuma', 'Parcial', 'Completa'}" values="{'25','50','75'}"/>
+        </layout>
+    </popup>
+    <popup name="popEquip" width="200" height="250" backOpacity="0.4" autoScopeNode="false">
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+            <weaponInfoFieldSmall text="NOME" field="nome"/>
+            <weaponInfoFieldSmall text="Nível" field="nivel"/>
+            <weaponInfoFieldSmall text="Vol" field="peso"/>
+            <weaponInfoFieldSmall text="$" field="preco"/>
+        </flowLayout>
+        <textEditor align="client" field="descricao" class=""/>
+    </popup>
+	<popup name="popItem" width="300" height="250" backOpacity="0.4" autoScopeNode="false">
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+            <weaponInfoFieldSmall text="Nome" field="nome" hint=""/>
+            <weaponInfoFieldSmall text="Tipo" field="tipo" hint="Varinha? Poção? Cajado?"/>
+            <weaponInfoFieldSmall text="Rolagem" field="dados" hint="Rolagem feita ao usar o item."/>
+
+            <weaponInfoFieldSmallCenter text="NC" field="nc" hint="Nível de Conjurador"/>
+            <weaponInfoFieldSmallCenter text="CD" field="cd" hint="Classe de Dificuldade"/>
+            <itemInfoFieldSmall text="PREÇO" field="preco" hint=""/>
+        </flowLayout>
+        <textEditor align="client" field="descricao" class=""/>
+    </popup>
+    <popup name="weaponPop" width="210" height="210" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="50">
+            <VertLabelEdit text="Coice" field="coice" width="100" fontSize="11" hint="Quanto essa arma perde de ataque a cada uso consecutivo. "/>
+            <VertLabelEdit text="Recarga" field="recarga" width="100" fontSize="11" hint="Quanto essa arma recarrega após ficar sem ser utilizada em um ataque."/>
+        </layout>
+
+        <textEditor align="client" field="detalhes"/>
+    </popup>
+    <popup name="shipWeaponPop" width="245" height="300" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="50">
+            <VertLabelEdit text="PF" field="pf" width="75" fontSize="13"/>
+            <VertLabelEdit text="UNE" field="une" width="75" fontSize="13"/>
+            <VertLabelEdit text="Blocos" field="blocos" width="75" fontSize="13" formatFloat=",0"/>
+        </layout>
+        <label align="top" text="Tripulação" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelLabel text="Mínima" field="tripMin" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Máxima" field="tripMax" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13" hitTest="false"/>
+        </layout>
+        <textEditor align="client" field="detalhes"/>
+    </popup>
+	<popup name="popupConfig" width="210" height="310" backOpacity="0.4" autoScopeNode="false" padding="{top=5,bottom=5,left=5,right=5}">
+		<layout align="top" height="25">
+			<label align="client" width="50" field="name" horzTextAlign="center"/>
+		</layout>
+		<layout align="top" height="25">
+			<label align="left" width="50" text="Qtd" horzTextAlign="center"/>
+			<edit  align="left" width="50" field="qtdMod"/>
+			<label align="left" width="50" text="%" horzTextAlign="center"/>
+			<edit  align="left" width="50" field="perc"/>
+		</layout>
+		<layout align="top" height="25">
+			<button align="left" width="100" text="Adicionar">
+				<event name="onClick">
+					local node = self.popupConfig.node
+					local root = NDB.getRoot(node);
+					
+					local qtd = math.abs(tonumber(node.qtd) or 0)
+					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
+
+					local preco = tonumber(node.preco) or 0
+					local creditos = tonumber(root.creditos) or 0
+
+					node.qtd = qtd + qtdMod
+
+					local extra = preco*qtdMod
+					root.creditos = creditos + extra
+				</event>
+			</button>
+			<button align="left" width="100" text="Remover">
+				<event name="onClick">
+					local node = self.popupConfig.node
+					local root = NDB.getRoot(node);
+					
+					local qtd = math.abs(tonumber(node.qtd) or 0)
+					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
+
+					local preco = tonumber(node.preco) or 0
+					local creditos = tonumber(root.creditos) or 0
+
+					node.qtd = qtd - qtdMod
+
+					local waste = preco*qtdMod
+					root.creditos = creditos - waste
+				</event>
+			</button>
+		</layout>
+		<layout align="top" height="25">
+			<button align="left" width="100" text="Comprar">
+				<event name="onClick">
+					local node = self.popupConfig.node
+
+					local qtd = math.abs(tonumber(node.qtd) or 0)
+					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
+
+					node.qtd = qtd + qtdMod
+				</event>
+			</button>
+			<button align="left" width="100" text="Vender">
+				<event name="onClick">
+					local node = self.popupConfig.node
+					local root = NDB.getRoot(node);
+					
+					local qtd = math.abs(tonumber(node.qtd) or 0)
+					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
+
+					node.qtd = qtd - qtdMod
+
+					local perc = tonumber(node.perc) or 0
+					local preco = tonumber(node.preco) or 0
+					local creditos = tonumber(root.creditos) or 0
+
+					local waste = (100-perc)/100*preco*qtdMod
+					root.creditos = creditos - waste
+				</event>
+			</button>
+		</layout>
+
+		<textEditor align="client" field="detalhes"/>
+	</popup>
+    <popup name="shipPartPop" width="245" height="135" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="50">
+            <VertLabelEdit text="PF" field="pf" width="75" fontSize="13"/>
+            <VertLabelEdit text="UNE" field="une" width="75" fontSize="13"/>
+            <VertLabelEdit text="Blocos" field="blocos" width="75" fontSize="13"/>
+        </layout>
+        <label align="top" text="Tripulação" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Mínima" field="tripMin" width="75" fontSize="13"/>
+            <VertLabelEdit text="Máxima" field="tripMax" width="75" fontSize="13"/>
+            <VertLabelCombo text="Tipo" field="tripTipo" width="75" fontSize="13" items="{'Capitão','Imediato','Artilheiro','Engenheiro','Oficial','Conjurador','Piloto','Médico','Outro'}" values="{'1','2','3','4','5','6','7','8','9'}"/>
+        </layout>
+    </popup>
+    <popup name="reactorPop" width="245" height="135" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="50">
+            <VertLabelLabel text="PF" field="pf" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="UNE" field="une" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Blocos" field="blocos" width="75" fontSize="13" formatFloat=",0" hitTest="false"/>
+        </layout>
+        <label align="top" text="Tripulação" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelLabel text="Mínima" field="tripMin" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Máxima" field="tripMax" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13" hitTest="false"/>
+        </layout>
+    </popup>
+
+    <popup name="popAtributo" width="870" height="170" backOpacity="0.4" autoScopeNode="false">
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="14" margins="{bottom=4}" horzAlign="center">
+            <smallTitleCenter text="Inicial"/>
+            <smallTitleCenter text="Raça"/>
+            <smallTitleCenter text="Tema"/>
+            <smallTitleCenter text="NEP"/>
+            <smallTitleCenter text="Inerente"/>
+            <smallTitleCenter text="Tamanho"/>
+            <smallTitleCenter text="Outros"/>
+            <flowPart minWidth="20" maxWidth="20" height="15"/>
+            <smallCheckboxCenter text="Melhoria" field="isMelhoriaActive"/>
+            <smallCheckboxCenter text="Dn Temp." field="isDnTempActive"/>
+            <smallCheckboxCenter text="Dn Perm." field="isDnPermActive"/>
+            <smallCheckboxCenter text="Temp." field="isTempActive"/>
+            <smallCheckboxCenter text="Classe" field="isClasseActive"/>
+            <smallCheckboxCenter text="Magia" field="isMagiaActive"/>
+        </flowLayout>
+        <atributeFlow atr="For"/>
+        <atributeFlow atr="Des"/>
+        <atributeFlow atr="Con"/>
+        <atributeFlow atr="Int"/>
+        <atributeFlow atr="Sab"/>
+        <atributeFlow atr="Car"/>
+    </popup>
+    <popup name="popResistencia" width="380" height="150" backOpacity="0.4" autoScopeNode="false">
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
+            <smallTitleCenter text="Base"/>
+            <smallTitleCenter text="Atributo"/>
+            <smallTitleCenter text="Magia"/>
+            <smallTitleCenter text="Melhoria"/>
+            <smallTitleCenter text="Temp."/>
+            <smallTitleCenter text="Outros"/>
+            <smallTitleCenter text=""/>
+        </flowLayout>
+        <resitenceFlow tr="Fort"/>
+        <resitenceFlow tr="Ref"/>
+        <resitenceFlow tr="Von"/>
+        <textEditor align="client" field="trCondicional"/>
+
+        <dataLink field="atrTrFort" defaultValue="3"/>
+        <dataLink field="atrTrRef" defaultValue="2"/>
+        <dataLink field="atrTrVon" defaultValue="5"/>
+
+        <dataLink fields="{'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar', 'atrTrFort', 'atrTrRef', 'atrTrVon'}">
+            <event name="onUserChange">
+                if sheet ~= nil then
+                    local atrTable = {0,0,0,0,0,0,0}
+                    atrTable[1] = tonumber(sheet.efetModFor)
+                    atrTable[2] = tonumber(sheet.efetModDes)
+                    atrTable[3] = tonumber(sheet.efetModCon)
+                    atrTable[4] = tonumber(sheet.efetModInt)
+                    atrTable[5] = tonumber(sheet.efetModSab)
+                    atrTable[6] = tonumber(sheet.efetModCar)
+
+                    local num = tonumber(sheet.atrTrFort) or 3
+                    local atrModFort = atrTable[num]
+
+                    num = tonumber(sheet.atrTrRef) or 2
+                    local atrModRef = atrTable[num]
+
+                    num = tonumber(sheet.atrTrVon) or 5
+                    local atrModVon = atrTable[num]
+
+                    sheet.atrModFort = atrModFort
+                    sheet.atrModRef = atrModRef
+                    sheet.atrModVon = atrModVon
+                end
+            </event>
+        </dataLink>
+    </popup>
+    <popup name="popCA" width="450" height="210" backOpacity="0.4" autoScopeNode="false">
+        <flowLayout align="top" autoHeight="true" margins="{bottom=4}">
+            <flowPart minWidth="50" maxWidth="50" height="15"/>
+            <smallTitleCenter text="CAE"/>
+            <smallTitleCenter text="CAC"/>
+            <flowLineBreak/>
+
+            <Protection nome="Armadura" field="armaduraCa"/>
+            <flowPart minWidth="10" maxWidth="20" height="15"/>
+            <smallTitleCenter text="Penalidade"/>
+            <smallFieldCenter field="equipamentoCorpoPen"/>
+            <flowLineBreak/>
+            
+            <smallTitleCenter text="Destreza"/>
+            <flowPart minWidth="25" maxWidth="25" height="15"/>
+            <smallLabelCenter field="efetModDes"/>
+            <flowPart minWidth="25" maxWidth="25" height="15"/>
+            <longTextCenter field="destrezaCa2"/>
+            <flowPart minWidth="10" maxWidth="20" height="15"/>
+            <smallTitleCenter text="Limite"/>
+            <smallFieldCenter field="destrezaCALimit"/>
+            
+            <flowLineBreak/>
+            <Protection nome="Tamanho" field="tamanhoCa"/>
+            <flowLineBreak/>
+            <Protection nome="Natural" field="naturalCa"/>
+            <flowLineBreak/>
+            <Protection nome="Deflexao" field="deflexaoCa"/>
+            <flowLineBreak/>
+            <Protection nome="Esquiva" field="esquivaCa"/>
+            <flowLineBreak/>
+            <Protection nome="Sorte" field="sorteCa"/>
+            <flowLineBreak/>
+            <Protection nome="Outros" field="outrosCa"/>
+            <flowLineBreak/>
+            <Protection nome="Variados" field="variadosCa"/>
+            <flowLineBreak/>
+        </flowLayout>
+    </popup>
+
+        <popup name="popPericia" width="300" height="250" backOpacity="0.4" autoScopeNode="false">
+            <flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+                <periciaSmallCenter text="Penalidades" field="penalidesPericia"/>
+                <periciaSmallCenter text="Racial" field="racialPericia"/>
+                <periciaSmallCenter text="Tema" field="sinergiaPericia"/>
+                <periciaSmallCenter text="Equipamentos" field="equipamentosPericia"/>
+                <periciaSmallCenter text="Magico" field="magicoPericia"/>
+                <periciaSmallCenter text="Outros" field="outrosPericia"/>
+                <periciaSmallCenter text="Talentos" field="talentosPericia"/>
+                <periciaSmallCenter text="Classe" field="classePericia"/>
+                <periciaSmallCenter text="Condicional" field="condicionalPericia"/>
+                <periciaSmallCenter text="Competencia" field="competenciaPericia"/>
+                <periciaSmallCenter text="Intuição" field="intuicaoPericia"/>
+                <periciaSmallCenter text="Sorte" field="sortePericia"/>
+            </flowLayout>
+            <textEditor align="bottom" height="80" field="descricao"/>
+            <checkBox align="left" text="Exige Treino" field="exigeTreino"/>
+            <checkBox align="right" text="Penalidade Armadura" field="penalidadeArmadura"/>
+            <checkBox align="right" width="20" text="" field="penalidadeArmadura2"/>
+        </popup>
+        <popup name="popIdioma" width="200" height="100" backOpacity="0.4" autoScopeNode="false">
+            <checkBox align="top" text="Falar/Entender" field="conversarIdioma"/>
+            <checkBox align="top" text="Escrever/Ler" field="escritaIdioma"/>
+            <textEditor align="client" field="descricao"/>
+        </popup>
+
+    <popup name="popHabilidade" width="500" height="300" backOpacity="0.4" autoScopeNode="false">
+            <flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+                <habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
+                <habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
+                <habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
+                <habilidadeLarge text="Livro" field="livroHabilidade"/>
+                <dataLink field="nivelHabilidade">
+                    <event name="onChange">
+                        local rcl = self:findControlByName("rclListaDosTalentos");
+                        if rcl~= nil then
+                            rcl:sort();
+                        end;
+                        local rcl = self:findControlByName("rclListaDasProezas");
+                        if rcl~= nil then
+                            rcl:sort();
+                        end;
+                        rcl = self:findControlByName("rclListaDosOutros");
+                        if rcl~= nil then
+                            rcl:sort();
+                        end;
+                        rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+                        if rcl~= nil then
+                            rcl:sort();
+                        end;
+                    </event>
+                </dataLink>
+            </flowLayout>
+            <textEditor align="client" field="descricao"/>
+    </popup>
+    <popup name="BarPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
+        <rectangle align="client" color="white" xradius="5" yradius="5">
+            <rectangle align="client" name="PopupBarColor" color="#808080" xradius="5" yradius="5" opacity="0.9">
+                <label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="AtributoBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>
+                <layout align="client" margins="{top=2, left=4}">
+                    <layout align="top" height="18">
+                        <label fontColor="black" align="left" text="Atual:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                        <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinha" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+                        <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoAtualBarrinha" name="currentBarValue">
+                            <event name="OnKeyDown">
+                                local oenter = (event.keyCode == 13)
+                                if oenter then
+                                    self.BarPopup:close();
+                                end;
+                            </event>
+                        </edit>
+                    </layout>
+                    <layout align="top" height="18">
+                        <label fontColor="black" align="left" text="Max:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                        <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinhaMax" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+                        <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoMaxBarrinha" name="maxBarValue">
+                            <event name="OnKeyDown">
+                                local oenter = (event.keyCode == 13);
+                                if oenter then
+                                    self.BarPopup:close();
+                                end;
+                            </event>
+                        </edit>
+                    </layout>
+                </layout>
+            </rectangle>
+        </rectangle>
+        
+        <event name="onClose">
+            setTimeout( function()
+                if (self.BarPopup.scopeNode.ModificadorBarrinha == "igual") then
+                    self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
+                elseif (self.BarPopup.scopeNode.ModificadorBarrinha == "mais") then
+                    self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempAtualBarrinha or 0) + tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
+                elseif (self.BarPopup.scopeNode.ModificadorBarrinha == "menos") then
+                    self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempAtualBarrinha or 0) - tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
+                end;
+                
+                if (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "igual") then
+                    self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
+                elseif (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "mais") then
+                    self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempMaxBarrinha or 0) + tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
+                elseif (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "menos") then
+                    self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempMaxBarrinha or 0) - tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
+                end;
+                
+                local barrinhapc = 0
+                local barrinhapcmax = 0
+                local porcentagem = 0
+                local porcentagemmax = 0
+
+                barrinhapc = (self.BarPopup.scopeNode.ValorTempAtualBarrinha - (self.BarPopup.scopeNode.BarrinhaValor or 0));
+                barrinhapcmax = (self.BarPopup.scopeNode.ValorTempMaxBarrinha - (self.BarPopup.scopeNode.BarrinhaValorMax or 0));
+                self.BarPopup.scopeNode.BarrinhaValor = self.BarPopup.scopeNode.ValorTempAtualBarrinha;
+                self.BarPopup.scopeNode.BarrinhaValorMax = self.BarPopup.scopeNode.ValorTempMaxBarrinha;
+                
+                if ((barrinhapc ~= 0) or (barrinhapcmax ~= 0)) then
+                    local nome = self.BarPopup.scopeNode.AtributoBarrinha or "Equipamento";
+                    local personagem = sheet.nome or "nome";
+                    local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+                    local valor = barrinhapc;
+                    local valormax = barrinhapcmax;
+                    
+                    if tonumber(barrinhapc) >= 0 then
+                        valor = "+" .. tostring(barrinhapc);
+                    end;
+                    if tonumber(barrinhapcmax) >= 0 then
+                        valormax = "+" .. tostring(barrinhapcmax);
+                    end;
+                    
+                    if tonumber(valormax) == 0 then
+                        text = text .. valor;
+                    else
+                        text = text .. valor .. "/" .. valormax;
+                    end;
+                    
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    if mesaDoPersonagem ~= nil then
+                           mesaDoPersonagem.activeChat:enviarMensagem(text);
+                    end;
+                end;
+            end, 100);
+        </event>
+    </popup>
+    <popup name="popMagia" width="250" height="350" backOpacity="0.4" autoScopeNode="false">
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+            <magicInfoField text="ESCOLA" field="escola"/>
+            <flowLineBreak/>
+            <magicInfoField text="COMPONENTES" field="componentes"/>
+            <magicInfoField text="EXECUÇÃO" field="execucao"/>
+            <magicInfoField text="ALCANCE" field="alcance"/>
+            <magicInfoField text="ALVO" field="alvo"/>
+            <magicInfoField text="DURAÇÃO" field="duracao"/>
+            <magicInfoField text="TR" field="tr"/>
+            <magicInfoField text="RM" field="rm"/>
+            <magicInfoField text="CD + " field="myCD"/>
+            <magicInfoField text="LIVRO" field="livro"/>
+            <magicInfoField text="PÁGINA" field="pagina"/>
+        </flowLayout>
+        <button align="top" height="25" text="Exibir">
+            <event name="onClick">
+                local txt = "\n";
+                local node = self.popMagia.node;
+                if (node.nomeMagia ~= nil) then txt = txt .. node.nomeMagia .. "\n" end;
+                if (node.escola ~= nil) then txt = txt .. node.escola .. "\n" end;
+                if (node.componentes ~= nil) then txt = txt .. "Componentes: " .. node.componentes .. "\n" end;
+                if (node.execucao ~= nil) then txt = txt .. "Execução: " .. node.execucao .. "\n" end;
+                if (node.alcance ~= nil) then txt = txt .. "Alcance: " .. node.alcance .. "\n" end;
+                if (node.alvo ~= nil) then txt = txt .. "Alvo: " .. node.alvo .. "\n" end;
+                if (node.duracao ~= nil) then txt = txt .. "Duração: " .. node.duracao .. "\n" end;
+                if (node.tr ~= nil) then txt = txt .. "Teste de Resistência: " .. node.tr .. "\n" end;
+                if (node.rm ~= nil) then txt = txt .. "Resistência a Magia: " .. node.rm .. "\n" end;
+                if (node.livro ~= nil) then txt = txt .. "Livro: " .. node.livro .. " " .. (node.pagina or "") .. "\n" end;
+                if (node.descricao ~= nil) then txt = txt .. node.descricao end;
+
+                local mesa = Firecast.getMesaDe(node);
+                if mesa ~= nil then
+                       mesa.activeChat:enviarMensagem(txt);
+                end;
+            </event>
+        </button>
+        
+        <textEditor align="client" field="descricao" class=""/>
+    </popup>
+
+        <popup name="BarrinhaPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
+            <rectangle align="client" color="white" xradius="5" yradius="5">
+                <rectangle align="client" name="CorPopupBarrinhas" color="#808080" xradius="5" yradius="5" opacity="0.9">
+                    <label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="AtributoBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>
+                    <layout align="client" margins="{top=2, left=4}">
+                        <layout align="top" height="18">
+                            <label fontColor="black" align="left" text="Atual:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                            <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinha" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+                            <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoAtualBarrinha" name="ValorAtualBarrinha">
+                                <event name="OnKeyDown">
+                                    local oenter = (event.keyCode == 13)
+                                    if oenter then
+                                        self.BarrinhaPopup:close();
+                                    end;
+                                </event>
+                            </edit>
+                        </layout>
+                        <layout align="top" height="18">
+                            <label fontColor="black" align="left" text="Max:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                            <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinhaMax" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+                            <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoMaxBarrinha" name="ValorMaxBarrinha">
+                                <event name="OnKeyDown">
+                                    local oenter = (event.keyCode == 13);
+                                    if oenter then
+                                        self.BarrinhaPopup:close();
+                                    end;
+                                </event>
+                            </edit>
+                        </layout>
+                    </layout>
+                </rectangle>
+            </rectangle>
+            
+            <event name="onClose">
+                setTimeout( function()
+                    if (sheet.ModificadorBarrinha == "igual") then
+                        sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorMudadoAtualBarrinha or 0);
+                    elseif (sheet.ModificadorBarrinha == "mais") then
+                        sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorTempAtualBarrinha or 0) + tonumber(sheet.ValorMudadoAtualBarrinha or 0);
+                    elseif (sheet.ModificadorBarrinha == "menos") then
+                        sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorTempAtualBarrinha or 0) - tonumber(sheet.ValorMudadoAtualBarrinha or 0);
+                    end;
+                    
+                    if (sheet.ModificadorBarrinhaMax == "igual") then
+                        sheet.ValorTempMaxBarrinha = tonumber(sheet.ValorMudadoMaxBarrinha or 0);
+                    elseif (sheet.ModificadorBarrinhaMax == "mais") then
+                        sheet.ValorTempMaxBarrinha = tonumber(sheet.ValorTempMaxBarrinha or 0) + tonumber(sheet.ValorMudadoMaxBarrinha or 0);
+                    elseif (sheet.ModificadorBarrinhaMax == "menos") then
+                        sheet.ValorTempMaxBarrinha = tonumber(sheet.ValorTempMaxBarrinha or 0) - tonumber(sheet.ValorMudadoMaxBarrinha or 0);
+                    end;
+                    
+                    local barrinhapc = 0
+                    local barrinhapcmax = 0
+                    local porcentagem = 0
+                    local porcentagemmax = 0
+
+                    barrinhapc = (sheet.ValorTempAtualBarrinha - (sheet["Barrinha" .. (sheet.barrinhaID or 12) .. "Valor"] or 0));
+                    barrinhapcmax = (sheet.ValorTempMaxBarrinha - (sheet["Barrinha" .. (sheet.barrinhaID or 12) .. "ValorMax"] or 0));
+                    sheet["Barrinha" .. (sheet.barrinhaID or 12) .. "Valor"] = sheet.ValorTempAtualBarrinha;
+                    sheet["Barrinha" .. (sheet.barrinhaID or 12) .. "ValorMax"] = sheet.ValorTempMaxBarrinha;
+                    
+                    if ((barrinhapc ~= 0) or (barrinhapcmax ~= 0)) then
+                        local nome = sheet.AtributoBarrinha or "Equipamento";
+                        local personagem = sheet.nome or "nome";
+                        local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+                        local valor = barrinhapc;
+                        local valormax = barrinhapcmax;
+                        
+                        if tonumber(barrinhapc) >= 0 then
+                            valor = "+" .. tostring(barrinhapc);
+                        end;
+                        if tonumber(barrinhapcmax) >= 0 then
+                            valormax = "+" .. tostring(barrinhapcmax);
+                        end;
+                        
+                        if tonumber(valormax) == 0 then
+                            text = text .. valor;
+                        else
+                            text = text .. valor .. "/" .. valormax;
+                        end;
+                        
+                        local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                        if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.activeChat:enviarMensagem(text);
+                        end;
+                    end;
+                end, 100);
+            </event>
+        </popup>
+</group>

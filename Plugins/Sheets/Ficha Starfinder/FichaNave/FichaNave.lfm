@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaNave" formType="sheetTemplate" dataType="Ambesek.Starfinder.Nave" title="Ficha Starfinder (Nave)" align="client" theme="dark">
+    <style>
+        label {
+                textTrimming: none;
+        }
+        button {
+                textTrimming: none;
+        }
+    </style> 
     <script>
         <![CDATA[
 
@@ -45,19 +53,16 @@
         ]]> 
     </script>
 
-    <template name="VertLabelEdit">
-        <layout align="left" width="$(width)" margins="{right=5}">
-            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
-            <edit top="20" field="$(field)" width="$(width)" height="25"/>
-        </layout>
-    </template> 
+    <import file="../FichaStarfinder/Template.xml"/>
+    <import file="../FichaStarfinder/PopUps.xml"/>
+    
     <template name="VertCheckEdit">
         <layout align="left" width="$(width)" margins="{right=5}">
             <checkBox text="$(text)" width="$(width)" field="$(field)Check" horzTextAlign="leading" fontSize="$(fontSize)"/>
             <edit top="20" field="$(field)" width="$(width)" height="25"/>
         </layout>
     </template> 
-    <template name="VertCheckEditOrLLabel">
+    <template name="VertCheckEditOrLabel">
         <layout align="left" width="$(width)" margins="{right=5}">
             <checkBox text="$(text)" width="$(width)" field="$(field)Check" horzTextAlign="leading" fontSize="$(fontSize)"/>
             <edit top="20" field="$(field)" width="$(width)" height="25" visible="true" name="$(field)Edit"/>
@@ -74,15 +79,6 @@
             </event>
         </dataLink>
     </template> 
-    <template name="VertLabelLabelEdit">
-        <layout align="left" width="$(width)" margins="{right=5}">
-            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
-            <rectangle top="20" height="25" width="$(width2)" color="#F0FFFF" strokeColor="black" strokeSize="1">
-                <label align="client" field="$(field)Min" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
-            </rectangle>
-            <edit left="$(width2)" top="20" field="$(field)Max" width="$(width2)" height="25"/>
-        </layout>
-    </template>
     <template name="VertTriLabel">
         <layout align="left" width="$(width)" margins="{right=5}">
             <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
@@ -103,236 +99,9 @@
                 <edit align="left" field="$(field)_c" width="$(width2)" margins="{bottom=5}"/>
             </layout>
         </layout>
-    </template> 
-    <template name="VertLabelLabel">
-        <layout align="left" width="$(width)" margins="{right=5}">
-            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)" hint="$(hint or '')"  hitTest="$(hitTest)"/>
-            <rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1">
-                <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)" formatFloat="$(formatFloat)"/>
-            </rectangle>
-        </layout>
-    </template>
-    <template name="VertLabelPop">
-        <layout align="left" width="$(width)" margins="{right=5}">
-            <label text="$(text)" width="$(width2)" horzTextAlign="leading" fontSize="$(fontSize)"/>
-            <button left="$(width2)" width="20" height="20" text="i" onClick="$(onClick)"/>
-            <rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1">
-                <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)" formatFloat="$(formatFloat)"/>
-            </rectangle>
-        </layout>
-    </template>
-    <template name="VertLabelCombo">
-        <layout align="left" width="$(width)" margins="{right=5}">
-            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
-            <comboBox top="20" field="$(field)" name="$(field)" width="$(width)" height="25" items="$(items)" values="$(values)" fontSize="$(fontSize)"/>
-        </layout>
-    </template>
-    <template name="VertComboButton">
-        <layout align="left" width="$(width)" margins="{right=5}">
-            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)">
-                <button align="right" width="15" margins="{top=2}" text="o" fontSize="9" onClick="$(onClick)"/>
-            </label>
-            <comboBox top="20" field="$(field)" name="$(field)" width="$(width)" height="25" items="$(items)" values="$(values)" fontSize="$(fontSize)"/>
-        </layout>
-    </template>
-    <template name="HorzLabel">
-        <layout align="left" width="$(widthTotal)" margins="{right=5}">
-            <label align="left" text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)"/>
-            <rectangle align="left" width="$(width2)" color="black" strokeColor="white" strokeSize="1">
-                <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
-            </rectangle>
-        </layout>
-    </template>
-    <template name="HorzLabelPop">
-        <layout align="left" width="$(widthTotal)" margins="{right=5}">
-            <button align="left" width="20" height="20" text="i" margins="{top=2.5,left=2.5,right=2.5}" onClick="$(onClick)"/>
-            <label align="left" text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)"/>
-            <rectangle align="left" width="$(width2)" color="black" strokeColor="white" strokeSize="1">
-                <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
-            </rectangle>
-        </layout>
-    </template>
-    <template name="weaponInfoFieldSmallCenter">
-        <flowPart minWidth="90" maxWidth="100" height="35">
-            <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
-            <edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
-        </flowPart>
-    </template>
-    <template name="weaponInfoFieldSmall">
-        <flowPart minWidth="90" maxWidth="100" height="35">
-            <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
-            <edit align="client" class="" field="$(field)" fontSize="12"/>
-        </flowPart>
-    </template>
-    <template name="itemInfoFieldSmall">
-        <flowPart minWidth="90" maxWidth="100" height="35">
-            <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
-            <edit align="client" class="" field="$(field)" fontSize="12" type="float"/>
-        </flowPart>
     </template>
 
-    <popup name="addPop" width="455" height="310" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-        <layout align="top" height="25">
-            <label align="left" text="Estrutura (PV)" width="210" horzTextAlign="center"/>
-
-            <label align="left" text="CAE" width="70" margins="{right=10}" horzTextAlign="center" />
-            <label align="left" text="CAC" width="70" margins="{right=10}" horzTextAlign="center" />
-            <label align="left" text="Proteção" width="70" horzTextAlign="center" />
-        </layout>
-        <layout align="top" height="50">
-            <VertLabelEdit text="+%" field="pvMult" width="100" fontSize="13"/>
-            <VertLabelEdit text="Fixo" field="pvAdd" width="100" fontSize="13"/>
-
-            <VertLabelEdit text="+%" field="caeMult" width="35" fontSize="11"/>
-            <VertLabelEdit text="Fixo" field="caeAdd" width="35" fontSize="11"/>
-            <VertLabelEdit text="+%" field="cacMult" width="35" fontSize="11"/>
-            <VertLabelEdit text="Fixo" field="cacAdd" width="35" fontSize="11"/>
-            <VertLabelEdit text="+%" field="protMult" width="35" fontSize="11"/>
-            <VertLabelEdit text="Fixo" field="protAdd" width="35" fontSize="11"/>
-        </layout>
-
-        <layout align="top" height="25">
-            <label align="left" text="Modificadores" width="210" horzTextAlign="center"/>
-
-            <label align="left" text="Deslocamento" height="210" horzTextAlign="center" />
-        </layout>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Pilotar" field="pilotarAdd" width="100" fontSize="13"/>
-            <VertLabelEdit text="Ataque" field="ataqueAdd" width="100" fontSize="13"/>
-
-            <VertLabelEdit text="+%" field="deslMult" width="100" fontSize="13"/>
-            <VertLabelEdit text="Fixo (q)" field="deslAdd" width="100" fontSize="13"/>
-        </layout>
-
-        <label align="top" text="Preço" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelLabel text="Total" field="precoTotal" width="60" fontSize="11" format="%d C" hitTest="false"/>
-            <VertLabelEdit text="Level" field="precoPorLevel" width="60" fontSize="11"/>
-            <VertLabelLabel text="" field="precoLevel" width="60" fontSize="11" format="%d C" hitTest="false"/>
-            <VertLabelEdit text="Tam" field="precoPorTam" width="60" fontSize="11"/>
-            <VertLabelLabel text="" field="precoTam" width="60" fontSize="11" format="%d C" hitTest="false"/>
-            <VertLabelEdit text="Fixo" field="precoAdd" width="60" fontSize="11"/>
-            <VertLabelEdit text="+%" field="precoMult" width="60" fontSize="11"/>
-        </layout>
-
-        <textEditor align="client" field="detalhes"/>
-    </popup>
-    <popup name="costPop" width="325" height="60" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-        <layout align="top" height="50">
-            <VertLabelEdit text="Base" field="precoBase" width="75" fontSize="11"/>
-            <VertLabelLabel text="Multiplicador" field="precoMult" width="75" fontSize="9" format="%.2f" hitTest="false"/>
-            <VertLabelLabel text="Adicionais" field="precoMod" width="75" fontSize="11" format="%d C" hitTest="false"/>
-            <VertLabelEdit text="Outros" field="precoOutros" width="75" fontSize="11"/>
-        </layout>
-    </popup>
-    <popup name="deslPop" width="395" height="60" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-        <layout align="top" height="50">
-            <VertLabelEdit text="Base (q)" field="deslBase" width="60" fontSize="11"/>
-            <VertLabelEdit text="Viagem (Km/h)" field="deslBaseViagem" width="60" fontSize="9"/>
-            <VertLabelLabel text="Multiplicador" field="deslMult" width="60" fontSize="9" format="%.2f" hitTest="false"/>
-            <VertLabelLabel text="Adicionais (q)" field="deslAdd" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelEdit text="Outros (q)" field="deslOutros" width="60" fontSize="11"/>
-            <VertLabelEdit text="Outros (Km/h)" field="deslOutrosViagem" width="60" fontSize="9"/>
-        </layout>
-    </popup>
-    <popup name="modPop" width="200" height="160" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-        <label align="top" text="Pilotagem" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Base" field="pilBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="pilotarAdd" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelEdit text="Outros" field="pilOutros" width="60" fontSize="11"/>
-        </layout>
-        <label align="top" text="Ataque" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Base" field="atkBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="ataqueAdd" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelEdit text="Outros" field="atkOutros" width="60" fontSize="11"/>
-        </layout>
-    </popup>
-    <popup name="caPop" width="265" height="235" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-        <label align="top" text="CAE" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Base" field="caeBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="caeAdd" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelLabel text="Multiplicador" field="caeMult" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelEdit text="Outros" field="caeOutros" width="60" fontSize="11"/>
-        </layout>
-        <label align="top" text="CAC" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Base" field="cacBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="cacAdd" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelLabel text="Multiplicador" field="cacMult" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelEdit text="Outros" field="cacOutros" width="60" fontSize="11"/>
-        </layout>
-        <label align="top" text="Proteção" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Base" field="protBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="protAdd" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelLabel text="Multiplicador" field="protMult" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelEdit text="Outros" field="protOutros" width="60" fontSize="11"/>
-        </layout>
-    </popup>
-    <popup name="healthPop" width="370" height="85" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-        <label align="top" text="Estrutura" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Base" field="pvBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="pvAdd" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelLabel text="Multiplicador" field="pvMult" width="60" fontSize="9" hitTest="false"/>
-            <VertLabelEdit text="Outros" field="pvOutros" width="60" fontSize="11"/>
-            <VertLabelCombo text="Cobertura" field="cobertura" width="100" fontSize="13" items="{'Nenhuma', 'Parcial', 'Completa'}" values="{'25','50','75'}"/>
-        </layout>
-    </popup>
-    <popup name="popEquip" width="200" height="250" backOpacity="0.4" autoScopeNode="false">
-        <flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
-            <weaponInfoFieldSmall text="NOME" field="nome"/>
-            <weaponInfoFieldSmall text="Nível" field="nivel"/>
-            <weaponInfoFieldSmall text="Vol" field="peso"/>
-            <weaponInfoFieldSmall text="$" field="preco"/>
-        </flowLayout>
-        <textEditor align="client" field="descricao" class=""/>
-    </popup>
-    <popup name="shipPartPop" width="245" height="135" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-        <layout align="top" height="50">
-            <VertLabelEdit text="PF" field="pf" width="75" fontSize="13"/>
-            <VertLabelEdit text="UNE" field="une" width="75" fontSize="13"/>
-            <VertLabelEdit text="Blocos" field="blocos" width="75" fontSize="13"/>
-        </layout>
-        <label align="top" text="Tripulação" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Mínima" field="tripMin" width="75" fontSize="13"/>
-            <VertLabelEdit text="Máxima" field="tripMax" width="75" fontSize="13"/>
-            <VertLabelCombo text="Tipo" field="tripTipo" width="75" fontSize="13" items="{'Capitão','Imediato','Artilheiro','Engenheiro','Oficial','Conjurador','Piloto','Médico','Outro'}" values="{'1','2','3','4','5','6','7','8','9'}"/>
-        </layout>
-    </popup>
-    <popup name="reactorPop" width="245" height="135" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-        <layout align="top" height="50">
-            <VertLabelLabel text="PF" field="pf" width="75" fontSize="13" hitTest="false"/>
-            <VertLabelLabel text="UNE" field="une" width="75" fontSize="13" hitTest="false"/>
-            <VertLabelLabel text="Blocos" field="blocos" width="75" fontSize="13" formatFloat=",0" hitTest="false"/>
-        </layout>
-        <label align="top" text="Tripulação" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelLabel text="Mínima" field="tripMin" width="75" fontSize="13" hitTest="false"/>
-            <VertLabelLabel text="Máxima" field="tripMax" width="75" fontSize="13" hitTest="false"/>
-            <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13" hitTest="false"/>
-        </layout>
-    </popup>
-    <popup name="weaponPop" width="245" height="300" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-        <layout align="top" height="50">
-            <VertLabelEdit text="PF" field="pf" width="75" fontSize="13"/>
-            <VertLabelEdit text="UNE" field="une" width="75" fontSize="13"/>
-            <VertLabelEdit text="Blocos" field="blocos" width="75" fontSize="13" formatFloat=",0"/>
-        </layout>
-        <label align="top" text="Tripulação" height="25" horzTextAlign="center"/>
-        <layout align="top" height="50">
-            <VertLabelLabel text="Mínima" field="tripMin" width="75" fontSize="13" hitTest="false"/>
-            <VertLabelLabel text="Máxima" field="tripMax" width="75" fontSize="13" hitTest="false"/>
-            <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13" hitTest="false"/>
-        </layout>
-        <textEditor align="client" field="detalhes"/>
-    </popup>
-
-    <tabControl align="client">
+    <tabControl align="client" g-cnt-gutter="5">
         <tab title="Geral">
             <import file="General.xml"/>
         </tab>
@@ -346,7 +115,7 @@
             <import file="../FichaStarfinder/10.Anotacoes.xml"/>
         </tab>
         <tab title="Creditos">
-            <import file="../FichaStarfinder/11.Creditos.xml"/>
+            <import file="../FichaStarfinder/Credits.xml"/>
         </tab>
     </tabControl>
 

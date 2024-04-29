@@ -52,11 +52,11 @@
 		</layout>
 		<layout align="client">
 			<rectangle align="client" color="black" strokeColor="white" strokeSize="1">
-					<recordList name="rclTripulantes" field="listaTripulantes" templateForm="frmCrewPart" align="client" width="465" margins="{left=5,right=5}" layout="verticalTiles" minQt="1">
-						<event name="onCompare">
-					        return ((tonumber(nodeA.funcao) or 0) - (tonumber(nodeB.funcao) or 0));
-					    </event>
-					</recordList>
+				<recordList name="rclTripulantes" field="listaTripulantes" templateForm="frmCrewPart" align="client" width="465" margins="{left=5,right=5}" layout="verticalTiles" minQt="1">
+					<event name="onCompare">
+				        return ((tonumber(nodeA.funcao) or 0) - (tonumber(nodeB.funcao) or 0));
+				    </event>
+				</recordList>
 			</rectangle>
 		</layout>
 	</scrollBox>
