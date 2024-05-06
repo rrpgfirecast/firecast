@@ -496,7 +496,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="02042024204321" compilationDigest="c966aa5729d0fd5dc7f3b8b4785d475644ca2044">
+    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="06052024165902" compilationDigest="b7afc6860a3705b1ee9ee7184d01a34f7108a931">
         <info lang="en" name="Scene 3 Core" description="Plug-in that has basic features for the combat grid, also known as Scene 3"/>
         <info lang="pt" name="Núcleo do Scene 3" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" author="Firecast - AlyssonRPG" site="http://www.rrpg.com.br"/>
     </element>
@@ -701,7 +701,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="4.0.2" compilationDate="28042024163332" compilationDigest="dc4e9738fa82bf2bd7ea037ad82a57f2e8d84ccd">
+    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="4.0.2" compilationDate="29042024011608" compilationDigest="4b20b4091d4cfb85d339d889e4f288f4cd6b8ae3">
         <info lang="pt-BR" name="Ficha RPG meister" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Alterar.DataType.FichaRPGmeister" title="Ficha RPGmeister" formType="sheetTemplate">
