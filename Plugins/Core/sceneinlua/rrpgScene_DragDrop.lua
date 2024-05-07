@@ -116,13 +116,17 @@ end;
 local function adicionarUmTokenDeUmPersonagem(scene, personagem, x, y, autoPlace)
 	local avatarUsar = personagem.avatar;
 	local jogadorCtrl = personagem.dono;
+	local useBottonFrame;
 
 	if (avatarUsar == nil or avatarUsar == "") and (jogadorCtrl ~= nil) then
 		avatarUsar = jogadorCtrl.avatar;
 	end;
 	
 	if avatarUsar == "" then
-		avatarUsar = "urlInvalida";
+		avatarUsar = "https://firecast.app/icons/question_mark.png";
+		useBottonFrame = true;
+	else
+		useBottonFrame = false;
 	end;
 	
 	SC3UNDO_Capture(scene, 
@@ -133,6 +137,11 @@ local function adicionarUmTokenDeUmPersonagem(scene, personagem, x, y, autoPlace
 			tryFinally(function()
 						local tImg = token.image;
 						tImg.url = avatarUsar;
+						
+						if useBottonFrame then
+							tImg.frame = "boton";
+						end;						
+						
 						token.snapToGrid = true;				
 						token.ownerCharacter = personagem.codigoInterno;
 						token.name = personagem.nome;
