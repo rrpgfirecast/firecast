@@ -264,31 +264,35 @@ local function AddMacro(nome,code)
   local macro = nil
 
   -- TRY TO FIND IF MACRO ALREADY EXISTS
-  local macros = NDB.getChildNodes(node.global.macros)
-  for i=1, #macros, 1 do 
-    if macros[i].macro == nome then
-      -- MACRO EXIST CHECK IF OLDER VERSION
-      local currentVersion = tonumber(macros[i].version) or 0
-      if version > currentVersion then
-        -- THIS IS A NEWER VERSION, INSTALL
-        macro = macros[i]
-      else
-        -- CANCEL MACRO UPDATE, OLDER VERSION
-        return
+  if node and node.global then
+    local macros = NDB.getChildNodes(node.global.macros)
+    for i=1, #macros, 1 do 
+      if macros[i].macro == nome then
+        -- MACRO EXIST CHECK IF OLDER VERSION
+        local currentVersion = tonumber(macros[i].version) or 0
+        if version > currentVersion then
+          -- THIS IS A NEWER VERSION, INSTALL
+          macro = macros[i]
+        else
+          -- CANCEL MACRO UPDATE, OLDER VERSION
+          return
+        end
       end
     end
-  end
+  
+    -- MACRO DOESN'T EXISTS, CREATE NEW
+    if macro == nil then
+      macro = NDB.createChildNode(node.global.macros, "item")
+    end
+    -- Cancel if failed to create node
+    if macro == nil then return end
 
-  -- MACRO DOESN'T EXISTS, CREATE NEW
-  if macro == nil then
-    macro = NDB.createChildNode(node.global.macros, "item")
+    -- ADD MACRO DETAILS
+    macro.tipoMacro = "L"
+    macro.macro = nome
+    macro.version = version
+    macro.acoes = code
   end
-
-  -- ADD MACRO DETAILS
-  macro.tipoMacro = "L"
-  macro.macro = nome
-  macro.version = version
-  macro.acoes = code
 end
 
 promise:thenDo(

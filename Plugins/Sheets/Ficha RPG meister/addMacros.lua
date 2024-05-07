@@ -284,6 +284,8 @@ local function AddMacro(nome,code)
     if macro == nil then
       macro = NDB.createChildNode(node.global.macros, "item")
     end
+    -- Cancel if failed to create node
+    if macro == nil then return end
 
     -- ADD MACRO DETAILS
     macro.tipoMacro = "L"
