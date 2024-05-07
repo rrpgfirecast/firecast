@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frm_FM" align="client" theme="dark">
+	<scrollBox align="client">
+		<script><![CDATA[
+			local default;
+			local loaded = false;
+			--colocar algo para quando sheet terminar de carregar puxar os valores de default.room[Firecast.getMesaDe(sheet).codigoInterno]. 
+
+			local function loadDefault()
+				if sheet==nil then return end;
+				if default==nil then return end;
+
+				if default.room[Firecast.getMesaDe(sheet).codigoInterno].global then
+					sheet.showToolbar = default.room[Firecast.getMesaDe(sheet).codigoInterno].showToolbar;
+					sheet.fontSize = default.room[Firecast.getMesaDe(sheet).codigoInterno].fontSize;
+					sheet.fontColor = default.room[Firecast.getMesaDe(sheet).codigoInterno].fontColor;
+					sheet.backgroundColor = default.room[Firecast.getMesaDe(sheet).codigoInterno].backgroundColor;
+					sheet.global = true;
+				end;
+
+				self.txt.showToolbar = not sheet.showToolbar;
+				self.txt.defaultFontSize = sheet.fontSize;
+				self.txt.defaultFontColor = sheet.fontColor;
+				self.txt.backgroundColor = sheet.backgroundColor;
+			end;
+		]]> 
+		</script>
+		<layout align="top">
+			<layout align="left" width="150">
+				<button left="0" top="0" width="45" height="45" text="" onClick="self.rclAbas:append();" hint="Adiciona nova aba. ">
+					<image left="5" top="5" width="35" height="35" src="images/addIcon.png"/>
+				</button>
+			</layout>
+			<layout align="client">
+				<recordList name="rclAbas" field="abas" templateForm="frm_FM_Aba" align="top" height="46" selectable="true" layout="horizontal">
+					<event name="onCompare">
+						local comp = ((tonumber(nodeA.index) or 0) - (tonumber(nodeB.index) or 0));
+
+						if comp == 0 then
+							return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+						else
+							return comp;
+						end;
+					</event>
+					<event name="onSelect">
+						local node = self.rclAbas.selectedNode;
+						self.boxTexto.node = node;
+						self.boxTexto.visible = (node ~= nil);
+					</event>
+					<event name="onEndEnumeration">
+						if self.rclAbas.selectedNode == nil and sheet ~= nil then
+							local nodes = NDB.getChildNodes(sheet.abas);			   
+
+							if #nodes > 0 then
+								self.rclAbas.selectedNode = nodes[1];
+							end;
+						end;
+					</event>
+				</recordList>
+			</layout>
+		</layout>
+		<layout align="client">
+			<dataScopeBox name="boxTexto" align="client" visible="false">
+				<richEdit name="txt" align="client" backgroundColor="black" defaultFontColor="white" field="txt" hideSelection="false" animateImages="true">
+					<event name="onMouseMove">
+						loadDefault();
+					</event>
+				</richEdit>
+			</dataScopeBox>
+		</layout>
+	</scrollBox>
+</form>

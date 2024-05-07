@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="AventurasLog" align="top" height="35" theme="dark" margins="{top=1}">
+	<rectangle g="col" g-width="12" height="35" color="#212121" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+		<edit g="col" g-width="1" height="25" field="numero" type="number"/>
+		<edit g="col" g-width="2" height="25" field="data" />
+		<button g="col" g-width="2" height="25" text="LOG" hint="Abrir Log">
+			<event name="onClick">
+                    gui.openInBrowser(sheet.log);                 
+               </event>
+		</button>
+		<edit g="col" g-width="5" height="25" field="log" />
+		<button g="col" g-width="2" height="25" text="🗑️">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa sessao?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

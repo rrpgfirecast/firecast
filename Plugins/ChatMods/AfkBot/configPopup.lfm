@@ -22,9 +22,9 @@
 			nomes[1] = "Sem Ficha";
 			valores[1] = "0";
 			
-			-- Filter for 'Ficha Multiaba' only
+			-- Filter for 'Ficha Multiaba' or 'Gerenciador' only
 			for i = 1, #personagens, 1 do
-				if personagens[i].dataType == "Ambesek.Nefertyne.FichaMultiaba" then
+				if personagens[i].dataType == "Ambesek.Nefertyne.FichaMultiaba" or personagens[i].dataType == "Ambesek.Gerenciador.RPGmeister" then
 					nomes[#nomes + 1] = personagens[i].nome;
 					valores[#valores + 1] = tostring(personagens[i].codigoInterno);
 				end

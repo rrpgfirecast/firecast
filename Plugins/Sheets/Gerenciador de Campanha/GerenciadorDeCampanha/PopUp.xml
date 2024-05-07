@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<popup name="xpAllPopup" width="175" height="225" backOpacity="0.4" autoScopeNode="false">
+			<label align="top" height="25" text="Da XP de acordo com o NEP"/>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="Sessão Nº"/>
+				<edit align="left" width="50" field="xpAll_session"/>
+				<button align="right" width="25" text="+" onClick="self.rclXpAll:append();"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="XP"/>
+				<label align="left" width="50" text="NEP"/>
+			</layout>
+			<layout align="client">
+				<recordList align="client" name="rclXpAll" field="rclXpAll" templateForm="frmXpAllForm"/>
+			</layout>
+			<button align="bottom" height="25" text="Adicionar">
+				<event name="onClick">
+					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+					local xps = ndb.getChildNodes(sheet.rclXpAll);
+
+					for i=1, #jogadores, 1 do 
+						local jogador = jogadores[i];
+						self.boxDetalhesDoItem.node = jogador; 
+						self.boxDetalhesDoItem.visible = (jogador ~= nil);
+
+						local nep = jogador.nep
+						local xp = 0
+
+						for j=1, #xps, 1 do
+							if nep == xps[j].nep then
+								xp = xp + xps[j].xp;
+							end
+						end
+
+						if xp ~= 0 then
+							local node = self.rclExperience:append();
+							if node~= nil then 
+								node.contador = sheet.xpAll_session;
+								node.valor = xp;
+							end
+						end
+					end
+
+					sheet.rclXpAll = {}
+					self.xpAllPopup:close();
+				</event>
+			</button>
+	</popup>
+	<popup name="poAllPopup" width="175" height="225" backOpacity="0.4" autoScopeNode="false">
+			<label align="top" height="25" text="Da PO de acordo com o NEP"/>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="Sessão Nº"/>
+				<edit align="left" width="50" field="poAll_session"/>
+				<button align="right" width="25" text="+" onClick="self.rclPoAll:append();"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="PO"/>
+				<label align="left" width="50" text="NEP"/>
+			</layout>
+			<layout align="client">
+				<recordList align="client" name="rclPoAll" field="rclPoAll" templateForm="frmXpAllForm"/>
+			</layout>
+			<button align="bottom" height="25" text="Adicionar">
+				<event name="onClick">
+					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+					local pos = ndb.getChildNodes(sheet.rclPoAll);
+
+					for i=1, #jogadores, 1 do 
+						local jogador = jogadores[i];
+						self.boxDetalhesDoItem.node = jogador; 
+						self.boxDetalhesDoItem.visible = (jogador ~= nil);
+
+						local nep = jogador.nep
+						local po = 0
+
+						for j=1, #pos, 1 do
+							if nep == pos[j].nep then
+								po = po + pos[j].xp;
+							end
+						end
+
+						if po ~= 0 then
+							local node = self.rclDinheiro:append();
+							if node~= nil then 
+								node.contador = sheet.poAll_session;
+								node.valor = po;
+							end
+						end
+					end
+
+					sheet.rclPoAll = {}
+					self.poAllPopup:close();
+				</event>
+			</button>
+	</popup>
+	<popup name="poSetTarget" width="175" height="225" backOpacity="0.4" autoScopeNode="false">
+			<label align="top" height="25" text="Define PO por NEP"/>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="Sessão Nº"/>
+				<edit align="left" width="50" field="poSet_session"/>
+				<button align="right" width="25" text="+" onClick="self.rclPoSet:append();"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="PO"/>
+				<label align="left" width="50" text="NEP"/>
+			</layout>
+			<layout align="client">
+				<recordList align="client" name="rclPoSet" field="rclPoSet" templateForm="frmXpAllForm"/>
+			</layout>
+			<button align="bottom" height="25" text="Definir">
+				<event name="onClick">
+					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+					local pos = ndb.getChildNodes(sheet.rclPoSet);
+
+					for i=1, #jogadores, 1 do 
+						local jogador = jogadores[i];
+						self.boxDetalhesDoItem.node = jogador; 
+						self.boxDetalhesDoItem.visible = (jogador ~= nil);
+
+						local nep = jogador.nep
+						local po = 0
+
+						for j=1, #pos, 1 do
+							if nep == pos[j].nep then
+								po = pos[j].xp;
+							end
+						end
+
+						local currentPO = tonumber(jogador.PO) or 0
+
+						if po ~= 0 and po > currentPO then
+							local node = self.rclDinheiro:append();
+							if node~= nil then 
+								node.contador = sheet.poSet_session;
+								node.valor = po-currentPO;
+							end
+						end
+					end
+
+					sheet.rclPoSet = {}
+					self.poSetTarget:close();
+				</event>
+			</button>
+	</popup>
+	<popup name="phAllPopup" width="225" height="275" backOpacity="0.4" autoScopeNode="false">
+			<label align="top" height="25" text="Da PH a todos jogadores."/>
+
+			<rectangle align="client" color="#212121" strokeColor="white" strokeSize="1" margins="{left=0,top=5}">
+				<label left="5" top="5" width="150" height="25" text="Presença" horzTextAlign="center" />
+				<label left="5" top="30" width="150" height="25" text="Atraso Justificado" horzTextAlign="center" />
+				<label left="5" top="55" width="150" height="25" text="Atraso" horzTextAlign="center" />
+				<label left="5" top="80" width="150" height="25" text="Falta Justificada" horzTextAlign="center" />
+				<label left="5" top="105" width="150" height="25" text="Falta" horzTextAlign="center" />
+				<label left="5" top="130" width="150" height="25" text="Uso" horzTextAlign="center" />
+				<label left="5" top="155" width="150" height="25" text="Desperdicio" horzTextAlign="center" />
+				<label left="5" top="180" width="150" height="25" text="Nível" horzTextAlign="center" />
+				
+				<edit left="155" top="5" width="50" height="25" field="presenca" />
+				<edit left="155" top="30" width="50" height="25" field="atrasoJustificado" />
+				<edit left="155" top="55" width="50" height="25" field="atraso" />
+				<edit left="155" top="80" width="50" height="25" field="faltaJustificada" />
+				<edit left="155" top="105" width="50" height="25" field="falta" />
+				<edit left="155" top="130" width="50" height="25" field="usos" />
+				<edit left="155" top="155" width="50" height="25" field="desperdicio" />
+				<edit left="155" top="180" width="50" height="25" field="nivel" />
+			</rectangle>
+
+			<button align="bottom" height="25" text="Adicionar" margins="{left=0,top=5}">
+				<event name="onClick">
+					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+
+					for i=1, #jogadores, 1 do 
+						local jogador = jogadores[i];
+						self.boxDetalhesDoItem.node = jogador; 
+						self.boxDetalhesDoItem.visible = (jogador ~= nil);
+
+						jogador.presenca = (tonumber(jogador.presenca) or 0) + (tonumber(sheet.presenca) or 0)
+						jogador.atrasoJustificado = (tonumber(jogador.atrasoJustificado) or 0) + (tonumber(sheet.atrasoJustificado) or 0)
+						jogador.atraso = (tonumber(jogador.atraso) or 0) + (tonumber(sheet.atraso) or 0)
+						jogador.faltaJustificada = (tonumber(jogador.faltaJustificada) or 0) + (tonumber(sheet.faltaJustificada) or 0)
+						jogador.falta = (tonumber(jogador.falta) or 0) + (tonumber(sheet.falta) or 0)
+						jogador.usos = (tonumber(jogador.usos) or 0) + (tonumber(sheet.usos) or 0)
+						jogador.desperdicio = (tonumber(jogador.desperdicio) or 0) + (tonumber(sheet.desperdicio) or 0)
+						jogador.nivel = (tonumber(jogador.nivel) or 0) + (tonumber(sheet.nivel) or 0)
+					end
+
+					sheet.presenca = 0
+					sheet.atrasoJustificado = 0
+					sheet.atraso = 0
+					sheet.faltaJustificada = 0
+					sheet.falta = 0
+					sheet.usos = 0
+					sheet.desperdicio = 0
+					sheet.nivel = 0
+
+					self.phAllPopup:close();
+				</event>
+			</button>
+	</popup>
+
+	<popup name="popClima" width="240" height="210" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="9" margins="{bottom=4}" horzAlign="center">
+			<smallTitleCenter text="Temperatura"/>
+			<longComboBox field="temperatura" items="{'Glacial', 'Frio', 'Temperado', 'Morno', 'Quente', 'Infernal', 'Personalizado'}"/>
+
+			<flowLineBreak/>
+
+			<smallTitleCenter text="Média" hint="Valor base da média de temperatura."/>
+			<shortEdit field="temperatura_1"/>
+			<shortEdit field="temperatura_2"/>
+			<shortEdit field="temperatura_3"/>
+			<shortEdit field="temperatura_4"/>
+			<shortEdit field="temperatura_5"/>
+
+			<flowLineBreak/>
+
+			<smallTitleCenter text="Variancia" hint="Entre 1 e N é adicionado a média do dia aleatoriamente."/>
+			<shortNumEdit field="temperaturaVar_1" min="1"/>
+			<shortNumEdit field="temperaturaVar_2" min="1"/>
+			<shortNumEdit field="temperaturaVar_3" min="1"/>
+			<shortNumEdit field="temperaturaVar_4" min="1"/>
+			<shortNumEdit field="temperaturaVar_5" min="1"/>
+
+			<flowLineBreak/>
+
+			<smallTitleCenter text="Chance" hint="Chance de usar essa faixa de temperatura. De mais frio que o normal a mais quente que o normal."/>
+			<shortNumEdit field="temperaturaChance_1" min="0"/>
+			<shortNumEdit field="temperaturaChance_2" min="0"/>
+			<shortNumEdit field="temperaturaChance_3" min="0"/>
+			<shortNumEdit field="temperaturaChance_4" min="0"/>
+			<shortNumEdit field="temperaturaChance_5" min="0"/>
+
+			<flowLineBreak/>
+
+			<smallTitleCenter text="MinMax" hint="Variação de temperatura ao longo do dia em relação a média. Calculando independente da Variancia, usando a Chance. "/>
+			<shortNumEdit field="temperaturaMM_1" min="1"/>
+			<shortNumEdit field="temperaturaMM_2" min="1"/>
+			<shortNumEdit field="temperaturaMM_3" min="1"/>
+			<shortNumEdit field="temperaturaMM_4" min="1"/>
+			<shortNumEdit field="temperaturaMM_5" min="1"/>
+
+			<flowLineBreak/>
+
+			<smallTitleCenter text="Precipitação"/>
+			<longComboBox field="chuvas" items="{'Nenhuma', 'Pouca', 'Razoável', 'Muita', 'Constante', 'Personalizado'}"/>
+
+			<flowLineBreak/>
+
+			<smallTitleCenter text="Chance" hint="Chance de clima ensolarado, nublado, chuviscando, chuva, temporal, tempestade."/>
+			<shortNumEdit field="chuvaChance_1" min="0"/>
+			<shortNumEdit field="chuvaChance_2" min="0"/>
+			<shortNumEdit field="chuvaChance_3" min="0"/>
+			<shortNumEdit field="chuvaChance_4" min="0"/>
+			<shortNumEdit field="chuvaChance_5" min="0"/>
+			<shortNumEdit field="chuvaChance_6" min="0"/>
+
+			<flowLineBreak/>
+
+			<smallTitleCenter text="Areia" hint="Força minima do vento para tempestade de areia."/>
+			<longComboBox field="areia" items="{'Nenhuma', 'Pouca', 'Razoável', 'Muita', 'Constante', 'Personalizado'}"/>
+			<shortNumEdit field="areiaMin" min="1"/>
+
+			<flowLineBreak/>
+
+			<smallTitleCenter text="Ventos"/>
+			<longComboBox field="ventos" items="{'Nenhum', 'Pouco', 'Razoável', 'Muito', 'Constante', 'Personalizado'}"/>
+
+			<flowLineBreak/>
+
+			<smallTitleCenter text="Chance" hint="Chance de cada intensidade dos ventos."/>
+			<shortNumEdit field="ventosChance_1" min="0"/>
+			<shortNumEdit field="ventosChance_2" min="0"/>
+			<shortNumEdit field="ventosChance_3" min="0"/>
+			<shortNumEdit field="ventosChance_4" min="0"/>
+			<shortNumEdit field="ventosChance_5" min="0"/>
+			<shortNumEdit field="ventosChance_6" min="0"/>
+			<shortNumEdit field="ventosChance_7" min="0"/>
+			<shortNumEdit field="ventosChance_8" min="0"/>
+
+			<flowLineBreak/>
+		</flowLayout>
+	</popup>
+	<popup name="popCelestial" width="250" height="190" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<longTitleCenter text="Eventos Celestes"/>
+			<flowLineBreak/>
+
+			<smallTitleCenter text="Sobrenatural"/>
+			<longComboBox field="sobrentural" items="{'Nenhum', 'Raro', 'Incomum', 'Comum', 'Constante', 'Personalizado'}"/>
+			<shortEdit field="sobrentural_chance"/>
+			<dataLink field="sobrentural">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local type = sheet.sobrentural;
+					if type == "Raro" then
+						sheet.sobrentural_chance = 1;
+					elseif type == "Incomum" then
+						sheet.sobrentural_chance = 3;
+					elseif type == "Comum" then
+						sheet.sobrentural_chance = 7;
+					elseif type == "Constante" then
+						sheet.sobrentural_chance = 14;
+					elseif type == "Nenhum" then
+						sheet.sobrentural_chance = 0;
+					end;
+				</event>
+			</dataLink>
+
+			<smallTitleCenter text="Aurora"/>
+			<longComboBox field="auroras" items="{'Nenhum', 'Raro', 'Incomum', 'Comum', 'Constante', 'Personalizado'}"/>
+			<shortEdit field="auroras_chance"/>
+			<dataLink field="auroras">
+				<event name="onChange">
+					if sheet==nil then return end;
+					
+					local type = sheet.auroras;
+					if type == "Raro" then
+						sheet.auroras_chance = 1;
+					elseif type == "Incomum" then
+						sheet.auroras_chance = 3;
+					elseif type == "Comum" then
+						sheet.auroras_chance = 7;
+					elseif type == "Constante" then
+						sheet.auroras_chance = 14;
+					elseif type == "Nenhum" then
+						sheet.auroras_chance = 0;
+					end;
+				</event>
+			</dataLink>
+
+			<smallTitleCenter text="Cometas"/>
+			<longComboBox field="cometas" items="{'Nenhum', 'Raro', 'Incomum', 'Comum', 'Constante', 'Personalizado'}"/>
+			<shortEdit field="cometas_chance"/>
+			<dataLink field="cometas">
+				<event name="onChange">
+					if sheet==nil then return end;
+					
+					local type = sheet.cometas;
+					if type == "Raro" then
+						sheet.cometas_chance = 1;
+					elseif type == "Incomum" then
+						sheet.cometas_chance = 3;
+					elseif type == "Comum" then
+						sheet.cometas_chance = 7;
+					elseif type == "Constante" then
+						sheet.cometas_chance = 14;
+					elseif type == "Nenhum" then
+						sheet.cometas_chance = 0;
+					end;
+				</event>
+			</dataLink>
+
+			<smallTitleCenter text="Estrela Cadente"/>
+			<longComboBox field="cadentes" items="{'Nenhum', 'Raro', 'Incomum', 'Comum', 'Constante', 'Personalizado'}"/>
+			<shortEdit field="cadentes_chance"/>
+			<dataLink field="cadentes">
+				<event name="onChange">
+					if sheet==nil then return end;
+					
+					local type = sheet.cadentes;
+					if type == "Raro" then
+						sheet.cadentes_chance = 1;
+					elseif type == "Incomum" then
+						sheet.cadentes_chance = 3;
+					elseif type == "Comum" then
+						sheet.cadentes_chance = 7;
+					elseif type == "Constante" then
+						sheet.cadentes_chance = 14;
+					elseif type == "Nenhum" then
+						sheet.cadentes_chance = 0;
+					end;
+				</event>
+			</dataLink>
+
+			<smallTitleCenter text="Eclipse Lunar"/>
+			<longComboBox field="lunar" items="{'Nenhum', 'Raro', 'Incomum', 'Comum', 'Constante', 'Personalizado'}"/>
+			<shortEdit field="lunar_chance"/>
+			<dataLink field="lunar">
+				<event name="onChange">
+					if sheet==nil then return end;
+					
+					local type = sheet.lunar;
+					if type == "Raro" then
+						sheet.lunar_chance = 1;
+					elseif type == "Incomum" then
+						sheet.lunar_chance = 3;
+					elseif type == "Comum" then
+						sheet.lunar_chance = 7;
+					elseif type == "Constante" then
+						sheet.lunar_chance = 14;
+					elseif type == "Nenhum" then
+						sheet.lunar_chance = 0;
+					end;
+				</event>
+			</dataLink>
+
+			<smallTitleCenter text="Eclipse Solar"/>
+			<longComboBox field="solar" items="{'Nenhum', 'Raro', 'Incomum', 'Comum', 'Constante', 'Personalizado'}"/>
+			<shortEdit field="solar_chance"/>
+			<dataLink field="solar">
+				<event name="onChange">
+					if sheet==nil then return end;
+					
+					local type = sheet.solar;
+					if type == "Raro" then
+						sheet.solar_chance = 1;
+					elseif type == "Incomum" then
+						sheet.solar_chance = 3;
+					elseif type == "Comum" then
+						sheet.solar_chance = 7;
+					elseif type == "Constante" then
+						sheet.solar_chance = 14;
+					elseif type == "Nenhum" then
+						sheet.solar_chance = 0;
+					end;
+				</event>
+			</dataLink>
+
+			<smallTitleCenter text="Meteoros"/>
+			<longComboBox field="meteoros" items="{'Nenhum', 'Raro', 'Incomum', 'Comum', 'Constante', 'Personalizado'}"/>
+			<shortEdit field="meteoros_chance"/>
+			<dataLink field="meteoros">
+				<event name="onChange">
+					if sheet==nil then return end;
+					
+					local type = sheet.meteoros;
+					if type == "Raro" then
+						sheet.meteoros_chance = 1;
+					elseif type == "Incomum" then
+						sheet.meteoros_chance = 3;
+					elseif type == "Comum" then
+						sheet.meteoros_chance = 7;
+					elseif type == "Constante" then
+						sheet.meteoros_chance = 14;
+					elseif type == "Nenhum" then
+						sheet.meteoros_chance = 0;
+					end;
+				</event>
+			</dataLink>
+
+			<smallTitleCenter text="Terremotos"/>
+			<longComboBox field="terremotos" items="{'Nenhum', 'Raro', 'Incomum', 'Comum', 'Constante', 'Personalizado'}"/>
+			<shortEdit field="terremotos_chance"/>
+			<dataLink field="terremotos">
+				<event name="onChange">
+					if sheet==nil then return end;
+					
+					local type = sheet.terremotos;
+					if type == "Raro" then
+						sheet.terremotos_chance = 1;
+					elseif type == "Incomum" then
+						sheet.terremotos_chance = 3;
+					elseif type == "Comum" then
+						sheet.terremotos_chance = 7;
+					elseif type == "Constante" then
+						sheet.terremotos_chance = 14;
+					elseif type == "Nenhum" then
+						sheet.terremotos_chance = 0;
+					end;
+				</event>
+			</dataLink>
+		</flowLayout>
+	</popup>
+	<popup name="popMoon" width="250" height="190" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<longTitleCenter text="Fases da Lua"/>
+			<longTitleCenter text="Nome Alternativo"/>
+			<shortTitleCenter text="Dur."/>
+
+			<longTitleCenter text="Cheia"/>
+			<longEdit field="lua_cheia"/>
+			<shortEdit field="lua_cheia_duration"/>
+
+			<longTitleCenter text="Minguante Convexo"/>
+			<longEdit field="lua_minguante_convexo"/>
+			<shortEdit field="lua_minguante_convexo_duration"/>
+
+			<longTitleCenter text="Quarto Minguante"/>
+			<longEdit field="lua_quarto_minguante"/>
+			<shortEdit field="lua_quarto_minguante_duration"/>
+
+			<longTitleCenter text="Minguante Concavo"/>
+			<longEdit field="lua_minguante_concavo"/>
+			<shortEdit field="lua_minguante_concavo_duration"/>
+
+			<longTitleCenter text="Lua Nova"/>
+			<longEdit field="lua_lua_nova"/>
+			<shortEdit field="lua_lua_nova_duration"/>
+
+			<longTitleCenter text="Crescente Concavo"/>
+			<longEdit field="lua_crescente_concavo"/>
+			<shortEdit field="lua_crescente_concavo_duration"/>
+
+			<longTitleCenter text="Quarto Crescente"/>
+			<longEdit field="lua_quarto_crescente"/>
+			<shortEdit field="lua_quarto_crescente_duration"/>
+
+			<longTitleCenter text="Crescente Convexo"/>
+			<longEdit field="lua_crescente_convexo"/>
+			<shortEdit field="lua_crescente_convexo_duration"/>
+		</flowLayout>
+	</popup>
+</group>

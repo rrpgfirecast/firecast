@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Notes" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client" g-cnt-line-spacing="5">
+		<button align="client" name="GMbt" text="Exibir área do mestre." onClick="secret();" hint="Exibe as Anotações do Mestre."/>
+	
+		<layout align="client" name="notes" visible="false" >
+			<textEditor g="col" g-width="3" g-vert-tile="true" field="anotacoes1"/>
+			<textEditor g="col" g-width="3" g-vert-tile="true" field="anotacoes2"/>
+			<textEditor g="col" g-width="3" g-vert-tile="true" field="anotacoes3"/>
+			<textEditor g="col" g-width="3" g-vert-tile="true" field="anotacoes4"/>
+		</layout>
+		
+		<script>
+			local function secret()
+				local mesa = rrpg.getMesaDe(sheet)
+				
+				if mesa.meuJogador.isMestre then
+					self.notes.visible = true
+					self.GMbt.visible = false
+				else
+					self.notes.visible = false
+					self.GMbt.visible = true
+				end;
+			end;
+		</script>
+    </scrollBox>
+</form>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmRecordListFormExperience" width="150" height="25" margins="{top=1}">
+<form name="JogadoresDinheiro" align="top" height="25" margins="{top=1}">
 	<rectangle align="client" color="#212121">
-		<edit left="0" top="0" width="30" height="25" field="contador" type="number">
+		<edit g="col" g-width="2" height="25" field="contador" type="number">
 			<event name="onChange">
 				-- Atualiza a ordem lista a cada alteração
-				local rcl = self:findControlByName("rclExperience");
+				local rcl = self:findControlByName("rclDinheiro");
 				if rcl~=nil then
 					rcl:sort();
 				end;
 			</event>
 		</edit>
-		<edit left="30" top="0" width="95" height="25" field="valor" type="number"/>
+		<edit g="col" g-width="8" height="25" field="valor" type="float" decimalPlaces="2"/>
 
 		<!-- Botão que apaga o objeto da lista -->
-		<button left="125" top="0" width="25" height="25" text="X">
+		<button g="col" g-width="2" height="25" text="🗑️">
 			<event name="onClick">
-				dialogs.confirmOkCancel("Tem certeza que quer apagar essa Experiência?",
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse Tesouro?",
 					function (confirmado)
 						if confirmado then
 							ndb.deleteNode(sheet);
@@ -32,14 +32,14 @@
 					if box~=nil then
 						local node = box.node;
 					
-						local objetos = ndb.getChildNodes(node.listaDeExperiencia);
+						local objetos = ndb.getChildNodes(node.listaDeDinheiro);
 						local soma = 0;
 
 						for i=1, #objetos, 1 do 
 							soma = soma + (tonumber(objetos[i].valor) or 0);
 						end;
 
-						node.XP = soma;
+						node.PO = soma;
 					end;
 				end;
 		        ]]>
