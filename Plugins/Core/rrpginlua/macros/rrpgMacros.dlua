@@ -5,6 +5,9 @@ local Locale = require("locale.lua");
 local GUI = require("gui.lua");
 local Log = require("log.lua");
 local Async = require("async.lua");
+local System = require("system.lua");
+local Firecast = require("firecast.lua");
+local Objs = require("rrpgObjs.lua");
 
 local macros = {};
 local _MACRO_CALL_CO_FUNCTION_RET = "CallSomeFunctionInMainThread";
@@ -333,6 +336,51 @@ function yieldedFunctions.yGetRoomNDB(co, mesa, name, options)
 		opcoes);
 end;
 
+function yieldedFunctions.yAsyncWaitForMessage(co, medium, timeoutMS)
+	local promise, resolution = Async.Promise.toResolve();
+	local listenerId; 
+	local timeoutTimer;
+
+	local function releaseWaitObjects()
+		if (timeoutTimer ~= nil) then
+			timeoutTimer.enabled = false;
+			timeoutTimer = nil;
+		end;
+
+		if (listenerId ~= nil) then
+			Firecast.Messaging.unlisten(listenerId);
+			listenerId = nil;
+		end;
+	end;
+	
+	listenerId = Firecast.Messaging.listen("ChatMessageEx",
+		function(event)
+			local eventMedium = event.logRec.medium;
+
+			if (eventMedium.kind == medium.kind) and 
+			   (eventMedium.user1 == medium.user1) and
+			   (eventMedium.user2 == medium.user2) and
+			   (eventMedium.roomId == medium.roomId) and
+			   (eventMedium.groupId == medium.groupId) and
+			   (eventMedium.channelId == medium.channelId) and
+			   (event.logRec._visible) and
+			   (event.logRec._storable) then
+			
+				resolution:setSuccess(event.logRec);
+				releaseWaitObjects();							
+			end;
+		end);
+
+
+	timeoutTimer = Objs.newTimer(timeoutMS,
+		function()
+			resolution:setFailure("timeout");
+			releaseWaitObjects();
+		end);
+
+	handleCoResume(co, promise);
+end;
+
 local __delayedLoadMacroEnv = {
 	jogadores = function(chat)
 			local js = {};
@@ -410,6 +458,10 @@ local __delayedLoadMacroEnv = {
 		return cloneTable(chat);
 	end,
 	
+	elapsedMS = function(chat, env)
+		return System.getTickCount() - env.__startTickCount;
+	end,
+	
 	Firecast = function(chat, env)
 		return cloneTable(require("firecast.lua"));
 	end	
@@ -418,6 +470,8 @@ local __delayedLoadMacroEnv = {
 __delayedLoadMacroEnv.myPlayer = __delayedLoadMacroEnv.meuJogador;
 __delayedLoadMacroEnv.room = __delayedLoadMacroEnv.mesa;
 __delayedLoadMacroEnv.players = __delayedLoadMacroEnv.jogadores;
+
+__delayedLoadMacroEnvSkipCache = { elapsedMS = true };
 
 local function createMacroEnvTable(chat)
 	local env = {};
@@ -439,6 +493,10 @@ local function createMacroEnvTable(chat)
 			error(ret[2]);
 		end;
 	end;
+	
+	env.pawait = function(promise)
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAwait', promise);		
+	end;	
 	
 	function env.escrever(texto, quebrarLinha, permitirSmileys)
 		chat:escrever(texto, quebrarLinha, permitirSmileys);
@@ -951,10 +1009,26 @@ local function createMacroEnvTable(chat)
 		return env.await(trackPromise);	
 	end;	
 	
+	env.waitMessage = function(timeoutMS)
+		timeoutMS = math.max(tonumber(timeoutMS or 0) or 0, 0);
+		local promise = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAsyncWaitForMessage', chat.medium, timeoutMS);
+		local r, dataOrError = env.pawait(promise);
+
+		if r then
+			return r, dataOrError;
+		else
+			if dataOrError == "timeout" then
+				return false;
+			else
+				error(dataOrError);
+			end;
+		end;
+	end;		
+	
 	env.writeEx = function(text, talemarkOptions)
 		return chat:writeEx(text, talemarkOptions);	
 	end;
-		
+			
 	env.pairs = pairs;
 	env.ipairs = ipairs;
 	env.pcall = pcall;
@@ -1005,7 +1079,11 @@ local function createMacroEnvTable(chat)
 			
 			if delayedLoadFunction ~= nil then
 				local v = delayedLoadFunction(chat, env);
-				rawset(table, key, v);
+				
+				if not __delayedLoadMacroEnvSkipCache[key] then
+					rawset(table, key, v);
+				end;
+				
 				return v;
 			else
 				return nil;
@@ -1051,7 +1129,8 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 		local co = coroutine.create(macroLauncher);		
 		rawset(co, "__endCallback", endCallback);	
 		rawset(co, "__chat", chat);	
-		rawset(co, "__firstCoResume", true);		
+		rawset(co, "__firstCoResume", true);
+		rawset(ambiente, "__startTickCount", System.getTickCount());
 		handleCoResume(co);
 	end;
 	
