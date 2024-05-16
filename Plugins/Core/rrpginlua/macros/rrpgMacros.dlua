@@ -337,7 +337,7 @@ function yieldedFunctions.yGetRoomNDB(co, mesa, name, options)
 end;
 
 function yieldedFunctions.yAsyncWaitForMessage(co, medium, timeoutMS)
-	local promise, resolution = Async.Promise.toResolve();
+	local resolved = false;	
 	local listenerId; 
 	local timeoutTimer;
 
@@ -366,19 +366,25 @@ function yieldedFunctions.yAsyncWaitForMessage(co, medium, timeoutMS)
 			   (event.logRec._visible) and
 			   (event.logRec._storable) then
 			
-				resolution:setSuccess(event.logRec);
-				releaseWaitObjects();							
+				releaseWaitObjects();	
+
+				if not resolved then
+					resolved = true;
+					handleCoResume(co, true, event.logRec);					
+				end;										
 			end;
 		end);
 
 
 	timeoutTimer = Objs.newTimer(timeoutMS,
 		function()
-			resolution:setFailure("timeout");
 			releaseWaitObjects();
-		end);
 
-	handleCoResume(co, promise);
+			if not resolved then
+				resolved = true;
+				handleCoResume(co, false, "timeout");					
+			end;								
+		end);	
 end;
 
 local __delayedLoadMacroEnv = {
@@ -1011,8 +1017,7 @@ local function createMacroEnvTable(chat)
 	
 	env.waitMessage = function(timeoutMS)
 		timeoutMS = math.max(tonumber(timeoutMS or 0) or 0, 0);
-		local promise = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAsyncWaitForMessage', chat.medium, timeoutMS);
-		local r, dataOrError = env.pawait(promise);
+		local r, dataOrError = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAsyncWaitForMessage', chat.medium, timeoutMS);		
 
 		if r then
 			return r, dataOrError;
