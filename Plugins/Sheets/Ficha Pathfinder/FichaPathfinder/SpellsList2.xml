@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<recordList name="magicList2" field="campoDosSignos" templateForm="frmMagiasSigno" align="top" layout="horizontalTiles" hitTest="false" minQt="0" autoHeight="true">
+	<event name="onCompare"><![CDATA[
+	    ]]>
+	</event>
+</recordList>

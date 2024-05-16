@@ -26,11 +26,9 @@
 		]]> 
 		</script>
 		<layout align="top">
-			<layout align="left" width="150">
-				<button left="0" top="0" width="45" height="45" text="" onClick="self.rclAbas:append();" hint="Adiciona nova aba. ">
-					<image left="5" top="5" width="35" height="35" src="images/addIcon.png"/>
-				</button>
-			</layout>
+			<button align="left" width="50" height="50" text="" onClick="self.rclAbas:append();" hint="Adiciona nova aba. ">
+				<image left="5" top="5" width="40" height="40" src="images/addIcon.png"/>
+			</button>
 			<layout align="client">
 				<recordList name="rclAbas" field="abas" templateForm="frm_FM_Aba" align="top" height="46" selectable="true" layout="horizontal">
 					<event name="onCompare">

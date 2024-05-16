@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Equipments" align="client">
+    <scrollBox align="client" g-cnt-line-spacing="5">
+        <!-- Title region -->
+        <rectangle g="col" g-width="12" g-width-lg="7" g-min-height="700" color="black" strokeColor="white" strokeSize="1" g-vert-tile="true" padding="{left=5,right=5,top=5,bottom=5}">
+            <layout g="col" g-width="2" g-vert-tile="true" g-min-height="700">
+                <recordList g="col" g-width="12" g-min-height="700" name="rclEquipamentos" field="listaDeEquipamentos" templateForm="EquipmentsSelector" layout="vertical" selectable="true" minQt="12">
+                    <event name="onEndEnumeration"><![CDATA[
+                        if sheet~= nil then
+                            local objetos = NDB.getChildNodes(sheet.listaDeEquipamentos)
+                            local slots = {"Cabeça","Testa","Olhos","Pescoço","Ombros","Torso","Corpo","Armadura","Punhos","Cintura","Mãos","Dedo I","Dedo II","Pés"}
+                            local indexes = {1,2,3,4,5,6,7,8,9,10,11,12,13,14}
+                            local images = {"http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cabeca.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/testa.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/olhos.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pescoco.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/ombros.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/torso.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/corpo.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/corpo.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/punhos.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cintura.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/maos.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoI.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoII.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pes.png"}
+                            for i=1, #objetos, 1 do
+                                objetos[i].slot = slots[i]
+                                objetos[i].index = indexes[i]
+                                objetos[i].imgSlots = images[i]
+                            end
+
+                            if self.rclEquipamentos.selectedNode== nil and #objetos>0 then
+                                self.rclEquipamentos.selectedNode = objetos[1] 
+                            end
+                            self.rclEquipamentos:sort()
+                        end
+                        ]]>
+                    </event>
+                    <event name="onSelect"><![CDATA[
+                            local node = self.rclEquipamentos.selectedNode
+                            self.boxDetalheDoEquipamento.node = node 
+                            self.boxDetalheDoEquipamento.visible = (node ~= nil)
+                        ]]>
+                    </event>
+                    <event name="onCompare"><![CDATA[
+                        if (nodeA.index or 0) < (nodeB.index or 0) then
+                            return -1
+                        elseif (nodeA.index or 0) > (nodeB.index or 0) then
+                            return 1
+                        else   
+                            return 0
+                        end
+                        ]]>
+                    </event>
+                </recordList>
+            </layout>
+
+            <layout g="col" g-width="10" g-vert-tile="true" g-min-height="600">
+                <dataScopeBox g="col" g-width="12" g-vert-tile="true" g-min-height="600" name="boxDetalheDoEquipamento" visible="false">
+                    <rectangle g="col" g-width="8" g-min-height="600" color="black" strokeColor="white" strokeSize="1" g-vert-tile="true" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+                        <edit g="col" g-width="12" height="25" vertTextAlign="center" field="nome"/>
+                        <textEditor g="col" g-width="12" height="300" field="descricao"/>
+
+                        <label g="col" g-width="3" height="25" text="Peso" horzTextAlign="center"/>
+                        <rectangle g="col" g-width="3" height="25" color="black" strokeColor="grey" strokeSize="1" name="weightLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
+                            <label align="client" field="peso" horzTextAlign="center" formatFloat=",0.## Kg"/>
+                            <event name="onClick">
+                                self.weightLabel.visible = false
+                                self.weightEdit.visible = true
+                                self.weightEdit:setFocus()
+                            </event>
+                        </rectangle>
+                        <edit g="col" g-width="3" height="25" field="peso" type="float" vertTextAlign="center" name="weightEdit" visible="false">
+                            <event name="onUserChange">
+                                if self.boxDetalheDoEquipamento.node~= nil then
+                                    local node = NDB.getRoot(self.boxDetalheDoEquipamento.node)
+                                    local pesoEquipamento = 0
+                                    local nodes = NDB.getChildNodes(node.listaDeEquipamentos) 
+                                    for i=1, #nodes, 1 do
+                                        pesoEquipamento = pesoEquipamento + (tonumber(nodes[i].peso) or 0)
+                                    end
+                                    node.pesoEquipamento = pesoEquipamento
+                                end
+                            </event>
+                            <event name="onExit">
+                                self.weightLabel.visible = true
+                                self.weightEdit.visible = false
+                            </event>
+                        </edit>
+
+                        <label g="col" g-width="3" height="25" text="Preço" horzTextAlign="center"/>
+                        <rectangle g="col" g-width="3" height="25" color="black" strokeColor="grey" strokeSize="1" name="priceLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
+                            <label align="client" field="preco" horzTextAlign="center" formatFloat=",0.## PO"/>
+                            <event name="onClick">
+                                self.priceLabel.visible = false
+                                self.priceEdit.visible = true
+                                self.priceEdit:setFocus()
+                            </event>
+                        </rectangle>
+                        <edit g="col" g-width="3" height="25" field="preco" type="float" vertTextAlign="center" name="priceEdit" visible="false">
+                            <event name="onUserChange">
+                                if self.boxDetalheDoEquipamento.node~= nil then
+                                    local node = NDB.getRoot(self.boxDetalheDoEquipamento.node)
+                                    local precoEquipamento = 0
+                                    local nodes = NDB.getChildNodes(node.listaDeEquipamentos) 
+                                    for i=1, #nodes, 1 do
+                                        precoEquipamento = precoEquipamento + (tonumber(nodes[i].preco) or 0)
+                                    end
+                                    node.precoEquipamento = precoEquipamento
+                                end
+                            </event>
+                            <event name="onExit">
+                                self.priceLabel.visible = true
+                                self.priceEdit.visible = false
+                            </event>
+                        </edit>
+
+                        <layout g="col" g-width="12" g-min-height="100" g-auto-height="true" name="armadura">
+                            <label g="col" g-width="3" height="25" text="CA" horzTextAlign="center"/>
+                            <edit g="col" g-width="1" height="25" vertTextAlign="center" field="caBase"/>
+                            <rectangle g="col" g-width="1" height="25" color="black"  strokeColor="white" strokeSize="1">
+                                <label align="client" field="caTotal" horzTextAlign="center"/>
+                            </rectangle>
+
+                            <label g="col" g-width="3" height="25" g-offset="1" text="Melhoria" horzTextAlign="center"/>
+                            <edit g="col" g-width="1" height="25" vertTextAlign="center" field="melhoria"/>
+
+                            <dataLink fields="{'melhoria','caBase'}">
+                                <event name="onUserChange">
+                                    if self.boxDetalheDoEquipamento.node==nil then return end
+                                    if self.boxDetalheDoEquipamento.node.melhoria==nil then return end
+                                    local melhoria = tonumber(self.boxDetalheDoEquipamento.node.melhoria) or 0
+                                    local caBase = tonumber(self.boxDetalheDoEquipamento.node.caBase) or 0
+                                    self.boxDetalheDoEquipamento.node.caTotal = melhoria + caBase
+                                </event>
+                            </dataLink>
+
+                            <label g="col" g-width="3" height="25" text="DES. Máxima" horzTextAlign="center"/>
+                            <edit g="col" g-width="1" height="25" vertTextAlign="center" field="desMax"/>
+
+                            <label g="col" g-width="3" height="25" g-offset="2" text="Categoria" horzTextAlign="center"/>
+                            <comboBox g="col" g-width="2" height="25" field="categoria" items="{'Leve', 'Média', 'Pesada', 'Massiva'}" fontColor="white"/>
+
+
+                            <label g="col" g-width="3" height="25" text="Penalidade" horzTextAlign="center"/>
+                            <edit g="col" g-width="1" height="25" vertTextAlign="center" field="pen">
+                                <event name="onUserChange">
+                                    if self.boxDetalheDoEquipamento.node==nil then return end
+                                    if self.boxDetalheDoEquipamento.node.index ~= 6 then return end
+
+                                    if self.boxDetalheDoEquipamento.node.pen==nil then 
+                                        self.boxDetalheDoEquipamento.node.pen=0 
+                                    end
+
+                                    sheet.equipamentoCorpoPen = self.boxDetalheDoEquipamento.node.pen
+                                </event>
+                            </edit>
+
+                            <label g="col" g-width="3" height="25" g-offset="2" text="Falha Arcana" horzTextAlign="center"/>
+                            <edit g="col" g-width="1" height="25" vertTextAlign="center" field="falhaArcana"/>
+
+
+                            <label g="col" g-width="3" height="25" text="Deslocamento" horzTextAlign="center"/>
+                            <edit g="col" g-width="1" height="25" vertTextAlign="center" field="deslocamento"/>
+
+                            <label g="col" g-width="3" height="25" g-offset="2" text="Corrida" horzTextAlign="center"/>
+                            <edit g="col" g-width="1" height="25" vertTextAlign="center" field="corrida"/>
+                        </layout>
+
+                        <layout g="col" g-width="12" g-min-height="25">
+                            <layout g="col" g-width="6" g-offset="3" height="15">
+                                <imageCheckBox align="client">
+                                    <progressBar colorMode="hl" align="client" hitTest="true" mouseGlow="true" color="Red" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
+                                        <event name="onMouseEnter">
+                                            self.CorBarrinha.color = "Green"
+                                            self.ValoresBarrinha.visible = true
+                                            self.boxDetalheDoEquipamento.node.InfoBarrinha = (self.boxDetalheDoEquipamento.node.BarrinhaValor or 0) .. "/"  .. (self.boxDetalheDoEquipamento.node.BarrinhaValorMax or 0)                   
+                                        </event>
+                                        <event name="onMouseLeave">
+                                            self.ValoresBarrinha.visible = false
+                                        </event>
+                                        <event name="onDblClick">
+                                            self.boxDetalheDoEquipamento.node.BarrinhaID = self.boxDetalheDoEquipamento.node.index
+                                            self.boxDetalheDoEquipamento.node.AtributoBarrinha = self.boxDetalheDoEquipamento.node.nome
+                                            
+                                            self.boxDetalheDoEquipamento.node.ModificadorBarrinha = "igual"
+                                            self.boxDetalheDoEquipamento.node.ModificadorBarrinhaMax = "igual"
+                                            self.boxDetalheDoEquipamento.node.ValorTempAtualBarrinha = self.boxDetalheDoEquipamento.node.BarrinhaValor
+                                            self.boxDetalheDoEquipamento.node.ValorTempMaxBarrinha = self.boxDetalheDoEquipamento.node.BarrinhaValorMax
+                                            self.boxDetalheDoEquipamento.node.ValorMudadoAtualBarrinha = self.boxDetalheDoEquipamento.node.BarrinhaValor
+                                            self.boxDetalheDoEquipamento.node.ValorMudadoMaxBarrinha = self.boxDetalheDoEquipamento.node.BarrinhaValorMax
+                                            self.PopupBarColor.color = "Green"
+                                            self.BarPopup.scopeNode = self.boxDetalheDoEquipamento.node
+                                            self.BarPopup:show("top", self.Barrinha)
+                                            self.BarPopup.top = (self.BarPopup.top + 29 + 10)
+                                        </event>
+                                    </progressBar>
+                                </imageCheckBox>
+                            </layout>
+                            <layout g="col" g-width="3" height="14" visible="false" name="ValoresBarrinha">
+                                <rectangle align="client" xradius="2" yradius="2" name="CorBarrinha" color="Green">
+                                    <label align="client" fontColor="white" fontSize="12" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha" field="InfoBarrinha" horzTextAlign="center" text="0/0">
+                                        <event name="onResize">
+                                            self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4)
+                                        </event>
+                                    </label>
+                                </rectangle>
+                            </layout>
+                            <dataLink field="CorBarrinha" defaultValue="Green">
+                                <event name="onUserChange">
+                                    self.Barrinha.color = "Green"
+                                </event>
+                            </dataLink>
+                            <dataLink field="BarrinhaValor">
+                                <event name="onChange">
+                                    if sheet.BarrinhaValor==nil then return end
+                                    if sheet.BarrinhaValor==0 then 
+                                        self.Barrinha.color = "Yellow"
+                                    else
+                                        self.Barrinha.color = "Green"
+                                    end
+                                </event>
+                            </dataLink>
+                        </layout>
+
+                        <dataLink field="index">
+                            <event name="onChange">
+                                if self.boxDetalheDoEquipamento.node==nil then return end
+                                if self.boxDetalheDoEquipamento.node.index == 8 then
+                                    self.armadura.visible = true
+                                else
+                                    self.armadura.visible = false
+                                end
+                            </event>
+                        </dataLink>
+                    </rectangle>
+                    <layout g="col" g-width="4" g-vert-tile="true" g-min-height="600">
+                        <image align="client" src="images/slots.png" field="imgSlots" style="proportional" optimize="true"/>
+                    </layout>
+                </dataScopeBox>
+            </layout>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="5" g-min-height="300" color="black" strokeColor="white" strokeSize="1" g-vert-tile="true" padding="{left=5,right=5,top=5,bottom=5}">
+
+            <button g="col" g-width="4" height="25" text="+" onClick="self.rclBuffs:append()" hint="Novo efeito"/>
+            <button g="col" g-width="4" height="25" text="Organizar" onClick="self.rclBuffs:reorganize()" hint="Organizar"/>
+            <button g="col" g-width="4" height="25" text="Exibir" hint="Exibir na mesa">
+                <event name="onClick">
+                    local nodes = NDB.getChildNodes(sheet.listaDeBuffs)
+                    local chat = Firecast.getMesaDe(sheet).activeChat
+                    for i=1, #nodes, 1 do
+                        local cd = 11 + (tonumber(nodes[i].nc) or 0)
+                        if (nodes[i].ativo) then
+                            local txt = "* " .. (nodes[i].magia or "efeito") .. " (" .. (nodes[i].duracao or "duração") .. ", CD" .. cd .. "): sobre " .. (nodes[i].alvos or "alvos")
+                            chat:enviarMensagem(txt) 
+                        end
+                    end
+                </event>
+            </button>
+
+            <layout g="col" g-width="12" height="25">
+                <label g="col" g-width="4" g-offset="1" height="25" text="Magia" horzTextAlign="center"/>
+                <label g="col" g-width="2" height="25" text="Duração" horzTextAlign="center"/>
+                <label g="col" g-width="1" height="25" text="NV" fontSize="10" horzTextAlign="center"/>
+                <label g="col" g-width="1" height="25" text="NC" fontSize="10" horzTextAlign="center"/>
+                <label g="col" g-width="2" height="25" text="Alvos" horzTextAlign="center"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList g="col" g-width="12" g-min-height="250" g-vert-tile="true" name="rclBuffs" field="listaDeBuffs" templateForm="EquipmentsBuffs">
+                    <event name="onCompare"><![CDATA[
+                        local ativoA = 0
+                        if left.ativo then ativoA = 1 end
+                        local ativoB = 0
+                        if right.ativo then ativoB = 1 end
+
+                        local nivelA = tonumber(left.nv) or 0
+                        local nivelB = tonumber(right.nv) or 0
+
+                        if ativoA ~= ativoB then
+                            return ativoB - ativoA
+                        else
+                            return nivelB - nivelA
+                        end
+                        ]]>
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+    </scrollBox>
+</form>

@@ -10,8 +10,8 @@ if parametro~="" and parametro~=nil and #arg==0 then
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-    index = index + 1;
-    arg[index] = i;
+  	index = index + 1;
+  	arg[index] = i;
   end
 end
 local indice = tonumber(arg[1])
@@ -91,8 +91,8 @@ if parametro~="" and parametro~=nil and #arg==0 then
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-    index = index + 1;
-    arg[index] = i;
+  	index = index + 1;
+  	arg[index] = i;
   end
 end
 local indice = tonumber(arg[1])
@@ -145,8 +145,8 @@ if parametro~="" and parametro~=nil and #arg==0 then
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-    index = index + 1;
-    arg[index] = i;
+  	index = index + 1;
+  	arg[index] = i;
   end
 end
 local indice = tonumber(arg[1])
@@ -195,8 +195,8 @@ if parametro~="" and parametro~=nil and #arg==0 then
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-    index = index + 1;
-    arg[index] = i;
+  	index = index + 1;
+  	arg[index] = i;
   end
 end
 local indice = tonumber(arg[1])
@@ -236,8 +236,8 @@ if parametro~="" and parametro~=nil and #arg==0 then
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-    index = index + 1;
-    arg[index] = i;
+  	index = index + 1;
+  	arg[index] = i;
   end
 end
 

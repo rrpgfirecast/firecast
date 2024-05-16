@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Attacks" align="client">
+    <tabControl align="client" g-cnt-gutter="5">
+        <tab title="Simples">
+            <import file="AttacksSimple.xml"/>
+        </tab>
+        <tab title="Avançados">
+            <import file="AttacksAdvanced.xml"/>
+        </tab>
+    </tabControl>
+</form>

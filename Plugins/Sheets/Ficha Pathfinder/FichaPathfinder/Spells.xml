@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="Spells" align="client">
+	<script>
+		local function showHiddenLayouts()
+			if self.boxDetalhesDaMagia.node== nil then return end;
+
+			-- Tira todas visibilidades.
+			self.details3.visible = false;
+			self.details2.visible = false;
+			self.details4.visible = false;
+			self.details7.visible = false;
+			self.details8.visible = false;
+
+			self.magicList3.visible = false;
+			self.magicList2.visible = false;
+			self.magicList4.visible = false;
+			self.magicList7.visible = false;
+			self.magicList8.visible = false;
+
+			-- Recoloca as visibilidades.
+			local tipo = self.boxDetalhesDaMagia.node.tipoMagia or "";
+			if self["details" .. tipo] then 
+				self["details" .. tipo].visible = true 
+				self["details" .. tipo].left = 5;
+				self["details" .. tipo].top = 5;
+			end;
+
+			if self["magicList" .. tipo] then 
+				self["magicList" .. tipo].visible = true;
+				self["magicList" .. tipo].width = self.magics.width - 350;
+				local height = self.magics.height - 50;
+				if self["magicList" .. tipo].height&lt;height then self["magicList" .. tipo].height = height end;
+
+				if tipo == "7" then
+					self.magicList7.width = self.magics.width - 350;
+					self.magicList7.height = self["magicList" .. tipo].height;
+				end;
+				if tipo == "2" then
+					self.magicList2.width = self.magics.width - 350;
+					self.magicList2.height = self["magicList" .. tipo].height;
+				end;
+				if tipo == "1" then
+					self.rclMagiasOld.width = self.magics.width - 350;
+					self.rclMagiasOld.height = self["magicList" .. tipo].height;
+				end;
+			end;
+
+			self.detailsPart.left = 0;
+		end;
+
+		local function updateMagicCD(num) 
+			local node = self.boxDetalhesDaMagia.node;
+			local nodes = NDB.getChildNodes(node["campoDasMagias" .. num]); 
+
+			for i=1, #nodes, 1 do
+				nodes[i].updateCD = (tonumber(nodes[i].updateCD) or 0) + 1;
+				if nodes[i].updateCD > 999999 then nodes[i].updateCD = -1 end;
+			end
+		end;
+
+		local function removeZeroes(num)
+			if num%1 == 0 then
+				return math.floor(num);
+			end;
+			return num;
+		end;
+
+		local function clTest()
+			local rolagem = Firecast.interpretarRolagem("1d20 +" .. (self.boxDetalhesDaMagia.node.NC or "0"));
+			local mesa = Firecast.getMesaDe(sheet);
+			mesa.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "Nome"));
+		end
+	</script>
+
+	<scrollBox align="client" name="magics">
+		<layout align="top" height="50">
+			<button text="+" width="30" align="left" hint="Nova Magia">
+				<event name="onClick">
+					self.rclListaDasClassesMagicas:append();
+				</event>
+			</button>
+			<recordList name="rclListaDasClassesMagicas" field="campoDosItens" templateForm="frmMagiasSeletor" align="client" selectable="true" layout="horizontal">
+				<event name="onSelect">
+					local node = self.rclListaDasClassesMagicas.selectedNode;
+					self.boxDetalhesDaMagia.node = node;
+					self.boxDetalhesDaMagia.visible = (node ~= nil);
+					showHiddenLayouts();
+				</event>
+				<event name="onEndEnumeration">
+					if self.rclListaDasClassesMagicas.selectedNode == nil and sheet ~= nil then
+						local nodes = NDB.getChildNodes(sheet.campoDosItens);               
+						if #nodes > 0 then
+							self.rclListaDasClassesMagicas.selectedNode = nodes[1];
+						end;
+						showHiddenLayouts();
+					end;
+				</event>
+			</recordList>
+		</layout>
+
+		<dataLink fields="{'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar'}">
+			<event name="onUserChange">
+				local node = self.boxDetalhesDaMagia.node;
+				if node == nil then return end;
+				node.updatedATR = not node.updatedATR;
+			</event>
+		</dataLink>
+
+		<dataScopeBox name="boxDetalhesDaMagia" visible="false" align="client">
+			<scrollBox align="client">
+				<rectangle g="col" g-width="12" g-width-lg="3" g-vert-tile="true" g-auto-height="true" strokeSize="1" name="listPart" padding="{left=5,right=5,top=5,bottom=5}">
+					<Title text="Classe" field="classeMagia" g="col" widthL="3" widthR="6"/>
+					<TitleButton text="NC" field="NC" g="col" widthL="1" widthR="2" onClick="clTest()"/>
+
+					<TitleComboBox text="Tipo" field="tipoMagia" g="col" widthL="3" widthR="6" items="{'Lista Magias', 'Signos', 'Essencias', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '4', '7', '8'}" value="3" onChange="showHiddenLayouts()"/>
+					<Title text="CD +" field="cd" g="col" widthL="1" widthR="2"/>
+
+					<dataLink fields="{'NC'}">
+						<event name="onUserChange">
+							if self.boxDetalhesDaMagia.node== nil then return end;
+							local node = self.boxDetalhesDaMagia.node;
+
+							local nc = tonumber(node.nc) or 0;
+
+							local longo = 120 + 12 * nc;
+							local medio = 30 + 3 * nc;
+							local curto = 7.5 + 1.5 * (math.floor(nc/2));
+
+							node.alcanceContinental = removeZeroes(longo) .. "Km";
+							node.alcanceRegional = removeZeroes(longo/10) .. "Km";
+							node.alcanceQuilometrico = removeZeroes(longo/100) .. "Km";
+							node.alcanceLongo = removeZeroes(longo) .. "m (" .. removeZeroes(longo/1.5) .. "q)";
+							node.alcanceMedio = removeZeroes(medio) .. "m (" .. removeZeroes(medio/1.5) .. "q)";
+							node.alcanceCurto = removeZeroes(curto) .. "m (" .. removeZeroes(curto/1.5) .. "q)";
+
+						</event>
+					</dataLink>
+					<dataLink fields="{'cd'}">
+						<event name="onUserChange">
+							if self.boxDetalhesDaMagia.node== nil then return end;
+							local node = self.boxDetalhesDaMagia.node;
+
+							updateMagicCD(0);
+							updateMagicCD(1);
+							updateMagicCD(2);
+							updateMagicCD(3);
+							updateMagicCD(4);
+							updateMagicCD(5);
+							updateMagicCD(6);
+							updateMagicCD(7);
+							updateMagicCD(8);
+							updateMagicCD(9);
+
+							local nodes = NDB.getChildNodes(node.campoDasMagiasEpicas); 
+							for i=1, #nodes, 1 do
+								nodes[i].cdExtra = node.cd;
+							end
+						</event>
+					</dataLink>
+					<dataLink fields="{'conhecidas0', 'conhecidas1', 'conhecidas2', 'conhecidas3', 'conhecidas4', 'conhecidas5', 'conhecidas6', 'conhecidas7', 'conhecidas8', 'conhecidas9'}">
+						<event name="onUserChange">
+							if self.boxDetalhesDaMagia.node== nil then return end;
+							local node = self.boxDetalhesDaMagia.node;
+
+							node.grimorio = (tonumber(node.conhecidas0) or 0) + 
+											(tonumber(node.conhecidas1) or 0) + 
+											(tonumber(node.conhecidas2) or 0)*2 + 
+											(tonumber(node.conhecidas3) or 0)*3 + 
+											(tonumber(node.conhecidas4) or 0)*4 + 
+											(tonumber(node.conhecidas5) or 0)*5 + 
+											(tonumber(node.conhecidas6) or 0)*6 + 
+											(tonumber(node.conhecidas7) or 0)*7 + 
+											(tonumber(node.conhecidas8) or 0)*8 + 
+											(tonumber(node.conhecidas9) or 0)*9;
+						</event>
+					</dataLink>
+
+					<layout g="col" g-width="12" g-auto-height="true" g-min-height="150" name="detailsLayout">
+						<import file="SpellsDetails3.xml"/>
+						<import file="SpellsDetails2.xml"/>
+						<import file="SpellsDetails4.xml"/>
+						<import file="SpellsDetails7.xml"/>
+						<import file="SpellsDetails8.xml"/>
+					</layout>
+
+					<textEditor g="col" g-width="12" g-vert-tile="true" g-auto-height="true" g-min-height="150" field="notes"/>
+				</rectangle>
+				<rectangle g="col" g-width="12" g-width-lg="9" g-vert-tile="true" g-auto-height="true" g-min-height="500" strokeSize="1" name="scrollPart">
+					<scrollBox align="client" name="detailsPart" padding="{left=5,right=5,top=5,bottom=5}">
+						<import file="SpellsList3.xml"/>
+						<import file="SpellsList2.xml"/>
+						<import file="SpellsList4.xml"/>
+						<import file="SpellsList7.xml"/>
+						<import file="SpellsList8.xml"/>
+					</scrollBox>
+				</rectangle>
+			</scrollBox>
+		</dataScopeBox>
+	</scrollBox>
+</form>

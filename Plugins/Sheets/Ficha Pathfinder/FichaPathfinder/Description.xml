@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Description" align="client" margins="{top=1}">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="12" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<label g="col" g-width="3" height="25" text="TAMANHO" horzTextAlign="center"/>
+				<comboBox g="col" g-width="5" height="25" field="tamanho" fontColor="white" items="{'Minúsculo', 'Diminuto', 'Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'-4','-3','-2','-1','0','1','2','3','4'}" horzTextAlign="center"/>
+				<checkBox g="col" g-width="4" height="25" field="quadrupede" text="Quadrúpede" />
+
+				<dataLink fields="{'tamanho', 'quadrupede', 'efetFor', 'cargaForca'}">
+					<event name="onChange">
+						<![CDATA[
+						if sheet~=nil then
+							local str = (tonumber(sheet.efetFor) or 1) + (tonumber(sheet.cargaForca) or 0)
+							local size = tonumber(sheet.tamanho) or 0
+							local quad = sheet.quadrupede
+
+							local mult = 1
+							local mod1 = 0
+							local mod2 = 0
+
+							if size == -4 then
+								if quad then
+									mult = 1 / 4
+								else
+									mult = 1 / 8
+								end
+								mod1 = 8
+								mod2 = 16
+							elseif size == -3 then
+								if quad then
+									mult = 1 / 2
+								else
+									mult = 1 / 4
+								end
+								mod1 = 4
+								mod2 = 12
+							elseif size == -2 then
+								if quad then
+									mult = 3 / 4
+								else
+									mult = 1 / 2
+								end
+								mod1 = 2
+								mod2 = 8
+							elseif size == -1 then
+								if quad then
+									mult = 1
+								else
+									mult = 3 / 4
+								end
+								mod1 = 1
+								mod2 = 4
+							elseif size == 0 then
+								if quad then
+									mult = 1.5
+								else
+									mult = 1
+								end
+							elseif size == 1 then
+								if quad then
+									mult = 3
+								else
+									mult = 2
+								end
+								mod1 = -1
+								mod2 = -4
+							elseif size == 2 then
+								if quad then
+									mult = 6
+								else
+									mult = 4
+								end
+								mod1 = -2
+								mod2 = -8
+							elseif size == 3 then
+								if quad then
+									mult = 12
+								else
+									mult = 8
+								end
+								mod1 = -4
+								mod2 = -12
+							elseif size == 4 then
+								if quad then
+									mult = 24
+								else
+									mult = 16
+								end
+								mod1 = -8
+								mod2 = -16
+							end
+
+							while str > 29 do
+								mult = mult * 4
+								str = str - 10
+							end
+
+							if str < 1 then
+								str = 1
+							end
+
+							local load = NDB.load("loads.xml")
+
+							local light = (load.light[str] * mult)
+							local medium = (load.medium[str] * mult)
+							local heavy = (load.heavy[str] * mult)
+
+							sheet.cargaLeve = light
+							sheet.cargaMedia = medium
+							sheet.cargaPesada = heavy
+
+							sheet.agarrarTam = 0 - mod2
+							sheet.tamanhoCa = mod1
+						end
+						]]>
+					</event>	
+				</dataLink>
+
+				<Title text="ALTURA" field="altura"/>
+				<Title text="PESO" field="peso"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="IDADE" field="idade"/>
+				<Title text="SEXO" field="sexo"/>
+				<Title text="OUTROS" field="aparenciaOutros"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="OLHOS" field="aparenciaOlhos"/>
+				<Title text="PELE" field="pele"/>
+				<Title text="CABELO" field="cabelo"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="PLANO" field="plano"/>
+				<Title text="REGIÃO" field="regiao"/>
+				<Title text="REINO" field="reino"/>
+			</layout>
+		</rectangle>
+
+		<layout g="col" g-width="12" g-width-lg="3" g-vert-tile="true" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" height="25" text="APARÊNCIA"/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="aparencia"/>
+			</rectangle>
+			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" height="25" text="PERSONALIDADE"/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="personalidade"/>
+			</rectangle>
+		</layout>
+
+		<rectangle g="col" g-width="12" g-width-lg="9" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<label g="col" g-width="12" height="25" text="HISTORIA"/>
+			<richEdit g="col" g-width="12" g-vert-tile="true" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</rectangle>
+	</scrollBox>
+</form>

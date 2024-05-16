@@ -5,10 +5,8 @@
 			local function recursiveFindControls(control, controlsList)
 				local children = control:getChildren()
 				for i=1, #children, 1 do
-					if children[i].name ~= "frmCombatTracker" then
-						controlsList[#controlsList+1] = children[i]
-						recursiveFindControls(children[i], controlsList)
-					end
+					controlsList[#controlsList+1] = children[i]
+					recursiveFindControls(children[i], controlsList)
 				end
 			end
 
@@ -46,6 +44,16 @@
         	<rectangle g="col" g-width="12" g-min-height="125" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
         		<label g="col" g-width="12" height="25" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
 				<label g="col" g-width="12" height="25" text="Arte: Nefer (Nefertyne)" horzTextAlign="center"/>
+
+				<layout g="col" g-width="12" height="25"/>
+
+				<label g="col" g-width="12" height="25" text="Consultores:" horzTextAlign="center"/>
+				<label g="col" g-width="12" height="25" text="AldTheFox" horzTextAlign="center"/>
+				<label g="col" g-width="12" height="25" text="Dønø_da_Wyrm" horzTextAlign="center"/>
+				<label g="col" g-width="12" height="25" text="Hitoshura" horzTextAlign="center"/>
+
+				<layout g="col" g-width="12" height="25"/>
+
 				<label g="col" g-width="12" height="25" text="Ficha feita para a mesa: " horzTextAlign="center"/>
 				<label g="col" g-width="12" height="25" text="RPGmeister" horzTextAlign="center"/>
         	</rectangle>
@@ -170,18 +178,15 @@
 				<label g="col" g-width="12" height="25" text="VERSÃO ATUAL:" field="versionDownloaded"/>
 				<checkBox g="col" g-width="12" height="25" field="noUpdate" text="Não pedir para atualizar."/>
 
-				<button g="col" g-width="4" height="25" textTrimming="none" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/README.md')" />
-				<button g="col" g-width="4" height="25" textTrimming="none" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true')"/>
-				<button g="col" g-width="4" height="25" textTrimming="none" text="Tutorial" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/__Tutorial/Ficha%20RPG%20meister%20-%20Tutorial.docx?raw=true')" />
+				<button g="col" g-width="4" height="25" textTrimming="none" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/README.md')" />
+				<button g="col" g-width="4" height="25" textTrimming="none" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true')"/>
+				<button g="col" g-width="4" height="25" textTrimming="none" text="Tutorial" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/__Tutorial/Ficha%20Pathfinder%20-%20Tutorial.docx?raw=true')" />
 
 				<label g="col" g-width="6" height="25" textTrimming="none" text="CONHEÇA A MESA:" fontSize="11" horzTextAlign="center"/>
 				<button g="col" g-width="6" height="25" textTrimming="none" text="RPGmeister" onClick="GUI.openInBrowser('https://vtt.firecast.app/artifacts/rooms/64070')" />
 
 				<button g="col" g-width="6" height="25" textTrimming="none" text="Exportar Ficha" >
 					<event name="onClick">
-						local mesa = rrpg.getMesaDe(sheet)
-						if not mesa.meuJogador.isMestre then return end
-
 						local xml = NDB.exportXML(sheet)
 
 						local export = {}

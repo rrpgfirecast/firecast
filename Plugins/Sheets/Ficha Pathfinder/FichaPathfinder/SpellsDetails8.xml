@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rectangle g="col" g-width="12" g-auto-height="true" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details8" visible="false">
+	<TitleComboBox text="CD" field="atributoCD" g="col" widthL="2" widthR="2" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+	<TitleComboBox text="Bônus" field="atributoBonus" g="col" widthL="2" widthR="2" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+	<TitleLabel text="Grimorio" field="grimorio" g="col" widthL="2" widthR="2"/>
+
+	<label g="col" g-width="2" text="NÍVEL" horzTextAlign="center" height="25" g-offset="1"/>
+	<label g="col" g-width="2" text="TOTAL" horzTextAlign="center" height="25"/>
+	<label g="col" g-width="2" text="BASE" horzTextAlign="center" height="25"/>
+	<label g="col" g-width="2" text="BÔNUS" horzTextAlign="center" height="25"/>
+	<label g="col" g-width="2" text="CONHECIDAS" fontSize="8" horzTextAlign="center" height="25" g-break-line-after="true"/>
+
+	<magicGridLevel nivel="10"/>
+	<magicGridLevel nivel="11"/>
+	<magicGridLevel nivel="12"/>
+	<magicGridLevel nivel="13"/>
+	<magicGridLevel nivel="14"/>
+	<magicGridLevel nivel="15"/>
+	<magicGridLevel nivel="16"/>
+	<magicGridLevel nivel="17"/>
+	<magicGridLevel nivel="18"/>
+	<magicGridLevel nivel="19"/>
+
+	<button g="col" g-width="6" height="25" text="Exportar Magias" margins="{top=5}">
+		<event name="onClick">
+			local xml = NDB.exportXML(self.boxDetalhesDaMagia.node);
+
+			local export = {};
+			Utils.binaryEncode(export, "utf8", xml);
+
+			local stream = Utils.newMemoryStream();
+			stream:write(export);
+
+			Dialogs.saveFile("Salvar Magias como XML", stream, "magias.xml", "application/xml",
+				function()
+					stream:close();
+					showMessage("Magias Exportadas.");
+				end);
+		</event>
+	</button>
+	<button g="col" g-width="6" height="25" text="Importar Magias" margins="{top=5}">
+		<event name="onClick">
+			Dialogs.openFile("Importar Magias", "application/xml", false, 
+				function(arquivos)
+					local arq = arquivos[1];
+
+					local import = {};
+					arq.stream:read(import, arq.stream.size);
+
+					local xml = Utils.binaryDecode(import, "utf8");
+
+					NDB.importXML(self.boxDetalhesDaMagia.node, xml);
+
+					arq.stream:close()
+				end);
+		</event>
+	</button>
+
+	<label g="col" g-width="12" text="Alcances" horzTextAlign="center" height="25"/>
+
+	<TitleLabel text="Curto" field="alcanceCurto" g="col" widthL="1" widthR="3" fontSize="11"/>
+	<TitleLabel text="Médio" field="alcanceMedio" g="col" widthL="1" widthR="3" fontSize="9"/>
+	<TitleLabel text="Longo" field="alcanceLongo" g="col" widthL="1" widthR="3" fontSize="11"/>
+</rectangle>

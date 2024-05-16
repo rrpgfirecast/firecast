@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="AdvancedAttacksWeapon" height="280">
+	<script>
+		local function updateAll()
+			if sheet == nil then return end
+			local num = (tonumber(sheet.weaponType) or 1)
+			sheet.num = sheet.weaponType
+			local node = NDB.getRoot(sheet)
+			local nodes = NDB.getChildNodes(node.campoDasArmas) 
+			sheet.weapon = nodes[num]
+
+			if sheet.weapon== nil then return end
+
+			local auto = sheet.weapon.batismo or sheet.weapon.nome or sheet.weapon.arma or "Arma"
+			local nomeAtaque = sheet.weapon.batismo or sheet.weapon.nome or sheet.weapon.arma or "Arma"
+    		local bba = tonumber(node.bba) or 0
+    		local acertos = {}
+
+            -- Adicionando bônus de melhoria ou de qualidade Obra-Prima ao acerto
+    		local pen = tonumber(sheet.weapon.qualidade) or 0
+            if Utils.compareStringPtBr(sheet.weapon.qualidade, "Obra-Prima")==0
+                 or Utils.compareStringPtBr(sheet.weapon.qualidade, "OP")==0
+                 or Utils.compareStringPtBr(sheet.weapon.qualidade, "ObraPrima")==0  then
+    			pen = 1
+    		end
+    		pen = pen + (tonumber(node.buffAtaque) or 0)
+            pen = pen + (tonumber(node.tamanhoCa) or 0)
+
+    		-- Pegando o valor dos atributos
+    		local forc = tonumber(node.efetModFor) or 0
+    		local des = tonumber(node.efetModDes) or 0
+            local con = tonumber(node.efetModCon) or 0
+    		local int = tonumber(node.efetModInt) or 0
+            local sab  = tonumber(node.efetModSab) or 0
+            local car = tonumber(node.efetModCar) or 0
+
+            if sheet.useStr then pen = pen + forc end
+            if sheet.useDex then pen = pen + des end
+            if sheet.useCon then pen = pen + con end
+            if sheet.useInt then pen = pen + int end
+            if sheet.useSab then pen = pen + sab end
+            if sheet.useCar then pen = pen + car end
+
+            -- Calculando a quantidade de ataques e seus acertos
+    		acertos[1] = bba
+    		local i = 2
+    		if sheet.velocidade then
+    			acertos[2] = bba
+    			i = i + 1
+    		end
+    		if sheet.tiroRapidoAprimorado then
+    			acertos[i] = bba
+    			i = i + 1
+    		elseif sheet.tiroRapido then
+    			acertos[i] = bba
+    			i = i + 1
+    			pen = pen - 2
+    		end
+    		if sheet.rajada then
+    			local qtd = tonumber(sheet.rajadaQtd) or 0
+    			local pnl = math.abs(tonumber(sheet.rajadaPen) or 0)
+    			for j=1, qtd, 1 do
+    				acertos[i] = bba
+    				i = i + 1
+    			end
+    			pen = pen - pnl
+    		end
+            if sheet.flanquear then
+                pen = pen + 2
+            end
+
+            local limite = 4
+            if sheet.limite then
+                limite = tonumber(sheet.limiteQtd) or 4
+            end
+    		if bba-5 > 0 and limite>1 then
+    			acertos[i] = bba -5
+    			i = i + 1
+    		end
+    		if bba-10 > 0 and limite>2 then
+    			acertos[i] = bba -10
+    			i = i + 1
+    		end
+    		if bba-15 > 0 and limite>3 then
+    			acertos[i] = bba -15
+    			-- i = i + 1
+    		end
+
+    		if sheet.combate2armasLeve then
+    			pen = pen - 2
+    		elseif sheet.combate2armas then
+    			pen = pen -4
+    		end
+    		if sheet.talentos then
+    			pen = pen + (tonumber(sheet.talentosAtaq) or 0)
+    		end
+    		if sheet.outros then
+    			pen = pen + (tonumber(sheet.outrosAtaq) or 0)
+    		end
+            if sheet.outros1 then
+                pen = pen + (tonumber(sheet.outros1Ataq) or 0)
+            end
+            if sheet.outros2 then
+                pen = pen + (tonumber(sheet.outros2Ataq) or 0)
+            end
+            if sheet.outros3 then
+                pen = pen + (tonumber(sheet.outros3Ataq) or 0)
+            end
+            if sheet.outros4 then
+                pen = pen + (tonumber(sheet.outros4Ataq) or 0)
+            end
+    		if sheet.itens then
+    			pen = pen + (tonumber(sheet.itensAtaq) or 0)
+    		end
+    		if sheet.magias then
+    			pen = pen + (tonumber(sheet.magiasAtaq) or 0)
+    		end
+    		if sheet.extra then
+    			pen = pen + (tonumber(sheet.extraAtaq) or 0)
+    		end
+    		if sheet.tamanho then
+    			pen = pen + (tonumber(sheet.tamanhoPen) or 0)
+    		end
+    		if sheet.ataquePoderoso then
+    			pen = pen - math.abs(tonumber(sheet.ataquePoderosoPen) or 0)
+    		end
+            if sheet.miraMortal then
+                pen = pen - math.abs(tonumber(sheet.miraMortalPen) or 0)
+            end
+    		if sheet.especializacaoCombate then
+    			pen = pen - math.abs(tonumber(sheet.especializacaoCombatePen) or 0)
+    		end
+    		if sheet.alcance then
+    			pen = pen - math.abs(tonumber(sheet.alcancePen) or 0)
+    		end
+
+            local multMunicao = 0
+            if sheet.tiroMultiplo then
+                multMunicao = 1
+            end
+
+            -- se o bonus de força for menor que o minimo para a arma aplique a penalidade
+            local limit = tonumber(sheet.compostoLim) or 0
+            if sheet.composto and forc &lt; limit then
+                pen = pen - 2
+            end
+
+    		if sheet.ataqueMultiplo then
+    			acertos = {}
+    			local qtd = tonumber(sheet.ataqueMultiploQtd) or 1
+    			for j=1, qtd, 1 do
+    				acertos[j] = bba
+    			end
+    			pen = pen - math.abs(tonumber(sheet.ataqueMultiploPen) or 0)
+    		end
+
+    		auto = auto .. " "
+    		for j=1, #acertos, 1 do
+    			acertos[j] = acertos[j] + pen
+    			auto = auto .. "+" .. acertos[j]
+    			if j ~= #acertos then
+    				auto = auto .. "/"
+    			end
+    		end
+
+    		-- Calculando o dano
+    		local dado = sheet.weapon.dano or "1d1"
+    		if sheet.tamanho and sheet.tamanhoDado~="Dado" then
+    			dado = sheet.tamanhoDado or "1d1"
+    		end
+
+    		-- Melhoria da arma
+    		local apr = tonumber(sheet.weapon.qualidade) or 0
+    		if apr ~= 0 then
+    			dado = dado .. "+" .. apr
+    		end
+
+    		-- Adicionando bonus de atributos
+
+    		local multStr = tonumber(sheet.multStr) or 0
+    		local multDex = tonumber(sheet.multDex) or 0
+            local multCon = tonumber(sheet.multCon) or 0
+            local multInt = tonumber(sheet.multInt) or 0
+    		local multSab = tonumber(sheet.multSab) or 0
+            local multCar = tonumber(sheet.multCar) or 0
+
+            if multStr > 0 then
+            	if sheet.composto then
+            		-- aplique os limites de dano por força em armas compostas
+                    dado = dado .. "+" .. math.min(math.floor(forc*multStr), limit)
+                else
+                	dado = dado .. "+" .. math.floor(forc*multStr)
+    			end
+            end
+            -- Dano de tiro multiplo
+            local danoExtra = dado
+
+            if multDex > 0 then dado = dado .. "+" .. math.floor(des*multDex) end
+            if multCon > 0 then dado = dado .. "+" .. math.floor(con*multCon) end
+            if multInt > 0 then dado = dado .. "+" .. math.floor(int*multInt) end
+            if multSab > 0 then dado = dado .. "+" .. math.floor(sab*multSab) end
+            if multCar > 0 then dado = dado .. "+" .. math.floor(car*multCar) end
+
+    		-- Dano que não se aplica a tiros multiplos
+    		if sheet.ataquePoderoso then
+    			local dmg = math.abs(tonumber(sheet.ataquePoderosoPen) or 0)*2
+
+    			if multStr > 1 then
+    				dmg = math.floor(dmg * 1.5)
+                elseif multStr &lt; 1 then
+                    dmg = math.floor(dmg * 0.5)
+    			end
+
+    			dado = dado .. "+" .. dmg
+    		end
+            if sheet.miraMortal then
+                local dmg = math.abs(tonumber(sheet.miraMortalPen) or 0)*2
+
+                dado = dado .. "+" .. dmg
+            end
+
+    		local crit = dado
+    		-- Dano que não é necessariamente aplicado a criticos, mas se aplica a tiros multiplos
+    		if sheet.talentos then
+    			if sheet.talentosDano ~= "Dano" then
+    				dado = dado .. (sheet.talentosDano or "")
+                    danoExtra = danoExtra .. (sheet.talentosDano or "")
+    			end
+    			if sheet.talentosCrit~="Crit" then
+    				crit = crit .. (sheet.talentosCrit or "")
+    			end
+    		end
+    		if sheet.itens then
+    			if sheet.itensDano ~= "Dano" then
+    				dado = dado .. (sheet.itensDano or "")
+    				danoExtra = danoExtra .. (sheet.itensDano or "")
+    			end
+    			if sheet.itensCrit~="Crit" then
+    				crit = crit .. (sheet.itensCrit or "")
+    			end
+    		end
+    		if sheet.magias then
+    			if sheet.magiasDano ~= "Dano" then
+    				dado = dado .. (sheet.magiasDano or "")
+    				danoExtra = danoExtra .. (sheet.magiasDano or "")
+    			end
+    			if sheet.magiasCrit~="Crit" then
+    				crit = crit .. (sheet.magiasCrit or "")
+    			end
+    		end
+    		if sheet.extra then
+    			if sheet.extraDano ~= "Dano" then
+    				dado = dado .. (sheet.extraDano or "")
+    				danoExtra = danoExtra .. (sheet.extraDano or "")
+    			end
+    			if sheet.extraCrit~="Crit" then
+    				crit = crit .. (sheet.extraCrit or "")
+    			end
+    		end
+    		if sheet.outros then
+    			if sheet.outrosDano ~= "Dano" then
+    				dado = dado .. (sheet.outrosDano or "")
+    				danoExtra = danoExtra .. (sheet.outrosDano or "")
+    			end
+    			if sheet.outrosCrit~="Crit" then
+    				crit = crit .. (sheet.outrosCrit or "")
+    			end
+    		end
+            if sheet.outros1 then
+                if sheet.outros1Dano ~= "Dano" then
+                    dado = dado .. (sheet.outros1Dano or "")
+                    danoExtra = danoExtra .. (sheet.outros1Dano or "")
+                end
+                if sheet.outros1Crit~="Crit" then
+                    crit = crit .. (sheet.outros1Crit or "")
+                end
+            end
+            if sheet.outros2 then
+                if sheet.outros2Dano ~= "Dano" then
+                    dado = dado .. (sheet.outros2Dano or "")
+                    danoExtra = danoExtra .. (sheet.outros2Dano or "")
+                end
+                if sheet.outros2Crit~="Crit" then
+                    crit = crit .. (sheet.outros2Crit or "")
+                end
+            end
+            if sheet.outros3 then
+                if sheet.outros3Dano ~= "Dano" then
+                    dado = dado .. (sheet.outros3Dano or "")
+                    danoExtra = danoExtra .. (sheet.outros3Dano or "")
+                end
+                if sheet.outros3Crit~="Crit" then
+                    crit = crit .. (sheet.outros3Crit or "")
+                end
+            end
+            if sheet.outros4 then
+                if sheet.outros4Dano ~= "Dano" then
+                    dado = dado .. (sheet.outros4Dano or "")
+                    danoExtra = danoExtra .. (sheet.outros4Dano or "")
+                end
+                if sheet.outros4Crit~="Crit" then
+                    crit = crit .. (sheet.outros4Crit or "")
+                end
+            end
+    		if node.buffDano~= nil then
+    			dado = dado .. node.buffDano
+    			danoExtra = danoExtra .. node.buffDano
+    		end
+    		if node.buffDanoCritico~=nil then
+    			crit = crit .. node.buffDanoCritico
+    		end
+
+    		--Dano que não é aplicado a criticos
+    		local precisao = ""
+    		local extraCrit = ""
+    		if sheet.energia then
+    			dado = dado .. (sheet.energiaDano or "")
+    			precisao = precisao .. (sheet.energiaDano or "")
+    			if sheet.energiaCrit~="Crit" then
+    				extraCrit = (sheet.energiaCrit or "")
+    			end
+    		end
+    		if sheet.furtivo then
+    			dado = dado .. (sheet.furtivoDano or "")
+    			precisao = precisao .. (sheet.furtivoDano or "")
+    		end
+
+    		auto = auto .. " (" .. dado .. ", "
+
+    		-- Calculando a chance de critico
+
+    		local decisivo = 20
+    		if sheet.weapon.decisivo~= nil then
+    			decisivo = tonumber(string.sub(sheet.weapon.decisivo, 1, 2))
+    		end
+    		auto = auto .. (sheet.weapon.decisivo or 20) .. "/"
+
+    		--Calculando multiplicador e dano extra por critico
+    		local mod = sheet.weapon.multiplicador or "2"
+    		mod = string.gsub(mod, "x", "")
+            mod = string.gsub(mod, "X", "")
+    		local multiplicador = tonumber(mod) or 2
+    		auto = auto .. "x" .. multiplicador .. " ["
+
+    		local extra = crit
+    		crit = ""
+    		for j=2, multiplicador, 1 do
+    			crit = crit .. "+" .. extra
+    		end
+    		if extraCrit~="" then
+    			crit = crit .. extraCrit
+    		end
+    		auto = auto .. crit .. "]) "
+
+    		-- Calculando Alcance
+    		if sheet.weapon.alcance ~= nil then
+    			local range = sheet.weapon.alcance
+    			range = string.gsub(range, "m", "")
+    			range = string.gsub(range, "M", "")
+    			local alcance = tonumber(range)
+    			if alcance ~= nil then
+    				if sheet.alcance then
+    					alcance = alcance * (tonumber(sheet.alcanceMult) or 1)
+    				end
+    				auto = auto .. alcance .. "m"
+    			end
+    		end
+
+    		sheet.auto = auto
+    		sheet.nomeAtaque = nomeAtaque
+
+    		sheet.acertos = acertos
+    		sheet.numAtaques = #acertos
+            sheet.multMunicao = multMunicao
+    		sheet.dado = dado
+            sheet.danoExtra = danoExtra
+    		sheet.crit = crit
+    		sheet.decisivo = decisivo
+		end
+	</script>
+    <template name="checkEdit">
+    	<layout g="row" g-min-height="25">
+			<checkBox g="col" g-width="6" height="25" text="$(text)" field="$(field)" hint="$(hint)"/>
+			<edit  g="col" g-width="2" height="25" field="$(field)$(prompt1)"/>
+			<dataLink field="$(field)$(prompt1)" defaultValue="$(prompt1)" />
+			<!-- if (tonumber(num) or 0) > 1 then -->
+			<edit g="col" g-width="2" height="25"  field="$(field)$(prompt2)"/>
+			<dataLink field="$(field)$(prompt2)" defaultValue="$(prompt2)" />
+			<!-- end -->
+			<!-- if (tonumber(num) or 0) > 2 then -->
+			<edit g="col" g-width="2" height="25"  field="$(field)$(prompt3)"/>
+			<dataLink field="$(field)$(prompt3)" defaultValue="$(prompt3)" />
+			<!-- end -->
+		</layout>
+	</template>
+    <template name="checkEditCustom">
+    	<layout g="row" g-min-height="25">
+	        <checkBox g="col" g-width="1" height="25" field="$(field)" hint="$(hint)"/>
+	        <edit g="col" g-width="5" height="25" field="$(field)Name)"/>
+	        <edit g="col" g-width="2" height="25" field="$(field)$(prompt1)"/>
+	        <dataLink field="$(field)$(prompt1)" defaultValue="$(prompt1)" />
+	        <!-- if (tonumber(num) or 0) > 1 then -->
+	        <edit g="col" g-width="2" height="25"  field="$(field)$(prompt2)"/>
+	        <dataLink field="$(field)$(prompt2)" defaultValue="$(prompt2)" />
+	        <!-- end -->
+	        <!-- if (tonumber(num) or 0) > 2 then -->
+	        <edit g="col" g-width="2" height="25"  field="$(field)$(prompt3)"/>
+	        <dataLink field="$(field)$(prompt3)" defaultValue="$(prompt3)" />
+	        <!-- end -->
+        </layout>
+    </template>
+    <template name="labelEdit">
+    	<layout g="row" g-min-height="25">
+    		<label g="col" g-width="9" height="25" text="$(text)" hint="$(hint)"/>
+            <edit g="col" g-width="3" height="25" field="$(field)"/>
+    	</layout>
+    </template>
+    <template name="atrUse">
+    	<layout g="row" g-min-height="25">
+        	<checkBox g="col" g-width="9" text="$(text)" field="use$(field)" hint="Marque se o modificador desse atributo entra no ataque."/>
+        	<comboBox g="col" g-width="3" field="mult$(field)" items="{'0', '0.5', '1', '1.5', '2', '2.5', '3'}" hint="Quantas vezes esse atributo é aplicado ao dano."/>
+        	<dataLink field="mult$(field)" defaultValue="0"/>
+        </layout>
+    </template>
+
+	<rectangle g="col" g-width="12" g-auto-height="true" g-min-height="200" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+        <comboBox g="col" g-width="4" g-width-lg="2" height="25" name="weaponType" field="weaponType" fontColor="white" margins="{right=5}">
+           <event name="onChange">
+                updateAll()
+
+                sheet.weaponTypeName = sheet.weaponType
+           </event>
+           <event name="onMouseDown">
+                local node = NDB.getRoot(sheet)
+                local nodes = NDB.getChildNodes(node.campoDasArmas) 
+                local selected = sheet.weaponType
+                local items = {}
+                local values = {}
+                for i=1, #nodes, 1 do
+                    items[i] = nodes[i].batismo or nodes[i].arma or nodes[i].nome or "Arma"
+                    values[i] = "" .. i
+                end
+                self.weaponType.items = items
+                self.weaponType.values = values
+                sheet.weaponType = selected
+           </event>
+        </comboBox>
+        <dataLink field="weaponTypeName">
+           <event name="onChange">
+               if sheet==nil then return end
+
+               self.weaponType.text = sheet.weaponTypeName
+           </event>
+        </dataLink>
+        <label g="col" g-width="8" g-width-lg="10" name="auto" field="auto" text="Escolha uma Arma" g-dyn-width-txt="true"/>
+
+        <layout g="col" g-width="12" g-auto-height="true" name="default" margins="{top=4, bottom=4, left=5, right=5}">
+            <layout g="col" g-width="12" g-width-lg="4" g-auto-height="true" margins="{right=5}">
+                <layout g="col" g-width="8" g-auto-height="true">
+                    <checkEdit text="Furtivo" field="furtivo" num="1" prompt1="Dano" hint="Adicione aqui o seu valor de ataque furtivo no formato +xd6, sendo x a quantidade de dados extras. "/>
+                    <checkEdit text="Ataque Poderoso" field="ataquePoderoso" num="1" prompt1="Pen" hint="Coloque aqui a penalidade do seu ataque poderoso. Esse valor será multiplicado e adicionado ao seu dano de acordo com as regras do talento. "/>
+                    <checkEdit text="Mira Mortal" field="miraMortal" num="1" prompt1="Pen" hint="Coloque aqui a penalidade da sua mira mortal. Esse valor será multiplicado e adicionado ao seu dano de acordo com as regras do talento. "/>
+                    <checkEdit text="Espec. em Combate" field="especializacaoCombate" num="1" prompt1="Pen" hint="Coloque aqui quanto você quer passar do seu acerto para a CA. Você precisa ajustar a CA manualmente, mas o acerto não. "/>
+                    <checkEdit text="Composto" field="composto" num="1" prompt1="Lim" hint="Bônus minimo de força necessario para usar esse arco composto. Se não possuir força minima a penalidade já é aplicada. "/>
+                    <checkEdit text="Limite" field="limite" num="1" prompt1="Qtd" hint="Limita a quantidade de ataques usados em um ataque total. Util para caso o personagem não tenha todos talentos de combater com duas armas. "/>
+                    <checkEdit text="Ataque Multiplo" field="ataqueMultiplo" num="2" prompt1="Qtd" prompt2="Pen" hint="Coloque aqui quantos ataques naturais são feitos com essa arma. Adicione também as penalidades por ataques primarios ou secundarios."/>
+                    <checkEdit text="Alcance" field="alcance" num="2" prompt1="Mult" prompt2="Pen" hint="Coloque no primeiro campo a quantidade de vezes que você deseja multiplicar o incremento de distancia (até 5 para armas de arremesso e até 10 para outros). No segundo a penalidade que você quer adicionar ao ataque por isso (normalmente -2/incremento)."/>
+                    <checkEdit text="Rajada de Golpes" field="rajada" num="2" prompt1="Qtd" prompt2="Pen" hint="Quantos golpes serão feitos na rajada de golpes e a penalidade aplicada neles. "/>
+                    <checkEdit text="Tamanho" field="tamanho" num="2" prompt1="Dado" prompt2="Pen" hint="Coloque aqui o novo dado de dano por aumento ou diminuição de tamanho do personagem e a penalidade ou bônus adequado. Se for em descrição e mudar o tamanho do personage a penalidade vai automaticamente. "/>
+                </layout>
+                <layout g="col" g-width="4" g-auto-height="true">
+                    <atrUse field="Str" text="Força"/>
+                    <atrUse field="Dex" text="Destreza"/>
+                    <atrUse field="Con" text="Constituição"/>
+                    <atrUse field="Int" text="Inteligência"/>
+                    <atrUse field="Sab" text="Sabedoria"/>
+                    <atrUse field="Car" text="Carisma"/>
+                </layout>
+            </layout>
+            <layout g="col" g-width="12" g-width-lg="4" g-auto-height="true" margins="{right=5}">
+                <layout g="col" g-width="8" g-auto-height="true">
+                    <checkEdit text="Dano por Energia" field="energia" num="2" prompt1="Dano" prompt2="Crit" hint="Coloque aqui qualquer dano extra por energia da arma, assim como dano extra por energia em sucessos decisivos. Normalmente ganhos por armas flamejantes e da explosão flamejante, ou similares. "/>
+                    <checkEdit text="Talentos" field="talentos" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por talentos."/>
+                    <checkEdit text="Itens" field="itens" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por itens."/>
+                    <checkEdit text="Magias" field="magias" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por efeitos magicos."/>
+                    <checkEditCustom field="extra" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+                    <checkEditCustom field="outros" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+                    <checkEditCustom field="outros1" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+                    <checkEditCustom field="outros2" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+                    <checkEditCustom field="outros3" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+                    <checkEditCustom field="outros4" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+                </layout>
+                <layout g="col" g-width="4" g-auto-height="true">
+                    <checkBox g="row" g-min-height="25" text="Duas Mãos" field="combate2maos" hint="Marque se estiver usando a arma com as duas mãos"/>
+                    <checkBox g="row" g-min-height="25" text="Duas Armas" field="combate2armas" hint="Marque se estiver lutando com duas armas e usando uma arma de uma mão na mão inabil. "/>
+                    <checkBox g="row" g-min-height="25" text="Duas Armas Leves" field="combate2armasLeve" hint="Marque se estiver lutando com duas armas e usando uma arma leve na mão inabil. "/>
+                    <checkBox g="row" g-min-height="25" text="Velocidade" field="velocidade" hint="Marque se estiver sobre efeito de velocidade ou algo similar. Não adiciona o +1 no acerto automaticamente, use o campo de magias. "/>
+                    <checkBox g="row" g-min-height="25" text="Tiro Rapido" field="tiroRapido" hint="Marque se estiver usando o talento tiro rapido para adicionar o ataque extra. Já aplica a penalidade. "/>
+                    <checkBox g="row" g-min-height="25" text="Tiro Rapido Apr." field="tiroRapidoAprimorado" hint="Marque se estiver usando o talento tiro rapido aprimorado para adicionar o ataque extra, sem a penalidade."/>
+                    <checkBox g="row" g-min-height="25" text="Flanquear" field="flanquear" hint="Marque se estiver flanquando o alvo. "/>
+                    <checkBox g="row" g-min-height="25" text="Tiro Multiplo" field="tiroMultiplo" hint="Adicional uma flecha ao primeiro ataque em um ataque total."/>
+                    <labelEdit text="Munição"  hint="Vão ser consumidas automaticamente durante ataques. Se acabarem um aviso vai exibir no chat, mas não vai impedir novos ataques de serem feitos." field="municao"/>
+                    <labelEdit text="Confirmação" hint="Bônus para confirmar sucessos decisivos." field="confirmacaoAtaq"/>
+                </layout>
+            </layout>
+            <layout g="col" g-width="12" g-width-lg="4" g-auto-height="true" g-vert-tile="true" margins="{right=5}" g-min-height="225">
+                <textEditor g="col" g-width="10" g-vert-tile="true" field="detalhes" g-min-height="225"/>
+                <layout g="col" g-width="2" g-vert-tile="true" g-min-height="225">
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Ataque">
+                        <event name="onClick">
+                            if sheet == nil then return end
+                            updateAll()
+                            local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                            if sheet.acertos[1] ~= nil then
+                                
+                                if sheet.municao~= nil then
+                                    local municao = tonumber(sheet.municao) or 0
+                                    if municao == 0 then
+                                        mesaDoPersonagem.activeChat:enviarMensagem("Esta arma está sem munição.")
+                                    else
+                                        sheet.municao = municao - 1
+                                    end
+                                end
+
+                                local rolagem = Firecast.interpretarRolagem("1d20+" .. sheet.acertos[1])
+                                local armamento = sheet.nomeAtaque or "arma"
+                                local personagem = NDB.getRoot(sheet).nome or "personagem"
+
+                                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque padrão com " .. armamento .. " de " .. personagem)
+                            end
+                        </event>
+                    </button>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Dano">
+                        <event name="onClick">
+                            if sheet == nil then return end
+                            updateAll()
+                            local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                            if sheet.dado ~= nil then
+                                local rolagem = Firecast.interpretarRolagem(sheet.dado)
+                                local armamento = sheet.nomeAtaque or "arma"
+                                local personagem = NDB.getRoot(sheet).nome or "personagem"
+
+                                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano do ataque com " .. armamento .. " de " .. personagem)
+                            end
+                        </event>
+                    </button>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Decisivo">
+                        <event name="onClick">
+                            if sheet == nil then return end
+                            updateAll()
+                            local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                            if sheet.crit ~= nil then
+                                local rolagem = Firecast.interpretarRolagem(sheet.crit)
+                                local armamento = sheet.nomeAtaque or "arma"
+                                local personagem = NDB.getRoot(sheet).nome or "personagem"
+
+                                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano adicional do decisivo do ataque com " .. armamento .. " de " .. personagem)
+                            end
+                        </event>
+                    </button>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Info">
+                        <event name="onClick">
+                            local pop = self:findControlByName("popArma")
+
+                            if pop ~= nil then
+                                pop:setNodeObject(sheet.weapon)
+                                pop:showPopupEx("bottomCenter", self)
+                            else
+                                showMessage("Ops, bug.. nao encontrei o popup de arma para exibir")
+                            end
+                        </event>
+                    </button>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Exibir">
+                        <event name="onClick">
+                            if sheet == nil then return end
+                            updateAll()
+                            local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                            if sheet.auto ~= nil then
+                                local mensagem = sheet.auto or ""
+                                mesaDoPersonagem.activeChat:enviarMensagem(mensagem)
+                            end
+                        </event>
+                    </button>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Atualizar">
+                        <event name="onClick">
+                            updateAll()
+                        </event>
+                    </button>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Copiar" hint="Copiar." onClick="System.setClipboardText(NDB.exportXML(sheet))"/>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Colar" hint="Colar." onClick="NDB.importXML(sheet, System.getClipboardText())"/>
+                    <button g="col" g-width="12" height="25" textTrimming="none" text="Apagar">
+                        <event name="onClick">
+                            Dialogs.confirmOkCancel("Tem certeza que quer apagar essa arma?",
+                                function (confirmado)
+                                    if confirmado then
+                                        NDB.deleteNode(sheet)
+                                    end
+                            end)
+                        </event>
+                    </button>
+                </layout> 
+            </layout>
+
+            <dataLink fields="{'furtivo', 'ataquePoderoso', 'miraMortal', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'outros1', 'outros2', 'outros3', 'outros4', 'combate2maos', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'flanquear', 'atualizar','useStr', 'multStr', 'useDex', 'multDex', 'useCon', 'multCon', 'useInt', 'multInt', 'useSab', 'multSab', 'useCar', 'multCar'}">
+                <event name="onUserChange">                
+                    updateAll()
+                </event>
+            </dataLink>
+        </layout>
+    </rectangle>
+</form>
