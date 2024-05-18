@@ -635,7 +635,7 @@ Firecast.Messaging.listen("ChatMessage",
 				tryNPC(true, message.chat, "AfkBot", "Não entendi. Tente: 'voz', 'ficha', '>>', 'start', 'end' ou 'show'.")
 			end;
 		elseif message.mine and string.sub(txt,1,string.len(" >> Turno de "))==" >> Turno de " then
-			afkdb.config[message.mesa.codigoInterno].actionOwner = string.sub(txt,string.len(" >> Turno de ")+1,-2);
+			afkdb.config[message.mesa.codigoInterno].actionOwner = string.sub(txt,string.len(" >> Turno de ")+1,-1);
 			--message.chat:escrever(string.sub(txt,string.len(" >> Turno de ")+1));
 		end;
 	end);
@@ -669,10 +669,10 @@ Firecast.Messaging.listen("ChatMessageEx",
 			--showMessage("No selected sheet to save log " .. afkdb.config[codigoInterno].characterID)
 			return
 		end
-		-- Selected sheet is not 'Ficha Multiaba'
+		-- Selected sheet is not 'Ficha Multiaba' or 'Gerenciador'
 		local logs = message.chat.room:findBibliotecaItem(afkdb.config[codigoInterno].characterID)
-		if logs.dataType ~= "Ambesek.Nefertyne.FichaMultiaba" then
-			--showMessage("Selected sheet is not 'Ficha Multiaba'")
+		if logs.dataType ~= "Ambesek.Nefertyne.FichaMultiaba" and logs.dataType ~= "Ambesek.Gerenciador.RPGmeister" then
+			--showMessage("Selected sheet is not valid")
 			return 
 		end
 
@@ -748,7 +748,7 @@ Firecast.Messaging.listen("ChatMessageEx",
 			if afktemp[codigoInterno].nick ~= nick and afktemp[codigoInterno].avatar ~= params.url then
 				re:breakLine()
 				re:insertImage(params)
-				re:insertText(nick)
+				re:insertText(Utils.removerFmtChat(nick))
 				re:breakParagraph()
 			end
 			if msgType == "standard" then

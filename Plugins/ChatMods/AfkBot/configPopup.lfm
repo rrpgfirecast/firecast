@@ -42,16 +42,18 @@
 		function self:listAllDataTypes()
 			local installed = Firecast.Plugins.getInstalledDataTypes()
 			local dataTypes = {}
+			local titles = {}
 
 			local i = 0
             for key,value in pairs(installed) do
             	if value.formType == "sheetTemplate" then
 			    	i = i + 1
 					dataTypes[i] = value.dataType
+					titles[i] = value.title
 				end
 			end
 
-			self.dt.items = dataTypes
+			self.dt.items = titles
 			self.dt.values = dataTypes
 
 			if sheet.dataType then

@@ -19,6 +19,8 @@ scene.tokenMenu.properties=Propriedades...
 scene.tokenMenu.clearHistMov=Limpar Histórico de Movimentos
 scene.tokenMenu.clearMemory=Limpar Memória de Áreas Vistas pelo Token
 scene.tokenMenu.cast=Conjurar Magia...
+scene.tokenMenu.open=Abrir Ficha...
+scene.tokenMenu.save=Salvar Token...
 
 scene.menu.token.editCA=Editar:
 scene.menu.token.editCA.copy=Copiar
@@ -223,6 +225,7 @@ scene.menu.conditions.c61=Personalizado1
 scene.menu.conditions.c62=Personalizado2
 scene.menu.conditions.c63=Personalizado3
 scene.menu.conditions.c64=Personalizado4
+scene.menu.conditions.c65=Personalizado5
 
 scene.menu.conditions.link1=http://firecast.blob.core.windows.net/blobs/IAUQMVUR_386260.png
 scene.menu.conditions.link2=http://firecast.blob.core.windows.net/blobs/QNIIBIMV_386244.png
@@ -288,6 +291,7 @@ scene.menu.conditions.link61=userinput
 scene.menu.conditions.link62=userinput
 scene.menu.conditions.link63=userinput
 scene.menu.conditions.link64=userinput
+scene.menu.conditions.link65=userinput
 
 
 scene.fogOfWar=Névoa da Guerra

@@ -99,7 +99,7 @@ SceneLib.registerPlugin(
 				frm = GUI.newForm(form);
 				
 				asyncStartLocalToRemoteDataMigration();
-				dataPromise = Firecast.asyncOpenUserNDB(TOKENS_REMOTE_NAME, {create=true, skipLoad=true});				
+				dataPromise = Firecast.asyncOpenUserNDB(TOKENS_REMOTE_NAME, {create=true, skipLoad=true});
 			else
 				frm = frmInserior;
 				dataPromise = Promise.resolved(frm:getNodeObject());

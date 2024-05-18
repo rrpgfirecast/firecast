@@ -664,7 +664,7 @@
 									end;
 									
 									if opGraficaAura.userData.FormaAura == "CP" then
-										opGraficaAura.data = "M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0";		
+										opGraficaAura.data = "M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0";
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
 								        opGraficaAura.width = self.edtRaioAura.asNumber;
