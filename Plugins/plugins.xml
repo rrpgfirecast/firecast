@@ -238,7 +238,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.OrderMarker" name="Order Marker" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/OrderMarker/output/OrderMarker.rpk?raw=true" fileName="OrderMarker.rpk" repositoryPath="Scene/OrderMarker/" author="Ambesek" description="Allows for the creation of order marks on scene tokens." version="1.0" compilationDate="03032023113330" compilationDigest="281cc290086901efb9801bbaced2ab046be1844b">
+    <element id="Ambesek.OrderMarker" name="Order Marker" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/OrderMarker/output/OrderMarker.rpk?raw=true" fileName="OrderMarker.rpk" repositoryPath="Scene/OrderMarker/" author="Ambesek" description="Allows for the creation of order marks on scene tokens." version="1.1" compilationDate="18052024172108" compilationDigest="123156a7a334c7e44c49c62d81416455b91dfb39">
         <info lang="pt-BR" name="Order Marker" description="Allows for the creation of order marks on scene tokens." author="Ambesek"/>
     </element>
     <element id="Ambesek.Pathfinder.2e" name="Ficha Pathfinder 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true" fileName="Ficha Pathfinder 2e.rpk" repositoryPath="Sheets/Ficha Pathfinder 2e/" author="Ambesek" description="Ficha feita para o sistema Pathfinder 2e." version="1.0.1" compilationDate="03032023114706" compilationDigest="90accfd2e4328032657636fb0d78d9514a9701b4">
