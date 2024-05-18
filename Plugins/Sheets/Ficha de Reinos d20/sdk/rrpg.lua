@@ -303,21 +303,21 @@ function rrpg.dispatch(eventName, ...)
 end
 
 function rrpg.registrarDataType(dt)
-  if type(dt) == 'table' then	
-	if ((dt.dataType ~= nil) and (dt.dataType ~= "")) then	
-  		localRRPG.dataTypes[dt.dataType] = dt;  
-  		_rrpg_DataTypes_Registrar(dt);
-  	end;	
-  end;
+	if type(dt) == 'table' then	
+		if ((dt.dataType ~= nil) and (dt.dataType ~= "")) then	
+			localRRPG.dataTypes[dt.dataType] = dt;  
+			_rrpg_DataTypes_Registrar(dt);
+		end;	
+	end;
 end;
 
 function rrpg.registrarForm(frm)
-  if type(frm) == 'table' then	
-	if (frm.name ~= nil) then	
-  		localRRPG.forms[frm.name] = frm;  
-		_rrpg_Forms_RegisterForm(frm);
-  	end;	
-  end;
+	if type(frm) == 'table' then	
+		if (frm.name ~= nil) then	
+			localRRPG.forms[frm.name] = frm;  
+			_rrpg_Forms_RegisterForm(frm);
+		end;	
+    end;
 end;
 
 function rrpg.registrarSpecialForm(frm)

@@ -69,6 +69,7 @@ hint.link=Abre a ficha do personagem
 hint.notes=Exibe um campo de anotações do PdM
 hint.copy=Copia informações de barrinha, linhas e avatar do dono da ficha
 hint.talk=Falar como esse personagem
+hint.macro=Rola macro a partir desse personagem
 hint.impersonate=Personificar esse personagem
 hint.hide=Envia objeto pra lista oculta
 hint.show=Envia objeto pra lista publica
@@ -78,6 +79,8 @@ dialogs.delete.avatar=Tem certeza que quer apagar esse PdM?
 dialogs.hide=Deseja manda esse npc pra lista oculta?
 dialogs.show=Deseja manda esse npc pra lista publica?
 dialogs.dmOnly=Apenas o Mestre pode ver
+dialogs.noMacro=Sem macros pra essa ficha
+dialogs.macroChoice=Escolha um macro
 
 
 [en]
@@ -151,6 +154,7 @@ hint.link=Opens the character sheet
 hint.notes=Show NPC notes
 hint.copy=Copy player avatar information
 hint.talk=Talk as this character
+hint.copy=Roll macro from this character
 hint.impersonate=Impersonate this character
 hint.hide=Send object to hidden list
 hint.show=Send object to public list
@@ -160,4 +164,5 @@ dialogs.delete.avatar=Do you really wish to delete this NPC?
 dialogs.hide=Do you wish to hidden this NPC?
 dialogs.show=Do you wish to show this NPC?
 dialogs.dmOnly=Only the DM can see
-
+dialogs.noMacro=No macro for this sheet
+dialogs.macroChoice=Choose a macro

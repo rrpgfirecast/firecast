@@ -43,7 +43,7 @@
 	     end
 
 		function self:listAllCharacters()
-			local mesa = Firecast.getMesaDe(sheet);
+			local mesa = Firecast.getMesaDe(sheet)
 
 			local personagens = {};
 			recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens);
@@ -113,8 +113,10 @@
 				end
 
 				self.loadBT.visible = anyKnown
+				self.macroBT.visible = anyKnown
 			else
 				self.loadBT.visible=false
+				self.macroBT.visible=false
 			end
 		end
 
@@ -406,6 +408,14 @@
 					<event name="OnStartDrag">
 						if drag then
 					    	drag:addData("imageURL", sheet.avatar)
+
+					    	local mesa = Firecast.getMesaDe(sheet)
+					    	local bibItem = mesa:findBibliotecaItem(sheet.characterID)
+					    	if bibItem == nil then return end
+
+					    	if bibItem:isType("personagem") then
+					    		drag:addData("character", bibItem)
+					    	end
 					    end
 					</event>
 				</image>
@@ -715,6 +725,36 @@
 
 					sheet.linha1 = bibItem.edtLine0
 					sheet.linha2 = bibItem.edtLine1
+				</event>
+			</button>
+
+			<button align="top" height="25" text="🎲" margins="{bottom=0,right=0}" hint="@@hint.macro" name="macroBT">
+				<event name="onClick">
+					if sheet==nil then return end
+					local mesa = Firecast.getMesaDe(sheet)
+					if mesa==nil then return end
+					local bibItem = mesa:findBibliotecaItem(sheet.characterID)
+					if bibItem==nil then return end
+
+					local dataType = "dataType"..hash(bibItem.dataType)
+					if dataType=="dataType5919525159726570555" or dataType=="dataType2850853990837453463" or dataType=="dataType9150763801005266856" then
+						-- Alterar.DataType.FichaRPGmeister
+						-- Ambesek.Nefertyne.FichaPathfinder
+						-- Ambesek.FichaStarfinder
+						Dialogs.choose(lang('dialogs.macroChoice'), {"ataq","per","atr","tr","ini"},
+			            	function(selected, selectedIndex, selectedText)
+			            		if selected then
+			            			local txt = "/" .. selectedText
+			            			if selectedText ~= "ini" then 
+			            				txt = txt .. " 0"
+			            			end
+			            			txt = txt .. " " .. sheet.characterID
+			            			mesa.activeChat:enviarMensagem(txt)
+			            		end
+			            	end)
+					else
+						showMessage(lang('dialogs.noMacro'))
+					end
 				</event>
 			</button>
 

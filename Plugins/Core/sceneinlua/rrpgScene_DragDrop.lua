@@ -51,6 +51,7 @@ local function adicionarUmTokenDeUmURL(scene, url, x, y, drag, autoPlace)
 						
 						if per ~= nil then
 							token.ownerCharacter = per.codigoInterno;
+							token.name = per.name
 						end;
 						
 						local jogador = drag:getData("player");
