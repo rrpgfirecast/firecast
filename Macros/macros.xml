@@ -4,6 +4,7 @@
 	<element name="7sVb" path="7thSea/7sVb.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/7thSea/7sVb.lua"/>
 	<element name="acn" path="Ao%20Cair%20da%20Noite/acn.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ao%20Cair%20da%20Noite/acn.lua"/>
 	<element name="Uno" path="Cards/Uno.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Cards/Uno.lua"/>
+	<element name="dados base" path="Chronicles%20of%20Darkness/dados%20base.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Chronicles%20of%20Darkness/dados%20base.lua"/>
 	<element name="base_para_magias" path="D&amp;D5e/base_para_magias.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D&amp;D5e/base_para_magias.lua"/>
 	<element name="r2" path="D&amp;D5e/r2.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D&amp;D5e/r2.lua"/>
 	<element name="skills_saves" path="D&amp;D5e/skills_saves.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D&amp;D5e/skills_saves.lua"/>
