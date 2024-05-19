@@ -17,9 +17,8 @@ rawset(rrpg, "listeners", {generator = 0});
 rawset(rrpg, "dataTypes", {});
 rawset(rrpg, "forms", {});
 rawset(rrpg, "props", {});
-
 		
-function rrpg.getMesas()
+function rrpg:getMesas()
   local hs = _rrpg_GetMesasIDs();	
   local mesas = {};
   local idx = 1;  
@@ -34,9 +33,7 @@ function rrpg.getMesas()
   end
     
   return mesas;
-end;				
-		
-rrpg.props["mesas"] = {getter="getMesas", tipo="table"};
+end;			
 		
 local propsRolagem = {
 	possuiAlgumDado = {getter="getPossuiAlgumDado", tipo="bool"},
@@ -217,8 +214,6 @@ function rrpg.getMesaDe(object)
 	
 	return nil;
 end;
-
-rrpg.getRoomOf = rrpg.getMesaDe;
 	
 function rrpg.getBibliotecaItemDe(object)		
 	if (type(object) ~= "table") then
@@ -308,21 +303,21 @@ function rrpg.dispatch(eventName, ...)
 end
 
 function rrpg.registrarDataType(dt)
-  if type(dt) == 'table' then	
-	if ((dt.dataType ~= nil) and (dt.dataType ~= "")) then	
-  		localRRPG.dataTypes[dt.dataType] = dt;  
-  		_rrpg_DataTypes_Registrar(dt);
-  	end;	
-  end;
+	if type(dt) == 'table' then	
+		if ((dt.dataType ~= nil) and (dt.dataType ~= "")) then	
+			localRRPG.dataTypes[dt.dataType] = dt;  
+			_rrpg_DataTypes_Registrar(dt);
+		end;	
+	end;
 end;
 
 function rrpg.registrarForm(frm)
-  if type(frm) == 'table' then	
-	if (frm.name ~= nil) then	
-  		localRRPG.forms[frm.name] = frm;  
-		_rrpg_Forms_RegisterForm(frm);
-  	end;	
-  end;
+	if type(frm) == 'table' then	
+		if (frm.name ~= nil) then	
+			localRRPG.forms[frm.name] = frm;  
+			_rrpg_Forms_RegisterForm(frm);
+		end;	
+    end;
 end;
 
 function rrpg.registrarSpecialForm(frm)
@@ -400,18 +395,48 @@ function rrpg.asyncOpenUserNDB(name, options)
 		return Async.Promise.withError("No API Support");
 	end;
 		
-	return Async.Promise.wrap(_rrpg_Session_asyncOpenUserNDB(name, options));
+	return rrpgWrappers.__serverRequestQueue:addAsyncJob(
+		function () 
+			return Async.Promise.wrap(_rrpg_Session_asyncOpenUserNDB(name, options));
+		end);						
 end;
-		
-rrpg.messaging = require("rrpgEventMessages.lua");
 
+function rrpg.parseTalemark(text, talemarkOptions)
+	if System.checkAPIVersion(87, 4) then
+		return _obj_invokeEx(localRRPG.handle, 'ParseTalemark', text, talemarkOptions);	
+	else
+		return {type="root"};
+	end;
+end;
+			
+rrpg.messaging = require("rrpgEventMessages.lua");
+	
+rrpg.props["mesas"] = {getter="getMesas", tipo="table"};
+
+-- Alias functions
 rrpg.listen = rrpg.messaging.listen;
 rrpg.listenOnce = rrpg.messaging.listenOnce;
 rrpg.unlisten = rrpg.messaging.unlisten;
 rrpg.groupOnceListeners = rrpg.messaging.groupOnceListeners;
 rrpg.Messaging = rrpg.messaging;
+rrpg.parseRoll = rrpg.interpretarRolagem;
+rrpg.findRoom = rrpg.findMesa;
+rrpg.getRoomOf = rrpg.getMesaDe;
+rrpg.getRooms = rrpg.getMesas;	
+rrpg.getLibraryItemOf = rrpg.getBibliotecaItemDe;
+rrpg.getCharacterOf = rrpg.getPersonagemDe;
+
+-- Alias properties
+rrpg.props["rooms"] = rrpg.props["mesas"];
 		
 RRPG = rrpg;		
 		
+		
+-- Exported API to the Firecast Executable
+
+function __rrpg_loadRolagemFromBase64EncodedString(encodedString)
+	return rrpg.loadRolagemFromBase64EncodedString(encodedString);
+end;		
+				
 require("rrpgEventMessagesAdapters.lua");
 return rrpg;

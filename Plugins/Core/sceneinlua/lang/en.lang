@@ -19,6 +19,8 @@ scene.tokenMenu.properties=Properties...
 scene.tokenMenu.clearHistMov=Clear Movement History
 scene.tokenMenu.clearMemory=Clear Token's View Memory
 scene.tokenMenu.cast=Cast Spell...
+scene.tokenMenu.open=Open Sheet...
+scene.tokenMenu.save=Save Token...
 scene.menu.token.editCA=Edit:
 scene.menu.token.editCA.copy=Copy
 scene.menu.token.editCA.paste=Paste
@@ -221,6 +223,7 @@ scene.menu.conditions.c61=Custom1
 scene.menu.conditions.c62=Custom2
 scene.menu.conditions.c63=Custom3
 scene.menu.conditions.c64=Custom4
+scene.menu.conditions.c65=Custom5
 
 
 scene.fogOfWar=Fog of War

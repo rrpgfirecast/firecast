@@ -14,7 +14,7 @@ Esse repositório foi criado com o intuito de armazenar o código de projetos re
 
 # Ferramentas
 
-- [**SDK**](https://firecast.app/para-programadores/): Necessário instalar para poder compilar os projetos de plugin. No link há duas versões disponíveis, uma compatível com o RRPG antigo e mobile, o [RDK3.4b](http://www.firecast.com.br/RDK3.4b.exe), e o mais atual, [RDK 3.6c](https://firecast.app/downloads/RDK3.6c.exe).
+- [**SDK**](https://firecast.app/para-programadores/): Necessário instalar para poder compilar os projetos de plugin. No link há duas versões disponíveis, uma compatível com o RRPG antigo e mobile, o [RDK3.4b](http://www.firecast.com.br/RDK3.4b.exe), e o mais atual, [RDK 3.7b](https://firecast.app/downloads/RDK3.7b.exe).
 - [**Sublime**](https://www.sublimetext.com/3): Um editor de texto, esse ou qualquer outro como [Notepad++](https://notepad-plus-plus.org/), que permita editar os arquivos do projeto. 
 - [**Souce Tree**](https://www.sourcetreeapp.com/): Uma ferramenta para uso do git com interface, essa ou qualquer outra, para facilitar o acesso ao Github. 
 

@@ -2,7 +2,7 @@
 <form name="frmLibrary" align="client">
 	<scrollBox align="client">
 		<image align="client" field="bgLibrary" style="autoFit" editable="true">
-			<dataLink field="bgLibrary" defaultValue=""/>
+			<dataLink field="bgLibrary" defaultValue="http://blob.firecast.com.br/blobs/ALQGGOBK_1620755/Aba_09_Biblioteca.jpg"/>
 			<button align="top" text="Novo" onClick="self.rclLibrary:append();" hint="Adicionar" margins="{bottom=10}"/>
 
 			<recordList align="client" name="rclLibrary" field="listaLibrary" templateForm="frmNPCForm" layout="horizontalTiles" selectable="true">

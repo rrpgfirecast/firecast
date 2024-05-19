@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Companions" align="client">
+    <scrollBox align="client" g-cnt-line-spacing="5">
+        <rectangle g="col" g-width="12" g-width-lg="10" g-min-height="200" g-vert-tile="true" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5" g-vert-tile-weight="3">
+            <dataScopeBox name="boxDetalhesDoCompanheiro" visible="false" g="col" g-width="12" g-vert-tile="true" g-auto-height="true" g-cnt-line-spacing="5">
+                <layout g="col" g-width="6" g-width-lg="3" g-min-height="200" g-vert-tile="true" g-auto-height="true" g-cnt-line-spacing="5">
+                    <rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <image align="client" field="avatarComp" editable="true" style="proportional" >
+                            <event name="OnStartDrag">
+                                drag:addData("imageURL", self.rclListaDosCompanheiros.selectedNode.avatarComp)
+                            </event>
+                        </image>
+                    </rectangle>
+                    <rectangle g="col" g-width="12" g-min-height="135" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <Title text="Nome" field="nomeComp"/>
+                        <Title text="Raça" field="racaComp"/>
+                        <Title text="Tipo" field="tipoComp"/>
+                        <Title text="Subtipos" field="subtiposComp"/>
+                        <Title text="Tamanho" field="tamanhoComp"/>
+                    </rectangle>
+                    <rectangle g="col" g-width="12" g-min-height="110" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <Title text="PV" field="pvsComp" widthL="1" widthR="3"/>
+                        <Title text="PE" field="pesComp" widthL="1" widthR="3"/>
+                        <Title text="Pd" field="pdsComp" widthL="1" widthR="3"/>
+                        <layout g="col" g-width="6" g-min-height="75" g-auto-height="true">
+                            <Title text="CAE" field="caeComp" widthL="6" widthR="6"/>
+                            <Title text="CAC" field="cacComp" widthL="6" widthR="6"/>
+                            <Title text="CA MC" field="camcComp" widthL="6" widthR="6"/>
+                        </layout>
+                        <layout g="col" g-width="6" g-min-height="75" g-auto-height="true">
+                            <textEditor g="col" g-width="12" g-min-height="75" g-vert-tile="true" field="caCompDesc"/>
+                        </layout>
+                    </rectangle>
+                    <rectangle g="col" g-width="12" g-min-height="110" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <button g="col" g-width="4" height="25" text="Iniciativa">
+                            <event name="onClick">
+                                local node = self.rclListaDosCompanheiros.selectedNode;
+                                local rolagem = Firecast.interpretarRolagem("1d20 + " .. (node.iniciativaComp or 0));
+                                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de iniciativa de " .. (node.nomeComp or "Companheiro"));
+                            </event>
+                        </button>
+                        <edit g="col" g-width="2" height="25" field="iniciativaComp"/>
+                        <edit g="col" g-width="6" height="25" field="iniciativaCompDesc"/>
+
+                        <Title text="Deslocamento" fontSize="12" field="deslocamentoComp"/>
+
+                        <Title text="BBA" field="bbaComp" widthL="2" widthR="4"/>
+
+                        <button g="col" g-width="3" height="25" text="Agarrar">
+                            <event name="onClick">
+                                local node = self.rclListaDosCompanheiros.selectedNode
+                                local rolagem = Firecast.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0))
+                                local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (node.nomeComp or "Companheiro"))
+                            </event>
+                        </button>
+                        <edit g="col" g-width="3" height="25" field="agarrarComp"/>
+
+                        <label g="col" g-width="2" height="25" text="Espaço" horzTextAlign="center"/>
+                        <edit g="col" g-width="2" height="25" field="esp1Comp"/>
+                        <edit g="col" g-width="2" height="25" field="esp2Comp"/>
+
+                        <Title text="Alcance" field="alcanceComp" widthL="3" widthR="3"/>
+                    </rectangle>
+                    <rectangle g="col" g-width="12" g-min-height="160" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <AttributeComp ATR="FOR" atr="for" nome="força"/>
+                        <AttributeComp ATR="DES" atr="des" nome="destreza"/>
+                        <AttributeComp ATR="CON" atr="con" nome="constituição"/>
+                        <AttributeComp ATR="INT" atr="int" nome="inteligência"/>
+                        <AttributeComp ATR="SAB" atr="sab" nome="sabedoria"/>
+                        <AttributeComp ATR="CAR" atr="car" nome="carisma"/>
+                    </rectangle>
+                    <rectangle g="col" g-width="12" g-min-height="85" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <SaveComp ATR="FORT" atr="fort" nome="fortitude"/>
+                        <SaveComp ATR="REF" atr="ref" nome="reflexos"/>
+                        <SaveComp ATR="VON" atr="von" nome="vontade"/>
+                    </rectangle>
+                </layout>
+                <layout g="col" g-width="6" g-width-lg="3" g-min-height="200" g-vert-tile="true" g-auto-height="true" g-cnt-line-spacing="5">
+                    <rectangle g="col" g-width="12" g-min-height="260" g-vert-tile="true" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <TitleEditor text="PERÍCIAS" field="periciasComp"/>
+                    </rectangle>
+                    <rectangle g="col" g-width="12" g-min-height="260" g-vert-tile="true" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <InventorySlot text="INVENTARIO" field="inventarioComp" field2="InventorioComp"/>
+                    </rectangle>
+                </layout>
+
+				<dataLink field="precoInventorioComp">
+					<event name="onChange">
+						if sheet==nil then return end;
+
+						local nodes = NDB.getChildNodes(sheet.campoDosCompanheiros);   
+						local total = 0;
+						for i=1, #nodes, 1 do
+							total = total + (tonumber(nodes[i].precoInventorioComp) or 0);
+						end
+						sheet.precoInventorioComp = total;
+
+					</event>
+				</dataLink>
+
+                <layout g="col" g-width="6" g-width-lg="3" g-min-height="400" g-vert-tile="true" g-auto-height="true" g-cnt-line-spacing="5">
+                    <rectangle g="col" g-width="12" g-min-height="260" g-vert-tile="true" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <TitleEditor text="TALENTOS" field="talentosComp"/>
+                    </rectangle>
+                    <rectangle g="col" g-width="12" g-min-height="260" g-vert-tile="true" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <TitleEditor text="ATAQUES" field="ataquesComp"/>
+
+                        <label g="col" g-width="3" height="25" text="Macros" horzTextAlign="center"/>
+                        <script>
+                            local function lines(str)
+                               local t = {}
+                               local function helper(line)
+                                  table.insert(t, line)
+                                  return ""
+                               end
+                               helper((str:gsub("(.-)\r?\n", helper)))
+                               return t
+                            end
+                        </script>
+                        <button g="col" g-width="3" height="25" hint="Envia tudo do segundo espaço para ataques no chat." text="Atacar">
+                            <event name="onClick">
+                                local macro = self.boxDetalhesDoCompanheiro.node.macro
+                                if macro~=nil then
+                                    local macros = lines(macro)
+                                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                                    for i=1, #macros, 1 do
+                                        mesaDoPersonagem.activeChat:enviarMensagem(macros[i])
+                                    end
+                                end
+                            </event>
+                        </button>
+                        <textEditor g="col" g-width="12" g-min-height="100" g-vert-tile="true" field="macro"/>
+                    </rectangle>
+                </layout>
+                <layout g="col" g-width="6" g-width-lg="3" g-min-height="400" g-vert-tile="true" g-auto-height="true" g-cnt-line-spacing="5">
+                    <rectangle g="col" g-width="12" g-min-height="260" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <TitleEditor text="HABILIDADES" field="habilidadesComp"/>
+                    </rectangle>
+                    <rectangle g="col" g-width="12" g-min-height="260" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+                        <TitleEditor text="OUTROS" field="outrosComp"/>
+                    </rectangle>
+                </layout>
+            </dataScopeBox>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="2" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5" g-auto-height="true">
+            <button text="Novo Companheiro" g="col" g-width="12" height="25">
+                <event name="onClick">
+                    self.rclListaDosCompanheiros:append()
+                </event>
+            </button>
+
+            <recordList name="rclListaDosCompanheiros" field="campoDosCompanheiros" templateForm="CompanionsSelector" g="col" g-width="12" g-min-height="200" g-vert-tile="true" selectable="true" layout="vertical">
+                <event name="onSelect">
+                    local node = self.rclListaDosCompanheiros.selectedNode
+                    self.boxDetalhesDoCompanheiro.node = node
+                    self.boxDetalhesDoCompanheiro.visible = (node ~= nil)
+                </event>
+                <event name="onEndEnumeration">
+                    if self.rclListaDosCompanheiros.selectedNode == nil and sheet ~= nil then
+                        local nodes = NDB.getChildNodes(sheet.campoDosCompanheiros)               
+                        if #nodes &gt; 0 then
+                            self.rclListaDosCompanheiros.selectedNode = nodes[1]
+                        end
+                    end
+                </event>
+            </recordList>
+        </rectangle>
+    </scrollBox>
+</form>

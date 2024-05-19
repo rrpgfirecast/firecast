@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMacro" align="client">
+	<script>
+		local function AddPublic(name,code)
+	        local room = Firecast.getRoomOf(sheet)
+	        local myCode = room.codigoInterno
+
+	        local promise = room:asyncOpenRoomNDB("RRPG_Macros")
+	        local node = await(promise)
+	        -- If using room ndb look for 'RRPG_Macros'
+	        -- If using user ndb look for 'macros' [mesas/global]
+
+	        -- ADD NEW MACRO
+
+	        -- TRY TO FIND IF MACRO ALREADY EXISTS
+	        local macro = nil
+	        local macros = NDB.getChildNodes(node.macros)
+	        for i=1, #macros, 1 do 
+	        	if macros[i].macro == name then
+	        		-- MACRO EXIST
+	        		local currentVersion = tonumber(macros[i].version) or 0
+	        		macro = macros[i]
+	        	end
+	        end
+
+	        -- MACRO DOESN'T EXISTS, CREATE NEW
+	        if macro == nil then
+	        	macro = NDB.createChildNode(node.macros, "item")
+	        end
+
+	        macro.tipoMacro = "L"
+	        macro.macro = name
+	        macro.acoes = code
+		end
+		local function AddGlobal(name,code)
+	        local promise = Firecast.asyncOpenUserNDB("macros", {create=false})
+	        -- If using room ndb look for 'RRPG_Macros'
+	        -- If using user ndb look for 'macros' [mesas/global]
+	        local node = await(promise)
+
+	        -- ADD NEW MACRO
+	        local macro = nil
+
+	        -- TRY TO FIND IF MACRO ALREADY EXISTS
+	        local macros = NDB.getChildNodes(node.global.macros)
+	        for i=1, #macros, 1 do 
+	        	if macros[i].macro == name then
+	        		-- MACRO EXIST
+	        		local currentVersion = tonumber(macros[i].version) or 0
+	        		macro = macros[i]
+	        	end
+	        end
+
+	        -- MACRO DOESN'T EXISTS, CREATE NEW
+	        if macro == nil then
+	        	macro = NDB.createChildNode(node.global.macros, "item")
+	        end
+
+	        macro.tipoMacro = "L"
+	        macro.macro = name
+	        macro.acoes = code
+		end
+		local function AddRoom(name,code)
+	        local promise = Firecast.asyncOpenUserNDB("macros", {create=false})
+	        -- If using room ndb look for 'RRPG_Macros'
+	        -- If using user ndb look for 'macros' [mesas/global]
+	        local node = await(promise)
+
+	        -- ADD NEW MACRO
+
+	        -- TRY TO FIND IF THIS ROOM ALREADY HAS AN NODE
+	        local room = Firecast.getRoomOf(sheet)
+	        local myCode = room.codigoInterno
+
+	        local mesas = NDB.getChildNodes(node.mesas)
+	        local mesa = nil
+	        local text = ""
+	        for i=1, #mesas, 1 do 
+	        	if myCode == tonumber(NDB.getNodeName(mesas[i])) then
+	        		mesa = mesas[i]
+	        	end
+	        end
+
+	        -- ROOM DOESN'T EXISTS, CREATE NEW
+	        if mesa == nil then
+	        	mesa = NDB.createChildNode(node.mesas, (""..myCode))
+	        end
+
+	        -- TRY TO FIND IF MACRO ALREADY EXISTS
+	        local macro = nil
+	        local macros = NDB.getChildNodes(mesa.macros)
+	        for i=1, #macros, 1 do 
+	        	if macros[i].macro == name then
+	        		-- MACRO EXIST CHECK IF OLDER VERSION
+	        		local currentVersion = tonumber(macros[i].version) or 0
+	        		macro = macros[i]
+	        	end
+	        end
+
+	        -- MACRO DOESN'T EXISTS, CREATE NEW
+	        if macro == nil then
+	        	macro = NDB.createChildNode(mesa.macros, "item")
+	        end
+
+	        macro.tipoMacro = "L"
+	        macro.macro = name
+	        macro.acoes = code
+		end
+	</script>
+	<scrollBox align="client">
+		<recordList align="left" width="500" field="macroList" name="macroList" templateForm="frmMacroItem" selectable="true">
+			<event name="onCompare">
+				local ret = Utils.compareStringPtBr(nodeA.path, nodeB.path);
+				if ret == 0 then
+					ret = Utils.compareStringPtBr(nodeA.name, nodeB.name);
+				end
+				return ret
+        	</event>
+        	<event name="onSelect">                
+                local node = self.macroList.selectedNode;  
+                self.macroEditor.node = node;                       
+                self.macroEditor.visible = (node ~= nil);
+            </event>
+		</recordList>
+		<dataScopeBox align="client" name="macroEditor" visible="false">
+			<layout align="top" height="25">
+				<button align="left" width="25" text="💾" hint="@@macro.save">
+					<event name="onClick">
+						local name = self.macroEditor.node.name
+						local code = self.macroEditor.node.code
+						if self.macroEditor.node.macrotype == "all" then
+							AddPublic(name, code)
+						elseif self.macroEditor.node.macrotype == "global" then
+							AddGlobal(name, code)
+						elseif self.macroEditor.node.macrotype == "room" then
+							AddRoom(name, code)
+						else
+							showMessage(Locale.tryLang("macro.noType"))
+						end
+					</event>
+				</button>
+				<label align="left" width="100" text="@@macro.typeHint" horzTextAlign="center"/>
+				<comboBox align="client" field="macrotype" items="{'@@macro.all','@@macro.global','@@macro.room'}" values="{'all','global','room'}"/>
+			</layout>
+			<edit align="top" height="25" field="name"/>
+			<textEditor align="client" field="code"/>
+			<event name="onNodeReady">
+				if self.macroEditor.node.code == nil or self.macroEditor.node.code == "" then
+					--System.setClipboardText(self.macroEditor.node.link)
+					Internet.download(self.macroEditor.node.link,
+		                function(stream, contentType)
+		                	local code = stream:readBinary("utf8")
+		                	if code == nil or code == "" then
+		                		code = stream:readBinary("ansi")
+		                	end
+		                	if code == nil or code == "" then
+		                		code = stream:readBinary("utf16")
+		                	end
+
+		                	if code == nil or code == "" then
+		                		code = "error"
+		                	end
+
+		                    self.macroEditor.node.code = code
+		                    stream:close()
+		                end,
+		                function (errorMsg)
+		                    -- esta função será chamada quando ocorrer algum erro no download.
+		                    -- errorMsg possui a msg de erro
+		                    showMessage(tryTranslate("error.load").."\n" .. errorMsg);
+		                end,
+		                function (downloaded, total)
+		                    -- esta função será chamada constantemente.
+		                    -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+		                end,
+		                "alwaysDownload");
+				end
+			</event>
+		</dataScopeBox>
+	</scrollBox>
+</form>

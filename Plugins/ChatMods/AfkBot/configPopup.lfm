@@ -1,5 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="afkbotPopup" formType="undefined" dataType="ambesek.afkbot" title="AfkBot" width="290" height ="500">
+<popupForm name="afkbotPopup" formType="undefined" dataType="ambesek.afkbot" title="AfkBot" width="290" height ="525">
+	<script><![CDATA[
+		function self:listAllCharacters()
+			local mesa = Firecast.findRoom(sheet.codigoInterno)
+			if mesa==nil then 
+				showMessage("Cant find room")
+				return
+			end
+
+			local personagens = {};
+			recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens);
+			
+			table.sort(personagens,
+				function(left, right)
+					return Utils.compareStringPtBr(left.nome, right.nome) < 0;
+				end);
+				
+			local nomes = {};
+			local valores = {};
+			
+			nomes[1] = "Sem Ficha";
+			valores[1] = "0";
+			
+			-- Filter for 'Ficha Multiaba' or 'Gerenciador' only
+			for i = 1, #personagens, 1 do
+				if personagens[i].dataType == "Ambesek.Nefertyne.FichaMultiaba" or personagens[i].dataType == "Ambesek.Gerenciador.RPGmeister" then
+					nomes[#nomes + 1] = personagens[i].nome;
+					valores[#valores + 1] = tostring(personagens[i].codigoInterno);
+				end
+			end;
+			
+			self.cmbPersonagem.items = nomes;
+			self.cmbPersonagem.values = valores;
+
+			if sheet.characterName ~= nil then
+				sheet.character = sheet.characterID
+				self.cmbPersonagem.text = sheet.characterName
+			end
+		end
+
+		function self:listAllDataTypes()
+			local installed = Firecast.Plugins.getInstalledDataTypes()
+			local dataTypes = {}
+			local titles = {}
+
+			local i = 0
+            for key,value in pairs(installed) do
+            	if value.formType == "sheetTemplate" then
+			    	i = i + 1
+					dataTypes[i] = value.dataType
+					titles[i] = value.title
+				end
+			end
+
+			self.dt.items = titles
+			self.dt.values = dataTypes
+
+			if sheet.dataType then
+				self.dt.text = sheet.dataType
+			end
+		end
+
+		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
+			if bibItem.tipo == "personagem" then
+				dest[#dest + 1] = bibItem;
+			else
+				local filhos = bibItem.filhos;
+				
+				for i = 1, #filhos, 1 do
+					recursiveEnumPersonagensEmBibItem(filhos[i], dest);
+				end;
+			end
+		end
+		]]>
+	</script>
 	<tabControl align="client">
 		<tab title="Opções" padding="{left=10,right=10,top=10}"> 
 			<checkBox field="botEnabled" align="top" height="25" text="Habilitar AfkBot"/>
@@ -35,8 +109,43 @@
 
 			<checkBox align="top" height="25" text="Dar ficha aos jogadores." field="giveSheet"/>
 			<layout align="top" height="25">
-				<label align="left" width="90" text="DataType" horzTextAlign="center"/>
-				<edit align="left" width="150" field="dataType"/>
+				<label align="left" width="70" text="DataType" horzTextAlign="center"/>
+				<comboBox name="dt" align="client" width="200" field="dataType"/>
+			</layout>
+
+			<horzLine align="top" height="5"/>
+			<label align="top" height="25" text="Configurações de Sessão"/>
+			<layout align="top" height="25">
+				<label align="left" width="120" fontSize="11" text="Logs" horzTextAlign="center"/>
+				<comboBox name="cmbPersonagem" align="client" field="character">
+					<event name="onChange">
+						if sheet==nil then return end
+						sheet.characterName = self.cmbPersonagem.text
+						if sheet.character ~= nil then
+							sheet.characterID = sheet.character
+						end
+
+						local mesa = Firecast.findRoom(sheet.codigoInterno)
+						local bibItem = mesa:findBibliotecaItem(sheet.characterID)
+						if bibItem and bibItem.avatar ~= nil and bibItem.avatar ~= "" and sheet.avatar == nil then
+							sheet.avatar = bibItem.avatar
+						end
+					</event>
+				</comboBox>
+				<dataLink field="characterName">
+					<event name="onChange">
+						if sheet==nil then return end
+						self.cmbPersonagem.text = sheet.characterName
+					</event>
+				</dataLink>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="120" fontSize="11" text="Messagem Inicial" horzTextAlign="center"/>
+				<edit align="left" width="150" field="msgStart"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="120" fontSize="11" text="Messagem Final" horzTextAlign="center"/>
+				<edit align="left" width="150" field="msgEnd"/>
 			</layout>
 
 			<dataLink fields="{'botEnabled','autoEnable'}">
@@ -136,4 +245,10 @@
 			</dataLink>
 		</tab>
 	</tabControl>
+	<event name="onScopeNodeChanged">
+	    if sheet ~= nil then   
+	        self:listAllCharacters()
+	        self:listAllDataTypes()
+	    end;
+	</event>
 </popupForm>

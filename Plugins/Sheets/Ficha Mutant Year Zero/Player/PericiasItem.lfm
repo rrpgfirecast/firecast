@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericiasItem" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+	]]>
+	</script>
+
+	<edit align="client" vertTextAlign="center" field="nome"/>
+	<layout align="right" width="190">
+		<layout align="left" width="95">
+			<edit align="left" width="35" field="bonus" type="number" vertTextAlign="center"/>
+			<comboBox align="right" width="60" vertTextAlign="center" horzTextAlign="center" field="chave" items="{'FOR', 'AGI', 'AST', 'EMP', '-'}" values="{'1', '2', '3', '4', '0'}" fontColor="white"/>
+		</layout>
+		<layout align="right" width="95">
+			<edit align="left" width="30" field="equip" type="number" vertTextAlign="center"/>
+			<rectangle align="client" width="40" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="total" horzTextAlign="center"/>
+			</rectangle>
+			<button align="right" width="25" text="X" onClick="askForDelete();"/>
+		</layout>
+	</layout>
+
+	<dataLink fields="{'bonus','equip', 'forca', 'agilidade', 'astucia', 'empatia', 'chave'}">
+		<event name="onChange">
+			if sheet==nil then return end
+			local bonus = tonumber(sheet.bonus) or 0
+			local equip = tonumber(sheet.equip) or 0
+			local atr = 0
+			if sheet.chave=="1" then
+				atr = tonumber(sheet.forca) or 0
+			elseif sheet.chave=="2" then
+				atr = tonumber(sheet.agilidade) or 0
+			elseif sheet.chave=="3" then
+				atr = tonumber(sheet.astucia) or 0
+			elseif sheet.chave=="4" then
+				atr = tonumber(sheet.empatia) or 0
+			end
+
+			sheet.total = bonus + atr + equip
+		</event>
+	</dataLink>
+</form>

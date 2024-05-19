@@ -61,7 +61,7 @@
             	 -- E
             	items = {'Nova Leve', 'Nova Pesado', 'Nova Ultra', 'Portal Leve', 'Portal Pesado', 'Portal Ultra'};
             	values = {'17','18','19','20','21','22'};
-            elseif tamanho>=6then
+            elseif tamanho>=6 then
             	-- I or C
             	items = {'Portal Leve', 'Portal Pesado', 'Portal Ultra'};
             	values = {'20','21','22'};

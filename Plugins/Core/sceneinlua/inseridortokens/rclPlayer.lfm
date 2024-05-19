@@ -11,9 +11,7 @@
 
             if pop ~= nil then
                 pop:setNodeObject(self.sheet);
-                pop:showPopupEx("mouseCenter", self);
-            else
-                --showMessage("Popup não encontrado.");
+                pop:showPopupEx("mouseCenter", self);            
             end;
         end
 
@@ -37,14 +35,6 @@
                         NDB.deleteNode(sheet);
                     end;
                 end);
-        end
-
-        local function OpenClose()
-            if sheet==nil then return end;
-
-            if sheet.directory then
-                sheet.dirOpen = not sheet.dirOpen
-            end;
         end
 
         local function UpdateIcon()
@@ -144,7 +134,7 @@
 
     <event name="OnStartDrag">
         if sheet.id == nil then
-            sheet.id = Utils.Utils.generateUniqueString();
+            sheet.id = Utils.generateUniqueString();
         end;
         if sheet.dirLevel == nil then
             sheet.dirLevel = 0
@@ -162,7 +152,7 @@
                         local node = NDB.getParent(NDB.getParent(sheet))
 
                         if sheet.id == nil then
-                            sheet.id = Utils.Utils.generateUniqueString();
+                            sheet.id = Utils.generateUniqueString();
                         end;
                         if sheet.dirLevel == nil then
                             sheet.dirLevel = 0

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmBibliotecaRPGmeister" formType="sheetTemplate" dataType="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" align="client" theme="dark">
+    <style>
+        label {
+                textTrimming: none;
+        }
+        button {
+                textTrimming: none;
+        }
+    </style> 
     <script>
         <![CDATA[
         local function isNewVersion(installed, downloaded)
@@ -33,27 +41,34 @@
         end;
         ]]> 
     </script>
-	<tabControl align="client">
+
+    <import file="Templates.xml"/>
+    <import file="PopUp.xml"/>
+
+	<tabControl align="client" g-cnt-gutter="5">
 		<tab title="Jogadores">
-			<import file="01.Jogadores.lfm"/>
+			<import file="01.Jogadores.xml"/>
 		</tab>
 		<tab title="Calendario">
-			<import file="02.Calendario.lfm"/>
+			<import file="02.Calendario.xml"/>
 		</tab>
-		<tab title="NPCs">
-			<import file="MainDockNPCs.lfm"/>
-		</tab>
+        <tab title="PdMs">
+            <import file="ListaPdMs.lfm"/>
+        </tab>
 		<tab title="Iniciativas">
 			<import file="CombatTrackerDock.lfm"/>
 		</tab>
 		<tab title="Aventuras">
-			<import file="03.aventuras.lfm"/>
+			<import file="03.aventuras.xml"/>
 		</tab>
+        <tab title="Logs">
+            <import file="FichaMultiaba.xml"/>
+        </tab>
 		<tab title="Anotaçoes">
-			<import file="05.Anotacoes.lfm"/>
+			<import file="05.Anotacoes.xml"/>
 		</tab>
 		<tab title="Creditos">
-			<import file="06.Creditos.lfm"/>
+			<import file="06.Creditos.xml"/>
 		</tab>
 	</tabControl>
     <event name="onNodeReady">

@@ -65,7 +65,7 @@ local function constructNew_frmAvatar()
     obj.image1:setName("image1");
 
     obj._e_event0 = obj.image1:addEventListener("onStartDrag",
-        function (_, drag, x, y)
+        function (_, drag, x, y, event)
             if drag then
             				    	drag:addData("imageURL", sheet.avatar)
             				    end
@@ -84,10 +84,10 @@ local function constructNew_frmAvatar()
           self:setNodeDatabase(nil);
         end;
 
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

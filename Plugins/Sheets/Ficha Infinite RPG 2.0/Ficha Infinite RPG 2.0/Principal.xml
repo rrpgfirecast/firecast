@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPrincipal" align="client">
+	<template name="HorzLabelEdit">
+		<label text="$(text)" align="left" width="$(width or 75)" horzTextAlign="center"/>
+		<edit field="$(field)" align="client" margins="{right=5}"/>
+	</template>
+	<template name="HorzLabelEditLabel">
+		<label text="$(text)" align="left" width="75" horzTextAlign="center"/>
+		<edit field="$(field)" align="client"/>
+		<rectangle align="right" width="85" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+			<label field="$(field)Auto" align="client" horzTextAlign="center"/>
+		</rectangle>
+	</template>
+	<template name="HorzLabelCbBox">
+		<label text="$(text)" align="left" width="$(width or 75)" horzTextAlign="center"/>
+		<comboBox field="$(field)" align="client" items="$(items)" values="$(values)" margins="{right=5}"/>
+	</template>
+	<template name="HorzLabelLabel">
+		<label text="$(text)" align="left" width="$(width or 75)" horzTextAlign="center"/>
+		<rectangle align="client" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+			<label field="$(field)" align="client" horzTextAlign="center"/>
+		</rectangle>
+	</template>
+	<template name="Atributo">
+		<button text="$(text)" fontSize="$(fontSize or 13)" align="left" width="75" horzTextAlign="center" margins="{left=5}">
+			<event name="onClick">
+				roll(sheet.$(field)Mod, "$(text)")
+			</event>
+		</button>
+		<edit field="$(field)Ini" align="left" width="50" type="number"/>
+		<edit field="$(field)Up" align="left" width="50" type="number"/>
+		<edit field="$(field)Ext" align="left" width="50" type="number"/>
+		<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1">
+			<label field="$(field)Total" align="client" horzTextAlign="center"/>
+		</rectangle>
+		<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+			<label field="$(field)Mod" align="client" horzTextAlign="center"/>
+		</rectangle>
+
+		<dataLink fields="{'$(field)Ini','$(field)Up','$(field)Ext'}">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local total = (tonumber(sheet.$(field)Ini) or 0) + (tonumber(sheet.$(field)Up) or 0) + (tonumber(sheet.$(field)Ext) or 0)
+				local mod = math.ceil((total - 10) / 2.0) 
+
+				sheet.$(field)Total = total
+				sheet.$(field)Mod = mod
+
+
+				local pericias = NDB.getChildNodes(sheet.listaDePericias);
+				for i=1, #pericias, 1 do 
+					pericias[i].$(field) = mod
+				end;
+			</event>
+		</dataLink>
+	</template>
+	<template name="Status">
+		<label text="$(text)" fontSize="$(fontSize or 13)" align="left" width="75" horzTextAlign="center" margins="{left=5}"/>
+		<edit field="$(field)Ext" align="left" width="50" type="number"/>
+		<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1">
+			<label field="$(field)Total" align="client" horzTextAlign="center"/>
+		</rectangle>
+
+		<dataLink fields="$(atrs)">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local atrs = $(atrs)
+				local mult = $(mult)
+				local biotipo = $(biotipo)
+				local bBonus = {}
+				bBonus.Ectomorfo = biotipo[1]
+				bBonus.Endomorfo = biotipo[2]
+				bBonus.Mesomorfo = biotipo[3]
+
+				local total = (tonumber(sheet[atrs[1]]) or 0) * mult[1]
+				total = total + (tonumber(sheet[atrs[2]]) or 0) * mult[2]
+				total = total + (tonumber(sheet[atrs[3]]) or 0) * mult[3]
+				total = total + (bBonus[sheet.biotipo] or 0)
+				total = total + (tonumber(sheet[atrs[5]]) or 0)
+
+				sheet.$(field)Total = math.ceil(total)
+			</event>
+		</dataLink>
+	</template>
+
+	<scrollBox align="client">
+		<layout align="left" width="400" margins="{right=10}">
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1" >
+	        	<label left="0" top="50" width="400" height="20" text="Avatar" horzTextAlign="center"/>
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+						if drag then
+					    	drag:addData("imageURL", sheet.avatar)
+					    end
+					</event>
+				</image>
+			</rectangle>
+        </layout>
+
+        <layout align="client">
+			<layout align="top" height="160" margins="{bottom=10}">
+				<rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1" margins="{right=10}">
+					<layout align="top" height="25" margins="{top=5}">
+						<HorzLabelEdit text="Nome" field="nome"/>
+					</layout>
+					<layout align="top" height="25">
+						<HorzLabelEdit text="Poder" field="poder"/>
+					</layout>
+					<layout align="top" height="25">
+						<HorzLabelCbBox text="Biotipo" field="biotipo" items="{'Ectomorfo', 'Mesomorfo', 'Endomorfo'}" values="{'Ectomorfo', 'Mesomorfo', 'Endomorfo'}"/>
+					</layout>
+					<layout align="top" height="25">
+						<HorzLabelEditLabel text="XP" field="xp"/>
+					</layout>
+					<layout align="top" height="25">
+						<HorzLabelLabel text="Nível" field="nivel"/>
+					</layout>
+					<layout align="top" height="25">
+						<HorzLabelEdit text="Maestria" field="maestria"/>
+					</layout>
+				</rectangle>
+				<dataLink fields="{'xp', 'xpPericias','xpMaestrias','xpPoderes'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local xp = tonumber(sheet.xp) or 0
+						local xpAux = xp
+						local nivel = 0
+						local xpTable = {5,10,15,20,25,30,35,40,45,50,60,70,80,90,100,115,130,145,160,175,200,225,250,275,300,350,400,450,500,550}
+						for i=1, #xpTable, 1 do
+							if xp >= xpTable[i] then
+								nivel = i
+								xp = xp - xpTable[i]
+							else
+								break
+							end
+						end
+
+						sheet.nivel = nivel
+
+						-- total xp
+
+						local xpPericias = tonumber(sheet.xpPericias) or 0
+						local xpMaestrias = tonumber(sheet.xpMaestrias) or 0
+						local xpPoderes = tonumber(sheet.xpPoderes) or 0
+
+						sheet.xpAuto = xpAux + xpPericias + xpMaestrias + xpPoderes
+					</event>
+				</dataLink>
+
+				<rectangle align="left" width="185" color="black" strokeColor="white" strokeSize="1" >
+					<layout align="top" height="25" margins="{top=5}">
+						<label align="client" text="STATUS" horzTextAlign="center"/>
+					</layout>
+					<layout align="top" height="25">
+						<Status text="RD" field="rd" mult="{0.5, 0.3, 0.5}" atrs="{'vigorTotal', 'proezaTotal', 'nivel', 'biotipo', 'rdExt'}" biotipo="{0,0,0}"/>
+					</layout>
+					<layout align="top" height="25">
+						<Status text="ATK" field="atk" mult="{1.2, 0.8, 0.5}" atrs="{'proezaTotal', 'intelectoTotal', 'nivel', 'biotipo', 'atkExt'}" biotipo="{0,0,0}"/>
+					</layout>
+					<layout align="top" height="25">
+						<Status text="HP" field="hp" mult="{1.8, 1.6, 1.6}" atrs="{'vigorTotal', 'vontadeTotal', 'nivel', 'biotipo', 'hpExt'}" biotipo="{20,50,30}"/>
+					</layout>
+					<layout align="top" height="25">
+						<Status text="EnR" field="enr" mult="{0.8, 0.7, 1.0}" atrs="{'intelectoTotal', 'vontadeTotal', 'nivel', 'biotipo', 'enrExt'}" biotipo="{25,10,10}"/>
+					</layout>
+					<layout align="top" height="25">
+						<Status text="STA" field="sta" mult="{0.9, 0.6, 1.0}" atrs="{'vigorTotal', 'vontadeTotal', 'nivel', 'biotipo', 'staExt'}" biotipo="{10,10,25}"/>
+					</layout>
+				</rectangle>
+	        </layout>
+
+			<layout align="top" height="210">
+				<rectangle align="left" width="335" color="black" strokeColor="white" strokeSize="1" margins="{right=10}">
+					<layout align="top" height="25" margins="{top=5}">
+						<label align="client" text="ATRIBUTOS" horzTextAlign="center"/>
+					</layout>
+					<layout align="top" height="25">
+						<label align="left" width="75" horzTextAlign="center" text="" margins="{left=5}"/>
+						<label align="left" width="50" horzTextAlign="center" text="Ini"/>
+						<label align="left" width="50" horzTextAlign="center" text="Up"/>
+						<label align="left" width="50" horzTextAlign="center" text="Extra"/>
+						<label align="left" width="50" horzTextAlign="center" text="Total"/>
+						<label align="left" width="50" horzTextAlign="center" text="Mod" margins="{right=5}"/>
+					</layout>
+					<layout align="top" height="25">
+						<Atributo text="Proeza" field="proeza"/>
+					</layout>
+					<layout align="top" height="25">
+						<Atributo text="Coordenação" field="coordenacao" fontSize="11"/>
+					</layout>
+					<layout align="top" height="25">
+						<Atributo text="Vigor" field="vigor"/>
+					</layout>
+					<layout align="top" height="25">
+						<Atributo text="Intelecto" field="intelecto"/>
+					</layout>
+					<layout align="top" height="25">
+						<Atributo text="Atenção" field="atencao"/>
+					</layout>
+					<layout align="top" height="25">
+						<Atributo text="Vontade" field="vontade"/>
+					</layout>
+				</rectangle>
+
+				<rectangle align="left" width="500" color="black" strokeColor="white" strokeSize="1">
+					<layout align="top" height="25" margins="{top=5}">
+						<button align="left" width="25" text="+" margins="{left=5}">
+							<event name="onClick">
+								local pericia = self.listaDePericias:append()
+								if pericia then
+									pericia.proeza = sheet.proezaMod
+									pericia.coordenacao = sheet.coordenacaoMod
+									pericia.vigor = sheet.vigorMod
+									pericia.intelecto = sheet.intelectoMod
+									pericia.atencao = sheet.atencaoMod
+									pericia.vontade = sheet.vontadeMod
+								end
+							</event>
+						</button>
+						<label align="client" text="PERÍCIAS" horzTextAlign="center"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5}">
+						<label text="T" align="left" width="20" horzTextAlign="center"/>
+						<label text="" align="left" width="25" height="25" horzTextAlign="center"/>
+						<label text="" align="client" horzTextAlign="center"/>
+
+						<layout align="right" width="245" margins="{right=20}">
+							<label align="left" width="30" text="XP" horzTextAlign="center"/>
+							<label align="left" width="30" text="Nível" horzTextAlign="center"/>
+							<label align="left" width="30" text="Mod" horzTextAlign="center"/>
+							<label align="left" width="100" text="Atributo" horzTextAlign="center"/>
+
+							<label align="client" text="Total" horzTextAlign="center"/>
+
+							<!-- Botão que apaga o objeto da lista -->
+							<label align="right" width="25" text="" horzTextAlign="center"/>
+						</layout>
+					</layout>
+					<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="listaDePericias" field="listaDePericias" templateForm="frmPericia" layout="vertical">
+						<event name="onCompare">
+							return Utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+						</event>
+					</recordList>
+				</rectangle>
+	        </layout>
+	    </layout>
+	</scrollBox>
+</form>

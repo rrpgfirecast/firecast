@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="autoupdaterPopup" formType="undefined" dataType="ambesek.autoupdater" title="Auto Updater" width="720" height ="300">
-	<import file="Main.lfm"/>
+<popupForm name="autoupdaterPopup" formType="undefined" dataType="ambesek.autoupdater" title="Auto Updater" width="720" height ="480">
+	<import file="AutoUpdater.lfm"/>
     <event name="onShow">
         init();
     </event>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiasSigno" width="400" height="200" margins="{bottom=3,right=3}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+		]]>	
+	</script>
+
+	<layout width="400" height="200">
+		<layout align="top" height="25">
+			<rectangle align="right" width="100" color="black" strokeColor="white" strokeSize="1">
+				<edit align="left" width="75" field="cd" horzTextAlign="center" fontSize="12"/>
+				<button align="right" width="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+			</rectangle>
+
+			<edit align="left" width="300" field="nomeMagia"/>
+		</layout>
+		<textEditor align="bottom" height="175" field="details"/>
+	</layout>
+</form>

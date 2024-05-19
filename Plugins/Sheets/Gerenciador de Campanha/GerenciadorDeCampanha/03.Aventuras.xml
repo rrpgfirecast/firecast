@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador03" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+    	<layout g="col" g-width="8" g-vert-tile="true" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" height="35" color="Black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+				<button g="col" g-width="1" height="25" text="+" hint="Nova Aventura">
+		    		<event name="onClick">
+						if sheet~=nil then
+							local aventuras = ndb.getChildNodes(sheet.aventuras);
+							local num = #aventuras + 1;
+
+							local node = self.rclAventuras:append();
+							if node~=nil then
+								node.numero = num;
+							end;
+
+							self.rclAventuras:sort();
+						end;
+					</event>
+		    	</button>
+				<label g="col" g-width="11" height="25" text="LISTA DE AVENTURAS" horzTextAlign="center" />
+			</rectangle>
+			
+			<scrollBox g="col" g-width="12" g-vert-tile="true" g-min-height="400">
+				<recordList align="top" itemHeight="200" autoHeight="true" minQt="1" name="rclAventuras" field="aventuras" templateForm="AventurasAventura">
+					<event name="onCompare"><![CDATA[               
+			            if (tonumber(nodeA.numero) or 0) < (tonumber(nodeB.numero) or 0) then
+			                return 1;
+			            elseif (tonumber(nodeA.numero) or 0) > (tonumber(nodeB.numero) or 0) then
+			                return -1;
+			            else   
+			                return 0;
+			            end;               
+			            ]]>
+					</event>
+				</recordList>
+			</scrollBox>
+    	</layout>
+    	<layout g="col" g-width="4" g-vert-tile="true">
+			<rectangle g="col" g-width="12" g-vert-tile="true" g-min-height="400" color="Black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}">
+				<layout g="col" g-width="12" height="25">
+					<button g="col" g-width="1" height="25" text="+" hint="Novo">
+						<event name="onClick">
+							if sheet~=nil then
+								local sessoes = ndb.getChildNodes(sheet.sessoes);
+								local num = 1;
+
+								if #sessoes > 0 then
+									num = (tonumber(sessoes[#sessoes].numero) or 0) + 1
+								end;
+
+								local node = self.rclSessoes:append();
+								if node~=nil then
+									node.numero = num;
+									node.data = os.date("%d/%m/%Y", os.time());
+								end;
+
+								self.rclSessoes:sort();
+							end;
+						</event>
+					</button>
+					<label g="col" g-width="11" height="25" text="SESSÕES" horzTextAlign="center"/>
+				</layout>
+
+				<layout g="col" g-width="12" height="25">
+					<label g="col" g-width="1" height="25" text="Nº" horzTextAlign="center"/>
+					<label g="col" g-width="2" height="25" text="Data" horzTextAlign="center"/>
+					<layout g="col" g-width="1" height="25"/>
+					<label g="col" g-width="7" height="25" text="Log" horzTextAlign="center"/>
+				</layout>
+				
+				
+				<recordList g="col" g-width="12" g-vert-tile="true" g-min-height="400" itemHeight="35" name="rclSessoes" field="sessoes" templateForm="AventurasLog">
+					<event name="onCompare"><![CDATA[               
+			            if (tonumber(nodeA.numero) or 0) < (tonumber(nodeB.numero) or 0) then
+			                return 1;
+			            elseif (tonumber(nodeA.numero) or 0) > (tonumber(nodeB.numero) or 0) then
+			                return -1;
+			            else   
+			                return 0;
+			            end;               
+			            ]]>
+					</event>
+				</recordList>
+				
+			</rectangle>
+	    </layout>
+    </scrollBox>
+</form>

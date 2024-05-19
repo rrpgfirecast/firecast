@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaque" height="110" margins="{top=10,bottom=-0}">       
+
+    <button text="Attack" onClick="ligarAtaque()" top="0" left="0" width="120"/>
+    <edit field="Ataque" horzTextAlign="center" top="20" left="0" width="120"/>
+
+    <comboBox field="escAtaque" text="Attribute" onChange="escolherAtributo()" top="0" left="120" width="40" items="{'Str', 'Agi', 'Int', 'Will'}"/>
+    <label field="modAtaque" left="130" top="25" text="0" width="40"/>    
+
+    <label left="168" top="0" text="Boons"/>
+    <edit field="modBoons" horzTextAlign="center" top="20" left="160" width="50"/>
+
+    <label left="255" top="0" text="Damage"/>
+    <edit field="dano"  horzTextAlign="center" top="20" left="210" width="60"/>
+    <edit field="Bonus"  horzTextAlign="center" top="20" left="290" width="60"/>
+    <label left="275" top="25" text="+"/>
+
+    <label left="0" top="57" text="Extra Effect"/>
+    <edit field="danoExtra"  horzTextAlign="center" top="50" left="75" width="275"/>
+
+    <label left="0" top="87" text="Properties"/>
+    <edit field="propriedades" top="80" left="65" width="245"/>
+    <button text="Del" top="80" left="310" width="40" height="31" onClick="NDB.deleteNode(sheet);" />
+ 
+<!--_janela de boons e banes-->
+     <popup name="popBoonBaneAtaque" width="400" height="200" backOpacity="0.5">
+        <rectangle align="client" color="black" corners="" xradius="25" yradius="25" cornerType="round"/>
+        <label text="    BOON / BANE" align="left" left="180" top="-100"/>
+        <edit field="modBoonBaneAtaque" align="top" width="100" height="100" type="number" horzTextAlign="center" fontSize="40"/>
+        <button onClick="confirmarBoonBane()" align="right" width="272" text="Rolar"/>
+    </popup>
+
+    <script>
+        local valBoonBane = 0;
+        local ligAtaque = false;
+
+        local modForca;
+        local modAgilidade;
+        local modIntelecto;
+        local modVontade;
+
+        local function ligarAtaque()
+            ligAtaque = true;
+            self.popBoonBaneAtaque:show();            
+        end;
+
+-- --------------------------------------------------------------
+
+        local function rolarAtaque(boonBane)
+            local modBoonBane = boonBane;
+            local modAtaque;
+
+            if sheet.escAtaque == nil then
+                showMessage("Informe o atributo do ataque");
+            end;
+
+            if sheet.escAtaque ~= nil then
+                if sheet.escAtaque == "Str" then
+                    local node = NDB.getRoot(sheet);
+                    local arma = sheet.Ataque;
+                    
+                    local nome;
+                    if node.Nome == nil then
+                        nome = " ";
+                    else
+                        nome = " de " .. node.Nome;
+                    end;
+
+                    if node.Forca == nil then
+                        showMessage("Preencha o valor de Força no campo Strength");
+                    end;
+
+                    if node.Forca ~= nil then
+                        modAtaque = node.modForca;
+                        local efeitoExtra = " ";
+                        if sheet.danoExtra ~= nil then 
+                            efeitoExtra = sheet.danoExtra;
+                        end;
+
+                        local mesaDeRPG = Firecast.getMesaDe(sheet);
+                        rolagemForca = Firecast.interpretarRolagem("1d20 + " .. modAtaque + modBoonBane);
+                        mesaDeRPG.chat:rolarDados(rolagemForca, arma .. nome, 
+                            function (rolado)
+                                local dano;
+                                if sheet.Dano ~= nil then
+                                    for i = 1, 1, 1 do
+                                        dano = string.sub(sheet.Dano, i, i);
+                                        
+                                        if sheet.Bonus ~= nil then
+                                            bonus = sheet.Bonus;
+                                            rolagemDano = Firecast.interpretarRolagem(dano .. "d6 +" .. bonus);
+                                        else
+                                            rolagemDano = Firecast.interpretarRolagem(dano .. "d6");
+                                        end;
+
+                                    end;
+                                    mesaDeRPG.chat:rolarDados(rolagemDano, "Dano de " .. arma) 
+                                end;
+
+                                if efeitoExtra ~= " " then
+                                    mesaDeRPG.chat:enviarMensagem("Efeito Extra ( " .. efeitoExtra .. " )");                            
+                                end;    
+                        end);
+                    end;
+                end;
+
+                if sheet.escAtaque == "Agi" then
+                    local node = NDB.getRoot(sheet);
+                    local arma = sheet.Ataque;
+                    
+                    local nome;
+                    if node.Nome == nil then
+                        nome = " ";
+                    else
+                        nome = " de " .. node.Nome;
+                    end;
+
+                    if node.Agilidade == nil then
+                        showMessage("Preencha o valor de Agilidade no campo Agility");
+                    end;
+
+                    if node.Agilidade ~= nil then
+                        modAtaque = node.modAgilidade;
+                        local efeitoExtra = " ";
+                        if sheet.danoExtra ~= nil then 
+                            efeitoExtra = sheet.danoExtra;
+                        end;
+
+                        local mesaDeRPG = Firecast.getMesaDe(sheet);
+                        rolagemAgilidade = Firecast.interpretarRolagem("1d20 + " .. modAtaque + modBoonBane);
+                        mesaDeRPG.chat:rolarDados(rolagemAgilidade, arma .. nome, 
+                            function (rolado)
+                                local dano;
+                                if sheet.Dano ~= nil then
+                                    for i = 1, 1, 1 do
+                                        dano = string.sub(sheet.Dano, i, i);
+                                        
+                                        if sheet.Bonus ~= nil then
+                                            bonus = sheet.Bonus;
+                                            rolagemDano = Firecast.interpretarRolagem(dano .. "d6 +" .. bonus);
+                                        else
+                                            rolagemDano = Firecast.interpretarRolagem(dano .. "d6");
+                                        end;
+
+                                    end;
+                                    mesaDeRPG.chat:rolarDados(rolagemDano, "Dano de " .. arma) 
+                                end;
+
+                                if efeitoExtra ~= " " then
+                                    mesaDeRPG.chat:enviarMensagem("Efeito Extra ( " .. efeitoExtra .. " )");                            
+                                end;    
+                        end);
+                    end;
+                end;
+
+                if sheet.escAtaque == "Int" then
+                    local node = NDB.getRoot(sheet);
+                    local arma = sheet.Ataque;
+                    
+                    local nome;
+                    if node.Nome == nil then
+                        nome = " ";
+                    else
+                        nome = " de " .. node.Nome;
+                    end;
+
+                    if node.Intelecto == nil then
+                        showMessage("Preencha o valor de Intelecto no campo Intellect");
+                    end;
+
+                    if node.Intelecto ~= nil then
+                        modAtaque = node.modIntelecto;
+                        local efeitoExtra = " ";
+                        if sheet.danoExtra ~= nil then 
+                            efeitoExtra = sheet.danoExtra;
+                        end;
+
+                        local mesaDeRPG = Firecast.getMesaDe(sheet);
+                        rolagemIntelecto = Firecast.interpretarRolagem("1d20 + " .. modAtaque + modBoonBane);
+                        mesaDeRPG.chat:rolarDados(rolagemIntelecto, arma .. nome, 
+                            function (rolado)
+                                local dano;
+                                if sheet.Dano ~= nil then
+                                    for i = 1, 1, 1 do
+                                        dano = string.sub(sheet.Dano, i, i);
+                                        
+                                        if sheet.Bonus ~= nil then
+                                            bonus = sheet.Bonus;
+                                            rolagemDano = Firecast.interpretarRolagem(dano .. "d6 +" .. bonus);
+                                        else
+                                            rolagemDano = Firecast.interpretarRolagem(dano .. "d6");
+                                        end;
+
+                                    end;
+                                    mesaDeRPG.chat:rolarDados(rolagemDano, "Dano de " .. arma) 
+                                end;
+
+                                if efeitoExtra ~= " " then
+                                    mesaDeRPG.chat:enviarMensagem("Efeito Extra ( " .. efeitoExtra .. " )");                            
+                                end;    
+                        end);
+                    end;
+                end;
+
+                if sheet.escAtaque == "Will" then
+                    local node = NDB.getRoot(sheet);
+                    local arma = sheet.Ataque;
+                    
+                    local nome;
+                    if node.Nome == nil then
+                        nome = " ";
+                    else
+                        nome = " de " .. node.Nome;
+                    end;
+
+                    if node.Vontade == nil then
+                        showMessage("Preencha o valor de Vontade no campo Will");
+                    end;
+
+                    if node.Vontade ~= nil then
+                        modAtaque = node.modVontade;
+                        local efeitoExtra = " ";
+                        if sheet.danoExtra ~= nil then 
+                            efeitoExtra = sheet.danoExtra;
+                        end;
+
+                        local mesaDeRPG = Firecast.getMesaDe(sheet);
+                        rolagemVontade = Firecast.interpretarRolagem("1d20 + " .. modAtaque + modBoonBane);
+                        mesaDeRPG.chat:rolarDados(rolagemVontade, arma .. nome, 
+                            function (rolado)
+                                local dano;
+                                if sheet.Dano ~= nil then
+                                    for i = 1, 1, 1 do
+                                        dano = string.sub(sheet.Dano, i, i);
+                                        
+                                        if sheet.Bonus ~= nil then
+                                            bonus = sheet.Bonus;
+                                            rolagemDano = Firecast.interpretarRolagem(dano .. "d6 +" .. bonus);
+                                        else
+                                            rolagemDano = Firecast.interpretarRolagem(dano .. "d6");
+                                        end;
+
+                                    end;
+                                    mesaDeRPG.chat:rolarDados(rolagemDano, "Dano de " .. arma) 
+                                end;
+
+                                if efeitoExtra ~= " " then
+                                    mesaDeRPG.chat:enviarMensagem("Efeito Extra ( " .. efeitoExtra .. " )");                            
+                                end;    
+                        end);
+                    end;
+                end;
+
+            end;
+        end;
+
+
+-- ----------------------------------------------------------------
+
+        local function confirmarBoonBane()
+            local node = NDB.getRoot(sheet);
+            
+            if node.modBoonBaneAtaque ~= nil then
+            -- local node = NDB.getRoot(sheet);
+                
+                local boonBaneAtaque;
+                if sheet.modBoons == nil then
+                    boonBaneAtaque = "0d6";
+                else 
+                    boonBaneAtaque = sheet.modBoons;
+                end;
+                
+                local numBoonBane;
+                for i = 1, 1, 1 do
+                    numBoonBane = string.sub(boonBaneAtaque, i, i)
+                end;
+                local modBoonBane = node.modBoonBaneAtaque + numBoonBane;
+                
+                local valorAnterior = 0;
+
+                local mesaDeRPG = Firecast.getMesaDe(sheet);
+
+                self.popBoonBaneAtaque:close();
+
+                -- boon / bane == 0
+                if modBoonBane == 0 or modBoonBane == nil then
+                    valBoonBane = 0;
+
+                    if ligAtaque == true then
+                        rolarAtaque(valBoonBane);
+                        ligAtaque = false;
+                    end;
+
+                end;
+
+                -- bane -1 a -infinito
+                if modBoonBane &lt; 0 and modBoonBane &gt; -13 then
+                    local cont = 0;
+                    for i = - 1, modBoonBane, -1 do
+                        mesaDeRPG.chat:rolarDados("1d6", "Bane", 
+                            function (rolado)
+                                valorAnterior = rolado.resultado;
+                    
+                                if valorAnterior &gt; valBoonBane then
+                                    valBoonBane = valorAnterior;
+                                end;
+                    
+                                cont = cont - 1;
+                                if cont == modBoonBane then
+                                    if ligAtaque == true then
+                                        rolarAtaque(valBoonBane * -1);
+                                        ligAtaque = false;
+                                        valBoonBane = 0;
+                                    end;
+                                end;
+                        end);
+
+                    end;
+                end;
+
+                -- boon 1 a infinito
+                if modBoonBane &gt; 0 and modBoonBane &lt; 13 then
+                    local cont = 0;
+                    for i = 1, modBoonBane, 1 do
+                        mesaDeRPG.chat:rolarDados("1d6", "Boon", 
+                            function (rolado)
+                                valorAnterior = rolado.resultado;
+                    
+                                if valorAnterior &gt; valBoonBane then
+                                    valBoonBane = valorAnterior;
+                                end;
+                    
+                                cont = cont + 1;
+                                if cont == modBoonBane then
+                                    if ligAtaque == true then
+                                        rolarAtaque(valBoonBane);
+                                        ligAtaque = false;
+                                        valBoonBane = 0;
+                                    end;
+
+                                end;
+                        end);
+                    
+                    end;                                
+                end;
+            end; 
+        end;
+
+
+----------------------------------------------------------------
+
+        local function escolherAtributo()
+            local node = NDB.getRoot(sheet);
+            modForca = node.modForca;
+            modAgilidade = node.modAgilidade;
+            modIntelecto = node.modIntelecto;
+            modVontade = node.modVontade;
+            -- local modForca = modificadorForca;
+
+            if sheet.escAtaque == "Str" then
+                sheet.modAtaque = modForca;
+            end;
+
+            if sheet.escAtaque == "Agi" then
+                sheet.modAtaque = modAgilidade;
+            end;            
+
+            if sheet.escAtaque == "Int" then
+                sheet.modAtaque = modIntelecto;
+            end;                       
+            
+            if sheet.escAtaque == "Will" then
+                sheet.modAtaque = modVontade;
+            end;                        
+
+        end;
+    </script>
+</form>

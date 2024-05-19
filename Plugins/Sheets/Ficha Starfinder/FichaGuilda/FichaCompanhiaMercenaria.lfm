@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaContrato" formType="sheetTemplate" dataType="Ambesek.Starfinder.CompanhiaMercenaria" title="Ficha Starfinder (Companhia de Mercenarios)" align="client" theme="dark">
+    <style>
+        label {
+                textTrimming: none;
+        }
+        button {
+                textTrimming: none;
+        }
+    </style> 
     <script>
         <![CDATA[
         local function isNewVersion(installed, downloaded)
@@ -44,57 +52,18 @@
         ]]> 
     </script>
 
-    <template name="ListaFlexivel">
-        <flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}" avoidScale="true">
-            <script>
-                <![CDATA[
-                    rawset(self.$(rclName)Part, "_recalcHeight",                    
-                        function ()
-                            self.$(rclName)Part.height = self.$(rclName).height + 25;
-                        end);
-                ]]>
-            </script>
+    <import file="../FichaStarfinder/Template.xml"/>
+    <import file="../FichaStarfinder/PopUps.xml"/>
 
-            <layout align="top" height="25">
-                <button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
-                <label text="$(nome)" align="left" width="225" margins="{left=5}"/>
-            </layout>
-
-            <recordList name="$(rclName)" field="$(rclField)" templateForm="$(frm)" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="0">
-                <event name="onCompare">
-                    -- Jogue contratos invisiveis pro fim
-                    local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
-                    if vis~=0 then return vis end
-
-                    -- Ordene por dificuldade
-                    local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
-                    if dif~=0 then return dif end
-
-                    -- Ordene por nome
-                    local n = utils.compareStringPtBr(nodeA.nome, nodeB.nome)
-                    if n~=0 then return n end
-
-                    -- Ordene por lvl
-                    local lvl = ((tonumber(nodeB.lvl) or 0) - (tonumber(nodeA.lvl) or 0));
-                    if lvl~=0 then return lvl end
-
-                    -- Ordene por qtd
-                    local qtd = ((tonumber(nodeB.qtd) or 0) - (tonumber(nodeA.qtd) or 0));
-                    if qtd~=0 then return qtd end
-
-                    -- Ordene por name
-                    return utils.compareStringPtBr(nodeA.name, nodeB.name);
-                </event>
-            </recordList>
-        </flowPart>
-    </template> 
-
-    <tabControl align="client">
+    <tabControl align="client" g-cnt-gutter="5">
         <tab title="Companhia">
             <import file="guild.xml"/>
         </tab>
         <tab title="Contratos">
             <import file="contract.xml"/>
+        </tab>
+        <tab title="Contratos Concluidos">
+            <import file="contract2.xml"/>
         </tab>
         <tab title="Contratantes">
             <import file="contractor.xml"/>
@@ -106,7 +75,7 @@
             <import file="../FichaStarfinder/10.Anotacoes.xml"/>
         </tab>
         <tab title="Creditos">
-            <import file="../FichaStarfinder/11.Creditos.xml"/>
+            <import file="../FichaStarfinder/Credits.xml"/>
         </tab>
     </tabControl>
 

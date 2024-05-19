@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmTokenMenu" width="235" height="120" title="Menu do Token" drawContainer="false"> 
+<popupForm name="frmTokenMenu" width="235" height="120" title="Menu do Token" drawContainer="false" movable="false"> 
 	<import file="sceneTags.xml"/>
 
 	<script>
@@ -85,8 +85,10 @@
 								  end;				
 
 		local btnCast = newMenuItem(lang("scene.tokenMenu.cast"), self.flaLayout);
-		local btnApagar = newMenuItem(lang("scene.remove.item"), self.flaLayout);	
-		local btnProps = newMenuItem(lang("scene.tokenMenu.properties"), self.flaLayout);				
+		local btnApagar = newMenuItem(lang("scene.remove.item"), self.flaLayout);
+		local btnOpen = newMenuItem(lang("scene.tokenMenu.open"), self.flaLayout);
+		local btnSave = newMenuItem(lang("scene.tokenMenu.save"), self.flaLayout);
+		local btnProps = newMenuItem(lang("scene.tokenMenu.properties"), self.flaLayout);
 		
 		-- Menu Camadas
 				
@@ -118,7 +120,7 @@
 		
 		-- Menu Condições
 
-		local numConditions = 64;
+		local numConditions = 65;
 		local btnConditionVoltar = newMenuItem(lang("scene.menu.backOption"), self.flaConditionOptions);
 		local macConditions = newMultiActionMenuItem("", self.flaConditionOptions, 5);
 		local actConditions = {};
@@ -326,6 +328,112 @@
 							 self:close();
 							 frm:show();
 						   end;
+							
+		btnOpen.onClick = function ()
+							-- Get token to open sheet
+							local theToken
+							if #(self.theSelection) > 0 then
+								theToken = theSelection[1];
+							end
+							if theToken == nil then 
+								self:close()
+								return
+							end
+
+							local mesa = Firecast.getMesaDe(theScene)
+							if mesa==nil then return end
+
+							local bibItem = mesa:findBibliotecaItem(theToken.ownerCharacter)
+							if bibItem==nil then return end
+
+							GUI.asyncOpenFirecastURI(bibItem.firecastURI, {autoFocus=true, newTab=true})
+
+							self:close()
+
+						   	end;
+
+		btnSave.onClick = function ()
+							local dataPromise = Firecast.asyncOpenUserNDB("tokens", {create=true, skipLoad=true});
+							dataPromise:thenDo(
+								function (node)
+
+									-- Get token to be saved
+									local theToken
+									if #(self.theSelection) > 0 then
+										theToken = theSelection[1];
+									end
+									if theToken == nil then 
+										self:close()
+										return
+									end
+
+									-- create a new token on the saved token menu
+									local savedToken = NDB.createChildNode(node.tokensSalvos, "item")
+									if savedToken == nil then 
+										self:close()
+										return
+									end
+
+									-- useful variables
+									local size = theScene.grid.cellSize;
+
+
+									-- fill token data
+
+									-- MAIN
+									savedToken.character = theToken.ownerCharacter
+									savedToken.name = theToken.name
+
+									savedToken.snapToGrid = theToken.snapToGrid
+									savedToken.facingMode = theToken.facingMode
+
+									savedToken.layer = theToken.layer
+
+									savedToken.bar1 = theToken.barValue1
+									savedToken.bar1Max = theToken.barMax1
+									savedToken.bar1Color = theToken.barColor1
+									savedToken.bar2 = theToken.barValue2
+									savedToken.bar2Max = theToken.barMax2
+									savedToken.bar2Color = theToken.barColor2
+									savedToken.bar3 = theToken.barValue3
+									savedToken.bar3Max = theToken.barMax3
+									savedToken.bar3Color = theToken.barColor3
+
+
+									savedToken.width = theToken.width / size
+									savedToken.height = theToken.height / size
+									savedToken.angle = theToken.rotation
+
+									-- AURA
+
+									local opGraficaAura = theToken.canvas:findByName("aura")
+
+									savedToken.cbxPossuiAura = opGraficaAura ~= nil
+									if savedToken.cbxPossuiAura then
+										savedToken.cmbFormaAura = opGraficaAura.userData.FormaAura
+										savedToken.imageAura = opGraficaAura.url
+										savedToken.edtRaioAura = opGraficaAura.height
+										savedToken.edtAlturaAura = opGraficaAura.height
+										savedToken.edtLarguraAura = opGraficaAura.width
+										savedToken.cmbCorAura = opGraficaAura.color
+									end
+
+									-- IMAGE
+									savedToken.image = theToken.image.url
+
+									-- FOG OF WAR
+									savedToken.visionIntense = theToken.visionIntenseLightRange
+									savedToken.visionWeak = theToken.visionWeakLightRange
+									savedToken.visionDark = theToken.visionDarknessRange
+									savedToken.visionAngle = theToken.visionAngle
+									savedToken.hasSight = theToken.visionHaveVision
+									savedToken.lightIntense = theToken.lightIntenseRange
+									savedToken.lightWeak = theToken.lightWeakRange
+									savedToken.lightAngle = theToken.lightAngle
+								end);
+
+								self:close()
+							end;
 
 		btnCast.onClick = function ()
 							if not theScene.isGM then
@@ -529,113 +637,119 @@
 													local opGrafica = umToken.canvas:findByName(mark);
 
 													if opGrafica == nil then
-														local slot = 4;
-														if conditionsSlots[4] ~= 0 then
-															showMessage(lang("scene.menu.alert.maxConditions"));
-															return;
-														elseif conditionsSlots[1] == 0 then
-															slot = 1;
-														elseif conditionsSlots[2] == 0 then
-															slot = 2;
-														elseif conditionsSlots[3] == 0 then
-															slot = 3;
-														end;
-
+														-- ADD CONDITION to all selected tokens if first token doesn't have the op
 														actConditions[i]:setChecked(true);
-														conditionsSlots[slot] = i;
 
 														for k=1, #self.theSelection, 1 do
 															local iterationUmToken = theSelection[k];
+															if iterationUmToken.userData.CondtNum == nil then
+																iterationUmToken.userData.CondtNum = 0
+																iterationUmToken.userData.CondtList = {}
+															end
+
 															local iterationOpGrafica = iterationUmToken.canvas:findByName(mark);
 
-															-- Clean old
-															local limit = iterationUmToken.canvas.opCount-1;
-															for l=0, limit, 1 do
-																local aux = iterationUmToken.canvas:getOp(l);
+															if iterationOpGrafica == nil then 
+																-- ADD CONDITION to this token
+																if i ~= 31 then 
+																	-- Death token doesn't occupy an slot
+																	iterationUmToken.userData.CondtNum = iterationUmToken.userData.CondtNum + 1
+																	iterationUmToken.userData.CondtList[iterationUmToken.userData.CondtNum] = mark
+																end
 
-																if aux~= nil and aux.objectType == "opBitmap" and aux.name ~= "condt31" and string.find(aux.name, 'condt')~=nil then
-																	local pos = 0;
-																	if aux.x == 0 and aux.y == 0 then
-																		pos = 1;
-																	elseif aux.x ~= 0 and aux.y == 0 then
-																		pos = 2;
-																	elseif aux.x == 0 and aux.y ~= 0 then
-																		pos = 3;
-																	elseif aux.x ~= 0 and aux.y ~= 0 then
-																		pos = 4;
-																	end;
+																-- CREATE the condition bitmap
+																iterationOpGrafica = iterationUmToken.canvas:addBitmap();
+	                    										iterationOpGrafica.name = mark;
 
-																	if pos == slot then
-																		aux:delete();
-																		break;
-																	end;
+	                    										-- Getting URL
+		                    									if i>= 61 and i <= 65 then
+		                    										Dialogs.inputQuery("URL", lang("scene.inseridor.url"), "", 
+																					function(url)
+																						iterationOpGrafica.url = url
+																					end)
+		                    									else
+		                    										iterationOpGrafica.url = lang("scene.menu.conditions.link" .. i)
+		                    									end
 
-																end;
-															end;
+		                    									-- if token is rotated ignore it
+		                    									iterationOpGrafica.rotMode = "ignoreCanvasRot"
 
-															iterationOpGrafica = iterationUmToken.canvas:addBitmap();
-	                    									iterationOpGrafica.name = mark;
+		                    									-- draw condition after drawing token
+		                    									iterationOpGrafica.outOfOrderMode = "afterOwnerLayer"
 
-	                    									-- Getting URL
-	                    									if i>= 61 and i <= 64 then
-	                    										Dialogs.inputQuery("URL", lang("scene.inseridor.url"), "", 
-																				function(url)
-																					iterationOpGrafica.url = url;
-																				end);
-	                    									else
-	                    										iterationOpGrafica.url = lang("scene.menu.conditions.link" .. i);
-	                    									end;
-	                    								
-	                    									iterationOpGrafica.rotMode = "ignoreCanvasRot";
-	                    									iterationOpGrafica.outOfOrderMode = "afterOwnerLayer";
+		                    									-- draw condition only when hovering or selected
+		                    									iterationOpGrafica.drawingTrigger = {"hover", "selected"}
 
-											            	if i == 31 then
-											            		iterationOpGrafica.x = 0;
-											            		iterationOpGrafica.y = 0;
-											            		iterationOpGrafica.width = 1;
-											            		iterationOpGrafica.height = 1;
-											            	else
-											            		iterationOpGrafica.x = slotX[slot];
-											            		iterationOpGrafica.y = slotY[slot];
-											            		iterationOpGrafica.width = 0.4;
-											            		iterationOpGrafica.height = 0.4;
-											            	end;
-											            	iterationOpGrafica.z = 10;
-											            end;
+		                    									-- define condition position
+		                    									if i == 31 then
+		                    										-- dead token occupy the whole token
+												            		iterationOpGrafica.x = 0
+												            		iterationOpGrafica.y = 0
+												            		iterationOpGrafica.width = 1
+												            		iterationOpGrafica.height = 1
+												            	else
+												            		-- [-0.1/0.3/0.7]
+												            		iterationOpGrafica.x = ((iterationUmToken.userData.CondtNum-1) % 3)*0.4 - 0.1
 
-											            
+												            		-- [1.4,1.8,2.2,...]
+												            		iterationOpGrafica.y = math.floor((iterationUmToken.userData.CondtNum-1)/3)*0.4 + 1.4
+												            		iterationOpGrafica.width = 0.4
+												            		iterationOpGrafica.height = 0.4
+												            	end
+												            	-- render on the 10th upper layer
+												            	iterationOpGrafica.z = 10
+															else
+																-- this token alredy has the condition, skip
+															end
+											            end;										            
 													else 
+														-- REMOVE CONDITION to all selected tokens if first token doesn't have the op
 														actConditions[i]:setChecked(false);
-														local slot = 4;
-														if conditionsSlots[1] == i then
-															slot = 1;
-														elseif conditionsSlots[2] == i then
-															slot = 2;
-														elseif conditionsSlots[3] == i then
-															slot = 3;
-														end;
-
-														for j = slot, 4, 1 do
-															conditionsSlots[j] = conditionsSlots[j+1];
-															local toMove = "condt" .. conditionsSlots[j];
-
-															for k=1, #self.theSelection, 1 do
-																local umToken4 = theSelection[k];
-																local moving = umToken4.canvas:findByName(toMove);
-																if moving~=nil and conditionsSlots[j]~= 31 then
-																	moving.x = slotX[j];
-																	moving.y = slotY[j];
-																end;
-															end;
-														end;
 
 														for k=1, #self.theSelection, 1 do
-															local umToken5 = theSelection[k];
-															local opGrafica3 = umToken5.canvas:findByName(mark);
-															if opGrafica3~= nil then
-																opGrafica3:delete();
-															end;
-														end;
+															local iterationUmToken = theSelection[k]
+															if iterationUmToken.userData.CondtNum == nil then
+																iterationUmToken.userData.CondtNum = 0
+																iterationUmToken.userData.CondtList = {}
+															end
+
+															local iterationOpGrafica = iterationUmToken.canvas:findByName(mark)
+															if iterationOpGrafica~= nil then
+																iterationOpGrafica:delete()
+															end
+
+															-- if token has any condition after this condition move them all
+
+															-- find this condition's position on the list
+															local pos = nil
+															for l=1, iterationUmToken.userData.CondtNum, 1 do 
+																if iterationUmToken.userData.CondtList[l] == mark then 
+																	pos = l
+																	break 
+																end
+															end
+
+															if pos ~= nil then 
+																-- we found that token position on the list 
+																for l=pos, iterationUmToken.userData.CondtNum, 1 do 
+																	if l == iterationUmToken.userData.CondtNum then 
+																		-- last on the list, just delete 
+																		iterationUmToken.userData.CondtList[iterationUmToken.userData.CondtNum] = nil
+																		iterationUmToken.userData.CondtNum = iterationUmToken.userData.CondtNum - 1
+																	else
+																		-- move it one slot down
+																		iterationUmToken.userData.CondtList[l] = iterationUmToken.userData.CondtList[l+1]
+																		local OpGtoMove = iterationUmToken.canvas:findByName(iterationUmToken.userData.CondtList[l])
+
+																		-- [-0.1/0.3/0.7]
+													            		OpGtoMove.x = ((l-1) % 3)*0.4 - 0.1
+													            		-- [1.4,1.8,2.2,...]
+												            			OpGtoMove.y = math.floor((l-1)/3)*0.4 + 1.4
+																	end
+																end
+																-- move anyone after it
+															end
+														end
 
 													end;
 													
@@ -659,11 +773,5 @@
 			event.keyCode = 0;
 			event.key = "";
 		end;
-	</event>
-	
-	<event name="onHide">
-		--theSelection = nil;
-		--self.theSelection = nil;
-	</event>
-	
+	</event>	
 </popupForm>

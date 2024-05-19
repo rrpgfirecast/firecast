@@ -1,27 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmSelImagemURL" title="@@selimage.title" height="300" width="300" resizable="true">
+<popupForm name="frmSelImagemURL" title="@@selimage.title" height="600" width="690" resizable="true">
 	<import file="../interfaceUtils.xml"/>
 
 	<script> <![CDATA[		
-		function self:adaptarTamanhoDaTela()
-			local sw, sh = System.getScreenSize();
-			local dw = 650;
-			local dh = 600;
-		
-			if dw > sw - 15 then
-				dw = sw - 15;
-			end;
-			
-			if dh > sh - 15 then
-				dh = sh - 15;
-			end;
-						
-			self.width = dw;
-			self.height = dh;
-		end;
-	
-		self:adaptarTamanhoDaTela();
-	
 		local cUser = Firecast.getCurrentUser();
 		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;			
 		
@@ -129,7 +110,7 @@
 		
 		<!-- Imagem do FireDrive -->
 		<flowPart name="flpImgFireDrive" height="20" minWidth="180" maxWidth="99999" margins="{top=25}">
-			<radioButton name="rdbFireDrive" text="@@selimage.firedrive " width="185" align="left" vertTextAlign="center"/>
+			<radioButton name="rdbFireDrive" text="@@selimage.firedrive" width="185" align="left" vertTextAlign="center"/>
 			<horzLine name="linha2" strokeColor="white"/>
 			
 			<event name="onResize">
@@ -160,10 +141,9 @@
 
 	<BottomActionCancelPopupPanel actionClick="self:tryDespacharOK()" cancelClick="self:retornarCancel(true)"/>
 	
-	<script>
-		
+	<script>	
 		if self.navigator ~= nil then
-			self.navigator.filter = "image/.+";
+			self.navigator.filter = {"image/.+", "video/.+"};
 			self.navigator:gotoDir('/');
 			self.navigator.align = "client";
 			self.navigator.parent = self.fireDriveNavigatorContent;		

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6e">
+    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
+    <id>marceloroberto.3dx</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha 3DX</name>
+        <description>Ficha de 3DX para Firecast</description>
+        <author>Marcelo Roberto</author>
+        <site>https://www.marceloroberto.com.br</site>
+        <contact>https://instagram.com/profmarceloroberto</contact>
+    </info>
+</module>

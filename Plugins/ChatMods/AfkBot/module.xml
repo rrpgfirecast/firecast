@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.6c" originalPluginFileName="afkbot.rpk">
+<module sdkVersion="3.7" originalPluginFileName="afkbot.rpk">
 	<id>AfkBot</id>
-	<version>1.7.1</version>
-	
-	
-	
-	
-	
+	<version>1.12.1</version>
     <info lang="pt-BR">
         <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>AfkBot</name>

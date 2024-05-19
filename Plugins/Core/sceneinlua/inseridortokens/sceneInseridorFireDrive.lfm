@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmInseriorFireDrive" width="580" height="300" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmInseriorFireDrive" width="600" height="300" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="../interfaceUtils.xml"/>
@@ -66,6 +66,50 @@
 			self.labBar$(indice).text = LANG('scene.tokenEdit.barraPrefix') .. " $(indice):";
 		</script>
 	</template>
+
+	<template name="ComponenteDeLuz">
+		<!-- nomeLabel = uniqueName("labCompLuz");
+
+			if nomeMetric == nil then
+				nomeMetric = uniqueName("labMetric");
+			end;
+			
+			if nomeEdit == nil then
+				nomeEdit = uniqueName("edtMetric");
+			end;				
+		-->	 		
+		
+		<layout align="top" height="28" margins="{top=2}">
+			<label name="$(nomeLabel)" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>
+		
+			<edit left="105" top="0" width="50" height="28" name="$(nomeEdit)" type="float" min="0" max="9999" decimalPlaces="1" field="$(field)"/>
+			<label left="158" top="3" width="50" height="28" name="$(nomeMetric)" text="m" autoSize="true" margins="{left=4, right=2}"/>												
+		</layout>
+		
+		<script>
+			self.$(nomeLabel).text = lang('$(title)') .. ":";								
+		</script>
+	</template>
+
+	<template name="ComponenteDeAngulo">
+		<!-- nomeLabel = uniqueName("labCompAngulo"); 
+		
+			if nomeEdit == nil then
+				nomeEdit = uniqueName("edtAngulo");
+			end;	
+		-->	 			
+	
+		<layout align="top" height="28" margins="{top=2}">
+			<label name="$(nomeLabel)" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>	
+			
+			<edit left="105" top="0" width="30" height="28" name="$(nomeEdit)" type="float" min="1" max="360" decimalPlaces="1" field="$(field)"/>
+			<label left="138" top="3" width="50" height="28" name="$(nomeMetric)" text="@@lowerCase(scene.angle.short.degrees)" autoSize="true" margins="{left=4, right=2}"/>	
+		</layout>
+		
+		<script>
+			self.$(nomeLabel).text = lang('$(title)') .. ":";
+		</script>			
+	</template>	
 
 	<popup name="popMany" width="400" height="250" backOpacity="0.4" autoScopeNode="false">
 		<label name="manyDialog" text="@@scene.inseridor.dialog.manyDialog" align="top" height="25"/>
@@ -390,8 +434,6 @@
 									nodeA = self:findItemById(nodeA.father)
 								end;
 							end;
-
-							return 0
 					</event>
 				</recordList>
 			</rectangle>
@@ -489,7 +531,7 @@
 			<label name="labSelectTokenInfo" align="client" vertTextAlign="center" horzTextAlign="center" wordWrap="true" text="@@scene.inseridor.selectOrCreateToken"/>
 		</layout>
 		
-		<dataScopeBox align="right" width="320" name="dsbToken">
+		<dataScopeBox align="right" width="340" name="dsbToken">
 			<tabControl align="client" margins="{left=5, bottom=2, top=2, right=5}" name="tabCtrlDados">
 				<tab name="tabPrincipal" text="@@scene.tokenEdit.propriedades">
 					<scrollBox align="client">
@@ -551,6 +593,113 @@
 					</scrollBox>		
 				</tab>
 
+				<tab name="tabAura" title="@@scene.fogOfWar.aura.tabTitle">
+					<scrollBox align="client">
+							
+						<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaAura" margins="{left=10, right=10, top=10, bottom=2}">	
+							<!-- AREA DO KAREL -->
+
+							<checkBox name="cbxPossuiAura" field="cbxPossuiAura" left="30" top="20" fontSize="18" text="@@scene.FormaAura.PossuiAura">
+								<event name="onChange">
+									-- por mais feio que seja foi necessaria essas "gambiarra" por conta de algum bug do flowLayout --
+									
+									if self.cbxPossuiAura.checked then
+										self.flaAuraContent.visible = true;
+										self.flaAuraContent.height = self.flaAuraContent.height + 1;
+										self.flaAuraContent.height = self.flaAuraContent.height - 1;
+									else
+										self.flaAuraContent.visible = false;
+										self.flaAuraContent.height = self.flaAuraContent.height + 1;
+										self.flaAuraContent.height = self.flaAuraContent.height - 1;
+									end;
+								</event>
+							</checkBox>
+							
+								
+							<flowLayout name="flaAuraContent" visible="false" autoHeight="true" align="top" minWidth="50" maxWidth="50000"  maxControlsPerLine="1" margins="{top=5}">
+															
+								<flowPart class="optionPart" name="flpFormaAura">	
+									<label name="labFormaAura" class="itemTitle"/>
+									<comboBox name="cmbFormaAura" field="cmbFormaAura" class="itemContent">
+										<event name="onChange">
+											if self.cmbFormaAura.value == "URL" then
+												self.flpImagemAura.visible = true;
+												self.fplCorAura.visible = false;
+												self.flaAuraContent:needRealign();
+											else
+												self.flpImagemAura.visible = false;
+												self.fplCorAura.visible = true;
+												self.flaAuraContent:needRealign();											
+											end;																			
+
+											if self.cmbFormaAura.value == "C" then	
+												self.flpRaioAura.visible = true;
+												self.fplAlturaAura.visible = false;
+												self.fplLarguraAura.visible = false;
+												self.flaAuraContent:needRealign();
+											elseif self.cmbFormaAura.value == "SC" then		
+												self.flpRaioAura.visible = true;
+												self.fplAlturaAura.visible = false;
+												self.fplLarguraAura.visible = false;
+												self.flaAuraContent:needRealign();
+											elseif self.cmbFormaAura.value == "CP" then
+												self.flpRaioAura.visible = true;
+												self.fplAlturaAura.visible = false;
+												self.fplLarguraAura.visible = false;
+												self.flaAuraContent:needRealign();
+											elseif self.cmbFormaAura.value == "COD" then
+												self.flpRaioAura.visible = true;
+												self.fplAlturaAura.visible = false;
+												self.fplLarguraAura.visible = false;
+												self.flaAuraContent:needRealign();
+											else
+												self.flpRaioAura.visible = false;
+												self.fplAlturaAura.visible = true;
+												self.fplLarguraAura.visible = true;
+												self.flaAuraContent:needRealign();
+											end;															
+										</event>
+									</comboBox>
+								</flowPart>	
+								
+								<flowPart class="optionPart" height="200" visible="true" width="200" name="flpImagemAura">	
+									<rectangle class="itemContent" width="200" height="200" strokeColor="white" color="black"/>
+									<label class="itemContent" width="200" height="20" fontSize="11" name="labescolhaimg" horzTextAlign="center"/>
+									<image class="itemContent" width="200" height="200" style="autoFit" editable="true" name="imageAura" field="imageAura"/>
+								</flowPart>	
+
+								<flowPart class="optionPart" visible="false" name="flpURLAura">	
+									<label name="labAuraURL" class="itemTitle"/>
+									<edit name="edtAuraURL" field="edtAuraURL" class="itemContent"/>
+								</flowPart>		
+
+								<flowPart class="optionPart" visible="false" name="flpRaioAura">	
+									<label name="labRaioAura" class="itemTitle"/>
+									<edit name="edtRaioAura" field="edtRaioAura" class="itemContent" width="75" align="left" type="float" text="5" min="0.1"/>
+									<label name="labUnidadeMetrica1" align="left" class="itemContent" />
+								</flowPart>	
+							
+								<flowPart class="optionPart" name="fplAlturaAura">	
+									<label name="labAlturaAura" class="itemTitle"/>
+									<edit name="edtAlturaAura" field="edtAlturaAura" class="itemContent" width="75" align="left" type="float" text="5" min="0.1"/>
+									<label name="labUnidadeMetrica2" align="left" class="itemContent" />
+								</flowPart>		
+								
+								<flowPart class="optionPart" name="fplLarguraAura">	
+									<label name="labLarguraAura" class="itemTitle"/>
+									<edit name="edtLarguraAura" field="edtLarguraAura" class="itemContent" width="75" align="left" type="float" text="5" min="0.1"/>
+									<label name="labUnidadeMetrica3" align="left" class="itemContent" />
+								</flowPart>		
+								
+								<flowPart class="optionPart" name="fplCorAura">	
+									<label name="labCorAura" class="itemTitle"/>
+									<colorComboBox name="cmbCorAura" field="cmbCorAura" color="red" class="itemContent"/>
+								</flowPart>							
+							</flowLayout>					
+						</flowLayout>								
+					</scrollBox>				
+				</tab>
+
 				<tab name="tabImagem" text="@@scene.inseridor.tab.imagem">
 					<label name="labTitle" left="10" top="0" width="100" height="28" horzTextAlign="leading" vertTextAlign="center" fontSize="15" fontColor="#FFCC66" text="@@scene.inseridor.tab.imagem"/>
 					<horzLine left="10" top="30" width="290" strokeColor="#FFCC6670" margins="{left=10}"/>
@@ -564,50 +713,6 @@
 						<button left="55" top="245" width="185" height="25" name="adjust" text="@@scene.inseridor.labels.adjust" onClick="self:adjustPic()"/>
 					</layout>
 				</tab>
-
-				<template name="ComponenteDeLuz">
-					<!-- nomeLabel = uniqueName("labCompLuz");
-
-						if nomeMetric == nil then
-							nomeMetric = uniqueName("labMetric");
-						end;
-						
-						if nomeEdit == nil then
-							nomeEdit = uniqueName("edtMetric");
-						end;				
-					-->	 		
-					
-					<layout align="top" height="28" margins="{top=2}">
-						<label name="$(nomeLabel)" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>
-					
-						<edit left="105" top="0" width="50" height="28" name="$(nomeEdit)" type="float" min="0" max="9999" decimalPlaces="1" field="$(field)"/>
-						<label left="158" top="3" width="50" height="28" name="$(nomeMetric)" text="m" autoSize="true" margins="{left=4, right=2}"/>												
-					</layout>
-					
-					<script>
-						self.$(nomeLabel).text = lang('$(title)') .. ":";								
-					</script>
-				</template>		
-				
-				<template name="ComponenteDeAngulo">
-					<!-- nomeLabel = uniqueName("labCompAngulo"); 
-					
-						if nomeEdit == nil then
-							nomeEdit = uniqueName("edtAngulo");
-						end;	
-					-->	 			
-				
-					<layout align="top" height="28" margins="{top=2}">
-						<label name="$(nomeLabel)" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>	
-						
-						<edit left="105" top="0" width="30" height="28" name="$(nomeEdit)" type="float" min="1" max="360" decimalPlaces="1" field="$(field)"/>
-						<label left="138" top="3" width="50" height="28" name="$(nomeMetric)" text="@@lowerCase(scene.angle.short.degrees)" autoSize="true" margins="{left=4, right=2}"/>	
-					</layout>
-					
-					<script>
-						self.$(nomeLabel).text = lang('$(title)') .. ":";
-					</script>			
-				</template>		
 
 				<tab name="tabFOW" text="@@scene.fogOfWar">
 					<scrollBox align="client">
@@ -708,6 +813,23 @@
 		
 		self.cmbFacingMode.items = {lang('scene.FacingMode.rotate'), lang('scene.FacingMode.arrow')};
 
+		self.labAlturaAura.text = lang('scene.labAlturaAura.text');
+		self.labLarguraAura.text = lang('scene.labLarguraAura.text');
+		self.labFormaAura.text = lang('scene.labFormaAura.text');
+		
+		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), 
+		                           lang('scene.FormaAura.Circulo'), 
+								   lang('scene.FormaAura.Quadrado'), 
+								   lang('scene.FormaAura.ConeDiagonal'), 
+								   lang('scene.FormaAura.ConeHorizontal'), 
+								   lang('scene.FormaAura.SemiCirculo'), 
+								   lang('scene.FormaAura.CirculoPerfeito')};
+		
+		self.cmbFormaAura.values = {'URL', 'C', 'Q', 'COD', 'COH', 'SC', 'CP'}
+		self.labAuraURL.text = lang('scene.labAuraURL.text');
+		self.labCorAura.text = lang('scene.labCorAura.text');
+		self.labRaioAura.text = lang('scene.labRaioAura.text');
+
 		function self:prepareForShow(oScene)
 			scene = oScene;
 
@@ -729,8 +851,7 @@
 			local kids = {};
 			local index = 0;
 
-			local tokens = NDB.getChildNodes(sheet.tokensSalvos);
-			local found = true;
+			local tokens = NDB.getChildNodes(sheet.tokensSalvos);			
 
 			for i,v in ipairs(tokens) do
 				if v.father == id then
@@ -747,8 +868,7 @@
 			local index = 0;
 			local dept = 0;
 
-			local tokens = NDB.getChildNodes(sheet.tokensSalvos);
-			local found = true;
+			local tokens = NDB.getChildNodes(sheet.tokensSalvos);			
 
 			while dept <= index do
 				for i,v in ipairs(tokens) do
@@ -884,7 +1004,7 @@
 					local arq = arquivos[1];
 
 					local import = {};
-					local bytes = arq.stream:read(import, arq.stream.size);
+					arq.stream:read(import, arq.stream.size);
 
 					local xml = Utils.binaryDecode(import, "utf8");
 
@@ -896,10 +1016,10 @@
 			local xml = NDB.exportXML(sheet);
 
 			local export = {};
-			local bytes = Utils.binaryEncode(export, "utf8", xml);
+			Utils.binaryEncode(export, "utf8", xml);
 
 			local stream = Utils.newMemoryStream();
-			local bytes = stream:write(export);
+			stream:write(export);
 
 			Dialogs.saveFile(lang("scene.inseridor.export"), stream, "tokens.xml", "application/xml",
 				function()
@@ -970,7 +1090,7 @@
 				layer = "background"
 			else
 				layer = "tokens";
-			end;					
+			end;
 						
 			if _lastMouseDown ~= nil then
 				x = _lastMouseDown.x;
@@ -1008,6 +1128,7 @@
 			else
 				token.ownerCharacter = 0;
 			end;
+			token.name = self.labelVal.text
 
 			if self.visionIntense.text==nil or self.visionIntense.text=="" then
 				self.visionIntense.text = "102";
@@ -1045,6 +1166,118 @@
 			token.image.url = self.image.url;
 			scene.items:clearSelection();
 			token.selected = true;
+
+			-- Salvar Aura
+			
+			local opGraficaAura = token.canvas:findByName("aura");	
+										
+			-- 1 - Deletar se precisar deletar, ou se o que tem lá não é util.
+			
+			if opGraficaAura ~= nil then
+			    local eraURL = opGraficaAura.userData.FormaAura == "URL"															
+				local deveSerURL = self.cmbFormaAura.value == "URL"
+			
+				if not self.cbxPossuiAura.checked or (eraURL and not deveSerURL) or (not eraURL and deveSerURL) then
+					opGraficaAura:delete()
+					opGraficaAura = nil
+				end;												
+			end
+																		
+			-- 2 -- Se precisar, criar aura
+										
+			if opGraficaAura == nil and self.cbxPossuiAura.checked then
+				if self.cmbFormaAura.value == "URL" then
+					opGraficaAura = token.canvas:addBitmap();
+				else
+					opGraficaAura = token.canvas:addPath();
+				end;															
+			end
+									
+			
+			-- 3 -- Se existir aura, alterar ela
+			
+			if opGraficaAura ~= nil then
+				opGraficaAura.name = "aura"
+				opGraficaAura.height = self.edtAlturaAura.asNumber;
+				opGraficaAura.width = self.edtLarguraAura.asNumber;
+				opGraficaAura.y = (opGraficaAura.height /-2);
+				opGraficaAura.x = (opGraficaAura.width /-2);
+				opGraficaAura.xOrigin = 0.5;
+				opGraficaAura.yOrigin = 0.5;
+	            opGraficaAura.z = 10;                      
+				opGraficaAura.outOfOrderMode = "beforeOwnerLayer"; 
+				opGraficaAura.opacity = 0.5;     
+				opGraficaAura.widthMetric = "worldMetric";
+				opGraficaAura.heightMetric = "worldMetric";	
+				opGraficaAura.xMetric = "worldMetric";
+				opGraficaAura.yMetric = "worldMetric";
+				opGraficaAura.userData.FormaAura = self.cmbFormaAura.value;
+												
+				if opGraficaAura.objectType == "opBitmap" then
+					opGraficaAura.url = self.imageAura.url;
+					opGraficaAura.opacity = 0.85;
+				else		
+					if opGraficaAura.userData.FormaAura == "C" then							
+						opGraficaAura.color = self.cmbCorAura.color;
+						opGraficaAura.height = self.edtRaioAura.asNumber;
+				        opGraficaAura.width = self.edtRaioAura.asNumber;
+						opGraficaAura.y = -(opGraficaAura.height / 2);
+						opGraficaAura.x = -(opGraficaAura.width / 2);
+						opGraficaAura.xOrigin = 0.5; 
+						opGraficaAura.yOrigin = 0.5;
+						opGraficaAura.pathData = criarPathAreaCirculo(math.ceil(opGraficaAura.height / 2));	
+					end;
+				
+					if opGraficaAura.userData.FormaAura == "Q" then																										
+						opGraficaAura.color = self.cmbCorAura.color;
+						opGraficaAura.pathData = criarPathAreaQuadrado();										
+					end;
+					
+					if opGraficaAura.userData.FormaAura == "COD" then
+						opGraficaAura.color = self.cmbCorAura.color;
+						opGraficaAura.xOrigin = 0.0;     -- X começa em 1.0 largura de token + 0.0 metros
+						opGraficaAura.yOrigin = 0.0;
+						opGraficaAura.height = self.edtRaioAura.asNumber;
+				        opGraficaAura.width = self.edtRaioAura.asNumber;
+						opGraficaAura.x = 0;	
+						opGraficaAura.y = 0;	
+						opGraficaAura.pathData = criarPathAreaConeDiagonal(math.ceil(opGraficaAura.height / 2), (math.ceil(opGraficaAura.width / 2)));										
+					end;
+														
+					if opGraficaAura.userData.FormaAura == "COH" then
+						opGraficaAura.color = self.cmbCorAura.color;
+						opGraficaAura.xOrigin = 1.0;  
+						opGraficaAura.yOrigin = 0.5;
+						opGraficaAura.x = 0;	
+						opGraficaAura.y = opGraficaAura.height / -2;	
+						opGraficaAura.pathData = criarPathAreaConeHorizontal(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));										
+					end;
+					
+					if opGraficaAura.userData.FormaAura == "SC" then
+						opGraficaAura.color = self.cmbCorAura.color;										
+						opGraficaAura.xOrigin = 1.0; 
+						opGraficaAura.yOrigin = 0.5;
+						opGraficaAura.x = 0;
+						opGraficaAura.height = self.edtRaioAura.asNumber;
+				        opGraficaAura.width = self.edtRaioAura.asNumber / 2;										
+						opGraficaAura.y = opGraficaAura.height / -2;										
+						opGraficaAura.pathData = criarPathAreaSemiCirculo(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));
+					end;
+					
+					if opGraficaAura.userData.FormaAura == "CP" then
+						opGraficaAura.data = "M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0";		
+						opGraficaAura.color = self.cmbCorAura.color;
+						opGraficaAura.height = self.edtRaioAura.asNumber;
+				        opGraficaAura.width = self.edtRaioAura.asNumber;
+						opGraficaAura.y = opGraficaAura.height / -2;
+						opGraficaAura.x = opGraficaAura.width / -2;
+						opGraficaAura.xOrigin = 0.5; 
+						opGraficaAura.yOrigin = 0.5;										
+					end;
+				end;
+			end;
+										
+			-- Finaliza o Salva Aura 
 		end;
 		
 		function self:processarCancel()

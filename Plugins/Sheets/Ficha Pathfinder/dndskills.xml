@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <item chavePericia="2" exigeTreino="True" nomePericia="Abrir Fechaduras">
+        <__ndb__ id="2" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="True" nomePericia="Acrobacia" penalidadeArmadura2="True">
+        <__ndb__ id="3" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="6" exigeTreino="True" nomePericia="Adestrar Animais">
+        <__ndb__ id="4" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Arte da Fuga" penalidadeArmadura2="True">
+        <__ndb__ id="5" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Atuação">
+        <__ndb__ id="6" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="False" nomePericia="Avaliação">
+        <__ndb__ id="7" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Blefar">
+        <__ndb__ id="8" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Cavalgar">
+        <__ndb__ id="9" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="3" exigeTreino="False" nomePericia="Concentração">
+        <__ndb__ id="10" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Arcano">
+        <__ndb__ id="11" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Engenharia e Arquitetura">
+        <__ndb__ id="12" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Geografia">
+        <__ndb__ id="13" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Historia">
+        <__ndb__ id="14" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Local">
+        <__ndb__ id="15" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Masmorras">
+        <__ndb__ id="16" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Natureza">
+        <__ndb__ id="17" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Nobreza e Realeza">
+        <__ndb__ id="18" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Planos">
+        <__ndb__ id="19" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Religião">
+        <__ndb__ id="20" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Cura">
+        <__ndb__ id="21" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Decifrar Escrita">
+        <__ndb__ id="22" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Diplomacia">
+        <__ndb__ id="23" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Disfarces">
+        <__ndb__ id="24" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Equilibrio" penalidadeArmadura2="True">
+        <__ndb__ id="25" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="1" exigeTreino="False" nomePericia="Escalar" penalidadeArmadura2="True">
+        <__ndb__ id="26" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Esconder-se" penalidadeArmadura2="True">
+        <__ndb__ id="27" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="4" exigeTreino="False" nomePericia="Falsificação">
+        <__ndb__ id="28" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Furtividade" penalidadeArmadura2="True">
+        <__ndb__ id="29" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Identificar Magia">
+        <__ndb__ id="30" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Intimidação">
+        <__ndb__ id="31" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="1" exigeTreino="False" nomePericia="Natação" penalidadeArmadura="True" penalidadeArmadura2="True">
+        <__ndb__ id="32" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura="B" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Observar">
+        <__ndb__ id="33" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Obter Informação">
+        <__ndb__ id="34" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="False" nomePericia="Oficios">
+        <__ndb__ id="35" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Operar Mecanismo">
+        <__ndb__ id="36" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Ouvir">
+        <__ndb__ id="37" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="True" nomePericia="Prestidigitação" penalidadeArmadura2="True">
+        <__ndb__ id="38" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="4" exigeTreino="False" nomePericia="Procurar">
+        <__ndb__ id="39" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="5" exigeTreino="True" nomePericia="Profissão">
+        <__ndb__ id="40" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="1" exigeTreino="False" nomePericia="Saltar" penalidadeArmadura2="True">
+        <__ndb__ id="41" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Sentir Motivação">
+        <__ndb__ id="42" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Sobrevivência">
+        <__ndb__ id="43" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Usar Cordas">
+        <__ndb__ id="44" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="True" nomePericia="Usar Instrumento Mágico">
+        <__ndb__ id="45" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <__ndb__ id="1" idGenerator="45"/>
+</database>

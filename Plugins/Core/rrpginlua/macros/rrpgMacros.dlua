@@ -4,9 +4,14 @@ local NDB = require("ndb.lua");
 local Locale = require("locale.lua");
 local GUI = require("gui.lua");
 local Log = require("log.lua");
+local Async = require("async.lua");
+local System = require("system.lua");
+local Firecast = require("firecast.lua");
+local Objs = require("rrpgObjs.lua");
 
 local macros = {};
 local _MACRO_CALL_CO_FUNCTION_RET = "CallSomeFunctionInMainThread";
+local _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE = "____systemGRTBL____";
 
 local cloneFunctions = {};
 
@@ -138,6 +143,8 @@ local function handleCoResume(co, ...)
 			local f = yieldedFunctions[retornos[3]];
 			
 			f(co, table.unpack(retornos, 4));
+		elseif retornos[2] == Async._ASYNC_EXEC_AWAIT_CO_RET then
+			yieldedFunctions.yAwait(co, retornos[3])			
 		elseif coroutine.status(co)	== "dead" then
 			local endCallback = rawget(co, "__endCallback");
 			
@@ -148,10 +155,14 @@ local function handleCoResume(co, ...)
 	end;
 end;
 
-function yieldedFunctions.yRolarDado(co, chat, rolagem, msgAdicional)	
-	chat:rolarDados(rolagem, msgAdicional,
-		function(rolado)
-			handleCoResume(co, rolado.resultado, rolado);
+function yieldedFunctions.yAwait(co, promise)		
+	promise:thenDo(
+		function(...)
+			handleCoResume(co, true, ...);
+		end,
+		
+		function(errorMessage)
+			handleCoResume(co, false, errorMessage);
 		end);
 end;
 
@@ -325,6 +336,57 @@ function yieldedFunctions.yGetRoomNDB(co, mesa, name, options)
 		opcoes);
 end;
 
+function yieldedFunctions.yAsyncWaitForMessage(co, medium, timeoutMS)
+	local resolved = false;	
+	local listenerId; 
+	local timeoutTimer;
+
+	local function releaseWaitObjects()
+		if (timeoutTimer ~= nil) then
+			timeoutTimer.enabled = false;
+			timeoutTimer = nil;
+		end;
+
+		if (listenerId ~= nil) then
+			Firecast.Messaging.unlisten(listenerId);
+			listenerId = nil;
+		end;
+	end;
+	
+	listenerId = Firecast.Messaging.listen("ChatMessageEx",
+		function(event)
+			local eventMedium = event.logRec.medium;
+
+			if (eventMedium.kind == medium.kind) and 
+			   (eventMedium.user1 == medium.user1) and
+			   (eventMedium.user2 == medium.user2) and
+			   (eventMedium.roomId == medium.roomId) and
+			   (eventMedium.groupId == medium.groupId) and
+			   (eventMedium.channelId == medium.channelId) and
+			   (event.logRec._visible) and
+			   (event.logRec._storable) then
+			
+				releaseWaitObjects();	
+
+				if not resolved then
+					resolved = true;
+					handleCoResume(co, true, event.logRec);					
+				end;										
+			end;
+		end);
+
+
+	timeoutTimer = Objs.newTimer(timeoutMS,
+		function()
+			releaseWaitObjects();
+
+			if not resolved then
+				resolved = true;
+				handleCoResume(co, false, "timeout");					
+			end;								
+		end);	
+end;
+
 local __delayedLoadMacroEnv = {
 	jogadores = function(chat)
 			local js = {};
@@ -361,7 +423,7 @@ local __delayedLoadMacroEnv = {
 			else
 				throwMacroNotAssociatedToRooom("myPlayer");
 			end;
-		end;
+		end,
 		
 	mesa = function(chat)
 		local m = rrpg.getMesaDe(chat); 
@@ -371,7 +433,7 @@ local __delayedLoadMacroEnv = {
 		else
 			throwMacroNotAssociatedToRooom("room");
 		end;
-	end;
+	end,
 	
 	arg = function(chat, env)
 		local str = env.parametro or "";
@@ -384,28 +446,38 @@ local __delayedLoadMacroEnv = {
 		end;
 		
 		return ret;
-	end;
+	end,
 	
 	parameter = function(chat, env)
 		return env.parametro;
-	end;
+	end,
 	
 	myCharacter = function(chat, env)
 		return env.getCharacterOfPlayer(env.myPlayer);
-	end;
+	end,
 	
 	sheet = function(chat, env)
 		return env.getCharacterSheet(env.myCharacter);
-	end;
+	end,
 	
 	chat = function(chat, env)
 		return cloneTable(chat);
-	end;	
+	end,
+	
+	elapsedMS = function(chat, env)
+		return System.getTickCount() - env.__startTickCount;
+	end,
+	
+	Firecast = function(chat, env)
+		return cloneTable(require("firecast.lua"));
+	end	
 };
 
 __delayedLoadMacroEnv.myPlayer = __delayedLoadMacroEnv.meuJogador;
 __delayedLoadMacroEnv.room = __delayedLoadMacroEnv.mesa;
 __delayedLoadMacroEnv.players = __delayedLoadMacroEnv.jogadores;
+
+__delayedLoadMacroEnvSkipCache = { elapsedMS = true };
 
 local function createMacroEnvTable(chat)
 	local env = {};
@@ -418,21 +490,34 @@ local function createMacroEnvTable(chat)
 		end;
 	end;
 	
+	env.await = function(promise)
+		local ret = table.pack(coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAwait', promise));		
+		
+		if ret[1] then
+			return table.unpack(ret, 2);
+		else	
+			error(ret[2]);
+		end;
+	end;
+	
+	env.pawait = function(promise)
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAwait', promise);		
+	end;	
+	
 	function env.escrever(texto, quebrarLinha, permitirSmileys)
 		chat:escrever(texto, quebrarLinha, permitirSmileys);
 	end;
 	
 	env.write = env.escrever;
 	
-	function env.enviar(texto)
-		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChatSendMessageAndWait', chat, 'enviarMensagem', texto); 
+	function env.enviar(text, params)
+		return env.await(chat:asyncSendStd(text, params));		
 	end;		
 	
 	env.send = env.enviar;
 	
-	function env.rolar(rolagem, msgAdicional)
-		local resultado, rolagemObj = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yRolarDado', chat, rolagem, msgAdicional);
-		return resultado, rolagemObj;
+	function env.rolar(rolagem, msgAdicional, params)
+		return env.await(chat:asyncRoll(rolagem, msgAdicional, params));		
 	end;
 	
 	env.roll = env.rolar;
@@ -457,8 +542,8 @@ local function createMacroEnvTable(chat)
 	
 	env.wait = env.esperar;
 	
-	function env.agir(acao)
-		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChatSendMessageAndWait', chat, 'enviarAcao', acao); 	
+	function env.agir(acao, params)
+		return env.await(chat:asyncSendAction(acao, params));		
 	end;
 	
 	env.act = env.agir;
@@ -917,7 +1002,38 @@ local function createMacroEnvTable(chat)
 			error(nodeOrError);
 		end;
 	end;	
+		
+	env.playLocal = function(address, volume)	
+		local audioLib = require("audio.lua");		
+		local trackPromise = audioLib.defaultPlayer:play(address, volume);
+		return env.await(trackPromise);
+	end;
 	
+	env.playRoom = function(address, volume)
+		assertIsOnRoom("playRoom");
+		local trackPromise = env.mesa.audioPlayer:play(address, volume);
+		return env.await(trackPromise);	
+	end;	
+	
+	env.waitMessage = function(timeoutMS)
+		timeoutMS = math.max(tonumber(timeoutMS or 0) or 0, 0);
+		local r, dataOrError = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAsyncWaitForMessage', chat.medium, timeoutMS);		
+
+		if r then
+			return r, dataOrError;
+		else
+			if dataOrError == "timeout" then
+				return false;
+			else
+				error(dataOrError);
+			end;
+		end;
+	end;		
+	
+	env.writeEx = function(text, talemarkOptions)
+		return chat:writeEx(text, talemarkOptions);	
+	end;
+			
 	env.pairs = pairs;
 	env.ipairs = ipairs;
 	env.pcall = pcall;
@@ -935,7 +1051,22 @@ local function createMacroEnvTable(chat)
 	env.coroutine = cloneTable(coroutine);
 	env.utils = cloneTable(Utils);	
 	env.ndb = cloneTable(NDB);
-	env.Log = cloneTable(Log)
+	env.Log = cloneTable(Log);
+	env.Async = cloneTable(Async);
+	
+	if type(_obj_getSystemGlobalSymbols) == 'function' then
+		local globalSyms = _obj_getSystemGlobalSymbols();
+		
+		for k, v in pairs(globalSyms) do
+			env[k] = v;
+		end;
+	else
+		if rawget(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE) == nil then
+			rawset(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE, {});		
+		end;
+		
+		env[_FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE] = rawget(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE); 	
+	end;
 	
 	env.Utils = env.utils;	
 	env.NDB = env.ndb;
@@ -953,7 +1084,11 @@ local function createMacroEnvTable(chat)
 			
 			if delayedLoadFunction ~= nil then
 				local v = delayedLoadFunction(chat, env);
-				rawset(table, key, v);
+				
+				if not __delayedLoadMacroEnvSkipCache[key] then
+					rawset(table, key, v);
+				end;
+				
 				return v;
 			else
 				return nil;
@@ -999,7 +1134,8 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 		local co = coroutine.create(macroLauncher);		
 		rawset(co, "__endCallback", endCallback);	
 		rawset(co, "__chat", chat);	
-		rawset(co, "__firstCoResume", true);		
+		rawset(co, "__firstCoResume", true);
+		rawset(ambiente, "__startTickCount", System.getTickCount());
 		handleCoResume(co);
 	end;
 	

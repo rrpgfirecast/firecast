@@ -1,4 +1,4 @@
--- Modera ou desativa a modera�ao da mesa e ja da voz a todos jogadores. 
+﻿-- Modera ou desativa a moderaçao da mesa e ja da voz a todos jogadores. 
 if mesa.isModerada then
   mesa:requestSetModerada(false);
   for i = 1, #jogadores, 1 do

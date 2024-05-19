@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Nefertyne.Template" title="Template" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+
+        -- DEBUG FUNCTIONS
+
+        -- turns an object in a string
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+        
+        -- write string in the chat
+        local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+        ]]> 
+    </script>
+
+    <tabControl align="client">
+        <tab title="Exemplos">
+            <tabControl align="client">
+                <tab title="DetailList">
+                    <import file="DetailList.lfm"/>
+                </tab>
+                <tab title="MultImageCheckbox">
+                    <import file="MultImageCheckbox.lfm"/>
+                </tab>
+                <tab title="ColorSelector">
+                    <import file="ColorSelector.lfm"/>
+                </tab>
+                <tab title="RclCounter">
+                    <import file="RclCounter.lfm"/>
+                </tab>
+                <tab title="Popup">
+                    <import file="Popup.lfm"/>
+                </tab>
+                <tab title="DiceRoll">
+                    <import file="DiceRoll.lfm"/>
+                </tab>
+                <tab title="Avatar">
+                    <import file="Avatar.lfm"/>
+                </tab>
+                <tab title="ImportExport">
+                    <import file="ImportExport.lfm"/>
+                </tab>
+                <tab title="ThemeControl">
+                    <import file="ThemeControl.lfm"/>
+                </tab>
+                <tab title="BarControl">
+                    <import file="BarControl.lfm"/>
+                </tab>
+                <tab title="EditBar">
+                    <import file="EditBar.lfm"/>
+                </tab>
+                <tab title="Macros">
+                    <import file="UserNDBTest.xml"/>
+                </tab>
+            </tabControl>
+        </tab>
+        <tab title="Descrição">
+            <import file="Description.lfm"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="Notes.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="Credits.lfm"/>
+        </tab>
+    </tabControl>
+    
+    <event name="onNodeReady">
+        Internet.download("raw_download_link",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                GUI.openInBrowser('raw_download_link');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+</form>

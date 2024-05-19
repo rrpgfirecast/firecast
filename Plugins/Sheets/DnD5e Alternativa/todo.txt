@@ -1,0 +1,15 @@
+TODO:
+	Espaços de Magia de Bruxo
+	Rolagem automática em magias
+	Inspiração
+	Colocar propriedades
+	Sincronizar contadores com barrinhas
+	Configurações da mesa
+	Adaptar a tamanhos de tela menores
+Em progresso:
+	Polymorph
+Feitas:
+	Desvantagem
+	Dados de Vida no descanso curto
+	Death Saving Throw
+	Propriedades das magias interpretadas corretamente

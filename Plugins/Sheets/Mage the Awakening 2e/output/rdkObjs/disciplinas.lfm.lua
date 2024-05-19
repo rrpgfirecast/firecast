@@ -815,7 +815,7 @@ local function constructNew_disciplinas()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.nomeCheckDisc00_01:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             					sheet.fldCheckDisc00_01 = not sheet.fldCheckDisc00_01;
             					
@@ -830,7 +830,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event1 = obj.nomeCheckDisc00_02:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             					sheet.fldCheckDisc00_02 = not sheet.fldCheckDisc00_02;
             					
@@ -851,7 +851,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event2 = obj.nomeCheckDisc00_03:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             					sheet.fldCheckDisc00_03 = not sheet.fldCheckDisc00_03;
             					
@@ -874,7 +874,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event3 = obj.nomeCheckDisc00_04:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             					sheet.fldCheckDisc00_04 = not sheet.fldCheckDisc00_04;
             					
@@ -899,7 +899,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event4 = obj.nomeCheckDisc00_05:addEventListener("onClick",
-        function (_)
+        function (_, event)
             
             					sheet.fldCheckDisc00_05 = not sheet.fldCheckDisc00_05;
             					
@@ -918,7 +918,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event5 = obj.nomeBut01:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_01");
             					
             					if pop ~= nil then
@@ -930,7 +930,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event6 = obj.nomeBut01B:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_01");
             					
             					if pop ~= nil then
@@ -954,7 +954,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event8 = obj.nomeBut02:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_02");
             					
             					if pop ~= nil then
@@ -966,7 +966,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event9 = obj.nomeBut02B:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_02");
             					
             					if pop ~= nil then
@@ -990,7 +990,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event11 = obj.nomeBut03:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_03");
             					
             					if pop ~= nil then
@@ -1002,7 +1002,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event12 = obj.nomeBut03B:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_03");
             					
             					if pop ~= nil then
@@ -1026,7 +1026,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event14 = obj.nomeBut04:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_04");
             					
             					if pop ~= nil then
@@ -1038,7 +1038,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event15 = obj.nomeBut04B:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_04");
             					
             					if pop ~= nil then
@@ -1062,7 +1062,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event17 = obj.nomeBut05:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_05");
             					
             					if pop ~= nil then
@@ -1074,7 +1074,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event18 = obj.nomeBut05B:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popUp_05");
             					
             					if pop ~= nil then
@@ -1098,7 +1098,7 @@ local function constructNew_disciplinas()
         end, obj);
 
     obj._e_event20 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             NDB.deleteNode(sheet);
         end, obj);
 

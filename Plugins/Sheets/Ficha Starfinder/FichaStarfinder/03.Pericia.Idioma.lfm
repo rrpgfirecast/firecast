@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister3i_svg" width="290" height="25" theme="dark" margins="{top=2, bottom=2, right=10}">
+<form name="SkillsLanguage" g="col" g-width="12" height="25">
 
 	<script> 
 		<![CDATA[			
@@ -7,37 +7,35 @@
 			Dialogs.confirmYesNo("Deseja realmente apagar esse idioma?",
 								 function (confirmado)
 									if confirmado then
-										NDB.deleteNode(sheet);
-									end;
-								 end);
-		end;
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
 
 		local function showIdiomaPopup()
-			local pop = self:findControlByName("popIdioma");
+			local pop = self:findControlByName("popIdioma")
 				
 			if pop ~= nil then
-				pop:setNodeObject(self.sheet);
-				pop:showPopupEx("bottom", self);
+				pop:setNodeObject(self.sheet)
+				pop:showPopupEx("bottom", self)
 			else
-				showMessage("Ops, bug.. nao encontrei o popup de idiomas para exibir");
-			end;				
-		end;
+				showMessage("Ops, bug.. nao encontrei o popup de idiomas para exibir")
+			end				
+		end
 
 		]]>	
 	</script>
 
-	<rectangle align="client" color="#202020" hitTest="false"/>
-
-	<edit vertTextAlign="center" left="0" top="0" width="110" height="25" field="nomeIdioma">
-		<event name="onChange">
-			local rcl = self:findControlByName("rclListaDosIdiomas");
+	<edit vertTextAlign="center" g="col" g-width="5" height="25" field="nomeIdioma">
+		<event name="onUserChange">
+			local rcl = self:findControlByName("rclListaDosIdiomas")
 			if rcl~= nil then
-				rcl:sort();
-			end;
+				rcl:sort()
+			end
 		</event>
 	</edit>
-	<edit vertTextAlign="center" left="110" top="0" width="110" height="25" field="alfabetoIdioma"/>
+	<edit vertTextAlign="center" g="col" g-width="5" height="25" field="alfabetoIdioma"/>
 
-	<button left="220" top="1" width="23" height="23" text="i" onClick="showIdiomaPopup();"/>
-	<button left="245" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+	<button g="col" g-width="1" height="25" text="ℹ️" onClick="showIdiomaPopup()" hint="Detalhes" textTrimming="none"/>
+	<button g="col" g-width="1" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
 </form>

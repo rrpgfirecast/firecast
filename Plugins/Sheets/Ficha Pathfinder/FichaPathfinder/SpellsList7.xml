@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<recordList name="magicList7" field="campoDasMagiasEpicas" templateForm="frmMagiasMagiaEpica" align="top" layout="horizontalTiles" hitTest="false" minQt="1" autoHeight="true">
+	<event name="onCompare"><![CDATA[ 
+		local aUsada = (tonumber(nodeA.usedMagia) or 0);
+		local bUsada = (tonumber(nodeB.usedMagia) or 0);
+
+	    if aUsada < bUsada then
+	        return 1;
+	    elseif aUsada > bUsada then
+	        return -1;
+	    else
+	        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+	    end;
+	    ]]>
+	</event>
+</recordList>

@@ -34,6 +34,8 @@ if afkdb.config == nil then
 	afkdb.config = {};
 end;
 
+local afktemp = {}
+
 local config = NDB.load("config.xml");
 
 local function isNewVersion(installed, downloaded)
@@ -71,6 +73,9 @@ local function initializeRoom(mesa)
 	if afkdb.config[mesa.codigoInterno] == nil then
 		afkdb.config[mesa.codigoInterno] = {};
 	end;
+	if afktemp[mesa.codigoInterno] == nil then
+		afktemp[mesa.codigoInterno] = {}
+	end
 end
 local function initializeClock(mesa)
 	if afkdb.config[mesa.codigoInterno].clock == nil then
@@ -185,6 +190,7 @@ end
 
 function getConfigWindow(mesa)
 	initializeRoom(mesa);
+	afkdb.config[mesa.codigoInterno].codigoInterno = mesa.codigoInterno
 
 	local cfgForm = GUI.newForm("afkbotPopup");
 	cfgForm:setNodeObject(afkdb.config[mesa.codigoInterno]);
@@ -274,7 +280,7 @@ Firecast.Messaging.listen("HandleChatCommand",
 		end
 	end);
 
--- Escuta das mensagens de chat padrão e decide se deve ou não enviar o alerta por conta dessa mensagem
+-- Escuta as mensagens de chat padrão e decide se deve ou não enviar o alerta por conta dessa mensagem
 Firecast.Messaging.listen("ChatMessage", 
 	function (message)
 		if message.mesa == nil then return end;
@@ -357,18 +363,31 @@ Firecast.Messaging.listen("MesaJoined",
 		end;
 
 		-- Enviar mensagem de bos vindas automatica.
-		local list = NDB.getChildNodes(afkdb.config[message.mesa.codigoInterno].welcomeList);
+		local list = NDB.getChildNodes(afkdb.config[message.mesa.codigoInterno].welcomeList)
 		if (not message.mesa.isModerada) then
 			for i=1, #list, 1 do 
-				local item = list[i];
+				local item = list[i]
 				if item.login == message.jogador.login then
-					message.mesa.chat:enviarMensagem(item.message);
+					message.mesa.chat:enviarMensagem(item.message)
 					if not item.permanent then
-						NDB.deleteNode(item);
+						NDB.deleteNode(item)
 					end
-				end;
-			end;
-		end;
+				end
+			end
+		end
+
+		-- Adicionar automaticamente ao offchat depois de 3 segundos
+		if afktemp[message.mesa.codigoInterno].offchat ~= nil then
+			setTimeout(
+					function()
+						afktemp[message.mesa.codigoInterno].offchat:asyncInvite({message.jogador.login})
+						if message.jogador.isJogador then
+							message.jogador:requestSetVoz(true);
+						end
+					end, 3000
+				)
+			
+		end
 	end);
 
 -- Escuta por rolagens de dado
@@ -461,30 +480,75 @@ Firecast.Messaging.listen("ChatMessage",
 		for substring in txt:gmatch("%S+") do
    			table.insert(arg, substring)
 		end
+		local codigoInterno = message.mesa.codigoInterno
 
 		if arg[1]=="afkbot" then
-
-
 			-- give voice to players
-			if ((arg[2]=="voz" or arg[2]=="voice") and message.jogador~=nil and message.jogador.isJogador and message.mesa.isModerada and afkdb.config[message.mesa.codigoInterno].giveVoice) then
-				message.jogador:requestSetVoz(true);
-			elseif ((arg[2]=="ficha" or arg[2]=="sheet") and afkdb.config[message.mesa.codigoInterno].giveSheet and message.jogador~= nil and message.jogador.personagemPrincipal==-1 and afkdb.config[message.mesa.codigoInterno].dataType~=nil) then 
-				Firecast.Requests.criarPersonagem(message.mesa.biblioteca, message.jogador.login, afkdb.config[message.mesa.codigoInterno].dataType, false, message.jogador,
-					function (sucess)
-						-- do nothing
-					end,
-					function (fail)
-						-- showMessage(fail)
-					end);
+			if (arg[2]=="voz" or arg[2]=="voice") then
+				if not afkdb.config[codigoInterno].giveVoice then
+					tryNPC(true, message.chat, "AfkBot", "O mestre não me permite te dar voz.")
+				elseif (message.jogador~=nil and not message.jogador.isJogador) then
+					tryNPC(true, message.chat, "AfkBot", "Jogador Invalido.")
+				elseif (not message.mesa.isModerada) then
+					tryNPC(true, message.chat, "AfkBot", "Mesa não está moderada. Você não precisa de voz.")
+				else
+					message.jogador:requestSetVoz(true)
+				end
+			elseif (arg[2]=="ficha" or arg[2]=="sheet") then 
+				if not afkdb.config[codigoInterno].giveSheet then
+					tryNPC(true, message.chat, "AfkBot", "O mestre não me permite te dar ficha.")
+				elseif (afkdb.config[codigoInterno].dataType==nil or afkdb.config[codigoInterno].dataType == "") then
+					tryNPC(true, message.chat, "AfkBot", "O mestre não definiu que ficha eu posso te dar.")
+				elseif (message.jogador==nil) then
+					tryNPC(true, message.chat, "AfkBot", "Usuario Invalido.")
+				elseif (message.jogador.personagemPrincipal ~= -1) then
+					tryNPC(true, message.chat, "AfkBot", "Você já tem ficha.")
+				else
+					local charParams = {}
+					charParams.name = message.jogador.login
+					charParams.dataType = afkdb.config[codigoInterno].dataType
+					charParams.visible = false
+					charParams.ownerLogin  = message.jogador.login
+
+					message.mesa.biblioteca:asyncCreateChar(charParams)
+					tryNPC(true, message.chat, "AfkBot", "Ficha Liberada.")
+				end
 			elseif (arg[2]=="off") then
-				-- poe o jogador no off chat
-			elseif (arg[2]=="math") then
-				-- faz calculo matematico
-			elseif (arg[2]==">>" and message.jogador~=nil and message.jogador.isJogador and afkdb.config[message.mesa.codigoInterno].passAction) then
-				if Utils.compareStringPtBr(Utils.removerFmtChat(message.jogador.nick), Utils.removerFmtChat(afkdb.config[message.mesa.codigoInterno].actionOwner)) == 0 then
+				if (not message.mesa.isModerada) then
+					tryNPC(true, message.chat, "AfkBot", "Mesa não está moderada.")
+				else
+					if message.jogador.isMestre then
+						-- torna esse o off chat
+						if message.chat.medium.kind == "groupPvtOnRoom" then
+							if afktemp[codigoInterno].offchat == message.chat then
+								afktemp[codigoInterno].offchat = nil
+								tryNPC(true, message.chat, "AfkBot", "A partir de agora não há este não é o off chat.")
+							else
+								afktemp[codigoInterno].offchat = message.chat
+								tryNPC(true, message.chat, "AfkBot", "A partir de agora esse é o off chat.")
+							end
+						else
+							tryNPC(true, message.chat, "AfkBot", "Esse chat não pode ser usado como off chat.")
+						end
+					else
+						-- poe o jogador no off chat
+						if afktemp[codigoInterno].offchat ~= nil then
+							afktemp[codigoInterno].offchat:asyncInvite({message.jogador.login})
+							tryNPC(true, message.chat, "AfkBot", "Feito.")
+						else
+							tryNPC(true, message.chat, "AfkBot", "Não há off chat valido.")
+						end
+					end
+				end
+			elseif (arg[2]==">>") then
+				if not afkdb.config[codigoInterno].passAction then
+					tryNPC(true, message.chat, "AfkBot", "O mestre não me permite passar tua vez.")
+				elseif (message.jogador==nil and not message.jogador.isJogador) then
+					tryNPC(true, message.chat, "AfkBot", "Usuario Invalido.")
+				elseif Utils.compareStringPtBr(Utils.removerFmtChat(message.jogador.nick), Utils.removerFmtChat(afkdb.config[codigoInterno].actionOwner)) == 0 then
 					message.chat:enviarMensagem("/>>");
 				else
-					tryNPC(true,message.chat,"AfkBot","Não é sua vez \"" .. (Utils.removerFmtChat(message.jogador.nick) or "nil") .. "\", é a vez de \"" .. (afkdb.config[message.mesa.codigoInterno].actionOwner or "nil") .. "\".");
+					tryNPC(true,message.chat,"AfkBot","Não é sua vez \"" .. (Utils.removerFmtChat(message.jogador.nick) or "nil") .. "\", é a vez de \"" .. (afkdb.config[codigoInterno].actionOwner or "nil") .. "\".");
 				end
 			elseif (arg[2]=="show") then
 				local param = ""; 
@@ -493,13 +557,275 @@ Firecast.Messaging.listen("ChatMessage",
 					if arg[i] ~= nil then param = param .. " " .. arg[i] end;
 				end
 				ShowBibItem(message, param);
+			elseif (arg[2]=="start") then
+				if not message.mine then
+					return
+				elseif (message.jogador==nil and not message.jogador.isMestre) then
+					tryNPC(true, message.chat, "AfkBot", "Usuario Invalido.")
+				elseif (message.mesa.isModerada) then
+					tryNPC(true, message.chat, "AfkBot", "Mesa já está moderada.")
+				else
+					-- moderate
+					message.mesa:requestSetModerada(true)
+					-- give voice
+					local jogadores = message.mesa.jogadores
+					local logins = {}
+					for i=1, #jogadores, 1 do
+						logins[i] = jogadores[i].login
+						if jogadores[i].isJogador then
+							jogadores[i]:requestSetVoz(true)
+						end
+					end
+					-- add all to off chat
+					if (#logins > 1)  then
+						if afktemp[codigoInterno].offchat ~= nil then
+							afktemp[codigoInterno].offchat:asyncInvite(logins)
+						else
+							local promise = message.mesa:asyncCreateGroupPVT(logins);
+							afktemp[codigoInterno].offchat = await(promise);
+						end
+					end
+					-- clear chat
+					message.chat:enviarMensagem("/clear")
+					-- add start message
+					if afkdb.config[codigoInterno].msgStart ~= nil and afkdb.config[codigoInterno].msgStart ~= "" then
+						message.chat:enviarMensagem(afkdb.config[codigoInterno].msgStart)
+					end
+					-- save session number
+					afkdb.config[codigoInterno].currSession = arg[3]
+					-- reset temp node to force reload 
+					afktemp[codigoInterno].logNode = nil
+					afktemp[codigoInterno].tab = nil
+					afktemp[codigoInterno].dsb = nil
+					afktemp[codigoInterno].nick = nil
+					afktemp[codigoInterno].avatar = nil
+				end
+			elseif (arg[2]=="end") then
+				if not message.mine then
+					return
+				elseif (message.jogador==nil and not message.jogador.isMestre) then
+					tryNPC(true, message.chat, "AfkBot", "Usuario Invalido.")
+				elseif (not message.mesa.isModerada) then
+					tryNPC(true, message.chat, "AfkBot", "Mesa não está moderada.")
+				else
+					-- add end message
+					if afkdb.config[codigoInterno].msgEnd ~= nil and afkdb.config[codigoInterno].msgEnd ~= "" then
+						message.chat:enviarMensagem(afkdb.config[codigoInterno].msgEnd)
+					end
+					-- remove voice
+					local jogadores = message.mesa.jogadores
+					for i=1, #jogadores, 1 do
+						if jogadores[i].isJogador then
+							jogadores[i]:requestSetVoz(false)
+						end
+					end
+					-- end moderation
+					message.mesa:requestSetModerada(false)
+					-- end off chat
+					afktemp[codigoInterno].offchat = nil
+					-- stop saving log
+					afkdb.config[codigoInterno].currSession = nil
+					afktemp[codigoInterno].logNode = nil
+					afktemp[codigoInterno].tab = nil
+					afktemp[codigoInterno].dsb = nil
+					afktemp[codigoInterno].nick = nil
+					afktemp[codigoInterno].avatar = nil
+				end
 			else
-				-- message.chat:enviarMensagem("AfkBot: Não posso. ");
+				tryNPC(true, message.chat, "AfkBot", "Não entendi. Tente: 'voz', 'ficha', '>>', 'start', 'end' ou 'show'.")
 			end;
 		elseif message.mine and string.sub(txt,1,string.len(" >> Turno de "))==" >> Turno de " then
-			afkdb.config[message.mesa.codigoInterno].actionOwner = string.sub(txt,string.len(" >> Turno de ")+1,-2);
+			afkdb.config[message.mesa.codigoInterno].actionOwner = string.sub(txt,string.len(" >> Turno de ")+1,-1);
 			--message.chat:escrever(string.sub(txt,string.len(" >> Turno de ")+1));
 		end;
+	end);
+
+-- Copia o Log pra uma ficha
+Firecast.Messaging.listen("ChatMessageEx",
+	function (message)
+		-- not in a room
+		if message.chat.room == nil then
+			return 
+		end
+		initializeRoom(message.chat.room);
+		-- not in main chat
+		if message.chat.medium.kind ~= "room" then
+			return
+		end
+		-- Not in session, room is not moderated
+		if not message.chat.room.isModerada then
+			--showMessage("Not in session, room is not moderated")
+			return
+		end
+		-- We don't have a session number
+		local codigoInterno = message.chat.room.codigoInterno
+		local currSession = tonumber(afkdb.config[codigoInterno].currSession)
+		if currSession == nil then 
+			--showMessage("Find if we have a session number")
+			return
+		end
+		-- No selected sheet to save log
+		if (tonumber(afkdb.config[codigoInterno].characterID) or 0) <= 0 then
+			--showMessage("No selected sheet to save log " .. afkdb.config[codigoInterno].characterID)
+			return
+		end
+		-- Selected sheet is not 'Ficha Multiaba' or 'Gerenciador'
+		local logs = message.chat.room:findBibliotecaItem(afkdb.config[codigoInterno].characterID)
+		if logs.dataType ~= "Ambesek.Nefertyne.FichaMultiaba" and logs.dataType ~= "Ambesek.Gerenciador.RPGmeister" then
+			--showMessage("Selected sheet is not valid")
+			return 
+		end
+
+		-- EVERYTHING IS FINE INITIATE AUTO LOG
+		-- LOAD NDB
+		if afktemp[codigoInterno].logNode == nil then
+			afktemp[codigoInterno].logNode = await(logs:asyncOpenNDB())
+		end
+		-- Find TAB
+		local aba = nil
+		if afktemp[codigoInterno].tab == nil then
+			local node = afktemp[codigoInterno].logNode
+			-- Find right place to add log
+			if node.abas==nil then
+				node.abas = {}
+			end
+			local abas = NDB.getChildNodes(node.abas)
+			for i=1, #abas, 1 do
+				if abas[i].index == currSession then 
+					aba = abas[i]
+				end
+			end
+
+			-- Couldn't find tab, create one
+			if aba == nil then
+				aba = NDB.createChildNode(node.abas, "item")
+				aba.index = currSession
+				aba.nome_aba = "Sessão " .. currSession
+			end
+		end
+		-- Create Rich Edit to add info
+		if afktemp[codigoInterno].dsb == nil then
+			afktemp[codigoInterno].dsb = GUI.newDataScopeBox()
+			afktemp[codigoInterno].dsb:setName("boxTexto");
+
+			afktemp[codigoInterno].re = GUI.newRichEdit()
+			afktemp[codigoInterno].re:setParent(afktemp[codigoInterno].dsb)
+			afktemp[codigoInterno].re:setName("txt")
+			afktemp[codigoInterno].re:setField("txt")
+    		afktemp[codigoInterno].re.backgroundColor = "black"
+    		afktemp[codigoInterno].re.defaultFontColor = "white"
+
+			afktemp[codigoInterno].dsb:setNodeObject(aba)
+		end
+
+		local msgType = message.logRec.msg.msgType
+		if (msgType == "standard" or msgType == "action" or msgType == "dice") then 
+			local re = afktemp[codigoInterno].re
+
+			local params = {}
+			params.url = message.logRec.msg.impersonation.avatar
+			params.width = 50
+			params.height = 50
+			if params.url==nil then
+				-- message.logRec.entity.login
+				local jogadores = message.chat.room.jogadores
+				for i=1, #jogadores, 1 do
+					if jogadores[i].login == message.logRec.entity.login then
+						params.url = jogadores[i].avatar
+					end
+				end
+			end
+			if params.url==nil then
+				params.url = ""
+			end
+			local nick = message.logRec.msg.impersonation.name
+			if nick == nil then
+				nick = message.logRec.entity.nick
+			end
+
+			re:gotoEnd(false)
+			re:beginEdit()
+			if afktemp[codigoInterno].nick ~= nick and afktemp[codigoInterno].avatar ~= params.url then
+				re:breakLine()
+				re:insertImage(params)
+				re:insertText(Utils.removerFmtChat(nick))
+				re:breakParagraph()
+			end
+			if msgType == "standard" then
+				re:insertTalemark(message.logRec.msg.content, message.logRec.msg.talemarkOptions)
+			elseif msgType == "action" then
+				re:setSelectionFontStyle({"bold","italic"})
+				re:setSelectionFontColor("DeepPink ")
+				re:insertText(nick .. " " .. message.logRec.msg.content)
+			elseif msgType == "dice" then
+				re:setSelectionFontStyle({})
+				local roll = message.logRec.msg.roll
+				local total = 0
+				local add = true
+				local dice = " {"
+				for i = 1, #roll.ops, 1 do  
+				    local operacao = roll.ops[i];      
+				    -- Vamos verificar que tipo de operação é esta.      
+				    if operacao.tipo == "dado" then             
+				        -- Loop percorrendo cada um dos resultados individuais deste conjunto de dados.
+				        dice = dice .. "[";
+				        for j = 1, #operacao.resultados, 1 do
+				            dice = dice .. math.floor(operacao.resultados[j]);
+
+				            if add then
+				            	total = total + math.floor(operacao.resultados[j])
+				            else
+				            	total = total - math.floor(operacao.resultados[j])
+				            end
+
+				            if j ~= #operacao.resultados then
+				            	dice = dice .. ", "
+				            end
+				        end;               
+
+				        dice = dice .. "]";
+				    elseif operacao.tipo == "soma" then 
+				    	dice = dice .. " + "
+				    	add = true
+				    elseif operacao.tipo == "subtracao" then 
+				    	dice = dice .. " - "
+				    	add = false
+				    elseif operacao.tipo == "imediato" then
+				        dice = dice .. math.floor(operacao.valor);
+
+				        if add then
+				        	total = total + math.floor(operacao.valor)
+				        else
+				        	total = total - math.floor(operacao.valor)
+				        end
+				    end;
+				end;
+				local dice = dice .. "}"
+				re:setSelectionFontColor("blue")
+				re:insertText(nick)
+				
+				re:setSelectionFontColor("white")
+				re:insertText(" rolou ")
+
+				re:setSelectionFontColor("blue")
+				re:insertText(roll.asString)
+
+				re:setSelectionFontColor("white")
+				re:insertText(" = ")
+
+				re:setSelectionFontColor("LimeGreen")
+				re:insertText(total)
+
+				re:setSelectionFontColor("DarkOrange")
+				re:insertText(dice)
+			end
+			re:breakParagraph()
+			re:endEdit()
+
+			afktemp[codigoInterno].nick = nick
+			afktemp[codigoInterno].avatar = params.url
+
+		end
 	end);
 
 Firecast.Messaging.listen("ListChatCommands",

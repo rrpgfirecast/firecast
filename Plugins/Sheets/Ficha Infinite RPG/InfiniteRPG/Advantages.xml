@@ -29,7 +29,7 @@
 			<textEditor align="client" height="25" field="$(field)"/>
 		</layout>
 	</template>
-	<popup name="popVantagem" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+	<popup name="popVantagem" width="600" height="480" backOpacity="0.4" autoScopeNode="false">
 		<LabelEditVert text="Nome" field="nome"/>
 		<LabelEditVert text="Custo" field="custo"/>
 		<LabelTextEditVert text="Descrição" field="descricao"/>

@@ -1,200 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmNaveGeneral" align="client" theme="dark">
-	<scrollBox align="client">
-		<layout height="610"/>
-		<layout align="left" width="765" margins="{bottom=5}">
-			<layout align="top" height="200" margins="{bottom=5}">
-				<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-					<image align="client" field="avatarComp" editable="true" style="autoFit">
-						<event name="OnStartDrag">
-							drag:addData("imageURL", sheet.avatarComp);
-						</event>
-					</image>
-				</rectangle>
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<layout g="col" g-width="12" g-width-lg="8" g-auto-height="true" g-min-height="600" g-vert-tile="true" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="4" g-auto-height="true" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+				<image align="client" field="avatarComp" editable="true" style="proportional">
+					<event name="OnStartDrag">
+						drag:addData("imageURL", sheet.avatarComp);
+					</event>
+				</image>
+			</rectangle>
 
-				<rectangle align="left" width="210" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelEdit text="Nome" field="nome" width="95" fontSize="13"/>
-						<VertLabelEdit text="Modelo" field="modelo" width="95" fontSize="13"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelEdit text="Ranque" field="ranque" width="95" fontSize="13"/>
-						<VertLabelLabel text="Class. Deriva" field="deriva_class" width="95" fontSize="13"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelLabel text="Manobra" field="manobra" width="145" fontSize="13"/>
-						<VertLabelLabel text="Velocidade" field="velocidade" width="45" fontSize="9"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelCombo text="Tamanho" field="tamanho" width="95" fontSize="13" items="{'Minúsculo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'1','2','3','4','5','6','7'}"/>
-						<VertLabelCombo text="Plataforma" field="plataforma" width="95" fontSize="13" items="{}" values="{}"/>
-					</layout>
-				</rectangle>
+			<rectangle g="col" g-width="8" g-width-lg="4" g-auto-height="true" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+				<GridLabelEdit text="Nome" field="nome"/>
+				<GridLabelEdit text="Modelo" field="modelo"/>
 
-				<rectangle align="left" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelLabel text="CA" field="ca" width="60" fontSize="13"/>
-						<VertLabelEdit text="Piloto" field="ca_piloto" width="60" fontSize="13"/>
-						<VertLabelLabel text="Armadura" field="ca_armadura" width="60" fontSize="13"/>
-						<VertLabelLabel text="Tamanho" field="ca_tamanho" width="60" fontSize="13"/>
-						<VertLabelEdit text="Outros" field="ca_outros" width="60" fontSize="13"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelLabel text="TM" field="tm" width="60" fontSize="13"/>
-						<VertLabelEdit text="Piloto" field="ca_piloto" width="60" fontSize="13"/>
-						<VertLabelLabel text="Contramedidas" field="tm_contramedidas" width="60" fontSize="8"/>
-						<VertLabelLabel text="Tamanho" field="ca_tamanho" width="60" fontSize="13"/>
-						<VertLabelEdit text="Outros" field="tm_outros" width="60" fontSize="13"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelLabel text="Casco" field="casco" width="60" fontSize="13"/>
-						<VertLabelLabel text="LD" field="casco_ld" width="60" fontSize="13"/>
-						<VertLabelLabel text="LC" field="casco_lc" width="60" fontSize="13"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelLabel text="Escudo" field="escudo_total" width="60" fontSize="13"/>
-						<VertLabelEdit text="Proa" field="escudo_proa" width="60" fontSize="13"/>
-						<VertLabelEdit text="Popa" field="escudo_popa" width="60" fontSize="13"/>
-						<VertLabelEdit text="Bombordo" field="escudo_bombordo" width="60" fontSize="11"/>
-						<VertLabelEdit text="Estibordo" field="escudo_estibordo" width="60" fontSize="11"/>
-					</layout>
-				</rectangle>
-			</layout>
-			<layout align="top" height="200" margins="{bottom=5}">
-				<rectangle align="left" width="380" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-					<layout align="top" height="20">
-						<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclReatores:append();"/>
-						<label align="left" text="Núcleos de Energia" width="200" margins="{left=5}"/>
-					</layout>
-					<recordList name="rclReatores" field="listaReatores" templateForm="frmReactorPart" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
-				</rectangle>
-				<rectangle align="left" width="375" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-					<layout align="top" height="20">
-						<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclExpansao:append();"/>
-						<label align="left" text="Compatimentos de Expansão" width="200" margins="{left=5}"/>
-					</layout>
-					<recordList name="rclExpansao" field="listaExpansao" templateForm="frmShipPart" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
-				</rectangle>
-			</layout>
-			<layout align="top" height="200" margins="{bottom=5}">
-				<rectangle align="left" width="650" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-					<textEditor align="client" field="detalhes" margins="{left=5,right=5,top=0}"/>
-				</rectangle>
-				<rectangle align="left" width="105" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=2.5,bottom=2.5}">
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertCheckEditOrLLabel text="Valor" field="preco" width="95" fontSize="13" formatFloat=",0 C"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertCheckEditOrLLabel text="Peso Máximo" field="peso" width="95" fontSize="12" formatFloat=",0.# Tons"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelEdit text="Volume" field="volume" width="95" fontSize="13"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelLabel text="Danos Críticos" field="danos" width="95" fontSize="11"/>
-					</layout>
-				</rectangle>
-			</layout>
+				<GridLabelEdit text="Ranque" field="ranque"/>
+				<GridLabelLabel text="Class. Deriva" field="deriva_class"/>
+
+				<GridLabelLabel text="Manobra" field="manobra"/>
+				<GridLabelLabel text="Velocidade" field="velocidade"/>
+
+				<GridLabelCombo text="Tamanho" field="tamanho" items="{'Minúsculo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'1','2','3','4','5','6','7'}"/>
+				<GridLabelCombo text="Plataforma" field="plataforma" items="{}" values="{}"/>
+			</rectangle>
+
+			<rectangle g="col" g-width="12" g-width-lg="4" g-auto-height="true" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+				<GridLabelLabel text="CA" field="ca" width="4" hint="Classe de Armadura"/>
+				<GridLabelEdit text="Piloto" field="ca_piloto" width="2"/>
+				<GridLabelLabel text="Armadura" field="ca_armadura" width="2"/>
+				<GridLabelLabel text="Tamanho" field="ca_tamanho" width="2"/>
+				<GridLabelEdit text="Outros" field="ca_outros" width="2"/>
+				
+				<GridLabelLabel text="TM" field="tm" width="4" hint="Trava de Mira"/>
+				<GridLabelEdit text="Piloto" field="ca_piloto" width="2"/>
+				<GridLabelLabel text="Contramedidas" field="tm_contramedidas" width="2" fontSize="8"/>
+				<GridLabelLabel text="Tamanho" field="ca_tamanho" width="2"/>
+				<GridLabelEdit text="Outros" field="tm_outros" width="2"/>
+				
+				<GridLabelLabel text="Casco" field="casco" width="3"/>
+				<GridLabelLabel text="LD" field="casco_ld" width="3" hint="Limiar de Dano"/>
+				<GridLabelLabel text="LC" field="casco_lc" width="3" hint="Limiar de Crítico"/>
+				<GridLabelLabel text="Armas" field="weaponSlots" width="3"/>
+
+				<GridLabelLabel text="Escudo" field="escudo_total" width="4"/>
+				<GridLabelEdit text="Proa" field="escudo_proa" width="2"/>
+				<GridLabelEdit text="Popa" field="escudo_popa" width="2"/>
+				<GridLabelEdit text="Bombordo" field="escudo_bombordo" width="2" fontSize="11"/>
+				<GridLabelEdit text="Estibordo" field="escudo_estibordo" width="2" fontSize="11"/>
+			</rectangle>
+
+
+			<rectangle g="col" g-width="6" g-auto-height="true" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5}">
+				<layout align="top" height="20">
+					<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclReatores:append();"/>
+					<label align="left" text="Núcleos de Energia" width="200" margins="{left=5}"/>
+				</layout>
+				<recordList name="rclReatores" field="listaReatores" templateForm="frmReactorPart" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+			</rectangle>
+			<rectangle g="col" g-width="6" g-auto-height="true" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5}">
+				<layout align="top" height="20">
+					<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclExpansao:append();"/>
+					<label align="left" text="Compatimentos de Expansão" width="200" margins="{left=5}"/>
+				</layout>
+				<recordList name="rclExpansao" field="listaExpansao" templateForm="frmShipPart" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+			</rectangle>
+
+			
+			<rectangle g="col" g-width="10" g-auto-height="true" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5}">
+				<textEditor align="client" field="detalhes" margins="{left=5,right=5,top=0}"/>
+			</rectangle>
+			<rectangle g="col" g-width="2" g-auto-height="true" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+				<GridCheckEditOrLabel text="Valor" field="preco" width="12" formatFloat=",0 C"/>
+
+				<GridCheckEditOrLabel text="Peso Máximo" field="peso" width="12" formatFloat=",0.# Tons"/>
+
+				<GridLabelEdit text="Volume" field="volume" width="12"/>
+				<GridLabelLabel text="Danos Críticos" field="danos" width="12"/>
+			</rectangle>
+			
 		</layout>
-		<layout align="left" width="500" margins="{bottom=5}">
-			<layout align="top" height="405" margins="{bottom=5}">
-				<rectangle align="client" width="500" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertTriLabel text="PF" field="fabricacao" width="115" width2="57.5" fontSize="13"/>
-						<VertTriLabel text="UNE" field="energia" width="115" width2="57.5" fontSize="13"/>
-						<VertTriLabel text="Comp. Expansão" field="expansao" width="115" width2="57.5" fontSize="11"/>
-						<VertTriLabel text="Tripulação" field="tripulacao" width="115" width2="57.5" fontSize="13"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertTriLabel text="Blocos" field="blocos" width="300" width2="150" fontSize="13" formatFloat=",0"/>
-						<VertLabelTriEdit text="Dimensões (q)" field="dimensoes" width="180" width2="60" fontSize="13"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelCombo text="Escudo" field="escudo" width="115" fontSize="13" items="{'-', 'Básico 10', 'Básico 20', 'Básico 30', 'Básico 40', 'Leve 50', 'Leve 60', 'Leve 70', 'Leve 80', 'Médio 90', 'Médio 100', 'Médio 120', 'Médio 140', 'Médio 160', 'Médio 200', 'Pesado 240', 'Pesado 280', 'Pesado 320', 'Pesado 360', 'Pesado 420', 'Pesado 480', 'Superior 540', 'Superior 600'}" values="{'0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22'}"/>
-						<VertLabelCombo text="Armadura" field="armadura" width="115" fontSize="13" items="{'-','md 1','md 2','md 3','md 4','md 5','md 6','md 7','md 8','md 9','md 10','md 11','md 12','md 13','md 14','md 15'}" values="{'0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'}"/>
-						<VertLabelCombo text="Contramedidas" field="contramedidas" width="115" fontSize="13" items="{'-','md 1','md 2','md 3','md 4','md 5','md 6','md 7','md 8','md 9','md 10','md 11','md 12','md 13','md 14','md 15'}" values="{'0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'}"/>
-						<VertLabelCombo text="Computador" field="computador" width="115" fontSize="13" items="{'Básico', 'Mono md 1', 'Duo md 1', 'Tri md 1', 'Tetra md 1', 'Mono md 2', 'Duo md 2', 'Tri md 2', 'Tetra md 2', 'Mono md 3', 'Duo md 3', 'Tri md 3', 'Tetra md 3', 'Mono md 4', 'Duo md 4', 'Tri md 4', 'Mono md 5', 'Duo md 5', 'Tri md 5', 'Mono md 6', 'Duo md 6', 'Mono md 7', 'Duo md 7', 'Mono md 8', 'Duo md8 +8', 'Mono md 9', 'Duo md 9', 'Mono md 10', 'Duo md 10'}" values="{'0_0', '1_1', '2_1', '3_1', '4_1', '1_2', '2_2', '3_2', '4_2', '1_3', '2_3', '3_3', '4_3', '1_4', '2_4', '3_4', '1_5', '2_5', '3_5', '1_6', '2_6', '1_7', '2_7', '1_8', '2_8', '1_9', '2_9', '1_10', '2_10'}"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelCombo text="Propulsor" field="propulsor" width="115" fontSize="13" items="{}" values="{}"/>
-						<VertLabelCombo text="Deriva" field="deriva" width="115" fontSize="13" items="{}" values="{}"/>
-						<VertLabelCombo text="Sensor" field="sensor" width="115" fontSize="13" items="{'Mixaria', 'Barato Curto', 'Básico Curto', 'Avançado Curto', 'Barato Médio', 'Básico Médio', 'Avançado Médio', 'Barato Longo', 'Básico Longo', 'Avançado Longo'}" values="{'0','1','2','3','4','5','6','7','8','9'}"/>
-						<layout align="left" width="115">
-							<checkBox align="top" height="25" text="PC Extra" field="opt_pc" margins="{right=5}"/>
-							<checkBox align="top" height="25" text="Tripulação Extra" field="opt_trip" margins="{right=5}"/>
-						</layout>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelCombo text="Anti-Hack" field="sec_hack" width="115" fontSize="13" items="{'-','x1','x2','x3','x4'}" values="{'0','1','2','3','4'}"/>
-						<VertLabelCombo text="Grade de Choque" field="sec_choque" width="115" fontSize="13" items="{'-','x1','x2','x3','x4'}" values="{'0','1','2','3','4'}"/>
-					</layout>
-					<layout align="top" height="25">
-						<layout align="left" width="5"/>
-						<checkBox align="left" width="115" text="Tranca Biométrica" field="sec_tranca" margins="{right=5}" fontSize="11"/>
-						<checkBox align="left" width="115" text="Autodestruição" field="sec_autodest" margins="{right=5}"/>
-						<checkBox align="left" width="115" text="Alarme" field="sec_alarm" margins="{right=5}"/>
-						<checkBox align="left" width="115" text="Bloqueio" field="sec_lockout" margins="{right=5}"/>
-					</layout>
-					<layout align="top" height="25">
-						<layout align="left" width="5"/>
-						<checkBox align="left" width="115" text="Interface Falsa" field="sec_shell" margins="{right=5}"/>
-						<checkBox align="left" width="115" text="Formatar Dados" field="sec_wipe" margins="{right=5}"/>
-						<checkBox align="left" width="115" text="Contravírus" field="sec_feedback" margins="{right=5}"/>
-						<checkBox align="left" width="115" text="Firewall" field="sec_firewall" margins="{right=5}"/>
-					</layout>
-					<horzLine align="top" height="1" strokeSize="1"/>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelCombo text="Suporte de Vida" field="status_vida" width="115" fontSize="13" items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
-						<VertLabelCombo text="Sensores" field="status_sensores" width="115" fontSize="13"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
-						<VertLabelCombo text="Motores" field="status_motores" width="115" fontSize="13"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
-						<VertLabelCombo text="Núcleo de Energia" field="status_reator" width="115" fontSize="13"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
-					</layout>
-					<layout align="top" height="50">
-						<layout align="left" width="5"/>
-						<VertLabelCombo text="Armas Proa" field="status_proa" width="115" fontSize="13"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
-						<VertLabelCombo text="Armas Popa" field="status_popa" width="115" fontSize="13"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
-						<VertLabelCombo text="Armas Bombordo" field="status_bombordo" width="115" fontSize="13"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
-						<VertLabelCombo text="Armas Estibordo" field="status_estibordo" width="115" fontSize="13"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
-					</layout>
-					
-				</rectangle>
-			</layout>
-			<layout align="top" height="200" margins="{bottom=5}">
-				<rectangle align="client" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-					<layout align="top" height="20">
-						<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclInv:append();"/>
-						<label align="left" text="Inventario" width="100" margins="{left=5}"/>
-					</layout>
-					<layout align="bottom" height="20" margins="{top=5}">
-						<label left="5" top="0" width="50" height="20" text="Vol"/>
-						<rectangle left="25" top="0" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
-						<label vertTextAlign="center" horzTextAlign="center" left="25" top="0" width="70" height="20" field="pesoInv" formatFloat=",0.##"/>
-						<label left="105" top="0" width="50" height="20" text="$"/>
-						<rectangle left="120" top="0" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-						<label vertTextAlign="center" horzTextAlign="center" left="120" top="0" width="91" height="20" field="precoInv"  formatFloat=",0.## C"/>
-					</layout>
+		<layout g="col" g-width="12" g-width-lg="4" g-auto-height="true" g-min-height="600" g-vert-tile="true" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" g-min-height="300" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+				<GridTriLabel text="PF" field="fabricacao" width="3"/>
+				<GridTriLabel text="UNE" field="energia" width="3"/>
+				<GridTriLabel text="Comp. Expansão" field="expansao" width="3" fontSize="11"/>
+				<GridTriLabel text="Tripulação" field="tripulacao" width="3"/>
 
-					<recordList name="rclInv" field="listaInv" templateForm="frmVehicleItem" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
-				</rectangle>
-			</layout>
+				<GridTriLabel text="Blocos" field="blocos" width="8" formatFloat=",0"/>
+				<GridLabelTriEdit text="Dimensões (q)" field="dimensoes" width="4"/>
+
+				<GridLabelCombo text="Escudo" field="escudo" width="3" items="{'-', 'Básico 10', 'Básico 20', 'Básico 30', 'Básico 40', 'Leve 50', 'Leve 60', 'Leve 70', 'Leve 80', 'Médio 90', 'Médio 100', 'Médio 120', 'Médio 140', 'Médio 160', 'Médio 200', 'Pesado 240', 'Pesado 280', 'Pesado 320', 'Pesado 360', 'Pesado 420', 'Pesado 480', 'Superior 540', 'Superior 600'}" values="{'0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22'}"/>
+				<GridLabelCombo text="Armadura" field="armadura" width="3" items="{'-','md 1','md 2','md 3','md 4','md 5','md 6','md 7','md 8','md 9','md 10','md 11','md 12','md 13','md 14','md 15'}" values="{'0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'}"/>
+				<GridLabelCombo text="Contramedidas" field="contramedidas" width="3" items="{'-','md 1','md 2','md 3','md 4','md 5','md 6','md 7','md 8','md 9','md 10','md 11','md 12','md 13','md 14','md 15'}" values="{'0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'}"/>
+				<GridLabelCombo text="Computador" field="computador" width="3" items="{'Básico', 'Mono md 1', 'Duo md 1', 'Tri md 1', 'Tetra md 1', 'Mono md 2', 'Duo md 2', 'Tri md 2', 'Tetra md 2', 'Mono md 3', 'Duo md 3', 'Tri md 3', 'Tetra md 3', 'Mono md 4', 'Duo md 4', 'Tri md 4', 'Mono md 5', 'Duo md 5', 'Tri md 5', 'Mono md 6', 'Duo md 6', 'Mono md 7', 'Duo md 7', 'Mono md 8', 'Duo md8 +8', 'Mono md 9', 'Duo md 9', 'Mono md 10', 'Duo md 10'}" values="{'0_0', '1_1', '2_1', '3_1', '4_1', '1_2', '2_2', '3_2', '4_2', '1_3', '2_3', '3_3', '4_3', '1_4', '2_4', '3_4', '1_5', '2_5', '3_5', '1_6', '2_6', '1_7', '2_7', '1_8', '2_8', '1_9', '2_9', '1_10', '2_10'}"/>
+
+				<GridLabelCombo text="Propulsor" field="propulsor" width="3" items="{}" values="{}"/>
+				<GridLabelCombo text="Deriva" field="deriva" width="3" items="{}" values="{}"/>
+				<GridLabelCombo text="Sensor" field="sensor" width="3" items="{'Mixaria', 'Barato Curto', 'Básico Curto', 'Avançado Curto', 'Barato Médio', 'Básico Médio', 'Avançado Médio', 'Barato Longo', 'Básico Longo', 'Avançado Longo'}" values="{'0','1','2','3','4','5','6','7','8','9'}"/>
+				<layout g="col" g-width="3" height="50">
+					<checkBox align="top" height="25" text="PC Extra" field="opt_pc" margins="{right=5}"/>
+					<checkBox align="top" height="25" text="Tripulação Extra" field="opt_trip" margins="{right=5}"/>
+				</layout>
+
+				<GridLabelCombo text="Anti-Hack" field="sec_hack" width="3" items="{'-','x1','x2','x3','x4'}" values="{'0','1','2','3','4'}"/>
+				<GridLabelCombo text="Grade de Choque" field="sec_choque" width="3" items="{'-','x1','x2','x3','x4'}" values="{'0','1','2','3','4'}"/>
+				<layout g="col" g-width="6" height="50"/>
+
+				<checkBox g="col" g-width="3" height="25" text="Tranca Biométrica" field="sec_tranca" margins="{right=5}" fontSize="11"/>
+				<checkBox g="col" g-width="3" height="25" text="Autodestruição" field="sec_autodest" margins="{right=5}"/>
+				<checkBox g="col" g-width="3" height="25" text="Alarme" field="sec_alarm" margins="{right=5}"/>
+				<checkBox g="col" g-width="3" height="25" text="Bloqueio" field="sec_lockout" margins="{right=5}"/>
+
+				<checkBox g="col" g-width="3" height="25" text="Interface Falsa" field="sec_shell" margins="{right=5}"/>
+				<checkBox g="col" g-width="3" height="25" text="Formatar Dados" field="sec_wipe" margins="{right=5}"/>
+				<checkBox g="col" g-width="3" height="25" text="Contravírus" field="sec_feedback" margins="{right=5}"/>
+				<checkBox g="col" g-width="3" height="25" text="Firewall" field="sec_firewall" margins="{right=5}"/>
+			</rectangle>
+
+			<rectangle g="col" g-width="12" g-min-height="100" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+				<label g="col" g-width="12" height="25" text="Status da Nave"/>
+
+				<GridLabelCombo text="Suporte de Vida" field="status_vida" width="3" items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
+				<GridLabelCombo text="Sensores" field="status_sensores" width="3"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
+				<GridLabelCombo text="Motores" field="status_motores" width="3"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
+				<GridLabelCombo text="Núcleo de Energia" field="status_reator" width="3"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
+
+				<GridLabelCombo text="Armas Proa" field="status_proa" width="3"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
+				<GridLabelCombo text="Armas Popa" field="status_popa" width="3"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
+				<GridLabelCombo text="Armas Bombordo" field="status_bombordo" width="3"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
+				<GridLabelCombo text="Armas Estibordo" field="status_estibordo" width="3"  items="{'Nominal','Falhando','Mal Funcionamento', 'Avariado'}" values="{'0','1','2','3'}"/>
+			</rectangle>
+			
+			<rectangle g="col" g-width="12" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+				<layout align="top" height="20">
+					<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclInv:append();"/>
+					<label align="left" text="Inventario" width="100" margins="{left=5}"/>
+				</layout>
+				<layout align="bottom" height="20" margins="{top=5}">
+					<label left="5" top="0" width="50" height="20" text="Vol"/>
+					<rectangle left="25" top="0" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+					<label vertTextAlign="center" horzTextAlign="center" left="25" top="0" width="70" height="20" field="pesoInv" formatFloat=",0.##"/>
+					<label left="105" top="0" width="50" height="20" text="$"/>
+					<rectangle left="120" top="0" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+					<label vertTextAlign="center" horzTextAlign="center" left="120" top="0" width="91" height="20" field="precoInv"  formatFloat=",0.## C"/>
+				</layout>
+
+				<recordList name="rclInv" field="listaInv" templateForm="frmVehicleItem" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+			</rectangle>
 		</layout>
 	</scrollBox>
 
@@ -717,26 +669,28 @@
 				local expansao = (tonumber(sheet.expansao_tripMin) or 0);
 				local pilotos = math.floor(propulsor/10);
 
-				local expansoes = {0,0,0,0,0,0,0};
+				local expansoes = {0,0,0,0,0,0,0,0,0};
 
 	            local nodes = NDB.getChildNodes(sheet.listaExpansao); 
 	            for i=1, #nodes, 1 do
 	                local trip = (tonumber(nodes[i].tripMin) or 0);
 	                local tipo = (tonumber(nodes[i].tripTipo) or 0);
 
-	                if tipo >=1 and tipo &lt;= 7 then
+	                if tipo >=1 and tipo &lt;= 9 then
 	                	expansoes[tipo] = expansoes[tipo] + trip;
 	                end;
 	            end;
 
 				tripMin = tripMin + propulsor + escudo + deriva + reator + weapon + expansao;
 				sheet.trip_min1 = capitao + expansoes[1];
-				sheet.trip_min2 = weapon + expansoes[2];
-				sheet.trip_min3 = (propulsor - pilotos) + deriva + reator + expansoes[3];
-				sheet.trip_min4 = escudo + expansoes[4];
-				sheet.trip_min5 = pilotos + expansoes[5];
-				sheet.trip_min6 = expansoes[6];
-				sheet.trip_min7 = expansoes[7];
+				sheet.trip_min2 = 0
+				sheet.trip_min3 = weapon + expansoes[3];
+				sheet.trip_min4 = (propulsor - pilotos) + deriva + reator + expansoes[4];
+				sheet.trip_min5 = escudo + expansoes[5];
+				sheet.trip_min6 = 0
+				sheet.trip_min7 = pilotos + expansoes[7];
+				sheet.trip_min8 = expansoes[8];
+				sheet.trip_min9 = expansoes[9];
 
 			end;
 
@@ -758,26 +712,28 @@
 				local expansao = (tonumber(sheet.expansao_tripMax) or 0);
 				local pilotos = math.floor(propulsor/10);
 
-				local expansoes = {0,0,0,0,0,0,0};
+				local expansoes = {0,0,0,0,0,0,0,0,0};
 
 	            local nodes = NDB.getChildNodes(sheet.listaExpansao); 
 	            for i=1, #nodes, 1 do
 	                local trip = (tonumber(nodes[i].tripMax) or 0);
 	                local tipo = (tonumber(nodes[i].tripTipo) or 0);
 
-	                if tipo >=1 and tipo &lt;= 7 then
+	                if tipo >=1 and tipo &lt;= 9 then
 	                	expansoes[tipo] = expansoes[tipo] + trip;
 	                end;
 	            end;
 
 				tripMax = tripMax + propulsor + escudo + deriva + reator + weapon + expansao;
 				sheet.trip_max1 = capitao + expansoes[1];
-				sheet.trip_max2 = weapon + expansoes[2];
-				sheet.trip_max3 = propulsor - pilotos + deriva + reator + expansoes[3];
-				sheet.trip_max4 = escudo + expansoes[4];
-				sheet.trip_max5 = pilotos + expansoes[5];
-				sheet.trip_max6 = expansoes[6];
-				sheet.trip_max7 = expansoes[7];
+				sheet.trip_max2 = 1
+				sheet.trip_max3 = weapon + expansoes[3];
+				sheet.trip_max4 = propulsor - pilotos + deriva + reator + expansoes[4];
+				sheet.trip_max5 = escudo + expansoes[5];
+				sheet.trip_max6 = 1
+				sheet.trip_max7 = pilotos + expansoes[7];
+				sheet.trip_max8 = expansoes[8];
+				sheet.trip_max9 = expansoes[9];
 			end;
 
 			sheet.tripulacaoMax = tripMax;

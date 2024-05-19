@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="EquipmentsSelector" width="150" height="44" margins="{top=5}">
+    <rectangle align="client" color="#333333" hitTest="false" name="background" strokeColor="white" strokeSize="1" padding="{left=1,right=1,top=1,bottom=1}">
+        <label align="top" height="25" field="slot" fontSize="16" horzTextAlign="center"/>
+        <label align="top" height="15" field="nome" fontSize="9" horzTextAlign="center"/>
+    </rectangle>
+</form>

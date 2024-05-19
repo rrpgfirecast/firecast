@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<script> require("common.lua"); require("import5etools.lua"); </script>
+
+
+	<scrollBox align="client">
+		<layout align="left" width="150">
+			<button name="btnPolymorph"		text="Transformar"	align="top" onClick="dload.polymorph(self, true);"	enabled="true"/>
+			<button name="btnUnpolymorph"	text="Reverter"		align="top" onClick="dload.unpolymorph(self);"		enabled="false"/>
+			<dataLink field="polymorph.old"> <event name="onChange">
+				self.btnPolymorph:setEnabled(sheet.polymorph.old == nil);
+				self.btnUnpolymorph:setEnabled(sheet.polymorph.old ~= nil);
+			</event> </dataLink>
+
+			<flowLayout align="client">
+				<upperGridCampoSolidoCheckBox field="polymorph.config.atributos.str"	titulo="FORÇA"/>
+				<upperGridCampoSolidoCheckBox field="polymorph.config.atributos.dex"	titulo="DESTREZA"/>
+				<upperGridCampoSolidoCheckBox field="polymorph.config.atributos.con"	titulo="CONSTITUIÇÃO"/>
+				<upperGridCampoSolidoCheckBox field="polymorph.config.atributos.int"	titulo="INTELIGÊNCIA"/>
+				<upperGridCampoSolidoCheckBox field="polymorph.config.atributos.wis"	titulo="SABEDORIA"/>
+				<upperGridCampoSolidoCheckBox field="polymorph.config.atributos.cha"	titulo="CARISMA"/>
+				<upperGridCampoSolidoCheckBox field="polymorph.config.token"			titulo="TOKEN"/>
+
+				<upperGridMagicComboBox field="polymorph.config.PV" titulo="PONTOS DE VIDA" items="{'Não muda', 'Média', 'Rolar', 'Animus'}"/>
+			</flowLayout>
+
+
+			<dataLink field="polymorph.config.atributos.str"	defaultValue="true"/>
+			<dataLink field="polymorph.config.atributos.dex"	defaultValue="true"/>
+			<dataLink field="polymorph.config.atributos.con"	defaultValue="true"/>
+			<dataLink field="polymorph.config.atributos.int"	defaultValue="false"/>
+			<dataLink field="polymorph.config.atributos.wis"	defaultValue="false"/>
+			<dataLink field="polymorph.config.atributos.cha"	defaultValue="false"/>
+			<dataLink field="polymorph.config.PV"				defaultValue="Média"/>
+
+			<button text="Limpar ficha" align="top" visible="false"> <event name="onClick">
+				sheet.macroSavedSkills = nil;
+				sheet.macroProperties = nil;
+				sheet.attackOptions = nil;
+				sheet.resistencias.attr = nil;
+			</event> </button>
+		</layout>
+	</scrollBox>
+</rectangle>

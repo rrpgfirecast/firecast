@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRegistrosItem" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse registro?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showRegistroPopup()
+			local pop = self:findControlByName("popRegistro");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de habilidades para exibir");
+			end;				
+		end;
+	]]>
+	</script>
+
+	<button align="right" width="25" text="i" onClick="showRegistroPopup();"/>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	<layout align="client">
+		<edit align="client" vertTextAlign="center" field="coordenadas"/>
+		<edit align="right" width="100" vertTextAlign="center" field="terreno"/>
+		<edit align="right" width="50" vertTextAlign="center" field="podridao"/>
+		<checkBox align="left" width="20" field="mark" vertTextAlign="center"/>
+		<edit align="right" width="100" vertTextAlign="center" field="ameaca"/>
+		<edit align="right" width="200" vertTextAlign="center" field="comentarios"/>
+	</layout>
+</form>

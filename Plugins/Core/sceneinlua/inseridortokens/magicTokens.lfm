@@ -175,7 +175,7 @@
 		local multy = 1;
 		
 		self.areaLabel.text = lang('scene.magic.areaLabel');
-		self.areaType.items = {lang("scene.magic.areaType1"), lang("scene.magic.areaType2"), lang("scene.magic.areaType3"), lang("scene.magic.areaType4"), lang("scene.magic.areaType5"), lang("scene.magic.areaType6")};
+		self.areaType.items = {lang("scene.magic.areaType1"), lang("scene.magic.areaType2"), lang("scene.magic.areaType3"), lang("scene.magic.areaType4"), lang("scene.magic.areaType5"), lang("scene.magic.areaType6"), lang("scene.magic.areaType7"), lang("scene.magic.areaType8"), lang("scene.magic.areaType9")};
 		self.areaType.value = lang("scene.magic.areaType4");
 
 		self.reachLabel.text = lang('scene.magic.reachLabel');
@@ -238,7 +238,6 @@
 			else
 				self:createConeDiagonallyQuad()
 			end
-			
 		end
 
 		function self:createConeDiagonallyQuad()
@@ -650,8 +649,23 @@
 
 			path = path .. " Z";
 
-			self:createToken(path);
+			self:createToken(path)
 		end;
+
+		function self:createCirclePerfect()
+			local path = "M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0"
+			self:createToken(path)
+		end
+
+		function self:createSemiCirclePerfect()
+			local path = "M 50 1.5 a 2 1 0 0 0 0 47 Z"
+			self:createToken(path)
+		end
+
+		function self:createConePerfect()
+			local path = "M 80 80 A 45 45, 0, 0, 0, 125 125 L 125 80 Z"
+			self:createToken(path)
+		end
 
 		function self:createSquare()
 			local reach = tonumber(self.reachVal.text) or 1;
@@ -885,6 +899,18 @@
 				multy = ((reach*2)+1)/reach;
 				multx = multy;
 				self:createEmanacao();
+			elseif opt == lang("scene.magic.areaType7") then
+				multx = 2
+				multy = 2
+				self:createCirclePerfect()
+			elseif opt == lang("scene.magic.areaType8") then
+				multx = 1
+				multy = 2
+				self:createSemiCirclePerfect()
+			elseif opt == lang("scene.magic.areaType9") then
+				multx = 1
+				multy = 1
+				self:createConePerfect()
 			end;
 
 			self:processarCancel();

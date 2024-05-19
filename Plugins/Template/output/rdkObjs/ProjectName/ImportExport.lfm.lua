@@ -53,7 +53,7 @@ local function constructNew_frmImportExport()
     obj.button2:setName("button2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local xml = NDB.exportXML(sheet);
             
             				local export = {};
@@ -70,7 +70,7 @@ local function constructNew_frmImportExport()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (_, event)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
             						local arq = arquivos[1];
@@ -99,8 +99,8 @@ local function constructNew_frmImportExport()
         end;
 
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

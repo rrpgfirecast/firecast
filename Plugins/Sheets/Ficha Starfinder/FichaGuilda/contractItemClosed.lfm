@@ -29,6 +29,22 @@
 									end;
 								 end);
 		end;
+        local function askForClose()
+            Dialogs.confirmYesNo("Deseja realmente fechar esse contrato?",
+                                 function (confirmado)
+                                    if confirmado then
+                                        local rcl = self:findControlByName("rclContratosFechados");
+                                        if rcl == nil then return end
+
+                                        local item = rcl:append()
+                                        if item == nil then return end
+
+                                        NDB.copy(item, sheet)
+
+                                        NDB.deleteNode(sheet);
+                                    end;
+                                 end);
+        end;
 
         local function toggleCheckbox(name, index)
             if index < 1 or index > 5 then return end 
@@ -109,7 +125,8 @@
             <label align="left" width="100" text="Contrato" horzTextAlign="center"/>
             <edit align="client" field="nome"/>
 
-            <button align="right" width="25" text="X" onClick="askForDelete();"/>
+            <button align="right" width="25" text="✔️" onClick="askForClose();"/>
+            <button align="right" width="25" text="❌" onClick="askForDelete();"/>
             <imageCheckBox name="cbxInvisivel" field="cbxInvisivel" align="right" width="25" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos. "/> 
         </layout>
 
@@ -246,6 +263,11 @@
 
                         local rep = math.floor((stars/#contratos) + 0.5)
                         node.reputacao = rep .. "*"
+
+                        local reputacao = self:findControlByName("reputacao");
+                        if reputacao then
+                            reputacao.hint = (stars/#contratos)
+                        end
                     </event>
                 </dataLink>
             </layout>

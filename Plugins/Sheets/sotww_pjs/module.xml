@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6d" originalPluginFileName="sotww_pjs.rpk" compilationDate="04012024182204" sdkApiVersion="87" compilationDigest="91c9b0762c5806357d2291b0ad6f106cd65aa02e">
+    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
+    <id>br.com.czagalo_sotWW_pjs</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>SotWW - Quick Play</name>
+        <description>Ficha de Personagem para teste do Quick Play do RPG Shadow of the Weird Wizard</description>
+        <author>Célio Zagalo</author>
+        <site>https://github.com/czagalo</site>
+        <contact>E-Mail: acazagalo@gmail.com, Instagram: @czagalo</contact>
+    </info>
+    <dataTypes>
+        <dataType title="Shadow of the Weird Wizard" name="frmprototipo_planilha_weird_wizard" lfmFile="prototipo_planilha_weird_wizard/prototipo_planilha_weird_wizard.lfm">br.com.czagalo_Planilha_SotWW</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="br.com.czagalo_Planilha_SotWW" formType="sheetTemplate" lfmFile="prototipo_planilha_weird_wizard/prototipo_planilha_weird_wizard.lfm" formName="frmprototipo_planilha_weird_wizard">
+                <info title="Shadow of the Weird Wizard"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>SotWW - Quick Play</name>
+    <description>Ficha de Personagem para teste do Quick Play do RPG Shadow of the Weird Wizard</description>
+    <author>Célio Zagalo</author>
+    <site>https://github.com/czagalo</site>
+    <contact>E-Mail: acazagalo@gmail.com, Instagram: @czagalo</contact>
+</module>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmDownloadedPlugin" height="50" margins="{top=1}">
+<form name="frmDownloadedPlugin" height="50" margins="{top=1}" g="row" g-min-height="50" cacheMode="time">
 	<script>
         local function tryTranslate(text)
             local trans = Locale.tryLang(text);
@@ -49,6 +49,7 @@
                 "checkForModification");
         end
 	</script>
+	
 	<rectangle align="client" color="#212121">
 		<label align="left" field="name" horzTextAlign="center" textTrimming="none" wordWrap="true" name="pluginName" hitTest="true"/>
 		<label align="left" field="moduleId" horzTextAlign="center" textTrimming="none" wordWrap="true" name="moduleId" hitTest="true"/>
@@ -100,15 +101,6 @@
 			if sheet==nil then return end;
 
 			self.author.hint = sheet.contact;
-		</event>
-	</dataLink>
-
-	<dataLink fields="{'priority'}">
-		<event name="onChange">
-			if sheet==nil then return end;
-
-			local rcl = self:findControlByName("downloadedPluginsList");
-			if rcl ~= nil then rcl:sort() end;
 		</event>
 	</dataLink>
 </form>

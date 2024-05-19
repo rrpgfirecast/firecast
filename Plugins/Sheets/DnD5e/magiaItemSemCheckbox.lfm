@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmMagiaItemSemCheckbox">
+<form name="frmMagiaItemSemCheckbox" cacheMode="time">
 	<import file="templates.xml"/>
 	<import file="styles.xml"/>
 	

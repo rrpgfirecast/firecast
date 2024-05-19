@@ -150,175 +150,6 @@
 		]]>	
 	</script>
 
-	<template name="VertLabelEdit">
-		<layout align="left" width="$(width)" margins="{right=5}">
-			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
-			<edit top="20" field="$(field)" width="$(width)" height="25"/>
-		</layout>
-	</template>	
-	<template name="VertLabelLabelEdit">
-		<layout align="left" width="$(width)" margins="{right=5}">
-			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
-			<rectangle top="20" height="25" width="$(width2)" color="#F0FFFF" strokeColor="black" strokeSize="1">
-				<label align="client" field="$(field)Min" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
-			</rectangle>
-			<edit left="$(width2)" top="20" field="$(field)Max" width="$(width2)" height="25"/>
-		</layout>
-	</template>
-	<template name="VertLabelLabel">
-		<layout align="left" width="$(width)" margins="{right=5}">
-			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
-			<rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1">
-				<label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
-			</rectangle>
-		</layout>
-	</template>
-	<template name="VertLabelPop">
-		<layout align="left" width="$(width)" margins="{right=5}">
-			<label text="$(text)" width="$(width2)" horzTextAlign="leading" fontSize="$(fontSize)"/>
-			<button left="$(width2)" width="20" height="20" text="i" onClick="$(onClick)"/>
-			<rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1">
-				<label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)" formatFloat="$(formatFloat)"/>
-			</rectangle>
-		</layout>
-	</template>
-	<template name="VertLabelCombo">
-		<layout align="left" width="$(width)" margins="{right=5}">
-			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
-			<comboBox top="20" field="$(field)" width="$(width)" height="25" items="$(items)" values="$(values)" fontSize="$(fontSize)"/>
-		</layout>
-	</template>
-
-	<template name="HorzLabel">
-		<layout align="left" width="$(widthTotal)" margins="{right=5}">
-			<label align="left" text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)"/>
-			<rectangle align="left" width="$(width2)" color="black" strokeColor="white" strokeSize="1">
-				<label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
-			</rectangle>
-		</layout>
-	</template>
-	<template name="HorzLabelPop">
-		<layout align="left" width="$(widthTotal)" margins="{right=5}">
-			<button align="left" width="20" height="20" text="i" margins="{top=2.5,left=2.5,right=2.5}" onClick="$(onClick)"/>
-			<label align="left" text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)"/>
-			<rectangle align="left" width="$(width2)" color="black" strokeColor="white" strokeSize="1">
-				<label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
-			</rectangle>
-		</layout>
-	</template>
-
-	<popup name="addPop" width="455" height="310" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-		<layout align="top" height="25">
-			<label align="left" text="Estrutura (PV)" width="210" horzTextAlign="center"/>
-
-			<label align="left" text="CAE" width="70" margins="{right=10}" horzTextAlign="center" />
-			<label align="left" text="CAC" width="70" margins="{right=10}" horzTextAlign="center" />
-			<label align="left" text="Proteção" width="70" horzTextAlign="center" />
-		</layout>
-		<layout align="top" height="50">
-			<VertLabelEdit text="+%" field="pvMult" width="100" fontSize="13"/>
-			<VertLabelEdit text="Fixo" field="pvAdd" width="100" fontSize="13"/>
-
-			<VertLabelEdit text="+%" field="caeMult" width="35" fontSize="11"/>
-			<VertLabelEdit text="Fixo" field="caeAdd" width="35" fontSize="11"/>
-			<VertLabelEdit text="+%" field="cacMult" width="35" fontSize="11"/>
-			<VertLabelEdit text="Fixo" field="cacAdd" width="35" fontSize="11"/>
-			<VertLabelEdit text="+%" field="protMult" width="35" fontSize="11"/>
-			<VertLabelEdit text="Fixo" field="protAdd" width="35" fontSize="11"/>
-		</layout>
-
-		<layout align="top" height="25">
-			<label align="left" text="Modificadores" width="210" horzTextAlign="center"/>
-
-			<label align="left" text="Deslocamento" height="210" horzTextAlign="center" />
-		</layout>
-		<layout align="top" height="50">
-			<VertLabelEdit text="Pilotar" field="pilotarAdd" width="100" fontSize="13"/>
-			<VertLabelEdit text="Ataque" field="ataqueAdd" width="100" fontSize="13"/>
-
-			<VertLabelEdit text="+%" field="deslMult" width="100" fontSize="13"/>
-			<VertLabelEdit text="Fixo (q)" field="deslAdd" width="100" fontSize="13"/>
-		</layout>
-
-		<label align="top" text="Preço" height="25" horzTextAlign="center"/>
-		<layout align="top" height="50">
-			<VertLabelLabel text="Total" field="precoTotal" width="60" fontSize="11" format="%d C"/>
-			<VertLabelEdit text="Level" field="precoPorLevel" width="60" fontSize="11"/>
-			<VertLabelLabel text="" field="precoLevel" width="60" fontSize="11" format="%d C"/>
-			<VertLabelEdit text="Tam" field="precoPorTam" width="60" fontSize="11"/>
-			<VertLabelLabel text="" field="precoTam" width="60" fontSize="11" format="%d C"/>
-			<VertLabelEdit text="Fixo" field="precoAdd" width="60" fontSize="11"/>
-			<VertLabelEdit text="+%" field="precoMult" width="60" fontSize="11"/>
-		</layout>
-
-		<textEditor align="client" field="detalhes"/>
-	</popup>
-	<popup name="costPop" width="325" height="60" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-		<layout align="top" height="50">
-			<VertLabelEdit text="Base" field="precoBase" width="75" fontSize="11"/>
-			<VertLabelLabel text="Multiplicador" field="precoMult" width="75" fontSize="9" format="%.2f"/>
-			<VertLabelLabel text="Adicionais" field="precoMod" width="75" fontSize="11" format="%d C"/>
-			<VertLabelEdit text="Outros" field="precoOutros" width="75" fontSize="11"/>
-		</layout>
-	</popup>
-	<popup name="deslPop" width="395" height="60" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-		<layout align="top" height="50">
-			<VertLabelEdit text="Base (q)" field="deslBase" width="60" fontSize="11"/>
-			<VertLabelEdit text="Viagem (Km/h)" field="deslBaseViagem" width="60" fontSize="9"/>
-			<VertLabelLabel text="Multiplicador" field="deslMult" width="60" fontSize="9" format="%.2f"/>
-			<VertLabelLabel text="Adicionais (q)" field="deslAdd" width="60" fontSize="9"/>
-			<VertLabelEdit text="Outros (q)" field="deslOutros" width="60" fontSize="11"/>
-			<VertLabelEdit text="Outros (Km/h)" field="deslOutrosViagem" width="60" fontSize="9"/>
-		</layout>
-	</popup>
-	<popup name="modPop" width="200" height="160" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-		<label align="top" text="Pilotagem" height="25" horzTextAlign="center"/>
-		<layout align="top" height="50">
-			<VertLabelEdit text="Base" field="pilBase" width="60" fontSize="11"/>
-			<VertLabelLabel text="Adicional" field="pilotarAdd" width="60" fontSize="9"/>
-			<VertLabelEdit text="Outros" field="pilOutros" width="60" fontSize="11"/>
-		</layout>
-		<label align="top" text="Ataque" height="25" horzTextAlign="center"/>
-		<layout align="top" height="50">
-			<VertLabelEdit text="Base" field="atkBase" width="60" fontSize="11"/>
-			<VertLabelLabel text="Adicional" field="ataqueAdd" width="60" fontSize="9"/>
-			<VertLabelEdit text="Outros" field="atkOutros" width="60" fontSize="11"/>
-		</layout>
-	</popup>
-	<popup name="caPop" width="265" height="235" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-		<label align="top" text="CAE" height="25" horzTextAlign="center"/>
-		<layout align="top" height="50">
-			<VertLabelEdit text="Base" field="caeBase" width="60" fontSize="11"/>
-			<VertLabelLabel text="Adicional" field="caeAdd" width="60" fontSize="9"/>
-			<VertLabelLabel text="Multiplicador" field="caeMult" width="60" fontSize="9"/>
-			<VertLabelEdit text="Outros" field="caeOutros" width="60" fontSize="11"/>
-		</layout>
-		<label align="top" text="CAC" height="25" horzTextAlign="center"/>
-		<layout align="top" height="50">
-			<VertLabelEdit text="Base" field="cacBase" width="60" fontSize="11"/>
-			<VertLabelLabel text="Adicional" field="cacAdd" width="60" fontSize="9"/>
-			<VertLabelLabel text="Multiplicador" field="cacMult" width="60" fontSize="9"/>
-			<VertLabelEdit text="Outros" field="cacOutros" width="60" fontSize="11"/>
-		</layout>
-		<label align="top" text="Proteção" height="25" horzTextAlign="center"/>
-		<layout align="top" height="50">
-			<VertLabelEdit text="Base" field="protBase" width="60" fontSize="11"/>
-			<VertLabelLabel text="Adicional" field="protAdd" width="60" fontSize="9"/>
-			<VertLabelLabel text="Multiplicador" field="protMult" width="60" fontSize="9"/>
-			<VertLabelEdit text="Outros" field="protOutros" width="60" fontSize="11"/>
-		</layout>
-	</popup>
-	<popup name="healthPop" width="370" height="85" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
-		<label align="top" text="Estrutura" height="25" horzTextAlign="center"/>
-		<layout align="top" height="50">
-			<VertLabelEdit text="Base" field="pvBase" width="60" fontSize="11"/>
-			<VertLabelLabel text="Adicional" field="pvAdd" width="60" fontSize="9"/>
-			<VertLabelLabel text="Multiplicador" field="pvMult" width="60" fontSize="9"/>
-			<VertLabelEdit text="Outros" field="pvOutros" width="60" fontSize="11"/>
-			<VertLabelCombo text="Cobertura" field="cobertura" width="100" fontSize="13" items="{'Nenhuma', 'Parcial', 'Completa'}" values="{'25','50','75'}"/>
-		</layout>
-	</popup>
-
 	<layout align="top" height="50">
 		<button text="+" align="left" width="40" margins="{bottom=5,top=5}">
 			<event name="onClick">
@@ -345,130 +176,128 @@
 
 	<dataScopeBox name="boxDetalhesDoVeiculo" visible="false" align="client">
 		<scrollBox align="client">
-			<layout height="610"/>
-			<layout align="left" width="765" margins="{bottom=5}">
-				<layout align="top" height="200" margins="{bottom=5}">
-					<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-						<image align="client" field="avatarComp" editable="true" style="autoFit">
-							<event name="OnStartDrag">
-							    drag:addData("imageURL", self.rclVeiculos.selectedNode.avatarComp);
-							</event>
-						</image>
-					</rectangle>
+			            <layout g="col" g-width="12" g-auto-height="true" g-vert-tile="true" g-cnt-line-spacing="5">
+                <rectangle g="col" g-width="6" g-width-lg="2" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1">
+                    <image align="client" field="avatarComp" editable="true" style="proportional">
+                        <event name="OnStartDrag">
+                            if drag then
+                                drag:addData("imageURL", self.rclVeiculos.selectedNode.avatarComp);
+                            end
+                        </event>
+                    </image>
+                </rectangle>
 
-					<rectangle align="left" width="210" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-						<layout align="top" height="50">
-							<layout align="left" width="5"/>
-							<VertLabelEdit text="Nome" field="nome" width="200" fontSize="13"/>
-						</layout>
-						<layout align="top" height="50">
-							<layout align="left" width="5"/>
-							<VertLabelEdit text="Level/Ranque" field="level" width="95" fontSize="13"/>
-							<VertLabelEdit text="Tipo" field="tipo" width="95" fontSize="13"/>
-						</layout>
-						<layout align="top" height="50">
-							<layout align="left" width="5"/>
-							<VertLabelPop text="Preço" field="preco" width="95" width2="70" fontSize="13" formatFloat=",0.# C" onClick="findPopup(&quot;costPop&quot;);"/>
-							<VertLabelCombo text="Tamanho" field="tamanho" width="95" fontSize="13" items="{'Minúsculo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'1','2','3','4','5','6','7'}"/>
-						</layout>
-						<layout align="top" height="50">
-							<layout align="left" width="5"/>
-							<VertLabelEdit text="Passageiros" field="passageiros" width="95" fontSize="13"/>
-							<VertLabelEdit text="Carga" field="carga" width="95" fontSize="13"/>
-						</layout>
-					</rectangle>
+                <rectangle g="col" g-width="6" g-width-lg="2" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}" g-auto-height="true">
+                    <GridLabelEdit text="Nome" field="nome"/>
 
-					<rectangle align="left" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-						<layout align="top" height="25">
-							<HorzLabelPop text="PV" widthTotal="125" width="50" width2="50" fontSize="13" field="pv" onClick="findPopup(&quot;healthPop&quot;);"/>
-							<HorzLabel text="PE" widthTotal="100" width="50" width2="50" fontSize="13" field="pe"/>
-							<checkBox align="left" text="Quebrado" field="quebrado"/>
-						</layout>
-						<layout align="top" height="25">
-							<HorzLabelPop text="CAE" widthTotal="125" width="50" width2="50" fontSize="13" field="cae" onClick="findPopup(&quot;caPop&quot;);" format="%d"/>
-							<HorzLabel text="CAC" widthTotal="100" width="50" width2="50" fontSize="13" field="cac" format="%d"/>
-							<HorzLabel text="Proteção" widthTotal="100" width="50" width2="50" fontSize="10" field="protecao" format="%d"/>
-						</layout>
-						<layout align="top" height="25">
-							<HorzLabelPop text="Pilotar" widthTotal="125" width="50" width2="50" fontSize="13" field="pilotarPen" onClick="findPopup(&quot;modPop&quot;);"/>
-							<HorzLabel text="Ataque" widthTotal="100" width="50" width2="50" fontSize="13" field="ataquePen"/>
-							<checkBox align="left" text="Ataque Mov." field="atkTotal"/>
-						</layout>
-						<layout align="top" height="25">
-							<HorzLabelPop text="Deslocamento" widthTotal="175" width="105" width2="45" fontSize="13" field="deslQuadrados" format="%d q" onClick="findPopup(&quot;deslPop&quot;);"/>
-							<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-								<label align="client" field="deslMetros" horzTextAlign="center" vertTextAlign="center" formatFloat="0.# m" fontSize="10"/>
-							</rectangle>
-							<rectangle align="left" width="100" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-								<label align="client" field="deslViagem" horzTextAlign="center" vertTextAlign="center" formatFloat="0.## Km/h" fontSize="11"/>
-							</rectangle>
-						</layout>
-						<textEditor align="client" field="detalhes" margins="{left=5,right=5,top=5}"/>
-					</rectangle>
-				</layout>
-				<layout align="top" height="200" margins="{bottom=5}">
-					<rectangle align="left" width="380" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-						<layout align="top" height="20">
-							<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclMods:append();"/>
-							<label align="left" text="Modificações" width="100" margins="{left=5}"/>
-						</layout>
-						<recordList name="rclMods" field="listaMods" templateForm="frmVehicleMod" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
-					</rectangle>
-					<rectangle align="left" width="375" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-						<layout align="top" height="20">
-							<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclEquips:append();"/>
-							<label align="left" text="Equipamentos" width="100" margins="{left=5}"/>
-						</layout>
-						<recordList name="rclEquips" field="listaEquips" templateForm="frmVehicleMod" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
-					</rectangle>
-				</layout>
-				<layout align="top" height="200" margins="{bottom=5}">
-					<rectangle align="client" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-						<layout align="top" height="20">
-							<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclAtaqs:append();"/>
-							<label align="left" text="Ataques" width="50" margins="{left=5}"/>
-							<button align="left" width="20" height="20" text="R" margins="{left=5}" onClick="prepareAtaque();"/>
+                    <GridLabelEdit text="Level/Ranque" field="level"/>
+                    <GridLabelEdit text="Tipo" field="tipo"/>
 
-							<label align="right" text="Lugar" width="100" margins="{left=0}" horzTextAlign="center"/>
-							<layout align="right" width="270">
-								<label align="right" text="Bônus" width="40" margins="{left=0}" horzTextAlign="center"/>
-								<label align="right" text="Dano" width="40" margins="{left=0}" horzTextAlign="center"/>
-								<label align="right" text="Crítico" width="40" margins="{left=0}" horzTextAlign="center"/>
-								<label align="right" text="Mult." width="40" margins="{left=0}" horzTextAlign="center"/>
-								<label align="right" text="Alcance" width="40" margins="{left=0}" fontSize="9" horzTextAlign="center"/>
-								<label align="right" text="Munição" width="40" margins="{left=0,right=30}" fontSize="9" horzTextAlign="center"/>
-							</layout>
-						</layout>
-						<recordList name="rclAtaqs" field="listaAtaqs" templateForm="frmVehicleArma" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
-					</rectangle>
-				</layout>
-			</layout>
-			<layout align="left" width="500" margins="{bottom=5}">
-				<layout align="top" height="405" margins="{bottom=5}">
-					<rectangle align="client" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-						<textEditor align="client" field="anotacoes" margins="{left=5,right=5}"/>
-					</rectangle>
-				</layout>
-				<layout align="top" height="200" margins="{bottom=5}">
-					<rectangle align="client" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
-						<layout align="top" height="20">
-							<button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclInv:append();"/>
-							<label align="left" text="Inventario" width="100" margins="{left=5}"/>
-						</layout>
-						<layout align="bottom" height="20" margins="{top=5}">
-							<label left="5" top="0" width="50" height="20" text="Vol"/>
-							<rectangle left="25" top="0" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
-							<label vertTextAlign="center" horzTextAlign="center" left="25" top="0" width="70" height="20" field="pesoInv" formatFloat=",0.##"/>
-							<label left="105" top="0" width="50" height="20" text="$"/>
-							<rectangle left="120" top="0" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-							<label vertTextAlign="center" horzTextAlign="center" left="120" top="0" width="91" height="20" field="precoInv"  formatFloat=",0.## C"/>
-						</layout>
+                    <GridLabelPop text="Preço" field="preco" formatFloat=",0.# C" onClick="findPopup('costPop');"/>
+                    <GridLabelCombo text="Tamanho" field="tamanho" items="{'Minúsculo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'1','2','3','4','5','6','7'}"/>
 
-						<recordList name="rclInv" field="listaInv" templateForm="frmVehicleItem" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
-					</rectangle>
-				</layout>
-			</layout>
-			
+                    <GridLabelEdit text="Passageiros" field="passageiros"/>
+                    <GridLabelEdit text="Carga" field="carga"/>
+                </rectangle>
+
+                <rectangle g="col" g-width="8" g-width-lg="4" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}" g-auto-height="true" g-cnt-line-spacing="5">
+                    <button g="col" g-width="1" height="25" text="i" onClick="findPopup('healthPop')"/>
+                    <HorzLabel text="PV" width="4" field="pv"/>
+                    <HorzLabel text="PE" width="4" field="pe"/>
+                    <checkBox g="col" g-width="3" text="Quebrado" field="quebrado"/>
+
+                    <button g="col" g-width="1" height="25" text="i" onClick="findPopup('caPop')"/>
+                    <HorzLabel text="CAE" width="4" field="cae" format="%d"/>
+                    <HorzLabel text="CAC" width="4" field="cac" format="%d"/>
+                    <HorzLabel text="Proteção" width="3" fontSize="10" field="protecao" format="%d"/>
+
+                    <button g="col" g-width="1" height="25" text="i" onClick="findPopup('modPop')" g-break-line-before="true"/>
+                    <HorzLabel text="Pilotar" width="4" field="pilotarPen"/>
+                    <HorzLabel text="Ataque" width="4" field="ataquePen"/>
+                    <checkBox g="col" g-width="3" text="Ataque em Movimento" field="atkTotal"/>
+
+                    <button g="col" g-width="1" height="25" text="i" onClick="findPopup('deslPop')" g-break-line-before="true"/>
+                    <HorzLabel text="Deslocamento" width="4" field="deslQuadrados" format="%d q"/>
+                    <rectangle g="col" g-width="3" height="25" color="black" strokeColor="white" strokeSize="1">
+                        <label align="client" field="deslMetros" horzTextAlign="center" vertTextAlign="center" formatFloat="0.# m" fontSize="10"/>
+                    </rectangle>
+                    <rectangle g="col" g-width="3" height="25" color="black" strokeColor="white" strokeSize="1">
+                        <label align="client" field="deslViagem" horzTextAlign="center" vertTextAlign="center" formatFloat="0.## Km/h" fontSize="11"/>
+                    </rectangle>
+
+                    <layout g="col" g-width="12">
+                        <GridLabelEdit text="Ataque" field="tempAtaque" width="3" fontSize="11"/>
+                        <GridLabelEdit text="Dano" field="tempDano" width="6" fontSize="11"/>
+                        <GridLabelEdit text="CA" field="tempCA" width="3" fontSize="11"/>
+                    </layout>
+                </rectangle>
+
+                <rectangle g="col" g-width="4" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+                    <textEditor g="col" g-width="6" g-vert-tile="true" field="detalhes"/>
+                    <textEditor g="col" g-width="6" g-vert-tile="true"  field="anotacoes"/>
+                </rectangle>
+            </layout>
+
+            <layout g="col" g-width="12" g-auto-height="true" g-vert-tile="true" g-cnt-line-spacing="5">
+                <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5}">
+                    <layout align="top" height="20">
+                        <button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclMods:append();"/>
+                        <label align="left" text="Modificações de Chassi" width="200" margins="{left=5}"/>
+                    </layout>
+                    <recordList name="rclMods" field="listaMods" templateForm="frmVehicleMod" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+                </rectangle>
+                <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5}">
+                    <layout align="top" height="20">
+                        <button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclEquips:append();"/>
+                        <label align="left" text="Equipamentos" width="200" margins="{left=5}"/>
+                    </layout>
+                    <recordList name="rclEquips" field="listaEquips" templateForm="frmVehicleMod" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+                </rectangle>
+                <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+                    <layout align="top" height="20">
+                        <button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclOutros:append();"/>
+                        <label align="left" text="Outros" width="200" margins="{left=5}"/>
+                    </layout>
+                    <recordList name="rclOutros" field="listaOutros" templateForm="frmVehicleMod" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+                </rectangle>
+            </layout>
+
+            <layout g="col" g-width="12" g-auto-height="true" g-vert-tile="true" g-cnt-line-spacing="5">
+                <rectangle g="col" g-width="12" g-width-lg="8" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5}">
+                    <layout align="top" height="20">
+                        <button align="left" width="25" height="20" text="+" margins="{left=5}" onClick="self.rclAtaqs:append();"/>
+                        <button align="left" width="25" height="20" text="🎲" margins="{left=5}" onClick="prepareAtaque();"/>
+                        <label align="left" text="Ataques" width="100" margins="{left=5}"/>
+
+                        <label align="right" text="Lugar" width="100" margins="{left=0}" horzTextAlign="center"/>
+                        <layout align="right" width="270" margins="{right=40}">
+                            <label align="right" text="Bônus" width="40" margins="{left=0}" horzTextAlign="center"/>
+                            <label align="right" text="Dano" width="40" margins="{left=0}" horzTextAlign="center"/>
+                            <label align="right" text="Crítico" width="40" margins="{left=0}" horzTextAlign="center"/>
+                            <label align="right" text="Mult." width="40" margins="{left=0}" horzTextAlign="center"/>
+                            <label align="right" text="Alcance" width="40" margins="{left=0}" fontSize="9" horzTextAlign="center"/>
+                            <label align="right" text="Munição" width="40" margins="{left=0,right=30}" fontSize="9" horzTextAlign="center"/>
+                        </layout>
+                    </layout>
+                    <recordList name="rclAtaqs" field="listaAtaqs" templateForm="frmVehicleArma" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+                </rectangle>
+                <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="200" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5}">
+                    <layout align="top" height="20">
+                        <button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclInv:append();"/>
+                        <label align="left" text="Inventario" width="150" margins="{left=5}"/>
+                    </layout>
+                    <layout align="bottom" height="20" margins="{top=5}">
+                        <label left="5" top="0" width="50" height="20" text="Vol"/>
+                        <rectangle left="25" top="0" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+                        <label vertTextAlign="center" horzTextAlign="center" left="25" top="0" width="70" height="20" field="pesoInv" formatFloat=",0.##"/>
+                        <label left="105" top="0" width="50" height="20" text="$"/>
+                        <rectangle left="120" top="0" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+                        <label vertTextAlign="center" horzTextAlign="center" left="120" top="0" width="91" height="20" field="precoInv"  formatFloat=",0.## C"/>
+                    </layout>
+
+                    <recordList name="rclInv" field="listaInv" templateForm="frmVehicleItem" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+                </rectangle>
+            </layout>
 		</scrollBox>
 	</dataScopeBox>
 </form>

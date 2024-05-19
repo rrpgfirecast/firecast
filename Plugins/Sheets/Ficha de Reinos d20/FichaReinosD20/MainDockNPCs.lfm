@@ -67,7 +67,11 @@
 
 	<script>
 		function getOrganizacao()
-			return self.dcsMain.scopeNode.TipoOrganizar;
+			if self.dcsMain.scopeNode then
+				return self.dcsMain.scopeNode.TipoOrganizar;
+			else
+				return "Alfa"
+			end
 		end;
 		
 		function MudarNomeDaAba(nome)
@@ -288,15 +292,47 @@
 		<scrollBox align="client">
 			 <recordList visible="true" align="client" templateForm="OpcaoDaComboboxFalsa" field="opcoesFalsas" name="opcoesFalsas" layout="verticalTiles" autoHeight="true" selectable="true" minQt="1" >
 				<event name="onSelect">
-					 local node = self.opcoesFalsas.selectedNode;
-					 setTimeout(function()
+					local node = self.opcoesFalsas.selectedNode;
+					setTimeout(function()
 						if node ~= nil then
-							 self.dcsMain.scopeNode = node;
-							 self.dcsTituloEAbas.scopeNode = node;
-							 self.comboBoxFalsa.scopeNode = node;
+							self.dcsMain.scopeNode = node;
+							self.dcsTituloEAbas.scopeNode = node;
+							self.comboBoxFalsa.scopeNode = node;
+
+							-- Copy to new list
+
+							sheet.lista = node.campoDosNPC
+
+							sheet.bar1Color = sheet.CorBarrinha1
+							sheet.bar1Name = sheet.NomeBarrinha1
+							sheet.bar2Color = sheet.CorBarrinha2
+							sheet.bar2Name = sheet.NomeBarrinha2
+							sheet.bar3Color = sheet.CorBarrinha3
+							sheet.bar3Name = sheet.NomeBarrinha3
+							sheet.bar4Color = sheet.CorBarrinha4
+							sheet.bar4Name = sheet.NomeBarrinha4
+
+
+							local pdms = NDB.getChildNodes(sheet.lista)
+							for i=1, #pdms, 1 do
+								local pdm = pdms[i]
+								pdm.avatar = pdm.AvatarNPC
+								pdm.nome = pdm.NomeGrande
+
+								pdm.bar1Valor = pdm.Barrinha1Valor
+								pdm.bar1ValorMax = pdm.Barrinha1ValorMax
+								pdm.bar2Valor = pdm.Barrinha2Valor
+								pdm.bar2ValorMax = pdm.Barrinha2ValorMax
+								pdm.bar3Valor = pdm.Barrinha3Valor
+								pdm.bar3ValorMax = pdm.Barrinha3ValorMax
+								pdm.bar4Valor = pdm.Barrinha4Valor
+								pdm.bar4ValorMax = pdm.Barrinha4ValorMax
+								pdm.linha1 = pdm.Linha1
+								pdm.linha2 = pdm.Linha2
+							end
 						end;
-					 end,10);
-					 self.dropDownFalso:close();
+					end,10);
+					self.dropDownFalso:close();
 				</event>
 				<event name="onBeginEnumeration">
 					if sheet ~= nil then

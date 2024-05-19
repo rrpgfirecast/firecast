@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemFormula" height="29">
+	<import file="tidy5e-templates.xml"/>
+
+	<!-- FUNÇÕES -->
+	<script> 
+		<![CDATA[
+			require("common.lua");
+		]]>
+	</script>
+
+	<!-- UI -->
+	<flowLayout align="top" height="29" padding="{top=2, bottom=2, left=2, right=2}">
+		<flowPart width="34" maxWidth="835" height="25">
+			<edit align="client" field="formula" textPrompt="Fórmula"/>
+		</flowPart>
+		<flowPart width="5" height="25"/>
+		<flowPart width="33" maxWidth="830" height="25">
+			<edit align="client" field="contexto" textPrompt="Contexto"/>
+		</flowPart>
+		<flowPart width="5" height="25"/>
+		<flowPart name="tipoDanoFP" width="27" maxWidth="685" height="25">
+			<comboBox align="client" field="tipoDano" items="{'', 'Ácido', 'Contusão', 'Gelo', 'Fogo', 'Energia', 'Elétrico', 'Necrótico', 'Perfurante', 'Veneno', 'Psíquico', 'Radiante', 'Cortante', 'Trovejante', 'Cura', 'Cura (Temporária)'}"/>
+		</flowPart>
+		<flowPart name="tipoDanoMargin" width="5" height="25"/>
+		<flowPart width="20" maxWidth="35" height="25">
+			<button align="client" text="-" horzTextAlign="center" onClick="common.askForDelete(sheet);"/>
+		</flowPart>
+	</flowLayout>
+
+	<!-- VARIAVEIS -->
+	<dataLink field="formula" defaultValue=""/>
+	<dataLink field="contexto" defaultValue=""/>
+	<dataLink field="tipoDano" defaultValue=""> <event name="onChange">
+		self.tipoDanoFP:setVisible(sheet.tipoDano ~= "não");
+		self.tipoDanoMargin:setVisible(sheet.tipoDano ~= "não");
+	</event> </dataLink>
+</form>

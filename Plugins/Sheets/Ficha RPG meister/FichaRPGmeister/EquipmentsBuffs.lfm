@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="EquipmentsBuffs" height="50" margins="{bottom=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse efeito?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+	]]>
+	</script>
+	<layout g="col" g-width="12" height="25">
+		<checkBox g="col" g-width="1" height="25" field="ativo"/>
+		<edit g="col" g-width="4" height="25" field="magia"/>
+		<edit g="col" g-width="2" height="25" field="duracao" vertTextAlign="center"/>
+		<edit g="col" g-width="1" height="25" field="nv" type="number" vertTextAlign="center"/>
+		<edit g="col" g-width="1" height="25" field="nc" type="number" vertTextAlign="center"/>
+		<edit g="col" g-width="2" height="25" field="alvos" vertTextAlign="center"/>
+
+		<button g="col" g-width="1" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+	</layout>
+	<edit g="col" g-width="12" height="25" vertTextAlign="center" field="efeitos"/>
+</form>

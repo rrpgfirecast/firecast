@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.6c">
-	<id>FICHA_PATHFINDER</id>
-	<version>0.11.4</version>
-	
-	
-	
-	
-	
+<module sdkVersion="3.7">
+    <id>FICHA_PATHFINDER</id>
+    <version>1.1</version>
     <info lang="pt-BR">
         <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Ficha Pathfinder</name>

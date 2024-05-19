@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="InventoryConsumable" height="25" width="285" margins="{top=2,bottom=2}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse item?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showItemPopup()
+			local pop = self:findControlByName("popItem");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("left", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de items para exibir");
+			end;				
+		end;
+
+		local function use()
+			local mesa = Firecast.getMesaDe(sheet);
+
+			local texto = (sheet.nome or "Item") .. " foi usado.";
+			if sheet.cd~=nil then
+				texto = texto .. " CD: " .. sheet.cd .. ".";
+			end;
+			
+			if sheet.dados~=nil then
+				local rolagem = Firecast.interpretarRolagem(sheet.dados);
+				
+				mesa.activeChat:rolarDados(rolagem, texto);
+			end;
+
+			if sheet.BarrinhaValor~=nil then
+				sheet.BarrinhaValor = tonumber(sheet.BarrinhaValor) - 1;
+
+				if sheet.dados==nil then
+					mesa.activeChat:enviarMensagem(texto);
+				end;
+			end;
+		end;
+
+		local function itemPrice()
+			if sheet~= nil then
+				local node = NDB.getRoot(sheet);
+				local precoItens = 0;
+				local nodes = NDB.getChildNodes(node.itensConsumiveis); 
+				for i=1, #nodes, 1 do
+					precoItens = precoItens + (tonumber(nodes[i].preco) or 0);
+				end
+				node.precoItens = precoItens;
+			end;
+		end;
+		]]>	
+	</script>
+
+	<button g="col" g-width="2" height="25" text="Usar" onClick="use();" margins="{right=5}"/>
+	<label g="col" g-width="4" height="25" field="nome"/>
+
+	<layout g="col" g-width="4" height="25">
+		<layout g="col" g-width="6" height="25">
+			<imageCheckBox align="client">
+				<progressBar colorMode="hl" align="client" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="Red" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
+					<event name="onMouseEnter">
+						self.CorBarrinha.color = "Green";
+						self.ValoresBarrinha.visible = true;
+						sheet.InfoBarrinha = (sheet.BarrinhaValor or 0) .. "/"	.. (sheet.BarrinhaValorMax or 0);					
+					</event>
+					<event name="onMouseLeave">
+						self.ValoresBarrinha.visible = false;
+					</event>
+					<event name="onDblClick">
+						sheet.BarrinhaID = sheet.index;
+						sheet.AtributoBarrinha = sheet.nome;
+						
+						sheet.ModificadorBarrinha = "igual";
+						sheet.ModificadorBarrinhaMax = "igual";
+						sheet.ValorTempAtualBarrinha = sheet.BarrinhaValor;
+						sheet.ValorTempMaxBarrinha = sheet.BarrinhaValorMax;
+						sheet.ValorMudadoAtualBarrinha = sheet.BarrinhaValor;
+						sheet.ValorMudadoMaxBarrinha = sheet.BarrinhaValorMax;
+
+						local rec = self:findControlByName("PopupBarColor");
+						if rec~=nil then rec.color = "Green" end;
+						
+						local pop = self:findControlByName("BarPopup");
+						if pop~= nil then
+							pop.scopeNode = sheet;
+							pop:show("top", self.Barrinha);
+							pop.top = (pop.top + 29 + 10);
+						end;
+					</event>
+				</progressBar>
+			</imageCheckBox>
+		</layout>
+		<layout g="col" g-width="6" height="15" margins="{top=5,bottom=5}" visible="false" name="ValoresBarrinha">
+			<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha" color="Green">
+				<label align="client" fontColor="white" fontSize="10" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha" field="InfoBarrinha" horzTextAlign="center" text="0/0">
+					<event name="onResize">
+						self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4);
+					</event>
+				</label>
+			</rectangle>
+		</layout>
+		<dataLink field="CorBarrinha" defaultValue="Green">
+			<event name="onUserChange">
+				self.Barrinha.color = "Green";
+			</event>
+		</dataLink>
+		<dataLink field="BarrinhaValor">
+			<event name="onChange">
+				if sheet.BarrinhaValor==nil then return end;
+				if sheet.BarrinhaValor==0 then 
+					self.Barrinha.color = "Yellow";
+				else
+					self.Barrinha.color = "Green";
+				end;
+			</event>
+		</dataLink>
+	</layout>
+	
+    <button g="col" g-width="1" height="25" text="ℹ️" onClick="showItemPopup()" hint="Detalhes" textTrimming="none"/>
+    <button g="col" g-width="1" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+
+    <dataLink fields="{'preco'}">
+		<event name="onUserChange">
+			itemPrice()
+		</event>
+	</dataLink>
+</form>

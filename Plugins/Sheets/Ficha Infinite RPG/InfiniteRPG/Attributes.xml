@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmAttributes" align="client">
+	<script>
+		local function roll(field,text)
+			local mesa = Firecast.getMesaDe(sheet);
+
+			local mod = math.floor(tonumber(sheet[field]) or 0);
+			local rolagem = Firecast.interpretarRolagem("2d10 + " .. mod);
+
+			mesa.activeChat:rolarDados(rolagem, text);
+		end;
+	</script>
 	<template name="Attribute">
 		<layout align="top" height="25" margins="{left=5,right=5}">
-			<label align="left" width="75" text="$(text)" margins="{right=5}"/>
+			<button align="left" width="75" text="$(text)" margins="{right=5}" onClick="roll('$(field)Mod','$(text)')"/>
 			
 			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<label align="client" field="$(field)Normal" horzTextAlign="center"/>
@@ -30,8 +40,9 @@
 					local xp = tonumber(sheet.$(field)XP) or 0
 					while (xp >= cost) do
 						normal = normal + 1
+						local extra = math.floor((normal+1)/10) * 10
 						xp = xp - cost
-						cost = cost + 1
+						cost = cost + 1 + extra
 					end
 
 					local total = 	(tonumber(sheet.$(field)Equip) or 0) +
@@ -45,7 +56,11 @@
 		</layout>
 	</template>
 	<template name="Attribute2">
+		<!-- if (rollBt == "true") or (rollBt == true) then -->
+		<button align="top" height="21" text="$(text)" margins="{right=5,left=5,top=2,bottom=2}" onClick="roll('$(field)Total','$(text)')"/>
+		<!-- else -->
 		<label align="top" height="25" text="$(text)" margins="{left=5,right=5}"/>
+		<!-- end -->
 		<layout align="top" height="25" margins="{left=5,right=5}">
 			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<label align="client" field="$(field)Base" horzTextAlign="center"/>
@@ -69,10 +84,165 @@
 			</dataLink>
 		</layout>
 	</template>
+	<template name="SkillGroup">
+		<!-- 
+			if (type(body) == "string") and (body ~= "") then
+				pericias = totable(body);
+			else
+				pericias = {};
+			end;
+		-->
+
+		<rectangle align="top" height="115" color="black" strokeColor="white" strokeSize="1" margins="{top=$(top)}" padding="{left=5,right=5,top=5,bottom=5}">
+			<layout align="top" height="25" margins="{bottom=5}">
+				<label align="left" width="75" text="$(text)"/>
+
+				<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+					<label align="client" field="$(field)Mod" horzTextAlign="center"/>
+				</rectangle>
+			</layout>
+			<layout align="top" height="75">
+				<layout align="left" width="140" margins="{right=10}">
+					<!-- 
+					if #pericias>=1 then
+						objPericia = pericias[1];
+						periciaTitulo = objPericia[1];
+						periciaField = objPericia[2];
+					-->	
+						<Skill text="$(periciaTitulo)" field="$(periciaField)"/>
+
+						<dataLink fields="{'$(field)Mod','$(periciaField)Normal'}">
+							<event name="onChange">
+								if sheet==nil then return end;
+
+								local total = 	tonumber(sheet.$(field)Mod or 0) +
+												tonumber(sheet.$(periciaField)Normal or 0);
+
+								sheet.$(periciaField)Total = total
+							</event>
+						</dataLink>
+					<!-- end; -->
+
+					<!-- 
+					if #pericias>=2 then
+						objPericia = pericias[2];
+						periciaTitulo = objPericia[1];
+						periciaField = objPericia[2];
+					-->	
+						<Skill text="$(periciaTitulo)" field="$(periciaField)"/>
+
+						<dataLink fields="{'$(field)Mod','$(periciaField)Normal'}">
+							<event name="onChange">
+								if sheet==nil then return end;
+
+								local total = 	tonumber(sheet.$(field)Mod or 0) +
+												tonumber(sheet.$(periciaField)Normal or 0);
+
+								sheet.$(periciaField)Total = total
+							</event>
+						</dataLink>
+					<!-- end; -->
+
+					<!-- 
+					if #pericias>=5 then
+						objPericia = pericias[5];
+						periciaTitulo = objPericia[1];
+						periciaField = objPericia[2];
+					-->	
+						<Skill text="$(periciaTitulo)" field="$(periciaField)"/>
+
+						<dataLink fields="{'$(field)Mod','$(periciaField)Normal'}">
+							<event name="onChange">
+								if sheet==nil then return end;
+
+								local total = 	tonumber(sheet.$(field)Mod or 0) +
+												tonumber(sheet.$(periciaField)Normal or 0);
+
+								sheet.$(periciaField)Total = total
+							</event>
+						</dataLink>
+					<!-- end; -->
+				</layout>
+				<layout align="left" width="140" margins="{right=0}">
+					<!-- 
+					if #pericias>=3 then
+						objPericia = pericias[3];
+						periciaTitulo = objPericia[1];
+						periciaField = objPericia[2];
+					-->	
+						<Skill text="$(periciaTitulo)" field="$(periciaField)"/>
+
+						<dataLink fields="{'$(field)Mod','$(periciaField)Normal'}">
+							<event name="onChange">
+								if sheet==nil then return end;
+
+								local total = 	tonumber(sheet.$(field)Mod or 0) +
+												tonumber(sheet.$(periciaField)Normal or 0);
+
+								sheet.$(periciaField)Total = total
+							</event>
+						</dataLink>
+					<!-- end; -->
+
+					<!-- 
+					if #pericias>=4 then
+						objPericia = pericias[4];
+						periciaTitulo = objPericia[1];
+						periciaField = objPericia[2];
+					-->	
+						<Skill text="$(periciaTitulo)" field="$(periciaField)"/>
+
+						<dataLink fields="{'$(field)Mod','$(periciaField)Normal'}">
+							<event name="onChange">
+								if sheet==nil then return end;
+
+								local total = 	tonumber(sheet.$(field)Mod or 0) +
+												tonumber(sheet.$(periciaField)Normal or 0);
+
+								sheet.$(periciaField)Total = total
+							</event>
+						</dataLink>
+					<!-- end; -->
+
+					<!-- 
+					if #pericias>=6 then
+						objPericia = pericias[6];
+						periciaTitulo = objPericia[1];
+						periciaField = objPericia[2];
+					-->	
+						<Skill text="$(periciaTitulo)" field="$(periciaField)"/>
+
+						<dataLink fields="{'$(field)Mod','$(periciaField)Normal'}">
+							<event name="onChange">
+								if sheet==nil then return end;
+
+								local total = 	tonumber(sheet.$(field)Mod or 0) +
+												tonumber(sheet.$(periciaField)Normal or 0);
+
+								sheet.$(periciaField)Total = total
+							</event>
+						</dataLink>
+					<!-- end; -->
+				</layout>
+			</layout>
+		</rectangle>
+	</template>
+	<template name="Skill">
+		<layout align="top" height="25">
+			<button align="left" width="70" text="$(text)" margins="{right=5}" fontSize="10" onClick="roll('$(field)Total','$(text)')"/>
+
+			<edit align="left" width="30" field="$(field)Normal" margins="{right=5}"/>
+
+			<rectangle align="left" width="30" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(field)Total" horzTextAlign="center"/>
+			</rectangle>
+		</layout>
+	</template>
+
 	<scrollBox align="client">
 		<layout align="left" width="200" margins="{right=10}">
 			<rectangle align="top" height="160" color="black" strokeColor="white" strokeSize="1" margins="{top=0}" padding="{top=5,bottom=5}">
-				<Attribute2 text="HP" field="hp" initial="50"/>
+				<Attribute2 text="HP" field="hp" initial="50" rollBt="false"/>
 				<dataLink fields="{'fortitudeTotal', 'vitalidadeTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -85,7 +255,7 @@
 						sheet.hpBase = fort * 20 + vit * 80
 					</event>
 				</dataLink>
-				<Attribute2 text="PS" field="ps" initial="30"/>
+				<Attribute2 text="PS" field="ps" initial="30" rollBt="false"/>
 				<dataLink fields="{'resistenciaTotal', 'vitalidadeTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -98,7 +268,7 @@
 						sheet.psBase = res * 10 + vit * 20
 					</event>
 				</dataLink>
-				<Attribute2 text="RD" field="rd" initial="0"/>
+				<Attribute2 text="RD" field="rd" initial="0" rollBt="false"/>
 				<dataLink fields="{'resistenciaTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -112,7 +282,7 @@
 			</rectangle>
 
 			<rectangle align="top" height="355" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
-				<Attribute2 text="Dano" field="dano" initial="0"/>
+				<Attribute2 text="Dano" field="dano" initial="0" rollBt="false"/>
 				<dataLink fields="{'fortitudeTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -123,7 +293,7 @@
 						sheet.danoBase = fort * 5
 					</event>
 				</dataLink>
-				<Attribute2 text="Acerto" field="acerto" initial="0"/>
+				<Attribute2 text="Acerto" field="acerto" initial="0" rollBt="true"/>
 				<dataLink fields="{'destrezaTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -134,7 +304,7 @@
 						sheet.acertoBase = des * 1
 					</event>
 				</dataLink>
-				<Attribute2 text="Esquiva" field="esquiva" initial="0"/>
+				<Attribute2 text="Esquiva" field="esquiva" initial="0" rollBt="true"/>
 				<dataLink fields="{'destrezaTotal', 'instintoTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -147,7 +317,7 @@
 						sheet.esquivaBase = des * 1 + inst * 1
 					</event>
 				</dataLink>
-				<Attribute2 text="Defesa" field="defesa" initial="0"/>
+				<Attribute2 text="Defesa" field="defesa" initial="0" rollBt="true"/>
 				<dataLink fields="{'resistenciaTotal', 'instintoTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -160,7 +330,7 @@
 						sheet.defesaBase = res * 1 + inst * 1
 					</event>
 				</dataLink>
-				<Attribute2 text="Iniciativa" field="iniciativa" initial="0"/>
+				<Attribute2 text="Iniciativa" field="iniciativa" initial="0" rollBt="true"/>
 				<dataLink fields="{'instintoTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -171,7 +341,7 @@
 						sheet.iniciativaBase = inst * 1
 					</event>
 				</dataLink>
-				<Attribute2 text="Dano Especial" field="danoEspecial" initial="0"/>
+				<Attribute2 text="Dano Especial" field="danoEspecial" initial="0" rollBt="false"/>
 				<dataLink fields="{'intelectoTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -182,7 +352,7 @@
 						sheet.danoEspecialBase = int * 7
 					</event>
 				</dataLink>
-				<Attribute2 text="Defesa Especial" field="defesaEspecial" initial="0"/>
+				<Attribute2 text="Defesa Especial" field="defesaEspecial" initial="0" rollBt="false"/>
 				<dataLink fields="{'sabedoriaTotal'}">
 					<event name="onChange">
 						if sheet==nil then return end
@@ -237,16 +407,129 @@
 			</rectangle>
 
 			<rectangle align="top" height="280" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
-				<label align="top" height="25" text="Poder" margins="{left=5,top=5}"/>
-				<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="poder"/>
-			</rectangle>
-		</layout>
-
-		<layout align="left" width="200" margins="{right=10}">
-			<rectangle align="top" height="525" color="black" strokeColor="white" strokeSize="1" margins="{top=0}">
-				<label align="top" height="25" text="Danos" margins="{left=5,top=0}"/>
+				<label align="top" height="25" text="Extras" margins="{left=5,top=5}"/>
 				<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="danos"/>
 			</rectangle>
 		</layout>
+
+		<layout align="left" width="300" margins="{right=10}">
+			<layout align="top" height="520">
+				<SkillGroup text="Fortitude" field="fortitude" top="0">
+					{{"Atletismo", "atletismo"},
+					{"Halterofilia", "halterofilia"}}
+				</SkillGroup>
+				<SkillGroup text="Instinto" field="instinto" top="10">
+					{{"Sentidos", "sentidos"},
+					{"Coragem", "coragem"}}
+				</SkillGroup>
+				<SkillGroup text="Destreza" field="destreza" top="10">
+					{{"Acrobacia", "acrobacia"},
+					{"Manuseio", "manuseio"},
+					{"Dançar", "dancar"},
+					{"Furtividade", "furtividade"}}
+				</SkillGroup>
+				<SkillGroup text="Sabedoria" field="sabedoria" top="10">
+					{{"Medicina", "medicina"},
+					{"Percepção", "percepcao"},
+					{"Culinária", "culinaria"},
+					{"Sobrevivência", "sobrevivencia"},
+					{"Controle", "controle"},
+					{"Natureza", "natureza"}}
+				</SkillGroup>
+			</layout>
+		</layout>
+		<layout align="left" width="300" margins="{right=10}">
+			<layout align="top" height="520">
+				<SkillGroup text="Intelecto" field="intelecto" top="0">
+					{{"Mecânica", "mecanica"},
+					{"Investigação", "investigacao"},
+					{"Fisica/Quimica", "fisica"},
+					{"Computação", "computacao"},
+					{"Poder", "poder"},
+					{"Sociedade", "sociedade"}}
+				</SkillGroup>
+				<SkillGroup text="Carisma" field="carisma" top="10">
+					{{"Enganar", "enganar"},
+					{"Intimidar", "intimidar"},
+					{"Heroismo", "heroismo"},
+					{"Cantar", "cantar"},
+					{"Atuar", "atuar"},
+					{"Persuadir", "persuadir"}}
+				</SkillGroup>
+				<SkillGroup text="Resistência" field="resistencia" top="10">
+					{{"Resistir", "resistir"}}
+				</SkillGroup>
+				<SkillGroup text="Vitalidade" field="vitalidade" top="10">
+					{{"Folêgo", "folego"}}
+				</SkillGroup>
+			</layout>
+		</layout>
+
+		<dataLink fields="{'atletismoNormal','halterofiliaNormal','sentidosNormal','coragemNormal','acrobaciaNormal','manuseioNormal','dancarNormal','furtividadeNormal','medicinaNormal','percepcaoNormal','culinariaNormal','sobrevivenciaNormal','controleNormal','naturezaNormal','mecanicaNormal','investigacaoNormal','fisicaNormal','computacaoNormal','poderNormal','sociedadeNormal','enganarNormal','intimidarNormal','heroismoNormal','cantarNormal','atuarNormal','persuadirNormal','resistirNormal','folegoNormal'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local atletismo = (tonumber(sheet.atletismoNormal) or 0)
+				atletismo = (1+atletismo)*atletismo/2
+				local halterofilia = (tonumber(sheet.halterofiliaNormal) or 0)
+				halterofilia = (1+halterofilia)*halterofilia/2
+				local sentidos = (tonumber(sheet.sentidosNormal) or 0)
+				sentidos = (1+sentidos)*sentidos/2
+				local coragem = (tonumber(sheet.coragemNormal) or 0)
+				coragem = (1+coragem)*coragem/2
+				local acrobacia = (tonumber(sheet.acrobaciaNormal) or 0)
+				acrobacia = (1+acrobacia)*acrobacia/2
+				local manuseio = (tonumber(sheet.manuseioNormal) or 0)
+				manuseio = (1+manuseio)*manuseio/2
+				local dancar = (tonumber(sheet.dancarNormal) or 0)
+				dancar = (1+dancar)*dancar/2
+				local furtividade = (tonumber(sheet.furtividadeNormal) or 0)
+				furtividade = (1+furtividade)*furtividade/2
+				local medicina = (tonumber(sheet.medicinaNormal) or 0)
+				medicina = (1+medicina)*medicina/2
+				local percepcao = (tonumber(sheet.percepcaoNormal) or 0)
+				percepcao = (1+percepcao)*percepcao/2
+				local culinaria = (tonumber(sheet.culinariaNormal) or 0)
+				culinaria = (1+culinaria)*culinaria/2
+				local sobrevivencia = (tonumber(sheet.sobrevivenciaNormal) or 0)
+				sobrevivencia = (1+sobrevivencia)*sobrevivencia/2
+				local controle = (tonumber(sheet.controleNormal) or 0)
+				controle = (1+controle)*controle/2
+				local natureza = (tonumber(sheet.naturezaNormal) or 0)
+				natureza = (1+natureza)*natureza/2
+				local mecanica = (tonumber(sheet.mecanicaNormal) or 0)
+				mecanica = (1+mecanica)*mecanica/2
+				local investigacao = (tonumber(sheet.investigacaoNormal) or 0)
+				investigacao = (1+investigacao)*investigacao/2
+				local fisica = (tonumber(sheet.fisicaNormal) or 0)
+				fisica = (1+fisica)*fisica/2
+				local computacao = (tonumber(sheet.computacaoNormal) or 0)
+				computacao = (1+computacao)*computacao/2
+				local poder = (tonumber(sheet.poderNormal) or 0)
+				poder = (1+poder)*poder/2
+				local sociedade = (tonumber(sheet.sociedadeNormal) or 0)
+				sociedade = (1+sociedade)*sociedade/2
+				local enganar = (tonumber(sheet.enganarNormal) or 0)
+				enganar = (1+enganar)*enganar/2
+				local intimidar = (tonumber(sheet.intimidarNormal) or 0)
+				intimidar = (1+intimidar)*intimidar/2
+				local heroismo = (tonumber(sheet.heroismoNormal) or 0)
+				heroismo = (1+heroismo)*heroismo/2
+				local cantar = (tonumber(sheet.cantarNormal) or 0)
+				cantar = (1+cantar)*cantar/2
+				local atuar = (tonumber(sheet.atuarNormal) or 0)
+				atuar = (1+atuar)*atuar/2
+				local persuadir = (tonumber(sheet.persuadirNormal) or 0)
+				persuadir = (1+persuadir)*persuadir/2
+				local resistir = (tonumber(sheet.resistirNormal) or 0)
+				resistir = (1+resistir)*resistir/2
+				local folego = (tonumber(sheet.folegoNormal) or 0)
+				folego = (1+folego)*folego/2
+
+				local total = atletismo+halterofilia+sentidos+coragem+acrobacia+manuseio+dancar+furtividade+medicina+percepcao+culinaria+sobrevivencia+controle+natureza+mecanica+investigacao+fisica+computacao+poder+sociedade+enganar+intimidar+heroismo+cantar+atuar+persuadir+resistir+folego
+
+				sheet.xpPericias = total*100
+			</event>
+		</dataLink>
 	</scrollBox>
 </form>

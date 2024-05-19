@@ -93,7 +93,7 @@ local function constructNew_frmDiceRoll()
     obj.edit1:setName("edit1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local roll = sheet.roll or "1d1-1";
             	    		local rolagem = Firecast.interpretarRolagem(roll);
             				local mesa = Firecast.getMesaDe(sheet);
@@ -114,8 +114,8 @@ local function constructNew_frmDiceRoll()
         end;
 
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

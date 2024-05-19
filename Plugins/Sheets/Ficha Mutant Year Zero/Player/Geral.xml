@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeral" align="client">
+	<template name="Atributo">
+		<layout align="top" height="25" margins="{top=4}">
+			<layout align="client">
+				<label align="client" text="$(atr)" horzTextAlign="center"/>
+				<edit align="right" width="40" field="$(field)Atr" type="number"/>
+				<rectangle align="right" width="40" color="black" strokeColor="white" strokeSize="1">
+					<label align="client" field="$(field)Total" horzTextAlign="center"/>
+				</rectangle>
+			</layout>
+			<layout align="right" width="120" margins="{right=5}">
+				<label align="client" width="80" text="$(trauma)" horzTextAlign="center"/>
+				<edit align="right" width="40" field="$(field)Trauma" type="number"/>
+			</layout>
+		</layout>
+
+		<dataLink fields="{'$(field)Atr','$(field)Trauma'}">
+			<event name="onChange">
+				local atr = tonumber(sheet.$(field)Atr) or 0
+				local trauma = tonumber(sheet.$(field)Trauma) or 0
+				local total = atr - trauma
+
+				sheet.$(field)Total = total
+
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias)
+				for i=1, #nodes do
+					nodes[i].$(field) = total
+				end 
+			</event>
+		</dataLink>
+	</template>
+	<scrollBox align="client">
+		<rectangle align="top" height="35" color="#000000" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=2,left=2,bottom=2}">
+			<layout align="left" width="270" margins="{top=5,bottom=5,left=5,right=5}">
+				<label align="left" width="75" text="Nome" horzTextAlign="center"/>
+				<edit align="client" field="nome"/>
+			</layout>
+			<layout align="left" width="270" margins="{top=5,bottom=5,left=5,right=5}">
+				<label align="left" width="75" text="Papel" horzTextAlign="center"/>
+				<edit align="client" field="papel"/>
+			</layout>
+		</rectangle>
+
+		<layout align="top" height="150" margins="{top=5}">
+			<rectangle align="left" width="280" color="#000000" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=2,left=2,bottom=2}">
+				<label align="top" height="25" margins="{top=4}" text="ATRIBUTOS" horzTextAlign="center"/>
+				<Atributo atr="Força" trauma="Dano" field="forca"/>
+				<Atributo atr="Agilidade" trauma="Fadiga" field="agilidade"/>
+				<Atributo atr="Astúcia" trauma="Confusão" field="astucia"/>
+				<Atributo atr="Empatia" trauma="Dúvida" field="empatia"/>
+			</rectangle>
+
+			<rectangle align="left" width="280" color="#000000" strokeSize="1" strokeColor="#FFFFFF" margins="{left=5}" padding="{top=2,right=2,left=2,bottom=2}">
+				<layout align="left" width="100">
+					<label align="top" height="25" margins="{top=4}" text="CONDIÇÕES" horzTextAlign="center"/>
+					<checkBox align="top" height="25" margins="{top=3}" text="Faminto" field="faminto"/>
+					<checkBox align="top" height="25" margins="{top=3}" text="Insone" field="insone"/>
+					<checkBox align="top" height="25" margins="{top=3}" text="Desidratado" field="desidratado"/>
+					<checkBox align="top" height="25" margins="{top=3}" text="Hipotérmico" field="hipotermico"/>
+				</layout>
+				<textEditor align="client" field="ferimentos" margins="{right=5,top=5,bottom=5}"/>
+			</rectangle>
+
+			<rectangle align="left" width="150" color="#000000" strokeSize="1" strokeColor="#FFFFFF" margins="{left=5}" padding="{top=2,right=2,left=2,bottom=2}">
+				<layout align="left" width="150">
+					<label align="top" height="25" margins="{top=4}" text="PONTOS" horzTextAlign="center"/>
+					<layout align="top" height="25" margins="{top=3}">
+						<label align="left" width="75" text="Podridão" horzTextAlign="center"/>
+						<edit align="client" field="podridao" margins="{right=10}"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=3}">
+						<label align="left" width="75" text="Mutação" horzTextAlign="center"/>
+						<edit align="client" field="mutacao" margins="{right=10}"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=3}">
+						<label align="left" width="75" text="Experiência" horzTextAlign="center"/>
+						<edit align="client" field="xp" margins="{right=10}"/>
+					</layout>
+				</layout>
+			</rectangle>
+
+			<rectangle align="left" width="150" color="black" strokeColor="white" strokeSize="1" margins="{left=5}">
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+						if drag and sheet.avatar then
+					    	drag:addData("imageURL", sheet.avatar)
+					    end
+					</event>
+				</image>
+			</rectangle>
+		</layout>
+
+		<layout align="top" height="300" margins="{top=5}">
+			<rectangle align="left" width="280" color="#000000" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=2,left=2,bottom=2}">
+				<label align="top" height="25" margins="{top=4}" text="RELACIONAMENTOS" horzTextAlign="center"/>
+				<textEditor align="client" field="relacionamentos"/>
+			</rectangle>
+			<rectangle align="left" width="600" color="#000000" strokeSize="1" strokeColor="#FFFFFF" margins="{left=5}" padding="{top=2,right=2,left=2,bottom=2}">
+				<label align="top" height="25" margins="{top=4}" text="CONHECIDOS" horzTextAlign="center"/>
+				<textEditor align="client" field="conhecidos"/>
+			</rectangle>
+		</layout>
+	</scrollBox>
+</form>

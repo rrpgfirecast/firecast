@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagia" height="255" margins="{top=10,bottom=-0}">       
+
+    <button text="Spell" onClick="ligarMagia()" top="0" left="0" width="230"/>
+    <edit field="nomeMagia" horzTextAlign="center" top="20" left="0" width="230"/>
+
+    <label text="Tradition" left="265" top="0"/>
+    <edit field="Tradicao" horzTextAlign="center" top="20" left="230" width="120"/>
+
+    <label text="Type" left="0" top="60"/>
+    <comboBox field="escTipo" top="50" left="35" width="60" height="40" items="{'Utility', 'Attack'}"/>
+
+    <label text="Rank" left="100" top="60"/>
+    <edit field="NivelMagia" top="50" left="135" width="30" height="40"/>    
+
+    <label text="Attribute" left="170" top="60"/>
+    <comboBox field="escAtributo" horzTextAlign="center" top="50" left="230" width="120" height="40" items="{'Intellect', 'Will', 'None'}"/>
+
+    <label text="Duration" left="0" top="100"/>
+    <edit field="Duracao" horzTextAlign="center" top="90" left="55" width="80" height="40"/>
+
+    <label text="Target" left="140" top="100"/>
+    <edit field="Alvo" horzTextAlign="center" top="90" left="180" width="170" height="40"/>
+
+    <label text="Area" left="0" top="140"/>
+    <edit field="Area" horzTextAlign="center" top="130" left="35" width="160" height="40"/>
+
+    <label text="Castings" left="205" top="140"/>
+    <edit field="qtdConjuracao" horzTextAlign="center" top="130" left="260" width="30" height="40"/>
+    <label text="/" left="303" top="140"/>
+    <edit field="maxConjuracao" horzTextAlign="center" top="130" left="320" width="30" height="40"/>
+    <label text="qtd" left="267" top="125" fontSize="8" />
+    <label text="max" left="327" top="125" fontSize="8" />
+    <label text="Description" left="0" top="175"/>
+    <textEditor field="descMagia" left="0" top="195" width="320"/>
+    <rectangle left="0" top="245" color="gray" width="350" height="5"/>
+    <button text="Del" width="30" left="320" top="195" height="50" onClick="NDB.deleteNode(sheet);"/>
+
+
+    <script>
+        local function ligarMagia()
+            if sheet.nomeMagia ~= nil then
+                local magia = sheet.nomeMagia;
+                local tradicao = sheet.Tradicao;
+                local nivel = sheet.nivelMagia;
+                local duracao = sheet.Duracao;
+                local alvo = sheet.Alvo;
+                local area = sheet.Area;
+                local descricao = sheet.descMagia;
+
+                if tradicao == nil then
+                    tradicao = " ";
+                end;
+
+                if nivel == nil then
+                    nivel = " ";
+                end;
+
+
+                local mesaDeRPG = Firecast.getMesaDe(sheet);
+                mesaDeRPG.chat:enviarMensagem(magia .. " ( " .. tradicao .. " ) Nível - " .. nivel);
+                if duracao ~= nil then
+                    mesaDeRPG.chat:enviarMensagem("Duração: " .. duracao);
+                end;
+                if alvo ~= nil then
+                    mesaDeRPG.chat:enviarMensagem("Alvo: " .. alvo);
+                end;
+                if area ~= nil then
+                    mesaDeRPG.chat:enviarMensagem("Área: " .. area);
+                end; 
+                if descricao ~= nil then
+                    mesaDeRPG.chat:enviarMensagem("--------------------");
+                    mesaDeRPG.chat:enviarMensagem(descricao);
+                    mesaDeRPG.chat:enviarMensagem("--------------------");
+                end;               
+            end;
+        end;
+
+
+    </script>
+</form>

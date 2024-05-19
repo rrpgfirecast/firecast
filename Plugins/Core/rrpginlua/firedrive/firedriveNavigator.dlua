@@ -73,14 +73,45 @@ function nav.criarAddPopup(ctrl)
 					 end;
 
 	
+	function ctrl:convertFireDriveFilterToOpenDialogFilter()
+		local buildingFilter = nil;
+		local filter = ctrl.filter;
+		
+		local function appendOpenFileFilter(filterStr)
+			if buildingFilter == nil then
+				buildingFilter = filterStr;
+			else	
+				buildingFilter = buildingFilter .. ", " .. filterStr;
+			end;
+		end;
+	
+		local function handleFireDriveFilterStr(filterStr) 
+			if type(filterStr) ~= "string" then
+				return;
+			end;
+			
+			if filterStr:match("image/.+") then
+				appendOpenFileFilter("image/*");
+			elseif filterStr:match("video/.+") then
+				appendOpenFileFilter("video/*");
+			end;
+		end;		
+		
+		if filter ~= nil then				
+			if type(filter) == "table" then
+				for i = 1, #filter do
+					handleFireDriveFilterStr(filter[i]);
+				end;
+			elseif type(filter) == "string" then
+				handleFireDriveFilterStr(filter);
+			end;
+		end;	
+		
+		return buildingFilter;
+	end;
+	
 	btnUpload.onClick = function ()
-							local filtroAbrir = nil;
-							
-							if ctrl.filter ~= nil then
-								if ctrl.filter:match("image/.+") then
-									filtroAbrir = "image/*";
-								end;
-							end;
+							local filtroAbrir = ctrl:convertFireDriveFilterToOpenDialogFilter();
 							
 							dialogs.openFile("@@firedrive.uploadFile.prompt", filtroAbrir, true, 
 								function(files)
@@ -99,25 +130,22 @@ end;
 function nav.criarItemMenuPopup(ctrl)
 	local pop = GUI.newPopup();
 	pop.width = 200;
-	pop.height = 130;
 	pop.backOpacity = 0.25; 
 	local itemUrl;	
 	local itemName;
 	local itemNode;
-	local totalH = 0;
+	
+
+	pop.grid:setCntLineSpacing(6):setCntGutter(10):
+		setAutoHeight():setPaddingTop(8):setPaddingBottom(8);
 	
 	local function newMenuBtn(text)
 		local btn = GUI.newButton();
-		local margins = {left=5, right=5, top=3, bottom=3};
-		local btnH = 35;
-		btn.text = text;
-		btn.margins = margins;
-		btn.height = btnH;
-		btn.align = "top";
+		btn.text = text;		
 		btn.wordWrap = true;
-		btn.parent = pop;
+		btn.grid:setRole("col"):setWidth(12):setDynHeightTxt(true):setMinHeight(35);
+		btn.parent = pop;	
 		
-		totalH = totalH + margins.top + margins.bottom + btnH;
 		return btn;
 	end;
 	
@@ -125,7 +153,6 @@ function nav.criarItemMenuPopup(ctrl)
 	local btnDelete = newMenuBtn("@@firedrive.mgr.deleteAction");
 	local btnCopyURL = newMenuBtn("@@firedrive.mgr.copyURLAction");	
 	
-	pop.height = totalH + 8;
 	
 	btnDelete.onClick = function()
 							local itemUrlToDel = itemUrl;
@@ -219,6 +246,7 @@ function nav.newFDNavigatorLayout()
 	local btnVoltar;
 	local btnAdd;
 	local labTitulo;
+	local sbxItems;
 	local rclItens;
 	local indLoading;
 	local loadingCount = 0;
@@ -290,14 +318,18 @@ function nav.newFDNavigatorLayout()
 	layCenter.align = "client";
 	layCenter.parent = ctrl;
 	
-	rclItens = GUI.newRecordList();
+	sbxItems = GUI.newScrollBox();
+	ctrl.sbxItems = sbxItems;
+	sbxItems.align = "client";
+	sbxItems.parent = layCenter;
+	
+	rclItens = GUI.newGridRecordList();
 	ctrl.rclItens = rclItens;
-	rclItens.align = "client";
 	rclItens.selectable = true;	
-	rclItens.parent = layCenter;	
+	rclItens.parent = sbxItems;	
 	rclItens.field = "itens";
 	rclItens.templateForm = "frmFireDriveNavigatorItem";
-	rclItens.layout = "horizontalTiles";
+	rclItens.grid:setRole("row");
 	
 	indLoading = GUI.newActivityIndicator();	
 	ctrl.indLoading = ctrl;
@@ -330,6 +362,28 @@ function nav.newFDNavigatorLayout()
 			if _wasRclFocused then
 				rclItens:setFocus();
 			end;
+		end;
+	end;
+		
+	function ctrl:testMimeTypeForFilter(mimeType)
+		local f = ctrl.filter;
+		
+		if f == nil then
+			return true;
+		elseif type(f) == "table" then
+			for i = 1, #f do
+				local filterItem = f[i];
+			
+				if (type(filterItem) == "string") and (mimeType:match(filterItem)) then
+					return true;
+				end;
+			end;
+			
+			return false;
+		elseif type(f) == "string" then
+			return mimeType:match(f);
+		else	
+			return false;
 		end;
 	end;
 		
@@ -369,7 +423,7 @@ function nav.newFDNavigatorLayout()
 								for i = 1, #itens, 1 do
 									local it = itens[i];
 									
-									if it.isDir or (it.mimeType ~= nil and it.mimeType:match(ctrl.filter)) then
+									if it.isDir or (it.mimeType ~= nil and ctrl:testMimeTypeForFilter(it.mimeType)) then
 										filteredItens[#filteredItens + 1] = it;
 									end;													
 								end;
@@ -656,11 +710,11 @@ function nav.newFDNavigatorLayout()
 							return utils.compareStringPtBr(nodeA.name, nodeB.name);															
 						 end;
 		
-	rclItens.onItemAdded = function (node, form)
+	rclItens.onItemShow = function (node, form)
 								form._navigator = ctrl;
 	   					   end;
 						   
-	rclItens.onItemRemoved = function (node, form)
+	rclItens.onItemHide = function (node, form)
 								form._navigator = nil;
 	   					   end;					
 

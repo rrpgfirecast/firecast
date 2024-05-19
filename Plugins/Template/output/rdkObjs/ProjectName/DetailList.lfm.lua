@@ -42,10 +42,8 @@ local function constructNew_frmDetailList()
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
-    obj.button1:setLeft(0);
-    obj.button1:setTop(0);
+    obj.button1:setAlign("left");
     obj.button1:setWidth(25);
-    obj.button1:setHeight(25);
     obj.button1:setText("+");
     obj.button1:setHint("Adicionar");
     obj.button1:setName("button1");
@@ -69,7 +67,7 @@ local function constructNew_frmDetailList()
     obj.rclSelector:setAutoHeight(true);
     obj.rclSelector:setName("rclSelector");
     obj.rclSelector:setField("listaDeOpcoes");
-    obj.rclSelector:setTemplateForm("frmDataScopeSelectionForm");
+    obj.rclSelector:setTemplateForm("frmDetailListItem");
     obj.rclSelector:setLayout("vertical");
     obj.rclSelector:setSelectable(true);
 
@@ -87,15 +85,22 @@ local function constructNew_frmDetailList()
 
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle2);
-    obj.edit1:setLeft(5);
-    obj.edit1:setTop(5);
-    obj.edit1:setWidth(230);
+    obj.edit1:setAlign("top");
     obj.edit1:setHeight(25);
     obj.edit1:setField("nome");
+    obj.edit1:setMargins({top=5,right=5,left=5,bottom=5});
     obj.edit1:setName("edit1");
 
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1:setParent(obj.rectangle2);
+    obj.textEditor1:setAlign("client");
+    obj.textEditor1:setHeight(25);
+    obj.textEditor1:setField("details");
+    obj.textEditor1:setMargins({right=5,left=5,bottom=5});
+    obj.textEditor1:setName("textEditor1");
+
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             self.rclSelector:append();
         end, obj);
 
@@ -127,15 +132,16 @@ local function constructNew_frmDetailList()
           self:setNodeDatabase(nil);
         end;
 
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.boxDetalhesDoItem ~= nil then self.boxDetalhesDoItem:destroy(); self.boxDetalhesDoItem = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
-        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.rclSelector ~= nil then self.rclSelector:destroy(); self.rclSelector = nil; end;
+        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.boxDetalhesDoItem ~= nil then self.boxDetalhesDoItem:destroy(); self.boxDetalhesDoItem = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

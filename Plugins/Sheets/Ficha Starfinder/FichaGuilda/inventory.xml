@@ -1,87 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmInventory" align="client">
-	<popup name="popupConfig" width="210" height="110" backOpacity="0.4" autoScopeNode="false" padding="{top=5,bottom=5,left=5,right=5}">
-		<layout align="top" height="25">
-			<label align="client" width="50" field="name" horzTextAlign="center"/>
-		</layout>
-		<layout align="top" height="25">
-			<label align="left" width="50" text="Qtd" horzTextAlign="center"/>
-			<edit  align="left" width="50" field="qtdMod"/>
-			<label align="left" width="50" text="%" horzTextAlign="center"/>
-			<edit  align="left" width="50" field="perc"/>
-		</layout>
-		<layout align="top" height="25">
-			<button align="left" width="100" text="Adicionar">
-				<event name="onClick">
-					local node = self.popupConfig.node
-					local root = NDB.getRoot(node);
-					
-					local qtd = math.abs(tonumber(node.qtd) or 0)
-					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
-
-					local preco = tonumber(node.preco) or 0
-					local creditos = tonumber(root.creditos) or 0
-
-					node.qtd = qtd + qtdMod
-
-					local extra = preco*qtdMod
-					root.creditos = creditos + extra
-				</event>
-			</button>
-			<button align="left" width="100" text="Remover">
-				<event name="onClick">
-					local node = self.popupConfig.node
-					local root = NDB.getRoot(node);
-					
-					local qtd = math.abs(tonumber(node.qtd) or 0)
-					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
-
-					local preco = tonumber(node.preco) or 0
-					local creditos = tonumber(root.creditos) or 0
-
-					node.qtd = qtd - qtdMod
-
-					local waste = preco*qtdMod
-					root.creditos = creditos - waste
-				</event>
-			</button>
-		</layout>
-		<layout align="top" height="25">
-			<button align="left" width="100" text="Comprar">
-				<event name="onClick">
-					local node = self.popupConfig.node
-
-					local qtd = math.abs(tonumber(node.qtd) or 0)
-					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
-
-					node.qtd = qtd + qtdMod
-				</event>
-			</button>
-			<button align="left" width="100" text="Vender">
-				<event name="onClick">
-					local node = self.popupConfig.node
-					local root = NDB.getRoot(node);
-					
-					local qtd = math.abs(tonumber(node.qtd) or 0)
-					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
-
-					node.qtd = qtd - qtdMod
-
-					local perc = tonumber(node.perc) or 0
-					local preco = tonumber(node.preco) or 0
-					local creditos = tonumber(root.creditos) or 0
-
-					local waste = (100-perc)/100*preco*qtdMod
-					root.creditos = creditos - waste
-				</event>
-			</button>
-		</layout>
-	</popup>
 	<scrollBox align="client">
 		<rectangle align="top" height="35" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
 			<layout align="left" width="300" margins="{right=5}">
 				<label align="left" width="100" horzTextAlign="center" text="Creditos"/>
-				<formatEdit field="creditos" unit="C"/>
+				<formatEdit2 field="creditos" unit="C"/>
 			</layout>
 
 			<layout align="left" width="300" margins="{right=5}">
@@ -98,17 +21,17 @@
                 </rectangle>
 			</layout>
 		</rectangle>
-		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
-			<ListaFlexivel nome="NAVES" rclName="rclInventarioNaves" rclField="rclInventarioNaves" frm="frmInventaryItem"/>
-			<ListaFlexivel nome="MECHAS" rclName="rclInventarioMechas" rclField="rclInventarioMechas" frm="frmInventaryItem"/>
-			<ListaFlexivel nome="VEICULOS" rclName="rclInventarioVeiculos" rclField="rclInventarioVeiculos" frm="frmInventaryItem"/>
-			<ListaFlexivel nome="EQUIPAMENTOS" rclName="rclInventarioEquipamentos" rclField="rclInventarioEquipamentos" frm="frmInventaryItem"/>
-			<ListaFlexivel nome="IMPLANTES" rclName="rclInventarioImplantes" rclField="rclInventarioImplantes" frm="frmInventaryItem"/>
-			<ListaFlexivel nome="MEDICINA" rclName="rclInventarioMedicina" rclField="rclInventarioMedicina" frm="frmInventaryItem"/>
-			<ListaFlexivel nome="ARMAS" rclName="rclInventarioArmas" rclField="rclInventarioArmas" frm="frmInventaryItem"/>
-			<ListaFlexivel nome="MUNIÇÃO" rclName="rclInventarioMunicao" rclField="rclInventarioMunicao" frm="frmInventaryItem"/>
-			<ListaFlexivel nome="PEÇAS" rclName="rclInventarioPecas" rclField="rclInventarioPecas" frm="frmInventaryItem"/>
-			<ListaFlexivel nome="OUTROS" rclName="rclInventarioOutros" rclField="rclInventarioOutros" frm="frmInventaryItem"/>
+		<flowLayout align="top" autoHeight="true" maxColumns="4" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivelGuilda nome="NAVES" rclName="rclInventarioNaves" rclField="rclInventarioNaves" frm="frmInventaryItem"/>
+			<ListaFlexivelGuilda nome="MECHAS" rclName="rclInventarioMechas" rclField="rclInventarioMechas" frm="frmInventaryItem"/>
+			<ListaFlexivelGuilda nome="VEICULOS" rclName="rclInventarioVeiculos" rclField="rclInventarioVeiculos" frm="frmInventaryItem"/>
+			<ListaFlexivelGuilda nome="EQUIPAMENTOS" rclName="rclInventarioEquipamentos" rclField="rclInventarioEquipamentos" frm="frmInventaryItem"/>
+			<ListaFlexivelGuilda nome="IMPLANTES" rclName="rclInventarioImplantes" rclField="rclInventarioImplantes" frm="frmInventaryItem"/>
+			<ListaFlexivelGuilda nome="MEDICINA" rclName="rclInventarioMedicina" rclField="rclInventarioMedicina" frm="frmInventaryItem"/>
+			<ListaFlexivelGuilda nome="ARMAS" rclName="rclInventarioArmas" rclField="rclInventarioArmas" frm="frmInventaryItem"/>
+			<ListaFlexivelGuilda nome="MUNIÇÃO" rclName="rclInventarioMunicao" rclField="rclInventarioMunicao" frm="frmInventaryItem"/>
+			<ListaFlexivelGuilda nome="PEÇAS" rclName="rclInventarioPecas" rclField="rclInventarioPecas" frm="frmInventaryItem"/>
+			<ListaFlexivelGuilda nome="OUTROS" rclName="rclInventarioOutros" rclField="rclInventarioOutros" frm="frmInventaryItem"/>
 		</flowLayout>
 	</scrollBox>
 

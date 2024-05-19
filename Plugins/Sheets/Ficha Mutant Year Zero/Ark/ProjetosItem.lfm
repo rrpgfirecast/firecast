@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmProjetosItem" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse projeto?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showProjetoPopup()
+			local pop = self:findControlByName("popProjeto");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de habilidades para exibir");
+			end;				
+		end;
+	]]>
+	</script>
+
+	<checkBox align="left" width="20" field="completo" vertTextAlign="center"/>
+	<button align="right" width="25" text="i" onClick="showProjetoPopup();"/>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	<layout align="client">
+		<edit align="client" vertTextAlign="center" field="nome"/>
+		<edit align="right" width="200" vertTextAlign="center" field="comentarios"/>
+		<edit align="right" width="100" vertTextAlign="center" field="pericias"/>
+		<edit align="right" width="100" vertTextAlign="center" field="trabalho"/>
+	</layout>
+</form>

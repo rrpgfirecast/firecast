@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmContract2" align="client">
+	<scrollBox align="client">
+            <layout align="top" height="25">
+                <button text="+" align="left" width="30" onClick="self.rclContratosFechados:append();"/>
+                <label text="FECHADOS" align="left" width="225" margins="{left=5}"/>
+            </layout>
+
+            <recordList name="rclContratosFechados" field="rclContratosFechados" templateForm="frmContractItemClosed" align="top" layout="horizontalTiles" autoHeight="true" hitTest="false" minQt="0">
+                <event name="onCompare">
+                    -- Jogue contratos invisiveis pro fim
+                    local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                    if vis~=0 then return vis end
+
+                    -- Ordene por dificuldade
+                    local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+                    if dif~=0 then return dif end
+
+                    -- Ordene por nome
+                    local n = utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+                    if n~=0 then return n end
+
+                    -- Ordene por lvl
+                    local lvl = ((tonumber(nodeB.lvl) or 0) - (tonumber(nodeA.lvl) or 0));
+                    if lvl~=0 then return lvl end
+
+                    -- Ordene por qtd
+                    local qtd = ((tonumber(nodeB.qtd) or 0) - (tonumber(nodeA.qtd) or 0));
+                    if qtd~=0 then return qtd end
+
+                    -- Ordene por name
+                    return utils.compareStringPtBr(nodeA.name, nodeB.name);
+                </event>
+            </recordList>
+	</scrollBox>
+</form>

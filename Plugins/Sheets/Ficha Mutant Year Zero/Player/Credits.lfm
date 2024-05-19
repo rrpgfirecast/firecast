@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateCreditos" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="250">
+			<image align="left" width="400" height="300" style="proportional" src="images/logo.png" margins="{right=50}"/>
+			<image align="left" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
+		</layout>
+
+		<layout align="top" width="200" height="160" margins="{top=10}">
+			<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=10}">
+				<label align="top" height="25" text="Plugin feito por: " horzTextAlign="center"/>
+				<label align="top" height="25" text="Vinny (Ambesek)" horzTextAlign="center"/>
+			</rectangle>
+
+			<rectangle align="left" width="210" color="black" strokeColor="white" strokeSize="1" margins="{right=10}" padding="{right=5,left=5}">
+				<label align="top" height="25" text="Versão Atual: " horzTextAlign="center" field="versionInstalled"/>
+				<label align="top" height="25" text="Sua Versão: " horzTextAlign="center" field="versionDownloaded"/>
+				<checkBox align="top" height="25" field="noUpdate" text="Não pedir para atualizar."/>
+				
+				<layout align="top" height="25">
+					<button align="left" width="100" text="Change Log" onClick="GUI.openInBrowser('link_change_log')" />
+					<button align="left" width="100" text="Atualizar" onClick="GUI.openInBrowser('raw_download_link')" />
+				</layout>
+				
+				<label align="top" height="25" text="Conheça as Mesas:"/>
+
+				<layout align="top" height="25">
+					<button align="left" width="100" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+					<button align="left" width="100" text="Nome Mesa" onClick="GUI.openInBrowser('link_mesa');" />
+				</layout>
+			</rectangle>
+		</layout>
+		
+
+	</scrollBox>
+</form>

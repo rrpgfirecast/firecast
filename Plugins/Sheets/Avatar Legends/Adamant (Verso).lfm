@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmadamant2_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmadamant2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmadamant2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/AdamantVerso.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			
+			<!-- Looks -->
+            <layout left="76" top="134" width="414" height="52" compilerOrder="1">
+                <textEditor left="0" top="0" width="414" height="52" fontSize="24" fontColor="#000000" field="Texto11" transparent="true" compilerOrder="2"/>
+            </layout>&#xD;
+			
+			<!-- Home Town -->
+            <layout left="174" top="194" width="333" height="23" compilerOrder="127">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="333" height="24" field="Texto1" compilerOrder="128"/>
+            </layout>&#xD;
+			
+			<!-- Connections -->
+			<layout left="81" top="482" width="141" height="20" compilerOrder="3">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="21" field="Texto12_0" compilerOrder="4"/>
+            </layout>&#xD;
+			<layout left="78" top="560" width="141" height="20" compilerOrder="5">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="21" field="Texto12_1" compilerOrder="6"/>
+            </layout>&#xD;
+			
+			<!-- Técnica 1 -->
+            <layout left="599" top="289" width="421" height="25" compilerOrder="103">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="Texto_Technique_Name_0" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="1045" top="297" width="23" height="24" compilerOrder="67">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_0_0" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="1091" top="297" width="23" height="24" compilerOrder="69">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_0_1" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="1142" top="297" width="23" height="24" compilerOrder="71">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_0_2" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="528" top="321" width="23" height="24" compilerOrder="31">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_0_0" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="866" top="321" width="23" height="24" compilerOrder="35">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_0_2" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="702" top="321" width="23" height="24" compilerOrder="33">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_0_1" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="539" top="365" width="613" height="99" compilerOrder="115">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="Texto_Tech_description_0" transparent="true" compilerOrder="116"/>
+            </layout>&#xD;
+          
+			<!-- Técnica 2 -->
+            <layout left="599" top="490" width="421" height="25" compilerOrder="105">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="Texto_Technique_Name_1" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="1045" top="497" width="23" height="24" compilerOrder="73">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_1_0" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="1091" top="497" width="23" height="24" compilerOrder="75">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_1_1" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="1142" top="497" width="23" height="24" compilerOrder="77">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_1_2" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="702" top="521" width="23" height="24" compilerOrder="39">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_1_1" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="528" top="521" width="23" height="24" compilerOrder="37">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_1_0" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="866" top="521" width="23" height="24" compilerOrder="41">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_1_2" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="539" top="565" width="613" height="99" compilerOrder="117">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="Texto_Tech_description_1" transparent="true" compilerOrder="118"/>
+            </layout>&#xD;
+			
+			<!-- Técnica 3 -->
+            <layout left="599" top="692" width="421" height="25" compilerOrder="107">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="Texto_Technique_Name_2" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="1045" top="697" width="23" height="24" compilerOrder="79">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_2_0" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="1091" top="697" width="23" height="24" compilerOrder="81">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_2_1" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="1142" top="697" width="23" height="24" compilerOrder="83">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_2_2" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="702" top="721" width="23" height="24" compilerOrder="45">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_2_1" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="528" top="721" width="23" height="24" compilerOrder="43">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_2_0" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="866" top="721" width="23" height="24" compilerOrder="47">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_2_2" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="539" top="765" width="613" height="99" compilerOrder="119">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="Texto_Tech_description_2" transparent="true" compilerOrder="120"/>
+            </layout>&#xD;
+			
+			<!-- Técnica 4 -->
+            <layout left="599" top="893" width="421" height="25" compilerOrder="109">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="Texto_Technique_Name_3" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="1045" top="897" width="23" height="24" compilerOrder="85">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_3_0" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="1091" top="897" width="23" height="24" compilerOrder="87">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_3_1" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="1142" top="897" width="23" height="24" compilerOrder="89">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_3_2" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="702" top="921" width="23" height="24" compilerOrder="51">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_3_1" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="528" top="921" width="23" height="24" compilerOrder="49">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_3_0" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="866" top="921" width="23" height="14" compilerOrder="53">
+                <checkBox left="0" top="0" width="23" height="15" field="Check_Box15_3_2" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="539" top="965" width="613" height="99" compilerOrder="121">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="Texto_Tech_description_3" transparent="true" compilerOrder="122"/>
+            </layout>&#xD;
+			
+			<!-- Técnica 5 -->
+            <layout left="599" top="1094" width="421" height="25" compilerOrder="111">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="Texto_Technique_Name_4" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="1045" top="1097" width="23" height="24" compilerOrder="91">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_4_0" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="1091" top="1097" width="23" height="24" compilerOrder="93">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_4_1" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="1142" top="1097" width="23" height="24" compilerOrder="95">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_4_2" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="702" top="1121" width="23" height="24" compilerOrder="57">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_4_1" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="528" top="1121" width="23" height="24" compilerOrder="55">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_4_0" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="866" top="1121" width="23" height="24" compilerOrder="59">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_4_2" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="539" top="1165" width="613" height="99" compilerOrder="123">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="Texto_Tech_description_4" transparent="true" compilerOrder="124"/>
+            </layout>&#xD;
+			
+			<!-- Técnica 6 -->
+            <layout left="599" top="1293" width="421" height="25" compilerOrder="113">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="421" height="26" field="Texto_Technique_Name_5" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="1045" top="1296" width="23" height="24" compilerOrder="97">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_5_0" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="1091" top="1296" width="23" height="24" compilerOrder="99">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_5_1" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="1142" top="1296" width="23" height="24" compilerOrder="101">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_BoxTrain_5_2" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="702" top="1321" width="23" height="24" compilerOrder="63">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_5_1" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="528" top="1321" width="23" height="24" compilerOrder="61">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_5_0" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="866" top="1321" width="23" height="24" compilerOrder="65">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box15_5_2" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="542" top="1365" width="613" height="99" compilerOrder="125">
+                <textEditor left="0" top="0" width="613" height="99" fontSize="19" fontColor="#000000" field="Texto_Tech_description_5" transparent="true" compilerOrder="126"/>
+            </layout>&#xD;
+			
+			<!-- Growth -->
+            <layout left="189" top="1010" width="23" height="23" compilerOrder="7">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box13_0" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="213" top="1010" width="23" height="23" compilerOrder="9">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box13_1" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="237" top="1010" width="23" height="23" compilerOrder="11">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box13_2" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="261" top="1010" width="23" height="23" compilerOrder="13">
+                <checkBox left="0" top="0" width="23" height="24" field="Check_Box13_3" compilerOrder="14"/>
+            </layout>&#xD;
+			
+            <layout left="331" top="1206" width="23" height="17" compilerOrder="15">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box14_0_0" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="348" top="1206" width="23" height="17" compilerOrder="17">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box14_0_1" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="353" top="1226" width="23" height="17" compilerOrder="19">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box14_1_0" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="370" top="1226" width="23" height="17" compilerOrder="21">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box14_1_1" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="255" top="1265" width="23" height="17" compilerOrder="27">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box14_2_0" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="272" top="1265" width="23" height="17" compilerOrder="29">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box14_2_1" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="298" top="1286" width="23" height="17" compilerOrder="23">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box14_3_0" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="315" top="1286" width="23" height="17" compilerOrder="25">
+                <checkBox left="0" top="0" width="23" height="18" field="Check_Box14_3_1" compilerOrder="26"/>
+            </layout>&#xD;
+			
+			
+        </rectangle>
+    </scrollBox>
+</form>

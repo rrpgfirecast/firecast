@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmBoardProps" width="300" height="300" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmBoardProps" width="400" height="490" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="interfaceUtils.xml"/>
@@ -60,23 +60,7 @@
 		local realCellHeight = 1;
 		local offsetCellsW = 1;
 		local offsetCellsH = 1;
-		local exibindoFOW = false;
-		
-		local _maxH = 450;
-		local _minH = 300;
-		local _useHeight;
-		local _, _screenSafeH = System.getScreenSize();
-		_screenSafeH = _screenSafeH - 40;
-				
-		_useHeight = _screenSafeH;
-		
-		if _useHeight < _minH then
-			_useHeight = _minH;
-		elseif _useHeight > _maxH then
-			_useHeight = _maxH;
-		end;
-		
-		self.height = _useHeight;
+		local exibindoFOW = false;		
 		]]>
 	</script>	
 	
@@ -312,11 +296,7 @@
 		self.cmbFogSharing.items = {lang('scene.fogOfWar.options.sharing.individual'),
 									lang('scene.fogOfWar.options.sharing.group')};
 		self.cmbFogSharing.values = {"individual", "group"};									
-		
-		if System.isMobile() then
-			self.placement = "top";
-		end;
-		
+				
 		for i = 1, #metricValues, 1 do
 			metricNames[i] = lang("metric." .. metricValues[i]);
 		end;

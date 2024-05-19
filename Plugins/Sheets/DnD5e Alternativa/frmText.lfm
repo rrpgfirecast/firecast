@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmText" height="30">
+	<button name="edit" align="client" onClick="if sheet.hint ~= nil then showMessage(sheet.hint); end;" wordWrap="true" textTrimming="none"/>
+	<button name="button" align="right" text="✖" width="25" onClick="NDB.deleteNode(sheet);"/>
+	<dataLink field="texto"><event name="onChange"> self.edit:setText(sheet.texto); </event></dataLink>
+	<dataLink field="hint"><event name="onChange"> self.edit:setHint(sheet.hint); </event></dataLink>
+</form>

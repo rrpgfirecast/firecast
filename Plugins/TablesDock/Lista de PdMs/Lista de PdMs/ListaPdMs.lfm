@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMainListaPdMs" formType="tablesDock" dataType="Ambesek.Lista.PdMs" title="@@dock.title" align="client" theme="dark">
+
+    <template name="BarSetting">
+        <edit align="left" width="100" field="$(field)Name"/>
+        <colorComboBox align="left" width="75" field="$(field)Color"/>
+        <edit align="left" width="75" field="$(field)Color"/>
+    </template>
+    <template name="BarDefaults">
+        <dataLink field="$(field)Name" defaultValue="$(text)">
+            <event name="onChange">
+                if sheet==nil then return end
+                local avatares = NDB.getChildNodes(sheet.lista)
+                for i=1, #avatares, 1 do
+                    avatares[i].$(field)Name = sheet.$(field)Name
+                end
+            </event>
+        </dataLink>
+        <dataLink field="$(field)Color" defaultValue="DarkGray">
+            <event name="onChange">
+                if sheet==nil then return end
+                local avatares = NDB.getChildNodes(sheet.lista)
+                for i=1, #avatares, 1 do
+                    avatares[i].$(field)Color = sheet.$(field)Color
+                end
+            </event>
+        </dataLink>
+    </template>
+
+    <template name="TextOptions">
+        <layout align="client" margins="{top=10,bottom=10,left=10,right=10}">
+            <checkBox align="top" height="25" text="@@talemark.title$(text)" field="$(field)Use"/>
+            <layout align="top" height="25">
+                <label align="left" width="100" text="@@talemark.fontColor"/>
+                <rectangle name="$(field)Color" align="client">
+                    <event name="onClick">
+                        local promise = Dialogs.asyncSelectTalemarkColor(sheet.$(field)Color);       
+                        local r, color = pawait(promise);
+
+                        if r then
+                            self["$(popup)"].node.$(field)Color = color
+                            self.$(field)Color.color = sheet.$(field)Color
+                        end; 
+                    </event>
+                </rectangle>
+                <dataLink field="$(field)Color">
+                    <event name="onChange">
+                        if self["$(popup)"].node==nil then return end
+                        self.$(field)Color.color = self["$(popup)"].node.$(field)Color
+                    </event>
+                </dataLink>
+            </layout>
+            <layout align="top" height="25">
+                <label align="left" width="100" text="@@talemark.bgColor"/>
+                <rectangle name="$(field)ColorBG" align="client">
+                    <event name="onClick">
+                        local promise = Dialogs.asyncSelectTalemarkColor(sheet.$(field)ColorBG);
+                        local r, color = pawait(promise);
+
+                        if r then
+                            self["$(popup)"].node.$(field)ColorBG = color
+                            self.$(field)ColorBG.color = sheet.$(field)ColorBG
+                        end; 
+                    </event>
+                </rectangle>
+                <dataLink field="$(field)ColorBG">
+                    <event name="onChange">
+                        if self["$(popup)"].node==nil then return end
+                        self.$(field)ColorBG.color = self["$(popup)"].node.$(field)ColorBG
+                    </event>
+                </dataLink>
+            </layout>
+            <checkBox align="top" height="25" text="@@talemark.bold" field="$(field)Negrito"/>
+            <checkBox align="top" height="25" text="@@talemark.underline" field="$(field)Sublinhado"/>
+            <checkBox align="top" height="25" text="@@talemark.italic" field="$(field)Italico"/>
+            <checkBox align="top" height="25" text="@@talemark.crossed" field="$(field)Tachado"/>
+        </layout>
+    </template>
+
+    <popup name="CreditsPopup" width="415" height="250" backOpacity="0.4" autoScopeNode="false" margins="{top=25,bottom=25,left=25,right=25}">
+            <image left="5" top="5" width="200" height="200" src="images/RPGmeister.jpg" style="stretch" optimize="true" compilerOrder="0"/>
+
+            <layout left="210" top="5" width="200" height="150">
+                <rectangle left="0" top="0" width="200" height="150" color="black" xradius="15" yradius="15" cornerType="round"/>
+                <label left="0" top="10" width="200" height="20" text="@@credits.programmer" horzTextAlign="center"/>
+                <label left="0" top="70" width="200" height="20" text="@@credits.room" horzTextAlign="center"/>
+                <label left="0" top="95" width="200" height="20" text="RPGmeister" horzTextAlign="center"/>
+                <label left="0" top="120" width="200" height="20" text="StarTech" horzTextAlign="center"/>
+            </layout>
+
+            <label left="210" top="160" width="200" height="20" text="@@credits.version" field="versionInstalled"/>
+            <label left="210" top="190" width="200" height="20" text="@@credits.versionCurrent" field="versionDownloaded"/>
+
+            <label left="5" top="215" width="120" height="20" text="@@credits.visit" fontSize="11"/>
+            <button left="125" top="215" width="90" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecast.app/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+            <button left="215" top="215" width="90" text="StarTech" onClick="GUI.openInBrowser('https://my.firecast.app/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=195975');" />
+
+            <button left="305" top="215" width="100" text="@@credits.update" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true')" />
+    </popup>
+
+    <popup name="NotesPopup" align="client" margins="{top=25,bottom=25,left=25,right=25}">
+        <checkBox align="top" height="25" text="@@dialogs.dmOnly" field="dmOnly"/>
+        <richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+    </popup>
+    <popup name="SettingsPopup" width="270" height="145" backOpacity="0.4" autoScopeNode="false">
+        <layout align="top" height="25" margins="{left=5,top=5}">
+            <BarSetting field="bar1"/>
+        </layout>
+        <layout align="top" height="25" margins="{left=5}">
+            <BarSetting field="bar2"/>
+        </layout>
+        <layout align="top" height="25" margins="{left=5}">
+            <BarSetting field="bar3"/>
+        </layout>
+        <layout align="top" height="25" margins="{left=5}">
+            <BarSetting field="bar4"/>
+        </layout>
+        <layout align="top" height="25" margins="{left=5}">
+            <button align="left" text="?" width="25" onClick="GUI.openInBrowser('https://firecast.app/sdk3/StringdecoresnoLuaForm.html')"/>
+            <comboBox align="client" field="sortMode" items="{'Organizar: Nome', 'Organizar: Cor'}" values="{'Nome', 'Cor'}" value="Nome"/>
+        </layout>
+        <event name="onNodeReady">
+
+        </event>
+    </popup>
+    <popup name="BarPopup" width="150" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
+        <rectangle align="client" color="white" xradius="5" yradius="5">
+            <rectangle align="client" name="PopupBarColor" color="#808080" xradius="5" yradius="5" opacity="0.9">
+                <label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="NomeBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>
+                <layout align="client" margins="{top=2, left=4}">
+                    <layout align="top" height="18">
+                        <label fontColor="black" align="left" text="@@bar.current" horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                        <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinha" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+                        <dataLink field="ModificadorBarrinha" defaultValue="igual"/>
+                        <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoAtualBarrinha" name="currentBarValue">
+                            <event name="OnKeyDown">
+                                local oenter = (event.keyCode == 13)
+                                if oenter then
+                                    self.BarPopup:close();
+                                end;
+                            </event>
+                        </edit>
+                    </layout>
+                    <layout align="top" height="18">
+                        <label fontColor="black" align="left" text="@@bar.max" horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                        <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinhaMax" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+                        <dataLink field="ModificadorBarrinhaMax" defaultValue="igual"/>
+                        <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoMaxBarrinha" name="maxBarValue">
+                            <event name="OnKeyDown">
+                                local oenter = (event.keyCode == 13);
+                                if oenter then
+                                    self.BarPopup:close();
+                                end;
+                            </event>
+                        </edit>
+                    </layout>
+                </layout>
+            </rectangle>
+        </rectangle>
+
+        <event name="onNodeReady">
+            local node = self.BarPopup.scopeNode
+            if node == nil then return end
+            
+            local selectedBar = node.selectedBar
+
+            node.NomeBarrinha = node[selectedBar.."Name"]
+            node.ValorMudadoAtualBarrinha = node[selectedBar.."Valor"] or 0
+            node.ValorMudadoMaxBarrinha = node[selectedBar.."ValorMax"] or 0
+        </event>
+        
+        <event name="onClose">
+            setTimeout( function()
+                local node = self.BarPopup.scopeNode
+                if node == nil then return end
+
+                local selectedBar = node.selectedBar
+
+                if (node.ModificadorBarrinha == "igual") then
+                    node["ValorTempAtual"..selectedBar] = tonumber(node.ValorMudadoAtualBarrinha or 0);
+                elseif (node.ModificadorBarrinha == "mais") then
+                    node["ValorTempAtual"..selectedBar] = tonumber(node["ValorTempAtual"..selectedBar] or 0) + tonumber(node.ValorMudadoAtualBarrinha or 0);
+                elseif (node.ModificadorBarrinha == "menos") then
+                    node["ValorTempAtual"..selectedBar] = tonumber(node["ValorTempAtual"..selectedBar] or 0) - tonumber(node.ValorMudadoAtualBarrinha or 0);
+                end;
+                
+                if (node.ModificadorBarrinhaMax == "igual") then
+                    node["ValorTempMax"..selectedBar] = tonumber(node.ValorMudadoMaxBarrinha or 0);
+                elseif (node.ModificadorBarrinhaMax == "mais") then
+                    node["ValorTempMax"..selectedBar] = tonumber(node["ValorTempMax"..selectedBar] or 0) + tonumber(node.ValorMudadoMaxBarrinha or 0);
+                elseif (node.ModificadorBarrinhaMax == "menos") then
+                    node["ValorTempMax"..selectedBar] = tonumber(node["ValorTempMax"..selectedBar] or 0) - tonumber(node.ValorMudadoMaxBarrinha or 0);
+                end;
+                
+                local barrinhapc = 0
+                local barrinhapcmax = 0
+                local porcentagem = 0
+                local porcentagemmax = 0
+
+                barrinhapc = (node["ValorTempAtual"..selectedBar] - (node[selectedBar.."Valor"] or 0));
+                barrinhapcmax = (node["ValorTempMax"..selectedBar] - (node[selectedBar.."ValorMax"] or 0));
+                node[selectedBar.."Valor"] = node["ValorTempAtual"..selectedBar];
+                node[selectedBar.."ValorMax"] = node["ValorTempMax"..selectedBar];
+                
+                if ((barrinhapc ~= 0) or (barrinhapcmax ~= 0)) then
+                    local nome = node[selectedBar .. "Name"] or "Barrinha";
+                    local personagem = node.nome or "personagem";
+                    local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+                    local valor = barrinhapc;
+                    local valormax = barrinhapcmax;
+                    
+                    if tonumber(barrinhapc) >= 0 then
+                        valor = "+" .. tostring(barrinhapc);
+                    end;
+                    if tonumber(barrinhapcmax) >= 0 then
+                        valormax = "+" .. tostring(barrinhapcmax);
+                    end;
+                    
+                    if tonumber(valormax) == 0 then
+                        text = text .. valor;
+                    else
+                        text = text .. valor .. "/" .. valormax;
+                    end;
+                    
+                    local mesa = Firecast.getMesaDe(sheet);
+                    if mesa ~= nil then
+                           mesa.activeChat:enviarMensagem(text);
+                    end;
+                end;
+            end, 100);
+        </event>
+    </popup>
+
+    <popup name="TextDefaultPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="@@talemark.normal" field="normal" popup="TextDefaultPopup"/>
+    </popup>
+    <popup name="TextActionPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="@@talemark.action" field="acao" popup="TextActionPopup"/>
+    </popup>
+    <popup name="TextThoughtPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="@@talemark.thought" field="pensamento" popup="TextThoughtPopup"/>
+    </popup>
+    <popup name="TextSpeechPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="@@talemark.speak" field="fala" popup="TextSpeechPopup"/>
+    </popup>
+    <popup name="TextOffPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="@@talemark.off" field="off" popup="TextOffPopup"/>
+    </popup>
+
+    <script>
+        <![CDATA[
+        local function GetTalemarkBlockStyle(node, text)
+            local style = {}
+
+            style = {}
+            style.color = node[text.."Color"]
+            style.bkgColor = node[text.."ColorBG"]
+            style.bold = node[text.."Negrito"]
+            style.italic = node[text.."Italico"]
+            style.strikeout = node[text.."Tachado"]
+            style.underline = node[text.."Sublinhado"]
+
+            return style
+        end
+
+        local function SendMessage()
+
+            local node = self.messageEditor.node
+            local mesa = Firecast.getMesaDe(node);
+            local chat = mesa.activeChat;
+
+            local params = {}
+            params.talemarkOptions = {}
+            if node.normalUse then
+                params.talemarkOptions.defaultTextStyle = GetTalemarkBlockStyle(node, "normal")
+            end
+            if node.acaoUse then
+                params.talemarkOptions.charActionTextStyle = GetTalemarkBlockStyle(node, "acao")
+            end
+            if node.pensamentoUse then
+                params.talemarkOptions.charQuotedSpeechTextStyle = GetTalemarkBlockStyle(node, "pensamento")
+            end
+            if node.falaUse then
+                params.talemarkOptions.charEmDashSpeechTextStyle = GetTalemarkBlockStyle(node, "fala")
+            end
+            if node.offUse then
+                params.talemarkOptions.outOfCharTextStyle = GetTalemarkBlockStyle(node, "off")
+            end
+
+                                    
+            local textoCompleto = self.TextoMensagem.text;
+            for linha in textoCompleto:gmatch("[^\13\10]+") do
+                if (tonumber(node.ShowNome) == 1) then
+                    chat:enviarNarracao(linha);
+                    node.TextoMensagem = ""
+                elseif (tonumber(node.ShowNome) == 2) then
+                    if node.avatar ~= nil then
+                        params.impersonation = {}
+                        params.impersonation.mode = "character"
+                        params.impersonation.avatar = node.avatar
+
+                        chat:asyncSendStd(linha, params);
+
+                        node.TextoMensagem = ""
+                    else
+                        showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
+                    end;
+                elseif (tonumber(node.ShowNome) == 3) then
+                    if node.nome ~= nil then
+                        params.impersonation = {}
+                        params.impersonation.mode = "character"
+                        params.impersonation.name = node.nome
+
+                        chat:asyncSendStd(linha, params);
+
+                        node.TextoMensagem = ""
+                    else
+                        showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
+                    end;
+                elseif (tonumber(node.ShowNome) == 4) then
+                    if node.avatar ~= nil then
+                        if node.nome ~= nil then
+                            
+                            params.impersonation = {}
+                            params.impersonation.mode = "character"
+                            params.impersonation.avatar = node.avatar
+                            params.impersonation.name = node.nome
+
+                            chat:asyncSendStd(linha, params);
+                            
+                            node.TextoMensagem = ""
+                        else
+                            showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
+                        end;
+                    else
+                        showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
+                    end;
+                else
+                    chat:enviarMensagem(linha);
+                    node.TextoMensagem = ""
+                end;
+            end;
+        end
+
+        local function ShowPopup(popup, sheet)
+            local pop = self:findControlByName(popup);
+            if pop~= nil then
+                pop.scopeNode = sheet
+                pop:show("center", self)
+            end;
+        end
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+        
+        local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+
+        local function tryTranslate(text)
+            local trans = Locale.tryLang(text);
+            if trans == nil then trans = text end;
+            return trans;
+        end
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        ]]> 
+    </script>
+    <scrollBox align="client">
+        <layout align="top" height="25" margins="{top=5,right=5,left=5}">
+            <button align="left" text="👤" width="25" hint="@@hint.avatar">
+                <event name="onClick">
+                    local avatar = self.lista:append()
+                    if avatar~= nil then
+                        avatar.bar1Name = sheet.bar1Name
+                        avatar.bar1Color = sheet.bar1Color
+                        avatar.bar2Name = sheet.bar2Name
+                        avatar.bar2Color = sheet.bar2Color
+                        avatar.bar3Name = sheet.bar3Name
+                        avatar.bar3Color = sheet.bar3Color
+                        avatar.bar4Name = sheet.bar4Name
+                        avatar.bar4Color = sheet.bar4Color
+                    end
+                </event>
+            </button>
+            <button align="left" text="⚙️" width="25" hint="@@hint.options">
+                <event name="onClick">
+                    local pop = self:findControlByName("SettingsPopup");
+                    if pop~= nil then
+                        pop.scopeNode = sheet
+                        pop:show("center", self)
+                    end;
+                </event>
+            </button>
+            <button align="left" text="🔄" width="25" onClick="self.lista:sort();self.listaOculta:sort()" hint="@@hint.sort"/>
+            <button align="left" text="🙈" width="25" name="listaBT" hint="@@hint.alt">
+                                <script>
+                    <![CDATA[
+                    local pics = {  "🙈",
+                                    "🙉"};
+                    ]]>
+                </script>
+
+                <event name="onClick"><![CDATA[
+                    if sheet.listaCounter == nil then
+                        sheet.listaCounter = 0;
+                    end;
+                    -- Contador que vai de 0 a N e reseta ao passar de N
+                    sheet.listaCounter = (sheet.listaCounter + 1) % #pics
+                    ]]>
+                </event>
+            </button>
+            <button align="left" text="❌" width="25" onClick="Firecast.getMesaDe(self).activeChat:setImpersonation({});Firecast.getMesaDe(self).activeChat.talemarkOptions=nil;" hint="@@hint.removeImp"/>
+            <button align="left" text="ℹ️" width="25" hint="@@hint.credits">
+                <event name="onClick">
+                    local pop = self:findControlByName("CreditsPopup");
+                    if pop~= nil then
+                        pop.scopeNode = sheet
+                        pop:show("center", self)
+                    end;
+                </event>
+            </button>
+            <dataLink field="listaCounter">
+                <event name="onChange">
+                    self.listaBT.text = pics[sheet.listaCounter +1]
+
+                    if sheet.listaCounter==1 then
+                        self.listaPdMPublica.visible = false
+                        self.listaPdMOculta.visible = true
+                    else
+                        self.listaPdMPublica.visible = true
+                        self.listaPdMOculta.visible = false
+                    end
+
+                    self.lista:sort()
+                    self.listaOculta:sort()
+                </event>
+            </dataLink>
+
+        </layout>
+        <layout align="client" visible="true" name="listaPdMPublica">
+            <recordList align="client" name="lista" field="lista" templateForm="frmAvatar" layout="horizontalTiles">
+                <event name="onCompare"><![CDATA[
+                    if sheet.sortMode=="Cor" then
+                        local diff = ((tonumber(nodeA.attitudeCounter) or 0)-(tonumber(nodeB.attitudeCounter) or 0))
+                        if diff~= 0 then
+                            return diff
+                        end
+                    end
+                    
+                    return Utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+                    
+                    ]]>
+                </event>
+            </recordList>
+            <dataLink field="sort">
+                <event name="onChange"> 
+                    if sheet==nil then return end
+                    if sheet.sort then
+                        sheet.sort = false
+                        self.lista:sort()
+                    end
+                </event>
+            </dataLink>
+            <BarDefaults field="bar1" text="@@bar.dName 1"/>
+            <BarDefaults field="bar2" text="@@bar.dName 2"/>
+            <BarDefaults field="bar3" text="@@bar.dName 3"/>
+            <BarDefaults field="bar4" text="@@bar.dName 4"/>
+        </layout>
+        <layout align="client" visible="false" name="listaPdMOculta">
+            <recordList align="client" name="listaOculta" field="listaOculta" templateForm="frmAvatarOculto" layout="horizontalTiles">
+                <event name="onCompare"><![CDATA[
+                    return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);            
+                    ]]>
+                </event>
+            </recordList>
+        </layout>
+        <layout align="bottom" height="220" name="messageLayout" visible="false">
+            <dataScopeBox align="client" name="messageEditor">
+                <layout align="top" height="128" margins="{top=4}">
+                    <layout align="top" height="18" margins="{left=8}">
+                        <label align="left" fontSize="12" fontStyle="bold" autoSize="true" text="@@msg.title"/>
+                        <comboBox align="left" field="ShowNome" fontColor="white" fontSize="12" items="{'Texto', 'Narração', 'Avatar', 'Mostrar Nome', 'Nome e Avatar'}" values="{'0', '1', '2', '3', '4'}" text="@@msg.txt" width="118" vertTextAlign="trailing" margins="{left=10}"/>
+
+                        <button align="right" width="25" text="X" margins="{bottom=0,right=0}">
+                            <event name="onClick">
+                                self.messageEditor.node = nil
+                                self.messageLayout.visible = false
+                            </event>
+                        </button>
+                    </layout>
+                    
+                    <textEditor align="client" fontSize="12" name="TextoMensagem" field="TextoMensagem" margins="{left=4, right=4, top=4, bottom=4}">
+                        <event name="onKeyDown">
+                            if event.ctrlKey and event.keyCode==13 then
+                                event.keyCode = 0
+                                event.key = ""
+                                SendMessage()
+                            end
+                        </event>
+                    </textEditor>
+                    
+                    <layout align="bottom" height="20" margins="{bottom=4, top=4}">
+                        <label align="left" width="100" fontSize="12" text="@@msg.format" fontStyle="bold" margins="{left=8}" />
+                        <button align="right" width="48" text="@@msg.enter" margins="{right=2}">
+                            <event name="onClick">
+                                self.messageEditor.node.TextoMensagem = (self.messageEditor.node.TextoMensagem or "") .. "\13\10";
+                            </event>
+                        </button>
+                        <button align="right" width="60" text="@@msg.clear" margins="{right=4}">
+                            <event name="onClick">
+                                self.messageEditor.node.TextoMensagem = ""
+                            </event>
+                        </button>
+                        <layout align="right" width="132">
+                            <label left="0" fontColor="white" fontSize="12" autoSize="true" text="@@msg.color"/>
+                            <comboBox left="70" height="20" name="CorN" field="CorN" margins="{left=8}" width="48" fontColor="white" items="{' ', '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" values="{'0', '01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" value="0">
+                            </comboBox>
+                        </layout>
+                        
+                        <dataLink field="CorN" defaultValue="0">
+                            <event name="onChange">
+                                if not ((self.messageEditor.node.CorN == 0) or (self.CorN.value == "0")) then
+                                    local cor = "[§K" .. self.CorN.text .. "]";
+                                    if (cor ~= "[§K ]" and not inserindo) then
+                                        inserindo = true
+                                        self.messageEditor.node.TextoMensagem = (self.messageEditor.node.TextoMensagem or "") .. cor;
+                                    end;
+                                    
+                                    self.CorN.value = "0";
+                                    setTimeout(function()
+                                        inserindo = false;
+                                    end, 100);
+                                end;
+                            </event>
+                        </dataLink>
+                        
+                        <button align="right" width="20" fontStyle="bold" text="B" margins="{right=2}">
+                            <event name="onClick">
+                                self.messageEditor.node.TextoMensagem = (self.messageEditor.node.TextoMensagem or "") .. "[§B]";
+                            </event>
+                        </button>
+                        <button align="right" width="20" fontStyle="italic" text="I" margins="{right=2}">
+                            <event name="onClick">
+                                self.messageEditor.node.TextoMensagem = (self.messageEditor.node.TextoMensagem or "") .. "[§T]";
+                            </event>
+                        </button>
+                        <button align="right" width="20" fontStyle="underline" text="U" margins="{right=2}">
+                            <event name="onClick">
+                                self.messageEditor.node.TextoMensagem = (self.messageEditor.node.TextoMensagem or "") .. "[§U]";
+                            </event>
+                        </button>
+                        <button align="right" width="20" fontStyle="strikeout" text="S" margins="{right=2}">
+                            <event name="onClick">
+                                self.messageEditor.node.TextoMensagem = (self.messageEditor.node.TextoMensagem or "") .. "[§S]";
+                            </event>
+                        </button>
+                    </layout>
+                    <layout align="bottom" height="20" margins="{left=8}">
+                        <button align="left" width="85" text="@@talemark.normal" onClick="ShowPopup('TextDefaultPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="@@talemark.action" onClick="ShowPopup('TextActionPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="@@talemark.thought" onClick="ShowPopup('TextThoughtPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="@@talemark.speak" onClick="ShowPopup('TextSpeechPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="@@talemark.off" onClick="ShowPopup('TextOffPopup', self.messageEditor.node)"/>
+                    </layout>
+                </layout>
+                <layout align="bottom" height="60" margins="{top=4}">
+                    <layout align="left" width="80" margins="{left=4}">
+                        <label align="top" height="18" fontSize="12" margins="{left=8}" text="@@msg.roll"/>
+                        <edit align="top" height="22" fontSize="12" margins="{left=4, right=4, top=4, bottom=4}" field="TextoRolagem"/>
+                    </layout>
+                    <layout align="left" width="180" margins="{left=4}">
+                        <label align="top" height="18" fontSize="12" margins="{left=8}" text="@@msg.rollName"/>
+                        <edit align="top" height="22" fontSize="12" margins="{left=4, right=4, top=4, bottom=4}" field="NomeRolagem"/>
+                    </layout>
+                    <layout align="client" margins="{left=4, right=4}">
+                        <button align="top" height="22" fontSize="12" margins="{left=4, right=4}" text="@@msg.send" onClick="SendMessage()"/>
+                        
+                        <button align="top" height="22" fontSize="12" margins="{top=4, left=4, right=4}" text="@@msg.rollSend">
+                            <event name="onClick">
+                                local text = ""
+                                if self.messageEditor.node.NomeRolagem ~= nil then
+                                    text = self.messageEditor.node.NomeRolagem .. " - " .. (self.messageEditor.node.nome or "nome");
+                                end
+                
+                                local rolando = Firecast.interpretarRolagem(self.messageEditor.node.TextoRolagem); 
+                                
+                                if not rolando.possuiAlgumDado then
+                                    rolando = Firecast.interpretarRolagem("1d20"):concatenar(rolando);
+                                end; 
+                                
+                                local mesa = Firecast.getMesaDe(self.messageEditor.node);
+
+                                if mesa ~= nil then
+                                    mesa.activeChat:rolarDados(rolando, text);
+                                end;
+                            </event>
+                        </button>
+                    </layout>
+                </layout>
+            </dataScopeBox>
+        </layout>
+    </scrollBox>
+    <event name="onNodeReady">
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO ATUAL: " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "SUA VERSÃO: " .. installed[i].version;
+                    end;
+                end;
+
+                rawset(sheet, "stream", stream);
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose(tryTranslate("newVersion"),{tryTranslate("yes"), tryTranslate("no"), tryTranslate("dontAsk")},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                local install = Firecast.Plugins.installPlugin(rawget(sheet,"stream"), true);
+                                if install==false then
+                                    GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true');
+                                end;
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+</form>

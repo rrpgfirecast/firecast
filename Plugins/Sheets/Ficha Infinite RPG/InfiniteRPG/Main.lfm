@@ -64,9 +64,6 @@
         <tab title="Atributos">
             <import file="Attributes.xml"/>
         </tab>
-        <tab title="Pericias">
-            <import file="Skills.xml"/>
-        </tab>
         <tab title="Vantagens">
             <import file="Advantages.xml"/>
         </tab>

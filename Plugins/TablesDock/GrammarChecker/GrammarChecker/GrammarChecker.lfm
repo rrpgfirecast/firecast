@@ -540,7 +540,7 @@
         init();
     </event>
     <event name="onNodeReady">
-        Internet.download("raw_download_link",
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/GrammarChecker/output/GrammarChecker.rpk?raw=true",
             function(stream, contentType)
                 local info = Firecast.Plugins.getRPKDetails(stream);
                 updaterSheet.versionDownloaded = tryTranslate("available")..": " .. info.version;
@@ -563,7 +563,7 @@
                             if selected and selectedIndex == 1 then
                                 local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
                                 if install==false then
-                                    GUI.openInBrowser('raw_download_link');
+                                    GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/GrammarChecker/output/GrammarChecker.rpk?raw=true');
                                 end;
                             elseif selected and selectedIndex == 3 then
                                 updaterSheet.noUpdate = true;

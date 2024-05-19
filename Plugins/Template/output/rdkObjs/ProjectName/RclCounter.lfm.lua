@@ -111,7 +111,7 @@ local function constructNew_frmRclCounter()
     obj.rclName:setLayout("vertical");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             -- Aumenta um contador enquanto adiciona um objeto
             					if sheet~=nil then
             						local objetos = NDB.getChildNodes(sheet.listaDe);
@@ -133,7 +133,7 @@ local function constructNew_frmRclCounter()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (_, event)
             -- Aumenta um contador enquanto adiciona um objeto
             					if sheet~=nil then
             						local objetos = NDB.getChildNodes(sheet.listaDe);
@@ -175,16 +175,16 @@ local function constructNew_frmRclCounter()
           self:setNodeDatabase(nil);
         end;
 
-        if self.rclName ~= nil then self.rclName:destroy(); self.rclName = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
-        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.rclName ~= nil then self.rclName:destroy(); self.rclName = nil; end;
+        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

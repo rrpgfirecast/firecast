@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmAbilities" align="client">
-	<popup name="popAbility" width="400" height="440" backOpacity="0.4" autoScopeNode="false">
+	<popup name="popAbility" width="600" height="600" backOpacity="0.4" autoScopeNode="false">
 		<layout align="top" height="25">
 			<label align="left" width="50" text="Nome" horzTextAlign="center"/>
-			<edit align="left" width="200" field="nome"/>
-			<label align="left" width="50" text="Nível" horzTextAlign="center"/>
-			<edit align="left" width="50" field="nivel"/>
-			<button align="left" width="25" text="X" margins="{left=5}">
-				<event name="onClick">
-					Dialogs.confirmYesNo("Deseja realmente apagar?",
-										function (confirmado)
-											if confirmado then
-												NDB.deleteNode(self.popAbility.node);
-												self.popAbility:close();
-											end;
-										end);
-				</event>
-			</button>
+			<edit align="client" width="200" field="nome"/>
+			<layout align="right" width="125">
+				<label align="left" width="50" text="Nível" horzTextAlign="center"/>
+				<edit align="client" width="50" field="nivel"/>
+				<button align="right" width="25" text="X" margins="{left=5}">
+					<event name="onClick">
+						Dialogs.confirmYesNo("Deseja realmente apagar?",
+											function (confirmado)
+												if confirmado then
+													NDB.deleteNode(self.popAbility.node);
+													self.popAbility:close();
+												end;
+											end);
+					</event>
+				</button>
+			</layout>
 		</layout>
 		<layout align="top" height="200" margins="{top=5}">
 			<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
@@ -37,13 +39,13 @@
 					<LabelEditVert text="Custo" field="custo"/>
 				</layout>
 				<layout align="top" height="100" margins="{top=0, bottom=0}">
-					<LabelTextEditVert text="Efeito/Dano" field="efeito"/>
+					<LabelTextEditVert text="Descrição" field="descricao"/>
 				</layout>
 			</layout>
 
 		</layout>
-		<layout align="top" height="200" margins="{top=0, bottom=5}">
-			<LabelTextEditVert text="Descrição" field="descricao"/>
+		<layout align="client" height="200" margins="{top=0, bottom=5}">
+			<LabelTextEditVert text="Efeito/Dano" field="efeito"/>
 		</layout>
 	</popup>
 	<scrollBox align="client">

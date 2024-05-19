@@ -394,7 +394,7 @@
 		
 		local function setDraggerRecursivo(ctrl, dragger)
 			if ctrl ~= self.rctVez then				
-				ctrl.onStartDrag = dragger;
+				--ctrl.onStartDrag = dragger;
 			end;
 			
 			local childs = ctrl:getChildren();

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<flowLayout g="col" g-width="12" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" name="magicList4" visible="false" padding="{left=5,right=5,top=5,bottom=5}" avoidScale="false">
+	<essenceListFlow num="1"/>
+	<essenceListFlow num="2"/>
+	<essenceListFlow num="3"/>
+	<essenceListFlow num="4"/>
+	<essenceListFlow num="5"/>
+	<essenceListFlow num="6"/>
+	<essenceListFlow num="7"/>
+	<essenceListFlow num="8"/>
+	<essenceListFlow num="9"/>
+</flowLayout>
