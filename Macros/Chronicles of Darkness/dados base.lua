@@ -61,7 +61,7 @@ else
       		  if op.tipo == "dado" then
          		       for j = 1, #op.resultados, 1 do
             		            aux[#aux + 1] = op.resultados[j];
-									if op.resultados[j] > 8 then
+									if op.resultados[j] > 7 then
 										sucessos = sucessos + 1;
 									end;
 									if op.resultados[j] == 10 then
