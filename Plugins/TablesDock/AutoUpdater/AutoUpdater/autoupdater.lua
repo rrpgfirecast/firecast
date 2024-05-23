@@ -2,6 +2,7 @@ require("rrpg.lua");
 require("vhd.lua");
 require("utils.lua");
 require("async.lua");
+require("plugins.lua");
 local Internet = require("internet.lua");
 local Locale = require("locale.lua");
 local NDB = require("ndb.lua");
@@ -29,10 +30,44 @@ function dump(o)
 end
         
 local function write(str, chat)	
+	if chat == nil then 
+		-- showMessage(str) 
+		return
+	end
     if str then
         chat:escrever(str);
     else
         chat:escrever("String nula");
+    end;
+end;
+
+local function isNewVersion(installed, downloaded)
+    local installedVersion = {};
+    local installedIndex = 0;
+    for i in string.gmatch(installed, "[^%.]+") do
+        installedIndex = installedIndex +1;
+        installedVersion[installedIndex] = i;
+    end
+
+    local downloadedVersion = {};
+    local downloadedIndex = 0;
+    for i in string.gmatch(downloaded, "[^%.]+") do
+        downloadedIndex = downloadedIndex +1;
+        downloadedVersion[downloadedIndex] = i;
+    end
+
+    for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+        if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+            return false;
+        elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+            return true;
+        end;
+    end;
+
+    if downloadedIndex > installedIndex then
+        return true;
+    else
+        return false;
     end;
 end;
 
@@ -43,7 +78,7 @@ local function tryTranslate(text)
 end
 
 local function downloadID(url, id, chat)
-	local install = true;
+	local install
 	Internet.download(url,
         function(stream, contentType)
         	if stream ~= nil then
@@ -299,3 +334,21 @@ Firecast.Messaging.listen("ListChatCommands",
 				message.response = {{comando="/autoupdater", descricao=tryTranslate("help.desc")},
 									{comando="/autoupdater <id|nome>", descricao=tryTranslate("help.download")}};
 		end);
+
+-- Automatically Update
+
+local installed = Firecast.Plugins.getInstalledPlugins()
+local promise = Async.execute(loadPluginsXMLAsNode)
+promise:thenDo(
+	function(node)
+		local available = NDB.getChildNodes(node)
+
+		for i=1, #installed, 1 do
+			for j=1, #available, 1 do
+				if installed[i].moduleId == available[j].id and isNewVersion(installed[i].version, available[j].version) then 
+					downloadID(available[j].url, available[j].id, nil)
+					break
+				end
+			end
+		end
+	end)
