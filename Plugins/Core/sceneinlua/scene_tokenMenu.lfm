@@ -677,9 +677,6 @@
 		                    									-- draw condition after drawing token
 		                    									iterationOpGrafica.outOfOrderMode = "afterOwnerLayer"
 
-		                    									-- draw condition only when hovering or selected
-		                    									iterationOpGrafica.drawingTrigger = {"hover", "selected"}
-
 		                    									-- define condition position
 		                    									if i == 31 then
 		                    										-- dead token occupy the whole token
@@ -695,6 +692,9 @@
 												            		iterationOpGrafica.y = math.floor((iterationUmToken.userData.CondtNum-1)/3)*0.4 + 1.4
 												            		iterationOpGrafica.width = 0.4
 												            		iterationOpGrafica.height = 0.4
+
+												            		-- draw condition only when hovering or selected
+												            		iterationOpGrafica.drawingTrigger = {"hover", "selected"}
 												            	end
 												            	-- render on the 10th upper layer
 												            	iterationOpGrafica.z = 10
