@@ -473,7 +473,13 @@ function ndb.createChildNode(nodeObj, childName)
 	local node = localNDB.getNodeObjectFromFacade(nodeObj);
 	
 	if node ~= nil then
-		return node:addChild(childName):getFacade();
+		local childNode = node:addChild(childName); 
+
+		if childNode ~= nil then
+			return childNode:getFacade();
+		else
+			return nil;
+		end;
 	else
 		return nil;
 	end;

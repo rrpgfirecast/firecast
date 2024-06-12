@@ -24,6 +24,11 @@ end;
 
 function MOVHIST_AddTrackHistory(token, track)
 	local userData = token.userData;
+
+	if type(userData) ~= "table" then
+		return nil;
+	end;
+
 	local novoHistoryNode = nil;
 	NDB.beginUpdate(userData);
 	
@@ -31,20 +36,24 @@ function MOVHIST_AddTrackHistory(token, track)
 		function()
 			local movHist = userData.movHist;
 			
-			if type(movHist) ~= "table"  then
+			if type(movHist) ~= "table" then
 				userData.movHist = {};
 				movHist = userData.movHist;	
 			end;
 				
 			if movHist ~= nil then				
 				novoHistoryNode = NDB.createChildNode(movHist, "h");
-				local trackTable = track:save();
-				
-				for k2, v2 in pairs(trackTable) do
-					novoHistoryNode[k2] = v2;
+
+				if novoHistoryNode ~= nil then
+					local trackTable = track:save();
+					
+					for k2, v2 in pairs(trackTable) do
+						novoHistoryNode[k2] = v2;
+					end;
+					
+					novoHistoryNode.date = NDB.getServerUTCTime(userData);	
 				end;
 				
-				novoHistoryNode.date = NDB.getServerUTCTime(userData);	
 				removerExcessoMovHist(movHist);	
 			end;
 		end,
