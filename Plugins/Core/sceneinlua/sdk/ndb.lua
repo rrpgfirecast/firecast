@@ -473,7 +473,13 @@ function ndb.createChildNode(nodeObj, childName)
 	local node = localNDB.getNodeObjectFromFacade(nodeObj);
 	
 	if node ~= nil then
-		return node:addChild(childName):getFacade();
+		local childNode = node:addChild(childName); 
+
+		if childNode ~= nil then
+			return childNode:getFacade();
+		else
+			return nil;
+		end;
 	else
 		return nil;
 	end;
@@ -917,7 +923,7 @@ function pairs(obj)
 end;
 
 function ipairs(obj)
-	if rawget(obj, "__nodeFacadeFlag") then
+	if (obj ~= nil) and rawget(obj, "__nodeFacadeFlag") then
 		-- Node Façade		
 		local state = _prepareNodeFacadePairsState(obj);			
 		return oldIPairsFunc(state);
