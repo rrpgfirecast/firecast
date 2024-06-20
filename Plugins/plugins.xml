@@ -496,7 +496,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="13062024121128" compilationDigest="ee60a52d7096f56181f34eadd8717534eecf2d4f">
+    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="20062024140914" compilationDigest="d63ec4980e4faa4a9e1f697050a93f7f5525cd69">
         <info lang="en" name="Scene 3 Core" description="Plug-in that has basic features for the combat grid, also known as Scene 3"/>
         <info lang="pt" name="Núcleo do Scene 3" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" author="Firecast - AlyssonRPG" site="http://www.rrpg.com.br"/>
     </element>
@@ -1014,7 +1014,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="RRPG.FIRECAST.FMXModule" name="Firecast" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/rrpginlua/output/rrpginlua.rpk?raw=true" fileName="rrpginlua.rpk" repositoryPath="Core/rrpginlua/" author="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." version="1.0" compilationDate="16052024134038" compilationDigest="372dffe85c258c2b5460e6e193f3e99209c13f11">
+    <element id="RRPG.FIRECAST.FMXModule" name="Firecast" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/rrpginlua/output/rrpginlua.rpk?raw=true" fileName="rrpginlua.rpk" repositoryPath="Core/rrpginlua/" author="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." version="1.0" compilationDate="20062024140301" compilationDigest="c235020c2a4101f47b268a926f217388d06443ec">
         <info lang="pt" name="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." author="Firecast" site="http://www.rrpg.com.br"/>
         <info lang="en" description="Contains standard Firecast features. Is not possible to uninstall this plug-in."/>
         <dataTypes>
