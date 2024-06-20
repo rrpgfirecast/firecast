@@ -416,7 +416,7 @@ function nav.newFDNavigatorLayout()
 					ndb.beginUpdate(sheet);
 					
 					tryFinally(
-						function ()		
+						function()		
 							if ctrl.filter ~= nil then
 								local filteredItens = {};
 								

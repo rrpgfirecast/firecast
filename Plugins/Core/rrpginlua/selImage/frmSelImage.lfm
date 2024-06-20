@@ -143,8 +143,7 @@
 	
 	<script>	
 		if self.navigator ~= nil then
-			self.navigator.filter = {"image/.+", "video/.+"};
-			self.navigator:gotoDir('/');
+			self.navigator.filter = {"image/.+", "video/.+"};			
 			self.navigator.align = "client";
 			self.navigator.parent = self.fireDriveNavigatorContent;		
 			

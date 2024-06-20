@@ -20,7 +20,6 @@
 					self.navigator = require("/firedrive/firedriveNavigator.dlua").newFDNavigatorLayout();				
 				end;
 				
-				self.navigator:gotoDir('/');
 				self.navigator.align = "client";			
 				self.navigator.parent = self.layCentro;					
 			else	

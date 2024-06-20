@@ -33,7 +33,6 @@
 	
 	<script>
 		if self.navigator ~= nil then
-			self.navigator:gotoDir('/');
 			self.navigator.align = "client";			
 			self.navigator.parent = self.layCentro;		
 		else
