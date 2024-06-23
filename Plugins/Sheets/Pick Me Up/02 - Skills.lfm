@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEstiloDaLista" g="col" g-width="12" height="55" theme="dark"> 
+
+	
+		
+		<button g="col" g-width="12" height="36"> 
+			<event name="onClick">
+				<![CDATA[
+	    		local pop = self:findControlByName("boxDetalhesDasEstilo");
+				
+				if pop ~= nil then
+					pop:setNodeObject(sheet);
+				
+				else
+					showMessage("Ops, bug.. nao encontrei o popup para exibir");
+				end;
+				]]>
+				
+			</event>
+		<rectangle color="#150e16" strokeSize="1" strokeColor="white" 	g="col" g-width="12" cornerType="round" xradius="5" yradius="5" >
+		 <!-- O título do item que aparece na lista -->
+		<edit 	g="col" g-width="8" horzTextAlign="center" vertTextAlign="center" fontSize="18" field="nomeskill" fontFamily="Wishes Script Caps Display" 	transparent="true"	height="50"	margins="{top=3,bottom=3,left=3}"/>
+		
+		<rectangle color="#150e16" strokeSize="1" strokeColor="white" 	g="col" g-width="3" cornerType="round" xradius="5" yradius="5" margins="{top=3,bottom=3}" height="42">
+		<label 	g="col" g-width="12" horzTextAlign="center" vertTextAlign="center" fontSize="13" text="Mod:" fontFamily="Cinzel" 			height="15"	margins="{top=3}" />
+		<edit 	g="col" g-width="12" horzTextAlign="center" vertTextAlign="center" fontSize="18" field="modatual" fontFamily="Cinzel" 	transparent="true"	height="25"	margins="{bottom=3}"/>
+		</rectangle>
+	
+		<!-- Botão para apagar o item da lista -->
+		
+        <button g="col" g-width="1"  text="X" onClick="NDB.deleteNode(sheet);"	margins="{top=3,bottom=3,right=3}"/>    				
+	
+		</rectangle>
+		</button>
+		
+       
+</form>
