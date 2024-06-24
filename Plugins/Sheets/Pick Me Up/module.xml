@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7" originalPluginFileName="Pick Me Up.rpk" compilationDate="22042024025507" sdkApiVersion="88" sdkMinorApiVersion="1" compilationDigest="c5772a8a361b87c63afaa85b95765629c8526ba7" compilationUniqueID="6625d18bd9bad0ba0001906d">
+    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
+    <id>Pick_Me_Up_Tibs</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>1.2</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Pick Me Up Infinite Gacha</name>
+        <description>Plugin de ficha para sistema baseado no Manhwa Pick Me Up Infinite Gacha </description>
+        <author>Tibs</author>
+        <site>nenhum</site>
+        <contact>Discord -&gt; @tibsss</contact>
+    </info>
+    
+    
+    
+    
+    
+    
+    
+    <dataTypes>
+        <dataType title="Pick Me Up Infinite Gacha - Ficha" name="frmficha" lfmFile="01 - perfil.lfm">Ficha.Pick.Me.Up</dataType>
+        <dataType title="Pick Me Up Infinite Gacha - Ficha" name="frmficha" lfmFile="01 - perfil.lfm">Ficha.Pick.Me.Up</dataType>
+    </dataTypes>
+    
+    <name>Pick Me Up Infinite Gacha</name>
+    <description>Plugin de ficha para sistema baseado no Manhwa Pick Me Up Infinite Gacha</description>
+    <author>Tibs</author>
+    <site>nenhum</site>
+    <contact>Discord -&gt; @tibsss</contact>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="Ficha.Pick.Me.Up" formType="sheetTemplate" lfmFile="01 - perfil.lfm" formName="frmficha">
+                <info title="Pick Me Up Infinite Gacha - Ficha"/>
+            </dataType>
+        </dataTypes>
+        <fontFiles>
+            <fontFile family="Cinzel" weight="regular" style="normal" stretch="normal" path="/Cinzel-Regular.otf"/>
+            <fontFile family="BankGothic Lt BT" weight="light" style="normal" stretch="normal" path="/TT0589M_.TTF"/>
+            <fontFile family="BankGothic Md BT" weight="regular" style="normal" stretch="normal" path="/TT0590M_.TTF"/>
+            <fontFile family="Wishes Script Caps Display" weight="regular" style="normal" stretch="normal" path="/wishes-script-caps-display.otf"/>
+        </fontFiles>
+    </assembledFeatures>
+</module>

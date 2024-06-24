@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmficha" formType="sheetTemplate" dataType="Ficha.Pick.Me.Up" title="Pick Me Up Infinite Gacha - Ficha" align="client" theme="dark">
+
+<rectangle 	align="client"	color="black"  >
+	<image g="col" g-width="12" style="proportional" height="85"  src="http://blob.firecast.com.br/blobs/FCMWSWEU_3185381/Novo_Projeto__3_.png"/>
+</rectangle>
+
+<tabControl align="client" margins="{top=60}">
+
+	<tab title="Perfil">
+	<rectangle 	align="client" 	color="black" />
+	<scrollBox align="client">      
+		
+	
+    
+         <flowLayout align="top" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080" g-cnt-gutter="5" autoHeight="true" orientation="horizontal" maxControlsPerLine="3" horzAlign="leading" margins="{left=20, top=20, bottom=20, right=20}" >
+
+			<flowPart width="360" height="550" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080"> <!--Perfil-->
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+					
+					<label	height="25"	text="Perfil" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=15}"/>
+					
+					<image  field="personagem"  editable="true" animate="true" style="proportional" g="col" g-width="12" height="330" margins="{left=10, top=5, right=10}"/>
+					<dataLink field="personagem" defaultValue="https://images.vexels.com/media/users/3/220516/isolated/preview/7e7c120c190ae032e068975586d25279-silhueta-de-soldado-guerreiro-medieval.png">
+					<event name="onChange">
+					if sheet.personagem == nil then sheet.personagem = "https://images.vexels.com/media/users/3/220516/isolated/preview/7e7c120c190ae032e068975586d25279-silhueta-de-soldado-guerreiro-medieval.png";
+					end;
+					</event>
+					</dataLink>
+					
+					<label		height="15" text="Nome :" 		fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<edit	height="40" field="nome"		fontSize="30" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" vertTextAlign="leading" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25" text="Estrelas :" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5}">
+						<comboBox field="estrela"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="25"   items="{'1', '2', '3', '4', '5', '6', '7'}" margins="{left=3,right=3}">
+						<label	height="25"	text="☆"					fontSize="16" g="col" g-width="11" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" vertTextAlign="leading" margins="{right=7}"	/>
+						</comboBox>
+						<dataLink fields="{'estrela'}" defaultValues="{'1'}"/>
+					</rectangle>
+					<label		height="25" fontSize="15" g="col" g-width="2" />
+					
+					<label		height="25"	text="Nivel :" 		fontSize="18" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit		height="30"	field="nv"			fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					<dataLink fields="{'nv'}" defaultValues="{'1'}"/>
+					</rectangle>
+					
+					<label		height="25"	text="Classe :" 		fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5}">
+						<edit		height="30"	field="classe"		fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+					<dataLink fields="{'classe'}" defaultValues="{'Novato'}"/>
+					</rectangle>
+		
+					<label		height="25"	text="XP :" 			fontSize="18" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=5}"/>
+					<rectangle g="col" g-width="4" height="25" strokeSize="1" strokeColor="white" margins="{top=5,right=10}" g-cnt-gutter="0" color="none" cornerType="round" xradius="5" yradius="5">
+						<edit	height="30"	field="xp"			fontSize="25" g="col" g-width="5" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+						<edit	height="25"	text="/"			fontSize="30" g="col" g-width="2" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" readOnly="true"/>
+						<edit	height="30"	field="xpmax"		fontSize="25" g="col" g-width="5" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+							<dataLink	fields="{'nv', 'estrelasoriginais','xpmax'}">
+								<event name="onChange">
+									sheet.o1a2 = (math.floor((sheet.nv)-10) * 5);
+									sheet.o1a3 = (math.floor((sheet.nv)-20) * 5);
+									
+									if 		sheet.o1a2 &lt; 0 then sheet.o1a2 = 0;
+									end;
+									if 		sheet.o1a3 &lt; 0 then sheet.o1a3 = 0;
+									end;
+									if 		sheet.estrelasoriginais == "1" then
+											sheet.xpmax = math.floor((sheet.nv) * 10) + (sheet.o1a2) + (sheet.o1a3);	
+									end;
+									
+									
+									sheet.o2a3 = (math.floor((sheet.nv)-20) * 5);
+									
+									if 		sheet.o2a3 &lt; 0 then sheet.o2a3 = 0;
+									end;
+									if 		sheet.estrelasoriginais == "2" then
+											sheet.xpmax = math.floor((sheet.nv) * 15) + (sheet.o2a3);	
+									end;
+									
+											
+									if 	sheet.estrelasoriginais == "3" then
+											sheet.xpmax = math.floor((sheet.nv) * 20 ) ;
+									end;
+									if 	sheet.estrelasoriginais == "4" then
+											sheet.xpmax = math.floor((sheet.nv) * 25 ) ;
+									end;
+									if 	sheet.estrelasoriginais == "5" then
+											sheet.xpmax = math.floor((sheet.nv) * 30 ) ;	
+									end;
+									
+								</event>
+							</dataLink>	
+							<dataLink	field="xp" defaultValue="00"/>
+					
+					
+					
+					</rectangle>
+						
+					<label	height="25"	text="Função no Lobby :" 	fontSize="15" g="col" g-width="4" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="8" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10}">
+						<edit	height="30"	field="funcao"				fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+						<dataLink fields="{'funcao'}" defaultValues="{'Nenhuma'}"/>
+					</rectangle>
+						
+				
+				</rectangle>
+			</flowPart>                
+			
+			<flowPart width="360" height="550" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080"> <!--Atributos-->
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+						
+					<label	height="25"	text="Atributos" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" 	margins="{top=15}"/>	
+					<label	height="20"					fontSize="15" g="col" g-width="4" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10,}"/>	
+					<label	height="20"	text="Base" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10,}"/>	
+					<label	height="20"	text="Sintese" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10}"/>	
+					<label	height="20"	text="Equips" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10}"/>	
+					<label	height="20"	text="Total" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10}"/>
+				
+					
+					<label		height="40"	text="FORÇA" 	fontSize="22" g="col" g-width="4" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" margins="{top=10,left=10}"	/>	
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="8" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">					
+						<edit	height="50"	field="forcabase" 		fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	margins="{left=3}"/>
+						<edit	height="50"	field="forcasintese" 	fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="forcaequips" 	fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="forca" 			fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true"  readOnly="true" margins="{right=3}" />
+					</rectangle>
+					
+					<label		height="40"	text="DESTREZA" 	fontSize="22" g="col" g-width="4" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10,left=10}"/>	
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="8" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit	height="50"	field="destrezabase" 		fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	margins="{left=3}"/>
+						<edit	height="50"	field="destrezasintese" 	fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="destrezaequips" 		fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="destreza" 			fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true"  readOnly="true" margins="{right=3}"/>
+
+					</rectangle>
+					
+					<label		height="40"	text="VIGOR" 	fontSize="22" g="col" g-width="4" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10,left=10}"/>	
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="8" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit	height="50"	field="vigorbase" 		fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	margins="{left=3}"/>
+						<edit	height="50"	field="vigorsintese" 	fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="vigorequips" 	fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="vigor" 			fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true"  readOnly="true" margins="{right=3}"/>
+					</rectangle>
+					
+					<label		height="40"	text="INTELIGÊNCIA" 	fontSize="18" g="col" g-width="4" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10,left=10}"/>	
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="8" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit	height="50"	field="inteligenciabase" 		fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	margins="{left=3}"/>
+						<edit	height="50"	field="inteligenciasintese" 	fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="inteligenciaequips" 		fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="inteligencia" 			fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true"  readOnly="true" margins="{right=3}"/>
+					</rectangle>
+					
+					<label		height="40"	text="CARISMA" 	fontSize="22" g="col" g-width="4" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10,left=10}"/>	
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="8" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit	height="50"	field="carismabase" 		fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	margins="{left=3}"/>
+						<edit	height="50"	field="carismasintese" 		fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="carismaequips" 		fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" 	/>
+						<edit	height="50"	field="carisma" 			fontSize="50" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true"  readOnly="true" margins="{right=3}" />
+
+					</rectangle>
+			
+				
+						
+					<dataLink fields="{'forcabase', 'forcasintese', 'forcaequips', 'forca', 'destrezabase', 'destrezasintese', 'destrezaequips', 'destreza', 'vigorbase', 'vigorsintese', 'vigorequips', 'vigor', 'inteligenciabase', 'inteligenciasintese', 'inteligenciaequips', 'inteligencia', 'carismabase', 'carismasintese', 'carismaequips', 'carisma', 'condicao'}" defaultValues="{'0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0', 'Nenhum'}">
+							<event name="onChange">								
+									
+									local forca = 			(tonumber(sheet.forcabase)) + (tonumber(sheet.forcasintese)) + (tonumber(sheet.forcaequips));
+									local destreza = 		(tonumber(sheet.destrezabase)) + (tonumber(sheet.destrezasintese)) + (tonumber(sheet.destrezaequips));
+									local vigor = 			(tonumber(sheet.vigorbase)) + (tonumber(sheet.vigorsintese)) + (tonumber(sheet.vigorequips));
+									local inteligencia = 	(tonumber(sheet.inteligenciabase)) + (tonumber(sheet.inteligenciasintese)) + (tonumber(sheet.inteligenciaequips));
+									local carisma = 		(tonumber(sheet.carismabase)) + (tonumber(sheet.carismasintese)) + (tonumber(sheet.carismaequips));
+
+																
+			
+									if 		sheet.condicao == "Medo" then
+											sheet.forca = 	math.floor(forca * 0.7);
+											sheet.destreza = 	math.floor(destreza * 0.7);                  
+											sheet.vigor = 	math.floor(vigor * 0.7);                  
+											sheet.inteligencia = 	math.floor(inteligencia * 0.7);                  
+											sheet.carisma = 	math.floor(carisma * 0.7);                  
+
+			
+									elseif	sheet.condicao == "Pavor" then
+											sheet.forca = 	math.floor(forca * 0.5);
+											sheet.destreza = 	math.floor(destreza * 0.5);                  
+											sheet.vigor = 	math.floor(vigor * 0.5);                  
+											sheet.inteligencia = 	math.floor(inteligencia * 0.5);                  
+											sheet.carisma = 	math.floor(carisma * 0.5);   
+											
+									elseif	sheet.condicao == "Terror" then
+											sheet.forca = 	math.floor(forca * 0.2);
+											sheet.destreza = 	math.floor(destreza * 0.2);                  
+											sheet.vigor = 	math.floor(vigor * 0.2);                  
+											sheet.inteligencia = 	math.floor(inteligencia * 0.2);                  
+											sheet.carisma = 	math.floor(carisma * 0.2);   
+
+									else	sheet.forca = 	math.floor(forca);
+											sheet.destreza = 	math.floor(destreza);                  
+											sheet.vigor = 	math.floor(vigor);                  
+											sheet.inteligencia = 	math.floor(inteligencia);                  
+											sheet.carisma = 	math.floor(carisma);   					
+		
+					end;
+									
+							</event>
+						</dataLink>	
+					
+					<rectangle  height="30"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10,left=10}">
+						
+						<label	height="25"	text="Disponível:" 	fontSize="12" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" 	vertTextAlign="center" margins="{top=3}"/>	
+						<rectangle  height="23"	color="none" cornerType="round"	  g="col" g-width="1" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+							<edit	height="23"	field="distribuir" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>
+							<dataLink fields="{'estrelasoriginais','total','nv','forcabase','destrezabase','vigorbase','inteligenciabase','carismabase'}">
+							<event name="onChange">
+									sheet.o1a2d = (math.floor((sheet.nv)-10) * 1);
+									sheet.o1a3d = (math.floor((sheet.nv)-20) * 1);
+									
+									if 		sheet.o1a2d &lt; 0 then sheet.o1a2d = 0;
+									end;
+									if 		sheet.o1a3d &lt; 0 then sheet.o1a3d = 0;
+									end;
+									if 		sheet.estrelasoriginais == "1" then
+											sheet.distribuir = 40  + ((tonumber(sheet.estrelasoriginais) - 1) * 8) + ((tonumber(sheet.nv) - 1) * 4) + (sheet.o1a2d) + (sheet.o1a3d) - sheet.forcabase - sheet.destrezabase - sheet.vigorbase - sheet.inteligenciabase - sheet.carismabase;	
+									end;
+									
+									
+									sheet.o2a3d = (math.floor((sheet.nv)-20) * 1);
+
+									if 		sheet.o2a3d &lt; 0 then sheet.o2a3d = 0;
+									end;
+									if 		sheet.estrelasoriginais == "2" then
+											sheet.distribuir = 40 + ((tonumber(sheet.estrelasoriginais) - 1) * 8) + ((tonumber(sheet.nv) - 1) * 5) + (sheet.o2a3d) - sheet.forcabase - sheet.destrezabase - sheet.vigorbase - sheet.inteligenciabase - sheet.carismabase;	
+									end;
+
+		
+									if 		sheet.estrelasoriginais == "3" then
+											sheet.distribuir = 40 + ((tonumber(sheet.estrelasoriginais) - 1) * 8) + ((tonumber(sheet.nv) - 1)*6)- sheet.forcabase - sheet.destrezabase - sheet.vigorbase - sheet.inteligenciabase - sheet.carismabase;	
+									end;
+									if 		sheet.estrelasoriginais == "4" then
+											sheet.distribuir = 40 + ((tonumber(sheet.estrelasoriginais) - 1) * 8) + ((tonumber(sheet.nv) - 1)*7)- sheet.forcabase - sheet.destrezabase - sheet.vigorbase - sheet.inteligenciabase - sheet.carismabase;
+									end;
+									if 		sheet.estrelasoriginais == "5" then
+											sheet.distribuir = 40 + ((tonumber(sheet.estrelasoriginais) - 1) * 8) + ((tonumber(sheet.nv) - 1)*8)- sheet.forcabase - sheet.destrezabase - sheet.vigorbase - sheet.inteligenciabase - sheet.carismabase;	
+									end;
+							</event>
+						</dataLink>	
+						</rectangle>				
+						
+						<label	height="25"	text="Totais:" 	fontSize="10" g="col" g-width="1" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" 	vertTextAlign="center" margins="{top=3}"/>	
+						<rectangle  height="23"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+							<edit	height="23"	field="basetotal" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+						</rectangle>
+						<dataLink fields="{'forcabase', 'destrezabase','vigorbase','inteligenciabase','carismabase'}">
+							<event name="onChange">
+								sheet.basetotal = 	((tonumber(sheet.forcabase) or 0) +
+													(tonumber(sheet.destrezabase) or 0) +
+													(tonumber(sheet.vigorbase) or 0) +
+													(tonumber(sheet.inteligenciabase) or 0) + 
+													(tonumber(sheet.carismabase) or 0)); 
+	
+							</event>
+						</dataLink>
+						
+							
+						<rectangle  height="23"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+							<edit	height="23"	field="sintesetotal" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+						</rectangle>
+						<dataLink fields="{'forcasintese', 'destrezasintese','vigorsintese','inteligenciasintese','carismasintese'}">
+							<event name="onChange">
+								sheet.sintesetotal = 	((tonumber(sheet.forcasintese) or 0) +
+														(tonumber(sheet.destrezasintese) or 0) +
+														(tonumber(sheet.vigorsintese) or 0) +
+														(tonumber(sheet.inteligenciasintese) or 0) + 
+														(tonumber(sheet.carismasintese) or 0)); 
+	
+							</event>
+						</dataLink>
+						
+						
+						<rectangle  height="23"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+							<edit	height="23"	field="equipstotal" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+						</rectangle>
+						<dataLink fields="{'sheet.forcaequips', 'destrezaequips','vigorequips','inteligenciaequips','carismaequips'}">
+							<event name="onChange">
+								sheet.equipstotal = ((tonumber(sheet.forcaequips) or 0) +
+													(tonumber(sheet.destrezaequips) or 0) +
+													(tonumber(sheet.vigorequips) or 0) +
+													(tonumber(sheet.inteligenciaequips) or 0) + 
+													(tonumber(sheet.carismaequips) or 0)); 
+	
+							</event>
+						</dataLink>
+						
+						
+						<rectangle  height="23"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3,right=3}">
+							<edit	height="23"	field="total" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+						</rectangle>
+						<dataLink fields="{'forca', 'destreza','vigor','inteligencia','carisma'}">
+							<event name="onChange">
+								sheet.total = 		((tonumber(sheet.forca) or 0) +
+													(tonumber(sheet.destreza) or 0) +
+													(tonumber(sheet.vigor) or 0) +
+													(tonumber(sheet.inteligencia) or 0) + 
+													(tonumber(sheet.carisma) or 0)); 
+	
+							</event>
+						</dataLink>
+						
+					</rectangle>	
+					
+					<label		height="25" text="Condição:" 	fontSize="15" g="col" g-width="4" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="8" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+							<comboBox field="condicao"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Nenhum', 'Medo', 'Pavor', 'Terror'}" margins="{left=3,right=3}"/>
+					</rectangle>
+					
+					<label	height="25"	text="HP :" 	fontSize="25" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="center" fontColor="red"	vertTextAlign="center" margins="{top=20,left=10}"/>	
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=20}">
+						<edit	height="30"	field="hptotal" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+						<dataLink fields="{'vigor'}">
+							<event name="onChange">
+								sheet.hptotal = 10 + (((tonumber(sheet.vigorbase)) + (tonumber(sheet.vigorsintese)) + (tonumber(sheet.vigorequips))) * 2);
+								
+							</event>
+						</dataLink>	
+					</rectangle>	
+					<label	height="25"	text=" = 10 + (Vigor x 2) " 	fontSize="25" g="col" g-width="8" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" 	 margins="{top=20,right=10}"/>	
+					
+					<label	height="25"	text="SP :" 	fontSize="25" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="center" fontColor="green"	vertTextAlign="center" margins="{top=20,left=10}"/>	
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=20}">
+						<edit	height="30"	field="sptotal" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+						<dataLink fields="{'vigor'}">
+							<event name="onChange">
+								sheet.sptotal = 10 + (((tonumber(sheet.vigorbase)) + (tonumber(sheet.vigorsintese)) + (tonumber(sheet.vigorequips))) * 3);
+	
+							</event>
+						</dataLink>	
+					</rectangle>	
+					<label	height="25"	text=" = 10 + (Vigor x 3) " 	fontSize="25" g="col" g-width="8" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" 	 margins="{top=20,right=10}"/>	
+					
+					<label	height="25"	text="MP :" 	fontSize="25" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="center" fontColor="blue"	vertTextAlign="center" margins="{top=20,left=10}"/>	
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=20}">
+						<edit	height="30"	field="mptotal" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+						<dataLink fields="{'inteligencia'}">
+							<event name="onChange">
+								sheet.mptotal = 4 + math.floor(((tonumber(sheet.inteligenciabase)) + (tonumber(sheet.inteligenciasintese)) + (tonumber(sheet.inteligenciaequips))) * 1.5);
+
+							</event>
+						</dataLink>	
+					</rectangle>	
+					<label	height="25"	text=" = 4 + (Inteligência x 1,5) " 	fontSize="25" g="col" g-width="8" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" 	 margins="{top=20,right=10}"/>	
+					
+				</rectangle>
+			</flowPart>                   
+	
+			<flowPart width="360" height="550" minWidth="360" maxWidth="360" g-min-height="500" g-max-height="1080"> <!--Equipamentos-->
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+					
+				<image  field="fundoequips"  editable="false" animate="false" style="proportional" g="col" g-width="12" height="530" src="http://blob.firecast.com.br/blobs/UERFUURU_3195434/06__1_.png" margins="{left=10, top=10, right=10,bottom=15}">	
+				
+				<group> <!--Botões-->
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip1:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="cabecaequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64" />
+						</button>
+				</rectangle>
+				
+				<label		height="15" 			fontSize="18" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip2:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="maoesquerdaequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64" />
+						</button>
+				</rectangle>
+
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip3:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="ombroequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64" />
+						</button>
+				</rectangle>
+				
+				<label		height="15" 			fontSize="18" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip4:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="pescocoequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64"  />
+						</button>
+				</rectangle>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip5:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="torsoequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64" />
+						</button>
+				</rectangle>
+				
+				<label		height="15" 			fontSize="18" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip6:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="costasequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64" />
+						</button>
+				</rectangle>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip7:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="maodireitaequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64" />
+						</button>
+				</rectangle>
+				
+				<label		height="15" 			fontSize="18" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip8:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="cintoequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64" />
+						</button>
+				</rectangle>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip9:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="armadireitaequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64"/>
+						</button>
+				</rectangle>
+				
+				<label		height="15" 			fontSize="18" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip10:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="armaesquedaequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64"/>
+						</button>
+				</rectangle>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip11:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="botaequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64"/>
+						</button>
+				</rectangle>
+				
+				<label		height="15" 			fontSize="18" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip12:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="pernaequip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64"/>
+						</button>
+				</rectangle>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip13:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="acessorio1equip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64"/>
+						</button>
+				</rectangle>
+				
+				<label		height="15" 			fontSize="18" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+				
+				<rectangle  height="70"	color="#150e16" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<button align="client" onClick="self.boxequip14:show();" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}" > 
+						<image  field="acessorio2equip"  editable="false" animate="true" style="proportional" g="col" g-width="12" height="64"/>
+						</button>
+				</rectangle>
+				
+				</group> 
+				
+				<group> <!--Popups-->
+				
+				<popup name="boxequip1"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="cabecaequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/VSBKJVLE_3196991/capacete.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto1"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip2"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="maoesquerdaequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/MHJOGVIJ_3197013/mao_esquerda.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto2"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip3"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="ombroequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/VWWCJLAI_3197011/ombros.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto3"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip4"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="pescocoequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/KQTJSRMC_3196994/colar.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto4"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip5"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="torsoequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/BHSFRPKJ_3197012/torso.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto5"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip6"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="costasequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/PFNJLMSL_3196996/costas.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto6"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip7"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="maodireitaequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/KAOFDIWM_3196998/mao_direita.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto7"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip8"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="cintoequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/VIKSJTAS_3196995/cinto.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto8"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip9"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="armadireitaequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/MRUHMKWV_3196993/arma_direita.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto9"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip10"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="armaesquedaequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/QQBQUNJS_3196992/arma_esqueda.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto10"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip11"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="botaequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/ODHJPRVJ_3196989/bota.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto11"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip12"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="pernaequip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/ADULDOEJ_3196997/cal_a.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto12"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip13"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="acessorio1equip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto13"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				<popup name="boxequip14"  width="380" height="600" left="0" backOpacity="0.4" >
+					<rectangle color="black" left="-5" 	top="-5" 	width="390" 	height="610"/>	
+					<rectangle color="#150e16" strokeSize="2" strokeColor="white"	left="5" 	top="5" 	width="370" 	height="590"  	   cornerType="round"/>	
+					<image   	field="acessorio2equip" editable="true" animate="true" style="proportional" g="col" g-width="12" height="230" margins="{top=10}">
+					<image  	editable="false" style="proportional" g="col" g-width="3" height="40" src="http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png" />
+					</image>
+					<richEdit 	height="350" g="col" g-width="12" field="equiptexto14"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" visible="true" />
+				</popup>
+				
+				
+				
+				</group>
+				
+				<dataLink fields="{'cabecaequip','maoesquerdaequip','ombroequip','pescocoequip','torsoequip','costasequip','maodireitaequip','cintoequip','armadireitaequip','armaesquedaequip','botaequip','pernaequip','acessorio1equip','acessorio2equip'}"  defaultValues="{'http://blob.firecast.com.br/blobs/VSBKJVLE_3196991/capacete.png', 'http://blob.firecast.com.br/blobs/MHJOGVIJ_3197013/mao_esquerda.png', 'http://blob.firecast.com.br/blobs/VWWCJLAI_3197011/ombros.png', 'http://blob.firecast.com.br/blobs/KQTJSRMC_3196994/colar.png', 'http://blob.firecast.com.br/blobs/BHSFRPKJ_3197012/torso.png', 'http://blob.firecast.com.br/blobs/PFNJLMSL_3196996/costas.png', 'http://blob.firecast.com.br/blobs/KAOFDIWM_3196998/mao_direita.png', 'http://blob.firecast.com.br/blobs/VIKSJTAS_3196995/cinto.png', 'http://blob.firecast.com.br/blobs/MRUHMKWV_3196993/arma_direita.png', 'http://blob.firecast.com.br/blobs/QQBQUNJS_3196992/arma_esqueda.png', 'http://blob.firecast.com.br/blobs/ODHJPRVJ_3196989/bota.png', 'http://blob.firecast.com.br/blobs/ADULDOEJ_3196997/cal_a.png', 'http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png', 'http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png'}" >
+				<event name="onChange"> 
+				if sheet.cabecaequip == nil then sheet.cabecaequip = "http://blob.firecast.com.br/blobs/VSBKJVLE_3196991/capacete.png" ;
+				end;
+				if sheet.maoesquerdaequip == nil then sheet.maoesquerdaequip = "http://blob.firecast.com.br/blobs/MHJOGVIJ_3197013/mao_esquerda.png" ;
+				end;
+				if sheet.ombroequip == nil then sheet.ombroequip = "http://blob.firecast.com.br/blobs/VWWCJLAI_3197011/ombros.png" ;
+				end;
+				if sheet.pescocoequip == nil then sheet.pescocoequip = "http://blob.firecast.com.br/blobs/KQTJSRMC_3196994/colar.png" ;
+				end;
+				if sheet.torsoequip == nil then sheet.torsoequip = "http://blob.firecast.com.br/blobs/BHSFRPKJ_3197012/torso.png" ;
+				end;
+				if sheet.costasequip == nil then sheet.costasequip = "http://blob.firecast.com.br/blobs/PFNJLMSL_3196996/costas.png" ;
+				end;
+				if sheet.maodireitaequip == nil then sheet.maodireitaequip = "http://blob.firecast.com.br/blobs/KAOFDIWM_3196998/mao_direita.png" ;
+				end;
+				if sheet.cintoequip == nil then sheet.cintoequip = "http://blob.firecast.com.br/blobs/VIKSJTAS_3196995/cinto.png" ;
+				end;
+				if sheet.armadireitaequip == nil then sheet.armadireitaequip = "http://blob.firecast.com.br/blobs/MRUHMKWV_3196993/arma_direita.png" ;
+				end;
+				if sheet.armaesquedaequip == nil then sheet.armaesquedaequip = "http://blob.firecast.com.br/blobs/QQBQUNJS_3196992/arma_esqueda.png" ;
+				end;
+				if sheet.botaequip == nil then sheet.botaequip = "http://blob.firecast.com.br/blobs/ODHJPRVJ_3196989/bota.png" ;
+				end;
+				if sheet.pernaequip == nil then sheet.pernaequip = "http://blob.firecast.com.br/blobs/ADULDOEJ_3196997/cal_a.png" ;
+				end;
+				if sheet.acessorio1equip == nil then sheet.acessorio1equip = "http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png" ;
+				end;
+				if sheet.acessorio2equip == nil then sheet.acessorio2equip = "http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png" ;
+				end;
+				
+				</event>
+				</dataLink>
+				</image>
+				</rectangle>
+			</flowPart>                                   
+                       
+        </flowLayout>
+		
+	</scrollBox>
+	</tab>
+	
+	<tab title="Skills">
+		<rectangle 	align="client" 	color="black" />
+		<scrollBox align="client">      
+	
+    
+         <flowLayout align="top" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080" g-cnt-gutter="5" autoHeight="true" orientation="horizontal" maxControlsPerLine="3" horzAlign="leading" margins="{left=20, top=20, bottom=20, right=20}" >
+
+			<flowPart width="360" height="550" minWidth="360" maxWidth="360" g-min-height="500" g-max-height="1080">
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+					
+					<label	height="25"	text="Skills" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=15}"/>
+					
+			<button text="Ativa" g="col" g-width="4" margins="{left=10}">
+			<event name="onClick">
+						self.ativobotao.visible = true;
+						self.passivobotao.visible = false;
+						self.suplementarbotao.visible = false;
+						self.boxDetalhesDasEstilo.visible = true;
+						self.boxDetalhesDasEstilo2.visible = false;
+						self.boxDetalhesDasEstilo3.visible = false;
+			</event>
+			</button>
+			
+			<button	text="Passiva" g="col" g-width="4" margins="{left=5,right=5}">
+			<event name="onClick">
+						self.ativobotao.visible = false;
+						self.passivobotao.visible = true;
+						self.suplementarbotao.visible = false;
+						self.boxDetalhesDasEstilo.visible = false;
+						self.boxDetalhesDasEstilo2.visible = true;
+						self.boxDetalhesDasEstilo3.visible = false;
+			</event>
+			</button>
+			
+			<button	text="Suplementar" g="col" g-width="4" margins="{right=10}">
+			<event name="onClick">
+						self.ativobotao.visible = false;
+						self.passivobotao.visible = false;
+						self.suplementarbotao.visible = true;
+						self.boxDetalhesDasEstilo.visible = false;
+						self.boxDetalhesDasEstilo2.visible = false;
+						self.boxDetalhesDasEstilo3.visible = true;
+			</event>
+			</button>
+
+	
+			<!-- Skills Ativas -->
+			<layout name="ativobotao" g="col" g-width="12" height="500" margins="{left=10, top=10, bottom=10, right=10}" >
+				<button text="Nova Skill" g="col" g-width="12" height="30" fontFamily="Cinzel" margins="{bottom=10}">
+					<event name="onClick">
+						self.rclListaDeEstilo:append();
+					</event>
+				</button>
+			
+			
+			
+			<recordList  field="campoDeEstilo" name="rclListaDeEstilo" templateForm="frmEstiloDaLista" layout="vertical" g="col" g-width="12" height="430" margins="{left=10,  right=10}" selectable="true" >
+				<event name="onSelect">
+					local node = self.rclListaDeEstilo.selectedNode;
+					self.boxDetalhesDasEstilo.node = node;
+					self.boxDetalhesDasEstilo.visible = (node ~= nil);
+				</event>
+					
+				<event name="onEndEnumeration">
+					if self.rclListaDeEstilo.selectedNode == nil and sheet ~= nil then
+					local nodes = NDB.getChildNodes(sheet.campoDeEstilo);               
+
+					if #nodes > 0 then
+					self.rclListaDeEstilo.selectedNode = nodes[1];
+					end;
+					end;
+				</event>
+			</recordList>
+			</layout>	
+			
+		
+			<!-- Skills Passivas-->
+			<layout name="passivobotao" g="col" g-width="12" height="500" margins="{left=10, top=10, bottom=10, right=10}" >
+				<button text="Nova Skill" g="col" g-width="12" height="30" fontFamily="Cinzel" margins="{bottom=10}">
+					<event name="onClick">
+						self.rclListaDeEstilo2:append();
+					</event>
+				</button>
+	
+				
+			<recordList  field="campoDeEstilo2" name="rclListaDeEstilo2" templateForm="frmEstiloDaLista2" layout="vertical" g="col" g-width="12" height="430" margins="{left=10,right=10}" selectable="true" >
+				<event name="onSelect">
+					local node = self.rclListaDeEstilo2.selectedNode;
+					self.boxDetalhesDasEstilo2.node = node;
+					self.boxDetalhesDasEstilo2.visible = (node ~= nil);
+				</event>
+					
+				<event name="onEndEnumeration">
+					if self.rclListaDeEstilo2.selectedNode == nil and sheet ~= nil then
+					local nodes = NDB.getChildNodes(sheet.campoDeEstilo);               
+
+					if #nodes > 0 then
+					self.rclListaDeEstilo2.selectedNode = nodes[1];
+					end;
+					end;
+				</event>
+			</recordList>
+			</layout>
+
+			
+			<!--Skills Suplementares -->
+			<layout name="suplementarbotao" g="col" g-width="12" height="500" margins="{left=10, top=10, bottom=10, right=10}" >
+				<button text="Nova Skill" g="col" g-width="12" height="30" fontFamily="Cinzel" margins="{bottom=10}">
+					<event name="onClick">
+						self.rclListaDeEstilo3:append();
+					</event>
+				</button>
+		
+				
+			<recordList  field="campoDeEstilo3" name="rclListaDeEstilo3" templateForm="frmEstiloDaLista3" layout="vertical" g="col" g-width="12" height="430" margins="{left=10, right=10}" selectable="true" >
+				<event name="onSelect">
+					local node = self.rclListaDeEstilo3.selectedNode;
+					self.boxDetalhesDasEstilo3.node = node;
+					self.boxDetalhesDasEstilo3.visible = (node ~= nil);
+				</event>
+					
+				<event name="onEndEnumeration">
+					if self.rclListaDeEstilo3.selectedNode == nil and sheet ~= nil then
+					local nodes = NDB.getChildNodes(sheet.campoDeEstilo);               
+
+					if #nodes > 0 then
+					self.rclListaDeEstilo3.selectedNode = nodes[1];
+					end;
+					end;
+				</event>
+			</recordList>			
+			</layout>			
+				
+				</rectangle>
+			</flowPart>                
+			
+			<flowPart width="360" height="550" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080">
+				
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+				<dataScopeBox  name="boxDetalhesDasEstilo"  g="col" g-width="12" g-min-height="550">						
+					<label		height="15" text="Nome:" 		fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<edit	height="40" field="nomeskill"		fontSize="30" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25" text="Rank:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="5" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10}">
+							<comboBox field="rank"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Basico', 'Intermediario', 'Avançado', 'Mestre', 'Supremo'}" margins="{left=3,right=3}"/>
+					</rectangle>
+					
+					
+					<label		height="25"	text="Mod:" 		fontSize="18" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit		height="25"	field="modatual"			fontSize="22" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25" text="Tipo:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10}">
+							<comboBox field="tipo"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Ativo', 'Passivo', 'Ativo/Passivo' ,'Suplementar'}" margins="{left=3,right=3}"/>
+					</rectangle>
+					
+					<label		height="25"	text="Nv:" 		fontSize="18" g="col" g-width="1" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="1" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10}">
+						<edit		height="25"	field="nvskill"			fontSize="22" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25"	text="Progresso:" 		fontSize="18" g="col" g-width="3" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit		height="25"	field="progressoskill"			fontSize="22" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<rectangle  height="390"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10,left=10}">
+						<richEdit   align="client" field="descricaoskill"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" margins="{top=3,right=3,left=3,bottom=3}"/>
+					</rectangle>
+						
+				</dataScopeBox>
+				
+				<dataScopeBox  name="boxDetalhesDasEstilo2" g="col" g-width="12" g-min-height="550">						
+					<label		height="15" text="Nome:" 		fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<edit	height="40" field="nomeskill"		fontSize="30" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25" text="Rank:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="5" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10}">
+							<comboBox field="rank"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Basico', 'Intermediario', 'Avançado', 'Mestre', 'Supremo'}" margins="{left=3,right=3}"/>
+					</rectangle>
+					
+					
+					<label		height="25"	text="Mod:" 		fontSize="18" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit		height="25"	field="modatual"			fontSize="22" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25" text="Tipo:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10}">
+							<comboBox field="tipo"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Ativo', 'Passivo', 'Ativo/Passivo' ,'Suplementar'}" margins="{left=3,right=3}"/>
+					</rectangle>
+					
+					<label		height="25"	text="Nv:" 		fontSize="18" g="col" g-width="1" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="1" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10}">
+						<edit		height="25"	field="nvskill"			fontSize="22" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25"	text="Progresso:" 		fontSize="18" g="col" g-width="3" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit		height="25"	field="progressoskill"			fontSize="22" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<rectangle  height="390"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10,left=10}">
+						<richEdit   align="client" field="descricaoskill"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" margins="{top=3,right=3,left=3,bottom=3}"/>
+					</rectangle>
+						
+				</dataScopeBox>
+				
+				<dataScopeBox  name="boxDetalhesDasEstilo3"  g="col" g-width="12" g-min-height="550">						
+					<label		height="15" text="Nome:" 		fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+						<edit	height="40" field="nomeskill"		fontSize="30" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25" text="Rank:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="5" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10}">
+							<comboBox field="rank"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Basico', 'Intermediario', 'Avançado', 'Mestre', 'Supremo'}" margins="{left=3,right=3}"/>
+					</rectangle>
+					
+					
+					<label		height="25"	text="Mod:" 		fontSize="18" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit		height="25"	field="modatual"			fontSize="22" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25" text="Tipo:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10}">
+							<comboBox field="tipo"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Ativo', 'Passivo', 'Ativo/Passivo' ,'Suplementar'}" margins="{left=3,right=3}"/>
+					</rectangle>
+					
+					<label		height="25"	text="Nv:" 		fontSize="18" g="col" g-width="1" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="1" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10}">
+						<edit		height="25"	field="nvskill"			fontSize="22" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<label		height="25"	text="Progresso:" 		fontSize="18" g="col" g-width="3" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit		height="25"	field="progressoskill"			fontSize="22" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					<rectangle  height="390"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10,left=10}">
+						<richEdit   align="client" field="descricaoskill"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" margins="{top=3,right=3,left=3,bottom=3}"/>
+					</rectangle>
+						
+				</dataScopeBox>
+				
+				
+				</rectangle>
+			</flowPart>  
+			
+                         
+        </flowLayout>
+		
+	</scrollBox>
+	
+	</tab>
+	
+	<tab title="Inventário">
+		<rectangle 	align="client" 	color="black" />
+		<scrollBox align="client">      
+		
+		<style>
+                flowPart {
+                        margins: {left=10, right=10, top=10, bottom=10};
+                }              
+
+                label {
+                        width: 75;
+                        horzTextAlign: trailing;
+                        margins: {right=10};
+                }
+        </style> 
+    
+         <flowLayout align="top" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080" g-cnt-gutter="5" autoHeight="true" orientation="horizontal" maxControlsPerLine="3" horzAlign="leading" margins="{left=20, top=20, bottom=20, right=20}" >
+
+			<flowPart width="360" height="550" minWidth="360" maxWidth="360" g-min-height="500" g-max-height="1080">
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+					
+					<label	height="25"	text="Inventário" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=15}"/>
+					
+					<!-- Quadro de Estilo - Elemento Visual "Botão de Novo Item" -->
+			<layout g="col" g-width="12" height="30" margins="{left=10, top=10, bottom=10, right=10}" >
+				<button text="Novo Item" align="client" fontFamily="Cinzel">
+					<event name="onClick">
+						self.rclListaDeItem:append();
+					</event>
+				</button>
+			</layout>
+				
+			<recordList  field="campoDeintem" name="rclListaDeItem" templateForm="frmListaitens" layout="vertical" g="col" g-width="12" height="430" margins="{left=10, top=10, bottom=10, right=10}" selectable="true" >
+				<event name="onSelect">
+					local node = self.rclListaDeItem.selectedNode;
+					self.boxDetalhesDosItens.node = node;
+					self.boxDetalhesDosItens.visible = (node ~= nil);
+				</event>
+					
+				<event name="onEndEnumeration">
+					if self.rclListaDeItem.selectedNode == nil and sheet ~= nil then
+					local nodes = NDB.getChildNodes(sheet.campoDeEstilo);               
+
+					if #nodes > 0 then
+					self.rclListaDeItem.selectedNode = nodes[1];
+					end;
+					end;
+				</event>
+			</recordList>
+					
+					
+						
+				
+				</rectangle>
+			</flowPart>                
+			
+			<flowPart width="360" height="550" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080">
+				
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+				<dataScopeBox  name="boxDetalhesDosItens" g="col" g-width="12" g-min-height="550">						
+					<label		height="15" text="Nome:" 		fontSize="18" g="col" g-width="10" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=10,left=10}"/>
+					<label		height="25" text="Rank:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="leading" 	margins="{top=10,left=10}"/>
+					
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="10" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{left=10}">
+						<edit	height="50" field="nomeitem"		fontSize="30" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+					</rectangle>
+					
+					
+					<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{right=10}">
+							<comboBox field="rank"   g="col" g-width="12" height="40"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="20"   items="{'F-', 'F', 'F+', 'E-', 'E', 'E+', 'D-', 'D', 'D+', 'C-', 'C', 'C+', 'B-', 'B', 'B+', 'A-', 'A', 'A+', 'S-', 'S', 'S+'}" margins="{left=3,right=3}"/>
+					</rectangle>
+					
+					
+					
+					
+					<rectangle  height="450"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10,left=10}">
+						<richEdit   align="client" field="descricaoitem"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" margins="{top=3,right=3,left=3,bottom=3}"/>
+					</rectangle>
+						
+				</dataScopeBox>
+				</rectangle>
+			</flowPart>  
+			
+                         
+        </flowLayout>
+		
+	</scrollBox>
+	
+	</tab>
+	
+	<tab title="Raça e Classe">
+	<rectangle 	align="client" 	color="black" />
+	<scrollBox align="client">      
+		
+	
+    
+         <flowLayout align="top" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080" g-cnt-gutter="5" autoHeight="true" orientation="horizontal" maxControlsPerLine="3" horzAlign="leading" margins="{left=20, top=20, bottom=20, right=20}" >
+
+		
+			<flowPart width="360" height="550" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080">
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+					
+					<label	height="25"	text="Raça" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=15}"/>
+					<label	height="25"	text="Raça:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="10" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit	height="30"	field="raca"	fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+						<dataLink fields="{'raca'}" defaultValues="{'Humano'}"/>
+					</rectangle>
+					
+					<label	height="35"	text="Bônus Raciais:" 	fontSize="15" g="col" g-width="4" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="trailing" 	margins="{top=5,left=13}"/>
+					<rectangle  height="425"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=0,right=10,left=10}">
+						<richEdit   align="client" field="bonusracial"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" margins="{top=3,right=3,left=3,bottom=3}"/>
+					</rectangle>
+					
+				</rectangle>
+			</flowPart>                                   
+
+			<flowPart width="360" height="550" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080">
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+					
+					<label	height="25"	text="Classe" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=15}"/>
+					<label	height="25"	text="Classe:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="10" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit	height="30"	field="classe"	fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+					</rectangle>
+					
+					<label	height="35	"	text="Bônus da Classe:" 	fontSize="15" g="col" g-width="4" fontFamily="Wishes Script Caps Display"  horzTextAlign="leading" vertTextAlign="trailing" 	margins="{top=5,left=13}"/>
+					<rectangle  height="425"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=0,right=10,left=10}">
+						<richEdit   align="client" field="bonusclasse"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" margins="{top=3,right=3,left=3,bottom=3}"/>
+					</rectangle>
+					
+				</rectangle>
+			</flowPart>                                   
+		
+			
+			
+        </flowLayout>
+		
+	</scrollBox>
+	</tab>
+	
+	<tab title="História">
+	<rectangle 	align="client" 	color="black" />
+	<scrollBox align="client">      
+    
+         <flowLayout align="top" minWidth="360" maxWidth="2160" g-min-height="500" g-max-height="1080" g-cnt-gutter="5" autoHeight="true" orientation="horizontal" maxControlsPerLine="3" horzAlign="leading" margins="{left=20, top=20, bottom=20, right=20}" >
+
+			<flowPart width="360" height="550" minWidth="360" maxWidth="2160" g-min-height="500" g-max-height="1080">
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+					
+					<label	height="25"	text="História" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=15}"/>
+					<label	height="25"	text="Origem:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="10" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit	height="30"	field="origem"	fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+					</rectangle>
+					
+					<label	height="25"	text="Estrelas Originais:" 	fontSize="15" g="col" g-width="4" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5}">
+						<comboBox field="estrelasoriginais"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="25"   items="{'1', '2', '3', '4', '5'}" margins="{left=3,right=3}">
+						<label	height="25"	text="☆"					fontSize="16" g="col" g-width="11" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" vertTextAlign="leading" margins="{right=7}"	/>
+						</comboBox>
+						<dataLink fields="{'estrelasoriginais'}" defaultValues="{'1'}"/>
+					</rectangle>
+					
+					<label	height="25"	text="Tipo:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5}"/>
+					<rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10}">
+						<comboBox field="tipodepersonagem"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Jogador', 'Nativo'}" margins="{left=3,right=3}"/>
+						<dataLink fields="{'tipodepersonagem'}" defaultValues="{'Jogador'}"/>
+					</rectangle>
+					
+					
+					<rectangle  height="425"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10,left=10}">
+						<richEdit   align="client" field="bg"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" margins="{top=3,right=3,left=3,bottom=3}"/>
+					</rectangle>
+					
+				</rectangle>
+			</flowPart>                                   
+                          
+         
+        </flowLayout>
+		
+	</scrollBox>
+	</tab>
+	
+	<tab title="Anotações">
+	<rectangle 	align="client" 	color="black" />
+	<scrollBox align="client">      
+    
+         <flowLayout align="top" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080" g-cnt-gutter="5" autoHeight="true" orientation="horizontal" maxControlsPerLine="3" horzAlign="leading" margins="{left=20, top=20, bottom=20, right=20}" >
+
+			<flowPart width="360" height="550" minWidth="360" maxWidth="360" g-min-height="500" g-max-height="1080">
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+					
+					<label	height="25"	text="Anotações" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=15}"/>
+					
+					<!-- Quadro de Estilo - Elemento Visual "Botão de Novo Item" -->
+					<layout g="col" g-width="12" height="30" margins="{left=10, top=10, bottom=10, right=10}" >
+						<button text="Novo Item" align="client" fontFamily="Cinzel">
+							<event name="onClick">
+								self.rclListaDeAnotacoes:append();
+							</event>
+						</button>
+					</layout>
+				
+					<recordList  field="campoDeAnotacoes" name="rclListaDeAnotacoes" templateForm="frmListaanotacoes" layout="vertical" g="col" g-width="12" height="430" margins="{left=10, top=10, bottom=10, right=10}" selectable="true" >
+						<event name="onSelect">
+							local node = self.rclListaDeAnotacoes.selectedNode;
+							self.boxanotacoes.node = node;
+							self.boxanotacoes.visible = (node ~= nil);
+						</event>
+					
+						<event name="onEndEnumeration">
+							if self.rclListaDeAnotacoes.selectedNode == nil and sheet ~= nil then
+							local nodes = NDB.getChildNodes(sheet.campoDeAnotacoes);               
+
+							if #nodes > 0 then
+							self.rclListaDeAnotacoes.selectedNode = nodes[1];
+							end;
+							end;
+						</event>
+					</recordList>
+				</rectangle>
+			</flowPart>                
+			
+			<flowPart width="360" height="550" minWidth="360" maxWidth="1080" g-min-height="500" g-max-height="1080">
+				
+				<rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-min-height="550" >
+					<dataScopeBox  name="boxanotacoes" g="col" g-width="12" g-min-height="550">						
+				
+						<rectangle  height="40"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,left=10,right=10}">
+							<edit	height="50" field="nomeitem"		fontSize="30" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+						</rectangle>
+					
+						<rectangle  height="480"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10,left=10}">
+							<richEdit   align="client" field="descricaoitem"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" margins="{top=3,right=3,left=3,bottom=3}"/>
+						</rectangle>
+						
+					</dataScopeBox>
+				</rectangle>
+			</flowPart>                              
+         
+        </flowLayout>
+		
+	</scrollBox>
+	</tab>
+	</tabControl>
+</form>

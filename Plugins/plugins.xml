@@ -1003,6 +1003,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="Pick_Me_Up_Tibs" name="Pick Me Up Infinite Gacha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pick%20Me%20Up/output/Pick%20Me%20Up.rpk?raw=true" fileName="Pick Me Up.rpk" repositoryPath="Sheets/Pick Me Up/" author="Tibs" description="Plugin de ficha para sistema baseado no Manhwa Pick Me Up Infinite Gacha" version="1.2" compilationDate="23062024022739" compilationDigest="abd717f0d7c3347728375d9e71db9bd06c4065de">
+        <info lang="pt-BR" name="Pick Me Up Infinite Gacha" description="Plugin de ficha para sistema baseado no Manhwa Pick Me Up Infinite Gacha" author="Tibs" site="nenhum"/>
+        <dataTypes>
+            <dataType id="Ficha.Pick.Me.Up" title="Pick Me Up Infinite Gacha - Ficha" formType="sheetTemplate">
+                <info title="Pick Me Up Infinite Gacha - Ficha"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="PokeIcons" name="PokeIcons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/PokeIcons/output/PokeIcons.rpk?raw=true" fileName="PokeIcons.rpk" repositoryPath="ChatMods/PokeIcons/" author="Ambesek" description="Use comandos e atalhos /unown :numero: pra inserir pokémon no chat. Use /help para mais informações. Use /help para ver opções." version="0.8" compilationDate="03032023113325" compilationDigest="02d4378f5319181518b69484b21c97dffa6378f7">
         <info lang="pt-BR" name="PokeIcons" description="Use comandos e atalhos /unown :numero: pra inserir pokémon no chat. Use /help para mais informações. Use /help para ver opções." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
     </element>
