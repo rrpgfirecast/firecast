@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmEquipamentoItemDefesa" cacheMode="time">
+<form name="frmEquipamentoItemDefesa" cacheMode="time" g="row" g-padding-top="12" g-padding-bottom="12">
 	<import file="templates.xml"/>
 	<import file="styles.xml"/>
 	
@@ -7,30 +7,68 @@
 		flowLayout, flowPart {
 			margins: {left=5, right=5, top=2, bottom=2};
 		}
-		
-		.contentLayout {
-			margins: {top=8, bottom=8};
-		}
-		
+				
 		#layMenu button {
 			margins: {bottom=6};
 			height: 32;
 		}
 	</style>
+	
+	<script>
+		local Utils = require('utils.lua');
+	
+		function self:tryCastTipoStringToTypeEnumField(inputValue)
+			inputValue = string.lower(Utils.removerAcentos(tostring(inputValue)));
+			
+			local function contains(stringsToFind)										
+				for k, v in pairs(stringsToFind) do
+					local r = string.find(inputValue, v, 1, true);
+					
+					if r then
+						return r;
+					end;						
+				end;	
+
+				return nil;
+			end;
+			
+			if contains({'leve', 'light'}) then
+				return "lightArmor";		
+			elseif contains({'media', 'medio', 'medium'}) then
+				return "mediumArmor";
+			elseif contains({'pesada', 'pesado', 'heavy'}) then
+				return "heavyArmor";
+			elseif contains({'escudo', 'shield'}) then
+				return "shield";	
+			elseif contains({'bonus'}) then
+				return "bonus";			
+			elseif contains({'outro', 'other'}) then
+				return "other";		
+			else
+				return nil;
+			end;
+		end;
+	
+		function self:migrateTipoStringToTypeEnumFieldIfNeeded()
+			assert(sheet ~= nil);
+			
+			local currentTipo = sheet.tipo;			
+			
+			if (sheet.typeEnum == nil) and (currentTipo ~= nil) then
+				local convertedValue = self:tryCastTipoStringToTypeEnumField(currentTipo);
+				
+				if convertedValue ~= nil then
+					sheet.typeEnum = convertedValue;
+				end;
+			end;
+		end;
+	</script>
 
 	<script> 
 		<![CDATA[
+				
 		local function atualizarDesiredHeight()
-			local margins = self.layPrincipal.margins;
-			local h = self.fraLayout:getHeight() + 2 + margins.top + margins.bottom;
-			local ultObjMenu = self.btnApagar;
-			local mH = ultObjMenu.top + ultObjMenu.height + self.layMenu.top + self.layMenu.margins.bottom;
-			
-			if h < mH then
-				h = mH;
-			end;
-			
-			self.height = h;			
+			-- REMOVER atualizarDesiredHeight em favor do grid.			
 		end;
 		
 		local function askForDelete()
@@ -45,44 +83,148 @@
 		]]>		
 	</script>
 	
+	<!-- Delete button -->
+	<layout g="block" g-auto-height="true" g-dyn-width-each-line="true" g-vert-tile="true" g-gutter="8">
+		<button g="block" g-dyn-width-txt="true" g-dyn-height-txt="true" g-min-height="30" g-padding-left="8" g-padding-right="8" g-min-width="64"
+				text="@@DnD5e.tab.equipament.btn.delete" name="btnApagar" onClick="askForDelete();" />	
+	</layout>
+	
+	<!--
 	<layout align="left" width="64" margins="{top=10, left=3, bottom=10}" name="layMenu">		
 		<button align="top" text="@@DnD5e.tab.equipament.btn.delete" name="btnApagar" onClick="askForDelete();"/>							
 	</layout>
+	-->
 	
 	
+	<layout g="col" g-width="12" g-auto-height="true" g-cnt-line-spacing="8" name="layPrincipal">		
+		<style>
+			.largeField {
+				g: col;
+				g-width-xs: 12;
+				g-width-md: 6;
+				g-width-xl: 3;
+				g-min-width: 130;
+			}		
+		
+			.mediumField {
+				g: col;
+				g-width-xs: 12;
+				g-width-md: 6;
+				g-width-xl: 2;
+				g-min-width: 110;					
+			}
+			
+			.smallField {
+				g: col;
+				g-width-xs: 12;
+				g-width-sm: 6;
+				g-width-md: 3;
+				g-width-xl: 1;
+				g-min-width: 80;
+			}	
+
+		    .smallToMediumField {
+				g: col;
+				g-width-xs: 12;
+				g-width-sm: 6;
+				g-width-md: 4;
+				g-width-xl: 1;		
+				g-min-width: 110;		
+			}
+
+			.checkboxField {
+				g: block;
+				width: 32;
+			}
+		</style>
+	
+		<upperFieldGridEdit class="largeField" field="nome" title="@@DnD5e.tab.equipament.defend.lab.name"/>
+		<upperFieldGridEdit class="smallField" field="peso" title="@@DnD5e.tab.equipament.defend.lab.weight"/>	
+		
+		<upperFieldGridComboBox class="smallToMediumField" baseName="TypeEnum" field="typeEnum" title="@@DnD5e.tab.equipament.defend.lab.type" />					
+		
+		<script>
+			self.cmbTypeEnum.items = { '@@DnD5e.tab.equipament.defend.cmbType.lightArmor', 
+			                           '@@DnD5e.tab.equipament.defend.cmbType.mediumArmor', 
+									   '@@DnD5e.tab.equipament.defend.cmbType.heavyArmor', 
+									   '@@DnD5e.tab.equipament.defend.cmbType.shield',
+									   '@@DnD5e.tab.equipament.defend.cmbType.bonus',
+									   '@@DnD5e.tab.equipament.defend.cmbType.other' }
+									   
+			self.cmbTypeEnum.values = {'lightArmor', 'mediumArmor', 'heavyArmor', 'shield', 'bonus', 'other'};
+		</script>
+		
+		
+		<upperFieldGridCheckBox class="checkboxField" field="active" title="@@DnD5e.tab.equipament.btn.active"/>			
+		<upperFieldGridEdit class="smallField" field="caBonus" title="@@DnD5e.tab.equipament.defend.lab.ca"/>
+		<upperFieldGridCheckBox class="checkboxField" field="penalidade" title="@@DnD5e.tab.equipament.btn.pen"/>		
+		<upperFieldGridEdit class="mediumField" field="propriedades" title="@@DnD5e.tab.equipament.defend.lab.property"/>			
+	</layout>
+	
+	<!--
 	<layout align="client" class="contentLayout" margins="{top=8, bottom=8}" name="layPrincipal">
 		<flowLayout class="tile" name="fraLayout" avoidScale="true" autoHeight="true" vertAlign="trailing" align="top" lineSpacing="2" horzAlign="justify" onResize="atualizarDesiredHeight();">
 			<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="@@DnD5e.tab.equipament.defend.lab.name"/>
 			<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="@@DnD5e.tab.equipament.defend.lab.weight"/>											
-			<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="@@DnD5e.tab.equipament.defend.lab.type"/>							
-			<upperGridCampoSolidoCheckBox height="40" field="active" titulo="@@DnD5e.tab.equipament.btn.active"/>
+			<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="@@DnD5e.tab.equipament.defend.lab.type"/>		
+			
+			<upperGridCampoSolidoCheckBox height="40" field="active" titulo="@@DnD5e.tab.equipament.btn.active"/>   FALTANDO
+			
+			
 			<upperGridCampoSolido height="40" field="caBonus" titulo="@@DnD5e.tab.equipament.defend.lab.ca"/>
-			<upperGridCampoSolidoCheckBox height="40" field="penalidade" titulo="@@DnD5e.tab.equipament.btn.pen"/>
+			
+			<upperGridCampoSolidoCheckBox height="40" field="penalidade" titulo="@@DnD5e.tab.equipament.btn.pen"/>    FALTANDO
+			
 			<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="@@DnD5e.tab.equipament.defend.lab.property"/>
 		</flowLayout>	
 	</layout>
-
-	<dataLink fields="{'caBonus','active'}">
+	
+	-->
+	
+	<dataLink fields="{'caBonus', 'active', 'typeEnum'}">
 		<event name="onChange">
 			if sheet==nil then return end
 
-			local node = NDB.getRoot(sheet)
-			local nodes = NDB.getChildNodes(node.equipamentos.defesas)
+			local rootNode = NDB.getRoot(sheet)
+			local nodes = NDB.getChildNodes(rootNode.equipamentos.defesas)
 			local ca = 0
+			local isUsingHeavyArmor = false;
+			local isUsingMediumArmor = false;
+			
 			for i=1, #nodes, 1 do
 				if nodes[i].active then
-					local bonus = common.interpreta(nodes[i], nodes[i].caBonus)
-
+					local bonus = common.interpreta(nodes[i], nodes[i].caBonus);
+									
 					local rolagem = Firecast.interpretarRolagem(bonus)
 					rolagem = Firecast.interpretarRolagem("1d1-1"):concatenar(rolagem)
 					rolagem:rolarLocalmente()
 					bonus = rolagem.resultado
 					
 					ca = ca + (tonumber(bonus) or 0)
+					
+					local armorType = nodes[i].typeEnum;
+					
+					if armorType == "heavyArmor" then					
+						isUsingHeavyArmor = true;
+					elseif armorType == "mediumArmor" then
+						isUsingMediumArmor = true;
+					end;
 				end
 			end
 
-			node.caEquip = ca
+			rootNode.caEquip = ca
+			
+			if isUsingHeavyArmor then
+				rootNode.caEquipDexMode = "heavyArmor";
+			elseif isUsingMediumArmor then
+				rootNode.caEquipDexMode = "mediumArmor";
+			else
+				rootNode.caEquipDexMode = nil;  -- default mode
+			end;			
 		</event>
 	</dataLink>
+	
+	<event name='OnNodeReady'>
+		self:migrateTipoStringToTypeEnumFieldIfNeeded();
+	</event>
 </form>

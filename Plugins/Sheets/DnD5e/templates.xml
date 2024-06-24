@@ -51,6 +51,41 @@
 			</flowPart>					
 	</template>		
 	
+
+	<template name="upperFieldGridEdit">
+		<!-- baseName = baseName or uniqueName("UpperFieldGridCntEdit");	-->		
+		
+		<layout name="lay$(baseName)" class="$(class or '')" g-auto-height="true">
+			<edit g="col" g-width="12" name="edt$(baseName)" class="infoNoTopo" field="$(field)" fontSize="13" transparent="false" vertTextAlign="center"/>
+			<label g="col" g-width="12" g-dyn-height-txt="true" g-margin-top="2" name="lab$(baseName)" class="tituloCampo" text="$(title)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>					
+		</layout>
+	</template>		
+	
+	<template name="upperFieldGridCheckBox">
+		<!-- baseName = baseName or uniqueName("UpperFieldGridCntCheckBox"); -->	
+
+		<layout name="lay$(baseName)" class="$(class or '')" g-auto-height="true">		
+			<dndCheckBox name="cbx$(baseName)" field="$(field)" losango="true" height="32"/>			
+			
+			<script>
+				self.cbx$(baseName)['g-role'] = "col";
+				self.cbx$(baseName)['g-width'] = "12";
+			</script>
+			
+			<label g="col" g-width="12" g-dyn-height-txt="true" g-margin-top="2" name="lab$(baseName)" class="tituloCampo" text="$(title)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>						
+		</layout>
+	</template>			
+	
+	<template name="upperFieldGridComboBox">
+		<!-- baseName = baseName or uniqueName("UpperFieldGridComboBox"); -->	
+
+		<layout name="lay$(baseName)" class="$(class or '')" g-auto-height="true">		
+			<comboBox g="col" g-width="12" name="cmb$(baseName)" class="infoNoTopo" field="$(field)" fontSize="13" transparent="false" hint="$(hint or '')" items="$(items or '{}')" values="$(values or '{}')"/>			
+			<label g="col" g-width="12" g-dyn-height-txt="true" g-margin-top="2" name="lab$(baseName)" class="tituloCampo" text="$(title)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>	
+		</layout>
+	</template>		
+
+	
 	<template name="upperGridCampoSolidoCheckBox">
 		<!-- baseName = uniqueName("GridCampoSolido"); -->
 	
@@ -62,7 +97,7 @@
 				<dndCheckBox name="cbx$(baseName)" align="top" field="$(field)" losango="true" height="32"/>				
 				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
 				
-				<script>    self.$(baseName):setHeight(self.cbx$(baseName):getHeight() + self.lab$(baseName):getHeight());</script>				
+				<script> self.$(baseName):setHeight(self.cbx$(baseName):getHeight() + self.lab$(baseName):getHeight()); </script>				
 			</flowPart>					
 	</template>	
 

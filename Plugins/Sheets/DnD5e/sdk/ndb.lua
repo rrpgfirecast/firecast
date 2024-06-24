@@ -168,8 +168,8 @@ function localNDB.nodeFromHandle(nodeHandle)
 	return node;
 end;
 
-function localNDB.copyNodeToAnother(nodeDest, nodeSrc, ctxCtrl)
-	if nodeDest.handle == nodeSrc.handle then
+function localNDB.copyNodeToAnother(nodeDest, nodeSrc, ctxCtrl)	
+	if (nodeDest == nil) or (nodeSrc == nil) or (nodeDest.handle == nodeSrc.handle) then
 		return;
 	end;
 	
@@ -203,7 +203,10 @@ function localNDB.copyNodeToAnother(nodeDest, nodeSrc, ctxCtrl)
 				
 				if not ctxCtrl[srcChild.handle] then
 					newChild = nodeDest:addChild(srcChild:getName());
-					localNDB.copyNodeToAnother(newChild, srcChild, ctxCtrl);
+					
+					if newChild ~= nil then
+						localNDB.copyNodeToAnother(newChild, srcChild, ctxCtrl);
+					end;
 				end;
 			end;
 		end,
@@ -214,6 +217,10 @@ function localNDB.copyNodeToAnother(nodeDest, nodeSrc, ctxCtrl)
 end;
 
 function localNDB.copyTableToNode(nodeDest, tableValue)
+	if (nodeDest == nil) then
+		return;
+	end;
+	
 	nodeDest:clearNode();
 
 	for k, v in pairs(tableValue) do
@@ -241,31 +248,36 @@ function localNDB.assignPropValueToNode(node, prop, value)
 		-- Setando um Table/Child Node
 		_obj_invoke(node.handle, "BeginUpdate");		
 		
-		node:setAttribute(prop, nil);  -- remover atributo de mesmo nome se existir	
-		local childNode = node:findChild(prop);
-		
-		if childNode == nil then
-			childNode = node:addChild(prop); -- Nodo não existe, vamos criar um
-		end;
+		tryFinally(
+			function()
+				node:setAttribute(prop, nil);  -- remover atributo de mesmo nome se existir		
+				local childNode = node:findChild(prop);
 				
-		if rawget(value, "__nodeFlag") then
-			-- é um node
-			localNDB.copyNodeToAnother(childNode, value);
-		elseif rawget(value, "__nodeFacadeFlag") then
-			-- é um node facade
-			localNDB.copyNodeToAnother(childNode, value.__node);	
-		else
-			-- Aparentemente é um table comum
-			localNDB.copyTableToNode(childNode, value);			
-		end;	
-		
-		_obj_invoke(node.handle, "EndUpdate");	
+				if childNode == nil then
+					childNode = node:addChild(prop); -- Nodo não existe, vamos criar um			
+				end;
+				
+				if childNode ~= nil then				
+					if rawget(value, "__nodeFlag") then
+						-- é um node
+						localNDB.copyNodeToAnother(childNode, value);
+					elseif rawget(value, "__nodeFacadeFlag") then
+						-- é um node facade
+						localNDB.copyNodeToAnother(childNode, value.__node);	
+					else
+						-- Aparentemente é um table comum
+						localNDB.copyTableToNode(childNode, value);			
+					end;
+				end;
+			end,
+			
+			function()
+				_obj_invoke(node.handle, "EndUpdate");	
+			end);		
 	else
 		-- Setando um Atributo
-		--_obj_invoke(node.handle, "BeginUpdate");
 		_obj_invoke(node.handle, "RemoveChildNodes", prop); -- remover todos os child nodes de mesmo nome	
-		node:setAttribute(prop, value);
-		--_obj_invoke(node.handle, "EndUpdate");	
+		node:setAttribute(prop, value);		
 	end;
 end;
 
@@ -473,7 +485,13 @@ function ndb.createChildNode(nodeObj, childName)
 	local node = localNDB.getNodeObjectFromFacade(nodeObj);
 	
 	if node ~= nil then
-		return node:addChild(childName):getFacade();
+		local childNode = node:addChild(childName); 
+
+		if childNode ~= nil then
+			return childNode:getFacade();
+		else
+			return nil;
+		end;
 	else
 		return nil;
 	end;
@@ -917,7 +935,7 @@ function pairs(obj)
 end;
 
 function ipairs(obj)
-	if rawget(obj, "__nodeFacadeFlag") then
+	if (obj ~= nil) and rawget(obj, "__nodeFacadeFlag") then
 		-- Node Façade		
 		local state = _prepareNodeFacadePairsState(obj);			
 		return oldIPairsFunc(state);
