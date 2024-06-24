@@ -173,12 +173,23 @@
 								<label align="top" text="@@DnD5e.frente.lab.CA" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 								<edit align="client" class="atributo transparente" field="CA" fontSize="30"/>	
 							</flowPart>
-							<dataLink fields="{'caEquip', 'atributos.moddestrezastr'}">
+							<dataLink fields="{'caEquip', 'atributos.moddestrezastr', 'caEquipDexMode'}">
 								<event name="onChange">
 									if sheet==nil then return end
 									if sheet.atributos==nil then return end
-									sheet.CA = 10 + (tonumber(sheet.caEquip) or 0) + 
-													(tonumber(sheet.atributos.moddestrezastr) or 0)
+									
+									local modDex = tonumber(sheet.atributos.moddestrezastr) or 0;
+									local dexBonus;
+									
+									if sheet.caEquipDexMode == "heavyArmor" then
+										dexBonus = 0;
+									elseif sheet.caEquipDexMode == "mediumArmor" then
+										dexBonus = math.min(modDex, 2);
+									else
+										dexBonus = modDex;
+									end;
+									
+									sheet.CA = 10 + (tonumber(sheet.caEquip) or 0) + dexBonus;
 								</event>
 							</dataLink>
 							

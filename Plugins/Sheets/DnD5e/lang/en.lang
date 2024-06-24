@@ -9,6 +9,7 @@ DnD5e.tab.equipament.btn.newItem=New Item
 DnD5e.tab.equipament.btn.property=Add Property
 DnD5e.tab.equipament.btn.pen=DIS.
 DnD5e.tab.equipament.btn.active=USE
+DnD5e.tab.equipament.btn.addAttackOption=Add Attack Option
 
 DnD5e.tab.equipament.atack.lab.name=NAME
 DnD5e.tab.equipament.atack.lab.weight=WEIGHT
@@ -31,6 +32,11 @@ DnD5e.tab.equipament.defend.lab.weight=WEIGHT
 DnD5e.tab.equipament.defend.lab.type=TYPE
 DnD5e.tab.equipament.defend.lab.ca=ARMOR CLASS
 DnD5e.tab.equipament.defend.lab.property=PROPERTIES
+DnD5e.tab.equipament.defend.cmbType.lightArmor=Light Armor
+DnD5e.tab.equipament.defend.cmbType.mediumArmor=Medium Armor
+DnD5e.tab.equipament.defend.cmbType.heavyArmor=Heavy Armor
+DnD5e.tab.equipament.defend.cmbType.shield=Shield
+DnD5e.tab.equipament.defend.cmbType.other=Other
 
 DnD5e.tab.equipament.lab.extraEquip=OTHER EQUIPMENT
 

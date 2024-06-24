@@ -155,7 +155,7 @@
 									<recordList name="rclOptsAttack" align="client" field="optsAttack" templateForm="frmOptAtaque">
 										<event name="onItemAdded"> form.cbOptAtaqueMunicao:setItems(common.getNomeContadores(sheet, {""})); </event>
 									</recordList>
-									<button align="bottom" text="Add Attack Option" onClick="self.rclOptsAttack:append();" margins="{left=200, right=200}"/>
+									<button align="bottom" text="@@DnD5e.tab.equipament.btn.addAttackOption" onClick="self.rclOptsAttack:append();" margins="{left=200, right=200}"/>
 									<dataLink field="contadoresMudaram">
 										<event name="onChange">
 											if sheet ~= nil and self ~= nil and sheet.contadoresMudaram then
