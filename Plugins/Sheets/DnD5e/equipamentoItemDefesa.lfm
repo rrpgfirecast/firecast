@@ -14,7 +14,7 @@
 		}
 	</style>
 	
-	<script>
+	<script><![CDATA[
 		local Utils = require('utils.lua');
 	
 		function self:tryCastTipoStringToTypeEnumField(inputValue)
@@ -40,8 +40,6 @@
 				return "heavyArmor";
 			elseif contains({'escudo', 'shield'}) then
 				return "shield";	
-			elseif contains({'bonus'}) then
-				return "bonus";			
 			elseif contains({'outro', 'other'}) then
 				return "other";		
 			else
@@ -62,15 +60,7 @@
 				end;
 			end;
 		end;
-	</script>
-
-	<script> 
-		<![CDATA[
-				
-		local function atualizarDesiredHeight()
-			-- REMOVER atualizarDesiredHeight em favor do grid.			
-		end;
-		
+						
 		local function askForDelete()
 			Dialogs.confirmYesNo("@@DnD5e.generic.deleteConfirmation",
 								 function (confirmado)
@@ -88,15 +78,9 @@
 		<button g="block" g-dyn-width-txt="true" g-dyn-height-txt="true" g-min-height="30" g-padding-left="8" g-padding-right="8" g-min-width="64"
 				text="@@DnD5e.tab.equipament.btn.delete" name="btnApagar" onClick="askForDelete();" />	
 	</layout>
-	
-	<!--
-	<layout align="left" width="64" margins="{top=10, left=3, bottom=10}" name="layMenu">		
-		<button align="top" text="@@DnD5e.tab.equipament.btn.delete" name="btnApagar" onClick="askForDelete();"/>							
-	</layout>
-	-->
-	
-	
-	<layout g="col" g-width="12" g-auto-height="true" g-cnt-line-spacing="8" name="layPrincipal">		
+		
+	<!-- Atributes of the Equipment -->
+	<layout g="col" g-width="12" g-auto-height="true" g-cnt-line-spacing="8" g-cnt-gutter="12" name="layPrincipal">		
 		<style>
 			.largeField {
 				g: col;
@@ -148,10 +132,9 @@
 			                           '@@DnD5e.tab.equipament.defend.cmbType.mediumArmor', 
 									   '@@DnD5e.tab.equipament.defend.cmbType.heavyArmor', 
 									   '@@DnD5e.tab.equipament.defend.cmbType.shield',
-									   '@@DnD5e.tab.equipament.defend.cmbType.bonus',
 									   '@@DnD5e.tab.equipament.defend.cmbType.other' }
 									   
-			self.cmbTypeEnum.values = {'lightArmor', 'mediumArmor', 'heavyArmor', 'shield', 'bonus', 'other'};
+			self.cmbTypeEnum.values = {'lightArmor', 'mediumArmor', 'heavyArmor', 'shield', 'other'};
 		</script>
 		
 		
@@ -161,25 +144,6 @@
 		<upperFieldGridEdit class="mediumField" field="propriedades" title="@@DnD5e.tab.equipament.defend.lab.property"/>			
 	</layout>
 	
-	<!--
-	<layout align="client" class="contentLayout" margins="{top=8, bottom=8}" name="layPrincipal">
-		<flowLayout class="tile" name="fraLayout" avoidScale="true" autoHeight="true" vertAlign="trailing" align="top" lineSpacing="2" horzAlign="justify" onResize="atualizarDesiredHeight();">
-			<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="@@DnD5e.tab.equipament.defend.lab.name"/>
-			<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="@@DnD5e.tab.equipament.defend.lab.weight"/>											
-			<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="@@DnD5e.tab.equipament.defend.lab.type"/>		
-			
-			<upperGridCampoSolidoCheckBox height="40" field="active" titulo="@@DnD5e.tab.equipament.btn.active"/>   FALTANDO
-			
-			
-			<upperGridCampoSolido height="40" field="caBonus" titulo="@@DnD5e.tab.equipament.defend.lab.ca"/>
-			
-			<upperGridCampoSolidoCheckBox height="40" field="penalidade" titulo="@@DnD5e.tab.equipament.btn.pen"/>    FALTANDO
-			
-			<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="@@DnD5e.tab.equipament.defend.lab.property"/>
-		</flowLayout>	
-	</layout>
-	
-	-->
 	
 	<dataLink fields="{'caBonus', 'active', 'typeEnum'}">
 		<event name="onChange">
@@ -202,11 +166,11 @@
 					
 					ca = ca + (tonumber(bonus) or 0)
 					
-					local armorType = nodes[i].typeEnum;
+					local equipType = nodes[i].typeEnum;
 					
-					if armorType == "heavyArmor" then					
+					if equipType == "heavyArmor" then					
 						isUsingHeavyArmor = true;
-					elseif armorType == "mediumArmor" then
+					elseif equipType == "mediumArmor" then
 						isUsingMediumArmor = true;
 					end;
 				end
