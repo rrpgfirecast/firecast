@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCoyoteCrow" formType="sheetTemplate" dataType="app.firecast.plugins.coyoteandcrow.fillablepdf" title="Coyote &amp; Crow" align="client" theme="light">
+	<layout g="container" g-auto-height="false" g-vert-tile="true" g-cnt-horz-align="center">
+
+		<scrollBox g="block" g-vert-tile="true" width="1022" g-horz-tile="true" g-max-width="1022">		
+			<rectangle height="1268" width="1005" color="white">
+				<tabControl align="client">
+					<tab title="Front">
+						<import file="1.lfm"/>
+					</tab>
+					<tab title="Back">
+						<import file="2.lfm"/>
+					</tab>
+				</tabControl>	
+			</rectangle>
+		</scrollBox>
+	</layout>
+</form>

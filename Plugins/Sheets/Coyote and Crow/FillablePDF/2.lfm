@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCoyoteCrowFormFillableCharacterSheet_v1_01__1_2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmCoyoteCrowFormFillableCharacterSheet_v1_01__1_2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmCoyoteCrowFormFillableCharacterSheet_v1_01__1_2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+
+	<rectangle g="row" g-vert-tile="true" g-min-height="1268" color="white">    
+		<image left="0" top="0" width="979" height="1268" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+		<layout left="82" top="86" width="811" height="35" compilerOrder="1">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_1" compilerOrder="2"/>
+		</layout>&#xD;
+		<layout left="82" top="124" width="811" height="35" compilerOrder="3">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_2" compilerOrder="4"/>
+		</layout>&#xD;
+		<layout left="82" top="162" width="811" height="35" compilerOrder="5">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_3" compilerOrder="6"/>
+		</layout>&#xD;
+		<layout left="82" top="201" width="811" height="35" compilerOrder="7">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_4" compilerOrder="8"/>
+		</layout>&#xD;
+		<layout left="82" top="239" width="811" height="35" compilerOrder="9">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_5" compilerOrder="10"/>
+		</layout>&#xD;
+		<layout left="82" top="278" width="811" height="35" compilerOrder="11">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_6" compilerOrder="12"/>
+		</layout>&#xD;
+		<layout left="82" top="316" width="811" height="35" compilerOrder="13">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_7" compilerOrder="14"/>
+		</layout>&#xD;
+		<layout left="82" top="354" width="811" height="35" compilerOrder="15">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_8" compilerOrder="16"/>
+		</layout>&#xD;
+		<layout left="82" top="393" width="811" height="35" compilerOrder="17">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_9" compilerOrder="18"/>
+		</layout>&#xD;
+		<layout left="82" top="431" width="811" height="35" compilerOrder="19">
+			<edit transparent="true" fontSize="15.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="811" height="36" field="Belongings_10" compilerOrder="20"/>
+		</layout>&#xD;
+		<layout left="520" top="594" width="409" height="582" compilerOrder="23">
+			<image left="0" top="0" width="409" height="583" compilerOrder="24" style="proportional" field="charSketch" editable="true" animate="true" />						
+		</layout>&#xD;
+		<layout left="101" top="604.8" width="376" height="573.2" compilerOrder="21">
+			<textEditor left="0" top="0" width="376" height="573.2" fontSize="19.2" fontColor="#000000" field="Saga_Notes" transparent="true" compilerOrder="22"/>
+		</layout>&#xD;
+	</rectangle>
+</form>

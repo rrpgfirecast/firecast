@@ -372,6 +372,15 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="app.firecast.plugins.coyoteandcrow" name="Coyote &amp; Crow" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Coyote%20and%20Crow/output/Coyote%20and%20Crow.rpk?raw=true" fileName="Coyote and Crow.rpk" repositoryPath="Sheets/Coyote and Crow/" author="AlyssonRPG" description="Modelo de ficha para Coyote &amp; Crow" version="1.0" compilationDate="03072024125356" compilationDigest="bb4a84be03e2b817722595e2b42d50d2c088ad54">
+        <info lang="pt-BR" name="Coyote &amp; Crow" description="Modelo de ficha para Coyote &amp; Crow" author="AlyssonRPG" site="https://firecast.app"/>
+        <info lang="en" description="Character sheet for Coyote &amp; Crow"/>
+        <dataTypes>
+            <dataType id="app.firecast.plugins.coyoteandcrow.fillablepdf" title="Coyote &amp;amp; Crow" formType="sheetTemplate">
+                <info title="Coyote &amp;amp; Crow"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Arc.Metal.Zhuls" name="Ficha Arc Metal Zhuls" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Arc%20Metal%20Zhuls.rpk?raw=true" fileName="Arc Metal Zhuls.rpk" repositoryPath="Sheets/Arc Metal Zhuls/" author="Ambesek" description="Ficha para o cenario e sistema Arc Metal Zhuls." version="0.3" compilationDate="03032023113334" compilationDigest="abf94572ac40d17163063d6eb175064e056fb907">
         <info lang="pt-BR" name="Ficha Arc Metal Zhuls" description="Ficha para o cenario e sistema Arc Metal Zhuls." author="Ambesek"/>
         <dataTypes>
@@ -439,7 +448,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="02042024204536" compilationDigest="bc6df5714bc9c7a2df2fa77262aaac5aead4727c">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="24062024152422" compilationDigest="ae4d763eedacf33bbaac6fae18d77e9f80ef0cd4">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>

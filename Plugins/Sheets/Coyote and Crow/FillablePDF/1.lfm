@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCoyoteCrowFormFillableCharacterSheet_v1_01__1_1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmCoyoteCrowFormFillableCharacterSheet_v1_01__1_1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmCoyoteCrowFormFillableCharacterSheet_v1_01__1_1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+	<rectangle g="row" g-vert-tile="true" g-min-height="1268" color="white">
+		<image left="0" top="0" width="985" height="1268" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+		<layout left="167" top="156" width="386" height="26" compilerOrder="1">
+			<edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="386" height="27" field="Names" compilerOrder="2"/>
+		</layout>&#xD;
+		<layout left="592" top="156" width="309" height="26" compilerOrder="3">
+			<edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="309" height="27" field="Age" compilerOrder="4"/>
+		</layout>&#xD;
+		<layout left="442" top="193" width="168" height="27" compilerOrder="7">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="168" height="28" field="Path" compilerOrder="8"/>
+		</layout>&#xD;
+		<layout left="185" top="194" width="152" height="27" compilerOrder="5">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="152" height="28" field="Archetype" compilerOrder="6"/>
+		</layout>&#xD;
+		<layout left="711" top="195" width="188" height="26" compilerOrder="9">
+			<edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="188" height="27" field="Motivation" compilerOrder="10"/>
+		</layout>&#xD;
+		<layout left="240" top="233" width="658" height="26" compilerOrder="11">
+			<edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="658" height="27" field="Other_Identifiers" compilerOrder="12"/>
+		</layout>&#xD;
+		<layout left="197" top="271" width="701" height="26" compilerOrder="13">
+			<edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="701" height="27" field="Background_1" compilerOrder="14"/>
+		</layout>&#xD;
+		<layout left="93" top="308" width="805" height="27" compilerOrder="15">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="805" height="28" field="Background_2" compilerOrder="16"/>
+		</layout>&#xD;
+		<layout left="230" top="347" width="669" height="27" compilerOrder="17">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="669" height="28" field="Gifts__Burdens_1" compilerOrder="18"/>
+		</layout>&#xD;
+		<layout left="93" top="386" width="806" height="27" compilerOrder="19">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="806" height="28" field="Gifts__Burdens_2" compilerOrder="20"/>
+		</layout>&#xD;
+		<layout left="245" top="425" width="251" height="26" compilerOrder="21">
+			<edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="251" height="27" field="Short_Term_Goals_1" compilerOrder="22"/>
+		</layout>&#xD;
+		<layout left="554" top="425" width="345" height="26" compilerOrder="23">
+			<edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="345" height="27" field="Short_Term_Goals_2" compilerOrder="24"/>
+		</layout>&#xD;
+		<layout left="232" top="463" width="667" height="26" compilerOrder="25">
+			<edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="667" height="27" field="Long_Term_Goal" compilerOrder="26"/>
+		</layout>&#xD;
+		<layout left="684" top="561" width="46" height="21" compilerOrder="27">
+			<edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="22" field="Legendary_Ranks" compilerOrder="28"/>
+		</layout>&#xD;
+		<layout left="884" top="562" width="43" height="20" compilerOrder="29">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="43" height="21" field="Initiative_Score" compilerOrder="30"/>
+		</layout>&#xD;
+		<layout left="610" top="603" width="318" height="27" compilerOrder="43">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="318" height="28" field="Abilities_1" compilerOrder="44"/>
+		</layout>&#xD;
+		<layout left="93" top="606" width="61" height="48" compilerOrder="31">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="STR" compilerOrder="32"/>
+		</layout>&#xD;
+		<layout left="160" top="606" width="61" height="48" compilerOrder="33">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="AGI" compilerOrder="34"/>
+		</layout>&#xD;
+		<layout left="228" top="606" width="61" height="48" compilerOrder="35">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="END" compilerOrder="36"/>
+		</layout>&#xD;
+		<layout left="308" top="606" width="61" height="48" compilerOrder="37">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="PD" compilerOrder="38"/>
+		</layout>&#xD;
+		<layout left="375" top="606" width="61" height="48" compilerOrder="39">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="Body" compilerOrder="40"/>
+		</layout>&#xD;
+		<layout left="444" top="606" width="61" height="48" compilerOrder="41">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="Bodyc" compilerOrder="42"/>
+		</layout>&#xD;
+		<layout left="533" top="633" width="394" height="27" compilerOrder="45">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="394" height="28" field="Abilities_2" compilerOrder="46"/>
+		</layout>&#xD;
+		<layout left="533" top="663" width="394" height="27" compilerOrder="47">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="394" height="28" field="Abilities_3" compilerOrder="48"/>
+		</layout>&#xD;
+		<layout left="93" top="672" width="61" height="48" compilerOrder="49">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="INT" compilerOrder="50"/>
+		</layout>&#xD;
+		<layout left="160" top="672" width="61" height="48" compilerOrder="51">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="PER" compilerOrder="52"/>
+		</layout>&#xD;
+		<layout left="228" top="672" width="61" height="48" compilerOrder="53">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="WIS" compilerOrder="54"/>
+		</layout>&#xD;
+		<layout left="308" top="672" width="61" height="48" compilerOrder="55">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="MD" compilerOrder="56"/>
+		</layout>&#xD;
+		<layout left="375" top="672" width="61" height="48" compilerOrder="57">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="Mind" compilerOrder="58"/>
+		</layout>&#xD;
+		<layout left="444" top="673" width="61" height="48" compilerOrder="59">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="Mindc" compilerOrder="60"/>
+		</layout>&#xD;
+		<layout left="676" top="694" width="251" height="27" compilerOrder="61">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="251" height="28" field="States_1" compilerOrder="62"/>
+		</layout>&#xD;
+		<layout left="533" top="725" width="394" height="27" compilerOrder="63">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="394" height="28" field="States_2" compilerOrder="64"/>
+		</layout>&#xD;
+		<layout left="93" top="740" width="61" height="48" compilerOrder="65">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="SPI" compilerOrder="66"/>
+		</layout>&#xD;
+		<layout left="160" top="740" width="61" height="48" compilerOrder="67">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="CHA" compilerOrder="68"/>
+		</layout>&#xD;
+		<layout left="228" top="740" width="61" height="48" compilerOrder="69">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="WLL" compilerOrder="70"/>
+		</layout>&#xD;
+		<layout left="308" top="740" width="61" height="48" compilerOrder="71">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="SD" compilerOrder="72"/>
+		</layout>&#xD;
+		<layout left="375" top="740" width="61" height="48" compilerOrder="73">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="Soul" compilerOrder="74"/>
+		</layout>&#xD;
+		<layout left="444" top="741" width="61" height="48" compilerOrder="75">
+			<edit transparent="true" fontSize="28.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="49" field="Soulc" compilerOrder="76"/>
+		</layout>&#xD;
+		<layout left="533" top="754" width="394" height="27" compilerOrder="77">
+			<edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="394" height="28" field="States_3" compilerOrder="78"/>
+		</layout>&#xD;
+		<layout left="228" top="872" width="28" height="20" compilerOrder="79">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Art_Stat" compilerOrder="80"/>
+		</layout>&#xD;
+		<layout left="270" top="872" width="28" height="20" compilerOrder="81">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Art_Rank" compilerOrder="82"/>
+		</layout>&#xD;
+		<layout left="315" top="872" width="28" height="20" compilerOrder="83">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Art_Total" compilerOrder="84"/>
+		</layout>&#xD;
+		<layout left="518" top="872" width="28" height="20" compilerOrder="85">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Knowledge_Stat" compilerOrder="86"/>
+		</layout>&#xD;
+		<layout left="561" top="872" width="28" height="20" compilerOrder="87">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Knowledge_Rank" compilerOrder="88"/>
+		</layout>&#xD;
+		<layout left="606" top="872" width="28" height="20" compilerOrder="89">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Knowledge_Total" compilerOrder="90"/>
+		</layout>&#xD;
+		<layout left="803" top="873" width="28" height="20" compilerOrder="91">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Stat_1" compilerOrder="92"/>
+		</layout>&#xD;
+		<layout left="845" top="874" width="28" height="20" compilerOrder="95">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Skill_Rank_1" compilerOrder="96"/>
+		</layout>&#xD;
+		<layout left="890" top="874" width="28" height="20" compilerOrder="97">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Total_1" compilerOrder="98"/>
+		</layout>&#xD;
+		<layout left="648" top="875" width="146" height="19" compilerOrder="93">
+			<edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="20" field="Specialized_Skill_1" compilerOrder="94"/>
+		</layout>&#xD;
+		<layout left="228" top="896" width="28" height="20" compilerOrder="99">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Athletics_Stat" compilerOrder="100"/>
+		</layout>&#xD;
+		<layout left="270" top="896" width="28" height="20" compilerOrder="101">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Athletics_Rank" compilerOrder="102"/>
+		</layout>&#xD;
+		<layout left="315" top="896" width="28" height="20" compilerOrder="103">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Athletics_Total" compilerOrder="104"/>
+		</layout>&#xD;
+		<layout left="518" top="896" width="28" height="20" compilerOrder="105">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Language_Stat" compilerOrder="106"/>
+		</layout>&#xD;
+		<layout left="561" top="896" width="28" height="20" compilerOrder="107">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Language_Rank" compilerOrder="108"/>
+		</layout>&#xD;
+		<layout left="606" top="896" width="28" height="20" compilerOrder="109">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Language_Total" compilerOrder="110"/>
+		</layout>&#xD;
+		<layout left="647" top="898" width="147" height="20" compilerOrder="119">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="147" height="21" field="Specialized_Base_Skill_1" compilerOrder="120"/>
+		</layout>&#xD;
+		<layout left="845" top="898" width="28" height="20" compilerOrder="121">
+			<edit transparent="true" fontSize="12.8" fontColor="#BFBFBF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Base_Rank_1" compilerOrder="122"/>
+		</layout>&#xD;
+		<layout left="228" top="920" width="28" height="20" compilerOrder="123">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Ceremony_Stat" compilerOrder="124"/>
+		</layout>&#xD;
+		<layout left="270" top="920" width="28" height="20" compilerOrder="111">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Ceremony_Rank" compilerOrder="112"/>
+		</layout>&#xD;
+		<layout left="315" top="920" width="28" height="20" compilerOrder="113">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Ceremony_Total" compilerOrder="114"/>
+		</layout>&#xD;
+		<layout left="518" top="920" width="28" height="20" compilerOrder="125">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Medicine_Stat" compilerOrder="126"/>
+		</layout>&#xD;
+		<layout left="561" top="920" width="28" height="20" compilerOrder="115">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Medicine_Rank" compilerOrder="116"/>
+		</layout>&#xD;
+		<layout left="606" top="920" width="28" height="20" compilerOrder="117">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Medicine_Total" compilerOrder="118"/>
+		</layout>&#xD;
+		<layout left="803" top="922" width="28" height="20" compilerOrder="129">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Stat_2" compilerOrder="130"/>
+		</layout>&#xD;
+		<layout left="845" top="922" width="28" height="20" compilerOrder="131">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Skill_Rank_2" compilerOrder="132"/>
+		</layout>&#xD;
+		<layout left="890" top="922" width="28" height="20" compilerOrder="133">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Total_2" compilerOrder="134"/>
+		</layout>&#xD;
+		<layout left="648" top="923" width="146" height="19" compilerOrder="127">
+			<edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="20" field="Specialized_Skill_2" compilerOrder="128"/>
+		</layout>&#xD;
+		<layout left="228" top="944" width="28" height="20" compilerOrder="135">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Charm_Stat" compilerOrder="136"/>
+		</layout>&#xD;
+		<layout left="270" top="944" width="28" height="20" compilerOrder="137">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Charm_Rank" compilerOrder="138"/>
+		</layout>&#xD;
+		<layout left="315" top="944" width="28" height="20" compilerOrder="139">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Charm_Total" compilerOrder="140"/>
+		</layout>&#xD;
+		<layout left="518" top="944" width="28" height="20" compilerOrder="141">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Melee_Weapons_Stat" compilerOrder="142"/>
+		</layout>&#xD;
+		<layout left="561" top="944" width="28" height="20" compilerOrder="143">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Melee_Weapons_Rank" compilerOrder="144"/>
+		</layout>&#xD;
+		<layout left="606" top="944" width="28" height="20" compilerOrder="145">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Melee_Weapons_Total" compilerOrder="146"/>
+		</layout>&#xD;
+		<layout left="647" top="946" width="147" height="20" compilerOrder="147">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="147" height="21" field="Specialized_Base_Skill_2" compilerOrder="148"/>
+		</layout>&#xD;
+		<layout left="845" top="946" width="28" height="20" compilerOrder="149">
+			<edit transparent="true" fontSize="12.8" fontColor="#BFBFBF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Base_Rank_2" compilerOrder="150"/>
+		</layout>&#xD;
+		<layout left="228" top="969" width="28" height="20" compilerOrder="151">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Coercion_Stat" compilerOrder="152"/>
+		</layout>&#xD;
+		<layout left="270" top="969" width="28" height="20" compilerOrder="153">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Coercion_Rank" compilerOrder="154"/>
+		</layout>&#xD;
+		<layout left="315" top="969" width="28" height="20" compilerOrder="155">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Coercion_Total" compilerOrder="156"/>
+		</layout>&#xD;
+		<layout left="518" top="969" width="28" height="20" compilerOrder="157">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Music_Stat" compilerOrder="158"/>
+		</layout>&#xD;
+		<layout left="561" top="969" width="28" height="20" compilerOrder="159">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Music_Rank" compilerOrder="160"/>
+		</layout>&#xD;
+		<layout left="606" top="969" width="28" height="20" compilerOrder="161">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Music_Total" compilerOrder="162"/>
+		</layout>&#xD;
+		<layout left="803" top="970" width="28" height="20" compilerOrder="165">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Stat_3" compilerOrder="166"/>
+		</layout>&#xD;
+		<layout left="845" top="970" width="28" height="20" compilerOrder="167">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Skill_Rank_3" compilerOrder="168"/>
+		</layout>&#xD;
+		<layout left="890" top="970" width="28" height="20" compilerOrder="169">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Total_3" compilerOrder="170"/>
+		</layout>&#xD;
+		<layout left="648" top="971" width="146" height="19" compilerOrder="163">
+			<edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="20" field="Specialized_Skill_3" compilerOrder="164"/>
+		</layout>&#xD;
+		<layout left="228" top="993" width="28" height="20" compilerOrder="171">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Computers_Stat" compilerOrder="172"/>
+		</layout>&#xD;
+		<layout left="270" top="993" width="28" height="20" compilerOrder="173">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Computers_Rank" compilerOrder="174"/>
+		</layout>&#xD;
+		<layout left="315" top="993" width="28" height="20" compilerOrder="175">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Computers_Total" compilerOrder="176"/>
+		</layout>&#xD;
+		<layout left="518" top="993" width="28" height="20" compilerOrder="177">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Performance_Stat" compilerOrder="178"/>
+		</layout>&#xD;
+		<layout left="561" top="993" width="28" height="20" compilerOrder="179">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Performance_Rank" compilerOrder="180"/>
+		</layout>&#xD;
+		<layout left="606" top="993" width="28" height="20" compilerOrder="181">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Performance_Total" compilerOrder="182"/>
+		</layout>&#xD;
+		<layout left="647" top="994" width="147" height="20" compilerOrder="183">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="147" height="21" field="Specialized_Base_Skill_3" compilerOrder="184"/>
+		</layout>&#xD;
+		<layout left="845" top="994" width="28" height="20" compilerOrder="185">
+			<edit transparent="true" fontSize="12.8" fontColor="#BFBFBF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Base_Rank_3" compilerOrder="186"/>
+		</layout>&#xD;
+		<layout left="228" top="1017" width="28" height="20" compilerOrder="187">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Cooking_Stat" compilerOrder="188"/>
+		</layout>&#xD;
+		<layout left="270" top="1017" width="28" height="20" compilerOrder="189">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Cooking_Rank" compilerOrder="190"/>
+		</layout>&#xD;
+		<layout left="315" top="1017" width="28" height="20" compilerOrder="191">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Cooking_Total" compilerOrder="192"/>
+		</layout>&#xD;
+		<layout left="518" top="1017" width="28" height="20" compilerOrder="193">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Piloting_Stat" compilerOrder="194"/>
+		</layout>&#xD;
+		<layout left="561" top="1017" width="28" height="20" compilerOrder="195">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Piloting_Rank" compilerOrder="196"/>
+		</layout>&#xD;
+		<layout left="606" top="1017" width="28" height="20" compilerOrder="197">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Piloting_Total" compilerOrder="198"/>
+		</layout>&#xD;
+		<layout left="803" top="1018" width="28" height="20" compilerOrder="201">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Stat_4" compilerOrder="202"/>
+		</layout>&#xD;
+		<layout left="845" top="1018" width="28" height="20" compilerOrder="203">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Skill_Rank_4" compilerOrder="204"/>
+		</layout>&#xD;
+		<layout left="890" top="1018" width="28" height="20" compilerOrder="205">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Total_4" compilerOrder="206"/>
+		</layout>&#xD;
+		<layout left="648" top="1019" width="146" height="19" compilerOrder="199">
+			<edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="20" field="Specialized_Skill_4" compilerOrder="200"/>
+		</layout>&#xD;
+		<layout left="228" top="1041" width="28" height="20" compilerOrder="207">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Crafting_Stat" compilerOrder="208"/>
+		</layout>&#xD;
+		<layout left="270" top="1041" width="28" height="20" compilerOrder="209">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Crafting_Rank" compilerOrder="210"/>
+		</layout>&#xD;
+		<layout left="315" top="1041" width="28" height="20" compilerOrder="211">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Crafting_Total" compilerOrder="212"/>
+		</layout>&#xD;
+		<layout left="518" top="1041" width="28" height="20" compilerOrder="213">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Ranged_Weapons_Stat" compilerOrder="214"/>
+		</layout>&#xD;
+		<layout left="561" top="1041" width="28" height="20" compilerOrder="215">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Ranged_Weapons_Rank" compilerOrder="216"/>
+		</layout>&#xD;
+		<layout left="606" top="1041" width="28" height="20" compilerOrder="217">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Ranged_Weapons_Total" compilerOrder="218"/>
+		</layout>&#xD;
+		<layout left="845" top="1042" width="28" height="20" compilerOrder="221">
+			<edit transparent="true" fontSize="12.8" fontColor="#BFBFBF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Base_Rank_4" compilerOrder="222"/>
+		</layout>&#xD;
+		<layout left="647" top="1043" width="147" height="20" compilerOrder="219">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="147" height="21" field="Specialized_Base_Skill_4" compilerOrder="220"/>
+		</layout>&#xD;
+		<layout left="228" top="1065" width="28" height="20" compilerOrder="223">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Cybernetics_Stat" compilerOrder="224"/>
+		</layout>&#xD;
+		<layout left="270" top="1065" width="28" height="20" compilerOrder="225">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Cybernetics_Rank" compilerOrder="226"/>
+		</layout>&#xD;
+		<layout left="315" top="1065" width="28" height="20" compilerOrder="227">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Cybernetics_Total" compilerOrder="228"/>
+		</layout>&#xD;
+		<layout left="518" top="1065" width="28" height="20" compilerOrder="229">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Science_Stat" compilerOrder="230"/>
+		</layout>&#xD;
+		<layout left="561" top="1065" width="28" height="20" compilerOrder="231">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Science_Rank" compilerOrder="232"/>
+		</layout>&#xD;
+		<layout left="606" top="1065" width="28" height="20" compilerOrder="233">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Science_Total" compilerOrder="234"/>
+		</layout>&#xD;
+		<layout left="803" top="1066" width="28" height="20" compilerOrder="237">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Stat_5" compilerOrder="238"/>
+		</layout>&#xD;
+		<layout left="890" top="1066" width="28" height="20" compilerOrder="241">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Total_5" compilerOrder="242"/>
+		</layout>&#xD;
+		<layout left="648" top="1067" width="146" height="19" compilerOrder="235">
+			<edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="20" field="Specialized_Skill_5" compilerOrder="236"/>
+		</layout>&#xD;
+		<layout left="845" top="1067" width="28" height="20" compilerOrder="239">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Skill_Rank_5" compilerOrder="240"/>
+		</layout>&#xD;
+		<layout left="228" top="1089" width="28" height="20" compilerOrder="243">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Deception_Stat" compilerOrder="244"/>
+		</layout>&#xD;
+		<layout left="270" top="1089" width="28" height="20" compilerOrder="245">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Deception_Rank" compilerOrder="246"/>
+		</layout>&#xD;
+		<layout left="315" top="1089" width="28" height="20" compilerOrder="247">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Deception_Total" compilerOrder="248"/>
+		</layout>&#xD;
+		<layout left="518" top="1089" width="28" height="20" compilerOrder="249">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Skullduggery_Stat" compilerOrder="250"/>
+		</layout>&#xD;
+		<layout left="561" top="1089" width="28" height="20" compilerOrder="251">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Skullduggery_Rank" compilerOrder="252"/>
+		</layout>&#xD;
+		<layout left="606" top="1089" width="28" height="20" compilerOrder="253">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Skullduggery_Total" compilerOrder="254"/>
+		</layout>&#xD;
+		<layout left="845" top="1090" width="28" height="20" compilerOrder="257">
+			<edit transparent="true" fontSize="12.8" fontColor="#BFBFBF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Base_Rank_5" compilerOrder="258"/>
+		</layout>&#xD;
+		<layout left="647" top="1091" width="147" height="20" compilerOrder="255">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="147" height="21" field="Specialized_Base_Skill_5" compilerOrder="256"/>
+		</layout>&#xD;
+		<layout left="228" top="1113" width="28" height="20" compilerOrder="259">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Farming_Stat" compilerOrder="260"/>
+		</layout>&#xD;
+		<layout left="270" top="1113" width="28" height="20" compilerOrder="261">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Farming_Rank" compilerOrder="262"/>
+		</layout>&#xD;
+		<layout left="315" top="1113" width="28" height="20" compilerOrder="263">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Farming_Total" compilerOrder="264"/>
+		</layout>&#xD;
+		<layout left="518" top="1113" width="28" height="20" compilerOrder="265">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Stealth_Stat" compilerOrder="266"/>
+		</layout>&#xD;
+		<layout left="561" top="1113" width="28" height="20" compilerOrder="267">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Stealth_Rank" compilerOrder="268"/>
+		</layout>&#xD;
+		<layout left="606" top="1113" width="28" height="20" compilerOrder="269">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Stealth_Total" compilerOrder="270"/>
+		</layout>&#xD;
+		<layout left="803" top="1114" width="28" height="20" compilerOrder="273">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Stat_6" compilerOrder="274"/>
+		</layout>&#xD;
+		<layout left="648" top="1115" width="146" height="19" compilerOrder="271">
+			<edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="20" field="Specialized_Skill_6" compilerOrder="272"/>
+		</layout>&#xD;
+		<layout left="845" top="1115" width="28" height="20" compilerOrder="275">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Skill_Rank_6" compilerOrder="276"/>
+		</layout>&#xD;
+		<layout left="890" top="1115" width="28" height="20" compilerOrder="277">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Total_6" compilerOrder="278"/>
+		</layout>&#xD;
+		<layout left="228" top="1137" width="28" height="20" compilerOrder="279">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Herbalism_Stat" compilerOrder="280"/>
+		</layout>&#xD;
+		<layout left="270" top="1137" width="28" height="20" compilerOrder="281">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Herbalism_Rank" compilerOrder="282"/>
+		</layout>&#xD;
+		<layout left="315" top="1137" width="28" height="20" compilerOrder="283">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Herbalism_Total" compilerOrder="284"/>
+		</layout>&#xD;
+		<layout left="518" top="1137" width="28" height="20" compilerOrder="285">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Survival_Stat" compilerOrder="286"/>
+		</layout>&#xD;
+		<layout left="561" top="1137" width="28" height="20" compilerOrder="287">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Survival_Rank" compilerOrder="288"/>
+		</layout>&#xD;
+		<layout left="606" top="1137" width="28" height="20" compilerOrder="289">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Survival_Total" compilerOrder="290"/>
+		</layout>&#xD;
+		<layout left="647" top="1139" width="147" height="20" compilerOrder="291">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="147" height="21" field="Specialized_Base_Skill_6" compilerOrder="292"/>
+		</layout>&#xD;
+		<layout left="845" top="1139" width="28" height="20" compilerOrder="293">
+			<edit transparent="true" fontSize="12.8" fontColor="#BFBFBF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Base_Rank_6" compilerOrder="294"/>
+		</layout>&#xD;
+		<layout left="228" top="1162" width="28" height="20" compilerOrder="295">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Husbandry_Stat" compilerOrder="296"/>
+		</layout>&#xD;
+		<layout left="270" top="1162" width="28" height="20" compilerOrder="297">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Husbandry_Rank" compilerOrder="298"/>
+		</layout>&#xD;
+		<layout left="315" top="1162" width="28" height="20" compilerOrder="299">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Husbandry_Total" compilerOrder="300"/>
+		</layout>&#xD;
+		<layout left="518" top="1162" width="28" height="20" compilerOrder="301">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Tracking_Stat" compilerOrder="302"/>
+		</layout>&#xD;
+		<layout left="561" top="1162" width="28" height="20" compilerOrder="303">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Tracking_Rank" compilerOrder="304"/>
+		</layout>&#xD;
+		<layout left="606" top="1162" width="28" height="20" compilerOrder="305">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Tracking_Total" compilerOrder="306"/>
+		</layout>&#xD;
+		<layout left="648" top="1163" width="146" height="19" compilerOrder="307">
+			<edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="20" field="Specialized_Skill_7" compilerOrder="308"/>
+		</layout>&#xD;
+		<layout left="803" top="1163" width="28" height="20" compilerOrder="309">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Stat_7" compilerOrder="310"/>
+		</layout>&#xD;
+		<layout left="845" top="1163" width="28" height="20" compilerOrder="311">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Skill_Rank_7" compilerOrder="312"/>
+		</layout>&#xD;
+		<layout left="890" top="1163" width="28" height="20" compilerOrder="313">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Total_7" compilerOrder="314"/>
+		</layout>&#xD;
+		<layout left="228" top="1186" width="28" height="20" compilerOrder="315">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Investigation_Stat" compilerOrder="316"/>
+		</layout>&#xD;
+		<layout left="270" top="1186" width="28" height="20" compilerOrder="317">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Investigation_Rank" compilerOrder="318"/>
+		</layout>&#xD;
+		<layout left="315" top="1186" width="28" height="20" compilerOrder="319">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Investigation_Total" compilerOrder="320"/>
+		</layout>&#xD;
+		<layout left="518" top="1186" width="28" height="20" compilerOrder="321">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Unarmed_Combat_Stat" compilerOrder="322"/>
+		</layout>&#xD;
+		<layout left="561" top="1186" width="28" height="20" compilerOrder="323">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Unarmed_Combat_Rank" compilerOrder="324"/>
+		</layout>&#xD;
+		<layout left="606" top="1186" width="28" height="20" compilerOrder="325">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Unarmed_Combat_Total" compilerOrder="326"/>
+		</layout>&#xD;
+		<layout left="647" top="1187" width="147" height="20" compilerOrder="327">
+			<edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="147" height="21" field="Specialized_Base_Skill_7" compilerOrder="328"/>
+		</layout>&#xD;
+		<layout left="845" top="1187" width="28" height="20" compilerOrder="329">
+			<edit transparent="true" fontSize="12.8" fontColor="#BFBFBF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="28" height="21" field="Specialized_Base_Rank_7" compilerOrder="330"/>
+		</layout>&#xD;
+	</rectangle>
+ 
+    <dataLink fields="{&apos;Art_Stat&apos;, &apos;Art_Total&apos;, &apos;Athletics_Stat&apos;, &apos;Athletics_Total&apos;, &apos;Ceremony_Stat&apos;, &apos;Ceremony_Total&apos;, &apos;Charm_Stat&apos;, &apos;Charm_Total&apos;, &apos;Coercion_Stat&apos;, &apos;Coercion_Total&apos;, &apos;Computers_Stat&apos;, &apos;Computers_Total&apos;, &apos;Cooking_Stat&apos;, &apos;Cooking_Total&apos;, &apos;Crafting_Stat&apos;, &apos;Crafting_Total&apos;, &apos;Cybernetics_Stat&apos;, &apos;Cybernetics_Total&apos;, &apos;Deception_Stat&apos;, &apos;Deception_Total&apos;, &apos;Farming_Stat&apos;, &apos;Farming_Total&apos;, &apos;Herbalism_Stat&apos;, &apos;Herbalism_Total&apos;, &apos;Husbandry_Stat&apos;, &apos;Husbandry_Total&apos;, &apos;Investigation_Stat&apos;, &apos;Investigation_Total&apos;, &apos;Knowledge_Stat&apos;, &apos;Knowledge_Total&apos;, &apos;Language_Stat&apos;, &apos;Language_Total&apos;, &apos;Medicine_Stat&apos;, &apos;Medicine_Total&apos;, &apos;Melee_Weapons_Stat&apos;, &apos;Melee_Weapons_Total&apos;, &apos;Music_Stat&apos;, &apos;Music_Total&apos;, &apos;Performance_Stat&apos;, &apos;Performance_Total&apos;, &apos;Piloting_Stat&apos;, &apos;Piloting_Total&apos;, &apos;Ranged_Weapons_Stat&apos;, &apos;Ranged_Weapons_Total&apos;, &apos;Science_Stat&apos;, &apos;Science_Total&apos;, &apos;Skullduggery_Stat&apos;, &apos;Skullduggery_Total&apos;, &apos;Specialized_Base_Skill_1&apos;, &apos;Specialized_Base_Skill_2&apos;, &apos;Specialized_Base_Skill_3&apos;, &apos;Specialized_Base_Skill_4&apos;, &apos;Specialized_Base_Skill_5&apos;, &apos;Specialized_Base_Skill_6&apos;, &apos;Specialized_Base_Skill_7&apos;, &apos;Specialized_Total_1&apos;, &apos;Specialized_Total_2&apos;, &apos;Specialized_Total_3&apos;, &apos;Specialized_Total_4&apos;, &apos;Specialized_Total_5&apos;, &apos;Specialized_Total_6&apos;, &apos;Specialized_Total_7&apos;, &apos;Stealth_Stat&apos;, &apos;Stealth_Total&apos;, &apos;Survival_Stat&apos;, &apos;Survival_Total&apos;, &apos;Tracking_Stat&apos;, &apos;Tracking_Total&apos;, &apos;Unarmed_Combat_Stat&apos;, &apos;Unarmed_Combat_Total&apos;}" defaultValues="{&apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;(-select base skill-)&apos;, &apos;(-select base skill-)&apos;, &apos;(-select base skill-)&apos;, &apos;(-select base skill-)&apos;, &apos;(-select base skill-)&apos;, &apos;(-select base skill-)&apos;, &apos;(-select base skill-)&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;}"/>
+</form>
