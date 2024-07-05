@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPocket_Dragon" formType="sheetTemplate" dataType="Ficha.Pocket_Dragon" title="Ficha Pocket Dragon" align="client" theme="light">
+    <import file="1.lfm"/>
+</form>

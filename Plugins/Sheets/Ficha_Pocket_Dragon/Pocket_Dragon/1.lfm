@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPocket_Dragon1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmPocket_Dragon1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmPocket_Dragon1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="447" height="630" color="white">&#xD;
+            <path color="none" strokeSize="1" strokeColor="#00000033" left="0" top="0" width="446.4" height="629.2" data="M0,629.249328613281 L446.413513183594,629.249328613281 L446.413513183594,0.0008087158203125 L0,0.0008087158203125 Z " compilerOrder="0"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="0" top="0" width="446.4" height="629.2" data="M0,0.0008087158203125 L446.413513183594,0.0008087158203125 L446.413513183594,629.249328613281 L0,629.249328613281 L0,0.0008087158203125 Z " compilerOrder="1"/>&#xD;
+            <image left="14.8" top="21.1" width="187" height="41.2" src="images/1.png" style="stretch" optimize="true" compilerOrder="674"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="227" width="11.2" height="14.8" compilerOrder="676" scaleX="1.4" text="FI"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="242.6" width="9.2" height="14.8" compilerOrder="677" scaleX="1.3" text="C"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="254.3" width="10.6" height="14.8" compilerOrder="678" scaleX="1.2" text="H"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="266.7" width="9.6" height="14.8" compilerOrder="679" scaleX="1.2" text="A"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="283.2" width="10.4" height="14.8" compilerOrder="680" scaleX="1.1" text="D"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="294.9" width="7.5" height="14.8" compilerOrder="681" scaleX="1.4" text="E"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="310.5" width="8.3" height="14.8" compilerOrder="682" scaleX="1.3" text="P"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="321.3" width="7.5" height="14.8" compilerOrder="683" scaleX="1.4" text="E"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="332.1" width="8.9" height="14.8" compilerOrder="684" scaleX="1.3" text="R"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="343.7" width="7.9" height="14.8" compilerOrder="685" scaleX="1.4" text="S"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="354.5" width="11.2" height="14.8" compilerOrder="686" scaleX="1.1" text="O"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="366.9" width="11.1" height="14.8" compilerOrder="687" scaleX="1.1" text="N"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="379.3" width="9.6" height="14.8" compilerOrder="688" scaleX="1.2" text="A"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="391" width="10.2" height="14.8" compilerOrder="689" scaleX="1.2" text="G"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="403.4" width="7.5" height="14.8" compilerOrder="690" scaleX="1.4" text="E"/>&#xD;
+            <label fontSize="14.9" fontColor="#2B89C6" top="42.8" left="414.1" width="14" height="14.8" compilerOrder="691" text="M"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="65.7" top="87.7" width="200.7" height="22.1" data="M65.6504974365234,109.787322998047 L266.386505126953,109.787322998047 L266.386505126953,87.7193145751953 L65.6504974365234,87.7193145751953 Z " compilerOrder="691"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="306.6" top="87.9" width="102.4" height="22.1" data="M306.567016601563,109.998809814453 L408.997497558594,109.998809814453 L408.997497558594,87.9308013916016 L306.567016601563,87.9308013916016 Z " compilerOrder="692"/>&#xD;
+            <layout left="66" top="88" width="200" height="22" compilerOrder="735">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="200" height="23" field="nome" compilerOrder="736"/>
+            </layout>&#xD;
+            <layout left="307" top="88" width="102" height="22" compilerOrder="737">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="102" height="23" field="raca" items="{'Humano', 'Anão', 'Halfling', 'Elfo'}" compilerOrder="738"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="21.3" width="11.1" height="14.8" compilerOrder="3" scaleX="0.9" text="N"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="30.9" width="8.7" height="14.8" compilerOrder="4" scaleX="0.9" text="o"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="38.8" width="23.2" height="14.8" compilerOrder="5" text="me:"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="65.3" width="6.2" height="14.8" compilerOrder="6" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="72.9" width="12.4" height="14.8" compilerOrder="7" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="87.6" width="6.2" height="14.8" compilerOrder="8" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="95.2" width="6.2" height="14.8" compilerOrder="9" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="102.5" width="12.4" height="14.8" compilerOrder="10" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="117.5" width="6.2" height="14.8" compilerOrder="11" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="124.8" width="12.4" height="14.8" compilerOrder="12" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="139.8" width="6.2" height="14.8" compilerOrder="13" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="147.1" width="12.4" height="14.8" compilerOrder="14" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="162.1" width="6.2" height="14.8" compilerOrder="15" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="169.4" width="12.4" height="14.8" compilerOrder="16" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="184.3" width="6.2" height="14.8" compilerOrder="17" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="191.7" width="6.2" height="14.8" compilerOrder="18" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="199.2" width="12.4" height="14.8" compilerOrder="19" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="214" width="6.2" height="14.8" compilerOrder="20" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="221.5" width="12.4" height="14.8" compilerOrder="21" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="236.3" width="6.2" height="14.8" compilerOrder="22" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="243.8" width="6.2" height="14.8" compilerOrder="23" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="251.2" width="12.4" height="14.8" compilerOrder="24" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="269.3" width="8.9" height="14.8" compilerOrder="25" scaleX="0.9" text="R"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="277.4" width="7.6" height="14.8" compilerOrder="26" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="284.6" width="6.9" height="14.8" compilerOrder="27" scaleX="0.9" text="ç"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="290.9" width="7.6" height="14.8" compilerOrder="28" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="298.1" width="3.2" height="14.8" compilerOrder="29" scaleX="1.2" text=":"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="305.4" width="6.2" height="14.8" compilerOrder="30" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="312.8" width="6.2" height="14.8" compilerOrder="31" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="320.3" width="12.4" height="14.8" compilerOrder="32" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="335.1" width="6.2" height="14.8" compilerOrder="33" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="342.6" width="12.4" height="14.8" compilerOrder="34" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="357.4" width="6.2" height="14.8" compilerOrder="35" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="364.9" width="12.4" height="14.8" compilerOrder="36" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="379.6" width="6.2" height="14.8" compilerOrder="37" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="387.2" width="12.4" height="14.8" compilerOrder="38" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="93.8" left="401.9" width="6.2" height="14.8" compilerOrder="39" scaleX="1.2" text="_"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="65.7" top="123.9" width="197.9" height="22.1" data="M65.6504974365234,145.928314208984 L263.536499023438,145.928314208984 L263.536499023438,123.860305786133 L65.6504974365234,123.860305786133 Z " compilerOrder="693"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="308.4" top="123.9" width="101.1" height="22.1" data="M308.3955078125,145.928314208984 L409.465484619141,145.928314208984 L409.465484619141,123.860305786133 L308.3955078125,123.860305786133 Z " compilerOrder="694"/>&#xD;
+            <layout left="66" top="124" width="197" height="22" compilerOrder="739">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="197" height="23" field="classe" items="{'Homem de Armas', 'Ladrão', 'Clérigo', 'Mago'}" compilerOrder="740"/>
+            </layout>&#xD;
+            <layout left="309" top="124" width="100" height="22" compilerOrder="741">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="100" height="23" field="nivel" compilerOrder="742"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="20.1" width="12.8" height="14.8" compilerOrder="40" scaleX="0.9" text="Cl"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="31.4" width="7.6" height="14.8" compilerOrder="41" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="38.6" width="6.3" height="14.8" compilerOrder="42" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="44.3" width="6.3" height="14.8" compilerOrder="43" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="50.1" width="7.8" height="14.8" compilerOrder="44" scaleX="0.9" text="e"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="57.6" width="3.2" height="14.8" compilerOrder="45" scaleX="1.2" text=":"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="65" width="12.4" height="14.8" compilerOrder="46" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="79.7" width="6.2" height="14.8" compilerOrder="47" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="87.3" width="12.4" height="14.8" compilerOrder="48" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="102" width="6.2" height="14.8" compilerOrder="49" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="109.6" width="12.4" height="14.8" compilerOrder="50" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="124.3" width="6.2" height="14.8" compilerOrder="51" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="131.8" width="12.4" height="14.8" compilerOrder="52" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="146.6" width="6.2" height="14.8" compilerOrder="53" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="154.1" width="12.4" height="14.8" compilerOrder="54" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="168.9" width="6.2" height="14.8" compilerOrder="55" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="176.4" width="12.4" height="14.8" compilerOrder="56" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="191.3" width="18.6" height="14.8" compilerOrder="57" scaleX="1.2" text="___"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="213.6" width="12.4" height="14.8" compilerOrder="58" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="228.3" width="6.2" height="14.8" compilerOrder="59" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="235.9" width="12.4" height="14.8" compilerOrder="60" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="250.6" width="6.2" height="14.8" compilerOrder="61" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="258.2" width="10.7" height="14.8" compilerOrder="62" text="_ "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="269" width="11.1" height="14.8" compilerOrder="63" scaleX="0.9" text="N"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="278.5" width="10.7" height="14.8" compilerOrder="64" scaleX="0.9" text="ív"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="288.7" width="7.8" height="14.8" compilerOrder="65" scaleX="0.9" text="e"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="296.1" width="3.6" height="14.8" compilerOrder="66" scaleX="0.9" text="l"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="299.5" width="3.2" height="14.8" compilerOrder="67" scaleX="1.2" text=":"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="306.8" width="12.4" height="14.8" compilerOrder="68" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="321.8" width="6.2" height="14.8" compilerOrder="69" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="329.1" width="12.4" height="14.8" compilerOrder="70" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="344.1" width="6.2" height="14.8" compilerOrder="71" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="351.4" width="12.4" height="14.8" compilerOrder="72" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="366.4" width="6.2" height="14.8" compilerOrder="73" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="373.7" width="12.4" height="14.8" compilerOrder="74" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="388.7" width="6.2" height="14.8" compilerOrder="75" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="130.5" left="396" width="12.4" height="14.8" compilerOrder="76" scaleX="1.2" text="__"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="54.5" top="160" width="87.4" height="22.1" data="M54.4680023193359,182.070816040039 L141.888000488281,182.070816040039 L141.888000488281,160.002807617188 L54.4680023193359,160.002807617188 Z " compilerOrder="695"/>&#xD;
+            <layout left="55" top="160" width="87" height="22" compilerOrder="743">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="87" height="23" field="movimento" compilerOrder="744"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="176.6" top="160" width="109.9" height="22.1" data="M176.626495361328,182.070816040039 L286.540496826172,182.070816040039 L286.540496826172,160.002807617188 L176.626495361328,160.002807617188 Z " compilerOrder="696"/>&#xD;
+            <layout left="177" top="160" width="109" height="22" compilerOrder="745">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="109" height="23" field="pvs" compilerOrder="746"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="320.5" top="160" width="87.4" height="22.1" data="M320.470520019531,182.070816040039 L407.848480224609,182.070816040039 L407.848480224609,160.002807617188 L320.470520019531,160.002807617188 Z " compilerOrder="697"/>&#xD;
+            <layout left="321" top="160" width="87" height="22" compilerOrder="747">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="87" height="23" field="xp" compilerOrder="748"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="19" width="13.4" height="14.8" compilerOrder="77" scaleX="0.9" text="M"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="31.6" width="8.7" height="14.8" compilerOrder="78" scaleX="0.9" text="o"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="39.5" width="7.1" height="14.8" compilerOrder="79" scaleX="0.9" text="v"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="46.3" width="3.2" height="14.8" compilerOrder="80" scaleX="1.2" text=":"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="53.7" width="12.4" height="14.8" compilerOrder="81" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="68.4" width="6.2" height="14.8" compilerOrder="82" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="75.9" width="12.4" height="14.8" compilerOrder="83" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="90.7" width="6.2" height="14.8" compilerOrder="84" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="98.2" width="6.2" height="14.8" compilerOrder="85" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="105.6" width="12.4" height="14.8" compilerOrder="86" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="120.5" width="6.2" height="14.8" compilerOrder="87" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="127.9" width="12.4" height="14.8" compilerOrder="88" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="146.2" width="8.3" height="14.8" compilerOrder="89" scaleX="0.9" text="P"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="153.8" width="9.3" height="14.8" compilerOrder="90" scaleX="0.9" text="V"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="162.2" width="6.3" height="14.8" compilerOrder="91" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="168.1" width="3.2" height="14.8" compilerOrder="92" scaleX="1.2" text=":"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="175.5" width="12.4" height="14.8" compilerOrder="93" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="190.4" width="6.2" height="14.8" compilerOrder="94" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="197.8" width="12.4" height="14.8" compilerOrder="95" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="212.7" width="6.2" height="14.8" compilerOrder="96" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="220.1" width="12.4" height="14.8" compilerOrder="97" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="235" width="18.6" height="14.8" compilerOrder="98" scaleX="1.2" text="___"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="257.2" width="18.6" height="14.8" compilerOrder="99" scaleX="1.2" text="___"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="279.5" width="10.7" height="14.8" compilerOrder="100" text="_ "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="290.3" width="8.8" height="14.8" compilerOrder="101" scaleX="0.9" text="X"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="298" width="8.3" height="14.8" compilerOrder="102" scaleX="0.9" text="P"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="305.7" width="6.3" height="14.8" compilerOrder="103" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="311.5" width="3.2" height="14.8" compilerOrder="104" scaleX="1.2" text=":"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="318.8" width="12.4" height="14.8" compilerOrder="105" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="333.8" width="6.2" height="14.8" compilerOrder="106" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="341.1" width="12.4" height="14.8" compilerOrder="107" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="356.1" width="6.2" height="14.8" compilerOrder="108" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="363.4" width="6.2" height="14.8" compilerOrder="109" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="371" width="12.4" height="14.8" compilerOrder="110" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="385.7" width="6.2" height="14.8" compilerOrder="111" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="167" left="393.3" width="12.4" height="14.8" compilerOrder="112" scaleX="1.2" text="__"/>&#xD;
+            <layout left="32" top="199" width="146" height="22" compilerOrder="749">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="23" field="obs" compilerOrder="750"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="31.2" top="199.4" width="146.9" height="22.1" data="M31.1669998168945,221.442840576172 L178.030487060547,221.442840576172 L178.030487060547,199.37483215332 L31.1669998168945,199.37483215332 Z " compilerOrder="698"/>&#xD;
+            <layout left="264" top="200" width="146" height="22" compilerOrder="751">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="23" field="combate" compilerOrder="752"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="263.5" top="200.2" width="146.9" height="22.1" data="M263.452484130859,222.251342773438 L410.316009521484,222.251342773438 L410.316009521484,200.183334350586 L263.452484130859,200.183334350586 Z " compilerOrder="699"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="29.8" width="6.2" height="14.8" compilerOrder="113" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="37.2" width="6.2" height="14.8" compilerOrder="114" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="44.7" width="6.2" height="14.8" compilerOrder="115" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="52.1" width="6.2" height="14.8" compilerOrder="116" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="59.6" width="6.2" height="14.8" compilerOrder="117" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="67" width="6.2" height="14.8" compilerOrder="118" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="74.5" width="6.2" height="14.8" compilerOrder="119" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="81.9" width="6.2" height="14.8" compilerOrder="120" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="89.4" width="6.2" height="14.8" compilerOrder="121" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="96.8" width="6.2" height="14.8" compilerOrder="122" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="104.4" width="6.2" height="14.8" compilerOrder="123" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="111.7" width="6.2" height="14.8" compilerOrder="124" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="119.3" width="6.2" height="14.8" compilerOrder="125" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="126.7" width="6.2" height="14.8" compilerOrder="126" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="134.2" width="6.2" height="14.8" compilerOrder="127" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="141.6" width="6.2" height="14.8" compilerOrder="128" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="149.1" width="6.2" height="14.8" compilerOrder="129" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="156.5" width="6.2" height="14.8" compilerOrder="130" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="164" width="6.2" height="14.8" compilerOrder="131" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="171.4" width="6.2" height="14.8" compilerOrder="132" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="183.9" width="9.2" height="14.8" compilerOrder="133" scaleX="1.3" text="C"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="195.4" width="21.6" height="14.8" compilerOrder="134" scaleX="1.1" text="om"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="220.2" width="8.8" height="14.8" compilerOrder="135" scaleX="1.1" text="b"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="230.3" width="12.6" height="14.8" compilerOrder="136" scaleX="1.3" text="at"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="246.8" width="11.9" height="14.8" compilerOrder="137" scaleX="1.2" text="e "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="261.8" width="6.2" height="14.8" compilerOrder="138" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="269.2" width="6.2" height="14.8" compilerOrder="139" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="276.7" width="6.2" height="14.8" compilerOrder="140" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="284.1" width="6.2" height="14.8" compilerOrder="141" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="291.7" width="6.2" height="14.8" compilerOrder="142" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="299" width="6.2" height="14.8" compilerOrder="143" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="306.6" width="6.2" height="14.8" compilerOrder="144" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="314" width="6.2" height="14.8" compilerOrder="145" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="321.5" width="6.2" height="14.8" compilerOrder="146" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="328.9" width="6.2" height="14.8" compilerOrder="147" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="336.4" width="6.2" height="14.8" compilerOrder="148" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="343.8" width="6.2" height="14.8" compilerOrder="149" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="351.3" width="6.2" height="14.8" compilerOrder="150" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="358.7" width="6.2" height="14.8" compilerOrder="151" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="366.3" width="6.2" height="14.8" compilerOrder="152" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="373.6" width="6.2" height="14.8" compilerOrder="153" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="381.2" width="6.2" height="14.8" compilerOrder="154" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="388.5" width="6.2" height="14.8" compilerOrder="155" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="396.1" width="6.2" height="14.8" compilerOrder="156" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="206.2" left="403.4" width="6.2" height="14.8" compilerOrder="157" scaleX="1.2" text="_"/>&#xD;
+            <layout left="292" top="233" width="50" height="22" compilerOrder="753">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="50" height="23" field="escudo" compilerOrder="754"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="290.9" top="233.1" width="50.3" height="22.1" data="M290.877014160156,255.203323364258 L341.220001220703,255.203323364258 L341.220001220703,233.135314941406 L290.877014160156,233.135314941406 Z " compilerOrder="702"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="158.2" top="233.9" width="50.3" height="22.1" data="M158.21549987793,256.011840820313 L208.558502197266,256.011840820313 L208.558502197266,233.943817138672 L158.21549987793,233.943817138672 Z " compilerOrder="700"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="224.9" top="233.9" width="50.3" height="22.1" data="M224.929504394531,256.011840820313 L275.272491455078,256.011840820313 L275.272491455078,233.943817138672 L224.929504394531,233.943817138672 Z " compilerOrder="701"/>&#xD;
+            <layout left="159" top="234" width="50" height="22" compilerOrder="755">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="50" height="23" field="umquartodenivel" compilerOrder="756"/>
+            </layout>&#xD;
+            <layout left="226" top="234" width="50" height="22" compilerOrder="757">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="50" height="23" field="armadura" compilerOrder="758"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="357" top="234" width="50.3" height="22.1" data="M357.037475585938,256.097320556641 L407.380493164063,256.097320556641 L407.380493164063,234.029327392578 L357.037475585938,234.029327392578 Z " compilerOrder="703"/>&#xD;
+            <layout left="358" top="234" width="50" height="22" compilerOrder="759">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="50" height="23" field="cafinal" compilerOrder="760"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="19" width="12.8" height="14.8" compilerOrder="158" scaleX="0.9" text="Cl"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="30.3" width="7.6" height="14.8" compilerOrder="159" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="37.5" width="6.3" height="14.8" compilerOrder="160" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="43.3" width="6.3" height="14.8" compilerOrder="161" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="49" width="7.8" height="14.8" compilerOrder="162" scaleX="0.9" text="e"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="60" width="9.6" height="14.8" compilerOrder="163" scaleX="0.9" text="A"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="68.6" width="5.2" height="14.8" compilerOrder="164" text="r"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="73.8" width="12.8" height="14.8" compilerOrder="165" scaleX="0.9" text="m"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="85.7" width="7.6" height="14.8" compilerOrder="166" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="92.8" width="8.8" height="14.8" compilerOrder="167" scaleX="0.9" text="d"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="100.6" width="8.4" height="14.8" compilerOrder="168" scaleX="0.9" text="u"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="108.5" width="5.2" height="14.8" compilerOrder="169" text="r"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="113.7" width="7.6" height="14.8" compilerOrder="170" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="120.7" width="3.2" height="14.8" compilerOrder="171" scaleX="1.2" text=":"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="128" width="8" height="14.8" compilerOrder="172" scaleX="0.9" text="1"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="135.8" width="12.1" height="14.8" compilerOrder="173" scaleX="0.9" text="0 "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="146.5" width="10.2" height="14.8" compilerOrder="174" scaleX="0.7" text="+"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="157.3" width="6.2" height="14.8" compilerOrder="175" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="164.8" width="18.6" height="14.8" compilerOrder="176" scaleX="1.2" text="___"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="187.1" width="18.6" height="14.8" compilerOrder="177" scaleX="1.2" text="___"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="212.8" width="10.2" height="14.8" compilerOrder="178" scaleX="0.7" text="+"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="223.6" width="6.2" height="14.8" compilerOrder="179" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="230.9" width="12.4" height="14.8" compilerOrder="180" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="245.9" width="6.2" height="14.8" compilerOrder="181" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="253.2" width="12.4" height="14.8" compilerOrder="182" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="268.2" width="6.2" height="14.8" compilerOrder="183" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="279" width="10.2" height="14.8" compilerOrder="184" scaleX="0.7" text="+"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="289.7" width="6.2" height="14.8" compilerOrder="185" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="297.1" width="6.2" height="14.8" compilerOrder="186" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="304.6" width="12.4" height="14.8" compilerOrder="187" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="319.4" width="6.2" height="14.8" compilerOrder="188" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="326.9" width="12.4" height="14.8" compilerOrder="189" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="345.1" width="10.2" height="14.8" compilerOrder="190" scaleX="0.7" text="="/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="355.8" width="6.2" height="14.8" compilerOrder="191" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="363.2" width="6.2" height="14.8" compilerOrder="192" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="370.7" width="6.2" height="14.8" compilerOrder="193" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="378.1" width="12.4" height="14.8" compilerOrder="194" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="393" width="6.2" height="14.8" compilerOrder="195" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="240.1" left="400.4" width="6.2" height="14.8" compilerOrder="196" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="168" width="9.4" height="10.4" compilerOrder="197" scaleX="0.7" text="¼"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="177" width="7.8" height="10.4" compilerOrder="198" scaleX="0.9" text="N"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="183.6" width="2.4" height="10.4" compilerOrder="199" text="í"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="186" width="10.4" height="10.4" compilerOrder="200" scaleX="0.9" text="ve"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="195.8" width="2.4" height="10.4" compilerOrder="201" text="l"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="217.2" width="21" height="10.4" compilerOrder="202" scaleX="0.8" text="     A"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="235" width="12.6" height="10.4" compilerOrder="203" scaleX="0.9" text="rm"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="246.8" width="5.3" height="10.4" compilerOrder="204" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="251.9" width="6.1" height="10.4" compilerOrder="205" scaleX="0.9" text="d"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="257.2" width="5.9" height="10.4" compilerOrder="206" scaleX="0.9" text="u"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="262.8" width="8.5" height="10.4" compilerOrder="207" text="ra"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="285.6" width="25.2" height="10.4" compilerOrder="208" scaleX="0.8" text="       E"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="307.1" width="4.4" height="10.4" compilerOrder="209" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="311.1" width="4.8" height="10.4" compilerOrder="210" scaleX="0.9" text="c"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="315.6" width="5.9" height="10.4" compilerOrder="211" scaleX="0.9" text="u"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="321" width="6.1" height="10.4" compilerOrder="212" scaleX="0.9" text="d"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="326.5" width="6.1" height="10.4" compilerOrder="213" scaleX="0.9" text="o"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="355.6" width="17.8" height="10.4" compilerOrder="214" scaleX="0.8" text="    C"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="370.5" width="6.7" height="10.4" compilerOrder="215" scaleX="0.9" text="A"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="376.6" width="7.9" height="10.4" compilerOrder="216" scaleX="0.9" text=" F"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="383.6" width="2.4" height="10.4" compilerOrder="217" text="i"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="386.1" width="5.9" height="10.4" compilerOrder="218" scaleX="0.9" text="n"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="391.5" width="5.3" height="10.4" compilerOrder="219" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="258.9" left="396.5" width="2.4" height="10.4" compilerOrder="220" text="l"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="115.6" top="277.7" width="57.6" height="22.1" data="M115.569000244141,299.765319824219 L173.182495117188,299.765319824219 L173.182495117188,277.697326660156 L115.569000244141,277.697326660156 Z " compilerOrder="707"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="263.4" top="277.7" width="57.6" height="22.1" data="M263.408996582031,299.721832275391 L321.022491455078,299.721832275391 L321.022491455078,277.65380859375 L263.408996582031,277.65380859375 Z " compilerOrder="705"/>&#xD;
+            <layout left="116" top="278" width="57" height="22" compilerOrder="763">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="57" height="23" field="ataqueNivel" compilerOrder="764"/>
+            </layout>&#xD;
+            <layout left="191" top="278" width="57" height="22" compilerOrder="765">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="57" height="23" field="ataqueRacaClasse" compilerOrder="766"/>
+            </layout>&#xD;
+            <layout left="264" top="278" width="57" height="22" compilerOrder="761">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="57" height="23" field="ataqueOutros" compilerOrder="762"/>
+            </layout>&#xD;
+            <layout left="338" top="278" width="64" height="22" compilerOrder="767">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="64" height="23" field="ataqueTotal" compilerOrder="768"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="189.9" top="278.1" width="57.6" height="22.1" data="M189.936004638672,300.189819335938 L247.549499511719,300.189819335938 L247.549499511719,278.121826171875 L189.936004638672,278.121826171875 Z " compilerOrder="706"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="337.3" top="278.1" width="65" height="22.1" data="M337.307983398438,300.189819335938 L402.277496337891,300.189819335938 L402.277496337891,278.121826171875 L337.307983398438,278.121826171875 Z " compilerOrder="704"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="19" width="9.6" height="14.8" compilerOrder="221" scaleX="0.9" text="A"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="27.6" width="5" height="14.8" compilerOrder="222" text="t"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="32.5" width="7.6" height="14.8" compilerOrder="223" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="39.7" width="8.8" height="14.8" compilerOrder="224" scaleX="0.9" text="q"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="47.6" width="8.4" height="14.8" compilerOrder="225" scaleX="0.9" text="u"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="55.3" width="7.8" height="14.8" compilerOrder="226" scaleX="0.9" text="e"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="62.8" width="3.2" height="14.8" compilerOrder="227" scaleX="1.3" text=":"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="70.2" width="16.8" height="14.8" compilerOrder="228" scaleX="0.9" text="1d"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="85.5" width="8" height="14.8" compilerOrder="229" scaleX="0.9" text="2"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="93" width="8" height="14.8" compilerOrder="230" scaleX="0.9" text="0"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="103.9" width="14.3" height="14.8" compilerOrder="231" scaleX="0.7" text="+ "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="114.7" width="6.2" height="14.8" compilerOrder="232" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="122.3" width="12.4" height="14.8" compilerOrder="233" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="137" width="6.2" height="14.8" compilerOrder="234" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="144.6" width="12.4" height="14.8" compilerOrder="235" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="159.3" width="6.2" height="14.8" compilerOrder="236" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="166.9" width="10.7" height="14.8" compilerOrder="237" text="_ "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="177.6" width="14.3" height="14.8" compilerOrder="238" scaleX="0.7" text="+ "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="188.4" width="12.4" height="14.8" compilerOrder="239" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="203.1" width="6.2" height="14.8" compilerOrder="240" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="210.7" width="12.4" height="14.8" compilerOrder="241" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="225.6" width="12.4" height="14.8" compilerOrder="242" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="240.3" width="6.2" height="14.8" compilerOrder="243" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="251.1" width="10.2" height="14.8" compilerOrder="244" scaleX="0.7" text="+"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="261.9" width="6.2" height="14.8" compilerOrder="245" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="269.5" width="12.4" height="14.8" compilerOrder="246" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="284.2" width="6.2" height="14.8" compilerOrder="247" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="291.7" width="12.4" height="14.8" compilerOrder="248" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="306.5" width="6.2" height="14.8" compilerOrder="249" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="314" width="10.7" height="14.8" compilerOrder="250" text="_ "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="324.8" width="14.3" height="14.8" compilerOrder="251" scaleX="0.7" text="= "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="335.6" width="12.4" height="14.8" compilerOrder="252" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="350.5" width="6.2" height="14.8" compilerOrder="253" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="357.9" width="12.4" height="14.8" compilerOrder="254" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="372.8" width="18.6" height="14.8" compilerOrder="255" scaleX="1.2" text="___"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="284.1" left="395.1" width="10.7" height="14.8" compilerOrder="256" text="_ "/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="134.2" width="10.3" height="10.4" compilerOrder="257" scaleX="0.9" text="Ní"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="143.2" width="10.4" height="10.4" compilerOrder="258" scaleX="0.9" text="ve"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="153.1" width="2.4" height="10.4" compilerOrder="259" text="l"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="195.6" width="6.2" height="10.4" compilerOrder="260" scaleX="0.9" text="R"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="201.2" width="5.3" height="10.4" compilerOrder="261" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="206.2" width="4.8" height="10.4" compilerOrder="262" scaleX="0.9" text="ç"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="210.5" width="5.3" height="10.4" compilerOrder="263" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="215.6" width="4" height="10.4" compilerOrder="264" text="/"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="219.7" width="6.4" height="10.4" compilerOrder="265" scaleX="0.9" text="C"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="225.1" width="2.4" height="10.4" compilerOrder="266" text="l"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="227.5" width="5.3" height="10.4" compilerOrder="267" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="232.6" width="4.4" height="10.4" compilerOrder="268" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="236.5" width="4.4" height="10.4" compilerOrder="269" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="240.6" width="5.4" height="10.4" compilerOrder="270" scaleX="0.9" text="e"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="262.4" width="24.9" height="10.4" compilerOrder="271" scaleX="0.8" text="      O"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="283.4" width="5.9" height="10.4" compilerOrder="272" scaleX="0.9" text="u"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="288.8" width="3.5" height="10.4" compilerOrder="273" text="t"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="292.4" width="3.6" height="10.4" compilerOrder="274" text="r"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="295.9" width="6.1" height="10.4" compilerOrder="275" scaleX="0.9" text="o"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="301.3" width="4.4" height="10.4" compilerOrder="276" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="338.5" width="12.4" height="10.4" compilerOrder="277" scaleX="0.9" text="  A"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="349.1" width="3.5" height="10.4" compilerOrder="278" text="t"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="352.7" width="5.3" height="10.4" compilerOrder="279" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="357.7" width="6.1" height="10.4" compilerOrder="280" scaleX="0.9" text="q"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="363.1" width="5.9" height="10.4" compilerOrder="281" scaleX="0.9" text="u"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="368.7" width="5.4" height="10.4" compilerOrder="282" scaleX="0.9" text="e"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="373.7" width="8.3" height="10.4" compilerOrder="283" scaleX="0.9" text=" T"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="381.2" width="6.1" height="10.4" compilerOrder="284" scaleX="0.9" text="o"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="386.6" width="3.5" height="10.4" compilerOrder="285" text="t"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="390.2" width="5.3" height="10.4" compilerOrder="286" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="302.9" left="395.2" width="2.4" height="10.4" compilerOrder="287" text="l"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="24.9" top="329.8" width="162.8" height="22.1" data="M24.9165000915527,351.851318359375 L187.725006103516,351.851318359375 L187.725006103516,329.783325195313 L24.9165000915527,329.783325195313 Z " compilerOrder="708"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="251.2" top="329.8" width="162.8" height="22.1" data="M251.206481933594,351.851318359375 L414.015014648438,351.851318359375 L414.015014648438,329.783325195313 L251.206481933594,329.783325195313 Z " compilerOrder="709"/>&#xD;
+            <layout left="26" top="330" width="162" height="22" compilerOrder="769">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="162" height="23" field="obsArmas" compilerOrder="770"/>
+            </layout>&#xD;
+            <layout left="252" top="330" width="162" height="22" compilerOrder="771">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="162" height="23" field="armas" items="{'--', 'Adaga', 'Bordão/Cajado', 'Arco Curto', 'Espada Curta', 'Espada Longa', 'Machado', 'Maça', 'Montante'}" compilerOrder="772"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="24.4" width="6.2" height="14.9" compilerOrder="288" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="31.8" width="6.2" height="14.9" compilerOrder="289" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="39.3" width="6.2" height="14.9" compilerOrder="290" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="46.7" width="6.2" height="14.9" compilerOrder="291" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="54.2" width="6.2" height="14.9" compilerOrder="292" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="61.6" width="6.2" height="14.9" compilerOrder="293" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="69.1" width="6.2" height="14.9" compilerOrder="294" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="76.5" width="6.2" height="14.9" compilerOrder="295" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="84" width="6.2" height="14.9" compilerOrder="296" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="91.4" width="6.2" height="14.9" compilerOrder="297" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="99" width="6.2" height="14.9" compilerOrder="298" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="106.3" width="6.2" height="14.9" compilerOrder="299" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="113.9" width="6.2" height="14.9" compilerOrder="300" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="121.3" width="6.2" height="14.9" compilerOrder="301" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="128.8" width="6.2" height="14.9" compilerOrder="302" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="136.2" width="6.2" height="14.9" compilerOrder="303" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="143.7" width="6.2" height="14.9" compilerOrder="304" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="151.1" width="6.2" height="14.9" compilerOrder="305" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="158.6" width="6.2" height="14.9" compilerOrder="306" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="166" width="6.2" height="14.9" compilerOrder="307" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="173.6" width="6.2" height="14.9" compilerOrder="308" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="180.9" width="6.2" height="14.9" compilerOrder="309" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="193.4" width="9.6" height="14.9" compilerOrder="310" scaleX="1.2" text="A"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="204.9" width="5.2" height="14.9" compilerOrder="311" scaleX="1.3" text="r"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="211.6" width="12.8" height="14.9" compilerOrder="312" scaleX="1.2" text="m"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="226.5" width="13.9" height="14.9" compilerOrder="313" scaleX="1.4" text="as"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="250.7" width="6.2" height="14.9" compilerOrder="314" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="258" width="6.2" height="14.9" compilerOrder="315" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="265.6" width="6.2" height="14.9" compilerOrder="316" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="272.9" width="6.2" height="14.9" compilerOrder="317" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="280.5" width="6.2" height="14.9" compilerOrder="318" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="287.8" width="6.2" height="14.9" compilerOrder="319" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="295.4" width="6.2" height="14.9" compilerOrder="320" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="302.8" width="6.2" height="14.9" compilerOrder="321" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="310.3" width="6.2" height="14.9" compilerOrder="322" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="317.7" width="6.2" height="14.9" compilerOrder="323" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="325.2" width="6.2" height="14.9" compilerOrder="324" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="332.6" width="6.2" height="14.9" compilerOrder="325" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="340.1" width="6.2" height="14.9" compilerOrder="326" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="347.5" width="6.2" height="14.9" compilerOrder="327" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="355.1" width="6.2" height="14.9" compilerOrder="328" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="362.4" width="6.2" height="14.9" compilerOrder="329" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="370" width="6.2" height="14.9" compilerOrder="330" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="377.4" width="6.2" height="14.9" compilerOrder="331" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="384.9" width="6.2" height="14.9" compilerOrder="332" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="392.3" width="6.2" height="14.9" compilerOrder="333" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="399.8" width="6.2" height="14.9" compilerOrder="334" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="335.9" left="407.2" width="6.2" height="14.9" compilerOrder="335" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="61.5" width="6.7" height="10.4" compilerOrder="336" scaleX="0.9" text="A"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="67.4" width="3.6" height="10.4" compilerOrder="337" text="r"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="71" width="9" height="10.4" compilerOrder="338" scaleX="0.9" text="m"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="79.4" width="5.3" height="10.4" compilerOrder="339" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="150.4" width="5.6" height="10.4" compilerOrder="340" scaleX="0.9" text=" I"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="155.2" width="5.9" height="10.4" compilerOrder="341" scaleX="0.9" text="n"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="160.8" width="2.4" height="10.4" compilerOrder="342" text="i"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="163.1" width="4.8" height="10.4" compilerOrder="343" scaleX="0.9" text="c"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="167.6" width="2.4" height="10.4" compilerOrder="344" text="i"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="169.9" width="5.3" height="10.4" compilerOrder="345" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="174.9" width="3.1" height="10.4" compilerOrder="346" scaleX="1.9" text=")"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="180.7" width="10.3" height="10.4" compilerOrder="347" scaleX="0.9" text="va"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="202.2" width="26.6" height="10.4" compilerOrder="348" scaleX="0.8" text="       A"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="224.7" width="3.5" height="10.4" compilerOrder="349" text="t"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="228.1" width="5.3" height="10.4" compilerOrder="350" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="233.1" width="6.1" height="10.4" compilerOrder="351" scaleX="0.9" text="q"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="238.7" width="5.9" height="10.4" compilerOrder="352" scaleX="0.9" text="u"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="244" width="5.4" height="10.4" compilerOrder="353" scaleX="0.9" text="e"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="249.3" width="4.4" height="10.4" compilerOrder="354" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="274.6" width="13" height="10.4" compilerOrder="355" scaleX="0.8" text="  D"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="285.5" width="5.3" height="10.4" compilerOrder="356" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="290.6" width="5.9" height="10.4" compilerOrder="357" scaleX="0.9" text="n"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="296.1" width="6.1" height="10.4" compilerOrder="358" scaleX="0.9" text="o"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="301.5" width="8.8" height="10.4" compilerOrder="359" scaleX="0.9" text=" B"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="309.6" width="5.3" height="10.4" compilerOrder="360" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="314.6" width="4.4" height="10.4" compilerOrder="361" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="318.5" width="5.4" height="10.4" compilerOrder="362" scaleX="0.9" text="e"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="328.6" width="17.4" height="10.4" compilerOrder="363" scaleX="0.9" text="    B"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="343.7" width="6.1" height="10.4" compilerOrder="364" scaleX="0.9" text="ô"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="349.1" width="5.9" height="10.4" compilerOrder="365" scaleX="0.9" text="n"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="354.6" width="5.9" height="10.4" compilerOrder="366" scaleX="0.9" text="u"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="360" width="4.4" height="10.4" compilerOrder="367" scaleX="0.9" text="s"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="364.1" width="9" height="10.4" compilerOrder="368" scaleX="0.9" text=" d"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="371.8" width="5.4" height="10.4" compilerOrder="369" scaleX="0.9" text="e"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="377.1" width="10.1" height="10.4" compilerOrder="370" scaleX="0.9" text=" D"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="385.9" width="5.3" height="10.4" compilerOrder="371" scaleX="0.9" text="a"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="390.9" width="5.9" height="10.4" compilerOrder="372" scaleX="0.9" text="n"/>&#xD;
+            <label fontSize="10.4" fontColor="#221E1F" top="352.1" left="396.3" width="6.1" height="10.4" compilerOrder="373" scaleX="0.9" text="o"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="19.6" top="364.9" width="109.7" height="22.1" data="M19.6019992828369,386.972320556641 L129.261001586914,386.972320556641 L129.261001586914,364.904327392578 L19.6019992828369,364.904327392578 Z " compilerOrder="710"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="209.9" top="364.9" width="49.9" height="22.1" data="M209.876998901367,387.014312744141 L259.752014160156,387.014312744141 L259.752014160156,364.946319580078 L209.876998901367,364.946319580078 Z " compilerOrder="712"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="276.1" top="364.9" width="50.5" height="22.1" data="M276.122985839844,387.014312744141 L326.593505859375,387.014312744141 L326.593505859375,364.946319580078 L276.122985839844,364.946319580078 Z " compilerOrder="713"/>&#xD;
+            <layout left="20" top="365" width="109" height="22" compilerOrder="773">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="109" height="23" field="arma1" items="{'--', 'Adaga', 'Bordão/Cajado', 'Arco Curto', 'Espada Curta', 'Espada Longa', 'Machado', 'Maça', 'Montante'}" compilerOrder="774"/>
+            </layout>&#xD;
+            <layout left="211" top="365" width="49" height="22" compilerOrder="775">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="23" field="arma1Ataques" compilerOrder="776"/>
+            </layout>&#xD;
+            <layout left="277" top="365" width="50" height="22" compilerOrder="777">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="50" height="23" field="arma1DanoBase" compilerOrder="778"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="144.9" top="365.6" width="49.9" height="22.1" data="M144.949508666992,387.6533203125 L194.824493408203,387.6533203125 L194.824493408203,365.585327148438 L144.949508666992,365.585327148438 Z " compilerOrder="711"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="342.3" top="365.6" width="56.9" height="22.1" data="M342.325500488281,387.6533203125 L399.259521484375,387.6533203125 L399.259521484375,365.585327148438 L342.325500488281,365.585327148438 Z " compilerOrder="714"/>&#xD;
+            <layout left="146" top="366" width="49" height="22" compilerOrder="779">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="23" field="arma1Iniciativa" compilerOrder="780"/>
+            </layout>&#xD;
+            <layout left="343" top="366" width="56" height="22" compilerOrder="781">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="23" field="arma1BonusDeDano" compilerOrder="782"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="19" width="12.4" height="14.8" compilerOrder="374" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="33.7" width="6.2" height="14.8" compilerOrder="375" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="41.3" width="12.4" height="14.8" compilerOrder="376" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="56" width="6.2" height="14.8" compilerOrder="377" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="63.6" width="6.2" height="14.8" compilerOrder="378" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="70.9" width="12.4" height="14.8" compilerOrder="379" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="85.9" width="6.2" height="14.8" compilerOrder="380" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="93.2" width="12.4" height="14.8" compilerOrder="381" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="108.2" width="6.2" height="14.8" compilerOrder="382" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="115.5" width="12.4" height="14.8" compilerOrder="383" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="133.7" width="3.6" height="14.8" compilerOrder="384" scaleX="1.9" text="|"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="143.9" width="6.2" height="14.8" compilerOrder="385" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="151.5" width="12.4" height="14.8" compilerOrder="386" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="166.2" width="6.2" height="14.8" compilerOrder="387" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="173.8" width="6.2" height="14.8" compilerOrder="388" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="181.1" width="12.4" height="14.8" compilerOrder="389" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="199.3" width="3.6" height="14.8" compilerOrder="390" scaleX="1.9" text="|"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="209.5" width="6.2" height="14.8" compilerOrder="391" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="217.1" width="12.4" height="14.8" compilerOrder="392" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="231.8" width="6.2" height="14.8" compilerOrder="393" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="239.3" width="12.4" height="14.8" compilerOrder="394" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="254.1" width="6.2" height="14.8" compilerOrder="395" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="265" width="7.6" height="14.8" compilerOrder="396" scaleX="1.3" text="| "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="275.3" width="6.2" height="14.8" compilerOrder="397" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="282.6" width="12.4" height="14.8" compilerOrder="398" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="297.6" width="6.2" height="14.8" compilerOrder="399" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="304.9" width="12.4" height="14.8" compilerOrder="400" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="319.8" width="6.2" height="14.8" compilerOrder="401" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="330.6" width="3.6" height="14.8" compilerOrder="402" scaleX="1.9" text="|"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="340.8" width="6.2" height="14.8" compilerOrder="403" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="348.2" width="12.4" height="14.8" compilerOrder="404" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="363.1" width="6.2" height="14.8" compilerOrder="405" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="370.5" width="12.4" height="14.8" compilerOrder="406" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="385.4" width="6.2" height="14.8" compilerOrder="407" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="371.8" left="392.8" width="10.7" height="14.8" compilerOrder="408" text="_ "/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="20.3" top="390" width="109.7" height="22.1" data="M20.2814998626709,412.059814453125 L129.940490722656,412.059814453125 L129.940490722656,389.991821289063 L20.2814998626709,389.991821289063 Z " compilerOrder="715"/>&#xD;
+            <layout left="21" top="390" width="109" height="22" compilerOrder="783">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="109" height="23" field="arma2" items="{'--', 'Adaga', 'Bordão/Cajado', 'Arco Curto', 'Espada Curta', 'Espada Longa', 'Machado', 'Maça', 'Montante'}" compilerOrder="784"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="210.6" top="390" width="49.9" height="22.1" data="M210.557983398438,412.101806640625 L260.432983398438,412.101806640625 L260.432983398438,390.033813476563 L210.557983398438,390.033813476563 Z " compilerOrder="717"/>&#xD;
+            <layout left="211" top="390" width="49" height="22" compilerOrder="785">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="23" field="arma2Ataques" compilerOrder="786"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="276.8" top="390" width="50.5" height="22.1" data="M276.802490234375,412.101806640625 L327.273010253906,412.101806640625 L327.273010253906,390.033813476563 L276.802490234375,390.033813476563 Z " compilerOrder="718"/>&#xD;
+            <layout left="278" top="390" width="50" height="22" compilerOrder="787">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="50" height="23" field="arma2DanoBase" compilerOrder="788"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="145.6" top="390.7" width="49.9" height="22.1" data="M145.630493164063,412.739318847656 L195.505508422852,412.739318847656 L195.505508422852,390.671325683594 L145.630493164063,390.671325683594 Z " compilerOrder="716"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="343" top="390.7" width="56.9" height="22.1" data="M343.006500244141,412.739318847656 L399.940521240234,412.739318847656 L399.940521240234,390.671325683594 L343.006500244141,390.671325683594 Z " compilerOrder="719"/>&#xD;
+            <layout left="146" top="391" width="49" height="22" compilerOrder="789">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="23" field="arma2Iniciativa" compilerOrder="790"/>
+            </layout>&#xD;
+            <layout left="344" top="391" width="56" height="22" compilerOrder="791">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="23" field="arma2BonusDeDano" compilerOrder="792"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="19" width="12.4" height="14.8" compilerOrder="409" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="33.7" width="6.2" height="14.8" compilerOrder="410" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="41.3" width="12.4" height="14.8" compilerOrder="411" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="56" width="6.2" height="14.8" compilerOrder="412" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="63.6" width="6.2" height="14.8" compilerOrder="413" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="70.9" width="12.4" height="14.8" compilerOrder="414" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="85.9" width="6.2" height="14.8" compilerOrder="415" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="93.2" width="12.4" height="14.8" compilerOrder="416" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="108.2" width="6.2" height="14.8" compilerOrder="417" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="115.5" width="12.4" height="14.8" compilerOrder="418" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="133.7" width="3.6" height="14.8" compilerOrder="419" scaleX="1.9" text="|"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="143.9" width="6.2" height="14.8" compilerOrder="420" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="151.5" width="12.4" height="14.8" compilerOrder="421" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="166.2" width="6.2" height="14.8" compilerOrder="422" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="173.8" width="6.2" height="14.8" compilerOrder="423" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="181.1" width="12.4" height="14.8" compilerOrder="424" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="199.3" width="3.6" height="14.8" compilerOrder="425" scaleX="1.9" text="|"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="209.5" width="6.2" height="14.8" compilerOrder="426" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="217.1" width="12.4" height="14.8" compilerOrder="427" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="231.8" width="6.2" height="14.8" compilerOrder="428" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="239.3" width="12.4" height="14.8" compilerOrder="429" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="254.1" width="6.2" height="14.8" compilerOrder="430" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="265" width="7.6" height="14.8" compilerOrder="431" scaleX="1.3" text="| "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="275.3" width="6.2" height="14.8" compilerOrder="432" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="282.6" width="12.4" height="14.8" compilerOrder="433" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="297.6" width="6.2" height="14.8" compilerOrder="434" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="304.9" width="12.4" height="14.8" compilerOrder="435" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="319.8" width="6.2" height="14.8" compilerOrder="436" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="330.6" width="3.6" height="14.8" compilerOrder="437" scaleX="1.9" text="|"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="340.8" width="6.2" height="14.8" compilerOrder="438" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="348.2" width="12.4" height="14.8" compilerOrder="439" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="363.1" width="6.2" height="14.8" compilerOrder="440" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="370.5" width="12.4" height="14.8" compilerOrder="441" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="385.4" width="6.2" height="14.8" compilerOrder="442" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="397.4" left="392.8" width="10.7" height="14.8" compilerOrder="443" text="_ "/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="19.6" top="415.7" width="109.7" height="22.1" data="M19.6439990997314,437.741333007813 L129.303009033203,437.741333007813 L129.303009033203,415.673309326172 L19.6439990997314,415.673309326172 Z " compilerOrder="720"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="209.9" top="415.7" width="49.9" height="22.1" data="M209.919006347656,437.783325195313 L259.794006347656,437.783325195313 L259.794006347656,415.71533203125 L209.919006347656,415.71533203125 Z " compilerOrder="722"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="276.2" top="415.7" width="50.5" height="22.1" data="M276.165008544922,437.783325195313 L326.635498046875,437.783325195313 L326.635498046875,415.71533203125 L276.165008544922,415.71533203125 Z " compilerOrder="723"/>&#xD;
+            <layout left="20" top="416" width="109" height="22" compilerOrder="793">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="109" height="23" field="arma3" items="{'--', 'Adaga', 'Bordão/Cajado', 'Arco Curto', 'Espada Curta', 'Espada Longa', 'Machado', 'Maça', 'Montante'}" compilerOrder="794"/>
+            </layout>&#xD;
+            <layout left="146" top="416" width="49" height="22" compilerOrder="799">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="23" field="arma3Iniciativa" compilerOrder="800"/>
+            </layout>&#xD;
+            <layout left="211" top="416" width="49" height="22" compilerOrder="795">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="23" field="arma3Ataques" compilerOrder="796"/>
+            </layout>&#xD;
+            <layout left="277" top="416" width="50" height="22" compilerOrder="797">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="50" height="23" field="arma3DanoBase" compilerOrder="798"/>
+            </layout>&#xD;
+            <layout left="343" top="416" width="56" height="22" compilerOrder="801">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="23" field="arma3BonusDeDano" compilerOrder="802"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="145" top="416.4" width="49.9" height="22.1" data="M144.991500854492,438.420806884766 L194.866485595703,438.420806884766 L194.866485595703,416.352813720703 L144.991500854492,416.352813720703 Z " compilerOrder="721"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="342.4" top="416.4" width="56.9" height="22.1" data="M342.369018554688,438.420806884766 L399.302978515625,438.420806884766 L399.302978515625,416.352813720703 L342.369018554688,416.352813720703 Z " compilerOrder="724"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="19" width="12.4" height="14.9" compilerOrder="444" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="33.7" width="6.2" height="14.9" compilerOrder="445" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="41.3" width="12.4" height="14.9" compilerOrder="446" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="56" width="6.2" height="14.9" compilerOrder="447" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="63.6" width="6.2" height="14.9" compilerOrder="448" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="70.9" width="12.4" height="14.9" compilerOrder="449" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="85.9" width="6.2" height="14.9" compilerOrder="450" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="93.2" width="12.4" height="14.9" compilerOrder="451" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="108.2" width="6.2" height="14.9" compilerOrder="452" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="115.5" width="12.4" height="14.9" compilerOrder="453" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="133.7" width="3.6" height="14.9" compilerOrder="454" scaleX="1.9" text="|"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="143.9" width="6.2" height="14.9" compilerOrder="455" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="151.5" width="12.4" height="14.9" compilerOrder="456" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="166.2" width="6.2" height="14.9" compilerOrder="457" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="173.8" width="6.2" height="14.9" compilerOrder="458" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="181.1" width="12.4" height="14.9" compilerOrder="459" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="199.3" width="3.6" height="14.9" compilerOrder="460" scaleX="1.9" text="|"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="209.5" width="6.2" height="14.9" compilerOrder="461" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="217.1" width="12.4" height="14.9" compilerOrder="462" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="231.8" width="6.2" height="14.9" compilerOrder="463" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="239.3" width="12.4" height="14.9" compilerOrder="464" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="254.1" width="6.2" height="14.9" compilerOrder="465" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="265" width="7.6" height="14.9" compilerOrder="466" scaleX="1.3" text="| "/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="275.3" width="6.2" height="14.9" compilerOrder="467" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="282.6" width="12.4" height="14.9" compilerOrder="468" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="297.6" width="6.2" height="14.9" compilerOrder="469" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="304.9" width="12.4" height="14.9" compilerOrder="470" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="319.8" width="6.2" height="14.9" compilerOrder="471" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="330.6" width="3.6" height="14.9" compilerOrder="472" scaleX="1.9" text="|"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="340.8" width="6.2" height="14.9" compilerOrder="473" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="348.2" width="12.4" height="14.9" compilerOrder="474" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="363.1" width="6.2" height="14.9" compilerOrder="475" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="370.5" width="12.4" height="14.9" compilerOrder="476" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="385.4" width="6.2" height="14.9" compilerOrder="477" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="422.9" left="392.8" width="10.7" height="14.9" compilerOrder="478" text="_ "/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="26.9" width="8.6" height="12.1" compilerOrder="479" scaleX="1.2" text="H"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="36.8" width="6.2" height="12.1" compilerOrder="480" scaleX="1.3" text="a"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="44.9" width="7.1" height="12.1" compilerOrder="481" scaleX="1.1" text="b"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="53" width="2.9" height="12.1" compilerOrder="482" scaleX="1.4" text="i"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="57" width="2.9" height="12.1" compilerOrder="483" scaleX="1.4" text="l"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="60.9" width="2.9" height="12.1" compilerOrder="484" scaleX="1.4" text="i"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="65" width="7.1" height="12.1" compilerOrder="485" scaleX="1.1" text="d"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="73" width="6.2" height="12.1" compilerOrder="486" scaleX="1.3" text="a"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="81.1" width="7.1" height="12.1" compilerOrder="487" scaleX="1.1" text="d"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="89.2" width="6.3" height="12.1" compilerOrder="488" scaleX="1.3" text="e"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="97.1" width="5.1" height="12.1" compilerOrder="489" scaleX="1.5" text="s"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="108.6" width="7.1" height="12.1" compilerOrder="490" scaleX="1.1" text="d"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="116.5" width="6.3" height="12.1" compilerOrder="491" scaleX="1.3" text="e"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="128.6" width="7.2" height="12.1" compilerOrder="492" scaleX="1.3" text="R"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="138" width="6.2" height="12.1" compilerOrder="493" scaleX="1.3" text="a"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="146.1" width="5.6" height="12.1" compilerOrder="494" scaleX="1.4" text="ç"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="154.2" width="6.2" height="12.1" compilerOrder="495" scaleX="1.3" text="a"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="166.2" width="6.3" height="12.1" compilerOrder="496" scaleX="1.3" text="e"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="178.3" width="7.5" height="12.1" compilerOrder="497" scaleX="1.3" text="C"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="187.7" width="2.9" height="12.1" compilerOrder="498" scaleX="1.4" text="l"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="191.7" width="6.2" height="12.1" compilerOrder="499" scaleX="1.3" text="a"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="199.7" width="5.1" height="12.1" compilerOrder="500" scaleX="1.5" text="s"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="207.1" width="5.1" height="12.1" compilerOrder="501" scaleX="1.5" text="s"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="214.5" width="6.3" height="12.1" compilerOrder="502" scaleX="1.3" text="e"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="319" width="6.1" height="12.1" compilerOrder="503" scaleX="1.4" text="E"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="327.6" width="7.1" height="12.1" compilerOrder="504" scaleX="1.1" text="q"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="335.7" width="6.8" height="12.1" compilerOrder="505" scaleX="1.2" text="u"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="343.8" width="2.9" height="12.1" compilerOrder="506" scaleX="1.4" text="i"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="347.8" width="7.1" height="12.1" compilerOrder="507" scaleX="1.1" text="p"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="355.9" width="6.2" height="12.1" compilerOrder="508" scaleX="1.3" text="a"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="363.8" width="10.4" height="12.1" compilerOrder="509" scaleX="1.2" text="m"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="375.8" width="6.3" height="12.1" compilerOrder="510" scaleX="1.3" text="e"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="383.9" width="6.8" height="12.1" compilerOrder="511" scaleX="1.2" text="n"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="392" width="4.1" height="12.1" compilerOrder="512" scaleX="1.3" text="t"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="397.3" width="7.1" height="12.1" compilerOrder="513" scaleX="1.1" text="o"/>&#xD;
+            <label fontSize="12.1" fontColor="#221E1F" top="461.5" left="405.4" width="5.1" height="12.1" compilerOrder="514" scaleX="1.5" text="s"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="20.3" top="478.6" width="175.8" height="18.3" data="M20.3250007629395,496.928314208984 L196.144500732422,496.928314208984 L196.144500732422,478.602813720703 L20.3250007629395,478.602813720703 Z " compilerOrder="733"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="232.5" top="478.6" width="175.8" height="18.3" data="M232.455001831055,496.970336914063 L408.274536132813,496.970336914063 L408.274536132813,478.644836425781 L232.455001831055,478.644836425781 Z " compilerOrder="734"/>&#xD;
+            <layout left="21" top="479" width="175" height="18" compilerOrder="803">
+                <edit transparent="true" fontSize="11.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="19" field="habilidadesDeRacaClasse1" compilerOrder="804"/>
+            </layout>&#xD;
+            <layout left="233" top="479" width="175" height="18" compilerOrder="805">
+                <comboBox transparent="true" fontSize="11.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="19" field="equipamentos1" items="{'Armadura de Couro +2', 'Armadura de Cotas +4', 'Armadura de Placas +6', 'Escudo +1'}" compilerOrder="806"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="19" width="12.4" height="14.9" compilerOrder="515" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="33.7" width="6.2" height="14.9" compilerOrder="516" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="41.3" width="12.4" height="14.9" compilerOrder="517" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="56" width="6.2" height="14.9" compilerOrder="518" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="63.6" width="6.2" height="14.9" compilerOrder="519" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="70.9" width="12.4" height="14.9" compilerOrder="520" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="85.9" width="6.2" height="14.9" compilerOrder="521" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="93.2" width="12.4" height="14.9" compilerOrder="522" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="108.2" width="6.2" height="14.9" compilerOrder="523" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="115.5" width="12.4" height="14.9" compilerOrder="524" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="130.5" width="6.2" height="14.9" compilerOrder="525" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="137.8" width="12.4" height="14.9" compilerOrder="526" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="152.7" width="6.2" height="14.9" compilerOrder="527" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="160.1" width="12.4" height="14.9" compilerOrder="528" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="175" width="6.2" height="14.9" compilerOrder="529" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="182.4" width="12.4" height="14.9" compilerOrder="530" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="230.8" width="6.2" height="14.9" compilerOrder="531" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="238.4" width="6.2" height="14.9" compilerOrder="532" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="245.7" width="12.4" height="14.9" compilerOrder="533" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="260.7" width="6.2" height="14.9" compilerOrder="534" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="268" width="12.4" height="14.9" compilerOrder="535" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="282.9" width="6.2" height="14.9" compilerOrder="536" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="290.3" width="12.4" height="14.9" compilerOrder="537" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="305.2" width="6.2" height="14.9" compilerOrder="538" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="312.6" width="12.4" height="14.9" compilerOrder="539" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="327.5" width="6.2" height="14.9" compilerOrder="540" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="334.9" width="12.4" height="14.9" compilerOrder="541" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="349.8" width="6.2" height="14.9" compilerOrder="542" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="357.2" width="12.4" height="14.9" compilerOrder="543" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="372.1" width="6.2" height="14.9" compilerOrder="544" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="379.4" width="12.4" height="14.9" compilerOrder="545" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="481.2" left="394.3" width="12.4" height="14.9" compilerOrder="546" scaleX="1.2" text="__"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="20.3" top="499.8" width="175.8" height="22.8" data="M20.2814998626709,522.609802246094 L196.100982666016,522.609802246094 L196.100982666016,499.818817138672 L20.2814998626709,499.818817138672 Z " compilerOrder="725"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="232.4" top="499.9" width="175.8" height="22.8" data="M232.412994384766,522.6533203125 L408.232482910156,522.6533203125 L408.232482910156,499.8623046875 L232.412994384766,499.8623046875 Z " compilerOrder="726"/>&#xD;
+            <layout left="21" top="500" width="175" height="23" compilerOrder="807">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="24" field="habilidadesDeRacaClasse2" compilerOrder="808"/>
+            </layout>&#xD;
+            <layout left="233" top="500" width="175" height="23" compilerOrder="809">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="24" field="equipamentos2" items="{'Armadura de Couro +2', 'Armadura de Cotas +4', 'Armadura de Placas +6', 'Escudo +1'}" compilerOrder="810"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="19" width="12.4" height="14.8" compilerOrder="547" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="33.7" width="6.2" height="14.8" compilerOrder="548" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="41.3" width="12.4" height="14.8" compilerOrder="549" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="56" width="6.2" height="14.8" compilerOrder="550" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="63.6" width="6.2" height="14.8" compilerOrder="551" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="70.9" width="12.4" height="14.8" compilerOrder="552" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="85.9" width="6.2" height="14.8" compilerOrder="553" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="93.2" width="12.4" height="14.8" compilerOrder="554" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="108.2" width="6.2" height="14.8" compilerOrder="555" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="115.5" width="12.4" height="14.8" compilerOrder="556" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="130.5" width="6.2" height="14.8" compilerOrder="557" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="137.8" width="12.4" height="14.8" compilerOrder="558" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="152.7" width="6.2" height="14.8" compilerOrder="559" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="160.1" width="12.4" height="14.8" compilerOrder="560" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="175" width="6.2" height="14.8" compilerOrder="561" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="182.4" width="12.4" height="14.8" compilerOrder="562" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="230.8" width="6.2" height="14.8" compilerOrder="563" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="238.4" width="6.2" height="14.8" compilerOrder="564" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="245.7" width="12.4" height="14.8" compilerOrder="565" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="260.7" width="6.2" height="14.8" compilerOrder="566" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="268" width="12.4" height="14.8" compilerOrder="567" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="282.9" width="6.2" height="14.8" compilerOrder="568" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="290.3" width="12.4" height="14.8" compilerOrder="569" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="305.2" width="6.2" height="14.8" compilerOrder="570" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="312.6" width="12.4" height="14.8" compilerOrder="571" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="327.5" width="6.2" height="14.8" compilerOrder="572" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="334.9" width="12.4" height="14.8" compilerOrder="573" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="349.8" width="6.2" height="14.8" compilerOrder="574" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="357.2" width="12.4" height="14.8" compilerOrder="575" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="372.1" width="6.2" height="14.8" compilerOrder="576" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="379.4" width="12.4" height="14.8" compilerOrder="577" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="506.9" left="394.3" width="12.4" height="14.8" compilerOrder="578" scaleX="1.2" text="__"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="20.3" top="525.5" width="175.8" height="22.8" data="M20.3250007629395,548.334838867188 L196.144500732422,548.334838867188 L196.144500732422,525.543823242188 L20.3250007629395,525.543823242188 Z " compilerOrder="727"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="232.5" top="525.6" width="175.8" height="22.8" data="M232.455001831055,548.376831054688 L408.274536132813,548.376831054688 L408.274536132813,525.585815429688 L232.455001831055,525.585815429688 Z " compilerOrder="728"/>&#xD;
+            <layout left="21" top="526" width="175" height="23" compilerOrder="811">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="24" field="habilidadesDeRacaClasse3" compilerOrder="812"/>
+            </layout>&#xD;
+            <layout left="233" top="526" width="175" height="23" compilerOrder="813">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="24" field="equipamentos3" items="{'Armadura de Couro +2', 'Armadura de Cotas +4', 'Armadura de Placas +6', 'Escudo +1'}" compilerOrder="814"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="19" width="12.4" height="14.8" compilerOrder="579" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="33.7" width="6.2" height="14.8" compilerOrder="580" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="41.3" width="12.4" height="14.8" compilerOrder="581" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="56" width="6.2" height="14.8" compilerOrder="582" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="63.6" width="6.2" height="14.8" compilerOrder="583" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="70.9" width="12.4" height="14.8" compilerOrder="584" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="85.9" width="6.2" height="14.8" compilerOrder="585" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="93.2" width="12.4" height="14.8" compilerOrder="586" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="108.2" width="6.2" height="14.8" compilerOrder="587" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="115.5" width="12.4" height="14.8" compilerOrder="588" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="130.5" width="6.2" height="14.8" compilerOrder="589" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="137.8" width="12.4" height="14.8" compilerOrder="590" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="152.7" width="6.2" height="14.8" compilerOrder="591" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="160.1" width="12.4" height="14.8" compilerOrder="592" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="175" width="6.2" height="14.8" compilerOrder="593" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="182.4" width="12.4" height="14.8" compilerOrder="594" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="230.8" width="6.2" height="14.8" compilerOrder="595" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="238.4" width="6.2" height="14.8" compilerOrder="596" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="245.7" width="12.4" height="14.8" compilerOrder="597" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="260.7" width="6.2" height="14.8" compilerOrder="598" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="268" width="12.4" height="14.8" compilerOrder="599" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="282.9" width="6.2" height="14.8" compilerOrder="600" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="290.3" width="12.4" height="14.8" compilerOrder="601" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="305.2" width="6.2" height="14.8" compilerOrder="602" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="312.6" width="12.4" height="14.8" compilerOrder="603" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="327.5" width="6.2" height="14.8" compilerOrder="604" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="334.9" width="12.4" height="14.8" compilerOrder="605" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="349.8" width="6.2" height="14.8" compilerOrder="606" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="357.2" width="12.4" height="14.8" compilerOrder="607" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="372.1" width="6.2" height="14.8" compilerOrder="608" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="379.4" width="12.4" height="14.8" compilerOrder="609" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="532.6" left="394.3" width="12.4" height="14.8" compilerOrder="610" scaleX="1.2" text="__"/>&#xD;
+            <layout left="21" top="551" width="175" height="23" compilerOrder="815">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="24" field="habilidadesDeRacaClasse4" compilerOrder="816"/>
+            </layout>&#xD;
+            <layout left="233" top="551" width="175" height="23" compilerOrder="817">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="24" field="equipamentos4" items="{'Armadura de Couro +2', 'Armadura de Cotas +4', 'Armadura de Placas +6', 'Escudo +1'}" compilerOrder="818"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="20.4" top="551.2" width="175.8" height="22.8" data="M20.367000579834,574.016296386719 L196.186492919922,574.016296386719 L196.186492919922,551.225341796875 L20.367000579834,551.225341796875 Z " compilerOrder="729"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="232.5" top="551.3" width="175.8" height="22.8" data="M232.497009277344,574.059814453125 L408.316497802734,574.059814453125 L408.316497802734,551.268798828125 L232.497009277344,551.268798828125 Z " compilerOrder="730"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="19" width="12.4" height="14.8" compilerOrder="611" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="33.7" width="6.2" height="14.8" compilerOrder="612" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="41.3" width="12.4" height="14.8" compilerOrder="613" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="56" width="6.2" height="14.8" compilerOrder="614" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="63.6" width="6.2" height="14.8" compilerOrder="615" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="70.9" width="12.4" height="14.8" compilerOrder="616" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="85.9" width="6.2" height="14.8" compilerOrder="617" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="93.2" width="12.4" height="14.8" compilerOrder="618" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="108.2" width="6.2" height="14.8" compilerOrder="619" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="115.5" width="12.4" height="14.8" compilerOrder="620" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="130.5" width="6.2" height="14.8" compilerOrder="621" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="137.8" width="12.4" height="14.8" compilerOrder="622" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="152.7" width="6.2" height="14.8" compilerOrder="623" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="160.1" width="12.4" height="14.8" compilerOrder="624" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="175" width="6.2" height="14.8" compilerOrder="625" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="182.4" width="12.4" height="14.8" compilerOrder="626" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="230.8" width="6.2" height="14.8" compilerOrder="627" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="238.4" width="6.2" height="14.8" compilerOrder="628" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="245.7" width="12.4" height="14.8" compilerOrder="629" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="260.7" width="6.2" height="14.8" compilerOrder="630" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="268" width="12.4" height="14.8" compilerOrder="631" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="282.9" width="6.2" height="14.8" compilerOrder="632" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="290.3" width="12.4" height="14.8" compilerOrder="633" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="305.2" width="6.2" height="14.8" compilerOrder="634" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="312.6" width="12.4" height="14.8" compilerOrder="635" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="327.5" width="6.2" height="14.8" compilerOrder="636" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="334.9" width="12.4" height="14.8" compilerOrder="637" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="349.8" width="6.2" height="14.8" compilerOrder="638" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="357.2" width="12.4" height="14.8" compilerOrder="639" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="372.1" width="6.2" height="14.8" compilerOrder="640" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="379.4" width="12.4" height="14.8" compilerOrder="641" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="558.2" left="394.3" width="12.4" height="14.8" compilerOrder="642" scaleX="1.2" text="__"/>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="19.8" top="576.9" width="175.8" height="22.8" data="M19.7714996337891,599.697814941406 L195.591003417969,599.697814941406 L195.591003417969,576.906799316406 L19.7714996337891,576.906799316406 Z " compilerOrder="731"/>&#xD;
+            <layout left="21" top="577" width="175" height="23" compilerOrder="819">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="24" field="habilidadesDeRacaClasse5" compilerOrder="820"/>
+            </layout>&#xD;
+            <path color="#FFFFFF" strokeSize="1" strokeColor="#00000033" left="231.9" top="577" width="175.8" height="22.8" data="M231.903015136719,599.741333007813 L407.722503662109,599.741333007813 L407.722503662109,576.950317382813 L231.903015136719,576.950317382813 Z " compilerOrder="732"/>&#xD;
+            <layout left="233" top="577" width="175" height="23" compilerOrder="821">
+                <comboBox transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="24" field="equipamentos5" items="{'Armadura de Couro +2', 'Armadura de Cotas +4', 'Armadura de Placas +6', 'Escudo +1'}" compilerOrder="822"/>
+            </layout>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="19" width="12.4" height="14.8" compilerOrder="643" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="33.7" width="6.2" height="14.8" compilerOrder="644" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="41.3" width="12.4" height="14.8" compilerOrder="645" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="56" width="6.2" height="14.8" compilerOrder="646" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="63.6" width="6.2" height="14.8" compilerOrder="647" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="70.9" width="12.4" height="14.8" compilerOrder="648" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="85.9" width="6.2" height="14.8" compilerOrder="649" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="93.2" width="12.4" height="14.8" compilerOrder="650" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="108.2" width="6.2" height="14.8" compilerOrder="651" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="115.5" width="12.4" height="14.8" compilerOrder="652" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="130.5" width="6.2" height="14.8" compilerOrder="653" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="137.8" width="12.4" height="14.8" compilerOrder="654" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="152.7" width="6.2" height="14.8" compilerOrder="655" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="160.1" width="12.4" height="14.8" compilerOrder="656" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="175" width="6.2" height="14.8" compilerOrder="657" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="182.4" width="12.4" height="14.8" compilerOrder="658" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="230.8" width="6.2" height="14.8" compilerOrder="659" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="238.4" width="6.2" height="14.8" compilerOrder="660" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="245.7" width="12.4" height="14.8" compilerOrder="661" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="260.7" width="6.2" height="14.8" compilerOrder="662" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="268" width="12.4" height="14.8" compilerOrder="663" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="282.9" width="6.2" height="14.8" compilerOrder="664" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="290.3" width="12.4" height="14.8" compilerOrder="665" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="305.2" width="6.2" height="14.8" compilerOrder="666" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="312.6" width="12.4" height="14.8" compilerOrder="667" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="327.5" width="6.2" height="14.8" compilerOrder="668" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="334.9" width="12.4" height="14.8" compilerOrder="669" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="349.8" width="6.2" height="14.8" compilerOrder="670" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="357.2" width="12.4" height="14.8" compilerOrder="671" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="372.1" width="6.2" height="14.8" compilerOrder="672" scaleX="1.2" text="_"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="379.4" width="12.4" height="14.8" compilerOrder="673" scaleX="1.2" text="__"/>&#xD;
+            <label fontSize="14.9" fontColor="#221E1F" top="583.9" left="394.3" width="16.4" height="14.8" compilerOrder="674" scaleX="1.1" text="__ "/>&#xD;
+        </rectangle>
+        
+        <dataLink field="nivel">
+            <event name="onPersistedChange">
+                    sheet.ataqueNivel = (sheet.nivel or 0);
+                    sheet.umquartodenivel = math.floor((sheet.nivel or 1)/4);
+            </event>
+        </dataLink>
+
+        <dataLink fields="{'ataqueOutros', 'ataqueRacaClase', 'ataqueNivel'}">
+            <event name="onChange">
+                    sheet.ataqueTotal = math.floor((sheet.ataqueOutros or 0) + (sheet.ataqueRacaClasse or 0) + (sheet.ataqueNivel or 0));
+            </event>
+        </dataLink>
+        <dataLink field="arma1">
+            <event name="onChange">
+                ajusteArma1(sheet);
+            </event>
+        </dataLink>
+        <dataLink field="arma2">
+            <event name="onChange">
+                ajusteArma2(sheet);
+            </event>
+        </dataLink>
+        <dataLink field="arma3">
+            <event name="onChange">
+                ajusteArma3(sheet);
+            </event>
+        </dataLink>
+        <dataLink field="raca">
+            <event name="onChange">
+                racasOnChange(sheet);
+            </event>
+        </dataLink>
+    </scrollBox>
+</form>
