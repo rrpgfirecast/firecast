@@ -505,7 +505,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="20062024140914" compilationDigest="d63ec4980e4faa4a9e1f697050a93f7f5525cd69">
+    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="13072024130330" compilationDigest="b0c3fc1fc44dc52a127cb1968c23c46da32feba7">
         <info lang="en" name="Scene 3 Core" description="Plug-in that has basic features for the combat grid, also known as Scene 3"/>
         <info lang="pt" name="Núcleo do Scene 3" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" author="Firecast - AlyssonRPG" site="http://www.rrpg.com.br"/>
     </element>
@@ -699,6 +699,14 @@
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPKMN" title="Ficha Pokémon d20" formType="sheetTemplate">
                 <info title="Ficha Pokémon d20"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="FICHA_POCKET_DRAGON" name="Ficha Pocket Dragon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha_Pocket_Dragon/output/Ficha_Pocket_Dragon.rpk?raw=true" fileName="Ficha_Pocket_Dragon.rpk" repositoryPath="Sheets/Ficha_Pocket_Dragon/" author="Ítalo" description="Ficha básica de Pocket Dragon" version="1.0" compilationDate="04072024153619" compilationDigest="aac8c33231fac6ca2f26458ed8a59c2acdc4fb88">
+        <info lang="pt-BR" name="Ficha Pocket Dragon" description="Ficha básica de Pocket Dragon" author="Ítalo" site="N/A"/>
+        <dataTypes>
+            <dataType id="Ficha.Pocket_Dragon" title="Ficha Pocket Dragon" formType="sheetTemplate">
+                <info title="Ficha Pocket Dragon"/>
             </dataType>
         </dataTypes>
     </element>
