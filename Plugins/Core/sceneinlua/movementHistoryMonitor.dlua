@@ -71,6 +71,11 @@ function MOVHIST_MONITOR_start(scene, movHist)
 			tmtCheckSelected = setTimeout(
 									function()
 										tmtCheckSelected = nil;
+																				
+										if not scene.isObjectAlive then
+											return;
+										end;
+												
 										local selection = scene.items.selection;
 										local setModeFunc = MOVHIST_SetMode;
 													

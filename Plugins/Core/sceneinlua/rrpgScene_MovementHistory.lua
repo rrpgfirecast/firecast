@@ -70,6 +70,10 @@ local _movHistScene = {};
 setmetatable(_movHistScene, {__mode="k"});
 
 local function onHistToDrawChanged(scene, mh, hists)
+	if (scene == nil) or not (scene.isObjectAlive) then
+		return;
+	end;
+
 	local tracksDrawing = mh.tracksDrawing;
 	
 	-- desativar old tracks drawing

@@ -114,6 +114,10 @@ end;
 local _tracksPerScene = {};
 
 local function MOVETRACK_addTRACK(scene, track)
+	if not scene.isObjectAlive then
+		return;
+	end;
+
 	local tracks = _tracksPerScene[scene];
 	
 	if tracks == nil then
@@ -157,6 +161,10 @@ local function MOVETRACK_addTRACK(scene, track)
 end;
 
 local function MOVETRACK_removeTRACK(scene, track)
+	if not scene.isObjectAlive then
+		return;
+	end;
+	
 	local tracks = _tracksPerScene[scene];
 	
 	if tracks == nil then
