@@ -125,7 +125,7 @@
 		local macConditions = newMultiActionMenuItem("", self.flaConditionOptions, 5);
 		local actConditions = {};
 		for i=1, numConditions, 1 do
-			actConditions[i] = macConditions:addCheckBoxAction("/icos/conditions/"..i..".png", lang("scene.menu.conditions.c"..i));
+			actConditions[i] = macConditions:addCheckBoxAction("/icos/conditions/"..i..".png", lang("scene.menu.conditions.instruction1") .. "\n" .. lang("scene.menu.conditions.instruction2") .. "\n" .. lang("scene.menu.conditions.c"..i));
 		end;
 		local conditionsSlots = {0, 0, 0, 0, 0};
 		local slotX = {0, 0.6, 0, 0.6};
@@ -143,7 +143,7 @@
 		
 		btnImageOptions.onClick = function()
 									self:setActiveMenu(self.flaImageOptions);
-							      end;	
+								  end;	
 
 		btnCondition.onClick = function()
 							  		self:setActiveMenu(self.flaConditionOptions);
@@ -524,7 +524,7 @@
 									end);
 								
 								self:close();							
-					       end;
+						   end;
 				end;		
 
 				local function createInvertImageBoolOptionCallback(propName)							
@@ -540,7 +540,7 @@
 									end);
 								
 								self:close();							
-					       end;
+						   end;
 				end;	
 				
 				actColorBlend.onClick = function()
@@ -633,127 +633,166 @@
 						actConditions[i]:setChecked(false);
 					end;
 
-					actConditions[i].onClick = function()
-													local opGrafica = umToken.canvas:findByName(mark);
+					actConditions[i].onClick = function(event)
+							local fullSize = event.shiftKey
+							local smallSize = event.ctrlKey
 
-													if opGrafica == nil then
-														-- ADD CONDITION to all selected tokens if first token doesn't have the op
-														actConditions[i]:setChecked(true);
+							local opGrafica = umToken.canvas:findByName(mark);
 
-														for k=1, #self.theSelection, 1 do
-															local iterationUmToken = theSelection[k];
-															if iterationUmToken.userData.CondtNum == nil then
-																iterationUmToken.userData.CondtNum = 0
-																iterationUmToken.userData.CondtList = {}
-															end
+							if opGrafica == nil then
+								-- ADD CONDITION to all selected tokens if first token doesn't have the op
+								actConditions[i]:setChecked(true);
 
-															local iterationOpGrafica = iterationUmToken.canvas:findByName(mark);
+								for k=1, #self.theSelection, 1 do
+									local iterationUmToken = theSelection[k];
+									if iterationUmToken.userData.CondtNum == nil then
+										iterationUmToken.userData.CondtNum = 0
+										iterationUmToken.userData.CondtList = {}
+									end
+									if iterationUmToken.userData.SmallCondtNum == nil then
+										iterationUmToken.userData.SmallCondtNum = 0
+										iterationUmToken.userData.SmallCondtList = {}
+									end
 
-															if iterationOpGrafica == nil then 
-																-- ADD CONDITION to this token
-																if i ~= 31 then 
-																	-- Death token doesn't occupy an slot
-																	iterationUmToken.userData.CondtNum = iterationUmToken.userData.CondtNum + 1
-																	iterationUmToken.userData.CondtList[iterationUmToken.userData.CondtNum] = mark
-																end
+									local iterationOpGrafica = iterationUmToken.canvas:findByName(mark);
 
-																-- CREATE the condition bitmap
-																iterationOpGrafica = iterationUmToken.canvas:addBitmap();
-	                    										iterationOpGrafica.name = mark;
+									if iterationOpGrafica == nil then 
+										-- ADD CONDITION to this token
+										if fullSize then
+											-- Death token doesn't occupy an slot
+										elseif smallSize then
+											-- Only 4 slots
+											if iterationUmToken.userData.SmallCondtNum >= 4 then return end
+											iterationUmToken.userData.SmallCondtNum = iterationUmToken.userData.SmallCondtNum + 1
+											iterationUmToken.userData.SmallCondtList[iterationUmToken.userData.SmallCondtNum] = mark
+										else
+											iterationUmToken.userData.CondtNum = iterationUmToken.userData.CondtNum + 1
+											iterationUmToken.userData.CondtList[iterationUmToken.userData.CondtNum] = mark
+										end
 
-	                    										-- Getting URL
-		                    									if i>= 61 and i <= 65 then
-		                    										Dialogs.inputQuery("URL", lang("scene.inseridor.url"), "", 
-																					function(url)
-																						iterationOpGrafica.url = url
-																					end)
-		                    									else
-		                    										iterationOpGrafica.url = lang("scene.menu.conditions.link" .. i)
-		                    									end
+										-- CREATE the condition bitmap
+										iterationOpGrafica = iterationUmToken.canvas:addBitmap();
+										iterationOpGrafica.name = mark;
 
-		                    									-- if token is rotated ignore it
-		                    									iterationOpGrafica.rotMode = "ignoreCanvasRot"
+										-- Getting URL
+										if i>= 61 and i <= 65 then
+											Dialogs.inputQuery("URL", lang("scene.inseridor.url"), "", 
+															function(url)
+																iterationOpGrafica.url = url
+															end)
+										else
+											iterationOpGrafica.url = lang("scene.menu.conditions.link" .. i)
+										end
 
-		                    									-- draw condition after drawing token
-		                    									iterationOpGrafica.outOfOrderMode = "afterOwnerLayer"
+										-- if token is rotated ignore it
+										iterationOpGrafica.rotMode = "ignoreCanvasRot"
 
-		                    									-- define condition position
-		                    									if i == 31 then
-		                    										-- dead token occupy the whole token
-												            		iterationOpGrafica.x = 0
-												            		iterationOpGrafica.y = 0
-												            		iterationOpGrafica.width = 1
-												            		iterationOpGrafica.height = 1
-												            	else
-												            		-- [-0.1/0.3/0.7]
-												            		iterationOpGrafica.x = ((iterationUmToken.userData.CondtNum-1) % 3)*0.4 - 0.1
+										-- draw condition after drawing token
+										iterationOpGrafica.outOfOrderMode = "afterOwnerLayer"
 
-												            		-- [1.4,1.8,2.2,...]
-												            		iterationOpGrafica.y = math.floor((iterationUmToken.userData.CondtNum-1)/3)*0.4 + 1.4
-												            		iterationOpGrafica.width = 0.4
-												            		iterationOpGrafica.height = 0.4
+										-- define condition position
+										if fullSize then
+											-- dead token occupy the whole token
+											iterationOpGrafica.x = 0
+											iterationOpGrafica.y = 0
+											iterationOpGrafica.width = 1
+											iterationOpGrafica.height = 1
+										elseif smallSize then
+											-- [0.05, 0.55]
+											iterationOpGrafica.x = ((iterationUmToken.userData.SmallCondtNum-1) % 2)*0.5 + 0.05
 
-												            		-- draw condition only when hovering or selected
-												            		iterationOpGrafica.drawingTrigger = {"hover", "selected"}
-												            	end
-												            	-- render on the 10th upper layer
-												            	iterationOpGrafica.z = 10
-															else
-																-- this token alredy has the condition, skip
-															end
-											            end;										            
-													else 
-														-- REMOVE CONDITION to all selected tokens if first token doesn't have the op
-														actConditions[i]:setChecked(false);
+											-- [0.05, 0.55]
+											iterationOpGrafica.y = math.floor((iterationUmToken.userData.SmallCondtNum-1)/2)*0.5 + 0.05
 
-														for k=1, #self.theSelection, 1 do
-															local iterationUmToken = theSelection[k]
-															if iterationUmToken.userData.CondtNum == nil then
-																iterationUmToken.userData.CondtNum = 0
-																iterationUmToken.userData.CondtList = {}
-															end
+											iterationOpGrafica.width = 0.4
+											iterationOpGrafica.height = 0.4
+										else
+											-- [-0.1/0.3/0.7]
+											iterationOpGrafica.x = ((iterationUmToken.userData.CondtNum-1) % 3)*0.4 - 0.1
 
-															local iterationOpGrafica = iterationUmToken.canvas:findByName(mark)
-															if iterationOpGrafica~= nil then
-																iterationOpGrafica:delete()
-															end
+											-- [1.4,1.8,2.2,...]
+											iterationOpGrafica.y = math.floor((iterationUmToken.userData.CondtNum-1)/3)*0.4 + 1.4
+											iterationOpGrafica.width = 0.4
+											iterationOpGrafica.height = 0.4
 
-															-- if token has any condition after this condition move them all
+											-- draw condition only when hovering or selected
+											iterationOpGrafica.drawingTrigger = {"hover", "selected"}
+										end
+										-- render on the 10th upper layer
+										iterationOpGrafica.z = 10
+									else
+										-- this token alredy has the condition, skip
+									end
+											end;													
+							else 
+								-- REMOVE CONDITION to all selected tokens if first token doesn't have the op
+								actConditions[i]:setChecked(false);
 
-															-- find this condition's position on the list
-															local pos = nil
-															for l=1, iterationUmToken.userData.CondtNum, 1 do 
-																if iterationUmToken.userData.CondtList[l] == mark then 
-																	pos = l
-																	break 
-																end
-															end
+								for k=1, #self.theSelection, 1 do
+									local iterationUmToken = theSelection[k]
+									if iterationUmToken.userData.CondtNum == nil then
+										iterationUmToken.userData.CondtNum = 0
+										iterationUmToken.userData.CondtList = {}
+									end
+									if iterationUmToken.userData.SmallCondtNum == nil then
+										iterationUmToken.userData.SmallCondtNum = 0
+										iterationUmToken.userData.SmallCondtList = {}
+									end
 
-															if pos ~= nil then 
-																-- we found that token position on the list 
-																for l=pos, iterationUmToken.userData.CondtNum, 1 do 
-																	if l == iterationUmToken.userData.CondtNum then 
-																		-- last on the list, just delete 
-																		iterationUmToken.userData.CondtList[iterationUmToken.userData.CondtNum] = nil
-																		iterationUmToken.userData.CondtNum = iterationUmToken.userData.CondtNum - 1
-																	else
-																		-- move it one slot down
-																		iterationUmToken.userData.CondtList[l] = iterationUmToken.userData.CondtList[l+1]
-																		local OpGtoMove = iterationUmToken.canvas:findByName(iterationUmToken.userData.CondtList[l])
+									local iterationOpGrafica = iterationUmToken.canvas:findByName(mark)
+									-- If opGrafica is inside token, it is a small op
+									local smallSize = iterationOpGrafica.y < 1
+									if iterationOpGrafica~= nil then
+										iterationOpGrafica:delete()
+									end
 
-																		-- [-0.1/0.3/0.7]
-													            		OpGtoMove.x = ((l-1) % 3)*0.4 - 0.1
-													            		-- [1.4,1.8,2.2,...]
-												            			OpGtoMove.y = math.floor((l-1)/3)*0.4 + 1.4
-																	end
-																end
-																-- move anyone after it
-															end
-														end
+									-- if token has any condition after this condition move them all
 
-													end;
-													
-												end;
+									-- find this condition's position on the list
+									local pos = nil
+									local var = "Condt"
+									if smallSize then
+										var = "SmallCondt"
+									end
+									for l=1, iterationUmToken.userData[var.."Num"], 1 do 
+										if iterationUmToken.userData[var.."List"][l] == mark then 
+											pos = l
+											break 
+										end
+									end
+
+									if pos ~= nil then 
+										-- we found that token position on the list 
+										for l=pos, iterationUmToken.userData[var.."Num"], 1 do 
+											if l == iterationUmToken.userData[var.."Num"] then 
+												-- last on the list, just delete 
+												iterationUmToken.userData[var.."List"][iterationUmToken.userData[var.."Num"]] = nil
+												iterationUmToken.userData[var.."Num"] = iterationUmToken.userData[var.."Num"] - 1
+											else
+												-- move it one slot down
+												iterationUmToken.userData[var.."List"][l] = iterationUmToken.userData[var.."List"][l+1]
+												local OpGtoMove = iterationUmToken.canvas:findByName(iterationUmToken.userData[var.."List"][l])
+
+												if smallSize then
+													-- [-0.1/0.3/0.7]
+													OpGtoMove.x = ((l-1) % 2)*0.5 + 0.05
+													-- [1.4,1.8,2.2,...]
+													OpGtoMove.y = math.floor((l-1)/2)*0.5 + 0.05
+												else
+													-- [-0.1/0.3/0.7]
+													OpGtoMove.x = ((l-1) % 3)*0.4 - 0.1
+													-- [1.4,1.8,2.2,...]
+													OpGtoMove.y = math.floor((l-1)/3)*0.4 + 1.4
+												end
+											end
+										end
+										-- move anyone after it
+									end
+								end
+
+							end;
+							
+						end;
 				end;
 			end;
 			

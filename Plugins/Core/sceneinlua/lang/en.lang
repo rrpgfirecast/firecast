@@ -159,6 +159,8 @@ scene.gridFineTuning.offset=Move a grid position
 
 
 scene.menu.alert.maxConditions=Only 4 conditions per Token!
+scene.menu.conditions.instruction1=Ctrl+click to be always visible.
+scene.menu.conditions.instruction2=Shift+click to fill token.
 scene.menu.conditions.c1=Number 1
 scene.menu.conditions.c2=Number 2
 scene.menu.conditions.c3=Number 3

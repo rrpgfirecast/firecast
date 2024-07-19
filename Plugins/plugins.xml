@@ -238,7 +238,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.OrderMarker" name="Order Marker" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/OrderMarker/output/OrderMarker.rpk?raw=true" fileName="OrderMarker.rpk" repositoryPath="Scene/OrderMarker/" author="Ambesek" description="Allows for the creation of order marks on scene tokens." version="1.1" compilationDate="18052024172108" compilationDigest="123156a7a334c7e44c49c62d81416455b91dfb39">
+    <element id="Ambesek.OrderMarker" name="Order Marker" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/OrderMarker/output/OrderMarker.rpk?raw=true" fileName="OrderMarker.rpk" repositoryPath="Scene/OrderMarker/" author="Ambesek" description="Allows for the creation of order marks on scene tokens." version="1.1.1" compilationDate="19072024143600" compilationDigest="76a3477a78b90b26310c6d1869a30bdca0c210ed">
         <info lang="pt-BR" name="Order Marker" description="Allows for the creation of order marks on scene tokens." author="Ambesek"/>
     </element>
     <element id="Ambesek.Pathfinder.2e" name="Ficha Pathfinder 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true" fileName="Ficha Pathfinder 2e.rpk" repositoryPath="Sheets/Ficha Pathfinder 2e/" author="Ambesek" description="Ficha feita para o sistema Pathfinder 2e." version="1.0.1" compilationDate="03032023114706" compilationDigest="90accfd2e4328032657636fb0d78d9514a9701b4">
@@ -292,7 +292,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="1.1" compilationDate="18052024145526" compilationDigest="26eaf8afa0ad10b32735a8c9f40d97934c1751d9">
+    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="1.1.1" compilationDate="20052024143659" compilationDigest="b9371e70161db47bb9d9f26ca7e7f09ea5646dfe">
         <info lang="pt-BR" name="Ficha Starfinder" description="Ficha feita para o sistema Starfinder." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Starfinder.CompanhiaMercenaria" title="Ficha Starfinder (Companhia de Mercenarios)" formType="sheetTemplate">
@@ -505,7 +505,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="13072024130330" compilationDigest="b0c3fc1fc44dc52a127cb1968c23c46da32feba7">
+    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="19072024143455" compilationDigest="4457867d1fca4432a948130f1cd7dc8fd1b1acfe">
         <info lang="en" name="Scene 3 Core" description="Plug-in that has basic features for the combat grid, also known as Scene 3"/>
         <info lang="pt" name="Núcleo do Scene 3" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" author="Firecast - AlyssonRPG" site="http://www.rrpg.com.br"/>
     </element>
@@ -686,7 +686,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.1" compilationDate="18052024145457" compilationDigest="e38472f43fc28587ccb9e445ee974e9490e372bc">
+    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.1.2" compilationDate="05062024220454" compilationDigest="7e453aff392906400ca6628ee33cbc3165509975">
         <info lang="pt-BR" name="Ficha Pathfinder" description="Ficha feita para o sistema Pathfinder." author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder" formType="sheetTemplate">

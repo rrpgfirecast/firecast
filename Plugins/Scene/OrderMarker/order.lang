@@ -3,6 +3,6 @@ scene.order=Ordem
 scene.order.selected=Ordenar Todos Selecionados
 scene.order.clean=Limpar Todos Selecionados
 scene.order.select=Selecionar
-scene.order.input=Digite a altura em quadrados
+scene.order.input=Digite a ordem do token
 scene.order.invalid=Valor Inválido
 scene.order.manual=Ordernar Manualmente

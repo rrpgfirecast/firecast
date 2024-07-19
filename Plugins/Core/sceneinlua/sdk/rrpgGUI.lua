@@ -1359,9 +1359,6 @@ function gui.RichEdit:getSelectionFontFamily() if System.checkAPIVersion(87, 4) 
 function gui.RichEdit:getSelectionFontStyle() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFontStyle"); else return {}; end; end;
 function gui.RichEdit:getSelectionFloat() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFloat"); else return "none"; end; end;
 function gui.RichEdit:getSelectionParaAlign() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionParaAlign"); else return "left"; end; end;
-function gui.RichEdit:getSelectionParaLineSpacing() if System.checkAPIVersion(88, 3) then return _obj_invokeEx(self.handle, "LGetSelectionParaLineSpacing"); else return 1.0; end; end;
-function gui.RichEdit:getSelectionParaTopMargin() if System.checkAPIVersion(88, 3) then return _obj_invokeEx(self.handle, "LGetSelectionParaTopMargin"); else return 0; end; end;
-function gui.RichEdit:getSelectionParaBottomMargin() if System.checkAPIVersion(88, 3) then return _obj_invokeEx(self.handle, "LGetSelectionParaBottomMargin"); else return 0; end; end;
 	
 function gui.RichEdit:gotoStart(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoStart", holdSelection); end; end;
 function gui.RichEdit:gotoEnd(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoEnd", holdSelection); end; end;
@@ -1397,9 +1394,6 @@ function gui.RichEdit:setSelectionFontFamily(family) if System.checkAPIVersion(8
 function gui.RichEdit:setSelectionFontStyle(style) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionFontStyle", style); end; end;
 function gui.RichEdit:setSelectionFloat(floatMode) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionFloat", floatMode); end; end;
 function gui.RichEdit:setSelectionParaAlign(paraAlign) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionParaAlign", paraAlign); end; end;
-function gui.RichEdit:setSelectionParaLineSpacing(value) if System.checkAPIVersion(88, 3) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionParaLineSpacing", value); end; end;
-function gui.RichEdit:setSelectionParaTopMargin(value) if System.checkAPIVersion(88, 3) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionParaTopMargin", value); end; end;
-function gui.RichEdit:setSelectionParaBottomMargin(value) if System.checkAPIVersion(88, 3) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionParaBottomMargin", value); end; end;
 	
 function gui.RichEdit:getLengthInChars() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetLengthInChars"); else return 0; end; end;		
 function gui.RichEdit:getLengthInGlyphs() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetLengthInGlyphs"); else return 0; end; end;
