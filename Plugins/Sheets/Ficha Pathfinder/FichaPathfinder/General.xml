@@ -214,7 +214,7 @@
 				</rectangle>
 
 				<TitleLabelButton text="BMC" field="bmc" widthL="2" widthR="3" onClick="basicRoll('Teste de BMC', 'bmc')"/>
-				<TitleLabel text="DMC" field="bmd" widthL="2" widthR="3"/>
+				<TitleLabel text="DMC" field="dmc" widthL="2" widthR="3"/>
 				<button g="col" g-width="2" height="25" name="ManeuverBt" text="i">
 					<event name="onClick">
 						local pop = self:findControlByName("popManeuver");
@@ -228,15 +228,32 @@
 						</event>
 				</button>
 
-				<dataLink fields="{'bba', 'efetModFor', 'agarrarTam', 'agarrarVar'}"> 
-					<event name="onUserChange">
-						if sheet~= nil then
-							local agarrar = (tonumber(sheet.bba) or 0) + 
-										(tonumber(sheet.efetModFor) or 0) +  
-										(tonumber(sheet.agarrarTam) or 0) +   
-										(tonumber(sheet.agarrarVar) or 0)				  
-							sheet.agarrar = agarrar
-						end
+				<dataLink fields="{'bba', 'efetModFor', 'efetModDes', 'bmcTamanho', 'bmcOutros', 'destrezaBMC', 'bmcDiversos'}"> 
+					<event name="onChange">
+						if sheet== nil then return end
+						local bmc = (tonumber(sheet.bba) or 0) + 
+									(tonumber(sheet.bmcTamanho) or 0) +   
+									(tonumber(sheet.bmcOutros) or 0) +   
+									(tonumber(sheet.bmcDiversos) or 0)
+						if sheet.destrezaBMC then
+							bmc = bmc + (tonumber(sheet.efetModDes) or 0)
+						else
+							bmc = bmc + (tonumber(sheet.efetModFor) or 0)
+						end		  
+						sheet.bmc = bmc
+					</event>
+				</dataLink>
+
+				<dataLink fields="{'bba', 'efetModFor', 'efetModDes', 'bmdTamanho', 'bmdOutros', 'bmdDiversos'}"> 
+					<event name="onChange">
+						if sheet== nil then return end
+						local dmc = (tonumber(sheet.bba) or 0) + 
+									(tonumber(sheet.bmdTamanho) or 0) +   
+									(tonumber(sheet.bmdOutros) or 0) +   
+									(tonumber(sheet.bmdDiversos) or 0) +
+									(tonumber(sheet.efetModDes) or 0) + 
+									(tonumber(sheet.efetModFor) or 0)
+						sheet.dmc = dmc
 					</event>
 				</dataLink>
 			</rectangle>
@@ -250,6 +267,36 @@
 					<TitleLabelButton field="trVon" text="Vontade" onClick="basicRoll('Teste de Vontade', 'trVon')"/>
 				</layout>
 				<button g="col" g-width="1" g-min-height="75" name="TrBut" text=">>" onClick="ShowPopUp('popResistencia', self.TrBut)" hint="Detalhes" textTrimming="none"/>
+				<SaveEvent tr="Fort"/>
+				<SaveEvent tr="Ref"/>
+				<SaveEvent tr="Von"/>
+
+				<dataLink fields="{'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar', 'atrTrFort', 'atrTrRef', 'atrTrVon'}">
+					<event name="onUserChange">
+						if sheet ~= nil then
+							local atrTable = {0,0,0,0,0,0,0}
+							atrTable[1] = tonumber(sheet.efetModFor)
+							atrTable[2] = tonumber(sheet.efetModDes)
+							atrTable[3] = tonumber(sheet.efetModCon)
+							atrTable[4] = tonumber(sheet.efetModInt)
+							atrTable[5] = tonumber(sheet.efetModSab)
+							atrTable[6] = tonumber(sheet.efetModCar)
+
+							local num = tonumber(sheet.atrTrFort) or 3
+							local atrModFort = atrTable[num]
+
+							num = tonumber(sheet.atrTrRef) or 2
+							local atrModRef = atrTable[num]
+
+							num = tonumber(sheet.atrTrVon) or 5
+							local atrModVon = atrTable[num]
+
+							sheet.atrModFort = atrModFort
+							sheet.atrModRef = atrModRef
+							sheet.atrModVon = atrModVon
+						end
+					</event>
+				</dataLink>
 
 			</rectangle>
 		</layout>

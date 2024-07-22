@@ -917,7 +917,7 @@ function pairs(obj)
 end;
 
 function ipairs(obj)
-	if rawget(obj, "__nodeFacadeFlag") then
+	if (obj ~= nil) and rawget(obj, "__nodeFacadeFlag") then
 		-- Node Façade		
 		local state = _prepareNodeFacadePairsState(obj);			
 		return oldIPairsFunc(state);

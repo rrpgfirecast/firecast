@@ -310,7 +310,8 @@
 			<smallFieldCenter field="outros$(tr)"/>
 			<attributeComboBox field="atrTr$(tr)"/>
 		</flowLayout>
-
+	</template>
+	<template name="SaveEvent">
 		<dataLink fields="{'base$(tr)', 'atrMod$(tr)', 'magia$(tr)', 'variavel$(tr)', 'temporario$(tr)', 'outros$(tr)','buffTR'}">
 			<event name="onUserChange"><![CDATA[
 				if sheet~= nil then
@@ -330,6 +331,7 @@
 			</event>
 		</dataLink>
 	</template>
+
 	<template name="SaveComp">
 		<button g="col" g-width="2" height="25" text="$(ATR)" textTrimming="none">
 			<event name="onClick">

@@ -89,14 +89,14 @@
 	</layout>
 
 	<!-- Calcule o bonus de pericia-->
-	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia','buffPericia', 'penalidade'}">
+	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia','buffPericia', 'penalidade','isClass'}">
 		<event name="onUserChange">
 			if sheet== nil then return end
 
 			local pen = (tonumber(sheet.penalidade) or 0)
+			local grad = (tonumber(sheet.graduacaoPericia) or 0)
 
 			local mod = (tonumber(sheet.atributoPericia) or 0) +
-						(tonumber(sheet.graduacaoPericia) or 0) +
 						(tonumber(sheet.penalidesPericia) or 0) +
 						(tonumber(sheet.racialPericia) or 0) +
 						(tonumber(sheet.sinergiaPericia) or 0) +
@@ -110,6 +110,11 @@
 						(tonumber(sheet.sortePericia) or 0) +
 						(tonumber(sheet.condicionalPericia) or 0) +
 						(tonumber(sheet.buffPericia) or 0)
+			if sheet.isClass and grad > 0 then
+				mod = mod + 3 + grad
+			else
+				mod = mod + grad
+			end
 
 			if sheet.penalidadeArmadura then
 				mod = mod + pen
@@ -123,7 +128,7 @@
 	</dataLink>
 
 	<!-- Calcule os pontos totais de pericia gastos-->
-	<dataLink fields="{'graduacaoPericia', 'isClass'}">
+	<dataLink fields="{'graduacaoPericia'}">
 		<event name="onUserChange">
 			if sheet== nil then return end
 			local node = NDB.getRoot(sheet)

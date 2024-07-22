@@ -56,33 +56,6 @@
 		<dataLink field="atrTrFort" defaultValue="3"/>
 		<dataLink field="atrTrRef" defaultValue="2"/>
 		<dataLink field="atrTrVon" defaultValue="5"/>
-
-		<dataLink fields="{'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar', 'atrTrFort', 'atrTrRef', 'atrTrVon'}">
-			<event name="onUserChange">
-				if sheet ~= nil then
-					local atrTable = {0,0,0,0,0,0,0}
-					atrTable[1] = tonumber(sheet.efetModFor)
-					atrTable[2] = tonumber(sheet.efetModDes)
-					atrTable[3] = tonumber(sheet.efetModCon)
-					atrTable[4] = tonumber(sheet.efetModInt)
-					atrTable[5] = tonumber(sheet.efetModSab)
-					atrTable[6] = tonumber(sheet.efetModCar)
-
-					local num = tonumber(sheet.atrTrFort) or 3
-					local atrModFort = atrTable[num]
-
-					num = tonumber(sheet.atrTrRef) or 2
-					local atrModRef = atrTable[num]
-
-					num = tonumber(sheet.atrTrVon) or 5
-					local atrModVon = atrTable[num]
-
-					sheet.atrModFort = atrModFort
-					sheet.atrModRef = atrModRef
-					sheet.atrModVon = atrModVon
-				end
-			</event>
-		</dataLink>
 	</popup>
 	
 	<popup name="popCA" width="600" height="210" backOpacity="0.4" autoScopeNode="false">
@@ -160,7 +133,7 @@
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 			<periciaSmallCenter text="Penalidades" field="penalidesPericia"/>
 			<periciaSmallCenter text="Racial" field="racialPericia"/>
-			<periciaSmallCenter text="Sinergia" field="sinergiaPericia"/>
+			<periciaSmallCenter text="Traços" field="sinergiaPericia"/>
 			<periciaSmallCenter text="Equipamentos" field="equipamentosPericia"/>
 			<periciaSmallCenter text="Magico" field="magicoPericia"/>
 			<periciaSmallCenter text="Outros" field="outrosPericia"/>
@@ -473,7 +446,7 @@
 			<flowLineBreak/> 
 
 			<smallTitleCenter text="BMC"/>
-			<smallLabelCenter field="bba"/>
+			<smallLabelCenter field="bmc"/>
 			<smallLabelCenter field="efetModFor"/>
 			<smallFieldCenter field="bmcTamanho"/>
 			<smallFieldCenter field="bmcOutros"/>
@@ -484,8 +457,8 @@
 
 			<flowLineBreak/> 
 
-			<smallTitleCenter text="BMD"/>
-			<smallLabelCenter field="bba"/>
+			<smallTitleCenter text="DMC"/>
+			<smallLabelCenter field="dmc"/>
 			<smallLabelCenter field="efetModFor"/>
 			<smallFieldCenter field="bmdTamanho"/>
 			<smallFieldCenter field="bmdOutros"/>

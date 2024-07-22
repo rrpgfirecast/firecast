@@ -83,7 +83,7 @@
 					<event name="onChange">
 						if sheet == nil then return end
 
-						local root = GUI.findControlByName("frmFichaRPGmeister", self)
+						local root = GUI.findControlByName("frmFichaPathfinder", self)
 						if root ~= nil then
 							root.scale = (tonumber(sheet.zoom) or 1)
 							root:needRepaint()
