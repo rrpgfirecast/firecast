@@ -522,7 +522,9 @@
                                     end
                                 end
 
-                                local rolagem = Firecast.interpretarRolagem("1d20+" .. sheet.acertos[1])
+                                local roll = (tonumber(sheet.acertos[1]) or 0) - math.abs(tonumber(NDB.getRoot(sheet).nvNeg) or 0)
+
+                                local rolagem = Firecast.interpretarRolagem("1d20+" .. roll)
                                 local armamento = sheet.nomeAtaque or "arma"
                                 local personagem = NDB.getRoot(sheet).nome or "personagem"
 

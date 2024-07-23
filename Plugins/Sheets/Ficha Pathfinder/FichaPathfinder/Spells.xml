@@ -66,9 +66,36 @@
 		end;
 
 		local function clTest()
-			local rolagem = Firecast.interpretarRolagem("1d20 +" .. (self.boxDetalhesDaMagia.node.NC or "0"));
+			local mod = (tonumber(self.boxDetalhesDaMagia.node.NC) or 0) - 
+						math.abs(tonumber(sheet.nvNeg) or 0)
+			local rolagem = Firecast.interpretarRolagem("1d20 +" .. mod);
 			local mesa = Firecast.getMesaDe(sheet);
 			mesa.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "Nome"));
+		end
+
+		local function concTest()
+			local mod = (tonumber(self.boxDetalhesDaMagia.node.NC) or 0) +
+						(tonumber(self.boxDetalhesDaMagia.node.concentracao) or 0) - 
+						math.abs(tonumber(sheet.nvNeg) or 0)
+
+			local ctrl = self.boxDetalhesDaMagia.node.atributoBonus;
+			if ctrl=='1' then
+				mod = mod + (tonumber(sheet.efetModFor) or 0)
+			elseif ctrl=='2' then
+				mod = mod + (tonumber(sheet.efetModDes) or 0)
+			elseif ctrl=='3' then
+				mod = mod + (tonumber(sheet.efetModCon) or 0)
+			elseif ctrl=='4' then
+				mod = mod + (tonumber(sheet.efetModInt) or 0)
+			elseif ctrl=='5' then
+				mod = mod + (tonumber(sheet.efetModSab) or 0)
+			elseif ctrl=='6' then
+				mod = mod + (tonumber(sheet.efetModCar) or 0)
+			end;
+
+			local rolagem = Firecast.interpretarRolagem("1d20 +" .. mod);
+			local mesa = Firecast.getMesaDe(sheet);
+			mesa.activeChat:rolarDados(rolagem, "Teste de Concentração de " .. (sheet.nome or "Nome"));
 		end
 	</script>
 
@@ -109,18 +136,22 @@
 		<dataScopeBox name="boxDetalhesDaMagia" visible="false" align="client">
 			<scrollBox align="client">
 				<rectangle g="col" g-width="12" g-width-lg="3" g-vert-tile="true" g-auto-height="true" strokeSize="1" name="listPart" padding="{left=5,right=5,top=5,bottom=5}">
-					<Title text="Classe" field="classeMagia" g="col" widthL="3" widthR="6"/>
-					<TitleButton text="NC" field="NC" g="col" widthL="1" widthR="2" onClick="clTest()"/>
+					<Title text="Classe" field="classeMagia" g="col" widthL="2" widthR="4"/>
+					<button g="col" g-width="2" text="NC" horzTextAlign="center" height="25" onClick="clTest()" textTrimming="none"/>
+					<label g="col" g-width="2" text="CD +" horzTextAlign="center" height="25" fontSize="13" textTrimming="none"/>
+					<button g="col" g-width="2" text="Conc+" horzTextAlign="center" height="25" onClick="concTest()" textTrimming="none"/>
 
-					<TitleComboBox text="Tipo" field="tipoMagia" g="col" widthL="3" widthR="6" items="{'Lista Magias', 'Signos', 'Essencias', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '4', '7', '8'}" value="3" onChange="showHiddenLayouts()"/>
-					<Title text="CD +" field="cd" g="col" widthL="1" widthR="2"/>
+					<TitleComboBox text="Tipo" field="tipoMagia" g="col" widthL="2" widthR="4" items="{'Lista Magias', 'Signos', 'Essencias', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '4', '7', '8'}" value="3" onChange="showHiddenLayouts()"/>
+					<edit g="col" g-width="2" field="NC" height="25"/>
+					<edit g="col" g-width="2" field="cd" height="25"/>
+					<edit g="col" g-width="2" field="concentracao" height="25"/>
 
-					<dataLink fields="{'NC'}">
-						<event name="onUserChange">
+					<dataLink fields="{'NC','nvNeg'}">
+						<event name="onChange">
 							if self.boxDetalhesDaMagia.node== nil then return end;
 							local node = self.boxDetalhesDaMagia.node;
 
-							local nc = tonumber(node.nc) or 0;
+							local nc = (tonumber(node.nc) or 0) - math.abs(tonumber(sheet.nvNeg) or 0);
 
 							local longo = 120 + 12 * nc;
 							local medio = 30 + 3 * nc;

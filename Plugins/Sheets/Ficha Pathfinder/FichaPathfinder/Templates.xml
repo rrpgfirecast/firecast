@@ -86,7 +86,7 @@
     </template>
 
     <template name="Attribute">
-    	<button g="col" g-width="4" text="$(atrN)" horzTextAlign="center" height="25" onClick="basicRoll('Teste de $(atrN)', 'efetMod$(atr)')" textTrimming="none"/>
+    	<button g="col" g-width="4" text="$(atrN)" horzTextAlign="center" height="25" onClick="basicRoll('Teste de $(atrN)', 'efetMod$(atr)', true)" textTrimming="none"/>
 		<rectangle g="col" g-width="2" height="25" color="black" strokeColor="white" strokeSize="1">
 			<label align="client" field="real$(atr)" horzTextAlign="center"/>
 		</rectangle>
@@ -406,6 +406,7 @@
 						
 						local mesa = Firecast.getMesaDe(sheet)
 						while array[max]~=nil do
+							array[max] = array[max] - math.abs(tonumber(sheet.nvNeg) or 0)
 							max = max + 1
 						end
 						

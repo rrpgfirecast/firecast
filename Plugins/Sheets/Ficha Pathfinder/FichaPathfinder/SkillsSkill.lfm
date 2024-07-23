@@ -26,7 +26,7 @@
 			local mesaDoPersonagem = Firecast.getMesaDe(sheet)
 			local node = NDB.getRoot(sheet)
 
-			local mod = math.floor(tonumber(sheet.totalPericia) or 0)
+			local mod = math.floor(tonumber(sheet.totalPericia) or 0) - math.abs(tonumber(NDB.getRoot(sheet).nvNeg) or 0)
 			local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod)
 
 			local warn = ""

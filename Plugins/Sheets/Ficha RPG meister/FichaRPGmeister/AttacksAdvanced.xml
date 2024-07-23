@@ -148,6 +148,7 @@
 						end
 
 						local acertos = weapons[weaponID].acertos
+						acertos[ataqueID] = acertos[ataqueID] - math.abs(tonumber(sheet.nvNeg) or 0)
 						local decisivo = weapons[weaponID].decisivo
 						local armamento = weapons[weaponID].nomeAtaque or "arma"
 						local conf = tonumber(weapons[weaponID].confirmacaoAtaq) or 0
@@ -214,6 +215,7 @@
 						ataquesFeitos = 0
 
 						local acertos = weapons[weaponID].acertos
+						acertos[ataqueID] = acertos[ataqueID] - math.abs(tonumber(sheet.nvNeg) or 0)
 						local decisivo = weapons[weaponID].decisivo
 						local armamento = weapons[weaponID].nomeAtaque or "arma"
 						local conf = tonumber(weapons[weaponID].confirmacaoAtaq) or 0
@@ -248,6 +250,7 @@
 						local acertos = weapons[weaponID].acertos
 						local armamento = weapons[weaponID].nomeAtaque or "arma"
 
+						acertos[ataqueID] = acertos[ataqueID] - math.abs(tonumber(sheet.nvNeg) or 0)
 						local rolagem = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID])
 						mesa.activeChat:rolarDados(rolagem, "Ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 							function (rolado)
@@ -321,6 +324,7 @@
 					--preparando ataque
 					local acertos = weapons[weaponID].acertos
 					local armamento = weapons[weaponID].nomeAtaque or "arma"
+					acertos[ataqueID] = acertos[ataqueID] - math.abs(tonumber(sheet.nvNeg) or 0)
 
 					local rolagem = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID])
 					mesa.activeChat:rolarDados(rolagem, "Ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 

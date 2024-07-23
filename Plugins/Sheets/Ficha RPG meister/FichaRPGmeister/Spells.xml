@@ -66,7 +66,9 @@
 		end;
 
 		local function clTest()
-			local rolagem = Firecast.interpretarRolagem("1d20 +" .. (self.boxDetalhesDaMagia.node.NC or "0"));
+            local mod = (tonumber(self.boxDetalhesDaMagia.node.NC) or 0) - 
+                        math.abs(tonumber(sheet.nvNeg) or 0)
+            local rolagem = Firecast.interpretarRolagem("1d20 +" .. mod);
 			local mesa = Firecast.getMesaDe(sheet);
 			mesa.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "Nome"));
 		end
@@ -115,12 +117,12 @@
 					<TitleComboBox text="Tipo" field="tipoMagia" g="col" widthL="3" widthR="6" items="{'Lista Magias', 'Signos', 'Essencias', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '4', '7', '8'}" value="3" onChange="showHiddenLayouts()"/>
 					<Title text="CD +" field="cd" g="col" widthL="1" widthR="2"/>
 
-					<dataLink fields="{'NC'}">
+					<dataLink fields="{'NC', 'nvNeg'}">
 						<event name="onUserChange">
 							if self.boxDetalhesDaMagia.node== nil then return end;
 							local node = self.boxDetalhesDaMagia.node;
 
-							local nc = tonumber(node.nc) or 0;
+							local nc = (tonumber(node.nc) or 0) - math.abs(tonumber(sheet.nvNeg) or 0);
 
 							local longo = 120 + 12 * nc;
 							local medio = 30 + 3 * nc;

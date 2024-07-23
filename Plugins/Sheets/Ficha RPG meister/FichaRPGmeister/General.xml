@@ -9,8 +9,11 @@
 				sheet.xpNova = 0
 	        end
 
-	        local function basicRoll(text, var)
+            local function basicRoll(text, var, nvNeg)
 	        	local mod = tonumber(sheet[var]) or 0
+                if nvNeg then
+                    mod = mod - math.abs(tonumber(sheet.nvNeg) or 0)
+                end
 				local rolagem = Firecast.interpretarRolagem("1d20+" .. mod)
 				if mod < 0 then
 					rolagem = Firecast.interpretarRolagem("1d20" .. mod)
@@ -207,9 +210,9 @@
 				<label g="col" g-width="12" text="RESISTÊNCIAS" horzTextAlign="center" height="25"/>
 
 				<layout g="col" g-width="11" g-min-height="75">
-					<TitleLabelButton field="trFort" text="Fortitude" onClick="basicRoll('Teste de Fortitude', 'trFort')"/>
-					<TitleLabelButton field="trRef" text="Reflexos" onClick="basicRoll('Teste de Reflexos', 'trRef')"/>
-					<TitleLabelButton field="trVon" text="Vontade" onClick="basicRoll('Teste de Vontade', 'trVon')"/>
+					<TitleLabelButton field="trFort" text="Fortitude" onClick="basicRoll('Teste de Fortitude', 'trFort', true)"/>
+					<TitleLabelButton field="trRef" text="Reflexos" onClick="basicRoll('Teste de Reflexos', 'trRef', true)"/>
+					<TitleLabelButton field="trVon" text="Vontade" onClick="basicRoll('Teste de Vontade', 'trVon', true)"/>
 				</layout>
 				<button g="col" g-width="1" g-min-height="75" name="TrBut" text=">>" onClick="ShowPopUp('popResistencia', self.TrBut)" hint="Detalhes" textTrimming="none"/>
 				<SaveEvent tr="Fort"/>
@@ -364,12 +367,13 @@
 			</rectangle>
 
 			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="200">
-				<label g="col" g-width="12" text="BÔNUS TEMPORARIOS" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="12" text="EFEITOS TEMPORARIOS" horzTextAlign="center" height="25"/>
 				<Title text="ATAQUE" field="buffAtaque"/>
 				<Title text="DANO" field="buffDano"/>
 				<Title text="CRITICO" field="buffDanoCritico"/>
 				<Title text="TR" field="buffTR"/>
 				<Title text="PERICIA" field="buffPericia"/>
+				<Title text="NV. NEGATIVO" field="nvNeg" fontSize="11"/>
 			</rectangle>
 		</layout>
 		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="415">
