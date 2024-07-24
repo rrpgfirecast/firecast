@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_Preta_Ordem_Paranormal_1_0_12_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFicha_Preta_Ordem_Paranormal_1_0_12_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFicha_Preta_Ordem_Paranormal_1_0_12_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1308" height="1754" color="white">&#xD;
+            <image left="0" top="0" width="1308" height="1754" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="1050" top="61" width="79" height="44" compilerOrder="1">
+                <edit transparent="true" fontSize="30.8" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="45" field="Text_QPmoFxPBAQ__0" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="616" top="104" width="531" height="30" compilerOrder="9">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_g2T4LJ7GFv__0" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="433" top="105" width="72" height="30" compilerOrder="5">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_XQdx2sueaf__0" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="520" top="105" width="82" height="30" compilerOrder="7">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_MN64mSkKmU__0" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="69" top="106" width="345" height="30" compilerOrder="3">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_rqc1O5p6Yb__0" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="69" top="139" width="345" height="30" compilerOrder="11">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_wPmUHEh0aA__0" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="520" top="139" width="82" height="30" compilerOrder="15">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_R53dA7iYNS__0" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="433" top="140" width="72" height="30" compilerOrder="13">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_0aLrWKynDs__0" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="617" top="140" width="531" height="30" compilerOrder="17">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_iWFRNe_G6S__0" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="69" top="174" width="345" height="30" compilerOrder="19">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_zXQMoeOQMT__0" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="617" top="174" width="531" height="30" compilerOrder="25">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_iBavV_1aeP__0" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="433" top="175" width="72" height="30" compilerOrder="21">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_zjNWpkaxJW__0" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="520" top="175" width="82" height="30" compilerOrder="23">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_aQvNB_i0I3__0" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="69" top="209" width="345" height="30" compilerOrder="27">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_oKsSnJq3La__0" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="434" top="210" width="72" height="30" compilerOrder="29">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_EBxLZJC400__0" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="520" top="210" width="82" height="30" compilerOrder="31">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_pzuHmeTlEQ__0" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="616" top="210" width="531" height="30" compilerOrder="33">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_Mxjd90G1Vn__0" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="69" top="245" width="345" height="30" compilerOrder="35">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_yBPlrSzuD2__0" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="434" top="245" width="72" height="30" compilerOrder="37">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_2JlAbOG3Cj__0" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="520" top="245" width="82" height="30" compilerOrder="39">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_Dzv5ABuxxe__0" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="616" top="246" width="531" height="30" compilerOrder="41">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_vzg8LrZ3v7__0" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="69" top="280" width="345" height="30" compilerOrder="43">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_GYDK9GiHOz__0" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="433" top="280" width="72" height="30" compilerOrder="45">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_k2Z5Upacka__0" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="520" top="280" width="82" height="30" compilerOrder="47">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_5cu8wbzIkG__0" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="616" top="281" width="531" height="30" compilerOrder="49">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_U4qDJrF_7H__0" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="69" top="314" width="345" height="30" compilerOrder="51">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_VeZ8DElgNz__0" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="434" top="315" width="72" height="30" compilerOrder="53">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_mLLEs2JHiu__0" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="520" top="315" width="82" height="30" compilerOrder="55">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_kAS_a2YYHE__0" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="615" top="315" width="531" height="30" compilerOrder="57">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_aaMxkNb2dD__0" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="69" top="350" width="345" height="30" compilerOrder="59">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_e4Ym85_cl9__0" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="435" top="350" width="72" height="30" compilerOrder="61">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_yV6A7iO7NA__0" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="519" top="350" width="82" height="30" compilerOrder="63">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_s_dr975419__0" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="616" top="350" width="531" height="30" compilerOrder="65">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_bvQtCAfZnb__0" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="520" top="385" width="82" height="30" compilerOrder="71">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text__qVpee8iA9__0" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="616" top="385" width="531" height="30" compilerOrder="73">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_23_YyDEUlW__0" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="68" top="386" width="345" height="30" compilerOrder="67">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_BqK8hIyiYO__0" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="435" top="386" width="72" height="30" compilerOrder="69">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_MNpWzdzkZa__0" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="68" top="420" width="345" height="30" compilerOrder="75">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_DkKafcOuNP__0" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="520" top="420" width="82" height="30" compilerOrder="79">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_K55Ze6ajJM__0" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="434" top="421" width="72" height="30" compilerOrder="77">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_qXA2pXkM_R__0" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="616" top="421" width="531" height="30" compilerOrder="81">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_bp0jbCLpzr__0" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="68" top="455" width="345" height="30" compilerOrder="83">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_bCa1LmHn_F__0" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="434" top="456" width="72" height="30" compilerOrder="85">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_XQ5uenYolk__0" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="520" top="456" width="82" height="30" compilerOrder="87">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_i4HundTLqn__0" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="617" top="456" width="531" height="30" compilerOrder="89">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_zIe_toRjGa__0" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="68" top="490" width="345" height="30" compilerOrder="91">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_2jRRuFT4k5__0" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="520" top="490" width="82" height="30" compilerOrder="95">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_krEaLJoRRX__0" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="617" top="490" width="531" height="30" compilerOrder="97">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_zC3YpVds3d__0" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="434" top="491" width="72" height="30" compilerOrder="93">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_bSh8RVKvND__0" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="69" top="525" width="345" height="30" compilerOrder="99">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_DyC5ZJzX0p__0" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="617" top="525" width="531" height="30" compilerOrder="105">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_DfdUyy6OeT__0" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="434" top="526" width="72" height="30" compilerOrder="101">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_ZnogA0l8aM__0" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="520" top="526" width="82" height="30" compilerOrder="103">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_LKKpTsAJnO__0" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="435" top="560" width="72" height="30" compilerOrder="109">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_rcvT8liZMf__0" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="70" top="561" width="345" height="30" compilerOrder="107">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_Dwn3hJCdo9__0" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="520" top="561" width="82" height="30" compilerOrder="111">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text__Ofl8HECwW__0" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="616" top="561" width="531" height="30" compilerOrder="113">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_rPtnLjsvLI__0" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="69" top="596" width="345" height="30" compilerOrder="115">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_pp91PjGWQX__0" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="435" top="596" width="72" height="30" compilerOrder="117">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_tdJHt8bYLa__0" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="520" top="596" width="82" height="30" compilerOrder="119">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_4NMrPIefjV__0" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="616" top="596" width="531" height="30" compilerOrder="121">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_etwNM_DhPd__0" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="68" top="631" width="345" height="30" compilerOrder="123">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_pxweCEf1kP__0" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="434" top="631" width="72" height="30" compilerOrder="125">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_myYLN2m61r__0" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="520" top="631" width="82" height="30" compilerOrder="127">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_b9qw45x8GP__0" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="616" top="632" width="531" height="30" compilerOrder="129">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_2WMfSr0ESN__0" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="69" top="665" width="345" height="30" compilerOrder="131">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_1AggUoX2Xl__0" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="435" top="666" width="72" height="30" compilerOrder="133">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_9syAMorVEe__0" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="520" top="666" width="82" height="30" compilerOrder="135">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_ph1uQJL7sP__0" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="617" top="667" width="531" height="30" compilerOrder="137">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_Q7lqOVqiYJ__0" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="68" top="701" width="345" height="30" compilerOrder="139">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_Pedzf7x4S9__0" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="434" top="701" width="72" height="30" compilerOrder="141">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_qcd2VDEycY__0" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="520" top="701" width="82" height="30" compilerOrder="143">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_0BsHOtA6Jg__0" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="616" top="701" width="531" height="30" compilerOrder="145">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_bpJtMbJ_xa__0" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="69" top="736" width="345" height="30" compilerOrder="147">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_D_4F1c1hgl__0" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="519" top="736" width="82" height="30" compilerOrder="151">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_oGq3thzKjm__0" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="616" top="736" width="531" height="30" compilerOrder="153">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_u72s1cIGnX__0" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="434" top="737" width="72" height="30" compilerOrder="149">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_WvADDn_xbr__0" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="434" top="771" width="72" height="30" compilerOrder="157">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="31" field="Text_Ve_4YVgZjd__0" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="520" top="771" width="82" height="30" compilerOrder="159">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="31" field="Text_01cbeZBUtO__0" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="68" top="772" width="345" height="30" compilerOrder="155">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="345" height="31" field="Text_wFxsE_kL0q__0" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="616" top="772" width="531" height="30" compilerOrder="161">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="531" height="31" field="Text_te4XPmv4HZ__0" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="546" top="833" width="80" height="46" compilerOrder="163">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="47" field="Text_ywi52GMh8N__0" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="724" top="834" width="405" height="46" compilerOrder="165">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="405" height="47" field="Text_Z0psB6Bp7m__0" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="157" top="900" width="69" height="46" compilerOrder="167">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="69" height="47" field="Text_RQXQatqBQF__0" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="422" top="900" width="69" height="46" compilerOrder="173">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="69" height="47" field="Text_gsejy0_GCc__0" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="612" top="900" width="311" height="46" compilerOrder="175">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="311" height="47" field="Text_fk1xa3v7ss__0" compilerOrder="176"/>
+            </layout>&#xD;
+			
+            <layout left="1085" top="900" width="61" height="46" compilerOrder="179">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="47" field="Carga_Max" compilerOrder="180"/>
+				
+            </layout>&#xD;
+            <layout left="245" top="901" width="69" height="46" compilerOrder="169">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="69" height="47" field="Text_17gV1Jylbi__0" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="333" top="901" width="69" height="46" compilerOrder="171">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="69" height="47" field="Text_2aQFZniYbq__0" compilerOrder="172"/>
+            </layout>&#xD;
+			
+            <layout left="1010" top="901" width="61" height="46" compilerOrder="177">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="47" field="Carga_Atual" compilerOrder="178"/>
+            </layout>&#xD;
+			
+			<layout left="2000" top="1400" width="61" height="46" compilerOrder="177">
+                <edit transparent="true" fontSize="32.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="47" field="Penalidade_Carga"/>
+            </layout>&#xD;
+			
+			<button left="1017" top="950" text="Calcular Inventário" fontSize='12' width="120">
+			<event name="onClick">
+					local personagem = Firecast.getPersonagemDe(sheet);
+					if (personagem ~= nil) then
+							local mesa = personagem.mesa;
+							
+							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+							
+									if(sheet.Penalidade_Carga == nil) then
+										sheet.Penalidade_Carga = 0;
+									
+									end;
+								
+									Espacos_Totais = tonumber(sheet.Esp1) + tonumber(sheet.Esp2) + tonumber(sheet.Esp3) + tonumber(sheet.Esp4) + tonumber(sheet.Esp5) + tonumber(sheet.Esp6) + tonumber(sheet.Esp7)
+						
+									Espacos_Totais = Espacos_Totais + tonumber(sheet.Esp8) + tonumber(sheet.Esp9) + tonumber(sheet.Esp10) + tonumber(sheet.Esp11) + tonumber(sheet.Esp12) + tonumber(sheet.Esp13) 
+									
+									Espacos_Totais = Espacos_Totais + tonumber(sheet.Esp14) + tonumber(sheet.Esp15) + tonumber(sheet.Esp16) + tonumber(sheet.Esp17) + tonumber(sheet.Esp18) + tonumber(sheet.Esp19) 
+									
+									Espacos_Totais = Espacos_Totais + tonumber(sheet.Esp20) + tonumber(sheet.Esp21) + tonumber(sheet.Esp22);
+									
+									
+									
+									if (Espacos_Totais > (2 * tonumber(sheet.Carga_Max))) then
+										showMessage("Você superou o limite de duas vezes a carga máxima, você não pode levar este item!");
+									
+									elseif (Espacos_Totais > tonumber(sheet.Carga_Max)) then
+										showMessage("Você está com uma sobrecarga de peso, você sofrerá as seguintes penalidades: -5 em defesa e nos testes das seguintes perícias: Acrobacia, Crime e Furtividade!\n*As penalizações serão aplicadas na aba Outros*");
+									
+										if (tonumber(sheet.Penalidade_Carga) == 0) then
+											sheet.Penalidade_Carga = 1;
+											sheet.Defesa_Outros = tonumber(sheet.Defesa_Outros) - 5;
+											sheet.Outros_Acrobacia = tonumber(sheet.Outros_Acrobacia) - 5;
+											sheet.Outros_Crime = tonumber(sheet.Outros_Crime) - 5;
+											sheet.Outros_Furtividade = tonumber(sheet.Outros_Furtividade) - 5;
+											
+										end;
+										sheet.Carga_Atual = Espacos_Totais;
+										
+									else
+										if (tonumber(sheet.Penalidade_Carga) == 1) then
+											sheet.Penalidade_Carga = 0;
+											sheet.Defesa_Outros = tonumber(sheet.Defesa_Outros) + 5;
+											sheet.Outros_Acrobacia = tonumber(sheet.Outros_Acrobacia) + 5;
+											sheet.Outros_Crime = tonumber(sheet.Outros_Crime) + 5;
+											sheet.Outros_Furtividade = tonumber(sheet.Outros_Furtividade) + 5;
+											showMessage("Suas penalidades foram removidas!");
+										end;
+										sheet.Carga_Atual = Espacos_Totais;
+									
+									
+									end;
+
+										
+							end;
+					end;
+				</event>
+			
+			</button>
+			
+            <layout left="444" top="1001" width="66" height="26" compilerOrder="183">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_Wb92DsNssE__0" compilerOrder="184"/>
+            </layout>&#xD;
+            
+			<layout left="527" top="1001" width="66" height="26" compilerOrder="185">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp1" compilerOrder="186"/>
+            
+			</layout>&#xD;
+            <layout left="628" top="1001" width="353" height="26" compilerOrder="187">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_NOzPB2rWOB__0" compilerOrder="188"/>
+            </layout>&#xD;
+            <layout left="999" top="1001" width="66" height="26" compilerOrder="189">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_l5JSVE9XXX__0" compilerOrder="190"/>
+            </layout>&#xD;
+            <layout left="72" top="1002" width="353" height="26" compilerOrder="181">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_hPK6_vgDtK__0" compilerOrder="182"/>
+            </layout>&#xD;
+            
+			<layout left="1081" top="1002" width="66" height="26" compilerOrder="191">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp12" compilerOrder="192"/>
+
+            </layout>&#xD;
+            
+			<layout left="445" top="1036" width="66" height="26" compilerOrder="195">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_kPpjwhIJMX__0" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="628" top="1036" width="353" height="26" compilerOrder="199">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_OSJvvXg9JG__0" compilerOrder="200"/>
+            </layout>&#xD;
+            <layout left="72" top="1037" width="353" height="26" compilerOrder="193">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_PMiUhg6ufa__0" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="526" top="1037" width="66" height="26" compilerOrder="197">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp2" compilerOrder="198"/>
+
+            </layout>&#xD;
+            <layout left="999" top="1037" width="66" height="26" compilerOrder="201">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_RWpNy4yUKC__0" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="1081" top="1037" width="66" height="26" compilerOrder="203">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp13" compilerOrder="204"/>
+
+            </layout>&#xD;
+            <layout left="526" top="1071" width="66" height="26" compilerOrder="209">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp3" compilerOrder="210"/>
+
+            </layout>&#xD;
+            <layout left="627" top="1071" width="353" height="26" compilerOrder="211">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_UmnV6M_IMm__0" compilerOrder="212"/>
+            </layout>&#xD;
+            <layout left="71" top="1072" width="353" height="26" compilerOrder="205">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_gUBlU_xH3___0" compilerOrder="206"/>
+            </layout>&#xD;
+            <layout left="444" top="1072" width="66" height="26" compilerOrder="207">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text__2E8JDV4Pv__0" compilerOrder="208"/>
+            </layout>&#xD;
+            <layout left="999" top="1072" width="66" height="26" compilerOrder="213">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_8wCGg7vIpO__0" compilerOrder="214"/>
+            </layout>&#xD;
+            <layout left="1080" top="1072" width="66" height="26" compilerOrder="215">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp14" compilerOrder="216"/>
+
+            </layout>&#xD;
+            <layout left="445" top="1106" width="66" height="26" compilerOrder="219">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_gBRh7drXWZ__0" compilerOrder="220"/>
+            </layout>&#xD;
+            <layout left="526" top="1106" width="66" height="26" compilerOrder="221">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp4" compilerOrder="222"/>
+
+            </layout>&#xD;
+            <layout left="71" top="1107" width="353" height="26" compilerOrder="217">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_4q4T4OTku___0" compilerOrder="218"/>
+            </layout>&#xD;
+            <layout left="627" top="1107" width="353" height="26" compilerOrder="223">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_a4Kg7DuTO3__0" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="999" top="1107" width="66" height="26" compilerOrder="225">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_IdnSJfRQNw__0" compilerOrder="226"/>
+            </layout>&#xD;
+            <layout left="1080" top="1107" width="66" height="26" compilerOrder="227">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp15" compilerOrder="228"/>
+
+            </layout>&#xD;
+            <layout left="445" top="1141" width="66" height="26" compilerOrder="231">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_cB_kVYCgN9__0" compilerOrder="232"/>
+            </layout>&#xD;
+            <layout left="526" top="1142" width="66" height="26" compilerOrder="233">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp5" compilerOrder="234"/>
+
+            </layout>&#xD;
+            <layout left="626" top="1142" width="353" height="26" compilerOrder="235">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_Itk7LBcS_m__0" compilerOrder="236"/>
+            </layout>&#xD;
+            <layout left="999" top="1142" width="66" height="26" compilerOrder="237">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_411lg7e4dE__0" compilerOrder="238"/>
+            </layout>&#xD;
+            <layout left="1080" top="1142" width="66" height="26" compilerOrder="239">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp16" compilerOrder="240"/>
+
+            </layout>&#xD;
+            <layout left="72" top="1143" width="353" height="26" compilerOrder="229">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_6QOIh3u32t__0" compilerOrder="230"/>
+            </layout>&#xD;
+            <layout left="72" top="1177" width="353" height="26" compilerOrder="241">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_oIr_Myg8fO__0" compilerOrder="242"/>
+            </layout>&#xD;
+            <layout left="445" top="1177" width="66" height="26" compilerOrder="243">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_v5y8a_Ewv9__0" compilerOrder="244"/>
+            </layout>&#xD;
+            <layout left="526" top="1177" width="66" height="26" compilerOrder="245">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp6" compilerOrder="246"/>
+
+            </layout>&#xD;
+            <layout left="626" top="1177" width="353" height="26" compilerOrder="247">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_8Q85IyP937__0" compilerOrder="248"/>
+            </layout>&#xD;
+            <layout left="999" top="1177" width="66" height="26" compilerOrder="249">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_PnllzWi4q3__0" compilerOrder="250"/>
+            </layout>&#xD;
+            <layout left="1080" top="1177" width="66" height="26" compilerOrder="251">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp17" compilerOrder="252"/>
+
+            </layout>&#xD;
+            <layout left="71" top="1212" width="353" height="26" compilerOrder="253">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_eESeY7DQM___0" compilerOrder="254"/>
+            </layout>&#xD;
+            <layout left="445" top="1212" width="66" height="26" compilerOrder="255">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_9CBP0NYNo1__0" compilerOrder="256"/>
+            </layout>&#xD;
+            <layout left="526" top="1212" width="66" height="26" compilerOrder="257">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp7" compilerOrder="258"/>
+
+            </layout>&#xD;
+            <layout left="626" top="1212" width="353" height="26" compilerOrder="259">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_1kVdti5nJv__0" compilerOrder="260"/>
+            </layout>&#xD;
+            <layout left="999" top="1212" width="66" height="26" compilerOrder="261">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_SXU8ZtHVPQ__0" compilerOrder="262"/>
+            </layout>&#xD;
+            <layout left="1080" top="1212" width="66" height="26" compilerOrder="263">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp18" compilerOrder="264"/>
+
+            </layout>&#xD;
+            <layout left="72" top="1247" width="353" height="26" compilerOrder="265">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_bqtNqwvprS__0" compilerOrder="266"/>
+            </layout>&#xD;
+            <layout left="445" top="1247" width="66" height="26" compilerOrder="267">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_zcMahaTLu8__0" compilerOrder="268"/>
+            </layout>&#xD;
+            <layout left="526" top="1247" width="66" height="26" compilerOrder="269">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp8" compilerOrder="270"/>
+
+            </layout>&#xD;
+            <layout left="999" top="1247" width="66" height="26" compilerOrder="273">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_VcFsJW9Cut__0" compilerOrder="274"/>
+            </layout>&#xD;
+            <layout left="1081" top="1247" width="66" height="26" compilerOrder="275">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp19" compilerOrder="276"/>
+
+            </layout>&#xD;
+            <layout left="627" top="1248" width="353" height="26" compilerOrder="271">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_B0by_7P6M8__0" compilerOrder="272"/>
+            </layout>&#xD;
+            <layout left="72" top="1282" width="353" height="26" compilerOrder="277">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_26mjBZRVgd__0" compilerOrder="278"/>
+            </layout>&#xD;
+            <layout left="445" top="1282" width="66" height="26" compilerOrder="279">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_TGqsIcb7ug__0" compilerOrder="280"/>
+            </layout>&#xD;
+            <layout left="526" top="1282" width="66" height="26" compilerOrder="281">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp9" compilerOrder="282"/>
+
+            </layout>&#xD;
+            <layout left="626" top="1282" width="353" height="26" compilerOrder="283">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_tu9DpzErCg__0" compilerOrder="284"/>
+            </layout>&#xD;
+            <layout left="999" top="1282" width="66" height="26" compilerOrder="285">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_WwEVnSlObi__0" compilerOrder="286"/>
+            </layout>&#xD;
+            <layout left="1080" top="1282" width="66" height="26" compilerOrder="287">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp20" compilerOrder="288"/>
+
+            </layout>&#xD;
+            <layout left="72" top="1317" width="353" height="26" compilerOrder="289">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_NNSS4yDKfF__0" compilerOrder="290"/>
+            </layout>&#xD;
+            <layout left="526" top="1317" width="66" height="26" compilerOrder="293">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp10" compilerOrder="294"/>
+
+            </layout>&#xD;
+            <layout left="626" top="1317" width="353" height="26" compilerOrder="295">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_mcRCoGqov6__0" compilerOrder="296"/>
+            </layout>&#xD;
+            <layout left="999" top="1317" width="66" height="26" compilerOrder="297">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_k_dJabqdDH__0" compilerOrder="298"/>
+            </layout>&#xD;
+            <layout left="1080" top="1317" width="66" height="26" compilerOrder="299">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp21" compilerOrder="300"/>
+
+            </layout>&#xD;
+            <layout left="445" top="1318" width="66" height="26" compilerOrder="291">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_VhxdPfJuUc__0" compilerOrder="292"/>
+            </layout>&#xD;
+            <layout left="71" top="1352" width="353" height="26" compilerOrder="301">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_Mdc5fsDHko__0" compilerOrder="302"/>
+            </layout>&#xD;
+            <layout left="445" top="1352" width="66" height="26" compilerOrder="303">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_SG06AeG3PA__0" compilerOrder="304"/>
+            </layout>&#xD;
+            <layout left="526" top="1352" width="66" height="26" compilerOrder="305">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp11" compilerOrder="306"/>
+
+            </layout>&#xD;
+            <layout left="999" top="1352" width="66" height="26" compilerOrder="309">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Text_YMvxhcsoi___0" compilerOrder="310"/>
+            </layout>&#xD;
+            <layout left="626" top="1353" width="353" height="26" compilerOrder="307">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="353" height="27" field="Text_fL64QRJpC4__0" compilerOrder="308"/>
+            </layout>&#xD;
+            <layout left="1080" top="1353" width="66" height="26" compilerOrder="311">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="27" field="Esp22" compilerOrder="312"/>
+            </layout>&#xD;
+            <layout left="67" top="1482" width="255" height="26" compilerOrder="313">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text__gxRYZJ24E__0" compilerOrder="314"/>
+            </layout>&#xD;
+            <layout left="342" top="1482" width="255" height="26" compilerOrder="315">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_mHBGr5KnOP__0" compilerOrder="316"/>
+            </layout>&#xD;
+            <layout left="616" top="1482" width="255" height="26" compilerOrder="317">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_12adKhA3uf__0" compilerOrder="318"/>
+            </layout>&#xD;
+            <layout left="891" top="1482" width="255" height="26" compilerOrder="319">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_Q1CL3c48ka__0" compilerOrder="320"/>
+            </layout>&#xD;
+            <layout left="343" top="1517" width="255" height="26" compilerOrder="323">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_g4CnHX6kRQ__0" compilerOrder="324"/>
+            </layout>&#xD;
+            <layout left="617" top="1517" width="255" height="26" compilerOrder="325">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_3YzBbbVSDS__0" compilerOrder="326"/>
+            </layout>&#xD;
+            <layout left="891" top="1517" width="255" height="26" compilerOrder="327">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_V4HXdOkgQU__0" compilerOrder="328"/>
+            </layout>&#xD;
+            <layout left="68" top="1518" width="255" height="26" compilerOrder="321">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_p9eLnr_bdU__0" compilerOrder="322"/>
+            </layout>&#xD;
+            <layout left="67" top="1552" width="255" height="26" compilerOrder="329">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text__ALzrDoyJ2__0" compilerOrder="330"/>
+            </layout>&#xD;
+            <layout left="343" top="1552" width="255" height="26" compilerOrder="331">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_rtAvRG_xC9__0" compilerOrder="332"/>
+            </layout>&#xD;
+            <layout left="617" top="1552" width="255" height="26" compilerOrder="333">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_o1rBszsTS0__0" compilerOrder="334"/>
+            </layout>&#xD;
+            <layout left="891" top="1553" width="255" height="26" compilerOrder="335">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_tyPFB1pf72__0" compilerOrder="336"/>
+            </layout>&#xD;
+            <layout left="68" top="1587" width="255" height="26" compilerOrder="337">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_TSj2uoHbFf__0" compilerOrder="338"/>
+            </layout>&#xD;
+            <layout left="343" top="1587" width="255" height="26" compilerOrder="339">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_79mXdeRKLa__0" compilerOrder="340"/>
+            </layout>&#xD;
+            <layout left="617" top="1588" width="255" height="26" compilerOrder="341">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_ghThuIzvzd__0" compilerOrder="342"/>
+            </layout>&#xD;
+            <layout left="891" top="1588" width="255" height="26" compilerOrder="343">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_FSGECTFRxm__0" compilerOrder="344"/>
+            </layout>&#xD;
+            <layout left="67" top="1622" width="255" height="26" compilerOrder="345">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_POIwh979VY__0" compilerOrder="346"/>
+            </layout>&#xD;
+            <layout left="342" top="1622" width="255" height="26" compilerOrder="347">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_djYrOOSBok__0" compilerOrder="348"/>
+            </layout>&#xD;
+            <layout left="617" top="1622" width="255" height="26" compilerOrder="349">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_UHZYuQGL49__0" compilerOrder="350"/>
+            </layout>&#xD;
+            <layout left="891" top="1622" width="255" height="26" compilerOrder="351">
+                <edit transparent="true" fontSize="17.3" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="255" height="27" field="Text_BHd0s_DdQE__0" compilerOrder="352"/>
+            </layout>&#xD;
+        
+		
+		</rectangle>
+    </scrollBox>
+	
+</form>

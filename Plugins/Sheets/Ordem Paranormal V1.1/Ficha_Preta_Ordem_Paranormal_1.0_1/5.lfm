@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_Preta_Rituais_6_PAG3_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFicha_Preta_Rituais_6_PAG3_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFicha_Preta_Rituais_6_PAG3_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1250" height="1768" color="white">&#xD;
+            <image left="0" top="0" width="1250" height="1768" src="images/5.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="627" top="83" width="243" height="30" compilerOrder="1">
+                <edit transparent="true" fontSize="18.9" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="243" height="31" field="nome" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="935" top="83" width="68" height="30" compilerOrder="3">
+                <textEditor left="0" top="0" width="68" height="30" fontSize="18.9" fontColor="#FFFFFF" field="Dt_ritual" transparent="true" compilerOrder="4"/>
+            </layout>&#xD;
+            
+            
+			
+			
+<group>
+				<button left="302" top="602" text="Conjurar" fontSize='12' width="60" >
+				<event name="onClick">
+						sheet.Nome_rit = sheet.Nome_rit13;
+						sheet.Elementos_Rit = sheet.Elementos_rit13;
+						sheet.Circulo_rit = sheet.Circulo_rit13;
+						sheet.Execucao_rit= sheet.Execucao_rit13;
+						sheet.Alc_rit = sheet.Alc_rit13;
+						sheet.Alvo_rit = sheet.Alvo_rit13;
+						sheet.Duracao_rit = sheet.Duracao_rit13;
+						sheet.Resistencia_rit = sheet.Resistencia_rit13;
+						sheet.Dados_rit = sheet.Dados_rit13;
+						sheet.Descricao_rit = sheet.Descricao_rit13;
+						sheet.Niv_Rit = nil;
+						sheet.PE_extra = nil;
+						
+						self.Rit_popup:show();
+					</event>
+				
+				</button>
+				
+			
+				<layout left="84" top="209" width="495" height="33" compilerOrder="5">
+					<edit transparent="true" fontSize="22.6" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="495" height="34" field="Nome_rit13" compilerOrder="6"/>
+				</layout>&#xD;
+				
+				<group>
+					<radioButton text="" groupName="Elementos_rit13" field="Elementos_rit13" fieldValue="Conhecimento"
+						 left="74" top="263" width="17" height="18" />  
+					
+					<radioButton text="" groupName="Elementos_rit13" field="Elementos_rit13" fieldValue="Energia"
+						 left="239" top="263" width="17" height="18"/>
+					
+					<radioButton text="" groupName="Elementos_rit13" field="Elementos_rit13" fieldValue="Morte"
+						 left="336" top="262" width="17" height="18"/>                                                         
+					
+					<radioButton text="" groupName="Elementos_rit13" field="Elementos_rit13" fieldValue="Sangue"
+						 left="419" top="263" width="17" height="18" />                                 
+
+					<radioButton text="" groupName="Elementos_rit13" field="Elementos_rit13" fieldValue="Medo"
+						 left="516" top="263" width="17" height="18"/>
+				</group>
+				
+				
+				<group>
+					<radioButton text="" groupName="Circulo_rit13" field="Circulo_rit13" fieldValue="1"
+						 left="171" top="299" width="18" height="18" /> 
+				
+					<radioButton text="" groupName="Circulo_rit13" field="Circulo_rit13" fieldValue="3"
+						 left="228" top="299" width="18" height="18" />  
+					
+					<radioButton text="" groupName="Circulo_rit13" field="Circulo_rit13" fieldValue="6"
+						 left="279" top="300" width="18" height="13"/>
+					
+					<radioButton text="" groupName="Circulo_rit13" field="Circulo_rit13" fieldValue="10"
+						 left="336" top="299" width="18" height="18"/>                                                                                       
+				</group>
+				
+				
+				<layout left="172" top="328" width="171" height="20" compilerOrder="45">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="171" height="21" field="Execucao_rit13" compilerOrder="46"/>
+				</layout>&#xD;
+				
+				<layout left="442" top="326" width="138" height="20" compilerOrder="47">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="138" height="21" field="Alc_rit13" compilerOrder="48"/>
+				</layout>&#xD;
+				
+				<layout left="128" top="364" width="452" height="20" compilerOrder="53">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="452" height="21" field="Alvo_rit13" compilerOrder="54"/>
+				</layout>&#xD;
+				
+				<layout left="167" top="397" width="417" height="20" compilerOrder="57">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="417" height="20" field="Duracao_rit13" compilerOrder="58"/>
+				</layout>&#xD;
+				
+				<layout left="189" top="431" width="395" height="20" compilerOrder="61">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="395" height="20" field="Resistencia_rit13" compilerOrder="62"/>
+				</layout>&#xD;
+
+				<layout left="82" top="467" height="40" width="500">
+					<label left="0" top="0" height="25" width="60" autoSize="true" fontColor="#FFFFFF" fontSize="18.9" text="Dados:"/>
+					<edit left="70" top="0" height="25" width="160" field="Dados_rit13"/>
+				</layout>&#xD;
+
+				<layout left="82" top="502.8" width="500" height="94.2" compilerOrder="65">
+					<textEditor left="0" top="0" width="500" height="114.2" fontSize="18.9" fontColor="#FFFFFF" field="Descricao_rit13" transparent="true" compilerOrder="66"/>
+				</layout>&#xD;	
+			
+			</group>
+			
+			
+			
+			<group>
+			
+			<button left="881" top="602" text="Conjurar" fontSize='12' width="60">
+				<event name="onClick">
+						sheet.Nome_rit = sheet.Nome_rit14;
+						sheet.Elementos_Rit = sheet.Elementos_rit14;
+						sheet.Circulo_rit = sheet.Circulo_rit14;
+						sheet.Execucao_rit= sheet.Execucao_rit14;
+						sheet.Alc_rit = sheet.Alc_rit14;
+						sheet.Alvo_rit = sheet.Alvo_rit14;
+						sheet.Duracao_rit = sheet.Duracao_rit14;
+						sheet.Resistencia_rit = sheet.Resistencia_rit14;
+						sheet.Dados_rit = sheet.Dados_rit14;
+						sheet.Descricao_rit = sheet.Descricao_rit14;
+						sheet.Niv_Rit = nil;
+						sheet.PE_extra = nil;
+						
+						self.Rit_popup:show();
+					</event>
+				
+				</button>
+				
+				
+				<layout left="663" top="211" width="498" height="32" compilerOrder="7">
+					<edit transparent="true" fontSize="21.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="498" height="33" field="Nome_rit14" compilerOrder="8"/>
+				</layout>&#xD;
+			
+				<group>
+					<radioButton text="" groupName="Elementos_rit14" field="Elementos_rit14" fieldValue="Conhecimento"
+						 left="650" top="265" width="17" height="18" /> 
+				
+					<radioButton text="" groupName="Elementos_rit14" field="Elementos_rit14" fieldValue="Energia"
+						 left="818" top="262" width="17" height="18" />  
+					
+					<radioButton text="" groupName="Elementos_rit14" field="Elementos_rit14" fieldValue="Morte"
+						 left="914" top="263" width="17" height="18"/>
+					
+					<radioButton text="" groupName="Elementos_rit14" field="Elementos_rit14" fieldValue="Sangue"
+						 left="1000" top="263" width="17" height="18"/>                                                                                        
+
+					<radioButton text="" groupName="Elementos_rit14" field="Elementos_rit14" fieldValue="Medo"
+						 left="1095" top="265" width="17" height="18"/>
+				</group>
+			
+			
+				<group>
+					<radioButton text="" groupName="Circulo_rit14" field="Circulo_rit14" fieldValue="1"
+						 left="755" top="298" width="18" height="18" /> 
+				
+					<radioButton text="" groupName="Circulo_rit14" field="Circulo_rit14" fieldValue="3"
+						 left="808" top="297" width="18" height="18" />  
+					
+					<radioButton text="" groupName="Circulo_rit14" field="Circulo_rit14" fieldValue="6"
+						 left="859" top="298" width="18" height="13"/>
+					
+					<radioButton text="" groupName="Circulo_rit14" field="Circulo_rit14" fieldValue="10"
+						 left="917" top="299" width="18" height="18"/>                                                                                       
+				</group>
+				
+				
+				<layout left="752" top="328" width="171" height="20" compilerOrder="49">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="171" height="21" field="Execucao_rit14" compilerOrder="50"/>
+				</layout>&#xD;
+				
+				<layout left="1023" top="325" width="138" height="20" compilerOrder="51">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="138" height="21" field="Alc_rit14" compilerOrder="52"/>
+				</layout>&#xD;
+			
+				<layout left="708" top="363" width="452" height="20" compilerOrder="55">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="452" height="21" field="Alvo_rit14" compilerOrder="56"/>
+				</layout>&#xD;
+				
+				<layout left="746" top="397" width="417" height="20" compilerOrder="59">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="417" height="20" field="Duracao_rit14" compilerOrder="60"/>
+				</layout>&#xD;
+
+				<layout left="766" top="431" width="395" height="20" compilerOrder="63">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="395" height="20" field="Resistencia_rit14" compilerOrder="64"/>
+				</layout>&#xD;		
+				
+				<layout left="661" top="467" height="40" width="500">
+					<label left="0" top="0" height="25" width="60" autoSize="true" fontColor="#FFFFFF" fontSize="18.9" text="Dados:"/>
+					<edit left="70" top="0" height="25" width="160" field="Dados_rit14"/>
+				</layout>&#xD;
+
+				<layout left="661" top="502.8" width="500" height="94.2" compilerOrder="67">
+					<textEditor left="0" top="0" width="500" height="94.2" fontSize="18.9" fontColor="#FFFFFF" field="Descricao_rit14" transparent="true" compilerOrder="68"/>
+				</layout>&#xD;	
+				
+			</group>
+				
+			
+			<group>
+				<button left="302" top="1090" text="Conjurar" fontSize='12' width="60">
+				<event name="onClick">
+						sheet.Nome_rit = sheet.Nome_rit15;
+						sheet.Elementos_Rit = sheet.Elementos_rit15;
+						sheet.Circulo_rit = sheet.Circulo_rit15;
+						sheet.Execucao_rit= sheet.Execucao_rit15;
+						sheet.Alc_rit = sheet.Alc_rit15;
+						sheet.Alvo_rit = sheet.Alvo_rit15;
+						sheet.Duracao_rit = sheet.Duracao_rit15;
+						sheet.Resistencia_rit = sheet.Resistencia_rit15;
+						sheet.Dados_rit = sheet.Dados_rit15;
+						sheet.Descricao_rit = sheet.Descricao_rit15;
+						sheet.Niv_Rit = nil;
+						sheet.PE_extra = nil;
+						
+						self.Rit_popup:show();
+					</event>
+				
+				</button>
+			
+			
+				<layout left="86" top="697" width="495" height="33" compilerOrder="69">
+					<edit transparent="true" fontSize="22.6" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="495" height="34" field="Nome_rit15" compilerOrder="70"/>
+				</layout>&#xD;
+				
+				
+				<group>
+					<radioButton text="" groupName="Elementos_rit15" field="Elementos_rit15" fieldValue="Conhecimento"
+						 left="72" top="751" width="17" height="18" /> 
+				
+					<radioButton text="" groupName="Elementos_rit15" field="Elementos_rit15" fieldValue="Energia"
+						 left="238" top="750" width="17" height="18" />  
+					
+					<radioButton text="" groupName="Elementos_rit15" field="Elementos_rit15" fieldValue="Morte"
+						 left="337" top="749" width="17" height="18"/>
+					
+					<radioButton text="" groupName="Elementos_rit15" field="Elementos_rit15" fieldValue="Sangue"
+						 left="422" top="749" width="17" height="18"/>                                                                                        
+
+					<radioButton text="" groupName="Elementos_rit15" field="Elementos_rit15" fieldValue="Medo"
+						 left="518" top="749" width="17" height="18"/>
+				</group>
+				
+				
+				<group>
+					<radioButton text="" groupName="Circulo_rit15" field="Circulo_rit15" fieldValue="1"
+						 left="174" top="784" width="18" height="18" /> 
+				
+					<radioButton text="" groupName="Circulo_rit15" field="Circulo_rit15" fieldValue="3"
+						 left="229" top="786" width="18" height="18" />  
+					
+					<radioButton text="" groupName="Circulo_rit15" field="Circulo_rit15" fieldValue="6"
+						 left="284" top="787" width="18" height="13"/>
+					
+					<radioButton text="" groupName="Circulo_rit15" field="Circulo_rit15" fieldValue="10"
+						 left="339" top="785" width="18" height="18"/>                                                                                       
+				</group>
+				
+				
+				<layout left="173" top="813" width="171" height="20" compilerOrder="109">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="171" height="21" field="Execucao_rit15" compilerOrder="110"/>
+				</layout>&#xD;
+				
+				
+				<layout left="443" top="813" width="138" height="20" compilerOrder="111">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="138" height="21" field="Alc_rit15" compilerOrder="112"/>
+				</layout>&#xD;	
+				
+				
+				<layout left="129" top="846" width="452" height="20" compilerOrder="117">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="452" height="21" field="Alvo_rit15" compilerOrder="118"/>
+				</layout>&#xD;	
+				
+				
+				<layout left="168" top="883" width="417" height="20" compilerOrder="121">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="417" height="20" field="Duracao_rit15" compilerOrder="122"/>
+				</layout>&#xD;
+				
+				
+				<layout left="191" top="917" width="395" height="20" compilerOrder="125">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="395" height="20" field="Resistencia_rit15" compilerOrder="126"/>
+				</layout>&#xD;
+				
+				
+				<layout left="82" top="955" height="40" width="500">
+					<label left="0" top="0" height="25" width="60" autoSize="true" fontColor="#FFFFFF" fontSize="18.9" text="Dados:"/>
+					<edit left="70" top="0" height="25" width="160" field="Dados_rit15"/>
+				</layout>&#xD;
+				
+				
+				<layout left="82" top="990.8" width="500" height="94.2" compilerOrder="129">
+					<textEditor left="0" top="0" width="500" height="94.2" fontSize="18.9" fontColor="#FFFFFF" field="Descricao_rit15" transparent="true" compilerOrder="130"/>
+				</layout>&#xD;
+				
+			</group>
+			
+			
+			
+			<group>
+				<button left="884" top="1090" text="Conjurar" fontSize='12' width="60">
+				<event name="onClick">
+						sheet.Nome_rit = sheet.Nome_rit16;
+						sheet.Elementos_Rit = sheet.Elementos_rit16;
+						sheet.Circulo_rit = sheet.Circulo_rit16;
+						sheet.Execucao_rit= sheet.Execucao_rit16;
+						sheet.Alc_rit = sheet.Alc_rit16;
+						sheet.Alvo_rit = sheet.Alvo_rit16;
+						sheet.Duracao_rit = sheet.Duracao_rit16;
+						sheet.Resistencia_rit = sheet.Resistencia_rit16;
+						sheet.Dados_rit = sheet.Dados_rit16;
+						sheet.Descricao_rit = sheet.Descricao_rit16;
+						sheet.Niv_Rit = nil;
+						sheet.PE_extra = nil;
+						
+						self.Rit_popup:show();
+					</event>
+				
+				</button>
+			
+			
+				<layout left="664" top="697" width="495" height="33" compilerOrder="71">
+					<edit transparent="true" fontSize="22.6" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="495" height="34" field="Nome_rit16" compilerOrder="72"/>
+				</layout>&#xD;
+				
+				
+				<group>
+					<radioButton text="" groupName="Elementos_rit16" field="Elementos_rit16" fieldValue="Conhecimento"
+						 left="653" top="750" width="17" height="18" /> 
+				
+					<radioButton text="" groupName="Elementos_rit16" field="Elementos_rit16" fieldValue="Energia"
+						 left="819" top="749" width="17" height="18" />  
+					
+					<radioButton text="" groupName="Elementos_rit16" field="Elementos_rit16" fieldValue="Morte"
+						 left="915" top="748" width="17" height="18"/>
+					
+					<radioButton text="" groupName="Elementos_rit16" field="Elementos_rit16" fieldValue="Sangue"
+						 left="1002" top="748" width="17" height="18"/>                                                                                        
+
+					<radioButton text="" groupName="Elementos_rit16" field="Elementos_rit16" fieldValue="Medo"
+						 left="1096" top="750" width="17" height="18"/>
+				</group>
+				
+				
+				<group>
+					<radioButton text="" groupName="Circulo_rit16" field="Circulo_rit16" fieldValue="1"
+						 left="752" top="783" width="18" height="18" /> 
+				
+					<radioButton text="" groupName="Circulo_rit16" field="Circulo_rit16" fieldValue="3"
+						 left="805" top="782" width="18" height="18" />  
+					
+					<radioButton text="" groupName="Circulo_rit16" field="Circulo_rit16" fieldValue="6"
+						 left="859" top="785" width="18" height="13"/>
+					
+					<radioButton text="" groupName="Circulo_rit16" field="Circulo_rit16" fieldValue="10"
+						 left="917" top="782" width="18" height="18"/>                                                                                       
+				</group>
+				
+				
+				<layout left="751" top="814" width="171" height="20" compilerOrder="113">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="171" height="21" field="Execucao_rit16" compilerOrder="114"/>
+				</layout>&#xD;
+				
+				
+				<layout left="1021" top="813" width="138" height="20" compilerOrder="115">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="138" height="21" field="Alc_rit16" compilerOrder="116"/>
+				</layout>&#xD;
+				
+				
+				<layout left="709" top="846" width="452" height="20" compilerOrder="119">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="452" height="21" field="Alvo_rit16" compilerOrder="120"/>
+				</layout>&#xD;
+				
+				
+				<layout left="743" top="881" width="417" height="20" compilerOrder="123">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="417" height="20" field="Duracao_rit16" compilerOrder="124"/>
+				</layout>&#xD;
+			
+			
+				<layout left="766" top="917" width="395" height="20" compilerOrder="127">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="395" height="20" field="Resistencia_rit16" compilerOrder="128"/>
+				</layout>&#xD;
+				
+				
+				<layout left="664" top="955" height="40" width="500">
+					<label left="0" top="0" height="25" width="60" autoSize="true" fontColor="#FFFFFF" fontSize="18.9" text="Dados:"/>
+					<edit left="70" top="0" height="25" width="160" field="Dados_rit16"/>
+				</layout>&#xD;
+				
+				
+				<layout left="664" top="990.8" width="500" height="94.2" compilerOrder="129">
+					<textEditor left="0" top="0" width="500" height="94.2" fontSize="18.9" fontColor="#FFFFFF" field="Descricao_rit16" transparent="true" compilerOrder="130"/>
+				</layout>&#xD;
+			
+			</group>
+
+
+			
+			<group>
+			
+				<button left="304" top="1577" text="Conjurar" fontSize='12' width="60">
+				<event name="onClick">
+						sheet.Nome_rit = sheet.Nome_rit17;
+						sheet.Elementos_Rit = sheet.Elementos_rit17;
+						sheet.Circulo_rit = sheet.Circulo_rit17;
+						sheet.Execucao_rit= sheet.Execucao_rit17;
+						sheet.Alc_rit = sheet.Alc_rit17;
+						sheet.Alvo_rit = sheet.Alvo_rit17;
+						sheet.Duracao_rit = sheet.Duracao_rit17;
+						sheet.Resistencia_rit = sheet.Resistencia_rit17;
+						sheet.Dados_rit = sheet.Dados_rit17;
+						sheet.Descricao_rit = sheet.Descricao_rit17;
+						sheet.Niv_Rit = nil;
+						sheet.PE_extra = nil;
+						
+						self.Rit_popup:show();
+					</event>
+				
+				</button>
+			
+			
+				<layout left="87" top="1180" width="495" height="33" compilerOrder="133">
+					<edit transparent="true" fontSize="22.6" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="495" height="34" field="Nome_rit17" compilerOrder="134"/>
+				</layout>&#xD;
+				
+				
+				<group>
+					<radioButton text="" groupName="Elementos_rit17" field="Elementos_rit17" fieldValue="Conhecimento"
+						 left="72" top="1237" width="17" height="18" /> 
+				
+					<radioButton text="" groupName="Elementos_rit17" field="Elementos_rit17" fieldValue="Energia"
+						 left="238" top="1233" width="17" height="18" />  
+					
+					<radioButton text="" groupName="Elementos_rit17" field="Elementos_rit17" fieldValue="Morte"
+						 left="337" top="1235" width="17" height="18"/>
+					
+					<radioButton text="" groupName="Elementos_rit17" field="Elementos_rit17" fieldValue="Sangue"
+						 left="422" top="1235" width="17" height="18"/>                                                                                        
+
+					<radioButton text="" groupName="Elementos_rit17" field="Elementos_rit17" fieldValue="Medo"
+						 left="516" top="1234" width="17" height="18"/>
+				</group>
+				
+				
+				<group>
+					<radioButton text="" groupName="Circulo_rit17" field="Circulo_rit17" fieldValue="1"
+						 left="173" top="1269" width="18" height="18" /> 
+				
+					<radioButton text="" groupName="Circulo_rit17" field="Circulo_rit17" fieldValue="3"
+						 left="227" top="1270" width="18" height="18" />  
+					
+					<radioButton text="" groupName="Circulo_rit17" field="Circulo_rit17" fieldValue="6"
+						 left="282" top="1273" width="18" height="13"/>
+					
+					<radioButton text="" groupName="Circulo_rit17" field="Circulo_rit17" fieldValue="10"
+						 left="338" top="1268" width="18" height="18"/>  
+				</group>
+				
+				
+				<layout left="172" top="1299" width="171" height="20" compilerOrder="173">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="171" height="21" field="Execucao_rit17" compilerOrder="174"/>
+				</layout>&#xD;
+				
+				
+				<layout left="443" top="1297" width="138" height="20" compilerOrder="175">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="138" height="21" field="Alc_rit17" compilerOrder="176"/>
+				</layout>&#xD;
+				
+				
+				<layout left="130" top="1335" width="452" height="20" compilerOrder="181">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="452" height="21" field="Alvo_rit17" compilerOrder="182"/>
+				</layout>&#xD;
+				
+				
+				<layout left="166" top="1367" width="417" height="20" compilerOrder="185">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="417" height="20" field="Duracao_rit17" compilerOrder="186"/>
+				</layout>&#xD;
+				
+				
+				<layout left="188" top="1402" width="395" height="20" compilerOrder="189">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="395" height="20" field="Resistencia_rit17" compilerOrder="190"/>
+				</layout>&#xD;
+				
+				
+				<layout left="84" top="1442" height="40" width="500">
+					<label left="0" top="0" height="25" width="60" autoSize="true" fontColor="#FFFFFF" fontSize="18.9" text="Dados:"/>
+					<edit left="70" top="0" height="25" width="160" field="Dados_rit17"/>
+				</layout>&#xD;
+				
+				
+				<layout left="84" top="1477.8" width="500" height="94.2" compilerOrder="193">
+					<textEditor left="0" top="0" width="500" height="94.2" fontSize="18.9" fontColor="#FFFFFF" field="Descricao_rit17" transparent="true" compilerOrder="194"/>
+				</layout>&#xD;
+
+			</group>
+            
+            
+			
+			<group>
+				<button left="881" top="1577" text="Conjurar" fontSize='12' width="60">
+				<event name="onClick">
+						sheet.Nome_rit = sheet.Nome_rit18;
+						sheet.Elementos_Rit = sheet.Elementos_rit18;
+						sheet.Circulo_rit = sheet.Circulo_rit18;
+						sheet.Execucao_rit= sheet.Execucao_rit18;
+						sheet.Alc_rit = sheet.Alc_rit18;
+						sheet.Alvo_rit = sheet.Alvo_rit18;
+						sheet.Duracao_rit = sheet.Duracao_rit18;
+						sheet.Resistencia_rit = sheet.Resistencia_rit18;
+						sheet.Dados_rit = sheet.Dados_rit18;
+						sheet.Descricao_rit = sheet.Descricao_rit18;
+						sheet.Niv_Rit = nil;
+						sheet.PE_extra = nil;
+						
+						self.Rit_popup:show();
+					</event>
+				
+				</button>
+			
+			
+				<layout left="664" top="1182" width="495" height="33" compilerOrder="135">
+					<edit transparent="true" fontSize="22.6" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="495" height="34" field="Nome_rit18" compilerOrder="136"/>
+				</layout>&#xD;
+				
+				
+				<group>
+					<radioButton text="" groupName="Elementos_rit18" field="Elementos_rit18" fieldValue="Conhecimento"
+						 left="651" top="1234" width="17" height="18" /> 
+				
+					<radioButton text="" groupName="Elementos_rit18" field="Elementos_rit18" fieldValue="Energia"
+						 left="815" top="1234" width="17" height="18" />  
+					
+					<radioButton text="" groupName="Elementos_rit18" field="Elementos_rit18" fieldValue="Morte"
+						 left="915" top="1236" width="17" height="18"/>
+					
+					<radioButton text="" groupName="Elementos_rit18" field="Elementos_rit18" fieldValue="Sangue"
+						 left="1000" top="1236" width="17" height="18"/>                                                                                        
+
+					<radioButton text="" groupName="Elementos_rit18" field="Elementos_rit18" fieldValue="Medo"
+						 left="1095" top="1235" width="17" height="18"/>
+				</group>
+				
+				
+				<group>
+					<radioButton text="" groupName="Circulo_rit18" field="Circulo_rit18" fieldValue="1"
+						 left="751" top="1270" width="18" height="18" /> 
+				
+					<radioButton text="" groupName="Circulo_rit18" field="Circulo_rit18" fieldValue="3"
+						 left="806" top="1269" width="18" height="18" />  
+					
+					<radioButton text="" groupName="Circulo_rit18" field="Circulo_rit18" fieldValue="6"
+						 left="860" top="1271" width="18" height="13"/>
+					
+					<radioButton text="" groupName="Circulo_rit18" field="Circulo_rit18" fieldValue="10"
+						 left="916" top="1267" width="18" height="18"/>                                                                                       
+				</group>
+				
+				
+				<layout left="749" top="1298" width="174" height="20" compilerOrder="177">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="174" height="21" field="Execucao_rit18" compilerOrder="178"/>
+				</layout>&#xD;
+				
+				
+				<layout left="1022" top="1299" width="138" height="20" compilerOrder="179">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="138" height="21" field="Alc_rit18" compilerOrder="180"/>
+				</layout>&#xD;
+				
+				
+				<layout left="709" top="1332" width="452" height="20" compilerOrder="183">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="452" height="21" field="Alvo_rit18" compilerOrder="184"/>
+				</layout>&#xD;
+				
+				
+				<layout left="746" top="1367" width="417" height="20" compilerOrder="187">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="417" height="20" field="Duracao_rit18" compilerOrder="188"/>
+				</layout>&#xD;
+				
+				
+				<layout left="769" top="1403" width="395" height="20" compilerOrder="191">
+					<edit transparent="true" fontSize="12.8" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="395" height="20" field="Resistencia_rit18" compilerOrder="192"/>
+				</layout>&#xD;
+				
+				
+				<layout left="661" top="1443" height="40" width="500">
+					<label left="0" top="0" height="25" width="60" autoSize="true" fontColor="#FFFFFF" fontSize="18.9" text="Dados:"/>
+					<edit left="70" top="0" height="25" width="160" field="Dados_rit18"/>
+				</layout>&#xD;
+				
+				
+				<layout left="661" top="1478.8" width="500" height="94.2" compilerOrder="195">
+					<textEditor left="0" top="0" width="500" height="94.2" fontSize="18.9" fontColor="#FFFFFF" field="Descricao_rit18" transparent="true" compilerOrder="196"/>
+				</layout>&#xD;
+			
+			</group>
+            
+					
+				
+        </rectangle>
+    </scrollBox>
+</form>
+
