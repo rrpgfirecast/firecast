@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_Preta_Ordem_Paranormal_1_0_1" formType="sheetTemplate" dataType="br.com.rrpg.OrdemParanormal" title="Ficha_OrdemParanormal" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+		<tab title="Rituais 1">
+            <import file="3.lfm"/>
+        </tab>
+        <tab title="Rituais 2">
+            <import file="4.lfm"/>
+        </tab>
+		<tab title="Rituais 3">
+            <import file="5.lfm"/>
+        </tab>
+		<tab title="Rituais 4">
+            <import file="6.lfm"/>
+        </tab>
+		<tab title="Rituais 5">
+            <import file="7.lfm"/>
+        </tab>
+		<tab title="Rituais 6">
+            <import file="8.lfm"/>
+        </tab>
+		
+    </tabControl>
+	
+</form>

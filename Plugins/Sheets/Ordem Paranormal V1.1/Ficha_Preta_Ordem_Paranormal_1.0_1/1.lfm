@@ -1,0 +1,2095 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_Preta_Ordem_Paranormal_1_0_11_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFicha_Preta_Ordem_Paranormal_1_0_11_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFicha_Preta_Ordem_Paranormal_1_0_11_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+
+        <rectangle width="1308" height="1754" color="white">&#xD;
+		<script>
+			local function rolarPericia(nomePericia, dados, bonus, treino, outros)
+					local soma;
+					local aux = {};
+					local personagem = Firecast.getPersonagemDe(sheet);
+					if (personagem ~= nil) then
+							local mesa = personagem.mesa;
+							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+
+								local dadosR = "ord"..dados.."d20"
+								local roll = Firecast.interpretarRolagem(dadosR);
+								
+								if (bonus~= nil) then
+									roll:concatenar(bonus)
+								end;
+								if (treino ~= nil) then
+									roll:concatenar(treino)
+								end;
+								if (outros ~= nil) then
+									roll:concatenar(outros)
+								end;
+
+
+										local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+										if mesaDoPersonagem ~= nil then
+												local promise = mesaDoPersonagem.chat:asyncRoll(roll, nomePericia);
+												local n, rollObject, logRec = await(promise);
+												
+												for i = 1, #rollObject.ops, 1 do
+													local op = rollObject.ops[i];       
+											 
+													if op.tipo == "dado" then
+															for j = 1, #op.resultados, 1 do
+																	aux[#aux + 1] = op.resultados[j];
+															end;
+													elseif op.tipo == "imediato" then
+														if op.valor ~= nil then
+															soma = op.valor;
+															
+														else
+															soma = 0;
+														end;
+													end;
+												end;
+											
+											mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]".. tonumber(aux[1]) + tonumber(soma) .. " (" .. aux[1] .. " + " .. soma .. ")")	
+									   end;
+							end;
+					end;
+			end;
+			
+			
+			local function rolarAtaque(Descricao_Atq, Teste_Atq, Dano_Atq, Margem, Crit, Tipo)
+					local soma_atq;
+					local aux_atq = {};
+					local personagem = Firecast.getPersonagemDe(sheet);
+					if (personagem ~= nil) then
+							local mesa = personagem.mesa;
+							
+							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+									
+									local dadosTeste = "ord".. Teste_Atq;
+									local rolagem_teste = Firecast.interpretarRolagem(dadosTeste);
+									
+									local dadosDano =  "ord".. Dano_Atq;
+									local rolagem_dano = Firecast.interpretarRolagem(dadosDano);
+									
+										if (rolagem_teste.possuiAlgumDado) and (rolagem_dano.possuiAlgumDado) and (Descricao_Atq ~= nil) and (Margem ~= nil) and (Crit ~= nil) then
+												local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+												if mesaDoPersonagem ~= nil then
+														local promise = mesaDoPersonagem.chat:asyncRoll(rolagem_teste, Descricao_Atq);
+														local n, rollObject, logRec = await(promise);
+														for i = 1, #rollObject.ops, 1 do
+															local op = rollObject.ops[i];       
+													 
+															if op.tipo == "dado" then
+																	for j = 1, #op.resultados, 1 do
+																			aux_atq[#aux_atq + 1] = op.resultados[j];
+																	end;
+															elseif op.tipo == "imediato" then
+																if op.valor ~= nil then
+																	soma_atq = op.valor;
+																	
+																else
+																	soma_atq = 0;
+																end;
+															end;
+														end;
+											
+														mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]".. tonumber(aux_atq[1]) + tonumber(soma_atq) .. " (" .. aux_atq[1] .. " + " .. soma_atq .. ")")
+														
+														local dano = mesaDoPersonagem.chat:asyncRoll(rolagem_dano, string.format("Dano %s", Tipo));
+														local m, danoRoll, logRec2 = await(dano);
+														
+														if (tonumber(aux_atq[1]) >= tonumber(Margem)) then
+															mesaDoPersonagem.chat:enviarMensagem("[§K4]ATAQUE CRÍTICO! [§K1](Margem = " .. Margem ..  ")\n[§K4]Dano causado: [§K1]".. m * Crit .. " (" .. m .. " * " .. Crit .. ")");
+														end;
+												end;
+										else
+											showMessage("Algum campo do ataque está incompleto, preencha para poder atacar!")
+										end; 
+
+										
+							end;
+					end;
+			end;
+		</script>
+            
+			<button left="118" top="10" text="Ajustar campos não utilizados e realizar cálculos básicos" fontSize='12' width="400">
+			<event name="onClick">
+					local personagem = Firecast.getPersonagemDe(sheet);
+					if (personagem ~= nil) then
+							local mesa = personagem.mesa;
+							
+							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+									
+									if (sheet.NEX ~= nil) then
+										sheet.PE_rodada = tonumber(sheet.NEX) /5;
+									end;
+
+									if (sheet.Forca ~= nil) then
+										if(sheet.Forca ~= "0") then
+											sheet.Carga_Max = (sheet.Forca) * (5);
+										
+										elseif(sheet.Forca == "0") then
+											sheet.Carga_Max = 2;
+										end;
+									end;
+									
+									if (sheet.PE_rodada ~= nil) and (sheet.Presenca ~= nil) then
+										sheet.DT_ritual = 10 + tonumber(sheet.PE_rodada) + tonumber(sheet.Presenca);
+									end;
+								
+									if(sheet.Bonus_Acrobacia == nil) then
+										sheet.Bonus_Acrobacia = 0;
+									end;
+									
+									if(sheet.Bonus_Adestramento == nil) then
+										sheet.Bonus_Adestramento = 0;
+									end;
+									
+									if(sheet.Bonus_Artes == nil) then
+										sheet.Bonus_Artes = 0;
+									end;
+									
+									if(sheet.Bonus_Atletismo == nil) then
+										sheet.Bonus_Atletismo = 0;
+									end;
+									
+									if(sheet.Bonus_Atualidade == nil) then
+										sheet.Bonus_Atualidade = 0;
+									end;
+									
+									if(sheet.Bonus_Ciencias == nil) then
+										sheet.Bonus_Ciencias = 0;
+									end;
+									
+									if(sheet.Bonus_Crime == nil) then
+										sheet.Bonus_Crime = 0;
+									end;
+									
+									if(sheet.Bonus_Diplomacia == nil) then
+										sheet.Bonus_Diplomacia = 0;
+									end;
+									
+									if(sheet.Bonus_Enganacao == nil) then
+										sheet.Bonus_Enganacao = 0;
+									end;
+									
+									if(sheet.Bonus_Fortitude == nil) then
+										sheet.Bonus_Fortitude = 0;
+									end;
+									
+									if(sheet.Bonus_Furtividade == nil) then
+										sheet.Bonus_Furtividade = 0;
+									end;
+									
+									if(sheet.Bonus_Luta == nil) then
+										sheet.Bonus_Luta = 0;
+									end;
+									
+									if(sheet.Bonus_Intimidacao == nil) then
+										sheet.Bonus_Intimidacao = 0;
+									end;
+									
+									if(sheet.Bonus_Intuicao == nil) then
+										sheet.Bonus_Intuicao = 0;
+									end;
+									
+									if(sheet.Bonus_Investigacao == nil) then
+										sheet.Bonus_Investigacao = 0;
+									end;
+									
+									if(sheet.Bonus_Luta == nil) then
+										sheet.Bonus_Luta = 0;
+									end;
+									
+									if(sheet.Bonus_Medicina == nil) then
+										sheet.Bonus_Medicina = 0;
+									end;
+									
+									if(sheet.bonus_Ocultismo == nil) then
+										sheet.bonus_Ocultismo = 0;
+									end;
+									
+									if(sheet.Bonus_Percepcao == nil) then
+										sheet.Bonus_Percepcao = 0;
+									end;
+									
+									if(sheet.Bonus_Pilotagem == nil) then
+										sheet.Bonus_Pilotagem = 0;
+									end;
+									
+									if(sheet.Bonus_Pontaria == nil) then
+										sheet.Bonus_Pontaria = 0;
+									end;
+									
+									if(sheet.Bonus_Profissao == nil) then
+										sheet.Bonus_Profissao = 0;
+									end;
+									
+									if(sheet.Bonus_Reflexos == nil) then
+										sheet.Bonus_Reflexos = 0;
+									end;
+									
+									if(sheet.Bonus_Religiao == nil) then
+										sheet.Bonus_Religiao = 0;
+									end;
+									
+									if(sheet.Bonus_Sobrevivencia == nil) then
+										sheet.Bonus_Sobrevivencia = 0;
+									end;
+									
+									if(sheet.Bonus_Tatica == nil) then
+										sheet.Bonus_Tatica = 0;
+									end;
+									
+									if(sheet.Bonus_Tecnologia == nil) then
+										sheet.Bonus_Tecnologia = 0;
+									end;
+									
+									if(sheet.Bonus_Vontade == nil) then
+										sheet.Bonus_Vontade = 0;
+									end;
+									
+									
+									
+									if(sheet.Treino_Acrobacia == nil) then
+										sheet.Treino_Acrobacia = 0;
+									end;
+									
+									if(sheet.Treino_Adestramento == nil) then
+										sheet.Treino_Adestramento = 0;
+									end;
+									
+									if(sheet.Treino_Artes == nil) then
+										sheet.Treino_Artes = 0;
+									end;
+									
+									if(sheet.Treino_Atletismo == nil) then
+										sheet.Treino_Atletismo = 0;
+									end;
+									
+									if(sheet.Treino_Atualidades == nil) then
+										sheet.Treino_Atualidades = 0;
+									end;
+									
+									if(sheet.Treino_Ciencias == nil) then
+										sheet.Treino_Ciencias = 0;
+									end;
+									
+									if(sheet.Treino_Crime == nil) then
+										sheet.Treino_Crime = 0;
+									end;
+									
+									if(sheet.Treino_Diplomacia == nil) then
+										sheet.Treino_Diplomacia = 0;
+									end;
+									
+									if(sheet.Treino_Enganacao == nil) then
+										sheet.Treino_Enganacao = 0;
+									end;
+									
+									if(sheet.Treino_Fortitude == nil) then
+										sheet.Treino_Fortitude = 0;
+									end;
+									
+									if(sheet.Treino_Furtividade == nil) then
+										sheet.Treino_Furtividade = 0;
+									end;
+									
+									if(sheet.Treino_Luta == nil) then
+										sheet.Treino_Luta = 0;
+									end;
+									
+									if(sheet.Treino_intimidacao == nil) then
+										sheet.Treino_intimidacao = 0;
+									end;
+									
+									if(sheet.Treino_Intuicao == nil) then
+										sheet.Treino_Intuicao = 0;
+									end;
+									
+									if(sheet.Treino_Investigacao == nil) then
+										sheet.Treino_Investigacao = 0;
+									end;
+									
+									if(sheet.Treino_Luta == nil) then
+										sheet.Treino_Luta = 0;
+									end;
+									
+									if(sheet.Treino_Medicina == nil) then
+										sheet.Treino_Medicina = 0;
+									end;
+									
+									if(sheet.Treino_Ocultismo == nil) then
+										sheet.Treino_Ocultismo = 0;
+									end;
+									
+									if(sheet.Treino_Percepcao == nil) then
+										sheet.Treino_Percepcao = 0;
+									end;
+									
+									if(sheet.Treino_Pilotagem == nil) then
+										sheet.Treino_Pilotagem = 0;
+									end;
+									
+									if(sheet.Treino_Pontaria == nil) then
+										sheet.Treino_Pontaria = 0;
+									end;
+									
+									if(sheet.Treino_Profissao == nil) then
+										sheet.Treino_Profissao = 0;
+									end;
+									
+									if(sheet.Treino_Reflexos == nil) then
+										sheet.Treino_Reflexos = 0;
+									end;
+									
+									if(sheet.Treino_Religiao == nil) then
+										sheet.Treino_Religiao = 0;
+									end;
+									
+									if(sheet.Treino_Sobrevivencia == nil) then
+										sheet.Treino_Sobrevivencia = 0;
+									end;
+									
+									if(sheet.Treino_Tatica == nil) then
+										sheet.Treino_Tatica = 0;
+									end;
+									
+									if(sheet.Treino_Tecnologia == nil) then
+										sheet.Treino_Tecnologia = 0;
+									end;
+									
+									if(sheet.Treino_Vontade == nil) then
+										sheet.Treino_Vontade = 0;
+									end;
+									
+									
+									
+									if(sheet.Outros_Acrobacia == nil) then
+										sheet.Outros_Acrobacia = 0;
+									end;
+									
+									if(sheet.Outros_Adestramento == nil) then
+										sheet.Outros_Adestramento = 0;
+									end;
+									
+									if(sheet.Outros_Artes == nil) then
+										sheet.Outros_Artes = 0;
+									end;
+									
+									if(sheet.Outros_Atletismo == nil) then
+										sheet.Outros_Atletismo = 0;
+									end;
+									
+									if(sheet.Outros_Atualidade == nil) then
+										sheet.Outros_Atualidade = 0;
+									end;
+									
+									if(sheet.Outros_Crime == nil) then
+										sheet.Outros_Crime = 0;
+									end;
+									
+									if(sheet.Outros_Ciencias == nil) then
+										sheet.Outros_Ciencias = 0;
+									end;
+									
+									if(sheet.Outros_Diplomacia == nil) then
+										sheet.Outros_Diplomacia = 0;
+									end;
+									
+									if(sheet.Defesa_Outros == nil) then
+										sheet.Defesa_Outros = 0;
+									end;
+									
+									if(sheet.Defesa_Equip == nil) then
+										sheet.Defesa_Equip = 0;
+									end;
+									
+									if(sheet.Outros_Enganacao == nil) then
+										sheet.Outros_Enganacao = 0;
+									end;
+									
+									if(sheet.Outros_Fortitude == nil) then
+										sheet.Outros_Fortitude = 0;
+									end;
+									
+									if(sheet.Outros_Furtividade == nil) then
+										sheet.Outros_ = 0;
+									end;
+									
+									if(sheet.Outros_Furtividade == nil) then
+										sheet.Outros_Furtividade = 0;
+									end;
+									
+									if(sheet.Outros_Luta == nil) then
+										sheet.Outros_Luta = 0;
+									end;
+									
+									if(sheet.Outros_Intimidacao == nil) then
+										sheet.Outros_Intimidacao = 0;
+									end;
+									
+									if(sheet.Outros_Intuicao == nil) then
+										sheet.Outros_Intuicao = 0;
+									end;
+									
+									if(sheet.outros_Investigacao == nil) then
+										sheet.outros_Investigacao = 0;
+									end;
+									
+									if(sheet.Outros_Luta == nil) then
+										sheet.Outros_Luta = 0;
+									end;
+									
+									if(sheet.Outros_Medicina == nil) then
+										sheet.Outros_Medicina = 0;
+									end;
+									
+									if(sheet.Outros_Oucutismo == nil) then
+										sheet.Outros_Oucutismo = 0;
+									end;
+									
+									if(sheet.Outros_Percepcao == nil) then
+										sheet.Outros_Percepcao = 0;
+									end;
+									
+									if(sheet.Outros_Pilotagem == nil) then
+										sheet.Outros_Pilotagem = 0;
+									end;
+									
+									if(sheet.Outros_Pontaria == nil) then
+										sheet.Outros_Pontaria = 0;
+									end;
+									
+									if(sheet.Outros_Profissao == nil) then
+										sheet.Outros_Profissao = 0;
+									end;
+									
+									if(sheet.Outros_Reflexos == nil) then
+										sheet.Outros_Reflexos = 0;
+									end;
+									
+									if(sheet.Outros_Religiao == nil) then
+										sheet.Outros_Religiao = 0;
+									end;
+									
+									if(sheet.Outros_Sobrevivencia == nil) then
+										sheet.Outros_Sobrevivencia = 0;
+									end;
+									
+									if(sheet.Outros_Tatica== nil) then
+										sheet.Outros_Tatica = 0;
+									end;
+									
+									if(sheet.Outros_Tecnologia == nil) then
+										sheet.Outros_Tecnologia = 0;
+									end;
+									
+									if(sheet.Outros_Vontade == nil) then
+										sheet.Outros_Vontade = 0;
+									end;
+									
+									
+									
+									
+									if(sheet.Esp1 == nil) then
+										sheet.Esp1 = 0;
+									end;
+									
+									if(sheet.Esp2 == nil) then
+										sheet.Esp2 = 0;
+									end;
+									
+									if(sheet.Esp3 == nil) then
+										sheet.Esp3 = 0;
+									end;
+									
+									if(sheet.Esp4 == nil) then
+										sheet.Esp4 = 0;
+									end;
+									
+									if(sheet.Esp5 == nil) then
+										sheet.Esp5 = 0;
+									end;
+									
+									if(sheet.Esp6 == nil) then
+										sheet.Esp6 = 0;
+									end;
+									
+									if(sheet.Esp7 == nil) then
+										sheet.Esp7 = 0;
+									end;
+									
+									if(sheet.Esp8 == nil) then
+										sheet.Esp8 = 0;
+									end;
+									
+									if(sheet.Esp9 == nil) then
+										sheet.Esp9 = 0;
+									end;
+									
+									if(sheet.Esp10 == nil) then
+										sheet.Esp10 = 0;
+									end;
+									
+									if(sheet.Esp11 == nil) then
+										sheet.Esp11 = 0;
+									end;
+									
+									if(sheet.Esp12 == nil) then
+										sheet.Esp12 = 0;
+									end;
+									
+									if(sheet.Esp13 == nil) then
+										sheet.Esp13 = 0;
+									end;
+									
+									if(sheet.Esp14 == nil) then
+										sheet.Esp14 = 0;
+									end;
+									
+									if(sheet.Esp15 == nil) then
+										sheet.Esp15 = 0;
+									end;
+									
+									if(sheet.Esp16 == nil) then
+										sheet.Esp16 = 0;
+									end;
+									
+									if(sheet.Esp17 == nil) then
+										sheet.Esp17 = 0;
+									end;
+									
+									if(sheet.Esp18 == nil) then
+										sheet.Esp18 = 0;
+									end;
+									
+									if(sheet.Esp19 == nil) then
+										sheet.Esp19 = 0;
+									end;
+									
+									if(sheet.Esp20 == nil) then
+										sheet.Esp20 = 0;
+									end;
+									
+									if(sheet.Esp21 == nil) then
+										sheet.Esp21 = 0;
+									end;
+									
+									if(sheet.Esp22 == nil) then
+										sheet.Esp22 = 0;
+									end;
+									
+									
+									
+										
+							end;
+					end;
+				</event>
+			
+			</button>
+			
+			<image left="0" top="0" width="1308" height="1754" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="169" top="67" width="359" height="39" compilerOrder="1">
+                <edit transparent="true" fontSize="27.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="359" height="40" field="nome" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="564" top="67" width="159" height="39" compilerOrder="3">
+                <edit transparent="true" fontSize="27.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="159" height="40" field="jogador" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="409" top="216" width="95" height="79" compilerOrder="5">
+                <edit transparent="true" fontSize="57.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="95" height="80" field="Agilidade" compilerOrder="6"/>
+					<dataLink field="Agilidade">
+						<event name="onChange">
+							sheet.Dados_Acrobacia = (sheet.Agilidade or 1);
+							sheet.Dados_Furtividade = (sheet.Agilidade or 1);
+							sheet.Dados_Luta = (sheet.Agilidade or 1);
+							sheet.Dados_Crime = (sheet.Agilidade or 1);
+							sheet.Dados_Pilotagem = (sheet.Agilidade or 1);
+							sheet.Dados_Pontaria = (sheet.Agilidade or 1);
+							sheet.Dados_Reflexos = (sheet.Agilidade or 1);
+						</event>
+					</dataLink>
+				
+				
+				
+            </layout>&#xD;
+			
+			
+            <layout left="229" top="334" width="95" height="79" compilerOrder="7">
+                <edit transparent="true" fontSize="57.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="95" height="80" field="Forca" compilerOrder="8"/>
+				<dataLink field="Forca">
+					<event name="onChange">
+						<![CDATA[
+								if(sheet.Forca ~= "0") then
+									sheet.Carga_Max = (sheet.Forca) * (5);
+								
+								elseif(sheet.Forca == "0") then
+									sheet.Carga_Max = 2;
+								end;
+						]]>
+						
+						
+						
+						sheet.Dados_Atletismo = (sheet.Forca or 1);
+						sheet.Dados_Luta = (sheet.Forca or 1);
+						
+					</event>
+				</dataLink>
+            </layout>&#xD;
+			
+			
+            <layout left="587" top="334" width="95" height="79" compilerOrder="9">
+                <edit transparent="true" fontSize="57.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="95" height="80" field="Intelecto" compilerOrder="10"/>
+				<dataLink field="Intelecto">
+						<event name="onChange">
+							sheet.Dados_Atualidade = (sheet.Intelecto or 1);
+							sheet.Dados_Ciencias = (sheet.Intelecto or 1);
+							sheet.Dados_Investigacao = (sheet.Intelecto or 1);
+							sheet.Dados_Medicina = (sheet.Intelecto or 1);
+							sheet.Dados_Ocultismo = (sheet.Intelecto or 1);
+							sheet.Dados_Profissao = (sheet.Intelecto or 1);
+							sheet.Dados_Sobrevivencia = (sheet.Intelecto or 1);
+							sheet.Dados_Tatica = (sheet.Intelecto or 1);
+							sheet.Dados_Tecnologia = (sheet.Intelecto or 1);
+							
+						</event>
+					</dataLink>
+            </layout>&#xD;
+			
+			<button left="748" top="345" text="Rolar" fontSize='12' width="37">
+				<event name="onClick">
+					rolarPericia("Acrobacia", sheet.Dados_Acrobacia, sheet.Bonus_Acrobacia, sheet.Treino_Acrobacia, sheet.Outros_Acrobacia);
+				</event>
+			
+			</button>
+			
+            <layout left="1005" top="339" width="44" height="31" compilerOrder="11">
+             <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Acrobacia" compilerOrder="12"/>  
+			<dataLink field = "Dados_Acrobacia">
+					<event name="onChange">
+						if (sheet.Dados_Acrobacia == "AGI") then
+							sheet.Dados_Acrobacia = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Acrobacia == "FOR") then
+							sheet.Dados_Acrobacia = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Acrobacia == "INT") then
+							sheet.Dados_Acrobacia = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Acrobacia == "PRE") then
+							sheet.Dados_Acrobacia = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Acrobacia == "VIG") then
+							sheet.Dados_Acrobacia = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+			
+            </layout>&#xD;
+            <layout left="1081" top="340" width="34" height="31" compilerOrder="13">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Acrobacia" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="1194" top="341" width="44" height="31" compilerOrder="17">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Acrobacia" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="1132" top="342" width="47" height="30" compilerOrder="15">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Acrobacia" compilerOrder="16"/>
+            </layout>&#xD;
+			
+			<button left="748" top="382" fontSize='12' text="Rolar" width="37">
+			<event name="onClick">
+					rolarPericia("Adestramento", sheet.Dados_Adestramento, sheet.Bonus_Adestramento, sheet.Treino_Adestramento, sheet.Outros_Adestramento);
+				</event>
+			
+			</button>
+            <layout left="1005" top="376" width="44" height="31" compilerOrder="19">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Adestramento" compilerOrder="20"/>
+				<dataLink field = "Dados_Adestramento">
+					<event name="onChange">
+						if (sheet.Dados_Adestramento == "AGI") then
+							sheet.Dados_Adestramento = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Adestramento == "FOR") then
+							sheet.Dados_Adestramento = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Adestramento == "INT") then
+							sheet.Dados_Adestramento = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Adestramento == "PRE") then
+							sheet.Dados_Adestramento = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Adestramento == "VIG") then
+							sheet.Dados_Adestramento = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1082" top="377" width="34" height="31" compilerOrder="21">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Adestramento" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="1194" top="377" width="44" height="31" compilerOrder="25">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Adestramento" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="1133" top="379" width="47" height="30" compilerOrder="23">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Adestramento" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="1083" top="414" width="34" height="31" compilerOrder="29">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Artes" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="1194" top="414" width="44" height="31" compilerOrder="33">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Artes" compilerOrder="34"/>
+            </layout>&#xD;
+			
+			<button left="748" top="421" fontSize='12' text="Rolar" width="37">
+			<event name="onClick">
+					rolarPericia("Artes", sheet.Dados_Artes, sheet.Bonus_Artes, sheet.Treino_Artes, sheet.Outros_Artes);
+				</event>
+			
+			</button>
+            <layout left="1005" top="415" width="44" height="31" compilerOrder="27">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Artes" compilerOrder="28"/>
+				<dataLink field = "Dados_Artes">
+					<event name="onChange">
+						if (sheet.Dados_Artes == "AGI") then
+							sheet.Dados_Artes = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Artes == "FOR") then
+							sheet.Dados_Artes = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Artes == "INT") then
+							sheet.Dados_Artes = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Artes == "PRE") then
+							sheet.Dados_Artes = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Artes == "VIG") then
+							sheet.Dados_Artes = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1132" top="415" width="47" height="30" compilerOrder="31">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Artes" compilerOrder="32"/>
+            </layout>&#xD;
+			
+			<button left="748" top="457" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Atletismo", sheet.Dados_Atletismo, sheet.Bonus_Atletismo, sheet.Treino_Atletismo, sheet.Outros_Atletismo);
+				</event>
+			
+			</button>
+            <layout left="1005" top="451" width="44" height="31" compilerOrder="35">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Atletismo" compilerOrder="36"/>
+				<dataLink field = "Dados_Atletismo">
+					<event name="onChange">
+						if (sheet.Dados_Atletismo == "AGI") then
+							sheet.Dados_Atletismo = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Atletismo == "FOR") then
+							sheet.Dados_Atletismo = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Atletismo == "INT") then
+							sheet.Dados_Atletismo = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Atletismo == "PRE") then
+							sheet.Dados_Atletismo = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Atletismo == "VIG") then
+							sheet.Dados_Atletismo = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1084" top="451" width="34" height="31" compilerOrder="37">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Atletismo" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="1195" top="451" width="44" height="31" compilerOrder="41">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Atletismo" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="1132" top="452" width="47" height="30" compilerOrder="39">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Atletismo" compilerOrder="40"/>
+            </layout>&#xD;
+			
+			<button left="748" top="494" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+				rolarPericia("Atualidade", sheet.Dados_Atualidade, sheet.Bonus_Atualidade, sheet.Treino_Atualidade, sheet.Outros_Atualidade);
+			</event>
+			
+			</button>
+            <layout left="1006" top="488" width="44" height="31" compilerOrder="43">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Atualidade" compilerOrder="44"/>
+				<dataLink field = "Dados_Atualidade">
+					<event name="onChange">
+						if (sheet.Dados_Atualidade == "AGI") then
+							sheet.Dados_Atualidade = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Atualidade == "FOR") then
+							sheet.Dados_Atualidade = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Atualidade == "INT") then
+							sheet.Dados_Atualidade = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Atualidade == "PRE") then
+							sheet.Dados_Atualidade = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Atualidade == "VIG") then
+							sheet.Dados_Atualidade = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1083" top="488" width="34" height="31" compilerOrder="45">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Atualidade" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="1194" top="488" width="44" height="31" compilerOrder="49">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Atualidade" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="1132" top="490" width="47" height="30" compilerOrder="47">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Atualidades" compilerOrder="48"/>
+            </layout>&#xD;
+			
+			<button left="748" top="531" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Ciências", sheet.Dados_Ciencias, sheet.Bonus_Ciencias, sheet.Treino_Ciencias, sheet.Outros_Ciencias);
+				</event>
+			
+			</button>
+            <layout left="1005" top="525" width="44" height="31" compilerOrder="51">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Ciencias" compilerOrder="52"/>
+				<dataLink field = "Dados_Ciencias">
+					<event name="onChange">
+						if (sheet.Dados_Ciencias == "AGI") then
+							sheet.Dados_Ciencias = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Ciencias == "FOR") then
+							sheet.Dados_Ciencias = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Ciencias == "INT") then
+							sheet.Dados_Ciencias = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Ciencias == "PRE") then
+							sheet.Dados_Ciencias = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Ciencias == "VIG") then
+							sheet.Dados_Ciencias = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1195" top="525" width="44" height="31" compilerOrder="57">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Ciencias" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="1082" top="526" width="34" height="31" compilerOrder="53">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Ciencias" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="1132" top="527" width="47" height="30" compilerOrder="55">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Ciencias" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="280" top="551" width="95" height="79" compilerOrder="59">
+                <edit transparent="true" fontSize="57.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="95" height="80" field="Presenca" compilerOrder="60"/>
+					<dataLink field="Presenca">
+						<event name="onChange">
+							sheet.Dados_Adestramento = (sheet.Presenca or 1);
+							sheet.Dados_Artes = (sheet.Presenca or 1);
+							sheet.Dados_Diplomacia = (sheet.Presenca or 1);
+							sheet.Dados_Enganacao = (sheet.Presenca or 1);
+							sheet.Dados_Intimidacao = (sheet.Presenca or 1);
+							sheet.Dados_Intuicao = (sheet.Presenca or 1);
+							sheet.Dados_Percepcao = (sheet.Presenca or 1);
+							sheet.Dados_Religiao = (sheet.Presenca or 1);
+							sheet.Dados_Vontade = (sheet.Presenca or 1);
+						</event>
+					</dataLink>
+            </layout>&#xD;
+            <layout left="536" top="552" width="94" height="79" compilerOrder="61">
+                <edit transparent="true" fontSize="57.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="94" height="80" field="Vigor" compilerOrder="62"/>
+					<dataLink field="Vigor">
+						<event name="onChange">
+							sheet.Dados_Fortitude = (sheet.Vigor or 1);
+						</event>
+					</dataLink>
+            </layout>&#xD;
+			
+			<button left="748" top="568" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Crime", sheet.Dados_Crime, sheet.Bonus_Crime, sheet.Treino_Crime, sheet.Outros_Crime);
+				</event>
+			
+			</button>
+            <layout left="1006" top="562" width="44" height="31" compilerOrder="63">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Crime" compilerOrder="64"/>
+				<dataLink field = "Dados_Crime">
+					<event name="onChange">
+						if (sheet.Dados_Crime == "AGI") then
+							sheet.Dados_Crime = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Crime == "FOR") then
+							sheet.Dados_Crime = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Crime == "INT") then
+							sheet.Dados_Crime = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Crime == "PRE") then
+							sheet.Dados_Crime = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Crime == "VIG") then
+							sheet.Dados_Crime = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1194" top="562" width="44" height="31" compilerOrder="69">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Crime" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="1082" top="563" width="34" height="31" compilerOrder="65">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Crime" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="1132" top="564" width="47" height="30" compilerOrder="67">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Crime" compilerOrder="68"/>
+            </layout>&#xD;
+			
+			<button left="748" top="605" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Diplomacia", sheet.Dados_Diplomacia, sheet.Bonus_Diplomacia, sheet.Treino_Diplomacia, sheet.Outros_Diplomacia);
+				</event>
+			
+			</button>
+            <layout left="1006" top="599" width="44" height="31" compilerOrder="71">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Diplomacia" compilerOrder="72"/>
+				<dataLink field = "Dados_Diplomacia">
+					<event name="onChange">
+						if (sheet.Dados_Diplomacia == "AGI") then
+							sheet.Dados_Diplomacia = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Diplomacia == "FOR") then
+							sheet.Dados_Diplomacia = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Diplomacia == "INT") then
+							sheet.Dados_Diplomacia = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Diplomacia == "PRE") then
+							sheet.Dados_Diplomacia = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Diplomacia == "VIG") then
+							sheet.Dados_Diplomacia = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1195" top="599" width="44" height="31" compilerOrder="77">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Diplomacia" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="1082" top="600" width="34" height="31" compilerOrder="73">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Diplomacia" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="1132" top="600" width="47" height="30" compilerOrder="75">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Diplomacia" compilerOrder="76"/>
+            </layout>&#xD;
+			
+			<button left="748" top="642" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Enganaço", sheet.Dados_Enganacao, sheet.Bonus_Enganacao, sheet.Treino_Enganacao, sheet.Outros_Enganacao);
+				</event>
+			
+			</button>
+            <layout left="1005" top="636" width="44" height="31" compilerOrder="79">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Enganacao" compilerOrder="80"/>
+				<dataLink field = "Dados_Enganacao">
+					<event name="onChange">
+						if (sheet.Dados_Enganacao == "AGI") then
+							sheet.Dados_Enganacao= (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Enganacao == "FOR") then
+							sheet.Dados_Enganacao = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Enganacao == "INT") then
+							sheet.Dados_Enganacao = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Enganacao == "PRE") then
+							sheet.Dados_Enganacao = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Enganacao == "VIG") then
+							sheet.Dados_Enganacao = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+				
+				
+            </layout>&#xD;
+            <layout left="1194" top="636" width="44" height="31" compilerOrder="85">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Enganacao" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="1081" top="637" width="34" height="31" compilerOrder="81">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Enganacao" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="1132" top="637" width="47" height="30" compilerOrder="83">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Enganacao" compilerOrder="84"/>
+            </layout>&#xD;
+			
+			<button left="748" top="678" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Fortitude", sheet.Dados_Fortitude, sheet.Bonus_Fortitude, sheet.Treino_Fortitude, sheet.Outros_Fortitude);
+				</event>
+			
+			</button>
+            <layout left="1006" top="672" width="44" height="31" compilerOrder="87">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Fortitude" compilerOrder="88"/>
+				<dataLink field = "Dados_Fortitude">
+					<event name="onChange">
+						if (sheet.Dados_Fortitude == "AGI") then
+							sheet.Dados_Fortitude = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Fortitude == "FOR") then
+							sheet.Dados_Fortitude = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Fortitude == "INT") then
+							sheet.Dados_Fortitude = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Fortitude == "PRE") then
+							sheet.Dados_Fortitude = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Fortitude == "VIG") then
+							sheet.Dados_Fortitude = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="673" width="34" height="31" compilerOrder="89">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Fortitude" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="1194" top="674" width="44" height="31" compilerOrder="93">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Fortitude" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="1132" top="675" width="47" height="30" compilerOrder="91">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Fortitude" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="1195" top="710" width="44" height="31" compilerOrder="101">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Furtividade" compilerOrder="102"/>
+            </layout>&#xD;
+			
+			<button left="748" top="717" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Furtividade", sheet.Dados_Furtividade, sheet.Bonus_Furtividade, sheet.Treino_Furtividade, sheet.Outros_Furtividade);
+				</event>
+			
+			</button>
+            <layout left="1005" top="711" width="44" height="31" compilerOrder="95">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Furtividade" compilerOrder="96"/>
+				<dataLink field = "Dados_Furtividade">
+					<event name="onChange">
+						if (sheet.Dados_Furtividade == "AGI") then
+							sheet.Dados_Furtividade = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Furtividade == "FOR") then
+							sheet.Dados_Furtividade = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Furtividade == "INT") then
+							sheet.Dados_Furtividade = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Furtividade == "PRE") then
+							sheet.Dados_Furtividade = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Furtividade == "VIG") then
+							sheet.Dados_Furtividade = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="711" width="34" height="31" compilerOrder="97">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Furtividade" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="1132" top="712" width="47" height="30" compilerOrder="99">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Furtividade" compilerOrder="100"/>
+            </layout>&#xD;
+			
+			<button left="748" top="753" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Luta", sheet.Dados_Luta, sheet.Bonus_Luta, sheet.Treino_Luta, sheet.Outros_Luta);
+				</event>
+			
+			</button>
+            <layout left="1005" top="747" width="44" height="31" compilerOrder="103">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Luta" compilerOrder="104"/>
+				<dataLink field = "Dados_Luta">
+					<event name="onChange">
+						if (sheet.Dados_Luta == "AGI") then
+							sheet.Dados_Luta = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Luta == "FOR") then
+							sheet.Dados_Luta = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Luta == "INT") then
+							sheet.Dados_Luta = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Luta == "PRE") then
+							sheet.Dados_Luta = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Luta == "VIG") then
+							sheet.Dados_Luta = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="747" width="34" height="31" compilerOrder="105">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Luta" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="1195" top="747" width="44" height="31" compilerOrder="109">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Luta" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="1132" top="748" width="47" height="30" compilerOrder="107">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Luta" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="305" top="772" width="425" height="44" compilerOrder="111">
+                <edit transparent="true" fontSize="30.8" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="425" height="45" field="Text_oYk5J8Vupz__0" compilerOrder="112"/>
+            </layout>&#xD;
+			
+			<button left="748" top="790" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Intimidação", sheet.Dados_Intimidacao, sheet.Bonus_Intimidacao, sheet.Treino_Intimidacao, sheet.Outros_Intimidacao);
+				</event>
+			
+			</button>
+            <layout left="1006" top="784" width="44" height="31" compilerOrder="113">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Intimidacao" compilerOrder="114"/>
+				<dataLink field = "Dados_Intimidacao">
+					<event name="onChange">
+						if (sheet.Dados_Intimidacao == "AGI") then
+							sheet.Dados_Intimidacao = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Intimidacao == "FOR") then
+							sheet.Dados_Intimidacao = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Intimidacao == "INT") then
+							sheet.Dados_Intimidacao = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Intimidacao == "PRE") then
+							sheet.Dados_Intimidacao = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Intimidacao == "VIG") then
+							sheet.Dados_Intimidacao = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1195" top="784" width="44" height="31" compilerOrder="119">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Intimidacao" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="1132" top="785" width="47" height="30" compilerOrder="117">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_intimidacao" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="1081" top="786" width="34" height="31" compilerOrder="115">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Intimidacao" compilerOrder="116"/>
+            </layout>&#xD;
+			
+			<button left="748" top="827" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Intuição", sheet.Dados_Intuicao, sheet.Bonus_Intuicao, sheet.Treino_Intuicao, sheet.Outros_Intuicao);
+				</event>
+			
+			</button>
+            <layout left="1005" top="821" width="44" height="31" compilerOrder="121">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Intuicao" compilerOrder="122"/>
+				<dataLink field = "Dados_Intuicao">
+					<event name="onChange">
+						if (sheet.Dados_Intuicao == "AGI") then
+							sheet.Dados_Intuicao = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Intuicao == "FOR") then
+							sheet.Dados_Intuicao = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Intuicao == "INT") then
+							sheet.Dados_Intuicao = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Intuicao == "PRE") then
+							sheet.Dados_Intuicao = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Intuicao == "VIG") then
+							sheet.Dados_Intuicao = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="822" width="34" height="31" compilerOrder="123">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Intuicao" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="1195" top="822" width="44" height="31" compilerOrder="127">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Intuicao" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="1132" top="823" width="47" height="30" compilerOrder="125">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Intuicao" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="286" top="857" width="446" height="44" compilerOrder="129">
+                <edit transparent="true" fontSize="30.8" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="446" height="45" field="Text_3zjlJVXiBF__0" compilerOrder="130"/>
+            </layout>&#xD;
+			
+			<button left="748" top="864" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Investigação", sheet.Dados_Investigacao, sheet.Bonus_Investigacao, sheet.Treino_Investigacao, sheet.Outros_Investigacao);
+				</event>
+			
+			</button>
+            <layout left="1005" top="858" width="44" height="31" compilerOrder="131">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Investigacao" compilerOrder="132"/>
+				<dataLink field = "Dados_Investigacao">
+					<event name="onChange">
+						if (sheet.Dados_Investigacao == "AGI") then
+							sheet.Dados_Investigacao = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Investigacao == "FOR") then
+							sheet.Dados_Investigacao = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Investigacao == "INT") then
+							sheet.Dados_Investigacao = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Investigacao == "PRE") then
+							sheet.Dados_Investigacao = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Investigacao == "VIG") then
+							sheet.Dados_Investigacao = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="858" width="34" height="31" compilerOrder="133">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Investigacao" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="1194" top="859" width="44" height="31" compilerOrder="137">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="outros_Investigacao" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="1132" top="860" width="47" height="30" compilerOrder="135">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Investigacao" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="1081" top="895" width="34" height="31" compilerOrder="141">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Luta" compilerOrder="142"/>
+            </layout>&#xD;
+			
+			<button left="748" top="902" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Luta", sheet.Dados_Luta, sheet.Bonus_Luta, sheet.Treino_Luta, sheet.Outros_Luta);
+				</event>
+			
+			</button>
+            <layout left="1005" top="896" width="44" height="31" compilerOrder="139">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Luta" compilerOrder="140"/>
+				<dataLink field = "Dados_Luta">
+					<event name="onChange">
+						if (sheet.Dados_Luta == "AGI") then
+							sheet.Dados_Luta = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Luta == "FOR") then
+							sheet.Dados_Luta = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Luta == "INT") then
+							sheet.Dados_Luta = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Luta == "PRE") then
+							sheet.Dados_Luta = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Luta == "VIG") then
+							sheet.Dados_Luta = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1132" top="896" width="47" height="30" compilerOrder="143">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Luta" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="1194" top="896" width="44" height="31" compilerOrder="145">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Luta" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="1081" top="932" width="34" height="31" compilerOrder="155">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Medicina" compilerOrder="156"/>
+            </layout>&#xD;
+			
+			<button left="748" top="939" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Medicina", sheet.Dados_Medicina, sheet.Bonus_Medicina, sheet.Treino_Medicina, sheet.Outros_Medicina);
+				</event>
+			
+			</button>
+            <layout left="1005" top="933" width="44" height="31" compilerOrder="153">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Medicina" compilerOrder="154"/>
+				<dataLink field = "Dados_Medicina">
+					<event name="onChange">
+						if (sheet.Dados_Medicina == "AGI") then
+							sheet.Dados_Medicina = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Medicina == "FOR") then
+							sheet.Dados_Medicina = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Medicina == "INT") then
+							sheet.Dados_Medicina = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Medicina == "PRE") then
+							sheet.Dados_Medicina = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Medicina == "VIG") then
+							sheet.Dados_Medicina = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1194" top="933" width="44" height="31" compilerOrder="159">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Medicina" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="551" top="934" width="180" height="60" compilerOrder="151">
+                <edit transparent="true" fontSize="42.9" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="180" height="61" field="Deslocamento" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="1132" top="934" width="47" height="30" compilerOrder="157">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Medicina" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="234" top="936" width="57" height="55" compilerOrder="147">
+                <edit transparent="true" fontSize="39.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="57" height="56" field="NEX" compilerOrder="148" type="number"/>
+				<dataLink field="NEX">
+						<event name="onChange">
+							sheet.PE_rodada = tonumber(sheet.NEX) /5;
+							
+						</event>
+					</dataLink>
+            </layout>&#xD;
+            <layout left="341" top="938" width="83" height="52" compilerOrder="149">
+                <edit transparent="true" fontSize="36.8" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="83" height="53" field="PE_rodada" compilerOrder="150"/>
+            </layout>&#xD;
+			
+			<button left="748" top="975" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Ocultismo", sheet.Dados_Ocultismo, sheet.Bonus_Ocultismo, sheet.Treino_Ocultismo, sheet.Outros_Ocultismo);
+				</event>
+			
+			</button>
+            <layout left="1005" top="969" width="44" height="31" compilerOrder="161">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Ocultismo" compilerOrder="162"/>
+				<dataLink field = "Dados_Ocultismo">
+					<event name="onChange">
+						if (sheet.Dados_Ocultismo == "AGI") then
+							sheet.Dados_Ocultismo = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Ocultismo == "FOR") then
+							sheet.Dados_Ocultismo = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Ocultismo == "INT") then
+							sheet.Dados_Ocultismo = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Ocultismo == "PRE") then
+							sheet.Dados_Ocultismo = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Ocultismo == "VIG") then
+							sheet.Dados_Ocultismo = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="969" width="34" height="31" compilerOrder="163">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="bonus_Ocultismo" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="1194" top="970" width="44" height="31" compilerOrder="167">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Oucutismo" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="1132" top="971" width="47" height="30" compilerOrder="165">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Ocultismo" compilerOrder="166"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1012" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Percepção", sheet.Dados_Percepcao, sheet.Bonus_Percepcao, sheet.Treino_Percepcao, sheet.Outros_Percepcao);
+				</event>
+			
+			</button>
+            <layout left="1006" top="1006" width="44" height="31" compilerOrder="169">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Percepcao" compilerOrder="170"/>
+				<dataLink field = "Dados_Percepcao">
+					<event name="onChange">
+						if (sheet.Dados_Percepcao == "AGI") then
+							sheet.Dados_Percepcao = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Percepcao == "FOR") then
+							sheet.Dados_Percepcao = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Percepcao == "INT") then
+							sheet.Dados_Percepcao = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Percepcao == "PRE") then
+							sheet.Dados_Percepcao = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Percepcao == "VIG") then
+							sheet.Dados_Percepcao = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1194" top="1006" width="44" height="31" compilerOrder="175">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Percepcao" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="1081" top="1007" width="34" height="31" compilerOrder="171">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Percepcao" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="1132" top="1007" width="47" height="30" compilerOrder="173">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Percepcao" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="190" top="1034" width="87" height="69" compilerOrder="177">
+                <edit transparent="true" fontSize="49.6" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="87" height="70" field="HP" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="483" top="1034" width="80" height="69" compilerOrder="179">
+                <edit transparent="true" fontSize="49.6" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="70" field="PE" compilerOrder="180"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1049" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Pilotagem", sheet.Dados_Pilotagem, sheet.Bonus_Pilotagem, sheet.Treino_Pilotagem, sheet.Outros_Pilotagem);
+				</event>
+			
+			</button>
+            <layout left="1006" top="1043" width="44" height="31" compilerOrder="181">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Pilotagem" compilerOrder="182"/>
+				<dataLink field = "Dados_Pilotagem">
+					<event name="onChange">
+						if (sheet.Dados_Pilotagem == "AGI") then
+							sheet.Dados_Pilotagem = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Pilotagem == "FOR") then
+							sheet.Dados_Pilotagem = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Pilotagem == "INT") then
+							sheet.Dados_Pilotagem = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Pilotagem == "PRE") then
+							sheet.Dados_Pilotagem = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Pilotagem == "VIG") then
+							sheet.Dados_Pilotagem = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="1044" width="34" height="31" compilerOrder="183">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Pilotagem" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="1132" top="1044" width="47" height="30" compilerOrder="185">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Pilotagem" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="1194" top="1044" width="44" height="31" compilerOrder="187">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Pilotagem" compilerOrder="188"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1086" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Pontaria", sheet.Dados_Pontaria, sheet.Bonus_Pontaria, sheet.Treino_Pontaria, sheet.Outros_Pontaria);
+				</event>
+			
+			</button>
+            <layout left="1006" top="1080" width="44" height="31" compilerOrder="189">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Pontaria" compilerOrder="190"/>
+				<dataLink field = "Dados_Pontaria">
+					<event name="onChange">
+						if (sheet.Dados_Pontaria == "AGI") then
+							sheet.Dados_Pontaria = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Pontaria == "FOR") then
+							sheet.Dados_Pontaria = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Pontaria == "INT") then
+							sheet.Dados_Pontaria = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Pontaria == "PRE") then
+							sheet.Dados_Pontaria = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Pontaria == "VIG") then
+							sheet.Dados_Pontaria = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="1080" width="34" height="31" compilerOrder="191">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Pontaria" compilerOrder="192"/>
+            </layout>&#xD;
+            <layout left="1194" top="1080" width="44" height="31" compilerOrder="195">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Pontaria" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="1132" top="1081" width="47" height="30" compilerOrder="193">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Pontaria" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="286" top="1094" width="123" height="58" compilerOrder="197">
+                <edit transparent="true" fontSize="41.4" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="123" height="59" field="HP_Atual" compilerOrder="198"/>
+            </layout>&#xD;
+            <layout left="575" top="1096" width="156" height="56" compilerOrder="199">
+                <edit transparent="true" fontSize="39.8" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="156" height="57" field="PE_Atual" compilerOrder="200"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1123" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Profissão", sheet.Dados_Profissao, sheet.Bonus_Profissao, sheet.Treino_Profissao, sheet.Outros_Profissao);
+				</event>
+			
+			</button>
+            <layout left="1006" top="1117" width="44" height="31" compilerOrder="203">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Profissao" compilerOrder="204"/>
+				<dataLink field = "Dados_Profissao">
+					<event name="onChange">
+						if (sheet.Dados_Profissao == "AGI") then
+							sheet.Dados_Profissao = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Profissao == "FOR") then
+							sheet.Dados_Profissao = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Profissao == "INT") then
+							sheet.Dados_Profissao = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Profissao == "PRE") then
+							sheet.Dados_Profissao = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Profissao == "VIG") then
+							sheet.Dados_Profissao = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="1118" width="34" height="31" compilerOrder="205">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Profissao" compilerOrder="206"/>
+            </layout>&#xD;
+            <layout left="1194" top="1118" width="44" height="31" compilerOrder="209">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Profissao" compilerOrder="210"/>
+            </layout>&#xD;
+            <layout left="1132" top="1119" width="47" height="30" compilerOrder="207">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Profissao" compilerOrder="208"/>
+            </layout>&#xD;
+            <layout left="901" top="1123" width="80" height="16" compilerOrder="201">
+                <edit transparent="true" fontSize="9.8" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="17" field="Profissao" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="1081" top="1154" width="34" height="31" compilerOrder="213">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Reflexos" compilerOrder="214"/>
+            </layout>&#xD;
+            <layout left="1194" top="1154" width="44" height="31" compilerOrder="217">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Reflexos" compilerOrder="218"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1161" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Reflexos", sheet.Dados_Reflexos, sheet.Bonus_Reflexos, sheet.Treino_Reflexos, sheet.Outros_Reflexos);
+				</event>
+			
+			</button>
+            <layout left="1006" top="1155" width="44" height="31" compilerOrder="211">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Reflexos" compilerOrder="212"/>
+				<dataLink field = "Dados_Reflexos">
+					<event name="onChange">
+						if (sheet.Dados_Reflexos == "AGI") then
+							sheet.Dados_Reflexos = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Reflexos == "FOR") then
+							sheet.Dados_Reflexos = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Reflexos == "INT") then
+							sheet.Dados_Reflexos = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Reflexos == "PRE") then
+							sheet.Dados_Reflexos = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Reflexos == "VIG") then
+							sheet.Dados_Reflexos = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1132" top="1155" width="47" height="30" compilerOrder="215">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Reflexos" compilerOrder="216"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1197" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Religião", sheet.Dados_Religiao, sheet.Bonus_Religiao, sheet.Treino_Religiao, sheet.Outros_Religiao);
+				</event>
+			
+			</button>
+            <layout left="1006" top="1191" width="44" height="31" compilerOrder="225">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Religiao" compilerOrder="226"/>
+				<dataLink field = "Dados_Religiao">
+					<event name="onChange">
+						if (sheet.Dados_Religiao == "AGI") then
+							sheet.Dados_Religiao = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Religiao == "FOR") then
+							sheet.Dados_Religiao = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Religiao == "INT") then
+							sheet.Dados_Religiao = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Religiao == "PRE") then
+							sheet.Dados_Religiao = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Religiao == "VIG") then
+							sheet.Dados_Religiao = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1081" top="1191" width="34" height="31" compilerOrder="227">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Religiao" compilerOrder="228"/>
+            </layout>&#xD;
+            <layout left="1194" top="1191" width="44" height="31" compilerOrder="219">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Religiao" compilerOrder="220"/>
+            </layout>&#xD;
+            <layout left="1132" top="1193" width="47" height="30" compilerOrder="229">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Religiao" compilerOrder="230"/>
+            </layout>&#xD;
+            <layout left="547" top="1196" width="94" height="69" compilerOrder="223">
+                <edit transparent="true" fontSize="49.6" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="94" height="70" field="Text_KJ1PQM09mb__0" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="195" top="1198" width="103" height="91" compilerOrder="221">
+                <label fontSize="66.2" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="103" height="92" field="Defesa" compilerOrder="222"/>
+				
+				<dataLink field = "Agilidade">
+					<event name="onChange">
+						sheet.Defesa = math.floor( 10 + (sheet.Agilidade or 0) + (sheet.Defesa_Equip or 0) + (sheet.Defesa_Outros or 0) )
+				
+					</event>
+				</dataLink>
+				<dataLink field = "Defesa_Equip">
+					<event name="onChange">
+						sheet.Defesa = math.floor( 10 + (sheet.Agilidade or 0) + (sheet.Defesa_Equip or 0) + (sheet.Defesa_Outros or 0) )
+				
+					</event>
+				</dataLink>
+				<dataLink field = "Defesa_Outros">
+					<event name="onChange">
+						sheet.Defesa = math.floor( 10 + (sheet.Agilidade or 0) + (sheet.Defesa_Equip or 0) + (sheet.Defesa_Outros or 0) )
+				
+					</event>
+				</dataLink>
+            </layout>&#xD;
+            <layout left="1082" top="1228" width="34" height="31" compilerOrder="233">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Sobrevivencia" compilerOrder="234"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1235" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Sobrevivência", sheet.Dados_Sobrevivencia, sheet.Bonus_Sobrevivencia, sheet.Treino_Sobrevivencia, sheet.Outros_Sobrevivencia);
+				</event>
+			
+			</button>
+            <layout left="1006" top="1229" width="44" height="31" compilerOrder="231">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Sobrevivencia" compilerOrder="232"/>
+				<dataLink field = "Dados_Sobrevivencia">
+					<event name="onChange">
+						if (sheet.Dados_Sobrevivencia == "AGI") then
+							sheet.Dados_Sobrevivencia = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Sobrevivencia == "FOR") then
+							sheet.Dados_Sobrevivencia = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Sobrevivencia == "INT") then
+							sheet.Dados_Sobrevivencia = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Sobrevivencia == "PRE") then
+							sheet.Dados_Sobrevivencia = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Sobrevivencia == "VIG") then
+							sheet.Dados_Sobrevivencia = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1194" top="1229" width="44" height="31" compilerOrder="237">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Sobrevivencia" compilerOrder="238"/>
+            </layout>&#xD;
+            <layout left="1132" top="1230" width="47" height="30" compilerOrder="235">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Sobrevivencia" compilerOrder="236"/>
+            </layout>&#xD;
+            <layout left="397" top="1250" width="41" height="31" compilerOrder="239">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="41" height="32" field="Defesa_Equip" compilerOrder="240"/>
+            </layout>&#xD;
+            <layout left="452" top="1250" width="41" height="31" compilerOrder="241">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="41" height="32" field="Defesa_Outros" compilerOrder="242"/>
+            </layout>&#xD;
+            <layout left="650" top="1258" width="82" height="55" compilerOrder="243">
+                <edit transparent="true" fontSize="39.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="56" field="Text_WpKhV4tRMB__0" compilerOrder="244"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1271" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Tática", sheet.Dados_Tatica, sheet.Bonus_Tatica, sheet.Treino_Tatica, sheet.Outros_Tatica);
+				</event>
+			
+			</button>
+            <layout left="1006" top="1265" width="44" height="31" compilerOrder="245">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Tatica" compilerOrder="246"/>
+				<dataLink field = "Dados_Tatica">
+					<event name="onChange">
+						if (sheet.Dados_Tatica == "AGI") then
+							sheet.Dados_Tatica = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Tatica == "FOR") then
+							sheet.Dados_Tatica = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Tatica == "INT") then
+							sheet.Dados_Tatica = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Tatica == "PRE") then
+							sheet.Dados_Tatica = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Tatica == "VIG") then
+							sheet.Dados_Tatica = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1194" top="1265" width="44" height="31" compilerOrder="251">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Tatica" compilerOrder="252"/>
+            </layout>&#xD;
+            <layout left="1082" top="1266" width="34" height="31" compilerOrder="247">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Tatica" compilerOrder="248"/>
+            </layout>&#xD;
+            <layout left="1132" top="1266" width="47" height="30" compilerOrder="249">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Tatica" compilerOrder="250"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1308" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Tecnologia", sheet.Dados_Tecnologia, sheet.Bonus_Tecnologia, sheet.Treino_Tecnologia, sheet.Outros_Tecnologia);
+				</event>
+			
+			</button>
+            <layout left="1005" top="1302" width="44" height="31" compilerOrder="253">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Tecnologia" compilerOrder="254"/>
+				<dataLink field = "Dados_Tecnologia">
+					<event name="onChange">
+						if (sheet.Dados_Tecnologia == "AGI") then
+							sheet.Dados_Tecnologia = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Tecnologia == "FOR") then
+							sheet.Dados_Tecnologia = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Tecnologia == "INT") then
+							sheet.Dados_Tecnologia = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Tecnologia == "PRE") then
+							sheet.Dados_Tecnologia = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Tecnologia == "VIG") then
+							sheet.Dados_Tecnologia = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1082" top="1302" width="34" height="31" compilerOrder="255">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Tecnologia" compilerOrder="256"/>
+            </layout>&#xD;
+            <layout left="1194" top="1302" width="44" height="31" compilerOrder="259">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Tecnologia" compilerOrder="260"/>
+            </layout>&#xD;
+            <layout left="1132" top="1304" width="47" height="30" compilerOrder="257">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Tecnologia" compilerOrder="258"/>
+            </layout>&#xD;
+            <layout left="269" top="1322" width="464" height="31" compilerOrder="261">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="464" height="32" field="Text_DbsmqIEbh1__0" compilerOrder="262"/>
+            </layout>&#xD;
+			
+			<button left="748" top="1344" text="Rolar" fontSize='12' width="37">
+			<event name="onClick">
+					rolarPericia("Vontade", sheet.Dados_Vontade, sheet.Bonus_Vontade, sheet.Treino_Vontade, sheet.Outros_Vontade);
+				</event>
+			
+			</button>
+            <layout left="1006" top="1338" width="44" height="31" compilerOrder="263">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Dados_Vontade" compilerOrder="264"/>
+				<dataLink field = "Dados_Vontade">
+					<event name="onChange">
+						if (sheet.Dados_Vontade == "AGI") then
+							sheet.Dados_Vontade = (sheet.Agilidade or 1);
+						
+						elseif (sheet.Dados_Vontade == "FOR") then
+							sheet.Dados_Vontade = (sheet.Forca or 1);
+						
+						
+						elseif (sheet.Dados_Vontade == "INT") then
+							sheet.Dados_Vontade = (sheet.Intelecto or 1);
+						
+						
+						elseif (sheet.Dados_Vontade == "PRE") then
+							sheet.Dados_Vontade = (sheet.Presenca or 1);
+						
+						
+						elseif (sheet.Dados_Vontade == "VIG") then
+							sheet.Dados_Vontade = (sheet.Vigor or 1);
+						
+						end;
+					</event>
+				</dataLink>
+			
+            </layout>&#xD;
+            <layout left="1195" top="1339" width="44" height="31" compilerOrder="269">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="32" field="Outros_Vontade" compilerOrder="270"/>
+            </layout>&#xD;
+            <layout left="1081" top="1340" width="34" height="31" compilerOrder="265">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="32" field="Bonus_Vontade" compilerOrder="266"/>
+            </layout>&#xD;
+            <layout left="1132" top="1340" width="47" height="30" compilerOrder="267">
+                <edit transparent="true" fontSize="20.3" fontColor="#FFFFFF" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="31" field="Treino_Vontade" compilerOrder="268"/>
+            </layout>&#xD;
+            <layout left="296" top="1362" width="438" height="31" compilerOrder="271">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="438" height="32" field="Text_U6DyLOx1Cg__0" compilerOrder="272"/>
+            </layout>&#xD;
+			
+			<button left="118" top="1478" text="Rolar" fontSize='12' width="37">
+				
+				<event name="onClick">
+					rolarAtaque(sheet.Descricao_Atq1, sheet.Teste_Atq1, sheet.Dano_Atq1, sheet.Margem_1, sheet.Crit_1, sheet.Tipo_1);
+				</event>
+			
+			</button>
+            <layout left="161" top="1472" width="372" height="31" compilerOrder="273">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="372" height="32" field="Descricao_Atq1" compilerOrder="274"/>
+            </layout>&#xD;
+            <layout left="549" top="1472" width="134" height="31" compilerOrder="275">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="134" height="32" field="Teste_Atq1" compilerOrder="276"/>
+            </layout>&#xD;
+			
+			<comboBox left="860" top="1477" width ="67" field="Crit_1" items="{'Crítico', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8', 'X1'}" values="{'', '2', '3', '4', '5', '6', '7', '8', '1'}" value=""/>
+			<comboBox left="930" top="1477" width ="83" field="Margem_1" items="{'Margem', '20', '19', '18', '17', '16', '15'}" values="{'', '20', '19', '18', '17', '16', '15'}" value=""/>
+			<comboBox left="1016" top="1477" width ="78" field="alcan_1" items="{'Alcance', 'CaC', 'Curto', 'Médio', 'Longo'}" values="{'', '1', '2', '3'}" value=""/>
+			<comboBox left="1097" top="1477" width ="100" field="Tipo_1" items="{'Tipo', 'Balístico', 'Cortante', 'Impacto', 'Perfurante', 'Elemental'}" values="{'', 'balístico', 'cortante', 'de impacto', 'perfurante', 'elemental'}" value=""/>
+			
+            <layout left="700" top="1473" width="141" height="31" compilerOrder="277">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="141" height="32" field="Dano_Atq1" compilerOrder="278"/>
+            </layout>&#xD;
+            
+			
+			<button left="118" top="1515" text="Rolar" fontSize='12' width="37">
+				
+				<event name="onClick">
+					rolarAtaque(sheet.Descricao_Atq2, sheet.Teste_Atq2, sheet.Dano_Atq2, sheet.Margem_2, sheet.Crit_2, sheet.Tipo_2);
+				</event>
+			
+			</button>
+            <layout left="160" top="1509" width="372" height="31" compilerOrder="281">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="372" height="32" field="Descricao_Atq2" compilerOrder="282"/>
+            </layout>&#xD;
+            <layout left="549" top="1510" width="134" height="31" compilerOrder="283">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="134" height="32" field="Teste_Atq2" compilerOrder="284"/>
+            </layout>&#xD;
+			
+			<comboBox left="860" top="1513" width ="67" field="Crit_2" items="{'Crítico', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8', 'X1'}" values="{'', '2', '3', '4', '5', '6', '7', '8', '1'}" value=""/>
+			<comboBox left="930" top="1513" width ="83" field="Margem_2" items="{'Margem', '20', '19', '18', '17', '16', '15'}" values="{'', '20', '19', '18', '17', '16', '15'}" value=""/>
+			<comboBox left="1016" top="1513" width ="78" field="alcan_2" items="{'Alcance', 'CaC', 'Curto', 'Médio', 'Longo'}" values="{'', '1', '2', '3'}" value=""/>
+			<comboBox left="1097" top="1513" width ="100" field="Tipo_2" items="{'Tipo', 'Balístico', 'Cortante', 'Impacto', 'Perfurante', 'Elemental'}" values="{'', 'balístico', 'cortante', 'de impacto', 'perfurante', 'elemental'}" value=""/>
+			
+            <layout left="700" top="1510" width="141" height="31" compilerOrder="285">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="141" height="32" field="Dano_Atq2" compilerOrder="286"/>
+            </layout>&#xD;
+           
+			
+			<button left="118" top="1551" text="Rolar" fontSize='12' width="37">
+				
+				<event name="onClick">
+					rolarAtaque(sheet.Descricao_Atq3, sheet.Teste_Atq3, sheet.Dano_Atq3, sheet.Margem_3, sheet.Crit_3, sheet.Tipo_3);
+				</event>
+			
+			</button>
+            <layout left="160" top="1545" width="372" height="31" compilerOrder="289">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="372" height="32" field="Descricao_Atq3" compilerOrder="290"/>
+            </layout>&#xD;
+            <layout left="549" top="1545" width="134" height="31" compilerOrder="291">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="134" height="32" field="Teste_Atq3" compilerOrder="292"/>
+            </layout>&#xD;
+			
+			<comboBox left="860" top="1548" width ="67" field="Crit_3" items="{'Crítico', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8', 'X1'}" values="{'', '2', '3', '4', '5', '6', '7', '8', '1'}" value=""/>
+			<comboBox left="930" top="1548" width ="83" field="Margem_3" items="{'Margem', '20', '19', '18', '17', '16', '15'}" values="{'', '20', '19', '18', '17', '16', '15'}" value=""/>
+			<comboBox left="1016" top="1548" width ="78" field="alcan_3" items="{'Alcance', 'CaC', 'Curto', 'Médio', 'Longo'}" values="{'', '1', '2', '3'}" value=""/>
+			<comboBox left="1097" top="1548" width ="100" field="Tipo_3" items="{'Tipo', 'Balístico', 'Cortante', 'Impacto', 'Perfurante', 'Elemental'}" values="{'', 'balístico', 'cortante', 'de impacto', 'perfurante', 'elemental'}" value=""/>
+			
+            <layout left="700" top="1546" width="141" height="31" compilerOrder="293">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="141" height="32" field="Dano_Atq3" compilerOrder="294"/>
+            </layout>&#xD;
+            
+			
+			<button left="118" top="1588" text="Rolar" fontSize='12' width="37">
+				
+				<event name="onClick">
+					rolarAtaque(sheet.Descricao_Atq4, sheet.Teste_Atq4, sheet.Dano_Atq4, sheet.Margem_4, sheet.Crit_4, sheet.Tipo_4);
+				</event>
+			
+			</button>
+            <layout left="160" top="1582" width="372" height="31" compilerOrder="297">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="372" height="32" field="Descricao_Atq4" compilerOrder="298"/>
+            </layout>&#xD;
+            <layout left="549" top="1582" width="134" height="31" compilerOrder="299">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="134" height="32" field="Teste_Atq4" compilerOrder="300"/>
+            </layout>&#xD;
+            
+			<comboBox left="860" top="1585" width ="67" field="Crit_4" items="{'Crítico', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8', 'X1'}" values="{'', '2', '3', '4', '5', '6', '7', '8', '1'}" value=""/>
+			<comboBox left="930" top="1585" width ="83" field="Margem_4" items="{'Margem', '20', '19', '18', '17', '16', '15'}" values="{'', '20', '19', '18', '17', '16', '15'}" value=""/>
+			<comboBox left="1016" top="1585" width ="78" field="alcan_4" items="{'Alcance', 'CaC', 'Curto', 'Médio', 'Longo'}" values="{'', '1', '2', '3'}" value=""/>
+			<comboBox left="1097" top="1585" width ="100" field="Tipo_4" items="{'Tipo', 'Balístico', 'Cortante', 'Impacto', 'Perfurante', 'Elemental'}" values="{'', 'balístico', 'cortante', 'de impacto', 'perfurante', 'elemental'}" value=""/>
+			
+            <layout left="700" top="1583" width="141" height="31" compilerOrder="301">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="141" height="32" field="Dano_Atq4" compilerOrder="302"/>
+            </layout>&#xD;
+			
+			<button left="118" top="1624" text="Rolar" fontSize='12' width="37">
+				
+				<event name="onClick">
+					rolarAtaque(sheet.Descricao_Atq5, sheet.Teste_Atq5, sheet.Dano_Atq5, sheet.Margem_5, sheet.Crit_5, sheet.Tipo_5);
+				</event>
+			
+			</button>
+			<!-- <image left="118" top="1624" width="32" height="32" src="/d20_redmen.png"/> -->
+            <layout left="160" top="1618" width="372" height="31" compilerOrder="305">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="372" height="32" field="Descricao_Atq5" compilerOrder="306"/>
+            </layout>&#xD;
+            <layout left="549" top="1618" width="134" height="31" compilerOrder="307">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="134" height="32" field="Teste_Atq5" compilerOrder="308"/>
+            </layout>&#xD;
+			
+			<comboBox left="860" top="1621" width ="67" field="Crit_5" items="{'Crítico', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8', 'X1'}" values="{'', '2', '3', '4', '5', '6', '7', '8', '1'}" value=""/>
+			<comboBox left="930" top="1621" width ="83" field="Margem_5" items="{'Margem', '20', '19', '18', '17', '16', '15'}" values="{'', '20', '19', '18', '17', '16', '15'}" value=""/>
+			<comboBox left="1016" top="1621" width ="78" field="alcan_5" items="{'Alcance', 'CaC', 'Curto', 'Médio', 'Longo'}" values="{'', '1', '2', '3'}" value=""/>
+			<comboBox left="1097" top="1621" width ="100" field="Tipo_5" items="{'Tipo', 'Balístico', 'Cortante', 'Impacto', 'Perfurante', 'Elemental'}" values="{'', 'balístico', 'cortante', 'de impacto', 'perfurante', 'elemental'}" value=""/>
+			
+            <layout left="700" top="1618" width="141" height="31" compilerOrder="309">
+                <edit transparent="true" fontSize="21.1" fontColor="#FFFFFF" vertTextAlign="center" left="0" top="0" width="141" height="32" field="Dano_Atq5" compilerOrder="310"/>
+            </layout>&#xD;
+           
+			
+        </rectangle>
+    </scrollBox>
+    <dataLink fields="{&apos;Dropdown_0T7Jr95_9B__0&apos;, &apos;Dropdown_3LmF__KWEi__0&apos;, &apos;Dropdown_4dSy3__x_3__0&apos;, &apos;Dropdown_4gWr5KDwpy__0&apos;, &apos;Dropdown_bh3ke4om3V__0&apos;, &apos;Dropdown_d9eu225b3F__0&apos;, &apos;Dropdown_elBV5qCRJ6__0&apos;, &apos;Dropdown_FKWf3sFZ_m__0&apos;, &apos;Dropdown_G2Tvxq5uVC__0&apos;, &apos;Dropdown_h2BVM5YTUW__0&apos;, &apos;Dropdown_h3aDxNZrBa__0&apos;, &apos;Dropdown_h3N4aXYwu4__0&apos;, &apos;Dropdown_j4C49ejqQF__0&apos;, &apos;Dropdown_jq8fmIYRqH__0&apos;, &apos;Dropdown_KEUx9nYBez__0&apos;, &apos;Dropdown_m69hm52VUM__0&apos;, &apos;Dropdown_QObQwUztn6__0&apos;, &apos;Dropdown_qsHVx7t4Me__0&apos;, &apos;Dropdown_qwhz8wDJKT__0&apos;, &apos;Dropdown_sIdXWPUWnR__0&apos;, &apos;Dropdown_SsBuBfG3EP__0&apos;, &apos;Dropdown_tpeKuA9ynK__0&apos;, &apos;Dropdown_VlrQllX26a__0&apos;, &apos;Dropdown_vnM_VbtRtf__0&apos;, &apos;Dropdown_WaqnWe_U37__0&apos;, &apos;Dropdown_wOAW4UmKsQ__0&apos;, &apos;Dropdown_YDNKwJV6BI__0&apos;, &apos;Dropdown_zo4_95RzvC__0&apos;}" defaultValues="{&apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;}"/>
+	
+	
+</form>
+
