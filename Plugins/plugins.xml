@@ -292,7 +292,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="1.1.1" compilationDate="20052024143659" compilationDigest="b9371e70161db47bb9d9f26ca7e7f09ea5646dfe">
+    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="1.2.1" compilationDate="28072024133012" compilationDigest="acd90d7ffb134b94a5d51acfd39ebd199dccd68e">
         <info lang="pt-BR" name="Ficha Starfinder" description="Ficha feita para o sistema Starfinder." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Starfinder.CompanhiaMercenaria" title="Ficha Starfinder (Companhia de Mercenarios)" formType="sheetTemplate">
@@ -686,7 +686,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.2" compilationDate="25072024154300" compilationDigest="a42379ef56d28daf640e71d6b858c1d034e7d2f8">
+    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.2.2" compilationDate="28072024185314" compilationDigest="85ff9772219b1269ce02daf4b976b7d0819306fd">
         <info lang="pt-BR" name="Ficha Pathfinder" description="Ficha feita para o sistema Pathfinder." author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder" formType="sheetTemplate">
@@ -726,7 +726,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="4.2" compilationDate="23072024002629" compilationDigest="ef8d2901974bf524be79f988b506f3e4307b8fab">
+    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="4.2.2" compilationDate="28072024185456" compilationDigest="58547a72abdf90de1d2c3f06534a81ed559db43e">
         <info lang="pt-BR" name="Ficha RPG meister" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Alterar.DataType.FichaRPGmeister" title="Ficha RPGmeister" formType="sheetTemplate">

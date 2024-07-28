@@ -91,15 +91,15 @@
 											(tonumber(sheet.precoBolsos) or 0) +
 											(tonumber(sheet.precoImoveis) or 0) +
 											(tonumber(sheet.precoInventorioComp) or 0) +
-											(tonumber(sheet.precoItens) or 0);
+											(tonumber(sheet.precoItens) or 0)
 
 							-- Calculando dinheiro restante
-							local total = tonumber(sheet.dinheiroTotal) or 0;
-							local restante = total - gastos;
+							local total = tonumber(sheet.dinheiroTotal) or 0
+							local restante = total - gastos
 
-							sheet.gastos = gastos;
-							sheet.dinheiroRestante = restante;
-						end;
+							sheet.gastos = gastos
+							sheet.dinheiroRestante = restante
+						end
 					</event>
 				</dataLink>
 	        </rectangle>
@@ -111,21 +111,21 @@
 				<TitleLabel text="PESADA" field="cargaPesada" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
 
 				<TitleLabel text="ERGUER" field="cargaErguer" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
-				<TitleLabel text="EMPURRAR" field="cargaLevantar" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
 				<TitleLabel text="LEVANTAR" field="cargaEmpurrar" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
+				<TitleLabel text="EMPURRAR" field="cargaLevantar" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
 
 				<TitleLabel text="ATUAL" field="cargaAtual" formatFloat=",0.## Kg" widthL="4" widthR="8"/>
 				<Title text="FORÇA EXTRA" field="cargaForca" widthL="4" widthR="8"/>
 			
 				<dataLink field="cargaPesada">
-					<event name="onUserChange">
+					<event name="onChange">
 						if sheet~= nil then
 
-							local mod = (tonumber(sheet.cargaPesada) or 0);
-							sheet.cargaErguer = mod;
-							sheet.cargaLevantar = (2*mod);
-							sheet.cargaEmpurrar = (5*mod);
-						end;
+							local mod = (tonumber(sheet.cargaPesada) or 0)
+							sheet.cargaErguer = mod
+							sheet.cargaEmpurrar = (2*mod)
+							sheet.cargaLevantar = (5*mod)
+						end
 					</event>
 				</dataLink>
 				<dataLink fields="{'pesoEquipamento', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
@@ -139,9 +139,9 @@
 										(tonumber(sheet.pesoOutros) or 0) +
 										(tonumber(sheet.pesoMunicoes) or 0) +
 										(tonumber(sheet.pesoBolsos) or 0) +
-										(tonumber(sheet.pesoImoveis) or 0);
-							sheet.cargaAtual = carga;
-						end;
+										(tonumber(sheet.pesoImoveis) or 0)
+							sheet.cargaAtual = carga
+						end
 					</event>
 				</dataLink>
 	        </rectangle>

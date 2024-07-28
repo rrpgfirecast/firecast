@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.7b">
 	<id>FICHA_RPG_MEISTER</id>
-	<version>4.2.1</version>
+	<version>4.2.2</version>
     <info lang="pt-BR">
         <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Ficha RPG meister</name>

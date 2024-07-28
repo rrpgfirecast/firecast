@@ -250,7 +250,7 @@
 				<dataLink fields="{'bba', 'efetModFor', 'efetModDes', 'bmdTamanho', 'bmdOutros', 'bmdDiversos', 'nvNeg'}"> 
 					<event name="onChange">
 						if sheet== nil then return end
-						local dmc = (tonumber(sheet.bba) or 0) + 
+						local dmc = 10 + (tonumber(sheet.bba) or 0) + 
 									(tonumber(sheet.bmdTamanho) or 0) +   
 									(tonumber(sheet.bmdOutros) or 0) +   
 									(tonumber(sheet.bmdDiversos) or 0) +
