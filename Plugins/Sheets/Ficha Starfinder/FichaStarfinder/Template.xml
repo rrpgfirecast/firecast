@@ -439,23 +439,16 @@
 	        </event>
 		</dataLink>
     </template>
-	<template name="atributeFlow">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="14" margins="{bottom=4}" horzAlign="center">
-			<smallFieldCenter field="inicial$(atr)"/>
-			<smallFieldCenter field="raca$(atr)"/>
-			<smallFieldCenter field="tema$(atr)"/>
-			<smallFieldCenter field="nep$(atr)"/>
-			<smallFieldCenter field="inerente$(atr)"/>
-			<smallFieldCenter field="tamanho$(atr)"/>
-			<smallFieldCenter field="outros$(atr)"/>
-			<flowPart minWidth="20" maxWidth="20" height="20"/>
-			<midFieldCenter field="melhoria$(atr)"/>
-			<midFieldCenter field="danoTemp$(atr)"/>
-			<midFieldCenter field="danoPerm$(atr)"/>
-			<midFieldCenter field="temporario$(atr)"/>
-			<midFieldCenter field="magia$(atr)"/>
-			<midFieldCenter field="classe$(atr)"/>
-		</flowLayout>
+	<template name="attributeFlowReal">
+		<edit g="col" g-width="2" field="inicial$(atr)" height="25"/>
+		<layout g="col" g-width="10" height="25">
+			<edit g="col" g-width="2" field="raca$(atr)" height="25"/>
+			<edit g="col" g-width="2" field="tema$(atr)" height="25"/>
+			<edit g="col" g-width="2" field="nep$(atr)" height="25"/>
+			<edit g="col" g-width="2" field="inerente$(atr)" height="25"/>
+			<edit g="col" g-width="2" field="tamanho$(atr)" height="25"/>
+			<edit g="col" g-width="2" field="outros$(atr)" height="25"/>
+		</layout>
 
 		<dataLink fields="{'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}" defaultValues="{'true', 'true', 'true', 'true', 'true', 'true'}"/>
 		<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'tema$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)', 'magia$(atr)', 'classe$(atr)', 'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}">
@@ -463,7 +456,7 @@
 				if sheet~= nil then
 					local real = 	(tonumber(sheet.inicial$(atr)) or 0) + 
 									(tonumber(sheet.raca$(atr)) or 0) + 
-									(tonumber(sheet.tema$(atr)) or 0) + 
+									(tonumber(sheet.tema$(atr)) or 0) +
 									(tonumber(sheet.nep$(atr)) or 0) + 
 									(tonumber(sheet.inerente$(atr)) or 0) + 
 									(tonumber(sheet.tamanho$(atr)) or 0) + 
@@ -495,6 +488,14 @@
 				]]>	
 			</event>
 		</dataLink>
+	</template>
+	<template name="attributeFlowEfet">
+		<edit g="col" g-width="2" field="melhoria$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="danoTemp$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="danoPerm$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="temporario$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="magia$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="classe$(atr)" height="25"/>
 	</template>
 	<template name="Atribute">
 		<button left="5" width="35" text="$(atrU)" fontSize="11">
@@ -932,7 +933,7 @@
 						i = 1
 						max = 1
 						
-						array = {sheet.ataque$(num)a, sheet.ataque$(num)b, sheet.ataque$(num)c}
+						array = {sheet.ataque$(num)a, sheet.ataque$(num)b, sheet.ataque$(num)c, sheet.ataque$(num)d}
 			
 						decisivo = sheet.decisivo$(num) or "20"
 						decisivo = tonumber(string.sub(decisivo, 1, 2))
@@ -978,9 +979,12 @@
 						
 					</event>
 				</button>
-				<edit type="number" vertTextAlign="center"  g="col" g-width="3" height="25" field="ataque$(num)a"/>
-				<edit type="number" vertTextAlign="center"  g="col" g-width="3" height="25" field="ataque$(num)b"/>
-				<edit type="number" vertTextAlign="center"  g="col" g-width="3" height="25" field="ataque$(num)c"/>
+				<layout g="col" g-width="6" g-width-lg="9" height="25">
+					<edit type="number" vertTextAlign="center"  g="col" g-width="3" height="25" field="ataque$(num)a"/>
+					<edit type="number" vertTextAlign="center"  g="col" g-width="3" height="25" field="ataque$(num)b"/>
+					<edit type="number" vertTextAlign="center"  g="col" g-width="3" height="25" field="ataque$(num)c"/>
+					<edit type="number" vertTextAlign="center"  g="col" g-width="3" height="25" field="ataque$(num)d"/>
+				</layout>
 
 				<TitleButton text="DANO" field="dano$(num)" widthR="3" onClick="rollDamage($(num))"/>
 				<TitleButton text="CRITICO" field="danoCritico$(num)" widthR="3" onClick="rollCritDamage($(num))"/>

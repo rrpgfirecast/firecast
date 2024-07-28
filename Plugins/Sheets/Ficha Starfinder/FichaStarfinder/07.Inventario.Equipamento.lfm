@@ -102,6 +102,9 @@
 			self.equipPriceEdit.visible = false;
 		</event>
 	</edit>
+
+	<dataLink fields="{'peso','preco'}" defaultValues="{'0','0'}"/>
+	
 	<layout g="col" g-width="1" height="25">
 		<button g="col" g-width="6" height="25" text="ℹ️" onClick="showPopup();" textTrimming="none"/>
 		<button g="col" g-width="6" height="25" text="🗑️" onClick="askForDelete();" textTrimming="none"/>

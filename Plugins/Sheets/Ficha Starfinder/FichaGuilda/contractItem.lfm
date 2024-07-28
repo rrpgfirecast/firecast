@@ -118,8 +118,6 @@
                 elseif "$(type)"=="direct" then
                     sheet.$(field)Total = val + mult
                 end
-
-
             </event>
         </dataLink>
     </template>

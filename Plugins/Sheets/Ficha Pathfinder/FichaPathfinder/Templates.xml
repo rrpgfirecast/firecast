@@ -109,22 +109,14 @@
 	        </event>
 		</dataLink>
     </template>
-	<template name="attributeFlow">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
-			<smallFieldCenter field="inicial$(atr)"/>
-			<smallFieldCenter field="raca$(atr)"/>
-			<smallFieldCenter field="nep$(atr)"/>
-			<smallFieldCenter field="inerente$(atr)"/>
-			<smallFieldCenter field="tamanho$(atr)"/>
-			<smallFieldCenter field="outros$(atr)"/>
-			<flowPart minWidth="20" maxWidth="20" height="20"/>
-			<midFieldCenter field="melhoria$(atr)"/>
-			<midFieldCenter field="danoTemp$(atr)"/>
-			<midFieldCenter field="danoPerm$(atr)"/>
-			<midFieldCenter field="temporario$(atr)"/>
-			<midFieldCenter field="magia$(atr)"/>
-			<midFieldCenter field="classe$(atr)"/>
-		</flowLayout>
+
+	<template name="attributeFlowReal">
+		<edit g="col" g-width="2" field="inicial$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="raca$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="nep$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="inerente$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="tamanho$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="outros$(atr)" height="25"/>
 
 		<dataLink fields="{'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}" defaultValues="{'true', 'true', 'true', 'true', 'true', 'true'}"/>
 		<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)', 'magia$(atr)', 'classe$(atr)', 'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}">
@@ -163,6 +155,14 @@
 				]]>	
 			</event>
 		</dataLink>
+	</template>
+	<template name="attributeFlowEfet">
+		<edit g="col" g-width="2" field="melhoria$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="danoTemp$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="danoPerm$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="temporario$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="magia$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="classe$(atr)" height="25"/>
 	</template>
 	<template name="attributeComboBox">
 		<flowPart minWidth="60" maxWidth="60" height="20">

@@ -131,7 +131,7 @@
 					<Attribute atr="Sab" atrN="Sabedoria" num="5"/>
 					<Attribute atr="Car" atrN="Carisma" num="6"/>
 				</layout>
-				<button g="col" g-width="1" g-min-height="150" name="AtrBut" text=">>" margins="{top=25}" onClick="ShowPopUp('popAtributo', self.AtrBut)" hint="Detalhes" textTrimming="none"/>
+				<button g="col" g-width="1" g-min-height="150" name="AtrBut" text=">>" margins="{top=25}" onClick="ShowPopUp('popAttribute', self.AtrBut)" hint="Detalhes" textTrimming="none"/>
 			</rectangle>
 			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="200">
 				<label g="col" g-width="12" text="PONTOS DE VIGOR" horzTextAlign="center" height="25"/>

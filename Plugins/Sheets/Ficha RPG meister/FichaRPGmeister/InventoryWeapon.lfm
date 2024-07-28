@@ -133,6 +133,8 @@
 		</event>
 	</edit>
 
+	<dataLink fields="{'peso','preco'}" defaultValues="{'0','0'}"/>
+
 	<button g="col" g-width="1" height="25" text="ℹ️" onClick="showArmaPopup()" hint="Detalhes" textTrimming="none"/>
 	<button g="col" g-width="1" height="25" text="🖋️" onClick="createName()" hint="Nomear Arma" textTrimming="none"/>
 	<button g="col" g-width="1" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>

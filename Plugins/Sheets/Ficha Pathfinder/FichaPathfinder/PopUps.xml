@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group>
-	<popup name="popAtributo" width="820" height="170" backOpacity="0.4" autoScopeNode="false">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
-			<smallTitleCenter text="Inicial"/>
-			<smallTitleCenter text="Raça"/>
-			<smallTitleCenter text="NEP"/>
-			<smallTitleCenter text="Inerente"/>
-			<smallTitleCenter text="Tamanho"/>
-			<smallTitleCenter text="Outros"/>
-			<flowPart minWidth="20" maxWidth="20" height="15"/>
-			<smallCheckboxCenter text="Melhoria" field="isMelhoriaActive"/>
-			<smallCheckboxCenter text="Dn Temp." field="isDnTempActive"/>
-			<smallCheckboxCenter text="Dn Perm." field="isDnPermActive"/>
-			<smallCheckboxCenter text="Temp." field="isTempActive"/>
-			<smallCheckboxCenter text="Classe" field="isClasseActive"/>
-			<smallCheckboxCenter text="Magia" field="isMagiaActive"/>
-		</flowLayout>
-		<attributeFlow atr="For"/>
-		<attributeFlow atr="Des"/>
-		<attributeFlow atr="Con"/>
-		<attributeFlow atr="Int"/>
-		<attributeFlow atr="Sab"/>
-		<attributeFlow atr="Car"/>
+	<popup name="popAttribute" width="410" height="370" backOpacity="0.4" autoScopeNode="false" g-cnt-line-spacing="1" g-cnt-gutter="1">
+		<label g="col" g-width="2" text="Inicial" horzTextAlign="center" height="25" textTrimming="none"/>
+		<label g="col" g-width="2" text="Raça" horzTextAlign="center" height="25" textTrimming="none"/>
+		<label g="col" g-width="2" text="NEP" horzTextAlign="center" height="25" textTrimming="none"/>
+		<label g="col" g-width="2" text="Inerente" horzTextAlign="center" height="25" textTrimming="none"/>
+		<label g="col" g-width="2" text="Tamanho" horzTextAlign="center" height="25" textTrimming="none"/>
+		<label g="col" g-width="2" text="Outros" horzTextAlign="center" height="25" textTrimming="none"/>
+
+		<attributeFlowReal atr="For"/>
+		<attributeFlowReal atr="Des"/>
+		<attributeFlowReal atr="Con"/>
+		<attributeFlowReal atr="Int"/>
+		<attributeFlowReal atr="Sab"/>
+		<attributeFlowReal atr="Car"/>
+
+		<checkBox g="col" g-width="2" text="Melhoria" field="isMelhoriaActive" horzTextAlign="center" height="25" textTrimming="none" fontSize="11"/>
+		<checkBox g="col" g-width="2" text="Dn Temp." field="isDnTempActive" horzTextAlign="center" height="25" textTrimming="none" fontSize="11"/>
+		<checkBox g="col" g-width="2" text="Dn Perm." field="isDnPermActive" horzTextAlign="center" height="25" textTrimming="none" fontSize="11"/>
+		<checkBox g="col" g-width="2" text="Temp." field="isTempActive" horzTextAlign="center" height="25" textTrimming="none" fontSize="11"/>
+		<checkBox g="col" g-width="2" text="Classe" field="isClasseActive" horzTextAlign="center" height="25" textTrimming="none" fontSize="11"/>
+		<checkBox g="col" g-width="2" text="Magia" field="isMagiaActive" horzTextAlign="center" height="25" textTrimming="none" fontSize="11"/>
+
+		<attributeFlowEfet atr="For"/>
+		<attributeFlowEfet atr="Des"/>
+		<attributeFlowEfet atr="Con"/>
+		<attributeFlowEfet atr="Int"/>
+		<attributeFlowEfet atr="Sab"/>
+		<attributeFlowEfet atr="Car"/>
 	</popup>
 
 	<popup name="popGrapple" width="225" height="50" backOpacity="0.4" autoScopeNode="false">
