@@ -7,7 +7,7 @@
         <rectangle width="1308" height="1754" color="white">&#xD;
 		<script>
 			local function rolarPericia(nomePericia, dados, bonus, treino, outros)
-					local soma;
+					local soma =0;
 					local aux = {};
 					local personagem = Firecast.getPersonagemDe(sheet);
 					if (personagem ~= nil) then
@@ -18,13 +18,16 @@
 								local roll = Firecast.interpretarRolagem(dadosR);
 								
 								if (bonus~= nil) then
-									roll:concatenar(bonus)
+									roll:concatenar(bonus);
+									soma = soma + tonumber(bonus);
 								end;
 								if (treino ~= nil) then
-									roll:concatenar(treino)
+									roll:concatenar(treino);
+									soma = soma + tonumber(treino);
 								end;
 								if (outros ~= nil) then
-									roll:concatenar(outros)
+									roll:concatenar(outros);
+									soma = soma + tonumber(outros);
 								end;
 
 
@@ -41,13 +44,6 @@
 															for j = 1, #op.resultados, 1 do
 																	aux[#aux + 1] = op.resultados[j];
 															end;
-													elseif op.tipo == "imediato" then
-														if op.valor ~= nil then
-															soma = op.valor;
-															
-														else
-															soma = 0;
-														end;
 													end;
 												end;
 											
