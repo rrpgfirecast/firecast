@@ -1,0 +1,1583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHEROIS1_svg" align="client" theme="default" margins="{top=1}">
+    <style>#frmHEROIS1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+    #frmHEROIS1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1211" height="1723" color="white">&#xD;
+            <image left="0" top="0" width="1207" height="1723" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <!-- QUADRADO SUPERIOR -->
+            <!-- QUADRADO ESQUERDA -->
+            <layout left="13" top="198" width="421" height="64" compilerOrder="1">
+                <edit transparent="true" fontSize="36.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="2"
+            field="nome_personagem" />
+            </layout>&#xD;
+            <layout left="12" top="324" width="421" height="64" compilerOrder="3">
+                <edit transparent="true" fontSize="36.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="4" 
+        field="CODINOME" />
+            </layout>&#xD;
+            <!-- QUADRADO MEIO -->
+            <image field="imagemDoPersonagem" editable="true" style="autoFit" left="438" top="4" width="333" height="384" animate="true" />
+            <!-- QUADRADO DIREITA -->
+            <layout left="776" top="61" width="427" height="23" compilerOrder="5">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="427" height="24" compilerOrder="6"
+        field="origem_personagem"/>
+            </layout>&#xD;
+            <layout left="776" top="137" width="427" height="23" compilerOrder="7">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="427" height="24" compilerOrder="8"
+        field="genero_personagem"/>
+            </layout>&#xD;
+            <layout left="775" top="212" width="427" height="23" compilerOrder="9">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="427" height="24"  compilerOrder="10"
+        field="altura_personagem"/>
+            </layout>&#xD;
+            <layout left="775" top="289" width="427" height="23" compilerOrder="11">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="427" height="24" compilerOrder="12"
+        field="peso_personagem"/>
+            </layout>&#xD;
+            <layout left="775" top="365" width="427" height="23" compilerOrder="13">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="427" height="24" compilerOrder="14"
+        field="idade_personagem"/>
+            </layout>&#xD;
+            <!--ATRIBUTOS-->
+            <!--FORCA-->
+            <layout left="65" top="447" width="80" height="62" compilerOrder="15">
+                <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="16"
+        field="status_forca"/>
+            </layout>&#xD;
+            <layout left="135" top="422" width="23" height="23" compilerOrder="17">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="18"
+        field="graduacao_forca"/>
+            </layout>&#xD;
+            <dataLink fields="{'status_forca'}">
+                <event name="onChange">
+			    local bonus = tonumber(sheet.status_forca or 0);								
+				sheet.status_forca = bonus;	
+				
+				if bonus >= 0 then
+				    sheet.status_forca = bonus;
+				else	
+				    sheet.status_forca = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <dataLink fields="{'graduacao_forca'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.graduacao_forca or 0);								
+				sheet.graduacao_forca = bonus;	
+				
+				if bonus >= 0 then
+					sheet.graduacao_forca = bonus;
+				else	
+					sheet.graduacao_forca = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <button left="72" top="536" width="73" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar força." opacity="0.0">
+                <image align="client" margins="{top=-1}" width="73"  height="31" src=""/>
+                <event name="onClick">
+                local bonus = tonumber(sheet.graduacao_forca);
+                local converter = false;
+                if (bonus >= 0)then
+				sheet.graduacao_forca = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d20");
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.status_forca);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de força do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de força do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                end;
+                end;
+                end;
+            </event>
+            </button>
+            <!--AGILIDADE-->
+            <layout left="207" top="447" width="80" height="61" compilerOrder="19">
+                <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="62" 
+        field="status_agilidade" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="276" top="422" width="23" height="23" compilerOrder="21">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="22"
+        field="graduacao_agilidade"/>
+            </layout>&#xD;
+            <dataLink fields="{'status_agilidade'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.status_agilidade or 0);								
+				sheet.status_agilidade = bonus;	
+				
+				if bonus >= 0 then
+					sheet.status_agilidade = bonus;
+				else	
+					sheet.status_agilidade = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <dataLink fields="{'graduacao_agilidade'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.graduacao_agilidade or 0);								
+				sheet.graduacao_agilidade = bonus;	
+				
+				if bonus >= 0 then
+				    sheet.graduacao_agilidade = bonus;
+				else	
+				    sheet.graduacao_agilidade = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <button left="205" top="534" width="94" height="31" text="" visible='true' cursor="handPoint" hitTest="true" hint="Clique para rolar agilidade." opacity="0.0">
+                <image align="client" margins="{top=-1}" width="73"  height="31" src=""/>
+                <event name="onClick">
+                local bonus = tonumber(sheet.graduacao_agilidade);
+                local converter = false;
+                if (bonus >= 0)then								
+				sheet.graduacao_agilidade = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d20");                        
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+        
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.status_agilidade);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de agilidade do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de agilidade do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                end;
+                end;
+                end;     
+            </event>
+            </button>
+            <!--LUTA-->
+            <layout left="350" top="447" width="80" height="62" compilerOrder="23">
+                <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="24"
+        field="status_luta"/>
+            </layout>&#xD;
+            <layout left="417" top="419" width="24" height="23" compilerOrder="25">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="24" height="24" compilerOrder="26"
+        field="graduacao_luta"/>
+            </layout>&#xD;
+            <dataLink fields="{'status_luta'}">
+                <event name="onChange">
+			    local bonus = tonumber(sheet.status_luta or 0);								
+			    sheet.status_luta = bonus;	
+				
+			    if bonus >= 0 then
+				    sheet.status_luta = bonus;
+			    else	
+			        sheet.status_luta = bonus;
+			    end;						
+			</event>
+            </dataLink>
+            <dataLink fields="{'graduacao_luta'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.graduacao_luta or 0);								
+				sheet.graduacao_luta = bonus;	
+				
+				if bonus >= 0 then
+					sheet.graduacao_luta = bonus;
+				else	
+					sheet.graduacao_luta = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <button left="358" top="534" width="70" height="31" text="" visible='true' opacity="0.0" cursor="handPoint" hitTest="true" hint="Clique para rolar luta." >
+                <image align="client" margins="{top=-1}" width="73"  height="31" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.graduacao_luta);
+                    local converter = false;
+                    if (bonus >= 0)then								
+				    sheet.graduacao_luta = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d20");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_luta);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de luta do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de luta do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    end;
+                    end;
+                    end;     
+                </event>
+            </button>
+            <!--VIGOR-->
+            <layout left="492" top="448" width="80" height="59" compilerOrder="27">
+                <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="60" compilerOrder="28"
+        field="status_vigor"/>
+            </layout>&#xD;
+            <layout left="559" top="419" width="23" height="23" compilerOrder="29">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24" compilerOrder="30"
+        field="graduacao_vigor"/>
+            </layout>&#xD;
+            <dataLink fields="{'graduacao_vigor'}">
+                <event name="onChange">
+				    local bonus = tonumber(sheet.graduacao_vigor or 0);								
+				    sheet.graduacao_vigor = bonus;	
+				
+				    if bonus >= 0 then
+					sheet.graduacao_vigor = bonus;
+				    else	
+					sheet.graduacao_vigor = bonus;
+				    end;						
+			</event>
+            </dataLink>
+            <dataLink fields="{'status_vigor'}">
+                <event name="onChange">
+				    local bonus = tonumber(sheet.status_vigor or 0);								
+				    sheet.status_vigor = bonus;	
+                    
+				    if bonus >= 0 then
+					sheet.status_vigor = bonus;
+				    else	
+					sheet.status_vigor = bonus;
+				    end;						
+			</event>
+            </dataLink>
+            <button left="502" top="534" width="70" height="31" text="" visible='true' opacity="0.0" cursor="handPoint" hitTest="true" hint="Clique para rolar vigor." >
+                <image align="client" margins="{top=-1}" width="73"  height="31" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.graduacao_vigor);
+                    local converter = false;
+                    if (bonus >= 0)then								
+				    sheet.graduacao_vigor = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d20");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_vigor);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de vigor do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de vigor do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    end;
+                    end;
+                    end;     
+                </event>
+            </button>
+            <!--PRONTIDAO-->
+            <layout left="635" top="448" width="80" height="60" compilerOrder="31">
+                <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="61" compilerOrder="32"
+        field="status_prontidao"/>
+            </layout>&#xD;
+            <layout left="701" top="419" width="23" height="23" compilerOrder="33">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24" compilerOrder="34"
+        field="graduacao_prontidao"/>
+            </layout>&#xD;
+            <dataLink fields="{'graduacao_prontidao'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.graduacao_prontidao or 0);								
+				sheet.graduacao_prontidao = bonus;	
+				
+				if bonus >= 0 then
+					sheet.graduacao_prontidao = bonus;
+				else	
+					sheet.graduacao_prontidao = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <dataLink fields="{'status_prontidao'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.status_prontidao or 0);								
+				sheet.status_prontidao = bonus;	
+                    
+				if bonus >= 0 then
+					sheet.status_prontidao = bonus;
+				else	
+					sheet.status_prontidao = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <button left="625" top="534" width="110" visible='true' opacity="0.0"  height="31" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar prontidão." >
+                <image align="client" margins="{top=-1}" width="73"  height="31" src=""/>
+                <event name="onClick">
+                local bonus = tonumber(sheet.graduacao_prontidao);
+                local converter = false;
+                if (bonus >= 0)then								
+			    sheet.graduacao_prontidao = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d20");                        
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+        
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.status_prontidao);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de prontidão do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de prontidão do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                end;
+                end;
+                end;   
+			</event>
+            </button>
+            <!--DESTREZA-->
+            <layout left="778" top="446" width="80" height="62" compilerOrder="35">
+                <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" 
+        field="status_destreza" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="842" top="419" width="23" height="23" compilerOrder="37">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24" 
+        field="graduacao_destreza" compilerOrder="38"/>
+            </layout>&#xD;
+            <dataLink fields="{'status_destreza'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.status_destreza or 0);								
+				sheet.status_destreza = bonus;	
+				
+				if bonus >= 0 then
+					sheet.status_destreza = bonus;
+				else	
+					sheet.status_destreza = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <dataLink fields="{'graduacao_destreza'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.graduacao_destreza or 0);								
+				sheet.graduacao_destreza = bonus;	
+                    
+				if bonus >= 0 then
+					sheet.graduacao_destreza = bonus;
+				else	
+					sheet.graduacao_destreza = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <button left="776" top="534" width="92" height="31" text="" visible='true' opacity="0.0" cursor="handPoint" hitTest="true" hint="Clique para rolar destreza." >
+                <image align="client" margins="{top=-1}" width="73"  height="31" src=""/>
+                <event name="onClick">
+				local bonus = tonumber(sheet.graduacao_destreza);
+                local converter = false;
+                if (bonus >= 0)then								
+			    sheet.graduacao_destreza = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d20");                        
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+        
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.status_destreza);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de destreza do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de destreza do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                end;
+                end;
+                end;    
+			</event>
+            </button>
+            <!--INTELECTO-->
+            <layout left="984" top="419" width="23" height="23" compilerOrder="41">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24" 
+        field="graduacao_intelecto" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="920" top="447" width="80" height="63" compilerOrder="39">
+                <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="64" compilerOrder="40"
+        field="status_intelecto"/>
+            </layout>&#xD;
+            <dataLink fields="{'status_intelecto'}">
+                <event name="onChange">
+			    local bonus = tonumber(sheet.status_intelecto or 0);								
+			    sheet.status_intelecto = bonus;	
+				
+			    if bonus >= 0 then
+				    sheet.status_intelecto = bonus;
+			    else	
+				    sheet.status_intelecto = bonus;
+			    end;						
+		    </event>
+            </dataLink>
+            <dataLink fields="{'graduacao_intelecto'}">
+                <event name="onChange">
+			    local bonus = tonumber(sheet.graduacao_intelecto or 0);								
+			    sheet.graduacao_intelecto = bonus;	
+                    
+			    if bonus >= 0 then
+				    sheet.graduacao_intelecto = bonus;
+			    else	
+			    sheet.graduacao_intelecto = bonus;
+			    end;						
+		    </event>
+            </dataLink>
+            <button left="916" top="534" width="98" height="31"  visible='true' opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar intelecto." >
+                <image align="client" margins="{top=-1}" width="73"  height="31" src=""/>
+                <event name="onClick">
+				local bonus = tonumber(sheet.graduacao_intelecto);
+                local converter = false;
+                if (bonus >= 0)then								
+			    sheet.graduacao_intelecto = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d20");                        
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+        
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.status_intelecto);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de intelecto do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de intelecto do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                end;
+                end;
+                end;     
+			</event>
+            </button>
+            <!--PRESENÇA-->
+            <layout left="1126" top="419" width="23" height="23" compilerOrder="45">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24" compilerOrder="46"
+        field="graduacao_presenca"/>
+            </layout>&#xD;
+            <layout left="1066" top="445" width="79" height="67" compilerOrder="43">
+                <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="68" compilerOrder="44"
+        field="status_presenca"/>
+            </layout>&#xD;
+            <dataLink fields="{'status_presenca'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.status_presenca or 0);								
+				sheet.status_presenca = bonus;	
+				
+				if bonus >= 0 then
+					sheet.status_presenca = bonus;
+				else	
+					sheet.status_presenca = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <dataLink fields="{'graduacao_presenca'}">
+                <event name="onChange">
+				local bonus = tonumber(sheet.graduacao_presenca or 0);								
+				sheet.graduacao_presenca = bonus;	
+                    
+				if bonus >= 0 then
+					sheet.graduacao_presenca = bonus;
+				else	
+					sheet.graduacao_presenca = bonus;
+				end;						
+			</event>
+            </dataLink>
+            <button left="1056" top="534" width="100" height="31" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar presença." visible='true' opacity="0.0">
+                <image align="client" margins="{top=-1}" width="73"  height="31" src=""/>
+                <event name="onClick">
+				local bonus = tonumber(sheet.graduacao_presenca);
+                local converter = false;
+                if (bonus >= 0)then								
+			    sheet.graduacao_presenca = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d20");                        
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+        
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.status_presenca);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de presença do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de presença do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                end;
+                end;
+                end;     
+			</event>
+            </button>
+            <!-- PERICIAS ESQUERDA-->
+            <!--ACROBACIA-->
+            <layout left="108" top="680" width="36" height="35" compilerOrder="47">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+        field="pericia_acrobacia"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_acrobacia'}">
+                <event name="onChange">
+                local bonus = tonumber(sheet.pericia_acrobacia or 0);								
+                sheet.pericia_acrobacia = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_acrobacia = bonus;
+                else
+                sheet.pericia_acrobacia = bonus;
+                end;
+            </event>
+            </dataLink>
+            <button left="190" top="681" width="208" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar acrobacia.">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                local bonus = tonumber(sheet.pericia_acrobacia);
+                local converter = false;
+                if (bonus >= 0)then								
+				sheet.pericia_acrobacia = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d6");                        
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+        
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.pericia_acrobacia);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de acrobacia do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de acrobacia do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                end;
+                end;
+                end;  
+            </event>
+            </button>
+            <!--ATLETISMO-->
+            <layout left="107" top="792" width="36" height="35" compilerOrder="49">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="50"
+        field="pericia_atletismo"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_atletismo'}">
+                <event name="onChange">
+                local bonus = tonumber(sheet.pericia_atletismo or 0);								
+                sheet.pericia_atletismo = bonus;	
+            
+                if bonus >= 0 then
+                sheet.pericia_atletismo = bonus;
+                else	
+                sheet.pericia_atletismo = bonus;
+                end;
+            </event>
+            </dataLink>
+            <button left="192" top="792" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar atletismo." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                local bonus = tonumber(sheet.pericia_atletismo);
+                local converter = false;
+                if (bonus >= 0)then								
+				sheet.pericia_atletismo = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d6");                        
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+        
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.pericia_atletismo);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de atletismo do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de atletismo do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                end;
+                end;
+                end;    
+            </event>
+            </button>
+            <!--VEICULOS-->
+            <layout left="107" top="903" width="36" height="35" compilerOrder="51">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="52" 
+        field="pericia_veiculos"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_veiculos'}">
+                <event name="onChange">
+                local bonus = tonumber(sheet.pericia_veiculos or 0);								
+                sheet.pericia_veiculos = bonus;	
+                
+                if bonus >= 0 then
+                sheet.pericia_veiculos = bonus;
+                else	
+                sheet.pericia_veiculos = bonus;
+                end;
+            </event>
+            </dataLink>
+            <button left="192" top="900" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar veículos." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                local bonus = tonumber(sheet.pericia_veiculos);
+                local converter = false;
+                if (bonus >= 0)then								
+				sheet.pericia_veiculos = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d6");                        
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+        
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.pericia_veiculos);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de veiculos do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de veiculos do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                end;
+                end;
+                end;     
+            </event>
+            </button>
+            <!--INTUICAO-->
+            <layout left="108" top="1014" width="36" height="35" compilerOrder="53">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="54"
+        field="pericia_intuicao"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_intuicao'}">
+                <event name="onChange">
+                local bonus = tonumber(sheet.pericia_intuicao or 0);								
+                sheet.pericia_intuicao = bonus;	
+                
+                if bonus >= 0 then
+                sheet.pericia_intuicao = bonus;
+                else
+                sheet.pericia_intuicao = bonus;
+                end;
+            </event>
+            </dataLink>
+            <button left="192" top="1013" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar intuição." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                local bonus = tonumber(sheet.pericia_intuicao);
+                local converter = false;
+                if (bonus >= 0)then								
+				sheet.pericia_intuicao = bonus;
+                else
+                bonus = bonus*(-1);
+                converter = true;
+                end;
+
+                
+                local personagem = Firecast.getPersonagemDe(sheet);
+                local auxiliar = (bonus+1);
+                local auxiliar2 = (auxiliar .. "d6");                        
+                
+                if (personagem ~= nil) then
+                local mesa = personagem.mesa;
+        
+                if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                local rolagem = Firecast.interpretarRolagem(sheet.pericia_intuicao);
+
+                if not rolagem.possuiAlgumDado then
+                rolagem = Firecast.interpretarRolagem(auxiliar2);
+                end; 
+                local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de intuicao do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de intuicao do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                end;
+                end;
+                end; 
+            </event>
+            </button>
+            <!--ENGANAÇÃO-->
+            <layout left="107" top="1122" width="36" height="35" compilerOrder="55">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="56"
+        field="pericia_enganacao"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_enganacao'}">
+                <event name="onChange">
+                local bonus = tonumber(sheet.pericia_enganacao or 0);								
+                sheet.pericia_enganacao = bonus;	
+                            
+                if bonus >= 0 then
+                sheet.pericia_enganacao = bonus;
+                else	
+                sheet.pericia_enganacao = bonus;
+                end;
+            </event>
+            </dataLink>
+            <button left="192" top="1120" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar enganação." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_enganacao);
+                    local converter = false;
+                    if (bonus >= 0)then								
+				    sheet.pericia_enganacao = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_enganacao);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de enganação do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de enganação do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;
+                </event>
+            </button>
+            <!--ESPECIALIDADE-->
+            <layout left="108" top="1235" width="36" height="35" compilerOrder="57">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="58"
+        field="pericia_especialidade"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_especialidade'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_especialidade or 0);								
+                    sheet.pericia_especialidade = bonus;	
+                            
+                    if bonus >= 0 then
+                    sheet.pericia_especialidade = bonus;
+                    else	
+                    sheet.pericia_especialidade = bonus;
+                    end;
+                </event>
+            </dataLink>
+            <button left="192" top="1235" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar especialidade." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_especialidade);
+                    local converter = false;
+                    if (bonus >= 0)then								
+				    sheet.pericia_especialidade = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_especialidade);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de especialidade do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de especialidade do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;     
+                </event>
+            </button>
+            <!--FURTIVIDADE-->
+            <layout left="108" top="1346" width="36" height="35" compilerOrder="59">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="60"
+            field="pericia_furtividade"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_furtividade'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_furtividade or 0);								
+                    sheet.pericia_furtividade = bonus;	
+                
+                    if bonus >= 0 then
+                        sheet.pericia_furtividade = bonus;
+                    else	
+                        sheet.pericia_furtividade = bonus;
+                    end;
+                </event>
+            </dataLink>
+            <button left="192" top="1345" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar furtividade." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_furtividade);
+                    local converter = false;
+                    if (bonus >= 0)then								
+				    sheet.pericia_furtividade = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_furtividade);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de furtividade do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de furtividade do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;   
+                </event>
+            </button>
+            <!--INTIMIDAÇÃO-->
+            <layout left="107" top="1452" width="36" height="35" compilerOrder="61">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36"  compilerOrder="62" 
+            field="pericia_intimidacao"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_intimidacao'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_intimidacao or 0);								
+                    sheet.pericia_intimidacao = bonus;	
+                
+                    if bonus >= 0 then
+                    sheet.pericia_intimidacao = bonus;
+                    else	
+                    sheet.pericia_intimidacao = bonus;
+                    end;
+            </event>
+            </dataLink>
+            <button left="192" top="1450" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar intimidação." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_intimidacao);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_intimidacao = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_intimidacao);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de intimidação do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de intimidação do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;    
+            </event>
+            </button>
+            <!-- PERFORMANCE -->
+            <layout left="107" top="1563" width="36" height="35" compilerOrder="61">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36"  compilerOrder="62" 
+            field="pericia_performance"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_performance'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_performance or 0);								
+                    sheet.pericia_performance = bonus;	
+                
+                    if bonus >= 0 then
+                    sheet.pericia_performance = bonus;
+                    else	
+                    sheet.pericia_performance = bonus;
+                    end;
+            </event>
+            </dataLink>
+            <button left="192" top="1562" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar performance." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_performance);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_performance = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_performance);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de performance do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de performance do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;    
+            </event>
+            </button>
+            <!--PERICIAS DIREITA-->
+            <!--INVESTIGACAO-->
+            <layout left="848" top="681" width="34" height="33" compilerOrder="49">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="50"
+        field="pericia_investigacao"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_investigacao'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_investigacao or 0);								
+                    sheet.pericia_investigacao = bonus;	
+                    
+                    if bonus >= 0 then
+                    sheet.pericia_investigacao = bonus;
+                    else	
+                    sheet.pericia_investigacao = bonus;
+                    end;
+                </event>
+            </dataLink>
+            <button left="930" top="681" width="208" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar investigação.">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_investigacao);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_investigacao = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_investigacao);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de investigação do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de investigação do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;    
+                </event>
+            </button>
+            <!--MAGIA-->
+            <layout left="849" top="793" width="36" height="35" compilerOrder="65">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="66"
+        field="pericia_magia"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_magia'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_magia or 0);								
+                    sheet.pericia_magia = bonus;	
+                
+                    if bonus >= 0 then
+                    sheet.pericia_magia = bonus;
+                    else	
+                    sheet.pericia_magia = bonus;
+                    end;
+                </event>
+            </dataLink>
+            <button left="930" top="792" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar magia." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_magia);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_magia = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_magia);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de magia do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de magia do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end; 
+                </event>
+            </button>
+            <!--PERCEPÇÃO-->
+            <layout left="848" top="902" width="36" height="35" compilerOrder="67">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" field="pericia_percepcao" compilerOrder="68"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_percepcao'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_percepcao or 0);								
+                    sheet.pericia_percepcao = bonus;	
+                
+                    if bonus >= 0 then
+                        sheet.pericia_percepcao = bonus;
+                    else	
+                        sheet.pericia_percepcao = bonus;
+                    end;
+                </event>
+            </dataLink>
+            <button left="930" top="900" width="208" height="36" text="" opacity="0.0" hint="Clique para percepção." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_percepcao);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_percepcao = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_percepcao);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de percepção do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de percepção do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;    
+                </event>
+            </button>
+            <!--PERSUASAO-->
+            <layout left="848" top="1014" width="36" height="35" compilerOrder="69">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" field="pericia_persuasao" compilerOrder="70"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_persuasao'}">
+                <event name="onChange">
+                                local bonus = tonumber(sheet.pericia_persuasao or 0);								
+                                sheet.pericia_persuasao = bonus;	
+                            
+                                if bonus >= 0 then
+                                    sheet.pericia_persuasao = bonus;
+                                else	
+                                    sheet.pericia_persuasao = bonus;
+                                end;
+                            </event>
+            </dataLink>
+            <button left="930" top="1013" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar persuasão." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_persuasao);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_persuasao = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_persuasao);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de persuasão do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de persuasão do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;    
+                </event>
+            </button>
+            <!-- PRESTIGITAÇÃO -->
+            <layout left="848" top="1122" width="36" height="35" compilerOrder="71">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="72" 
+            field="pericia_prestigitacao"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_prestigitacao'}">
+                <event name="onChange">
+                                local bonus = tonumber(sheet.pericia_prestigitacao or 0);								
+                                sheet.pericia_prestigitacao = bonus;	
+                            
+                                if bonus >= 0 then
+                                    sheet.pericia_prestigitacao = bonus;
+                                else	
+                                    sheet.pericia_prestigitacao = bonus;
+                                end;
+                            </event>
+            </dataLink>
+            <button left="930" top="1120" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar prestigitação." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_prestigitacao);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_prestigitacao = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_prestigitacao);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de prestigitação do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de prestigitação do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;
+                </event>
+            </button>
+            <!-- RELIGIÃO -->
+            <layout left="848" top="1234" width="36" height="35" compilerOrder="73">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="74" 
+            field="pericia_religiao"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_religiao'}">
+                <event name="onChange">
+                                local bonus = tonumber(sheet.pericia_religiao or 0);								
+                                sheet.pericia_religiao = bonus;	
+                            
+                                if bonus >= 0 then
+                                    sheet.pericia_religiao = bonus;
+                                else	
+                                    sheet.pericia_religiao = bonus;
+                                end;
+                            </event>
+            </dataLink>
+            <button left="930" top="1235" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar religião." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_religiao);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_religiao = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_religiao);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de religião do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de religião do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end; 
+                </event>
+            </button>
+            <!--TECNOLOGIA-->
+            <layout left="848" top="1345" width="36" height="35" compilerOrder="75">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" field="pericia_tecnologia" compilerOrder="76"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_tecnologia'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_tecnologia or 0);								
+                    sheet.pericia_tecnologia = bonus;	
+                
+                    if bonus >= 0 then
+                        sheet.pericia_tecnologia = bonus;
+                    else	
+                        sheet.pericia_tecnologia = bonus;
+                    end;
+                </event>
+            </dataLink>
+            <button left="930" top="1345" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar tecnologia." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                    local bonus = tonumber(sheet.pericia_tecnologia);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_tecnologia = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_tecnologia);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de tecnologia do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de tecnologia do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;
+                </event>
+            </button>
+            <!--MEDICINA-->
+            <layout left="848" top="1451" width="36" height="35" compilerOrder="77">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" 
+        field="pericia_medicina" compilerOrder="78"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_medicina'}">
+                <event name="onChange">
+                local bonus = tonumber(sheet.pericia_medicina or 0);								
+                sheet.pericia_medicina = bonus;	
+                
+                if bonus >= 0 then
+                sheet.pericia_medicina = bonus;
+                else	
+                sheet.pericia_medicina = bonus;
+                end;
+            </event>
+            </dataLink>
+            <button left="930" top="1450" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar medicina." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                local bonus = tonumber(sheet.pericia_medicina);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_medicina = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_medicina);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de medicina do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de medicina do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;     
+            </event>
+            </button>
+            <!-- LIDAR COM ANIMAIS -->
+            <layout left="848" top="1563" width="36" height="35" compilerOrder="77">
+                <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" 
+        field="pericia_animais" compilerOrder="78"/>
+            </layout>&#xD;
+            <dataLink fields="{'pericia_animais'}">
+                <event name="onChange">
+                local bonus = tonumber(sheet.pericia_animais or 0);								
+                sheet.pericia_animais = bonus;	
+                
+                if bonus >= 0 then
+                sheet.pericia_animais = bonus;
+                else	
+                sheet.pericia_animais = bonus;
+                end;
+            </event>
+            </dataLink>
+            <button left="930" top="1561" width="208" height="36" text="" opacity="0.0" hint="Clique para rolar lidar com animais." cursor="handPoint">
+                <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+                <event name="onClick">
+                local bonus = tonumber(sheet.pericia_animais);
+                    local converter = false;
+                    if (bonus >= 0)then								
+		    		sheet.pericia_animais = bonus;
+                    else
+                    bonus = bonus*(-1);
+                    converter = true;
+                    end;
+
+                    local personagem = Firecast.getPersonagemDe(sheet);
+                    local auxiliar = (bonus+1);
+                    local auxiliar2 = (auxiliar .. "d6");                        
+                
+                    if (personagem ~= nil) then
+                    local mesa = personagem.mesa;
+        
+                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.pericia_animais);
+
+                    if not rolagem.possuiAlgumDado then
+                    rolagem = Firecast.interpretarRolagem(auxiliar2);
+                    end; 
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+        
+                    if mesaDoPersonagem ~= nil and bonus >= 0 and converter == false then
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem positiva de lidar com animais do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                    else
+                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Rolagem negativa de lidar com animais do (a) " .. (sheet.CODINOME or "Indivíduo(a)"));
+                
+                    end;
+                    end;
+                    end;     
+            </event>
+            </button>
+        </rectangle>
+    </scrollBox>
+    <dataLink fields="{&apos;origem_personagem__0&apos;}" defaultValues="{&apos;0&apos;}"/>
+</form>
