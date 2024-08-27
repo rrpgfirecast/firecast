@@ -710,7 +710,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ficha_Preta_Ordem_Paranormal" name="OrdemParanormal" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ordem%20Paranormal%20V1.1/output/Ordem%20Paranormal%20V1.1.rpk?raw=true" fileName="Ordem Paranormal V1.1.rpk" repositoryPath="Sheets/Ordem Paranormal V1.1/" author="Kevin Ryan" description="Ficha Funcional para o sistema OrdemParanormal" version="1.0" compilationDate="24072024004021" compilationDigest="6f2aa306451cd167ede5945f252da4ebd9d464fe">
+    <element id="Ficha_Preta_Ordem_Paranormal" name="OrdemParanormal" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ordem%20Paranormal%20V1.1/output/Ordem%20Paranormal%20V1.1.rpk?raw=true" fileName="Ordem Paranormal V1.1.rpk" repositoryPath="Sheets/Ordem Paranormal V1.1/" author="Kevin Ryan" description="Ficha Funcional para o sistema OrdemParanormal" version="1.0" compilationDate="27082024190733" compilationDigest="f7d61f1a691c5d5993d50e0594457be7db57f003">
         <info lang="pt-BR" name="OrdemParanormal" description="Ficha Funcional para o sistema OrdemParanormal" author="Kevin Ryan" site="https://www.instagram.com/kevinryan2907/"/>
         <dataTypes>
             <dataType id="br.com.rrpg.OrdemParanormal" title="Ficha_OrdemParanormal" formType="sheetTemplate">
@@ -1068,6 +1068,17 @@
             <dataType id="RRPG.TB.COMBAT.TRACKER.v1" title="Tracker de Combate" formType="tablesDock">
                 <info lang="en" title="Combat Tracker"/>
                 <info lang="pt" title="Tracker de Combate"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="rrpg.hero.tham" name="Hero.Eclipse" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20HeroisdoEclipse/output/Ficha%20HeroisdoEclipse.rpk?raw=true" fileName="Ficha HeroisdoEclipse.rpk" repositoryPath="Sheets/Ficha HeroisdoEclipse/" author="isaq_xd" description="Modelo personalizado da ficha mutantes e malfeitores" version="1.0" compilationDate="17082024202321" compilationDigest="c8884a4cb6fe31db46d2d9dc96add5a3a662e666">
+        <info lang="pt-BR" name="Hero.Eclipse" description="Modelo personalizado da ficha mutantes e malfeitores" author="isaq_xd" site="isaque3356@icloud.com"/>
+        <dataTypes>
+            <dataType id="Ficha_MM3e_MultiAba" title="Ficha Multiaba" formType="sheetTemplate">
+                <info title="Ficha Multiaba"/>
+            </dataType>
+            <dataType id="Herois.Eclipse" title="Hero_Eclipse" formType="sheetTemplate">
+                <info title="Hero_Eclipse"/>
             </dataType>
         </dataTypes>
     </element>
