@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Herois_Eclipse" formType="sheetTemplate" dataType="Herois.Eclipse" title="Hero_Eclipse" align="client" theme="default">
+    <tabControl align='client'>
+        <tab title='Frente'>
+            <import file="1.lfm"/>
+        </tab>
+        <tab title='Multi-Abas'>
+            <import file='FichaMultiaba.lfm'/>
+        </tab>
+    </tabControl>
+</form>
