@@ -249,7 +249,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Ragnarock" name="Plugin Ragnarök" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Sheets/Ficha Ragnarock/" author="Ambesek" description="Ficha para um sistema proprio de Ragnaröck." version="0.8" compilationDate="07102023164324" compilationDigest="b675b12adcefff2cbb3b70110d152a7082902787">
+    <element id="Ambesek.Ragnarock" name="Plugin Ragnarök" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Sheets/Ficha Ragnarock/" author="Ambesek" description="Ficha para um sistema proprio de Ragnaröck." version="0.8.1" compilationDate="29082024020835" compilationDigest="8fc97f80d2f0a04534b38a334333c238fb753e3d">
         <info lang="pt-BR" name="Plugin Ragnarök" description="Ficha para um sistema proprio de Ragnaröck." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Ragnarock" title="Plugin Ragnarök" formType="sheetTemplate">
@@ -769,7 +769,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="2.1" compilationDate="18052024150919" compilationDigest="874d9a4c443db3030193746da19260247de7d6fd">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="2.1.1" compilationDate="06082024163411" compilationDigest="2420c4536374a38a35072329f37dc4864b4dab58">
         <info lang="pt-BR" name="Gerenciador de Campanha" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" formType="sheetTemplate">
