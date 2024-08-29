@@ -51,7 +51,7 @@
 					dialogs.inputQuery("Quantidade de Dados", "Coloque quantos dados vai rolar", "1",
 				        function (valorPreenchido)
 				        	local dados = tonumber(valorPreenchido) or 1;
-				        	local rolagem = rrpg.interpretarRolagem("ord " .. dados .. "d" .. faces); 
+				        	local rolagem = rrpg.interpretarRolagem(dados .. "d" .. faces); 
 							
 							dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
 				        		function (valorPreenchido)
@@ -70,7 +70,7 @@
 				        					end;
 				                        	mesa.activeChat:rolarDados(rolagem, msg,
 				                                function (rolado)
-				                                	local op = rolado.ops[2];
+				                                	local op = rolado.ops[1];
 		 
 													for j=1, #op.resultados, 1 do
 													    local result = op.resultados[j] + extra;
@@ -215,7 +215,7 @@
 									dialogs.inputQuery("Quantidade de Dados", "Coloque quantos dados vai rolar", "1",
 								        function (valorPreenchido)
 								        	local dados = tonumber(valorPreenchido) or 1;
-								        	local rolagem = rrpg.interpretarRolagem("ord " .. dados .. "d" .. faces); 
+								        	local rolagem = rrpg.interpretarRolagem(dados .. "d" .. faces); 
 											
 											dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
 								        		function (valorPreenchido)
@@ -234,7 +234,7 @@
 								        					end;
 								                        	mesa.activeChat:rolarDados(rolagem, msg,
 								                                function (rolado)
-								                                	local op = rolado.ops[2];
+								                                	local op = rolado.ops[1];
 						 
 																	for j=1, #op.resultados, 1 do
 																	    local result = op.resultados[j] + extra;
