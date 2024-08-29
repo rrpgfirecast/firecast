@@ -26,7 +26,6 @@
             </event>
         </dataLink>
     </template>
-
     <template name="TextOptions">
         <layout align="client" margins="{top=10,bottom=10,left=10,right=10}">
             <checkBox align="top" height="25" text="@@talemark.title$(text)" field="$(field)Use"/>
@@ -97,7 +96,6 @@
 
             <button left="305" top="215" width="100" text="@@credits.update" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true')" />
     </popup>
-
     <popup name="NotesPopup" align="client" margins="{top=25,bottom=25,left=25,right=25}">
         <checkBox align="top" height="25" text="@@dialogs.dmOnly" field="dmOnly"/>
         <richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
@@ -230,7 +228,6 @@
             end, 100);
         </event>
     </popup>
-
     <popup name="TextDefaultPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
         <TextOptions text="@@talemark.normal" field="normal" popup="TextDefaultPopup"/>
     </popup>

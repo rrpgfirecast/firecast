@@ -48,4 +48,50 @@
 			<edit align="client" fontSize="10" field="$(field)" vertTextAlign="center"/>
 		</flowPart>
 	</template>
+	
+	<template name="AtributoComp">
+					<button left="0" top="3" width="42" height="20" text="$(ATR)">
+						<event name="onClick">
+							local dado = "1d20 ";
+							local bonus = tonumber(sheet.$(atr)ModComp) or 0;
+							if bonus &gt;= 0 then
+								dado = "1d20 + ";
+							end;
+							local rolagem = rrpg.interpretarRolagem(dado .. bonus);
+							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (sheet.NomeGrande or "Companheiro"));
+						</event>
+					</button>
+					<edit left="45" top="0" width="30" height="25" field="$(atr)Comp">
+						<event name="onChange">
+							if sheet~=nil then
+								local mod = (tonumber(sheet.$(atr)Comp) or 0);
+								mod = math.floor((mod-10)/2);
+								if mod &gt;=0 then
+									mod = "+" .. mod;
+								end;
+								sheet.$(atr)ModComp = mod;
+							end;
+						</event>
+					</edit>
+					<rectangle left="80" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+					<label left="80" top="0" width="30" height="25" field="$(atr)ModComp" horzTextAlign="center"/>
+					<edit left="115" top="0" width="75" height="25" field="$(atr)CompDesc"/>
+	</template>
+	<template name="TRComp">
+					<button left="0" top="3" width="42" height="20" text="$(ATR)">
+						<event name="onClick">
+							local dado = "1d20 ";
+							local bonus = tonumber(sheet.$(atr)Comp) or 0;
+							if bonus &gt;= 0 then
+								dado = "1d20 + ";
+							end;
+							local rolagem = rrpg.interpretarRolagem(dado .. bonus);
+							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (sheet.NomeGrande or "Companheiro"));
+						</event>
+					</button>
+					<edit left="45" top="0" width="30" height="25" field="$(atr)Comp"/>
+					<edit left="80" top="0" width="110" height="25" field="$(atr)CompDesc"/>
+	</template>
 </group>
