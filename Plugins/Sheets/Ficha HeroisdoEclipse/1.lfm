@@ -12,7 +12,7 @@
             </layout>&#xD;
             <layout left="12" top="324" width="421" height="64" compilerOrder="3">
                 <edit transparent="true" fontSize="36.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="4" 
-    field="CODINOME" />
+    field="codinome_personagem" />
             </layout>&#xD;
             <!--QUADRADO MEIO-->
             <image field="imagemDoPersonagem" editable="true" style="autoFit" left="438" top="4" width="333" height="384" animate="true" />
@@ -99,11 +99,11 @@
                     if mesaDoPersonagem then
                     local promise
                     if bonus == 0 then
-                        mensagem = "[§K1]Força de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K1]Força de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Força de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K3]Vantagem em Força de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Força de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K5]Desvantagem em Força de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     end
         
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -216,11 +216,11 @@
                     if mesaDoPersonagem then
                     local promise
                     if bonus == 0 then
-                        mensagem = "[§K1]Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K1]Agilidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K3]Vantagem em Agilidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K5]Desvantagem em Agilidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     end
         
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -333,11 +333,11 @@
                     if mesaDoPersonagem then
                     local promise
                     if bonus == 0 then
-                        mensagem = "[§K1]Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K1]Luta de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K3]Vantagem em Luta de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K5]Desvantagem em Luta de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     end
         
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -450,11 +450,11 @@
                     if mesaDoPersonagem then
                     local promise
                     if bonus == 0 then
-                        mensagem = "[§K1]Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K1]Vigor de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K3]Vantagem em Vigor de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K5]Desvantagem em Vigor de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     end
         
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -567,11 +567,11 @@
             if mesaDoPersonagem then
             local promise
             if bonus == 0 then
-                mensagem = "[§K1]Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                mensagem = "[§K1]Prontidão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
             elseif bonus >= 0 and not converter then
-                mensagem = "[§K3]Vantagem em Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                mensagem = "[§K3]Vantagem em Prontidão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
             else
-                mensagem = "[§K5]Desvantagem em Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                mensagem = "[§K5]Desvantagem em Prontidão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
             end
 
             promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -684,11 +684,11 @@
             if mesaDoPersonagem then
             local promise
             if bonus == 0 then
-                mensagem = "[§K1]Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                mensagem = "[§K1]Destreza de " .. (sheet.codinome_personagem or "Indivíduo(a)")
             elseif bonus >= 0 and not converter then
-                mensagem = "[§K3]Vantagem em Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                mensagem = "[§K3]Vantagem em Destreza de " .. (sheet.codinome_personagem or "Indivíduo(a)")
             else
-                mensagem = "[§K5]Desvantagem em Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                mensagem = "[§K5]Desvantagem em Destreza de " .. (sheet.codinome_personagem or "Indivíduo(a)")
             end
 
             promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -801,11 +801,11 @@
                 if mesaDoPersonagem then
                 local promise
                 if bonus == 0 then
-                    mensagem = "[§K1]Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    mensagem = "[§K1]Intelecto de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                 elseif bonus >= 0 and not converter then
-                    mensagem = "[§K3]Vantagem em Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    mensagem = "[§K3]Vantagem em Intelecto de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                 else
-                    mensagem = "[§K5]Desvantagem em Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    mensagem = "[§K5]Desvantagem em Intelecto de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                 end
 
                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -918,11 +918,11 @@
                     if mesaDoPersonagem then
                     local promise
                     if bonus == 0 then
-                        mensagem = "[§K1]Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K1]Presença de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K3]Vantagem em Presença de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K5]Desvantagem em Presença de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                     end
     
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1015,11 +1015,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Acrobacia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Acrobacia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Acrobacia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Acrobacia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Acrobacia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Acrobacia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                 
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1086,11 +1086,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Atletismo de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Atletismo de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Atletismo de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Atletismo de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Atletismo de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Atletismo de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                 
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1155,11 +1155,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Veiculos de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Veiculos de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Veiculos de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Veiculos de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Veiculos de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Veiculos de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                 
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1224,11 +1224,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Intuição de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Intuição de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Intuição de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Intuição de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Intuição de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Intuição de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                 
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1293,11 +1293,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Enganação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Enganação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Enganação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Enganação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Enganação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Enganação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1361,11 +1361,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Especialidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Especialidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Especialidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Especialidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Especialidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Especialidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1429,11 +1429,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Furtividade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Furtividade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Furtividade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Furtividade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Furtividade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Furtividade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1497,11 +1497,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Intimidação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Intimidação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Intimidação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Intimidação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Intimidação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Intimidação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1565,11 +1565,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Performace de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Performace de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Performace de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Performace de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Performace de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Performace de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1634,11 +1634,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Investigação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Investigação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Investigação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Investigação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Investigação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Investigação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1702,11 +1702,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Magia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Magia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Magia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Magia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Magia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Magia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1769,11 +1769,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Percepção de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Percepção de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Percepção de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Percepção de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Percepção de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Percepção de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1836,11 +1836,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Persuasão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Persuasão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Persuasão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Persuasão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Persuasão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Persuasão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1904,11 +1904,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Prestigitação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Prestigitação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Prestigitação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Prestigitação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Prestigitação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Prestigitação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1972,11 +1972,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Religião de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Religião de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Religião de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Religião de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Religião de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Religião de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -2039,11 +2039,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Tecnologia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Tecnologia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Tecnologia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Tecnologia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Tecnologia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Tecnologia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -2107,11 +2107,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Medicina de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Medicina de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Medicina de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Medicina de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Medicina de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Medicina de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -2175,11 +2175,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Lidar com Animais de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K1]Lidar com Animais de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Lidar com Animais de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Lidar com Animais de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Lidar com Animais de " .. (sheet.CODINOME or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Lidar com Animais de " .. (sheet.codinome_personagem or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
