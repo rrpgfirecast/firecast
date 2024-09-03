@@ -5,11 +5,11 @@
             <import file="1.lfm"/>
         </tab>
 
-        <tab title='Mobile - Frente'>
+        <tab title='Mob-infos'>
             <import file="mob1.lfm"/>
         </tab>
 
-        <tab title='Mobile - Stats e Pericias'>
+        <tab title='Mob-Stats e Pericias'>
             <import file="mob2.lfm"/>
         </tab>
         
