@@ -1379,25 +1379,25 @@
     <!-- PERFORMACE -->
         <layout left="18" top="851" width="36" height="35" compilerOrder="47">
             <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
-            field="pericia_performace"/>
+            field="pericia_performance"/>
         </layout>&#xD;
-        <dataLink fields="{'pericia_performace'}">
+        <dataLink fields="{'pericia_performance'}">
             <event name="onChange">
-                local bonus = tonumber(sheet.pericia_performace or 0);								
-                sheet.pericia_performace = bonus;
+                local bonus = tonumber(sheet.pericia_performance or 0);								
+                sheet.pericia_performance = bonus;
 
                 if bonus >= 0 then
-                sheet.pericia_performace = bonus;
+                sheet.pericia_performance = bonus;
                 else
-                sheet.pericia_performace = bonus;
+                sheet.pericia_performance = bonus;
                 end;
             </event>
         </dataLink>    
-        <button left="73" top="854" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar performace.">
+        <button left="73" top="854" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar performance.">
             <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
             <event name="onClick">
                 <![CDATA[
-                    local bonus = tonumber(sheet.pericia_performace) or 0
+                    local bonus = tonumber(sheet.pericia_performance) or 0
                     local mensagem_adicional = ""
                     if bonus < 0 then
                         mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
@@ -1414,11 +1414,11 @@
                     if mesaDoPersonagem then
                     local promise
                     if bonus == 0 then
-                        mensagem = "[§K1]Performace de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K1]Performance de " .. (sheet.CODINOME or "Indivíduo(a)")
                     elseif bonus > 0 then
-                        mensagem = "[§K3]Vantagem em Performace de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K3]Vantagem em Performance de " .. (sheet.CODINOME or "Indivíduo(a)")
                     elseif bonus < 0 then
-                        mensagem = "[§K4]Desvantagem em Performace de " .. (sheet.CODINOME or "Indivíduo(a)")
+                        mensagem = "[§K4]Desvantagem em Performance de " .. (sheet.CODINOME or "Indivíduo(a)")
                     end
         
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1999,7 +1999,7 @@
                 ]]>
             </event>
         </button>
-    <!-- PERFORMACE -->
+    <!-- LIDAR COM ANIMAIS -->
         <layout left="231" top="851" width="36" height="35" compilerOrder="47">
             <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
             field="pericia_animais"/>
