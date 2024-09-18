@@ -4,6 +4,15 @@
         <tab title='Frente'>
             <import file="1.lfm"/>
         </tab>
+
+        <tab title='Mob-infos'>
+            <import file="mob1.lfm"/>
+        </tab>
+
+        <tab title='Mob-Stats e Pericias'>
+            <import file="mob2.lfm"/>
+        </tab>
+        
         <tab title='Multi-Abas'>
             <import file='FichaMultiaba.lfm'/>
         </tab>
