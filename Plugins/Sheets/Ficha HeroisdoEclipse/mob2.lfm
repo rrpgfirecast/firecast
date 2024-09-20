@@ -1,0 +1,2073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="hr_ab2_mobile" formType="sheetTemplate" dataType="Herois.Eclipse_mob2" title="Hero_Eclipse" align="client" theme="default">
+<rectangle width="432" height="805" color="white">&#xD;
+<scrollBox width="430" height="750">
+<image left="0" top="0" width="420" height="940" src="images/3.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+<!-- STATUS LINHA 1 -->
+    <!-- FORCA -->
+        <layout left="25" top="30" width="80" height="62" compilerOrder="15">
+            <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="16"
+        field="status_forca"/></layout>&#xD;
+        <layout left="82" top="18" width="23" height="23" compilerOrder="17">
+            <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="18"
+        field="graduacao_forca"/></layout>&#xD;
+        <dataLink fields="{'status_forca'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.status_forca or 0);								
+                    sheet.status_forca = bonus;	
+                if bonus >= 0 then
+                    sheet.status_forca = bonus;
+                else	
+                    sheet.status_forca = bonus;
+                end;						
+            </event>
+        </dataLink>
+        <dataLink fields="{'graduacao_forca'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.graduacao_forca or 0);								
+                    sheet.graduacao_forca = bonus;	
+                if bonus >= 0 then
+                    sheet.graduacao_forca = bonus;
+                else	
+                    sheet.graduacao_forca = bonus;
+                end;			
+            </event>
+        </dataLink>
+        <button left="30" top="100" width="65" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar força." opacity="0.0">
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.graduacao_forca) or 0
+                    local converter = false
+                    if bonus < 0 then
+                        bonus = -bonus
+                        converter = true
+                    end
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (bonus + 1)
+                    local auxiliar2 = (auxiliar .. "d20")
+                    local soma_atq
+                    local aux_atq = {}
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_forca)
+                    if not rolagem.possuiAlgumDado then
+                        rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) end
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Força de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus >= 0 and not converter then
+                        mensagem = "[§K3]Vantagem em Força de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    else
+                        mensagem = "[§K5]Desvantagem em Força de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+                        promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    local _, rollObject = await(promise)
+                    for i = 1, #rollObject.ops do
+                    local op = rollObject.ops[i]
+                    if op.tipo == "dado" then
+                        for j = 1, #op.resultados do
+                            aux_atq[#aux_atq + 1] = op.resultados[j]
+                        end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    local function bubbleSortAscending(t)
+                        local len = #t
+                            for i = 1, len do
+                            for j = 1, len - i do
+                                if t[j] > t[j + 1] then
+                                    t[j], t[j + 1] = t[j + 1], t[j]
+                                end
+                            end
+                        end
+                    end
+                    local function bubbleSortDescending(t)
+                    local len = #t
+                    for i = 1, len do
+                    for j = 1, len - i do
+                        if t[j] < t[j + 1] then
+                        t[j], t[j + 1] = t[j + 1], t[j] end
+                    end
+                    end
+                    end
+                    if converter then
+                        bubbleSortAscending(aux_atq)
+                    else
+                        bubbleSortDescending(aux_atq) end
+                    local resultado_final = math.floor((tonumber(aux_atq[1]) or 0) + (tonumber(soma_atq) or 0))
+                        mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]" .. resultado_final .. " (" .. math.floor(tonumber(aux_atq[1]) or 0) .. " + " .. math.floor(tonumber(soma_atq) or 0) .. ")")
+                    end
+                        end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- AGILIDADE -->
+        <layout left="123" top="30" width="80" height="62" compilerOrder="15">
+            <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="16"
+        field="status_agilidade"/></layout>&#xD;
+        <layout left="182" top="18" width="23" height="23" compilerOrder="17">
+            <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="18"
+        field="graduacao_agilidade"/></layout>&#xD;
+        <dataLink fields="{'status_agilidade'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.status_agilidade or 0);								
+                    sheet.status_agilidade = bonus;	
+                if bonus >= 0 then
+                    sheet.status_agilidade = bonus;
+                else	
+                    sheet.status_agilidade = bonus;
+                end;						
+            </event>
+        </dataLink>
+        <dataLink fields="{'graduacao_agilidade'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.graduacao_agilidade or 0);								
+                    sheet.graduacao_agilidade = bonus;	
+                if bonus >= 0 then
+                    sheet.graduacao_agilidade = bonus;
+                else	
+                    sheet.graduacao_agilidade = bonus;
+                end;			
+            </event>
+        </dataLink>
+        <button left="122" top="100" width="75" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar agilidade." opacity="0.0">
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.graduacao_agilidade) or 0
+                    local converter = false
+                    if bonus < 0 then
+                        bonus = -bonus
+                        converter = true
+                    end
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (bonus + 1)
+                    local auxiliar2 = (auxiliar .. "d20")
+                    local soma_atq
+                    local aux_atq = {}
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_agilidade)
+                    if not rolagem.possuiAlgumDado then
+                        rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) end
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus >= 0 and not converter then
+                        mensagem = "[§K3]Vantagem em Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    else
+                        mensagem = "[§K5]Desvantagem em Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+                        promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    local _, rollObject = await(promise)
+                    for i = 1, #rollObject.ops do
+                    local op = rollObject.ops[i]
+                    if op.tipo == "dado" then
+                        for j = 1, #op.resultados do
+                            aux_atq[#aux_atq + 1] = op.resultados[j]
+                        end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    local function bubbleSortAscending(t)
+                        local len = #t
+                            for i = 1, len do
+                            for j = 1, len - i do
+                                if t[j] > t[j + 1] then
+                                    t[j], t[j + 1] = t[j + 1], t[j]
+                                end
+                            end
+                        end
+                    end
+                    local function bubbleSortDescending(t)
+                    local len = #t
+                    for i = 1, len do
+                    for j = 1, len - i do
+                        if t[j] < t[j + 1] then
+                        t[j], t[j + 1] = t[j + 1], t[j] end
+                    end
+                    end
+                    end
+                    if converter then
+                        bubbleSortAscending(aux_atq)
+                    else
+                        bubbleSortDescending(aux_atq) end
+                    local resultado_final = math.floor((tonumber(aux_atq[1]) or 0) + (tonumber(soma_atq) or 0))
+                        mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]" .. resultado_final .. " (" .. math.floor(tonumber(aux_atq[1]) or 0) .. " + " .. math.floor(tonumber(soma_atq) or 0) .. ")")
+                    end
+                        end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- LUTA -->
+        <layout left="218" top="30" width="80" height="62" compilerOrder="15">
+            <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="16"
+        field="status_luta"/></layout>&#xD;
+        <layout left="276" top="18" width="23" height="23" compilerOrder="17">
+            <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="18"
+        field="graduacao_luta"/></layout>&#xD;
+        <dataLink fields="{'status_luta'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.status_luta or 0);								
+                    sheet.status_luta = bonus;	
+                if bonus >= 0 then
+                    sheet.status_luta = bonus;
+                else	
+                    sheet.status_luta = bonus;
+                end;						
+            </event>
+        </dataLink>
+        <dataLink fields="{'graduacao_luta'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.graduacao_luta or 0);								
+                    sheet.graduacao_luta = bonus;	
+                if bonus >= 0 then
+                    sheet.graduacao_luta = bonus;
+                else	
+                    sheet.graduacao_luta = bonus;
+                end;			
+            </event>
+        </dataLink>
+        <button left="216" top="100" width="75" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar luta." opacity="0.0">
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.graduacao_luta) or 0
+                    local converter = false
+                        if bonus < 0 then
+                            bonus = -bonus
+                            converter = true
+                        end
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (bonus + 1)
+                    local auxiliar2 = (auxiliar .. "d20")
+                    local soma_atq
+                    local aux_atq = {}
+                    
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_luta)
+                    if not rolagem.possuiAlgumDado then
+                        rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) end
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus >= 0 and not converter then
+                        mensagem = "[§K3]Vantagem em Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    else
+                        mensagem = "[§K5]Desvantagem em Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+                        promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    local _, rollObject = await(promise)
+                    for i = 1, #rollObject.ops do
+                    local op = rollObject.ops[i]
+                    if op.tipo == "dado" then
+                        for j = 1, #op.resultados do
+                            aux_atq[#aux_atq + 1] = op.resultados[j]
+                        end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    local function bubbleSortAscending(t)
+                        local len = #t
+                            for i = 1, len do
+                            for j = 1, len - i do
+                                if t[j] > t[j + 1] then
+                                    t[j], t[j + 1] = t[j + 1], t[j]
+                                end
+                            end
+                        end
+                    end
+                    local function bubbleSortDescending(t)
+                    local len = #t
+                    for i = 1, len do
+                    for j = 1, len - i do
+                        if t[j] < t[j + 1] then
+                        t[j], t[j + 1] = t[j + 1], t[j] end
+                    end
+                    end
+                    end
+                    if converter then
+                        bubbleSortAscending(aux_atq)
+                    else
+                        bubbleSortDescending(aux_atq) end
+                    local resultado_final = math.floor((tonumber(aux_atq[1]) or 0) + (tonumber(soma_atq) or 0))
+                        mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]" .. resultado_final .. " (" .. math.floor(tonumber(aux_atq[1]) or 0) .. " + " .. math.floor(tonumber(soma_atq) or 0) .. ")")
+                    end
+                        end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- VIGOR -->
+        <layout left="310" top="30" width="80" height="62" compilerOrder="15">
+            <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="16"
+        field="status_vigor"/></layout>&#xD;
+        <layout left="367" top="18" width="23" height="23" compilerOrder="17">
+            <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="18"
+        field="graduacao_vigor"/></layout>&#xD;
+        <dataLink fields="{'status_vigor'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.status_vigor or 0);								
+                    sheet.status_vigor = bonus;	
+                if bonus >= 0 then
+                    sheet.status_vigor = bonus;
+                else	
+                    sheet.status_vigor = bonus;
+                end;						
+            </event>
+        </dataLink>
+        <dataLink fields="{'graduacao_vigor'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.graduacao_vigor or 0);								
+                    sheet.graduacao_vigor = bonus;	
+                if bonus >= 0 then
+                    sheet.graduacao_vigor = bonus;
+                else	
+                    sheet.graduacao_vigor = bonus;
+                end;			
+            </event>
+        </dataLink>
+        <button left="310" top="100" width="75" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar vigor." opacity="0.0">
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.graduacao_vigor) or 0
+                    local converter = false
+                    if bonus < 0 then
+                        bonus = -bonus
+                        converter = true
+                    end
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (bonus + 1)
+                    local auxiliar2 = (auxiliar .. "d20")
+                    local soma_atq
+                    local aux_atq = {}
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_vigor)
+                    if not rolagem.possuiAlgumDado then
+                        rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) end
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus >= 0 and not converter then
+                        mensagem = "[§K3]Vantagem em Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    else
+                        mensagem = "[§K5]Desvantagem em Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+                        promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    local _, rollObject = await(promise)
+                    for i = 1, #rollObject.ops do
+                    local op = rollObject.ops[i]
+                    if op.tipo == "dado" then
+                        for j = 1, #op.resultados do
+                            aux_atq[#aux_atq + 1] = op.resultados[j]
+                        end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    local function bubbleSortAscending(t)
+                        local len = #t
+                            for i = 1, len do
+                            for j = 1, len - i do
+                                if t[j] > t[j + 1] then
+                                    t[j], t[j + 1] = t[j + 1], t[j]
+                                end
+                            end
+                        end
+                    end
+                    local function bubbleSortDescending(t)
+                    local len = #t
+                    for i = 1, len do
+                    for j = 1, len - i do
+                        if t[j] < t[j + 1] then
+                        t[j], t[j + 1] = t[j + 1], t[j] end
+                    end
+                    end
+                    end
+                    if converter then
+                        bubbleSortAscending(aux_atq)
+                    else
+                        bubbleSortDescending(aux_atq) end
+                    local resultado_final = math.floor((tonumber(aux_atq[1]) or 0) + (tonumber(soma_atq) or 0))
+                        mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]" .. resultado_final .. " (" .. math.floor(tonumber(aux_atq[1]) or 0) .. " + " .. math.floor(tonumber(soma_atq) or 0) .. ")")
+                    end
+                    end
+                end
+                ]]>
+            </event>
+        </button>
+<!-- STATUS LINHA 2 -->
+    <!-- PRONTIDAO -->
+        <layout left="28" top="157" width="80" height="62" compilerOrder="15">
+            <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="16"
+        field="status_prontidao"/></layout>&#xD;
+        <layout left="87" top="146" width="23" height="23" compilerOrder="17">
+            <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="18"
+        field="graduacao_prontidao"/></layout>&#xD;
+        <dataLink fields="{'status_prontidao'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.status_prontidao or 0);								
+                    sheet.status_prontidao = bonus;	
+                if bonus >= 0 then
+                    sheet.status_prontidao = bonus;
+                else	
+                    sheet.status_prontidao = bonus;
+                end;						
+            </event>
+        </dataLink>
+        <dataLink fields="{'graduacao_prontidao'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.graduacao_prontidao or 0);								
+                    sheet.graduacao_prontidao = bonus;	
+                if bonus >= 0 then
+                    sheet.graduacao_prontidao = bonus;
+                else	
+                    sheet.graduacao_prontidao = bonus;
+                end;			
+            </event>
+        </dataLink>
+        <button left="30" top="223" width="65" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar prontidão." opacity="0.0">
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.graduacao_prontidao) or 0
+                    local converter = false
+                    if bonus < 0 then
+                        bonus = -bonus
+                        converter = true
+                    end
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (bonus + 1)
+                    local auxiliar2 = (auxiliar .. "d20")
+                    local soma_atq
+                    local aux_atq = {}
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_prontidao)
+                    if not rolagem.possuiAlgumDado then
+                        rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) end
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus >= 0 and not converter then
+                        mensagem = "[§K3]Vantagem em Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    else
+                        mensagem = "[§K5]Desvantagem em Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+                        promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    local _, rollObject = await(promise)
+                    for i = 1, #rollObject.ops do
+                    local op = rollObject.ops[i]
+                    if op.tipo == "dado" then
+                        for j = 1, #op.resultados do
+                            aux_atq[#aux_atq + 1] = op.resultados[j]
+                        end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    local function bubbleSortAscending(t)
+                        local len = #t
+                            for i = 1, len do
+                            for j = 1, len - i do
+                                if t[j] > t[j + 1] then
+                                    t[j], t[j + 1] = t[j + 1], t[j]
+                                end
+                            end
+                        end
+                    end
+                    local function bubbleSortDescending(t)
+                    local len = #t
+                    for i = 1, len do
+                    for j = 1, len - i do
+                        if t[j] < t[j + 1] then
+                        t[j], t[j + 1] = t[j + 1], t[j] end
+                    end
+                    end
+                    end
+                    if converter then
+                        bubbleSortAscending(aux_atq)
+                    else
+                        bubbleSortDescending(aux_atq) end
+                    local resultado_final = math.floor((tonumber(aux_atq[1]) or 0) + (tonumber(soma_atq) or 0))
+                        mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]" .. resultado_final .. " (" .. math.floor(tonumber(aux_atq[1]) or 0) .. " + " .. math.floor(tonumber(soma_atq) or 0) .. ")")
+                    end
+                end
+                end
+                ]]>
+            </event>
+        </button>
+    <!-- DESTREZA -->
+        <layout left="126" top="157" width="80" height="62" compilerOrder="15">
+            <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="16"
+        field="status_destreza"/></layout>&#xD;
+        <layout left="186" top="146" width="23" height="23" compilerOrder="17">
+            <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="18"
+        field="graduacao_destreza"/></layout>&#xD;
+        <dataLink fields="{'status_destreza'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.status_destreza or 0);								
+                    sheet.status_destreza = bonus;	
+                if bonus >= 0 then
+                    sheet.status_destreza = bonus;
+                else	
+                    sheet.status_destreza = bonus;
+                end;						
+            </event>
+        </dataLink>
+        <dataLink fields="{'graduacao_destreza'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.graduacao_destreza or 0);								
+                    sheet.graduacao_destreza = bonus;	
+                if bonus >= 0 then
+                    sheet.graduacao_destreza = bonus;
+                else	
+                    sheet.graduacao_destreza = bonus;
+                end;			
+            </event>
+        </dataLink>
+        <button left="122" top="223" width="75" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar destreza." opacity="0.0">
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.graduacao_destreza) or 0
+                    local converter = false
+                    if bonus < 0 then
+                        bonus = -bonus
+                        converter = true
+                    end
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (bonus + 1)
+                    local auxiliar2 = (auxiliar .. "d20")
+                    local soma_atq
+                    local aux_atq = {}
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_destreza)
+                    if not rolagem.possuiAlgumDado then
+                        rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) end
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus >= 0 and not converter then
+                        mensagem = "[§K3]Vantagem em Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    else
+                        mensagem = "[§K5]Desvantagem em Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+                        promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    local _, rollObject = await(promise)
+                    for i = 1, #rollObject.ops do
+                    local op = rollObject.ops[i]
+                    if op.tipo == "dado" then
+                        for j = 1, #op.resultados do
+                            aux_atq[#aux_atq + 1] = op.resultados[j]
+                        end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    local function bubbleSortAscending(t)
+                        local len = #t
+                            for i = 1, len do
+                            for j = 1, len - i do
+                                if t[j] > t[j + 1] then
+                                    t[j], t[j + 1] = t[j + 1], t[j]
+                                end
+                            end
+                        end
+                    end
+                    local function bubbleSortDescending(t)
+                    local len = #t
+                    for i = 1, len do
+                    for j = 1, len - i do
+                        if t[j] < t[j + 1] then
+                        t[j], t[j + 1] = t[j + 1], t[j] end
+                    end
+                    end
+                    end
+                    if converter then
+                        bubbleSortAscending(aux_atq)
+                    else
+                        bubbleSortDescending(aux_atq) end
+                    local resultado_final = math.floor((tonumber(aux_atq[1]) or 0) + (tonumber(soma_atq) or 0))
+                        mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]" .. resultado_final .. " (" .. math.floor(tonumber(aux_atq[1]) or 0) .. " + " .. math.floor(tonumber(soma_atq) or 0) .. ")")
+                    end
+                        end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- INTELECTO -->
+        <layout left="222" top="157" width="80" height="62" compilerOrder="15">
+            <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="16"
+        field="status_intelecto"/></layout>&#xD;
+        <layout left="280" top="146" width="23" height="23" compilerOrder="17">
+            <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="18"
+        field="graduacao_intelecto"/></layout>&#xD;
+        <dataLink fields="{'status_intelecto'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.status_intelecto or 0);								
+                    sheet.status_intelecto = bonus;	
+                if bonus >= 0 then
+                    sheet.status_intelecto = bonus;
+                else	
+                    sheet.status_intelecto = bonus;
+                end;						
+            </event>
+        </dataLink>
+        <dataLink fields="{'graduacao_intelecto'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.graduacao_intelecto or 0);								
+                    sheet.graduacao_intelecto = bonus;	
+                if bonus >= 0 then
+                    sheet.graduacao_intelecto = bonus;
+                else	
+                    sheet.graduacao_intelecto = bonus;
+                end;			
+            </event>
+        </dataLink>
+        <button left="216" top="223" width="75" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar intelecto." opacity="0.0">
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.graduacao_intelecto) or 0
+                    local converter = false
+                        if bonus < 0 then
+                            bonus = -bonus
+                            converter = true
+                        end
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (bonus + 1)
+                    local auxiliar2 = (auxiliar .. "d20")
+                    local soma_atq
+                    local aux_atq = {}
+                    
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_intelecto)
+                    if not rolagem.possuiAlgumDado then
+                        rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) end
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus >= 0 and not converter then
+                        mensagem = "[§K3]Vantagem em Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    else
+                        mensagem = "[§K5]Desvantagem em Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+                        promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    local _, rollObject = await(promise)
+                    for i = 1, #rollObject.ops do
+                    local op = rollObject.ops[i]
+                    if op.tipo == "dado" then
+                        for j = 1, #op.resultados do
+                            aux_atq[#aux_atq + 1] = op.resultados[j]
+                        end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    local function bubbleSortAscending(t)
+                        local len = #t
+                            for i = 1, len do
+                            for j = 1, len - i do
+                                if t[j] > t[j + 1] then
+                                    t[j], t[j + 1] = t[j + 1], t[j]
+                                end
+                            end
+                        end
+                    end
+                    local function bubbleSortDescending(t)
+                    local len = #t
+                    for i = 1, len do
+                    for j = 1, len - i do
+                        if t[j] < t[j + 1] then
+                        t[j], t[j + 1] = t[j + 1], t[j] end
+                    end
+                    end
+                    end
+                    if converter then
+                        bubbleSortAscending(aux_atq)
+                    else
+                        bubbleSortDescending(aux_atq) end
+                    local resultado_final = math.floor((tonumber(aux_atq[1]) or 0) + (tonumber(soma_atq) or 0))
+                        mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]" .. resultado_final .. " (" .. math.floor(tonumber(aux_atq[1]) or 0) .. " + " .. math.floor(tonumber(soma_atq) or 0) .. ")")
+                    end
+                        end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- PRESENÇA -->
+        <layout left="314" top="157" width="80" height="62" compilerOrder="15">
+            <edit transparent="true" fontSize="26" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="80" height="63" compilerOrder="16"
+        field="status_presenca"/></layout>&#xD;
+        <layout left="373" top="146" width="23" height="23" compilerOrder="17">
+            <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="23" height="24"  compilerOrder="18"
+        field="graduacao_presenca"/></layout>&#xD;
+        <dataLink fields="{'status_presenca'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.status_presenca or 0);								
+                    sheet.status_presenca = bonus;	
+                if bonus >= 0 then
+                    sheet.status_presenca = bonus;
+                else	
+                    sheet.status_presenca = bonus;
+                end;						
+            </event>
+        </dataLink>
+        <dataLink fields="{'graduacao_presenca'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.graduacao_presenca or 0);								
+                    sheet.graduacao_presenca = bonus;	
+                if bonus >= 0 then
+                    sheet.graduacao_presenca = bonus;
+                else	
+                    sheet.graduacao_presenca = bonus;
+                end;			
+            </event>
+        </dataLink>
+        <button left="310" top="223" width="75" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar presença." opacity="0.0">
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.graduacao_presenca) or 0
+                    local converter = false
+                    if bonus < 0 then
+                        bonus = -bonus
+                        converter = true
+                    end
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (bonus + 1)
+                    local auxiliar2 = (auxiliar .. "d20")
+                    local soma_atq
+                    local aux_atq = {}
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local rolagem = Firecast.interpretarRolagem(sheet.status_presenca)
+                    if not rolagem.possuiAlgumDado then
+                        rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) end
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus >= 0 and not converter then
+                        mensagem = "[§K3]Vantagem em Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    else
+                        mensagem = "[§K5]Desvantagem em Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+                        promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    local _, rollObject = await(promise)
+                    for i = 1, #rollObject.ops do
+                    local op = rollObject.ops[i]
+                    if op.tipo == "dado" then
+                        for j = 1, #op.resultados do
+                            aux_atq[#aux_atq + 1] = op.resultados[j]
+                        end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    local function bubbleSortAscending(t)
+                        local len = #t
+                            for i = 1, len do
+                            for j = 1, len - i do
+                                if t[j] > t[j + 1] then
+                                    t[j], t[j + 1] = t[j + 1], t[j]
+                                end
+                            end
+                        end
+                    end
+                    local function bubbleSortDescending(t)
+                    local len = #t
+                    for i = 1, len do
+                    for j = 1, len - i do
+                        if t[j] < t[j + 1] then
+                        t[j], t[j + 1] = t[j + 1], t[j] end
+                    end
+                    end
+                    end
+                    if converter then
+                        bubbleSortAscending(aux_atq)
+                    else
+                        bubbleSortDescending(aux_atq) end
+                    local resultado_final = math.floor((tonumber(aux_atq[1]) or 0) + (tonumber(soma_atq) or 0))
+                        mesaDoPersonagem.chat:enviarMensagem("[§K10]Resultado: [§K1]" .. resultado_final .. " (" .. math.floor(tonumber(aux_atq[1]) or 0) .. " + " .. math.floor(tonumber(soma_atq) or 0) .. ")")
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+<!-- PERICIAS ESQUERDA -->
+    <!-- ACROBACIA -->
+        <layout left="19" top="321" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_acrobacia"/>
+        </layout>&#xD;
+            <dataLink fields="{'pericia_acrobacia'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_acrobacia or 0);								
+                    sheet.pericia_acrobacia = bonus;
+
+                    if bonus >= 0 then
+                    sheet.pericia_acrobacia = bonus;
+                    else
+                    sheet.pericia_acrobacia = bonus;
+                    end;
+                </event>
+            </dataLink>    
+        <button left="73" top="322" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar acrobacia.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_acrobacia) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Acrobacia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Acrobacia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Acrobacia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- ATLETISMO -->
+        <layout left="18" top="386" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_atletismo"/>
+        </layout>&#xD;
+            <dataLink fields="{'pericia_atletismo'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_atletismo or 0);								
+                    sheet.pericia_atletismo = bonus;
+
+                    if bonus >= 0 then
+                    sheet.pericia_atletismo = bonus;
+                    else
+                    sheet.pericia_atletismo = bonus;
+                    end;
+                </event>
+            </dataLink>    
+        <button left="73" top="386" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar atletismo.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_atletismo) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Atletismo de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Atletismo de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Atletismo de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- VEICULOS -->
+        <layout left="18" top="454" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_veiculos"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_veiculos'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_veiculos or 0);								
+                sheet.pericia_veiculos = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_veiculos = bonus;
+                else
+                sheet.pericia_veiculos = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="73" top="454" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar veiculos.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_veiculos) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Veiculos de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Veiculos de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Veiculos de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- INTUIÇÃO -->
+        <layout left="18" top="522" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_intuicao"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_intuicao'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_intuicao or 0);								
+                sheet.pericia_intuicao = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_intuicao = bonus;
+                else
+                sheet.pericia_intuicao = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="73" top="524" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar intuição.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_intuicao) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Intuição de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Intuição de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Intuição de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- ENGANAÇÃO -->
+        <layout left="18" top="588" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_enganacao"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_enganacao'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_enganacao or 0);								
+                sheet.pericia_enganacao = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_enganacao = bonus;
+                else
+                sheet.pericia_enganacao = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="73" top="588" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar enganação.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_enganacao) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Enganação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Enganação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Enganação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- ESPECIALIDADE -->
+        <layout left="18" top="652" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_especialidade"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_especialidade'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_especialidade or 0);								
+                sheet.pericia_especialidade = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_especialidade = bonus;
+                else
+                sheet.pericia_especialidade = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="73" top="656" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar especialidade.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_especialidade) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Especialidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Especialidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Especialidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- FURTIVIDADE -->
+        <layout left="18" top="719" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_furtividade"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_furtividade'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_furtividade or 0);								
+                sheet.pericia_furtividade = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_furtividade = bonus;
+                else
+                sheet.pericia_furtividade = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="73" top="722" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar furtividade.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_furtividade) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Furtividade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Furtividade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Furtividade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- INTIMIDAÇÃO -->
+        <layout left="18" top="784" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_intimidacao"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_intimidacao'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_intimidacao or 0);								
+                sheet.pericia_intimidacao = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_intimidacao = bonus;
+                else
+                sheet.pericia_intimidacao = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="73" top="788" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar intimidação.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_intimidacao) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Intimidação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Intimidação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Intimidação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- PERFORMACE -->
+        <layout left="18" top="851" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_performance"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_performance'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_performance or 0);								
+                sheet.pericia_performance = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_performance = bonus;
+                else
+                sheet.pericia_performance = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="73" top="854" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar performance.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_performance) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Performance de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Performance de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Performance de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+
+<!-- PERICIAS DIREITA -->
+    <!-- INVESTIGAÇÃO -->
+        <layout left="231" top="321" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_investigacao"/>
+        </layout>&#xD;
+            <dataLink fields="{'pericia_investigacao'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_investigacao or 0);								
+                    sheet.pericia_investigacao = bonus;
+
+                    if bonus >= 0 then
+                    sheet.pericia_investigacao = bonus;
+                    else
+                    sheet.pericia_investigacao = bonus;
+                    end;
+                </event>
+            </dataLink>    
+        <button left="285" top="322" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar investigação.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_investigacao) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Investigação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Investigação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Investigação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- MAGIA -->
+        <layout left="231" top="386" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_magia"/>
+        </layout>&#xD;
+            <dataLink fields="{'pericia_magia'}">
+                <event name="onChange">
+                    local bonus = tonumber(sheet.pericia_magia or 0);								
+                    sheet.pericia_magia = bonus;
+
+                    if bonus >= 0 then
+                    sheet.pericia_magia = bonus;
+                    else
+                    sheet.pericia_magia = bonus;
+                    end;
+                </event>
+            </dataLink>    
+        <button left="285" top="386" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar magia.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_magia) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Magia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Magia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Magia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- PERCEPÇÃO -->
+        <layout left="231" top="454" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_percepcao"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_percepcao'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_percepcao or 0);								
+                sheet.pericia_percepcao = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_percepcao = bonus;
+                else
+                sheet.pericia_percepcao = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="285" top="454" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar percepção.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_percepcao) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Percepção de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Percepção de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Percepção de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- PERSUASÃO -->
+        <layout left="231" top="522" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_persuasao"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_persuasao'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_persuasao or 0);								
+                sheet.pericia_persuasao = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_persuasao = bonus;
+                else
+                sheet.pericia_persuasao = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="285" top="524" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar persuasão.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_persuasao) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Persuasão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Persuasão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Persuasão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- PRESTIGITAÇÃO -->
+        <layout left="231" top="588" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_prestigitacao"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_prestigitacao'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_prestigitacao or 0);								
+                sheet.pericia_prestigitacao = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_prestigitacao = bonus;
+                else
+                sheet.pericia_prestigitacao = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="285" top="588" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar prestigitação.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_prestigitacao) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Prestigitação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Prestigitação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Prestigitação de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- RELIGIÃO -->
+        <layout left="231" top="652" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_religiao"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_religiao'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_religiao or 0);								
+                sheet.pericia_religiao = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_religiao = bonus;
+                else
+                sheet.pericia_religiao = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="285" top="656" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar religião.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_religiao) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Religião de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Religião de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Religião de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- TECNOLOGIA -->
+        <layout left="231" top="719" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_tecnologia"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_tecnologia'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_tecnologia or 0);								
+                sheet.pericia_tecnologia = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_tecnologia = bonus;
+                else
+                sheet.pericia_tecnologia = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="285" top="722" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar tecnologia.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_tecnologia) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Tecnologia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Tecnologia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Tecnologia de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- MEDICINA -->
+        <layout left="231" top="784" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_medicina"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_medicina'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_medicina or 0);								
+                sheet.pericia_medicina = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_medicina = bonus;
+                else
+                sheet.pericia_medicina = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="285" top="788" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar medicina.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_medicina) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Medicina de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Medicina de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Medicina de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+    <!-- LIDAR COM ANIMAIS -->
+        <layout left="231" top="851" width="36" height="35" compilerOrder="47">
+            <edit transparent="true" fontSize="18.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="36" compilerOrder="48"
+            field="pericia_animais"/>
+        </layout>&#xD;
+        <dataLink fields="{'pericia_animais'}">
+            <event name="onChange">
+                local bonus = tonumber(sheet.pericia_animais or 0);								
+                sheet.pericia_animais = bonus;
+
+                if bonus >= 0 then
+                sheet.pericia_animais = bonus;
+                else
+                sheet.pericia_animais = bonus;
+                end;
+            </event>
+        </dataLink>    
+        <button left="285" top="854" width="125" height="36" opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar lidar com animais.">
+            <image align="top" margins="{top=-1}" width="100" height="40" src=""/>
+            <event name="onClick">
+                <![CDATA[
+                    local bonus = tonumber(sheet.pericia_animais) or 0
+                    local mensagem_adicional = ""
+                    if bonus < 0 then
+                        mensagem_adicional = "[§K5]Perícia falhou por estar negativa."
+                    end
+
+                    local personagem = Firecast.getPersonagemDe(sheet)
+                    local auxiliar = (math.abs(bonus) + 1)
+                    local rolagem = Firecast.interpretarRolagem(auxiliar .. "d6")
+                    local aux_atq = {}        
+                    if personagem then
+                    local mesa = personagem.mesa
+                    if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+                    if mesaDoPersonagem then
+                    local promise
+                    if bonus == 0 then
+                        mensagem = "[§K1]Lidar com Animais de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus > 0 then
+                        mensagem = "[§K3]Vantagem em Lidar com Animais de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif bonus < 0 then
+                        mensagem = "[§K4]Desvantagem em Lidar com Animais de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    end
+        
+                    promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
+                    
+                    local _, rollObject = await(promise)
+                    
+                    for i = 1, #rollObject.ops do
+                        local op = rollObject.ops[i]
+                            if op.tipo == "dado" then
+                                for j = 1, #op.resultados do
+                                    aux_atq[#aux_atq + 1] = op.resultados[j]
+                                end
+                        elseif op.tipo == "imediato" then
+                            soma_atq = op.valor or 0
+                        end
+                    end
+                    -- Exibe a mensagem adicional se a perícia for negativa
+                    if bonus < 0 then
+                        mesaDoPersonagem.chat:enviarMensagem(mensagem_adicional)
+                    end
+                    end
+                    end
+                    end
+                ]]>
+            </event>
+        </button>
+</scrollBox>
+</rectangle>
+</form>

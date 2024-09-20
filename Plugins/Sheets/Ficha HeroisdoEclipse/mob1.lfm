@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frm_mobile_herois" align="client" theme="dark" g="col">
+
+<rectangle width="432" height="805" color="white">&#xD;
+<scrollBox width="430" height="750">
+<image left="0" top="0" width="431" height="940" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+<!-- PARTE SUPERIOR -->
+    <layout left="13" top="104" width="421" height="64" compilerOrder="1">
+        <edit transparent="true" fontSize="22" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="2"
+        field="nome_personagem" />
+    </layout>&#xD;
+    <layout left="13" top="184" width="421" height="64" compilerOrder="1">
+        <edit transparent="true" fontSize="22" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="2"
+        field="codinome_personagem" />
+    </layout>&#xD;
+    <layout left="13" top="264" width="421" height="64" compilerOrder="1">
+        <edit transparent="true" fontSize="22" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="2"
+        field="origem_personagem" />
+    </layout>&#xD;
+<!-- IMAGEM -->
+    <image field="imagemDoPersonagem" editable="true" style="autoFit" left="4" top="321" width="423" height="255" animate="true" />
+<!-- PARTE INFERIOR -->
+    <layout left="13" top="614" width="421" height="64" compilerOrder="1">
+        <edit transparent="true" fontSize="22" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="2"
+        field="genero_personagem" />
+    </layout>&#xD;
+    <layout left="13" top="702" width="421" height="64" compilerOrder="1">
+        <edit transparent="true" fontSize="22" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="2"
+        field="altura_personagem" />
+    </layout>&#xD;
+    <layout left="13" top="790" width="421" height="64" compilerOrder="1">
+        <edit transparent="true" fontSize="22" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="2"
+        field="peso_personagem" />
+    </layout>&#xD;
+    <layout left="13" top="880" width="421" height="64" compilerOrder="1">
+        <edit transparent="true" fontSize="22" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="2"
+        field="idade_personagem" />
+    </layout>&#xD;
+</scrollBox>
+</rectangle>
+
+</form>
