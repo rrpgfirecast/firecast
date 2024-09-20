@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaVictoryFinal2_svg" align="client" theme="default" margins="{top=1}">
+    <style>#frmFichaVictoryFinal2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFichaVictoryFinal2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="864" height="1206" color="white">&#xD;
+            <image left="0" top="0" width="864" height="1206" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="46" top="174" width="395" height="374" compilerOrder="21">
+                				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+					    drag:addData("imageURL", sheet.avatar);
+					</event>
+				</image>
+            </layout>&#xD;
+            <layout left="496" top="172" width="323" height="195" compilerOrder="1">
+                <textEditor left="0" top="0" width="323" height="195" fontSize="19.5" fontColor="#000000" fontFamily="Segoe UI" field="textarea_1dgli__0" transparent="true" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="527" top="445" width="263" height="23" compilerOrder="3">
+                <edit transparent="true" fontSize="15" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="263" height="24" field="text_2jnoi__0" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="494.5" top="449.5" width="17" height="19" compilerOrder="13">
+                <checkBox left="0" top="0" width="17" height="19" field="checkbox_7ejro__0" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="527" top="481" width="263" height="23" compilerOrder="5">
+                <edit transparent="true" fontSize="15" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="263" height="24" field="text_3zxsn__0" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="494.5" top="485.5" width="17" height="19" compilerOrder="15">
+                <checkBox left="0" top="0" width="17" height="19" field="checkbox_8dnms__0" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="527" top="519" width="263" height="23" compilerOrder="7">
+                <edit transparent="true" fontSize="15" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="263" height="24" field="text_4gfkm__0" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="494.5" top="521.5" width="17" height="19" compilerOrder="17">
+                <checkBox left="0" top="0" width="17" height="19" field="checkbox_9evsg__0" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="527" top="555" width="263" height="23" compilerOrder="9">
+                <edit transparent="true" fontSize="15" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="263" height="24" field="text_5fguh__0" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="494.5" top="557.5" width="17" height="19" compilerOrder="19">
+                <checkBox left="0" top="0" width="17" height="19" field="checkbox_10qeqp__0" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="47" top="648" width="770" height="528" compilerOrder="11">
+                <richEdit left="0" top="0" width="770" height="528" backgroundColor="#333333" defaultFontSize="19" defaultFontColor="white" field="textarea_6mltg__0" hideSelection="false" animateImages="true" margins="{left=4, right=4, top=4, bottom=4}" compilerOrder="12"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

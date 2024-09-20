@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="FichaVictoryFinal.rpk" compilationDate="10092024223825" sdkApiVersion="88" sdkMinorApiVersion="2" compilationDigest="d5a06c0b9b7874b35563426a8029ddbbeaf794af" compilationUniqueID="66e0ca61c8e390e600072379">
+    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
+    <id>FichaVictoryFinal</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha 3det Victory</name>
+        <description>Ficha do Sistema 3deT Victory para Firecast.</description>
+        <author>kuronau</author>
+        <site>https://bsky.app/profile/kuronau.bsky.social</site>
+        <contact>Bsky?</contact>
+    </info>
+    <dataTypes>
+        <dataType title="Ficha 3det Victory Final" name="frmFichaVictoryFinal" lfmFile="FichaVictoryFinal/FichaVictoryFinal.lfm">FichaVictoryFinal</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="FichaVictoryFinal" formType="sheetTemplate" lfmFile="FichaVictoryFinal/FichaVictoryFinal.lfm" formName="frmFichaVictoryFinal">
+                <info title="Ficha 3det Victory Final"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>Ficha 3det Victory</name>
+    <description>Ficha do Sistema 3deT Victory para Firecast.</description>
+    <author>kuronau</author>
+    <site>https://bsky.app/profile/kuronau.bsky.social</site>
+    <contact>Bsky?</contact>
+</module>

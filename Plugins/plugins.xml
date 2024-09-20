@@ -622,6 +622,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="FichaVictoryFinal" name="Ficha 3det Victory" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FichaVictoryFinal/output/FichaVictoryFinal.rpk?raw=true" fileName="FichaVictoryFinal.rpk" repositoryPath="Sheets/FichaVictoryFinal/" author="kuronau" description="Ficha do Sistema 3deT Victory para Firecast." version="1.0" compilationDate="20092024031721" compilationDigest="b098ce8ca89a2b42141474af9326bc359e9cd07b">
+        <info lang="pt-BR" name="Ficha 3det Victory" description="Ficha do Sistema 3deT Victory para Firecast." author="kuronau" site="https://bsky.app/profile/kuronau.bsky.social"/>
+        <dataTypes>
+            <dataType id="FichaVictoryFinal" title="Ficha 3det Victory Final" formType="sheetTemplate">
+                <info title="Ficha 3det Victory Final"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="FICHA_13_ERA" name="Ficha 13º Era" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true" fileName="Ficha 13º Era.rpk" repositoryPath="Sheets/Ficha 13º Era/" author="Lincoln Ruteskid" description="Ficha de personagem para o sistema 13º Era" version="1.0" compilationDate="03032023113521" compilationDigest="797142054b0de3c9ad6434b435c273e4d8be4577">
         <info lang="pt-BR" name="Ficha 13º Era" description="Ficha de personagem para o sistema 13º Era" author="Lincoln Ruteskid" site="https://www.facebook.com/lruteski"/>
         <dataTypes>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaVictoryFinal3_svg" align="client" theme="default" margins="{top=1}">
+    <style>#frmFichaVictoryFinal3_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFichaVictoryFinal3_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="864" height="1206" color="white">&#xD;
+            <image left="0" top="0" width="864" height="1206" src="images/3.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="128" top="216" width="326" height="32" compilerOrder="1">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome1" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="544" top="218" width="274" height="32" compilerOrder="29">
+			<edit align="client" field="rolagem1"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem1 == nil then return end
+
+					local rolagem1 = Firecast.interpretarRolagem(sheet.rolagem1)
+					if not rolagem1.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem1, sheet.nome1);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="270" width="326" height="32" compilerOrder="3">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome2" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="544" top="270" width="274" height="32" compilerOrder="31">
+			<edit align="client" field="rolagem2"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem2 == nil then return end
+
+					local rolagem2 = Firecast.interpretarRolagem(sheet.rolagem2)
+					if not rolagem2.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem2, sheet.nome2);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="326" width="326" height="32" compilerOrder="5">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome3" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="544" top="326" width="274" height="32" compilerOrder="33">
+			<edit align="client" field="rolagem3"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem3 == nil then return end
+
+					local rolagem3 = Firecast.interpretarRolagem(sheet.rolagem3)
+					if not rolagem3.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem3, sheet.nome3);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="380" width="326" height="32" compilerOrder="7">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome4" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="544" top="380" width="274" height="32" compilerOrder="35">
+			<edit align="client" field="rolagem4"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem4 == nil then return end
+
+					local rolagem4 = Firecast.interpretarRolagem(sheet.rolagem4)
+					if not rolagem4.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem4, sheet.nome4);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="434" width="326" height="32" compilerOrder="9">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome5" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="544" top="434" width="274" height="32" compilerOrder="37">
+			<edit align="client" field="rolagem5"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem5 == nil then return end
+
+					local rolagem5 = Firecast.interpretarRolagem(sheet.rolagem5)
+					if not rolagem5.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem5, sheet.nome5);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="488" width="326" height="32" compilerOrder="11">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome6" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="544" top="488" width="274" height="32" compilerOrder="39">
+			<edit align="client" field="rolagem6"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem6 == nil then return end
+
+					local rolagem6 = Firecast.interpretarRolagem(sheet.rolagem6)
+					if not rolagem6.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem6, sheet.nome6);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="130" top="536" width="326" height="32" compilerOrder="13">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome7" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="544" top="536" width="274" height="32" compilerOrder="41">
+			<edit align="client" field="rolagem7"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem7 == nil then return end
+
+					local rolagem7 = Firecast.interpretarRolagem(sheet.rolagem7)
+					if not rolagem7.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem7, sheet.nome7);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="684" width="326" height="32" compilerOrder="15">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome8" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="544" top="684" width="274" height="32" compilerOrder="43">
+			<edit align="client" field="rolagem8"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem8 == nil then return end
+
+					local rolagem8 = Firecast.interpretarRolagem(sheet.rolagem8)
+					if not rolagem8.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem8, sheet.nome8);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="130" top="738" width="326" height="32" compilerOrder="17">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome9" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="544" top="738" width="274" height="32" compilerOrder="45">
+			<edit align="client" field="rolagem9"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem9 == nil then return end
+
+					local rolagem9 = Firecast.interpretarRolagem(sheet.rolagem9)
+					if not rolagem9.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem9, sheet.nome9);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="794" width="326" height="32" compilerOrder="19">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome10" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="544" top="794" width="274" height="32" compilerOrder="47">
+			<edit align="client" field="rolagem10"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem10 == nil then return end
+
+					local rolagem10 = Firecast.interpretarRolagem(sheet.rolagem10)
+					if not rolagem10.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem10, sheet.nome10);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="849" width="326" height="32" compilerOrder="21">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome11" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="544" top="849" width="274" height="32" compilerOrder="49">
+			<edit align="client" field="rolagem11"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem11 == nil then return end
+
+					local rolagem11 = Firecast.interpretarRolagem(sheet.rolagem11)
+					if not rolagem11.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem11, sheet.nome11);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="902" width="326" height="32" compilerOrder="23">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome12" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="544" top="902" width="274" height="32" compilerOrder="51">
+			<edit align="client" field="rolagem12"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem12 == nil then return end
+
+					local rolagem12 = Firecast.interpretarRolagem(sheet.rolagem12)
+					if not rolagem12.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem12, sheet.nome12);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="957" width="326" height="32" compilerOrder="25">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome13" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="544" top="957" width="274" height="32" compilerOrder="53">
+			<edit align="client" field="rolagem13"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem13 == nil then return end
+
+					local rolagem13 = Firecast.interpretarRolagem(sheet.rolagem13)
+					if not rolagem13.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem13, sheet.nome13);
+				</event>
+			</button>
+            </layout>&#xD;
+            <layout left="128" top="1005" width="326" height="32" compilerOrder="27">
+                <edit transparent="true" fontSize="16" fontStyle="bold" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="326" height="33" field="nome14" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="544" top="1005" width="274" height="32" compilerOrder="55">
+			<edit align="client" field="rolagem14"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem14 == nil then return end
+
+					local rolagem14 = Firecast.interpretarRolagem(sheet.rolagem14)
+					if not rolagem14.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem14, sheet.nome14);
+				</event>
+			</button>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
