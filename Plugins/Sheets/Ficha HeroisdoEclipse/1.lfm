@@ -8,11 +8,11 @@
             <image left="0" top="0" width="1207" height="1723" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
             <layout left="13" top="198" width="421" height="64" compilerOrder="1">
                 <edit transparent="true" fontSize="36.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="2"
-    field="nome_personagem" />
+            field="nome_personagem" />
             </layout>&#xD;
             <layout left="12" top="324" width="421" height="64" compilerOrder="3">
                 <edit transparent="true" fontSize="36.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="421" height="65" compilerOrder="4" 
-    field="codinome_personagem" />
+    field="CODINOME" />
             </layout>&#xD;
             <!--QUADRADO MEIO-->
             <image field="imagemDoPersonagem" editable="true" style="autoFit" left="438" top="4" width="333" height="384" animate="true" />
@@ -49,40 +49,42 @@
             </layout>&#xD;
             <dataLink fields="{'status_forca'}">
                 <event name="onChange">
-			    local bonus = tonumber(sheet.status_forca or 0);								
-				sheet.status_forca = bonus;	
-				
-				if bonus >= 0 then
-				    sheet.status_forca = bonus;
-				else	
-				    sheet.status_forca = bonus;
-				end;						
-			</event>
+                    local bonus = tonumber(sheet.status_forca or 0);
+                    sheet.status_forca = bonus;
+                    if bonus >= 0 then
+                        sheet.status_forca = bonus;
+                    else
+                        sheet.status_forca = bonus;
+                    end;
+			    </event>
             </dataLink>
             <dataLink fields="{'graduacao_forca'}">
                 <event name="onChange">
-				local bonus = tonumber(sheet.graduacao_forca or 0);								
-				sheet.graduacao_forca = bonus;	
-				
-				if bonus >= 0 then
-					sheet.graduacao_forca = bonus;
-				else	
-					sheet.graduacao_forca = bonus;
-				end;						
-			</event>
+                    local bonus = tonumber(sheet.graduacao_forca) or 0;
+                    sheet.graduacao_forca = bonus;
+                    if bonus >= 0 then
+                        sheet.graduacao_forca = bonus;
+                    else
+                        sheet.graduacao_forca = bonus;
+                    end;
+			    </event>
             </dataLink>
             <button left="72" top="536" width="73" height="31" text="" visible='true' cursor="handPoint" hint="Clique para rolar força." opacity="0.0">
                 <image align="client" margins="{top=-1}" width="73"  height="31" src=""/>
                 <event name="onClick">
                     <![CDATA[
-                    local bonus = tonumber(sheet.graduacao_forca) or 0
-                    local converter = false
-        
+                    local bonus = tonumber(sheet.graduacao_forca) or 0;
+                    local converter = false;
+                    
                     if bonus < 0 then
-                        bonus = -bonus
+                        bonus = math.floor(bonus / -2);
                         converter = true
+                    elseif bonus == 0 then
+                        bonus = 0;
+                    elseif bonus > 0 then
+                        bonus = math.floor(bonus / 2);
                     end
-        
+                                        
                     local personagem = Firecast.getPersonagemDe(sheet)
                     local auxiliar = (bonus + 1)
                     local auxiliar2 = (auxiliar .. "d20")
@@ -94,16 +96,22 @@
                     if (personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre) then
                     local rolagem = Firecast.interpretarRolagem(sheet.status_forca)
                     if not rolagem.possuiAlgumDado then
-                           rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) end
+                        rolagem = Firecast.interpretarRolagem(auxiliar2):concatenar(rolagem) 
+                    end
+
                     local mesaDoPersonagem = Firecast.getMesaDe(sheet)
                     if mesaDoPersonagem then
                     local promise
-                    if bonus == 0 then
-                        mensagem = "[§K1]Força de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-                    elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Força de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                    if (sheet.graduacao_forca) == 0 then
+                        mensagem = "[§K1]" ..  "[" .. (sheet.graduacao_forca) .. "]" .. " Graduação em Força de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_forca)) > 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_forca) .. "]" .. " Graduações em Força de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_forca)) == 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_forca) .. "]" .. " Graduação em Força de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_forca)) == -1 then
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_forca) .. "]" .. " Graduação em Força de " .. (sheet.CODINOME or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Força de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_forca) .. "]" .. " Graduações em Força de " .. (sheet.CODINOME or "Indivíduo(a)")
                     end
         
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -196,8 +204,12 @@
                     local converter = false
         
                     if bonus < 0 then
-                        bonus = -bonus
+                        bonus = math.floor(bonus / -2);
                         converter = true
+                    elseif bonus == 0 then
+                        bonus = 0;
+                    elseif bonus > 0 then
+                        bonus = math.floor(bonus / 2);
                     end
         
                     local personagem = Firecast.getPersonagemDe(sheet)
@@ -215,12 +227,17 @@
                     local mesaDoPersonagem = Firecast.getMesaDe(sheet)
                     if mesaDoPersonagem then
                     local promise
-                    if bonus == 0 then
-                        mensagem = "[§K1]Agilidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-                    elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Agilidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+
+                    if (sheet.graduacao_agilidade) == 0 then
+                        mensagem = "[§K1]" ..  "[" .. (sheet.graduacao_agilidade) .. "]" .. " Graduação em Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_agilidade)) > 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_agilidade) .. "]" .. " Graduações em Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_agilidade)) == 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_agilidade) .. "]" .. " Graduação em Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_agilidade)) == -1 then
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_agilidade) .. "]" .. " Graduação em Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Agilidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_agilidade) .. "]" .. " Graduações em Agilidade de " .. (sheet.CODINOME or "Indivíduo(a)")
                     end
         
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -295,14 +312,14 @@
             </dataLink>
             <dataLink fields="{'graduacao_luta'}">
                 <event name="onChange">
-				local bonus = tonumber(sheet.graduacao_luta or 0);								
-				sheet.graduacao_luta = bonus;	
+				local bonus = tonumber(sheet.graduacao_luta or 0);
+				sheet.graduacao_luta = bonus;
 				
 				if bonus >= 0 then
 					sheet.graduacao_luta = bonus;
-				else	
+				else
 					sheet.graduacao_luta = bonus;
-				end;						
+				end;
 			</event>
             </dataLink>
             <button left="358" top="534" width="70" height="31" text="" visible='true' opacity="0.0" cursor="handPoint" hitTest="true" hint="Clique para rolar luta." >
@@ -313,8 +330,12 @@
                     local converter = false
         
                     if bonus < 0 then
-                        bonus = -bonus
+                        bonus = math.floor(bonus / -2);
                         converter = true
+                    elseif bonus == 0 then
+                        bonus = 0;
+                    elseif bonus > 0 then
+                        bonus = math.floor(bonus / 2);
                     end
         
                     local personagem = Firecast.getPersonagemDe(sheet)
@@ -332,12 +353,17 @@
                     local mesaDoPersonagem = Firecast.getMesaDe(sheet)
                     if mesaDoPersonagem then
                     local promise
-                    if bonus == 0 then
-                        mensagem = "[§K1]Luta de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-                    elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Luta de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+
+                    if (sheet.graduacao_luta) == 0 then
+                        mensagem = "[§K1]" ..  "[" .. (sheet.graduacao_luta) .. "]" .. " Graduação em Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_luta)) > 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_luta) .. "]" .. " Graduações em Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_luta)) == 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_luta) .. "]" .. " Graduação em Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_luta)) == -1 then
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_luta) .. "]" .. " Graduação em Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Luta de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_luta) .. "]" .. " Graduações em Luta de " .. (sheet.CODINOME or "Indivíduo(a)")
                     end
         
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -430,8 +456,12 @@
                     local converter = false
         
                     if bonus < 0 then
-                        bonus = -bonus
+                        bonus = math.floor(bonus / -2);
                         converter = true
+                    elseif bonus == 0 then
+                        bonus = 0;
+                    elseif bonus > 0 then
+                        bonus = math.floor(bonus / 2);
                     end
         
                     local personagem = Firecast.getPersonagemDe(sheet)
@@ -449,12 +479,17 @@
                     local mesaDoPersonagem = Firecast.getMesaDe(sheet)
                     if mesaDoPersonagem then
                     local promise
-                    if bonus == 0 then
-                        mensagem = "[§K1]Vigor de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-                    elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Vigor de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+
+                    if (sheet.graduacao_vigor) == 0 then
+                        mensagem = "[§K1]" ..  "[" .. (sheet.graduacao_vigor) .. "]" .. " Graduação em Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_vigor)) > 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_vigor) .. "]" .. " Graduações em Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_vigor)) == 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_vigor) .. "]" .. " Graduação em Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_vigor)) == -1 then
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_vigor) .. "]" .. " Graduação em Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Vigor de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_vigor) .. "]" .. " Graduações em Vigor de " .. (sheet.CODINOME or "Indivíduo(a)")
                     end
         
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -532,9 +567,9 @@
 				local bonus = tonumber(sheet.status_prontidao or 0);								
 				sheet.status_prontidao = bonus;	
                     
-				if bonus >= 0 then
-					sheet.status_prontidao = bonus;
-				else	
+				    if bonus >= 0 then
+					    sheet.status_prontidao = bonus;
+				    else	
 					sheet.status_prontidao = bonus;
 				end;						
 			</event>
@@ -546,10 +581,14 @@
             local bonus = tonumber(sheet.graduacao_prontidao) or 0
             local converter = false
 
-            if bonus < 0 then
-                bonus = -bonus
-                converter = true
-            end
+                    if bonus < 0 then
+                        bonus = math.floor(bonus / -2);
+                        converter = true
+                    elseif bonus == 0 then
+                        bonus = 0;
+                    elseif bonus > 0 then
+                        bonus = math.floor(bonus / 2);
+                    end
 
             local personagem = Firecast.getPersonagemDe(sheet)
             local auxiliar = (bonus + 1)
@@ -566,13 +605,18 @@
             local mesaDoPersonagem = Firecast.getMesaDe(sheet)
             if mesaDoPersonagem then
             local promise
-            if bonus == 0 then
-                mensagem = "[§K1]Prontidão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-            elseif bonus >= 0 and not converter then
-                mensagem = "[§K3]Vantagem em Prontidão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-            else
-                mensagem = "[§K5]Desvantagem em Prontidão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-            end
+
+                if (sheet.graduacao_prontidao) == 0 then
+                    mensagem = "[§K1]" ..  "[" .. (sheet.graduacao_prontidao) .. "]" .. " Graduação em Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                elseif (tonumber(sheet.graduacao_prontidao)) > 1 and not converter then
+                    mensagem = "[§K3]" .. "[" .. (sheet.graduacao_prontidao) .. "]" .. " Graduações em Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                elseif (tonumber(sheet.graduacao_prontidao)) == 1 and not converter then
+                    mensagem = "[§K3]" .. "[" .. (sheet.graduacao_prontidao) .. "]" .. " Graduação em Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                elseif (tonumber(sheet.graduacao_prontidao)) == -1 then
+                    mensagem = "[§K5]" .. "[" .. (sheet.graduacao_prontidao) .. "]" .. " Graduação em Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                else
+                    mensagem = "[§K5]" .. "[" .. (sheet.graduacao_prontidao) .. "]" .. " Graduações em Prontidão de " .. (sheet.CODINOME or "Indivíduo(a)")
+                end
 
             promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
 
@@ -663,10 +707,14 @@
             local bonus = tonumber(sheet.graduacao_destreza) or 0
             local converter = false
 
-            if bonus < 0 then
-                bonus = -bonus
-                converter = true
-            end
+                    if bonus < 0 then
+                        bonus = math.floor(bonus / -2);
+                        converter = true
+                    elseif bonus == 0 then
+                        bonus = 0;
+                    elseif bonus > 0 then
+                        bonus = math.floor(bonus / 2);
+                    end
 
             local personagem = Firecast.getPersonagemDe(sheet)
             local auxiliar = (bonus + 1)
@@ -683,13 +731,18 @@
             local mesaDoPersonagem = Firecast.getMesaDe(sheet)
             if mesaDoPersonagem then
             local promise
-            if bonus == 0 then
-                mensagem = "[§K1]Destreza de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-            elseif bonus >= 0 and not converter then
-                mensagem = "[§K3]Vantagem em Destreza de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-            else
-                mensagem = "[§K5]Desvantagem em Destreza de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-            end
+
+                if (sheet.graduacao_destreza) == 0 then
+                    mensagem = "[§K1]" ..  "[" .. (sheet.graduacao_destreza) .. "]" .. " Graduação em Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                elseif (tonumber(sheet.graduacao_destreza)) > 1 and not converter then
+                    mensagem = "[§K3]" .. "[" .. (sheet.graduacao_destreza) .. "]" .. " Graduações em Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                elseif (tonumber(sheet.graduacao_destreza)) == 1 and not converter then
+                    mensagem = "[§K3]" .. "[" .. (sheet.graduacao_destreza) .. "]" .. " Graduação em Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                elseif (tonumber(sheet.graduacao_destreza)) == -1 then
+                    mensagem = "[§K5]" .. "[" .. (sheet.graduacao_destreza) .. "]" .. " Graduação em Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                else
+                    mensagem = "[§K5]" .. "[" .. (sheet.graduacao_destreza) .. "]" .. " Graduações em Destreza de " .. (sheet.CODINOME or "Indivíduo(a)")
+                end
 
             promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
 
@@ -770,7 +823,8 @@
 				    sheet.graduacao_intelecto = bonus;
 			    else	
 			    sheet.graduacao_intelecto = bonus;
-			    end;						
+			    end;
+
 		    </event>
             </dataLink>
             <button left="916" top="534" width="98" height="31"  visible='true' opacity="0.0" text="" cursor="handPoint" hitTest="true" hint="Clique para rolar intelecto." >
@@ -780,10 +834,14 @@
                 local bonus = tonumber(sheet.graduacao_intelecto) or 0
                 local converter = false
 
-                if bonus < 0 then
-                    bonus = -bonus
-                    converter = true
-                end
+                    if bonus < 0 then
+                        bonus = math.floor(bonus / -2);
+                        converter = true
+                    elseif bonus == 0 then
+                        bonus = 0;
+                    elseif bonus > 0 then
+                        bonus = math.floor(bonus / 2);
+                    end
 
                 local personagem = Firecast.getPersonagemDe(sheet)
                 local auxiliar = (bonus + 1)
@@ -800,12 +858,17 @@
                 local mesaDoPersonagem = Firecast.getMesaDe(sheet)
                 if mesaDoPersonagem then
                 local promise
-                if bonus == 0 then
-                    mensagem = "[§K1]Intelecto de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-                elseif bonus >= 0 and not converter then
-                    mensagem = "[§K3]Vantagem em Intelecto de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+
+                if (sheet.graduacao_intelecto) == 0 then
+                    mensagem = "[§K1]" ..  "[" .. (sheet.graduacao_intelecto) .. "]" .. " Graduação em Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
+                elseif (tonumber(sheet.graduacao_intelecto)) > 1 and not converter then
+                    mensagem = "[§K3]" .. "[" .. (sheet.graduacao_intelecto) .. "]" .. " Graduações em Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
+                elseif (tonumber(sheet.graduacao_intelecto)) == 1 and not converter then
+                    mensagem = "[§K3]" .. "[" .. (sheet.graduacao_intelecto) .. "]" .. " Graduação em Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
+                elseif (tonumber(sheet.graduacao_intelecto)) == -1 then
+                    mensagem = "[§K5]" .. "[" .. (sheet.graduacao_intelecto) .. "]" .. " Graduação em Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
                 else
-                    mensagem = "[§K5]Desvantagem em Intelecto de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                    mensagem = "[§K5]" .. "[" .. (sheet.graduacao_intelecto) .. "]" .. " Graduações em Intelecto de " .. (sheet.CODINOME or "Indivíduo(a)")
                 end
 
                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -898,8 +961,12 @@
                     local converter = false
     
                     if bonus < 0 then
-                        bonus = -bonus
+                        bonus = math.floor(bonus / -2);
                         converter = true
+                    elseif bonus == 0 then
+                        bonus = 0;
+                    elseif bonus > 0 then
+                        bonus = math.floor(bonus / 2);
                     end
     
                     local personagem = Firecast.getPersonagemDe(sheet)
@@ -917,12 +984,17 @@
                     local mesaDoPersonagem = Firecast.getMesaDe(sheet)
                     if mesaDoPersonagem then
                     local promise
-                    if bonus == 0 then
-                        mensagem = "[§K1]Presença de " .. (sheet.codinome_personagem or "Indivíduo(a)")
-                    elseif bonus >= 0 and not converter then
-                        mensagem = "[§K3]Vantagem em Presença de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+
+                    if (sheet.graduacao_presenca) == 0 then
+                        mensagem = "[§K1]" ..  "[" .. (sheet.graduacao_presenca) .. "]" .. " Graduação em Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_presenca)) > 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_presenca) .. "]" .. " Graduações em Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_presenca)) == 1 and not converter then
+                        mensagem = "[§K3]" .. "[" .. (sheet.graduacao_presenca) .. "]" .. " Graduação em Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
+                    elseif (tonumber(sheet.graduacao_presenca)) == -1 then
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_presenca) .. "]" .. " Graduação em Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
                     else
-                        mensagem = "[§K5]Desvantagem em Presença de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                        mensagem = "[§K5]" .. "[" .. (sheet.graduacao_presenca) .. "]" .. " Graduações em Presença de " .. (sheet.CODINOME or "Indivíduo(a)")
                     end
     
                     promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1015,11 +1087,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Acrobacia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Acrobacia de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Acrobacia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Acrobacia de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Acrobacia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Acrobacia de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                 
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1086,11 +1158,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Atletismo de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Atletismo de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Atletismo de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Atletismo de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Atletismo de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Atletismo de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                 
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1155,11 +1227,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Veiculos de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Veiculos de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Veiculos de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Veiculos de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Veiculos de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Veiculos de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                 
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1224,11 +1296,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Intuição de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Intuição de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Intuição de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Intuição de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Intuição de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Intuição de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                 
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
@@ -1293,11 +1365,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Enganação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Enganação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Enganação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Enganação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Enganação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Enganação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1361,11 +1433,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Especialidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Especialidade de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Especialidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Especialidade de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Especialidade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Especialidade de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1429,11 +1501,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Furtividade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Furtividade de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Furtividade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Furtividade de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Furtividade de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Furtividade de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1497,11 +1569,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Intimidação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Intimidação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Intimidação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Intimidação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Intimidação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Intimidação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1565,11 +1637,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Performace de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Performace de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Performace de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Performace de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Performace de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Performace de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1634,11 +1706,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Investigação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Investigação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Investigação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Investigação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Investigação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Investigação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1702,11 +1774,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Magia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Magia de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Magia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Magia de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Magia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Magia de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1769,11 +1841,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Percepção de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Percepção de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Percepção de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Percepção de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Percepção de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Percepção de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1836,11 +1908,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Persuasão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Persuasão de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Persuasão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Persuasão de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Persuasão de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Persuasão de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1904,11 +1976,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Prestigitação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Prestigitação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Prestigitação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Prestigitação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Prestigitação de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Prestigitação de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -1972,11 +2044,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Religião de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Religião de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Religião de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Religião de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Religião de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Religião de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -2039,11 +2111,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Tecnologia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Tecnologia de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Tecnologia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Tecnologia de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Tecnologia de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Tecnologia de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -2107,11 +2179,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Medicina de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Medicina de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Medicina de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Medicina de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Medicina de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Medicina de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
@@ -2175,11 +2247,11 @@
                             if mesaDoPersonagem then
                                 local promise
                                 if bonus == 0 then
-                                    mensagem = "[§K1]Lidar com Animais de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K1]Lidar com Animais de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus > 0 then
-                                    mensagem = "[§K3]Vantagem em Lidar com Animais de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K3]Vantagem em Lidar com Animais de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 elseif bonus < 0 then
-                                    mensagem = "[§K4]Desvantagem em Lidar com Animais de " .. (sheet.codinome_personagem or "Indivíduo(a)")
+                                    mensagem = "[§K4]Desvantagem em Lidar com Animais de " .. (sheet.CODINOME or "Indivíduo(a)")
                                 end
                                 promise = mesaDoPersonagem.chat:asyncRoll(rolagem, mensagem)
                 
