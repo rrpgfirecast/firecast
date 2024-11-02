@@ -51,7 +51,7 @@
                                 local node = self.rclListaDosCompanheiros.selectedNode
                                 local rolagem = Firecast.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0))
                                 local mesaDoPersonagem = Firecast.getMesaDe(sheet)
-                                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (node.nomeComp or "Companheiro"))
+                                mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de BMC de " .. (node.nomeComp or "Companheiro"))
                             </event>
                         </button>
                         <edit g="col" g-width="3" height="25" field="agarrarComp"/>

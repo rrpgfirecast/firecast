@@ -134,7 +134,7 @@
                             <edit g="col" g-width="1" height="25" vertTextAlign="center" field="pen">
                                 <event name="onUserChange">
                                     if self.boxDetalheDoEquipamento.node==nil then return end
-                                    if self.boxDetalheDoEquipamento.node.index ~= 6 then return end
+                                    if self.boxDetalheDoEquipamento.node.index ~= 8 then return end
 
                                     if self.boxDetalheDoEquipamento.node.pen==nil then 
                                         self.boxDetalheDoEquipamento.node.pen=0 
