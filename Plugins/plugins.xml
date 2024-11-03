@@ -413,14 +413,6 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="BibliotecaRPGmeister" name="RPGM" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/BibliotecaRPGmeister/output/BibliotecaRPGmeister.rpk?raw=true" fileName="BibliotecaRPGmeister.rpk" repositoryPath="Sheets/BibliotecaRPGmeister/" author="Ambesek" description="Biblioteca com o material da mesa RPGmeister. Tanto para facilitar para abrir os links do dropbox quanto para permitir o uso por jogadores mobile." version="0.2" compilationDate="03032023113335" compilationDigest="cc78992a84d0a5d7bc401c46c71fa552f62d5608">
-        <info lang="pt-BR" name="RPGM" description="Biblioteca com o material da mesa RPGmeister. Tanto para facilitar para abrir os links do dropbox quanto para permitir o uso por jogadores mobile." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
-        <dataTypes>
-            <dataType id="Ambesek.Biblioteca.RPGmeister" title="Biblioteca RPGmeister" formType="sheetTemplate">
-                <info title="Biblioteca RPGmeister"/>
-            </dataType>
-        </dataTypes>
-    </element>
     <element id="br.com.czagalo.SotWW_Monsters_N_NPCs" name="SotWW - Monsters and NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/sotww_pdm/output/sotww_pdm.rpk?raw=true" fileName="sotww_pdm.rpk" repositoryPath="Sheets/sotww_pdm/" author="Célio Zagalo" description="Ficha para monstros e pdms, com rolagem de dados." version="1.1" compilationDate="04012024165330" compilationDigest="4789fd8d61211b0ee6a4a3641faa9aad8196f7ee">
         <info lang="pt-BR" name="SotWW - Monsters and NPCs" description="Ficha para monstros e pdms, com rolagem de dados." author="Célio Zagalo" site="https://www.instagram.com/czagalo/"/>
         <dataTypes>
