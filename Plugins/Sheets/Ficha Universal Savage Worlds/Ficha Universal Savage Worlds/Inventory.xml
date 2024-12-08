@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventory" align="client">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<NoteBlock text="Armas" field="inventory0_0"/>
+		<NoteBlock text="Armaduras" field="inventory0_1"/>
+		<NoteBlock text="Equipamentos" field="inventory0_2"/>
+
+		<NoteBlock text="Mochila" field="inventory1_0"/>
+		<NoteBlock text="" field="inventory1_1"/>
+		<NoteBlock text="" field="inventory1_2"/>
+
+		<NoteBlock text="" field="inventory2_0"/>
+		<NoteBlock text="" field="inventory2_1"/>
+		<NoteBlock text="" field="inventory2_2"/>
+	</scrollBox>
+</form>

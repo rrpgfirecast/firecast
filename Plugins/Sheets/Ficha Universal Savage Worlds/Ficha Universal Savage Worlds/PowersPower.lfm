@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="PowersPower" g="col" g-width="12" g-width-lg="3" height="250">
+	<import file="Templates.xml"/>
+
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+
+		local function rollTest()
+			-- TODO
+		end
+
+		]]>	
+	</script>
+
+	<formatEdit gwidth="11" default="" field="edge" fontSize="13" height="25" formatFloat=""/>
+	<button g="col" g-width="1" text="🗑️" height="25" onClick="askForDelete()"/>
+
+	<Title text="PP" field="pp" fontSize="11" widthL="2" widthR="4"/>
+	<Title text="Alcance" field="range" fontSize="11" widthL="2" widthR="4"/>
+	<Title text="Duração" field="duration" fontSize="11" widthL="2" widthR="4"/>
+	<Title text="Efeito" field="effect" fontSize="11" widthL="2" widthR="4"/>
+
+	<textEditor g="col" g-width="12" g-vert-tile="true" field="description"/>
+</form>

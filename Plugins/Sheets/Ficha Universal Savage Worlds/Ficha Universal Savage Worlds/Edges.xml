@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Edges" align="client" g-cnt-line-spacing="5">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="6" g-width-lg="6" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+            	<button text="Nova Vantagem" g="col" g-width="3" height="25" onClick="self.rclEdges:append();" textTrimming="none"/>
+            	<layout g="col" g-width="9"/>
+                <gridRecordList name="rclEdges" field="rclEdges" templateForm="EdgesEdge" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.edge, right.edge);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+        <rectangle g="col" g-width="6" g-width-lg="6" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <button text="Nova Complicação" g="col" g-width="3" height="25" onClick="self.rclHindrances:append();" textTrimming="none"/>
+                <layout g="col" g-width="9"/>
+                <gridRecordList name="rclHindrances" field="rclHindrances" templateForm="EdgesEdge" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.edge, right.edge);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+	</scrollBox>
+</form>

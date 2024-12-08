@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Notes" align="client" g-cnt-line-spacing="5">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<NoteBlock text="" field="notes0_0"/>
+		<NoteBlock text="" field="notes0_1"/>
+		<NoteBlock text="" field="notes0_2"/>
+
+		<NoteBlock text="" field="notes1_0"/>
+		<NoteBlock text="" field="notes1_1"/>
+		<NoteBlock text="" field="notes1_2"/>
+
+		<NoteBlock text="" field="notes2_0"/>
+		<NoteBlock text="" field="notes2_1"/>
+		<NoteBlock text="" field="notes2_2"/>
+	</scrollBox>
+</form>

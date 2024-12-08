@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Credits" align="client">
+	<script>
+		<![CDATA[
+			local function recursiveFindControls(control, controlsList)
+				local children = control:getChildren()
+				for i=1, #children, 1 do
+					controlsList[#controlsList+1] = children[i]
+					recursiveFindControls(children[i], controlsList)
+				end
+			end
+
+			local function findAllControls(root)
+				local controlsList = {root or self}
+				recursiveFindControls(root or self, controlsList)
+				
+				return controlsList
+			end
+
+			local function filterByClass(className, controls)
+				local controlsFromClass = {}
+
+				for i=1, #controls, 1 do
+					if controls[i]:getClassName() == className then
+						controlsFromClass[#controlsFromClass + 1] = controls[i]
+					end
+				end
+
+				return controlsFromClass
+			end
+
+			local function findClass(className, root)
+				local controls = findAllControls(root)
+				return filterByClass(className, controls)
+			end
+
+		]]>	
+	</script>
+
+    <scrollBox align="client" g-cnt-line-spacing="5">
+        <image g="col" g-width="6" g-width-lg="5" g-min-height="600" g-vert-tile="true" src="images/RPGmeister.jpg" style="proportional" optimize="true"/>
+
+        <layout g="col" g-width="6" g-width-lg="2" g-min-height="200" g-vert-tile="true" g-auto-height="true" g-cnt-line-spacing="5">
+        	<rectangle g="col" g-width="12" g-min-height="125" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+        		<label g="col" g-width="12" height="25" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
+				<label g="col" g-width="12" height="25" text="Arte: Nefer (Nefertyne)" horzTextAlign="center"/>
+        	</rectangle>
+
+        	<rectangle g="col" g-width="12" g-min-height="165" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+        		<TitleComboBox text="Tema:" field="theme" items="{'Escuro', 'Claro'}" values="{'Escuro', 'Claro'}"/>
+				<dataLink field="theme" defaultValue="Escuro">
+					<event name="onChange">
+						if sheet == nil then return end
+						local theme = sheet.theme
+						if theme == "Claro" then
+							theme = "light"
+						else
+							theme = "dark"
+						end
+
+						local forms = findClass("form")
+
+						for i=1, #forms, 1 do 
+							forms[i].theme = theme
+						end
+					</event>
+				</dataLink>
+
+        		<TitleComboBox text="Zoom: " field="zoom" items="{'0.5','0.6','0.7','0.8','0.9','1','1.1','1.2','1.3','1.4','1.5','1.75','2'}" values="{'0.5','0.6','0.7','0.8','0.9','1','1.1','1.2','1.3','1.4','1.5','1.75','2'}"/>
+				<dataLink field="zoom" defaultValue="1">
+					<event name="onChange">
+						if sheet == nil then return end
+
+						local root = GUI.findControlByName("frmFichaRPGmeister", self)
+						if root ~= nil then
+							root.scale = (tonumber(sheet.zoom) or 1)
+							root:needRepaint()
+							root.grid:invalidate()
+							root.width = root.width + 1
+						end
+					</event>
+				</dataLink>
+
+				<label g="col" g-width="12" height="25" text="CORES" horzTextAlign="center"/>
+
+				<label g="col" g-width="3" height="25" text="Fundo " horzTextAlign="center"/>
+				<colorSelection field="colorBackground"/>
+				<dataLink field="colorBackground" defaultValue="#000000">
+			        <event name="onChange">
+			            if sheet==nil then return end
+						local color = sheet.colorBackground or "#000000"
+
+			            local rectangles = findClass("rectangle")
+
+						for i=1, #rectangles, 1 do 
+							rectangles[i].color = color
+						end
+			        </event>
+				</dataLink>
+
+				<label g="col" g-width="3" height="25" text="Linhas " horzTextAlign="center"/>
+				<colorSelection top="85" field="colorStroke"/>
+				<dataLink field="colorStroke" defaultValue="#FFFFFF">
+			        <event name="onChange">
+			            if sheet==nil then return end
+						local strokeColor = sheet.colorStroke or "#FFFFFF"
+
+			            local rectangles = findClass("rectangle")
+
+						for i=1, #rectangles, 1 do 
+							rectangles[i].strokeColor = strokeColor
+						end
+
+			            local horzLines = findClass("horzLine")
+
+						for i=1, #horzLines, 1 do 
+							horzLines[i].strokeColor = strokeColor
+						end
+			        </event>
+			    </dataLink>
+
+				<label g="col" g-width="3" height="25" text="Fonte " horzTextAlign="center"/>
+				<colorSelection top="110" field="colorFont"/>
+				<dataLink field="colorFont" defaultValue="#FFFFFF">
+			        <event name="onChange">
+			            if sheet==nil then return end
+						local fontColor = sheet.colorFont or "#FFFFFF"
+
+						local controls = findAllControls()
+						
+						local edits = filterByClass("edit", controls)
+						for i=1, #edits, 1 do 
+							edits[i].fontColor = fontColor
+						end
+
+						local labels = filterByClass("label", controls)
+						for i=1, #labels, 1 do 
+							labels[i].fontColor = fontColor
+						end
+
+						local comboBoxs = filterByClass("comboBox", controls)
+						for i=1, #comboBoxs, 1 do 
+							comboBoxs[i].fontColor = fontColor
+						end
+
+						local textEditors = filterByClass("textEditor", controls)
+						for i=1, #textEditors, 1 do 
+							textEditors[i].fontColor = fontColor
+						end
+
+						local checkBoxs = filterByClass("checkBox", controls)
+						for i=1, #checkBoxs, 1 do 
+							checkBoxs[i].fontColor = fontColor
+						end
+
+						local buttons = filterByClass("button", controls)
+						for i=1, #buttons, 1 do 
+							buttons[i].fontColor = fontColor
+						end
+			        </event>
+			    </dataLink>
+        	</rectangle>
+
+        	<rectangle g="col" g-width="12" g-min-height="160" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+				<label g="col" g-width="12" height="25" text="SUA VERSÃO:" field="versionInstalled"/>
+				<label g="col" g-width="12" height="25" text="VERSÃO ATUAL:" field="versionDownloaded"/>
+				<checkBox g="col" g-width="12" height="25" field="noUpdate" text="Não pedir para atualizar."/>
+
+				<button g="col" g-width="4" height="25" textTrimming="none" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Savage%20Worlds/README.md')" />
+				<button g="col" g-width="4" height="25" textTrimming="none" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Savage%20Worlds/output/Ficha%20Universal%20Savage%20Worlds.rpk?raw=true')"/>
+
+				<label g="col" g-width="6" height="25" textTrimming="none" text="CONHEÇA A MESA:" fontSize="11" horzTextAlign="center"/>
+				<button g="col" g-width="6" height="25" textTrimming="none" text="RPGmeister" onClick="GUI.openInBrowser('https://vtt.firecast.app/artifacts/rooms/64070')" />
+
+				<button g="col" g-width="6" height="25" textTrimming="none" text="Exportar Ficha" >
+					<event name="onClick">
+						local xml = NDB.exportXML(sheet)
+
+						local export = {}
+						Utils.binaryEncode(export, "utf8", xml)
+
+						local stream = Utils.newMemoryStream()
+						stream:write(export)
+
+						Dialogs.saveFile("Salvar Ficha como XML", stream, (sheet.nome or "ficha") .. ".xml", "application/xml",
+							function()
+								stream:close()
+								showMessage("Ficha Exportada.")
+							end)
+					</event>
+				</button>
+				<button g="col" g-width="6" height="25" textTrimming="none" text="Importar Ficha" >
+					<event name="onClick">
+						Dialogs.openFile("Importar Ficha", "application/xml", false, 
+							function(arquivos)
+								local arq = arquivos[1]
+
+								local import = {}
+								arq.stream:read(import, arq.stream.size)
+
+								local xml = Utils.binaryDecode(import, "utf8")
+
+								NDB.importXML(sheet, xml)
+
+								arq.stream:close()
+							end)
+					</event>
+				</button>
+        	</rectangle>
+        </layout>
+    </scrollBox>
+</form>
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<group>
+	    <template name="formatEdit">
+	    	<layout g="col" g-width="$(gwidth or 3)" height="$(height)">
+		        <rectangle align="client" color="black" strokeColor="white" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" hint="Clique em mim para editar meu valor.">
+		            <label align="client" field="$(field)" horzTextAlign="center" fontSize="$(fontSize or 13)" formatFloat="$(formatFloat)"/>
+		            <event name="onClick">
+		                self.$(field)Label.visible = false;
+		                self.$(field)Edit.visible = true;
+		                self.$(field)Edit:setFocus();
+		            </event>
+		        </rectangle>
+		        <edit align="client" field="$(field)" fontSize="11" name="$(field)Edit" visible="false">
+		            <event name="onExit">
+		                self.$(field)Label.visible = true;
+		                self.$(field)Edit.visible = false;
+		            </event>
+		        </edit>
+		        <dataLink field="$(field)" defaultValue="$(default)"/>
+		    </layout>
+	    </template>
+	    <template name="comboDice">
+	    	<comboBox g="col" g-width="$(gwidth or 1)" field="$(field)" height="25" items="{'d4','d6','d8','d10','d12'}" values="{'d4','d6','d8','d10','d12'}" onChange="$(onChange)"/>
+	    </template>
+	</group>
+	<!-- Title -->
+	<group>
+	    <template name="Title">
+	    	<formatEdit gwidth="$(widthL or 3)" default="$(text)" field="Title$(field)" fontSize="$(fontSize or 13)" height="25" formatFloat=""/>
+			<edit g="col" g-width="$(widthR or 9)" field="$(field)" height="25"/>
+	    </template>
+	    <template name="TitleComboBox">
+			<label g="col" g-width="$(widthL or 3)" text="$(text)" horzTextAlign="center" height="25" textTrimming="none"/>
+			<comboBox g="col" g-width="$(widthR or 9)" field="$(field)" height="25" items="$(items)" values="$(values)" onChange="$(onChange)"/>
+	    </template>
+	</group>
+	<!-- Stats -->
+	<group>
+	    <template name="Attribute">
+	    	<formatEdit gwidth="$(width1 or 6)" default="$(text)" field="$(field)" fontSize="$(fontSize or 13)" height="25" formatFloat=""/>
+	    	<comboDice gwidth="$(width2 or 2)" field="$(field)Dice"/>
+			<edit g="col" g-width="$(width3 or 2)" field="$(field)Bonus" height="25"/>
+			<button g="col" g-width="$(width4 or 2)" text="🎲" height="25" onClick="$(onClick)"/>
+	    </template>
+	</group>
+	<group>
+	    <template name="NoteBlock">
+	    	<rectangle g="col" g-width="$(gwidth or 4)" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="160" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5" g-vert-tile="true">
+	        	<formatEdit gwidth="12" default="$(text)" field="$(field)" fontSize="13" height="25" formatFloat=""/>
+	        	<textEditor g="col" g-width="12"  field="$(field)Block" g-vert-tile="true"/>
+	        </rectangle>
+	    </template>
+		<template name="colorSelection">
+			<comboBox g="col" g-width="9" height="25" field="$(field)" items="{'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed', 'Indigo', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'}" values="{'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'}"/>	
+		</template>
+	</group>
+</group>

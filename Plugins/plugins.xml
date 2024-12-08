@@ -336,6 +336,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="Ambesek.Universal.Savage.Worlds" name="Ficha Universal Savage Worlds" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Savage%20Worlds/output/Ficha%20Universal%20Savage%20Worlds.rpk?raw=true" fileName="Ficha Universal Savage Worlds.rpk" repositoryPath="Sheets/Ficha Universal Savage Worlds/" author="Ambesek" description="Ficha universal para o sistema Savage Worlds" version="1.0" compilationDate="08122024231814" compilationDigest="aa589b57b75fbab0e6aff683ca4bfbd6cf3f2d73">
+        <info lang="pt-BR" name="Ficha Universal Savage Worlds" description="Ficha universal para o sistema Savage Worlds" author="Ambesek" site="https://github.com/VinnyAmbesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.Universal.SavageWorlds" title="Ficha Universal Savage Worlds" formType="sheetTemplate">
+                <info title="Ficha Universal Savage Worlds"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Universal.Storyteller" name="Ficha Universal Storyteller" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Storyteller/output/Ficha%20Universal%20Storyteller.rpk?raw=true" fileName="Ficha Universal Storyteller.rpk" repositoryPath="Sheets/Ficha Universal Storyteller/" author="Ambesek" description="Ficha Generica Universal para Storyteller" version="0.6" compilationDate="27082023150215" compilationDigest="3aa0c3c7769225e0f1e2564304a645ddc6b9245e">
         <info lang="pt-BR" name="Ficha Universal Storyteller" description="Ficha Generica Universal para Storyteller" author="Ambesek"/>
         <dataTypes>

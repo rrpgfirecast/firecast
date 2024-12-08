@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="ProgressionsProgression" g="col" g-width="12" g-width-lg="12" height="25">
+	<import file="Templates.xml"/>
+
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+
+		local function rollTest()
+			-- TODO
+		end
+
+		]]>	
+	</script>
+
+	<Title text="" field="progression" fontSize="11" widthL="3" widthR="8"/>
+	<button g="col" g-width="1" text="🗑️" height="25" onClick="askForDelete()"/>
+</form>

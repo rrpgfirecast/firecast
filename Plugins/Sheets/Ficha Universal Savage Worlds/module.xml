@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b">
+    <id>Ambesek.Universal.Savage.Worlds</id>
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <name>Ficha Universal Savage Worlds</name>
+        <description>Ficha universal para o sistema Savage Worlds</description>
+        <author>Ambesek</author>
+        <site>https://github.com/VinnyAmbesek</site>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
+</module>

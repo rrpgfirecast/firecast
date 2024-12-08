@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Powers" align="client" g-cnt-line-spacing="5">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="12" g-width-lg="12" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+            	<button text="Novo Poder" g="col" g-width="3" height="25" onClick="self.rclPowers:append();" textTrimming="none"/>
+            	<layout g="col" g-width="9"/>
+                <gridRecordList name="rclPowers" field="rclPowers" templateForm="PowersPower" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.power, right.power);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+	</scrollBox>
+</form>

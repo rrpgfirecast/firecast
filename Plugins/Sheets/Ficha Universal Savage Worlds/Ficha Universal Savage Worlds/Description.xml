@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Description" align="client" margins="{top=1}">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="12" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="TAMANHO" field="description0_0"/>
+				<Title text="ALTURA" field="description0_1"/>
+				<Title text="PESO" field="description0_2"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="IDADE" field="description1_0"/>
+				<Title text="SEXO" field="description1_1"/>
+				<Title text="OUTROS" field="description1_2"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="OLHOS" field="description2_0"/>
+				<Title text="PELE" field="description2_1"/>
+				<Title text="CABELO" field="description2_2"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="PLANO" field="description3_0"/>
+				<Title text="REGIÃO" field="description3_1"/>
+				<Title text="REINO" field="description3_2"/>
+			</layout>
+		</rectangle>
+
+		<layout g="col" g-width="12" g-width-lg="3" g-vert-tile="true" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+				<formatEdit gwidth="3" default="APARÊNCIA" field="appearance" height="25" formatFloat=""/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="aparencia"/>
+			</rectangle>
+			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+				<formatEdit gwidth="3" default="PERSONALIDADE" field="personality" height="25" formatFloat=""/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="personalidade"/>
+			</rectangle>
+		</layout>
+
+		<rectangle g="col" g-width="12" g-width-lg="9" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<formatEdit gwidth="3" default="HISTORIA" field="backgroundTitle" height="25" formatFloat=""/>
+			<layout g="col" g-width="9" height="25"/>
+
+			<richEdit g="col" g-width="9" g-vert-tile="true" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+			<rectangle g="col" g-width="3" g-min-height="85" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" g-vert-tile="true">
+				<image align="client" field="avatar" editable="true" style="proportional" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+						if drag then
+					    	drag:addData("imageURL", sheet.avatar)
+					    end
+					</event>
+				</image>
+			</rectangle>
+		</rectangle>
+	</scrollBox>
+</form>

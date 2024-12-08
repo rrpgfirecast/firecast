@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="General" align="client" g-cnt-line-spacing="5">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="12" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<rectangle g="col" g-width="6" g-width-lg="3" g-min-height="85" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<image align="client" field="sistema" editable="true" style="proportional" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+						if drag then
+					    	drag:addData("imageURL", sheet.sistema)
+					    end
+					</event>
+				</image>
+			</rectangle>
+
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="NOME" field="header0_0" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="CENÁRIO" field="header0_1" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="ESPÉCIE" field="header0_2" fontSize="11" widthL="4" widthR="8"/>
+			</layout>
+
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="RANQUE" field="header1_0" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="EXPERIÊNCIA" field="header1_1" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="BENES" field="header1_2" fontSize="11" widthL="4" widthR="8"/>
+			</layout>
+
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="CONVICÇÃO" field="header2_0" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="CLASSE" field="header2_1" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="" field="header2_2" fontSize="11" widthL="4" widthR="8"/>
+			</layout>
+		</rectangle>
+
+		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="160" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+			<formatEdit gwidth="12" default="ATRIBUTOS" field="TitleAttribute" height="25" formatFloat=""/>
+
+			<layout g="col" g-width="12" g-min-height="135">
+				<Attribute text="AGILIDADE" field="attribute0_0" fontSize="11"/>
+				<Attribute text="ASTÚCIA" field="attribute0_1" fontSize="11"/>
+				<Attribute text="ESPÍRITO" field="attribute0_2" fontSize="11"/>
+				<Attribute text="FORÇA" field="attribute0_3" fontSize="11"/>
+				<Attribute text="VIGOR" field="attribute0_4" fontSize="11"/>
+			</layout>
+		</rectangle>
+
+		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="160" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+			<formatEdit gwidth="12" default="DERIVADOS" field="DerivedAttribute" height="25" formatFloat=""/>
+
+			<layout g="col" g-width="12" g-min-height="135">
+				<Title text="MOVIMENTO" field="derived0_0" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="APARAR" field="derived0_1" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="RESISTÊNCIA" field="derived0_2" fontSize="11" widthL="4" widthR="8"/>
+			</layout>
+		</rectangle>
+
+		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="160" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+			<formatEdit gwidth="12" default="" field="OtherAttribute" height="25" formatFloat=""/>
+
+			<layout g="col" g-width="12" g-min-height="135">
+				<Title text="PONTOS DE PODER" field="other0_0" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="FADIGA" field="other0_1" fontSize="11" widthL="4" widthR="8"/>
+				<Title text="FERIMENTOS" field="other0_2" fontSize="11" widthL="4" widthR="8"/>
+			</layout>
+		</rectangle>
+
+	</scrollBox>
+</form>

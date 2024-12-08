@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="SkillsSkill" g="col" g-width="12" g-width-lg="6" height="25">
+	<import file="Templates.xml"/>
+
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+
+		local function rollTest()
+			-- TODO
+		end
+
+		]]>	
+	</script>
+
+	<formatEdit gwidth="6" default="" field="skill" fontSize="13" height="25" formatFloat=""/>
+	<comboDice gwidth="2" field="skillDice"/>
+	<edit g="col" g-width="2" field="skillBonus" height="25"/>
+	<button g="col" g-width="1" text="🎲" height="25" onClick="rollTest()"/>
+	<button g="col" g-width="1" text="🗑️" height="25" onClick="askForDelete()"/>
+</form>
