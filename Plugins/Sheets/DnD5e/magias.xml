@@ -38,7 +38,9 @@
 		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header1.xml">
 			<label frameRegion="RegiaoSmallTitulo" text="$(level)" class="magicLevelNumber"/>
 			<edit frameRegion="RegiaoConteudo1" class="magicLevelInformation" field="magias.espacosTotais$(level)"/>
+			<dataLink field="magias.espacosTotais$(level)" defaultValue="@@DnD5e.spells.uses.total"/>
 			<edit frameRegion="RegiaoConteudo2" class="magicLevelInformation" field="magias.espacosGastos$(level)"/>
+			<dataLink field="magias.espacosGastos$(level)" defaultValue="@@DnD5e.spells.uses.spent"/>
 		</flowPart>
 	</template>
 

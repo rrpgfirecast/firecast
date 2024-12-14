@@ -448,7 +448,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="24062024152422" compilationDigest="ae4d763eedacf33bbaac6fae18d77e9f80ef0cd4">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.4" compilationDate="24062024152422" compilationDigest="ae4d763eedacf33bbaac6fae18d77e9f80ef0cd4">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>
@@ -694,7 +694,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.2.3" compilationDate="28072024185314" compilationDigest="85ff9772219b1269ce02daf4b976b7d0819306fd">
+    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.2.3" compilationDate="02112024185030" compilationDigest="e0ec48022854a72f98a05ca21d13b35b5f0f0caf">
         <info lang="pt-BR" name="Ficha Pathfinder" description="Ficha feita para o sistema Pathfinder." author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder" formType="sheetTemplate">
@@ -1079,13 +1079,16 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="rrpg.hero.tham" name="Hero.Eclipse" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20HeroisdoEclipse/output/Ficha%20HeroisdoEclipse.rpk?raw=true" fileName="Ficha HeroisdoEclipse.rpk" repositoryPath="Sheets/Ficha HeroisdoEclipse/" author="isaq_xd" description="Modelo personalizado da ficha mutantes e malfeitores" version="1.0" compilationDate="17082024202321" compilationDigest="c8884a4cb6fe31db46d2d9dc96add5a3a662e666">
+    <element id="rrpg.hero.tham" name="Hero.Eclipse" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20HeroisdoEclipse/output/Ficha%20HeroisdoEclipse.rpk?raw=true" fileName="Ficha HeroisdoEclipse.rpk" repositoryPath="Sheets/Ficha HeroisdoEclipse/" author="isaq_xd" description="Modelo personalizado da ficha mutantes e malfeitores" version="1.5" compilationDate="06092024190058" compilationDigest="53abcf7c42c763d1bb015040616a73199e1ad488">
         <info lang="pt-BR" name="Hero.Eclipse" description="Modelo personalizado da ficha mutantes e malfeitores" author="isaq_xd" site="isaque3356@icloud.com"/>
         <dataTypes>
             <dataType id="Ficha_MM3e_MultiAba" title="Ficha Multiaba" formType="sheetTemplate">
                 <info title="Ficha Multiaba"/>
             </dataType>
             <dataType id="Herois.Eclipse" title="Hero_Eclipse" formType="sheetTemplate">
+                <info title="Hero_Eclipse"/>
+            </dataType>
+            <dataType id="Herois.Eclipse_mob2" title="Hero_Eclipse" formType="sheetTemplate">
                 <info title="Hero_Eclipse"/>
             </dataType>
         </dataTypes>
