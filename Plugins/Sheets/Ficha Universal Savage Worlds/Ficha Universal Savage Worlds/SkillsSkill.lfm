@@ -13,16 +13,83 @@
 								 end)
 		end
 
-		local function rollTest()
-			-- TODO
-		end
+        local function roll(field, extra, type)
+            local dice = sheet[field] or "1d4"
+            local wild = NDB.getRoot(sheet).wild
+            extra = tonumber(sheet[extra]) or 0
+            type = sheet[type] or ""
 
+            local dice1Result = 0
+            local dice2Result = 0
+
+            local chat = Firecast.getMesaDe(sheet).activeChat
+
+            local roll = dice
+            -- add wild dice
+            if wild then
+                roll = roll .. "+1d6"
+            end
+            -- add extra to dice roll
+            if extra > 0 then
+                roll = roll .. "+" .. extra
+            elseif extra < 0 then
+                roll = roll .. extra
+            end
+
+            local promise = chat:asyncRoll(roll, type)
+            local n, rollObject, logRec = await(promise)
+            --write(dump(rollObject))
+
+            -- check if aced the trait die
+            local aceTarget = tonumber(string.match(dice, "1d(%d+)")) or 4
+            local result = rollObject.ops[1].resultados[1]
+            dice1Result = dice1Result + result
+            local ace = aceTarget == result
+            local aceWild = false
+
+            -- check if aced the wild die
+            if wild then
+                -- use third op, as second op is the '+' operator
+                result = rollObject.ops[3].resultados[1]
+                dice2Result = dice2Result + result
+                aceWild = result == 6 
+
+                if rollObject.ops[1].resultados[1] == 1 and rollObject.ops[3].resultados[1] == 1 then
+                    chat:enviarMensagem("Falha Crítica!")
+                end
+            end
+
+            while ace do
+                -- reroll until not a trait ace 
+                promise = chat:asyncRoll(dice, type)
+                local n, rollObject, logRec = await(promise)
+
+                result = rollObject.ops[1].resultados[1]
+                dice1Result = dice1Result + result
+                ace = aceTarget == result
+            end
+
+            while aceWild do
+                --rerrol wild until not a wild ace
+                -- reroll until not an ace 
+                promise = chat:asyncRoll("1d6", "Selvagem")
+                local n, rollObject, logRec = await(promise)
+
+                -- use ops 1 here, as there is only the wild dice in the following rolls
+                result = rollObject.ops[1].resultados[1]
+                dice2Result = dice2Result + result
+                aceWild = result == 6 
+            end
+
+            local total = math.max(dice1Result, dice2Result) + extra
+            chat:enviarMensagem("Total: " .. math.floor(total))
+        end
 		]]>	
 	</script>
 
 	<formatEdit gwidth="6" default="" field="skill" fontSize="13" height="25" formatFloat=""/>
 	<comboDice gwidth="2" field="skillDice"/>
 	<edit g="col" g-width="2" field="skillBonus" height="25"/>
-	<button g="col" g-width="1" text="🎲" height="25" onClick="rollTest()"/>
+	<button g="col" g-width="1" text="🎲" height="25" onClick="roll('skillDice','skillBonus','skill')"/>
 	<button g="col" g-width="1" text="🗑️" height="25" onClick="askForDelete()"/>
 </form>

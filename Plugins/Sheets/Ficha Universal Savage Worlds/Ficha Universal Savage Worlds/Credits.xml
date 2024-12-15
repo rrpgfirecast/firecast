@@ -43,7 +43,6 @@
         <layout g="col" g-width="6" g-width-lg="2" g-min-height="200" g-vert-tile="true" g-auto-height="true" g-cnt-line-spacing="5">
         	<rectangle g="col" g-width="12" g-min-height="125" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
         		<label g="col" g-width="12" height="25" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
-				<label g="col" g-width="12" height="25" text="Arte: Nefer (Nefertyne)" horzTextAlign="center"/>
         	</rectangle>
 
         	<rectangle g="col" g-width="12" g-min-height="165" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
@@ -165,6 +164,8 @@
 				<label g="col" g-width="12" height="25" text="SUA VERSÃO:" field="versionInstalled"/>
 				<label g="col" g-width="12" height="25" text="VERSÃO ATUAL:" field="versionDownloaded"/>
 				<checkBox g="col" g-width="12" height="25" field="noUpdate" text="Não pedir para atualizar."/>
+				<checkBox g="col" g-width="12" height="25" field="wild" text="Dado Selvagem."/>
+				<dataLink field="wild" defaultValue="true"/>
 
 				<button g="col" g-width="4" height="25" textTrimming="none" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Savage%20Worlds/README.md')" />
 				<button g="col" g-width="4" height="25" textTrimming="none" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Savage%20Worlds/output/Ficha%20Universal%20Savage%20Worlds.rpk?raw=true')"/>

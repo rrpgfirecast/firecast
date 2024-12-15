@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.7b">
     <id>Ambesek.Universal.Savage.Worlds</id>
-    <version>1.0</version>
+    <version>1.1</version>
     <info lang="pt-BR">
         <name>Ficha Universal Savage Worlds</name>
         <description>Ficha universal para o sistema Savage Worlds</description>

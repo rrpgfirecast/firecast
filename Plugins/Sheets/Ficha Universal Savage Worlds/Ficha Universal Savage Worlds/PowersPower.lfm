@@ -12,11 +12,6 @@
 									end
 								 end)
 		end
-
-		local function rollTest()
-			-- TODO
-		end
-
 		]]>	
 	</script>
 

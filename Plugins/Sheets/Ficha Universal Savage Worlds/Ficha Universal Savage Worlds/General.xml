@@ -31,19 +31,19 @@
 			</layout>
 		</rectangle>
 
-		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="160" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="175" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
 			<formatEdit gwidth="12" default="ATRIBUTOS" field="TitleAttribute" height="25" formatFloat=""/>
 
 			<layout g="col" g-width="12" g-min-height="135">
-				<Attribute text="AGILIDADE" field="attribute0_0" fontSize="11"/>
-				<Attribute text="ASTÚCIA" field="attribute0_1" fontSize="11"/>
-				<Attribute text="ESPÍRITO" field="attribute0_2" fontSize="11"/>
-				<Attribute text="FORÇA" field="attribute0_3" fontSize="11"/>
-				<Attribute text="VIGOR" field="attribute0_4" fontSize="11"/>
+				<Attribute text="AGILIDADE" field="attribute0_0" fontSize="11" onClick="roll('attribute0_0Dice','attribute0_0Bonus','attribute0_0')"/>
+				<Attribute text="ASTÚCIA" field="attribute0_1" fontSize="11" onClick="roll('attribute0_1Dice','attribute0_1Bonus','attribute0_1')"/>
+				<Attribute text="ESPÍRITO" field="attribute0_2" fontSize="11" onClick="roll('attribute0_2Dice','attribute0_2Bonus','attribute0_2')"/>
+				<Attribute text="FORÇA" field="attribute0_3" fontSize="11" onClick="roll('attribute0_3Dice','attribute0_3Bonus','attribute0_3')"/>
+				<Attribute text="VIGOR" field="attribute0_4" fontSize="11" onClick="roll('attribute0_4Dice','attribute0_4Bonus','attribute0_4')"/>
 			</layout>
 		</rectangle>
 
-		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="160" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="175" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
 			<formatEdit gwidth="12" default="DERIVADOS" field="DerivedAttribute" height="25" formatFloat=""/>
 
 			<layout g="col" g-width="12" g-min-height="135">
@@ -53,7 +53,7 @@
 			</layout>
 		</rectangle>
 
-		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="160" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="175" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
 			<formatEdit gwidth="12" default="" field="OtherAttribute" height="25" formatFloat=""/>
 
 			<layout g="col" g-width="12" g-min-height="135">
@@ -61,6 +61,16 @@
 				<Title text="FADIGA" field="other0_1" fontSize="11" widthL="4" widthR="8"/>
 				<Title text="FERIMENTOS" field="other0_2" fontSize="11" widthL="4" widthR="8"/>
 			</layout>
+		</rectangle>
+
+		<rectangle g="col" g-width="3" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="175" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
+			<image align="client" field="avatarPic" editable="true" style="proportional" margins="{left=2, right=2, top=2, bottom=2}">
+				<event name="OnStartDrag">
+					if drag then
+				    	drag:addData("imageURL", sheet.avatarPic)
+				    end
+				</event>
+			</image>
 		</rectangle>
 
 	</scrollBox>
