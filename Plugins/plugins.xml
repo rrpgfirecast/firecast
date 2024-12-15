@@ -336,7 +336,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Universal.Savage.Worlds" name="Ficha Universal Savage Worlds" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Savage%20Worlds/output/Ficha%20Universal%20Savage%20Worlds.rpk?raw=true" fileName="Ficha Universal Savage Worlds.rpk" repositoryPath="Sheets/Ficha Universal Savage Worlds/" author="Ambesek" description="Ficha universal para o sistema Savage Worlds" version="1.1" compilationDate="08122024231814" compilationDigest="aa589b57b75fbab0e6aff683ca4bfbd6cf3f2d73">
+    <element id="Ambesek.Universal.Savage.Worlds" name="Ficha Universal Savage Worlds" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Savage%20Worlds/output/Ficha%20Universal%20Savage%20Worlds.rpk?raw=true" fileName="Ficha Universal Savage Worlds.rpk" repositoryPath="Sheets/Ficha Universal Savage Worlds/" author="Ambesek" description="Ficha universal para o sistema Savage Worlds" version="1.1.1" compilationDate="08122024231814" compilationDigest="aa589b57b75fbab0e6aff683ca4bfbd6cf3f2d73">
         <info lang="pt-BR" name="Ficha Universal Savage Worlds" description="Ficha universal para o sistema Savage Worlds" author="Ambesek" site="https://github.com/VinnyAmbesek"/>
         <dataTypes>
             <dataType id="Ambesek.Universal.SavageWorlds" title="Ficha Universal Savage Worlds" formType="sheetTemplate">

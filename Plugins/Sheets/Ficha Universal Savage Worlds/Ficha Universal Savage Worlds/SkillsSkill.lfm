@@ -57,6 +57,10 @@
                 if rollObject.ops[1].resultados[1] == 1 and rollObject.ops[3].resultados[1] == 1 then
                     chat:enviarMensagem("Falha Crítica!")
                 end
+            else
+                if rollObject.ops[1].resultados[1] == 1 then
+                    chat:enviarMensagem("Falha Crítica!")
+                end
             end
 
             while ace do
