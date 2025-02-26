@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Entry_List" height="110" margins="{top=5, bottom=5, right=10}">   
+
+	<script>
+		local function NodeSee()
+			local table = Firecast.getRoomOf(sheet);
+			local nodeSheet = NDB.getRoot(sheet);
+			nodeSheet = NDB.getRoot(nodeSheet);
+			local wiki = Firecast.getLibraryItemOf(nodeSheet);
+			if table.me.isMestre == true or table.me == wiki.owner then
+				if sheet.EntrySee == "1" or sheet.EntrySee == nil then
+					NDB.setPermission(sheet, "group", "todos", "read", nil);
+					NDB.setPermission(sheet, "group", "mestres", "read", "strongAllow");
+					NDB.setPermission(sheet, "group", "mestresAux", "read", "strongAllow");
+					NDB.setPermission(sheet, "group", "dono", "read", "strongAllow");
+					NDB.setPermission(sheet, "group", "todos", "read", "deny");
+					if sheet.WLSee ~= nil then
+						for k,v in pairs (NDB.getChildNodes(sheet.WLSee)) do
+							if v.nameWL ~= nil then
+								NDB.setPermission(sheet, "user", v.nameWL, "read", "strongAllow");
+							end;
+						end;
+					end;
+				elseif sheet.EntrySee == "2" then
+					NDB.setPermission(sheet, "group", "todos", "read", nil);
+					NDB.setPermission(sheet, "group", "mestres", "read", "strongAllow");
+					NDB.setPermission(sheet, "group", "mestresAux", "read", "strongAllow");
+					NDB.setPermission(sheet, "group", "dono", "read", "strongAllow");
+					NDB.setPermission(sheet, "group", "jogadores", "read", "strongAllow");
+					NDB.setPermission(sheet, "group", "todos", "read", "deny");
+					if sheet.WLSee ~= nil then
+						for k,v in pairs (NDB.getChildNodes(sheet.WLSee)) do
+							if v.nameWL ~= nil then
+								NDB.setPermission(sheet, "user", v.nameWL, "read", "strongAllow");
+							end;
+						end;
+					end;
+				elseif sheet.EntrySee == "3" then
+					NDB.setPermission(sheet, "group", "todos", "read", nil);
+					NDB.setPermission(sheet, "group", "todos", "read", "strongAllow");
+				end;
+			end;
+		end;
+		
+		local function NodeEdit()
+			local table = Firecast.getRoomOf(sheet);
+			local nodeSheet = NDB.getRoot(sheet);
+			nodeSheet = NDB.getRoot(nodeSheet);
+			local wiki = Firecast.getLibraryItemOf(nodeSheet);
+			if table.me.isMestre == true or table.me == wiki.owner then
+				if sheet.EntryEdit == "1" or sheet.EntryEdit == nil then
+					NDB.setPermission(sheet.EntryText, "group", "jogadores", "write", nil);
+					NDB.setPermission(sheet.EntryText, "group", "jogadores", "createChild", nil);
+					NDB.setPermission(sheet.EntryText, "group", "todos", "write", nil);
+					NDB.setPermission(sheet.EntryText, "group", "todos", "createChild", nil);
+					NDB.setPermission(sheet.EntryText, "group", "mestres", "write", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "mestres", "createChild", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "mestresAux", "write", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "mestresAux", "createChild", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "dono", "write", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "dono", "createChild", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "todos", "write", "deny");
+					NDB.setPermission(sheet.EntryText, "group", "todos", "createChild", "deny");
+					if sheet.WLEdit ~= nil then
+						for k,v in pairs (NDB.getChildNodes(sheet.WLEdit)) do
+							if v.nameWL ~= nil then 
+								NDB.setPermission(sheet.EntryText, "user", v.nameWL, "write", "strongAllow");
+								NDB.setPermission(sheet.EntryText, "user", v.nameWL, "createChild", "strongAllow");
+							end;
+						end;
+					end;
+				elseif sheet.EntryEdit == "2" then
+					NDB.setPermission(sheet.EntryText, "group", "todos", "write", nil);
+					NDB.setPermission(sheet.EntryText, "group", "todos", "createChild", nil);
+					NDB.setPermission(sheet.EntryText, "group", "mestres", "write", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "mestres", "createChild", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "mestresAux", "write", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "mestresAux", "createChild", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "dono", "write", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "dono", "createChild", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "jogadores", "write", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "jogadores", "createChild", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "todos", "write", "deny");
+					NDB.setPermission(sheet.EntryText, "group", "todos", "createChild", "deny");		
+					if sheet.WLEdit ~= nil then
+						for k,v in pairs (NDB.getChildNodes(sheet.WLEdit)) do
+							if v.nameWL ~= nil then 
+								NDB.setPermission(sheet.EntryText, "user", v.nameWL, "write", "strongAllow");
+								NDB.setPermission(sheet.EntryText, "user", v.nameWL, "createChild", "strongAllow");
+							end;
+						end;
+					end;
+				elseif sheet.EntryEdit == "3" then
+					NDB.setPermission(sheet.EntryText, "group", "todos", "write", nil);
+					NDB.setPermission(sheet.EntryText, "group", "todos", "write", "strongAllow");
+					NDB.setPermission(sheet.EntryText, "group", "todos", "createChild", "strongAllow");
+				end;
+			end;
+		end;
+		local function RightColors()
+			self.EntryBox.color = sheet.BackColor
+			self.EntryBox.strokeColor = sheet.StroColor;
+			self.Combo1.color = sheet.StroColor;
+			self.Combo2.color = sheet.StroColor;
+			self.edit1.color = sheet.StroColor;
+			self.edit2.color = sheet.StroColor;
+			self.button1.color = sheet.StroColor;
+			self.EntryName.fontColor = sheet.TitleColor;
+			self.ChapterEdit.fontColor = sheet.TitleColor;
+			self.ComboEdit.fontColor = sheet.TitleColor;
+			self.ComboSee.fontColor = sheet.TitleColor;
+		end;
+	</script>
+	<event name="onNodeReady">
+		local table = Firecast.getRoomOf(sheet);
+		local nodeSheet = NDB.getRoot(sheet);
+		nodeSheet = NDB.getRoot(nodeSheet);
+		local wiki = Firecast.getLibraryItemOf(nodeSheet);
+		if table.me.isMestre == true or table.me == wiki.owner then
+			NDB.setPermission(sheet, "group", "todos", "write", nil);
+			NDB.setPermission(sheet, "group", "mestres", "write", "strongAllow");
+			NDB.setPermission(sheet, "group", "mestresAux", "write", "strongAllow");
+			NDB.setPermission(sheet, "group", "dono", "write", "strongAllow");
+			NDB.setPermission(sheet, "group", "todos", "write", "deny");
+		end;
+		NodeSee();
+		NodeEdit();
+		RightColors();
+	</event>
+	
+	<dataLink fields="{'BackColor', 'StroColor', 'TitleColor', 'imageBGEntry', 'imageCpac', 'GenPerm'}" defaultValues="{'black', 'gray', 'black', 'WikiRPGLogo.png', '0.2', 'true'}">
+		<event name="onPersistedChange">
+			RightColors();
+		</event>
+	</dataLink>
+	
+	<popup name="popConfig" width="910" height="675" backOpacity="0.45">
+		<rectangle align="client" color="black">
+			<rectangle align="left" color="#00000000" width="300">
+				<rectangle align="top" color="#00000000" height="135">
+					<rectangle align="top" color="#00000000" height="45">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Whitelist de edição" fontSize="22"/>
+					</rectangle>
+					<comboBox align="client" margins="{top=5, left=5, right=5 , bottom=5}" items="{'Mestres','Mestres e Players', 'Todos'}" values="{ '1', '2', '3'}"
+						field="EntryEdit"  wordWrap="true" textTrimming="word" vertTextAlign="center" horzTextAlign="center" hitTest="true" hint="Selecione quem pode editar esse documento" onChange="NodeEdit();" fontSize="18"/>
+				</rectangle>
+				<button align="top" height="40" text="Novo Nome" margins="{left = 10, right = 10, top = 10}" onClick="self.WLEdit:append();" fontSize="20"/>
+				<recordList name="WLEdit" field="WLEdit" templateForm="White_List" selectable="true" align="client" margins="{left = 11, right = 11, top = 3, bottom = 3}"/>
+			</rectangle>
+			<rectangle align="left" color="#808080" width="5" margins="{top = 3, bottom = 3}"/>
+			<rectangle align="left" color="#00000000" width="300">
+				<rectangle align="top" color="#00000000" height="135">
+					<rectangle align="top" color="#00000000" height="45">
+						<label  align="client" vertTextAlign="center" horzTextAlign="center" text="Whitelist de visão" fontSize="22"/>
+					</rectangle>
+					<comboBox align="client" margins="{top=5, left=5, right=5 , bottom=5}" items="{'Mestres','Mestres e Players', 'Todos'}" values="{ '1', '2', '3'}"
+						field="EntrySee"  wordWrap="true" textTrimming="word" vertTextAlign="center" horzTextAlign="center" hitTest="true" hint="Selecione quem pode ver esse documento" onChange="NodeSee();" fontSize="18"/>
+				</rectangle>
+				<button align="top" height="40" text="Novo Nome" margins="{left = 10, right = 10, top = 10}" onClick="self.WLSee:append();" fontSize="20"/>
+				<recordList name="WLSee" field="WLSee" templateForm="White_List" selectable="true" align="client" margins="{left = 11, right = 11, top = 3, bottom = 3}"/>
+			</rectangle>
+			<rectangle align="left" color="#808080" width="5" margins="{top = 3, bottom = 3}"/>
+			<rectangle align="left" color="#00000000" width="300">
+				<rectangle align="top" color="#00000000" height="135">
+					<button align="client" text="❌" margins="{left = 5, right = 15, top = 10, bottom = 4}" fontSize="40" hint="Aperte para apagar essa entrada">
+						<event name="onClick">
+							self.popConfig:close();		
+							Dialogs.confirmYesNo("Deseja realmente apagar esta Entrada?",
+								function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								end);
+						</event>
+					</button>
+				</rectangle>
+				<rectangle align="top" color="#00000000" height="135">
+					<button align="client" text="Exportar Entrada" margins="{left = 5, right = 15, top = 10, bottom = 4}" fontSize="30">
+						<event name="onClick">
+							local xml = NDB.exportXML(sheet);
+	
+							local export = {};
+							Utils.binaryEncode(export, "utf8", xml);
+	
+							local stream = Utils.newMemoryStream();
+							stream:write(export);	
+
+							Dialogs.saveFile("Salve essa Entrada", stream, (sheet.EntryName .. " entrada"), "application/xml",
+								function()
+									stream:close();
+									showMessage("Entrada Exportada");
+								end);
+						</event>
+					</button>
+				</rectangle>
+				<rectangle align="top" color="#00000000" height="135">
+					<button align="client" text="Importar Entrada" margins="{left = 5, right = 15, top = 10, bottom = 4}" fontSize="30">
+						<event name="onClick">
+							Dialogs.openFile("Escolha o Arquivo de Entrada a ser importado.", "application/xml", false, 
+								function(arquivos)
+									local arq = arquivos[1];
+	
+									local import = {};
+									arq.stream:read(import, arq.stream.size);
+	
+									local xml = Utils.binaryDecode(import, "utf8");
+	
+									NDB.importXML(sheet, xml);
+								end);
+						</event>
+					</button>
+				</rectangle>
+				<rectangle align="top" color="#00000000" height="135">
+					<rectangle align="top" color="#00000000" height="45">
+						<label  align="client" vertTextAlign="center" horzTextAlign="center" text="Cor de Realce" fontSize="22"/>
+					</rectangle>
+					<colorComboBox align="client" margins="{top=5, left=5, right=15 , bottom=5}" field="StroColor">
+						<event name="onUserChange">
+							self.EntryBox.strokeColor = sheet.StroColor
+							self.Combo1.color = sheet.StroColor
+							self.Combo2.color = sheet.StroColor
+							self.edit1.color = sheet.StroColor
+							self.edit2.color = sheet.StroColor
+							self.button1.color = sheet.StroColor
+							
+							local RE = self.EntryBox:getParent();
+							RE = RE:getParent();
+							RE = RE:getParent();
+							RE = RE:getParent();
+							RE = RE:findControlByName("EntryTitleBG");
+							RE.color = sheet.StroColor
+						</event>
+					</colorComboBox>
+				</rectangle>
+				<rectangle align="top" color="#00000000" height="135">
+					<rectangle align="top" color="#00000000" height="45">
+						<label  align="client" vertTextAlign="center" horzTextAlign="center" text="Cor do Background" fontSize="22"/>
+					</rectangle>
+					<colorComboBox align="client" margins="{top=5, left=5, right=15 , bottom=12}" field="BackColor">
+						<event name="onUserChange">
+							self.EntryBox.color = sheet.BackColor
+							local RE = self.EntryBox:getParent();
+							RE = RE:getParent();
+							RE = RE:getParent();
+							RE = RE:getParent();
+							RE = RE:findControlByName("REEntry");
+							RE.backgroundColor = sheet.BackColor
+						</event>
+					</colorComboBox>
+				</rectangle>
+			</rectangle>
+		</rectangle>
+		<event name="onClose">
+			NodeSee();
+			NodeEdit();
+		</event>
+	</popup>
+	
+	<rectangle name="EntryBox" strokeColor="gray" strokeSize="5" align="client" color="black" yradius="5" xradius="5">
+
+        <rectangle align="top" color="#00000000" height="50" margins="{top=5, left=5, right=5}">
+			<rectangle align="left" width="231" margins="{top=5, left=5, right=5 , bottom=5}" name="edit1" color="gray" yradius="3" xradius="3">
+				<edit align="client" textPrompt="[Nome da Entrada]" field="EntryName" transparent="true" fontColor="black" name="EntryName"/>
+			</rectangle>
+			<rectangle align="client" margins="{top=5, left=5, right=5 , bottom=5}" color="gray" name="edit2" yradius="3" xradius="3">
+				<edit align="client" textPrompt="[Número do capítulo]" field="EntryChapter" type="float" vertTextAlign="center" horzTextAlign="center" decimalPlaces="1" name="ChapterEdit" transparent="true" fontColor="black">
+					<event name="onExit">
+						local mainsheet = self.ChapterEdit:getParent();
+						mainsheet = mainsheet:getParent();
+						mainsheet = mainsheet:getParent();
+						mainsheet = mainsheet:getParent();
+						mainsheet = mainsheet:getParent();
+						mainsheet:sort();
+						
+						local table = Firecast.getRoomOf(sheet);
+						local nodeSheet = NDB.getRoot(sheet);
+						local wiki = Firecast.getLibraryItemOf(nodeSheet);
+						
+						if table.me.isMestre == true or table.me == wiki.owner then
+							local controlChapter = self:getParent();
+							controlChapter = controlChapter:getParent();
+							controlChapter = controlChapter:getParent();
+							controlChapter = controlChapter:findControlByName("Chapter_Select");
+							
+							local entrylist = NDB.getChildNodes(nodeSheet.EntryNodes);
+							chapterlist = NDB.getChildNodes(nodeSheet.IndexNode);
+							for k, v in pairs (chapterlist) do
+								v.check = nil;
+							end;
+					
+							for k, v in pairs(entrylist) do
+								local check = nil;
+								local chapterlist = NDB.getChildNodes(nodeSheet.IndexNode);
+								for l, b in pairs (chapterlist) do
+									if tonumber(v.EntryChapter) == tonumber (b.Index) and v.EntryChapter ~= nil then
+										check = true;
+										b.check = true;
+									end;
+								end;
+								if check == nil and v.EntryChapter ~= nil then
+									local newChap = controlChapter:append();
+									newChap.Index = v.EntryChapter
+									newChap.check = true
+								end;
+							end;
+					
+							for k, v in pairs (chapterlist) do
+								if v.check == nil then
+									NDB.deleteNode(v);
+								end;
+							end;
+						end;
+					</event>
+				</edit>
+			</rectangle>
+		</rectangle>
+        <rectangle align="top" color="#00000000" height="50" margins="{bottom=5, left=5, right=5}">
+				<rectangle align="left" width="119" margins="{top=5, left=5, right=5 , bottom=5}" color="gray" name="Combo1" yradius="3" xradius="3">
+					<comboBox align="client" items="{'Mestres','Mestres e Players', 'Todos'}" values="{ '1', '2', '3'}" field="EntryEdit"  wordWrap="true" textTrimming="word"
+						vertTextAlign="center" horzTextAlign="center" hitTest="true" hint="Selecione quem pode editar esse documento." onChange="NodeEdit();" fontSize="11" transparent="true" name="ComboEdit" fontColor="black"/>
+				</rectangle>	
+				<rectangle align="left" width="119" margins="{top=5, left=5, right=5 , bottom=5}" color="gray" name="Combo2" yradius="3" xradius="3">
+					<comboBox align="client" items="{'Mestres','Mestres e Players', 'Todos'}" values="{ '1', '2', '3'}" field="EntrySee"  wordWrap="true" textTrimming="word" 
+						vertTextAlign="center" horzTextAlign="center" hitTest="true" hint="Selecione quem pode ver esse documento." onChange="NodeSee();" fontSize="11" transparent="true" name="ComboSee" fontColor="black"/>
+				</rectangle>
+				<rectangle align="client" margins="{top=5, left=5, right=5 , bottom=5}" color="gray" name="button1" yradius="3" xradius="3">
+					<label align="client" text="⚙️" vertTextAlign="center" horzTextAlign="center" fontSize="17" hitTest="true">
+						<event name="onClick">
+							local table = Firecast.getRoomOf(sheet);
+							local nodeSheet = NDB.getRoot(sheet);
+							nodeSheet = NDB.getRoot(nodeSheet);
+							local wiki = Firecast.getLibraryItemOf(nodeSheet);
+							if table.me.isMestre == true or table.me == wiki.owner then
+								self.popConfig.scopeNode = sheet;
+								self.popConfig:show();
+							end;
+						</event>
+					</label>
+				</rectangle>
+		</rectangle>
+
+	</rectangle>
+</form>

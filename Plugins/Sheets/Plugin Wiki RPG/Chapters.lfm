@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Chapter_List" height="50" width="400" margins="{top=5, bottom=5, right=5, left=5}">
+
+	<rectangle align="client" color="#808080" xradius="25" yradius="25">
+		<rectangle align="right" width="40" margins="{top=5, bottom=5, right=5, left=5}" xradius="20" yradius="20" color="black">
+			<label text="➡️" align="client" hint="Ir para esse capítulo" hitTest="true" fontSize="20" vertTextAlign="center" horzTextAlign="center">
+				<event name="onClick"><![CDATA[
+					local controlEntries = self:getParent();
+					controlEntries = controlEntries:getParent();
+					controlEntries = controlEntries:getParent();
+					local controlPop = controlEntries:findControlByName("popIndex");
+					controlEntries = controlEntries:findControlByName("Entries");
+			
+					local controlEntry = controlEntries:getChildren();
+			
+					local entry = "zzzzzzzzz";
+					local pos = nil;
+					for k, v in pairs (controlEntry) do 
+						local nodeEntry = v:getNodeObject();
+						if nodeEntry.EntryChapter == sheet.Index then
+							if Utils.compareStringPtBr(entry, nodeEntry.EntryChapter) > 0 then
+								entry = nodeEntry.EntryChapter;
+								pos = v
+							end;
+						end;
+					end;
+			
+					controlPop:close();
+					if pos ~= nil then
+						pos.EntryName:setFocus();
+					end;
+					]]>
+				</event>
+			</label>
+		</rectangle>
+		<rectangle align="left" width="40" margins="{top=5, bottom=5, right=5, left=5}" xradius="20" yradius="20" color="black">
+			<label align="client" vertTextAlign="center" horzTextAlign="center" fontSize="17" field="Index"/>
+		</rectangle>
+		<edit align="client" margins="{right=10}" field="nameChapter" vertTextAlign="center" fontSize="20" transparent="true"/>
+	</rectangle>
+</form>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b">
+    <!--O id identifica seu módulo globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+    <id>Ambesek.Queda.Dos.Sete</id>
+    <!--version é a versão do seu módulo. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+    <version>1.0.0</version>
+
+    <settings>
+        <automaticStringLocalization>true</automaticStringLocalization>
+    </settings>    
+
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha A Queda dos Sete</name>
+        <description>Ficha para A Queda dos Sete usando D&amp;D 5ª edição</description>
+        <author>Firecast+Ambesek</author>
+        <!-- Ficha com algumas alterações dos usuarios Ikaguia e Ambesek. -->
+        <site>https://firecast.app/</site>
+        <contact>https://www.facebook.com/AlyssonRPG</contact>
+    </info>
+</module>

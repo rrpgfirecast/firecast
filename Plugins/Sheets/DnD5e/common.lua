@@ -657,8 +657,9 @@ function common.rolaAtaque(node, modo, args, chat)
 		local function optAttUseAmmo(opt)
 			if not opt.municao or opt.municao == '' then return true; end;
 
-			local qtd = tonumber(opt.qtMunicao);
+			local qtd = tonumber(opt.qtMunicao) or 0;
 			local contador = common.getContador(node, opt.municao);
+			if contador == nil then return false end
 
 			if contador.valCur < qtd then
 				showMessage(Locale.lang("Dnd5e.messages.noCharges") .. opt.municao .. Locale.lang("Dnd5e.messages.toUse") .. opt.nome .. '\'');

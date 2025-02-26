@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="Wiki RPG.rpk" compilationDate="25022025200715" sdkApiVersion="88" sdkMinorApiVersion="2" compilationDigest="13324ac65d63a6c15fda057bcce7417859044e9b" compilationUniqueID="67be22f360ab19760000aa23">
+    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
+    <id>Wiki_RPG</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>WikiRPG</name>
+        <description>Modelo de ficha com o objetivo de servir como central de anotações de sua campanha.</description>
+        <author>Caio_Edurmp</author>
+        <contact>Discord: awildcaiohasappeared </contact>
+    </info>
+    <dataTypes>
+        <dataType title="Wiki_RPG" name="Wiki_RPG" lfmFile="Ficha_WikiRPG.lfm">WikiRPGSheet</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="WikiRPGSheet" formType="sheetTemplate" lfmFile="Ficha_WikiRPG.lfm" formName="Wiki_RPG">
+                <info title="Wiki_RPG"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>WikiRPG</name>
+    <description>Modelo de ficha com o objetivo de servir como central de anotações de sua campanha.</description>
+    <author>Caio_Edurmp</author>
+    <contact>Discord: awildcaiohasappeared</contact>
+</module>

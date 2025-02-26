@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="Ambesek.Queda.Dos.Sete" formType="sheetTemplate" title="@@dnd.edition" description="@@dnd.sheet.description" name="frmDnD5" theme="dark" cacheMode="time">
+	<import file="styles.xml"/>
+	<import file="templates.xml"/>
+	
+	<tabControl align="client" name="pgcPrincipal">
+		<tab title="@@DnD5e.tabControl.tab.front">
+			<import file="frente.xml"/>
+		</tab>
+		
+		<tab title="@@DnD5e.tabControl.tab.feature">
+			<import file="caracteristicas.xml"/>
+		</tab>
+		
+		<tab title="@@DnD5e.tabControl.tab.equipment">
+			<import file="equipamento.xml"/>
+		</tab>
+
+		<tab title="@@DnD5e.tabControl.tab.spells">
+			<import file="magias.xml"/>
+		</tab>
+
+		<tab title="@@DnD5e.tabControl.tab.counter">
+			<import file="contadores.xml"/>
+		</tab>
+
+		<tab title="@@DnD5e.tabControl.tab.annotations">
+						<rectangle class="fundo">
+				<checkBox align="right" width="15" field="outros.anotacoes_melhorado">
+					<event name="onChange">
+						if sheet then
+							self.anotacoesFancy:setVisible(sheet.outros.anotacoes_melhorado);
+							self.anotacoesOld:setVisible(not (sheet.outros.anotacoes_melhorado));
+						end;
+					</event>
+				</checkBox>
+				<richEdit name="anotacoesFancy" align="client" backgroundColor="#333333" defaultFontColor="white" field="outros.anotacoes2" hideSelection="false" defaultFontSize="15" animateImages="true" margins="{left=2, right=2, top=2, bottom=2}" visible="false"/>
+				<textEditor name="anotacoesOld" align="client" field="outros.anotacoes" class="transparente"  margins="{left=2, right=2, top=2, bottom=2}" visible="true"/>
+			</rectangle>
+		</tab>
+
+		<tab title="@@DnD5e.tabControl.tab.other">
+			<!-- Combobox de exportar ficha -->
+			<button left="0" top="0" width="150" height="20" text="@@Dnd5e.other.export" >
+				<event name="onClick">
+					local xml = NDB.exportXML(sheet);
+
+					local export = {};
+					Utils.binaryEncode(export, "utf8", xml);
+
+					local stream = Utils.newMemoryStream();
+					stream:write(export);
+
+					Dialogs.saveFile(LANG("Dnd5e.other.save"), stream, "sheet.xml", "application/xml",
+						function()
+							stream:close();
+							showMessage(LANG("Dnd5e.other.exported"));
+						end);
+				</event>
+			</button>
+			<!-- Combobox de importar ficha -->
+			<button left="0" top="25" width="150" height="20" text="@@Dnd5e.other.import" >
+				<event name="onClick">
+					Dialogs.openFile(LANG("Dnd5e.other.import"), "application/xml", false, 
+						function(arquivos)
+							local arq = arquivos[1];
+
+							local import = {};
+							arq.stream:read(import, arq.stream.size);
+
+							local xml = Utils.binaryDecode(import, "utf8");
+
+							NDB.importXML(sheet, xml);
+						end);
+				</event>
+			</button>
+
+			<button left="0" top="50" width="150" height="20" text="@@Dnd5e.other.shortRest">
+				<event name="onClick">
+		            local nodes = NDB.getChildNodes(sheet.contadores); 
+		            for i=1, #nodes, 1 do
+		            	-- only change short rest counters
+		            	local resetVal = nodes[i].selectedResetVal
+		                if nodes[i].selectedResetTime == "Descanso Curto" then
+
+		                	if resetVal == "Completa" then
+		                		nodes[i].valCur = nodes[i].valMax
+		                	elseif resetVal == "Recupera Metade (⌃)" then
+		                		nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + math.ceil(nodes[i].valMax/2));
+		                	elseif resetVal == "Recupera Metade (⌄)" then
+		                		nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + math.floor(nodes[i].valMax/2));
+		                	elseif resetVal == "Muda em" or resetVal == "Muda para" then
+
+								if not (resetVal == "Muda em" and nodes[i].valCur == nodes[i].valMax) then
+									local rolagem = Firecast.interpretarRolagem(common.interpreta(nodes[i], nodes[i].selectedResetVal2));
+									if not rolagem.possuiAlgumDado then
+										rolagem = Firecast.interpretarRolagem("1d1-1"):concatenar(rolagem);
+										rolagem:rolarLocalmente();
+										if resetVal == "Muda em" then
+											nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + rolagem.resultado);
+										else
+											nodes[i].valCur = rolagem.resultado;
+										end;
+									else
+										common.getMesa(nodes[i]).activeChat:rolarDados(rolagem, nodes[i].name, function(arolagem)
+											if resetVal == "Muda em" then
+												nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + arolagem.resultado);
+											else
+												nodes[i].valCur = arolagem.resultado;
+											end;
+										end);
+									end;
+								end;
+		                	end
+		                end
+		            end
+		        </event>
+			</button>
+
+			<button left="0" top="75" width="150" height="20" text="@@Dnd5e.other.longRest">
+				<event name="onClick">
+		            local nodes = NDB.getChildNodes(sheet.contadores); 
+		            for i=1, #nodes, 1 do
+		            	-- only change short rest counters
+		            	local resetVal = nodes[i].selectedResetVal
+		                if nodes[i].selectedResetTime == "Descanso Longo" then
+
+		                	if resetVal == "Completa" then
+		                		nodes[i].valCur = nodes[i].valMax
+		                	elseif resetVal == "Recupera Metade (⌃)" then
+		                		nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + math.ceil(nodes[i].valMax/2));
+		                	elseif resetVal == "Recupera Metade (⌄)" then
+		                		nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + math.floor(nodes[i].valMax/2));
+		                	elseif resetVal == "Muda em" or resetVal == "Muda para" then
+
+								if not (resetVal == "Muda em" and nodes[i].valCur == nodes[i].valMax) then
+									local rolagem = Firecast.interpretarRolagem(common.interpreta(nodes[i], nodes[i].selectedResetVal2));
+									if not rolagem.possuiAlgumDado then
+										rolagem = Firecast.interpretarRolagem("1d1-1"):concatenar(rolagem);
+										rolagem:rolarLocalmente();
+										if resetVal == "Muda em" then
+											nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + rolagem.resultado);
+										else
+											nodes[i].valCur = rolagem.resultado;
+										end;
+									else
+										common.getMesa(nodes[i]).activeChat:rolarDados(rolagem, nodes[i].name, function(arolagem)
+											if resetVal == "Muda em" then
+												nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + arolagem.resultado);
+											else
+												nodes[i].valCur = arolagem.resultado;
+											end;
+										end);
+									end;
+								end;
+		                	end
+		                else
+		                	nodes[i].valCur = nodes[i].valMax
+		                end
+		            end
+				</event>
+			</button>
+		</tab>
+	</tabControl>
+</form>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="White_List" height="50" margins="{top=5, bottom=5, right=5, left=5}">
+
+	<dataLink field="nameWL">
+		<event name="onPersistedChange">
+			local nodeSheet = NDB.getParent(sheet);
+			nodeSheet = NDB.getParent(nodeSheet);
+			NDB.setPermission(nodeSheet, "user", oldValue, "read", nil);
+			NDB.setPermission(nodeSheet.EntryText, "user", oldValue, "write", nil);
+			NDB.setPermission(nodeSheet.EntryText, "user", oldValue, "createChild", nil);
+			NDB.setPermission(nodeSheet, "user", oldValue, "read", "deny");
+			NDB.setPermission(nodeSheet.EntryText, "user", oldValue, "write", "deny");
+			NDB.setPermission(nodeSheet.EntryText, "user", oldValue, "createChild", "deny");
+		</event>
+	</dataLink>
+	<button text="❌" align="right" width="40" hint="Apague esse Login dessa Entrada">
+		<event name="onClick">
+			local nodeSheet = NDB.getParent(sheet);
+			nodeSheet = NDB.getParent(nodeSheet);
+			NDB.setPermission(nodeSheet, "user", sheet.nameWL, "read", nil);
+			NDB.setPermission(nodeSheet.EntryText, "user", sheet.nameWL, "write", nil);
+			NDB.setPermission(nodeSheet.EntryText, "user", sheet.nameWL, "createChild", nil);
+			NDB.setPermission(nodeSheet, "user", sheet.nameWL, "read", "deny");
+			NDB.setPermission(nodeSheet.EntryText, "user", sheet.nameWL, "write", "deny");
+			NDB.setPermission(nodeSheet.EntryText, "user", sheet.nameWL, "createChild", "deny");
+			NDB.deleteNode(sheet);
+		</event>
+	</button>
+	<edit align="client" margins="{right=10}" field="nameWL" vertTextAlign="center" fontSize="20" hint="Adicione o Login"/>
+</form>

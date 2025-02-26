@@ -136,8 +136,9 @@
                 aceWild = result == 6 
             end
 
-            local total = math.max(dice1Result, dice2Result) + extra
-            chat:enviarMensagem("Total: " .. math.floor(total))
+            local max = math.max(dice1Result, dice2Result) + extra
+            local min = math.min(dice1Result, dice2Result) + extra
+            chat:enviarMensagem("Total: " .. math.floor(max) .. ", " .. math.floor(min))
         end
         ]]> 
     </script>

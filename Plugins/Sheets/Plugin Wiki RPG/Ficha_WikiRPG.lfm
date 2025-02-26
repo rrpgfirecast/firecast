@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="WikiRPGSheet" 
+      title="Wiki_RPG" name="Wiki_RPG">    
+	  
+	<script>
+		local function Generic()
+			local entries = NDB.getChildNodes(sheet.EntryNodes)
+			for k, v in pairs (entries) do
+				if v.GenPerm == true then
+					v.ImageBGEntry = sheet.GenImageBGEntry
+					v.ImageCpac = sheet.GenImageCpac
+					v.TitleColor = sheet.GenTitleColor
+					v.BackColor = sheet.GenBackColor
+					v.StroColor = sheet.GenStroColor
+					v.EditColor = sheet.GenEditColor
+				end;
+			end;
+		end;
+		local function isRCLEmpty()
+			local entries = NDB.getChildNodes(sheet.EntryNodes)
+			local table = Firecast.getRoomOf(sheet);
+			local wiki = Firecast.getLibraryItemOf(sheet);
+			if table.me.isMestre == true or table.me == wiki.owner then
+				for k, v in pairs (entries) do
+					return
+				end;
+				local NewEntry = self.Entries:append();
+				local guide = VHD.openFile("GuiaEntrada.xml")
+				local import = {};
+				guide:read(import, guide.size);
+				local xml = Utils.binaryDecode(import, "utf8");
+				NDB.importXML(NewEntry, xml);
+			end;
+		end
+	</script>
+	
+	<event name="onNodeReady">
+		local table = Firecast.getRoomOf(sheet);
+		local wiki = Firecast.getLibraryItemOf(sheet);
+		if table.me.isMestre == true or table.me == wiki.owner then
+			self.ButtonAdd.visible = true;
+		end;
+		isRCLEmpty();
+	</event>
+	
+	<dataLink fields="{'GenImageBGEntry', 'GenImageCpac', 'GenTitleColor', 'GenBackColor', 'GenStroColor', 'GenEditColor'}" defaultValues="{'WikiRPGLogo.png', '0.2', 'black', 'black', 'gray', 'white'}">
+		<event name="onPersistedChange">
+			Generic();
+		</event>
+	</dataLink>
+		
+	<popup name="popWiki" width="800" height="714" backOpacity="0.45">
+		<rectangle align="left" color="#00000000" width="300">
+			<rectangle align="top" color="#00000000" height="100">
+				<button align="client" text="Exportar Entrada" margins="{left = 5, right = 5, top = 10, bottom = 4}" fontSize="30">
+					<event name="onClick">
+						local xml = NDB.exportXML(sheet);
+	
+						local export = {};
+						Utils.binaryEncode(export, "utf8", xml);
+	
+						local stream = Utils.newMemoryStream();
+						stream:write(export);	
+
+						Dialogs.saveFile("Salve essa Wiki", stream,  "Wiki", "application/xml",
+							function()
+								stream:close();
+								showMessage("Entrada Exportada");
+							end);
+					</event>
+				</button>
+			</rectangle>
+			<rectangle align="top" color="#00000000" height="100">
+				<button align="client" text="Importar Entrada" margins="{left = 5, right = 5, top = 10, bottom = 4}" fontSize="30">
+					<event name="onClick">
+						Dialogs.openFile("Escolha o Arquivo de Wiki a ser importado.", "application/xml", false, 
+							function(arquivos)
+								local arq = arquivos[1];
+	
+								local import = {};
+								arq.stream:read(import, arq.stream.size);
+	
+								local xml = Utils.binaryDecode(import, "utf8");
+	
+								NDB.importXML(sheet, xml);
+							end);
+					</event>
+				</button>
+			</rectangle>
+			
+			<rectangle align="top" color="#00000000" height="100">
+				<rectangle align="top" color="#00000000" height="35">
+					<label align="client" vertTextAlign="center" horzTextAlign="center" text="Cor do Título Genérica" fontSize="18"/>
+				</rectangle>
+				<colorComboBox align="client" margins="{top=5, left=5, right=15 , bottom=5}" field="GenTitleColor"/>
+			</rectangle>
+			
+			<rectangle align="top" color="#00000000" height="100">
+				<rectangle align="top" color="#00000000" height="35">
+					<label align="client" vertTextAlign="center" horzTextAlign="center" text="Cor do Background Genérica" fontSize="18"/>
+				</rectangle>
+				<colorComboBox align="client" margins="{top=5, left=5, right=15 , bottom=5}" field="GenBackColor"/>
+			</rectangle>
+			
+			<rectangle align="top" color="#00000000" height="100">
+				<rectangle align="top" color="#00000000" height="35">
+					<label align="client" vertTextAlign="center" horzTextAlign="center" text="Cor de Realce Genérica" fontSize="18"/>
+				</rectangle>
+				<colorComboBox align="client" margins="{top=5, left=5, right=15 , bottom=5}" field="GenStroColor"/>
+			</rectangle>
+			
+			<rectangle align="top" color="#00000000" height="100">
+				<rectangle align="top" color="#00000000" height="35">
+					<label align="client" vertTextAlign="center" horzTextAlign="center" text="Cor de Texto Genérica" fontSize="18"/>
+				</rectangle>
+				<colorComboBox align="client" margins="{top=5, left=5, right=15 , bottom=5}" useAlpha="false" field="GenEditColor"/>
+			</rectangle>
+			
+			<rectangle align="top" color="#00000000" height="100">
+				<button align="client" text="Abrir guia" margins="{left = 5, right = 5, top = 10, bottom = 4}" fontSize="30">
+					<event name="onClick">
+	
+						local NewEntry = self.Entries:append();
+						local guide = VHD.openFile("GuiaEntrada.xml")
+						local import = {};
+						guide:read(import, guide.size);
+						local xml = Utils.binaryDecode(import, "utf8");
+						NDB.importXML(NewEntry, xml);
+						self.popWiki:close();
+						
+					</event>
+				</button>
+			</rectangle>
+			
+		</rectangle>
+		<rectangle align="left" color="#00000000" width="500">
+			<rectangle align="top" color="#00000000" height="90">
+				<label align="top" height="45" vertTextAlign="center" horzTextAlign="center" text="Imagem e Opacidade genérica de Fundo" fontSize="22"/>
+				<label align="left" width="400" vertTextAlign="center" horzTextAlign="center" text="Opacidade genérica (Valores 0 - 1)" fontSize="22"/>
+				<edit align="client" margins="{top=10, left=10, right=10 , bottom=10}" vertTextAlign="center" horzTextAlign="center" fontSize="22" field="GenImageCpac" min="0" max="1" type="float"/>
+			</rectangle>
+			<image field="GenImageBGEntry" opacity="1" editable="true" animate="true" align="client" margins="{top=5, left=5, right=15 , bottom=5}">
+				<event name="onPictureLoadedChange">
+					if self.boxEntry.node ~= nil then
+						if self.boxEntry.node.imageBGEntry ~= sheet.GenImageBGEntry and self.boxEntry.node.GenPerm == true then
+							self.boxEntry.node.imageBGEntry = sheet.GenImageBGEntry;
+						end;
+					end;
+				</event>
+			</image>
+		</rectangle>
+	</popup>
+		
+	<popup name="popTitleColor" width="300" height="135" backOpacity="0.45">
+		<rectangle align="top" color="#00000000" height="45">
+			<label align="client" vertTextAlign="center" horzTextAlign="center" text="Cor do Título" fontSize="22"/>
+		</rectangle>
+		<colorComboBox align="client" margins="{top=5, left=5, right=15 , bottom=5}" field="TitleColor">
+			<event name="onUserChange">
+				self.EntryTitle.fontColor = self.boxEntry.node.TitleColor;
+				local controlEntry = self.Entries:getChildren();
+				for k, v in pairs (controlEntry) do
+					if v:getNodeObject() == self.Entries.selectedNode then
+						v.EntryName.fontColor = self.boxEntry.node.TitleColor;
+						v.ChapterEdit.fontColor = self.boxEntry.node.TitleColor;
+						v.ComboEdit.fontColor = self.boxEntry.node.TitleColor;
+						v.ComboSee.fontColor = self.boxEntry.node.TitleColor;
+					end;
+				end;
+			</event>
+		</colorComboBox>		
+	</popup>
+		
+	<popup name="popImage" width="500" height="600" backOpacity="0.45">
+		<rectangle align="top" color="#00000000" height="45">
+			<label align="left" width="400" vertTextAlign="center" horzTextAlign="center" text="Opacidade da Imagem (Valores 0 - 1)" fontSize="22"/>
+			<edit align="client" margins="{top=10, left=10, right=10 , bottom=10}" vertTextAlign="center" horzTextAlign="center" fontSize="22" field="imageCpac" min="0" max="1" type="float">
+				<event name="onUserChange">	
+					self.BackImage.opacity = self.boxEntry.node.ImageCpac;
+				</event>
+			</edit>
+		</rectangle>
+		<checkBox align="top" height="45" margins="{top=10, left=10, right=10 , bottom=10}" vertTextAlign="center" horzTextAlign="center" fontSize="22" field="GenPerm" text="Permitir a seleção genérica da Wiki"/>
+		<image field="ImageBGEntry" opacity="1" editable="true" animate="true" align="client" margins="{top=5, left=5, right=15 , bottom=5}"/>		
+	</popup>
+	
+	<popup name="popIndex" width="850" height="420" backOpacity="0.45">
+		<label align="top" height="50" vertTextAlign="center" horzTextAlign="center" text="Selecione um Capítulo" fontSize="30"/>
+		<recordList name="Chapter_Select" field="IndexNode" templateForm="Chapter_List" selectable="true" align="client" layout="horizontalTiles">
+			<event name="onCompare"><![CDATA[
+				if (tonumber(nodeA.Index) or 0) < (tonumber(nodeB.Index) or 0) then
+					return -1;
+				elseif (tonumber(nodeA.Index) or 0) > (tonumber(nodeB.Index) or 0) then
+					return 1;
+				end;
+				]]>
+			</event>
+		</recordList>
+	</popup>
+		
+	<rectangle width="360" color="#00000000" align="left">
+		<button align="top" height="60" text="Nova Entrada" name="ButtonAdd" visible="false" margins="{left = 10, right = 10, top = 10}" onClick="self.Entries:append();" onMenu="self.popWiki:show();" fontSize="30"
+			hitTest="true" hint="Clique com o botão direito do mouse para abrir as configirações da Wiki"/>
+		<button align="top" height="40" text="Índice" margins="{left = 10, right = 10, top = 10}" onClick="self.popIndex:show();" fontSize="20"/>
+		<recordList name="Entries" field="EntryNodes" templateForm="Entry_List" selectable="true" align="client" margins="{left = 11, right = 11}">
+			<event name="onSelect">
+				local selecEntry = self.Entries.selectedNode;
+				self.boxEntry.node = selecEntry;
+				self.boxEntry.visible = (selecEntry ~= nil);
+				if selecEntry ~= nil then
+					self.Entries:scrollToNode(selecEntry)
+				end;
+			</event>
+			<event name="onCompare"><![CDATA[
+				if (nodeA.EntryChapter or -999) < (nodeB.EntryChapter or -999) then
+					return -1;
+				elseif (nodeA.EntryChapter or -999) > (nodeB.EntryChapter or -999) then
+					return 1;
+				else
+					return Utils.compareStringPtBr((nodeA.EntryName or ""), (nodeB.EntryName or ""));
+				end;
+				]]>
+			</event>
+			<event name="onItemRemoved">
+				self.boxEntry.node = nil;
+				self.boxEntry.visible = false;
+				isRCLEmpty();
+			</event>
+			<event name="onItemAdded">
+				Generic();
+			</event>
+		</recordList>			
+	</rectangle>
+		
+	<dataScopeBox align="client" name="boxEntry" visible="false" margins="{left = 10, right = 10, top = 10}">
+		<rectangle  align="top" color="#808080" height="40" name="EntryTitleBG" hitTest="true" hint="Clique com o botão direito do mouse para definir a cor do título" corners="topLeft topRight" yradius="5" xradius="5">
+			<label field="EntryName" horzTextAlign="center" wordWrap="true" fontSize="26" align="client" fontColor="black" fontStyle="bold" name="EntryTitle"/>
+			<event name="onMenu">
+				local table = Firecast.getRoomOf(sheet);
+				local wiki = Firecast.getLibraryItemOf(sheet);
+				if table.me.isMestre == true or table.me == wiki.owner then
+					local selecEntry = self.Entries.selectedNode;
+					self.popTitleColor:setNodeObject(selecEntry);
+					self.popTitleColor:show();
+				end;
+			</event>
+		</rectangle>
+		<richEdit name="REEntry" align="client" backgroundColor="black" defaultFontColor="white" showToolbar="false" field="EntryText" animateImages="true" hideSelection="false">
+			<event name="onMenu">
+				local table = Firecast.getRoomOf(sheet);
+				local wiki = Firecast.getLibraryItemOf(sheet);
+				if table.me.isMestre == true or table.me == wiki.owner then
+					local selecEntry = self.Entries.selectedNode;
+					self.popImage:setNodeObject(selecEntry);
+					self.popImage:show();
+				end;
+			</event>
+			<image field="imageBGEntry" opacity="0.2" align="client" name="BackImage" animate="true"/>
+		</richEdit>
+		<event name="onNodeReady">
+			if NDB.testPermission(self.boxEntry.node.EntryText, "write") == true then
+				self.REEntry.showToolbar = true;
+			else
+				self.REEntry.showToolbar = false;
+			end;
+			self.REEntry.backgroundColor = self.boxEntry.node.BackColor;
+			self.EntryTitleBG.color = self.boxEntry.node.StroColor;
+			self.EntryTitle.fontColor = self.boxEntry.node.TitleColor;
+			self.BackImage.opacity = self.boxEntry.node.ImageCpac;
+			self.REEntry.defaultFontColor = self.boxEntry.node.EditColor
+			if self.boxEntry.node.ImageCpac ~= sheet.GenImageCpac and self.boxEntry.node.GenPerm == true then
+				self.boxEntry.node.ImageCpac = sheet.GenImageCpac;
+			end;
+			if self.boxEntry.node.imageBGEntry ~= sheet.GenImageBGEntry and self.boxEntry.node.GenPerm == true then
+				self.boxEntry.node.imageBGEntry = sheet.GenImageBGEntry;
+			end;
+			
+		</event>
+	</dataScopeBox>
+		
+</form>

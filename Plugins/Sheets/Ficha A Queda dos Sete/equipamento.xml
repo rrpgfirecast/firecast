@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraEquipamentoLayout">
+
+			<script>
+				<![CDATA[
+					local function recalcularTamanhoEquipsDefesa()
+						self.flwPartEquipDefense.height = self.rclEquipsDefense.height + self.labEquipDefense.height +
+														self.layEquipDefenseBottom.height + 
+														self.flwPartEquipDefense.padding.top + self.flwPartEquipDefense.padding.bottom + 7;
+					end;
+				]]>
+			</script>
+
+			<flowLayout class="oneLineTile" horzAlign="justify" autoHeight="true" avoidScale="true">
+				<!-- MARGEM CRITICO -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="critChance" width="70"/>
+					<label align="client" text="@@Dnd5e.equipment.criticalChance" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+				<dataLink field="critChance" defaultValue="20"/>
+				<!-- DANO ADICIONAL CRITICO -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="critDamage" width="70"/>
+					<label align="client" text="@@Dnd5e.equipment.criticalDamage" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+				<!-- REROLAGEM DE DANO -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="damageReroll" width="70"/>
+					<label align="client" text="@@Dnd5e.equipment.reroll" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+				<dataLink field="damageReroll" defaultValue="0"/>
+			</flowLayout>
+
+			<flowLineBreak/>
+
+			<!-- Equipamentos e Ataques -->
+			<flowLayout name="flwPartEquipAttack" class="tile" height="250" autoHeight="true" frameStyle="frames/panel5/frame.xml">
+				<layout g="col" g-width="3" name="layEquipAttackLeft" g-min-height="250">
+					<label align="top" autoSize="true" text="@@DnD5e.tab.equipament.equip.title" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<recordList name="rclEquips" align="client" field="equipamentos.ataques" templateForm="frmEquipamentoItem" minQt="1" hitTest="true"
+						margins="{top=5, bottom=5}">
+						<event name="onSelect">
+							local node = self.rclEquips.selectedNode;
+							self.dataEquipAttackDetails.node = node;
+							self.dataEquipAttackDetails.enabled = (node ~= nil);
+
+							if self.rclEquips.lastSelectedForm ~= nil then self.rclEquips.lastSelectedForm.editName:setEnabled(false); end;
+							if self.rclEquips.selectedForm ~= nil then self.rclEquips.selectedForm.editName:setEnabled(true); end;
+							self.rclEquips.lastSelectedForm = self.rclEquips.selectedForm;
+			            </event>
+					</recordList>
+					<button align="bottom" text="@@DnD5e.tab.equipament.btn.newItem" onClick="self.rclEquips.selectedNode = self.rclEquips:append(); self.rclEquips.selectedForm.editName:setFocus();"/>
+				</layout>
+				<layout g="col" g-width="9" name="layEquipAttackRight" g-min-height="250" g-cnt-gutter="5" g-cnt-line-spacing="5">
+					<dataScopeBox name="dataEquipAttackDetails" align="client" frameStyle="frames/panel5/frame.xml" margins="{left=10}" enabled="false">
+						<event name="onNodeReady">
+								self.imgEquipAttackImg:setVisible(false);
+								self.cbOptAtaqueMunicao:setItems(common.getNomeContadores(sheet, {""}));
+						</event>
+						<event name="onNodeUnready"> self.imgEquipAttackImg:setVisible(true); </event>
+
+						<layout name="layEquipAttackImg" g="col" g-width="2" g-vert-tile="true">
+							<image name="imgEquipAttackImg" align="client" url="https://clipartart.com/images/cross-sword-clipart.png" showProgress="false" animate='true'/>
+							<image align="client" field="imagem" showProgress="false" editable="true" animate='true'/>
+						</layout>
+
+						<layout name="layEquipPropriedades" g="col" g-width="2" g-vert-tile="true" margins="{left=5}">
+							<label text="@@DnD5e.tab.equipament.atack.lab.property" align="top" class="tituloCampo" horzTextAlign="center"/>
+							<recordList name="rclProps" align="client" field="listaPropriedades" templateForm="frmText">
+								<event name="onItemRemoved">
+									local equip = self.dataEquipAttackDetails.node;
+									if equip ~= nil then
+										if equip.tabPropriedades == nil then equip.tabPropriedades = {}; end;
+										equip.tabPropriedades[node.texto] = nil;
+
+										equip.propriedades = common.concat(equip.tabPropriedades, ", ");
+									end;
+								</event>
+							</recordList>
+							<button align="bottom" text="@@DnD5e.tab.equipament.btn.property" fontSize="11"><event name="onClick">
+								local equip = self.dataEquipAttackDetails.node;
+								if equip ~= nil then
+									if equip.tabPropriedades == nil then equip.tabPropriedades = {}; end;
+
+									local other = LANG("DnD5e.tabControl.tab.other")
+
+									local choices = {};
+									for prop,_ in pairs(common.armas_propriedades) do if not equip.tabPropriedades[prop] then table.insert(choices, prop); end; end;
+									table.sort(choices)
+									table.insert(choices, other)
+
+									Dialogs.choose(LANG("DnD5e.tab.equipament.selProp"), choices,
+										function(selected, selectedIndex, selectedText)
+											if(selected) then
+												if selectedText == other then
+													Dialogs.inputQuery(LANG("DnD5e.tab.equipament.textCaption"), LANG("DnD5e.tab.equipament.textPrompt"), "" , function(text) 
+														Dialogs.inputQuery(LANG("DnD5e.tab.equipament.hintCaption"), LANG("DnD5e.tab.equipament.hintPrompt"), "" , function(hint)
+																local node = self.rclProps:append()
+																node.texto = text
+																node.hint = hint
+															end)
+														end)
+												else
+													local node = self.rclProps:append()
+													node.texto = selectedText;
+													node.hint = common.armas_propriedades[selectedText];
+			
+													equip.tabPropriedades[selectedText] = true;
+													equip.propriedades = common.concat(equip.tabPropriedades, ", ");
+												end
+											end;
+										end
+									)
+								end;
+							</event></button>
+							<dataLink field="propriedades"><event name="onChange">
+								local equip = self.dataEquipAttackDetails.node;
+								if equip ~= nil and equip.propriedades ~= nil then
+									if equip.tabPropriedades == nil then equip.tabPropriedades = {}; end;
+
+									if self.rclProps ~= nil and common.concat(equip.tabPropriedades) == "" then
+										for propriedade in string.gmatch((equip.propriedades or ""), "[^,%s]+") do
+											if common.armas_propriedades[propriedade] ~= nil then
+												equip.tabPropriedades[propriedade] = true;
+												local node = self.rclProps:append();
+												node.texto = propriedade;
+												node.hint = common.armas_propriedades[propriedade];
+											end;
+										end;
+									end;
+									equip.propriedades = common.concat(equip.tabPropriedades, ", ");
+								end;
+							</event></dataLink>
+						</layout>
+							
+						<layout g="col" g-width="8" g-vert-tile="true" class="contentLayout" name="layPrincipal" margins="{left=5}">
+							<flowLayout class="tile" align="top" height="15" name="optAtaqueLegenda" horzAlign="justify">
+								<optAtaqueLegenda text=" " height="15" width="20"/>
+								<optAtaqueLegenda text="@@DnD5e.tab.equipament.atack.lab.range" height="15" minWidth="80" maxWidth="150"/>
+								<optAtaqueLegenda text="@@DnD5e.tab.equipament.atack.lab.attack" height="15" minWidth="110" maxWidth="200"/>
+								<optAtaqueLegenda text="@@DnD5e.tab.equipament.atack.lab.damage" height="15" minWidth="80" maxWidth="170"/>
+								<optAtaqueLegenda text="@@DnD5e.tab.equipament.atack.lab.type" height="15" minWidth="80" maxWidth="180"/>
+								<optAtaqueLegenda text="@@DnD5e.tab.equipament.atack.lab.ammunition" height="15" minWidth="100" maxWidth="200"/>
+								<optAtaqueLegenda text="@@DnD5e.tab.equipament.atack.lab.ammunitionAmount" height="15" minWidth="25" maxWidth="50"/>
+								<optAtaqueLegenda text=" " height="25" width="25"/>
+							</flowLayout>
+							<optAtaque name="optAtaquePadrao" align="top" enabled="false" checked="true" alcanceOuNome="alcance"/>
+							<horzLine align="top" strokeColor="lightGray" opacity="0.3" margins="{top=2}"/>
+							<recordList name="rclOptsAttack" align="client" field="optsAttack" templateForm="frmOptAtaque">
+								<event name="onItemAdded"> form.cbOptAtaqueMunicao:setItems(common.getNomeContadores(sheet, {""})); </event>
+							</recordList>
+							<button align="bottom" text="@@DnD5e.tab.equipament.btn.addAttackOption" onClick="self.rclOptsAttack:append();" margins="{left=150, right=150}" fontSize="11"/>
+							<dataLink field="contadoresMudaram">
+								<event name="onChange">
+									if sheet ~= nil and self ~= nil and sheet.contadoresMudaram then
+										local equip = self.dataEquipAttackDetails.node;
+										if equip ~= nil then
+											local optsAttack = NDB.getChildNodes(equip.optsAttack);
+											for i=1,#optsAttack,1 do
+												optsAttack[i].contadoresMudaram = true;
+												optsAttack[i].contadoresMudaram = false;
+											end;
+										end;
+									end;
+								</event>
+							</dataLink>
+						</layout>
+					</dataScopeBox>
+				</layout>
+			</flowLayout>
+
+			<flowLineBreak/>
+
+			<!-- Equipamentos de Defesa -->
+			 
+			<flowPart name="flwPartEquipDefense" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">
+			
+				<label name="labEquipDefense" align="top" autoSize="true" text="@@DnD5e.tab.equipament.defend.title" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsDefesa();"/>
+															
+				<recordList name="rclEquipsDefense" align="top" field="equipamentos.defesas" templateForm="frmEquipamentoItemDefesa" 
+							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsDefesa();" minQt="1" hitTest="false"/>
+							
+				<layout name="layEquipDefenseBottom" align="top" height="40">
+					<button name="btnEquipDefenseNew" align="left" onClick="self.rclEquipsDefense:append();" text="@@DnD5e.tab.equipament.btn.newItem" width="160" margins="{top=4, bottom=4}"/>
+				</layout>
+			</flowPart>	
+			
+			<flowLineBreak/>
+
+			<!-- Outros Equipamentos e DINHEIRO -->
+			<flowPart class="tile" height="450" frameStyle="frames/panel4transp/frame.xml" minScaledWidth="290">
+				<layout align="left" width="140" margins="{left=-20}">
+					<boxDinheiro align="top" text="$" field="equipamento.dinheiro.pc"/>
+					<checkBox align="top" field="equipamento.outros_melhorado" margins="{left=75, top=15}">
+						<event name="onChange">
+							if sheet then
+								self.editorFancy:setVisible(sheet.equipamento.outros_melhorado);
+								self.editorOld:setVisible(not (sheet.equipamento.outros_melhorado));
+							end;
+						</event>
+					</checkBox>
+				</layout>
+
+				<rectangle name="editorFancy" align="client" margins="{left=10, right=10}" color="black" visible="false">
+					<richEdit align="client" margins="{left=0.1, right=0.1, top=0.1, bottom=0.1}" field="equipamento.outros2" 
+						class="tile" backgroundColor="#333333" defaultFontColor="white" hideSelection="false" defaultFontSize="15" animateImages="true"/>
+				</rectangle>
+				<textEditor name="editorOld" align="client" margins="{left=10, right=10}" field="equipamento.outros" fontSize="15" visible="true"/>
+
+				<layout align="right" width="140" margins="{right=5}">
+					<layout align="top" height="80" margins="{bottom=5}">
+						<frame align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+							<edit align="client" frameRegion="ContentRegion" class="transparente" field="weight" fontSize="22" vertTextAlign="center" horzTextAlign="center"/>	
+						</frame>
+						
+						<label align="top" height="15" class="tituloCampo" autoSize="true" text="@@Dnd5e.equipment.carry" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>	
+					</layout>
+					<layout align="top" height="80" margins="{bottom=5}">
+						<frame align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+							<label align="client" frameRegion="ContentRegion" class="transparente" field="weightCapacity" fontSize="22" vertTextAlign="center" horzTextAlign="center"/>
+						</frame>
+						
+						<label align="top" height="15" class="tituloCampo" autoSize="true" text="@@DnD5e.equipment.capacity" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>	
+					</layout>
+					<layout align="top" height="80" margins="{bottom=5}">
+						<frame align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+							<label align="client" frameRegion="ContentRegion" class="transparente" field="weightLift" fontSize="22" vertTextAlign="center" horzTextAlign="center"/>
+						</frame>
+						
+						<label align="top" height="15" class="tituloCampo" autoSize="true" text="@@DnD5e.equipment.lift" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>
+					</layout>
+					<layout align="top" height="80" margins="{bottom=5}">
+						<frame align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+							<comboBox align="client" frameRegion="ContentRegion" class="transparente" field="weightSize" items="{'@@DnD5e.equipment.tiny','@@DnD5e.equipment.small','@@DnD5e.equipment.medium','@@DnD5e.equipment.large','@@DnD5e.equipment.huge','@@DnD5e.equipment.gargantuan'}" values="{'0.5', '1', '1.0', '2', '4', '8'}" horzTextAlign="center" vertTextAlign="center" fontSize="13" margins="{right=5}"/>	
+						</frame>
+						
+						<label align="top" height="15"  class="tituloCampo" autoSize="true" text="@@DnD5e.equipment.size" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>	
+					</layout>
+					<layout align="top" height="80" margins="{bottom=5}">
+						<frame align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+							<edit align="client" frameRegion="ContentRegion" class="transparente" field="weightAdd" fontSize="22" vertTextAlign="center" horzTextAlign="center"/>	
+						</frame>
+						
+						<label align="top" height="15" class="tituloCampo" autoSize="true" text="@@Dnd5e.equipment.backpack" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>	
+					</layout>
+					<dataLink fields="{'atributos.forca','weightSize','weightAdd'}">
+						<event name="onChange">
+							if sheet==nil then return end
+							if sheet.atributos==nil then return end
+
+							local forca = tonumber(sheet.atributos.forca) or 0
+							local size = tonumber(sheet.weightSize) or 1
+							local add = tonumber(sheet.weightAdd) or 0
+
+							sheet.weightCapacity = forca * 7.5 * size + add
+							sheet.weightLift = forca * 15 * size
+						</event>
+					</dataLink>
+				</layout>
+
+				<label align="bottom" autoSize="true" text="@@DnD5e.tab.equipament.lab.extraEquip" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsDefesa();"/>
+			</flowPart>
+		</flowLayout>
+	</scrollBox>
+</rectangle>

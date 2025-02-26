@@ -249,6 +249,15 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="Ambesek.Queda.Dos.Sete" name="Ficha A Queda dos Sete" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20A%20Queda%20dos%20Sete/output/Ficha%20A%20Queda%20dos%20Sete.rpk?raw=true" fileName="Ficha A Queda dos Sete.rpk" repositoryPath="Sheets/Ficha A Queda dos Sete/" author="Firecast+Ambesek" description="Ficha para A Queda dos Sete usando D&amp;D 5ª edição" version="1.0.0" compilationDate="24022025210700" compilationDigest="43287ba27e46888dbb3b8f1bcf836101d7a5a96f">
+        <info lang="pt-BR" name="Ficha A Queda dos Sete" description="Ficha para A Queda dos Sete usando D&amp;D 5ª edição" author="Firecast+Ambesek" site="https://firecast.app/"/>
+        <dataTypes>
+            <dataType id="Ambesek.Queda.Dos.Sete" title="Ficha A Queda dos Sete" formType="sheetTemplate">
+                <info lang="en" title="D&amp;amp;D 5th Edition" description="D&amp;amp;D 5th edition character sheet"/>
+                <info lang="pt" title="Ficha A Queda dos Sete" description="Ficha para A Queda dos Sete usando D&amp;amp;D 5ª edição"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Ragnarock" name="Plugin Ragnarök" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Sheets/Ficha Ragnarock/" author="Ambesek" description="Ficha para um sistema proprio de Ragnaröck." version="0.8.1" compilationDate="29082024020835" compilationDigest="8fc97f80d2f0a04534b38a334333c238fb753e3d">
         <info lang="pt-BR" name="Plugin Ragnarök" description="Ficha para um sistema proprio de Ragnaröck." author="Ambesek"/>
         <dataTypes>
@@ -336,7 +345,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Universal.Savage.Worlds" name="Ficha Universal Savage Worlds" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Savage%20Worlds/output/Ficha%20Universal%20Savage%20Worlds.rpk?raw=true" fileName="Ficha Universal Savage Worlds.rpk" repositoryPath="Sheets/Ficha Universal Savage Worlds/" author="Ambesek" description="Ficha universal para o sistema Savage Worlds" version="1.1.1" compilationDate="08122024231814" compilationDigest="aa589b57b75fbab0e6aff683ca4bfbd6cf3f2d73">
+    <element id="Ambesek.Universal.Savage.Worlds" name="Ficha Universal Savage Worlds" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Savage%20Worlds/output/Ficha%20Universal%20Savage%20Worlds.rpk?raw=true" fileName="Ficha Universal Savage Worlds.rpk" repositoryPath="Sheets/Ficha Universal Savage Worlds/" author="Ambesek" description="Ficha universal para o sistema Savage Worlds" version="1.1.1" compilationDate="15122024192034" compilationDigest="6622ce3b1e776a1f47ed20ec7f67e94c6df22d45">
         <info lang="pt-BR" name="Ficha Universal Savage Worlds" description="Ficha universal para o sistema Savage Worlds" author="Ambesek" site="https://github.com/VinnyAmbesek"/>
         <dataTypes>
             <dataType id="Ambesek.Universal.SavageWorlds" title="Ficha Universal Savage Worlds" formType="sheetTemplate">
@@ -448,7 +457,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.4" compilationDate="24062024152422" compilationDigest="ae4d763eedacf33bbaac6fae18d77e9f80ef0cd4">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.4" compilationDate="14122024214514" compilationDigest="09c27e4216135244aefcdc262d062a51ea8b5010">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>
@@ -1141,6 +1150,14 @@
         <dataTypes>
             <dataType id="thirteen.VaMv5" title="V:aM V5 Roma" formType="sheetTemplate">
                 <info title="V:aM V5 Roma"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="Wiki_RPG" name="WikiRPG" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Plugin%20Wiki%20RPG/output/Plugin%20Wiki%20RPG.rpk?raw=true" fileName="Plugin Wiki RPG.rpk" repositoryPath="Sheets/Plugin Wiki RPG/" author="Caio_Edurmp" description="Modelo de ficha com o objetivo de servir como central de anotações de sua campanha." version="1.0" compilationDate="26022025023816" compilationDigest="f5ba9c2da760b88999b5f95b1db8741ddfb1fba3">
+        <info lang="pt-BR" name="WikiRPG" description="Modelo de ficha com o objetivo de servir como central de anotações de sua campanha." author="Caio_Edurmp"/>
+        <dataTypes>
+            <dataType id="WikiRPGSheet" title="Wiki_RPG" formType="sheetTemplate">
+                <info title="Wiki_RPG"/>
             </dataType>
         </dataTypes>
     </element>

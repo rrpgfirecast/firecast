@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="128" height="123" autoScaleX="true" autoScaleY="true">
+	<borders left="6" top="8" bottom="12" right="6" />
+	<draw>	
+			<!-- FUNDO -->
+			<image left="0" top="0" right="128" bottom="123" overflowX="stretch" overflowY="stretch" zOrder="-1">
+				<anchors left="true" top="true" bottom="true" right="true"/>
+				<source url="fundo.png" left="0" right="128" top="0" bottom="123"/>
+			</image>				
+	</draw>
+</frame>
