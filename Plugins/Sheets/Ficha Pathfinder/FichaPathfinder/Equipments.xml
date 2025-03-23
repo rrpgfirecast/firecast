@@ -4,7 +4,7 @@
         <!-- Title region -->
         <rectangle g="col" g-width="12" g-width-lg="7" g-min-height="700" color="black" strokeColor="white" strokeSize="1" g-vert-tile="true" padding="{left=5,right=5,top=5,bottom=5}">
             <layout g="col" g-width="2" g-vert-tile="true" g-min-height="700">
-                <recordList g="col" g-width="12" g-min-height="700" name="rclEquipamentos" field="listaDeEquipamentos" templateForm="EquipmentsSelector" layout="vertical" selectable="true" minQt="12">
+                <recordList g="col" g-width="12" g-min-height="700" name="rclEquipamentos" field="listaDeEquipamentos" templateForm="EquipmentsSelector" layout="vertical" selectable="true" minQt="14">
                     <event name="onEndEnumeration"><![CDATA[
                         if sheet~= nil then
                             local objetos = NDB.getChildNodes(sheet.listaDeEquipamentos)
