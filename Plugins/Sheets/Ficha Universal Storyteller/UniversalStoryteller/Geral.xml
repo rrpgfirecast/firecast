@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGeral" align="client">
 	<rectangle align="right" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
-			<layout align="top" height="25">
-				<formatEdit width="225" height="25" field="health"/>
-	            <button left="225" width="25" height="25" text="+">
-	                <event name="onClick">
-	                    local node = self.rclhealth:append()
-	                </event>
-	            </button>
-			</layout>
-			<layout align="top" height="25">
-				<label left="20" width="85" height="25" text="" formatFloat=""/>
+		<layout align="top" height="25">
+			<formatEdit width="225" height="25" field="health"/>
+	        <button left="225" width="25" height="25" text="+">
+	            <event name="onClick">
+	                local node = self.rclhealth:append()
+	            </event>
+	        </button>
+		</layout>
+		<layout align="top" height="25">
+			<label left="20" width="85" height="25" text="" formatFloat=""/>
 
-	            <label left="105" width="30" height="25" text="Min"/>
-	            <label left="135" width="30" height="25" text="Max"/>
-	            <label left="170" width="30" height="25" text="Pen"/>
-			</layout>
+	        <label left="105" width="30" height="25" text="Min"/>
+	        <label left="135" width="30" height="25" text="Max"/>
+	        <label left="170" width="30" height="25" text="Pen"/>
+		</layout>
 
-			<scrollBox align="client">
-                <recordList align="top" autoHeight="true" name="rclhealth" field="rclhealth" templateForm="frmHealthItem" layout="vertical"/>
-            </scrollBox>
+		<scrollBox align="client">
+            <recordList align="top" autoHeight="true" name="rclhealth" field="rclhealth" templateForm="frmHealthItem" layout="vertical"/>
+        </scrollBox>
 
-			<layout align="bottom" height="25">
-				<formatEdit left="5" width="90" height="25" field="protecao"/>
+		<layout align="bottom" height="25">
+			<formatEdit left="5" width="90" height="25" field="protecao"/>
 
-	            <edit left="100" width="35" height="25" field="protecao0"/>
-	            <edit left="135" width="35" height="25" field="protecao1"/>
-	            <edit left="170" width="35" height="25" field="protecao2"/>
-	            <boxLabel left="205" width="40" height="25" field="protecaoTotal"/>
+	        <edit left="100" width="35" height="25" field="protecao0"/>
+	        <edit left="135" width="35" height="25" field="protecao1"/>
+	        <edit left="170" width="35" height="25" field="protecao2"/>
+	        <boxLabel left="205" width="40" height="25" field="protecaoTotal"/>
 
-		        <dataLink fields="{'protecao0','protecao1','protecao2'}">
-		            <event name="onChange">
-		                if sheet==nil then return end
-		                sheet.protecaoTotal =   (tonumber(sheet.protecao0) or 0) + 
-		                                        (tonumber(sheet.protecao1) or 0) + 
-		                                        (tonumber(sheet.protecao2) or 0)
-		            </event>
-		        </dataLink>
-			</layout>
+		    <dataLink fields="{'protecao0','protecao1','protecao2'}">
+		        <event name="onChange">
+		            if sheet==nil then return end
+		            sheet.protecaoTotal =   (tonumber(sheet.protecao0) or 0) + 
+		                                    (tonumber(sheet.protecao1) or 0) + 
+		                                    (tonumber(sheet.protecao2) or 0)
+		        </event>
+		    </dataLink>
+		</layout>
 	</rectangle>
 
 	<scrollBox align="client">

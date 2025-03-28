@@ -152,7 +152,7 @@
         <checkBox align="top" height="25" text="Reduz Sucessos em 1" field="crit1" margins="{bottom=5}"/>
         <checkBox align="top" height="25" text="Sucesso Extra em 10" field="add10" margins="{bottom=5}"/>
         <checkBox align="top" height="25" text="Dado Extra em 10" field="crit10" margins="{bottom=5}"/>
-        <checkBox align="top" height="25" text="Penalide Vitalidade" field="penVit" margins="{bottom=5}"/>
+        <checkBox align="top" height="25" text="Penalidade Vitalidade" field="penVit" margins="{bottom=5}"/>
 
         <layout align="top" height="25"/>
 

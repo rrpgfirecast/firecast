@@ -421,6 +421,45 @@
             <editBox left="100" field="$(field)Ini" extraSpace="false"/>
             <editBox left="225" field="$(field)Bonus" extraSpace="false"/>
             <editBox left="400" field="$(field)XP" extraSpace="true"/>
+
+            <!--
+                if (export == "true") then
+            -->
+            <button align="right" width="25" text="E" hint="Exportar Ficha" >
+                <event name="onClick">
+                    local xml = NDB.exportXML(sheet.rcl$(field));
+
+                    local export = {};
+                    local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+                    local stream = Utils.newMemoryStream();
+                    local bytes = stream:write(export);
+
+                    Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+                        function()
+                            stream:close();
+                            showMessage("Exportado.");
+                        end);
+                </event>
+            </button>
+            <button align="right" width="25" text="I" hint="Importar Ficha" >
+                <event name="onClick">
+                    Dialogs.openFile("Importar Ficha", "application/xml", false, 
+                        function(arquivos)
+                            local arq = arquivos[1];
+
+                            local import = {};
+                            local bytes = arq.stream:read(import, arq.stream.size);
+
+                            local xml = Utils.binaryDecode(import, "utf8");
+
+                            NDB.importXML(sheet.rcl$(field), xml);
+                        end);
+                </event>
+            </button>
+            <!--
+                end
+            -->
         </layout>
 
         <dataLink fields="{'$(field)IniCusto','$(field)Ini'}">
@@ -482,6 +521,39 @@
             <editBox left="100" field="$(field)Ini" extraSpace="false"/>
             <editBox left="225" field="$(field)Bonus" extraSpace="false"/>
             <editBox left="400" field="$(field)XP" extraSpace="true"/>
+
+            <button align="right" width="25" text="E" hint="Exportar Ficha" >
+                <event name="onClick">
+                    local xml = NDB.exportXML(sheet.rcl$(field));
+
+                    local export = {};
+                    local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+                    local stream = Utils.newMemoryStream();
+                    local bytes = stream:write(export);
+
+                    Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+                        function()
+                            stream:close();
+                            showMessage("Exportado.");
+                        end);
+                </event>
+            </button>
+            <button align="right" width="25" text="I" hint="Importar Ficha" >
+                <event name="onClick">
+                    Dialogs.openFile("Importar Ficha", "application/xml", false, 
+                        function(arquivos)
+                            local arq = arquivos[1];
+
+                            local import = {};
+                            local bytes = arq.stream:read(import, arq.stream.size);
+
+                            local xml = Utils.binaryDecode(import, "utf8");
+
+                            NDB.importXML(sheet.rcl$(field), xml);
+                        end);
+                </event>
+            </button>
         </layout>
     </template>
 

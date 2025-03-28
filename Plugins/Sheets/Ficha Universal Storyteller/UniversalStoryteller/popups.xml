@@ -146,7 +146,7 @@
             </event>
         </dataLink>
     </popup>
-    <popup name="popConfigHab" width="520" height="260" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popConfigHab" width="570" height="260" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
@@ -160,10 +160,10 @@
             <label align="left" width="150" text="Novo | Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
         <ConfigTitle field="habilidade"/>
-        <Config field="habilidade0" fontSize="11"/>
-        <Config field="habilidade1" fontSize="11"/>
-        <Config field="habilidade2" fontSize="11"/>
-        <Config field="habilidade3" fontSize="11"/>
+        <Config field="habilidade0" fontSize="11" export="true"/>
+        <Config field="habilidade1" fontSize="11" export="true"/>
+        <Config field="habilidade2" fontSize="11" export="true"/>
+        <Config field="habilidade3" fontSize="11" export="true"/>
 
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text="Especializações" horzTextAlign="center" fontSize="13"/>
@@ -209,7 +209,7 @@
             </event>
         </dataLink>
     </popup>
-    <popup name="popConfigOther" width="520" height="230" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popConfigOther" width="570" height="230" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
@@ -223,10 +223,10 @@
             <label align="left" width="150" text="Novo | Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
         <ConfigTitle field="other"/>
-        <Config field="other0" fontSize="11"/>
-        <Config field="other1" fontSize="11"/>
-        <Config field="other2" fontSize="11"/>
-        <Config field="other3" fontSize="11"/>
+        <Config field="other0" fontSize="11" export="true"/>
+        <Config field="other1" fontSize="11" export="true"/>
+        <Config field="other2" fontSize="11" export="true"/>
+        <Config field="other3" fontSize="11" export="true"/>
 
         <dataLink fields="{'other0IniGasto','other1IniGasto','other2IniGasto','other3IniGasto'}">
             <event name="onChange"><![CDATA[
@@ -264,7 +264,7 @@
             </event>
         </dataLink>
     </popup>
-    <popup name="popConfigOtherIndividual" width="520" height="255" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popConfigOtherIndividual" width="570" height="255" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
