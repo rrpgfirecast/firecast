@@ -4,8 +4,8 @@
 		<layout align="left" width="1335">
 			<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
 			    <layout align="top" height="25" margins="{bottom=5}">
-			        <formatEdit width="325" height="25" field="other" formatFloat=""/>
-			        <button left="330" width="25" height="25" name="otherButton" hint="Os itens dessa lista seguem um padrão de custo, e possuem um popup para anotar detalhes de funcionamento.">
+			        <formatEdit width="300" height="25" field="other" formatFloat=""/>
+			        <button left="305" width="25" height="25" name="otherButton" hint="Os itens dessa lista seguem um padrão de custo, e possuem um popup para anotar detalhes de funcionamento.">
 			        	<image align="client" style="autoFit" src="images/gear.png"/>
 			        	<event name="onClick">
 			        		<![CDATA[
@@ -31,10 +31,10 @@
 			    </layout>
 
 			    <layout align="top" height="25" margins="{bottom=5}">
-			    	<OtherTitle field="other0"/>
-			    	<OtherTitle field="other1"/>
-			    	<OtherTitle field="other2"/>
-			    	<OtherTitle field="other3"/>
+			    	<OtherTitle field="other0" width="300" btPos="275"/>
+			    	<OtherTitle field="other1" width="300" btPos="275"/>
+			    	<OtherTitle field="other2" width="300" btPos="275"/>
+			    	<OtherTitle field="other3" width="300" btPos="275"/>
 			    </layout>
 
 		        <dataLink fields="{'other0Ini','other1Ini','other2Ini','other3Ini'}">
@@ -67,10 +67,10 @@
 			</rectangle>
 
 			<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
-				<OtherBox field="rclother0"/>
-				<OtherBox field="rclother1"/>
-				<OtherBox field="rclother2"/>
-				<OtherBox field="rclother3"/>
+				<OtherBox field="rclother0" width="300"/>
+				<OtherBox field="rclother1" width="300"/>
+				<OtherBox field="rclother2" width="300"/>
+				<OtherBox field="rclother3" width="300"/>
 			</rectangle>
 		</layout>
 	</scrollBox>

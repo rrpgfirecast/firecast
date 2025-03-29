@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group>
     <template name="formatEdit">
-        <rectangle left="$(left or 0)" width="$(width)" height="$(height)" color="black" strokeColor="white" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" hint="Clique em mim para editar meu valor.">
-            <label width="$(width)" height="$(height)" field="$(field)" horzTextAlign="center" fontSize="11" formatFloat="$(formatFloat)"/>
+        <rectangle align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" color="black" strokeColor="white" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" hint="Clique em mim para editar meu valor.">
+            <label align="$(align or 'none')" width="$(width or 25)" height="$(height or 25)" field="$(field)" horzTextAlign="center" fontSize="11" formatFloat="$(formatFloat)"/>
             <event name="onClick">
                 self.$(field)Label.visible = false;
                 self.$(field)Edit.visible = true;
                 self.$(field)Edit:setFocus();
             </event>
         </rectangle>
-        <edit left="$(left or 0)" width="$(width)" height="$(height)" field="$(field)" fontSize="11" name="$(field)Edit" visible="false">
+        <edit align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" field="$(field)" fontSize="11" name="$(field)Edit" visible="false">
             <event name="onExit">
                 self.$(field)Label.visible = true;
                 self.$(field)Edit.visible = false;
@@ -588,9 +588,9 @@
     </template>
 
     <template name="OtherTitle">
-        <layout align="left" width="325" margins="{right=5}">
-            <formatEdit width="300" height="25" field="$(field)" formatFloat=""/>
-            <button left="300" width="25" height="25" text="+">
+        <layout align="left" width="$(width or 325)" margins="{right=5}">
+            <formatEdit width="$(btPos or 300)" height="25" field="$(field)" formatFloat=""/>
+            <button left="$(btPos or 300)" width="25" height="25" text="+">
                 <event name="onClick">
                     local node = self["rcl$(field)"]:append()
                     if node then
@@ -605,7 +605,7 @@
         </layout>
     </template>
     <template name="OtherBox">
-        <layout align="left" width="325" margins="{right=5}">
+        <layout align="left" width="$(width or 325)" margins="{right=5}">
             <scrollBox align="client">
                 <recordList align="top" autoHeight="true" name="$(field)" field="$(field)" templateForm="$(templateForm or 'frmOtherItem')" layout="vertical">
                     <event name="onCompare"><![CDATA[

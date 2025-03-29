@@ -1,57 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmOtherItem" width="275" height="25" margins="{bottom=5}">
+<form name="frmOtherItem" width="275" height="50" margins="{bottom=10}">
 	<import file="templates.xml"/>
 	<rectangle align="client" color="#212121">
-		<button align="right" width="25" text="i" margins="{left=2.5,right=0}" name="infoButton">
-			<event name="onClick">
-		        <![CDATA[
-			    local pop = self:findControlByName("popInfo");
-				
-				if pop ~= nil then
-					pop:setNodeObject(sheet);
-					pop:showPopupEx("bottomCenter", self.infoButton);
-				else
-					showMessage("Ops, bug.. nao encontrei o popup para exibir");
-				end;
-				]]>
-			</event>
-		</button>
-		<button align="right" width="25" text="X" margins="{left=0,right=2.5}">
-			<event name="onClick">
-				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
-					function (confirmado)
-						if confirmado then
-							NDB.deleteNode(sheet);
-						end;
-				end);
-			</event>
-		</button>
+	    <layout align="top" height="25" margins="{bottom=2.5,right=2.5}">
+	        <formatEdit align="client" field="other" formatFloat=""/>
+	    </layout>
+	    <layout align="top" height="25" margins="{bottom=2.5}">
+	        <button align="left"  width="25" text="1" fontSize="11">
+	            <event name="onClick">
+	            	local node = NDB.getRoot(sheet)
+	                node.roll1Name = sheet.other
+	                node.roll1Pool = sheet.otherTotal
+	            </event>
+	        </button>
+	        <button align="left" width="25" text="2" fontSize="11">
+	            <event name="onClick">
+	            	local node = NDB.getRoot(sheet)
+	                node.roll2Name = sheet.other
+	                node.roll2Pool = sheet.otherTotal
+	            </event>
+	        </button>
 
-		<layout align="client">
-	        <layout align="top" height="25" margins="{bottom=2.5}">
-	            <layout width="12.5" height="25">
-	                <button top="0" height="12.5" width="12.5" text="1" fontSize="5">
-	                    <event name="onClick">
-	                    	local node = NDB.getRoot(sheet)
-	                        node.roll1Name = sheet.other
-	                        node.roll1Pool = sheet.otherTotal
-	                    </event>
-	                </button>
-	                <button top="12.5" height="12.5" width="12.5" text="2" fontSize="5">
-	                    <event name="onClick">
-	                    	local node = NDB.getRoot(sheet)
-	                        node.roll2Name = sheet.other
-	                        node.roll2Pool = sheet.otherTotal
-	                    </event>
-	                </button>
-	            </layout>
+	        <layout align="left" width="5"/>
 
-	            <formatEdit left="12.5" width="87.5" height="25" field="other" formatFloat=""/>
-	            <edit left="100" width="35" height="25" field="otherIni"/>
-	            <edit left="135" width="35" height="25" field="otherBonus"/>
-	            <edit left="170" width="35" height="25" field="otherXP"/>
-	            <boxLabel left="205" width="45" height="25" field="otherTotal"/>
+	        <edit align="left" width="40" height="25" field="otherIni"/>
+	        <edit align="left" width="40" height="25" field="otherBonus"/>
+	        <edit align="left" width="40" height="25" field="otherXP"/>
+	        
+	        <layout align="left" width="5"/>
+
+	        <layout align="left" width="50">
+	        	<boxLabel width="45" height="25" field="otherTotal"/>
 	        </layout>
+
+			<button align="right" width="25" text="i" margins="{left=0,right=2.5}" name="infoButton">
+				<event name="onClick">
+			        <![CDATA[
+				    local pop = self:findControlByName("popInfo");
+					
+					if pop ~= nil then
+						pop:setNodeObject(sheet);
+						pop:showPopupEx("bottomCenter", self.infoButton);
+					else
+						showMessage("Ops, bug.. nao encontrei o popup para exibir");
+					end;
+					]]>
+				</event>
+			</button>
+			<button align="right" width="25" text="X" margins="{left=0,right=2.5}">
+				<event name="onClick">
+					Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
 	    </layout>
 
         <dataLink fields="{'otherIni','otherBonus','otherXP'}">

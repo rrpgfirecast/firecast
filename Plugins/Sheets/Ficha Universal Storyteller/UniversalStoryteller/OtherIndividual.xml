@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmOtherIndividual" align="client">
 	<scrollBox align="client">
-		<layout align="left" width="1665">
+		<layout align="left" width="1540">
 			<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
 			    <layout align="top" height="25" margins="{bottom=5}">
-			        <formatEdit width="325" height="25" field="otherIndividual" formatFloat=""/>
-			        <button left="330" width="25" height="25" name="otherIndividualButton" hint="Esse popup pode ser usado pra controlar os custos padrões. Cada item dessa lista pode ter seus custos modificados de forma individual.">
+			        <formatEdit width="300" height="25" field="otherIndividual" formatFloat=""/>
+			        <button left="305" width="25" height="25" name="otherIndividualButton" hint="Esse popup pode ser usado pra controlar os custos padrões. Cada item dessa lista pode ter seus custos modificados de forma individual.">
 			        	<image align="client" style="autoFit" src="images/gear.png"/>
 			        	<event name="onClick">
 			        		<![CDATA[
@@ -31,11 +31,11 @@
 			    </layout>
 
 			    <layout align="top" height="25" margins="{bottom=5}">
-			    	<OtherTitle field="otherIndividual0"/>
-			    	<OtherTitle field="otherIndividual1"/>
-			    	<OtherTitle field="otherIndividual2"/>
-			    	<OtherTitle field="otherIndividual3"/>
-			    	<OtherTitle field="otherIndividual4"/>
+			    	<OtherTitle field="otherIndividual0" width="300" btPos="275"/>
+			    	<OtherTitle field="otherIndividual1" width="300" btPos="275"/>
+			    	<OtherTitle field="otherIndividual2" width="300" btPos="275"/>
+			    	<OtherTitle field="otherIndividual3" width="300" btPos="275"/>
+			    	<OtherTitle field="otherIndividual4" width="300" btPos="275"/>
 			    </layout>
 
 		        <dataLink fields="{'otherIndividual0Ini','otherIndividual1Ini','otherIndividual2Ini','otherIndividual3Ini','otherIndividual4Ini'}">
@@ -71,11 +71,11 @@
 			</rectangle>
 
 			<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
-				<OtherBox field="rclotherIndividual0" templateForm="frmOtherIndividualItem"/>
-				<OtherBox field="rclotherIndividual1" templateForm="frmOtherIndividualItem"/>
-				<OtherBox field="rclotherIndividual2" templateForm="frmOtherIndividualItem"/>
-				<OtherBox field="rclotherIndividual3" templateForm="frmOtherIndividualItem"/>
-				<OtherBox field="rclotherIndividual4" templateForm="frmOtherIndividualItem"/>
+				<OtherBox field="rclotherIndividual0" templateForm="frmOtherIndividualItem" width="300"/>
+				<OtherBox field="rclotherIndividual1" templateForm="frmOtherIndividualItem" width="300"/>
+				<OtherBox field="rclotherIndividual2" templateForm="frmOtherIndividualItem" width="300"/>
+				<OtherBox field="rclotherIndividual3" templateForm="frmOtherIndividualItem" width="300"/>
+				<OtherBox field="rclotherIndividual4" templateForm="frmOtherIndividualItem" width="300"/>
 			</rectangle>
 		</layout>
 	</scrollBox>

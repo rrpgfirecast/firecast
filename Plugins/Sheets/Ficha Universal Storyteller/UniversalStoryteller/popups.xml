@@ -324,6 +324,10 @@
         </dataLink>
     </popup>
     
+    <popup name="popAbilityInfo" width="410" height="410" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+        <label align="top" height="25" field="habilidade"/>
+        <textEditor align="client" field="habilidadeSpec"/>
+    </popup>
     <popup name="popInfo" width="410" height="410" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <label align="top" height="25" field="other"/>
         <textEditor align="client" field="details"/>

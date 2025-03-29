@@ -1,45 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmAbilityItem" width="275" height="55" margins="{bottom=5}">
+<form name="frmAbilityItem" width="275" height="50" margins="{bottom=10}">
 	<import file="templates.xml"/>
 	<rectangle align="client" color="#212121">
-		<button align="right" width="25" text="X" margins="{left=2.5,right=2.5}">
-			<event name="onClick">
-				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
-					function (confirmado)
-						if confirmado then
-							NDB.deleteNode(sheet);
-						end;
-				end);
-			</event>
-		</button>
+	    <layout align="top" height="25" margins="{bottom=2.5,right=2.5}">
+	        <formatEdit align="client" field="habilidade" formatFloat=""/>
+	    </layout>
+	    <layout align="top" height="25" margins="{bottom=2.5}">
+	        <button align="left"  width="25" text="1" fontSize="11">
+	            <event name="onClick">
+	            	local node = NDB.getRoot(sheet)
+	                node.roll1Name = sheet.habilidade
+	                node.roll1Pool = sheet.habilidadeTotal
+	            </event>
+	        </button>
+	        <button align="left" width="25" text="2" fontSize="11">
+	            <event name="onClick">
+	            	local node = NDB.getRoot(sheet)
+	                node.roll2Name = sheet.habilidade
+	                node.roll2Pool = sheet.habilidadeTotal
+	            </event>
+	        </button>
 
-		<layout align="client">
-	        <layout align="top" height="25" margins="{bottom=2.5}">
-	            <layout width="12.5" height="25">
-	                <button top="0" height="12.5" width="12.5" text="1" fontSize="5">
-	                    <event name="onClick">
-	                    	local node = NDB.getRoot(sheet)
-	                        node.roll1Name = sheet.habilidade
-	                        node.roll1Pool = sheet.habilidadeTotal
-	                    </event>
-	                </button>
-	                <button top="12.5" height="12.5" width="12.5" text="2" fontSize="5">
-	                    <event name="onClick">
-	                    	local node = NDB.getRoot(sheet)
-	                        node.roll2Name = sheet.habilidade
-	                        node.roll2Pool = sheet.habilidadeTotal
-	                    </event>
-	                </button>
-	            </layout>
+	        <layout align="left" width="5"/>
 
-	            <formatEdit left="12.5" width="87.5" height="25" field="habilidade" formatFloat=""/>
-	            <edit left="100" width="35" height="25" field="habilidadeIni"/>
-	            <edit left="135" width="35" height="25" field="habilidadeBonus"/>
-	            <edit left="170" width="35" height="25" field="habilidadeXP"/>
-	            <boxLabel left="205" width="45" height="25" field="habilidadeTotal"/>
+	        <edit align="left" width="40" height="25" field="habilidadeIni"/>
+	        <edit align="left" width="40" height="25" field="habilidadeBonus"/>
+	        <edit align="left" width="40" height="25" field="habilidadeXP"/>
+	        
+	        <layout align="left" width="5"/>
+
+	        <layout align="left" width="50">
+	        	<boxLabel width="45" height="25" field="habilidadeTotal"/>
 	        </layout>
 
-	        <edit align="top" height="25" field="habilidadeSpec"/>
+			<button align="right" width="25" text="i" margins="{left=0,right=2.5}" name="infoButton">
+				<event name="onClick">
+			        <![CDATA[
+				    local pop = self:findControlByName("popAbilityInfo");
+					
+					if pop ~= nil then
+						pop:setNodeObject(sheet);
+						pop:showPopupEx("bottomCenter", self.infoButton);
+					else
+						showMessage("Ops, bug.. nao encontrei o popup para exibir");
+					end;
+					]]>
+				</event>
+			</button>
+			<button align="right" width="25" text="X" margins="{left=0,right=2.5}">
+				<event name="onClick">
+					Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
 	    </layout>
 
         <dataLink fields="{'habilidadeIni','habilidadeBonus','habilidadeXP'}">
