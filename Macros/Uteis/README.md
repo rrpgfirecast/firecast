@@ -12,6 +12,7 @@ Listados abaixo estão as macros localizadas dentro dessa pasta e sua funcionali
 | [espec](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/espec.lua?raw=true) | Ambesek | Transforma em espectador cada jogador sem voz. |
 | [kick](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/kick.lua?raw=true) | Ambesek | Expulsa o usuário da mesa através do login. |
 | [math](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/math.lua?raw=true) | Mia | Executa cálculos matemáticos. |
+| [mobs](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/mobs.lua?raw=true) | Lizandra Amaryllis | Gêrencia várias barras de vida de NPCs, facilitando combate com múltiplos inimigos. |
 | [mod](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/mod.lua?raw=true) | Ambesek | Inicia ou finaliza a sessão da mesa, além de dar ou retirar a voz dos jogadores. |
 | [show](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/show.lua?raw=true) | Ambesek | Encontra e linka NPCs da biblioteca da mesa no chat. |
 | [timer](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/timer.lua?raw=true) | thirteen | Permite criar um alarme no chat da mesa, com avisos em intervalos determinados. |
