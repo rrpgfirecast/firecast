@@ -17,3 +17,4 @@ Listados abaixo estão as macros localizadas dentro dessa pasta e sua funcionali
 | [timer](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/timer.lua?raw=true) | thirteen | Permite criar um alarme no chat da mesa, com avisos em intervalos determinados. |
 | [TrocaDeCor](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/TrocaDeCor.lua?raw=true) | thirteen | Altera a cor do texto, adicionando travessões, quando colocado um caractere chave no texto. |
 | [voz](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/voz.lua?raw=true) | Ambesek | Dá voz a todos com o modo Jogador na mesa. |
+| [xp](https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/xp.lua?raw=true) | Lizandra Amaryllis | Ajuda a alterar o xp e nível da barrinha/linha digitável rapidamente |
