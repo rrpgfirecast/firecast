@@ -12,9 +12,9 @@
 --                                --
 ------------------------------------
 -- em que linha/barrinha o xp vai ficar
-local target = 1 
+local alvo = 1 
 -- true para salvar o xp na barrinha, false para salvar em uma linha digitável
-local barrinha = false
+local usandoBarrinha = false
 local jogador = meuJogador
 
 -- Retorna quanto xp é necessário para sair do nível passado e ir para o próximo
@@ -22,11 +22,11 @@ local jogador = meuJogador
 -- nível 1 -> 100xp
 -- nível 2 -> 200xp
 -- Caso não queira colocar uma fórmula, você pode adicionar uma tabela e retornar um valor baseado no índice
-function calcularXpNivel(nivel)
+function xpNecessario(nivel)
 	return nivel * 100
 end
--- Função contrária ao calcularXpNivel, retorna o nível atual baseado no xp necessário para chegar no próximo
-function calcularNivelXp(xp)
+-- Função contrária ao xpNecessario, retorna o nível atual baseado no xp necessário para chegar no próximo
+function calcularNivel(xp)
 	return xp / 100
 end
 ------------------------------------
@@ -41,39 +41,38 @@ if jogador == nil then
 end
 
 -- Carrega os valores já salvo de xp
-local currentValue
-local level
+local xpAtual
+local nivel
 -- Barrinha
-if (barrinha) then
-	if (jogador:getBarValue(target) == nil) then
+if (usandoBarrinha) then
+	if (jogador:getBarValue(alvo) == nil) then
 		escrever("Barrinha não encontrada")
 		return 2
 	end
 	
-	currentValue, level = jogador:getBarValue(target)
-	level = calcularNivelXp(level)
+	xpAtual, nivel = jogador:getBarValue(alvo)
+	nivel = calcularNivel(nivel)
 -- Linha digitável
 else
-	if (jogador:getEditableLine(target) == nil) then
+	if (jogador:getEditableLine(alvo) == nil) then
 		escrever("Barrinha não encontrada")
 		return 2
 	end
-	local lineRaw = jogador:getEditableLine(target)
-	if (string.find(lineRaw, "%[[+-]?%d+/[+-]?%d+%]") == nil) then
+	local linhaBruta = jogador:getEditableLine(alvo)
+	if (string.find(linhaBruta, "%[[+-]?%d+/[+-]?%d+%]") == nil) then
 		escrever("Você não possuí xp na barrinha")
 		return 3
 	end
 	
-	local bufferInicio, bufferFim = string.find(lineRaw, "%b[/")
-	currentValue = tonumber(string.sub(lineRaw, bufferInicio + 1, bufferFim - 1))
+	local bufferInicio, bufferFim = string.find(linhaBruta, "%b[/")
+	xpAtual = tonumber(string.sub(linhaBruta, bufferInicio + 1, bufferFim - 1))
 
-	bufferInicio, bufferFim = string.find(lineRaw, "%b/]")
-	level = math.floor(tonumber(string.sub(lineRaw, bufferInicio + 1, bufferFim - 1)) / 100)
+	bufferInicio, bufferFim = string.find(linhaBruta, "%b/]")
+	nivel = math.floor(tonumber(string.sub(linhaBruta, bufferInicio + 1, bufferFim - 1)) / 100)
 end
 
 -- VALORES
 local valor = tonumber(arg[1])
-
 while (valor == nil) do
 	valor = tonumber(inputQuery("Valor: ", 0))
 end
@@ -96,42 +95,42 @@ end
 --                                --
 ------------------------------------
 
-escrever("---------- \nNível inicial:	[§K2]" .. level .. "\n[§K1]xp inicial:	[§K2]" .. currentValue)
+escrever("---------- \nNível inicial:	[§K2]" .. nivel .. "\n[§K1]xp inicial:	[§K2]" .. xpAtual)
 
 if (op == "L") then
-	level = level + valor
+	nivel = nivel + valor
 else
-	currentValue = currentValue + valor
-	local levelsGained = 0
+	xpAtual = xpAtual + valor
+	local niveisGanho = 0
 	if (valor > 0) then
 		while (true) do
-			if (level == 0) then level = level + 1 end
-			if (currentValue < calcularXpNivel(level)) then
-				escrever("\nNíveis ganhos: [§K2]" .. levelsGained)
+			if (nivel == 0) then nivel = nivel + 1 end
+			if (xpAtual < xpNecessario(nivel)) then
+				escrever("\nNíveis ganhos: [§K2]" .. niveisGanho)
 				break
 			end
-			currentValue = currentValue - calcularXpNivel(level)
-			level = level + 1
-			levelsGained = levelsGained + 1
+			xpAtual = xpAtual - xpNecessario(nivel)
+			nivel = nivel + 1
+			niveisGanho = niveisGanho + 1
 		end
 	elseif (valor < 0) then
 		while (true) do
-			if (currentValue >= 0 or level <= 0) then
-				escrever("\nNíveis perdidos: [§K2]" .. levelsGained)
+			if (xpAtual >= 0 or nivel <= 0) then
+				escrever("\nNíveis perdidos: [§K2]" .. niveisGanho)
 				break
 			end
-			level = level - 1
-			currentValue = currentValue + calcularXpNivel(level)
-			levelsGained = levelsGained + 1
+			nivel = nivel - 1
+			xpAtual = xpAtual + xpNecessario(nivel)
+			niveisGanho = niveisGanho + 1
 		end
 	end
 end
 
 
-escrever("\nNível final:	[§K2]" .. level .. "\n[§K1]xp final:	[§K2]" .. currentValue .. "\n[§K1]---------- ")
+escrever("\nNível final:	[§K2]" .. nivel .. "\n[§K1]xp final:	[§K2]" .. xpAtual .. "\n[§K1]---------- ")
 
-if (barrinha) then
-	jogador:requestSetBarValue(target, currentValue, calcularXpNivel(level))
+if (usandoBarrinha) then
+	jogador:requestSetBarValue(alvo, xpAtual, xpNecessario(nivel))
 else
-	jogador:requestSetEditableLine(target, "Nível " .. level .. ": [" .. currentValue .. "/" .. calcularXpNivel(level) .. "]")
+	jogador:requestSetEditableLine(alvo, "Nível " .. nivel .. ": [" .. xpAtual .. "/" .. xpNecessario(nivel) .. "]")
 end
