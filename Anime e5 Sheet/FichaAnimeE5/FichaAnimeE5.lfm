@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaAnimeE5" formType="sheetTemplate" dataType="br.com.rrpg.DnD_ANIME5E" title="Ficha Anime 5E" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Pagina 1">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Pagina 2">
+            <import file="2.lfm"/>
+        </tab>
+    </tabControl>
+</form>

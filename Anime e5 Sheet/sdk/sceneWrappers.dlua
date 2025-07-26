@@ -1,0 +1,1123 @@
+﻿local Objs = require("rrpgObjs.lua");
+local objs = Objs;
+local NDB = require("ndb.lua");
+local GUI = nil;
+
+local _userDataScopeAttr = '__userDataScope';
+
+local SceneWrappers = {};
+
+local _localStrongRefSceneObjects = {};
+
+--- [[  Wrapper Object BASE  ]] 
+local function initWrappedObjectFromHandle(handle)
+	local wObj = Objs.objectFromHandle(handle); 
+	
+	if (wObj.props == nil) then
+		wObj.props = {};
+	end;
+		
+	function wObj:getObjectID() return _obj_getProp(self.handle, "ObjectID"); end;
+	function wObj:getObjectType() return _obj_getProp(self.handle, "WrappedObjectType"); end;
+	function wObj:getIsObjectAlive() return _obj_getProp(self.handle, "IsObjectAlive"); end;
+	function wObj:isType(typeName) return _scene3_IsWrapperOfType(self.handle, typeName); end;
+	function wObj:beginUpdate() _obj_invoke(self.handle, "BeginUpdate"); end;
+	function wObj:endUpdate() _obj_invoke(self.handle, "EndUpdate"); end;
+	function wObj:getUserData() return _obj_invokeEx(self.handle, "GetUserData"); end;
+	
+	function wObj:newUserDataLink(field)
+		if GUI == nil then
+			GUI = require("gui.lua");
+		end;	
+	
+		local dataScope = rawget(self, _userDataScopeAttr);
+		
+		if dataScope == nil then	
+			dataScope = Objs.hierarchyObjectFromHandle(_obj_newObject("nonVisualDataScope"));
+			rawset(self, _userDataScopeAttr, dataScope);
+			_obj_invokeEx(self.handle, "PrepareUserDataScope", dataScope.handle);			
+		end
+		
+		local dl = GUI.newDataLink(); 
+		
+		if field ~= nil then
+			dl.field = field;		
+		end;
+		
+		dl:setParent(dataScope);		
+		return dl;
+	end;
+	
+	wObj.props["objectType"] = {getter = "getObjectType", tipo = "string"};
+	wObj.props["isObjectAlive"] = {getter = "getIsObjectAlive", tipo = "bool"};
+	wObj.props["objectID"] = {getter = "getObjectID", tipo = "int"};
+	wObj.props["userData"] = {getter = "getUserData", tipo = "table"};
+	
+	rawset(wObj, "objectID", wObj:getObjectID());
+	return wObj;
+end;
+
+--- [[  Wrapper Object SCENE  ]] 
+
+local __sceneProps = {worldWidth = {tipo = "double", readProp = "WorldWidth", writeProp = "WorldWidth"},
+					  worldHeight = {tipo = "double", readProp = "WorldHeight", writeProp = "WorldHeight"},
+                      worldMetricName = {tipo = "string", readProp = "WorldMetricName", writeProp = "WorldMetricName"},
+					  bkgColor = {tipo = "color", readProp = "BkgColor", writeProp = "BkgColor"},
+					  bkgImageURL = {tipo = "string", readProp="BkgImageURL", writeProp = "BkgImageURL"},
+					  workingLayer = {tipo = "enum", readProp = "WorkingLayer", writeProp = "WorkingLayer", values={"background", "objects", "tokens"}},
+					  viewport = {tipo = "table", getter=function(obj) return SceneWrappers.objectFromID(_scene3_getViewportObjectIDOfScene(obj.objectID)); end;},
+					  grid = {tipo = "table", getter=function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "GridLayerObjectID")); end;},
+					  items = {tipo = "table", getter=function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "ItemsObjectID")); end},
+					  fogOfWar = {tipo = "table", getter=function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "FogOfWarObjectID")); end},
+					  isGM = {tipo="bool", readProp="IsGM"},
+					  currentUserID = {tipo="string", readProp="CurrentUserID"},
+					  isViewingAsGM = {tipo="bool", readProp="IsViewingAsGM", writeProp = "IsViewingAsGM"},
+					  isViewingWalls = {tipo="bool", readProp="IsViewingWalls", writeProp = "IsViewingWalls"},
+					  renderAsPlayer = {tipo="bool", readProp="RenderAsPlayer"}};
+
+local __sceneEvents	= {onWorkingLayerChange="",
+					   onGMStateChange=""};
+
+local __sceneMethods = {
+		newTransaction = function(scene)
+			local tr = Objs.objectFromHandle(_obj_newObject("TLuaScene3Transaction"));
+			Objs.registerHandle(tr.handle, tr);
+			_obj_invoke(tr.handle, "Initialize", scene.objectID);
+			
+			tr.commit = function(trObj)
+				_obj_invoke(trObj.handle, "Commit");
+			end;
+			
+			tr.rollback = function(trObj)
+				_obj_invoke(trObj.handle, "Rollback");
+			end;
+			
+			tr.createUndoData =  function (trObj)
+				local handle = _obj_invoke(trObj.handle, "CreateUndoData");
+				local obj = objs.objectFromHandle(handle);
+				objs.registerHandle(handle, obj);	
+				return obj;
+			end;
+
+			tr.applyUndoData = function(trObj, undoData)
+				_obj_invoke(trObj.handle, "ApplyUndoData", undoData.handle);
+			end;					
+			
+			return tr;
+		end,
+		
+		pushTransaction = function(scene, transaction)
+			local trHandle;
+			
+			if transaction ~= nil then
+				trHandle = transaction.handle or 0;
+			else
+				trHandle = 0;
+			end;
+			
+			_obj_invoke(scene.handle, "PushTransaction", trHandle);
+		end,
+		
+		popTransaction = function(scene)
+			_obj_invoke(scene.handle, "PopTransaction");		
+		end,
+		
+		processCommand = function(scene, command)
+							return _obj_invokeEx(scene.handle, "ProcessCommand", command);
+						 end,
+						 
+		broadcastMessage = function(scene, messageId, message, loopBack)
+								local node = _obj_invokeEx(scene.handle, "LuaGetSceneNode");
+								
+								if node ~= nil then
+									return NDB.broadcastMessage(node, messageId, message, loopBack);
+								end;
+						   end,
+						   
+		newBroadcastListener = function(scene, messageId, callback)
+									local node = _obj_invokeEx(scene.handle, "LuaGetSceneNode");
+								
+									if node ~= nil then
+										return NDB.newBroadcastListener(node, messageId, 
+											function(sender, returnedMessageId, message)
+												if scene.isObjectAlive and (callback ~= nil) then
+													callback(sender, returnedMessageId, message);
+												end;
+											end);
+									end;
+							   end,
+
+		sendDelayedUpdates = function(scene)
+								return _obj_invoke(scene.handle, "SendDelayedUpdates");
+							 end
+						   
+	};
+					  
+local function initWrappedSceneFromHandle(handle)
+	local wObj = initWrappedObjectFromHandle(handle); 
+	
+	for k, v in pairs(__sceneProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__sceneMethods) do
+		rawset(wObj, k, v);		
+	end;		
+	
+	wObj.eves = __sceneEvents;		
+	return wObj;
+end;
+
+--- [[  Wrapper Object VIEWPORT  ]] 
+
+local __viewportProps = {width = {tipo = "double", readProp = "Width"},
+						 height = {tipo = "double", readProp = "Height"},
+						 worldX = {tipo = "double", readProp = "WorldX", writeProp = "WorldX"},
+						 worldY = {tipo = "double", readProp = "WorldY", writeProp = "WorldY"},
+						 scale = {tipo = "double", readProp = "Scale", writeProp = "Scale"},
+						 cursor = {tipo = "enum", readProp = "Cursor", writeProp = "Cursor"},
+						 scene = {tipo = "table", getter = function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "SceneObjectID")); end;}};
+						 
+local __viewportMethods = {screenToWorld = 
+							function(vp, screenX, screenY) 	
+								return _obj_invokeEx(vp.handle, "ScreenToWorld", screenX, screenY);
+							end,
+							
+						   worldToScreen =
+							function (vp, worldX, worldY)
+								return _scene3_ViewPort_WorldToScreen(vp.handle, worldX, worldY);
+							end,
+							
+							getScrollBounds = function(vp) return _obj_invokeEx(vp.handle, "GetScrollBounds"); end;
+							
+							setupToolCategory = 
+								function(vp, name, title, order) 
+									_obj_invoke(vp.handle, "SetupToolCategory", tostring(name), tostring(title), tonumber(order));
+								end,
+														
+							addToolButton = 
+								function (vp, categoryName, title, iconURL, order, options, callback, deactivationCallback)
+									if type(options) ~= "table" then
+										options = {};
+									end;
+									
+									local hBtn = _obj_newObject("SC3ToolButton");
+									local o = Objs.objectFromHandle(hBtn);								
+									Objs.registerHandle(hBtn, o);
+									
+									if callback ~= nil then
+										o:listen("OnCallback", callback);
+									end;
+									
+									if deactivationCallback ~= nil then
+										o:listen("OnDeactivationCallback", deactivationCallback);
+									end;
+									
+									_obj_invoke(hBtn, "SetViewport", vp.objectID);
+									_obj_invokeEx(hBtn, "SetupButton", categoryName, title, iconURL, order, options);
+									
+									local tblTools = rawget(vp, "_TblTools");
+									
+									if tblTools == nil then
+										tblTools = {};
+										rawset(vp, "_TblTools", tblTools);
+									end;
+									
+									local genID = (tblTools.generator or 0) + 1;
+									tblTools.generator = genID;
+									
+									tblTools[genID] = o;
+									return genID;
+								end,
+								
+							removeToolButton = 
+								function (vp, toolID)
+									local tblTools = rawget(vp, "_TblTools");
+									
+									if tblTools ~= nil then
+										local o = tblTools[toolID];
+										
+										if o ~= nil then
+											_obj_invoke(o.handle, "RemoveButton");
+											tblTools[toolID] = nil;
+										end;
+									end;
+								end,
+								
+							checkToolButton = function(vp, toolID, checked)	
+									local tblTools = rawget(vp, "_TblTools");
+									
+									if tblTools ~= nil then
+										local o = tblTools[toolID];
+										
+										if o ~= nil then
+											if checked == nil then
+												checked = true;
+											end;
+										
+											_obj_invoke(o.handle, "CheckToolButton", not not checked);
+										end;
+									end;
+								end,
+								
+							isToolButtonChecked = function(vp, toolID)	
+									local tblTools = rawget(vp, "_TblTools");
+									
+									if tblTools ~= nil then
+										local o = tblTools[toolID];
+										
+										if o ~= nil then                          
+											return _obj_getProp(o.handle, "IsChecked");
+										end;
+									end;
+									
+									return false;
+								end,														
+								
+							selectToolButton = function(vp, toolID)	
+									local tblTools = rawget(vp, "_TblTools");
+									
+									if tblTools ~= nil then
+										local o = tblTools[toolID];
+										
+										if o ~= nil then								
+											_obj_invoke(o.handle, "Select");
+										end;
+									end;
+								end,
+								
+							selectDefaultToolButton = function(vp)	
+									_obj_invoke(vp.handle, "SelectDefaultToolButton");
+								end,
+								
+							needRepaint = function (vp)
+									_obj_invoke(vp.handle, "NeedRepaint");
+								end,
+							
+							showForm = function(vp, form, options)
+								if (form == nil) then
+									error("invalid parameter - form is nil");
+									return false;
+								end;
+
+								if type(options) ~= "table" then
+									options = {};
+								end;
+										
+								local _popupFormShowers = vp._popupFormShowers;
+								
+								if _popupFormShowers == nil then
+									_popupFormShowers = {};
+									setmetatable(_popupFormShowers, {__mode="k"});  -- popupFormShowers possui chaves weak-reference									
+									vp._popupFormShowers = _popupFormShowers;
+								end;
+										
+								local popupShower = _popupFormShowers[form];
+								
+								if popupShower == nil then		
+									popupShower = Objs.objectFromHandle(_obj_newObject('TSC3ViewportFormShower'));
+									Objs.registerHandle(popupShower.handle, popupShower);
+									_popupFormShowers[form] = popupShower;
+									
+									_obj_invoke(popupShower.handle, "SetFormHandle", form.handle);
+								end;
+								
+								local closeListenerId = rawget(popupShower, "__closeListenerID");
+								
+								if closeListenerId ~= nil then
+									popupShower:removeEventListener(closeListenerId);
+									rawset(popupShower, "__closeListenerID", nil);
+								end;
+								
+								if type(options.onClose) == "function" then
+									closeListenerId = popupShower:addEventListener("OnPopupClose", options.onClose);
+									rawset(popupShower, "__closeListenerID", closeListenerId);		
+								end;
+								
+								_obj_setProp(popupShower.handle, "PopupPlacement", options.placement);	
+								return _obj_invoke(popupShower.handle, "Show", vp.handle);
+							end,
+							
+							closeForm = function(vp, form)
+								local _popupFormShowers = vp._popupFormShowers;
+							
+								if type(form) == "table" and _popupFormShowers ~= nil then
+									local v = _popupFormShowers[form];
+									
+									if v ~= nil then
+										_popupFormShowers[form] = nil;
+										return _obj_invoke(v.handle, "Close");
+									end;	
+								else
+									return false;
+								end;
+							end
+							};
+								
+local __viewportEvents = {onChange = "",
+						  onMouseDown = "event",
+						  onMouseUp = "event",
+						  onMouseMove = "event",
+						  onMouseWheel = "event",
+						  onMouseDblClick = "event",
+						  onFallbackMouseWheel = "event",
+						  onGestureBeginZoom = "x, y",
+						  onGestureZoom = "x, y, delta",
+						  onGestureEndZoom = "x, y",
+						  onGestureBeginRotation = "x, y",
+						  onGestureRotation = "x, y, angle",
+						  onGestureEndRotation = "x, y",
+						  onGestureBeginPan = "x, y",
+						  onGesturePan = "x, y",
+						  onGestureEndPan = "x, y",
+						  onGestureLongTap = "x, y";
+						  onKeyDown = "event",
+						  onKeyUp = "event",
+						  onBeforeDrawBkgLayer="",
+						  onBeforeDrawGridLayer="",
+						  onBeforeDrawObjsLayer="",
+						  onBeforeDrawTokensLayer="",
+						  onAfterDrawLayers="",
+						  onStartDrop="drop, x, y, drag"};								
+						 
+local __viewportRenderMethods = {
+		prepareFill = _scene3_gfx_prepareFill,		
+		fillRect = _scene3_gfx_fillRect,
+		fillEllipse = _scene3_gfx_fillEllipse,
+		fillPolygon = _scene3_gfx_fillPolygon,
+		fillACell = function(vp, i, j, opacity) _scene3_gfx_fillACell(vp.handle, i, j, opacity); end,
+		prepareDraw = _scene3_gfx_prepareDraw,
+		drawRect = _scene3_gfx_drawRect,
+		drawEllipse = _scene3_gfx_drawEllipse,		
+		drawLine = _scene3_gfx_drawLine,
+		prepareFont = _scene3_gfx_prepareFont,
+		textSize = _scene3_gfx_textSize,
+		fillText = _scene3_gfx_fillText,
+		fillTextFit = _scene3_gfx_fillTextFit,
+		pushRenderState = _scene3_gfx_pushState,
+		popRenderState = _scene3_gfx_popState,
+		pushRotationTransform = _scene3_gfx_pushRotationTransform,
+		pushWorldToScreenTransform = function(vp) _scene3_gfx_pushWorldToScreenTransform(vp.handle) end,
+		popTransform = _scene3_gfx_popTransform
+	};						 
+						 
+local function initWrappedViewportFromHandle(handle)
+	local wObj = initWrappedObjectFromHandle(handle); 
+	
+	for k, v in pairs(__viewportProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__viewportMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	for k, v in pairs(__viewportRenderMethods) do
+		rawset(wObj, k, v);		
+	end;		
+	
+	wObj.eves = __viewportEvents;
+	
+	return wObj;
+end;
+
+
+--- [[  Wrapper Object GRIDLayer  ]] 
+
+local __gridLayerProps = {gridType = {tipo = "enum", readProp = "GridType", writeProp="GridType", values={"square", "vertHex", "horzHex"}},
+						  offsetX = {tipo = "double", readProp = "OffsetX", writeProp = "OffsetX"},
+					 	  offsetY = {tipo = "double", readProp = "OffsetY", writeProp = "OffsetY"},
+					 	  cellSize = {tipo = "double", readProp = "CellSize", writeProp = "CellSize"},
+					 	  gridColor = {tipo = "color", readProp = "GridColor", writeProp = "GridColor"},
+						  grickThickness = {tipo = "double", readProp = "GridThickness", writeProp = "GridThickness"},
+						  drawGrid = {tipo = "bool", readProp = "DrawGrid", writeProp = "DrawGrid"},
+						  rowCount = {tipo = "int", readProp = "RowCount"},
+						  colCount = {tipo = "int", readProp = "ColumnCount"},
+						  squareDiagonals = {tipo="enum", readProp = "SquareDiagonals", writeProp="SquareDiagonals", values={"simplified", "manhattan", "alternated", "euclidean"}},
+					      scene = {tipo = "table", getter = function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "SceneObjectID")); end;}};
+						 
+local __gridLayerMethods = {cellToWorld = 
+							function(grid, i, j) 	
+								return _obj_invokeEx(grid.handle, "GetCellCenter", i, j);
+							end,
+							
+						   worldToCell =
+							function (grid, worldX, worldY)
+								return _obj_invokeEx(grid.handle, "GetGridCellAtPos", worldX, worldY);
+							end,
+							
+							shortestPath = function (grid, srcI, srcJ, destI, destJ, options)
+								if (options ~= nil) and type(options) ~= "table" then
+									options = nil;
+								end;
+								
+								return _obj_invokeEx(grid.handle, "ShortestPath", srcI, srcJ, destI, destJ, options);
+							end};
+								
+local __gridLayerEvents = {onChange = ""};								
+						 
+local function initWrappedGridLayerFromHandle(handle)
+	local wObj = initWrappedObjectFromHandle(handle); 
+	
+	for k, v in pairs(__gridLayerProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__gridLayerMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __gridLayerEvents;
+	
+	return wObj;
+end;
+
+--- [[  Wrapper Object GraphicItemList  ]] 
+
+local __GIL_Selection = "_xx_selection";
+
+local __GILProps = {count = {tipo = "int", readProp = "Count"},
+					selection = {tipo="table", getter="getSelection"}};
+						 
+local __GILMethods = {	get = function(t, idx) 	
+								local objID = _obj_invoke(t.handle, "GetItemObjectID", idx - 1);
+								local o = SceneWrappers.objectFromID(objID);
+								
+								if o == nil then
+									error("Invalid Scene GraphicItem Index");
+								else
+									return o;
+								end;
+							end,
+							
+						enumInRect = function(t, rect, layer)
+							local retObjs = _obj_invokeEx(t.handle, "EnumInRect", rect, layer);
+							
+							for i = 1, #retObjs, 1 do
+								retObjs[i] = SceneWrappers.objectFromID(retObjs[i]);
+							end;
+							
+							return retObjs;
+						end,
+						
+						enumAtPoint = function(t, worldX, worldY, layer)
+							local retObjs = _obj_invokeEx(t.handle, "EnumInPoint", worldX, worldY, layer);
+							
+							for i = 1, #retObjs, 1 do
+								retObjs[i] = SceneWrappers.objectFromID(retObjs[i]);
+							end;
+							
+							return retObjs;
+						end,
+						
+						itemAtPoint = function(t, worldX, worldY, layer)
+							local retObjs = t:enumAtPoint(worldX, worldY, layer);
+							
+							if #retObjs > 0 then
+								return retObjs[#retObjs];
+							else
+								return nil;
+							end;
+						end,
+						
+						getSelection = function(t)
+							local ss;
+							
+							ss = rawget(t, __GIL_Selection);
+							
+							if ss ~= nil then
+								return ss;
+							end;
+							
+							ss = _obj_invokeEx(t.handle, "EnumSelection");
+							
+							for i = 1, #ss, 1 do
+								ss[i] = SceneWrappers.objectFromID(ss[i]);
+							end;
+							
+							rawset(t, __GIL_Selection, ss);
+							return ss;
+						end,
+						
+						clearSelection = function(t)
+							local ss = t.selection;
+							
+							for k, v in pairs(ss) do
+								v.selected = false;
+							end;
+						end,
+						
+						addToken = function(t, layer)
+							return SceneWrappers.objectFromID(_obj_invokeEx(t.handle, "AddToken", layer));
+						end;
+						
+						addUserDrawing = function(t, layer)
+							return SceneWrappers.objectFromID(_obj_invokeEx(t.handle, "AddUserDrawing", layer));
+						end;
+						};
+								
+local __GILEvents = {onChange = "",
+					 onItemAdded="item",
+					 onItemRemoved="item",
+					 onItemSelected="item",					 
+					 onItemDeselected="item",
+					 onItemLayerChange="item"};								
+local __GILMetatable = nil;						 
+						 
+local function initialize_GILMetatable(mtbase)		
+	__GILMetatable = {};
+	local oldIndexMT = mtbase.__index;
+	local oldNewIndexMT = mtbase.__newindex;
+	
+	for k, v in pairs(mtbase) do
+		__GILMetatable[k] = v;
+	end
+	
+	__GILMetatable.__len = function(t)
+							  return _obj_getProp(t.handle, "Count");
+						   end;
+						   
+	__GILMetatable.__index = function(t, k)
+								if type(k) == "number" then
+									local objID = _obj_invoke(t.handle, "GetItemObjectID", k - 1);
+									local o = SceneWrappers.objectFromID(objID);
+									
+									if o == nil then
+										error("Invalid Scene GraphicItem Index");
+									else
+										return o;
+									end;
+								elseif oldIndexMT ~= nil then
+									return oldIndexMT(t, k);
+								else
+									return rawget(t, k);
+								end;
+							 end;
+							 
+	__GILMetatable.__newindex = function(t, k, v)
+								if type(k) == "number" then
+									error("Scene Graphic Item Index: Read-Only property");
+								elseif oldNewIndexMT ~= nil then
+									return oldNewIndexMT(t, k, v);
+								else
+									rawset(t, k, v);
+								end;
+							 end;							 
+end;
+						 
+local function initWrappedGraphicItemListFromHandle(handle)
+	local wObj = initWrappedObjectFromHandle(handle); 
+	
+	if __GILMetatable == nil then
+		initialize_GILMetatable(getmetatable(wObj));
+	end;
+	
+	setmetatable(wObj, __GILMetatable);
+	
+	for k, v in pairs(__GILProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__GILMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __GILEvents;
+	
+	-- Resetar o cache do selection
+	wObj:listen("OnItemSelected", function() rawset(wObj, __GIL_Selection, nil); end);
+	wObj:listen("OnItemDeselected", function() rawset(wObj, __GIL_Selection, nil);	end);	
+	return wObj;
+end;
+
+--- [[  Wrapper Object GraphicItem  ]] 
+
+local __graphicItemProps = {width = {tipo = "double", readProp = "Width", writeProp="Width"},
+						    height = {tipo = "double", readProp = "Height", writeProp = "Height"},
+							x = {tipo = "double", readProp = "X", writeProp = "X"},
+							y = {tipo = "double", readProp = "Y", writeProp = "Y"},
+							z = {tipo = "double", readProp = "Z", writeProp = "Z"},
+							rotation = {tipo = "double", readProp = "Rotation", writeProp = "Rotation"},
+							visible = {tipo = "bool", readProp = "Visible", writeProp = "Visible"},
+							snapToGrid = {tipo = "bool", readProp = "SnapToGrid", writeProp="SnapToGrid"},
+							locked = {tipo = "bool", readProp = "Locked", writeProp = "Locked"},						
+							selected = {tipo = "bool", readProp = "Selected", writeProp = "Selected"},
+							isHover = {tipo = "bool", readProp = "IsHover", writeProp = "IsHover"},
+							layer = {tipo = "enum", readProp = "Layer", writeProp = "Layer", values={"background", "objects", "token"}},
+						    isMine = {tipo = "bool", readProp = "IsMine"},	
+						    canBeRendered = {tipo = "bool", readProp = "CanBeRendered"},							
+							ownerUserID = {tipo = "string", readProp = "OwnerUserID", writeProp="OwnerUserID"},	
+							canvas = {tipo = "table", getter = function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "CanvasObjectID")); end;},
+							scene = {tipo = "table", getter = function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "SceneObjectID")); end;}};
+						 
+local __graphicItemMethods = {getCenter = 
+								function(t, snapToGrid) 	
+									return _obj_invokeEx(t.handle, "GetCenter", snapToGrid);
+								end,
+							
+						     setCenter =
+								function (t, worldX, worldY, snapToGrid)
+									return _obj_invokeEx(t.handle, "SetCenter", worldX, worldY, snapToGrid);
+								end,
+								
+							getBounds = 
+								function(t)	
+									return _scene3_GraItem_getBounds(t.objectID);
+								end,
+										
+							setBounds = function(t, left, top, right, bottom, rotation)
+									return _scene3_GraItem_setBounds(t.objectID, left, top, right, bottom, rotation);
+								end,
+							
+							getCellsOccupied = function (t)
+									return _obj_invokeEx(t.handle, "GetCellsOccupied");
+								end,
+								
+							compareZOrder = function(t, otherItem)	
+									return _obj_invokeEx(t.handle, "CompareZOrder", otherItem.handle);
+								end, 
+								
+							delete = function(t) _obj_invoke(t.handle, "Delete"); end,
+							
+							doSnapToGrid = function(t) _obj_invoke(t.handle, "DoSnapToGrid");  end;
+							};
+								
+local __graphicItemEvents = {onChange = "",
+							 onBeforeDraw = "",
+							 onAfterDraw = "",
+							 onBoundsChange = "item"};								
+						 
+local function initWrappedGraphicItemFromHandle(handle)
+	local wObj = initWrappedObjectFromHandle(handle); 
+	
+	for k, v in pairs(__graphicItemProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__graphicItemMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __graphicItemEvents;
+	
+	return wObj;
+end;
+
+
+--- [[  Wrapper Object Token  ]] 
+
+local __tokenItemProps = {facingMode = {tipo = "enum", readProp = "FacingMode", writeProp="FacingMode", values={"rotate", "arrow"}},						  
+						  ownerCharacter = {tipo = "int", readProp = "OwnerCharacter", writeProp="OwnerCharacter"},
+						  friendOrFoe = {tipo = "enum", readProp = "FriendOrFoe", writeProp="FriendOrFoe", values={"unknown", "friend", "neutral", "foe"}},
+						  name = {tipo="string", readProp="Name", writeProp="Name"},
+						  visionIntenseLightRange = {tipo = "double", readProp = "VisIntenseLightRange", writeProp="VisIntenseLightRange"},
+						  visionWeakLightRange = {tipo = "double", readProp = "VisWeakLightRange", writeProp="VisWeakLightRange"},
+						  visionDarknessRange = {tipo = "double", readProp = "VisDarkRange", writeProp="VisDarkRange"},
+						  visionAngle = {tipo = "double", readProp = "VisionAngle", writeProp="VisionAngle"},
+						  visionHaveVision = {tipo = "bool", readProp = "VisHaveVision", writeProp="VisHaveVision"},
+						  lightIntenseRange = {tipo = "double", readProp = "LightIntenseRange", writeProp="LightIntenseRange"},
+						  lightWeakRange = {tipo = "double", readProp = "LightWeakRange", writeProp="LightWeakRange"},
+						  lightAngle = {tipo = "double", readProp = "LightAngle", writeProp="LightAngle"},									  
+						  image = {tipo = "table", getter = function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "ImageOpObjectID")); end;}						  
+						  };
+						  
+for i = 1, 3, 1 do
+	__tokenItemProps["barValue" .. i] = {tipo="string", 
+	                                     getter = function(obj) 	return _obj_invoke(obj.handle, "GetBarValue", i - 1); end,
+										 setter = function(obj, value) _obj_invoke(obj.handle, "SetBarValue", i - 1, value); end};
+										 
+	__tokenItemProps["barMax" .. i] = {tipo="string", 
+	                                     getter = function(obj) 	return _obj_invoke(obj.handle, "GetBarMax", i - 1); end,
+										 setter = function(obj, value) _obj_invoke(obj.handle, "SetBarMax", i - 1, value); end};										 
+										 
+	__tokenItemProps["barColor" .. i] = {tipo="color", 
+	                                     getter = function(obj) 	return _obj_invoke(obj.handle, "GetBarColor", i - 1); end,
+										 setter = function(obj, value) _obj_invoke(obj.handle, "SetBarColor", i - 1, value); end};										 										 
+end;				  
+						 
+local __tokenMethods = {clearMemoryAreas = function(t) _obj_invoke(t.handle, "ClearMemoryAreas"); end
+						};
+local __tokenEvents = {};
+
+for k, v in pairs(__graphicItemEvents) do
+	__tokenEvents[k] = v;
+end;
+
+ __tokenEvents.onChange = "";								
+						 
+local function initWrappedTokenFromHandle(handle)
+	local wObj = initWrappedGraphicItemFromHandle(handle); 
+	
+	for k, v in pairs(__tokenItemProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__tokenMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __tokenEvents;
+	
+	return wObj;
+end;
+
+--- [[  Wrapper UserDrawing ]] 
+
+local __userDrawingItemProps = {};
+
+local __userDrawingMethods = {
+		markAsMyDrawing = 
+			function(t)
+				local scene = t.scene;
+				
+				if scene ~= nil then
+					if scene.isGM then
+						t.ownerUserID = '';
+					else
+						t.ownerUserID = scene.currentUserID;
+					end;
+				end;
+			end
+	};
+local __userDrawingEvents = {};
+
+for k, v in pairs(__graphicItemEvents) do
+	__userDrawingEvents[k] = v;
+end;
+
+local function initWrappedUerDrawingFromHandle(handle)
+	local wObj = initWrappedGraphicItemFromHandle(handle); 
+	
+	for k, v in pairs(__userDrawingItemProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__userDrawingMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __userDrawingEvents;	
+	return wObj;
+end;
+
+--- [[  Wrapper Object Persisted Canvas  ]] 
+
+local __PerCanvasProps = {opCount = {tipo = "int", readProp = "OpCount"}};
+						  
+						 
+local __PerCanvasMethods = {getOp = function(t, idx)
+										return SceneWrappers.objectFromID(_obj_invoke(t.handle, "GetOpObjectID", idx));
+									end,
+							
+							addBitmap = function(t)
+										  return SceneWrappers.objectFromID(_obj_invoke(t.handle, "AddBitmapOpObjectID"));
+										end,
+										
+							addPath = function(t)
+										return SceneWrappers.objectFromID(_obj_invoke(t.handle, "AddPathOpObjectID"));
+									  end,
+									  
+							addText = function(t)
+										return SceneWrappers.objectFromID(_obj_invoke(t.handle, "AddTextOpObjectID"));
+									  end,									  
+									  
+							findByName = function(t, name)
+										return SceneWrappers.objectFromID(_obj_invokeEx(t.handle, "FindByName", tostring(name)));
+									  end,
+									  
+							clear = function(t) _obj_invoke(t.handle, "Clear"); end;
+							};
+								
+local __PerCanvasEvents = {onChange = ""};								
+						 
+local function initWrappedPerCanvasFromHandle(handle)
+	local wObj = initWrappedObjectFromHandle(handle); 
+	
+	for k, v in pairs(__PerCanvasProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__PerCanvasMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __PerCanvasEvents;
+	
+	return wObj;
+end;
+
+
+--- [[  Wrapper Object DrawingOp  ]] 
+
+local __DOPBaseProps = {x = {tipo = "double", readProp = "X", writeProp="X"},
+						y = {tipo = "double", readProp = "Y", writeProp="Y"},
+						z = {tipo = "double", readProp = "Z", writeProp="Z"},
+						width = {tipo = "double", readProp = "Width", writeProp="Width"},
+						height = {tipo = "double", readProp = "Height", writeProp="Height"},
+						rotMode = {tipo = "enum", readProp="RotMode", writeProp = "RotMode", values={"default", "ignoreCanvasRot"}},
+						name = {tipo = "string", readProp = "Name", writeProp="Name"},
+						opacity = {tipo = "double", readProp = "Opacity", writeProp="Opacity"},
+						visibility = {tipo = "enum", readProp = "Visibility", writeProp="Visibility", values={"everyone", "gmOnly"}},				
+						rotation = {tipo="double", readProp="Rotation", writeProp="Rotation"},
+						rotCenterX = {tipo="double", readProp="RotCenterX", writeProp="RotCenterX"},
+						rotCenterY = {tipo="double", readProp="RotCenterY", writeProp="RotCenterY"},
+						drawingTrigger = {tipo="set", readProp="DrawingTrigger", writeProp="DrawingTrigger", values={"hover", "selected"}},
+						outOfOrderMode = {tipo="enum", readProp="OutOfOrderMode", writeProp="OutOfOrderMode", values={"noOutOfOrder", "afterFogOfWarLayer", "beforeOwnerLayer", "afterOwnerLayer"}},
+						xMetric = {tipo="enum", readProp="XMetric", writeProp="XMetric", values={"screenMetric", "worldMetric", "canvasMetric", "cellMetric"}},
+						yMetric = {tipo="enum", readProp="YMetric", writeProp="YMetric", values={"screenMetric", "worldMetric", "canvasMetric", "cellMetric"}},
+						widthMetric = {tipo="enum", readProp="WidthMetric", writeProp="WidthMetric", values={"screenMetric", "worldMetric", "canvasMetric", "cellMetric"}},
+						heightMetric = {tipo="enum", readProp="HeightMetric", writeProp="HeightMetric", values={"screenMetric", "worldMetric", "canvasMetric", "cellMetric"}},
+						xOrigin = {tipo = "double", readProp = "XOrigin", writeProp="XOrigin"},
+						yOrigin = {tipo = "double", readProp = "YOrigin", writeProp="YOrigin"}
+						};
+						  						 
+local __DOPBaseMethods = {delete = function(t)
+										_obj_invoke(t.handle, "Delete");
+								   end
+						  };
+								   
+local __DOPBaseEvents = {onChange = ""};								
+						 
+local function initWrappedDrawingOpBaseFromHandle(handle)
+	local wObj = initWrappedObjectFromHandle(handle); 
+	
+	for k, v in pairs(__DOPBaseProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__DOPBaseMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __DOPBaseEvents;
+	
+	return wObj;
+end;
+
+
+--- [[  Wrapper Object DrawingOpBitmap  ]] 
+
+local __DOPBitmapProps = {url = {tipo = "string", readProp = "URL", writeProp="URL"},
+						  flipHorz = {tipo = "bool", readProp="FlipHorz", writeProp = "FlipHorz"},
+						  flipVert = {tipo = "bool", readProp="FlipVert", writeProp = "FlipVert"},
+						  grayscale = {tipo = "bool", readProp="Grayscale", writeProp = "Grayscale"},
+						  colorBlend = {tipo = "color", readProp="ColorBlend", writeProp = "ColorBlend"},
+						  colorMask = {tipo = "color", readProp="ColorMask", writeProp = "ColorMask"},
+						  filterEx = {tipo = "enum", readProp="FilterEx", writeProp = "FilterEx", 
+									values={"none", "glow", "innerGlow", "blur", "sepia"}},
+						  filterExColor = {tipo = "color", readProp="FilterExColor", writeProp = "FilterExColor"},
+						  frame = {tipo = "enum", readProp="Frame", writeProp = "Frame", 
+						           values={"none", "boton"}},
+						  sourceRect = {tipo="table", readProp="SourceRect", writeProp="SourceRect"}};
+						  						 
+local __DOPBitmapMethods = {};
+local __DOPBitmapEvents = {onChange = ""};								
+						 
+local function initWrappedDrawingOpBitmapFromHandle(handle)
+	local wObj = initWrappedDrawingOpBaseFromHandle(handle); 
+	
+	for k, v in pairs(__DOPBitmapProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__DOPBitmapMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __DOPBitmapEvents;
+	
+	return wObj;
+end;
+
+--- [[  Wrapper Object DrawingOpPath  ]] 
+
+local __DOPPathProps = {pathData = {tipo = "string", readProp = "PathData", writeProp="PathData"},
+						data = {tipo = "string", readProp = "PathData", writeProp="PathData"},
+						path = {tipo = "string", readProp = "PathData", writeProp="PathData"},
+						color = {tipo="color", readProp="FillColor", writeProp="FillColor"},
+						strokeColor = {tipo="color", readProp="StrokeColor", writeProp="StrokeColor"},
+						strokeSize = {tipo="double", readProp="StrokeThickness", writeProp="StrokeThickness"},
+						strokeSizeMetric = {tipo="enum", values={"screenMetric", "worldMetric", "canvasMetric", "cellMetric"}, readProp="StrokeThicknessMetric", writeProp="StrokeThicknessMetric"},
+						strokeCap = {tipo="enum", readProp="StrokeCap", writeProp="StrokeCap", values={"flat", "round"}},
+						strokeJoin = {tipo="enum", readProp="StrokeJoin", writeProp="StrokeJoin", values={"miter", "round", "bevel"}},
+						strokeDash = {tipo="enum", readProp="StrokeDash", writeProp="StrokeDash", values={"solid", "dash", "dot", "dashDot", "dashDotDot"}}
+						}
+						  						 
+local __DOPPathMethods = {};
+local __DOPPathEvents = {onChange = ""};								
+						 
+local function initWrappedDrawingOpPathFromHandle(handle)
+	local wObj = initWrappedDrawingOpBaseFromHandle(handle); 
+	
+	for k, v in pairs(__DOPPathProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__DOPPathMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __DOPPathEvents;
+	
+	return wObj;
+end;
+
+
+
+--- [[  Wrapper Object DrawingOpText  ]] 
+
+local __DOPTextProps = {text = {tipo = "string", readProp = "Text", writeProp="Text"},
+						color = {tipo = "color", readProp = "Color", writeProp="Color"},
+						aspect = {tipo = "double", readProp = "Aspect"},
+						fontStyle = {tipo="set", readProp="FontStyle", writeProp="FontStyle"},
+						horzTextAlign = {tipo="enum", readProp="TextAlign", writeProp="TextAlign", values={"leading", "center", "trailing"}},
+						vertTextAlign = {tipo="enum", readProp="VertTextAlign", writeProp="VertTextAlign", values={"leading", "center", "trailing"}}
+						}
+						  						 
+local __DOPTextMethods = {};
+local __DOPTextEvents = {};								
+						 
+local function initWrappedDrawingOpTextFromHandle(handle)
+	local wObj = initWrappedDrawingOpBaseFromHandle(handle); 
+	
+	for k, v in pairs(__DOPTextProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__DOPTextMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __DOPTextEvents;
+	
+	return wObj;
+end;
+
+--- [[  Wrapper Object FogOfWar FOW  ]] 
+
+local __fowProps = {enabled = {tipo="bool", readProp="Enabled", writeProp="Enabled"},
+					ambientLight = {tipo="enum", readProp="AmbientLight", writeProp="AmbientLight", values={"intense", "weak", "none"}},
+					sharingMode = {tipo="enum", readProp="SharingMode", writeProp="SharingMode", values={"individual", "group"}}};
+					
+						 
+local __fowMethods = {setArea = function(t, polygon, areaType)
+									_obj_invokeEx(t.handle, "SetArea", polygon, areaType);
+								end,
+								
+					  resetAreas = function(t) _obj_invoke(t.handle, "ResetAreas"); end,
+					  
+					  addOpaqueArea = function(t, polygon)
+										_obj_invokeEx(t.handle, "AddOpaqueArea", polygon);					  
+					                 end,
+									 
+					  removeOpaqueArea = function(t, polygon)
+											_obj_invokeEx(t.handle, "RemoveOpaqueArea", polygon);					  
+										end,			
+
+					   resetOpaqueAreas = function(t) _obj_invoke(t.handle, "ResetOpaqueAreas"); end,
+					   
+					   testCircleMovementCollisionVsOpaqueAreas = function(t, centerX, centerY, r, offsetX, offsetY)
+																	return _obj_invokeEx(t.handle, "TestCircleMovementCollisionVsOpaqueAreas", centerX, centerY, r, offsetX, offsetY);
+					                                              end
+					  
+					 };
+								
+local __fowEvents = {onChange = ""};								
+						 
+local function initWrappedFogOfWarFromHandle(handle)
+	local wObj = initWrappedObjectFromHandle(handle); 
+	
+	for k, v in pairs(__fowProps) do
+		wObj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__fowMethods) do
+		rawset(wObj, k, v);		
+	end;	
+	
+	wObj.eves = __fowEvents;
+	
+	return wObj;
+end;
+
+------------------------------------------
+
+
+local __wrappersInitializers = {
+		token = initWrappedTokenFromHandle,
+		userDrawing = initWrappedUerDrawingFromHandle,
+		graphicItem = initWrappedGraphicItemFromHandle,
+		scene = initWrappedSceneFromHandle,
+		pluginAttachment = initWrappedObjectFromHandle,
+		viewport = initWrappedViewportFromHandle,
+		persistedCanvas = initWrappedPerCanvasFromHandle,
+		gridLayer = initWrappedGridLayerFromHandle,
+		graphicItemList = initWrappedGraphicItemListFromHandle,
+		drawingOpBase = initWrappedDrawingOpBaseFromHandle,
+		opBitmap = initWrappedDrawingOpBitmapFromHandle,
+		opPath = initWrappedDrawingOpPathFromHandle,
+		opText = initWrappedDrawingOpTextFromHandle,
+		fogOfWar = initWrappedFogOfWarFromHandle,
+	}
+
+function SceneWrappers.objectFromID(objectID)
+	if (objectID == nil) or (objectID == 0) then
+		return nil;
+	end;
+
+	local scObj = _localStrongRefSceneObjects[objectID];
+	
+	if scObj ~= nil then
+		return scObj;
+	end;
+	
+	local objWrapperHandle;	
+	objWrapperHandle = _scene3_GetOrCreateObjectWrapperForObjectID(objectID);
+	
+	if objWrapperHandle == nil then
+		return nil;
+	end;
+	
+	scObj = objs.tryFindFromHandle(objWrapperHandle);
+	
+	if scObj ~= nil then
+		if _scene3_IsObjectIDAlive(objectID) then	
+			_localStrongRefSceneObjects[objectID] = scObj;
+		end;
+		
+		return scObj;
+	end;		
+
+	local oType = _scene3_GetWrapperType(objWrapperHandle);	
+	local initer = __wrappersInitializers[oType];
+	
+	if initer == nil then
+		-- Olhar por um wrapper na herança.
+		
+		for k, v in pairs(__wrappersInitializers) do
+			if _scene3_IsWrapperOfType(objWrapperHandle, k) then
+				initer = v;
+				break;
+			end;
+		end;
+		
+		if initer == nil then
+			initer = initWrappedObjectFromHandle;
+		end;
+	end;
+	
+	scObj = initer(objWrapperHandle);
+	objs.registerHandle(objWrapperHandle, scObj);
+	
+	if _scene3_IsObjectIDAlive(objectID) then
+		_localStrongRefSceneObjects[objectID] = scObj;	
+	end;
+	
+	return scObj;
+end;
+
+function _INTERNAL_EVE_OnWrappedSceneObjectWasDestroyed(objectID)					
+	_localStrongRefSceneObjects[objectID] = nil;  -- Permitir o Garbage Collector coletar este objeto
+end;
+
+return SceneWrappers;
