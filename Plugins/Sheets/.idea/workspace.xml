@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="65bf2d0a-6b25-46fa-9d18-050b4d7c1b53" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/FichaAnimeE5/1.lfm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/FichaAnimeE5/2.lfm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/FichaAnimeE5/FichaAnimeE5.lfm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/FichaAnimeE5/images/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/FichaAnimeE5/images/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/module.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/output/Anime e5 Sheet.rpk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/output/rdkObjs/FichaAnimeE5/1.lfm.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/output/rdkObjs/FichaAnimeE5/2.lfm.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/output/rdkObjs/FichaAnimeE5/FichaAnimeE5.lfm.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/output/rdkObjs/_rdkCompiledLang.cln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/async.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/audio.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/audioCore.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/btree.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/btree_private.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/delayedLoad.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/dialogs.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/fireDrive.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/fireDriveCore.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/firecast.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/gui.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/internet.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/internetCore.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/locale.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/localeCore.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/log.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/ndb.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/ndb_observer.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/ndb_transaction.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/plugins.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/pluginsCore.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpg.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgDialogs.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgEventMessages.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgEventMessagesAdapters.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgEvents.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgGUI.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgGUI_grid.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgLFM.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgObjs.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgRequests.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgSharedObjects.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgUtil.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgUtil_async.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/rrpgWrappers.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/scene.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/sceneCore.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/sceneWrappers.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/sdk3.lang" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/serpent.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/slaxdom.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/slaxml.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/system.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/systemCore.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/utils.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/utils.serializer.dlua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/vhd.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Anime e5 Sheet/sdk/vkCodes.dlua" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="30QTvH89lLfj4U6EKLH11FDKQzv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/gabri/OneDrive/Documentos/GitHub/firecast/Plugins/Sheets",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="65bf2d0a-6b25-46fa-9d18-050b4d7c1b53" name="Changes" comment="" />
+      <created>1753559026343</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1753559026343</updated>
+      <workItem from="1753559030585" duration="136000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

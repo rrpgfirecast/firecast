@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaAnimeE51_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFichaAnimeE51_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFichaAnimeE51_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}
+</style>
+
+    <scrollBox align="client">
+        <rectangle width="1087" height="1408" color="white">&#xD;
+            <image left="0" top="0" width="1087" height="1408" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>
+
+
+            <!--Parte Superior-->
+            <edit name="nomePersonagem" left="95" top="150" width="235" height="40" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" textPrompt="Escreva aqui" field="nomePersonagem" transparent="true"/>
+            <edit name="nomeJogador" left="52" top="236" width="325" height="25" horzTextAlign="center" fontColor="black" fontSize="20" textPrompt="Escreva aqui" field="nomeJogador" transparent="true"/>
+
+            <edit name="racaEtamanho" left="418" top="50" width="235" height="28" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" textPrompt="Escreva aqui" field="racaEtamanho" transparent="true"/>
+
+            <edit name="descricao" left="418" top="112" width="235" height="28" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" textPrompt="Escreva aqui" field="descricao" transparent="true"/>
+
+            <edit name="alinhamento" left="418" top="172" width="235" height="28" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" textPrompt="Escreva aqui" field="alinhamento" transparent="true"/>
+
+            <edit name="pontosDiscricionarios" left="418" top="229" width="110" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" textPrompt="PDISC" type="number" field="pontosDiscricionarios" transparent="true"/>
+            <edit name="experiencia" left="543" top="229" width="110" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" type="number" textPrompt="EXP" field="experiencia" transparent="true"/>
+
+
+            <!--Experiência/Classe-->
+            <edit name="nivelExperiencia" left="936" top="53" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" type="number" textPrompt="Total" field="nivelExperiencia" transparent="true"/>
+
+            <edit name="classe1" left="714" top="140" width="133" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Classe" field="classe1" transparent="true"/>
+            <edit name="nivel1" left="859" top="140" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" type="number" textPrompt="Nível" field="nivel1" transparent="true"/>
+            <edit name="dadoVida1" left="939" top="140" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="DV" field="dadoVida1" transparent="true"/>
+
+            <edit name="classe2" left="714" top="188" width="133" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Classe" field="classe2" transparent="true"/>
+            <edit name="nivel2" left="859" top="188" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nível" type="number" field="nivel2" transparent="true"/>
+            <edit name="dadoVida2" left="939" top="188" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="DV" field="dadoVida2" transparent="true"/>
+
+            <edit name="classe3" left="714" top="236" width="133" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Classe" field="classe3" transparent="true"/>
+            <edit name="nivel3" left="859" top="236" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" type="number" textPrompt="Nível" field="nivel3" transparent="true"/>
+            <edit name="dadoVida3" left="939" top="236" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="DV" field="dadoVida3" transparent="true"/>
+
+
+            <!--Atributos-->
+            <edit name="forcaBase" left="83.5" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="forcaBase"/>
+            <edit name="forcaModificador" left="87" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="forcaModificador" transparent="true"/>
+
+            <edit name="destrezaBase" left="251" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="destrezaBase"/>
+            <edit name="destrezaModificador" left="255" top="472" width="70" height="25" enabled="false" fontColor="black" horzTextAlign="center" fontStyle="bold" fontSize="18" field="destrezaModificador" transparent="true"/>
+
+            <edit name="constituicaoBase" left="419" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="constituicaoBase"/>
+            <edit name="constituicaoModificador" left="423" top="472" width="70" height="25" enabled="false" fontColor="black" horzTextAlign="center" fontStyle="bold" fontSize="18" field="constituicaoModificador" transparent="true"/>
+
+            <edit name="inteligenciaBase" left="587" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="inteligenciaBase"/>
+            <edit name="inteligenciaModificador" left="591" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="inteligenciaModificador" transparent="true"/>
+
+            <edit name="sabedoriaBase" left="755" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="sabedoriaBase"/>
+            <edit name="sabedoriaModificador" left="759" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="sabedoriaModificador" transparent="true"/>
+
+            <edit name="carismaBase" left="922" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="carismaBase"/>
+            <edit name="carismaModificador" left="927" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="carismaModificador" transparent="true"/>
+
+
+            <!--Parte Inferior-->
+            <edit name="bonusProficiencia" left="75" top="670" width="80" height="40" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="30" textPrompt="BP" field="bonusProeficiencia" transparent="true"/>
+
+            <edit name="PVida_Maxima" left="251" top="645" width="43" height="32" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="VM" field="PVida_Atual" transparent="true"/>
+            <edit name="PVida_Atual" left="369" top="645" width="43" height="32" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="VA" field="PVida_Maxima" transparent="true"/>
+
+            <edit name="classeArmadura" left="508" top="673" width="69" height="32" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="CA" field="classeArmadura" transparent="true"/>
+
+            <edit name="PEnergia_Maxima" left="671" top="645" width="43" height="32" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="EM" field="PEnergia_Maxima" transparent="true"/>
+            <edit name="PEnergia_Atual" left="787" top="645" width="43" height="32" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="EA" field="PEnergia_Atual" transparent="true"/>
+
+            <edit name="Deslocamento" left="935" top="670" width="77" height="35" text="9m" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="30" textPrompt="DES" field="Deslocamento" transparent="true"/>
+
+
+            <!--Proficiencias-->
+            <edit name="salvaGuarda1" left="114" top="883" width="123" height="25" horzTextAlign="leading" fontColor="black"  fontStyle="bold" fontSize="16" textPrompt="Atributo" field="salvaGuarda1" transparent="true"/>
+            <edit name="salvaGuarda2" left="114" top="919" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Atributo" field="salvaGuarda2" transparent="true"/>
+            <edit name="salvaGuarda3" left="114" top="955" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Atributo" field="salvaGuarda3" transparent="true"/>
+            <edit name="salvaGuarda4" left="114" top="991" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Atributo" field="salvaGuarda4" transparent="true"/>
+
+            <edit name="armadura1" left="261" top="883" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="armadura1" transparent="true"/>
+            <edit name="armadura2" left="261" top="919" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="armadura2" transparent="true"/>
+            <edit name="armadura3" left="261" top="955" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="armadura3" transparent="true"/>
+            <edit name="armadura4" left="261" top="991" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="armadura4" transparent="true"/>
+
+            <edit name="armas1" left="409" top="883" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo ou Nome" field="armas1" transparent="true"/>
+            <edit name="armas2" left="409" top="919" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo ou Nome" field="armas2" transparent="true"/>
+            <edit name="armas3" left="409" top="955" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo ou Nome" field="armas3" transparent="true"/>
+            <edit name="armas4" left="409" top="991" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo ou Nome" field="armas4" transparent="true"/>
+
+            <edit name="ferramentas1" left="559" top="883" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="ferramentas1" transparent="true"/>
+            <edit name="ferramentas2" left="559" top="919" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="ferramentas2" transparent="true"/>
+            <edit name="ferramentas3" left="559" top="955" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="ferramentas3" transparent="true"/>
+            <edit name="ferramentas4" left="559" top="991" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="ferramentas4" transparent="true"/>
+
+            <edit name="periciasEidiomas1" left="708" top="883" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas1" transparent="true"/>
+            <edit name="periciasEidiomas2" left="708" top="919" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas2" transparent="true"/>
+            <edit name="periciasEidiomas3" left="708" top="955" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas3" transparent="true"/>
+            <edit name="periciasEidiomas4" left="708" top="991" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas4" transparent="true"/>
+
+
+            <!--Armas, Equipamentos, Tesouro, Antecedentes e Anotações-->
+            <edit name="armas" left="59" top="1146" width="967" height="30" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" field="armas" textPrompt="Armas"/>
+            <edit name="equipamentos" left="59" top="1180" width="967" height="30" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" field="equipamentos" textPrompt="Equipamentos"/>
+            <edit name="tesouro" left="59" top="1215" width="967" height="30" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" field="tesouro" textPrompt="Tesouro"/>
+            <edit name="antecedentes" left="59" top="1250" width="967" height="30" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" field="antecedentes" textPrompt="Antecedentes"/>
+            <edit name="anotacoes1" left="59" top="1285" width="967" height="30" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" field="anotacoes1" textPrompt="Anotações"/>
+            <edit name="anotacoes2" left="59" top="1320" width="967" height="30" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" field="anotacoes2" textPrompt="Anotações"/>
+
+        </rectangle>
+    </scrollBox>
+
+    <dataLink field="forcaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.forcaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.forcaModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="destrezaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.destrezaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.destrezaModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="constituicaoBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.constituicaoBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.constituicaoModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="inteligenciaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.inteligenciaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.inteligenciaModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="sabedoriaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.sabedoriaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.sabedoriaModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="carismaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.carismaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.carismaModificador = mod;
+        </event>
+    </dataLink>
+
+</form>
