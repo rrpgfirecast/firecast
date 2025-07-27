@@ -9,6 +9,7 @@
             <image left="0" top="0" width="1087" height="1408" src="images/primeiraPagina.png" style="stretch" optimize="true" compilerOrder="0"/>
 
 
+
             <!--Parte Superior-->
             <edit name="nomePersonagem" left="95" top="150" width="235" height="40" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" textPrompt="Escreva aqui" field="nomePersonagem" transparent="true"/>
             <edit name="nomeJogador" left="52" top="236" width="325" height="25" horzTextAlign="center" fontColor="black" fontSize="20" textPrompt="Escreva aqui" field="nomeJogador" transparent="true"/>
@@ -21,6 +22,7 @@
 
             <edit name="pontosDiscricionarios" left="418" top="229" width="110" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" textPrompt="PDISC" type="number" field="pontosDiscricionarios" transparent="true"/>
             <edit name="experiencia" left="543" top="229" width="110" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" type="number" textPrompt="EXP" field="experiencia" transparent="true"/>
+
 
 
             <!--Experiência/Classe-->
@@ -39,24 +41,98 @@
             <edit name="dadoVida3" left="939" top="236" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="DV" field="dadoVida3" transparent="true"/>
 
 
+
             <!--Atributos-->
             <edit name="forcaBase" left="83.5" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="forcaBase"/>
             <edit name="forcaModificador" left="87" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="forcaModificador" transparent="true"/>
+            <button left="87" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.forcaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Força");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.forcaModificador, "Teste de Força");
+                    end
+               </event>
+            </button>
 
             <edit name="destrezaBase" left="251" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="destrezaBase"/>
             <edit name="destrezaModificador" left="255" top="472" width="70" height="25" enabled="false" fontColor="black" horzTextAlign="center" fontStyle="bold" fontSize="18" field="destrezaModificador" transparent="true"/>
+            <button left="255" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.destrezaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Destreza");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.destrezaModificador, "Teste de Destreza");
+                    end
+               </event>
+            </button>
 
             <edit name="constituicaoBase" left="419" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="constituicaoBase"/>
             <edit name="constituicaoModificador" left="423" top="472" width="70" height="25" enabled="false" fontColor="black" horzTextAlign="center" fontStyle="bold" fontSize="18" field="constituicaoModificador" transparent="true"/>
+            <button left="423" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.constituicaoModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Constituição");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.constituicaoModificador, "Teste de Constituição");
+                    end
+               </event>
+            </button>
 
             <edit name="inteligenciaBase" left="587" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="inteligenciaBase"/>
             <edit name="inteligenciaModificador" left="591" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="inteligenciaModificador" transparent="true"/>
+            <button left="591" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.inteligenciaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Inteligência");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.inteligenciaModificador, "Teste de Inteligência");
+                    end
+               </event>
+            </button>
 
             <edit name="sabedoriaBase" left="755" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="sabedoriaBase"/>
             <edit name="sabedoriaModificador" left="759" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="sabedoriaModificador" transparent="true"/>
+            <button left="759" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.sabedoriaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Sabedoria");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.sabedoriaModificador, "Teste de Sabedoria");
+                    end
+               </event>
+            </button>
 
             <edit name="carismaBase" left="922" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="carismaBase"/>
             <edit name="carismaModificador" left="927" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="carismaModificador" transparent="true"/>
+            <button left="927" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.carismaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Carisma");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.carismaModificador, "Teste de Carisma");
+                    end
+               </event>
+            </button>
+
 
 
             <!--Parte Inferior-->
@@ -71,6 +147,7 @@
             <edit name="PEnergia_Atual" left="787" top="645" width="43" height="32" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="EA" field="PEnergia_Atual" transparent="true"/>
 
             <edit name="Deslocamento" left="935" top="670" width="77" height="35" text="9m" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="30" textPrompt="DES" field="Deslocamento" transparent="true"/>
+
 
 
             <!--Proficiencias-->
@@ -98,6 +175,7 @@
             <edit name="periciasEidiomas2" left="708" top="919" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas2" transparent="true"/>
             <edit name="periciasEidiomas3" left="708" top="955" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas3" transparent="true"/>
             <edit name="periciasEidiomas4" left="708" top="991" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas4" transparent="true"/>
+
 
 
             <!--Armas, Equipamentos, Tesouro, Antecedentes e Anotações-->

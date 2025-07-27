@@ -7,8 +7,9 @@
             <image left="0" top="0" width="1087" height="1408" src="images/segundaPagina.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
 
             <!--Parte Superior-->
-            <edit name="nomePersonagemPg2" left="471" top="50" width="232" height="40" horzTextAlign="center" fontStyle="bold" fontSize="24" textPrompt="Escreva aqui" field="nomePersonagem" transparent="true"/>
-            <edit name="nomeJogadorPg2" left="781" top="63" width="236" height="40" horzTextAlign="center" fontSize="20" textPrompt="Escreva aqui" field="nomeJogador" transparent="true"/>
+            <edit name="nomePersonagemPg2" left="471" top="50" width="232" height="40" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" textPrompt="Escreva aqui" field="nomePersonagem" transparent="true"/>
+            <edit name="nomeJogadorPg2" left="781" top="63" width="236" height="40" horzTextAlign="center" fontColor="black" fontSize="20" textPrompt="Escreva aqui" field="nomeJogador" transparent="true"/>
+
 
 
             <!--Qualidades-->
@@ -84,6 +85,8 @@
             <edit name="qualidades22" left="216" top="979" width="309" height="33" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" field="qualidades22" textPrompt="Qualidades" transparent="true"/>
             <edit name="qualidades23" left="216" top="1013" width="309" height="33" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" field="qualidades23" textPrompt="Qualidades" transparent="true"/>
 
+
+
             <!--Defeitos-->
             <edit name="graduacao1def" left="562" top="260" width="79" height="33" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" type="number" field="graduacao1def" textPrompt="Grad." transparent="true"/>
             <edit name="graduacao2def" left="562" top="295" width="79" height="33" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" type="number" field="graduacao2def" textPrompt="Grad." transparent="true"/>
@@ -114,6 +117,7 @@
             <edit name="defeitos7" left="726" top="466" width="309" height="33" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" field="defeitos7" textPrompt="Defeitos" transparent="true"/>
             <edit name="defeitos8" left="726" top="501" width="309" height="33" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" field="defeitos8" textPrompt="Defeitos" transparent="true"/>
             <edit name="defeitos9" left="726" top="535" width="309" height="33" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" field="defeitos9" textPrompt="Defeitos" transparent="true"/>
+
 
 
             <!--Magias, Psionismo e Conjuração-->
@@ -149,6 +153,7 @@
             <edit name="BonusAtaque" left="907" top="1280" width="100" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" type="number" field="BonusAtaque" textPrompt="Bônus" transparent="true"/>
 
 
+
             <!--Dano de Ataque Comum-->
             <edit name="armaAC1" left="67" top="1181" width="162" height="30" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="18" field="armaACs1" textPrompt="Nome da Arma" transparent="true"/>
             <edit name="armaAC2" left="67" top="1230" width="162" height="30" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="18" field="armaACs2" textPrompt="Nome da Arma" transparent="true"/>
@@ -165,9 +170,6 @@
             <edit name="danoArma1" left="419" top="1181" width="71" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" type="number" field="danoArmas1" textPrompt="Dano" transparent="true"/>
             <edit name="danoArma2" left="419" top="1230" width="71" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" type="number" field="danoArmas2" textPrompt="Dano" transparent="true"/>
             <edit name="danoArma3" left="419" top="1279" width="71" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" type="number" field="danoArmas3" textPrompt="Dano" transparent="true"/>
-
-
-
         </rectangle>
     </scrollBox>
 </form>

@@ -3,12 +3,12 @@
     <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
     <id>FICHA_ANIME5E</id>
     <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
-    <version>0.1</version>
+    <version>0.2</version>
     <info lang="pt-BR">
         <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Ficha Anime 5E</name>
-        <description>Plugin feito com fins de diversão, para eu e meus amigos :)</description>
-        <author>Kazith</author>
+        <description>Apenas uma Ficha para jogar no sistema do Anime 5E, um sistema underground baseado em DnD.</description>
+        <author>Kazarith</author>
         <site>http://não_tenho_site_ainda</site>
         <contact>kazarithcompendium@gmail.com</contact>
     </info>
