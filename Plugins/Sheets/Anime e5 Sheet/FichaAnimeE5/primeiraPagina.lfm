@@ -6,7 +6,7 @@
 
     <scrollBox align="client">
         <rectangle width="1087" height="1408" color="white">&#xD;
-            <image left="0" top="0" width="1087" height="1408" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <image left="0" top="0" width="1087" height="1408" src="images/primeiraPagina.png" style="stretch" optimize="true" compilerOrder="0"/>
 
 
             <!--Parte Superior-->

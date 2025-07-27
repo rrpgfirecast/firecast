@@ -4,7 +4,7 @@
 #frmFichaAnimeE52_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
     <scrollBox align="client">
         <rectangle width="1087" height="1408" color="white">&#xD;
-            <image left="0" top="0" width="1087" height="1408" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <image left="0" top="0" width="1087" height="1408" src="images/segundaPagina.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
 
             <!--Parte Superior-->
             <edit name="nomePersonagemPg2" left="471" top="50" width="232" height="40" horzTextAlign="center" fontStyle="bold" fontSize="24" textPrompt="Escreva aqui" field="nomePersonagem" transparent="true"/>
