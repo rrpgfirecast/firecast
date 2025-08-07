@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="legados" height="25" align="top" margins="{bottom=10}">
+<style>
+label {
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+edit {
+	fontSize: 14;
+	fontColor: #cdcdcd;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+}
+comboBox {
+	fontSize: 14;
+	fontColor: #cdcdcd;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+	fontStyle:italic;
+}
+horzLine{
+	strokeColor: #424242;
+	margins: {top=7};
+	align: top;
+	
+}
+imageCheckBox{
+	checkedImage: /images/checkBoxAtv.png;
+	uncheckedImage: /images/checkBoxDes.png;
+	height: 25;
+	width: 14;
+	align: right;
+	margins: {left=3};
+	autoChange: false;
+}
+rectangle.LinhaDeFora{
+	align: top; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 2; 
+	xradius: 25; 
+	yradius: 25; 
+	cornerType: bevel; 
+	margins: {top=20, right=20, bottom=20, left=20};
+	height: 1460;
+}
+rectangle.LinhaDeDentro{
+	align: client; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 1; 
+	xradius: 23; 
+	yradius: 23; 
+	cornerType: bevel; 
+	margins: {top=5, right=5, bottom=5, left=5};
+}
+rectangle.Fundo{
+	align: client; 
+	color: #272727; 
+	xradius: 20; 
+	yradius: 20; 
+	cornerType: bevel; 
+	margins: {top=10, right=10, bottom=10, left=10};
+}
+label.Divisor {
+	fontSize: 20;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	autoSize: true;
+	align: client;
+	margins: {bottom=7};
+}
+label.AtrClasse{
+	fontSize: 10;
+	fontColor: white;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	align: top;
+}
+flowLayout.Tabela{
+	align: top; 
+	orientation: horizontal; 
+	horzAlign: center; 
+	autoHeight: true; 
+	maxControlsPerLine: 3; 
+	margins: {left=20, top=20, bottom=30, right=20};
+}
+flowPart.flowCampo{
+	minWidth: 220; 
+	maxWidth: 220; 
+	height: 25; 
+	margins: {left=20, right=20, bottom=10};
+}
+edit.EditBold{
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+</style>
+	<layout align="client">
+		<layout align="left" width="85" margins="{right=5}">
+			<imageCheckBox field="fldCheckLeg_01" name="nomeCheckLeg_01" onClick="
+				sheet.fldCheckLeg_01 = not sheet.fldCheckLeg_01;
+				
+				if(sheet.fldCheckLeg_02) then 
+					sheet.fldCheckLeg_01 = true; 
+					sheet.fldCheckLeg_02 = false; 
+					sheet.fldCheckLeg_03 = false; 
+					sheet.fldCheckLeg_04 = false; 
+					sheet.fldCheckLeg_05 = false; 
+				end;
+			" />
+			<imageCheckBox field="fldCheckLeg_02" name="nomeCheckLeg_02" onClick="
+				sheet.fldCheckLeg_02 = not sheet.fldCheckLeg_02;
+				
+				if(sheet.fldCheckLeg_02) then 
+					sheet.fldCheckLeg_01 = true; 
+				else 
+					sheet.fldCheckLeg_01 = false;
+				end;
+				
+				if(sheet.fldCheckLeg_03) then 
+					sheet.fldCheckLeg_01 = true; 
+					sheet.fldCheckLeg_02 = true; 
+					sheet.fldCheckLeg_03 = false; 
+					sheet.fldCheckLeg_04 = false; 
+					sheet.fldCheckLeg_05 = false; 
+				end;
+			" />
+			<imageCheckBox field="fldCheckLeg_03" name="nomeCheckLeg_03" onClick="
+				sheet.fldCheckLeg_03 = not sheet.fldCheckLeg_03;
+				
+				if(sheet.fldCheckLeg_03) then 
+					sheet.fldCheckLeg_01 = true; 
+					sheet.fldCheckLeg_02 = true; 
+				else 
+					sheet.fldCheckLeg_01 = false; 
+					sheet.fldCheckLeg_02 = false; 
+				end;
+				
+				if(sheet.fldCheckLeg_04) then 
+					sheet.fldCheckLeg_01 = true; 
+					sheet.fldCheckLeg_02 = true; 
+					sheet.fldCheckLeg_03 = true; 
+					sheet.fldCheckLeg_04 = false; 
+					sheet.fldCheckLeg_05 = false; 
+				end;
+			" />
+			<imageCheckBox field="fldCheckLeg_04" name="nomeCheckLeg_04" onClick="
+				sheet.fldCheckLeg_04 = not sheet.fldCheckLeg_04;
+				
+				if(sheet.fldCheckLeg_04) then 
+					sheet.fldCheckLeg_01 = true; 
+					sheet.fldCheckLeg_02 = true; 
+					sheet.fldCheckLeg_03 = true; 
+				else 
+					sheet.fldCheckLeg_01 = false; 
+					sheet.fldCheckLeg_02 = false; 
+					sheet.fldCheckLeg_03 = false; 
+				end;
+				
+				if(sheet.fldCheckLeg_05) then 
+					sheet.fldCheckLeg_01 = true; 
+					sheet.fldCheckLeg_02 = true; 
+					sheet.fldCheckLeg_03 = true; 
+					sheet.fldCheckLeg_04 = true; 
+					sheet.fldCheckLeg_05 = false; 
+				end;
+			" />
+			<imageCheckBox field="fldCheckLeg_05" name="nomeCheckLeg_05" onClick="
+				sheet.fldCheckLeg_05 = not sheet.fldCheckLeg_05;
+				
+				if(sheet.fldCheckLeg_05) then 
+					sheet.fldCheckLeg_01 = true; 
+					sheet.fldCheckLeg_02 = true; 
+					sheet.fldCheckLeg_03 = true; 
+					sheet.fldCheckLeg_04 = true; 
+				else 
+					sheet.fldCheckLeg_01 = false; 
+					sheet.fldCheckLeg_02 = false; 
+					sheet.fldCheckLeg_03 = false; 
+					sheet.fldCheckLeg_04 = false; 
+				end;
+			" />
+		</layout>
+		<edit align="left" width="308" fontStyle="bold" field="fldLegados" /><dataLink field="fldLegados" defaultValue="—" />
+		<layout align="left" width="22" height="22">
+			<button text="🞭" width="22" height="22" onClick="NDB.deleteNode(sheet);" hint="Apagar Legado" />
+		</layout>
+	</layout>
+</form>
