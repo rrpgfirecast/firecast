@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaAnimeE5" formType="sheetTemplate" dataType="br.com.rrpg.DnD_ANIME5E" title="Ficha Anime 5E" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Ficha do Personagem/Pericias">
+            <import file="primeiraPagina.lfm"/>
+        </tab>
+        <tab title="Qualidades, Defeitos, Armas e Magias">
+            <import file="segundaPagina.lfm"/>
+        </tab>
+    </tabControl>
+</form>

@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaAnimeE51_svg" align="client" theme="light" margins="{top=1; left=180;}">
+    <style>#frmFichaAnimeE51_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFichaAnimeE51_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1087" height="1408" color="white">&#xD;
+            <image left="0" top="0" width="1087" height="1408" src="images/primeiraPagina.png" style="stretch" optimize="true" compilerOrder="0"/>
+
+
+            <!--Parte Superior-->
+            <edit name="nomePersonagem" left="95" top="150" width="235" height="40" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" textPrompt="Escreva aqui" field="nomePersonagem" transparent="true"/>
+            <edit name="nomeJogador" left="52" top="236" width="325" height="25" horzTextAlign="center" fontColor="black" fontSize="20" textPrompt="Escreva aqui" field="nomeJogador" transparent="true"/>
+
+            <edit name="racaEtamanho" left="418" top="50" width="235" height="28" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" textPrompt="Escreva aqui" field="racaEtamanho" transparent="true"/>
+
+            <edit name="descricao" left="418" top="112" width="235" height="28" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" textPrompt="Escreva aqui" field="descricao" transparent="true"/>
+
+            <edit name="alinhamento" left="418" top="172" width="235" height="28" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="20" textPrompt="Escreva aqui" field="alinhamento" transparent="true"/>
+
+            <edit name="pontosDiscricionarios" left="418" top="229" width="110" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" textPrompt="PDISC" type="number" field="pontosDiscricionarios" transparent="true"/>
+            <edit name="experiencia" left="543" top="229" width="110" height="30" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" type="number" textPrompt="EXP" field="experiencia" transparent="true"/>
+
+
+            <!--Experiência/Classe-->
+            <edit name="nivelExperiencia" left="936" top="53" width="66" height="25" textPrompt="Total" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="20" type="number" field="nivelExperiencia" transparent="true"/>
+
+            <edit name="classe1" left="714" top="140" width="133" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Classe" field="classe1" transparent="true"/>
+            <edit name="nivel1" left="859" top="140" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" type="number" textPrompt="Nível" field="nivel1" transparent="true"/>
+            <edit name="dadoVida1" left="939" top="140" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="DV" field="dadoVida1" transparent="true"/>
+
+            <edit name="classe2" left="714" top="188" width="133" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Classe" field="classe2" transparent="true"/>
+            <edit name="nivel2" left="859" top="188" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nível" type="number" field="nivel2" transparent="true"/>
+            <edit name="dadoVida2" left="939" top="188" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="DV" field="dadoVida2" transparent="true"/>
+
+            <edit name="classe3" left="714" top="236" width="133" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Classe" field="classe3" transparent="true"/>
+            <edit name="nivel3" left="859" top="236" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" type="number" textPrompt="Nível" field="nivel3" transparent="true"/>
+            <edit name="dadoVida3" left="939" top="236" width="66" height="25" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="DV" field="dadoVida3" transparent="true"/>
+
+
+            <!--Atributos-->
+            <edit name="forcaBase" left="83.5" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="forcaBase"/>
+            <edit name="forcaModificador" left="87" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="forcaModificador" transparent="true"/>
+            <button left="87" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.forcaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Força");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.forcaModificador, "Teste de Força");
+                    end
+               </event>
+            </button>
+
+            <edit name="destrezaBase" left="251" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="destrezaBase"/>
+            <edit name="destrezaModificador" left="255" top="472" width="70" height="25" enabled="false" fontColor="black" horzTextAlign="center" fontStyle="bold" fontSize="18" field="destrezaModificador" transparent="true"/>
+            <button left="255" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.destrezaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Destreza");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.destrezaModificador, "Teste de Destreza");
+                    end
+               </event>
+            </button>
+
+            <edit name="constituicaoBase" left="419" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="constituicaoBase"/>
+            <edit name="constituicaoModificador" left="423" top="472" width="70" height="25" enabled="false" fontColor="black" horzTextAlign="center" fontStyle="bold" fontSize="18" field="constituicaoModificador" transparent="true"/>
+            <button left="423" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.constituicaoModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Constituição");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.constituicaoModificador, "Teste de Constituição");
+                    end
+               </event>
+            </button>
+
+            <edit name="inteligenciaBase" left="587" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="inteligenciaBase"/>
+            <edit name="inteligenciaModificador" left="591" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="inteligenciaModificador" transparent="true"/>
+            <button left="591" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.inteligenciaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Inteligência");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.inteligenciaModificador, "Teste de Inteligência");
+                    end
+               </event>
+            </button>
+
+            <edit name="sabedoriaBase" left="755" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="sabedoriaBase"/>
+            <edit name="sabedoriaModificador" left="759" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="sabedoriaModificador" transparent="true"/>
+            <button left="759" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.sabedoriaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Sabedoria");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.sabedoriaModificador, "Teste de Sabedoria");
+                    end
+               </event>
+            </button>
+
+            <edit name="carismaBase" left="922" top="413" width="80" height="30" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="24" type="number" field="carismaBase"/>
+            <edit name="carismaModificador" left="927" top="472" width="70" height="25" enabled="false" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="18" field="carismaModificador" transparent="true"/>
+            <button left="927" top="472" width="70" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                    if(sheet.carismaModificador == nil) then
+                        local modificadorReserva = 0;
+                        mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Carisma");
+                    else
+                        mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.carismaModificador, "Teste de Carisma");
+                    end
+               </event>
+            </button>
+
+
+            <!--Parte Inferior-->
+            <edit name="bonusProficiencia" left="75" top="670" width="80" height="40" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="30" textPrompt="BP" field="bonusProeficiencia" transparent="true"/>
+
+            <edit name="PVida_Maxima" left="251" top="645" width="43" height="32" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="VM" field="PVida_Atual" transparent="true"/>
+            <edit name="PVida_Atual" left="369" top="645" width="43" height="32" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="VA" field="PVida_Maxima" transparent="true"/>
+
+            <edit name="classeArmadura" left="508" top="673" width="69" height="32" text="10" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="CA" field="classeArmadura" transparent="true"/>
+
+            <edit name="PEnergia_Maxima" left="671" top="645" width="43" height="32" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="EM" field="PEnergia_Maxima" transparent="true"/>
+            <edit name="PEnergia_Atual" left="787" top="645" width="43" height="32" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="26" type="number" textPrompt="EA" field="PEnergia_Atual" transparent="true"/>
+
+            <edit name="Deslocamento" left="935" top="670" width="77" height="35" text="9m" horzTextAlign="center" fontColor="black" fontStyle="bold" fontSize="30" textPrompt="DES" field="Deslocamento" transparent="true"/>
+
+
+            <!--Proficiencias-->
+            <edit name="salvaGuarda1" left="114" top="883" width="123" height="25" horzTextAlign="leading" fontColor="black"  fontStyle="bold" fontSize="16" textPrompt="Atributo" field="salvaGuarda1" transparent="true"/>
+            <edit name="salvaGuarda2" left="114" top="919" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Atributo" field="salvaGuarda2" transparent="true"/>
+            <edit name="salvaGuarda3" left="114" top="955" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Atributo" field="salvaGuarda3" transparent="true"/>
+            <edit name="salvaGuarda4" left="114" top="991" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Atributo" field="salvaGuarda4" transparent="true"/>
+
+            <edit name="armadura1" left="261" top="883" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="armadura1" transparent="true"/>
+            <edit name="armadura2" left="261" top="919" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="armadura2" transparent="true"/>
+            <edit name="armadura3" left="261" top="955" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="armadura3" transparent="true"/>
+            <edit name="armadura4" left="261" top="991" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="armadura4" transparent="true"/>
+
+            <edit name="armas1" left="409" top="883" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo ou Nome" field="armas1" transparent="true"/>
+            <edit name="armas2" left="409" top="919" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo ou Nome" field="armas2" transparent="true"/>
+            <edit name="armas3" left="409" top="955" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo ou Nome" field="armas3" transparent="true"/>
+            <edit name="armas4" left="409" top="991" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo ou Nome" field="armas4" transparent="true"/>
+
+            <edit name="ferramentas1" left="559" top="883" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="ferramentas1" transparent="true"/>
+            <edit name="ferramentas2" left="559" top="919" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="ferramentas2" transparent="true"/>
+            <edit name="ferramentas3" left="559" top="955" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="ferramentas3" transparent="true"/>
+            <edit name="ferramentas4" left="559" top="991" width="123" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Tipo" field="ferramentas4" transparent="true"/>
+
+            <edit name="periciasEidiomas1" left="708" top="883" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas1" transparent="true"/>
+            <edit name="periciasEidiomas2" left="708" top="919" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas2" transparent="true"/>
+            <edit name="periciasEidiomas3" left="708" top="955" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas3" transparent="true"/>
+            <edit name="periciasEidiomas4" left="708" top="991" width="273" height="25" horzTextAlign="leading" fontColor="black" fontStyle="bold" fontSize="16" textPrompt="Nome da Pericia/Nome do Idioma" field="periciasEidiomas4" transparent="true"/>
+
+
+            <!--Armas, Equipamentos, Tesouro, Antecedentes e Anotações-->
+            <textEditor name="anotacoes" left="59" top="1149" width="967" height="200" fontColor="black" fontStyle="bold" fontSize="16" field="anotacoes"/>
+
+        </rectangle>
+
+        <!--Lista de Pericias-->
+        <rectangle left="1050" top="0" width="225" height="422" color="white">&#xD;
+           <image left="-50" top="0" width="315" height="412" src="images/listaPericias.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+
+           <!--Caixa de Seleção-->
+           <checkBox name="pericia1" left="31" top="30" width="20" height="20" field="pericia1" cursor="handPoint"/>
+           <checkBox name="pericia2" left="31" top="49" width="20" height="20" field="pericia2" cursor="handPoint"/>
+           <checkBox name="pericia3" left="31" top="68" width="20" height="20" field="pericia3" cursor="handPoint"/>
+           <checkBox name="pericia4" left="31" top="87" width="20" height="20" field="pericia4" cursor="handPoint"/>
+           <checkBox name="pericia5" left="31" top="106" width="20" height="20" field="pericia5" cursor="handPoint"/>
+           <checkBox name="pericia6" left="31" top="125" width="20" height="20" field="pericia6" cursor="handPoint"/>
+           <checkBox name="pericia7" left="31" top="144" width="20" height="20" field="pericia7" cursor="handPoint"/>
+           <checkBox name="pericia8" left="31" top="163" width="20" height="20" field="pericia8" cursor="handPoint"/>
+           <checkBox name="pericia9" left="31" top="182" width="20" height="20" field="pericia9" cursor="handPoint"/>
+           <checkBox name="pericia10" left="31" top="201" width="20" height="20" field="pericia10" cursor="handPoint"/>
+           <checkBox name="pericia11" left="31" top="220" width="20" height="20" field="pericia11" cursor="handPoint"/>
+           <checkBox name="pericia12" left="31" top="239" width="20" height="20" field="pericia12" cursor="handPoint"/>
+           <checkBox name="pericia13" left="31" top="258" width="20" height="20" field="pericia13" cursor="handPoint"/>
+           <checkBox name="pericia14" left="31" top="277" width="20" height="20" field="pericia14" cursor="handPoint"/>
+           <checkBox name="pericia15" left="31" top="296" width="20" height="20" field="pericia15" cursor="handPoint"/>
+           <checkBox name="pericia16" left="31" top="317" width="20" height="20" field="pericia16" cursor="handPoint"/>
+           <checkBox name="pericia17" left="31" top="336" width="20" height="20" field="pericia17" cursor="handPoint"/>
+           <checkBox name="pericia18" left="31" top="355" width="20" height="20" field="pericia18" cursor="handPoint"/>
+
+
+           <!--Modificador Pericias-->
+           <edit name="acrobacia" left="45" top="24" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="acrobacia" transparent="true"/>
+           <button left="45" top="24" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.destrezaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia1 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.acrobacia = resultadoFormatado;
+                   if(sheet.acrobacia == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Acrobacia");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.acrobacia, "Teste de Acrobacia");
+                   end
+               </event>
+           </button>
+
+           <edit name="arcanismo" left="45" top="43" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="arcanismo" transparent="true"/>
+           <button left="45" top="43" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.inteligenciaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia2 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.arcanismo = resultadoFormatado;
+                   if(sheet.arcanismo == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Arcanismo");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.arcanismo, "Teste de Arcanismo");
+                   end
+               </event>
+           </button>
+
+           <edit name="atletismo" left="45" top="62" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="atletismo" transparent="true"/>
+           <button left="45" top="62" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.forcaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia3 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.atletismo = resultadoFormatado;
+                   if(sheet.atletismo == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Atletismo");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.atletismo, "Teste de Atletismo");
+                   end
+               </event>
+           </button>
+
+           <edit name="atuacao" left="45" top="81" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="atuacao" transparent="true"/>
+           <button left="45" top="81" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.carismaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia4 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.atuacao = resultadoFormatado;
+                   if(sheet.atuacao == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Atuação");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.atuacao, "Teste de Atuação");
+                   end
+               </event>
+           </button>
+
+           <edit name="blefar" left="45" top="100" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="blefar" transparent="true"/>
+           <button left="45" top="100" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.carismaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia5 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.blefar = resultadoFormatado;
+                   if(sheet.blefar == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Blefar");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.blefar, "Teste de Blefar");
+                   end
+               </event>
+           </button>
+
+           <edit name="furtividade" left="45" top="120" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="furtividade" transparent="true"/>
+           <button left="45" top="120" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.destrezaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia6 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.furtividade = resultadoFormatado;
+                   if(sheet.furtividade == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Furtividade");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.furtividade, "Teste de Furtividade");
+                   end
+               </event>
+           </button>
+
+           <edit name="historia" left="45" top="139" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="historia" transparent="true"/>
+           <button left="45" top="139" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.inteligenciaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia7 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.historia = resultadoFormatado;
+                   if(sheet.historia == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de História");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.historia, "Teste de História");
+                   end
+               </event>
+           </button>
+
+           <edit name="intimidacao" left="45" top="158" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="intimidacao" transparent="true"/>
+           <button left="45" top="158" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.carismaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia8 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.intimidacao = resultadoFormatado;
+                   if(sheet.intimidacao == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Intimidação");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.intimidacao, "Teste de Intimidação");
+                   end
+               </event>
+           </button>
+
+           <edit name="intuicao" left="45" top="177" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="intuicao" transparent="true"/>
+           <button left="45" top="177" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia9 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.intuicao = resultadoFormatado;
+                   if(sheet.intuicao == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Intuição");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.intuicao, "Teste de Intuição");
+                   end
+               </event>
+           </button>
+
+           <edit name="investigacao" left="45" top="196" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="investigacao" transparent="true"/>
+           <button left="45" top="196" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.inteligenciaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia10 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.investigacao = resultadoFormatado;
+                   if(sheet.investigacao == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Investigação");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.investigacao, "Teste de Investigação");
+                   end
+               </event>
+           </button>
+
+           <edit name="lidarComAnimais" left="45" top="215" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="lidarComAnimais" transparent="true"/>
+           <button left="45" top="215" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia11 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.lidarComAnimais = resultadoFormatado;
+                   if(sheet.lidarComAnimais == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Lidar com Animais");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.lidarComAnimais, "Teste de Lidar com Animais");
+                   end
+               </event>
+           </button>
+
+           <edit name="medicina" left="45" top="234" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="medicina" transparent="true"/>
+           <button left="45" top="234" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia12 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.medicina = resultadoFormatado;
+                   if(sheet.medicina == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Medicina");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.medicina, "Teste de Medicina");
+                   end
+               </event>
+           </button>
+
+           <edit name="natureza" left="45" top="253" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="natureza" transparent="true"/>
+           <button left="45" top="253" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.inteligenciaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia13 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.natureza = resultadoFormatado;
+                   if(sheet.natureza == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Natureza");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.natureza, "Teste de Natureza");
+                   end
+               </event>
+           </button>
+
+           <edit name="percepcao" left="45" top="272" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="percepcao" transparent="true"/>
+           <button left="45" top="272" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia14 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.percepcao = resultadoFormatado;
+                   if(sheet.percepcao == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Percepção");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.percepcao, "Teste de Percepção");
+                   end
+               </event>
+           </button>
+
+           <edit name="persuasao" left="45" top="291" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="persuasao" transparent="true"/>
+           <button left="45" top="291" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.carismaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia15 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.persuasao = resultadoFormatado;
+                   if(sheet.persuasao == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Persuasão");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.persuasao, "Teste de Persuasão");
+                   end
+               </event>
+           </button>
+
+           <edit name="prestidigitacao" left="45" top="310" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="prestidigitacao" transparent="true"/>
+           <button left="45" top="310" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.destrezaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia16 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.prestidigitacao = resultadoFormatado;
+                   if(sheet.prestidigitacao == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Prestidigitação");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.prestidigitacao, "Teste de Prestidigitação");
+                   end
+               </event>
+           </button>
+
+           <edit name="religiao" left="45" top="329" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="religiao" transparent="true"/>
+           <button left="45" top="329" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.inteligenciaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia17 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.religiao = resultadoFormatado;
+                   if(sheet.religiao == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Religião");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.religiao, "Teste de Religião");
+                   end
+               </event>
+           </button>
+
+           <edit name="sobrevivencia" left="45" top="348" width="30" height="25" horzTextAlign="center" enabled="false" fontColor="black" fontStyle="bold" fontSize="14" field="sobrevivencia" transparent="true"/>
+           <button left="45" top="348" width="30" height="25" opacity="0" cursor="handPoint">
+               <event name="onClick">
+                   local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                   local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+                   local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+                   local resultado;
+                   if sheet.pericia18 then
+                       resultado = modificadorNumerico + bonusNumerico;
+                   else
+                       resultado = modificadorNumerico;
+                   end;
+                   local resultadoFormatado;
+                   if resultado >= 0 then
+                       resultadoFormatado = "+" .. resultado;
+                   else
+                       resultadoFormatado = tostring(resultado);
+                   end
+                   sheet.sobrevivencia = resultadoFormatado;
+                   if(sheet.sobrevivencia == nil) then
+                       local modificadorReserva = 0;
+                       mesaDoPersonagem.chat:rolarDados("1d20 + " .. modificadorReserva, "Teste de Sobrevivência");
+                   else
+                       mesaDoPersonagem.chat:rolarDados("1d20" .. sheet.sobrevivencia, "Teste de Sobrevivência");
+                   end
+               </event>
+           </button>
+        </rectangle>
+    </scrollBox>
+
+
+    <!--Modificadores(Backend)-->
+    <dataLink field="forcaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.forcaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.forcaModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="destrezaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.destrezaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.destrezaModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="constituicaoBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.constituicaoBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.constituicaoModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="inteligenciaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.inteligenciaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.inteligenciaModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="sabedoriaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.sabedoriaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.sabedoriaModificador = mod;
+        </event>
+    </dataLink>
+
+    <dataLink field="carismaBase">
+        <event name="onChange">
+            local mod = math.floor(((sheet.carismaBase or 10) - 10) / 2);
+            if (mod >= 0) then
+                mod = "+" .. mod;
+            end;
+            sheet.carismaModificador = mod;
+        </event>
+    </dataLink>
+
+
+    <!--Pericias(Backend)-->
+    <dataLink field="pericia1">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.destrezaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia1 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.acrobacia = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia2">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.inteligenciaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia2 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.arcanismo = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia3">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.forcaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia3 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.atletismo = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia4">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.carismaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia4 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.atuacao = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia5">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.carsimaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia5 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.blefar = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia6">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.destrezaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia6 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.furtividade = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia7">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.inteligenciaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia7 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.historia = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia8">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.carismaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia8 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.intimidacao = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia9">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia9 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.intuicao = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia10">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.inteligenciaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia10 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.investigacao = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia11">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia11 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.lidarComAnimais = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia12">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia12 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.medicina = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia13">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.inteligenciaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia13 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.natureza = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia14">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia14 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.percepcao = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia15">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.carismaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia15 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.persuasao = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia16">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.destrezaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia16 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.prestidigitacao = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia17">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.inteligicenciaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia17 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.religiao = resultadoFormatado;
+        </event>
+    </dataLink>
+
+    <dataLink field="pericia18">
+        <event name="onChange">
+            local modificadorNumerico = tonumber(sheet.sabedoriaModificador) or 0;
+
+            local bonusNumerico = tonumber(sheet.bonusProeficiencia) or 0;
+
+            local resultado;
+            if sheet.pericia18 then
+                resultado = modificadorNumerico + bonusNumerico;
+            else
+                resultado = modificadorNumerico;
+            end;
+
+            local resultadoFormatado;
+            if resultado >= 0 then
+                resultadoFormatado = "+" .. resultado;
+            else
+                resultadoFormatado = tostring(resultado);
+            end
+
+            sheet.sobrevivencia = resultadoFormatado;
+        </event>
+    </dataLink>
+</form>
