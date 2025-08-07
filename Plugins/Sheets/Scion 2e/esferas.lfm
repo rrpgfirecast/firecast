@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="esferas" height="25" align="top" margins="{bottom=10}">
+<style>
+label {
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+edit {
+	fontSize: 14;
+	fontColor: #cdcdcd;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+}
+comboBox {
+	fontSize: 14;
+	fontColor: #cdcdcd;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+	fontStyle:italic;
+}
+horzLine{
+	strokeColor: #424242;
+	margins: {top=7};
+	align: top;
+	
+}
+imageCheckBox{
+	checkedImage: /images/checkBoxAtv.png;
+	uncheckedImage: /images/checkBoxDes.png;
+	height: 25;
+	width: 14;
+	align: right;
+	margins: {left=3};
+	autoChange: false;
+}
+rectangle.LinhaDeFora{
+	align: top; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 2; 
+	xradius: 25; 
+	yradius: 25; 
+	cornerType: bevel; 
+	margins: {top=20, right=20, bottom=20, left=20};
+	height: 1460;
+}
+rectangle.LinhaDeDentro{
+	align: client; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 1; 
+	xradius: 23; 
+	yradius: 23; 
+	cornerType: bevel; 
+	margins: {top=5, right=5, bottom=5, left=5};
+}
+rectangle.Fundo{
+	align: client; 
+	color: #272727; 
+	xradius: 20; 
+	yradius: 20; 
+	cornerType: bevel; 
+	margins: {top=10, right=10, bottom=10, left=10};
+}
+label.Divisor {
+	fontSize: 20;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	autoSize: true;
+	align: client;
+	margins: {bottom=7};
+}
+label.AtrClasse{
+	fontSize: 10;
+	fontColor: white;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	align: top;
+}
+flowLayout.Tabela{
+	align: top; 
+	orientation: horizontal; 
+	horzAlign: center; 
+	autoHeight: true; 
+	maxControlsPerLine: 3; 
+	margins: {left=20, top=20, bottom=30, right=20};
+}
+flowPart.flowCampo{
+	minWidth: 220; 
+	maxWidth: 220; 
+	height: 25; 
+	margins: {left=20, right=20, bottom=10};
+}
+edit.EditBold{
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+</style>
+	<layout align="client">
+		<button name="nomeBut" text="𝐢" width="22" height="22" align="left" margins="{top=1, bottom=1, right=5}" fontColor="#272727">
+				<event name="onClick">
+				<![CDATA[
+					local pop = self:findControlByName("popUp_");
+					
+					if pop ~= nil then
+						pop:setNodeObject(sheet);
+						pop:showPopupEx("mouse", self.nomeTru_);
+					else
+						showMessage("Ops, não encontrei o pop-up para exibir");
+					end;
+				]]>
+				</event>
+			</button>
+			<button name="nomeButB" text="𝐢" width="22" height="22" align="left" margins="{top=1, bottom=1, right=5}" fontColor="white" visible="false">
+				<event name="onClick">
+				<![CDATA[
+					local pop = self:findControlByName("popUp_");
+					
+					if pop ~= nil then
+						pop:setNodeObject(sheet);
+						pop:showPopupEx("mouse", self.nomeTru_);
+					else
+						showMessage("Ops, não encontrei o pop-up para exibir");
+					end;
+				]]>
+				</event>
+			</button>
+			<popup name="popUp_" width="630" height="445" backOpacity="0" drawContainer="false">
+				<rectangle align="client" color="#0e0e0e" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+					<rectangle align="client" color="#0e0e0e"  padding="{top=5, left=5, bottom=5, right=5}" xradius= "8" yradius="8" strokeColor="#272727" strokeSize="1"  cornerType="bevel">
+						<label field="fldEsferas" height="35" fontSize="30" align="top" margins="{top=5, left=10, right=80}" />
+						<label field="fldEsfTipo" anchors="right top" right="0" top="25" horzTextAlign="trailing" />
+						<horzLine align="top" margins="{left=10, right=10, top=10}" />
+						
+						<layout align="top" height="95" margins="top=5" padding="{left=10, right=10}">
+							<layout width="310" align="left">
+								<Campo rotulo="Custo" semAcento="Custo" largura="70" />
+								<Campo rotulo="Duração" semAcento="Duracao" largura="70" />
+								<Campo rotulo="Alvo" semAcento="Alvo" largura="70" />
+							<rectangle align="client" color="red" />
+							</layout>
+							<layout width="310" align="left">
+								<Campo rotulo="Alcance" semAcento="Alcance" largura="70" />
+								<Campo rotulo="Ação" semAcento="Acao" largura="70" />
+								<Campo rotulo="Conflito" semAcento="Conflito" largura="70" />
+							<rectangle align="client" color="red" />
+							</layout>
+						</layout>
+						
+						<horzLine align="top" margins="{left=10, right=10, top=10}" />
+						<textEditor margins="{top=10, left=10, right=10, bottom=10}" align="client" transparent="true" fontColor="#cdcdcd" field="fld" name="nomeEsf" fontFamily="Constantia" fontSize="15"/>
+						<dataLink field="fld" defaultValue="Descrição do Poder">
+								<event name="onChange">
+								<![CDATA[
+									if(sheet == nil) then return; end;
+									if(sheet.fld == nil or sheet.fld == "Descrição do Poder") then
+										self.nomeBut.visible = true;
+										self.nomeButB.visible = false;
+									else
+										self.nomeButB.visible = true;
+										self.nomeBut.visible = false;
+									end;
+								]]>
+								</event>
+						</dataLink>
+					</rectangle>	
+				</rectangle>
+			</popup>
+		<edit align="left" width="201" fontStyle="bold" field="fldEsferas" /><dataLink field="fldEsferas" defaultValue="—" />
+		<edit align="left" width="105" margins="right=5" fontStyle="italic" field="fldEsfCategoria" /><dataLink field="fldEsfCategoria" defaultValue="Esfera" />
+		<comboBox field="fldEsfTipo" align="left" items="{'Esfera', 'Poder'}" width="60" />
+		<button text="🞭" width="22" height="22" align="right" margins="{top=1, bottom=1, right=5}" onClick="NDB.deleteNode(sheet);" hint="Apagar Herança" />
+	</layout>
+	
+	<template name="Campo">
+		<layout align="top" height="35">
+				<label align="left" width="$(largura)" text="$(rotulo): " />
+				<edit align="client" field="fld$(semAcento)" />
+				<dataLink field="fld$(semAcento)" defaultValue="—" />
+		</layout>
+	</template>
+</form>

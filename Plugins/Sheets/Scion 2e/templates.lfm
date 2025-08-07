@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplates">
+
+	<template name="btnImgFundo">
+		<button name="btnImagemFundo" left="880" top="20" text="⚙" height="30" width="30" onClick="self.popImagemFundo:show('left', self.btnImagemFundo);"/>
+		<popup name="popImagemFundo" width="300" height="100" backOpacity="0" drawContainer="false">
+			<rectangle align="client" color="#353535" padding="{top=10, left=10, bottom=10, right=10}" xradius= "10" yradius="10" cornerType="bevel">
+			
+				<label align="top" text="I M A G E M  D E  F U N D O" margins="{bottom=5, top=10}" fontStyle="bold" fontFamily="Constantia"/>
+				<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
+				<edit align="client" padding="{top=10, left=10, bottom=10, right=10}" transparent="false" field="URLImagemFundo" width="240"/>
+
+			</rectangle>
+		</popup>
+	</template>
+
+	<template name="Campo">
+		<layout align="top" height="35">
+			<label align="left" width="$(largura)" text="$(rotulo): " />
+			<edit align="client" field="fld$(semAcento)" />
+		</layout>
+	</template>
+	
+	<template name="CampoVida">
+		<flowPart name="flPart_$(semAcento)" height="35" width="270" minWidth="270" margins="bottom=3">
+			<rectangle name="rectVid$(semAcento)" align="client" color="#272727" xradius= "5" yradius="5" cornerType="bevel">
+				<checkBox align="left" field="chcBVid$(semAcento)" width="25" margins="left=5" />
+				<dataLink field="chcBVid$(semAcento)" defaultValue="false">
+					<event name="onChange">
+						<![CDATA[
+							if(sheet == nil) then return; end;
+							
+							if sheet.chcBVid$(semAcento) == false then self.rectVid$(semAcento).color = '#272727'
+							else self.rectVid$(semAcento).color = '#2d2d2d' end;
+						]]>
+					</event>
+				</dataLink>
+				<label align="left" width="$(largura)" text="$(rotulo): " />
+				<edit align="client" field="fld_Edit-$(semAcento)" />
+				<dataLink field="fld_Edit-$(semAcento)" defaultValue="—" />
+				<label align="right" width="30" text="-$(valor)" />
+			</rectangle>
+		</flowPart>
+	</template>
+	
+	<template name="CampoVidaInconsciente">
+		<flowPart height="35" width="270" minWidth="270" margins="bottom=3">
+			<rectangle name="rectVid$(semAcento)" align="client" color="#272727" xradius= "5" yradius="5" cornerType="bevel">
+				<checkBox align="left" field="chcBVid$(semAcento)" width="25" margins="left=5" />
+				<dataLink field="chcBVid$(semAcento)" defaultValue="false">
+					<event name="onChange">
+						<![CDATA[
+							if(sheet == nil) then return; end;
+							
+							if sheet.chcBVid$(semAcento) == false then self.rectVid$(semAcento).color = '#272727'
+							else self.rectVid$(semAcento).color = '#2d2d2d' end;
+						]]>
+					</event>
+				</dataLink>
+				<label align="left" width="$(largura)" text="$(rotulo)" />
+			</rectangle>
+		</flowPart>
+	</template>
+	
+	<template name="Header">
+		<flowLayout class="Tabela" height="25" margins="">
+			<flowPart height="25" minWidth="400" maxWidth="1000" margins="">
+				<flowLayout class="Tabela" autoHeight="false" height="25" margins="">
+					<flowPart height="25" minWidth="0" maxWidth="$(linha)" width="$(linha)"><horzLine /></flowPart>
+					<flowPart height="25" width="$(largura)"><label class="Divisor" text="$(conteudo)" /></flowPart>
+					<flowPart height="25" minWidth="0" maxWidth="$(linha)" width="$(linha)"><horzLine /></flowPart>
+				</flowLayout>
+			</flowPart>
+		</flowLayout>
+	</template>
+	
+	<template name="Bolinhas">
+		<layout align="client">
+			<imageCheckBox field="fldCheck$(numero)_01" name="nomeCheck$(numero)_01" onClick=" 
+				sheet.fldCheck$(numero)_01 = not sheet.fldCheck$(numero)_01;
+				
+				if(sheet.fldCheck$(numero)_02) then 
+					sheet.fldCheck$(numero)_01 = true; 
+					sheet.fldCheck$(numero)_02 = false; 
+					sheet.fldCheck$(numero)_03 = false; 
+					sheet.fldCheck$(numero)_04 = false; 
+					sheet.fldCheck$(numero)_05 = false; 
+				end;
+				
+				CalcPontos();
+			" />
+			<imageCheckBox field="fldCheck$(numero)_02" name="nomeCheck$(numero)_02" onClick="
+				sheet.fldCheck$(numero)_02 = not sheet.fldCheck$(numero)_02;
+				
+				if(sheet.fldCheck$(numero)_02) then 
+					sheet.fldCheck$(numero)_01 = true; 
+				else 
+					sheet.fldCheck$(numero)_01 = false;
+				end;
+				
+				if(sheet.fldCheck$(numero)_03) then 
+					sheet.fldCheck$(numero)_01 = true; 
+					sheet.fldCheck$(numero)_02 = true; 
+					sheet.fldCheck$(numero)_03 = false; 
+					sheet.fldCheck$(numero)_04 = false; 
+					sheet.fldCheck$(numero)_05 = false; 
+				end;
+				
+				CalcPontos();
+			" />
+			<imageCheckBox field="fldCheck$(numero)_03" name="nomeCheck$(numero)_03" onClick="
+				sheet.fldCheck$(numero)_03 = not sheet.fldCheck$(numero)_03;
+				
+				if(sheet.fldCheck$(numero)_03) then 
+					sheet.fldCheck$(numero)_01 = true; 
+					sheet.fldCheck$(numero)_02 = true; 
+				else 
+					sheet.fldCheck$(numero)_01 = false; 
+					sheet.fldCheck$(numero)_02 = false; 
+				end;
+				
+				if(sheet.fldCheck$(numero)_04) then 
+					sheet.fldCheck$(numero)_01 = true; 
+					sheet.fldCheck$(numero)_02 = true; 
+					sheet.fldCheck$(numero)_03 = true; 
+					sheet.fldCheck$(numero)_04 = false; 
+					sheet.fldCheck$(numero)_05 = false; 
+				end;
+				
+				CalcPontos();
+			" />
+			<imageCheckBox field="fldCheck$(numero)_04" name="nomeCheck$(numero)_04" onClick="
+				sheet.fldCheck$(numero)_04 = not sheet.fldCheck$(numero)_04;
+				
+				if(sheet.fldCheck$(numero)_04) then 
+					sheet.fldCheck$(numero)_01 = true; 
+					sheet.fldCheck$(numero)_02 = true; 
+					sheet.fldCheck$(numero)_03 = true; 
+				else 
+					sheet.fldCheck$(numero)_01 = false; 
+					sheet.fldCheck$(numero)_02 = false; 
+					sheet.fldCheck$(numero)_03 = false; 
+				end;
+				
+				if(sheet.fldCheck$(numero)_05) then 
+					sheet.fldCheck$(numero)_01 = true; 
+					sheet.fldCheck$(numero)_02 = true; 
+					sheet.fldCheck$(numero)_03 = true; 
+					sheet.fldCheck$(numero)_04 = true; 
+					sheet.fldCheck$(numero)_05 = false; 
+				end;
+				
+				CalcPontos();
+			" />
+			<imageCheckBox field="fldCheck$(numero)_05" name="nomeCheck$(numero)_05" onClick="
+				sheet.fldCheck$(numero)_05 = not sheet.fldCheck$(numero)_05;
+				
+				if(sheet.fldCheck$(numero)_05) then 
+					sheet.fldCheck$(numero)_01 = true; 
+					sheet.fldCheck$(numero)_02 = true; 
+					sheet.fldCheck$(numero)_03 = true; 
+					sheet.fldCheck$(numero)_04 = true; 
+				else 
+					sheet.fldCheck$(numero)_01 = false; 
+					sheet.fldCheck$(numero)_02 = false; 
+					sheet.fldCheck$(numero)_03 = false; 
+					sheet.fldCheck$(numero)_04 = false; 
+				end;
+				
+				CalcPontos();
+			" />
+		</layout>
+	</template>
+
+	<template name="CincoPontos">
+		<flowPart class="flowCampo" margins="{bottom=10}">
+				<label align="left" width="$(largura)" text="$(rotulo)" />
+				<Bolinhas numero="$(numero)" />
+		</flowPart>
+	</template>
+	
+	<template name="CincoPontosHab">
+		<flowPart class="flowCampo" margins="{bottom=5}" align="client">
+				<rectangle align="client" color="#2d2d2d">
+				<checkBox name="nomeCheckB$(numero)" field="fldCheckB$(numero)" width="25" align="left" margins="{top=3, left=20}" />
+				<label align="left" width="$(largura)" text="$(rotulo)" />
+				<button name="nomeBut$(numero)" text="𝐢" width="22" height="22" top="2" left="150" fontColor="#272727" onClick="self.popUp_$(numero):show('right', self.nomeBut$(numero));" />
+				<button name="nomeBut$(numero)B" text="𝐢" width="22" height="22" top="2" left="150" fontColor="white" onClick="self.popUp_$(numero):show('right', self.nomeBut$(numero));" visible="false" />
+				<popup name="popUp_$(numero)" width="200" height="100" backOpacity="0" drawContainer="false">
+					<rectangle align="client" color="#0e0e0e" padding="{top=5, left=0, bottom=5, right=0}" xradius= "5" yradius="5" cornerType="bevel">
+						<rectangle align="client" color="#0e0e0e"  padding="{top=5, left=5, bottom=5, right=5}" xradius= "3" yradius="3" strokeColor="#272727" strokeSize="1"  cornerType="bevel">
+							<textEditor align="client" transparent="true" field="fldEnfase$(numero)" fontFamily="Constantia" fontSize="13"/>
+							<dataLink field="fldEnfase$(numero)" defaultValue="Ênfases">
+								<event name="onChange">
+								<![CDATA[
+									if(sheet == nil) then return; end;
+									if(sheet.fldEnfase$(numero) == nil or sheet.fldEnfase$(numero) == "Ênfases") then
+										self.nomeBut$(numero).visible = true;
+										self.nomeBut$(numero)B.visible = false;
+									else
+										self.nomeBut$(numero)B.visible = true;
+										self.nomeBut$(numero).visible = false;
+									end;
+								]]>
+								</event>
+							</dataLink>
+						</rectangle>	
+					</rectangle>
+				</popup>
+				<Bolinhas numero="$(numero)" />
+				<label align="right" width="20" text=" " />
+				</rectangle>
+		</flowPart>
+	</template>
+	
+	<template name="Coluna">
+		<layout class="flowCampo" height="165" align="top" margins="bottom=20">
+			<rectangle align="client" color="#2d2d2d" padding="{top=15, left=25, bottom=15, right=25}" xradius= "5" yradius="5" cornerType="bevel">
+				<flowLayout orientation="vertical" align="client" autoHeight="true" maxColumns="1">
+					<flowPart class="flowCampo" margins="{bottom=5}"><label class="AtrClasse" text="$(classAtr)" /></flowPart>
+					<CincoPontos rotulo="$(atr01)" largura="100" numero="$(n01)" />
+					<CincoPontos rotulo="$(atr02)" largura="100" numero="$(n02)" />
+					<CincoPontos rotulo="$(atr03)" largura="100" numero="$(n03)" />
+				</flowLayout>
+			</rectangle>
+		</layout>
+	</template>
+	
+	<template name="ColunaHab">
+		<flowPart class="flowCampo" height="237" margins="{bottom=20}" align="client">
+			<flowLayout orientation="vertical" align="client" autoHeight="true" maxColumns="1">
+				<CincoPontosHab rotulo="$(atr01)" largura="100" numero="$(n01)" />
+				<CincoPontosHab rotulo="$(atr02)" largura="100" numero="$(n02)" />
+				<CincoPontosHab rotulo="$(atr03)" largura="100" numero="$(n03)" />
+				<CincoPontosHab rotulo="$(atr04)" largura="100" numero="$(n04)" />
+				<CincoPontosHab rotulo="$(atr05)" largura="100" numero="$(n05)" />
+				<CincoPontosHab rotulo="$(atr06)" largura="100" numero="$(n06)" />
+				<CincoPontosHab rotulo="$(atr07)" largura="100" numero="$(n07)" />
+				<CincoPontosHab rotulo="$(atr08)" largura="100" numero="$(n08)" />
+			</flowLayout>
+		</flowPart>
+	</template>
+	
+	<template name="imageCheckBoxMul">
+		<layout width="14" height="25" margins="{$(margem)}">
+			<image name="checkMulVit_Des_$(id)" width="14" height="25"  field="checkMulVit_Des_$(id)" style="proportional" visible="true" hitTest="true" cursor="handPoint" onClick="
+				if(sheet.checkMulVit_Des_$(id) == '/images/checkBoxDes.png') then
+					sheet.checkMulVit_Des_$(id) = '/images/checkBoxAtv.png';
+				elseif(sheet.checkMulVit_Des_$(id) == '/images/checkBoxAtv.png') then
+					sheet.checkMulVit_Des_$(id) = '/images/checkBoxAgr.png';
+				elseif(sheet.checkMulVit_Des_$(id) == '/images/checkBoxAgr.png') then
+					sheet.checkMulVit_Des_$(id) = '/images/checkBoxDes.png';
+				end;
+			" />
+			<dataLink field="checkMulVit_Des_$(id)" defaultValue="/images/checkBoxDes.png" />
+		</layout>
+	</template>
+						
+	<template name="ColunaDoze">
+		<layout height="45" align="top">
+			<flowLayout orientation="vertical" align="client" horzAlign="center" autoHeight="true" maxColumns="1">
+				<label class="AtrClasse" text="$(classAtr)" horzTextAlign="center" margins="{bottom=10}" />
+				<flowPart class="flowCampo">
+					<flowLayout horzAlign="center" margins="{bottom=5}" align="client" orientation="horizontal">
+						<imageCheckBox margins="right=3" name="checkImp_01_$(id)" field="fldCheck$(id)_01" onClick="
+							sheet.fldCheck$(id)_01 = not sheet.fldCheck$(id)_01;
+							
+							if(sheet.fldCheck$(id)_02) then 
+								sheet.fldCheck$(id)_01 = true; 
+								sheet.fldCheck$(id)_02 = false; 
+								sheet.fldCheck$(id)_03 = false; 
+								sheet.fldCheck$(id)_04 = false; 
+								sheet.fldCheck$(id)_05 = false; 
+								sheet.fldCheck$(id)_06 = false; 
+								sheet.fldCheck$(id)_07 = false; 
+								sheet.fldCheck$(id)_08 = false; 
+								sheet.fldCheck$(id)_09 = false; 
+								sheet.fldCheck$(id)_10 = false; 
+								sheet.fldCheck$(id)_11 = false; 
+								sheet.fldCheck$(id)_12 = false; 
+							end;
+						"/>
+						<imageCheckBox margins="right=3" name="checkImp_02_$(id)" field="fldCheck$(id)_02"  onClick="
+							sheet.fldCheck$(id)_02 = not sheet.fldCheck$(id)_02;
+							
+							if(sheet.fldCheck$(id)_02) then 
+								sheet.fldCheck$(id)_01 = true; 
+							else 
+								sheet.fldCheck$(id)_01 = false;
+							end;
+							
+							if(sheet.fldCheck$(id)_03) then 
+								sheet.fldCheck$(id)_01 = true; 
+								sheet.fldCheck$(id)_02 = true; 
+								sheet.fldCheck$(id)_03 = false; 
+								sheet.fldCheck$(id)_04 = false; 
+								sheet.fldCheck$(id)_05 = false; 
+								sheet.fldCheck$(id)_06 = false; 
+								sheet.fldCheck$(id)_07 = false; 
+								sheet.fldCheck$(id)_08 = false; 
+								sheet.fldCheck$(id)_09 = false; 
+								sheet.fldCheck$(id)_10 = false; 
+								sheet.fldCheck$(id)_11 = false; 
+								sheet.fldCheck$(id)_12 = false; 
+							end;
+						" />
+						<imageCheckBox margins="right=3" name="checkImp_03_$(id)" field="fldCheck$(id)_03" onClick="
+							sheet.fldCheck$(id)_03 = not sheet.fldCheck$(id)_03;
+							
+							if(sheet.fldCheck$(id)_03) then 
+								sheet.fldCheck$(id)_01 = true; 
+								sheet.fldCheck$(id)_02 = true; 
+							else 
+								sheet.fldCheck$(id)_01 = false; 
+								sheet.fldCheck$(id)_02 = false; 
+							end;
+							
+							if(sheet.fldCheck$(id)_04) then 
+								sheet.fldCheck$(id)_01 = true; 
+								sheet.fldCheck$(id)_02 = true; 
+								sheet.fldCheck$(id)_03 = true; 
+								sheet.fldCheck$(id)_04 = false; 
+								sheet.fldCheck$(id)_05 = false; 
+								sheet.fldCheck$(id)_06 = false; 
+								sheet.fldCheck$(id)_07 = false; 
+								sheet.fldCheck$(id)_08 = false; 
+								sheet.fldCheck$(id)_09 = false; 
+								sheet.fldCheck$(id)_10 = false; 
+								sheet.fldCheck$(id)_11 = false; 
+								sheet.fldCheck$(id)_12 = false; 
+							end;
+						" />
+						<imageCheckBox margins="right=3" name="checkImp_04_$(id)" field="fldCheck$(id)_04" onClick="
+							sheet.fldCheck$(id)_04 = not sheet.fldCheck$(id)_04;
+							
+							if(sheet.fldCheck$(id)_04) then 
+								sheet.fldCheck$(id)_01 = true; 
+								sheet.fldCheck$(id)_02 = true; 
+								sheet.fldCheck$(id)_03 = true; 
+							else 
+								sheet.fldCheck$(id)_01 = false; 
+								sheet.fldCheck$(id)_02 = false; 
+								sheet.fldCheck$(id)_03 = false; 
+							end;
+							
+							if(sheet.fldCheck$(id)_05) then 
+								sheet.fldCheck$(id)_01 = true; 
+								sheet.fldCheck$(id)_02 = true; 
+								sheet.fldCheck$(id)_03 = true; 
+								sheet.fldCheck$(id)_04 = true; 
+								sheet.fldCheck$(id)_05 = false; 
+								sheet.fldCheck$(id)_06 = false; 
+								sheet.fldCheck$(id)_07 = false; 
+								sheet.fldCheck$(id)_08 = false; 
+								sheet.fldCheck$(id)_09 = false; 
+								sheet.fldCheck$(id)_10 = false; 
+								sheet.fldCheck$(id)_11 = false; 
+								sheet.fldCheck$(id)_12 = false; 
+							end;
+						" />
+						<imageCheckBox margins="right=3" name="checkImp_05_$(id)" field="fldCheck$(id)_05" onClick="
+							sheet.fldCheck$(id)_05 = not sheet.fldCheck$(id)_05;
+
+							if(sheet.fldCheck$(id)_05) then 
+								sheet.fldCheck$(id)_01 = true; 
+								sheet.fldCheck$(id)_02 = true; 
+								sheet.fldCheck$(id)_03 = true; 
+								sheet.fldCheck$(id)_04 = true; 
+							else 
+								sheet.fldCheck$(id)_01 = false; 
+								sheet.fldCheck$(id)_02 = false; 
+								sheet.fldCheck$(id)_03 = false; 
+								sheet.fldCheck$(id)_04 = false; 
+							end;
+
+							if(sheet.fldCheck$(id)_06) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = false;
+								sheet.fldCheck$(id)_07 = false;
+								sheet.fldCheck$(id)_08 = false;
+								sheet.fldCheck$(id)_09 = false;
+								sheet.fldCheck$(id)_10 = false;
+								sheet.fldCheck$(id)_11 = false;
+								sheet.fldCheck$(id)_12 = false;
+							end;
+						" />
+						<imageCheckBox margins="right=3" name="checkImp_06_$(id)" field="fldCheck$(id)_06" onClick="
+							sheet.fldCheck$(id)_06 = not sheet.fldCheck$(id)_06;
+
+							if(sheet.fldCheck$(id)_06) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+							else 
+								sheet.fldCheck$(id)_01 = false;
+								sheet.fldCheck$(id)_02 = false;
+								sheet.fldCheck$(id)_03 = false;
+								sheet.fldCheck$(id)_04 = false;
+								sheet.fldCheck$(id)_05 = false;
+							end;
+
+							if(sheet.fldCheck$(id)_07) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = false;
+								sheet.fldCheck$(id)_08 = false;
+								sheet.fldCheck$(id)_09 = false;
+								sheet.fldCheck$(id)_10 = false;
+								sheet.fldCheck$(id)_11 = false;
+								sheet.fldCheck$(id)_12 = false;
+							end;
+						" />
+						
+						<imageCheckBox margins="right=3" name="checkImp_07_$(id)" field="fldCheck$(id)_07" onClick="
+							sheet.fldCheck$(id)_07 = not sheet.fldCheck$(id)_07;
+
+							if(sheet.fldCheck$(id)_07) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+							else 
+								sheet.fldCheck$(id)_01 = false;
+								sheet.fldCheck$(id)_02 = false;
+								sheet.fldCheck$(id)_03 = false;
+								sheet.fldCheck$(id)_04 = false;
+								sheet.fldCheck$(id)_05 = false;
+								sheet.fldCheck$(id)_06 = false;
+							end;
+
+							if(sheet.fldCheck$(id)_08) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+								sheet.fldCheck$(id)_08 = false;
+								sheet.fldCheck$(id)_09 = false;
+								sheet.fldCheck$(id)_10 = false;
+								sheet.fldCheck$(id)_11 = false;
+								sheet.fldCheck$(id)_12 = false;
+							end;
+						" />
+						<imageCheckBox margins="right=3" name="checkImp_08_$(id)" field="fldCheck$(id)_08" onClick="
+							sheet.fldCheck$(id)_08 = not sheet.fldCheck$(id)_08;
+
+							if(sheet.fldCheck$(id)_08) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+							else 
+								sheet.fldCheck$(id)_01 = false;
+								sheet.fldCheck$(id)_02 = false;
+								sheet.fldCheck$(id)_03 = false;
+								sheet.fldCheck$(id)_04 = false;
+								sheet.fldCheck$(id)_05 = false;
+								sheet.fldCheck$(id)_06 = false;
+								sheet.fldCheck$(id)_07 = false;
+							end;
+
+							if(sheet.fldCheck$(id)_09) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+								sheet.fldCheck$(id)_08 = true;
+								sheet.fldCheck$(id)_09 = false;
+								sheet.fldCheck$(id)_10 = false;
+								sheet.fldCheck$(id)_11 = false;
+								sheet.fldCheck$(id)_12 = false;
+							end;
+						" />
+						<imageCheckBox margins="right=3" name="checkImp_09_$(id)" field="fldCheck$(id)_09" onClick="
+							sheet.fldCheck$(id)_09 = not sheet.fldCheck$(id)_09;
+
+							if(sheet.fldCheck$(id)_09) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+								sheet.fldCheck$(id)_08 = true;
+							else 
+								sheet.fldCheck$(id)_01 = false;
+								sheet.fldCheck$(id)_02 = false;
+								sheet.fldCheck$(id)_03 = false;
+								sheet.fldCheck$(id)_04 = false;
+								sheet.fldCheck$(id)_05 = false;
+								sheet.fldCheck$(id)_06 = false;
+								sheet.fldCheck$(id)_07 = false;
+								sheet.fldCheck$(id)_08 = false;
+							end;
+
+							if(sheet.fldCheck$(id)_10) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+								sheet.fldCheck$(id)_08 = true;
+								sheet.fldCheck$(id)_09 = true;
+								sheet.fldCheck$(id)_10 = false;
+								sheet.fldCheck$(id)_11 = false;
+								sheet.fldCheck$(id)_12 = false;
+							end;
+						" />
+						<imageCheckBox margins="right=3" name="checkImp_10_$(id)" field="fldCheck$(id)_10" onClick="
+							sheet.fldCheck$(id)_10 = not sheet.fldCheck$(id)_10;
+
+							if(sheet.fldCheck$(id)_10) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+								sheet.fldCheck$(id)_08 = true;
+								sheet.fldCheck$(id)_09 = true;
+							else 
+								sheet.fldCheck$(id)_01 = false;
+								sheet.fldCheck$(id)_02 = false;
+								sheet.fldCheck$(id)_03 = false;
+								sheet.fldCheck$(id)_04 = false;
+								sheet.fldCheck$(id)_05 = false;
+								sheet.fldCheck$(id)_06 = false;
+								sheet.fldCheck$(id)_07 = false;
+								sheet.fldCheck$(id)_08 = false;
+								sheet.fldCheck$(id)_09 = false;
+							end;
+
+							if(sheet.fldCheck$(id)_11) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+								sheet.fldCheck$(id)_08 = true;
+								sheet.fldCheck$(id)_09 = true;
+								sheet.fldCheck$(id)_10 = true;
+								sheet.fldCheck$(id)_11 = false;
+								sheet.fldCheck$(id)_12 = false;
+							end;
+						" />
+						<imageCheckBox margins="right=3" name="checkImp_11_$(id)" field="fldCheck$(id)_11" onClick="
+							sheet.fldCheck$(id)_11 = not sheet.fldCheck$(id)_11;
+
+							if(sheet.fldCheck$(id)_11) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+								sheet.fldCheck$(id)_08 = true;
+								sheet.fldCheck$(id)_09 = true;
+								sheet.fldCheck$(id)_10 = true;
+							else 
+								sheet.fldCheck$(id)_01 = false;
+								sheet.fldCheck$(id)_02 = false;
+								sheet.fldCheck$(id)_03 = false;
+								sheet.fldCheck$(id)_04 = false;
+								sheet.fldCheck$(id)_05 = false;
+								sheet.fldCheck$(id)_06 = false;
+								sheet.fldCheck$(id)_07 = false;
+								sheet.fldCheck$(id)_08 = false;
+								sheet.fldCheck$(id)_09 = false;
+								sheet.fldCheck$(id)_10 = false;
+							end;
+
+							if(sheet.fldCheck$(id)_12) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+								sheet.fldCheck$(id)_08 = true;
+								sheet.fldCheck$(id)_09 = true;
+								sheet.fldCheck$(id)_10 = true;
+								sheet.fldCheck$(id)_11 = true;
+								sheet.fldCheck$(id)_12 = false;
+							end;
+						" />
+						<imageCheckBox margins="" name="checkImp_12_$(id)" field="fldCheck$(id)_12" onClick="
+							sheet.fldCheck$(id)_12 = not sheet.fldCheck$(id)_12;
+
+							if(sheet.fldCheck$(id)_12) then 
+								sheet.fldCheck$(id)_01 = true;
+								sheet.fldCheck$(id)_02 = true;
+								sheet.fldCheck$(id)_03 = true;
+								sheet.fldCheck$(id)_04 = true;
+								sheet.fldCheck$(id)_05 = true;
+								sheet.fldCheck$(id)_06 = true;
+								sheet.fldCheck$(id)_07 = true;
+								sheet.fldCheck$(id)_08 = true;
+								sheet.fldCheck$(id)_09 = true;
+								sheet.fldCheck$(id)_10 = true;
+								sheet.fldCheck$(id)_11 = true;
+							else 
+								sheet.fldCheck$(id)_01 = false;
+								sheet.fldCheck$(id)_02 = false;
+								sheet.fldCheck$(id)_03 = false;
+								sheet.fldCheck$(id)_04 = false;
+								sheet.fldCheck$(id)_05 = false;
+								sheet.fldCheck$(id)_06 = false;
+								sheet.fldCheck$(id)_07 = false;
+								sheet.fldCheck$(id)_08 = false;
+								sheet.fldCheck$(id)_09 = false;
+								sheet.fldCheck$(id)_10 = false;
+								sheet.fldCheck$(id)_11 = false;
+							end;
+						" />
+					</flowLayout>
+				</flowPart>
+			</flowLayout>
+		</layout>
+	</template>
+						
+	<template name="ColunaVirtudes">
+		<layout height="55" align="top">
+			<flowLayout orientation="vertical" align="client" horzAlign="center" autoHeight="true" maxColumns="1">
+				<label class="AtrClasse" text="$(classAtr)" horzTextAlign="center" margins="{bottom=10}" />
+				<flowPart class="flowCampo" margins="{bottom=5}" minWidth="310" maxWidth="310">
+					<flowLayout align="client" horzAlign="center">
+						
+						<edit class="Virtude" field="Virtude1" />
+						<dataLink field="Virtude1" defaultValue="Virtude 01" />
+						<imageCheckBox name="checkVir_01_$(id)" field="fldCheck$(id)_01" onClick="
+							sheet.fldCheck$(id)_01 = true;
+							
+							sheet.fldCheck$(id)_02 = true;
+							sheet.fldCheck$(id)_03 = true;
+							sheet.fldCheck$(id)_04 = false;
+							sheet.fldCheck$(id)_05 = false;
+						"/>
+						<imageCheckBox name="checkVir_02_$(id)" field="fldCheck$(id)_02" onClick="
+							sheet.fldCheck$(id)_02 = true;
+							
+							sheet.fldCheck$(id)_01 = false;
+							sheet.fldCheck$(id)_03 = true;
+							sheet.fldCheck$(id)_04 = false;
+							sheet.fldCheck$(id)_05 = false;
+						"/>
+						<imageCheckBox name="checkVir_03_$(id)" field="fldCheck$(id)_03" checked="true" onClick="
+							sheet.fldCheck$(id)_03 = true;
+							
+							sheet.fldCheck$(id)_01 = false;
+							sheet.fldCheck$(id)_02 = false;
+							sheet.fldCheck$(id)_04 = false;
+							sheet.fldCheck$(id)_05 = false;
+						"/>
+						<imageCheckBox name="checkVir_04_$(id)" field="fldCheck$(id)_04" onClick="
+							sheet.fldCheck$(id)_04 = true;
+							
+							sheet.fldCheck$(id)_01 = false;
+							sheet.fldCheck$(id)_02 = false;
+							sheet.fldCheck$(id)_03 = true;
+							sheet.fldCheck$(id)_05 = false;
+						"/>
+						<imageCheckBox margins="{left=3, right=3}" name="checkVir_05_$(id)" field="fldCheck$(id)_05" onClick="
+							sheet.fldCheck$(id)_05 = true;
+							
+							sheet.fldCheck$(id)_01 = false;
+							sheet.fldCheck$(id)_02 = false;
+							sheet.fldCheck$(id)_03 = true;
+							sheet.fldCheck$(id)_04 = true;
+						"/>
+						<edit class="Virtude" horzTextAlign="trailing" field="Virtude2" />
+						<dataLink field="Virtude2" defaultValue="Virtude 02" />
+					</flowLayout>
+				</flowPart>
+			</flowLayout>
+		</layout>
+	</template>
+							
+	<template name="ColunaLenda">
+		<layout height="55" align="top">
+			<flowLayout orientation="vertical" align="client" horzAlign="center" autoHeight="true" maxColumns="1">
+				<label class="AtrClasse" text="$(classAtr)" horzTextAlign="center" margins="{bottom=10}" />
+				<flowPart class="flowCampo">
+					<flowLayout align="client" horzAlign="center">
+						<imageCheckBoxMul alinhamento="left" margem="right=3" id="01_$(id)" />
+						<imageCheckBoxMul alinhamento="left" margem="right=3" id="02_$(id)" />
+						<imageCheckBoxMul alinhamento="left" margem="right=3" id="03_$(id)" />
+						<imageCheckBoxMul alinhamento="left" margem="right=3" id="04_$(id)" />
+						<imageCheckBoxMul alinhamento="left" margem="" id="05_$(id)" />
+					</flowLayout>
+				</flowPart>
+			</flowLayout>
+		</layout>
+	</template>
+	
+	<template name="ColunaQuinze">
+		<flowPart class="flowCampo" height="55" minWidth="252" maxWidth="252" margins="{bottom=20, left=10, right=10}">
+			<flowLayout orientation="vertical" width="252" autoHeight="true" maxColumns="1">
+				<flowPart class="flowCampo" height="15" margins="{bottom=5}"><label class="AtrClasse" text="$(classAtr)" /></flowPart>
+				<flowPart class="flowCampo" margins="{bottom=5}" minWidth="252" maxWidth="252">
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="01_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="02_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="03_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="04_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="05_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="06_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="07_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="08_$(id)" />
+					
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="09_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="10_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="11_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="12_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="13_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="14_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="15_$(id)" />
+				</flowPart>
+			</flowLayout>
+		</flowPart>
+	</template>
+	
+	<template name="ColunaText">
+		<flowPart class="flowCampo" height="240" minWidth="260" maxWidth="260" margins="{bottom=0, left=5, right=5}">
+			<flowLayout orientation="vertical" width="260" autoHeight="true" maxColumns="1">
+				<flowPart class="flowCampo" minWidth="260" maxWidth="260" margins="{bottom=5}"><label class="AtrClasse" text="$(classAtr)" /></flowPart>
+				<rectangle height="200" width="260" color="#202020" cornerType="bevel" xradius="10" yradius="10" padding="{top=10, bottom=10, left=10, right=10}">
+					<textEditor align="client" transparent="true" field="fldVER_$(id)" name="nomeVER_$(id)" fontFamily="Constantia" fontSize="13"/>
+					<dataLink field="fldVER_$(id)" defaultValue="Escreva aqui." />
+				</rectangle>
+			</flowLayout>
+		</flowPart>
+	</template>
+
+	<template name="Divisor">
+		<layout align="top" height="30" width="425">
+			<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+			<rectangle align="client" margins="{right=$(largura), left=$(largura)}" color="#272727" />
+			<label horzTextAlign="center" text="$(texto)" fontSize="20" fontFamily="Constantia" align="client" />
+		</layout>
+	</template>
+
+	<template name="Caminhos">
+		<flowLayout orientation="vertical" align="top" autoHeight="true" maxColumns="1" margins="bottom=20" minWidth="425">
+			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
+				<rectangle color="#2d2d2d" align="client">
+					<edit field="fldEditCaminho01" align="left" width="363" text="Caminho" fontStyle="italic" margins="left=5" />
+					<dataLink field="fldEditCaminho01" defaultValue="Digite seu Caminho" />
+					<checkBox name="nomeCam01" field="fldCheckBCam01" width="25" align="right" margins="{top=3}" />
+				</rectangle>
+			</flowPart>
+			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
+				<rectangle color="#2d2d2d" align="client">
+					<edit field="fldEditCaminho02" align="left" width="363" text="Caminho" fontStyle="italic" margins="left=5" />
+					<dataLink field="fldEditCaminho02" defaultValue="Digite seu Caminho" />
+					<checkBox name="nomeCam02" field="fldCheckBCam02" width="25" align="right" margins="{top=3}" />
+				</rectangle>
+			</flowPart>
+			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
+				<rectangle color="#2d2d2d" align="client">
+					<edit field="fldEditCaminho03" align="left" width="363" text="Caminho" fontStyle="italic" margins="left=5" />
+					<dataLink field="fldEditCaminho03" defaultValue="Digite seu Caminho" />
+					<checkBox name="nomeCam03" field="fldCheckBCam03" width="25" align="right" margins="{top=3}" />
+				</rectangle>
+			</flowPart>
+		</flowLayout>
+	</template>
+	
+	<template name="Feitos">
+		<flowLayout width="425" orientation="vertical" align="top" autoHeight="true" maxColumns="1" margins="bottom=20">
+			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
+				<label align="left" width="120" text="Pequeno Feito" />
+				<rectangle color="#2d2d2d" align="client" margins="left=5">
+					<edit field="fldEditFeito01" align="left" width="256" text="Feito" fontStyle="italic" margins="left=5" />
+					<dataLink field="fldEditFeito01" defaultValue="Digite seu Objetivo" />
+					<checkBox name="nomeFei01" field="fldCheckBFei01" width="25" align="right" margins="{top=3}" />
+				</rectangle>
+			</flowPart>
+			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
+				<label align="left" width="120" text="Grande Feito" />
+				<rectangle color="#2d2d2d" align="client" margins="left=5">
+					<edit field="fldEditFeito02" align="left" width="256" text="Feito" fontStyle="italic" margins="left=5" />
+					<dataLink field="fldEditFeito02" defaultValue="Digite seu Objetivo" />
+					<checkBox name="nomeFei02" field="fldCheckBFei02" width="25" align="right" margins="{top=3}" />
+				</rectangle>
+			</flowPart>
+			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
+				<label align="left" width="120" text="Feito em Grupo" />
+				<rectangle color="#2d2d2d" align="client" margins="left=5">
+					<edit field="fldEditFeito03" align="left" width="256" text="Feito" fontStyle="italic" margins="left=5" />
+					<dataLink field="fldEditFeito03" defaultValue="Digite seu Objetivo" />
+					<checkBox name="nomeFei03" field="fldCheckBFei03" width="25" align="right" margins="{top=3}" />
+				</rectangle>
+			</flowPart>
+		</flowLayout>
+	</template>
+	
+	<template name="Titulo">
+		<flowLayout width="425" orientation="vertical" align="top" autoHeight="true" maxColumns="1" margins="bottom=0">
+			<flowPart height="27" class="flowCampo" margins="{bottom=5}" align="client">
+				<rectangle color="#2d2d2d" align="client">
+					<label align="left" width="108" margins="left=5" text="Título Lendário:" />
+					<edit field="fldTitulo" align="client" text="Título Lendário" fontStyle="italic" margins="left=2" />
+					<dataLink field="fldTitulo" defaultValue="Digite seu Título Lendário" />
+					<checkBox name="chbTitulo" field="fldCheckBTitulo" width="25" align="right" margins="{top=3}" />
+				</rectangle>
+			</flowPart>
+		</flowLayout>
+	</template>
+
+</form>

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="thirteen.Scion2e" title="Scion 2e" name="frmScion2e" theme="dark" onNodeReady="CalcPontos()">
+<style>
+label {
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+edit {
+	fontSize: 14;
+	fontColor: #cdcdcd;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+}
+edit.Virtude {
+	fontSize: 14;
+	fontColor: #ffffff;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+	width: 92;
+	fontStyle: italic;
+	textPrompt: "Virtude";
+}
+horzLine{
+	strokeColor: #424242;
+	margins: {top=7};
+	align: top;
+	
+}
+imageCheckBox{
+	checkedImage: /images/checkBoxAtv.png;
+	uncheckedImage: /images/checkBoxDes.png;
+	height: 25;
+	width: 14;
+	align: right;
+	margins: {left=3};
+	autoChange: false;
+}
+rectangle.LinhaDeFora{
+	align: client; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 2; 
+	xradius: 25; 
+	yradius: 25; 
+	cornerType: bevel; 
+	margins: {top=20, right=20, bottom=20, left=20};
+}
+rectangle.LinhaDeDentro{
+	align: client; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 1; 
+	xradius: 23; 
+	yradius: 23; 
+	cornerType: bevel; 
+	margins: {top=5, right=5, bottom=5, left=5};
+}
+rectangle.Fundo{
+	align: client; 
+	color: #272727; 
+	xradius: 20; 
+	yradius: 20; 
+	cornerType: bevel; 
+	margins: {top=10, right=10, bottom=10, left=10};
+}
+label.Divisor {
+	fontSize: 20;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	autoSize: true;
+	align: client;
+	margins: {bottom=7};
+}
+label.AtrClasse{
+	fontSize: 10;
+	fontColor: white;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	align: top;
+}
+flowLayout.Tabela{
+	align: top; 
+	orientation: horizontal; 
+	horzAlign: center; 
+	autoHeight: true; 
+	maxControlsPerLine: 7; 
+	margins: {left=20, top=20, bottom=30, right=20};
+}
+flowPart.flowCampo{
+	minWidth: 220; 
+	maxWidth: 550; 
+	height: 25; 
+	margins: {left=20, right=20, bottom=10};
+}
+edit.EditBold{
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+</style>
+<script>
+<![CDATA[
+
+	personagem = {
+    atributos = {
+        forca = 0,
+        destreza = 0,
+        vigor = 0,
+        carisma = 0,
+        manipulacao = 0,
+        autocontrole = 0,
+        inteligencia = 0,
+        raciocinio = 0,
+        determinacao = 0
+    },
+
+    habilidades = {
+        academia = 0,
+        armas_de_fogo = 0,
+        atletismo = 0,
+        briga = 0,
+        ciencia = 0,
+        conducao = 0,
+        cultura = 0,
+        empatia = 0,
+        integridade = 0,
+        lideranca = 0,
+        medicina = 0,
+        ocultismo = 0,
+        persuasao = 0,
+        sobrevivencia = 0,
+        subterfugio = 0,
+        tecnologia = 0
+		}
+	}
+	
+	local function sumBools(a, b, c, d, e)
+		local soma = 0
+
+		if a then soma = soma + 1 end
+		if b then soma = soma + 1 end
+		if c then soma = soma + 1 end
+		if d then soma = soma + 1 end
+		if e then soma = soma + 1 end
+
+		return soma
+	end
+	
+	local function calcMachucados()
+		if sumBools(sheet.fldCheck03_01, sheet.fldCheck03_02, sheet.fldCheck03_03, sheet.fldCheck03_04, sheet.fldCheck03_05) < 3 then 
+			self.flPart_Machucado04.visible = false
+			self.flPart_Machucado05.visible = false
+			
+		elseif sumBools(sheet.fldCheck03_01, sheet.fldCheck03_02, sheet.fldCheck03_03, sheet.fldCheck03_04, sheet.fldCheck03_05) < 5 then
+			self.flPart_Machucado04.visible = true
+			self.flPart_Machucado05.visible = false
+			
+		elseif sumBools(sheet.fldCheck03_01, sheet.fldCheck03_02, sheet.fldCheck03_03, sheet.fldCheck03_04, sheet.fldCheck03_05) == 5 then
+			self.flPart_Machucado04.visible = true
+			self.flPart_Machucado05.visible = true
+			
+		end
+		self.flLayVida:needRealign()
+		self.idFundo:needRepaint()
+	end
+	
+	local function rolagemDefesa()
+		local v1 = personagem.atributos.vigor
+		local v2 = personagem.atributos.autocontrole
+		local v3 = personagem.atributos.determinacao
+
+		return math.max(v1, v2, v3)
+	end
+	
+	local function rolagemMovimento()
+		local atributo = math.max(personagem.atributos.forca, personagem.atributos.destreza)
+		local habilidade = personagem.habilidades.atletismo
+
+		return atributo + habilidade
+	end
+
+	local function CalcPontos()
+		
+		personagem = {
+		atributos = {
+			forca = sumBools(sheet.fldCheck01_01, sheet.fldCheck01_02, sheet.fldCheck01_03, sheet.fldCheck01_04, sheet.fldCheck01_05),
+			destreza = sumBools(sheet.fldCheck02_01, sheet.fldCheck02_02, sheet.fldCheck02_03, sheet.fldCheck02_04, sheet.fldCheck02_05),
+			vigor = sumBools(sheet.fldCheck03_01, sheet.fldCheck03_02, sheet.fldCheck03_03, sheet.fldCheck03_04, sheet.fldCheck03_05),
+			carisma = sumBools(sheet.fldCheck04_01, sheet.fldCheck04_02, sheet.fldCheck04_03, sheet.fldCheck04_04, sheet.fldCheck04_05),
+			manipulacao = sumBools(sheet.fldCheck05_01, sheet.fldCheck05_02, sheet.fldCheck05_03, sheet.fldCheck05_04, sheet.fldCheck05_05),
+			autocontrole = sumBools(sheet.fldCheck06_01, sheet.fldCheck06_02, sheet.fldCheck06_03, sheet.fldCheck06_04, sheet.fldCheck06_05),
+			inteligencia = sumBools(sheet.fldCheck07_01, sheet.fldCheck07_02, sheet.fldCheck07_03, sheet.fldCheck07_04, sheet.fldCheck07_05),
+			raciocinio = sumBools(sheet.fldCheck08_01, sheet.fldCheck08_02, sheet.fldCheck08_03, sheet.fldCheck08_04, sheet.fldCheck08_05),
+			determinacao = sumBools(sheet.fldCheck09_01, sheet.fldCheck09_02, sheet.fldCheck09_03, sheet.fldCheck09_04, sheet.fldCheck09_05)
+		},
+
+		habilidades = {
+			academia = sumBools(sheet.fldCheck10_01, sheet.fldCheck10_02, sheet.fldCheck10_03, sheet.fldCheck10_04, sheet.fldCheck10_05),
+			armas_de_fogo = sumBools(sheet.fldCheck11_01, sheet.fldCheck11_02, sheet.fldCheck11_03, sheet.fldCheck11_04, sheet.fldCheck11_05),
+			atletismo = sumBools(sheet.fldCheck12_01, sheet.fldCheck12_02, sheet.fldCheck12_03, sheet.fldCheck12_04, sheet.fldCheck12_05),
+			briga = sumBools(sheet.fldCheck13_01, sheet.fldCheck13_02, sheet.fldCheck13_03, sheet.fldCheck13_04, sheet.fldCheck13_05),
+			ciencia = sumBools(sheet.fldCheck14_01, sheet.fldCheck14_02, sheet.fldCheck14_03, sheet.fldCheck14_04, sheet.fldCheck14_05),
+			conducao = sumBools(sheet.fldCheck15_01, sheet.fldCheck15_02, sheet.fldCheck15_03, sheet.fldCheck15_04, sheet.fldCheck15_05),
+			cultura = sumBools(sheet.fldCheck16_01, sheet.fldCheck16_02, sheet.fldCheck16_03, sheet.fldCheck16_04, sheet.fldCheck16_05),
+			empatia = sumBools(sheet.fldCheck17_01, sheet.fldCheck17_02, sheet.fldCheck17_03, sheet.fldCheck17_04, sheet.fldCheck17_05),
+			integridade = sumBools(sheet.fldCheck18_01, sheet.fldCheck18_02, sheet.fldCheck18_03, sheet.fldCheck18_04, sheet.fldCheck18_05),
+			lideranca = sumBools(sheet.fldCheck19_01, sheet.fldCheck19_02, sheet.fldCheck19_03, sheet.fldCheck19_04, sheet.fldCheck19_05),
+			medicina = sumBools(sheet.fldCheck20_01, sheet.fldCheck20_02, sheet.fldCheck20_03, sheet.fldCheck20_04, sheet.fldCheck20_05),
+			ocultismo = sumBools(sheet.fldCheck21_01, sheet.fldCheck21_02, sheet.fldCheck21_03, sheet.fldCheck21_04, sheet.fldCheck21_05),
+			persuasao = sumBools(sheet.fldCheck22_01, sheet.fldCheck22_02, sheet.fldCheck22_03, sheet.fldCheck22_04, sheet.fldCheck22_05),
+			sobrevivencia = sumBools(sheet.fldCheck23_01, sheet.fldCheck23_02, sheet.fldCheck23_03, sheet.fldCheck23_04, sheet.fldCheck23_05),
+			subterfugio = sumBools(sheet.fldCheck24_01, sheet.fldCheck24_02, sheet.fldCheck24_03, sheet.fldCheck24_04, sheet.fldCheck24_05),
+			tecnologia = sumBools(sheet.fldCheck25_01, sheet.fldCheck25_02, sheet.fldCheck25_03, sheet.fldCheck25_04, sheet.fldCheck25_05)
+			}
+		}
+
+		sheet.rollDefesa = rolagemDefesa()
+		sheet.rollMovimento = rolagemMovimento()
+		calcMachucados()
+		
+		self.flLayVida:needRealign()
+		self.idFundo:needRepaint()
+	end
+
+	local function TrocarAba(a)
+		if(a == 'D') then
+			if(self.layFrente:isVisible()) then
+				self.layFrente.visible = false;
+				self.layVerso.visible = true;
+				self.layFrente:needRepaint();
+				self.layVerso:needRepaint();
+				
+			elseif(self.layVerso:isVisible()) then
+				self.layVerso.visible = false;
+				self.layNote.visible = true;
+				self.layVerso:needRepaint();
+				self.layNote:needRepaint();
+				
+			elseif(self.layNote:isVisible()) then
+				self.layNote.visible = false;
+				self.layFrente.visible = true;
+				self.layNote:needRepaint();
+				self.layFrente:needRepaint();
+			end;
+		end;
+		
+		if(a == 'E') then
+			if(self.layFrente:isVisible()) then
+				self.layFrente.visible = false;
+				self.layNote.visible = true;
+				self.layFrente:needRepaint();
+				self.layNote:needRepaint();
+				
+			elseif(self.layVerso:isVisible()) then
+				self.layVerso.visible = false;
+				self.layFrente.visible = true;
+				self.layVerso:needRepaint();
+				self.layFrente:needRepaint();
+				
+			elseif(self.layNote:isVisible()) then
+				self.layNote.visible = false;
+				self.layVerso.visible = true;
+				self.layNote:needRepaint();
+				self.layVerso:needRepaint();
+			end;
+		
+		end;
+	end;
+
+]]>
+</script>
+<import file="templates.lfm" />
+
+	<!-- LAYOUT DO FUNDO -->
+	<image name="idImgFundo" field="URLImagemFundo" align="client" style="autofit" src="" onResize="self.idImgFundo:needRepaint();" />
+	<dataLink field="URLImagemFundo" defaultValue="/images/bg.png" onChange="self.idImgFundo:needRepaint();" />
+	<layout align="client" frameStyle="/frames/frameFundo.xml">
+		<scrollBox align="client">
+			<flowLayout autoHeight="true" align="top" horzAlign="center">
+			<flowPart align="top" height="1920" minWidth="30" maxWidth="50">
+				<image align="client" style="proportional" url="/images/left-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('E');" />
+			</flowPart>
+			<flowPart align="top" height="1920" minWidth="400" maxWidth="1000">
+				<flowLayout autoHeight="true" align="top" horzAlign="center">
+					<flowPart align="top" height="1920" minWidth="400" maxWidth="1000">
+						<rectangle class="LinhaDeFora">
+							<rectangle class="LinhaDeDentro">
+								<rectangle class="Fundo" name="idFundo">
+											
+										<layout name="layFrente" align="client">
+										<scrollBox align="client">
+										
+										<btnImgFundo />
+										<layout align="top" height="1050">
+										
+											<!--LOGO-->
+											<layout align="top" height="90">
+												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="top=20" />
+											</layout>
+											<!--INFO-->
+												<layout align="top" height="90">
+													
+													<layout align="left" width="310" padding="{left=20, right=20}">
+														<Campo rotulo="Nome" semAcento="Nome" largura="45" />
+														<Campo rotulo="Jogador" semAcento="Jogador" largura="57" />
+													</layout>
+													
+													<layout align="left" width="310" padding="{left=20, right=20}">
+														<Campo rotulo="Panteão" semAcento="Panteao" largura="60" />
+														<Campo rotulo="Parente Divino" semAcento="PaDivino" largura="105" />
+													</layout>
+													
+													<layout align="left" width="310" padding="{left=20, right=20}">
+														<Campo rotulo="Idade" semAcento="Idade" largura="43" />
+														<Campo rotulo="Crônica" semAcento="Cronica" largura="58" />
+													</layout>
+													
+												</layout>
+												
+												<!--HEADER SAÚDE-->
+												<layout align="top" height="215" padding="{left=20, right=20}">
+													<Divisor texto="S A Ú D E   🙵   F E R I M E N T O S" largura="275" />
+													<layout align="top" height="20" />
+													<layout align="top" height="165">
+																						
+														<flowLayout padding="right=40" name="flLayVida" autoHeight="true" align="left" width="620" orientation="vertical" maxControlsPerLine="2" onBeforeLayoutCalc="calcMachucados()" horzAlign="justify">
+															<CampoVida rotulo="Machucado" semAcento="Machucado01" largura="85" valor="01" />
+															<CampoVida rotulo="Machucado" semAcento="Machucado02" largura="85" valor="01" />
+															<CampoVida rotulo="Machucado" semAcento="Machucado03" largura="85" valor="01" />
+															<CampoVida rotulo="Machucado" semAcento="Machucado04" largura="85" valor="01" />
+															<CampoVida rotulo="Machucado" semAcento="Machucado05" largura="85" valor="01" />
+															<CampoVida rotulo="Ferimento" semAcento="Machucado06" largura="85" valor="02" />
+															<CampoVida rotulo="Mutilação" semAcento="Machucado07" largura="85" valor="04" />
+															<CampoVidaInconsciente rotulo="Inconsciente" semAcento="Inconsciente" largura="100" />
+														</flowLayout>
+														
+														<layout align="left" width="310">
+															<layout align="top" height="35" margins="bottom=3">
+																<rectangle align="left" width="35" height="35" color="#202020" margins="{right=15}" xradius= "15" yradius="15" cornerType="bevel">
+																	<label field="rollDefesa" align="client" horzTextAlign="center" vertTextAlign="center" margins="bottom=5" />
+																	<dataLink field="rollDefesa" defaultValue="0" />
+																</rectangle>
+																<label align="left" width="200" class="AtrClasse" horzTextAlign="leading" text="R O L A G E M   D E   D E F E S A"/>
+															</layout>
+															<layout align="top" height="35" margins="bottom=3">
+																<rectangle align="left" width="35" height="35" color="#202020" margins="{right=15}" xradius= "15" yradius="15" cornerType="bevel">
+																	<label field="rollMovimento" align="client" horzTextAlign="center" vertTextAlign="center" margins="bottom=5" />
+																	<dataLink field="rollMovimento" defaultValue="0" />
+																</rectangle>
+																<label align="left" width="200" class="AtrClasse" horzTextAlign="leading" text="R O L A G E M   D E   M O V I M E N T O" />
+															</layout>
+														</layout>
+														
+													</layout>
+													
+												</layout>
+												
+												<!--HEADER ATRIBUTOS-->
+												<layout align="top" height="50" padding="{left=20, right=20}">
+													<Divisor texto="A T R I B U T O S" largura="350" />
+												</layout>
+												
+												<!--ATRIBUTOS-->
+												<layout align="top" height="260">
+													
+													<layout align="left" width="310" padding="{left=20, right=20}">
+														<Coluna classAtr="F Í S I C O" atr01="Força" atr02="Destreza" atr03="Vigor" n01="01" n02="02" n03="03" />
+														<ColunaLenda classAtr="L E N D A" id="Leg" />
+													</layout>
+													
+													<layout align="left" width="310" padding="{left=20, right=20}">
+														<Coluna classAtr="S O C I A L" atr01="Carisma" atr02="Manipulação" atr03="Autocontrole" n01="04" n02="05" n03="06" />
+														<ColunaDoze classAtr="I M P U L S O" id="Imp" />
+													</layout>
+													
+													<layout align="left" width="310" padding="{left=20, right=20}">
+														<Coluna classAtr="M E N T A L" atr01="Inteligência" atr02="Raciocínio" atr03="Determinação" n01="07" n02="08" n03="09" />
+														<ColunaVirtudes classAtr="V I R T U D E S" id="Vir" />
+													</layout>
+													
+												</layout>
+												
+												<!--HEADER HABILIDADES-->
+												<layout align="top" height="50" padding="{left=20, right=20}">
+													<Divisor texto="H A B I L I D A D E S" largura="335" />
+												</layout>
+												
+												<!--HABILIDADES-->
+												<layout align="top" height="270">
+													
+													<layout align="left" width="465">
+														<ColunaHab	n01="10" atr01="Academia"
+																n02="11" atr02="Armas de Fogo"
+																n03="12" atr03="Atletismo"
+																n04="13" atr04="Briga"
+																n05="14" atr05="Ciência"
+																n06="15" atr06="Condução"
+																n07="16" atr07="Cultura"
+																n08="17" atr08="Empatia"/>
+													</layout>
+													
+													<layout align="left" width="465">
+														<ColunaHab	n01="18" atr01="Integridade"
+																n02="19" atr02="Liderança"
+																n03="20" atr03="Medicina"
+																n04="21" atr04="Ocultismo"
+																n05="22" atr05="Persuasão"
+																n06="23" atr06="Sobrevivência"
+																n07="24" atr07="Subterfúgio"
+																n08="25" atr08="Tecnologia"/>
+													</layout>
+													
+												</layout>
+												
+												<!--HEADER CAMINHOS E FEITOS-->
+												<layout align="top">
+													
+													<layout align="left" width="465" height="30" padding="{left=20, right=20}">
+														<Divisor texto="C A M I N H O S" largura="130" />
+													</layout>
+													
+													<layout align="left" width="465" height="30" padding="{left=20, right=20}">
+														<Divisor texto="F E I T O S" largura="155" />
+													</layout>
+													
+												</layout>
+											
+											</layout>
+												
+											<!--LEGADOS-->
+											
+											
+											<flowLayout orientation="vertical" anchors="top left" top="1075" left="0" width="465" padding="{left=20, right=20}" autoHeight="true" maxControlsPerLine="1">
+										
+													<Caminhos />
+													<Divisor texto="L E G A D O S" largura="144" />
+													<recordList width="425" align="top" minQt="3" layout="vertical" name="rclLegados" field="fldLegados" templateForm="legados" autoHeight="true" margins="{top=20}" onItemRemoved="self.idFundo:needRepaint();" onSelect="self.rclLegados:sort();">
+														<event name="onCompare">
+															return Utils.compareStringPtBr(nodeA.fldLegados, nodeB.fldLegados);
+														</event>
+													</recordList>
+													<button width="425" align="top" height="25" text="🞦" onClick="self.rclLegados:append(); self.idFundo:needRepaint();" hint="Novo Legado" />
+												
+												
+												<layout align="top" height="20" />
+												<Divisor texto="T R U Q U E S" largura="140" />
+												<recordList width="425" align="top" minQt="3" layout="vertical" name="rclTruques" field="fldTruques" templateForm="truques" autoHeight="true" margins="{top=20}" onItemRemoved="self.idFundo:needRepaint();" onSelect="self.rclTruques:sort();">
+													<event name="onCompare">
+														if nodeA.fldLegado == nodeB.fldLegado then
+															if nodeA.fldGrau == nodeB.fldGrau then
+																return Utils.compareStringPtBr(nodeA.fldTruques, nodeB.fldTruques);
+															else
+																return Utils.compareStringPtBr(nodeA.fldGrau, nodeB.fldGrau);
+															end
+														else
+															return Utils.compareStringPtBr(nodeA.fldLegado, nodeB.fldLegado);
+														end
+													</event>
+												</recordList>
+												<button width="425" align="top" height="25" text="🞦" onClick="self.rclTruques:append(); self.idFundo:needRepaint();" hint="Novo Truque" />
+												<layout align="top" height="40" />
+												
+											</flowLayout>
+											
+											<flowLayout orientation="vertical" anchors="top left" top="1075" left="485" width="425" autoHeight="true" maxControlsPerLine="1">
+												<Feitos />
+												<Divisor texto="H E R A N Ç A S" largura="130" />
+												<layout align="top" height="20" />
+												<Titulo />
+												<recordList width="425" align="top" minQt="1" layout="vertical" name="rclHerancas" field="fldHerancas" templateForm="herancas" autoHeight="true" margins="{top=3}" onItemRemoved="self.idFundo:needRepaint();" onSelect="self.rclHerancas:sort();">
+													<event name="onCompare">
+														if nodeA.fldHerTipo == nodeB.fldHerTipo then
+															return Utils.compareStringPtBr(nodeA.fldHerancas, nodeB.fldHerancas);
+														else
+															return Utils.compareStringPtBr(nodeA.fldHerTipo, nodeB.fldHerTipo);
+														end
+													</event>
+												</recordList>
+												<button width="425" align="top" height="25" text="🞦" onClick="self.rclHerancas:append(); self.idFundo:needRepaint();" hint="Nova Herança" />
+												
+												<layout align="top" height="20" />
+												<Divisor texto="E S F E R A S   🙵   P O D E R E S" largura="60" />
+												<recordList width="425" align="top" minQt="4" layout="vertical" name="rclEsferas" field="fldEsferas" templateForm="esferas" autoHeight="true" margins="{top=20}" onItemRemoved="self.idFundo:needRepaint();" onSelect="self.rclEsferas:sort();">
+													<event name="onCompare">
+														if nodeA.fldEsfCategoria == nodeB.fldEsfCategoria then
+															if nodeA.fldEsfTipo == nodeB.fldEsfTipo then
+																return Utils.compareStringPtBr(nodeA.fldEsferas, nodeB.fldEsferas);
+															else
+																return Utils.compareStringPtBr(nodeA.fldEsfTipo, nodeB.fldEsfTipo);
+															end
+														else
+															return Utils.compareStringPtBr(nodeA.fldEsfCategoria, nodeB.fldEsfCategoria);
+														end
+													</event>
+												</recordList>
+												<button width="425" align="top" height="25" text="🞦" onClick="self.rclEsferas:append(); self.idFundo:needRepaint();" hint="Nova Esfera ou Poder" />
+												<layout align="top" height="40" />
+												
+											</flowLayout>
+										</scrollBox>
+									</layout>
+									
+									<layout name="layVerso" align="client" visible="false">
+										
+										<!--LOGO-->
+										<layout align="client" margins="{right=20, left=20}">
+											<layout align="top" height="90">
+												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="top=20" />
+											</layout>
+											
+											<flowLayout align="top" margins="{top=20, bottom=20,}" height="440">
+												<flowPart class="flowCampo" height="440" minWidth="260" maxWidth="260">
+													<flowLayout orientation="vertical" width="260" autoHeight="true" maxColumns="1">
+														<flowPart class="flowCampo" minWidth="260" maxWidth="260" margins="{bottom=5}"><label class="AtrClasse" text="A P A R Ê N C I A" /></flowPart>
+														<layout align="none" height="400" width="260">
+															<image align="none" height="400" width="260" style="autofit" editable="true" field="fldFotoPJ" hint="Alterar Aparência" />
+															<dataLink field="fldFotoPJ" defaultValue="/images/scion.png" />
+															<image height="400" width="260" url="/images/frame.png" style="proportional"/>
+														</layout>
+													</flowLayout>
+												</flowPart>
+												
+												<flowPart class="flowCampo" height="440" minWidth="550" maxWidth="550">
+													<flowLayout orientation="vertical" width="550" autoHeight="true" maxColumns="1">
+														<flowPart class="flowCampo" minWidth="550" maxWidth="550" margins="{bottom=5}"><label class="AtrClasse" text="C O N T A T O S" /></flowPart>
+														<rectangle height="400" width="550" color="#202020" cornerType="bevel" xradius="10" yradius="10" padding="{top=10, bottom=10, left=10, right=10}">
+															<textEditor align="client" transparent="true" field="fldBG" name="nomeBG" fontFamily="Constantia" fontSize="13"/>
+															<dataLink field="fldBG" defaultValue="Escreva aqui." />
+														</rectangle>
+													</flowLayout>
+												</flowPart>
+											</flowLayout>
+											
+											<Divisor texto="H I S T Ó R I A" largura="350" />
+											<richEdit field="BG" align="client" margins="{top=10, bottom=40}" backgroundColor="#272727" defaultFontColor="white" />
+										</layout>
+									
+									</layout>
+									
+									<layout name="layNote" align="client" visible="false">
+										
+										<!--LOGO-->
+										<layout align="client" margins="{right=20, left=20}">
+											<layout align="top" height="90">
+												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="top=20" />
+											</layout>
+											
+											<Divisor texto="A N O T A Ç Õ E S" largura="350" />
+											<richEdit field="Notes" align="client" margins="{top=10, bottom=40}" backgroundColor="#272727" defaultFontColor="white" />
+										</layout>
+									</layout>
+								</rectangle>
+							</rectangle>
+						</rectangle>
+					</flowPart>
+				</flowLayout>
+			
+			</flowPart>
+			<flowPart align="top" height="1920" minWidth="30" maxWidth="50">
+				<image align="client" style="proportional" url="/images/right-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('D');" />
+			</flowPart>
+			</flowLayout>	
+		</scrollBox>
+	</layout>
+</form>
+
+<!--
+<layout align="top">
+	<rectangle color="yellow" align="client" />
+</layout>
+
+<layout align="top">
+									
+	<layout align="left" width="465">
+		<rectangle color="green" align="client" />
+	</layout>
+	
+	<layout align="left" width="465">
+		<rectangle color="blue" align="client" />
+	</layout>
+	
+</layout>
+
+<layout align="top">
+									
+	<layout align="left" width="310">
+		<rectangle color="green" align="client" />
+	</layout>
+	
+	<layout align="left" width="310">
+		<rectangle color="blue" align="client" />
+	</layout>
+	
+	<layout align="left" width="310">
+		<rectangle color="pink" align="client" />
+	</layout>
+	
+</layout>
+-->
