@@ -81,7 +81,7 @@ Vale a pena ressalvar que qualquer pasta neste repositório contém seu plugin c
 | [Reinos de Ferro](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Ficha%20RdF.rpk?raw=true) | Ambesek | Ficha para o cenário e sistema Reinos de Ferro. |
 | [RPGPokemon](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/RPGPokemon/output/RPGPokemon.rpk?raw=true) | Hitoshura | Ficha de jogador e pokémons no sistema _RPG Pokémon_. |
 | [Shadow of the Demon Lord](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Demon%20Lord/output/Shadow%20of%20the%20Demon%20Lord%20-%20Plugin.rpk?raw=true) | Valquíria Maia | Ficha para _Shadow of the Demon Lord_. |
-| [Scion 2e]() | thirteen | Ficha para Scion, 2ª edição. |
+| [Scion 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Scion%202e/output/Scion.rpk?raw=true) | thirteen | Ficha para Scion, 2ª edição. |
 | [Ficha Tormenta Imperio De Jade](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Arc%20Metal%20Zhuls.rpk?raw=true) | Miguel "AJ" Carigo | Ficha para Tormenta Imperio De Jade. |
 | [Vampire The Masquerade 5th](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Vampire%20The%20Masquerade%205th/output/Vampire%20The%20Masquerade%205th.rpk?raw=true) | thirteen | Ficha para Vampiro: a Máscara _(V:aM)_, 5ª edição. |
 | [World of Darkness 20th](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true) | Ambesek | Ficha para o _Vampire the Dark Ages_ e _Werewolf Apocalypse_, edição de 20 anos. |
