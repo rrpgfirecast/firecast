@@ -353,7 +353,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Universal.Storyteller" name="Ficha Universal Storyteller" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Storyteller/output/Ficha%20Universal%20Storyteller.rpk?raw=true" fileName="Ficha Universal Storyteller.rpk" repositoryPath="Sheets/Ficha Universal Storyteller/" author="Ambesek" description="Ficha Generica Universal para Storyteller" version="0.8" compilationDate="27082023150215" compilationDigest="3aa0c3c7769225e0f1e2564304a645ddc6b9245e">
+    <element id="Ambesek.Universal.Storyteller" name="Ficha Universal Storyteller" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Storyteller/output/Ficha%20Universal%20Storyteller.rpk?raw=true" fileName="Ficha Universal Storyteller.rpk" repositoryPath="Sheets/Ficha Universal Storyteller/" author="Ambesek" description="Ficha Generica Universal para Storyteller" version="0.8" compilationDate="29032025023040" compilationDigest="f068fe440b407b1924ee953bba8342d5568e23c7">
         <info lang="pt-BR" name="Ficha Universal Storyteller" description="Ficha Generica Universal para Storyteller" author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Universal.Storyteller" title="Ficha Universal Storyteller" formType="sheetTemplate">
@@ -457,7 +457,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.4" compilationDate="14122024214514" compilationDigest="09c27e4216135244aefcdc262d062a51ea8b5010">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.4" compilationDate="26022025023931" compilationDigest="5e5be498825c733c8383a8c6e776807fb631c1f2">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>
@@ -481,6 +481,14 @@
         <dataTypes>
             <dataType id="br.com.rrpg.DTF_SDK3" title="Demônio a Queda - Ficha de Personagem" formType="sheetTemplate">
                 <info title="Demônio a Queda - Ficha de Personagem"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="br.com.rrpg.fabulaultima" name="Fabula Ultima" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Fabula%20Ultima/output/Ficha%20Fabula%20Ultima.rpk?raw=true" fileName="Ficha Fabula Ultima.rpk" repositoryPath="Sheets/Ficha Fabula Ultima/" author="Hirobrin" description="Ficha Fabula Ultima" version="1.0" compilationDate="14082025232931" compilationDigest="4900d3fa9c5a79a1cc10c3384845ab7563803327">
+        <info lang="pt-BR" name="Fabula Ultima" description="Ficha Fabula Ultima" author="Hirobrin" site="https://firecast.app/pt_br/"/>
+        <dataTypes>
+            <dataType id="br.com.rrpg.fabulaultima" title="Ficha Fabula Ultima" formType="sheetTemplate">
+                <info title="Ficha Fabula Ultima"/>
             </dataType>
         </dataTypes>
     </element>
@@ -526,6 +534,14 @@
             </dataType>
             <dataType id="br.com.RRPG.WTFTV3_S3" title="Lobisomem: O Apocalipse - Ficha do Totem" formType="sheetTemplate">
                 <info title="Lobisomem: O Apocalipse - Ficha do Totem"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="br.com.WeirdWizard" name="Shadow of the Weird Wizard" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Weird%20Wizard/output/Shadow%20of%20the%20Weird%20Wizard.rpk?raw=true" fileName="Shadow of the Weird Wizard.rpk" repositoryPath="Sheets/Shadow of the Weird Wizard/" author="Célio Zagalo" description="Ficha de personagem para o RPG Shadow of the Weird Wizard" version="1.2" compilationDate="13072025025554" compilationDigest="69e04ad4052c983a8fe88667f958ee4ceefb89af">
+        <info lang="pt-BR" name="Shadow of the Weird Wizard" description="Ficha de personagem para o RPG Shadow of the Weird Wizard" author="Célio Zagalo" site="linkedin.com/in/celiozagalo/"/>
+        <dataTypes>
+            <dataType id="br.com.firecast.ShadowOfTheWeirdWizard" title="Shadow of the Weird Wizard" formType="sheetTemplate">
+                <info title="Shadow of the Weird Wizard"/>
             </dataType>
         </dataTypes>
     </element>
@@ -671,6 +687,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="FICHA_ANIME5E" name="Ficha Anime 5E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Anime%20e5%20Sheet/output/Anime%20e5%20Sheet.rpk?raw=true" fileName="Anime e5 Sheet.rpk" repositoryPath="Sheets/Anime e5 Sheet/" author="Kazarith" description="Apenas uma Ficha para jogar no sistema do Anime 5E, um sistema underground baseado em DnD." version="0.2" compilationDate="02082025173415" compilationDigest="5238c8ecd662e1343eefde88a7c80a1df4ecfd99">
+        <info lang="pt-BR" name="Ficha Anime 5E" description="Apenas uma Ficha para jogar no sistema do Anime 5E, um sistema underground baseado em DnD." author="Kazarith" site="http://não_tenho_site_ainda"/>
+        <dataTypes>
+            <dataType id="br.com.rrpg.DnD_ANIME5E" title="Ficha Anime 5E" formType="sheetTemplate">
+                <info title="Ficha Anime 5E"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ficha_de_L5R_4e_SDK_3.5" name="L5R 4e (Otimizado)" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5R%204e/output/Ficha%20L5R%204e.rpk?raw=true" fileName="Ficha L5R 4e.rpk" repositoryPath="Sheets/Ficha L5R 4e/" author="Gatan e thirteen" description="Ficha com cálculos automáticos para L5R 4e." version="2.1.0" compilationDate="03032023114054" compilationDigest="e47bebebb54ec1ea5bb845fb76e4ec6699eca46c">
         <info lang="pt-BR" name="L5R 4e (Otimizado)" description="Ficha com cálculos automáticos para L5R 4e." author="Gatan e thirteen" site="https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Ficha L5R 4e"/>
         <dataTypes>
@@ -703,7 +727,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.2.4" compilationDate="02112024185030" compilationDigest="e0ec48022854a72f98a05ca21d13b35b5f0f0caf">
+    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.2.4" compilationDate="23032025173516" compilationDigest="27117f3644a49aa4056dbb219b4f98402d187ec9">
         <info lang="pt-BR" name="Ficha Pathfinder" description="Ficha feita para o sistema Pathfinder." author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder" formType="sheetTemplate">
@@ -786,7 +810,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="2.1.1" compilationDate="06082024163411" compilationDigest="2420c4536374a38a35072329f37dc4864b4dab58">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="2.1.1" compilationDate="05032025132655" compilationDigest="431e0b25fbdb963086ec73765a57386803651a01">
         <info lang="pt-BR" name="Gerenciador de Campanha" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" formType="sheetTemplate">
@@ -1104,6 +1128,14 @@
     </element>
     <element id="RRPG.ROLETA.RUSSA" name="Plugin de Roleta Russa" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/RoletaRussa/output/RoletaRussa.rpk?raw=true" fileName="RoletaRussa.rpk" repositoryPath="ChatMods/RoletaRussa/" author="AlyssonRPG (RRPG Firecast)" description="Instala comandos no RRPG para automatizar a brincadeira da Roleta Russa" version="1.0" compilationDate="03032023113325" compilationDigest="b706660bd6eb6f0199147f388bccf480630c8714">
         <info lang="pt-BR" name="Plugin de Roleta Russa" description="Instala comandos no RRPG para automatizar a brincadeira da Roleta Russa" author="AlyssonRPG (RRPG Firecast)" site="http://www.rrpg.com.br"/>
+    </element>
+    <element id="Scion_2ª_Edição" name="Scion 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Scion%202e/output/Scion%202e.rpk?raw=true" fileName="Scion 2e.rpk" repositoryPath="Sheets/Scion 2e/" author="thirteen" description="Ficha de Personagem do sistema Scion, Segunda edição." version="1.0" compilationDate="07082025140805" compilationDigest="6d069039c79b1d8f9c7d0b2df9737bea2ad919b7">
+        <info name="Scion 2e" description="Ficha de Personagem do sistema Scion, Segunda edição." author="thirteen" site="https://www.twitter.com/i_am_thirteen"/>
+        <dataTypes>
+            <dataType id="thirteen.Scion2e" title="Scion 2e" formType="">
+                <info title="Scion 2e"/>
+            </dataType>
+        </dataTypes>
     </element>
     <element id="Stark_OMM_1" name="OMM" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true" fileName="Os Mundos dos Mortos.rpk" repositoryPath="Sheets/Os Mundos dos Mortos/" author="Stark_OMM_1" description="Pluguin de ficha O mundo dos mortos" version="1.0" compilationDate="03032023122456" compilationDigest="36648b6d939e590210c72d4e5034523c289d902f">
         <info lang="pt-BR" name="OMM" description="Pluguin de ficha O mundo dos mortos" author="Stark_OMM_1" site="http://www.rrpg.com.br"/>

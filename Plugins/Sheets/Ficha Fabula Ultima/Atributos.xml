@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+	<image align="client" style="autoFit" src="/imagens/Fundo.jpg"/>
+	<scrollBox align="client">
+		<flowLayout class="janela1">
+			<flowPart class="janela3" width="255" height="255">
+					<rectangle align="client" class="janela2">
+					<image align="client" style="stretch" src="/imagens/Janela1.png"/>
+						<rectangle left="15" top="15" width="225" height="225" color="transparent" strokeColor="White" strokeSize="1" margins="{left=5, right=5, top=5, bottom=5}">
+						<image align="client" style="proportional" src="/imagens/Logo.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+						<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+							<event name="OnStartDrag">
+								drag:addData("imageURL", sheet.avatar);
+							</event>
+						</image>
+						</rectangle>
+					</rectangle>
+			</flowPart>
+
+			<flowLineBreak/>
+
+			<flowPart class="janela3" width="800" height="220">
+				<rectangle align="client" class="janela2">
+				<image align="client" style="stretch" src="/imagens/Janela0.png"/>
+					<label left="300" top="5" width="200" height="25" text="Traços" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+
+					<rectangle left="11" top="35" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Nome" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatLabelEdit left="141" top="35" width="250" height="25" field="nome"/>
+
+					<rectangle left="11" top="65" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Raça" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatLabelEdit left="141" top="65" width="250" height="25" field="raca"/>
+
+					<rectangle left="11" top="95" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Sexo" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatLabelEdit left="141" top="95" width="250" height="25" field="sexo"/>
+
+					<rectangle left="11" top="125" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Idade" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatNumEdit left="141" top="125" width="250" height="25" field="idade" unit="anos"/>
+
+					<rectangle left="11" top="155" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Altura" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatNumEdit left="141" top="155" width="250" height="25" field="altura" unit="m"/>
+
+					<rectangle left="11" top="185" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Peso" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatNumEdit left="141" top="185" width="250" height="25" field="peso" unit="kg"/>
+
+					<rectangle left="410" top="35" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Identidade" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatLabelEdit left="540" top="35" width="250" height="25" field="identidade"/>
+
+					<rectangle left="410" top="65" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Tema" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatLabelEdit left="540" top="65" width="250" height="25" field="tema"/>
+
+					<rectangle left="410" top="95" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Origem" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatLabelEdit left="540" top="95" width="250" height="25" field="origem"/>
+
+					<rectangle left="410" top="125" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Fabula" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatIntEdit left="540" top="125" width="250" height="25" field="fabula"/>
+
+					<rectangle left="410" top="155" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Experiência" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatIntEdit left="540" top="155" width="250" height="25" field="experiencia"/>
+
+					<rectangle left="410" top="185" class="janela5">
+						<label align="client" vertTextAlign="center" horzTextAlign="center" text="Nível" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatIntEdit left="540" top="185" width="250" height="25" field="nivel"/>
+				</rectangle>
+			</flowPart>
+
+			<flowLineBreak/>
+
+			<flowPart class="janela3" width="800" height="325">
+				<rectangle align="client" class="janela2">
+				<image align="client" style="stretch" src="/imagens/Janela0.png"/>
+					<label left="300" top="5" width="200" height="25" text="Atributos" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+					<rectangle left="10" top="35" width="505" height="280" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="5" yradius="5">
+						<label left="110" top="17" width="50" height="25" text="Base" fontSize="16" vertTextAlign="center" horzTextAlign="center" fontColor="White" fontFamily="Courier New"/>
+						<label left="163" top="17" width="50" height="25" text="Atual" fontSize="16" vertTextAlign="center" horzTextAlign="center" fontColor="White" fontFamily="Courier New"/>
+						<label left="310" top="17" width="100" height="25" text="Condições" fontSize="16" vertTextAlign="center" horzTextAlign="center" fontColor="White" fontFamily="Courier New"/>
+
+						<layout left="20" top="30" width="200" height="35">
+							<AtributoBox text="Destreza" field="destreza"/>
+						</layout>
+
+						<layout left="20" top="60" width="200" height="35">
+							<AtributoBox text="Astúcia" field="astucia"/>
+						</layout>
+
+						<layout left="20" top="90" width="200" height="35">
+							<AtributoBox text="Vigor" field="vigor"/>
+						</layout>
+
+						<layout left="20" top="120" width="200" height="35">
+							<AtributoBox text="Vontade" field="vontade"/>
+						</layout>
+
+						<layout left="235" top="30" width="120" height="35">
+							<CondicaoBox text="Lento" field="lento"/>
+						</layout>
+
+						<layout left="235" top="60" width="120" height="35">
+							<CondicaoBox text="Atordoado" field="atordoado"/>
+						</layout>
+
+						<layout left="235" top="90" width="120" height="35">
+							<CondicaoBox text="Fraco" field="fraco"/>
+						</layout>
+
+						<layout left="235" top="120" width="120" height="35">
+							<CondicaoBox text="Abalado" field="abalado"/>
+						</layout>
+
+						<layout left="345" top="50" width="25" height="35">
+						<image align="client" style="stretch" src="/imagens/Linha.png"/>
+						</layout>
+
+						<layout left="365" top="45" width="120" height="35">
+							<CondicaoBox text="Enfurecido" field="enfurecido"/>
+						</layout>
+
+						<layout left="345" top="110" width="25" height="35">
+						<image align="client" style="stretch" src="/imagens/Linha.png"/>
+						</layout>
+
+						<layout left="365" top="105" width="120" height="35">
+							<CondicaoBox text="Envenenado" field="envenenado"/>
+						</layout>
+
+						<rectangle left="10" top="199" width="115" height="35" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+							<label vertTextAlign="center" left="28" width="80" height="35" text="Iniciativa" fontColor="White" fontFamily="Courier New"/>
+						</rectangle>
+						<image left="17" top="206" width="20" height="20" style="stretch" src="/imagens/Iniciativa.png"/>
+						<label left="121" top="185" width="50" height="25" text="Bônus" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontColor="White" fontFamily="Courier New"/>
+						<formatIntEdit left="124" top="204" width="43" height="25" field="iniciativa"/>
+
+						<button left="167" top="204" width="25" height="25" opacity="1" text="🎲">
+							<event name="onClick">
+								local rollIni = Firecast.interpretarRolagem("1d" .. (sheet.destrezaAtual or 6) .. "+1d" .. (sheet.astuciaAtual or 6) .. "+" .. (sheet.iniciativa or 0));
+								local room = Firecast.getMesaDe(sheet);
+								room.activeChat:rolarDados(rollIni, "Iniciativa");
+							</event>
+    					</button>
+
+						<rectangle left="217" top="199" width="85" height="35" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+							<label vertTextAlign="center" left="29" width="80" height="35" text="Defesa" fontColor="White" fontFamily="Courier New"/>
+						</rectangle>
+						<image left="223" top="206" width="20" height="20" style="stretch" src="/imagens/Def.png"/>
+						<formatIntEdit left="301" top="204" width="43" height="25" field="defesa"/>
+
+						<rectangle left="367" top="199" width="85" height="35" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+							<label vertTextAlign="center" left="29" width="80" height="35" text="Defesa Mágica" fontColor="White" fontFamily="Courier New"/>
+						</rectangle>
+						<image left="373" top="206" width="20" height="20" style="stretch" src="/imagens/DefM.png"/>
+						<formatIntEdit left="451" top="204" width="43" height="25" field="defesaMagica"/>
+					</rectangle>
+
+					<rectangle left="520" top="35" width="270" height="280" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="5" yradius="5">
+						<layout left="55" top="30" width="250" height="80">
+							<label left="28" top="0" width="100" height="25" text="Bônus" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontColor="White" fontFamily="Courier New"/>
+							<SubAtributoBox text="PV" field="pvTotal" color="#AF0000"/>
+						</layout>
+						<image left="172" top="20" width="25" height="25" style="stretch" src="/imagens/Vida.png"/>
+
+						<layout left="55" top="115" width="250" height="80">
+							<label left="28" top="0" width="100" height="25" text="Bônus" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontColor="White" fontFamily="Courier New"/>
+							<SubAtributoBox text="PM" field="pmTotal" color="#0375FF"/>
+						</layout>
+						<image left="172" top="105" width="25" height="25" style="stretch" src="/imagens/Mana.png"/>
+
+						<layout left="55" top="200" width="250" height="80">
+							<label left="28" top="0" width="100" height="25" text="Bônus" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontColor="White" fontFamily="Courier New"/>
+							<SubAtributoBox text="PI" field="piTotal" color="Gray"/>
+						</layout>
+						<image left="172" top="190" width="25" height="25" style="stretch" src="/imagens/Item.png"/>
+
+					    <dataLink fields="{'nivel','vigor','pvTotalBonus', 'vigorAtual'}" defaultValues="{'1', '6', '0', '6'}">
+                            <event name="onChange">
+                                if sheet == nil then return end;
+                                sheet.pvTotal = (tonumber(sheet.vigor) or 0) * 5 +
+                                                (tonumber(sheet.nivel) or 0) +
+                                                (tonumber(sheet.pvTotalBonus) or 0);
+							</event>
+                        </dataLink>
+
+						<dataLink fields="{'nivel','vontade','pmTotalBonus', 'vontadeAtual', 'zenit'}" defaultValues="{'1', '6', '0', '6', '0'}">
+                            <event name="onChange">
+                                if sheet == nil then return end;
+                                sheet.pmTotal = (tonumber(sheet.vontade) or 0) * 5 +
+                                                (tonumber(sheet.nivel) or 0) +
+                                                (tonumber(sheet.pmTotalBonus) or 0);
+                            </event>
+                        </dataLink>
+
+						<dataLink fields="{'piTotalBonus', 'destreza', 'astucia', 'destrezaAtual', 'astuciaAtual', 'iniciativa', 'experiencia', 'fabula'}" defaultValues="{'0', '6', '6', '6', '6', '0', '0', '0'}">
+                            <event name="onChange">
+                                if sheet == nil then return end;
+                                sheet.piTotal = 6 + (tonumber(sheet.piTotalBonus) or 0);
+                            </event>
+                        </dataLink>
+					</rectangle>
+				</rectangle>
+			</flowPart>
+		</flowLayout>
+	</scrollBox>
+</rectangle>

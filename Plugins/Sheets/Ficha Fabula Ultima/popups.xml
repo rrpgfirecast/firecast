@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <popup name="popInv" width="600" height="275">
+        <rectangle class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png"/>
+            <rectangle left="10" top="10" width="250" height="250" color="transparent" strokeColor="Gray" strokeSize="2" margins="{left=10, right=10, top=10, bottom=10}">
+                <image align="client" style="proportional" src="/imagens/Logo.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                <image align="client" field="imgItem" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    <event name="OnStartDrag">
+                        drag:addData("imageURL", sheet.imgItem);
+                    </event>
+                </image>
+            </rectangle>
+            <formatTextEdit left="270" top="5" width="317" height="258" field="descItem"/>
+        </rectangle>
+    </popup>
+
+    <popup name="popInv1" width="600" height="275">
+        <rectangle class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png"/>
+            <rectangle left="10" top="10" width="250" height="250" color="transparent" strokeColor="Gray" strokeSize="2" margins="{left=10, right=10, top=10, bottom=10}">
+                <image align="client" style="proportional" src="/imagens/Logo.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                <image align="client" field="imgItem1" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    <event name="OnStartDrag">
+                        drag:addData("imageURL", sheet.imgItem1);
+                    </event>
+                </image>
+            </rectangle>
+            <formatTextEdit left="270" top="5" width="317" height="258" field="descItem1"/>
+        </rectangle>
+    </popup>
+
+    <popup name="popInv2" width="600" height="275">
+        <rectangle class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png"/>
+            <rectangle left="10" top="10" width="250" height="250" color="transparent" strokeColor="Gray" strokeSize="2" margins="{left=10, right=10, top=10, bottom=10}">
+                <image align="client" style="proportional" src="/imagens/Logo.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                <image align="client" field="imgItem2" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    <event name="OnStartDrag">
+                        drag:addData("imageURL", sheet.imgItem2);
+                    </event>
+                </image>
+            </rectangle>
+            <formatTextEdit left="270" top="5" width="317" height="258" field="descItem2"/>
+        </rectangle>
+    </popup>
+
+    <popup name="popInv3" width="600" height="275">
+        <rectangle class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png"/>
+            <rectangle left="10" top="10" width="250" height="250" color="transparent" strokeColor="Gray" strokeSize="2" margins="{left=10, right=10, top=10, bottom=10}">
+                <image align="client" style="proportional" src="/imagens/Logo.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                <image align="client" field="imgItem3" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    <event name="OnStartDrag">
+                        drag:addData("imageURL", sheet.imgItem3);
+                    </event>
+                </image>
+            </rectangle>
+            <formatTextEdit left="270" top="5" width="317" height="258" field="descItem3"/>
+        </rectangle>
+    </popup>
+
+    <popup name="popInv4" width="600" height="275">
+        <rectangle class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png"/>
+            <rectangle left="10" top="10" width="250" height="250" color="transparent" strokeColor="Gray" strokeSize="2" margins="{left=10, right=10, top=10, bottom=10}">
+                <image align="client" style="proportional" src="/imagens/Logo.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                <image align="client" field="imgItem4" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    <event name="OnStartDrag">
+                        drag:addData("imageURL", sheet.imgItem4);
+                    </event>
+                </image>
+            </rectangle>
+            <formatTextEdit left="270" top="5" width="317" height="258" field="descItem4"/>
+        </rectangle>
+    </popup>
+
+    <popup name="popHeroicos" width="400" height="275">
+        <rectangle class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png" opacity="1"/>
+            <formatTextEdit left="5" top="5" width="382" height="258" field="descHab"/>
+        </rectangle>
+    </popup>
+
+    <popup name="popPoder" width="400" height="275">
+        <rectangle class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png" opacity="1"/>
+            <formatTextEdit left="5" top="5" width="382" height="258" field="descricaoPoderLista"/>
+        </rectangle>
+    </popup>
+
+    <popup name="popMagia" width="400" height="275">
+        <rectangle class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png" opacity="1"/>
+
+            <rectangle left="5" top="5" width="80" height="25" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="5" yradius="5">
+                <label align="client" vertTextAlign="center" horzTextAlign="center" text="Alvos" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+            </rectangle>
+            <formatLabelEdit left="84" top="5" width="302" height="25" field="alvosMagia"/>
+
+            <formatTextEdit left="5" top="32" width="382" height="231" field="descricaoMagiaLista"/>
+        </rectangle>
+    </popup>
+
+    <popup name="popRitual" width="400" height="275">
+        <rectangle class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png" opacity="1"/>
+            <formatTextEdit left="5" top="5" width="382" height="258" field="descricaoRitualLista"/>
+        </rectangle>
+    </popup>
+
+    <popup name="popInfo" width="488" height="448">
+        <rectangle align="client" class="janela2">
+            <image align="client" style="stretch" src="/imagens/Janela0.png" opacity="1"/>
+
+            <rectangle left="70" top="5" class="janela5">
+                <label left="0" top="0" width="131" height="25" text="Imagens" fontSize="16" vertTextAlign="center" horzTextAlign="center" fontColor="White" fontStyle="bold" fontFamily="Courier New"/>
+            </rectangle>
+
+            <button left="5" top="7" width="23" height="23" text="+">
+                <event name="onClick">
+                    self.rclImagem:append();
+                </event>
+            </button>
+
+            <rectangle  left="5" top="30" width="270" height="402" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                <recordList name="rclImagem" field="campoImagem" templateForm="frmImagem" left="15" top="0" width="245" height="398" layout="vertical" minQt="0"/>
+            </rectangle>
+
+            <!-- Exportar -->
+            <button left="316" top="185" width="120" height="25" text="Exportar Ficha" >
+                <event name="onClick">
+                    local xml = NDB.exportXML(sheet);
+
+                    local export = {};
+                    Utils.binaryEncode(export, "utf8", xml);
+
+                    local stream = Utils.newMemoryStream();
+                    stream:write(export);
+
+                    Dialogs.saveFile(LANG("Fabula.other.save"), stream, "sheet.xml", "application/xml",
+                        function()
+                            stream:close();
+                            showMessage(LANG("Fabula.other.exported"));
+                        end);
+                </event>
+            </button>
+            <!-- Importar -->
+            <button left="316" top="215" width="120" height="25" text="Importar Ficha" >
+                <event name="onClick">
+                    Dialogs.openFile(LANG("Fabula.other.import"), "application/xml", false, 
+                        function(arquivos)
+                            local arq = arquivos[1];
+
+                            local import = {};
+                            arq.stream:read(import, arq.stream.size);
+
+                            local xml = Utils.binaryDecode(import, "utf8");
+
+                            NDB.importXML(sheet, xml);
+                        end);
+                </event>
+            </button>
+        </rectangle>
+    </popup>
+</group>

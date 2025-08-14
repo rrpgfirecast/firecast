@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+	<script>
+		<![CDATA[
+		local function showInfoPopup()
+			local pop = self:findControlByName("popInfo");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("center", self);
+			else
+				showMessage("Não encontrei o popup de imagens para exibir.");
+			end;
+		end;
+		]]>
+	</script>
+
+	<image align="client" style="autoFit" src="/imagens/Fundo.jpg"/>
+	<scrollBox align="client">
+		<flowLayout class="janela1">
+            <flowPart class="janela3" width="800" height="490">
+                <rectangle align="client" class="janela2">
+                	<image align="client" style="stretch" src="/imagens/Janela2.png"/>
+                    <label left="300" top="5" width="200" height="25" text="Laços" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+					
+					<rectangle left="15" top="40" width="60" height="60" color="transparent" strokeColor="White" strokeSize="2">
+                		<image align="client" style="proportional" src="/imagens/Vin.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                		<image align="client" field="vinculo1" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    		<event name="OnStartDrag">
+                        		drag:addData("imageURL", sheet.vinculo1);
+                    		</event>
+                		</image>
+            		</rectangle>
+
+					<rectangle left="15" top="115" width="60" height="60" color="transparent" strokeColor="White" strokeSize="2">
+                		<image align="client" style="proportional" src="/imagens/Vin.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                		<image align="client" field="vinculo2" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    		<event name="OnStartDrag">
+                        		drag:addData("imageURL", sheet.vinculo2);
+                    		</event>
+                		</image>
+            		</rectangle>
+
+					<rectangle left="15" top="190" width="60" height="60" color="transparent" strokeColor="White" strokeSize="2">
+                		<image align="client" style="proportional" src="/imagens/Vin.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                		<image align="client" field="vinculo3" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    		<event name="OnStartDrag">
+                        		drag:addData("imageURL", sheet.vinculo3);
+                    		</event>
+                		</image>
+            		</rectangle>
+
+					<rectangle left="15" top="265" width="60" height="60" color="transparent" strokeColor="White" strokeSize="2">
+                		<image align="client" style="proportional" src="/imagens/Vin.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                		<image align="client" field="vinculo4" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    		<event name="OnStartDrag">
+                        		drag:addData("imageURL", sheet.vinculo4);
+                    		</event>
+                		</image>
+            		</rectangle>
+
+					<rectangle left="15" top="340" width="60" height="60" color="transparent" strokeColor="White" strokeSize="2">
+                		<image align="client" style="proportional" src="/imagens/Vin.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                		<image align="client" field="vinculo5" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    		<event name="OnStartDrag">
+                        		drag:addData("imageURL", sheet.vinculo5);
+                    		</event>
+                		</image>
+            		</rectangle>
+
+					<rectangle left="15" top="415" width="60" height="60" color="transparent" strokeColor="White" strokeSize="2">
+                		<image align="client" style="proportional" src="/imagens/Vin.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                		<image align="client" field="vinculo6" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    		<event name="OnStartDrag">
+                        		drag:addData("imageURL", sheet.vinculo6);
+                    		</event>
+                		</image>
+            		</rectangle>
+
+					<layout left="70" top="35" width="750" height="70">
+						<VinculoBox field="vinculo1"/>
+					</layout>
+
+					<layout left="70" top="110" width="750" height="70">
+						<VinculoBox field="vinculo2"/>
+					</layout>
+
+					<layout left="70" top="185" width="750" height="70">
+						<VinculoBox field="vinculo3"/>
+					</layout>
+
+					<layout left="70" top="260" width="750" height="70">
+						<VinculoBox field="vinculo4"/>
+					</layout>
+
+					<layout left="70" top="335" width="750" height="70">
+						<VinculoBox field="vinculo5"/>
+					</layout>
+
+					<layout left="70" top="410" width="750" height="70">
+						<VinculoBox field="vinculo6"/>
+					</layout>
+				</rectangle>
+            </flowPart>
+
+			<flowLineBreak/>
+
+			<flowPart class="janela3" width="800" height="310">
+				<rectangle align="client" class="janela2">
+				<image align="client" style="stretch" src="/imagens/Janela0.png"/>
+					<label left="300" top="5" width="200" height="25" text="História" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+					<formatTextEdit left="7" top="31" width="786" height="273" field="historia"/>
+				</rectangle>
+			</flowPart>
+		</flowLayout>
+	</scrollBox>
+</rectangle>

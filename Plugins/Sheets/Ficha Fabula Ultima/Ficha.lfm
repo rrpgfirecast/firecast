@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="br.com.rrpg.fabulaultima" formType="sheetTemplate" title="Ficha Fabula Ultima" name="FabulaUltima" align="client" theme="light">
+    <import file="templates.xml"/>
+    <import file="styles.xml"/>
+    <import file="popups.xml"/>
+    
+    <tabControl align="client">
+        <tab title="Atributos">
+            <import file="Atributos.xml"/>
+        </tab>
+        <tab title="Poderes">
+            <import file="Poderes.xml"/>
+        </tab>
+        <tab title="Magias">
+            <import file="Magias.xml"/>
+        </tab>
+        <tab title="Laços">
+            <import file="Historia.xml"/>
+        </tab>
+        <tab title="Equipamentos">
+            <import file="Equipamentos.xml"/>
+        </tab>
+    </tabControl>
+</form>

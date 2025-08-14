@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmClasses" width="740" height="228" theme="light">
+    <import file="templates.xml"/>
+    <import file="styles.xml"/>
+
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa classe?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+		]]>
+	</script>
+
+	<rectangle align="client" class="janela2">
+		<image align="client" style="stretch" src="/imagens/Janela0.png"/>
+
+		<rectangle left="7" top="5" class="janela5">
+			<label align="client" vertTextAlign="center" horzTextAlign="center" text="Classe" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+		</rectangle>
+		<formatLabelEdit left="137" top="5" width="340" height="25" field="classeHab"/>
+
+		<rectangle left="480" top="5" class="janela5">
+			<label align="client" vertTextAlign="center" horzTextAlign="center" text="Nível" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+		</rectangle>
+		<formatIntEdit left="610" top="5" width="127" height="25" field="nivelHab"/>
+
+        <rectangle left="7" top="33" width="131" height="65" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+			<label align="client" vertTextAlign="center" horzTextAlign="center" text="Benefícios" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+		</rectangle>
+		<formatTextEdit left="137" top="33" width="624" height="65" field="beneficio"/>
+
+        <rectangle left="7" top="101" width="131" height="122" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+			<label align="client" vertTextAlign="center" horzTextAlign="center" text="Poderes" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+		</rectangle>
+        <rectangle left="137" top="101" width="624" height="122" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+			<button left="597" top="5" width="23" height="23" text="+">
+				<event name="onClick">
+					self.rclHabilidades:append();
+				</event>
+			</button>
+			<recordList name="rclHabilidades" field="campoHabilidades" templateForm="frmHabilidades" left="3" top="3" width="594" height="120" layout="vertical" minQt="0"/>
+		</rectangle>
+		<button left="737" top="6" width="23" height="23" text="X" onClick="askForDelete();"/>
+	</rectangle>
+</form>

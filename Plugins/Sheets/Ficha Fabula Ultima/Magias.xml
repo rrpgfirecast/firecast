@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+    <image align="client" style="autoFit" src="/imagens/Fundo.jpg"/>
+    <scrollBox align="client">
+        <flowLayout class="janela1">
+            <flowPart class="janela3" width="800" height="500">
+                <rectangle align="client" class="janela2">
+                	<image align="client" style="stretch" src="/imagens/Janela2.png"/>
+                    <label left="300" top="5" width="200" height="25" text="Magias" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+                    <button left="6" top="6" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclFeiticos:append();
+                        </event>
+                    </button>
+                    <recordList name="rclFeiticos" field="campoFeiticos" templateForm="frmFeiticos" left="6" top="35" width="786" height="450" layout="vertical" minQt="0"/>
+                </rectangle>
+            </flowPart>
+
+            <flowLineBreak/>
+            
+            <flowPart class="janela3" width="800" height="300">
+				<rectangle align="client" class="janela2">
+				    <image align="client" style="stretch" src="/imagens/Janela0.png"/>
+
+                    <layout left="65" top="75" width="140" height="140">
+                        <rectangle left="5" top="5" width="130" height="130" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <image align="client" style="stretch" src="/imagens/Clock.png"/>
+                        </rectangle>
+
+                        <rectangle left="72" top="15" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="69" top="12" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock1"/>
+                        </rectangle>
+
+                        <rectangle left="93" top="27" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="90" top="24" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock2"/>
+                        </rectangle>
+
+                        <rectangle left="105" top="49" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="102" top="46" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock3"/>
+                        </rectangle>
+
+                        <rectangle left="105" top="73" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="102" top="70" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock4"/>
+                        </rectangle>
+
+                        <rectangle left="93" top="94" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="90" top="91" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock5"/>
+                        </rectangle>
+
+                        <rectangle left="72" top="105" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="69" top="102" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock6"/>
+                        </rectangle>
+
+                        <rectangle left="48" top="105" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="45" top="102" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock7"/>
+                        </rectangle>
+
+                        <rectangle left="27" top="94" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="24" top="91" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock8"/>
+                        </rectangle>
+
+                        <rectangle left="15" top="73" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="12" top="70" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock9"/>
+                        </rectangle>
+
+                        <rectangle left="15" top="49" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="12" top="46" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock10"/>
+                        </rectangle>
+
+                        <rectangle left="27" top="27" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="24" top="24" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock11"/>
+                        </rectangle>
+
+                        <rectangle left="48" top="15" width="20" height="20" color="Gray" cornerType="round" xradius="9" yradius="9"/>
+                        <rectangle left="45" top="12" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+                            <CheckBox left="0" top="0" field="clock12"/>
+                        </rectangle>
+                    </layout>
+
+
+                    <rectangle left="418" top="43" width="150" height="25" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+                        <label vertTextAlign="center" horzTextAlign="center" align="client" fontSize="16" text="Disciplinas" fontColor="White" fontFamily="Courier New"/>
+                    </rectangle>
+                    <rectangle left="270" top="67" width="446" height="66" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+                        <layout left="0" top="5" width="200" height="35">
+                            <RitualBox text="Arcanismo" field="arcanismo"/>
+                        </layout>
+
+                        <layout left="147" top="5" width="200" height="35">
+                            <RitualBox text="Quimerismo" field="quimerismo"/>
+                        </layout>
+
+                        <layout left="294" top="5" width="200" height="35">
+                            <RitualBox text="Elementalismo" field="elementalismo"/>
+                        </layout>
+
+                        <layout left="0" top="35" width="200" height="35">
+                            <RitualBox text="Entropismo" field="entropismo"/>
+                        </layout>
+
+                        <layout left="147" top="35" width="200" height="35">
+                            <RitualBox text="Ritualismo" field="ritualismo"/>
+                        </layout>
+
+                        <layout left="294" top="35" width="200" height="35">
+                            <RitualBox text="Espiritualismo" field="espiritualismo"/>
+                        </layout>
+                    </rectangle>
+
+					<label left="310" top="5" width="200" height="25" text="Rituais" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+					
+                    <button left="245" top="152" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclRituais:append();
+                        </event>
+                    </button>
+
+                    <rectangle left="270" top="145" width="446" height="127" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+                        <recordList name="rclRituais" field="campoRituais" templateForm="frmRituais" left="2" top="5" width="462" height="120" layout="vertical" minQt="0"/>
+                    </rectangle>
+                </rectangle>
+			</flowPart>
+		</flowLayout>
+	</scrollBox>
+</rectangle>

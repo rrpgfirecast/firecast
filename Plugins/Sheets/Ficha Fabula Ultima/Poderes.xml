@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+    <image align="client" style="autoFit" src="/imagens/Fundo.jpg"/>
+    <scrollBox align="client">
+        <flowLayout class="janela1">
+            <flowPart class="janela3" width="800" height="500">
+                <rectangle align="client" class="janela2">
+                	<image align="client" style="stretch" src="/imagens/Janela2.png"/>
+                    <label left="300" top="5" width="200" height="25" text="Classes" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+                    <button left="6" top="6" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclClasses:append();
+                        </event>
+                    </button>
+                    <recordList name="rclClasses" field="campoClasses" templateForm="frmClasses" left="6" top="35" width="786" height="456" layout="vertical" minQt="0"/>
+                </rectangle>
+            </flowPart>
+
+            <flowLineBreak/>
+
+            <flowPart class="janela3" width="400" height="300">
+				<rectangle align="client" class="janela2">
+				    <image align="client" style="stretch" src="/imagens/Janela1.png"/>
+					<label left="100" top="5" width="200" height="25" text="Características" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+					<formatTextEdit left="10" top="35" width="380" height="255" field="caracteristicas"/>
+				</rectangle>
+			</flowPart>
+
+            <flowPart class="janela3" width="400" height="300">
+				<rectangle align="client" class="janela2">
+				    <image align="client" style="stretch" src="/imagens/Janela1.png"/>
+					<label left="100" top="5" width="200" height="25" text="Poderes Heroicos" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+					
+                    <button left="8" top="6" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclHeroicos:append();
+                        </event>
+                    </button>
+                    <recordList name="rclHeroicos" field="campoHeroicos" templateForm="frmHeroicos" left="6" top="35" width="382" height="250" layout="vertical" minQt="0"/>
+				</rectangle>
+			</flowPart>
+        </flowLayout>
+    </scrollBox>
+</rectangle>

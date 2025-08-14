@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaques" width="400" height="55" theme="light">
+    <import file="templates.xml"/>
+    <import file="styles.xml"/>
+
+	<script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+	    ]]>
+	</script>
+
+	<rectangle  left="0" top="0" width="365" height="51" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="5" yradius="5">
+		<rectangle left="0" width="140" top="0" class="janela6">
+			<label  vertTextAlign="center" horzTextAlign="center" align="client" text="Ataque" fontColor="White" fontFamily="Courier New"/>
+		</rectangle>
+		<rectangle left="140" top="0" width="100" class="janela6">
+			<label  vertTextAlign="center" horzTextAlign="center" align="client" text="Atributos" fontColor="White" fontFamily="Courier New"/>
+		</rectangle>
+		<rectangle left="240" top="0" width="50" class="janela6">
+			<label  vertTextAlign="center" horzTextAlign="center" align="client" text="Bônus" fontColor="White" fontFamily="Courier New"/>
+		</rectangle>
+		<rectangle left="290" top="0" width="50" class="janela6">
+				<label  vertTextAlign="center" horzTextAlign="center" align="client" text="Dano" fontColor="White" fontFamily="Courier New"/>
+		</rectangle>
+		<button left="340" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+
+		<formatLabelEdit left="0" top="25" width="140" height="25" field="nomeAtaque"/>
+		<formatIntEdit left="140" top="25" width="50" height="25" field="atrGolpe1" prefix="d"/>
+		<formatIntEdit left="190" top="25" width="50" height="25" field="atrGolpe2" prefix="d"/>
+		<formatIntEdit left="240" top="25" width="50" height="25" field="bonusGolpe"/>
+		<formatIntEdit left="290" top="25" width="50" height="25" field="danoGolpe"/>
+		
+		<button left="340" top="26" width="23" height="23" text="🎲" >
+			<event name="onClick">
+				if sheet == nil then return end;
+				local rollAtk = Firecast.interpretarRolagem("1d" .. (sheet.atrGolpe1 or 6) .. "+1d" .. (sheet.atrGolpe2 or 6) .. "+" .. (tonumber(sheet.bonusGolpe) or 0));
+				local room = Firecast.getMesaDe(sheet);
+				room.activeChat:rolarDados(rollAtk, (sheet.nomeAtaque or "Ataque") .. " - Dano: HR + " .. (tonumber(sheet.danoGolpe) or 0));
+			</event>
+		</button>
+	</rectangle>
+</form>

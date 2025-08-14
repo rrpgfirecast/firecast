@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidades" width="440" height="30" theme="light">
+    <import file="templates.xml"/>
+    <import file="styles.xml"/>
+
+	<script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse poder?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showPoderPopup()
+			local pop = self:findControlByName("popPoder");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Não encontrei o popup do poder para exibir.");
+			end;
+		end;
+		]]>
+	</script>
+
+	<formatLabelEdit left="2" top="1" width="386" height="25" field="nomePoderLista"/>
+
+	<rectangle left="391" top="1" width="80" height="25" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="5" yradius="5">
+		<label align="client" vertTextAlign="center" horzTextAlign="center" text="Nível" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+	</rectangle>
+	<formatIntEdit left="470" top="1" width="60" height="25" field="nivelPoderLista"/>
+	
+	<button left="530" top="2" width="23" height="23" text="i" onClick="showPoderPopup();"/>
+	<button left="553" top="2" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>
