@@ -22,9 +22,9 @@
 	</template>
 	
 	<template name="CampoVida">
-		<flowPart name="flPart_$(semAcento)" height="35" width="270" minWidth="270" margins="bottom=3">
+		<flowPart name="flPart_$(semAcento)" height="35" width="270" minWidth="270" margins="{bottom=3}">
 			<rectangle name="rectVid$(semAcento)" align="client" color="#272727" xradius= "5" yradius="5" cornerType="bevel">
-				<checkBox align="left" field="chcBVid$(semAcento)" width="25" margins="left=5" />
+				<checkBox align="left" field="chcBVid$(semAcento)" width="25" margins="{left=5}" />
 				<dataLink field="chcBVid$(semAcento)" defaultValue="false">
 					<event name="onChange">
 						<![CDATA[
@@ -44,9 +44,9 @@
 	</template>
 	
 	<template name="CampoVidaInconsciente">
-		<flowPart height="35" width="270" minWidth="270" margins="bottom=3">
+		<flowPart height="35" width="270" minWidth="270" margins="{bottom=3}">
 			<rectangle name="rectVid$(semAcento)" align="client" color="#272727" xradius= "5" yradius="5" cornerType="bevel">
-				<checkBox align="left" field="chcBVid$(semAcento)" width="25" margins="left=5" />
+				<checkBox align="left" field="chcBVid$(semAcento)" width="25" margins="{left=5}" />
 				<dataLink field="chcBVid$(semAcento)" defaultValue="false">
 					<event name="onChange">
 						<![CDATA[
@@ -214,7 +214,7 @@
 	</template>
 	
 	<template name="Coluna">
-		<layout class="flowCampo" height="165" align="top" margins="bottom=20">
+		<layout class="flowCampo" height="165" align="top" margins="{bottom=20}">
 			<rectangle align="client" color="#2d2d2d" padding="{top=15, left=25, bottom=15, right=25}" xradius= "5" yradius="5" cornerType="bevel">
 				<flowLayout orientation="vertical" align="client" autoHeight="true" maxColumns="1">
 					<flowPart class="flowCampo" margins="{bottom=5}"><label class="AtrClasse" text="$(classAtr)" /></flowPart>
@@ -262,7 +262,7 @@
 				<label class="AtrClasse" text="$(classAtr)" horzTextAlign="center" margins="{bottom=10}" />
 				<flowPart class="flowCampo">
 					<flowLayout horzAlign="center" margins="{bottom=5}" align="client" orientation="horizontal">
-						<imageCheckBox margins="right=3" name="checkImp_01_$(id)" field="fldCheck$(id)_01" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_01_$(id)" field="fldCheck$(id)_01" onClick="
 							sheet.fldCheck$(id)_01 = not sheet.fldCheck$(id)_01;
 							
 							if(sheet.fldCheck$(id)_02) then 
@@ -280,7 +280,7 @@
 								sheet.fldCheck$(id)_12 = false; 
 							end;
 						"/>
-						<imageCheckBox margins="right=3" name="checkImp_02_$(id)" field="fldCheck$(id)_02"  onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_02_$(id)" field="fldCheck$(id)_02"  onClick="
 							sheet.fldCheck$(id)_02 = not sheet.fldCheck$(id)_02;
 							
 							if(sheet.fldCheck$(id)_02) then 
@@ -304,7 +304,7 @@
 								sheet.fldCheck$(id)_12 = false; 
 							end;
 						" />
-						<imageCheckBox margins="right=3" name="checkImp_03_$(id)" field="fldCheck$(id)_03" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_03_$(id)" field="fldCheck$(id)_03" onClick="
 							sheet.fldCheck$(id)_03 = not sheet.fldCheck$(id)_03;
 							
 							if(sheet.fldCheck$(id)_03) then 
@@ -330,7 +330,7 @@
 								sheet.fldCheck$(id)_12 = false; 
 							end;
 						" />
-						<imageCheckBox margins="right=3" name="checkImp_04_$(id)" field="fldCheck$(id)_04" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_04_$(id)" field="fldCheck$(id)_04" onClick="
 							sheet.fldCheck$(id)_04 = not sheet.fldCheck$(id)_04;
 							
 							if(sheet.fldCheck$(id)_04) then 
@@ -358,7 +358,7 @@
 								sheet.fldCheck$(id)_12 = false; 
 							end;
 						" />
-						<imageCheckBox margins="right=3" name="checkImp_05_$(id)" field="fldCheck$(id)_05" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_05_$(id)" field="fldCheck$(id)_05" onClick="
 							sheet.fldCheck$(id)_05 = not sheet.fldCheck$(id)_05;
 
 							if(sheet.fldCheck$(id)_05) then 
@@ -388,7 +388,7 @@
 								sheet.fldCheck$(id)_12 = false;
 							end;
 						" />
-						<imageCheckBox margins="right=3" name="checkImp_06_$(id)" field="fldCheck$(id)_06" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_06_$(id)" field="fldCheck$(id)_06" onClick="
 							sheet.fldCheck$(id)_06 = not sheet.fldCheck$(id)_06;
 
 							if(sheet.fldCheck$(id)_06) then 
@@ -421,7 +421,7 @@
 							end;
 						" />
 						
-						<imageCheckBox margins="right=3" name="checkImp_07_$(id)" field="fldCheck$(id)_07" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_07_$(id)" field="fldCheck$(id)_07" onClick="
 							sheet.fldCheck$(id)_07 = not sheet.fldCheck$(id)_07;
 
 							if(sheet.fldCheck$(id)_07) then 
@@ -455,7 +455,7 @@
 								sheet.fldCheck$(id)_12 = false;
 							end;
 						" />
-						<imageCheckBox margins="right=3" name="checkImp_08_$(id)" field="fldCheck$(id)_08" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_08_$(id)" field="fldCheck$(id)_08" onClick="
 							sheet.fldCheck$(id)_08 = not sheet.fldCheck$(id)_08;
 
 							if(sheet.fldCheck$(id)_08) then 
@@ -491,7 +491,7 @@
 								sheet.fldCheck$(id)_12 = false;
 							end;
 						" />
-						<imageCheckBox margins="right=3" name="checkImp_09_$(id)" field="fldCheck$(id)_09" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_09_$(id)" field="fldCheck$(id)_09" onClick="
 							sheet.fldCheck$(id)_09 = not sheet.fldCheck$(id)_09;
 
 							if(sheet.fldCheck$(id)_09) then 
@@ -529,7 +529,7 @@
 								sheet.fldCheck$(id)_12 = false;
 							end;
 						" />
-						<imageCheckBox margins="right=3" name="checkImp_10_$(id)" field="fldCheck$(id)_10" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_10_$(id)" field="fldCheck$(id)_10" onClick="
 							sheet.fldCheck$(id)_10 = not sheet.fldCheck$(id)_10;
 
 							if(sheet.fldCheck$(id)_10) then 
@@ -569,7 +569,7 @@
 								sheet.fldCheck$(id)_12 = false;
 							end;
 						" />
-						<imageCheckBox margins="right=3" name="checkImp_11_$(id)" field="fldCheck$(id)_11" onClick="
+						<imageCheckBox margins="{right=3}" name="checkImp_11_$(id)" field="fldCheck$(id)_11" onClick="
 							sheet.fldCheck$(id)_11 = not sheet.fldCheck$(id)_11;
 
 							if(sheet.fldCheck$(id)_11) then 
@@ -767,24 +767,24 @@
 	</template>
 
 	<template name="Caminhos">
-		<flowLayout orientation="vertical" align="top" autoHeight="true" maxColumns="1" margins="bottom=20" minWidth="425">
+		<flowLayout orientation="vertical" align="top" autoHeight="true" maxColumns="1" margins="{bottom=20}" minWidth="425">
 			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
 				<rectangle color="#2d2d2d" align="client">
-					<edit field="fldEditCaminho01" align="left" width="363" text="Caminho" fontStyle="italic" margins="left=5" />
+					<edit field="fldEditCaminho01" align="left" width="363" text="Caminho" fontStyle="italic" margins="{left=5}" />
 					<dataLink field="fldEditCaminho01" defaultValue="Digite seu Caminho" />
 					<checkBox name="nomeCam01" field="fldCheckBCam01" width="25" align="right" margins="{top=3}" />
 				</rectangle>
 			</flowPart>
 			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
 				<rectangle color="#2d2d2d" align="client">
-					<edit field="fldEditCaminho02" align="left" width="363" text="Caminho" fontStyle="italic" margins="left=5" />
+					<edit field="fldEditCaminho02" align="left" width="363" text="Caminho" fontStyle="italic" margins="{left=5}" />
 					<dataLink field="fldEditCaminho02" defaultValue="Digite seu Caminho" />
 					<checkBox name="nomeCam02" field="fldCheckBCam02" width="25" align="right" margins="{top=3}" />
 				</rectangle>
 			</flowPart>
 			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
 				<rectangle color="#2d2d2d" align="client">
-					<edit field="fldEditCaminho03" align="left" width="363" text="Caminho" fontStyle="italic" margins="left=5" />
+					<edit field="fldEditCaminho03" align="left" width="363" text="Caminho" fontStyle="italic" margins="{left=5}" />
 					<dataLink field="fldEditCaminho03" defaultValue="Digite seu Caminho" />
 					<checkBox name="nomeCam03" field="fldCheckBCam03" width="25" align="right" margins="{top=3}" />
 				</rectangle>
@@ -793,27 +793,27 @@
 	</template>
 	
 	<template name="Feitos">
-		<flowLayout width="425" orientation="vertical" align="top" autoHeight="true" maxColumns="1" margins="bottom=20">
+		<flowLayout width="425" orientation="vertical" align="top" autoHeight="true" maxColumns="1" margins="{bottom=20}">
 			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
 				<label align="left" width="120" text="Pequeno Feito" />
-				<rectangle color="#2d2d2d" align="client" margins="left=5">
-					<edit field="fldEditFeito01" align="left" width="256" text="Feito" fontStyle="italic" margins="left=5" />
+				<rectangle color="#2d2d2d" align="client" margins="{left=5}">
+					<edit field="fldEditFeito01" align="left" width="256" text="Feito" fontStyle="italic" margins="{left=5}" />
 					<dataLink field="fldEditFeito01" defaultValue="Digite seu Objetivo" />
 					<checkBox name="nomeFei01" field="fldCheckBFei01" width="25" align="right" margins="{top=3}" />
 				</rectangle>
 			</flowPart>
 			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
 				<label align="left" width="120" text="Grande Feito" />
-				<rectangle color="#2d2d2d" align="client" margins="left=5">
-					<edit field="fldEditFeito02" align="left" width="256" text="Feito" fontStyle="italic" margins="left=5" />
+				<rectangle color="#2d2d2d" align="client" margins="{left=5}">
+					<edit field="fldEditFeito02" align="left" width="256" text="Feito" fontStyle="italic" margins="{left=5}" />
 					<dataLink field="fldEditFeito02" defaultValue="Digite seu Objetivo" />
 					<checkBox name="nomeFei02" field="fldCheckBFei02" width="25" align="right" margins="{top=3}" />
 				</rectangle>
 			</flowPart>
 			<flowPart class="flowCampo" margins="{bottom=5}" align="client">
 				<label align="left" width="120" text="Feito em Grupo" />
-				<rectangle color="#2d2d2d" align="client" margins="left=5">
-					<edit field="fldEditFeito03" align="left" width="256" text="Feito" fontStyle="italic" margins="left=5" />
+				<rectangle color="#2d2d2d" align="client" margins="{left=5}">
+					<edit field="fldEditFeito03" align="left" width="256" text="Feito" fontStyle="italic" margins="{left=5}" />
 					<dataLink field="fldEditFeito03" defaultValue="Digite seu Objetivo" />
 					<checkBox name="nomeFei03" field="fldCheckBFei03" width="25" align="right" margins="{top=3}" />
 				</rectangle>
@@ -822,11 +822,11 @@
 	</template>
 	
 	<template name="Titulo">
-		<flowLayout width="425" orientation="vertical" align="top" autoHeight="true" maxColumns="1" margins="bottom=0">
+		<flowLayout width="425" orientation="vertical" align="top" autoHeight="true" maxColumns="1" margins="{bottom=0}">
 			<flowPart height="27" class="flowCampo" margins="{bottom=5}" align="client">
 				<rectangle color="#2d2d2d" align="client">
-					<label align="left" width="108" margins="left=5" text="Título Lendário:" />
-					<edit field="fldTitulo" align="client" text="Título Lendário" fontStyle="italic" margins="left=2" />
+					<label align="left" width="108" margins="{left=5}" text="Título Lendário:" />
+					<edit field="fldTitulo" align="client" text="Título Lendário" fontStyle="italic" margins="{left=2}" />
 					<dataLink field="fldTitulo" defaultValue="Digite seu Título Lendário" />
 					<checkBox name="chbTitulo" field="fldCheckBTitulo" width="25" align="right" margins="{top=3}" />
 				</rectangle>

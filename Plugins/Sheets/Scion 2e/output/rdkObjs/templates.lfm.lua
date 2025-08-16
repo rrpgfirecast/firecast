@@ -12,7 +12,7 @@ local function constructNew_frmTemplates()
     local self = obj;
     local sheet = nil;
 
-    rawset(obj, "_oldSetNodeObjectFunction", rawget(obj, "setNodeObject"));
+    rawset(obj, "_oldSetNodeObjectFunction", obj.setNodeObject);
 
     function obj:setNodeObject(nodeObject)
         sheet = nodeObject;
@@ -71,6 +71,7 @@ local _frmTemplates = {
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
+    cacheMode = "none", 
     title = "", 
     description=""};
 

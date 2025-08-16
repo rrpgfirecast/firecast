@@ -12,7 +12,7 @@ local function constructNew_esferas()
     local self = obj;
     local sheet = nil;
 
-    rawset(obj, "_oldSetNodeObjectFunction", rawget(obj, "setNodeObject"));
+    rawset(obj, "_oldSetNodeObjectFunction", obj.setNodeObject);
 
     function obj:setNodeObject(nodeObject)
         sheet = nodeObject;
@@ -96,21 +96,21 @@ local function constructNew_esferas()
     obj.label1:setMargins({top=5, left=10, right=80});
     obj.label1:setName("label1");
     obj.label1:setFontColor("white");
-    lfm_setPropAsString(obj.label1, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label1, "fontStyle", "bold");
     obj.label1:setTextTrimming("character");
     obj.label1:setFontFamily("Constantia");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle2);
     obj.label2:setField("fldEsfTipo");
-    lfm_setPropAsString(obj.label2, "anchors",  "right top");
+    lfm_setPropAsString(obj.label2, "anchors", "right top");
     obj.label2:setRight(0);
     obj.label2:setTop(25);
     obj.label2:setHorzTextAlign("trailing");
     obj.label2:setName("label2");
     obj.label2:setFontSize(14);
     obj.label2:setFontColor("white");
-    lfm_setPropAsString(obj.label2, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label2, "fontStyle", "bold");
     obj.label2:setTextTrimming("character");
     obj.label2:setFontFamily("Constantia");
 
@@ -149,7 +149,7 @@ local function constructNew_esferas()
     obj.label3:setName("label3");
     obj.label3:setFontSize(14);
     obj.label3:setFontColor("white");
-    lfm_setPropAsString(obj.label3, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label3, "fontStyle", "bold");
     obj.label3:setTextTrimming("character");
     obj.label3:setFontFamily("Constantia");
 
@@ -184,7 +184,7 @@ local function constructNew_esferas()
     obj.label4:setName("label4");
     obj.label4:setFontSize(14);
     obj.label4:setFontColor("white");
-    lfm_setPropAsString(obj.label4, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label4, "fontStyle", "bold");
     obj.label4:setTextTrimming("character");
     obj.label4:setFontFamily("Constantia");
 
@@ -219,7 +219,7 @@ local function constructNew_esferas()
     obj.label5:setName("label5");
     obj.label5:setFontSize(14);
     obj.label5:setFontColor("white");
-    lfm_setPropAsString(obj.label5, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label5, "fontStyle", "bold");
     obj.label5:setTextTrimming("character");
     obj.label5:setFontFamily("Constantia");
 
@@ -266,7 +266,7 @@ local function constructNew_esferas()
     obj.label6:setName("label6");
     obj.label6:setFontSize(14);
     obj.label6:setFontColor("white");
-    lfm_setPropAsString(obj.label6, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label6, "fontStyle", "bold");
     obj.label6:setTextTrimming("character");
     obj.label6:setFontFamily("Constantia");
 
@@ -301,7 +301,7 @@ local function constructNew_esferas()
     obj.label7:setName("label7");
     obj.label7:setFontSize(14);
     obj.label7:setFontColor("white");
-    lfm_setPropAsString(obj.label7, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label7, "fontStyle", "bold");
     obj.label7:setTextTrimming("character");
     obj.label7:setFontFamily("Constantia");
 
@@ -336,7 +336,7 @@ local function constructNew_esferas()
     obj.label8:setName("label8");
     obj.label8:setFontSize(14);
     obj.label8:setFontColor("white");
-    lfm_setPropAsString(obj.label8, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label8, "fontStyle", "bold");
     obj.label8:setTextTrimming("character");
     obj.label8:setFontFamily("Constantia");
 
@@ -391,7 +391,7 @@ local function constructNew_esferas()
     obj.edit7:setParent(obj.layout1);
     obj.edit7:setAlign("left");
     obj.edit7:setWidth(201);
-    lfm_setPropAsString(obj.edit7, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.edit7, "fontStyle", "bold");
     obj.edit7:setField("fldEsferas");
     obj.edit7:setName("edit7");
     obj.edit7:setFontSize(14);
@@ -411,7 +411,7 @@ local function constructNew_esferas()
     obj.edit8:setAlign("left");
     obj.edit8:setWidth(105);
     obj.edit8:setMargins({right=5});
-    lfm_setPropAsString(obj.edit8, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit8, "fontStyle", "italic");
     obj.edit8:setField("fldEsfCategoria");
     obj.edit8:setName("edit8");
     obj.edit8:setFontSize(14);
@@ -438,7 +438,7 @@ local function constructNew_esferas()
     obj.comboBox1:setTextTrimming("character");
     obj.comboBox1:setFontFamily("Constantia");
     obj.comboBox1:setTransparent(true);
-    lfm_setPropAsString(obj.comboBox1, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.comboBox1, "fontStyle", "italic");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
@@ -451,7 +451,7 @@ local function constructNew_esferas()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.nomeBut:addEventListener("onClick",
-        function (_)
+        function (event)
             local pop = self:findControlByName("popUp_");
             					
             					if pop ~= nil then
@@ -460,10 +460,10 @@ local function constructNew_esferas()
             					else
             						showMessage("Ops, não encontrei o pop-up para exibir");
             					end;
-        end, obj);
+        end);
 
     obj._e_event1 = obj.nomeButB:addEventListener("onClick",
-        function (_)
+        function (event)
             local pop = self:findControlByName("popUp_");
             					
             					if pop ~= nil then
@@ -472,10 +472,10 @@ local function constructNew_esferas()
             					else
             						showMessage("Ops, não encontrei o pop-up para exibir");
             					end;
-        end, obj);
+        end);
 
     obj._e_event2 = obj.dataLink7:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fld == nil or sheet.fld == "Descrição do Poder") then
             										self.nomeBut.visible = true;
@@ -484,12 +484,12 @@ local function constructNew_esferas()
             										self.nomeButB.visible = true;
             										self.nomeBut.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event3 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (event)
             NDB.deleteNode(sheet);
-        end, obj);
+        end);
 
     function obj:_releaseEvents()
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
@@ -507,53 +507,53 @@ local function constructNew_esferas()
           self:setNodeDatabase(nil);
         end;
 
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
-        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
-        if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
-        if self.nomeEsf ~= nil then self.nomeEsf:destroy(); self.nomeEsf = nil; end;
-        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
-        if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
-        if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
-        if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
-        if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
-        if self.nomeBut ~= nil then self.nomeBut:destroy(); self.nomeBut = nil; end;
-        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
-        if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
-        if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
-        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
-        if self.popUp_ ~= nil then self.popUp_:destroy(); self.popUp_ = nil; end;
-        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
-        if self.nomeButB ~= nil then self.nomeButB:destroy(); self.nomeButB = nil; end;
-        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
-        if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
-        if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
-        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
-        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
-        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
-        if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
-        if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
-        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
-        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
-        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
-        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
-        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
+        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.popUp_ ~= nil then self.popUp_:destroy(); self.popUp_ = nil; end;
+        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
+        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
+        if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
+        if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
+        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
+        if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
+        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
+        if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
+        if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
+        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
+        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
+        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
+        if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
+        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.nomeBut ~= nil then self.nomeBut:destroy(); self.nomeBut = nil; end;
+        if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.nomeEsf ~= nil then self.nomeEsf:destroy(); self.nomeEsf = nil; end;
+        if self.nomeButB ~= nil then self.nomeButB:destroy(); self.nomeButB = nil; end;
+        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
-        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
+        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
+        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
+        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
+        if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
+        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         self:_oldLFMDestroy();
     end;
 
@@ -585,6 +585,7 @@ local _esferas = {
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
+    cacheMode = "none", 
     title = "", 
     description=""};
 

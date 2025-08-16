@@ -12,7 +12,7 @@ local function constructNew_herancas()
     local self = obj;
     local sheet = nil;
 
-    rawset(obj, "_oldSetNodeObjectFunction", rawget(obj, "setNodeObject"));
+    rawset(obj, "_oldSetNodeObjectFunction", obj.setNodeObject);
 
     function obj:setNodeObject(nodeObject)
         sheet = nodeObject;
@@ -163,21 +163,21 @@ local function constructNew_herancas()
     obj.label1:setMargins({top=5, left=10, right=80});
     obj.label1:setName("label1");
     obj.label1:setFontColor("white");
-    lfm_setPropAsString(obj.label1, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label1, "fontStyle", "bold");
     obj.label1:setTextTrimming("character");
     obj.label1:setFontFamily("Constantia");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle2);
     obj.label2:setField("fldHerTipo");
-    lfm_setPropAsString(obj.label2, "anchors",  "right top");
+    lfm_setPropAsString(obj.label2, "anchors", "right top");
     obj.label2:setRight(0);
     obj.label2:setTop(25);
     obj.label2:setHorzTextAlign("trailing");
     obj.label2:setName("label2");
     obj.label2:setFontSize(14);
     obj.label2:setFontColor("white");
-    lfm_setPropAsString(obj.label2, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label2, "fontStyle", "bold");
     obj.label2:setTextTrimming("character");
     obj.label2:setFontFamily("Constantia");
 
@@ -209,7 +209,7 @@ local function constructNew_herancas()
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setAlign("left");
     obj.edit1:setWidth(182);
-    lfm_setPropAsString(obj.edit1, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.edit1, "fontStyle", "bold");
     obj.edit1:setField("fldHerancas");
     obj.edit1:setName("edit1");
     obj.edit1:setFontSize(14);
@@ -235,7 +235,7 @@ local function constructNew_herancas()
     obj.comboBox1:setTextTrimming("character");
     obj.comboBox1:setFontFamily("Constantia");
     obj.comboBox1:setTransparent(true);
-    lfm_setPropAsString(obj.comboBox1, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.comboBox1, "fontStyle", "italic");
 
     obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
@@ -253,7 +253,7 @@ local function constructNew_herancas()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.nomeCheckHer_01:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckHer_01 = not sheet.fldCheckHer_01;
             				
@@ -265,10 +265,10 @@ local function constructNew_herancas()
             					sheet.fldCheckHer_05 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event1 = obj.nomeCheckHer_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckHer_02 = not sheet.fldCheckHer_02;
             				
@@ -286,10 +286,10 @@ local function constructNew_herancas()
             					sheet.fldCheckHer_05 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event2 = obj.nomeCheckHer_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckHer_03 = not sheet.fldCheckHer_03;
             				
@@ -309,10 +309,10 @@ local function constructNew_herancas()
             					sheet.fldCheckHer_05 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event3 = obj.nomeCheckHer_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckHer_04 = not sheet.fldCheckHer_04;
             				
@@ -334,10 +334,10 @@ local function constructNew_herancas()
             					sheet.fldCheckHer_05 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event4 = obj.nomeCheckHer_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckHer_05 = not sheet.fldCheckHer_05;
             				
@@ -353,10 +353,10 @@ local function constructNew_herancas()
             					sheet.fldCheckHer_04 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event5 = obj.nomeBut:addEventListener("onClick",
-        function (_)
+        function (event)
             local pop = self:findControlByName("popUp_");
             					
             					if pop ~= nil then
@@ -365,10 +365,10 @@ local function constructNew_herancas()
             					else
             						showMessage("Ops, não encontrei o pop-up para exibir");
             					end;
-        end, obj);
+        end);
 
     obj._e_event6 = obj.nomeButB:addEventListener("onClick",
-        function (_)
+        function (event)
             local pop = self:findControlByName("popUp_");
             					
             					if pop ~= nil then
@@ -377,10 +377,10 @@ local function constructNew_herancas()
             					else
             						showMessage("Ops, não encontrei o pop-up para exibir");
             					end;
-        end, obj);
+        end);
 
     obj._e_event7 = obj.dataLink1:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fld == nil or sheet.fld == "Descrição da Herança") then
             										self.nomeBut.visible = true;
@@ -389,12 +389,12 @@ local function constructNew_herancas()
             										self.nomeButB.visible = true;
             										self.nomeBut.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event8 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (event)
             NDB.deleteNode(sheet);
-        end, obj);
+        end);
 
     function obj:_releaseEvents()
         __o_rrpgObjs.removeEventListenerById(self._e_event8);
@@ -417,28 +417,28 @@ local function constructNew_herancas()
           self:setNodeDatabase(nil);
         end;
 
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.nomeCheckHer_02 ~= nil then self.nomeCheckHer_02:destroy(); self.nomeCheckHer_02 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
-        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.nomeCheckHer_03 ~= nil then self.nomeCheckHer_03:destroy(); self.nomeCheckHer_03 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.nomeCheckHer_04 ~= nil then self.nomeCheckHer_04:destroy(); self.nomeCheckHer_04 = nil; end;
+        if self.popUp_ ~= nil then self.popUp_:destroy(); self.popUp_ = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.nomeCheckHer_01 ~= nil then self.nomeCheckHer_01:destroy(); self.nomeCheckHer_01 = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.nomeCheckHer_05 ~= nil then self.nomeCheckHer_05:destroy(); self.nomeCheckHer_05 = nil; end;
-        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
+        if self.nomeCheckHer_02 ~= nil then self.nomeCheckHer_02:destroy(); self.nomeCheckHer_02 = nil; end;
         if self.nomeBut ~= nil then self.nomeBut:destroy(); self.nomeBut = nil; end;
-        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.nomeHer ~= nil then self.nomeHer:destroy(); self.nomeHer = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
-        if self.nomeCheckHer_01 ~= nil then self.nomeCheckHer_01:destroy(); self.nomeCheckHer_01 = nil; end;
-        if self.popUp_ ~= nil then self.popUp_:destroy(); self.popUp_ = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.nomeCheckHer_04 ~= nil then self.nomeCheckHer_04:destroy(); self.nomeCheckHer_04 = nil; end;
         if self.nomeButB ~= nil then self.nomeButB:destroy(); self.nomeButB = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.nomeCheckHer_03 ~= nil then self.nomeCheckHer_03:destroy(); self.nomeCheckHer_03 = nil; end;
+        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         self:_oldLFMDestroy();
     end;
 
@@ -470,6 +470,7 @@ local _herancas = {
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
+    cacheMode = "none", 
     title = "", 
     description=""};
 

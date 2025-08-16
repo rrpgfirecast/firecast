@@ -144,7 +144,7 @@ edit.EditBold{
 						<label field="fldEsfTipo" anchors="right top" right="0" top="25" horzTextAlign="trailing" />
 						<horzLine align="top" margins="{left=10, right=10, top=10}" />
 						
-						<layout align="top" height="95" margins="top=5" padding="{left=10, right=10}">
+						<layout align="top" height="95" margins="{top=5}" padding="{left=10, right=10}">
 							<layout width="310" align="left">
 								<Campo rotulo="Custo" semAcento="Custo" largura="70" />
 								<Campo rotulo="Duração" semAcento="Duracao" largura="70" />
@@ -179,7 +179,7 @@ edit.EditBold{
 				</rectangle>
 			</popup>
 		<edit align="left" width="201" fontStyle="bold" field="fldEsferas" /><dataLink field="fldEsferas" defaultValue="—" />
-		<edit align="left" width="105" margins="right=5" fontStyle="italic" field="fldEsfCategoria" /><dataLink field="fldEsfCategoria" defaultValue="Esfera" />
+		<edit align="left" width="105" margins="{right=5}" fontStyle="italic" field="fldEsfCategoria" /><dataLink field="fldEsfCategoria" defaultValue="Esfera" />
 		<comboBox field="fldEsfTipo" align="left" items="{'Esfera', 'Poder'}" width="60" />
 		<button text="🞭" width="22" height="22" align="right" margins="{top=1, bottom=1, right=5}" onClick="NDB.deleteNode(sheet);" hint="Apagar Herança" />
 	</layout>

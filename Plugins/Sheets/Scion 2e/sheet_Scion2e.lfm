@@ -306,7 +306,7 @@ edit.EditBold{
 										
 											<!--LOGO-->
 											<layout align="top" height="90">
-												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="top=20" />
+												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="{top=20}" />
 											</layout>
 											<!--INFO-->
 												<layout align="top" height="90">
@@ -334,7 +334,7 @@ edit.EditBold{
 													<layout align="top" height="20" />
 													<layout align="top" height="165">
 																						
-														<flowLayout padding="right=40" name="flLayVida" autoHeight="true" align="left" width="620" orientation="vertical" maxControlsPerLine="2" onBeforeLayoutCalc="calcMachucados()" horzAlign="justify">
+														<flowLayout padding="{right=40}" name="flLayVida" autoHeight="true" align="left" width="620" orientation="vertical" maxControlsPerLine="2" onBeforeLayoutCalc="calcMachucados()" horzAlign="justify">
 															<CampoVida rotulo="Machucado" semAcento="Machucado01" largura="85" valor="01" />
 															<CampoVida rotulo="Machucado" semAcento="Machucado02" largura="85" valor="01" />
 															<CampoVida rotulo="Machucado" semAcento="Machucado03" largura="85" valor="01" />
@@ -346,16 +346,16 @@ edit.EditBold{
 														</flowLayout>
 														
 														<layout align="left" width="310">
-															<layout align="top" height="35" margins="bottom=3">
+															<layout align="top" height="35" margins="{bottom=3}">
 																<rectangle align="left" width="35" height="35" color="#202020" margins="{right=15}" xradius= "15" yradius="15" cornerType="bevel">
-																	<label field="rollDefesa" align="client" horzTextAlign="center" vertTextAlign="center" margins="bottom=5" />
+																	<label field="rollDefesa" align="client" horzTextAlign="center" vertTextAlign="center" margins="{bottom=5}" />
 																	<dataLink field="rollDefesa" defaultValue="0" />
 																</rectangle>
 																<label align="left" width="200" class="AtrClasse" horzTextAlign="leading" text="R O L A G E M   D E   D E F E S A"/>
 															</layout>
-															<layout align="top" height="35" margins="bottom=3">
+															<layout align="top" height="35" margins="{bottom=3}">
 																<rectangle align="left" width="35" height="35" color="#202020" margins="{right=15}" xradius= "15" yradius="15" cornerType="bevel">
-																	<label field="rollMovimento" align="client" horzTextAlign="center" vertTextAlign="center" margins="bottom=5" />
+																	<label field="rollMovimento" align="client" horzTextAlign="center" vertTextAlign="center" margins="{bottom=5}" />
 																	<dataLink field="rollMovimento" defaultValue="0" />
 																</rectangle>
 																<label align="left" width="200" class="AtrClasse" horzTextAlign="leading" text="R O L A G E M   D E   M O V I M E N T O" />
@@ -516,7 +516,7 @@ edit.EditBold{
 										<!--LOGO-->
 										<layout align="client" margins="{right=20, left=20}">
 											<layout align="top" height="90">
-												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="top=20" />
+												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="{top=20}" />
 											</layout>
 											
 											<flowLayout align="top" margins="{top=20, bottom=20,}" height="440">
@@ -553,7 +553,7 @@ edit.EditBold{
 										<!--LOGO-->
 										<layout align="client" margins="{right=20, left=20}">
 											<layout align="top" height="90">
-												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="top=20" />
+												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="{top=20}" />
 											</layout>
 											
 											<Divisor texto="A N O T A Ç Õ E S" largura="350" />

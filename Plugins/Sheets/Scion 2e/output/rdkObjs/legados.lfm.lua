@@ -12,7 +12,7 @@ local function constructNew_legados()
     local self = obj;
     local sheet = nil;
 
-    rawset(obj, "_oldSetNodeObjectFunction", rawget(obj, "setNodeObject"));
+    rawset(obj, "_oldSetNodeObjectFunction", obj.setNodeObject);
 
     function obj:setNodeObject(nodeObject)
         sheet = nodeObject;
@@ -107,7 +107,7 @@ local function constructNew_legados()
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setAlign("left");
     obj.edit1:setWidth(308);
-    lfm_setPropAsString(obj.edit1, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.edit1, "fontStyle", "bold");
     obj.edit1:setField("fldLegados");
     obj.edit1:setName("edit1");
     obj.edit1:setFontSize(14);
@@ -138,7 +138,7 @@ local function constructNew_legados()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.nomeCheckLeg_01:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckLeg_01 = not sheet.fldCheckLeg_01;
             				
@@ -150,10 +150,10 @@ local function constructNew_legados()
             					sheet.fldCheckLeg_05 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event1 = obj.nomeCheckLeg_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckLeg_02 = not sheet.fldCheckLeg_02;
             				
@@ -171,10 +171,10 @@ local function constructNew_legados()
             					sheet.fldCheckLeg_05 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event2 = obj.nomeCheckLeg_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckLeg_03 = not sheet.fldCheckLeg_03;
             				
@@ -194,10 +194,10 @@ local function constructNew_legados()
             					sheet.fldCheckLeg_05 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event3 = obj.nomeCheckLeg_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckLeg_04 = not sheet.fldCheckLeg_04;
             				
@@ -219,10 +219,10 @@ local function constructNew_legados()
             					sheet.fldCheckLeg_05 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event4 = obj.nomeCheckLeg_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheckLeg_05 = not sheet.fldCheckLeg_05;
             				
@@ -238,12 +238,12 @@ local function constructNew_legados()
             					sheet.fldCheckLeg_04 = false; 
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event5 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (event)
             NDB.deleteNode(sheet);
-        end, obj);
+        end);
 
     function obj:_releaseEvents()
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
@@ -263,17 +263,17 @@ local function constructNew_legados()
           self:setNodeDatabase(nil);
         end;
 
-        if self.nomeCheckLeg_03 ~= nil then self.nomeCheckLeg_03:destroy(); self.nomeCheckLeg_03 = nil; end;
-        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
-        if self.nomeCheckLeg_01 ~= nil then self.nomeCheckLeg_01:destroy(); self.nomeCheckLeg_01 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.nomeCheckLeg_05 ~= nil then self.nomeCheckLeg_05:destroy(); self.nomeCheckLeg_05 = nil; end;
+        if self.nomeCheckLeg_02 ~= nil then self.nomeCheckLeg_02:destroy(); self.nomeCheckLeg_02 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.nomeCheckLeg_04 ~= nil then self.nomeCheckLeg_04:destroy(); self.nomeCheckLeg_04 = nil; end;
-        if self.nomeCheckLeg_02 ~= nil then self.nomeCheckLeg_02:destroy(); self.nomeCheckLeg_02 = nil; end;
-        if self.nomeCheckLeg_05 ~= nil then self.nomeCheckLeg_05:destroy(); self.nomeCheckLeg_05 = nil; end;
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.nomeCheckLeg_03 ~= nil then self.nomeCheckLeg_03:destroy(); self.nomeCheckLeg_03 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.nomeCheckLeg_01 ~= nil then self.nomeCheckLeg_01:destroy(); self.nomeCheckLeg_01 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         self:_oldLFMDestroy();
     end;
 
@@ -305,6 +305,7 @@ local _legados = {
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
+    cacheMode = "none", 
     title = "", 
     description=""};
 

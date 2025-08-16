@@ -1129,8 +1129,8 @@
     <element id="RRPG.ROLETA.RUSSA" name="Plugin de Roleta Russa" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/RoletaRussa/output/RoletaRussa.rpk?raw=true" fileName="RoletaRussa.rpk" repositoryPath="ChatMods/RoletaRussa/" author="AlyssonRPG (RRPG Firecast)" description="Instala comandos no RRPG para automatizar a brincadeira da Roleta Russa" version="1.0" compilationDate="03032023113325" compilationDigest="b706660bd6eb6f0199147f388bccf480630c8714">
         <info lang="pt-BR" name="Plugin de Roleta Russa" description="Instala comandos no RRPG para automatizar a brincadeira da Roleta Russa" author="AlyssonRPG (RRPG Firecast)" site="http://www.rrpg.com.br"/>
     </element>
-    <element id="Scion_2ª_Edição" name="Scion 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Scion%202e/output/Scion%202e.rpk?raw=true" fileName="Scion 2e.rpk" repositoryPath="Sheets/Scion 2e/" author="thirteen" description="Ficha de Personagem do sistema Scion, Segunda edição." version="1.0" compilationDate="07082025140805" compilationDigest="6d069039c79b1d8f9c7d0b2df9737bea2ad919b7">
-        <info name="Scion 2e" description="Ficha de Personagem do sistema Scion, Segunda edição." author="thirteen" site="https://www.twitter.com/i_am_thirteen"/>
+    <element id="Scion_2a_Edicao" name="Scion 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Scion%202e/output/Scion%202e.rpk?raw=true" fileName="Scion 2e.rpk" repositoryPath="Sheets/Scion 2e/" author="thirteen" description="Ficha de Personagem do sistema Scion, Segunda edição." version="1.0" compilationDate="16082025020125" compilationDigest="02cb6f890803784b9807c3b9ffab0ba3c6f9e114">
+        <info lang="pt-BR" name="Scion 2e" description="Ficha de Personagem do sistema Scion, Segunda edição." author="thirteen" site="https://www.twitter.com/i_am_thirteen"/>
         <dataTypes>
             <dataType id="thirteen.Scion2e" title="Scion 2e" formType="sheetTemplate">
                 <info title="Scion 2e"/>

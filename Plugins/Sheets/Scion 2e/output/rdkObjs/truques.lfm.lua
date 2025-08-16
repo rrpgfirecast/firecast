@@ -12,7 +12,7 @@ local function constructNew_truques()
     local self = obj;
     local sheet = nil;
 
-    rawset(obj, "_oldSetNodeObjectFunction", rawget(obj, "setNodeObject"));
+    rawset(obj, "_oldSetNodeObjectFunction", obj.setNodeObject);
 
     function obj:setNodeObject(nodeObject)
         sheet = nodeObject;
@@ -96,28 +96,28 @@ local function constructNew_truques()
     obj.label1:setMargins({top=5, left=10, right=195});
     obj.label1:setName("label1");
     obj.label1:setFontColor("white");
-    lfm_setPropAsString(obj.label1, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label1, "fontStyle", "bold");
     obj.label1:setTextTrimming("character");
     obj.label1:setFontFamily("Constantia");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle2);
     obj.label2:setField("fldGrau");
-    lfm_setPropAsString(obj.label2, "anchors",  "right top");
+    lfm_setPropAsString(obj.label2, "anchors", "right top");
     obj.label2:setRight(0);
     obj.label2:setTop(25);
     obj.label2:setHorzTextAlign("trailing");
     obj.label2:setName("label2");
     obj.label2:setFontSize(14);
     obj.label2:setFontColor("white");
-    lfm_setPropAsString(obj.label2, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label2, "fontStyle", "bold");
     obj.label2:setTextTrimming("character");
     obj.label2:setFontFamily("Constantia");
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.rectangle2);
     obj.comboBox1:setField("fldLegado");
-    lfm_setPropAsString(obj.comboBox1, "anchors",  "right top");
+    lfm_setPropAsString(obj.comboBox1, "anchors", "right top");
     obj.comboBox1:setRight(-60);
     obj.comboBox1:setTop(23);
     obj.comboBox1:setItems({'Livre', 'Amante', 'Caçador', 'Criador', 'Curandeiro', 'Guerreiro', 'Juiz', 'Líder', 'Mensageiro', 'Mentiroso', 'Protetor', 'Sábio'});
@@ -127,7 +127,7 @@ local function constructNew_truques()
     obj.comboBox1:setTextTrimming("character");
     obj.comboBox1:setFontFamily("Constantia");
     obj.comboBox1:setTransparent(true);
-    lfm_setPropAsString(obj.comboBox1, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.comboBox1, "fontStyle", "italic");
 
     obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.rectangle2);
@@ -158,7 +158,7 @@ local function constructNew_truques()
     obj.edit1:setAlign("left");
     obj.edit1:setWidth(201);
     obj.edit1:setField("fldTruques");
-    lfm_setPropAsString(obj.edit1, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.edit1, "fontStyle", "bold");
     obj.edit1:setName("edit1");
     obj.edit1:setFontSize(14);
     obj.edit1:setFontColor("#cdcdcd");
@@ -183,7 +183,7 @@ local function constructNew_truques()
     obj.comboBox2:setTextTrimming("character");
     obj.comboBox2:setFontFamily("Constantia");
     obj.comboBox2:setTransparent(true);
-    lfm_setPropAsString(obj.comboBox2, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.comboBox2, "fontStyle", "italic");
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout1);
@@ -197,7 +197,7 @@ local function constructNew_truques()
     obj.comboBox3:setTextTrimming("character");
     obj.comboBox3:setFontFamily("Constantia");
     obj.comboBox3:setTransparent(true);
-    lfm_setPropAsString(obj.comboBox3, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.comboBox3, "fontStyle", "italic");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
@@ -210,7 +210,7 @@ local function constructNew_truques()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.nomeBut:addEventListener("onClick",
-        function (_)
+        function (event)
             local pop = self:findControlByName("popUp_");
             					
             					if pop ~= nil then
@@ -219,10 +219,10 @@ local function constructNew_truques()
             					else
             						showMessage("Ops, não encontrei o pop-up para exibir");
             					end;
-        end, obj);
+        end);
 
     obj._e_event1 = obj.nomeButB:addEventListener("onClick",
-        function (_)
+        function (event)
             local pop = self:findControlByName("popUp_");
             					
             					if pop ~= nil then
@@ -231,10 +231,10 @@ local function constructNew_truques()
             					else
             						showMessage("Ops, não encontrei o pop-up para exibir");
             					end;
-        end, obj);
+        end);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fld == nil or sheet.fld == "Descrição do Truque") then
             										self.nomeBut.visible = true;
@@ -243,12 +243,12 @@ local function constructNew_truques()
             										self.nomeButB.visible = true;
             										self.nomeBut.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event3 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (event)
             NDB.deleteNode(sheet);
-        end, obj);
+        end);
 
     function obj:_releaseEvents()
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
@@ -266,23 +266,23 @@ local function constructNew_truques()
           self:setNodeDatabase(nil);
         end;
 
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.nomeTru ~= nil then self.nomeTru:destroy(); self.nomeTru = nil; end;
-        if self.nomeBut ~= nil then self.nomeBut:destroy(); self.nomeBut = nil; end;
-        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
-        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
-        if self.popUp_ ~= nil then self.popUp_:destroy(); self.popUp_ = nil; end;
-        if self.nomeButB ~= nil then self.nomeButB:destroy(); self.nomeButB = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
+        if self.nomeTru ~= nil then self.nomeTru:destroy(); self.nomeTru = nil; end;
+        if self.popUp_ ~= nil then self.popUp_:destroy(); self.popUp_ = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.nomeBut ~= nil then self.nomeBut:destroy(); self.nomeBut = nil; end;
+        if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
+        if self.nomeButB ~= nil then self.nomeButB:destroy(); self.nomeButB = nil; end;
+        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         self:_oldLFMDestroy();
     end;
 
@@ -314,6 +314,7 @@ local _truques = {
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
+    cacheMode = "none", 
     title = "", 
     description=""};
 

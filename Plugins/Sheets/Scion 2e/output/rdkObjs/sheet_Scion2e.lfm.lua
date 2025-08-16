@@ -12,7 +12,7 @@ local function constructNew_frmScion2e()
     local self = obj;
     local sheet = nil;
 
-    rawset(obj, "_oldSetNodeObjectFunction", rawget(obj, "setNodeObject"));
+    rawset(obj, "_oldSetNodeObjectFunction", obj.setNodeObject);
 
     function obj:setNodeObject(nodeObject)
         sheet = nodeObject;
@@ -31,6 +31,10 @@ local function constructNew_frmScion2e()
     obj:setTitle("Scion 2e");
     obj:setName("frmScion2e");
     obj:setTheme("dark");
+
+
+
+
 
 
 
@@ -203,6 +207,10 @@ local function constructNew_frmScion2e()
 
 
 
+
+
+
+
     obj.frmTemplates = GUI.fromHandle(_obj_newObject("form"));
     obj.frmTemplates:setParent(obj);
     obj.frmTemplates:setName("frmTemplates");
@@ -356,7 +364,7 @@ local function constructNew_frmScion2e()
     obj.label1:setAlign("top");
     obj.label1:setText("I M A G E M  D E  F U N D O");
     obj.label1:setMargins({bottom=5, top=10});
-    lfm_setPropAsString(obj.label1, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label1, "fontStyle", "bold");
     obj.label1:setFontFamily("Constantia");
     obj.label1:setName("label1");
     obj.label1:setFontSize(14);
@@ -431,7 +439,7 @@ local function constructNew_frmScion2e()
     obj.label2:setName("label2");
     obj.label2:setFontSize(14);
     obj.label2:setFontColor("white");
-    lfm_setPropAsString(obj.label2, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label2, "fontStyle", "bold");
     obj.label2:setTextTrimming("character");
     obj.label2:setFontFamily("Constantia");
 
@@ -460,7 +468,7 @@ local function constructNew_frmScion2e()
     obj.label3:setName("label3");
     obj.label3:setFontSize(14);
     obj.label3:setFontColor("white");
-    lfm_setPropAsString(obj.label3, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label3, "fontStyle", "bold");
     obj.label3:setTextTrimming("character");
     obj.label3:setFontFamily("Constantia");
 
@@ -496,7 +504,7 @@ local function constructNew_frmScion2e()
     obj.label4:setName("label4");
     obj.label4:setFontSize(14);
     obj.label4:setFontColor("white");
-    lfm_setPropAsString(obj.label4, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label4, "fontStyle", "bold");
     obj.label4:setTextTrimming("character");
     obj.label4:setFontFamily("Constantia");
 
@@ -525,7 +533,7 @@ local function constructNew_frmScion2e()
     obj.label5:setName("label5");
     obj.label5:setFontSize(14);
     obj.label5:setFontColor("white");
-    lfm_setPropAsString(obj.label5, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label5, "fontStyle", "bold");
     obj.label5:setTextTrimming("character");
     obj.label5:setFontFamily("Constantia");
 
@@ -561,7 +569,7 @@ local function constructNew_frmScion2e()
     obj.label6:setName("label6");
     obj.label6:setFontSize(14);
     obj.label6:setFontColor("white");
-    lfm_setPropAsString(obj.label6, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label6, "fontStyle", "bold");
     obj.label6:setTextTrimming("character");
     obj.label6:setFontFamily("Constantia");
 
@@ -590,7 +598,7 @@ local function constructNew_frmScion2e()
     obj.label7:setName("label7");
     obj.label7:setFontSize(14);
     obj.label7:setFontColor("white");
-    lfm_setPropAsString(obj.label7, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label7, "fontStyle", "bold");
     obj.label7:setTextTrimming("character");
     obj.label7:setFontFamily("Constantia");
 
@@ -642,7 +650,7 @@ local function constructNew_frmScion2e()
     obj.label8:setAlign("client");
     obj.label8:setName("label8");
     obj.label8:setFontColor("white");
-    lfm_setPropAsString(obj.label8, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label8, "fontStyle", "bold");
     obj.label8:setTextTrimming("character");
 
     obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
@@ -707,7 +715,7 @@ local function constructNew_frmScion2e()
     obj.label9:setName("label9");
     obj.label9:setFontSize(14);
     obj.label9:setFontColor("white");
-    lfm_setPropAsString(obj.label9, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label9, "fontStyle", "bold");
     obj.label9:setTextTrimming("character");
     obj.label9:setFontFamily("Constantia");
 
@@ -736,7 +744,7 @@ local function constructNew_frmScion2e()
     obj.label10:setName("label10");
     obj.label10:setFontSize(14);
     obj.label10:setFontColor("white");
-    lfm_setPropAsString(obj.label10, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label10, "fontStyle", "bold");
     obj.label10:setTextTrimming("character");
     obj.label10:setFontFamily("Constantia");
 
@@ -779,7 +787,7 @@ local function constructNew_frmScion2e()
     obj.label11:setName("label11");
     obj.label11:setFontSize(14);
     obj.label11:setFontColor("white");
-    lfm_setPropAsString(obj.label11, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label11, "fontStyle", "bold");
     obj.label11:setTextTrimming("character");
     obj.label11:setFontFamily("Constantia");
 
@@ -808,7 +816,7 @@ local function constructNew_frmScion2e()
     obj.label12:setName("label12");
     obj.label12:setFontSize(14);
     obj.label12:setFontColor("white");
-    lfm_setPropAsString(obj.label12, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label12, "fontStyle", "bold");
     obj.label12:setTextTrimming("character");
     obj.label12:setFontFamily("Constantia");
 
@@ -851,7 +859,7 @@ local function constructNew_frmScion2e()
     obj.label13:setName("label13");
     obj.label13:setFontSize(14);
     obj.label13:setFontColor("white");
-    lfm_setPropAsString(obj.label13, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label13, "fontStyle", "bold");
     obj.label13:setTextTrimming("character");
     obj.label13:setFontFamily("Constantia");
 
@@ -880,7 +888,7 @@ local function constructNew_frmScion2e()
     obj.label14:setName("label14");
     obj.label14:setFontSize(14);
     obj.label14:setFontColor("white");
-    lfm_setPropAsString(obj.label14, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label14, "fontStyle", "bold");
     obj.label14:setTextTrimming("character");
     obj.label14:setFontFamily("Constantia");
 
@@ -923,7 +931,7 @@ local function constructNew_frmScion2e()
     obj.label15:setName("label15");
     obj.label15:setFontSize(14);
     obj.label15:setFontColor("white");
-    lfm_setPropAsString(obj.label15, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label15, "fontStyle", "bold");
     obj.label15:setTextTrimming("character");
     obj.label15:setFontFamily("Constantia");
 
@@ -952,7 +960,7 @@ local function constructNew_frmScion2e()
     obj.label16:setName("label16");
     obj.label16:setFontSize(14);
     obj.label16:setFontColor("white");
-    lfm_setPropAsString(obj.label16, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label16, "fontStyle", "bold");
     obj.label16:setTextTrimming("character");
     obj.label16:setFontFamily("Constantia");
 
@@ -995,7 +1003,7 @@ local function constructNew_frmScion2e()
     obj.label17:setName("label17");
     obj.label17:setFontSize(14);
     obj.label17:setFontColor("white");
-    lfm_setPropAsString(obj.label17, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label17, "fontStyle", "bold");
     obj.label17:setTextTrimming("character");
     obj.label17:setFontFamily("Constantia");
 
@@ -1024,7 +1032,7 @@ local function constructNew_frmScion2e()
     obj.label18:setName("label18");
     obj.label18:setFontSize(14);
     obj.label18:setFontColor("white");
-    lfm_setPropAsString(obj.label18, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label18, "fontStyle", "bold");
     obj.label18:setTextTrimming("character");
     obj.label18:setFontFamily("Constantia");
 
@@ -1067,7 +1075,7 @@ local function constructNew_frmScion2e()
     obj.label19:setName("label19");
     obj.label19:setFontSize(14);
     obj.label19:setFontColor("white");
-    lfm_setPropAsString(obj.label19, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label19, "fontStyle", "bold");
     obj.label19:setTextTrimming("character");
     obj.label19:setFontFamily("Constantia");
 
@@ -1096,7 +1104,7 @@ local function constructNew_frmScion2e()
     obj.label20:setName("label20");
     obj.label20:setFontSize(14);
     obj.label20:setFontColor("white");
-    lfm_setPropAsString(obj.label20, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label20, "fontStyle", "bold");
     obj.label20:setTextTrimming("character");
     obj.label20:setFontFamily("Constantia");
 
@@ -1139,7 +1147,7 @@ local function constructNew_frmScion2e()
     obj.label21:setName("label21");
     obj.label21:setFontSize(14);
     obj.label21:setFontColor("white");
-    lfm_setPropAsString(obj.label21, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label21, "fontStyle", "bold");
     obj.label21:setTextTrimming("character");
     obj.label21:setFontFamily("Constantia");
 
@@ -1168,7 +1176,7 @@ local function constructNew_frmScion2e()
     obj.label22:setName("label22");
     obj.label22:setFontSize(14);
     obj.label22:setFontColor("white");
-    lfm_setPropAsString(obj.label22, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label22, "fontStyle", "bold");
     obj.label22:setTextTrimming("character");
     obj.label22:setFontFamily("Constantia");
 
@@ -1211,7 +1219,7 @@ local function constructNew_frmScion2e()
     obj.label23:setName("label23");
     obj.label23:setFontSize(14);
     obj.label23:setFontColor("white");
-    lfm_setPropAsString(obj.label23, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label23, "fontStyle", "bold");
     obj.label23:setTextTrimming("character");
     obj.label23:setFontFamily("Constantia");
 
@@ -1250,7 +1258,7 @@ local function constructNew_frmScion2e()
     obj.label24:setName("label24");
     obj.label24:setFontSize(14);
     obj.label24:setFontColor("white");
-    lfm_setPropAsString(obj.label24, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label24, "fontStyle", "bold");
     obj.label24:setTextTrimming("character");
     obj.label24:setFontFamily("Constantia");
 
@@ -1271,7 +1279,7 @@ local function constructNew_frmScion2e()
     obj.label25:setFontColor("white");
     obj.label25:setTextTrimming("character");
     obj.label25:setFontFamily("Constantia");
-    lfm_setPropAsString(obj.label25, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label25, "fontStyle", "bold");
 
     obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout18);
@@ -1302,7 +1310,7 @@ local function constructNew_frmScion2e()
     obj.label26:setName("label26");
     obj.label26:setFontSize(14);
     obj.label26:setFontColor("white");
-    lfm_setPropAsString(obj.label26, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label26, "fontStyle", "bold");
     obj.label26:setTextTrimming("character");
     obj.label26:setFontFamily("Constantia");
 
@@ -1323,7 +1331,7 @@ local function constructNew_frmScion2e()
     obj.label27:setFontColor("white");
     obj.label27:setTextTrimming("character");
     obj.label27:setFontFamily("Constantia");
-    lfm_setPropAsString(obj.label27, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label27, "fontStyle", "bold");
 
     obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.layout2);
@@ -1362,7 +1370,7 @@ local function constructNew_frmScion2e()
     obj.label28:setAlign("client");
     obj.label28:setName("label28");
     obj.label28:setFontColor("white");
-    lfm_setPropAsString(obj.label28, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label28, "fontStyle", "bold");
     obj.label28:setTextTrimming("character");
 
     obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1421,7 +1429,7 @@ local function constructNew_frmScion2e()
     obj.label29:setFontFamily("Constantia");
     obj.label29:setHorzTextAlign("center");
     obj.label29:setAlign("top");
-    lfm_setPropAsString(obj.label29, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label29, "fontStyle", "bold");
 
     obj.flowPart6 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart6:setParent(obj.flowLayout3);
@@ -1439,7 +1447,7 @@ local function constructNew_frmScion2e()
     obj.label30:setName("label30");
     obj.label30:setFontSize(14);
     obj.label30:setFontColor("white");
-    lfm_setPropAsString(obj.label30, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label30, "fontStyle", "bold");
     obj.label30:setTextTrimming("character");
     obj.label30:setFontFamily("Constantia");
 
@@ -1524,7 +1532,7 @@ local function constructNew_frmScion2e()
     obj.label31:setName("label31");
     obj.label31:setFontSize(14);
     obj.label31:setFontColor("white");
-    lfm_setPropAsString(obj.label31, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label31, "fontStyle", "bold");
     obj.label31:setTextTrimming("character");
     obj.label31:setFontFamily("Constantia");
 
@@ -1609,7 +1617,7 @@ local function constructNew_frmScion2e()
     obj.label32:setName("label32");
     obj.label32:setFontSize(14);
     obj.label32:setFontColor("white");
-    lfm_setPropAsString(obj.label32, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label32, "fontStyle", "bold");
     obj.label32:setTextTrimming("character");
     obj.label32:setFontFamily("Constantia");
 
@@ -1704,7 +1712,7 @@ local function constructNew_frmScion2e()
     obj.label33:setTextTrimming("character");
     obj.label33:setFontFamily("Constantia");
     obj.label33:setAlign("top");
-    lfm_setPropAsString(obj.label33, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label33, "fontStyle", "bold");
 
     obj.flowPart9 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart9:setParent(obj.flowLayout4);
@@ -1890,7 +1898,7 @@ local function constructNew_frmScion2e()
     obj.label34:setFontFamily("Constantia");
     obj.label34:setHorzTextAlign("center");
     obj.label34:setAlign("top");
-    lfm_setPropAsString(obj.label34, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label34, "fontStyle", "bold");
 
     obj.flowPart11 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart11:setParent(obj.flowLayout6);
@@ -1908,7 +1916,7 @@ local function constructNew_frmScion2e()
     obj.label35:setName("label35");
     obj.label35:setFontSize(14);
     obj.label35:setFontColor("white");
-    lfm_setPropAsString(obj.label35, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label35, "fontStyle", "bold");
     obj.label35:setTextTrimming("character");
     obj.label35:setFontFamily("Constantia");
 
@@ -1993,7 +2001,7 @@ local function constructNew_frmScion2e()
     obj.label36:setName("label36");
     obj.label36:setFontSize(14);
     obj.label36:setFontColor("white");
-    lfm_setPropAsString(obj.label36, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label36, "fontStyle", "bold");
     obj.label36:setTextTrimming("character");
     obj.label36:setFontFamily("Constantia");
 
@@ -2078,7 +2086,7 @@ local function constructNew_frmScion2e()
     obj.label37:setName("label37");
     obj.label37:setFontSize(14);
     obj.label37:setFontColor("white");
-    lfm_setPropAsString(obj.label37, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label37, "fontStyle", "bold");
     obj.label37:setTextTrimming("character");
     obj.label37:setFontFamily("Constantia");
 
@@ -2173,7 +2181,7 @@ local function constructNew_frmScion2e()
     obj.label38:setTextTrimming("character");
     obj.label38:setFontFamily("Constantia");
     obj.label38:setAlign("top");
-    lfm_setPropAsString(obj.label38, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label38, "fontStyle", "bold");
 
     obj.flowPart14 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart14:setParent(obj.flowLayout7);
@@ -2325,7 +2333,7 @@ local function constructNew_frmScion2e()
 
     obj.checkImp_12_Imp = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.checkImp_12_Imp:setParent(obj.flowLayout8);
-    obj.checkImp_12_Imp:setMargins({});
+    obj.checkImp_12_Imp:setMargins();
     obj.checkImp_12_Imp:setName("checkImp_12_Imp");
     obj.checkImp_12_Imp:setField("fldCheckImp_12");
     obj.checkImp_12_Imp:setImageChecked("/images/checkBoxAtv.png");
@@ -2385,7 +2393,7 @@ local function constructNew_frmScion2e()
     obj.label39:setFontFamily("Constantia");
     obj.label39:setHorzTextAlign("center");
     obj.label39:setAlign("top");
-    lfm_setPropAsString(obj.label39, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label39, "fontStyle", "bold");
 
     obj.flowPart16 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart16:setParent(obj.flowLayout9);
@@ -2403,7 +2411,7 @@ local function constructNew_frmScion2e()
     obj.label40:setName("label40");
     obj.label40:setFontSize(14);
     obj.label40:setFontColor("white");
-    lfm_setPropAsString(obj.label40, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label40, "fontStyle", "bold");
     obj.label40:setTextTrimming("character");
     obj.label40:setFontFamily("Constantia");
 
@@ -2488,7 +2496,7 @@ local function constructNew_frmScion2e()
     obj.label41:setName("label41");
     obj.label41:setFontSize(14);
     obj.label41:setFontColor("white");
-    lfm_setPropAsString(obj.label41, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label41, "fontStyle", "bold");
     obj.label41:setTextTrimming("character");
     obj.label41:setFontFamily("Constantia");
 
@@ -2573,7 +2581,7 @@ local function constructNew_frmScion2e()
     obj.label42:setName("label42");
     obj.label42:setFontSize(14);
     obj.label42:setFontColor("white");
-    lfm_setPropAsString(obj.label42, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label42, "fontStyle", "bold");
     obj.label42:setTextTrimming("character");
     obj.label42:setFontFamily("Constantia");
 
@@ -2668,7 +2676,7 @@ local function constructNew_frmScion2e()
     obj.label43:setTextTrimming("character");
     obj.label43:setFontFamily("Constantia");
     obj.label43:setAlign("top");
-    lfm_setPropAsString(obj.label43, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label43, "fontStyle", "bold");
 
     obj.flowPart19 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart19:setParent(obj.flowLayout10);
@@ -2694,7 +2702,7 @@ local function constructNew_frmScion2e()
     obj.edit15:setFontFamily("Constantia");
     obj.edit15:setTransparent(true);
     obj.edit15:setWidth(92);
-    lfm_setPropAsString(obj.edit15, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit15, "fontStyle", "italic");
     obj.edit15:setTextPrompt("\"Virtude\"");
 
     obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -2775,7 +2783,7 @@ local function constructNew_frmScion2e()
     obj.edit16:setFontFamily("Constantia");
     obj.edit16:setTransparent(true);
     obj.edit16:setWidth(92);
-    lfm_setPropAsString(obj.edit16, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit16, "fontStyle", "italic");
     obj.edit16:setTextPrompt("\"Virtude\"");
 
     obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -2821,7 +2829,7 @@ local function constructNew_frmScion2e()
     obj.label44:setAlign("client");
     obj.label44:setName("label44");
     obj.label44:setFontColor("white");
-    lfm_setPropAsString(obj.label44, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label44, "fontStyle", "bold");
     obj.label44:setTextTrimming("character");
 
     obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2884,7 +2892,7 @@ local function constructNew_frmScion2e()
     obj.label45:setName("label45");
     obj.label45:setFontSize(14);
     obj.label45:setFontColor("white");
-    lfm_setPropAsString(obj.label45, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label45, "fontStyle", "bold");
     obj.label45:setTextTrimming("character");
     obj.label45:setFontFamily("Constantia");
 
@@ -3027,7 +3035,7 @@ local function constructNew_frmScion2e()
     obj.label46:setName("label46");
     obj.label46:setFontSize(14);
     obj.label46:setFontColor("white");
-    lfm_setPropAsString(obj.label46, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label46, "fontStyle", "bold");
     obj.label46:setTextTrimming("character");
     obj.label46:setFontFamily("Constantia");
 
@@ -3062,7 +3070,7 @@ local function constructNew_frmScion2e()
     obj.label47:setName("label47");
     obj.label47:setFontSize(14);
     obj.label47:setFontColor("white");
-    lfm_setPropAsString(obj.label47, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label47, "fontStyle", "bold");
     obj.label47:setTextTrimming("character");
     obj.label47:setFontFamily("Constantia");
 
@@ -3205,7 +3213,7 @@ local function constructNew_frmScion2e()
     obj.label48:setName("label48");
     obj.label48:setFontSize(14);
     obj.label48:setFontColor("white");
-    lfm_setPropAsString(obj.label48, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label48, "fontStyle", "bold");
     obj.label48:setTextTrimming("character");
     obj.label48:setFontFamily("Constantia");
 
@@ -3240,7 +3248,7 @@ local function constructNew_frmScion2e()
     obj.label49:setName("label49");
     obj.label49:setFontSize(14);
     obj.label49:setFontColor("white");
-    lfm_setPropAsString(obj.label49, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label49, "fontStyle", "bold");
     obj.label49:setTextTrimming("character");
     obj.label49:setFontFamily("Constantia");
 
@@ -3383,7 +3391,7 @@ local function constructNew_frmScion2e()
     obj.label50:setName("label50");
     obj.label50:setFontSize(14);
     obj.label50:setFontColor("white");
-    lfm_setPropAsString(obj.label50, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label50, "fontStyle", "bold");
     obj.label50:setTextTrimming("character");
     obj.label50:setFontFamily("Constantia");
 
@@ -3418,7 +3426,7 @@ local function constructNew_frmScion2e()
     obj.label51:setName("label51");
     obj.label51:setFontSize(14);
     obj.label51:setFontColor("white");
-    lfm_setPropAsString(obj.label51, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label51, "fontStyle", "bold");
     obj.label51:setTextTrimming("character");
     obj.label51:setFontFamily("Constantia");
 
@@ -3561,7 +3569,7 @@ local function constructNew_frmScion2e()
     obj.label52:setName("label52");
     obj.label52:setFontSize(14);
     obj.label52:setFontColor("white");
-    lfm_setPropAsString(obj.label52, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label52, "fontStyle", "bold");
     obj.label52:setTextTrimming("character");
     obj.label52:setFontFamily("Constantia");
 
@@ -3596,7 +3604,7 @@ local function constructNew_frmScion2e()
     obj.label53:setName("label53");
     obj.label53:setFontSize(14);
     obj.label53:setFontColor("white");
-    lfm_setPropAsString(obj.label53, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label53, "fontStyle", "bold");
     obj.label53:setTextTrimming("character");
     obj.label53:setFontFamily("Constantia");
 
@@ -3739,7 +3747,7 @@ local function constructNew_frmScion2e()
     obj.label54:setName("label54");
     obj.label54:setFontSize(14);
     obj.label54:setFontColor("white");
-    lfm_setPropAsString(obj.label54, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label54, "fontStyle", "bold");
     obj.label54:setTextTrimming("character");
     obj.label54:setFontFamily("Constantia");
 
@@ -3774,7 +3782,7 @@ local function constructNew_frmScion2e()
     obj.label55:setName("label55");
     obj.label55:setFontSize(14);
     obj.label55:setFontColor("white");
-    lfm_setPropAsString(obj.label55, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label55, "fontStyle", "bold");
     obj.label55:setTextTrimming("character");
     obj.label55:setFontFamily("Constantia");
 
@@ -3917,7 +3925,7 @@ local function constructNew_frmScion2e()
     obj.label56:setName("label56");
     obj.label56:setFontSize(14);
     obj.label56:setFontColor("white");
-    lfm_setPropAsString(obj.label56, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label56, "fontStyle", "bold");
     obj.label56:setTextTrimming("character");
     obj.label56:setFontFamily("Constantia");
 
@@ -3952,7 +3960,7 @@ local function constructNew_frmScion2e()
     obj.label57:setName("label57");
     obj.label57:setFontSize(14);
     obj.label57:setFontColor("white");
-    lfm_setPropAsString(obj.label57, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label57, "fontStyle", "bold");
     obj.label57:setTextTrimming("character");
     obj.label57:setFontFamily("Constantia");
 
@@ -4095,7 +4103,7 @@ local function constructNew_frmScion2e()
     obj.label58:setName("label58");
     obj.label58:setFontSize(14);
     obj.label58:setFontColor("white");
-    lfm_setPropAsString(obj.label58, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label58, "fontStyle", "bold");
     obj.label58:setTextTrimming("character");
     obj.label58:setFontFamily("Constantia");
 
@@ -4130,7 +4138,7 @@ local function constructNew_frmScion2e()
     obj.label59:setName("label59");
     obj.label59:setFontSize(14);
     obj.label59:setFontColor("white");
-    lfm_setPropAsString(obj.label59, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label59, "fontStyle", "bold");
     obj.label59:setTextTrimming("character");
     obj.label59:setFontFamily("Constantia");
 
@@ -4273,7 +4281,7 @@ local function constructNew_frmScion2e()
     obj.label60:setName("label60");
     obj.label60:setFontSize(14);
     obj.label60:setFontColor("white");
-    lfm_setPropAsString(obj.label60, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label60, "fontStyle", "bold");
     obj.label60:setTextTrimming("character");
     obj.label60:setFontFamily("Constantia");
 
@@ -4331,7 +4339,7 @@ local function constructNew_frmScion2e()
     obj.label61:setName("label61");
     obj.label61:setFontSize(14);
     obj.label61:setFontColor("white");
-    lfm_setPropAsString(obj.label61, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label61, "fontStyle", "bold");
     obj.label61:setTextTrimming("character");
     obj.label61:setFontFamily("Constantia");
 
@@ -4474,7 +4482,7 @@ local function constructNew_frmScion2e()
     obj.label62:setName("label62");
     obj.label62:setFontSize(14);
     obj.label62:setFontColor("white");
-    lfm_setPropAsString(obj.label62, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label62, "fontStyle", "bold");
     obj.label62:setTextTrimming("character");
     obj.label62:setFontFamily("Constantia");
 
@@ -4509,7 +4517,7 @@ local function constructNew_frmScion2e()
     obj.label63:setName("label63");
     obj.label63:setFontSize(14);
     obj.label63:setFontColor("white");
-    lfm_setPropAsString(obj.label63, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label63, "fontStyle", "bold");
     obj.label63:setTextTrimming("character");
     obj.label63:setFontFamily("Constantia");
 
@@ -4652,7 +4660,7 @@ local function constructNew_frmScion2e()
     obj.label64:setName("label64");
     obj.label64:setFontSize(14);
     obj.label64:setFontColor("white");
-    lfm_setPropAsString(obj.label64, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label64, "fontStyle", "bold");
     obj.label64:setTextTrimming("character");
     obj.label64:setFontFamily("Constantia");
 
@@ -4687,7 +4695,7 @@ local function constructNew_frmScion2e()
     obj.label65:setName("label65");
     obj.label65:setFontSize(14);
     obj.label65:setFontColor("white");
-    lfm_setPropAsString(obj.label65, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label65, "fontStyle", "bold");
     obj.label65:setTextTrimming("character");
     obj.label65:setFontFamily("Constantia");
 
@@ -4830,7 +4838,7 @@ local function constructNew_frmScion2e()
     obj.label66:setName("label66");
     obj.label66:setFontSize(14);
     obj.label66:setFontColor("white");
-    lfm_setPropAsString(obj.label66, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label66, "fontStyle", "bold");
     obj.label66:setTextTrimming("character");
     obj.label66:setFontFamily("Constantia");
 
@@ -4865,7 +4873,7 @@ local function constructNew_frmScion2e()
     obj.label67:setName("label67");
     obj.label67:setFontSize(14);
     obj.label67:setFontColor("white");
-    lfm_setPropAsString(obj.label67, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label67, "fontStyle", "bold");
     obj.label67:setTextTrimming("character");
     obj.label67:setFontFamily("Constantia");
 
@@ -5008,7 +5016,7 @@ local function constructNew_frmScion2e()
     obj.label68:setName("label68");
     obj.label68:setFontSize(14);
     obj.label68:setFontColor("white");
-    lfm_setPropAsString(obj.label68, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label68, "fontStyle", "bold");
     obj.label68:setTextTrimming("character");
     obj.label68:setFontFamily("Constantia");
 
@@ -5043,7 +5051,7 @@ local function constructNew_frmScion2e()
     obj.label69:setName("label69");
     obj.label69:setFontSize(14);
     obj.label69:setFontColor("white");
-    lfm_setPropAsString(obj.label69, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label69, "fontStyle", "bold");
     obj.label69:setTextTrimming("character");
     obj.label69:setFontFamily("Constantia");
 
@@ -5186,7 +5194,7 @@ local function constructNew_frmScion2e()
     obj.label70:setName("label70");
     obj.label70:setFontSize(14);
     obj.label70:setFontColor("white");
-    lfm_setPropAsString(obj.label70, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label70, "fontStyle", "bold");
     obj.label70:setTextTrimming("character");
     obj.label70:setFontFamily("Constantia");
 
@@ -5221,7 +5229,7 @@ local function constructNew_frmScion2e()
     obj.label71:setName("label71");
     obj.label71:setFontSize(14);
     obj.label71:setFontColor("white");
-    lfm_setPropAsString(obj.label71, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label71, "fontStyle", "bold");
     obj.label71:setTextTrimming("character");
     obj.label71:setFontFamily("Constantia");
 
@@ -5364,7 +5372,7 @@ local function constructNew_frmScion2e()
     obj.label72:setName("label72");
     obj.label72:setFontSize(14);
     obj.label72:setFontColor("white");
-    lfm_setPropAsString(obj.label72, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label72, "fontStyle", "bold");
     obj.label72:setTextTrimming("character");
     obj.label72:setFontFamily("Constantia");
 
@@ -5399,7 +5407,7 @@ local function constructNew_frmScion2e()
     obj.label73:setName("label73");
     obj.label73:setFontSize(14);
     obj.label73:setFontColor("white");
-    lfm_setPropAsString(obj.label73, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label73, "fontStyle", "bold");
     obj.label73:setTextTrimming("character");
     obj.label73:setFontFamily("Constantia");
 
@@ -5542,7 +5550,7 @@ local function constructNew_frmScion2e()
     obj.label74:setName("label74");
     obj.label74:setFontSize(14);
     obj.label74:setFontColor("white");
-    lfm_setPropAsString(obj.label74, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label74, "fontStyle", "bold");
     obj.label74:setTextTrimming("character");
     obj.label74:setFontFamily("Constantia");
 
@@ -5577,7 +5585,7 @@ local function constructNew_frmScion2e()
     obj.label75:setName("label75");
     obj.label75:setFontSize(14);
     obj.label75:setFontColor("white");
-    lfm_setPropAsString(obj.label75, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label75, "fontStyle", "bold");
     obj.label75:setTextTrimming("character");
     obj.label75:setFontFamily("Constantia");
 
@@ -5720,7 +5728,7 @@ local function constructNew_frmScion2e()
     obj.label76:setName("label76");
     obj.label76:setFontSize(14);
     obj.label76:setFontColor("white");
-    lfm_setPropAsString(obj.label76, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label76, "fontStyle", "bold");
     obj.label76:setTextTrimming("character");
     obj.label76:setFontFamily("Constantia");
 
@@ -5767,7 +5775,7 @@ local function constructNew_frmScion2e()
     obj.label77:setAlign("client");
     obj.label77:setName("label77");
     obj.label77:setFontColor("white");
-    lfm_setPropAsString(obj.label77, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label77, "fontStyle", "bold");
     obj.label77:setTextTrimming("character");
 
     obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
@@ -5808,13 +5816,13 @@ local function constructNew_frmScion2e()
     obj.label78:setAlign("client");
     obj.label78:setName("label78");
     obj.label78:setFontColor("white");
-    lfm_setPropAsString(obj.label78, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label78, "fontStyle", "bold");
     obj.label78:setTextTrimming("character");
 
     obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout14:setParent(obj.scrollBox2);
     obj.flowLayout14:setOrientation("vertical");
-    lfm_setPropAsString(obj.flowLayout14, "anchors",  "top left");
+    lfm_setPropAsString(obj.flowLayout14, "anchors", "top left");
     obj.flowLayout14:setTop(1075);
     obj.flowLayout14:setLeft(0);
     obj.flowLayout14:setWidth(465);
@@ -5854,7 +5862,7 @@ local function constructNew_frmScion2e()
     obj.edit17:setAlign("left");
     obj.edit17:setWidth(363);
     obj.edit17:setText("Caminho");
-    lfm_setPropAsString(obj.edit17, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit17, "fontStyle", "italic");
     obj.edit17:setMargins({left=5});
     obj.edit17:setName("edit17");
     obj.edit17:setFontSize(14);
@@ -5898,7 +5906,7 @@ local function constructNew_frmScion2e()
     obj.edit18:setAlign("left");
     obj.edit18:setWidth(363);
     obj.edit18:setText("Caminho");
-    lfm_setPropAsString(obj.edit18, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit18, "fontStyle", "italic");
     obj.edit18:setMargins({left=5});
     obj.edit18:setName("edit18");
     obj.edit18:setFontSize(14);
@@ -5942,7 +5950,7 @@ local function constructNew_frmScion2e()
     obj.edit19:setAlign("left");
     obj.edit19:setWidth(363);
     obj.edit19:setText("Caminho");
-    lfm_setPropAsString(obj.edit19, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit19, "fontStyle", "italic");
     obj.edit19:setMargins({left=5});
     obj.edit19:setName("edit19");
     obj.edit19:setFontSize(14);
@@ -5995,7 +6003,7 @@ local function constructNew_frmScion2e()
     obj.label79:setAlign("client");
     obj.label79:setName("label79");
     obj.label79:setFontColor("white");
-    lfm_setPropAsString(obj.label79, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label79, "fontStyle", "bold");
     obj.label79:setTextTrimming("character");
 
     obj.rclLegados = GUI.fromHandle(_obj_newObject("recordList"));
@@ -6055,7 +6063,7 @@ local function constructNew_frmScion2e()
     obj.label80:setAlign("client");
     obj.label80:setName("label80");
     obj.label80:setFontColor("white");
-    lfm_setPropAsString(obj.label80, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label80, "fontStyle", "bold");
     obj.label80:setTextTrimming("character");
 
     obj.rclTruques = GUI.fromHandle(_obj_newObject("recordList"));
@@ -6088,7 +6096,7 @@ local function constructNew_frmScion2e()
     obj.flowLayout16 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout16:setParent(obj.scrollBox2);
     obj.flowLayout16:setOrientation("vertical");
-    lfm_setPropAsString(obj.flowLayout16, "anchors",  "top left");
+    lfm_setPropAsString(obj.flowLayout16, "anchors", "top left");
     obj.flowLayout16:setTop(1075);
     obj.flowLayout16:setLeft(485);
     obj.flowLayout16:setWidth(425);
@@ -6123,7 +6131,7 @@ local function constructNew_frmScion2e()
     obj.label81:setName("label81");
     obj.label81:setFontSize(14);
     obj.label81:setFontColor("white");
-    lfm_setPropAsString(obj.label81, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label81, "fontStyle", "bold");
     obj.label81:setTextTrimming("character");
     obj.label81:setFontFamily("Constantia");
 
@@ -6140,7 +6148,7 @@ local function constructNew_frmScion2e()
     obj.edit20:setAlign("left");
     obj.edit20:setWidth(256);
     obj.edit20:setText("Feito");
-    lfm_setPropAsString(obj.edit20, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit20, "fontStyle", "italic");
     obj.edit20:setMargins({left=5});
     obj.edit20:setName("edit20");
     obj.edit20:setFontSize(14);
@@ -6180,7 +6188,7 @@ local function constructNew_frmScion2e()
     obj.label82:setName("label82");
     obj.label82:setFontSize(14);
     obj.label82:setFontColor("white");
-    lfm_setPropAsString(obj.label82, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label82, "fontStyle", "bold");
     obj.label82:setTextTrimming("character");
     obj.label82:setFontFamily("Constantia");
 
@@ -6197,7 +6205,7 @@ local function constructNew_frmScion2e()
     obj.edit21:setAlign("left");
     obj.edit21:setWidth(256);
     obj.edit21:setText("Feito");
-    lfm_setPropAsString(obj.edit21, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit21, "fontStyle", "italic");
     obj.edit21:setMargins({left=5});
     obj.edit21:setName("edit21");
     obj.edit21:setFontSize(14);
@@ -6237,7 +6245,7 @@ local function constructNew_frmScion2e()
     obj.label83:setName("label83");
     obj.label83:setFontSize(14);
     obj.label83:setFontColor("white");
-    lfm_setPropAsString(obj.label83, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label83, "fontStyle", "bold");
     obj.label83:setTextTrimming("character");
     obj.label83:setFontFamily("Constantia");
 
@@ -6254,7 +6262,7 @@ local function constructNew_frmScion2e()
     obj.edit22:setAlign("left");
     obj.edit22:setWidth(256);
     obj.edit22:setText("Feito");
-    lfm_setPropAsString(obj.edit22, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit22, "fontStyle", "italic");
     obj.edit22:setMargins({left=5});
     obj.edit22:setName("edit22");
     obj.edit22:setFontSize(14);
@@ -6307,7 +6315,7 @@ local function constructNew_frmScion2e()
     obj.label84:setAlign("client");
     obj.label84:setName("label84");
     obj.label84:setFontColor("white");
-    lfm_setPropAsString(obj.label84, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label84, "fontStyle", "bold");
     obj.label84:setTextTrimming("character");
 
     obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6350,7 +6358,7 @@ local function constructNew_frmScion2e()
     obj.label85:setName("label85");
     obj.label85:setFontSize(14);
     obj.label85:setFontColor("white");
-    lfm_setPropAsString(obj.label85, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label85, "fontStyle", "bold");
     obj.label85:setTextTrimming("character");
     obj.label85:setFontFamily("Constantia");
 
@@ -6359,7 +6367,7 @@ local function constructNew_frmScion2e()
     obj.edit23:setField("fldTitulo");
     obj.edit23:setAlign("client");
     obj.edit23:setText("Título Lendário");
-    lfm_setPropAsString(obj.edit23, "fontStyle",  "italic");
+    lfm_setPropAsString(obj.edit23, "fontStyle", "italic");
     obj.edit23:setMargins({left=2});
     obj.edit23:setName("edit23");
     obj.edit23:setFontSize(14);
@@ -6439,7 +6447,7 @@ local function constructNew_frmScion2e()
     obj.label86:setAlign("client");
     obj.label86:setName("label86");
     obj.label86:setFontColor("white");
-    lfm_setPropAsString(obj.label86, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label86, "fontStyle", "bold");
     obj.label86:setTextTrimming("character");
 
     obj.rclEsferas = GUI.fromHandle(_obj_newObject("recordList"));
@@ -6537,7 +6545,7 @@ local function constructNew_frmScion2e()
     obj.label87:setFontFamily("Constantia");
     obj.label87:setHorzTextAlign("center");
     obj.label87:setAlign("top");
-    lfm_setPropAsString(obj.label87, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label87, "fontStyle", "bold");
 
     obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout84:setParent(obj.flowLayout20);
@@ -6605,7 +6613,7 @@ local function constructNew_frmScion2e()
     obj.label88:setFontFamily("Constantia");
     obj.label88:setHorzTextAlign("center");
     obj.label88:setAlign("top");
-    lfm_setPropAsString(obj.label88, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label88, "fontStyle", "bold");
 
     obj.rectangle73 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle73:setParent(obj.flowLayout21);
@@ -6663,7 +6671,7 @@ local function constructNew_frmScion2e()
     obj.label89:setAlign("client");
     obj.label89:setName("label89");
     obj.label89:setFontColor("white");
-    lfm_setPropAsString(obj.label89, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label89, "fontStyle", "bold");
     obj.label89:setTextTrimming("character");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
@@ -6671,8 +6679,8 @@ local function constructNew_frmScion2e()
     obj.richEdit1:setField("BG");
     obj.richEdit1:setAlign("client");
     obj.richEdit1:setMargins({top=10, bottom=40});
-    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#272727");
-    lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
+    obj.richEdit1.backgroundColor = "#272727";
+    obj.richEdit1.defaultFontColor = "white";
     obj.richEdit1:setName("richEdit1");
 
     obj.layNote = GUI.fromHandle(_obj_newObject("layout"));
@@ -6732,7 +6740,7 @@ local function constructNew_frmScion2e()
     obj.label90:setAlign("client");
     obj.label90:setName("label90");
     obj.label90:setFontColor("white");
-    lfm_setPropAsString(obj.label90, "fontStyle",  "bold");
+    lfm_setPropAsString(obj.label90, "fontStyle", "bold");
     obj.label90:setTextTrimming("character");
 
     obj.richEdit2 = GUI.fromHandle(_obj_newObject("richEdit"));
@@ -6740,8 +6748,8 @@ local function constructNew_frmScion2e()
     obj.richEdit2:setField("Notes");
     obj.richEdit2:setAlign("client");
     obj.richEdit2:setMargins({top=10, bottom=40});
-    lfm_setPropAsString(obj.richEdit2, "backgroundColor",  "#272727");
-    lfm_setPropAsString(obj.richEdit2, "defaultFontColor",  "white");
+    obj.richEdit2.backgroundColor = "#272727";
+    obj.richEdit2.defaultFontColor = "white";
     obj.richEdit2:setName("richEdit2");
 
     obj.flowPart49 = GUI.fromHandle(_obj_newObject("flowPart"));
@@ -6763,101 +6771,101 @@ local function constructNew_frmScion2e()
     obj.image7:setName("image7");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
-        function (_)
+        function ()
             CalcPontos()
-        end, obj);
+        end);
 
     obj._e_event1 = obj.idImgFundo:addEventListener("onResize",
-        function (_)
+        function ()
             self.idImgFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             self.idImgFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event3 = obj.image1:addEventListener("onClick",
-        function (_)
+        function (event)
             if(sheet==nil) then return end; TrocarAba('E');
-        end, obj);
+        end);
 
     obj._e_event4 = obj.btnImagemFundo:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popImagemFundo:show('left', self.btnImagemFundo);
-        end, obj);
+        end);
 
     obj._e_event5 = obj.flLayVida:addEventListener("onBeforeLayoutCalc",
-        function (_)
+        function ()
             calcMachucados()
-        end, obj);
+        end);
 
     obj._e_event6 = obj.dataLink2:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
             							if sheet.chcBVidMachucado01 == false then self.rectVidMachucado01.color = '#272727'
             							else self.rectVidMachucado01.color = '#2d2d2d' end;
-        end, obj);
+        end);
 
     obj._e_event7 = obj.dataLink4:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
             							if sheet.chcBVidMachucado02 == false then self.rectVidMachucado02.color = '#272727'
             							else self.rectVidMachucado02.color = '#2d2d2d' end;
-        end, obj);
+        end);
 
     obj._e_event8 = obj.dataLink6:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
             							if sheet.chcBVidMachucado03 == false then self.rectVidMachucado03.color = '#272727'
             							else self.rectVidMachucado03.color = '#2d2d2d' end;
-        end, obj);
+        end);
 
     obj._e_event9 = obj.dataLink8:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
             							if sheet.chcBVidMachucado04 == false then self.rectVidMachucado04.color = '#272727'
             							else self.rectVidMachucado04.color = '#2d2d2d' end;
-        end, obj);
+        end);
 
     obj._e_event10 = obj.dataLink10:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
             							if sheet.chcBVidMachucado05 == false then self.rectVidMachucado05.color = '#272727'
             							else self.rectVidMachucado05.color = '#2d2d2d' end;
-        end, obj);
+        end);
 
     obj._e_event11 = obj.dataLink12:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
             							if sheet.chcBVidMachucado06 == false then self.rectVidMachucado06.color = '#272727'
             							else self.rectVidMachucado06.color = '#2d2d2d' end;
-        end, obj);
+        end);
 
     obj._e_event12 = obj.dataLink14:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
             							if sheet.chcBVidMachucado07 == false then self.rectVidMachucado07.color = '#272727'
             							else self.rectVidMachucado07.color = '#2d2d2d' end;
-        end, obj);
+        end);
 
     obj._e_event13 = obj.dataLink16:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
             							if sheet.chcBVidInconsciente == false then self.rectVidInconsciente.color = '#272727'
             							else self.rectVidInconsciente.color = '#2d2d2d' end;
-        end, obj);
+        end);
 
     obj._e_event14 = obj.nomeCheck01_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck01_01 = not sheet.fldCheck01_01;
             				
@@ -6871,10 +6879,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event15 = obj.nomeCheck01_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck01_02 = not sheet.fldCheck01_02;
             				
@@ -6894,10 +6902,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event16 = obj.nomeCheck01_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck01_03 = not sheet.fldCheck01_03;
             				
@@ -6919,10 +6927,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event17 = obj.nomeCheck01_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck01_04 = not sheet.fldCheck01_04;
             				
@@ -6946,10 +6954,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event18 = obj.nomeCheck01_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck01_05 = not sheet.fldCheck01_05;
             				
@@ -6967,10 +6975,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event19 = obj.nomeCheck02_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck02_01 = not sheet.fldCheck02_01;
             				
@@ -6984,10 +6992,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event20 = obj.nomeCheck02_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck02_02 = not sheet.fldCheck02_02;
             				
@@ -7007,10 +7015,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event21 = obj.nomeCheck02_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck02_03 = not sheet.fldCheck02_03;
             				
@@ -7032,10 +7040,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event22 = obj.nomeCheck02_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck02_04 = not sheet.fldCheck02_04;
             				
@@ -7059,10 +7067,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event23 = obj.nomeCheck02_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck02_05 = not sheet.fldCheck02_05;
             				
@@ -7080,10 +7088,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event24 = obj.nomeCheck03_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck03_01 = not sheet.fldCheck03_01;
             				
@@ -7097,10 +7105,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event25 = obj.nomeCheck03_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck03_02 = not sheet.fldCheck03_02;
             				
@@ -7120,10 +7128,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event26 = obj.nomeCheck03_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck03_03 = not sheet.fldCheck03_03;
             				
@@ -7145,10 +7153,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event27 = obj.nomeCheck03_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck03_04 = not sheet.fldCheck03_04;
             				
@@ -7172,10 +7180,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event28 = obj.nomeCheck03_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck03_05 = not sheet.fldCheck03_05;
             				
@@ -7193,10 +7201,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event29 = obj.checkMulVit_Des_01_Leg:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				if(sheet.checkMulVit_Des_01_Leg == '/images/checkBoxDes.png') then
             					sheet.checkMulVit_Des_01_Leg = '/images/checkBoxAtv.png';
@@ -7206,10 +7214,10 @@ local function constructNew_frmScion2e()
             					sheet.checkMulVit_Des_01_Leg = '/images/checkBoxDes.png';
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event30 = obj.checkMulVit_Des_02_Leg:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				if(sheet.checkMulVit_Des_02_Leg == '/images/checkBoxDes.png') then
             					sheet.checkMulVit_Des_02_Leg = '/images/checkBoxAtv.png';
@@ -7219,10 +7227,10 @@ local function constructNew_frmScion2e()
             					sheet.checkMulVit_Des_02_Leg = '/images/checkBoxDes.png';
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event31 = obj.checkMulVit_Des_03_Leg:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				if(sheet.checkMulVit_Des_03_Leg == '/images/checkBoxDes.png') then
             					sheet.checkMulVit_Des_03_Leg = '/images/checkBoxAtv.png';
@@ -7232,10 +7240,10 @@ local function constructNew_frmScion2e()
             					sheet.checkMulVit_Des_03_Leg = '/images/checkBoxDes.png';
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event32 = obj.checkMulVit_Des_04_Leg:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				if(sheet.checkMulVit_Des_04_Leg == '/images/checkBoxDes.png') then
             					sheet.checkMulVit_Des_04_Leg = '/images/checkBoxAtv.png';
@@ -7245,10 +7253,10 @@ local function constructNew_frmScion2e()
             					sheet.checkMulVit_Des_04_Leg = '/images/checkBoxDes.png';
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event33 = obj.checkMulVit_Des_05_Leg:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				if(sheet.checkMulVit_Des_05_Leg == '/images/checkBoxDes.png') then
             					sheet.checkMulVit_Des_05_Leg = '/images/checkBoxAtv.png';
@@ -7258,10 +7266,10 @@ local function constructNew_frmScion2e()
             					sheet.checkMulVit_Des_05_Leg = '/images/checkBoxDes.png';
             				end;
             			
-        end, obj);
+        end);
 
     obj._e_event34 = obj.nomeCheck04_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck04_01 = not sheet.fldCheck04_01;
             				
@@ -7275,10 +7283,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event35 = obj.nomeCheck04_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck04_02 = not sheet.fldCheck04_02;
             				
@@ -7298,10 +7306,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event36 = obj.nomeCheck04_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck04_03 = not sheet.fldCheck04_03;
             				
@@ -7323,10 +7331,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event37 = obj.nomeCheck04_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck04_04 = not sheet.fldCheck04_04;
             				
@@ -7350,10 +7358,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event38 = obj.nomeCheck04_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck04_05 = not sheet.fldCheck04_05;
             				
@@ -7371,10 +7379,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event39 = obj.nomeCheck05_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck05_01 = not sheet.fldCheck05_01;
             				
@@ -7388,10 +7396,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event40 = obj.nomeCheck05_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck05_02 = not sheet.fldCheck05_02;
             				
@@ -7411,10 +7419,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event41 = obj.nomeCheck05_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck05_03 = not sheet.fldCheck05_03;
             				
@@ -7436,10 +7444,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event42 = obj.nomeCheck05_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck05_04 = not sheet.fldCheck05_04;
             				
@@ -7463,10 +7471,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event43 = obj.nomeCheck05_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck05_05 = not sheet.fldCheck05_05;
             				
@@ -7484,10 +7492,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event44 = obj.nomeCheck06_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck06_01 = not sheet.fldCheck06_01;
             				
@@ -7501,10 +7509,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event45 = obj.nomeCheck06_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck06_02 = not sheet.fldCheck06_02;
             				
@@ -7524,10 +7532,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event46 = obj.nomeCheck06_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck06_03 = not sheet.fldCheck06_03;
             				
@@ -7549,10 +7557,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event47 = obj.nomeCheck06_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck06_04 = not sheet.fldCheck06_04;
             				
@@ -7576,10 +7584,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event48 = obj.nomeCheck06_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck06_05 = not sheet.fldCheck06_05;
             				
@@ -7597,10 +7605,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event49 = obj.checkImp_01_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_01 = not sheet.fldCheckImp_01;
             							
@@ -7619,10 +7627,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false; 
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event50 = obj.checkImp_02_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_02 = not sheet.fldCheckImp_02;
             							
@@ -7647,10 +7655,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false; 
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event51 = obj.checkImp_03_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_03 = not sheet.fldCheckImp_03;
             							
@@ -7677,10 +7685,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false; 
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event52 = obj.checkImp_04_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_04 = not sheet.fldCheckImp_04;
             							
@@ -7709,10 +7717,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false; 
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event53 = obj.checkImp_05_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_05 = not sheet.fldCheckImp_05;
             
@@ -7743,10 +7751,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false;
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event54 = obj.checkImp_06_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_06 = not sheet.fldCheckImp_06;
             
@@ -7779,10 +7787,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false;
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event55 = obj.checkImp_07_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_07 = not sheet.fldCheckImp_07;
             
@@ -7817,10 +7825,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false;
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event56 = obj.checkImp_08_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_08 = not sheet.fldCheckImp_08;
             
@@ -7857,10 +7865,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false;
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event57 = obj.checkImp_09_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_09 = not sheet.fldCheckImp_09;
             
@@ -7899,10 +7907,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false;
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event58 = obj.checkImp_10_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_10 = not sheet.fldCheckImp_10;
             
@@ -7943,10 +7951,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false;
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event59 = obj.checkImp_11_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_11 = not sheet.fldCheckImp_11;
             
@@ -7989,10 +7997,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_12 = false;
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event60 = obj.checkImp_12_Imp:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckImp_12 = not sheet.fldCheckImp_12;
             
@@ -8022,10 +8030,10 @@ local function constructNew_frmScion2e()
             								sheet.fldCheckImp_11 = false;
             							end;
             						
-        end, obj);
+        end);
 
     obj._e_event61 = obj.nomeCheck07_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck07_01 = not sheet.fldCheck07_01;
             				
@@ -8039,10 +8047,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event62 = obj.nomeCheck07_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck07_02 = not sheet.fldCheck07_02;
             				
@@ -8062,10 +8070,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event63 = obj.nomeCheck07_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck07_03 = not sheet.fldCheck07_03;
             				
@@ -8087,10 +8095,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event64 = obj.nomeCheck07_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck07_04 = not sheet.fldCheck07_04;
             				
@@ -8114,10 +8122,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event65 = obj.nomeCheck07_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck07_05 = not sheet.fldCheck07_05;
             				
@@ -8135,10 +8143,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event66 = obj.nomeCheck08_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck08_01 = not sheet.fldCheck08_01;
             				
@@ -8152,10 +8160,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event67 = obj.nomeCheck08_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck08_02 = not sheet.fldCheck08_02;
             				
@@ -8175,10 +8183,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event68 = obj.nomeCheck08_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck08_03 = not sheet.fldCheck08_03;
             				
@@ -8200,10 +8208,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event69 = obj.nomeCheck08_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck08_04 = not sheet.fldCheck08_04;
             				
@@ -8227,10 +8235,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event70 = obj.nomeCheck08_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck08_05 = not sheet.fldCheck08_05;
             				
@@ -8248,10 +8256,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event71 = obj.nomeCheck09_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck09_01 = not sheet.fldCheck09_01;
             				
@@ -8265,10 +8273,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event72 = obj.nomeCheck09_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck09_02 = not sheet.fldCheck09_02;
             				
@@ -8288,10 +8296,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event73 = obj.nomeCheck09_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck09_03 = not sheet.fldCheck09_03;
             				
@@ -8313,10 +8321,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event74 = obj.nomeCheck09_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck09_04 = not sheet.fldCheck09_04;
             				
@@ -8340,10 +8348,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event75 = obj.nomeCheck09_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck09_05 = not sheet.fldCheck09_05;
             				
@@ -8361,10 +8369,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event76 = obj.checkVir_01_Vir:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckVir_01 = true;
             							
@@ -8373,10 +8381,10 @@ local function constructNew_frmScion2e()
             							sheet.fldCheckVir_04 = false;
             							sheet.fldCheckVir_05 = false;
             						
-        end, obj);
+        end);
 
     obj._e_event77 = obj.checkVir_02_Vir:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckVir_02 = true;
             							
@@ -8385,10 +8393,10 @@ local function constructNew_frmScion2e()
             							sheet.fldCheckVir_04 = false;
             							sheet.fldCheckVir_05 = false;
             						
-        end, obj);
+        end);
 
     obj._e_event78 = obj.checkVir_03_Vir:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckVir_03 = true;
             							
@@ -8397,10 +8405,10 @@ local function constructNew_frmScion2e()
             							sheet.fldCheckVir_04 = false;
             							sheet.fldCheckVir_05 = false;
             						
-        end, obj);
+        end);
 
     obj._e_event79 = obj.checkVir_04_Vir:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckVir_04 = true;
             							
@@ -8409,10 +8417,10 @@ local function constructNew_frmScion2e()
             							sheet.fldCheckVir_03 = true;
             							sheet.fldCheckVir_05 = false;
             						
-        end, obj);
+        end);
 
     obj._e_event80 = obj.checkVir_05_Vir:addEventListener("onClick",
-        function (_)
+        function (event)
             
             							sheet.fldCheckVir_05 = true;
             							
@@ -8421,20 +8429,20 @@ local function constructNew_frmScion2e()
             							sheet.fldCheckVir_03 = true;
             							sheet.fldCheckVir_04 = true;
             						
-        end, obj);
+        end);
 
     obj._e_event81 = obj.nomeBut10:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_10:show('right', self.nomeBut10);
-        end, obj);
+        end);
 
     obj._e_event82 = obj.nomeBut10B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_10:show('right', self.nomeBut10);
-        end, obj);
+        end);
 
     obj._e_event83 = obj.dataLink26:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase10 == nil or sheet.fldEnfase10 == "Ênfases") then
             										self.nomeBut10.visible = true;
@@ -8443,10 +8451,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut10B.visible = true;
             										self.nomeBut10.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event84 = obj.nomeCheck10_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck10_01 = not sheet.fldCheck10_01;
             				
@@ -8460,10 +8468,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event85 = obj.nomeCheck10_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck10_02 = not sheet.fldCheck10_02;
             				
@@ -8483,10 +8491,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event86 = obj.nomeCheck10_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck10_03 = not sheet.fldCheck10_03;
             				
@@ -8508,10 +8516,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event87 = obj.nomeCheck10_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck10_04 = not sheet.fldCheck10_04;
             				
@@ -8535,10 +8543,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event88 = obj.nomeCheck10_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck10_05 = not sheet.fldCheck10_05;
             				
@@ -8556,20 +8564,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event89 = obj.nomeBut11:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_11:show('right', self.nomeBut11);
-        end, obj);
+        end);
 
     obj._e_event90 = obj.nomeBut11B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_11:show('right', self.nomeBut11);
-        end, obj);
+        end);
 
     obj._e_event91 = obj.dataLink27:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase11 == nil or sheet.fldEnfase11 == "Ênfases") then
             										self.nomeBut11.visible = true;
@@ -8578,10 +8586,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut11B.visible = true;
             										self.nomeBut11.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event92 = obj.nomeCheck11_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck11_01 = not sheet.fldCheck11_01;
             				
@@ -8595,10 +8603,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event93 = obj.nomeCheck11_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck11_02 = not sheet.fldCheck11_02;
             				
@@ -8618,10 +8626,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event94 = obj.nomeCheck11_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck11_03 = not sheet.fldCheck11_03;
             				
@@ -8643,10 +8651,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event95 = obj.nomeCheck11_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck11_04 = not sheet.fldCheck11_04;
             				
@@ -8670,10 +8678,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event96 = obj.nomeCheck11_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck11_05 = not sheet.fldCheck11_05;
             				
@@ -8691,20 +8699,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event97 = obj.nomeBut12:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_12:show('right', self.nomeBut12);
-        end, obj);
+        end);
 
     obj._e_event98 = obj.nomeBut12B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_12:show('right', self.nomeBut12);
-        end, obj);
+        end);
 
     obj._e_event99 = obj.dataLink28:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase12 == nil or sheet.fldEnfase12 == "Ênfases") then
             										self.nomeBut12.visible = true;
@@ -8713,10 +8721,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut12B.visible = true;
             										self.nomeBut12.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event100 = obj.nomeCheck12_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck12_01 = not sheet.fldCheck12_01;
             				
@@ -8730,10 +8738,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event101 = obj.nomeCheck12_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck12_02 = not sheet.fldCheck12_02;
             				
@@ -8753,10 +8761,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event102 = obj.nomeCheck12_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck12_03 = not sheet.fldCheck12_03;
             				
@@ -8778,10 +8786,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event103 = obj.nomeCheck12_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck12_04 = not sheet.fldCheck12_04;
             				
@@ -8805,10 +8813,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event104 = obj.nomeCheck12_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck12_05 = not sheet.fldCheck12_05;
             				
@@ -8826,20 +8834,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event105 = obj.nomeBut13:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_13:show('right', self.nomeBut13);
-        end, obj);
+        end);
 
     obj._e_event106 = obj.nomeBut13B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_13:show('right', self.nomeBut13);
-        end, obj);
+        end);
 
     obj._e_event107 = obj.dataLink29:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase13 == nil or sheet.fldEnfase13 == "Ênfases") then
             										self.nomeBut13.visible = true;
@@ -8848,10 +8856,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut13B.visible = true;
             										self.nomeBut13.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event108 = obj.nomeCheck13_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck13_01 = not sheet.fldCheck13_01;
             				
@@ -8865,10 +8873,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event109 = obj.nomeCheck13_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck13_02 = not sheet.fldCheck13_02;
             				
@@ -8888,10 +8896,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event110 = obj.nomeCheck13_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck13_03 = not sheet.fldCheck13_03;
             				
@@ -8913,10 +8921,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event111 = obj.nomeCheck13_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck13_04 = not sheet.fldCheck13_04;
             				
@@ -8940,10 +8948,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event112 = obj.nomeCheck13_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck13_05 = not sheet.fldCheck13_05;
             				
@@ -8961,20 +8969,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event113 = obj.nomeBut14:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_14:show('right', self.nomeBut14);
-        end, obj);
+        end);
 
     obj._e_event114 = obj.nomeBut14B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_14:show('right', self.nomeBut14);
-        end, obj);
+        end);
 
     obj._e_event115 = obj.dataLink30:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase14 == nil or sheet.fldEnfase14 == "Ênfases") then
             										self.nomeBut14.visible = true;
@@ -8983,10 +8991,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut14B.visible = true;
             										self.nomeBut14.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event116 = obj.nomeCheck14_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck14_01 = not sheet.fldCheck14_01;
             				
@@ -9000,10 +9008,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event117 = obj.nomeCheck14_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck14_02 = not sheet.fldCheck14_02;
             				
@@ -9023,10 +9031,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event118 = obj.nomeCheck14_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck14_03 = not sheet.fldCheck14_03;
             				
@@ -9048,10 +9056,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event119 = obj.nomeCheck14_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck14_04 = not sheet.fldCheck14_04;
             				
@@ -9075,10 +9083,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event120 = obj.nomeCheck14_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck14_05 = not sheet.fldCheck14_05;
             				
@@ -9096,20 +9104,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event121 = obj.nomeBut15:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_15:show('right', self.nomeBut15);
-        end, obj);
+        end);
 
     obj._e_event122 = obj.nomeBut15B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_15:show('right', self.nomeBut15);
-        end, obj);
+        end);
 
     obj._e_event123 = obj.dataLink31:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase15 == nil or sheet.fldEnfase15 == "Ênfases") then
             										self.nomeBut15.visible = true;
@@ -9118,10 +9126,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut15B.visible = true;
             										self.nomeBut15.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event124 = obj.nomeCheck15_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck15_01 = not sheet.fldCheck15_01;
             				
@@ -9135,10 +9143,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event125 = obj.nomeCheck15_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck15_02 = not sheet.fldCheck15_02;
             				
@@ -9158,10 +9166,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event126 = obj.nomeCheck15_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck15_03 = not sheet.fldCheck15_03;
             				
@@ -9183,10 +9191,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event127 = obj.nomeCheck15_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck15_04 = not sheet.fldCheck15_04;
             				
@@ -9210,10 +9218,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event128 = obj.nomeCheck15_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck15_05 = not sheet.fldCheck15_05;
             				
@@ -9231,20 +9239,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event129 = obj.nomeBut16:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_16:show('right', self.nomeBut16);
-        end, obj);
+        end);
 
     obj._e_event130 = obj.nomeBut16B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_16:show('right', self.nomeBut16);
-        end, obj);
+        end);
 
     obj._e_event131 = obj.dataLink32:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase16 == nil or sheet.fldEnfase16 == "Ênfases") then
             										self.nomeBut16.visible = true;
@@ -9253,10 +9261,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut16B.visible = true;
             										self.nomeBut16.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event132 = obj.nomeCheck16_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck16_01 = not sheet.fldCheck16_01;
             				
@@ -9270,10 +9278,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event133 = obj.nomeCheck16_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck16_02 = not sheet.fldCheck16_02;
             				
@@ -9293,10 +9301,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event134 = obj.nomeCheck16_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck16_03 = not sheet.fldCheck16_03;
             				
@@ -9318,10 +9326,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event135 = obj.nomeCheck16_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck16_04 = not sheet.fldCheck16_04;
             				
@@ -9345,10 +9353,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event136 = obj.nomeCheck16_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck16_05 = not sheet.fldCheck16_05;
             				
@@ -9366,20 +9374,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event137 = obj.nomeBut17:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_17:show('right', self.nomeBut17);
-        end, obj);
+        end);
 
     obj._e_event138 = obj.nomeBut17B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_17:show('right', self.nomeBut17);
-        end, obj);
+        end);
 
     obj._e_event139 = obj.dataLink33:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase17 == nil or sheet.fldEnfase17 == "Ênfases") then
             										self.nomeBut17.visible = true;
@@ -9388,10 +9396,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut17B.visible = true;
             										self.nomeBut17.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event140 = obj.nomeCheck17_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck17_01 = not sheet.fldCheck17_01;
             				
@@ -9405,10 +9413,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event141 = obj.nomeCheck17_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck17_02 = not sheet.fldCheck17_02;
             				
@@ -9428,10 +9436,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event142 = obj.nomeCheck17_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck17_03 = not sheet.fldCheck17_03;
             				
@@ -9453,10 +9461,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event143 = obj.nomeCheck17_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck17_04 = not sheet.fldCheck17_04;
             				
@@ -9480,10 +9488,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event144 = obj.nomeCheck17_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck17_05 = not sheet.fldCheck17_05;
             				
@@ -9501,20 +9509,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event145 = obj.nomeBut18:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_18:show('right', self.nomeBut18);
-        end, obj);
+        end);
 
     obj._e_event146 = obj.nomeBut18B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_18:show('right', self.nomeBut18);
-        end, obj);
+        end);
 
     obj._e_event147 = obj.dataLink34:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase18 == nil or sheet.fldEnfase18 == "Ênfases") then
             										self.nomeBut18.visible = true;
@@ -9523,10 +9531,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut18B.visible = true;
             										self.nomeBut18.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event148 = obj.nomeCheck18_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck18_01 = not sheet.fldCheck18_01;
             				
@@ -9540,10 +9548,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event149 = obj.nomeCheck18_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck18_02 = not sheet.fldCheck18_02;
             				
@@ -9563,10 +9571,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event150 = obj.nomeCheck18_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck18_03 = not sheet.fldCheck18_03;
             				
@@ -9588,10 +9596,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event151 = obj.nomeCheck18_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck18_04 = not sheet.fldCheck18_04;
             				
@@ -9615,10 +9623,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event152 = obj.nomeCheck18_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck18_05 = not sheet.fldCheck18_05;
             				
@@ -9636,20 +9644,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event153 = obj.nomeBut19:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_19:show('right', self.nomeBut19);
-        end, obj);
+        end);
 
     obj._e_event154 = obj.nomeBut19B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_19:show('right', self.nomeBut19);
-        end, obj);
+        end);
 
     obj._e_event155 = obj.dataLink35:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase19 == nil or sheet.fldEnfase19 == "Ênfases") then
             										self.nomeBut19.visible = true;
@@ -9658,10 +9666,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut19B.visible = true;
             										self.nomeBut19.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event156 = obj.nomeCheck19_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck19_01 = not sheet.fldCheck19_01;
             				
@@ -9675,10 +9683,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event157 = obj.nomeCheck19_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck19_02 = not sheet.fldCheck19_02;
             				
@@ -9698,10 +9706,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event158 = obj.nomeCheck19_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck19_03 = not sheet.fldCheck19_03;
             				
@@ -9723,10 +9731,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event159 = obj.nomeCheck19_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck19_04 = not sheet.fldCheck19_04;
             				
@@ -9750,10 +9758,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event160 = obj.nomeCheck19_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck19_05 = not sheet.fldCheck19_05;
             				
@@ -9771,20 +9779,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event161 = obj.nomeBut20:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_20:show('right', self.nomeBut20);
-        end, obj);
+        end);
 
     obj._e_event162 = obj.nomeBut20B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_20:show('right', self.nomeBut20);
-        end, obj);
+        end);
 
     obj._e_event163 = obj.dataLink36:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase20 == nil or sheet.fldEnfase20 == "Ênfases") then
             										self.nomeBut20.visible = true;
@@ -9793,10 +9801,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut20B.visible = true;
             										self.nomeBut20.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event164 = obj.nomeCheck20_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck20_01 = not sheet.fldCheck20_01;
             				
@@ -9810,10 +9818,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event165 = obj.nomeCheck20_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck20_02 = not sheet.fldCheck20_02;
             				
@@ -9833,10 +9841,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event166 = obj.nomeCheck20_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck20_03 = not sheet.fldCheck20_03;
             				
@@ -9858,10 +9866,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event167 = obj.nomeCheck20_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck20_04 = not sheet.fldCheck20_04;
             				
@@ -9885,10 +9893,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event168 = obj.nomeCheck20_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck20_05 = not sheet.fldCheck20_05;
             				
@@ -9906,20 +9914,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event169 = obj.nomeBut21:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_21:show('right', self.nomeBut21);
-        end, obj);
+        end);
 
     obj._e_event170 = obj.nomeBut21B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_21:show('right', self.nomeBut21);
-        end, obj);
+        end);
 
     obj._e_event171 = obj.dataLink37:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase21 == nil or sheet.fldEnfase21 == "Ênfases") then
             										self.nomeBut21.visible = true;
@@ -9928,10 +9936,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut21B.visible = true;
             										self.nomeBut21.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event172 = obj.nomeCheck21_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck21_01 = not sheet.fldCheck21_01;
             				
@@ -9945,10 +9953,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event173 = obj.nomeCheck21_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck21_02 = not sheet.fldCheck21_02;
             				
@@ -9968,10 +9976,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event174 = obj.nomeCheck21_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck21_03 = not sheet.fldCheck21_03;
             				
@@ -9993,10 +10001,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event175 = obj.nomeCheck21_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck21_04 = not sheet.fldCheck21_04;
             				
@@ -10020,10 +10028,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event176 = obj.nomeCheck21_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck21_05 = not sheet.fldCheck21_05;
             				
@@ -10041,20 +10049,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event177 = obj.nomeBut22:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_22:show('right', self.nomeBut22);
-        end, obj);
+        end);
 
     obj._e_event178 = obj.nomeBut22B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_22:show('right', self.nomeBut22);
-        end, obj);
+        end);
 
     obj._e_event179 = obj.dataLink38:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase22 == nil or sheet.fldEnfase22 == "Ênfases") then
             										self.nomeBut22.visible = true;
@@ -10063,10 +10071,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut22B.visible = true;
             										self.nomeBut22.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event180 = obj.nomeCheck22_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck22_01 = not sheet.fldCheck22_01;
             				
@@ -10080,10 +10088,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event181 = obj.nomeCheck22_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck22_02 = not sheet.fldCheck22_02;
             				
@@ -10103,10 +10111,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event182 = obj.nomeCheck22_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck22_03 = not sheet.fldCheck22_03;
             				
@@ -10128,10 +10136,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event183 = obj.nomeCheck22_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck22_04 = not sheet.fldCheck22_04;
             				
@@ -10155,10 +10163,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event184 = obj.nomeCheck22_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck22_05 = not sheet.fldCheck22_05;
             				
@@ -10176,20 +10184,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event185 = obj.nomeBut23:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_23:show('right', self.nomeBut23);
-        end, obj);
+        end);
 
     obj._e_event186 = obj.nomeBut23B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_23:show('right', self.nomeBut23);
-        end, obj);
+        end);
 
     obj._e_event187 = obj.dataLink39:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase23 == nil or sheet.fldEnfase23 == "Ênfases") then
             										self.nomeBut23.visible = true;
@@ -10198,10 +10206,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut23B.visible = true;
             										self.nomeBut23.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event188 = obj.nomeCheck23_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck23_01 = not sheet.fldCheck23_01;
             				
@@ -10215,10 +10223,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event189 = obj.nomeCheck23_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck23_02 = not sheet.fldCheck23_02;
             				
@@ -10238,10 +10246,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event190 = obj.nomeCheck23_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck23_03 = not sheet.fldCheck23_03;
             				
@@ -10263,10 +10271,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event191 = obj.nomeCheck23_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck23_04 = not sheet.fldCheck23_04;
             				
@@ -10290,10 +10298,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event192 = obj.nomeCheck23_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck23_05 = not sheet.fldCheck23_05;
             				
@@ -10311,20 +10319,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event193 = obj.nomeBut24:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_24:show('right', self.nomeBut24);
-        end, obj);
+        end);
 
     obj._e_event194 = obj.nomeBut24B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_24:show('right', self.nomeBut24);
-        end, obj);
+        end);
 
     obj._e_event195 = obj.dataLink40:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase24 == nil or sheet.fldEnfase24 == "Ênfases") then
             										self.nomeBut24.visible = true;
@@ -10333,10 +10341,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut24B.visible = true;
             										self.nomeBut24.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event196 = obj.nomeCheck24_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck24_01 = not sheet.fldCheck24_01;
             				
@@ -10350,10 +10358,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event197 = obj.nomeCheck24_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck24_02 = not sheet.fldCheck24_02;
             				
@@ -10373,10 +10381,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event198 = obj.nomeCheck24_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck24_03 = not sheet.fldCheck24_03;
             				
@@ -10398,10 +10406,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event199 = obj.nomeCheck24_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck24_04 = not sheet.fldCheck24_04;
             				
@@ -10425,10 +10433,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event200 = obj.nomeCheck24_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck24_05 = not sheet.fldCheck24_05;
             				
@@ -10446,20 +10454,20 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event201 = obj.nomeBut25:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_25:show('right', self.nomeBut25);
-        end, obj);
+        end);
 
     obj._e_event202 = obj.nomeBut25B:addEventListener("onClick",
-        function (_)
+        function (event)
             self.popUp_25:show('right', self.nomeBut25);
-        end, obj);
+        end);
 
     obj._e_event203 = obj.dataLink41:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
+        function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase25 == nil or sheet.fldEnfase25 == "Ênfases") then
             										self.nomeBut25.visible = true;
@@ -10468,10 +10476,10 @@ local function constructNew_frmScion2e()
             										self.nomeBut25B.visible = true;
             										self.nomeBut25.visible = false;
             									end;
-        end, obj);
+        end);
 
     obj._e_event204 = obj.nomeCheck25_01:addEventListener("onClick",
-        function (_)
+        function (event)
              
             				sheet.fldCheck25_01 = not sheet.fldCheck25_01;
             				
@@ -10485,10 +10493,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event205 = obj.nomeCheck25_02:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck25_02 = not sheet.fldCheck25_02;
             				
@@ -10508,10 +10516,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event206 = obj.nomeCheck25_03:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck25_03 = not sheet.fldCheck25_03;
             				
@@ -10533,10 +10541,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event207 = obj.nomeCheck25_04:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck25_04 = not sheet.fldCheck25_04;
             				
@@ -10560,10 +10568,10 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event208 = obj.nomeCheck25_05:addEventListener("onClick",
-        function (_)
+        function (event)
             
             				sheet.fldCheck25_05 = not sheet.fldCheck25_05;
             				
@@ -10581,40 +10589,40 @@ local function constructNew_frmScion2e()
             				
             				CalcPontos();
             			
-        end, obj);
+        end);
 
     obj._e_event209 = obj.rclLegados:addEventListener("onItemRemoved",
-        function (_, node, form)
+        function (node, form)
             self.idFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event210 = obj.rclLegados:addEventListener("onSelect",
-        function (_)
+        function ()
             self.rclLegados:sort();
-        end, obj);
+        end);
 
     obj._e_event211 = obj.rclLegados:addEventListener("onCompare",
-        function (_, nodeA, nodeB)
+        function (nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.fldLegados, nodeB.fldLegados);
-        end, obj);
+        end);
 
     obj._e_event212 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (event)
             self.rclLegados:append(); self.idFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event213 = obj.rclTruques:addEventListener("onItemRemoved",
-        function (_, node, form)
+        function (node, form)
             self.idFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event214 = obj.rclTruques:addEventListener("onSelect",
-        function (_)
+        function ()
             self.rclTruques:sort();
-        end, obj);
+        end);
 
     obj._e_event215 = obj.rclTruques:addEventListener("onCompare",
-        function (_, nodeA, nodeB)
+        function (nodeA, nodeB)
             if nodeA.fldLegado == nodeB.fldLegado then
             															if nodeA.fldGrau == nodeB.fldGrau then
             																return Utils.compareStringPtBr(nodeA.fldTruques, nodeB.fldTruques);
@@ -10624,49 +10632,49 @@ local function constructNew_frmScion2e()
             														else
             															return Utils.compareStringPtBr(nodeA.fldLegado, nodeB.fldLegado);
             														end
-        end, obj);
+        end);
 
     obj._e_event216 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (event)
             self.rclTruques:append(); self.idFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event217 = obj.rclHerancas:addEventListener("onItemRemoved",
-        function (_, node, form)
+        function (node, form)
             self.idFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event218 = obj.rclHerancas:addEventListener("onSelect",
-        function (_)
+        function ()
             self.rclHerancas:sort();
-        end, obj);
+        end);
 
     obj._e_event219 = obj.rclHerancas:addEventListener("onCompare",
-        function (_, nodeA, nodeB)
+        function (nodeA, nodeB)
             if nodeA.fldHerTipo == nodeB.fldHerTipo then
             															return Utils.compareStringPtBr(nodeA.fldHerancas, nodeB.fldHerancas);
             														else
             															return Utils.compareStringPtBr(nodeA.fldHerTipo, nodeB.fldHerTipo);
             														end
-        end, obj);
+        end);
 
     obj._e_event220 = obj.button3:addEventListener("onClick",
-        function (_)
+        function (event)
             self.rclHerancas:append(); self.idFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event221 = obj.rclEsferas:addEventListener("onItemRemoved",
-        function (_, node, form)
+        function (node, form)
             self.idFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event222 = obj.rclEsferas:addEventListener("onSelect",
-        function (_)
+        function ()
             self.rclEsferas:sort();
-        end, obj);
+        end);
 
     obj._e_event223 = obj.rclEsferas:addEventListener("onCompare",
-        function (_, nodeA, nodeB)
+        function (nodeA, nodeB)
             if nodeA.fldEsfCategoria == nodeB.fldEsfCategoria then
             															if nodeA.fldEsfTipo == nodeB.fldEsfTipo then
             																return Utils.compareStringPtBr(nodeA.fldEsferas, nodeB.fldEsferas);
@@ -10676,17 +10684,17 @@ local function constructNew_frmScion2e()
             														else
             															return Utils.compareStringPtBr(nodeA.fldEsfCategoria, nodeB.fldEsfCategoria);
             														end
-        end, obj);
+        end);
 
     obj._e_event224 = obj.button4:addEventListener("onClick",
-        function (_)
+        function (event)
             self.rclEsferas:append(); self.idFundo:needRepaint();
-        end, obj);
+        end);
 
     obj._e_event225 = obj.image7:addEventListener("onClick",
-        function (_)
+        function (event)
             if(sheet==nil) then return end; TrocarAba('D');
-        end, obj);
+        end);
 
     function obj:_releaseEvents()
         __o_rrpgObjs.removeEventListenerById(self._e_event225);
@@ -10926,700 +10934,700 @@ local function constructNew_frmScion2e()
           self:setNodeDatabase(nil);
         end;
 
-        if self.nomeCheck18_01 ~= nil then self.nomeCheck18_01:destroy(); self.nomeCheck18_01 = nil; end;
-        if self.nomeCheck08_04 ~= nil then self.nomeCheck08_04:destroy(); self.nomeCheck08_04 = nil; end;
-        if self.nomeCheck14_03 ~= nil then self.nomeCheck14_03:destroy(); self.nomeCheck14_03 = nil; end;
-        if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
-        if self.nomeBut23B ~= nil then self.nomeBut23B:destroy(); self.nomeBut23B = nil; end;
-        if self.flowPart33 ~= nil then self.flowPart33:destroy(); self.flowPart33 = nil; end;
-        if self.rectangle64 ~= nil then self.rectangle64:destroy(); self.rectangle64 = nil; end;
-        if self.layout83 ~= nil then self.layout83:destroy(); self.layout83 = nil; end;
-        if self.horzLine11 ~= nil then self.horzLine11:destroy(); self.horzLine11 = nil; end;
-        if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
-        if self.nomeCheck02_04 ~= nil then self.nomeCheck02_04:destroy(); self.nomeCheck02_04 = nil; end;
-        if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
-        if self.nomeCheck11_02 ~= nil then self.nomeCheck11_02:destroy(); self.nomeCheck11_02 = nil; end;
-        if self.rectVidMachucado06 ~= nil then self.rectVidMachucado06:destroy(); self.rectVidMachucado06 = nil; end;
-        if self.popUp_14 ~= nil then self.popUp_14:destroy(); self.popUp_14 = nil; end;
-        if self.dataLink33 ~= nil then self.dataLink33:destroy(); self.dataLink33 = nil; end;
-        if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
-        if self.label43 ~= nil then self.label43:destroy(); self.label43 = nil; end;
-        if self.layout64 ~= nil then self.layout64:destroy(); self.layout64 = nil; end;
-        if self.nomeCheck24_02 ~= nil then self.nomeCheck24_02:destroy(); self.nomeCheck24_02 = nil; end;
-        if self.horzLine7 ~= nil then self.horzLine7:destroy(); self.horzLine7 = nil; end;
-        if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
-        if self.rectangle67 ~= nil then self.rectangle67:destroy(); self.rectangle67 = nil; end;
-        if self.rectangle35 ~= nil then self.rectangle35:destroy(); self.rectangle35 = nil; end;
-        if self.layout17 ~= nil then self.layout17:destroy(); self.layout17 = nil; end;
-        if self.flowPart32 ~= nil then self.flowPart32:destroy(); self.flowPart32 = nil; end;
-        if self.flLayVida ~= nil then self.flLayVida:destroy(); self.flLayVida = nil; end;
-        if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
-        if self.nomeCheck18_05 ~= nil then self.nomeCheck18_05:destroy(); self.nomeCheck18_05 = nil; end;
-        if self.rectangle46 ~= nil then self.rectangle46:destroy(); self.rectangle46 = nil; end;
-        if self.nomeCheck21_02 ~= nil then self.nomeCheck21_02:destroy(); self.nomeCheck21_02 = nil; end;
-        if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
-        if self.flowPart13 ~= nil then self.flowPart13:destroy(); self.flowPart13 = nil; end;
-        if self.layout47 ~= nil then self.layout47:destroy(); self.layout47 = nil; end;
-        if self.flowLayout19 ~= nil then self.flowLayout19:destroy(); self.flowLayout19 = nil; end;
-        if self.nomeCheck25_02 ~= nil then self.nomeCheck25_02:destroy(); self.nomeCheck25_02 = nil; end;
-        if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
-        if self.checkImp_09_Imp ~= nil then self.checkImp_09_Imp:destroy(); self.checkImp_09_Imp = nil; end;
-        if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
-        if self.rectangle47 ~= nil then self.rectangle47:destroy(); self.rectangle47 = nil; end;
-        if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
-        if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
-        if self.layout24 ~= nil then self.layout24:destroy(); self.layout24 = nil; end;
-        if self.nomeBut15 ~= nil then self.nomeBut15:destroy(); self.nomeBut15 = nil; end;
-        if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
-        if self.nomeBut24B ~= nil then self.nomeBut24B:destroy(); self.nomeBut24B = nil; end;
-        if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
-        if self.label75 ~= nil then self.label75:destroy(); self.label75 = nil; end;
-        if self.flowPart25 ~= nil then self.flowPart25:destroy(); self.flowPart25 = nil; end;
-        if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
-        if self.nomeCheck24_04 ~= nil then self.nomeCheck24_04:destroy(); self.nomeCheck24_04 = nil; end;
-        if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
-        if self.flowPart19 ~= nil then self.flowPart19:destroy(); self.flowPart19 = nil; end;
-        if self.layout62 ~= nil then self.layout62:destroy(); self.layout62 = nil; end;
-        if self.rectangle59 ~= nil then self.rectangle59:destroy(); self.rectangle59 = nil; end;
-        if self.checkVir_03_Vir ~= nil then self.checkVir_03_Vir:destroy(); self.checkVir_03_Vir = nil; end;
-        if self.nomeCheck08_05 ~= nil then self.nomeCheck08_05:destroy(); self.nomeCheck08_05 = nil; end;
-        if self.idFundo ~= nil then self.idFundo:destroy(); self.idFundo = nil; end;
-        if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
-        if self.flowLayout16 ~= nil then self.flowLayout16:destroy(); self.flowLayout16 = nil; end;
-        if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
-        if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
-        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.nomeCheck05_03 ~= nil then self.nomeCheck05_03:destroy(); self.nomeCheck05_03 = nil; end;
-        if self.layout88 ~= nil then self.layout88:destroy(); self.layout88 = nil; end;
-        if self.nomeCheck10_01 ~= nil then self.nomeCheck10_01:destroy(); self.nomeCheck10_01 = nil; end;
-        if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
-        if self.nomeCheck21_04 ~= nil then self.nomeCheck21_04:destroy(); self.nomeCheck21_04 = nil; end;
-        if self.nomeCheck01_02 ~= nil then self.nomeCheck01_02:destroy(); self.nomeCheck01_02 = nil; end;
-        if self.layout71 ~= nil then self.layout71:destroy(); self.layout71 = nil; end;
-        if self.dataLink44 ~= nil then self.dataLink44:destroy(); self.dataLink44 = nil; end;
-        if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
-        if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
-        if self.nomeCheck13_01 ~= nil then self.nomeCheck13_01:destroy(); self.nomeCheck13_01 = nil; end;
-        if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
-        if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
-        if self.layout37 ~= nil then self.layout37:destroy(); self.layout37 = nil; end;
-        if self.textEditor15 ~= nil then self.textEditor15:destroy(); self.textEditor15 = nil; end;
-        if self.label82 ~= nil then self.label82:destroy(); self.label82 = nil; end;
-        if self.rectangle33 ~= nil then self.rectangle33:destroy(); self.rectangle33 = nil; end;
-        if self.nomeBut10 ~= nil then self.nomeBut10:destroy(); self.nomeBut10 = nil; end;
-        if self.rectangle51 ~= nil then self.rectangle51:destroy(); self.rectangle51 = nil; end;
-        if self.layout36 ~= nil then self.layout36:destroy(); self.layout36 = nil; end;
-        if self.popUp_15 ~= nil then self.popUp_15:destroy(); self.popUp_15 = nil; end;
-        if self.nomeCheck17_04 ~= nil then self.nomeCheck17_04:destroy(); self.nomeCheck17_04 = nil; end;
-        if self.flowPart34 ~= nil then self.flowPart34:destroy(); self.flowPart34 = nil; end;
-        if self.layout52 ~= nil then self.layout52:destroy(); self.layout52 = nil; end;
-        if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
-        if self.nomeCheck22_05 ~= nil then self.nomeCheck22_05:destroy(); self.nomeCheck22_05 = nil; end;
-        if self.nomeFei03 ~= nil then self.nomeFei03:destroy(); self.nomeFei03 = nil; end;
-        if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
-        if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
-        if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
-        if self.flowPart43 ~= nil then self.flowPart43:destroy(); self.flowPart43 = nil; end;
-        if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
-        if self.nomeCheck06_05 ~= nil then self.nomeCheck06_05:destroy(); self.nomeCheck06_05 = nil; end;
-        if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
-        if self.layout34 ~= nil then self.layout34:destroy(); self.layout34 = nil; end;
-        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
-        if self.rectangle55 ~= nil then self.rectangle55:destroy(); self.rectangle55 = nil; end;
-        if self.nomeCheckB16 ~= nil then self.nomeCheckB16:destroy(); self.nomeCheckB16 = nil; end;
-        if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
-        if self.checkMulVit_Des_04_Leg ~= nil then self.checkMulVit_Des_04_Leg:destroy(); self.checkMulVit_Des_04_Leg = nil; end;
-        if self.layout42 ~= nil then self.layout42:destroy(); self.layout42 = nil; end;
-        if self.nomeBut17B ~= nil then self.nomeBut17B:destroy(); self.nomeBut17B = nil; end;
-        if self.layout61 ~= nil then self.layout61:destroy(); self.layout61 = nil; end;
-        if self.nomeCheck25_01 ~= nil then self.nomeCheck25_01:destroy(); self.nomeCheck25_01 = nil; end;
-        if self.flowPart22 ~= nil then self.flowPart22:destroy(); self.flowPart22 = nil; end;
-        if self.dataLink20 ~= nil then self.dataLink20:destroy(); self.dataLink20 = nil; end;
-        if self.nomeCheck06_03 ~= nil then self.nomeCheck06_03:destroy(); self.nomeCheck06_03 = nil; end;
-        if self.nomeCheck11_05 ~= nil then self.nomeCheck11_05:destroy(); self.nomeCheck11_05 = nil; end;
-        if self.rectangle68 ~= nil then self.rectangle68:destroy(); self.rectangle68 = nil; end;
-        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
-        if self.nomeCheck17_02 ~= nil then self.nomeCheck17_02:destroy(); self.nomeCheck17_02 = nil; end;
-        if self.nomeCheck13_05 ~= nil then self.nomeCheck13_05:destroy(); self.nomeCheck13_05 = nil; end;
-        if self.rectangle48 ~= nil then self.rectangle48:destroy(); self.rectangle48 = nil; end;
-        if self.layout55 ~= nil then self.layout55:destroy(); self.layout55 = nil; end;
-        if self.nomeCheck21_05 ~= nil then self.nomeCheck21_05:destroy(); self.nomeCheck21_05 = nil; end;
-        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
-        if self.flPart_Machucado07 ~= nil then self.flPart_Machucado07:destroy(); self.flPart_Machucado07 = nil; end;
-        if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
-        if self.nomeCheck09_04 ~= nil then self.nomeCheck09_04:destroy(); self.nomeCheck09_04 = nil; end;
-        if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
-        if self.flowLayout14 ~= nil then self.flowLayout14:destroy(); self.flowLayout14 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.rectangle23 ~= nil then self.rectangle23:destroy(); self.rectangle23 = nil; end;
-        if self.layout78 ~= nil then self.layout78:destroy(); self.layout78 = nil; end;
-        if self.nomeBG ~= nil then self.nomeBG:destroy(); self.nomeBG = nil; end;
-        if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
-        if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
-        if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
-        if self.nomeBut10B ~= nil then self.nomeBut10B:destroy(); self.nomeBut10B = nil; end;
-        if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
-        if self.rectangle61 ~= nil then self.rectangle61:destroy(); self.rectangle61 = nil; end;
-        if self.btnImagemFundo ~= nil then self.btnImagemFundo:destroy(); self.btnImagemFundo = nil; end;
-        if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
-        if self.nomeCheckB10 ~= nil then self.nomeCheckB10:destroy(); self.nomeCheckB10 = nil; end;
-        if self.rectangle52 ~= nil then self.rectangle52:destroy(); self.rectangle52 = nil; end;
-        if self.flowPart39 ~= nil then self.flowPart39:destroy(); self.flowPart39 = nil; end;
-        if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
-        if self.rectangle50 ~= nil then self.rectangle50:destroy(); self.rectangle50 = nil; end;
-        if self.nomeCheck04_05 ~= nil then self.nomeCheck04_05:destroy(); self.nomeCheck04_05 = nil; end;
-        if self.nomeCheck10_05 ~= nil then self.nomeCheck10_05:destroy(); self.nomeCheck10_05 = nil; end;
-        if self.nomeCheck21_01 ~= nil then self.nomeCheck21_01:destroy(); self.nomeCheck21_01 = nil; end;
-        if self.layout35 ~= nil then self.layout35:destroy(); self.layout35 = nil; end;
-        if self.popImagemFundo ~= nil then self.popImagemFundo:destroy(); self.popImagemFundo = nil; end;
-        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
-        if self.nomeCheck07_04 ~= nil then self.nomeCheck07_04:destroy(); self.nomeCheck07_04 = nil; end;
-        if self.nomeCheck14_05 ~= nil then self.nomeCheck14_05:destroy(); self.nomeCheck14_05 = nil; end;
-        if self.rectangle58 ~= nil then self.rectangle58:destroy(); self.rectangle58 = nil; end;
-        if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
-        if self.checkMulVit_Des_02_Leg ~= nil then self.checkMulVit_Des_02_Leg:destroy(); self.checkMulVit_Des_02_Leg = nil; end;
-        if self.checkImp_07_Imp ~= nil then self.checkImp_07_Imp:destroy(); self.checkImp_07_Imp = nil; end;
-        if self.flowPart28 ~= nil then self.flowPart28:destroy(); self.flowPart28 = nil; end;
-        if self.dataLink32 ~= nil then self.dataLink32:destroy(); self.dataLink32 = nil; end;
-        if self.dataLink34 ~= nil then self.dataLink34:destroy(); self.dataLink34 = nil; end;
-        if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
-        if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
-        if self.nomeBut13B ~= nil then self.nomeBut13B:destroy(); self.nomeBut13B = nil; end;
-        if self.nomeCheck15_02 ~= nil then self.nomeCheck15_02:destroy(); self.nomeCheck15_02 = nil; end;
-        if self.nomeCheck21_03 ~= nil then self.nomeCheck21_03:destroy(); self.nomeCheck21_03 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.popUp_11 ~= nil then self.popUp_11:destroy(); self.popUp_11 = nil; end;
-        if self.label89 ~= nil then self.label89:destroy(); self.label89 = nil; end;
-        if self.label38 ~= nil then self.label38:destroy(); self.label38 = nil; end;
-        if self.nomeCheck25_03 ~= nil then self.nomeCheck25_03:destroy(); self.nomeCheck25_03 = nil; end;
-        if self.nomeBut18 ~= nil then self.nomeBut18:destroy(); self.nomeBut18 = nil; end;
-        if self.popUp_10 ~= nil then self.popUp_10:destroy(); self.popUp_10 = nil; end;
-        if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
-        if self.rectangle42 ~= nil then self.rectangle42:destroy(); self.rectangle42 = nil; end;
-        if self.nomeCheck05_01 ~= nil then self.nomeCheck05_01:destroy(); self.nomeCheck05_01 = nil; end;
-        if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;
-        if self.layout51 ~= nil then self.layout51:destroy(); self.layout51 = nil; end;
-        if self.popUp_13 ~= nil then self.popUp_13:destroy(); self.popUp_13 = nil; end;
-        if self.nomeCheck23_02 ~= nil then self.nomeCheck23_02:destroy(); self.nomeCheck23_02 = nil; end;
-        if self.flowPart15 ~= nil then self.flowPart15:destroy(); self.flowPart15 = nil; end;
-        if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
-        if self.flowLayout8 ~= nil then self.flowLayout8:destroy(); self.flowLayout8 = nil; end;
-        if self.nomeCheck19_03 ~= nil then self.nomeCheck19_03:destroy(); self.nomeCheck19_03 = nil; end;
-        if self.nomeCheck20_02 ~= nil then self.nomeCheck20_02:destroy(); self.nomeCheck20_02 = nil; end;
-        if self.rclLegados ~= nil then self.rclLegados:destroy(); self.rclLegados = nil; end;
-        if self.rclEsferas ~= nil then self.rclEsferas:destroy(); self.rclEsferas = nil; end;
-        if self.nomeCheck05_05 ~= nil then self.nomeCheck05_05:destroy(); self.nomeCheck05_05 = nil; end;
-        if self.nomeCheck23_03 ~= nil then self.nomeCheck23_03:destroy(); self.nomeCheck23_03 = nil; end;
-        if self.layout39 ~= nil then self.layout39:destroy(); self.layout39 = nil; end;
-        if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
-        if self.dataLink40 ~= nil then self.dataLink40:destroy(); self.dataLink40 = nil; end;
-        if self.flowPart10 ~= nil then self.flowPart10:destroy(); self.flowPart10 = nil; end;
-        if self.layout69 ~= nil then self.layout69:destroy(); self.layout69 = nil; end;
-        if self.nomeBut21 ~= nil then self.nomeBut21:destroy(); self.nomeBut21 = nil; end;
-        if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
-        if self.textEditor9 ~= nil then self.textEditor9:destroy(); self.textEditor9 = nil; end;
-        if self.checkImp_06_Imp ~= nil then self.checkImp_06_Imp:destroy(); self.checkImp_06_Imp = nil; end;
-        if self.layout30 ~= nil then self.layout30:destroy(); self.layout30 = nil; end;
-        if self.dataLink47 ~= nil then self.dataLink47:destroy(); self.dataLink47 = nil; end;
-        if self.checkImp_01_Imp ~= nil then self.checkImp_01_Imp:destroy(); self.checkImp_01_Imp = nil; end;
-        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
-        if self.layout59 ~= nil then self.layout59:destroy(); self.layout59 = nil; end;
-        if self.layout60 ~= nil then self.layout60:destroy(); self.layout60 = nil; end;
-        if self.label73 ~= nil then self.label73:destroy(); self.label73 = nil; end;
-        if self.nomeCheck01_04 ~= nil then self.nomeCheck01_04:destroy(); self.nomeCheck01_04 = nil; end;
-        if self.flowPart40 ~= nil then self.flowPart40:destroy(); self.flowPart40 = nil; end;
-        if self.flowLayout18 ~= nil then self.flowLayout18:destroy(); self.flowLayout18 = nil; end;
-        if self.rectVidInconsciente ~= nil then self.rectVidInconsciente:destroy(); self.rectVidInconsciente = nil; end;
-        if self.layout72 ~= nil then self.layout72:destroy(); self.layout72 = nil; end;
-        if self.flowLayout15 ~= nil then self.flowLayout15:destroy(); self.flowLayout15 = nil; end;
-        if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
-        if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
-        if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
-        if self.flowLayout12 ~= nil then self.flowLayout12:destroy(); self.flowLayout12 = nil; end;
-        if self.rectangle66 ~= nil then self.rectangle66:destroy(); self.rectangle66 = nil; end;
-        if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
-        if self.nomeCheck05_04 ~= nil then self.nomeCheck05_04:destroy(); self.nomeCheck05_04 = nil; end;
-        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
-        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
-        if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
-        if self.nomeCheck07_03 ~= nil then self.nomeCheck07_03:destroy(); self.nomeCheck07_03 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
-        if self.nomeCheck08_02 ~= nil then self.nomeCheck08_02:destroy(); self.nomeCheck08_02 = nil; end;
-        if self.flowPart18 ~= nil then self.flowPart18:destroy(); self.flowPart18 = nil; end;
-        if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
-        if self.label90 ~= nil then self.label90:destroy(); self.label90 = nil; end;
-        if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
-        if self.flPart_Machucado04 ~= nil then self.flPart_Machucado04:destroy(); self.flPart_Machucado04 = nil; end;
-        if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
-        if self.checkVir_05_Vir ~= nil then self.checkVir_05_Vir:destroy(); self.checkVir_05_Vir = nil; end;
-        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
-        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
-        if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
-        if self.nomeBut12B ~= nil then self.nomeBut12B:destroy(); self.nomeBut12B = nil; end;
-        if self.nomeCheck12_05 ~= nil then self.nomeCheck12_05:destroy(); self.nomeCheck12_05 = nil; end;
-        if self.rectangle38 ~= nil then self.rectangle38:destroy(); self.rectangle38 = nil; end;
-        if self.nomeCheck20_03 ~= nil then self.nomeCheck20_03:destroy(); self.nomeCheck20_03 = nil; end;
-        if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
-        if self.nomeCheck12_01 ~= nil then self.nomeCheck12_01:destroy(); self.nomeCheck12_01 = nil; end;
-        if self.textEditor11 ~= nil then self.textEditor11:destroy(); self.textEditor11 = nil; end;
-        if self.nomeBut24 ~= nil then self.nomeBut24:destroy(); self.nomeBut24 = nil; end;
-        if self.textEditor16 ~= nil then self.textEditor16:destroy(); self.textEditor16 = nil; end;
-        if self.nomeCheckB21 ~= nil then self.nomeCheckB21:destroy(); self.nomeCheckB21 = nil; end;
-        if self.flowLayout20 ~= nil then self.flowLayout20:destroy(); self.flowLayout20 = nil; end;
-        if self.flowPart48 ~= nil then self.flowPart48:destroy(); self.flowPart48 = nil; end;
-        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
-        if self.dataLink45 ~= nil then self.dataLink45:destroy(); self.dataLink45 = nil; end;
-        if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
-        if self.dataLink43 ~= nil then self.dataLink43:destroy(); self.dataLink43 = nil; end;
-        if self.horzLine5 ~= nil then self.horzLine5:destroy(); self.horzLine5 = nil; end;
-        if self.nomeCheckB24 ~= nil then self.nomeCheckB24:destroy(); self.nomeCheckB24 = nil; end;
-        if self.layout26 ~= nil then self.layout26:destroy(); self.layout26 = nil; end;
-        if self.nomeBut20 ~= nil then self.nomeBut20:destroy(); self.nomeBut20 = nil; end;
-        if self.rectangle45 ~= nil then self.rectangle45:destroy(); self.rectangle45 = nil; end;
-        if self.flowPart35 ~= nil then self.flowPart35:destroy(); self.flowPart35 = nil; end;
-        if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
-        if self.flowLayout7 ~= nil then self.flowLayout7:destroy(); self.flowLayout7 = nil; end;
-        if self.nomeCheck11_03 ~= nil then self.nomeCheck11_03:destroy(); self.nomeCheck11_03 = nil; end;
-        if self.nomeCheckB13 ~= nil then self.nomeCheckB13:destroy(); self.nomeCheckB13 = nil; end;
-        if self.flowPart4 ~= nil then self.flowPart4:destroy(); self.flowPart4 = nil; end;
-        if self.nomeCheck08_01 ~= nil then self.nomeCheck08_01:destroy(); self.nomeCheck08_01 = nil; end;
-        if self.label86 ~= nil then self.label86:destroy(); self.label86 = nil; end;
-        if self.flowLayout10 ~= nil then self.flowLayout10:destroy(); self.flowLayout10 = nil; end;
-        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
-        if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
-        if self.rectangle53 ~= nil then self.rectangle53:destroy(); self.rectangle53 = nil; end;
-        if self.horzLine9 ~= nil then self.horzLine9:destroy(); self.horzLine9 = nil; end;
-        if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
-        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
-        if self.nomeCheck19_01 ~= nil then self.nomeCheck19_01:destroy(); self.nomeCheck19_01 = nil; end;
-        if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
-        if self.layout76 ~= nil then self.layout76:destroy(); self.layout76 = nil; end;
-        if self.checkImp_02_Imp ~= nil then self.checkImp_02_Imp:destroy(); self.checkImp_02_Imp = nil; end;
-        if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
-        if self.nomeCheck03_01 ~= nil then self.nomeCheck03_01:destroy(); self.nomeCheck03_01 = nil; end;
-        if self.rectangle62 ~= nil then self.rectangle62:destroy(); self.rectangle62 = nil; end;
-        if self.nomeCheckB18 ~= nil then self.nomeCheckB18:destroy(); self.nomeCheckB18 = nil; end;
-        if self.flowLayout4 ~= nil then self.flowLayout4:destroy(); self.flowLayout4 = nil; end;
-        if self.nomeCheck22_04 ~= nil then self.nomeCheck22_04:destroy(); self.nomeCheck22_04 = nil; end;
-        if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
-        if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
-        if self.popUp_19 ~= nil then self.popUp_19:destroy(); self.popUp_19 = nil; end;
-        if self.dataLink35 ~= nil then self.dataLink35:destroy(); self.dataLink35 = nil; end;
-        if self.nomeBut17 ~= nil then self.nomeBut17:destroy(); self.nomeBut17 = nil; end;
-        if self.label81 ~= nil then self.label81:destroy(); self.label81 = nil; end;
-        if self.dataLink22 ~= nil then self.dataLink22:destroy(); self.dataLink22 = nil; end;
-        if self.popUp_16 ~= nil then self.popUp_16:destroy(); self.popUp_16 = nil; end;
-        if self.nomeCheck20_04 ~= nil then self.nomeCheck20_04:destroy(); self.nomeCheck20_04 = nil; end;
-        if self.flowLayout2 ~= nil then self.flowLayout2:destroy(); self.flowLayout2 = nil; end;
-        if self.textEditor10 ~= nil then self.textEditor10:destroy(); self.textEditor10 = nil; end;
-        if self.layout31 ~= nil then self.layout31:destroy(); self.layout31 = nil; end;
-        if self.nomeCheck09_02 ~= nil then self.nomeCheck09_02:destroy(); self.nomeCheck09_02 = nil; end;
-        if self.dataLink27 ~= nil then self.dataLink27:destroy(); self.dataLink27 = nil; end;
-        if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
-        if self.dataLink30 ~= nil then self.dataLink30:destroy(); self.dataLink30 = nil; end;
-        if self.nomeCheck23_01 ~= nil then self.nomeCheck23_01:destroy(); self.nomeCheck23_01 = nil; end;
-        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.nomeBut14 ~= nil then self.nomeBut14:destroy(); self.nomeBut14 = nil; end;
-        if self.rectangle30 ~= nil then self.rectangle30:destroy(); self.rectangle30 = nil; end;
-        if self.layout70 ~= nil then self.layout70:destroy(); self.layout70 = nil; end;
-        if self.layout67 ~= nil then self.layout67:destroy(); self.layout67 = nil; end;
-        if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
-        if self.nomeCheck06_04 ~= nil then self.nomeCheck06_04:destroy(); self.nomeCheck06_04 = nil; end;
-        if self.layout29 ~= nil then self.layout29:destroy(); self.layout29 = nil; end;
-        if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
-        if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
-        if self.nomeBut20B ~= nil then self.nomeBut20B:destroy(); self.nomeBut20B = nil; end;
-        if self.rectangle63 ~= nil then self.rectangle63:destroy(); self.rectangle63 = nil; end;
-        if self.label79 ~= nil then self.label79:destroy(); self.label79 = nil; end;
-        if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
-        if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
-        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
-        if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
-        if self.rclHerancas ~= nil then self.rclHerancas:destroy(); self.rclHerancas = nil; end;
-        if self.rectangle74 ~= nil then self.rectangle74:destroy(); self.rectangle74 = nil; end;
-        if self.nomeCheck18_04 ~= nil then self.nomeCheck18_04:destroy(); self.nomeCheck18_04 = nil; end;
-        if self.rectangle36 ~= nil then self.rectangle36:destroy(); self.rectangle36 = nil; end;
-        if self.nomeCheck09_03 ~= nil then self.nomeCheck09_03:destroy(); self.nomeCheck09_03 = nil; end;
-        if self.horzLine4 ~= nil then self.horzLine4:destroy(); self.horzLine4 = nil; end;
-        if self.flowPart37 ~= nil then self.flowPart37:destroy(); self.flowPart37 = nil; end;
-        if self.flowPart45 ~= nil then self.flowPart45:destroy(); self.flowPart45 = nil; end;
-        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
-        if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
-        if self.popUp_23 ~= nil then self.popUp_23:destroy(); self.popUp_23 = nil; end;
-        if self.nomeCheckB19 ~= nil then self.nomeCheckB19:destroy(); self.nomeCheckB19 = nil; end;
-        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
-        if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
-        if self.layout48 ~= nil then self.layout48:destroy(); self.layout48 = nil; end;
-        if self.nomeBut16B ~= nil then self.nomeBut16B:destroy(); self.nomeBut16B = nil; end;
-        if self.layout73 ~= nil then self.layout73:destroy(); self.layout73 = nil; end;
-        if self.rectVidMachucado05 ~= nil then self.rectVidMachucado05:destroy(); self.rectVidMachucado05 = nil; end;
-        if self.nomeBut16 ~= nil then self.nomeBut16:destroy(); self.nomeBut16 = nil; end;
-        if self.nomeBut22 ~= nil then self.nomeBut22:destroy(); self.nomeBut22 = nil; end;
-        if self.flPart_Machucado05 ~= nil then self.flPart_Machucado05:destroy(); self.flPart_Machucado05 = nil; end;
-        if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
-        if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
-        if self.horzLine6 ~= nil then self.horzLine6:destroy(); self.horzLine6 = nil; end;
-        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
-        if self.checkVir_02_Vir ~= nil then self.checkVir_02_Vir:destroy(); self.checkVir_02_Vir = nil; end;
-        if self.flowPart24 ~= nil then self.flowPart24:destroy(); self.flowPart24 = nil; end;
-        if self.nomeCheckB25 ~= nil then self.nomeCheckB25:destroy(); self.nomeCheckB25 = nil; end;
-        if self.popUp_25 ~= nil then self.popUp_25:destroy(); self.popUp_25 = nil; end;
-        if self.nomeCheck14_04 ~= nil then self.nomeCheck14_04:destroy(); self.nomeCheck14_04 = nil; end;
-        if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;
-        if self.nomeCheck10_03 ~= nil then self.nomeCheck10_03:destroy(); self.nomeCheck10_03 = nil; end;
-        if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
-        if self.rectangle34 ~= nil then self.rectangle34:destroy(); self.rectangle34 = nil; end;
-        if self.rectVidMachucado03 ~= nil then self.rectVidMachucado03:destroy(); self.rectVidMachucado03 = nil; end;
-        if self.nomeCheck14_02 ~= nil then self.nomeCheck14_02:destroy(); self.nomeCheck14_02 = nil; end;
-        if self.nomeCheck20_01 ~= nil then self.nomeCheck20_01:destroy(); self.nomeCheck20_01 = nil; end;
-        if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
-        if self.layout58 ~= nil then self.layout58:destroy(); self.layout58 = nil; end;
-        if self.flPart_Machucado03 ~= nil then self.flPart_Machucado03:destroy(); self.flPart_Machucado03 = nil; end;
-        if self.nomeCheck11_01 ~= nil then self.nomeCheck11_01:destroy(); self.nomeCheck11_01 = nil; end;
-        if self.dataLink28 ~= nil then self.dataLink28:destroy(); self.dataLink28 = nil; end;
-        if self.nomeBut22B ~= nil then self.nomeBut22B:destroy(); self.nomeBut22B = nil; end;
-        if self.dataLink42 ~= nil then self.dataLink42:destroy(); self.dataLink42 = nil; end;
-        if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
-        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
-        if self.nomeCheck02_03 ~= nil then self.nomeCheck02_03:destroy(); self.nomeCheck02_03 = nil; end;
-        if self.layout63 ~= nil then self.layout63:destroy(); self.layout63 = nil; end;
-        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
-        if self.nomeCheck19_04 ~= nil then self.nomeCheck19_04:destroy(); self.nomeCheck19_04 = nil; end;
-        if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
-        if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
-        if self.flowLayout13 ~= nil then self.flowLayout13:destroy(); self.flowLayout13 = nil; end;
-        if self.popUp_20 ~= nil then self.popUp_20:destroy(); self.popUp_20 = nil; end;
-        if self.nomeCheck02_05 ~= nil then self.nomeCheck02_05:destroy(); self.nomeCheck02_05 = nil; end;
-        if self.flowPart42 ~= nil then self.flowPart42:destroy(); self.flowPart42 = nil; end;
-        if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
-        if self.nomeCheckB23 ~= nil then self.nomeCheckB23:destroy(); self.nomeCheckB23 = nil; end;
-        if self.layout41 ~= nil then self.layout41:destroy(); self.layout41 = nil; end;
-        if self.nomeCheck16_05 ~= nil then self.nomeCheck16_05:destroy(); self.nomeCheck16_05 = nil; end;
-        if self.checkMulVit_Des_05_Leg ~= nil then self.checkMulVit_Des_05_Leg:destroy(); self.checkMulVit_Des_05_Leg = nil; end;
-        if self.checkImp_08_Imp ~= nil then self.checkImp_08_Imp:destroy(); self.checkImp_08_Imp = nil; end;
-        if self.nomeCheck07_02 ~= nil then self.nomeCheck07_02:destroy(); self.nomeCheck07_02 = nil; end;
-        if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
-        if self.flowLayout5 ~= nil then self.flowLayout5:destroy(); self.flowLayout5 = nil; end;
-        if self.dataLink21 ~= nil then self.dataLink21:destroy(); self.dataLink21 = nil; end;
-        if self.layout38 ~= nil then self.layout38:destroy(); self.layout38 = nil; end;
-        if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
-        if self.nomeCheck06_01 ~= nil then self.nomeCheck06_01:destroy(); self.nomeCheck06_01 = nil; end;
-        if self.nomeBut11B ~= nil then self.nomeBut11B:destroy(); self.nomeBut11B = nil; end;
-        if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
-        if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
-        if self.nomeCheck16_02 ~= nil then self.nomeCheck16_02:destroy(); self.nomeCheck16_02 = nil; end;
-        if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
-        if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
-        if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
-        if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
-        if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
-        if self.horzLine10 ~= nil then self.horzLine10:destroy(); self.horzLine10 = nil; end;
-        if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
-        if self.nomeCheck15_03 ~= nil then self.nomeCheck15_03:destroy(); self.nomeCheck15_03 = nil; end;
-        if self.layout68 ~= nil then self.layout68:destroy(); self.layout68 = nil; end;
-        if self.rectangle75 ~= nil then self.rectangle75:destroy(); self.rectangle75 = nil; end;
-        if self.flowPart16 ~= nil then self.flowPart16:destroy(); self.flowPart16 = nil; end;
-        if self.rectangle57 ~= nil then self.rectangle57:destroy(); self.rectangle57 = nil; end;
-        if self.nomeCheck13_02 ~= nil then self.nomeCheck13_02:destroy(); self.nomeCheck13_02 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.nomeCheck09_01 ~= nil then self.nomeCheck09_01:destroy(); self.nomeCheck09_01 = nil; end;
-        if self.idImgFundo ~= nil then self.idImgFundo:destroy(); self.idImgFundo = nil; end;
-        if self.nomeBut12 ~= nil then self.nomeBut12:destroy(); self.nomeBut12 = nil; end;
-        if self.label69 ~= nil then self.label69:destroy(); self.label69 = nil; end;
-        if self.nomeCheck03_02 ~= nil then self.nomeCheck03_02:destroy(); self.nomeCheck03_02 = nil; end;
-        if self.label31 ~= nil then self.label31:destroy(); self.label31 = nil; end;
-        if self.nomeCheck04_01 ~= nil then self.nomeCheck04_01:destroy(); self.nomeCheck04_01 = nil; end;
-        if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
-        if self.nomeCheck15_01 ~= nil then self.nomeCheck15_01:destroy(); self.nomeCheck15_01 = nil; end;
-        if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
-        if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
-        if self.nomeCheck11_04 ~= nil then self.nomeCheck11_04:destroy(); self.nomeCheck11_04 = nil; end;
-        if self.layout54 ~= nil then self.layout54:destroy(); self.layout54 = nil; end;
-        if self.nomeCheck01_03 ~= nil then self.nomeCheck01_03:destroy(); self.nomeCheck01_03 = nil; end;
-        if self.rectangle70 ~= nil then self.rectangle70:destroy(); self.rectangle70 = nil; end;
-        if self.flowPart38 ~= nil then self.flowPart38:destroy(); self.flowPart38 = nil; end;
-        if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
-        if self.flPart_Machucado02 ~= nil then self.flPart_Machucado02:destroy(); self.flPart_Machucado02 = nil; end;
-        if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
-        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
-        if self.nomeCheck05_02 ~= nil then self.nomeCheck05_02:destroy(); self.nomeCheck05_02 = nil; end;
-        if self.nomeCheck15_04 ~= nil then self.nomeCheck15_04:destroy(); self.nomeCheck15_04 = nil; end;
-        if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
-        if self.rectangle15 ~= nil then self.rectangle15:destroy(); self.rectangle15 = nil; end;
-        if self.layVerso ~= nil then self.layVerso:destroy(); self.layVerso = nil; end;
-        if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
-        if self.label88 ~= nil then self.label88:destroy(); self.label88 = nil; end;
-        if self.nomeCheck03_04 ~= nil then self.nomeCheck03_04:destroy(); self.nomeCheck03_04 = nil; end;
-        if self.textEditor5 ~= nil then self.textEditor5:destroy(); self.textEditor5 = nil; end;
-        if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
-        if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
-        if self.flowPart20 ~= nil then self.flowPart20:destroy(); self.flowPart20 = nil; end;
-        if self.textEditor7 ~= nil then self.textEditor7:destroy(); self.textEditor7 = nil; end;
-        if self.flowPart44 ~= nil then self.flowPart44:destroy(); self.flowPart44 = nil; end;
-        if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
-        if self.nomeCheck14_01 ~= nil then self.nomeCheck14_01:destroy(); self.nomeCheck14_01 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.rectangle26 ~= nil then self.rectangle26:destroy(); self.rectangle26 = nil; end;
-        if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
-        if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
-        if self.nomeCheck22_03 ~= nil then self.nomeCheck22_03:destroy(); self.nomeCheck22_03 = nil; end;
-        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
-        if self.nomeCheck15_05 ~= nil then self.nomeCheck15_05:destroy(); self.nomeCheck15_05 = nil; end;
-        if self.nomeBut15B ~= nil then self.nomeBut15B:destroy(); self.nomeBut15B = nil; end;
-        if self.rectangle65 ~= nil then self.rectangle65:destroy(); self.rectangle65 = nil; end;
-        if self.nomeFei02 ~= nil then self.nomeFei02:destroy(); self.nomeFei02 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
-        if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
-        if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
-        if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
-        if self.rectangle44 ~= nil then self.rectangle44:destroy(); self.rectangle44 = nil; end;
-        if self.rectVidMachucado02 ~= nil then self.rectVidMachucado02:destroy(); self.rectVidMachucado02 = nil; end;
-        if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
-        if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
-        if self.nomeCheckB15 ~= nil then self.nomeCheckB15:destroy(); self.nomeCheckB15 = nil; end;
-        if self.popUp_17 ~= nil then self.popUp_17:destroy(); self.popUp_17 = nil; end;
-        if self.checkImp_11_Imp ~= nil then self.checkImp_11_Imp:destroy(); self.checkImp_11_Imp = nil; end;
-        if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
-        if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
-        if self.flowPart29 ~= nil then self.flowPart29:destroy(); self.flowPart29 = nil; end;
-        if self.nomeCam03 ~= nil then self.nomeCam03:destroy(); self.nomeCam03 = nil; end;
-        if self.nomeCheck08_03 ~= nil then self.nomeCheck08_03:destroy(); self.nomeCheck08_03 = nil; end;
-        if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
-        if self.nomeCheck02_02 ~= nil then self.nomeCheck02_02:destroy(); self.nomeCheck02_02 = nil; end;
-        if self.nomeCheck12_02 ~= nil then self.nomeCheck12_02:destroy(); self.nomeCheck12_02 = nil; end;
-        if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
-        if self.nomeCheck22_02 ~= nil then self.nomeCheck22_02:destroy(); self.nomeCheck22_02 = nil; end;
-        if self.popUp_24 ~= nil then self.popUp_24:destroy(); self.popUp_24 = nil; end;
-        if self.nomeCam02 ~= nil then self.nomeCam02:destroy(); self.nomeCam02 = nil; end;
-        if self.dataLink49 ~= nil then self.dataLink49:destroy(); self.dataLink49 = nil; end;
-        if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
-        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
-        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
-        if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
-        if self.nomeCheck04_03 ~= nil then self.nomeCheck04_03:destroy(); self.nomeCheck04_03 = nil; end;
-        if self.flowPart26 ~= nil then self.flowPart26:destroy(); self.flowPart26 = nil; end;
-        if self.nomeCheck16_03 ~= nil then self.nomeCheck16_03:destroy(); self.nomeCheck16_03 = nil; end;
-        if self.popUp_21 ~= nil then self.popUp_21:destroy(); self.popUp_21 = nil; end;
-        if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
-        if self.layout49 ~= nil then self.layout49:destroy(); self.layout49 = nil; end;
-        if self.flPart_Machucado01 ~= nil then self.flPart_Machucado01:destroy(); self.flPart_Machucado01 = nil; end;
-        if self.flowPart23 ~= nil then self.flowPart23:destroy(); self.flowPart23 = nil; end;
-        if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
-        if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
-        if self.nomeCheck10_04 ~= nil then self.nomeCheck10_04:destroy(); self.nomeCheck10_04 = nil; end;
-        if self.nomeCheck03_03 ~= nil then self.nomeCheck03_03:destroy(); self.nomeCheck03_03 = nil; end;
-        if self.dataLink37 ~= nil then self.dataLink37:destroy(); self.dataLink37 = nil; end;
-        if self.checkMulVit_Des_03_Leg ~= nil then self.checkMulVit_Des_03_Leg:destroy(); self.checkMulVit_Des_03_Leg = nil; end;
-        if self.nomeBut25B ~= nil then self.nomeBut25B:destroy(); self.nomeBut25B = nil; end;
-        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
-        if self.flowLayout6 ~= nil then self.flowLayout6:destroy(); self.flowLayout6 = nil; end;
-        if self.dataLink29 ~= nil then self.dataLink29:destroy(); self.dataLink29 = nil; end;
-        if self.rectVidMachucado04 ~= nil then self.rectVidMachucado04:destroy(); self.rectVidMachucado04 = nil; end;
-        if self.flowPart41 ~= nil then self.flowPart41:destroy(); self.flowPart41 = nil; end;
-        if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
-        if self.flowPart30 ~= nil then self.flowPart30:destroy(); self.flowPart30 = nil; end;
-        if self.rectangle60 ~= nil then self.rectangle60:destroy(); self.rectangle60 = nil; end;
-        if self.nomeCheck07_05 ~= nil then self.nomeCheck07_05:destroy(); self.nomeCheck07_05 = nil; end;
-        if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
-        if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
-        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
-        if self.layout33 ~= nil then self.layout33:destroy(); self.layout33 = nil; end;
-        if self.checkImp_03_Imp ~= nil then self.checkImp_03_Imp:destroy(); self.checkImp_03_Imp = nil; end;
-        if self.rectangle32 ~= nil then self.rectangle32:destroy(); self.rectangle32 = nil; end;
-        if self.label62 ~= nil then self.label62:destroy(); self.label62 = nil; end;
-        if self.nomeCheck18_02 ~= nil then self.nomeCheck18_02:destroy(); self.nomeCheck18_02 = nil; end;
-        if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
-        if self.layout21 ~= nil then self.layout21:destroy(); self.layout21 = nil; end;
-        if self.checkImp_10_Imp ~= nil then self.checkImp_10_Imp:destroy(); self.checkImp_10_Imp = nil; end;
-        if self.nomeCheck23_05 ~= nil then self.nomeCheck23_05:destroy(); self.nomeCheck23_05 = nil; end;
-        if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;
-        if self.edit18 ~= nil then self.edit18:destroy(); self.edit18 = nil; end;
-        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.nomeCheck01_05 ~= nil then self.nomeCheck01_05:destroy(); self.nomeCheck01_05 = nil; end;
-        if self.dataLink25 ~= nil then self.dataLink25:destroy(); self.dataLink25 = nil; end;
-        if self.rectangle71 ~= nil then self.rectangle71:destroy(); self.rectangle71 = nil; end;
-        if self.nomeCheck12_04 ~= nil then self.nomeCheck12_04:destroy(); self.nomeCheck12_04 = nil; end;
-        if self.layout79 ~= nil then self.layout79:destroy(); self.layout79 = nil; end;
-        if self.nomeCheck16_01 ~= nil then self.nomeCheck16_01:destroy(); self.nomeCheck16_01 = nil; end;
-        if self.flowPart49 ~= nil then self.flowPart49:destroy(); self.flowPart49 = nil; end;
-        if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
-        if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
-        if self.dataLink31 ~= nil then self.dataLink31:destroy(); self.dataLink31 = nil; end;
-        if self.flowPart14 ~= nil then self.flowPart14:destroy(); self.flowPart14 = nil; end;
-        if self.label44 ~= nil then self.label44:destroy(); self.label44 = nil; end;
-        if self.layout43 ~= nil then self.layout43:destroy(); self.layout43 = nil; end;
-        if self.nomeBut19 ~= nil then self.nomeBut19:destroy(); self.nomeBut19 = nil; end;
-        if self.rclTruques ~= nil then self.rclTruques:destroy(); self.rclTruques = nil; end;
-        if self.rectangle56 ~= nil then self.rectangle56:destroy(); self.rectangle56 = nil; end;
-        if self.textEditor13 ~= nil then self.textEditor13:destroy(); self.textEditor13 = nil; end;
-        if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
-        if self.nomeCheckB11 ~= nil then self.nomeCheckB11:destroy(); self.nomeCheckB11 = nil; end;
-        if self.nomeCheck19_05 ~= nil then self.nomeCheck19_05:destroy(); self.nomeCheck19_05 = nil; end;
-        if self.dataLink39 ~= nil then self.dataLink39:destroy(); self.dataLink39 = nil; end;
-        if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
-        if self.layout80 ~= nil then self.layout80:destroy(); self.layout80 = nil; end;
-        if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
-        if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
-        if self.layout57 ~= nil then self.layout57:destroy(); self.layout57 = nil; end;
-        if self.nomeCheck16_04 ~= nil then self.nomeCheck16_04:destroy(); self.nomeCheck16_04 = nil; end;
-        if self.label55 ~= nil then self.label55:destroy(); self.label55 = nil; end;
-        if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
-        if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
-        if self.label66 ~= nil then self.label66:destroy(); self.label66 = nil; end;
-        if self.layout82 ~= nil then self.layout82:destroy(); self.layout82 = nil; end;
-        if self.layout65 ~= nil then self.layout65:destroy(); self.layout65 = nil; end;
-        if self.flowPart46 ~= nil then self.flowPart46:destroy(); self.flowPart46 = nil; end;
-        if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
-        if self.layNote ~= nil then self.layNote:destroy(); self.layNote = nil; end;
-        if self.nomeCheck22_01 ~= nil then self.nomeCheck22_01:destroy(); self.nomeCheck22_01 = nil; end;
-        if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
-        if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
-        if self.popUp_22 ~= nil then self.popUp_22:destroy(); self.popUp_22 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
-        if self.nomeCheckB12 ~= nil then self.nomeCheckB12:destroy(); self.nomeCheckB12 = nil; end;
-        if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
-        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
-        if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
-        if self.frmTemplates ~= nil then self.frmTemplates:destroy(); self.frmTemplates = nil; end;
-        if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
-        if self.checkBox8 ~= nil then self.checkBox8:destroy(); self.checkBox8 = nil; end;
-        if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
-        if self.layout81 ~= nil then self.layout81:destroy(); self.layout81 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.image6 ~= nil then self.image6:destroy(); self.image6 = nil; end;
-        if self.layout45 ~= nil then self.layout45:destroy(); self.layout45 = nil; end;
-        if self.checkVir_01_Vir ~= nil then self.checkVir_01_Vir:destroy(); self.checkVir_01_Vir = nil; end;
-        if self.label60 ~= nil then self.label60:destroy(); self.label60 = nil; end;
-        if self.label64 ~= nil then self.label64:destroy(); self.label64 = nil; end;
-        if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
-        if self.flowPart31 ~= nil then self.flowPart31:destroy(); self.flowPart31 = nil; end;
-        if self.flowPart47 ~= nil then self.flowPart47:destroy(); self.flowPart47 = nil; end;
-        if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
-        if self.layout56 ~= nil then self.layout56:destroy(); self.layout56 = nil; end;
-        if self.nomeBut25 ~= nil then self.nomeBut25:destroy(); self.nomeBut25 = nil; end;
-        if self.horzLine8 ~= nil then self.horzLine8:destroy(); self.horzLine8 = nil; end;
-        if self.nomeCheckB17 ~= nil then self.nomeCheckB17:destroy(); self.nomeCheckB17 = nil; end;
-        if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
-        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
-        if self.nomeCheck10_02 ~= nil then self.nomeCheck10_02:destroy(); self.nomeCheck10_02 = nil; end;
-        if self.rectVidMachucado01 ~= nil then self.rectVidMachucado01:destroy(); self.rectVidMachucado01 = nil; end;
-        if self.rectVidMachucado07 ~= nil then self.rectVidMachucado07:destroy(); self.rectVidMachucado07 = nil; end;
-        if self.nomeCheck12_03 ~= nil then self.nomeCheck12_03:destroy(); self.nomeCheck12_03 = nil; end;
-        if self.nomeCheck17_01 ~= nil then self.nomeCheck17_01:destroy(); self.nomeCheck17_01 = nil; end;
-        if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
-        if self.rectangle54 ~= nil then self.rectangle54:destroy(); self.rectangle54 = nil; end;
-        if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
-        if self.flowPart12 ~= nil then self.flowPart12:destroy(); self.flowPart12 = nil; end;
-        if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
-        if self.dataLink41 ~= nil then self.dataLink41:destroy(); self.dataLink41 = nil; end;
-        if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
-        if self.chbTitulo ~= nil then self.chbTitulo:destroy(); self.chbTitulo = nil; end;
-        if self.nomeCheck01_01 ~= nil then self.nomeCheck01_01:destroy(); self.nomeCheck01_01 = nil; end;
-        if self.nomeCheck07_01 ~= nil then self.nomeCheck07_01:destroy(); self.nomeCheck07_01 = nil; end;
-        if self.layout27 ~= nil then self.layout27:destroy(); self.layout27 = nil; end;
-        if self.rectangle43 ~= nil then self.rectangle43:destroy(); self.rectangle43 = nil; end;
-        if self.dataLink36 ~= nil then self.dataLink36:destroy(); self.dataLink36 = nil; end;
-        if self.nomeCam01 ~= nil then self.nomeCam01:destroy(); self.nomeCam01 = nil; end;
-        if self.layout28 ~= nil then self.layout28:destroy(); self.layout28 = nil; end;
-        if self.flowLayout9 ~= nil then self.flowLayout9:destroy(); self.flowLayout9 = nil; end;
-        if self.layout44 ~= nil then self.layout44:destroy(); self.layout44 = nil; end;
-        if self.layout19 ~= nil then self.layout19:destroy(); self.layout19 = nil; end;
-        if self.dataLink17 ~= nil then self.dataLink17:destroy(); self.dataLink17 = nil; end;
-        if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
-        if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
-        if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
-        if self.nomeCheck18_03 ~= nil then self.nomeCheck18_03:destroy(); self.nomeCheck18_03 = nil; end;
-        if self.nomeCheck13_04 ~= nil then self.nomeCheck13_04:destroy(); self.nomeCheck13_04 = nil; end;
-        if self.nomeBut23 ~= nil then self.nomeBut23:destroy(); self.nomeBut23 = nil; end;
-        if self.nomeCheck24_03 ~= nil then self.nomeCheck24_03:destroy(); self.nomeCheck24_03 = nil; end;
-        if self.flowLayout17 ~= nil then self.flowLayout17:destroy(); self.flowLayout17 = nil; end;
-        if self.nomeCheckB22 ~= nil then self.nomeCheckB22:destroy(); self.nomeCheckB22 = nil; end;
-        if self.checkImp_05_Imp ~= nil then self.checkImp_05_Imp:destroy(); self.checkImp_05_Imp = nil; end;
-        if self.layout74 ~= nil then self.layout74:destroy(); self.layout74 = nil; end;
-        if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
-        if self.horzLine12 ~= nil then self.horzLine12:destroy(); self.horzLine12 = nil; end;
-        if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
-        if self.checkMulVit_Des_01_Leg ~= nil then self.checkMulVit_Des_01_Leg:destroy(); self.checkMulVit_Des_01_Leg = nil; end;
-        if self.flowLayout21 ~= nil then self.flowLayout21:destroy(); self.flowLayout21 = nil; end;
-        if self.nomeCheck04_02 ~= nil then self.nomeCheck04_02:destroy(); self.nomeCheck04_02 = nil; end;
-        if self.nomeCheck04_04 ~= nil then self.nomeCheck04_04:destroy(); self.nomeCheck04_04 = nil; end;
-        if self.nomeCheck20_05 ~= nil then self.nomeCheck20_05:destroy(); self.nomeCheck20_05 = nil; end;
-        if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
-        if self.flowLayout11 ~= nil then self.flowLayout11:destroy(); self.flowLayout11 = nil; end;
+        if self.nomeCheck21_05 ~= nil then self.nomeCheck21_05:destroy(); self.nomeCheck21_05 = nil; end;
         if self.nomeCheck02_01 ~= nil then self.nomeCheck02_01:destroy(); self.nomeCheck02_01 = nil; end;
-        if self.nomeCheck06_02 ~= nil then self.nomeCheck06_02:destroy(); self.nomeCheck06_02 = nil; end;
-        if self.layout53 ~= nil then self.layout53:destroy(); self.layout53 = nil; end;
-        if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
-        if self.nomeCheck03_05 ~= nil then self.nomeCheck03_05:destroy(); self.nomeCheck03_05 = nil; end;
-        if self.rectangle69 ~= nil then self.rectangle69:destroy(); self.rectangle69 = nil; end;
-        if self.nomeBut18B ~= nil then self.nomeBut18B:destroy(); self.nomeBut18B = nil; end;
-        if self.flowPart11 ~= nil then self.flowPart11:destroy(); self.flowPart11 = nil; end;
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
-        if self.nomeCheck17_03 ~= nil then self.nomeCheck17_03:destroy(); self.nomeCheck17_03 = nil; end;
-        if self.nomeBut14B ~= nil then self.nomeBut14B:destroy(); self.nomeBut14B = nil; end;
-        if self.rectangle27 ~= nil then self.rectangle27:destroy(); self.rectangle27 = nil; end;
-        if self.nomeCheck25_05 ~= nil then self.nomeCheck25_05:destroy(); self.nomeCheck25_05 = nil; end;
-        if self.flowPart36 ~= nil then self.flowPart36:destroy(); self.flowPart36 = nil; end;
-        if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
-        if self.nomeFei01 ~= nil then self.nomeFei01:destroy(); self.nomeFei01 = nil; end;
-        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.rectangle73 ~= nil then self.rectangle73:destroy(); self.rectangle73 = nil; end;
-        if self.dataLink26 ~= nil then self.dataLink26:destroy(); self.dataLink26 = nil; end;
-        if self.checkImp_04_Imp ~= nil then self.checkImp_04_Imp:destroy(); self.checkImp_04_Imp = nil; end;
-        if self.flowPart17 ~= nil then self.flowPart17:destroy(); self.flowPart17 = nil; end;
-        if self.label85 ~= nil then self.label85:destroy(); self.label85 = nil; end;
-        if self.flPart_Machucado06 ~= nil then self.flPart_Machucado06:destroy(); self.flPart_Machucado06 = nil; end;
-        if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
-        if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
-        if self.nomeCheck13_03 ~= nil then self.nomeCheck13_03:destroy(); self.nomeCheck13_03 = nil; end;
-        if self.nomeCheckB14 ~= nil then self.nomeCheckB14:destroy(); self.nomeCheckB14 = nil; end;
-        if self.flowPart27 ~= nil then self.flowPart27:destroy(); self.flowPart27 = nil; end;
-        if self.checkImp_12_Imp ~= nil then self.checkImp_12_Imp:destroy(); self.checkImp_12_Imp = nil; end;
-        if self.nomeBut13 ~= nil then self.nomeBut13:destroy(); self.nomeBut13 = nil; end;
-        if self.textEditor14 ~= nil then self.textEditor14:destroy(); self.textEditor14 = nil; end;
-        if self.rectangle31 ~= nil then self.rectangle31:destroy(); self.rectangle31 = nil; end;
-        if self.layFrente ~= nil then self.layFrente:destroy(); self.layFrente = nil; end;
-        if self.nomeCheck24_01 ~= nil then self.nomeCheck24_01:destroy(); self.nomeCheck24_01 = nil; end;
-        if self.nomeCheck24_05 ~= nil then self.nomeCheck24_05:destroy(); self.nomeCheck24_05 = nil; end;
-        if self.dataLink48 ~= nil then self.dataLink48:destroy(); self.dataLink48 = nil; end;
-        if self.nomeCheck17_05 ~= nil then self.nomeCheck17_05:destroy(); self.nomeCheck17_05 = nil; end;
-        if self.layout40 ~= nil then self.layout40:destroy(); self.layout40 = nil; end;
-        if self.layout84 ~= nil then self.layout84:destroy(); self.layout84 = nil; end;
-        if self.label87 ~= nil then self.label87:destroy(); self.label87 = nil; end;
-        if self.layout87 ~= nil then self.layout87:destroy(); self.layout87 = nil; end;
-        if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
-        if self.nomeCheckB20 ~= nil then self.nomeCheckB20:destroy(); self.nomeCheckB20 = nil; end;
-        if self.popUp_18 ~= nil then self.popUp_18:destroy(); self.popUp_18 = nil; end;
-        if self.nomeCheck25_04 ~= nil then self.nomeCheck25_04:destroy(); self.nomeCheck25_04 = nil; end;
-        if self.flowPart21 ~= nil then self.flowPart21:destroy(); self.flowPart21 = nil; end;
-        if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
-        if self.nomeBut21B ~= nil then self.nomeBut21B:destroy(); self.nomeBut21B = nil; end;
-        if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
-        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
-        if self.nomeCheck09_05 ~= nil then self.nomeCheck09_05:destroy(); self.nomeCheck09_05 = nil; end;
-        if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
-        if self.checkVir_04_Vir ~= nil then self.checkVir_04_Vir:destroy(); self.checkVir_04_Vir = nil; end;
-        if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
-        if self.rectangle39 ~= nil then self.rectangle39:destroy(); self.rectangle39 = nil; end;
-        if self.rectangle41 ~= nil then self.rectangle41:destroy(); self.rectangle41 = nil; end;
-        if self.nomeCheck19_02 ~= nil then self.nomeCheck19_02:destroy(); self.nomeCheck19_02 = nil; end;
-        if self.nomeCheck23_04 ~= nil then self.nomeCheck23_04:destroy(); self.nomeCheck23_04 = nil; end;
-        if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
-        if self.rectangle72 ~= nil then self.rectangle72:destroy(); self.rectangle72 = nil; end;
-        if self.nomeBut11 ~= nil then self.nomeBut11:destroy(); self.nomeBut11 = nil; end;
-        if self.dataLink50 ~= nil then self.dataLink50:destroy(); self.dataLink50 = nil; end;
-        if self.layout86 ~= nil then self.layout86:destroy(); self.layout86 = nil; end;
-        if self.layout85 ~= nil then self.layout85:destroy(); self.layout85 = nil; end;
+        if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
+        if self.nomeBut19 ~= nil then self.nomeBut19:destroy(); self.nomeBut19 = nil; end;
+        if self.rectangle71 ~= nil then self.rectangle71:destroy(); self.rectangle71 = nil; end;
+        if self.nomeCheck14_05 ~= nil then self.nomeCheck14_05:destroy(); self.nomeCheck14_05 = nil; end;
+        if self.layout70 ~= nil then self.layout70:destroy(); self.layout70 = nil; end;
+        if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;
+        if self.nomeBut12 ~= nil then self.nomeBut12:destroy(); self.nomeBut12 = nil; end;
+        if self.nomeCheck13_02 ~= nil then self.nomeCheck13_02:destroy(); self.nomeCheck13_02 = nil; end;
+        if self.rectangle74 ~= nil then self.rectangle74:destroy(); self.rectangle74 = nil; end;
+        if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
+        if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
+        if self.dataLink32 ~= nil then self.dataLink32:destroy(); self.dataLink32 = nil; end;
+        if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
+        if self.nomeCheck05_03 ~= nil then self.nomeCheck05_03:destroy(); self.nomeCheck05_03 = nil; end;
+        if self.rectangle32 ~= nil then self.rectangle32:destroy(); self.rectangle32 = nil; end;
+        if self.popImagemFundo ~= nil then self.popImagemFundo:destroy(); self.popImagemFundo = nil; end;
+        if self.label62 ~= nil then self.label62:destroy(); self.label62 = nil; end;
+        if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
+        if self.rectVidMachucado05 ~= nil then self.rectVidMachucado05:destroy(); self.rectVidMachucado05 = nil; end;
+        if self.nomeCheck03_04 ~= nil then self.nomeCheck03_04:destroy(); self.nomeCheck03_04 = nil; end;
+        if self.layout37 ~= nil then self.layout37:destroy(); self.layout37 = nil; end;
+        if self.nomeCheck17_03 ~= nil then self.nomeCheck17_03:destroy(); self.nomeCheck17_03 = nil; end;
+        if self.horzLine9 ~= nil then self.horzLine9:destroy(); self.horzLine9 = nil; end;
+        if self.horzLine6 ~= nil then self.horzLine6:destroy(); self.horzLine6 = nil; end;
+        if self.layout59 ~= nil then self.layout59:destroy(); self.layout59 = nil; end;
+        if self.label69 ~= nil then self.label69:destroy(); self.label69 = nil; end;
+        if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
+        if self.nomeCheck03_01 ~= nil then self.nomeCheck03_01:destroy(); self.nomeCheck03_01 = nil; end;
+        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
+        if self.rclHerancas ~= nil then self.rclHerancas:destroy(); self.rclHerancas = nil; end;
+        if self.flPart_Machucado07 ~= nil then self.flPart_Machucado07:destroy(); self.flPart_Machucado07 = nil; end;
+        if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
+        if self.nomeCheck10_03 ~= nil then self.nomeCheck10_03:destroy(); self.nomeCheck10_03 = nil; end;
+        if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
+        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.nomeCheckB11 ~= nil then self.nomeCheckB11:destroy(); self.nomeCheckB11 = nil; end;
+        if self.layout52 ~= nil then self.layout52:destroy(); self.layout52 = nil; end;
+        if self.checkImp_06_Imp ~= nil then self.checkImp_06_Imp:destroy(); self.checkImp_06_Imp = nil; end;
+        if self.rectangle38 ~= nil then self.rectangle38:destroy(); self.rectangle38 = nil; end;
+        if self.layout60 ~= nil then self.layout60:destroy(); self.layout60 = nil; end;
+        if self.nomeCheck01_04 ~= nil then self.nomeCheck01_04:destroy(); self.nomeCheck01_04 = nil; end;
+        if self.flowPart10 ~= nil then self.flowPart10:destroy(); self.flowPart10 = nil; end;
+        if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
+        if self.nomeCheckB14 ~= nil then self.nomeCheckB14:destroy(); self.nomeCheckB14 = nil; end;
+        if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
+        if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
+        if self.layout57 ~= nil then self.layout57:destroy(); self.layout57 = nil; end;
+        if self.nomeCheck16_02 ~= nil then self.nomeCheck16_02:destroy(); self.nomeCheck16_02 = nil; end;
+        if self.nomeCheck20_05 ~= nil then self.nomeCheck20_05:destroy(); self.nomeCheck20_05 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.flowLayout6 ~= nil then self.flowLayout6:destroy(); self.flowLayout6 = nil; end;
+        if self.nomeCheck01_01 ~= nil then self.nomeCheck01_01:destroy(); self.nomeCheck01_01 = nil; end;
+        if self.flowPart17 ~= nil then self.flowPart17:destroy(); self.flowPart17 = nil; end;
+        if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
+        if self.nomeCheck08_05 ~= nil then self.nomeCheck08_05:destroy(); self.nomeCheck08_05 = nil; end;
+        if self.checkVir_05_Vir ~= nil then self.checkVir_05_Vir:destroy(); self.checkVir_05_Vir = nil; end;
+        if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
+        if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
+        if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
+        if self.popUp_23 ~= nil then self.popUp_23:destroy(); self.popUp_23 = nil; end;
+        if self.dataLink41 ~= nil then self.dataLink41:destroy(); self.dataLink41 = nil; end;
+        if self.layout67 ~= nil then self.layout67:destroy(); self.layout67 = nil; end;
+        if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
+        if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
+        if self.rectangle63 ~= nil then self.rectangle63:destroy(); self.rectangle63 = nil; end;
+        if self.dataLink44 ~= nil then self.dataLink44:destroy(); self.dataLink44 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
+        if self.popUp_24 ~= nil then self.popUp_24:destroy(); self.popUp_24 = nil; end;
+        if self.nomeBut22 ~= nil then self.nomeBut22:destroy(); self.nomeBut22 = nil; end;
+        if self.flowLayout14 ~= nil then self.flowLayout14:destroy(); self.flowLayout14 = nil; end;
+        if self.rectangle64 ~= nil then self.rectangle64:destroy(); self.rectangle64 = nil; end;
+        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.flowLayout8 ~= nil then self.flowLayout8:destroy(); self.flowLayout8 = nil; end;
+        if self.nomeBut20B ~= nil then self.nomeBut20B:destroy(); self.nomeBut20B = nil; end;
+        if self.nomeBut22B ~= nil then self.nomeBut22B:destroy(); self.nomeBut22B = nil; end;
+        if self.layout42 ~= nil then self.layout42:destroy(); self.layout42 = nil; end;
+        if self.nomeCheck04_03 ~= nil then self.nomeCheck04_03:destroy(); self.nomeCheck04_03 = nil; end;
+        if self.nomeCheckB23 ~= nil then self.nomeCheckB23:destroy(); self.nomeCheckB23 = nil; end;
+        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
+        if self.flowLayout11 ~= nil then self.flowLayout11:destroy(); self.flowLayout11 = nil; end;
+        if self.nomeCheck24_01 ~= nil then self.nomeCheck24_01:destroy(); self.nomeCheck24_01 = nil; end;
+        if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
+        if self.flowPart32 ~= nil then self.flowPart32:destroy(); self.flowPart32 = nil; end;
+        if self.flowPart20 ~= nil then self.flowPart20:destroy(); self.flowPart20 = nil; end;
+        if self.rectangle43 ~= nil then self.rectangle43:destroy(); self.rectangle43 = nil; end;
+        if self.textEditor14 ~= nil then self.textEditor14:destroy(); self.textEditor14 = nil; end;
+        if self.layout45 ~= nil then self.layout45:destroy(); self.layout45 = nil; end;
+        if self.nomeCheck19_02 ~= nil then self.nomeCheck19_02:destroy(); self.nomeCheck19_02 = nil; end;
+        if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
+        if self.nomeCheckB24 ~= nil then self.nomeCheckB24:destroy(); self.nomeCheckB24 = nil; end;
+        if self.nomeCheck24_04 ~= nil then self.nomeCheck24_04:destroy(); self.nomeCheck24_04 = nil; end;
+        if self.label81 ~= nil then self.label81:destroy(); self.label81 = nil; end;
+        if self.flowPart35 ~= nil then self.flowPart35:destroy(); self.flowPart35 = nil; end;
+        if self.flowPart25 ~= nil then self.flowPart25:destroy(); self.flowPart25 = nil; end;
+        if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
+        if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
+        if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
+        if self.checkImp_05_Imp ~= nil then self.checkImp_05_Imp:destroy(); self.checkImp_05_Imp = nil; end;
+        if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
+        if self.layout48 ~= nil then self.layout48:destroy(); self.layout48 = nil; end;
+        if self.dataLink29 ~= nil then self.dataLink29:destroy(); self.dataLink29 = nil; end;
+        if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
+        if self.layout88 ~= nil then self.layout88:destroy(); self.layout88 = nil; end;
+        if self.btnImagemFundo ~= nil then self.btnImagemFundo:destroy(); self.btnImagemFundo = nil; end;
+        if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
+        if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
+        if self.nomeCheck06_02 ~= nil then self.nomeCheck06_02:destroy(); self.nomeCheck06_02 = nil; end;
+        if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
+        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
+        if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
+        if self.nomeCheck22_04 ~= nil then self.nomeCheck22_04:destroy(); self.nomeCheck22_04 = nil; end;
+        if self.layout24 ~= nil then self.layout24:destroy(); self.layout24 = nil; end;
+        if self.nomeFei03 ~= nil then self.nomeFei03:destroy(); self.nomeFei03 = nil; end;
+        if self.nomeCheck25_01 ~= nil then self.nomeCheck25_01:destroy(); self.nomeCheck25_01 = nil; end;
+        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.layout83 ~= nil then self.layout83:destroy(); self.layout83 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.nomeCheck06_05 ~= nil then self.nomeCheck06_05:destroy(); self.nomeCheck06_05 = nil; end;
+        if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
+        if self.nomeCheck09_05 ~= nil then self.nomeCheck09_05:destroy(); self.nomeCheck09_05 = nil; end;
+        if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
+        if self.nomeCheck22_03 ~= nil then self.nomeCheck22_03:destroy(); self.nomeCheck22_03 = nil; end;
+        if self.popUp_15 ~= nil then self.popUp_15:destroy(); self.popUp_15 = nil; end;
+        if self.rectangle55 ~= nil then self.rectangle55:destroy(); self.rectangle55 = nil; end;
+        if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
+        if self.flowPart46 ~= nil then self.flowPart46:destroy(); self.flowPart46 = nil; end;
+        if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
+        if self.nomeCheck09_02 ~= nil then self.nomeCheck09_02:destroy(); self.nomeCheck09_02 = nil; end;
+        if self.flowPart43 ~= nil then self.flowPart43:destroy(); self.flowPart43 = nil; end;
+        if self.rectangle27 ~= nil then self.rectangle27:destroy(); self.rectangle27 = nil; end;
+        if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
+        if self.popUp_18 ~= nil then self.popUp_18:destroy(); self.popUp_18 = nil; end;
+        if self.rectangle58 ~= nil then self.rectangle58:destroy(); self.rectangle58 = nil; end;
+        if self.nomeCheck12_03 ~= nil then self.nomeCheck12_03:destroy(); self.nomeCheck12_03 = nil; end;
+        if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
+        if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
+        if self.nomeCam03 ~= nil then self.nomeCam03:destroy(); self.nomeCam03 = nil; end;
+        if self.flowPart48 ~= nil then self.flowPart48:destroy(); self.flowPart48 = nil; end;
+        if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
+        if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
+        if self.layout78 ~= nil then self.layout78:destroy(); self.layout78 = nil; end;
+        if self.nomeCheck02_04 ~= nil then self.nomeCheck02_04:destroy(); self.nomeCheck02_04 = nil; end;
+        if self.flowPart4 ~= nil then self.flowPart4:destroy(); self.flowPart4 = nil; end;
+        if self.nomeCheck14_02 ~= nil then self.nomeCheck14_02:destroy(); self.nomeCheck14_02 = nil; end;
+        if self.nomeBut17B ~= nil then self.nomeBut17B:destroy(); self.nomeBut17B = nil; end;
+        if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
+        if self.nomeCheck21_03 ~= nil then self.nomeCheck21_03:destroy(); self.nomeCheck21_03 = nil; end;
+        if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
+        if self.nomeCheck13_05 ~= nil then self.nomeCheck13_05:destroy(); self.nomeCheck13_05 = nil; end;
+        if self.nomeBut17 ~= nil then self.nomeBut17:destroy(); self.nomeBut17 = nil; end;
+        if self.dataLink37 ~= nil then self.dataLink37:destroy(); self.dataLink37 = nil; end;
+        if self.layout72 ~= nil then self.layout72:destroy(); self.layout72 = nil; end;
+        if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
+        if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
+        if self.nomeBut10 ~= nil then self.nomeBut10:destroy(); self.nomeBut10 = nil; end;
+        if self.frmTemplates ~= nil then self.frmTemplates:destroy(); self.frmTemplates = nil; end;
+        if self.rectangle35 ~= nil then self.rectangle35:destroy(); self.rectangle35 = nil; end;
+        if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
+        if self.dataLink30 ~= nil then self.dataLink30:destroy(); self.dataLink30 = nil; end;
+        if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
+        if self.layout34 ~= nil then self.layout34:destroy(); self.layout34 = nil; end;
+        if self.nomeCheck05_05 ~= nil then self.nomeCheck05_05:destroy(); self.nomeCheck05_05 = nil; end;
+        if self.rectangle30 ~= nil then self.rectangle30:destroy(); self.rectangle30 = nil; end;
+        if self.nomeCheckB19 ~= nil then self.nomeCheckB19:destroy(); self.nomeCheckB19 = nil; end;
+        if self.rectVidMachucado07 ~= nil then self.rectVidMachucado07:destroy(); self.rectVidMachucado07 = nil; end;
+        if self.nomeCheck17_01 ~= nil then self.nomeCheck17_01:destroy(); self.nomeCheck17_01 = nil; end;
+        if self.nomeCheck03_02 ~= nil then self.nomeCheck03_02:destroy(); self.nomeCheck03_02 = nil; end;
+        if self.layout31 ~= nil then self.layout31:destroy(); self.layout31 = nil; end;
+        if self.flPart_Machucado04 ~= nil then self.flPart_Machucado04:destroy(); self.flPart_Machucado04 = nil; end;
+        if self.flowPart18 ~= nil then self.flowPart18:destroy(); self.flowPart18 = nil; end;
+        if self.rectVidMachucado02 ~= nil then self.rectVidMachucado02:destroy(); self.rectVidMachucado02 = nil; end;
+        if self.nomeCheck17_04 ~= nil then self.nomeCheck17_04:destroy(); self.nomeCheck17_04 = nil; end;
+        if self.dataLink49 ~= nil then self.dataLink49:destroy(); self.dataLink49 = nil; end;
+        if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
+        if self.flPart_Machucado01 ~= nil then self.flPart_Machucado01:destroy(); self.flPart_Machucado01 = nil; end;
+        if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
+        if self.nomeCheckB13 ~= nil then self.nomeCheckB13:destroy(); self.nomeCheckB13 = nil; end;
+        if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
+        if self.layout62 ~= nil then self.layout62:destroy(); self.layout62 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
+        if self.flowLayout5 ~= nil then self.flowLayout5:destroy(); self.flowLayout5 = nil; end;
+        if self.nomeBut25B ~= nil then self.nomeBut25B:destroy(); self.nomeBut25B = nil; end;
+        if self.flowPart12 ~= nil then self.flowPart12:destroy(); self.flowPart12 = nil; end;
+        if self.label43 ~= nil then self.label43:destroy(); self.label43 = nil; end;
+        if self.layout55 ~= nil then self.layout55:destroy(); self.layout55 = nil; end;
+        if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
+        if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
+        if self.nomeCheckB16 ~= nil then self.nomeCheckB16:destroy(); self.nomeCheckB16 = nil; end;
+        if self.layout69 ~= nil then self.layout69:destroy(); self.layout69 = nil; end;
+        if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
+        if self.nomeCheck20_03 ~= nil then self.nomeCheck20_03:destroy(); self.nomeCheck20_03 = nil; end;
+        if self.dataLink43 ~= nil then self.dataLink43:destroy(); self.dataLink43 = nil; end;
+        if self.nomeCheck01_03 ~= nil then self.nomeCheck01_03:destroy(); self.nomeCheck01_03 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
+        if self.popUp_21 ~= nil then self.popUp_21:destroy(); self.popUp_21 = nil; end;
+        if self.nomeBut21 ~= nil then self.nomeBut21:destroy(); self.nomeBut21 = nil; end;
+        if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
+        if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
+        if self.nomeCheck16_05 ~= nil then self.nomeCheck16_05:destroy(); self.nomeCheck16_05 = nil; end;
+        if self.rectangle61 ~= nil then self.rectangle61:destroy(); self.rectangle61 = nil; end;
+        if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
+        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
+        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
+        if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
+        if self.nomeCheck08_02 ~= nil then self.nomeCheck08_02:destroy(); self.nomeCheck08_02 = nil; end;
+        if self.edit18 ~= nil then self.edit18:destroy(); self.edit18 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.flowLayout16 ~= nil then self.flowLayout16:destroy(); self.flowLayout16 = nil; end;
+        if self.label89 ~= nil then self.label89:destroy(); self.label89 = nil; end;
+        if self.checkImp_07_Imp ~= nil then self.checkImp_07_Imp:destroy(); self.checkImp_07_Imp = nil; end;
+        if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
+        if self.textEditor11 ~= nil then self.textEditor11:destroy(); self.textEditor11 = nil; end;
+        if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
+        if self.nomeCheck04_05 ~= nil then self.nomeCheck04_05:destroy(); self.nomeCheck04_05 = nil; end;
+        if self.layout40 ~= nil then self.layout40:destroy(); self.layout40 = nil; end;
+        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
+        if self.flowLayout13 ~= nil then self.flowLayout13:destroy(); self.flowLayout13 = nil; end;
+        if self.nomeCheck19_01 ~= nil then self.nomeCheck19_01:destroy(); self.nomeCheck19_01 = nil; end;
+        if self.nomeCheckB21 ~= nil then self.nomeCheckB21:destroy(); self.nomeCheckB21 = nil; end;
+        if self.horzLine10 ~= nil then self.horzLine10:destroy(); self.horzLine10 = nil; end;
+        if self.flowPart30 ~= nil then self.flowPart30:destroy(); self.flowPart30 = nil; end;
+        if self.flowPart26 ~= nil then self.flowPart26:destroy(); self.flowPart26 = nil; end;
+        if self.rectangle45 ~= nil then self.rectangle45:destroy(); self.rectangle45 = nil; end;
+        if self.textEditor16 ~= nil then self.textEditor16:destroy(); self.textEditor16 = nil; end;
+        if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
+        if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
+        if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
+        if self.nomeCheck15_02 ~= nil then self.nomeCheck15_02:destroy(); self.nomeCheck15_02 = nil; end;
+        if self.checkMulVit_Des_03_Leg ~= nil then self.checkMulVit_Des_03_Leg:destroy(); self.checkMulVit_Des_03_Leg = nil; end;
+        if self.flowLayout18 ~= nil then self.flowLayout18:destroy(); self.flowLayout18 = nil; end;
+        if self.label87 ~= nil then self.label87:destroy(); self.label87 = nil; end;
+        if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
+        if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
+        if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
+        if self.dataLink27 ~= nil then self.dataLink27:destroy(); self.dataLink27 = nil; end;
+        if self.nomeCheck07_03 ~= nil then self.nomeCheck07_03:destroy(); self.nomeCheck07_03 = nil; end;
+        if self.nomeBut21B ~= nil then self.nomeBut21B:destroy(); self.nomeBut21B = nil; end;
+        if self.nomeCheck23_05 ~= nil then self.nomeCheck23_05:destroy(); self.nomeCheck23_05 = nil; end;
+        if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
+        if self.layVerso ~= nil then self.layVerso:destroy(); self.layVerso = nil; end;
+        if self.nomeCheck18_04 ~= nil then self.nomeCheck18_04:destroy(); self.nomeCheck18_04 = nil; end;
+        if self.nomeCheck25_02 ~= nil then self.nomeCheck25_02:destroy(); self.nomeCheck25_02 = nil; end;
+        if self.layout86 ~= nil then self.layout86:destroy(); self.layout86 = nil; end;
+        if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
+        if self.textEditor5 ~= nil then self.textEditor5:destroy(); self.textEditor5 = nil; end;
+        if self.dataLink22 ~= nil then self.dataLink22:destroy(); self.dataLink22 = nil; end;
+        if self.nomeCheck07_04 ~= nil then self.nomeCheck07_04:destroy(); self.nomeCheck07_04 = nil; end;
+        if self.label55 ~= nil then self.label55:destroy(); self.label55 = nil; end;
+        if self.nomeCheck23_02 ~= nil then self.nomeCheck23_02:destroy(); self.nomeCheck23_02 = nil; end;
+        if self.popUp_10 ~= nil then self.popUp_10:destroy(); self.popUp_10 = nil; end;
+        if self.rectangle50 ~= nil then self.rectangle50:destroy(); self.rectangle50 = nil; end;
+        if self.layout26 ~= nil then self.layout26:destroy(); self.layout26 = nil; end;
+        if self.nomeFei01 ~= nil then self.nomeFei01:destroy(); self.nomeFei01 = nil; end;
+        if self.nomeCheck18_01 ~= nil then self.nomeCheck18_01:destroy(); self.nomeCheck18_01 = nil; end;
+        if self.layout81 ~= nil then self.layout81:destroy(); self.layout81 = nil; end;
+        if self.flowLayout21 ~= nil then self.flowLayout21:destroy(); self.flowLayout21 = nil; end;
+        if self.nomeCheck11_05 ~= nil then self.nomeCheck11_05:destroy(); self.nomeCheck11_05 = nil; end;
+        if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
+        if self.flowPart40 ~= nil then self.flowPart40:destroy(); self.flowPart40 = nil; end;
+        if self.rclEsferas ~= nil then self.rclEsferas:destroy(); self.rclEsferas = nil; end;
+        if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
+        if self.popUp_17 ~= nil then self.popUp_17:destroy(); self.popUp_17 = nil; end;
+        if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
+        if self.rectangle57 ~= nil then self.rectangle57:destroy(); self.rectangle57 = nil; end;
+        if self.nomeCheck12_04 ~= nil then self.nomeCheck12_04:destroy(); self.nomeCheck12_04 = nil; end;
+        if self.dataLink17 ~= nil then self.dataLink17:destroy(); self.dataLink17 = nil; end;
+        if self.checkImp_11_Imp ~= nil then self.checkImp_11_Imp:destroy(); self.checkImp_11_Imp = nil; end;
+        if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
+        if self.layout28 ~= nil then self.layout28:destroy(); self.layout28 = nil; end;
+        if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
+        if self.nomeCheck12_01 ~= nil then self.nomeCheck12_01:destroy(); self.nomeCheck12_01 = nil; end;
         if self.nomeBut19B ~= nil then self.nomeBut19B:destroy(); self.nomeBut19B = nil; end;
-        if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;
-        if self.popUp_12 ~= nil then self.popUp_12:destroy(); self.popUp_12 = nil; end;
+        if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
+        if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
+        if self.nomeCam01 ~= nil then self.nomeCam01:destroy(); self.nomeCam01 = nil; end;
+        if self.nomeBut11B ~= nil then self.nomeBut11B:destroy(); self.nomeBut11B = nil; end;
+        if self.nomeBut13B ~= nil then self.nomeBut13B:destroy(); self.nomeBut13B = nil; end;
+        if self.nomeCheck21_04 ~= nil then self.nomeCheck21_04:destroy(); self.nomeCheck21_04 = nil; end;
+        if self.label90 ~= nil then self.label90:destroy(); self.label90 = nil; end;
+        if self.nomeCheck02_02 ~= nil then self.nomeCheck02_02:destroy(); self.nomeCheck02_02 = nil; end;
+        if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
+        if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
+        if self.checkVir_03_Vir ~= nil then self.checkVir_03_Vir:destroy(); self.checkVir_03_Vir = nil; end;
+        if self.nomeBut18 ~= nil then self.nomeBut18:destroy(); self.nomeBut18 = nil; end;
+        if self.rclLegados ~= nil then self.rclLegados:destroy(); self.rclLegados = nil; end;
+        if self.rectangle72 ~= nil then self.rectangle72:destroy(); self.rectangle72 = nil; end;
+        if self.nomeCheck14_04 ~= nil then self.nomeCheck14_04:destroy(); self.nomeCheck14_04 = nil; end;
+        if self.nomeCheck21_01 ~= nil then self.nomeCheck21_01:destroy(); self.nomeCheck21_01 = nil; end;
+        if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
+        if self.nomeBut15 ~= nil then self.nomeBut15:destroy(); self.nomeBut15 = nil; end;
+        if self.nomeCheck13_03 ~= nil then self.nomeCheck13_03:destroy(); self.nomeCheck13_03 = nil; end;
+        if self.rectangle75 ~= nil then self.rectangle75:destroy(); self.rectangle75 = nil; end;
+        if self.label64 ~= nil then self.label64:destroy(); self.label64 = nil; end;
+        if self.dataLink35 ~= nil then self.dataLink35:destroy(); self.dataLink35 = nil; end;
+        if self.layout74 ~= nil then self.layout74:destroy(); self.layout74 = nil; end;
+        if self.layout39 ~= nil then self.layout39:destroy(); self.layout39 = nil; end;
         if self.edit20 ~= nil then self.edit20:destroy(); self.edit20 = nil; end;
+        if self.nomeCheck05_02 ~= nil then self.nomeCheck05_02:destroy(); self.nomeCheck05_02 = nil; end;
+        if self.checkMulVit_Des_04_Leg ~= nil then self.checkMulVit_Des_04_Leg:destroy(); self.checkMulVit_Des_04_Leg = nil; end;
+        if self.checkImp_08_Imp ~= nil then self.checkImp_08_Imp:destroy(); self.checkImp_08_Imp = nil; end;
+        if self.rectangle33 ~= nil then self.rectangle33:destroy(); self.rectangle33 = nil; end;
+        if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
+        if self.horzLine8 ~= nil then self.horzLine8:destroy(); self.horzLine8 = nil; end;
+        if self.layout36 ~= nil then self.layout36:destroy(); self.layout36 = nil; end;
+        if self.nomeBut16B ~= nil then self.nomeBut16B:destroy(); self.nomeBut16B = nil; end;
+        if self.nomeCheck10_05 ~= nil then self.nomeCheck10_05:destroy(); self.nomeCheck10_05 = nil; end;
+        if self.layout58 ~= nil then self.layout58:destroy(); self.layout58 = nil; end;
+        if self.horzLine5 ~= nil then self.horzLine5:destroy(); self.horzLine5 = nil; end;
+        if self.rectVidMachucado01 ~= nil then self.rectVidMachucado01:destroy(); self.rectVidMachucado01 = nil; end;
+        if self.layout33 ~= nil then self.layout33:destroy(); self.layout33 = nil; end;
+        if self.nomeBut15B ~= nil then self.nomeBut15B:destroy(); self.nomeBut15B = nil; end;
+        if self.flPart_Machucado06 ~= nil then self.flPart_Machucado06:destroy(); self.flPart_Machucado06 = nil; end;
+        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
+        if self.nomeCheck10_02 ~= nil then self.nomeCheck10_02:destroy(); self.nomeCheck10_02 = nil; end;
+        if self.label38 ~= nil then self.label38:destroy(); self.label38 = nil; end;
+        if self.rectangle39 ~= nil then self.rectangle39:destroy(); self.rectangle39 = nil; end;
+        if self.layout61 ~= nil then self.layout61:destroy(); self.layout61 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.nomeBut23B ~= nil then self.nomeBut23B:destroy(); self.nomeBut23B = nil; end;
+        if self.idFundo ~= nil then self.idFundo:destroy(); self.idFundo = nil; end;
+        if self.flPart_Machucado03 ~= nil then self.flPart_Machucado03:destroy(); self.flPart_Machucado03 = nil; end;
+        if self.flowPart11 ~= nil then self.flowPart11:destroy(); self.flowPart11 = nil; end;
+        if self.checkImp_02_Imp ~= nil then self.checkImp_02_Imp:destroy(); self.checkImp_02_Imp = nil; end;
+        if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
+        if self.rectangle69 ~= nil then self.rectangle69:destroy(); self.rectangle69 = nil; end;
+        if self.nomeCheckB15 ~= nil then self.nomeCheckB15:destroy(); self.nomeCheckB15 = nil; end;
+        if self.layout56 ~= nil then self.layout56:destroy(); self.layout56 = nil; end;
+        if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
+        if self.layout64 ~= nil then self.layout64:destroy(); self.layout64 = nil; end;
+        if self.dataLink50 ~= nil then self.dataLink50:destroy(); self.dataLink50 = nil; end;
+        if self.flowLayout7 ~= nil then self.flowLayout7:destroy(); self.flowLayout7 = nil; end;
+        if self.flowPart14 ~= nil then self.flowPart14:destroy(); self.flowPart14 = nil; end;
+        if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
+        if self.popUp_22 ~= nil then self.popUp_22:destroy(); self.popUp_22 = nil; end;
+        if self.nomeBut24 ~= nil then self.nomeBut24:destroy(); self.nomeBut24 = nil; end;
+        if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
+        if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
+        if self.rectangle62 ~= nil then self.rectangle62:destroy(); self.rectangle62 = nil; end;
+        if self.dataLink45 ~= nil then self.dataLink45:destroy(); self.dataLink45 = nil; end;
+        if self.nomeCheck20_01 ~= nil then self.nomeCheck20_01:destroy(); self.nomeCheck20_01 = nil; end;
+        if self.flowLayout2 ~= nil then self.flowLayout2:destroy(); self.flowLayout2 = nil; end;
+        if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
+        if self.rectangle48 ~= nil then self.rectangle48:destroy(); self.rectangle48 = nil; end;
+        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
+        if self.nomeCheck08_01 ~= nil then self.nomeCheck08_01:destroy(); self.nomeCheck08_01 = nil; end;
+        if self.rectangle67 ~= nil then self.rectangle67:destroy(); self.rectangle67 = nil; end;
+        if self.nomeBut23 ~= nil then self.nomeBut23:destroy(); self.nomeBut23 = nil; end;
+        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
+        if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
+        if self.flowPart38 ~= nil then self.flowPart38:destroy(); self.flowPart38 = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
+        if self.flowLayout9 ~= nil then self.flowLayout9:destroy(); self.flowLayout9 = nil; end;
+        if self.layout43 ~= nil then self.layout43:destroy(); self.layout43 = nil; end;
+        if self.nomeCheck19_04 ~= nil then self.nomeCheck19_04:destroy(); self.nomeCheck19_04 = nil; end;
+        if self.nomeCheckB22 ~= nil then self.nomeCheckB22:destroy(); self.nomeCheckB22 = nil; end;
+        if self.nomeCheck24_02 ~= nil then self.nomeCheck24_02:destroy(); self.nomeCheck24_02 = nil; end;
+        if self.flowLayout10 ~= nil then self.flowLayout10:destroy(); self.flowLayout10 = nil; end;
+        if self.flowPart33 ~= nil then self.flowPart33:destroy(); self.flowPart33 = nil; end;
+        if self.flowPart23 ~= nil then self.flowPart23:destroy(); self.flowPart23 = nil; end;
+        if self.rectangle42 ~= nil then self.rectangle42:destroy(); self.rectangle42 = nil; end;
+        if self.textEditor13 ~= nil then self.textEditor13:destroy(); self.textEditor13 = nil; end;
+        if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
+        if self.nomeCheck19_03 ~= nil then self.nomeCheck19_03:destroy(); self.nomeCheck19_03 = nil; end;
+        if self.nomeCheck24_05 ~= nil then self.nomeCheck24_05:destroy(); self.nomeCheck24_05 = nil; end;
+        if self.nomeCheck15_01 ~= nil then self.nomeCheck15_01:destroy(); self.nomeCheck15_01 = nil; end;
+        if self.label82 ~= nil then self.label82:destroy(); self.label82 = nil; end;
+        if self.horzLine12 ~= nil then self.horzLine12:destroy(); self.horzLine12 = nil; end;
+        if self.flowPart36 ~= nil then self.flowPart36:destroy(); self.flowPart36 = nil; end;
+        if self.flowPart24 ~= nil then self.flowPart24:destroy(); self.flowPart24 = nil; end;
+        if self.rectangle47 ~= nil then self.rectangle47:destroy(); self.rectangle47 = nil; end;
+        if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
+        if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
+        if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
+        if self.layout49 ~= nil then self.layout49:destroy(); self.layout49 = nil; end;
+        if self.nomeCheck15_04 ~= nil then self.nomeCheck15_04:destroy(); self.nomeCheck15_04 = nil; end;
+        if self.label85 ~= nil then self.label85:destroy(); self.label85 = nil; end;
+        if self.flowPart29 ~= nil then self.flowPart29:destroy(); self.flowPart29 = nil; end;
+        if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
+        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
+        if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
+        if self.nomeCheck06_03 ~= nil then self.nomeCheck06_03:destroy(); self.nomeCheck06_03 = nil; end;
+        if self.nomeCheck07_01 ~= nil then self.nomeCheck07_01:destroy(); self.nomeCheck07_01 = nil; end;
+        if self.dataLink25 ~= nil then self.dataLink25:destroy(); self.dataLink25 = nil; end;
+        if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
+        if self.nomeCheck22_05 ~= nil then self.nomeCheck22_05:destroy(); self.nomeCheck22_05 = nil; end;
+        if self.nomeFei02 ~= nil then self.nomeFei02:destroy(); self.nomeFei02 = nil; end;
+        if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
+        if self.layout84 ~= nil then self.layout84:destroy(); self.layout84 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
+        if self.dataLink20 ~= nil then self.dataLink20:destroy(); self.dataLink20 = nil; end;
+        if self.nomeCheck09_04 ~= nil then self.nomeCheck09_04:destroy(); self.nomeCheck09_04 = nil; end;
+        if self.nomeBut14B ~= nil then self.nomeBut14B:destroy(); self.nomeBut14B = nil; end;
+        if self.textEditor7 ~= nil then self.textEditor7:destroy(); self.textEditor7 = nil; end;
+        if self.popUp_12 ~= nil then self.popUp_12:destroy(); self.popUp_12 = nil; end;
+        if self.rectangle52 ~= nil then self.rectangle52:destroy(); self.rectangle52 = nil; end;
+        if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
+        if self.label79 ~= nil then self.label79:destroy(); self.label79 = nil; end;
+        if self.nomeCheck18_03 ~= nil then self.nomeCheck18_03:destroy(); self.nomeCheck18_03 = nil; end;
+        if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
+        if self.nomeCheck25_05 ~= nil then self.nomeCheck25_05:destroy(); self.nomeCheck25_05 = nil; end;
+        if self.flowPart45 ~= nil then self.flowPart45:destroy(); self.flowPart45 = nil; end;
+        if self.nomeCheck09_01 ~= nil then self.nomeCheck09_01:destroy(); self.nomeCheck09_01 = nil; end;
+        if self.flowPart42 ~= nil then self.flowPart42:destroy(); self.flowPart42 = nil; end;
+        if self.rectangle26 ~= nil then self.rectangle26:destroy(); self.rectangle26 = nil; end;
+        if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
+        if self.popUp_19 ~= nil then self.popUp_19:destroy(); self.popUp_19 = nil; end;
+        if self.rectangle59 ~= nil then self.rectangle59:destroy(); self.rectangle59 = nil; end;
+        if self.nomeCheck12_02 ~= nil then self.nomeCheck12_02:destroy(); self.nomeCheck12_02 = nil; end;
+        if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
+        if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
+        if self.nomeCheck11_02 ~= nil then self.nomeCheck11_02:destroy(); self.nomeCheck11_02 = nil; end;
+        if self.rectangle23 ~= nil then self.rectangle23:destroy(); self.rectangle23 = nil; end;
+        if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
+        if self.label73 ~= nil then self.label73:destroy(); self.label73 = nil; end;
+        if self.nomeCheck02_05 ~= nil then self.nomeCheck02_05:destroy(); self.nomeCheck02_05 = nil; end;
+        if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
+        if self.nomeCheck14_01 ~= nil then self.nomeCheck14_01:destroy(); self.nomeCheck14_01 = nil; end;
+        if self.nomeCheck21_02 ~= nil then self.nomeCheck21_02:destroy(); self.nomeCheck21_02 = nil; end;
+        if self.checkBox8 ~= nil then self.checkBox8:destroy(); self.checkBox8 = nil; end;
+        if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
+        if self.nomeBut16 ~= nil then self.nomeBut16:destroy(); self.nomeBut16 = nil; end;
+        if self.rectangle70 ~= nil then self.rectangle70:destroy(); self.rectangle70 = nil; end;
+        if self.dataLink36 ~= nil then self.dataLink36:destroy(); self.dataLink36 = nil; end;
+        if self.layout71 ~= nil then self.layout71:destroy(); self.layout71 = nil; end;
+        if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
+        if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
+        if self.nomeBut18B ~= nil then self.nomeBut18B:destroy(); self.nomeBut18B = nil; end;
+        if self.nomeBut13 ~= nil then self.nomeBut13:destroy(); self.nomeBut13 = nil; end;
+        if self.nomeCheck13_01 ~= nil then self.nomeCheck13_01:destroy(); self.nomeCheck13_01 = nil; end;
+        if self.rectangle36 ~= nil then self.rectangle36:destroy(); self.rectangle36 = nil; end;
+        if self.label66 ~= nil then self.label66:destroy(); self.label66 = nil; end;
+        if self.nomeBut10B ~= nil then self.nomeBut10B:destroy(); self.nomeBut10B = nil; end;
+        if self.dataLink33 ~= nil then self.dataLink33:destroy(); self.dataLink33 = nil; end;
+        if self.nomeBut12B ~= nil then self.nomeBut12B:destroy(); self.nomeBut12B = nil; end;
+        if self.layout76 ~= nil then self.layout76:destroy(); self.layout76 = nil; end;
+        if self.nomeCheck05_04 ~= nil then self.nomeCheck05_04:destroy(); self.nomeCheck05_04 = nil; end;
+        if self.rectangle31 ~= nil then self.rectangle31:destroy(); self.rectangle31 = nil; end;
+        if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
+        if self.rectVidMachucado04 ~= nil then self.rectVidMachucado04:destroy(); self.rectVidMachucado04 = nil; end;
+        if self.nomeCheck03_05 ~= nil then self.nomeCheck03_05:destroy(); self.nomeCheck03_05 = nil; end;
+        if self.layout30 ~= nil then self.layout30:destroy(); self.layout30 = nil; end;
+        if self.nomeCheck17_02 ~= nil then self.nomeCheck17_02:destroy(); self.nomeCheck17_02 = nil; end;
+        if self.checkImp_04_Imp ~= nil then self.checkImp_04_Imp:destroy(); self.checkImp_04_Imp = nil; end;
+        if self.flowPart19 ~= nil then self.flowPart19:destroy(); self.flowPart19 = nil; end;
+        if self.horzLine7 ~= nil then self.horzLine7:destroy(); self.horzLine7 = nil; end;
+        if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
+        if self.rectVidMachucado03 ~= nil then self.rectVidMachucado03:destroy(); self.rectVidMachucado03 = nil; end;
+        if self.nomeCheck17_05 ~= nil then self.nomeCheck17_05:destroy(); self.nomeCheck17_05 = nil; end;
+        if self.dataLink39 ~= nil then self.dataLink39:destroy(); self.dataLink39 = nil; end;
+        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
+        if self.checkMulVit_Des_01_Leg ~= nil then self.checkMulVit_Des_01_Leg:destroy(); self.checkMulVit_Des_01_Leg = nil; end;
+        if self.nomeCheckB10 ~= nil then self.nomeCheckB10:destroy(); self.nomeCheckB10 = nil; end;
+        if self.layout53 ~= nil then self.layout53:destroy(); self.layout53 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.layout63 ~= nil then self.layout63:destroy(); self.layout63 = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
+        if self.nomeCheck01_05 ~= nil then self.nomeCheck01_05:destroy(); self.nomeCheck01_05 = nil; end;
+        if self.flowPart13 ~= nil then self.flowPart13:destroy(); self.flowPart13 = nil; end;
+        if self.checkVir_01_Vir ~= nil then self.checkVir_01_Vir:destroy(); self.checkVir_01_Vir = nil; end;
+        if self.label44 ~= nil then self.label44:destroy(); self.label44 = nil; end;
+        if self.layout54 ~= nil then self.layout54:destroy(); self.layout54 = nil; end;
+        if self.layout19 ~= nil then self.layout19:destroy(); self.layout19 = nil; end;
+        if self.nomeCheckB17 ~= nil then self.nomeCheckB17:destroy(); self.nomeCheckB17 = nil; end;
+        if self.nomeCheck16_03 ~= nil then self.nomeCheck16_03:destroy(); self.nomeCheck16_03 = nil; end;
+        if self.dataLink40 ~= nil then self.dataLink40:destroy(); self.dataLink40 = nil; end;
+        if self.nomeCheck20_04 ~= nil then self.nomeCheck20_04:destroy(); self.nomeCheck20_04 = nil; end;
+        if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
+        if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
+        if self.nomeCheck01_02 ~= nil then self.nomeCheck01_02:destroy(); self.nomeCheck01_02 = nil; end;
+        if self.flowPart16 ~= nil then self.flowPart16:destroy(); self.flowPart16 = nil; end;
+        if self.checkVir_04_Vir ~= nil then self.checkVir_04_Vir:destroy(); self.checkVir_04_Vir = nil; end;
+        if self.nomeCheck08_04 ~= nil then self.nomeCheck08_04:destroy(); self.nomeCheck08_04 = nil; end;
+        if self.checkMulVit_Des_05_Leg ~= nil then self.checkMulVit_Des_05_Leg:destroy(); self.checkMulVit_Des_05_Leg = nil; end;
+        if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
+        if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
+        if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
+        if self.nomeCheck16_04 ~= nil then self.nomeCheck16_04:destroy(); self.nomeCheck16_04 = nil; end;
+        if self.popUp_20 ~= nil then self.popUp_20:destroy(); self.popUp_20 = nil; end;
+        if self.rectangle60 ~= nil then self.rectangle60:destroy(); self.rectangle60 = nil; end;
+        if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.dataLink47 ~= nil then self.dataLink47:destroy(); self.dataLink47 = nil; end;
+        if self.image6 ~= nil then self.image6:destroy(); self.image6 = nil; end;
+        if self.nomeCheck08_03 ~= nil then self.nomeCheck08_03:destroy(); self.nomeCheck08_03 = nil; end;
+        if self.popUp_25 ~= nil then self.popUp_25:destroy(); self.popUp_25 = nil; end;
+        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.flowLayout15 ~= nil then self.flowLayout15:destroy(); self.flowLayout15 = nil; end;
+        if self.rectangle65 ~= nil then self.rectangle65:destroy(); self.rectangle65 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.textEditor10 ~= nil then self.textEditor10:destroy(); self.textEditor10 = nil; end;
+        if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
+        if self.nomeCheck04_02 ~= nil then self.nomeCheck04_02:destroy(); self.nomeCheck04_02 = nil; end;
+        if self.layout41 ~= nil then self.layout41:destroy(); self.layout41 = nil; end;
+        if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
+        if self.flowLayout12 ~= nil then self.flowLayout12:destroy(); self.flowLayout12 = nil; end;
+        if self.nomeCheckB20 ~= nil then self.nomeCheckB20:destroy(); self.nomeCheckB20 = nil; end;
+        if self.horzLine11 ~= nil then self.horzLine11:destroy(); self.horzLine11 = nil; end;
+        if self.checkImp_10_Imp ~= nil then self.checkImp_10_Imp:destroy(); self.checkImp_10_Imp = nil; end;
+        if self.flowPart21 ~= nil then self.flowPart21:destroy(); self.flowPart21 = nil; end;
+        if self.flowPart31 ~= nil then self.flowPart31:destroy(); self.flowPart31 = nil; end;
+        if self.rectangle44 ~= nil then self.rectangle44:destroy(); self.rectangle44 = nil; end;
+        if self.textEditor15 ~= nil then self.textEditor15:destroy(); self.textEditor15 = nil; end;
+        if self.layout44 ~= nil then self.layout44:destroy(); self.layout44 = nil; end;
+        if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
+        if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
+        if self.nomeCheck15_03 ~= nil then self.nomeCheck15_03:destroy(); self.nomeCheck15_03 = nil; end;
+        if self.nomeCheckB25 ~= nil then self.nomeCheckB25:destroy(); self.nomeCheckB25 = nil; end;
+        if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
+        if self.flowPart34 ~= nil then self.flowPart34:destroy(); self.flowPart34 = nil; end;
+        if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
+        if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
+        if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
+        if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
+        if self.nomeCheck07_02 ~= nil then self.nomeCheck07_02:destroy(); self.nomeCheck07_02 = nil; end;
+        if self.dataLink28 ~= nil then self.dataLink28:destroy(); self.dataLink28 = nil; end;
+        if self.nomeCheck23_04 ~= nil then self.nomeCheck23_04:destroy(); self.nomeCheck23_04 = nil; end;
+        if self.nomeBG ~= nil then self.nomeBG:destroy(); self.nomeBG = nil; end;
+        if self.layout87 ~= nil then self.layout87:destroy(); self.layout87 = nil; end;
+        if self.rclTruques ~= nil then self.rclTruques:destroy(); self.rclTruques = nil; end;
+        if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
+        if self.nomeCheck06_01 ~= nil then self.nomeCheck06_01:destroy(); self.nomeCheck06_01 = nil; end;
+        if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
+        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
+        if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
+        if self.nomeCheck23_01 ~= nil then self.nomeCheck23_01:destroy(); self.nomeCheck23_01 = nil; end;
+        if self.popUp_11 ~= nil then self.popUp_11:destroy(); self.popUp_11 = nil; end;
+        if self.flLayVida ~= nil then self.flLayVida:destroy(); self.flLayVida = nil; end;
+        if self.layout27 ~= nil then self.layout27:destroy(); self.layout27 = nil; end;
+        if self.rectangle51 ~= nil then self.rectangle51:destroy(); self.rectangle51 = nil; end;
+        if self.layout82 ~= nil then self.layout82:destroy(); self.layout82 = nil; end;
+        if self.layFrente ~= nil then self.layFrente:destroy(); self.layFrente = nil; end;
+        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.nomeCheck06_04 ~= nil then self.nomeCheck06_04:destroy(); self.nomeCheck06_04 = nil; end;
+        if self.checkImp_09_Imp ~= nil then self.checkImp_09_Imp:destroy(); self.checkImp_09_Imp = nil; end;
+        if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
+        if self.textEditor9 ~= nil then self.textEditor9:destroy(); self.textEditor9 = nil; end;
+        if self.popUp_14 ~= nil then self.popUp_14:destroy(); self.popUp_14 = nil; end;
+        if self.nomeCheck22_02 ~= nil then self.nomeCheck22_02:destroy(); self.nomeCheck22_02 = nil; end;
+        if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
+        if self.rectangle54 ~= nil then self.rectangle54:destroy(); self.rectangle54 = nil; end;
+        if self.flowPart47 ~= nil then self.flowPart47:destroy(); self.flowPart47 = nil; end;
+        if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
+        if self.nomeCheck11_01 ~= nil then self.nomeCheck11_01:destroy(); self.nomeCheck11_01 = nil; end;
+        if self.nomeCheck09_03 ~= nil then self.nomeCheck09_03:destroy(); self.nomeCheck09_03 = nil; end;
+        if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;
+        if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
+        if self.layout29 ~= nil then self.layout29:destroy(); self.layout29 = nil; end;
+        if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
+        if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
+        if self.nomeCam02 ~= nil then self.nomeCam02:destroy(); self.nomeCam02 = nil; end;
+        if self.layNote ~= nil then self.layNote:destroy(); self.layNote = nil; end;
+        if self.flowPart49 ~= nil then self.flowPart49:destroy(); self.flowPart49 = nil; end;
+        if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
+        if self.layout79 ~= nil then self.layout79:destroy(); self.layout79 = nil; end;
+        if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
+        if self.idImgFundo ~= nil then self.idImgFundo:destroy(); self.idImgFundo = nil; end;
+        if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
+        if self.nomeCheck02_03 ~= nil then self.nomeCheck02_03:destroy(); self.nomeCheck02_03 = nil; end;
+        if self.rectangle73 ~= nil then self.rectangle73:destroy(); self.rectangle73 = nil; end;
+        if self.nomeCheck14_03 ~= nil then self.nomeCheck14_03:destroy(); self.nomeCheck14_03 = nil; end;
+        if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
+        if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
+        if self.nomeBut14 ~= nil then self.nomeBut14:destroy(); self.nomeBut14 = nil; end;
+        if self.nomeCheck13_04 ~= nil then self.nomeCheck13_04:destroy(); self.nomeCheck13_04 = nil; end;
+        if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
+        if self.checkVir_02_Vir ~= nil then self.checkVir_02_Vir:destroy(); self.checkVir_02_Vir = nil; end;
+        if self.dataLink34 ~= nil then self.dataLink34:destroy(); self.dataLink34 = nil; end;
+        if self.layout73 ~= nil then self.layout73:destroy(); self.layout73 = nil; end;
+        if self.layout38 ~= nil then self.layout38:destroy(); self.layout38 = nil; end;
+        if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
+        if self.checkMulVit_Des_02_Leg ~= nil then self.checkMulVit_Des_02_Leg:destroy(); self.checkMulVit_Des_02_Leg = nil; end;
+        if self.nomeBut11 ~= nil then self.nomeBut11:destroy(); self.nomeBut11 = nil; end;
+        if self.checkImp_12_Imp ~= nil then self.checkImp_12_Imp:destroy(); self.checkImp_12_Imp = nil; end;
+        if self.nomeCheck05_01 ~= nil then self.nomeCheck05_01:destroy(); self.nomeCheck05_01 = nil; end;
+        if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
+        if self.rectangle34 ~= nil then self.rectangle34:destroy(); self.rectangle34 = nil; end;
+        if self.label60 ~= nil then self.label60:destroy(); self.label60 = nil; end;
+        if self.dataLink31 ~= nil then self.dataLink31:destroy(); self.dataLink31 = nil; end;
+        if self.layout35 ~= nil then self.layout35:destroy(); self.layout35 = nil; end;
+        if self.horzLine4 ~= nil then self.horzLine4:destroy(); self.horzLine4 = nil; end;
+        if self.nomeCheck10_04 ~= nil then self.nomeCheck10_04:destroy(); self.nomeCheck10_04 = nil; end;
+        if self.nomeCheckB18 ~= nil then self.nomeCheckB18:destroy(); self.nomeCheckB18 = nil; end;
+        if self.rectVidMachucado06 ~= nil then self.rectVidMachucado06:destroy(); self.rectVidMachucado06 = nil; end;
+        if self.nomeCheck03_03 ~= nil then self.nomeCheck03_03:destroy(); self.nomeCheck03_03 = nil; end;
+        if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
+        if self.flPart_Machucado05 ~= nil then self.flPart_Machucado05:destroy(); self.flPart_Machucado05 = nil; end;
+        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
+        if self.nomeCheck10_01 ~= nil then self.nomeCheck10_01:destroy(); self.nomeCheck10_01 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.dataLink48 ~= nil then self.dataLink48:destroy(); self.dataLink48 = nil; end;
+        if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
+        if self.flPart_Machucado02 ~= nil then self.flPart_Machucado02:destroy(); self.flPart_Machucado02 = nil; end;
+        if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
+        if self.rectangle68 ~= nil then self.rectangle68:destroy(); self.rectangle68 = nil; end;
+        if self.layout51 ~= nil then self.layout51:destroy(); self.layout51 = nil; end;
+        if self.nomeCheckB12 ~= nil then self.nomeCheckB12:destroy(); self.nomeCheckB12 = nil; end;
+        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.layout65 ~= nil then self.layout65:destroy(); self.layout65 = nil; end;
+        if self.flowLayout4 ~= nil then self.flowLayout4:destroy(); self.flowLayout4 = nil; end;
+        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
+        if self.flowPart15 ~= nil then self.flowPart15:destroy(); self.flowPart15 = nil; end;
+        if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
+        if self.nomeBut25 ~= nil then self.nomeBut25:destroy(); self.nomeBut25 = nil; end;
+        if self.layout17 ~= nil then self.layout17:destroy(); self.layout17 = nil; end;
+        if self.label31 ~= nil then self.label31:destroy(); self.label31 = nil; end;
+        if self.nomeCheck16_01 ~= nil then self.nomeCheck16_01:destroy(); self.nomeCheck16_01 = nil; end;
+        if self.layout68 ~= nil then self.layout68:destroy(); self.layout68 = nil; end;
+        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
+        if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
+        if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
+        if self.rectVidInconsciente ~= nil then self.rectVidInconsciente:destroy(); self.rectVidInconsciente = nil; end;
+        if self.nomeCheck20_02 ~= nil then self.nomeCheck20_02:destroy(); self.nomeCheck20_02 = nil; end;
+        if self.dataLink42 ~= nil then self.dataLink42:destroy(); self.dataLink42 = nil; end;
+        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
+        if self.rectangle66 ~= nil then self.rectangle66:destroy(); self.rectangle66 = nil; end;
+        if self.nomeBut20 ~= nil then self.nomeBut20:destroy(); self.nomeBut20 = nil; end;
+        if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
+        if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
+        if self.flowPart39 ~= nil then self.flowPart39:destroy(); self.flowPart39 = nil; end;
+        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
+        if self.nomeCheck04_01 ~= nil then self.nomeCheck04_01:destroy(); self.nomeCheck04_01 = nil; end;
+        if self.nomeCheck19_05 ~= nil then self.nomeCheck19_05:destroy(); self.nomeCheck19_05 = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.nomeCheck24_03 ~= nil then self.nomeCheck24_03:destroy(); self.nomeCheck24_03 = nil; end;
+        if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
+        if self.flowLayout17 ~= nil then self.flowLayout17:destroy(); self.flowLayout17 = nil; end;
+        if self.label88 ~= nil then self.label88:destroy(); self.label88 = nil; end;
+        if self.flowPart22 ~= nil then self.flowPart22:destroy(); self.flowPart22 = nil; end;
+        if self.rectangle41 ~= nil then self.rectangle41:destroy(); self.rectangle41 = nil; end;
+        if self.checkImp_01_Imp ~= nil then self.checkImp_01_Imp:destroy(); self.checkImp_01_Imp = nil; end;
+        if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
+        if self.layout47 ~= nil then self.layout47:destroy(); self.layout47 = nil; end;
+        if self.nomeCheck04_04 ~= nil then self.nomeCheck04_04:destroy(); self.nomeCheck04_04 = nil; end;
+        if self.nomeBut24B ~= nil then self.nomeBut24B:destroy(); self.nomeBut24B = nil; end;
+        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
+        if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
+        if self.chbTitulo ~= nil then self.chbTitulo:destroy(); self.chbTitulo = nil; end;
+        if self.flowPart37 ~= nil then self.flowPart37:destroy(); self.flowPart37 = nil; end;
+        if self.flowPart27 ~= nil then self.flowPart27:destroy(); self.flowPart27 = nil; end;
+        if self.rectangle46 ~= nil then self.rectangle46:destroy(); self.rectangle46 = nil; end;
+        if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;
+        if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
+        if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
+        if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
+        if self.nomeCheck15_05 ~= nil then self.nomeCheck15_05:destroy(); self.nomeCheck15_05 = nil; end;
+        if self.label86 ~= nil then self.label86:destroy(); self.label86 = nil; end;
+        if self.flowLayout19 ~= nil then self.flowLayout19:destroy(); self.flowLayout19 = nil; end;
+        if self.flowPart28 ~= nil then self.flowPart28:destroy(); self.flowPart28 = nil; end;
+        if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
+        if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
+        if self.dataLink26 ~= nil then self.dataLink26:destroy(); self.dataLink26 = nil; end;
+        if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
+        if self.nomeCheck18_05 ~= nil then self.nomeCheck18_05:destroy(); self.nomeCheck18_05 = nil; end;
+        if self.nomeCheck25_03 ~= nil then self.nomeCheck25_03:destroy(); self.nomeCheck25_03 = nil; end;
+        if self.layout85 ~= nil then self.layout85:destroy(); self.layout85 = nil; end;
+        if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
+        if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
+        if self.dataLink21 ~= nil then self.dataLink21:destroy(); self.dataLink21 = nil; end;
+        if self.nomeCheck07_05 ~= nil then self.nomeCheck07_05:destroy(); self.nomeCheck07_05 = nil; end;
+        if self.checkImp_03_Imp ~= nil then self.checkImp_03_Imp:destroy(); self.checkImp_03_Imp = nil; end;
+        if self.nomeCheck22_01 ~= nil then self.nomeCheck22_01:destroy(); self.nomeCheck22_01 = nil; end;
+        if self.popUp_13 ~= nil then self.popUp_13:destroy(); self.popUp_13 = nil; end;
+        if self.rectangle53 ~= nil then self.rectangle53:destroy(); self.rectangle53 = nil; end;
+        if self.layout21 ~= nil then self.layout21:destroy(); self.layout21 = nil; end;
+        if self.nomeCheck23_03 ~= nil then self.nomeCheck23_03:destroy(); self.nomeCheck23_03 = nil; end;
+        if self.nomeCheck18_02 ~= nil then self.nomeCheck18_02:destroy(); self.nomeCheck18_02 = nil; end;
+        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
+        if self.nomeCheck25_04 ~= nil then self.nomeCheck25_04:destroy(); self.nomeCheck25_04 = nil; end;
+        if self.nomeCheck11_04 ~= nil then self.nomeCheck11_04:destroy(); self.nomeCheck11_04 = nil; end;
+        if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
+        if self.flowPart44 ~= nil then self.flowPart44:destroy(); self.flowPart44 = nil; end;
+        if self.layout80 ~= nil then self.layout80:destroy(); self.layout80 = nil; end;
+        if self.flowPart41 ~= nil then self.flowPart41:destroy(); self.flowPart41 = nil; end;
+        if self.flowLayout20 ~= nil then self.flowLayout20:destroy(); self.flowLayout20 = nil; end;
+        if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
+        if self.rectangle15 ~= nil then self.rectangle15:destroy(); self.rectangle15 = nil; end;
+        if self.popUp_16 ~= nil then self.popUp_16:destroy(); self.popUp_16 = nil; end;
+        if self.rectangle56 ~= nil then self.rectangle56:destroy(); self.rectangle56 = nil; end;
+        if self.nomeCheck12_05 ~= nil then self.nomeCheck12_05:destroy(); self.nomeCheck12_05 = nil; end;
+        if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
+        if self.label75 ~= nil then self.label75:destroy(); self.label75 = nil; end;
+        if self.nomeCheck11_03 ~= nil then self.nomeCheck11_03:destroy(); self.nomeCheck11_03 = nil; end;
+        if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
+        if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
+        if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
         self:_oldLFMDestroy();
     end;
 
@@ -11651,6 +11659,7 @@ local _frmScion2e = {
     dataType = "thirteen.Scion2e", 
     formType = "sheetTemplate", 
     formComponentName = "form", 
+    cacheMode = "none", 
     title = "Scion 2e", 
     description=""};
 

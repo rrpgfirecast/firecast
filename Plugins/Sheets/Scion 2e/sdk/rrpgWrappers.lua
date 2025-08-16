@@ -2,7 +2,9 @@
 local SharedObjects = require("rrpgSharedObjects.lua");
 local rrpgWrappers = {};
 local localStrongRefContextoObjects = {};	
-
+local Locale = require("locale.lua");
+local Async = require("async.lua");
+local Utils = require('utils.lua');
 
 local SHARED_OBJECT_TYPE = "rrpgObject";
 
@@ -63,6 +65,30 @@ local function newTimedJobQueue(interval)
 		end;
 	end;
 	
+	function o:addAsyncJob(callback, ...)	
+		local promise, resolution = Async.Promise.toResolve();
+		assert((promise ~= nil) and (resolution ~= nil));
+								
+		o:addJob(
+			function(...)
+				assert(resolution ~= nil);
+				
+				local function protectedCallback(...)
+					local ret = table.pack(pcall(callback, ...));
+					
+					if ret[1] then
+						return table.unpack(ret, 2);
+					else
+						return Async.Promise.failed(ret[2]);
+					end;
+				end;
+				
+				Async.execute(protectedCallback, ...):thenResolve(resolution);
+			end, ...);
+		
+		return promise;
+	end;
+	
 	function o:clear()
 		o.timer.enabled = false;
 		o.gerador = 0;
@@ -76,6 +102,7 @@ local function newTimedJobQueue(interval)
 end;
 
 local __serverRequestQueue = newTimedJobQueue(250);
+rrpgWrappers.__serverRequestQueue = __serverRequestQueue;
 
 local function initWrappedObjectFromHandle(handle)
 	local wObj = objs.objectFromHandle(handle); 
@@ -102,22 +129,47 @@ end;
 local function initMesaWrappedObjectFromHandle(handle)
 	local wObj = initWrappedObjectFromHandle(handle); 
 	local mesa = wObj;
-    
-	function mesa:getChat() 
-		local objMesa = rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ChatObjectID")); 
-		
-		if objMesa == nil then
-			return rrpgWrappers.NullChatWrapper;  -- ao invés de retornar NULL, vamos retorna um objeto que não faz nada.
-		else
-			return objMesa;
-		end;
-	end;
-	
+
 	function mesa:getActiveChat()
 		local objMesa = rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ActiveChatObjectID")); 
 		
 		if objMesa == nil then
 			return mesa:getChat();
+		else
+			return objMesa;
+		end;
+	end;
+    
+	function mesa:getAudioPlayer()
+		local cachedPlayer = rawget(self, "__cachedAudioPlayer");
+
+		if cachedPlayer == nil then
+			local audioLib = require("audioCore.dlua");
+		
+			if self.isObjectAlive then				
+				local audioPlayerHandle = _obj_invokeEx(self.handle, 'CreateRoomAudioPlayer');		
+
+				if audioPlayerHandle ~= nil then
+					cachedPlayer = audioLib._audioPlayerWrapperFromHandle(audioPlayerHandle);
+				else
+					cachedPlayer = audioLib._newNullAudioPlayerWrapper("Failed to initialize room audio player");
+				end;
+			else
+				cachedPlayer = audioLib._newNullAudioPlayerWrapper("Not in room");
+			end;
+					
+			assert(cachedPlayer ~= nil);			
+			rawset(self, "__cachedAudioPlayer", cachedPlayer);
+		end;
+
+		return cachedPlayer;	
+	end;
+	
+	function mesa:getChat() 
+		local objMesa = rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ChatObjectID")); 
+		
+		if objMesa == nil then
+			return rrpgWrappers.NullChatWrapper;  -- ao invés de retornar NULL, vamos retorna um objeto que não faz nada.
 		else
 			return objMesa;
 		end;
@@ -164,15 +216,18 @@ local function initMesaWrappedObjectFromHandle(handle)
 	function mesa:getPodeTablesDock() return _obj_getProp(self.handle, "PodeTablesDock"); end; 
     	
 	function mesa:requestSetModerada(moderada) 
-		__serverRequestQueue:addJob(function () _obj_invoke(self.handle, "RequestSetModerada", not (not moderada));	end); 
+		moderada = Locale.autoEval(moderada);
+		__serverRequestQueue:addJob(function () _obj_invokeNoEval(self.handle, "RequestSetModerada", not (not moderada));	end); 
 	end;
 	
 	function mesa:abrirNDBDeMesa(nome, callback, opcoes)
 		local ndbBib = require("ndb.lua");
-		
+				
 		if type(opcoes) ~= "table" then
-			opcoes = {};			
-		end;
+			opcoes = {};
+		else	
+			opcoes = Utils.cloneTable(opcoes, true);
+		end;				
 		
 		opcoes.criar = not not opcoes.criar;
 		
@@ -203,7 +258,7 @@ local function initMesaWrappedObjectFromHandle(handle)
 						
 						if callback ~= nil then
 							setTimeout(callback, 1, rootNode);
-						end;
+							end;
 					elseif state == "closed" then
 						jaNotificou = true;
 						
@@ -215,14 +270,15 @@ local function initMesaWrappedObjectFromHandle(handle)
 							jaNotificouEmCarregamento = true;
 							
 							if opcoes.callbackDeCarga ~= nil then
-								opcoes.callbackDeCarga();
+								opcoes.callbackDeCarga(rootNode);
 							end;
 						end;
 					end;
 					
-					if jaNotificou then
+					if jaNotificou and (ndbObj ~= nil) then
 						ndbObj:removeEventListener(listenerProvider);
 						ndbObj:removeEventListener(listenerLoaded);
+						--ndbObj = nil;
 					end;						
 				end;						
 			end;
@@ -231,13 +287,72 @@ local function initMesaWrappedObjectFromHandle(handle)
 			listenerLoaded = ndbObj:addEventListener("OnLoaded", checkState);
 					
 			checkState();
-		else
-			if callback ~= nil then
-				setTimeout(callback, 1, nil);
-			end;
+		elseif callback ~= nil then
+			setTimeout(callback, 1, nil);		
 		end;
 	end;
+	
+	function mesa:asyncOpenRoomNDB(name, options)		
+		options = options or {};			
+	
+		local promise, resolution = Async.Promise.pending();
+				
+		local adaptedOptions = {};				
+		adaptedOptions.criar = options.create;
 		
+		if options.skipLoad then
+			adaptedOptions.callbackDeCarga = 
+				function(loadingNode)
+					resolution:setSuccess(loadingNode);
+				end;
+		end;
+		
+		self:abrirNDBDeMesa(name, 
+			function(loadedNode)
+				if loadedNode ~= nil then
+					resolution:setSuccess(loadedNode);
+				else	
+					resolution:setFailure("Could not load room nodedatabase");
+				end;
+			end, 
+			adaptedOptions);
+				
+		return promise;
+	end;
+	
+	function mesa:asyncOpenUserRoomNDB(name, options)
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncOpenUserRoomNDB", name, options));			
+			end);	
+	end;
+	
+	function mesa:getFirecastURI()
+		return _obj_invokeEx(self.handle, "GetFirecastURI");
+	end;
+	
+	function mesa:asyncOpenPVT(login, params) 		
+		local promiseHandle = _obj_invokeEx(self.handle, "AsyncOpenPVT", login, params);
+		return Async.Promise.wrap(promiseHandle);
+	end;		
+
+	function mesa:asyncCreateGroupPVT(logins, params) 		
+		local clonedLogins = Utils.cloneTable(logins);
+		local clonedParams = Utils.cloneTable(params);
+	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				local promiseHandle = _obj_invokeEx(self.handle, "AsyncCreateGroupPVT", clonedLogins, clonedParams);
+				return Async.Promise.wrap(promiseHandle);				
+			end);	
+	end;	
+	
+	function mesa:getChats()
+		return _obj_invokeEx(self.handle, "GetChats");
+	end;
+				
+	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};					
+	wObj.props["audioPlayer"] = {getter="getAudioPlayer", tipo="table"};				
 	wObj.props["nome"] = {getter = "getNome", tipo = "string"};
 	wObj.props["descricao"] = {getter = "getDescricao", tipo = "string"};
 	wObj.props["msgStatus"] = {getter = "getMsgStatus", tipo = "string"};	
@@ -246,6 +361,7 @@ local function initMesaWrappedObjectFromHandle(handle)
 	wObj.props["sistema"] = {getter = "getSistema", tipo = "string"};	
 	wObj.props["msgBoasVindas"] = {getter = "getMsgBoasVindas", tipo = "string"};	
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};	
+	wObj.props["firecastURI"] = {getter = "getFirecastURI", tipo = "string"};	
 	wObj.props["isRestrito18Anos"] = {getter = "getIsRestrito18Anos", tipo = "bool"};	
 	wObj.props["haVagas"] = {getter = "getHaVagas", tipo = "bool"};		
 	wObj.props["isModerada"] = {getter = "getIsModerada", tipo = "bool"};	
@@ -254,7 +370,9 @@ local function initMesaWrappedObjectFromHandle(handle)
 	wObj.props["meuJogador"] = {getter = "getMeuJogador", tipo = "table"};	
 	wObj.props["biblioteca"] = {getter = "getBiblioteca", tipo = "table"};	
 	wObj.props["chat"] = {getter="getChat", tipo="table"};
-	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};
+	
+	wObj.props["library"] = wObj.props["biblioteca"];	
+	wObj.props["me"] = wObj.props["meuJogador"];	
 	
 	return wObj;
 end;
@@ -286,8 +404,10 @@ local function initJogadorWrappedObjectFromHandle(handle)
 	function jogador:getCodigoInterno() return _obj_getProp(self.handle, "CodigoInterno"); end;
 	
 	function jogador:__innerRequestSetMode(modo, ativar)
+		modo, ativar = Locale.autoEval(modo, ativar);
+	
 		__serverRequestQueue:addJob(function()
-				_obj_invoke(self.handle, "RequestSetMode", modo, not (not ativar));	
+				_obj_invokeNoEval(self.handle, "RequestSetMode", modo, not (not ativar));	
 			end);
 	end;
 	
@@ -297,9 +417,18 @@ local function initJogadorWrappedObjectFromHandle(handle)
 	function jogador:requestSetJogador(isJogador) self:__innerRequestSetMode("jogador", isJogador); end;
 	function jogador:requestKick() __serverRequestQueue:addJob(function() _obj_invoke(self.handle, "RequestKick", ""); end); end;	
 	function jogador:getBarValue(index) return _obj_invokeEx(self.handle, "LuaGetBarValue", index); end;
-	function jogador:requestSetBarValue(index, currentValue, maxValue) __serverRequestQueue:addJob(function() _obj_invokeEx(self.handle, "LuaRequestSetBarValue", index, currentValue, maxValue); end); end;
+	
+	function jogador:requestSetBarValue(index, currentValue, maxValue) 
+		index, currentValue, maxValue = Locale.autoEval(index, currentValue, maxValue); 
+		
+		__serverRequestQueue:addJob(
+			function() 
+				_obj_invokeExNoEval(self.handle, "LuaRequestSetBarValue", index, currentValue, maxValue); 
+			end); 
+	end;
+	
 	function jogador:getEditableLine(index) return _obj_invokeEx(self.handle, "LuaGetEditableLine", index); end;
-	function jogador:requestSetEditableLine(index, text) __serverRequestQueue:addJob(function() _obj_invokeEx(self.handle, "LuaRequestSetEditableLine", index, text); end); end;	
+	function jogador:requestSetEditableLine(index, text) index, text = Locale.autoEval(index, text); __serverRequestQueue:addJob(function() _obj_invokeExNoEval(self.handle, "LuaRequestSetEditableLine", index, text); end); end;	
 		
 	wObj.props["mesa"] = {getter = "getMesa", tipo = "table"};
 	wObj.props["nick"] = {getter = "getNick", tipo = "string"};
@@ -321,6 +450,7 @@ local function initJogadorWrappedObjectFromHandle(handle)
 	wObj.props["haveVoz"] = {getter = "getHaveVoice", tipo = "bool"};
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};
 	wObj.props["personagemPrincipal"] = {readProp="PersonagemPrincipal", tipo = "int"};
+	wObj.props["id"] = {readProp="ID", tipo = "int"};
 	
 	return wObj;
 end;		
@@ -342,6 +472,99 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
     	end
     	   	
     	return filhos;	
+	end;
+	
+	function bibItem:__asyncCreateBibItem(bibItemType, params)
+		assert(type(params) == "table");
+				
+		local innerPromise = __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncCreateBibItemObjectID", bibItemType, params));			
+			end);			
+			
+		return Async.Promise.toHandle(innerPromise,
+			function (newObjectID)
+				local newObj = rrpgWrappers.contextObjectFromID(newObjectID);
+				
+				if newObj ~= nil then
+					return newObj;
+				else	
+					error("Could not find the new created library item");
+				end;
+			end);
+	end;
+	
+	function bibItem:asyncCreateChar(charParams)
+		if type(charParams) ~= "table" then
+			error("charParams must be a table");
+		end;
+		
+		if charParams.name == nil then
+			error("Required field: charParams.name");
+		end;
+		
+		if charParams.name == nil then
+			error("Required field: charParams.dataType");
+		end;		
+		
+		return bibItem:__asyncCreateBibItem('character', charParams);
+	end;
+	
+	function bibItem:asyncCreateDir(dirParams)
+		if type(dirParams) ~= "table" then
+			error("dirParams must be a table");
+		end;
+		
+		if dirParams.name == nil then
+			error("Required field: dirParams.name");
+		end;
+		
+		return bibItem:__asyncCreateBibItem('directory', dirParams);
+	end;	
+	
+	function bibItem:asyncCreateScene3(gridParams)
+		if type(gridParams) ~= "table" then
+			error("gridParams must be a table");
+		end;
+		
+		if gridParams.name == nil then
+			error("Required field: gridParams.name");
+		end;
+		
+		return bibItem:__asyncCreateBibItem('scene3', gridParams);
+	end;		
+
+	function bibItem:asyncDelete()	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncDelete"));			
+			end);			
+	end;		
+
+	function bibItem:asyncMoveTo(newParent)			
+		if type(newParent) ~= 'table' then
+			error('Parameter "newParent" must be an object');
+		end;	
+	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncMoveTo", newParent.objectID));			
+			end);	
+	end;
+
+	function bibItem:asyncUpdate(changes)
+		if type(changes) ~= 'table' then
+			error('Parameter "changes" must be a table');
+		end;	
+		
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncUpdate", changes));			
+			end);	
+	end;		
+	
+	function bibItem:getFirecastURI()
+		return _obj_invokeEx(self.handle, "GetFirecastURI");
 	end;
 	
 	function bibItem:getMesa() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "MesaObjectID")); end;
@@ -369,19 +592,54 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 	wObj.props["tipo"] = {getter = "getTipo", tipo = "string"};		
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};	
 	
+	wObj.props["room"] = wObj.props["mesa"];	
+	wObj.props["parent"] = wObj.props["pai"];
+	wObj.props["name"] = wObj.props["nome"];	
+	wObj.props["children"] = wObj.props["filhos"];
+	wObj.props["firecastURI"] = {getter = "getFirecastURI", tipo = "string"};	
+	wObj.props["ownerLogin"] = wObj.props["loginDono"];	
+	wObj.props["creatorLogin"] = wObj.props["loginCriador"];
+	wObj.props["creator"] = wObj.props["criador"];
+	wObj.props["owner"] = wObj.props["dono"];
+	wObj.props["visible"] = wObj.props["visivel"];	
+	wObj.props["recursiveVisible"] = wObj.props["visivelRecursivamente"];		
 	return wObj;
 end;		
 		
 --[ OBJETO PERSONAGEM ]--			
+
+local __PersonagemWrappedObjectProps = {};
+
+for i = 0, 3 do
+	local barIndex = i;
+	
+	__PersonagemWrappedObjectProps["bar" .. tostring(i) .. "Val"] = {tipo = "int", getter = function (personagem)										
+																								return _obj_invokeEx(personagem.handle, "GetBarVal", barIndex)											
+																						    end};	
+																						  
+	__PersonagemWrappedObjectProps["bar" .. tostring(i) .. "Max"] = {tipo = "int", getter = function (personagem)
+																								return _obj_invokeEx(personagem.handle, "GetBarMax", barIndex)	
+																						    end};
+end;
+
+for i = 0, 1 do
+	local edtLineIndex = i;
+	
+	__PersonagemWrappedObjectProps["edtLine" .. tostring(i)] = {tipo = "string", getter = function (personagem)
+																								return _obj_invokeEx(personagem.handle, "GetEdtLine", edtLineIndex)	
+																						    end};			
+end;	
 		
 local function initBibPersonagemWrappedObjectFromHandle(handle)
 	local wObj = initBibliotecaItemWrappedObjectFromHandle(handle); 
 	local bibItem = wObj;
 	
-	function bibItem:getDataType() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "DataType")); end;
+	function bibItem:getDataType() return _obj_getProp(self.handle, "DataType"); end;
 	function bibItem:getEscritaBloqueada() return _obj_getProp(self.handle, "EscritaBloqueada"); end;	
 	
-	function bibItem:loadSheetNDB(callback)
+	function bibItem:loadSheetNDB(callback, params)
+		params = params or {};
+	
 		local ndbBib = require("ndb.lua");
 		local ndbHandle = _obj_invokeEx(self.handle, 'GetOrCreateSheetNDB');
 		
@@ -414,16 +672,16 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 		
 		local state = ndbBib.getState(rootNode);
 		
-		if state == "open" then
+		if (state == "open") or 
+   		   ((state == "opening") and (params.skipLoad)) then
 			-- Already loaded
 			if callback ~= nil then
 				callback(rootNode);
-				--setTimeout(callback, 1, rootNode);
 			end;
 			
 			return;
 		end;
-		
+
 		-- Not loaded yet, letz monitor
 		
 		local jaNotificou = false;
@@ -458,10 +716,31 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 		checkState();		
 	end;
 	
+	function bibItem:asyncOpenNDB(options)
+		options = options or {};
+		local promise, resolution = Async.Promise.pending();
+		
+		self:loadSheetNDB(
+			function (loadedNDB)
+				if loadedNDB ~= nil then
+					resolution:setSuccess(loadedNDB);
+				else
+					resolution:setFailure("Could not load character nodedatabase");
+				end;
+			end, options);
+		
+		return promise;
+	end;
+	
 	wObj.props["dataType"] = {getter = "getDataType", tipo = "string"};	
 	wObj.props["escritaBloqueada"] = {getter = "getEscritaBloqueada", tipo = "bool"};
 	wObj.props["avatar"] = {readProp="Avatar", tipo = "string"};
 	
+	for k, v in pairs(__PersonagemWrappedObjectProps) do
+		wObj.props[k] = v;
+	end;	
+
+	wObj.props["editionBlocked"] = wObj.props["escritaBloqueada"];	
 	return wObj;
 end;			
 
@@ -511,13 +790,26 @@ local function _setupCallbackTrapForUniqueRoll(idOfRoll, callbackFunction)
 end;
 
 local _NULL_FUNCTION = function() end;
+local _NULL_ARRAY_FUNCTION = function() return {}; end;
+local _NULL_PROMISE_FUNCTION = function() Async.Promise.failed("Chat is not alive"); end;
+
 rrpgWrappers.NullChatWrapper = {enviarMensagem = _NULL_FUNCTION, 
 								rolarDados = _NULL_FUNCTION,
 								enviarAcao = _NULL_FUNCTION,
 								enviarRisada = _NULL_FUNCTION,
 								enviarMensagemNPC = _NULL_FUNCTION,
-								enviarNarracao = _NULL_FUNCTION};
-
+								enviarNarracao = _NULL_FUNCTION,
+								setImpersonation = _NULL_FUNCTION,
+								readLogRecs = _NULL_ARRAY_FUNCTION,
+								asyncQueryLogRecs = _NULL_PROMISE_FUNCTION,
+								asyncSendLaugh = _NULL_PROMISE_FUNCTION,
+								asyncSendAction = _NULL_PROMISE_FUNCTION,
+								asyncSendStd = _NULL_PROMISE_FUNCTION,
+								asyncInvite = _NULL_PROMISE_FUNCTION,
+								participants = {},
+								medium = {kind="undefined"}
+								};
+								
 local function initBaseChatWrappedObjectFromHandle(handle)
 	local wObj = initWrappedObjectFromHandle(handle); 
 	local wChat = wObj;
@@ -533,6 +825,17 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		return queue;
 	end;
 	
+	function wChat:_getLongTimedJobQueue()
+		local queue = rawget(self, "_longTimedJobQueue");
+		
+		if queue == nil then
+			queue = newTimedJobQueue(1000);
+			rawset(self, "_longTimedJobQueue", queue);
+		end;
+		
+		return queue;
+	end;	
+	
 	function wChat:escrever(texto, quebrarLinha, permitirSmileys) 
 		if quebrarLinha == nil then
 			quebrarLinha = true;
@@ -547,69 +850,100 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		end;
 	end;
 	
-	function wChat:enviarMensagem(msg) 
+	function wChat:enviarMensagem(msg, callback) 
+		msg = Locale.autoEval(tostring(msg));
+		
 		if msg ~= nil then	
 			local queue = self:_getTimedJobQueue()
-		
-			queue:addJob(function()		
-					if self.handle ~= nil then							
-						_obj_invoke(wChat.handle, "EnviarMensagem", tostring(msg));
+	
+	        function queuedSendTheMessage()
+				if self.handle ~= nil then							
+					_obj_invokeNoEval(wChat.handle, "EnviarMensagem", msg);
+					
+					if type(callback) == 'function' then
+						callback();
 					end;
-				end);		
+				end;
+			end;
+	        
+			queue:addJob(queuedSendTheMessage);		
 		end;
 	end;
 	
-	function wChat:enviarMensagemNPC(npc, msg) 
+	function wChat:enviarMensagemNPC(npc, msg, callback) 
+		npc, msg = Locale.autoEval(npc, msg);
+	
 		if msg ~= nil and npc ~= nil then	
 			local queue = self:_getTimedJobQueue()
 		
 			queue:addJob(function()		
 					if self.handle ~= nil then							
-						_obj_invoke(wChat.handle, "EnviarMensagemNPC", tostring(npc), tostring(msg));
+						_obj_invokeNoEval(wChat.handle, "EnviarMensagemNPC", tostring(npc), tostring(msg));
+						
+						if type(callback) == 'function' then
+							callback();
+						end;
 					end;
 				end);		
 		end;
 	end;	
 	
-	function wChat:enviarNarracao(msg) 
+	function wChat:enviarNarracao(msg, callback) 
+		msg = Locale.autoEval(msg);
+	
 		if msg ~= nil then	
 			local queue = self:_getTimedJobQueue()
 		
 			queue:addJob(function()		
 					if self.handle ~= nil then							
-						_obj_invoke(wChat.handle, "EnviarNarracao", tostring(msg));
+						_obj_invokeNoEval(wChat.handle, "EnviarNarracao", tostring(msg));
+						
+						if type(callback) == 'function' then
+							callback();
+						end;
 					end;
 				end);		
 		end;
 	end;	
 	
-	function wChat:enviarAcao(acao) 
+	function wChat:enviarAcao(acao, callback) 
+		acao = Locale.autoEval(acao);
+	
 		if acao ~= nil then	
 			local queue = self:_getTimedJobQueue()
 		
 			queue:addJob(function()		
 					if self.handle ~= nil then							
-						_obj_invoke(wChat.handle, "EnviarAcao", tostring(acao));
+						_obj_invokeNoEval(wChat.handle, "EnviarAcao", tostring(acao));
+						
+						if type(callback) == 'function' then
+							callback();
+						end;
 					end;
 				end);		
 		end;
 	end;	
 	
-	function wChat:enviarRisada() 
+	function wChat:enviarRisada(callback) 
 		local queue = self:_getTimedJobQueue()
 	
 		queue:addJob(function()		
 				if self.handle ~= nil then							
 					_obj_invoke(wChat.handle, "EnviarRisada");
+					
+					if type(callback) == 'function' then
+						callback();
+					end;
 				end;
 			end);		
 	end;		
 	
 	function wChat:rolarDados(rolagem, msg, callbackFunction) 
 		local rolAsStr;
+		msg = Locale.autoEval(msg);
 		
 		if type(rolagem) == "string" then
-			rolAsStr = rolagem;
+			rolAsStr = Locale.autoEval(rolagem);
 		elseif (type(rolagem) == "table") and (rolagem.getAsString ~= nil) then
 			rolAsStr = rolagem:getAsString();		
 		else
@@ -627,14 +961,14 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 				queue:addJob(
 					function ()
 						if self.handle ~= nil then
-							return _obj_invoke(self.handle, "EnviarRolagemEx", rolAsStr, msg, idUnicaRolagem);
+							return _obj_invokeNoEval(self.handle, "EnviarRolagemEx", rolAsStr, msg, idUnicaRolagem);
 						end;
 					end);	
 			else
 				queue:addJob(
 					function ()
 						if self.handle ~= nil then
-							return _obj_invoke(self.handle, "EnviarRolagem", rolAsStr, msg);
+							return _obj_invokeNoEval(self.handle, "EnviarRolagem", rolAsStr, msg);
 						end;
 					end);								
 			end;
@@ -657,8 +991,117 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		end;			
 	end;
 			
+	function wChat:__asyncSendEx(msgDesc, params) 	
+		local finalMsgDesc = Utils.cloneTable(params) or {};
+		
+		for k, v in pairs(msgDesc) do
+			finalMsgDesc[k] = v;
+		end;
+				
+		local queue = self:_getTimedJobQueue()
+		
+		return queue:addAsyncJob(
+			function()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncSendEx", finalMsgDesc));
+			end);	
+	end;
+			
+	function wChat:asyncSendStd(content, params) 						
+		return self:__asyncSendEx({msgType="standard", content=content}, params);
+	end;
+	
+	function wChat:asyncSendAction(content, params) 						
+		return self:__asyncSendEx({msgType="action", content=content}, params);
+	end;
+	
+	function wChat:asyncSendLaugh(params) 						
+		return self:__asyncSendEx({msgType="laugh"}, params);
+	end;	
+	
+	function wChat:asyncRoll(expression, message, params) 			
+		local expressionAsStr;
+
+		if type(expression) == "string" then
+			expressionAsStr = Locale.autoEval(expression);
+		elseif (type(expression) == "table") and (expression.getAsString ~= nil) then
+			expressionAsStr = expression:getAsString();		
+		else
+			expressionAsStr = nil;
+		end;
+	
+		local sendPromise = self:__asyncSendEx({msgType="dice", expression=expressionAsStr, content=message}, params);
+		
+		return sendPromise:thenDo(
+			function(logRec)				
+				local roll = logRec.msg.roll;
+				assert(roll ~= nil);
+				
+				return roll.resultado, roll, logRec;
+			end);		
+	end;		
+	
+	function wChat:readLogRecs() 
+		return _obj_invokeEx(self.handle, "ReadValidLogRecs");
+	end;
+	
+	function wChat:getImpersonation() 
+		return _obj_invokeEx(self.handle, "GetUIImpersonation");
+	end;	
+	
+	function wChat:setImpersonation(impersonation)
+		return _obj_invokeEx(self.handle, "SetUIImpersonation", impersonation);
+	end;
+	
+	function wChat:getTalemarkOptions()
+		return _obj_invokeEx(self.handle, "GetTalemarkOptions");
+	end;	
+	
+	function wChat:setTalemarkOptions(options)
+		return _obj_invokeEx(self.handle, "SetTalemarkOptions", options);
+	end;		
+		
+	function wChat:getMedium()
+		return _obj_invokeEx(self.handle, "GetMedium");
+	end;		
+	
+	function wChat:getParticipants() 
+		return _obj_invokeEx(self.handle, "GetParticipants");
+	end;
+	
+	function wChat:asyncQueryLogRecs(params) 		
+		params = Utils.cloneTable(params or {});
+		
+		local queue = self:_getLongTimedJobQueue()
+		
+		return queue:addAsyncJob(
+			function()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncQueryLogRecsFromServer", params));
+			end);	
+	end;		
+	
+	function wChat:writeEx(text, talemarkOptions) 		
+		return _obj_invokeEx(self.handle, "WriteEx", text, talemarkOptions);	
+	end;	
+				
+	function wChat:asyncInvite(logins)
+		local clonedLogins = Utils.cloneTable(logins);
+	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				local promiseHandle = _obj_invokeEx(self.handle, "AsyncInvite", clonedLogins);
+				return Async.Promise.wrap(promiseHandle);				
+			end);
+	end;
 				
 	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
+	wChat.props["impersonation"] = {getter = "getImpersonation", setter = "setImpersonation", tipo = "table"};	
+	wChat.props["talemarkOptions"] = {getter = "getTalemarkOptions", setter="setTalemarkOptions", tipo = "table"};	
+	wChat.props["medium"] = {getter = "getMedium", tipo = "table" };
+	wChat.props["participants"] = {getter = "getParticipants", tipo = "table" };	
+		
+	-- aliases
+	wChat.write = wChat.escrever;
+	
 	return wObj;
 end;
 		
@@ -722,6 +1165,10 @@ end;
 
 function _INTERNAL_AUX_ContextObjectFromID(objectID)
 	return rrpgWrappers.contextObjectFromID(objectID);
+end;
+
+function _INTERNAL_AUX_NullChatWrapper()
+	return rrpgWrappers.NullChatWrapper;
 end;
 
 SharedObjects.registerUnpacker(SHARED_OBJECT_TYPE,

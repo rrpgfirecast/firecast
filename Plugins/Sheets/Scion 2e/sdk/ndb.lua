@@ -6,10 +6,8 @@ NDB = ndb;
 
 local localNDB = {};
 
-
 local _localOpenNDBs = {}
 setmetatable(_localOpenNDBs, objs.weakMetatable);
-
 
 function localNDB.ndbFromHandle(handle)
 	local ctrl;
@@ -31,136 +29,143 @@ function localNDB.ndbFromHandle(handle)
 	return ctrl;
 end;
 
+-- [[ Node class ]] --
+
+localNDB.Node = objs.newClass();
+
+function localNDB.Node:initialize()	
+	rawset(self, "__nodeFlag", true);	
+end;
+
+function localNDB.Node:findChild(nodeName)
+	local nh = _ndb_findChild(self.handle, nodeName);
+	return localNDB.openNode(nh);
+end;
+
+function localNDB.Node:getFacade()
+	local nodeFacade = rawget(self, "__nodeFacade");
+
+	if nodeFacade == nil then
+		nodeFacade = localNDB.newNodeFacadeFor(self);
+		rawset(self, "__nodeFacade", nodeFacade);
+	end;
+
+	return nodeFacade;
+end;
+
+function localNDB.Node:getAttribute(name)
+	return _ndb_getAttribute(self.handle, name);
+end;
+
+function localNDB.Node:setAttribute(name, value)
+	return _ndb_setAttribute(self.handle, name, value);	
+end;
+
+function localNDB.Node:clearNode()
+	return _obj_invoke(self.handle, "ClearNode");			
+end;
+
+function localNDB.Node:getAttributesNames()
+	return _ndb_getAttributesNames(self.handle);
+end;
+
+function localNDB.Node:getAllAttributes()
+	return _ndb_getAllAttributes(self.handle);	
+end;
+
+function localNDB.Node:getChildCount()
+	return _ndb_getChildCount(self.handle);
+end;
+
+function localNDB.Node:getChild(indice)
+	return localNDB.openNode(_ndb_getChild(self.handle, indice));
+end;
+
+function localNDB.Node:getAllChilds()
+	local ret = {};
+	local count = self:getChildCount();			
+	
+	for i = 0, count - 1, 1 do
+		ret[i + 1] = self:getChild(i);
+	end;
+	
+	return ret;
+end;
+
+function localNDB.Node:addChild(nodeName)
+	return localNDB.openNode(_ndb_addChild(self.handle, nodeName));
+end;
+
+function localNDB.Node:delete()
+	_obj_invoke(self.handle, "Delete");
+end;
+
+function localNDB.Node:getName()
+	return _ndb_getNodeName(self.handle);
+end;
+
+function localNDB.Node:getPersistedAttributeValue(attributeName)
+	return _ndb_getPersistedAttributeValue(self.handle, attributeName);
+end;
+
+function localNDB.Node:exportXML()
+	return _obj_invoke(self.handle, "ExportToXMLString");
+end;
+
+function localNDB.Node:importXML(xmlString)
+	return _obj_invoke(self.handle, "ImportXMLString", (tostring(xmlString)) or "");
+end;	
+		
+function localNDB.Node:getLocalID()
+	return _obj_getProp(self.handle, "LocalID");
+end;	
+
+function localNDB.Node:beginUpdate()
+	_obj_invoke(self.handle, "BeginUpdate");
+end;	
+
+function localNDB.Node:endUpdate()
+	_obj_invoke(self.handle, "EndUpdate");
+end;		
+
+function localNDB.Node:getState()
+	return _obj_getProp(self.handle, "ProviderState");
+end;
+
+function localNDB.Node:setPermission(selKind, selId, permission, allowance)
+	return _obj_invokeEx(self.handle, "SetPermission", selKind, selId, permission, allowance);
+end;
+
+function localNDB.Node:getPermission(selKind, selId, permission)
+	return _obj_invokeEx(self.handle, "GetPermission", selKind, selId, permission);
+end;	
+
+function localNDB.Node:testPermission(permission)
+	return _obj_invokeEx(self.handle, "TestPermission", permission);
+end;
+
+function localNDB.Node:enumPermissions()
+	return _obj_invokeEx(self.handle, "EnumPermissions");
+end;
+
 function localNDB.nodeFromHandle(nodeHandle)
-	local ctrl;
+	local node;
 
 	if nodeHandle == nil then
 		return nil;
 	end;
 	
-	ctrl = objs.tryFindFromHandle(nodeHandle);
+	node = objs.tryFindFromHandle(nodeHandle);
 	
-	if ctrl ~= nil then
-		return ctrl;
+	if node ~= nil then
+		return node;
 	end;
 	
-	ctrl = objs.objectFromHandle(nodeHandle);
-	ctrl.__nodeFlag = true;	
-	ctrl.__nodeDatabase = localNDB.ndbFromHandle(_ndb_getNDBHandleOfNode(nodeHandle));
+	node = localNDB.Node.fromHandle(nodeHandle);
+	node.__nodeDatabase = localNDB.ndbFromHandle(_ndb_getNDBHandleOfNode(nodeHandle));
 	
-	function ctrl:findChild(nodeName)
-		local nh = _ndb_findChild(self.handle, nodeName);
-		return localNDB.openNode(nh);
-	end;
-	
-	function ctrl:getFacade()
-		local nodeFacade = rawget(self, "__nodeFacade");
-	
-		if nodeFacade == nil then
-			nodeFacade = localNDB.newNodeFacadeFor(self);
-			rawset(self, "__nodeFacade", nodeFacade);
-		end;
-	
-		return nodeFacade;
-	end;
-	
-	function ctrl:getAttribute(name)
-		return _ndb_getAttribute(self.handle, name);
-	end;
-	
-	function ctrl:setAttribute(name, value)
-		return _ndb_setAttribute(self.handle, name, value);	
-	end;
-	
-	function ctrl:clearNode()
-		return _obj_invoke(self.handle, "ClearNode");			
-	end;
-	
-	function ctrl:getAttributesNames()
-		return _ndb_getAttributesNames(self.handle);
-	end;
-	
-	function ctrl:getAllAttributes()
-		return _ndb_getAllAttributes(self.handle);	
-	end;
-	
-	function ctrl:getChildCount()
-		return _ndb_getChildCount(self.handle);
-	end;
-	
-	function ctrl:getChild(indice)
-		return localNDB.openNode(_ndb_getChild(self.handle, indice));
-	end;
-	
-	function ctrl:getAllChilds()
-		local ret = {};
-		local count = self:getChildCount();			
-		
-		for i = 0, count - 1, 1 do
-			ret[i + 1] = self:getChild(i);
-		end;
-		
-		return ret;
-	end;
-	
-	function ctrl:addChild(nodeName)
-		return localNDB.openNode(_ndb_addChild(self.handle, nodeName));
-	end;
-	
-	function ctrl:delete()
-		_obj_invoke(self.handle, "Delete");
-	end;
-	
-	function ctrl:getName()
-		return _ndb_getNodeName(self.handle);
-	end;
-	
-	function ctrl:getPersistedAttributeValue(attributeName)
-		return _ndb_getPersistedAttributeValue(self.handle, attributeName);
-	end;
-
-	function ctrl:exportXML()
-		return _obj_invoke(self.handle, "ExportToXMLString");
-	end;
-	
-	function ctrl:importXML(xmlString)
-		return _obj_invoke(self.handle, "ImportXMLString", (tostring(xmlString)) or "");
-	end;	
-			
-	function ctrl:getLocalID()
-		return _obj_getProp(self.handle, "LocalID");
-	end;	
-	
-	function ctrl:beginUpdate()
-		_obj_invoke(self.handle, "BeginUpdate");
-	end;	
-	
-	function ctrl:endUpdate()
-		_obj_invoke(self.handle, "EndUpdate");
-	end;		
-	
-	function ctrl:getState()
-		return _obj_getProp(self.handle, "ProviderState");
-	end;
-	
-	function ctrl:setPermission(selKind, selId, permission, allowance)
-		return _obj_invokeEx(self.handle, "SetPermission", selKind, selId, permission, allowance);
-	end;
-	
-	function ctrl:getPermission(selKind, selId, permission)
-		return _obj_invokeEx(self.handle, "GetPermission", selKind, selId, permission);
-	end;	
-	
-	function ctrl:testPermission(permission)
-		return _obj_invokeEx(self.handle, "TestPermission", permission);
-	end;
-	
-	function ctrl:enumPermissions()
-		return _obj_invokeEx(self.handle, "EnumPermissions");
-	end;
-	
-	objs.registerHandle(nodeHandle, ctrl);		
-	return ctrl;
+	objs.registerHandle(nodeHandle, node);		
+	return node;
 end;
 
 function localNDB.copyNodeToAnother(nodeDest, nodeSrc, ctxCtrl)
@@ -300,9 +305,7 @@ local NodeFacadeMetatable = {
 };
 
 function localNDB.newNodeFacadeFor(nodeObj)
-	local nodeFacade = {};
-	nodeFacade.__node = nodeObj;
-	nodeFacade.__nodeFacadeFlag = true;
+	local nodeFacade = {__node = nodeObj, __nodeFacadeFlag = true};
 	setmetatable(nodeFacade, NodeFacadeMetatable);	
 	return nodeFacade;
 end;
@@ -367,13 +370,13 @@ function ndb.load(fileName, userName)
 	end;
 	
 	openDB = ndb.openNodeDatabaseFromHandle(_obj_newObject("TLocalLuaNodeDatabase"));
-	_localOpenNDBs[expandedName] = openDB;
 	_obj_invoke(openDB.handle, "SetupLocalFile", expandedName, userName);		
+	_localOpenNDBs[expandedName] = openDB;	
 	return ndb.getRoot(openDB);
 end;
 
-function ndb.newMemNodeDatabase()
-	local openDB = ndb.openNodeDatabaseFromHandle(_obj_newObject("TLuaMemoryNodeDatabase"));
+function ndb.newMemNodeDatabase(initialContent)
+	local openDB = ndb.openNodeDatabaseFromHandle(_obj_newObject("TLuaMemoryNodeDatabase", initialContent));	
 	return ndb.getRoot(openDB);
 end;
 
@@ -914,7 +917,7 @@ function pairs(obj)
 end;
 
 function ipairs(obj)
-	if rawget(obj, "__nodeFacadeFlag") then
+	if (obj ~= nil) and rawget(obj, "__nodeFacadeFlag") then
 		-- Node Façade		
 		local state = _prepareNodeFacadePairsState(obj);			
 		return oldIPairsFunc(state);
