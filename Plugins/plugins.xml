@@ -1132,7 +1132,7 @@
     <element id="Scion_2ª_Edição" name="Scion 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Scion%202e/output/Scion%202e.rpk?raw=true" fileName="Scion 2e.rpk" repositoryPath="Sheets/Scion 2e/" author="thirteen" description="Ficha de Personagem do sistema Scion, Segunda edição." version="1.0" compilationDate="07082025140805" compilationDigest="6d069039c79b1d8f9c7d0b2df9737bea2ad919b7">
         <info name="Scion 2e" description="Ficha de Personagem do sistema Scion, Segunda edição." author="thirteen" site="https://www.twitter.com/i_am_thirteen"/>
         <dataTypes>
-            <dataType id="thirteen.Scion2e" title="Scion 2e" formType="">
+            <dataType id="thirteen.Scion2e" title="Scion 2e" formType="sheetTemplate">
                 <info title="Scion 2e"/>
             </dataType>
         </dataTypes>
