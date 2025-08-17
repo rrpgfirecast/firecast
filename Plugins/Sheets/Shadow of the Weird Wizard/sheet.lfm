@@ -3165,379 +3165,59 @@
       <tab title="Benefícios e Talentos"> 
             <scrollBox left="0" top="10" width="815" height="725">
             <layout left="0" top="10" width="799" height="3830">
-            
+
                   <rectangle left="0" top="0" width="799" height="3830" color="#D5D5D5">
-                        
-                        
+
                         <!-- Traços de Ancestralidade e Talentos -->
                         <label left="170" top="60" width="480" fontSize="24" horzTextAlign="center" 
-                              text="BENEFÍCIOS E TALENTOS" fontColor="#49244F" fontStyle="bold"/>
+                              text="BENEFÍCIOS E TALENTOS" fontColor="#49244F" fontStyle="bold"/>                        
                         
-                        <!-- Talento 01 -->
-                        <rectangle left="60" top="95" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="95" width="720" height="50" color="#49244F"/>
-                        <edit left="68" top="103" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento01">
-                              <event name="onChange">
-                                    if sheet.Talento01 == nil then
-                                          sheet.Talento01 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento01 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento01
-                                          sheet.Talento01 = string.sub(sheet.Talento01, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 01 -->
-                        <textEditor left="68" top="143" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento01"/>
-                        <rectangle left="60" top="337" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="332" width="720" height="1" color="#49244F"/>
+                        <!-- Adicionar Benefícios ou Talentos -->
+                        <rectangle left="0" top="95" width="799" height="3300" color="#D5D5D5">
+                        <recordList field="talentosBeneficios" name="rclTalentos" templateForm="frmTalentos" left="0" top="7" width="780" 
+                              autoHeight="True"/>
+                        </rectangle>
 
-                        <!-- Talento 02 -->
-                        <rectangle left="60" top="345" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="345" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="353" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento02">
-                              <event name="onChange">
-                                    if sheet.Talento02 == nil then
-                                          sheet.Talento02 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento02 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento02
-                                          sheet.Talento02 = string.sub(sheet.Talento02, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 02 -->
-                        <textEditor left="68" top="393" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento02"/>
-                        <rectangle left="60" top="582" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="587" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 03 -->
-                        <rectangle left="60" top="595" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="595" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="603" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento03">
-                              <event name="onChange">
-                                    if sheet.Talento03 == nil then
-                                          sheet.Talento03 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento03 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento03
-                                          sheet.Talento03 = string.sub(sheet.Talento03, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 03 -->
-                        <textEditor left="68" top="643" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento03"/>
-                        <rectangle left="60" top="832" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="837" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 04 -->
-                        <rectangle left="60" top="845" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="845" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="853" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento04">
-                              <event name="onChange">
-                                    if sheet.Talento04 == nil then
-                                          sheet.Talento04 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento04 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento04
-                                          sheet.Talento04 = string.sub(sheet.Talento04, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 04 -->
-                        <textEditor left="68" top="893" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento04"/>
-                        <rectangle left="60" top="1082" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="1087" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 05 -->
-                        <rectangle left="60" top="1095" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="1095" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="1103" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento05">
-                              <event name="onChange">
-                                    if sheet.Talento05 == nil then
-                                          sheet.Talento05 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento05 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento05
-                                          sheet.Talento05 = string.sub(sheet.Talento05, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 05 -->
-                        <textEditor left="68" top="1143" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento05"/>
-                        <rectangle left="60" top="1332" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="1337" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 06 -->
-                        <rectangle left="60" top="1345" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="1345" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="1353" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento06">
-                              <event name="onChange">
-                                    if sheet.Talento06 == nil then
-                                          sheet.Talento06 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento06 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento06
-                                          sheet.Talento06 = string.sub(sheet.Talento06, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 06 -->
-                        <textEditor left="68" top="1393" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento06"/>
-                        <rectangle left="60" top="1582" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="1587" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 07 -->
-                        <rectangle left="60" top="1595" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="1595" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="1603" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento07">
-                              <event name="onChange">
-                                    if sheet.Talento07 == nil then
-                                          sheet.Talento07 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento07 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento07
-                                          sheet.Talento07 = string.sub(sheet.Talento07, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 07 -->
-                        <textEditor left="68" top="1643" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento07"/>
-                        <rectangle left="60" top="1832" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="1837" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 08 -->
-                        <rectangle left="60" top="1845" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="1845" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="1853" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento08">
-                              <event name="onChange">
-                                    if sheet.Talento08 == nil then
-                                          sheet.Talento08 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento08 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento08
-                                          sheet.Talento08 = string.sub(sheet.Talento08, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 08 -->
-                        <textEditor left="68" top="1893" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento08"/>
-                        <rectangle left="60" top="2082" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="2087" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 09 -->
-                        <rectangle left="60" top="2095" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="2095" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="2103" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento09">
-                              <event name="onChange">
-                                    if sheet.Talento09 == nil then
-                                          sheet.Talento09 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento09 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento09
-                                          sheet.Talento09 = string.sub(sheet.Talento09, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 09 -->
-                        <textEditor left="68" top="2143" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento09"/>
-                        <rectangle left="60" top="2332" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="2337" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 10 -->
-                        <rectangle left="60" top="2345" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="2345" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="2353" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento10">
-                              <event name="onChange">
-                                    if sheet.Talento10 == nil then
-                                          sheet.Talento10 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento10 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento10
-                                          sheet.Talento10 = string.sub(sheet.Talento10, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 10 -->
-                        <textEditor left="68" top="2393" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento10"/>
-                        <rectangle left="60" top="2582" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="2587" width="720" height="1" color="#49244F"/>
-                        
-                        <!-- Talento 11 -->
-                        <rectangle left="60" top="2595" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="2595" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="2603" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento11">
-                              <event name="onChange">
-                                    if sheet.Talento11 == nil then
-                                          sheet.Talento11 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento11 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento11
-                                          sheet.Talento11 = string.sub(sheet.Talento11, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 11 -->
-                        <textEditor left="68" top="2643" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento11"/>
-                        <rectangle left="60" top="2832" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="2837" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 12 -->
-                        <rectangle left="60" top="2845" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="2845" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="2853" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento12">
-                              <event name="onChange">
-                                    if sheet.Talento12 == nil then
-                                          sheet.Talento12 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento12 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento12
-                                          sheet.Talento12 = string.sub(sheet.Talento12, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 12 -->
-                        <textEditor left="68" top="2893" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento12"/>
-                        <rectangle left="60" top="3082" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="3087" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 13 -->
-                        <rectangle left="60" top="3095" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="3095" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="3103" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento13">
-                              <event name="onChange">
-                                    if sheet.Talento13 == nil then
-                                          sheet.Talento13 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento13 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento13
-                                          sheet.Talento13 = string.sub(sheet.Talento13, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 13 -->
-                        <textEditor left="68" top="3143" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento13"/>
-                        <rectangle left="60" top="3332" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="3337" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 14 -->
-                        <rectangle left="60" top="3345" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="3345" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="3353" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento14">
-                              <event name="onChange">
-                                    if sheet.Talento14 == nil then
-                                          sheet.Talento14 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento14 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento14
-                                          sheet.Talento14 = string.sub(sheet.Talento14, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 14 -->
-                        <textEditor left="68" top="3393" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento14"/>
-                        <rectangle left="60" top="3582" width="720" height="1" color="#49244F"/>
-                        <rectangle left="60" top="3587" width="720" height="1" color="#49244F"/>
-
-                        <!-- Talento 15 -->
-                        <rectangle left="60" top="3595" width="720" height="231" color="#D5D5D5"
-                              strokeColor="#49244F" strokeSize="3"/>
-                        <rectangle left="60" top="3595" width="720" height="50" color="#49244F"/>
-                        <edit left="65" top="3603" width="715" fontSize="20" height="30"
-                              fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
-                              field="Talento15">
-                              <event name="onChange">
-                                    if sheet.Talento15 == nil then
-                                          sheet.Talento15 = "Talento"
-                                    end
-                                    
-                                    if #sheet.Talento15 &gt; 65 then
-                                          local delCaracteres = 64 - #sheet.Talento15
-                                          sheet.Talento15 = string.sub(sheet.Talento15, 1, delCaracteres)
-                                    end
-                              </event>
-                        </edit>
-                        <!-- Descrição Talento 15 -->
-                        <textEditor left="68" top="3643" width="710" fontSize="18" height="183" 
-                              fontColor="#49244F" transparent="true" field="descricaoTalento15"/>
+                        <rectangle left="755" top="58" width="60" height="1" color="#49244F"/>
+                        <rectangle left="755" top="66" width="60" height="3" color="#49244F"/>
+                        <rectangle left="755" top="74" width="60" height="1" color="#49244F"/>
+                        <rectangle left="745" top="44" width="45" height="45" color="#49244F"/>
+                        <label left="745" top="52" width="45" height="20" fontSize="40" horzTextAlign="center" 
+                              text="+" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              onClick="self.rclTalentos:append();" hint="Adicionar Talento">
+                              <!--event name="onClick">
+                                    local msg = "Força Debilitada: Você faz teste de força com 1 revés, e você concede 1 dádiva em jogadas contra sua força."
+                                    local mesaDeRPG = Firecast.getMesaDe(sheet)
+                                    mesaDeRPG.chat:enviarMensagem("-")
+                                    mesaDeRPG.chat:enviarMensagem(msg)
+                              </event-->
+                        </label>
 
                   </rectangle>
+            
+
             </layout>
             </scrollBox>
 
             <layout left="0" top="10" width="815" height="825">
                   <rectangle left="0" top="725" width="799" height="105" color="#D5D5D5"/>
                         <!-- Rodapé -->
+                        <rectangle left="65" top="650" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="655" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="660" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="665" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="670" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="675" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="680" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="685" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="690" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="695" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="700" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="705" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="710" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="715" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="720" width="712" height="1" color="#49244F"/>
+                        <rectangle left="65" top="725" width="712" height="1" color="#49244F"/>
                         <rectangle left="65" top="730" width="712" height="1" color="#49244F"/>
                         <rectangle left="65" top="735" width="712" height="1" color="#49244F"/>
                         <image left="260" top="745" width="324" height="72" src="/img/libelula.png"/>   
@@ -6390,7 +6070,8 @@
                         <!-- Força Debilitada -->
                         <rectangle left="80" top="130" width="320" height="40" color="#49244F"/>
                         <label left="75" top="140" width="210" fontSize="20" horzTextAlign="center" 
-                              text="Força Debilitada" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Força Debilitada" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Força Debilitada: Você faz teste de força com 1 revés, e você concede 1 dádiva em jogadas contra sua força."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6402,7 +6083,8 @@
                         <!-- Agilidade Debilitada -->
                         <rectangle left="440" top="130" width="320" height="40" color="#49244F"/>
                         <label left="455" top="140" width="210" fontSize="20" horzTextAlign="center" 
-                              text="Agilidade Debilitada" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Agilidade Debilitada" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Agilidade Debilitada: Você faz teste de agilidade com 1 revés, e você concede 1 dádiva em jogadas contra sua agilidade."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6414,7 +6096,8 @@
                         <!-- Intelecto Debilitado -->
                         <rectangle left="80" top="190" width="320" height="40" color="#49244F"/>
                         <label left="90" top="200" width="210" fontSize="20" horzTextAlign="center" 
-                              text="Intelecto Debilitado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Intelecto Debilitado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Intelecto Debilitado: Você faz teste de intelecto com 1 revés, e você concede 1 dádiva em jogadas contra seu intelecto."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6426,7 +6109,8 @@
                         <!-- Vontade Debilitada -->
                         <rectangle left="440" top="190" width="320" height="40" color="#49244F"/>
                         <label left="450" top="200" width="210" fontSize="20" horzTextAlign="center" 
-                              text="Vontade Debilitada" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Vontade Debilitada" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Vontade Debilitada: Você faz teste de vontade com 1 revés, e você concede 1 dádiva em jogadas contra sua vontade."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6438,7 +6122,8 @@
                         <!-- Adormecido -->
                         <rectangle left="80" top="295" width="200" height="40" color="#49244F"/>
                         <label left="85" top="305" width="150" fontSize="20" horzTextAlign="center" 
-                              text="Adormecido" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Adormecido" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Adormecido: Se você estiver inconsciente por estar dormindo naturalmente, você deixa de estar inconsciente quando uma criatura usar uma ação para chacoalhar você, chutá-lo ou fazer outra coisa para acordar você. Um barulho alto pode remover a aflição se você tiver sucesso em uma rolagem de sorte. O tempo passado dormindo conta como repouso para os propósitos de curar dano. Se o seu sono não for interrompido, você acorda naturalmente quando quiser."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6450,7 +6135,8 @@
                         <!-- Amaldiçoado -->
                         <rectangle left="322" top="295" width="200" height="40" color="#49244F"/>
                         <label left="327" top="305" width="150" fontSize="20" horzTextAlign="center" 
-                              text="Amaldiçoado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Amaldiçoado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Amaldiçoado: Você faz rolagens de sorte com 1 revés."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6462,7 +6148,8 @@
                         <!-- Amedrontado -->
                         <rectangle left="560" top="295" width="200" height="40" color="#49244F"/>
                         <label left="565" top="305" width="150" fontSize="20" horzTextAlign="center" 
-                              text="Amedrontado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Amedrontado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Amedrontado: Você teme a fonte desta aflição — uma criatura, um objeto, um espaço ou alguma outra coisa. Enquanto você tiver linha de visão para a fonte do seu medo, você faz rolagens de atributo com 1 revés e concede 1 dádiva em rolagens de atributo contra você."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6474,7 +6161,8 @@
                         <!-- Atordoado -->
                         <rectangle left="80" top="355" width="200" height="40" color="#49244F"/>
                         <label left="90" top="365" width="120" fontSize="20" horzTextAlign="center" 
-                              text="Atordoado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Atordoado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Atordoado: Você não pode usar ações ou reações. A sua Velocidade diminui a 0 e você não se beneficia de aumentos à Velocidade até esta aflição terminar. Você concede 2 dádivas em rolagens contra você e faz rolagens de atributo com 2 reveses."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6486,7 +6174,8 @@
                         <!-- Caído -->
                         <rectangle left="322" top="355" width="200" height="40" color="#49244F"/>
                         <label left="327" top="365" width="80" fontSize="20" horzTextAlign="center" 
-                              text="Caído" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Caído" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Caído: Você está deitado no chão. Você não pode usar reações. Você concede 1 dádiva em rolagens feitas para atacar você com armas corpo a corpo, mas impõe 1 revés em rolagens feitas para atacar você com armas à distância. Você somente pode usar seu movimento para rastejar ou se levantar."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6498,7 +6187,8 @@
                         <!-- Cego -->
                         <rectangle left="560" top="355" width="200" height="40" color="#49244F"/>
                         <label left="560" top="365" width="80" fontSize="20" horzTextAlign="center" 
-                              text="Cego" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Cego" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Cego: Você não consegue enxergar, portanto não tem linha de visão para nada. Você trata todas as criaturas e objetos como estando invisíveis. Se você quiser atacar ou interagir com alguma coisa, deve supor a localização do alvo ou localizá-lo usando outros sentidos, o que geralmente significa que você faz a rolagem com 3 reveses. Você não consegue usar reações que dependam da visão. Por fim, sua Velocidade é reduzida pela metade."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6510,7 +6200,8 @@
                         <!-- Confuso -->
                         <rectangle left="80" top="415" width="200" height="40" color="#49244F"/>
                         <label left="80" top="425" width="120" fontSize="20" horzTextAlign="center" 
-                              text="Confuso" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Confuso" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Confuso: Você fica incapaz de compreender o que acontece ao seu redor. Você não pode usar reações e faz rolagens de Intelecto e Vontade com 1 revés."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6522,7 +6213,8 @@
                         <!-- Controlado -->
                         <rectangle left="322" top="415" width="200" height="40" color="#49244F"/>
                         <label left="332" top="425" width="120" fontSize="20" horzTextAlign="center" 
-                              text="Controlado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Controlado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Controlado: Você fica sob o controle da fonte desta aflição. Seu turno acontece junto com o do seu controlador e ele decide o que você faz, usando os seus traços, talentos e feitiços. Se você já tiver feito um turno ao receber esta aflição, você faz um turno como descrito na rodada seguinte. Enquanto controlado, você trata a fonte desta aflição como um aliado."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6534,7 +6226,8 @@
                         <!-- Enfraquecido -->
                         <rectangle left="560" top="415" width="200" height="40" color="#49244F"/>
                         <label left="563" top="425" width="150" fontSize="20" horzTextAlign="center" 
-                              text="Enfraquecido" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Enfraquecido" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Enfraquecido: Você faz rolagens de Força e de Agilidade com 1 revés, e você concede 1 dádiva em rolagens contra sua Força e Agilidade. Além disso, a sua Velocidade é reduzida pela metade e você não se beneficia de aumentos à Velocidade."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6546,7 +6239,8 @@
                         <!-- Envenenado -->
                         <rectangle left="80" top="475" width="200" height="40" color="#49244F"/>
                         <label left="97" top="485" width="120" fontSize="20" horzTextAlign="center" 
-                              text="Envenenado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Envenenado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Envenenado: Você foi submetido a uma peçonha, veneno ou outro tipo de toxina. Você faz rolagens de atributo com 1 revés e concede 1 dádiva em rolagens contra você. Além disso, você perde 1d6 de Vida ao final de cada rodada."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6558,7 +6252,8 @@
                         <!-- Ferido -->
                         <rectangle left="322" top="475" width="200" height="40" color="#49244F"/>
                         <label left="330" top="485" width="80" fontSize="20" horzTextAlign="center" 
-                              text="Ferido" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Ferido" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Ferido: Normalmente, você não sofre efeitos por estar ferido, mas certos talentos, magias e outros efeitos usados contra você podem colocá-lo em desvantagem porquê você está ferido."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6570,7 +6265,8 @@
                         <!-- Incapacitado -->
                         <rectangle left="560" top="475" width="200" height="40" color="#49244F"/>
                         <label left="567" top="485" width="140" fontSize="20" horzTextAlign="center" 
-                              text="Incapacitado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Incapacitado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Incapacitado: Se você sofrer dano enquanto estiver incapacitado, você perderá Vida igual à quantidade de dano que você receberia. No final da rodada, você perde 1d6 de Vida e faz um teste de sorte. Em um sucesso, você cura 1 de dano. Em uma falha, você permanece incapacitado."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6582,7 +6278,8 @@
                         <!-- Incendiado -->
                         <rectangle left="80" top="535" width="200" height="40" color="#49244F"/>
                         <label left="93" top="545" width="120" fontSize="20" horzTextAlign="center" 
-                              text="Incendiado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Incendiado" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Incendiado: Um efeito pode fazer você pegar fogo. Você sofre 1d6 de dano ao final de cada rodada até o fogo ser apagado, normalmente com uma rolagem bem-sucedida de sorte. Você pode apagar as chamas com água, ou sufocá-las com um cobertor ou objeto similar. Uma criatura que ficar caída antes de tentar superar as chamas faz a rolagem com 1 dádiva."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6594,7 +6291,8 @@
                         <!-- Inconsciente -->
                         <rectangle left="322" top="535" width="200" height="40" color="#49244F"/>
                         <label left="340" top="545" width="120" fontSize="20" horzTextAlign="center" 
-                              text="Inconsciente" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Inconsciente" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Inconsciente: Você não pode usar ações ou reações. A sua Velocidade diminui a 0 e você não se beneficia de aumentos à Velocidade. Você não recebe informações sensoriais. Você concede 3 dádivas em rolagens contra você e você fracassa automaticamente em todas as rolagens de atributo."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6606,7 +6304,8 @@
                         <!-- Lento -->
                         <rectangle left="560" top="535" width="200" height="40" color="#49244F"/>
                         <label left="570" top="545" width="70" fontSize="20" horzTextAlign="center" 
-                              text="Lento" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Lento" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Lento: Se sua Velocidade for maior que 2, ela reduz a 2. Essa aflição não aumenta a Velocidade."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6618,7 +6317,8 @@
                         <!-- Restringido -->
                         <rectangle left="80" top="595" width="200" height="40" color="#49244F"/>
                         <label left="95" top="605" width="120" fontSize="20" horzTextAlign="center" 
-                              text="Restringido" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Restringido" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Restringido: A sua Velocidade diminui a 0 e você não se beneficia de aumentos à Velocidade até esta aflição terminar. Além disso, criaturas que fizerem rolagens contra a sua Agilidade recebem um sucesso automático."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6630,7 +6330,8 @@
                         <!-- Surdo -->
                         <rectangle left="322" top="595" width="200" height="40" color="#49244F"/>
                         <label left="334" top="605" width="70" fontSize="20" horzTextAlign="center" 
-                              text="Surdo" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Surdo" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Surdo: Você não consegue ouvir. Você não pode fazer reações que dependam da audição e não é afetado por efeitos que dependam da audição."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
@@ -6642,7 +6343,8 @@
                         <!-- Vulnerável -->
                         <rectangle left="560" top="595" width="200" height="40" color="#49244F"/>
                         <label left="573" top="605" width="110" fontSize="20" horzTextAlign="center" 
-                              text="Vulnerável" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint">
+                              text="Vulnerável" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                              hint="Enviar no Chat">
                               <event name="onClick">
                                     local msg = "Vulnerável: Você concede 1 dádiva em rolagens para atacar você e em rolagens feitas contra os seus atributos."
                                     local mesaDeRPG = Firecast.getMesaDe(sheet)
