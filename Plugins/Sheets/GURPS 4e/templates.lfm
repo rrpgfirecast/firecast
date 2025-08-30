@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplates">
+
+	<template name="btnImgFundo">
+		<button name="btnImagemFundo" anchors="top right" right="95" top="5" text="⚙" height="30" width="30" onClick="self.popImagemFundo:show('left', self.btnImagemFundo);"/>
+		<popup name="popImagemFundo" width="300" height="178" backOpacity="0" drawContainer="false">
+			<rectangle name="recSettings" align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<label align="top" text="F U N D O   D A   F I C H A" margins="{bottom=10}" fontStyle="bold" fontFamily="Constantia"/>
+					<radioButton groupName="rdbFundo" text="Imagem" fieldValue="img" field="rdbFundo" align="top"/>
+					<edit name="edtURLImagem" field="URLImagemFundo" align="top" />
+					<horzLine/>
+					<radioButton groupName="rdbFundo" text="Cor" fieldValue="cor" field="rdbFundo" align="top" />
+					<dataLink field="rdbFundo" defaultValue="img" onChange="
+						if sheet.rdbFundo == 'img' then 
+							self.ccbCorFundo.visible = false
+							self.edtURLImagem.visible = true
+							self.imgFundo.visible = true
+							self.recFundo.visible = false
+							self.recSettings:needRepaint()
+						else 
+							self.edtURLImagem.visible = false 
+							self.ccbCorFundo.visible = true
+							self.imgFundo.visible = false
+							self.recFundo.visible = true
+							self.recSettings:needRepaint()
+						end
+					"/>
+					<colorComboBox name="ccbCorFundo" field="corRetanguloFundo" useAlpha="false" height="30" align="top" />
+					<dataLink field="corRetanguloFundo" defaultValue="#272727" onChange="self.recFundo.color = sheet.corRetanguloFundo" />
+				</rectangle>
+			</rectangle>
+		</popup>
+	</template>
+	
+	<template name="btnConfigsAtributos">
+		<button name="btnConfigsAtrb" align="right" text="⚙" height="30" width="30" margins="{left=5}" onClick="self.popConfigsAtrb:show('left', self.btnConfigsAtrb);"/>
+		<popup name="popConfigsAtrb" width="360" height="460" backOpacity="0" drawContainer="false">
+			<rectangle name="recConfigsAtrb" align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<DivisorD texto="C O N F I G U R A Ç Õ E S" largura="240" topo="0"/>
+					<layout align="top" height="365">
+						<ConfigCusto atributo01="ST" atributo02="HP" 	default01="10" default02="2" />
+						<ConfigCusto atributo01="DX" atributo02="Will" 	default01="20" default02="10" />
+						<ConfigCusto atributo01="IQ" atributo02="Per" 	default01="20" default02="10" />
+						<ConfigCusto atributo01="HT" atributo02="FP" 	default01="10" default02="3" />
+						<ConfigCustoDer atributo01="BasicSpeed" atributo02="BasicMove" default01="5" default02="5" />
+						
+						<horzLine />
+						
+						<layout align="top" height="30" margins="{bottom=3}">
+							<label text="Enhanced Dodge:" align="client" fontStyle="bold"/>
+							<edit width="50" horzTextAlign="center" type="number" min="0" align="right" field="EnhancedDodge" />
+							<dataLink field="EnhancedDodge" defaultValue="0" onUserChange="calcAtributos()" />
+						</layout>
+						
+						<horzLine />
+						
+						<layout align="top" height = "40">
+							<checkBox align="left" name="chcbDisassociarAtr" field="fldDisassociarAtr" width="30">
+								<event name="onChange"><![CDATA[
+									local atributos = {'ST','DX','IQ','HT','HP','Will','Per','FP', 'BasicSpeed', 'BasicMove'}
+									local atributosSemPts = {'ThrDmg', 'SwDmg', 'BasicLift'}
+									local tabela = {'Carga01', 'Carga02', 'Carga03', 'Carga04', 'Carga05', 'Move01', 'Move02', 'Move03', 'Move04', 'Move05', 'Dodge01', 'Dodge02', 'Dodge03', 'Dodge04', 'Dodge05'}
+									
+									if(sheet.fldDisassociarAtr) then
+										for i=1, #atributos do
+											self['edt'..atributos[i]].readOnly = false
+											self['edt'..atributos[i]].cursor = 'IBeam'
+											
+											self['edt'..atributos[i]..'pts'].readOnly = false
+											self['edt'..atributos[i]..'pts'].cursor = 'IBeam'
+										end
+										
+										for i=1, #atributosSemPts do
+											self['edt'..atributosSemPts[i]].readOnly = false
+											self['edt'..atributosSemPts[i]].cursor = 'IBeam'
+										end
+										
+										for i=1, #tabela do
+											self['edt'..tabela[i]].readOnly = false
+											self['edt'..tabela[i]].cursor = 'IBeam'
+										end
+									else
+										for i=1, #atributos do
+											self['edt'..atributos[i]].readOnly = true
+											self['edt'..atributos[i]].cursor = 'default'
+											
+											self['edt'..atributos[i]..'pts'].readOnly = true
+											self['edt'..atributos[i]..'pts'].cursor = 'default'
+										end
+										
+										for i=1, #atributosSemPts do
+											self['edt'..atributosSemPts[i]].readOnly = true
+											self['edt'..atributosSemPts[i]].cursor = 'default'
+										end
+										
+										for i=1, #tabela do
+											self['edt'..tabela[i]].readOnly = true
+											self['edt'..tabela[i]].cursor = 'default'
+										end
+									end
+								]]></event>
+								<event name="onClick"><![CDATA[
+									resetAtributos()
+								]]></event>
+							</checkBox>
+							<layout align="client">
+								<label text="Desativar Cálculos Automáticos de Atributos" align="top" margins="{top=2}" />
+								<label text="Isso resetará todos os atributos e os Campos serão editáveis" fontStyle="italic" fontSize="10" align="top" />
+							</layout>
+						</layout>
+						<horzLine />
+						<layout align="top" height = "40">
+							<checkBox align="left" name="chcbTabelaSTRev" field="fldTabelaSTRev" width="30" onChange="calcAtributos()" />
+							<layout align="client">
+								<label text="Utilizar Tabela Revisada de ST" align="top" margins="{top=2}" />
+								<label text="Pg. 17 de Pyramid 3-83, parte do Knowing Your Own Strength" fontStyle="italic" fontSize="10" align="top" />
+							</layout>
+						</layout>
+						<horzLine />
+						<button align="right" text="R E S E T" fontSize="11" fontStyle="bold" onClick="resetAtributos()" />
+					</layout>
+				</rectangle>
+			</rectangle>
+		</popup>
+	</template>
+	
+	<template name="DivisorAtributos">
+		<layout align="top" height="30" margins="{top=20, bottom=15}">
+			<label align="left" text="A T R I B U T O S" width="155" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+			<edit align="left" name="edtAtributospts" field="Atributospts" class="pts" />
+			<dataLink field="Atributospts" defaultValue="[00]" />
+			<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+			<btnConfigsAtributos />
+		</layout>
+	</template>
+
+	<template name="DivisorD">
+		<layout align="top" height="30" margins="{top=0, bottom=15}">
+			<label align="left" text="$(texto)" width="$(largura)" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+			<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+		</layout>
+	</template>
+	
+	<template name="LinhaAtributosDiferentes">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<rectangle align="client" color="#272727" margins="{right=10}" xradius= "3" yradius="3" cornerType="bevel">
+				<AtributoRolavel atributo="$(atributo01)" />
+			</rectangle>
+			<layout align="right" width="150" height="30">
+				<rectangle align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel">
+					<AtributoNaoRolavel atributo="$(atributo02)" />
+				</rectangle>
+			</layout>
+		</layout>
+	</template>
+	
+	<template name="LinhaAtributosIguais">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<rectangle align="client" color="#272727" margins="{right=10}" xradius= "3" yradius="3" cornerType="bevel">
+				<AtributoRolavel atributo="$(atributo01)" />
+			</rectangle>
+			<layout align="right" width="150" height="30">
+				<rectangle align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel">
+					<AtributoRolavel atributo="$(atributo02)" />
+				</rectangle>
+			</layout>
+		</layout>
+	</template>
+	
+	<template name="labelPoints">
+		<edit name="edt$(atributo)pts" field="$(atributo)pts" class="pts">
+			<event name="onEnter"><![CDATA[
+				if(sheet.fldDisassociarAtr) then
+					self.edt$(atributo)pts.text = ""
+				end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				local input = sheet.$(atributo)pts or ""
+				input = string.gsub(input, "%[", "")
+				input = string.gsub(input, "%]", "")
+				input = tonumber(input)
+			
+				if input == nil then 
+					sheet.$(atributo)pts = '[00]'
+				else
+					sheet.$(atributo)pts = string.format('[%02d]', input)
+				end
+				calcSomaPontosAtributos()
+			]]></event>
+		</edit>
+	</template>
+	
+	<template name="labelPointsDer">
+		<edit name="edt$(atributo)pts" field="$(atributo)pts" class="pts" align="none" anchors="top left" top="-3" left="120">
+			<event name="onEnter"><![CDATA[
+				if(sheet.fldDisassociarAtr) then
+					self.edt$(atributo)pts.text = ""
+				end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				local input = sheet.$(atributo)pts or ""
+				input = string.gsub(input, "%[", "")
+				input = string.gsub(input, "%]", "")
+				input = tonumber(input)
+			
+				if input == nil then 
+					sheet.$(atributo)pts = '[00]'
+				else
+					sheet.$(atributo)pts = string.format('[%02d]', input)
+				end
+				calcSomaPontosAtributos()
+			]]></event>
+		</edit>
+	</template>
+	
+	<template name="AtributoRolavel">
+		<button name="btn$(atributo)" text="$(atributo)" class="btnAtrRolavel" onClick="g(sheet.$(atributo), '$(atributo)')" />
+		<edit name="edt$(atributo)" field="$(atributo)" class="edtAtrEditavel" />
+		<dataLink field="$(atributo)" defaultValue="10" onChange="" />
+		<atrDoisBotoes campo="$(atributo)pts" custo="custo$(atributo)" />
+		<labelPoints atributo="$(atributo)" />
+		<dataLink field="$(atributo)pts" defaultValue="[00]" onChange="calcSomaPontosAtributos() formatColors()" />
+	</template>
+	
+	<template name="AtributoNaoRolavel">
+		<label class="AtrInrolavel" text="$(atributo)" />
+		<edit name="edt$(atributo)" field="$(atributo)" class="edtAtrEditavel" />
+		<dataLink field="$(atributo)" defaultValue="10" onChange="" />
+		<atrDerDoisBotoes campo="$(atributo)pts" custo="custo$(atributo)" />
+		<labelPoints atributo="$(atributo)" />
+		<dataLink field="$(atributo)pts" defaultValue="[00]" onChange="calcSomaPontosAtributos() formatColors()" />
+	</template>
+	
+	<template name="atrDoisBotoes">
+		<layout align="left" width="15">
+			<button text="⯅" align="top" height="15" fontSize="6" onClick="
+				if(sheet.fldDisassociarAtr) then
+					local campoSt = '$(campo)'
+					local att = string.sub(campoSt, 1, #campoSt - 3)
+					sheet[att] = sheet[att] + 1
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) + tonumber(sheet['$(custo)']))
+				else
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) + tonumber(sheet['$(custo)']))
+					calcAtributos()
+				end
+				formatColors()
+			"/>
+			<button text="⯆" align="top" height="15" fontSize="6"  onClick="
+				if(sheet.fldDisassociarAtr) then
+					local campoSt = '$(campo)'
+					local att = string.sub(campoSt, 1, #campoSt - 3)
+					sheet[att] = sheet[att] - 1
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) - tonumber(sheet['$(custo)']))
+				else
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) - tonumber(sheet['$(custo)']))
+					calcAtributos()
+				end
+				formatColors()
+			"/>
+		</layout>
+	</template>
+	
+	<template name="atrDerDoisBotoes">
+		<layout align="left" width="15">
+			<button text="⯅" align="top" height="15" fontSize="6" onClick="
+				if(sheet.fldDisassociarAtr) then
+					local campoSt = '$(campo)'
+					local att = string.sub(campoSt, 1, #campoSt - 3)
+					sheet[att] = sheet[att] + 1
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) + tonumber(sheet['$(custo)']))
+				else
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) + tonumber(sheet['$(custo)']))
+					calcAtributos()
+				end
+				formatColors()
+			"/>
+			<button text="⯆" align="top" height="15" fontSize="6"  onClick="
+				if(sheet.fldDisassociarAtr) then
+					local campoSt = '$(campo)'
+					local att = string.sub(campoSt, 1, #campoSt - 3)
+					sheet[att] = sheet[att] - 1
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) - tonumber(sheet['$(custo)']))
+				else
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) - tonumber(sheet['$(custo)']))
+					calcAtributos()
+				end
+				formatColors()
+			"/>
+		</layout>
+	</template>
+	
+	<template name="ConfigCusto">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<ColCusto atributo="$(atributo01)" default="$(default01)" />
+			
+			<layout width="150" align="right" height="30">
+				<ColCusto atributo="$(atributo02)" default="$(default02)" />
+			</layout>
+		</layout>
+	</template>
+	
+	<template name="ConfigCustoDer">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<ColCustoDer atributo="$(atributo01)" default="$(default01)" />
+			
+			<layout width="150" align="right" height="30">
+				<ColCustoDer atributo="$(atributo02)" default="$(default02)" />
+			</layout>
+		</layout>
+	</template>
+	
+	<template name="ColCusto">
+		<label width="100" text="Custo de $(atributo):" align="left" fontStyle="bold"/>
+		<edit width="50" horzTextAlign="center" type="number" min="1" align="left" field="custo$(atributo)" />
+		<dataLink field="custo$(atributo)" defaultValue="$(default)">
+			<event name="onUserChange"><![CDATA[
+				if not (sheet.fldDisassociarAtr) then
+					if oldValue == nil then oldValue = 1 end
+					sheet['$(atributo)' .. 'pts'] = string.format('[%02d]', (tonumber(string.sub(sheet['$(atributo)' .. 'pts'], 2, -2)) / oldValue) * newValue)
+				end
+			]]></event>
+		</dataLink>
+	</template>
+	
+	<template name="ColCustoDer">
+		<label width="100" text="$(atributo):" align="left" fontStyle="bold"/>
+		<edit width="50" horzTextAlign="center" type="number" min="1" align="left" field="custo$(atributo)" />
+		<dataLink field="custo$(atributo)" defaultValue="$(default)">
+			<event name="onUserChange"><![CDATA[
+				if not (sheet.fldDisassociarAtr) then
+					if oldValue == nil then oldValue = 1 end
+					sheet['$(atributo)' .. 'pts'] = string.format('[%02d]', (tonumber(string.sub(sheet['$(atributo)' .. 'pts'], 2, -2)) / oldValue) * newValue)
+				end
+			]]></event>
+		</dataLink>
+	</template>
+	
+	<template name="atributosDerivados">
+		<layout align="top" height="70">
+										
+			<layout align="top" height="20" margins="{bottom=5}">
+				<label text="B A S I C   S P E E D" class="SubAttribute" />
+				<edit name="edtBasicSpeed" field="BasicSpeed" type="float" class="SubAttribute" />
+				<dataLink field="BasicSpeed" defaultValue="5" />
+				<layout align="left" width="15">
+					<button align="top" height="10" padding="{left=0, top=0, right=0, bottom=0}" text="⯅" fontSize="5" onClick="
+						if(sheet.fldDisassociarAtr) then
+							local campoSt = 'BasicSpeedpts'
+							local att = string.sub(campoSt, 1, #campoSt - 3)
+							sheet[att] = sheet[att] + 0.25
+							sheet['BasicSpeedpts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicSpeedpts'], 2, -2)) + tonumber(sheet['custoBasicSpeed']))
+						else
+							sheet['BasicSpeedpts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicSpeedpts'], 2, -2)) + tonumber(sheet['custoBasicSpeed']))
+							calcAtributos()
+						end
+						formatColors()
+					"/>
+					<button align="top" height="10" padding="{left=0, top=0, right=0, bottom=0}" text="⯆" fontSize="5" onClick="
+						if(sheet.fldDisassociarAtr) then
+							local campoSt = 'BasicSpeedpts'
+							local att = string.sub(campoSt, 1, #campoSt - 3)
+							sheet[att] = sheet[att] - 0.25
+							sheet['BasicSpeedpts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicSpeedpts'], 2, -2)) - tonumber(sheet['custoBasicSpeed']))
+						else
+							sheet['BasicSpeedpts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicSpeedpts'], 2, -2)) - tonumber(sheet['custoBasicSpeed']))
+							calcAtributos()
+						end
+						formatColors()
+					"/>
+				</layout>
+				<labelPointsDer atributo="BasicSpeed" />
+				<dataLink field="BasicSpeedpts" defaultValue="[00]" onChange="calcSomaPontosAtributos() formatColors()" />
+				
+				<layout align="right" width="150">
+					<label text="T H R U S T I N G   D M G ." class="SubAttribute" width="90" />
+					<edit name="edtThrDmg" field="ThrDmg" class="SubAttribute" align="client" />
+					<dataLink field="ThrDmg" defaultValue="1d-2" onChange="sheet.ThrDmg = tratarInputDano(newValue, oldValue)" />
+				</layout>
+			</layout>
+			
+			<layout align="top" height="20" margins="{bottom=5}">
+				<label text="B A S I C   M O V E" class="SubAttribute" />
+				<edit  name="edtBasicMove" field="BasicMove"  type="number" class="SubAttribute" />
+				<dataLink field="BasicMove" defaultValue="5" />
+				<layout align="left" width="15">
+					<button align="top" height="10" padding="{left=0, top=0, right=0, bottom=0}" text="⯅" fontSize="5" onClick="
+						if(sheet.fldDisassociarAtr) then
+							local campoSt = 'BasicMovepts'
+							local att = string.sub(campoSt, 1, #campoSt - 3)
+							sheet[att] = sheet[att] + 1
+							sheet['BasicMovepts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicMovepts'], 2, -2)) + tonumber(sheet['custoBasicMove']))
+						else
+							sheet['BasicMovepts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicMovepts'], 2, -2)) + tonumber(sheet['custoBasicMove']))
+							calcAtributos()
+						end
+						formatColors()
+					"/>
+					<button align="top" height="10" padding="{left=0, top=0, right=0, bottom=0}" text="⯆" fontSize="5"  onClick="
+						if(sheet.fldDisassociarAtr) then
+							local campoSt = 'BasicMovepts'
+							local att = string.sub(campoSt, 1, #campoSt - 3)
+							sheet[att] = sheet[att] - 1
+							sheet['BasicMovepts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicMovepts'], 2, -2)) - tonumber(sheet['custoBasicMove']))
+						else
+							sheet['BasicMovepts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicMovepts'], 2, -2)) - tonumber(sheet['custoBasicMove']))
+							calcAtributos()
+						end
+						formatColors()
+					"/>
+				</layout>
+				<labelPointsDer atributo="BasicMove" />
+				<dataLink field="BasicMovepts" defaultValue="[00]" onChange="calcSomaPontosAtributos() formatColors()" />
+				
+				<layout align="right" width="150">
+					<label text="S W I N G I N G   D M G ." class="SubAttribute" width="90" />
+					<edit name="edtSwDmg" field="SwDmg" class="SubAttribute" align="client"/>
+					<dataLink field="SwDmg" defaultValue="1d" onChange="sheet.SwDmg = tratarInputDano(newValue, oldValue)" />
+				</layout>
+			</layout>
+		
+			<layout align="top" height="20" margins="{bottom=5}">
+				<label text="B A S I C   L I F T" class="SubAttribute" />
+				<edit name="edtBasicLift" field="BasicLift" type="float" class="SubAttribute" align="client" horzTextAlign="leading" margins="{left=12}"/>
+				<dataLink field="BasicLift" defaultValue="20" />
+			</layout>
+			
+		</layout>
+	</template>
+	
+</form>
