@@ -519,8 +519,8 @@ edit.EditBold{
 												<image align="top" style="proportional" height="50" url="/images/logo.png" margins="{top=20}" />
 											</layout>
 											
-											<flowLayout align="top" margins="{top=20, bottom=20,}" height="440">
-												<flowPart class="flowCampo" height="440" minWidth="260" maxWidth="260">
+											<layout align="top" margins="{top=20, bottom=20,}" height="440">
+												<layout align="left" width="260" margins="{right=20}">
 													<flowLayout orientation="vertical" width="260" autoHeight="true" maxColumns="1">
 														<flowPart class="flowCampo" minWidth="260" maxWidth="260" margins="{bottom=5}"><label class="AtrClasse" text="A P A R Ê N C I A" /></flowPart>
 														<layout align="none" height="400" width="260">
@@ -529,18 +529,16 @@ edit.EditBold{
 															<image height="400" width="260" url="/images/frame.png" style="proportional"/>
 														</layout>
 													</flowLayout>
-												</flowPart>
+												</layout>
 												
-												<flowPart class="flowCampo" height="440" minWidth="550" maxWidth="550">
-													<flowLayout orientation="vertical" width="550" autoHeight="true" maxColumns="1">
-														<flowPart class="flowCampo" minWidth="550" maxWidth="550" margins="{bottom=5}"><label class="AtrClasse" text="C O N T A T O S" /></flowPart>
-														<rectangle height="400" width="550" color="#202020" cornerType="bevel" xradius="10" yradius="10" padding="{top=10, bottom=10, left=10, right=10}">
-															<textEditor align="client" transparent="true" field="fldBG" name="nomeBG" fontFamily="Constantia" fontSize="13"/>
-															<dataLink field="fldBG" defaultValue="Escreva aqui." />
-														</rectangle>
-													</flowLayout>
-												</flowPart>
-											</flowLayout>
+												<layout align="client">
+													<label margins="{bottom=15}" align="top" class="AtrClasse" text="C O N T A T O S" />
+													<rectangle height="400" align="top" color="#202020" cornerType="bevel" xradius="10" yradius="10" padding="{top=10, bottom=10, left=10, right=10}">
+														<textEditor align="client" transparent="true" field="fldBG" name="nomeBG" fontFamily="Constantia" fontSize="13"/>
+														<dataLink field="fldBG" defaultValue="Escreva aqui." />
+													</rectangle>
+												</layout>
+											</layout>
 											
 											<Divisor texto="H I S T Ó R I A" largura="350" />
 											<richEdit field="BG" align="client" margins="{top=10, bottom=40}" backgroundColor="#272727" defaultFontColor="white" />

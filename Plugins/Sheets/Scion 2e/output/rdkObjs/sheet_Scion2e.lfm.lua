@@ -6504,39 +6504,38 @@ local function constructNew_frmScion2e()
     obj.image3:setMargins({top=20});
     obj.image3:setName("image3");
 
+    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout84:setParent(obj.layout82);
+    obj.layout84:setAlign("top");
+    obj.layout84:setMargins({top=20, bottom=20,});
+    obj.layout84:setHeight(440);
+    obj.layout84:setName("layout84");
+
+    obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout85:setParent(obj.layout84);
+    obj.layout85:setAlign("left");
+    obj.layout85:setWidth(260);
+    obj.layout85:setMargins({right=20});
+    obj.layout85:setName("layout85");
+
     obj.flowLayout19 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout19:setParent(obj.layout82);
-    obj.flowLayout19:setAlign("top");
-    obj.flowLayout19:setMargins({top=20, bottom=20,});
-    obj.flowLayout19:setHeight(440);
+    obj.flowLayout19:setParent(obj.layout85);
+    obj.flowLayout19:setOrientation("vertical");
+    obj.flowLayout19:setWidth(260);
+    obj.flowLayout19:setAutoHeight(true);
+    obj.flowLayout19:setMaxColumns(1);
     obj.flowLayout19:setName("flowLayout19");
 
     obj.flowPart45 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart45:setParent(obj.flowLayout19);
-    obj.flowPart45:setHeight(440);
     obj.flowPart45:setMinWidth(260);
     obj.flowPart45:setMaxWidth(260);
+    obj.flowPart45:setMargins({bottom=5});
     obj.flowPart45:setName("flowPart45");
-    obj.flowPart45:setMargins({left=20, right=20, bottom=10});
-
-    obj.flowLayout20 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout20:setParent(obj.flowPart45);
-    obj.flowLayout20:setOrientation("vertical");
-    obj.flowLayout20:setWidth(260);
-    obj.flowLayout20:setAutoHeight(true);
-    obj.flowLayout20:setMaxColumns(1);
-    obj.flowLayout20:setName("flowLayout20");
-
-    obj.flowPart46 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart46:setParent(obj.flowLayout20);
-    obj.flowPart46:setMinWidth(260);
-    obj.flowPart46:setMaxWidth(260);
-    obj.flowPart46:setMargins({bottom=5});
-    obj.flowPart46:setName("flowPart46");
-    obj.flowPart46:setHeight(25);
+    obj.flowPart45:setHeight(25);
 
     obj.label87 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label87:setParent(obj.flowPart46);
+    obj.label87:setParent(obj.flowPart45);
     obj.label87:setText("A P A R Ê N C I A");
     obj.label87:setName("label87");
     obj.label87:setFontSize(10);
@@ -6547,15 +6546,15 @@ local function constructNew_frmScion2e()
     obj.label87:setAlign("top");
     lfm_setPropAsString(obj.label87, "fontStyle", "bold");
 
-    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout84:setParent(obj.flowLayout20);
-    obj.layout84:setAlign("none");
-    obj.layout84:setHeight(400);
-    obj.layout84:setWidth(260);
-    obj.layout84:setName("layout84");
+    obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout86:setParent(obj.flowLayout19);
+    obj.layout86:setAlign("none");
+    obj.layout86:setHeight(400);
+    obj.layout86:setWidth(260);
+    obj.layout86:setName("layout86");
 
     obj.image4 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.layout84);
+    obj.image4:setParent(obj.layout86);
     obj.image4:setAlign("none");
     obj.image4:setHeight(400);
     obj.image4:setWidth(260);
@@ -6566,45 +6565,28 @@ local function constructNew_frmScion2e()
     obj.image4:setName("image4");
 
     obj.dataLink49 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink49:setParent(obj.layout84);
+    obj.dataLink49:setParent(obj.layout86);
     obj.dataLink49:setField("fldFotoPJ");
     obj.dataLink49:setDefaultValue("/images/scion.png");
     obj.dataLink49:setName("dataLink49");
 
     obj.image5 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.layout84);
+    obj.image5:setParent(obj.layout86);
     obj.image5:setHeight(400);
     obj.image5:setWidth(260);
     obj.image5:setURL("/images/frame.png");
     obj.image5:setStyle("proportional");
     obj.image5:setName("image5");
 
-    obj.flowPart47 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart47:setParent(obj.flowLayout19);
-    obj.flowPart47:setHeight(440);
-    obj.flowPart47:setMinWidth(550);
-    obj.flowPart47:setMaxWidth(550);
-    obj.flowPart47:setName("flowPart47");
-    obj.flowPart47:setMargins({left=20, right=20, bottom=10});
-
-    obj.flowLayout21 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout21:setParent(obj.flowPart47);
-    obj.flowLayout21:setOrientation("vertical");
-    obj.flowLayout21:setWidth(550);
-    obj.flowLayout21:setAutoHeight(true);
-    obj.flowLayout21:setMaxColumns(1);
-    obj.flowLayout21:setName("flowLayout21");
-
-    obj.flowPart48 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart48:setParent(obj.flowLayout21);
-    obj.flowPart48:setMinWidth(550);
-    obj.flowPart48:setMaxWidth(550);
-    obj.flowPart48:setMargins({bottom=5});
-    obj.flowPart48:setName("flowPart48");
-    obj.flowPart48:setHeight(25);
+    obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout87:setParent(obj.layout84);
+    obj.layout87:setAlign("client");
+    obj.layout87:setName("layout87");
 
     obj.label88 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label88:setParent(obj.flowPart48);
+    obj.label88:setParent(obj.layout87);
+    obj.label88:setMargins({bottom=15});
+    obj.label88:setAlign("top");
     obj.label88:setText("C O N T A T O S");
     obj.label88:setName("label88");
     obj.label88:setFontSize(10);
@@ -6612,13 +6594,12 @@ local function constructNew_frmScion2e()
     obj.label88:setTextTrimming("character");
     obj.label88:setFontFamily("Constantia");
     obj.label88:setHorzTextAlign("center");
-    obj.label88:setAlign("top");
     lfm_setPropAsString(obj.label88, "fontStyle", "bold");
 
     obj.rectangle73 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle73:setParent(obj.flowLayout21);
+    obj.rectangle73:setParent(obj.layout87);
     obj.rectangle73:setHeight(400);
-    obj.rectangle73:setWidth(550);
+    obj.rectangle73:setAlign("top");
     obj.rectangle73:setColor("#202020");
     obj.rectangle73:setCornerType("bevel");
     obj.rectangle73:setXradius(10);
@@ -6641,29 +6622,29 @@ local function constructNew_frmScion2e()
     obj.dataLink50:setDefaultValue("Escreva aqui.");
     obj.dataLink50:setName("dataLink50");
 
-    obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout85:setParent(obj.layout82);
-    obj.layout85:setAlign("top");
-    obj.layout85:setHeight(30);
-    obj.layout85:setWidth(425);
-    obj.layout85:setName("layout85");
+    obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout88:setParent(obj.layout82);
+    obj.layout88:setAlign("top");
+    obj.layout88:setHeight(30);
+    obj.layout88:setWidth(425);
+    obj.layout88:setName("layout88");
 
     obj.horzLine11 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine11:setParent(obj.layout85);
+    obj.horzLine11:setParent(obj.layout88);
     obj.horzLine11:setAlign("client");
     obj.horzLine11:setMargins({top=14});
     obj.horzLine11:setStrokeColor("#424242");
     obj.horzLine11:setName("horzLine11");
 
     obj.rectangle74 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle74:setParent(obj.layout85);
+    obj.rectangle74:setParent(obj.layout88);
     obj.rectangle74:setAlign("client");
     obj.rectangle74:setMargins({right=350, left=350});
     obj.rectangle74:setColor("#272727");
     obj.rectangle74:setName("rectangle74");
 
     obj.label89 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label89:setParent(obj.layout85);
+    obj.label89:setParent(obj.layout88);
     obj.label89:setHorzTextAlign("center");
     obj.label89:setText("H I S T Ó R I A");
     obj.label89:setFontSize(20);
@@ -6689,20 +6670,20 @@ local function constructNew_frmScion2e()
     obj.layNote:setAlign("client");
     obj.layNote:setVisible(false);
 
-    obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout86:setParent(obj.layNote);
-    obj.layout86:setAlign("client");
-    obj.layout86:setMargins({right=20, left=20});
-    obj.layout86:setName("layout86");
+    obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout89:setParent(obj.layNote);
+    obj.layout89:setAlign("client");
+    obj.layout89:setMargins({right=20, left=20});
+    obj.layout89:setName("layout89");
 
-    obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout87:setParent(obj.layout86);
-    obj.layout87:setAlign("top");
-    obj.layout87:setHeight(90);
-    obj.layout87:setName("layout87");
+    obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout90:setParent(obj.layout89);
+    obj.layout90:setAlign("top");
+    obj.layout90:setHeight(90);
+    obj.layout90:setName("layout90");
 
     obj.image6 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image6:setParent(obj.layout87);
+    obj.image6:setParent(obj.layout90);
     obj.image6:setAlign("top");
     obj.image6:setStyle("proportional");
     obj.image6:setHeight(50);
@@ -6710,29 +6691,29 @@ local function constructNew_frmScion2e()
     obj.image6:setMargins({top=20});
     obj.image6:setName("image6");
 
-    obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout88:setParent(obj.layout86);
-    obj.layout88:setAlign("top");
-    obj.layout88:setHeight(30);
-    obj.layout88:setWidth(425);
-    obj.layout88:setName("layout88");
+    obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout91:setParent(obj.layout89);
+    obj.layout91:setAlign("top");
+    obj.layout91:setHeight(30);
+    obj.layout91:setWidth(425);
+    obj.layout91:setName("layout91");
 
     obj.horzLine12 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine12:setParent(obj.layout88);
+    obj.horzLine12:setParent(obj.layout91);
     obj.horzLine12:setAlign("client");
     obj.horzLine12:setMargins({top=14});
     obj.horzLine12:setStrokeColor("#424242");
     obj.horzLine12:setName("horzLine12");
 
     obj.rectangle75 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle75:setParent(obj.layout88);
+    obj.rectangle75:setParent(obj.layout91);
     obj.rectangle75:setAlign("client");
     obj.rectangle75:setMargins({right=350, left=350});
     obj.rectangle75:setColor("#272727");
     obj.rectangle75:setName("rectangle75");
 
     obj.label90 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label90:setParent(obj.layout88);
+    obj.label90:setParent(obj.layout91);
     obj.label90:setHorzTextAlign("center");
     obj.label90:setText("A N O T A Ç Õ E S");
     obj.label90:setFontSize(20);
@@ -6744,7 +6725,7 @@ local function constructNew_frmScion2e()
     obj.label90:setTextTrimming("character");
 
     obj.richEdit2 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit2:setParent(obj.layout86);
+    obj.richEdit2:setParent(obj.layout89);
     obj.richEdit2:setField("Notes");
     obj.richEdit2:setAlign("client");
     obj.richEdit2:setMargins({top=10, bottom=40});
@@ -6752,16 +6733,16 @@ local function constructNew_frmScion2e()
     obj.richEdit2.defaultFontColor = "white";
     obj.richEdit2:setName("richEdit2");
 
-    obj.flowPart49 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart49:setParent(obj.flowLayout1);
-    obj.flowPart49:setAlign("top");
-    obj.flowPart49:setHeight(1920);
-    obj.flowPart49:setMinWidth(30);
-    obj.flowPart49:setMaxWidth(50);
-    obj.flowPart49:setName("flowPart49");
+    obj.flowPart46 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart46:setParent(obj.flowLayout1);
+    obj.flowPart46:setAlign("top");
+    obj.flowPart46:setHeight(1920);
+    obj.flowPart46:setMinWidth(30);
+    obj.flowPart46:setMaxWidth(50);
+    obj.flowPart46:setName("flowPart46");
 
     obj.image7 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image7:setParent(obj.flowPart49);
+    obj.image7:setParent(obj.flowPart46);
     obj.image7:setAlign("client");
     obj.image7:setStyle("proportional");
     obj.image7:setURL("/images/right-arrow.png");
@@ -11075,7 +11056,6 @@ local function constructNew_frmScion2e()
         if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
         if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
         if self.nomeCam03 ~= nil then self.nomeCam03:destroy(); self.nomeCam03 = nil; end;
-        if self.flowPart48 ~= nil then self.flowPart48:destroy(); self.flowPart48 = nil; end;
         if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
         if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.layout78 ~= nil then self.layout78:destroy(); self.layout78 = nil; end;
@@ -11195,7 +11175,7 @@ local function constructNew_frmScion2e()
         if self.nomeFei01 ~= nil then self.nomeFei01:destroy(); self.nomeFei01 = nil; end;
         if self.nomeCheck18_01 ~= nil then self.nomeCheck18_01:destroy(); self.nomeCheck18_01 = nil; end;
         if self.layout81 ~= nil then self.layout81:destroy(); self.layout81 = nil; end;
-        if self.flowLayout21 ~= nil then self.flowLayout21:destroy(); self.flowLayout21 = nil; end;
+        if self.layout91 ~= nil then self.layout91:destroy(); self.layout91 = nil; end;
         if self.nomeCheck11_05 ~= nil then self.nomeCheck11_05:destroy(); self.nomeCheck11_05 = nil; end;
         if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
         if self.flowPart40 ~= nil then self.flowPart40:destroy(); self.flowPart40 = nil; end;
@@ -11317,6 +11297,7 @@ local function constructNew_frmScion2e()
         if self.nomeCheck15_04 ~= nil then self.nomeCheck15_04:destroy(); self.nomeCheck15_04 = nil; end;
         if self.label85 ~= nil then self.label85:destroy(); self.label85 = nil; end;
         if self.flowPart29 ~= nil then self.flowPart29:destroy(); self.flowPart29 = nil; end;
+        if self.layout89 ~= nil then self.layout89:destroy(); self.layout89 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
@@ -11471,6 +11452,7 @@ local function constructNew_frmScion2e()
         if self.layout27 ~= nil then self.layout27:destroy(); self.layout27 = nil; end;
         if self.rectangle51 ~= nil then self.rectangle51:destroy(); self.rectangle51 = nil; end;
         if self.layout82 ~= nil then self.layout82:destroy(); self.layout82 = nil; end;
+        if self.layout90 ~= nil then self.layout90:destroy(); self.layout90 = nil; end;
         if self.layFrente ~= nil then self.layFrente:destroy(); self.layFrente = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.nomeCheck06_04 ~= nil then self.nomeCheck06_04:destroy(); self.nomeCheck06_04 = nil; end;
@@ -11481,7 +11463,6 @@ local function constructNew_frmScion2e()
         if self.nomeCheck22_02 ~= nil then self.nomeCheck22_02:destroy(); self.nomeCheck22_02 = nil; end;
         if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
         if self.rectangle54 ~= nil then self.rectangle54:destroy(); self.rectangle54 = nil; end;
-        if self.flowPart47 ~= nil then self.flowPart47:destroy(); self.flowPart47 = nil; end;
         if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
         if self.nomeCheck11_01 ~= nil then self.nomeCheck11_01:destroy(); self.nomeCheck11_01 = nil; end;
         if self.nomeCheck09_03 ~= nil then self.nomeCheck09_03:destroy(); self.nomeCheck09_03 = nil; end;
@@ -11492,7 +11473,6 @@ local function constructNew_frmScion2e()
         if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.nomeCam02 ~= nil then self.nomeCam02:destroy(); self.nomeCam02 = nil; end;
         if self.layNote ~= nil then self.layNote:destroy(); self.layNote = nil; end;
-        if self.flowPart49 ~= nil then self.flowPart49:destroy(); self.flowPart49 = nil; end;
         if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
         if self.layout79 ~= nil then self.layout79:destroy(); self.layout79 = nil; end;
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
@@ -11616,7 +11596,6 @@ local function constructNew_frmScion2e()
         if self.flowPart44 ~= nil then self.flowPart44:destroy(); self.flowPart44 = nil; end;
         if self.layout80 ~= nil then self.layout80:destroy(); self.layout80 = nil; end;
         if self.flowPart41 ~= nil then self.flowPart41:destroy(); self.flowPart41 = nil; end;
-        if self.flowLayout20 ~= nil then self.flowLayout20:destroy(); self.flowLayout20 = nil; end;
         if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
         if self.rectangle15 ~= nil then self.rectangle15:destroy(); self.rectangle15 = nil; end;
         if self.popUp_16 ~= nil then self.popUp_16:destroy(); self.popUp_16 = nil; end;
