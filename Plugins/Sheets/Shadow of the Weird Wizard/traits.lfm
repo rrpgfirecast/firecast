@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTalentos" height="130" margins="{top=5,bottom=5}">       
+
+<!-- Talentos ou Benefícios -->
+      <rectangle left="60" width="720" height="131" color="#D5D5D5"
+            strokeColor="#49244F" strokeSize="3">
+            <rectangle left="0" top="0" width="464" height="45" color="#49244F"/>
+            <edit left="8" top="7" width="715" fontSize="20" height="30"
+                  fontColor="#D5D5D5" fontStyle="bold" transparent="true" 
+                  field="talentoBeneficio">
+                  <event name="onChange">
+                        if sheet.talentoBeneficio == nil then
+                              sheet.talentoBeneficio = "Talento"
+                        end
+                                                            
+                        if #sheet.talentoBeneficio &gt; 47 then
+                              local delCaracteres = 46 - #sheet.talentoBeneficio
+                              sheet.talentoBeneficio = string.sub(sheet.talentoBeneficio, 1, delCaracteres)
+                        end
+                  </event>
+            </edit>
+            <!-- Descrição Talento ou Benefício -->
+            <textEditor left="9" top="40" width="710" fontSize="14" height="90" 
+                  fontColor="#49244F" transparent="true" field="descricaoTalentoBeneficio"/>
+
+            <!-- Categorias de Talento ou Benefício -->
+            <rectangle left="465" top="0" width="163" height="45" color="#49244F"/>
+            <comboBox left="465" top="12" items="{'Ancestralidade', 'Caminho de Novato', 'Caminho de Especialista', 'Caminho de Mestre', 'Mágico', 'Outro'}" 
+                  field="categoriaTalentoBeneficio" fontColor="#D5D5D5" transparent="true" value="Ancestralidade" 
+                  width="163"/>
+
+            <rectangle left="629" top="0" width="45" height="45" color="#49244F"/>
+            <label left="629" top="7" width="45" height="20" fontSize="40" horzTextAlign="center" 
+                  text="»" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                  hint="Enviar no Chat">
+                        <event name="onClick">
+                                    local talento = sheet.talentoBeneficio
+                                    local descricao = sheet.descricaoTalentoBeneficio
+
+                                    local mesaDeRPG = Firecast.getMesaDe(sheet)
+                                    if sheet.talentoBeneficio ~= nil and sheet.descricaoTalentoBeneficio ~= nil then
+                                          mesaDeRPG.chat:enviarMensagem("---")
+                                          mesaDeRPG.chat:enviarMensagem("[§K2][§B]"..talento)
+                                          mesaDeRPG.chat:enviarMensagem("---")
+                                          mesaDeRPG.chat:enviarMensagem(descricao)
+                                          mesaDeRPG.chat:enviarMensagem("---")
+                                    end
+                        </event>
+            </label>
+            
+            <rectangle left="675" top="0" width="45" height="45" color="#49244F"/>
+            <label left="675" top="7" width="45" height="20" fontSize="40" horzTextAlign="center" 
+                  text="-" fontColor="#D5D5D5" fontStyle="bold" hitTest="true" cursor="handPoint"
+                  onClick="NDB.deleteNode(sheet);" hint="Remover Talento"/>
+
+      </rectangle>
+</form>
