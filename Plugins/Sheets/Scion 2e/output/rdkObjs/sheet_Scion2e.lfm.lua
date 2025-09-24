@@ -616,7 +616,7 @@ local function constructNew_frmScion2e()
     obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout2);
     obj.layout14:setAlign("top");
-    obj.layout14:setHeight(215);
+    obj.layout14:setHeight(170);
     obj.layout14:setPadding({left=20, right=20});
     obj.layout14:setName("layout14");
 
@@ -662,7 +662,7 @@ local function constructNew_frmScion2e()
     obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout14);
     obj.layout17:setAlign("top");
-    obj.layout17:setHeight(165);
+    obj.layout17:setHeight(120);
     obj.layout17:setName("layout17");
 
     obj.flLayVida = GUI.fromHandle(_obj_newObject("flowLayout"));
@@ -675,150 +675,6 @@ local function constructNew_frmScion2e()
     obj.flLayVida:setOrientation("vertical");
     obj.flLayVida:setMaxControlsPerLine(2);
     obj.flLayVida:setHorzAlign("justify");
-
-    obj.flPart_Machucado01 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flPart_Machucado01:setParent(obj.flLayVida);
-    obj.flPart_Machucado01:setName("flPart_Machucado01");
-    obj.flPart_Machucado01:setHeight(35);
-    obj.flPart_Machucado01:setWidth(270);
-    obj.flPart_Machucado01:setMinWidth(270);
-    obj.flPart_Machucado01:setMargins({bottom=3});
-
-    obj.rectVidMachucado01 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectVidMachucado01:setParent(obj.flPart_Machucado01);
-    obj.rectVidMachucado01:setName("rectVidMachucado01");
-    obj.rectVidMachucado01:setAlign("client");
-    obj.rectVidMachucado01:setColor("#272727");
-    obj.rectVidMachucado01:setXradius(5);
-    obj.rectVidMachucado01:setYradius(5);
-    obj.rectVidMachucado01:setCornerType("bevel");
-
-    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox1:setParent(obj.rectVidMachucado01);
-    obj.checkBox1:setAlign("left");
-    obj.checkBox1:setField("chcBVidMachucado01");
-    obj.checkBox1:setWidth(25);
-    obj.checkBox1:setMargins({left=5});
-    obj.checkBox1:setName("checkBox1");
-
-    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink2:setParent(obj.rectVidMachucado01);
-    obj.dataLink2:setField("chcBVidMachucado01");
-    obj.dataLink2:setDefaultValue("false");
-    obj.dataLink2:setName("dataLink2");
-
-    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label9:setParent(obj.rectVidMachucado01);
-    obj.label9:setAlign("left");
-    obj.label9:setWidth(85);
-    obj.label9:setText("Machucado: ");
-    obj.label9:setName("label9");
-    obj.label9:setFontSize(14);
-    obj.label9:setFontColor("white");
-    lfm_setPropAsString(obj.label9, "fontStyle", "bold");
-    obj.label9:setTextTrimming("character");
-    obj.label9:setFontFamily("Constantia");
-
-    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit8:setParent(obj.rectVidMachucado01);
-    obj.edit8:setAlign("client");
-    obj.edit8:setField("fld_Edit-Machucado01");
-    obj.edit8:setName("edit8");
-    obj.edit8:setFontSize(14);
-    obj.edit8:setFontColor("#cdcdcd");
-    obj.edit8:setTextTrimming("character");
-    obj.edit8:setFontFamily("Constantia");
-    obj.edit8:setTransparent(true);
-
-    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink3:setParent(obj.rectVidMachucado01);
-    obj.dataLink3:setField("fld_Edit-Machucado01");
-    obj.dataLink3:setDefaultValue("—");
-    obj.dataLink3:setName("dataLink3");
-
-    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label10:setParent(obj.rectVidMachucado01);
-    obj.label10:setAlign("right");
-    obj.label10:setWidth(30);
-    obj.label10:setText("-01");
-    obj.label10:setName("label10");
-    obj.label10:setFontSize(14);
-    obj.label10:setFontColor("white");
-    lfm_setPropAsString(obj.label10, "fontStyle", "bold");
-    obj.label10:setTextTrimming("character");
-    obj.label10:setFontFamily("Constantia");
-
-    obj.flPart_Machucado02 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flPart_Machucado02:setParent(obj.flLayVida);
-    obj.flPart_Machucado02:setName("flPart_Machucado02");
-    obj.flPart_Machucado02:setHeight(35);
-    obj.flPart_Machucado02:setWidth(270);
-    obj.flPart_Machucado02:setMinWidth(270);
-    obj.flPart_Machucado02:setMargins({bottom=3});
-
-    obj.rectVidMachucado02 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectVidMachucado02:setParent(obj.flPart_Machucado02);
-    obj.rectVidMachucado02:setName("rectVidMachucado02");
-    obj.rectVidMachucado02:setAlign("client");
-    obj.rectVidMachucado02:setColor("#272727");
-    obj.rectVidMachucado02:setXradius(5);
-    obj.rectVidMachucado02:setYradius(5);
-    obj.rectVidMachucado02:setCornerType("bevel");
-
-    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox2:setParent(obj.rectVidMachucado02);
-    obj.checkBox2:setAlign("left");
-    obj.checkBox2:setField("chcBVidMachucado02");
-    obj.checkBox2:setWidth(25);
-    obj.checkBox2:setMargins({left=5});
-    obj.checkBox2:setName("checkBox2");
-
-    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink4:setParent(obj.rectVidMachucado02);
-    obj.dataLink4:setField("chcBVidMachucado02");
-    obj.dataLink4:setDefaultValue("false");
-    obj.dataLink4:setName("dataLink4");
-
-    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label11:setParent(obj.rectVidMachucado02);
-    obj.label11:setAlign("left");
-    obj.label11:setWidth(85);
-    obj.label11:setText("Machucado: ");
-    obj.label11:setName("label11");
-    obj.label11:setFontSize(14);
-    obj.label11:setFontColor("white");
-    lfm_setPropAsString(obj.label11, "fontStyle", "bold");
-    obj.label11:setTextTrimming("character");
-    obj.label11:setFontFamily("Constantia");
-
-    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit9:setParent(obj.rectVidMachucado02);
-    obj.edit9:setAlign("client");
-    obj.edit9:setField("fld_Edit-Machucado02");
-    obj.edit9:setName("edit9");
-    obj.edit9:setFontSize(14);
-    obj.edit9:setFontColor("#cdcdcd");
-    obj.edit9:setTextTrimming("character");
-    obj.edit9:setFontFamily("Constantia");
-    obj.edit9:setTransparent(true);
-
-    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink5:setParent(obj.rectVidMachucado02);
-    obj.dataLink5:setField("fld_Edit-Machucado02");
-    obj.dataLink5:setDefaultValue("—");
-    obj.dataLink5:setName("dataLink5");
-
-    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label12:setParent(obj.rectVidMachucado02);
-    obj.label12:setAlign("right");
-    obj.label12:setWidth(30);
-    obj.label12:setText("-01");
-    obj.label12:setName("label12");
-    obj.label12:setFontSize(14);
-    obj.label12:setFontColor("white");
-    lfm_setPropAsString(obj.label12, "fontStyle", "bold");
-    obj.label12:setTextTrimming("character");
-    obj.label12:setFontFamily("Constantia");
 
     obj.flPart_Machucado03 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flPart_Machucado03:setParent(obj.flLayVida);
@@ -837,60 +693,60 @@ local function constructNew_frmScion2e()
     obj.rectVidMachucado03:setYradius(5);
     obj.rectVidMachucado03:setCornerType("bevel");
 
-    obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox3:setParent(obj.rectVidMachucado03);
-    obj.checkBox3:setAlign("left");
-    obj.checkBox3:setField("chcBVidMachucado03");
-    obj.checkBox3:setWidth(25);
-    obj.checkBox3:setMargins({left=5});
-    obj.checkBox3:setName("checkBox3");
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1:setParent(obj.rectVidMachucado03);
+    obj.checkBox1:setAlign("left");
+    obj.checkBox1:setField("chcBVidMachucado03");
+    obj.checkBox1:setWidth(25);
+    obj.checkBox1:setMargins({left=5});
+    obj.checkBox1:setName("checkBox1");
 
-    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink6:setParent(obj.rectVidMachucado03);
-    obj.dataLink6:setField("chcBVidMachucado03");
-    obj.dataLink6:setDefaultValue("false");
-    obj.dataLink6:setName("dataLink6");
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.rectVidMachucado03);
+    obj.dataLink2:setField("chcBVidMachucado03");
+    obj.dataLink2:setDefaultValue("false");
+    obj.dataLink2:setName("dataLink2");
 
-    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label13:setParent(obj.rectVidMachucado03);
-    obj.label13:setAlign("left");
-    obj.label13:setWidth(85);
-    obj.label13:setText("Machucado: ");
-    obj.label13:setName("label13");
-    obj.label13:setFontSize(14);
-    obj.label13:setFontColor("white");
-    lfm_setPropAsString(obj.label13, "fontStyle", "bold");
-    obj.label13:setTextTrimming("character");
-    obj.label13:setFontFamily("Constantia");
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label9:setParent(obj.rectVidMachucado03);
+    obj.label9:setAlign("left");
+    obj.label9:setWidth(85);
+    obj.label9:setText("Machucado: ");
+    obj.label9:setName("label9");
+    obj.label9:setFontSize(14);
+    obj.label9:setFontColor("white");
+    lfm_setPropAsString(obj.label9, "fontStyle", "bold");
+    obj.label9:setTextTrimming("character");
+    obj.label9:setFontFamily("Constantia");
 
-    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit10:setParent(obj.rectVidMachucado03);
-    obj.edit10:setAlign("client");
-    obj.edit10:setField("fld_Edit-Machucado03");
-    obj.edit10:setName("edit10");
-    obj.edit10:setFontSize(14);
-    obj.edit10:setFontColor("#cdcdcd");
-    obj.edit10:setTextTrimming("character");
-    obj.edit10:setFontFamily("Constantia");
-    obj.edit10:setTransparent(true);
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit8:setParent(obj.rectVidMachucado03);
+    obj.edit8:setAlign("client");
+    obj.edit8:setField("fld_Edit-Machucado03");
+    obj.edit8:setName("edit8");
+    obj.edit8:setFontSize(14);
+    obj.edit8:setFontColor("#cdcdcd");
+    obj.edit8:setTextTrimming("character");
+    obj.edit8:setFontFamily("Constantia");
+    obj.edit8:setTransparent(true);
 
-    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink7:setParent(obj.rectVidMachucado03);
-    obj.dataLink7:setField("fld_Edit-Machucado03");
-    obj.dataLink7:setDefaultValue("—");
-    obj.dataLink7:setName("dataLink7");
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj.rectVidMachucado03);
+    obj.dataLink3:setField("fld_Edit-Machucado03");
+    obj.dataLink3:setDefaultValue("—");
+    obj.dataLink3:setName("dataLink3");
 
-    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label14:setParent(obj.rectVidMachucado03);
-    obj.label14:setAlign("right");
-    obj.label14:setWidth(30);
-    obj.label14:setText("-01");
-    obj.label14:setName("label14");
-    obj.label14:setFontSize(14);
-    obj.label14:setFontColor("white");
-    lfm_setPropAsString(obj.label14, "fontStyle", "bold");
-    obj.label14:setTextTrimming("character");
-    obj.label14:setFontFamily("Constantia");
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label10:setParent(obj.rectVidMachucado03);
+    obj.label10:setAlign("right");
+    obj.label10:setWidth(30);
+    obj.label10:setText("-01");
+    obj.label10:setName("label10");
+    obj.label10:setFontSize(14);
+    obj.label10:setFontColor("white");
+    lfm_setPropAsString(obj.label10, "fontStyle", "bold");
+    obj.label10:setTextTrimming("character");
+    obj.label10:setFontFamily("Constantia");
 
     obj.flPart_Machucado04 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flPart_Machucado04:setParent(obj.flLayVida);
@@ -909,60 +765,60 @@ local function constructNew_frmScion2e()
     obj.rectVidMachucado04:setYradius(5);
     obj.rectVidMachucado04:setCornerType("bevel");
 
-    obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox4:setParent(obj.rectVidMachucado04);
-    obj.checkBox4:setAlign("left");
-    obj.checkBox4:setField("chcBVidMachucado04");
-    obj.checkBox4:setWidth(25);
-    obj.checkBox4:setMargins({left=5});
-    obj.checkBox4:setName("checkBox4");
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2:setParent(obj.rectVidMachucado04);
+    obj.checkBox2:setAlign("left");
+    obj.checkBox2:setField("chcBVidMachucado04");
+    obj.checkBox2:setWidth(25);
+    obj.checkBox2:setMargins({left=5});
+    obj.checkBox2:setName("checkBox2");
 
-    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink8:setParent(obj.rectVidMachucado04);
-    obj.dataLink8:setField("chcBVidMachucado04");
-    obj.dataLink8:setDefaultValue("false");
-    obj.dataLink8:setName("dataLink8");
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj.rectVidMachucado04);
+    obj.dataLink4:setField("chcBVidMachucado04");
+    obj.dataLink4:setDefaultValue("false");
+    obj.dataLink4:setName("dataLink4");
 
-    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label15:setParent(obj.rectVidMachucado04);
-    obj.label15:setAlign("left");
-    obj.label15:setWidth(85);
-    obj.label15:setText("Machucado: ");
-    obj.label15:setName("label15");
-    obj.label15:setFontSize(14);
-    obj.label15:setFontColor("white");
-    lfm_setPropAsString(obj.label15, "fontStyle", "bold");
-    obj.label15:setTextTrimming("character");
-    obj.label15:setFontFamily("Constantia");
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label11:setParent(obj.rectVidMachucado04);
+    obj.label11:setAlign("left");
+    obj.label11:setWidth(85);
+    obj.label11:setText("Machucado: ");
+    obj.label11:setName("label11");
+    obj.label11:setFontSize(14);
+    obj.label11:setFontColor("white");
+    lfm_setPropAsString(obj.label11, "fontStyle", "bold");
+    obj.label11:setTextTrimming("character");
+    obj.label11:setFontFamily("Constantia");
 
-    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit11:setParent(obj.rectVidMachucado04);
-    obj.edit11:setAlign("client");
-    obj.edit11:setField("fld_Edit-Machucado04");
-    obj.edit11:setName("edit11");
-    obj.edit11:setFontSize(14);
-    obj.edit11:setFontColor("#cdcdcd");
-    obj.edit11:setTextTrimming("character");
-    obj.edit11:setFontFamily("Constantia");
-    obj.edit11:setTransparent(true);
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit9:setParent(obj.rectVidMachucado04);
+    obj.edit9:setAlign("client");
+    obj.edit9:setField("fld_Edit-Machucado04");
+    obj.edit9:setName("edit9");
+    obj.edit9:setFontSize(14);
+    obj.edit9:setFontColor("#cdcdcd");
+    obj.edit9:setTextTrimming("character");
+    obj.edit9:setFontFamily("Constantia");
+    obj.edit9:setTransparent(true);
 
-    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink9:setParent(obj.rectVidMachucado04);
-    obj.dataLink9:setField("fld_Edit-Machucado04");
-    obj.dataLink9:setDefaultValue("—");
-    obj.dataLink9:setName("dataLink9");
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5:setParent(obj.rectVidMachucado04);
+    obj.dataLink5:setField("fld_Edit-Machucado04");
+    obj.dataLink5:setDefaultValue("—");
+    obj.dataLink5:setName("dataLink5");
 
-    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label16:setParent(obj.rectVidMachucado04);
-    obj.label16:setAlign("right");
-    obj.label16:setWidth(30);
-    obj.label16:setText("-01");
-    obj.label16:setName("label16");
-    obj.label16:setFontSize(14);
-    obj.label16:setFontColor("white");
-    lfm_setPropAsString(obj.label16, "fontStyle", "bold");
-    obj.label16:setTextTrimming("character");
-    obj.label16:setFontFamily("Constantia");
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label12:setParent(obj.rectVidMachucado04);
+    obj.label12:setAlign("right");
+    obj.label12:setWidth(30);
+    obj.label12:setText("-01");
+    obj.label12:setName("label12");
+    obj.label12:setFontSize(14);
+    obj.label12:setFontColor("white");
+    lfm_setPropAsString(obj.label12, "fontStyle", "bold");
+    obj.label12:setTextTrimming("character");
+    obj.label12:setFontFamily("Constantia");
 
     obj.flPart_Machucado05 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flPart_Machucado05:setParent(obj.flLayVida);
@@ -981,60 +837,60 @@ local function constructNew_frmScion2e()
     obj.rectVidMachucado05:setYradius(5);
     obj.rectVidMachucado05:setCornerType("bevel");
 
-    obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox5:setParent(obj.rectVidMachucado05);
-    obj.checkBox5:setAlign("left");
-    obj.checkBox5:setField("chcBVidMachucado05");
-    obj.checkBox5:setWidth(25);
-    obj.checkBox5:setMargins({left=5});
-    obj.checkBox5:setName("checkBox5");
+    obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox3:setParent(obj.rectVidMachucado05);
+    obj.checkBox3:setAlign("left");
+    obj.checkBox3:setField("chcBVidMachucado05");
+    obj.checkBox3:setWidth(25);
+    obj.checkBox3:setMargins({left=5});
+    obj.checkBox3:setName("checkBox3");
 
-    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink10:setParent(obj.rectVidMachucado05);
-    obj.dataLink10:setField("chcBVidMachucado05");
-    obj.dataLink10:setDefaultValue("false");
-    obj.dataLink10:setName("dataLink10");
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6:setParent(obj.rectVidMachucado05);
+    obj.dataLink6:setField("chcBVidMachucado05");
+    obj.dataLink6:setDefaultValue("false");
+    obj.dataLink6:setName("dataLink6");
 
-    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label17:setParent(obj.rectVidMachucado05);
-    obj.label17:setAlign("left");
-    obj.label17:setWidth(85);
-    obj.label17:setText("Machucado: ");
-    obj.label17:setName("label17");
-    obj.label17:setFontSize(14);
-    obj.label17:setFontColor("white");
-    lfm_setPropAsString(obj.label17, "fontStyle", "bold");
-    obj.label17:setTextTrimming("character");
-    obj.label17:setFontFamily("Constantia");
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label13:setParent(obj.rectVidMachucado05);
+    obj.label13:setAlign("left");
+    obj.label13:setWidth(85);
+    obj.label13:setText("Machucado: ");
+    obj.label13:setName("label13");
+    obj.label13:setFontSize(14);
+    obj.label13:setFontColor("white");
+    lfm_setPropAsString(obj.label13, "fontStyle", "bold");
+    obj.label13:setTextTrimming("character");
+    obj.label13:setFontFamily("Constantia");
 
-    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit12:setParent(obj.rectVidMachucado05);
-    obj.edit12:setAlign("client");
-    obj.edit12:setField("fld_Edit-Machucado05");
-    obj.edit12:setName("edit12");
-    obj.edit12:setFontSize(14);
-    obj.edit12:setFontColor("#cdcdcd");
-    obj.edit12:setTextTrimming("character");
-    obj.edit12:setFontFamily("Constantia");
-    obj.edit12:setTransparent(true);
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit10:setParent(obj.rectVidMachucado05);
+    obj.edit10:setAlign("client");
+    obj.edit10:setField("fld_Edit-Machucado05");
+    obj.edit10:setName("edit10");
+    obj.edit10:setFontSize(14);
+    obj.edit10:setFontColor("#cdcdcd");
+    obj.edit10:setTextTrimming("character");
+    obj.edit10:setFontFamily("Constantia");
+    obj.edit10:setTransparent(true);
 
-    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink11:setParent(obj.rectVidMachucado05);
-    obj.dataLink11:setField("fld_Edit-Machucado05");
-    obj.dataLink11:setDefaultValue("—");
-    obj.dataLink11:setName("dataLink11");
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7:setParent(obj.rectVidMachucado05);
+    obj.dataLink7:setField("fld_Edit-Machucado05");
+    obj.dataLink7:setDefaultValue("—");
+    obj.dataLink7:setName("dataLink7");
 
-    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label18:setParent(obj.rectVidMachucado05);
-    obj.label18:setAlign("right");
-    obj.label18:setWidth(30);
-    obj.label18:setText("-01");
-    obj.label18:setName("label18");
-    obj.label18:setFontSize(14);
-    obj.label18:setFontColor("white");
-    lfm_setPropAsString(obj.label18, "fontStyle", "bold");
-    obj.label18:setTextTrimming("character");
-    obj.label18:setFontFamily("Constantia");
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label14:setParent(obj.rectVidMachucado05);
+    obj.label14:setAlign("right");
+    obj.label14:setWidth(30);
+    obj.label14:setText("-01");
+    obj.label14:setName("label14");
+    obj.label14:setFontSize(14);
+    obj.label14:setFontColor("white");
+    lfm_setPropAsString(obj.label14, "fontStyle", "bold");
+    obj.label14:setTextTrimming("character");
+    obj.label14:setFontFamily("Constantia");
 
     obj.flPart_Machucado06 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flPart_Machucado06:setParent(obj.flLayVida);
@@ -1053,60 +909,60 @@ local function constructNew_frmScion2e()
     obj.rectVidMachucado06:setYradius(5);
     obj.rectVidMachucado06:setCornerType("bevel");
 
-    obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox6:setParent(obj.rectVidMachucado06);
-    obj.checkBox6:setAlign("left");
-    obj.checkBox6:setField("chcBVidMachucado06");
-    obj.checkBox6:setWidth(25);
-    obj.checkBox6:setMargins({left=5});
-    obj.checkBox6:setName("checkBox6");
+    obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox4:setParent(obj.rectVidMachucado06);
+    obj.checkBox4:setAlign("left");
+    obj.checkBox4:setField("chcBVidMachucado06");
+    obj.checkBox4:setWidth(25);
+    obj.checkBox4:setMargins({left=5});
+    obj.checkBox4:setName("checkBox4");
 
-    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink12:setParent(obj.rectVidMachucado06);
-    obj.dataLink12:setField("chcBVidMachucado06");
-    obj.dataLink12:setDefaultValue("false");
-    obj.dataLink12:setName("dataLink12");
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8:setParent(obj.rectVidMachucado06);
+    obj.dataLink8:setField("chcBVidMachucado06");
+    obj.dataLink8:setDefaultValue("false");
+    obj.dataLink8:setName("dataLink8");
 
-    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label19:setParent(obj.rectVidMachucado06);
-    obj.label19:setAlign("left");
-    obj.label19:setWidth(85);
-    obj.label19:setText("Ferimento: ");
-    obj.label19:setName("label19");
-    obj.label19:setFontSize(14);
-    obj.label19:setFontColor("white");
-    lfm_setPropAsString(obj.label19, "fontStyle", "bold");
-    obj.label19:setTextTrimming("character");
-    obj.label19:setFontFamily("Constantia");
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label15:setParent(obj.rectVidMachucado06);
+    obj.label15:setAlign("left");
+    obj.label15:setWidth(85);
+    obj.label15:setText("Ferimento: ");
+    obj.label15:setName("label15");
+    obj.label15:setFontSize(14);
+    obj.label15:setFontColor("white");
+    lfm_setPropAsString(obj.label15, "fontStyle", "bold");
+    obj.label15:setTextTrimming("character");
+    obj.label15:setFontFamily("Constantia");
 
-    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit13:setParent(obj.rectVidMachucado06);
-    obj.edit13:setAlign("client");
-    obj.edit13:setField("fld_Edit-Machucado06");
-    obj.edit13:setName("edit13");
-    obj.edit13:setFontSize(14);
-    obj.edit13:setFontColor("#cdcdcd");
-    obj.edit13:setTextTrimming("character");
-    obj.edit13:setFontFamily("Constantia");
-    obj.edit13:setTransparent(true);
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit11:setParent(obj.rectVidMachucado06);
+    obj.edit11:setAlign("client");
+    obj.edit11:setField("fld_Edit-Machucado06");
+    obj.edit11:setName("edit11");
+    obj.edit11:setFontSize(14);
+    obj.edit11:setFontColor("#cdcdcd");
+    obj.edit11:setTextTrimming("character");
+    obj.edit11:setFontFamily("Constantia");
+    obj.edit11:setTransparent(true);
 
-    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink13:setParent(obj.rectVidMachucado06);
-    obj.dataLink13:setField("fld_Edit-Machucado06");
-    obj.dataLink13:setDefaultValue("—");
-    obj.dataLink13:setName("dataLink13");
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9:setParent(obj.rectVidMachucado06);
+    obj.dataLink9:setField("fld_Edit-Machucado06");
+    obj.dataLink9:setDefaultValue("—");
+    obj.dataLink9:setName("dataLink9");
 
-    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label20:setParent(obj.rectVidMachucado06);
-    obj.label20:setAlign("right");
-    obj.label20:setWidth(30);
-    obj.label20:setText("-02");
-    obj.label20:setName("label20");
-    obj.label20:setFontSize(14);
-    obj.label20:setFontColor("white");
-    lfm_setPropAsString(obj.label20, "fontStyle", "bold");
-    obj.label20:setTextTrimming("character");
-    obj.label20:setFontFamily("Constantia");
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label16:setParent(obj.rectVidMachucado06);
+    obj.label16:setAlign("right");
+    obj.label16:setWidth(30);
+    obj.label16:setText("-02");
+    obj.label16:setName("label16");
+    obj.label16:setFontSize(14);
+    obj.label16:setFontColor("white");
+    lfm_setPropAsString(obj.label16, "fontStyle", "bold");
+    obj.label16:setTextTrimming("character");
+    obj.label16:setFontFamily("Constantia");
 
     obj.flPart_Machucado07 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flPart_Machucado07:setParent(obj.flLayVida);
@@ -1125,60 +981,60 @@ local function constructNew_frmScion2e()
     obj.rectVidMachucado07:setYradius(5);
     obj.rectVidMachucado07:setCornerType("bevel");
 
-    obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox7:setParent(obj.rectVidMachucado07);
-    obj.checkBox7:setAlign("left");
-    obj.checkBox7:setField("chcBVidMachucado07");
-    obj.checkBox7:setWidth(25);
-    obj.checkBox7:setMargins({left=5});
-    obj.checkBox7:setName("checkBox7");
+    obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox5:setParent(obj.rectVidMachucado07);
+    obj.checkBox5:setAlign("left");
+    obj.checkBox5:setField("chcBVidMachucado07");
+    obj.checkBox5:setWidth(25);
+    obj.checkBox5:setMargins({left=5});
+    obj.checkBox5:setName("checkBox5");
 
-    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink14:setParent(obj.rectVidMachucado07);
-    obj.dataLink14:setField("chcBVidMachucado07");
-    obj.dataLink14:setDefaultValue("false");
-    obj.dataLink14:setName("dataLink14");
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10:setParent(obj.rectVidMachucado07);
+    obj.dataLink10:setField("chcBVidMachucado07");
+    obj.dataLink10:setDefaultValue("false");
+    obj.dataLink10:setName("dataLink10");
 
-    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label21:setParent(obj.rectVidMachucado07);
-    obj.label21:setAlign("left");
-    obj.label21:setWidth(85);
-    obj.label21:setText("Mutilação: ");
-    obj.label21:setName("label21");
-    obj.label21:setFontSize(14);
-    obj.label21:setFontColor("white");
-    lfm_setPropAsString(obj.label21, "fontStyle", "bold");
-    obj.label21:setTextTrimming("character");
-    obj.label21:setFontFamily("Constantia");
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label17:setParent(obj.rectVidMachucado07);
+    obj.label17:setAlign("left");
+    obj.label17:setWidth(85);
+    obj.label17:setText("Mutilação: ");
+    obj.label17:setName("label17");
+    obj.label17:setFontSize(14);
+    obj.label17:setFontColor("white");
+    lfm_setPropAsString(obj.label17, "fontStyle", "bold");
+    obj.label17:setTextTrimming("character");
+    obj.label17:setFontFamily("Constantia");
 
-    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit14:setParent(obj.rectVidMachucado07);
-    obj.edit14:setAlign("client");
-    obj.edit14:setField("fld_Edit-Machucado07");
-    obj.edit14:setName("edit14");
-    obj.edit14:setFontSize(14);
-    obj.edit14:setFontColor("#cdcdcd");
-    obj.edit14:setTextTrimming("character");
-    obj.edit14:setFontFamily("Constantia");
-    obj.edit14:setTransparent(true);
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit12:setParent(obj.rectVidMachucado07);
+    obj.edit12:setAlign("client");
+    obj.edit12:setField("fld_Edit-Machucado07");
+    obj.edit12:setName("edit12");
+    obj.edit12:setFontSize(14);
+    obj.edit12:setFontColor("#cdcdcd");
+    obj.edit12:setTextTrimming("character");
+    obj.edit12:setFontFamily("Constantia");
+    obj.edit12:setTransparent(true);
 
-    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink15:setParent(obj.rectVidMachucado07);
-    obj.dataLink15:setField("fld_Edit-Machucado07");
-    obj.dataLink15:setDefaultValue("—");
-    obj.dataLink15:setName("dataLink15");
+    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11:setParent(obj.rectVidMachucado07);
+    obj.dataLink11:setField("fld_Edit-Machucado07");
+    obj.dataLink11:setDefaultValue("—");
+    obj.dataLink11:setName("dataLink11");
 
-    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label22:setParent(obj.rectVidMachucado07);
-    obj.label22:setAlign("right");
-    obj.label22:setWidth(30);
-    obj.label22:setText("-04");
-    obj.label22:setName("label22");
-    obj.label22:setFontSize(14);
-    obj.label22:setFontColor("white");
-    lfm_setPropAsString(obj.label22, "fontStyle", "bold");
-    obj.label22:setTextTrimming("character");
-    obj.label22:setFontFamily("Constantia");
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label18:setParent(obj.rectVidMachucado07);
+    obj.label18:setAlign("right");
+    obj.label18:setWidth(30);
+    obj.label18:setText("-04");
+    obj.label18:setName("label18");
+    obj.label18:setFontSize(14);
+    obj.label18:setFontColor("white");
+    lfm_setPropAsString(obj.label18, "fontStyle", "bold");
+    obj.label18:setTextTrimming("character");
+    obj.label18:setFontFamily("Constantia");
 
     obj.flowPart4 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart4:setParent(obj.flLayVida);
@@ -1197,31 +1053,31 @@ local function constructNew_frmScion2e()
     obj.rectVidInconsciente:setYradius(5);
     obj.rectVidInconsciente:setCornerType("bevel");
 
-    obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox8:setParent(obj.rectVidInconsciente);
-    obj.checkBox8:setAlign("left");
-    obj.checkBox8:setField("chcBVidInconsciente");
-    obj.checkBox8:setWidth(25);
-    obj.checkBox8:setMargins({left=5});
-    obj.checkBox8:setName("checkBox8");
+    obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox6:setParent(obj.rectVidInconsciente);
+    obj.checkBox6:setAlign("left");
+    obj.checkBox6:setField("chcBVidInconsciente");
+    obj.checkBox6:setWidth(25);
+    obj.checkBox6:setMargins({left=5});
+    obj.checkBox6:setName("checkBox6");
 
-    obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink16:setParent(obj.rectVidInconsciente);
-    obj.dataLink16:setField("chcBVidInconsciente");
-    obj.dataLink16:setDefaultValue("false");
-    obj.dataLink16:setName("dataLink16");
+    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12:setParent(obj.rectVidInconsciente);
+    obj.dataLink12:setField("chcBVidInconsciente");
+    obj.dataLink12:setDefaultValue("false");
+    obj.dataLink12:setName("dataLink12");
 
-    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label23:setParent(obj.rectVidInconsciente);
-    obj.label23:setAlign("left");
-    obj.label23:setWidth(100);
-    obj.label23:setText("Inconsciente");
-    obj.label23:setName("label23");
-    obj.label23:setFontSize(14);
-    obj.label23:setFontColor("white");
-    lfm_setPropAsString(obj.label23, "fontStyle", "bold");
-    obj.label23:setTextTrimming("character");
-    obj.label23:setFontFamily("Constantia");
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label19:setParent(obj.rectVidInconsciente);
+    obj.label19:setAlign("left");
+    obj.label19:setWidth(100);
+    obj.label19:setText("Inconsciente");
+    obj.label19:setName("label19");
+    obj.label19:setFontSize(14);
+    obj.label19:setFontColor("white");
+    lfm_setPropAsString(obj.label19, "fontStyle", "bold");
+    obj.label19:setTextTrimming("character");
+    obj.label19:setFontFamily("Constantia");
 
     obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout17);
@@ -1248,38 +1104,38 @@ local function constructNew_frmScion2e()
     obj.rectangle5:setCornerType("bevel");
     obj.rectangle5:setName("rectangle5");
 
-    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label24:setParent(obj.rectangle5);
-    obj.label24:setField("rollDefesa");
-    obj.label24:setAlign("client");
-    obj.label24:setHorzTextAlign("center");
-    obj.label24:setVertTextAlign("center");
-    obj.label24:setMargins({bottom=5});
-    obj.label24:setName("label24");
-    obj.label24:setFontSize(14);
-    obj.label24:setFontColor("white");
-    lfm_setPropAsString(obj.label24, "fontStyle", "bold");
-    obj.label24:setTextTrimming("character");
-    obj.label24:setFontFamily("Constantia");
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label20:setParent(obj.rectangle5);
+    obj.label20:setField("rollDefesa");
+    obj.label20:setAlign("client");
+    obj.label20:setHorzTextAlign("center");
+    obj.label20:setVertTextAlign("center");
+    obj.label20:setMargins({bottom=5});
+    obj.label20:setName("label20");
+    obj.label20:setFontSize(14);
+    obj.label20:setFontColor("white");
+    lfm_setPropAsString(obj.label20, "fontStyle", "bold");
+    obj.label20:setTextTrimming("character");
+    obj.label20:setFontFamily("Constantia");
 
-    obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink17:setParent(obj.rectangle5);
-    obj.dataLink17:setField("rollDefesa");
-    obj.dataLink17:setDefaultValue("0");
-    obj.dataLink17:setName("dataLink17");
+    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13:setParent(obj.rectangle5);
+    obj.dataLink13:setField("rollDefesa");
+    obj.dataLink13:setDefaultValue("0");
+    obj.dataLink13:setName("dataLink13");
 
-    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label25:setParent(obj.layout19);
-    obj.label25:setAlign("left");
-    obj.label25:setWidth(200);
-    obj.label25:setHorzTextAlign("leading");
-    obj.label25:setText("R O L A G E M   D E   D E F E S A");
-    obj.label25:setName("label25");
-    obj.label25:setFontSize(10);
-    obj.label25:setFontColor("white");
-    obj.label25:setTextTrimming("character");
-    obj.label25:setFontFamily("Constantia");
-    lfm_setPropAsString(obj.label25, "fontStyle", "bold");
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label21:setParent(obj.layout19);
+    obj.label21:setAlign("left");
+    obj.label21:setWidth(200);
+    obj.label21:setHorzTextAlign("leading");
+    obj.label21:setText("R O L A G E M   D E   D E F E S A");
+    obj.label21:setName("label21");
+    obj.label21:setFontSize(10);
+    obj.label21:setFontColor("white");
+    obj.label21:setTextTrimming("character");
+    obj.label21:setFontFamily("Constantia");
+    lfm_setPropAsString(obj.label21, "fontStyle", "bold");
 
     obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout18);
@@ -1300,38 +1156,38 @@ local function constructNew_frmScion2e()
     obj.rectangle6:setCornerType("bevel");
     obj.rectangle6:setName("rectangle6");
 
-    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label26:setParent(obj.rectangle6);
-    obj.label26:setField("rollMovimento");
-    obj.label26:setAlign("client");
-    obj.label26:setHorzTextAlign("center");
-    obj.label26:setVertTextAlign("center");
-    obj.label26:setMargins({bottom=5});
-    obj.label26:setName("label26");
-    obj.label26:setFontSize(14);
-    obj.label26:setFontColor("white");
-    lfm_setPropAsString(obj.label26, "fontStyle", "bold");
-    obj.label26:setTextTrimming("character");
-    obj.label26:setFontFamily("Constantia");
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label22:setParent(obj.rectangle6);
+    obj.label22:setField("rollMovimento");
+    obj.label22:setAlign("client");
+    obj.label22:setHorzTextAlign("center");
+    obj.label22:setVertTextAlign("center");
+    obj.label22:setMargins({bottom=5});
+    obj.label22:setName("label22");
+    obj.label22:setFontSize(14);
+    obj.label22:setFontColor("white");
+    lfm_setPropAsString(obj.label22, "fontStyle", "bold");
+    obj.label22:setTextTrimming("character");
+    obj.label22:setFontFamily("Constantia");
 
-    obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink18:setParent(obj.rectangle6);
-    obj.dataLink18:setField("rollMovimento");
-    obj.dataLink18:setDefaultValue("0");
-    obj.dataLink18:setName("dataLink18");
+    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14:setParent(obj.rectangle6);
+    obj.dataLink14:setField("rollMovimento");
+    obj.dataLink14:setDefaultValue("0");
+    obj.dataLink14:setName("dataLink14");
 
-    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label27:setParent(obj.layout20);
-    obj.label27:setAlign("left");
-    obj.label27:setWidth(200);
-    obj.label27:setHorzTextAlign("leading");
-    obj.label27:setText("R O L A G E M   D E   M O V I M E N T O");
-    obj.label27:setName("label27");
-    obj.label27:setFontSize(10);
-    obj.label27:setFontColor("white");
-    obj.label27:setTextTrimming("character");
-    obj.label27:setFontFamily("Constantia");
-    lfm_setPropAsString(obj.label27, "fontStyle", "bold");
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label23:setParent(obj.layout20);
+    obj.label23:setAlign("left");
+    obj.label23:setWidth(200);
+    obj.label23:setHorzTextAlign("leading");
+    obj.label23:setText("R O L A G E M   D E   M O V I M E N T O");
+    obj.label23:setName("label23");
+    obj.label23:setFontSize(10);
+    obj.label23:setFontColor("white");
+    obj.label23:setTextTrimming("character");
+    obj.label23:setFontFamily("Constantia");
+    lfm_setPropAsString(obj.label23, "fontStyle", "bold");
 
     obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.layout2);
@@ -1361,17 +1217,17 @@ local function constructNew_frmScion2e()
     obj.rectangle7:setColor("#272727");
     obj.rectangle7:setName("rectangle7");
 
-    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label28:setParent(obj.layout22);
-    obj.label28:setHorzTextAlign("center");
-    obj.label28:setText("A T R I B U T O S");
-    obj.label28:setFontSize(20);
-    obj.label28:setFontFamily("Constantia");
-    obj.label28:setAlign("client");
-    obj.label28:setName("label28");
-    obj.label28:setFontColor("white");
-    lfm_setPropAsString(obj.label28, "fontStyle", "bold");
-    obj.label28:setTextTrimming("character");
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label24:setParent(obj.layout22);
+    obj.label24:setHorzTextAlign("center");
+    obj.label24:setText("A T R I B U T O S");
+    obj.label24:setFontSize(20);
+    obj.label24:setFontFamily("Constantia");
+    obj.label24:setAlign("client");
+    obj.label24:setName("label24");
+    obj.label24:setFontColor("white");
+    lfm_setPropAsString(obj.label24, "fontStyle", "bold");
+    obj.label24:setTextTrimming("character");
 
     obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.layout2);
@@ -1419,17 +1275,17 @@ local function constructNew_frmScion2e()
     obj.flowPart5:setMaxWidth(550);
     obj.flowPart5:setHeight(25);
 
-    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label29:setParent(obj.flowPart5);
-    obj.label29:setText("F Í S I C O");
-    obj.label29:setName("label29");
-    obj.label29:setFontSize(10);
-    obj.label29:setFontColor("white");
-    obj.label29:setTextTrimming("character");
-    obj.label29:setFontFamily("Constantia");
-    obj.label29:setHorzTextAlign("center");
-    obj.label29:setAlign("top");
-    lfm_setPropAsString(obj.label29, "fontStyle", "bold");
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label25:setParent(obj.flowPart5);
+    obj.label25:setText("F Í S I C O");
+    obj.label25:setName("label25");
+    obj.label25:setFontSize(10);
+    obj.label25:setFontColor("white");
+    obj.label25:setTextTrimming("character");
+    obj.label25:setFontFamily("Constantia");
+    obj.label25:setHorzTextAlign("center");
+    obj.label25:setAlign("top");
+    lfm_setPropAsString(obj.label25, "fontStyle", "bold");
 
     obj.flowPart6 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart6:setParent(obj.flowLayout3);
@@ -1439,17 +1295,17 @@ local function constructNew_frmScion2e()
     obj.flowPart6:setMaxWidth(550);
     obj.flowPart6:setHeight(25);
 
-    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label30:setParent(obj.flowPart6);
-    obj.label30:setAlign("left");
-    obj.label30:setWidth(100);
-    obj.label30:setText("Força");
-    obj.label30:setName("label30");
-    obj.label30:setFontSize(14);
-    obj.label30:setFontColor("white");
-    lfm_setPropAsString(obj.label30, "fontStyle", "bold");
-    obj.label30:setTextTrimming("character");
-    obj.label30:setFontFamily("Constantia");
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label26:setParent(obj.flowPart6);
+    obj.label26:setAlign("left");
+    obj.label26:setWidth(100);
+    obj.label26:setText("Força");
+    obj.label26:setName("label26");
+    obj.label26:setFontSize(14);
+    obj.label26:setFontColor("white");
+    lfm_setPropAsString(obj.label26, "fontStyle", "bold");
+    obj.label26:setTextTrimming("character");
+    obj.label26:setFontFamily("Constantia");
 
     obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.flowPart6);
@@ -1524,17 +1380,17 @@ local function constructNew_frmScion2e()
     obj.flowPart7:setMaxWidth(550);
     obj.flowPart7:setHeight(25);
 
-    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label31:setParent(obj.flowPart7);
-    obj.label31:setAlign("left");
-    obj.label31:setWidth(100);
-    obj.label31:setText("Destreza");
-    obj.label31:setName("label31");
-    obj.label31:setFontSize(14);
-    obj.label31:setFontColor("white");
-    lfm_setPropAsString(obj.label31, "fontStyle", "bold");
-    obj.label31:setTextTrimming("character");
-    obj.label31:setFontFamily("Constantia");
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label27:setParent(obj.flowPart7);
+    obj.label27:setAlign("left");
+    obj.label27:setWidth(100);
+    obj.label27:setText("Destreza");
+    obj.label27:setName("label27");
+    obj.label27:setFontSize(14);
+    obj.label27:setFontColor("white");
+    lfm_setPropAsString(obj.label27, "fontStyle", "bold");
+    obj.label27:setTextTrimming("character");
+    obj.label27:setFontFamily("Constantia");
 
     obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.flowPart7);
@@ -1609,17 +1465,17 @@ local function constructNew_frmScion2e()
     obj.flowPart8:setMaxWidth(550);
     obj.flowPart8:setHeight(25);
 
-    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label32:setParent(obj.flowPart8);
-    obj.label32:setAlign("left");
-    obj.label32:setWidth(100);
-    obj.label32:setText("Vigor");
-    obj.label32:setName("label32");
-    obj.label32:setFontSize(14);
-    obj.label32:setFontColor("white");
-    lfm_setPropAsString(obj.label32, "fontStyle", "bold");
-    obj.label32:setTextTrimming("character");
-    obj.label32:setFontFamily("Constantia");
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label28:setParent(obj.flowPart8);
+    obj.label28:setAlign("left");
+    obj.label28:setWidth(100);
+    obj.label28:setText("Vigor");
+    obj.label28:setName("label28");
+    obj.label28:setFontSize(14);
+    obj.label28:setFontColor("white");
+    lfm_setPropAsString(obj.label28, "fontStyle", "bold");
+    obj.label28:setTextTrimming("character");
+    obj.label28:setFontFamily("Constantia");
 
     obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.flowPart8);
@@ -1701,18 +1557,18 @@ local function constructNew_frmScion2e()
     obj.flowLayout4:setMaxColumns(1);
     obj.flowLayout4:setName("flowLayout4");
 
-    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label33:setParent(obj.flowLayout4);
-    obj.label33:setText("L E N D A");
-    obj.label33:setHorzTextAlign("center");
-    obj.label33:setMargins({bottom=10});
-    obj.label33:setName("label33");
-    obj.label33:setFontSize(10);
-    obj.label33:setFontColor("white");
-    obj.label33:setTextTrimming("character");
-    obj.label33:setFontFamily("Constantia");
-    obj.label33:setAlign("top");
-    lfm_setPropAsString(obj.label33, "fontStyle", "bold");
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label29:setParent(obj.flowLayout4);
+    obj.label29:setText("L E N D A");
+    obj.label29:setHorzTextAlign("center");
+    obj.label29:setMargins({bottom=10});
+    obj.label29:setName("label29");
+    obj.label29:setFontSize(10);
+    obj.label29:setFontColor("white");
+    obj.label29:setTextTrimming("character");
+    obj.label29:setFontFamily("Constantia");
+    obj.label29:setAlign("top");
+    lfm_setPropAsString(obj.label29, "fontStyle", "bold");
 
     obj.flowPart9 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart9:setParent(obj.flowLayout4);
@@ -1746,11 +1602,11 @@ local function constructNew_frmScion2e()
     obj.checkMulVit_Des_01_Leg:setHitTest(true);
     obj.checkMulVit_Des_01_Leg:setCursor("handPoint");
 
-    obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink19:setParent(obj.layout30);
-    obj.dataLink19:setField("checkMulVit_Des_01_Leg");
-    obj.dataLink19:setDefaultValue("/images/checkBoxDes.png");
-    obj.dataLink19:setName("dataLink19");
+    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15:setParent(obj.layout30);
+    obj.dataLink15:setField("checkMulVit_Des_01_Leg");
+    obj.dataLink15:setDefaultValue("/images/checkBoxDes.png");
+    obj.dataLink15:setName("dataLink15");
 
     obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.flowLayout5);
@@ -1770,11 +1626,11 @@ local function constructNew_frmScion2e()
     obj.checkMulVit_Des_02_Leg:setHitTest(true);
     obj.checkMulVit_Des_02_Leg:setCursor("handPoint");
 
-    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink20:setParent(obj.layout31);
-    obj.dataLink20:setField("checkMulVit_Des_02_Leg");
-    obj.dataLink20:setDefaultValue("/images/checkBoxDes.png");
-    obj.dataLink20:setName("dataLink20");
+    obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink16:setParent(obj.layout31);
+    obj.dataLink16:setField("checkMulVit_Des_02_Leg");
+    obj.dataLink16:setDefaultValue("/images/checkBoxDes.png");
+    obj.dataLink16:setName("dataLink16");
 
     obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.flowLayout5);
@@ -1794,11 +1650,11 @@ local function constructNew_frmScion2e()
     obj.checkMulVit_Des_03_Leg:setHitTest(true);
     obj.checkMulVit_Des_03_Leg:setCursor("handPoint");
 
-    obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink21:setParent(obj.layout32);
-    obj.dataLink21:setField("checkMulVit_Des_03_Leg");
-    obj.dataLink21:setDefaultValue("/images/checkBoxDes.png");
-    obj.dataLink21:setName("dataLink21");
+    obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink17:setParent(obj.layout32);
+    obj.dataLink17:setField("checkMulVit_Des_03_Leg");
+    obj.dataLink17:setDefaultValue("/images/checkBoxDes.png");
+    obj.dataLink17:setName("dataLink17");
 
     obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.flowLayout5);
@@ -1818,11 +1674,11 @@ local function constructNew_frmScion2e()
     obj.checkMulVit_Des_04_Leg:setHitTest(true);
     obj.checkMulVit_Des_04_Leg:setCursor("handPoint");
 
-    obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink22:setParent(obj.layout33);
-    obj.dataLink22:setField("checkMulVit_Des_04_Leg");
-    obj.dataLink22:setDefaultValue("/images/checkBoxDes.png");
-    obj.dataLink22:setName("dataLink22");
+    obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink18:setParent(obj.layout33);
+    obj.dataLink18:setField("checkMulVit_Des_04_Leg");
+    obj.dataLink18:setDefaultValue("/images/checkBoxDes.png");
+    obj.dataLink18:setName("dataLink18");
 
     obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.flowLayout5);
@@ -1842,11 +1698,11 @@ local function constructNew_frmScion2e()
     obj.checkMulVit_Des_05_Leg:setHitTest(true);
     obj.checkMulVit_Des_05_Leg:setCursor("handPoint");
 
-    obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink23:setParent(obj.layout34);
-    obj.dataLink23:setField("checkMulVit_Des_05_Leg");
-    obj.dataLink23:setDefaultValue("/images/checkBoxDes.png");
-    obj.dataLink23:setName("dataLink23");
+    obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19:setParent(obj.layout34);
+    obj.dataLink19:setField("checkMulVit_Des_05_Leg");
+    obj.dataLink19:setDefaultValue("/images/checkBoxDes.png");
+    obj.dataLink19:setName("dataLink19");
 
     obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.layout23);
@@ -1888,17 +1744,17 @@ local function constructNew_frmScion2e()
     obj.flowPart10:setMaxWidth(550);
     obj.flowPart10:setHeight(25);
 
-    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label34:setParent(obj.flowPart10);
-    obj.label34:setText("S O C I A L");
-    obj.label34:setName("label34");
-    obj.label34:setFontSize(10);
-    obj.label34:setFontColor("white");
-    obj.label34:setTextTrimming("character");
-    obj.label34:setFontFamily("Constantia");
-    obj.label34:setHorzTextAlign("center");
-    obj.label34:setAlign("top");
-    lfm_setPropAsString(obj.label34, "fontStyle", "bold");
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label30:setParent(obj.flowPart10);
+    obj.label30:setText("S O C I A L");
+    obj.label30:setName("label30");
+    obj.label30:setFontSize(10);
+    obj.label30:setFontColor("white");
+    obj.label30:setTextTrimming("character");
+    obj.label30:setFontFamily("Constantia");
+    obj.label30:setHorzTextAlign("center");
+    obj.label30:setAlign("top");
+    lfm_setPropAsString(obj.label30, "fontStyle", "bold");
 
     obj.flowPart11 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart11:setParent(obj.flowLayout6);
@@ -1908,17 +1764,17 @@ local function constructNew_frmScion2e()
     obj.flowPart11:setMaxWidth(550);
     obj.flowPart11:setHeight(25);
 
-    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label35:setParent(obj.flowPart11);
-    obj.label35:setAlign("left");
-    obj.label35:setWidth(100);
-    obj.label35:setText("Carisma");
-    obj.label35:setName("label35");
-    obj.label35:setFontSize(14);
-    obj.label35:setFontColor("white");
-    lfm_setPropAsString(obj.label35, "fontStyle", "bold");
-    obj.label35:setTextTrimming("character");
-    obj.label35:setFontFamily("Constantia");
+    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label31:setParent(obj.flowPart11);
+    obj.label31:setAlign("left");
+    obj.label31:setWidth(100);
+    obj.label31:setText("Carisma");
+    obj.label31:setName("label31");
+    obj.label31:setFontSize(14);
+    obj.label31:setFontColor("white");
+    lfm_setPropAsString(obj.label31, "fontStyle", "bold");
+    obj.label31:setTextTrimming("character");
+    obj.label31:setFontFamily("Constantia");
 
     obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.flowPart11);
@@ -1993,17 +1849,17 @@ local function constructNew_frmScion2e()
     obj.flowPart12:setMaxWidth(550);
     obj.flowPart12:setHeight(25);
 
-    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label36:setParent(obj.flowPart12);
-    obj.label36:setAlign("left");
-    obj.label36:setWidth(100);
-    obj.label36:setText("Manipulação");
-    obj.label36:setName("label36");
-    obj.label36:setFontSize(14);
-    obj.label36:setFontColor("white");
-    lfm_setPropAsString(obj.label36, "fontStyle", "bold");
-    obj.label36:setTextTrimming("character");
-    obj.label36:setFontFamily("Constantia");
+    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label32:setParent(obj.flowPart12);
+    obj.label32:setAlign("left");
+    obj.label32:setWidth(100);
+    obj.label32:setText("Manipulação");
+    obj.label32:setName("label32");
+    obj.label32:setFontSize(14);
+    obj.label32:setFontColor("white");
+    lfm_setPropAsString(obj.label32, "fontStyle", "bold");
+    obj.label32:setTextTrimming("character");
+    obj.label32:setFontFamily("Constantia");
 
     obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.flowPart12);
@@ -2078,17 +1934,17 @@ local function constructNew_frmScion2e()
     obj.flowPart13:setMaxWidth(550);
     obj.flowPart13:setHeight(25);
 
-    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label37:setParent(obj.flowPart13);
-    obj.label37:setAlign("left");
-    obj.label37:setWidth(100);
-    obj.label37:setText("Autocontrole");
-    obj.label37:setName("label37");
-    obj.label37:setFontSize(14);
-    obj.label37:setFontColor("white");
-    lfm_setPropAsString(obj.label37, "fontStyle", "bold");
-    obj.label37:setTextTrimming("character");
-    obj.label37:setFontFamily("Constantia");
+    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label33:setParent(obj.flowPart13);
+    obj.label33:setAlign("left");
+    obj.label33:setWidth(100);
+    obj.label33:setText("Autocontrole");
+    obj.label33:setName("label33");
+    obj.label33:setFontSize(14);
+    obj.label33:setFontColor("white");
+    lfm_setPropAsString(obj.label33, "fontStyle", "bold");
+    obj.label33:setTextTrimming("character");
+    obj.label33:setFontFamily("Constantia");
 
     obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.flowPart13);
@@ -2170,18 +2026,18 @@ local function constructNew_frmScion2e()
     obj.flowLayout7:setMaxColumns(1);
     obj.flowLayout7:setName("flowLayout7");
 
-    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label38:setParent(obj.flowLayout7);
-    obj.label38:setText("I M P U L S O");
-    obj.label38:setHorzTextAlign("center");
-    obj.label38:setMargins({bottom=10});
-    obj.label38:setName("label38");
-    obj.label38:setFontSize(10);
-    obj.label38:setFontColor("white");
-    obj.label38:setTextTrimming("character");
-    obj.label38:setFontFamily("Constantia");
-    obj.label38:setAlign("top");
-    lfm_setPropAsString(obj.label38, "fontStyle", "bold");
+    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label34:setParent(obj.flowLayout7);
+    obj.label34:setText("I M P U L S O");
+    obj.label34:setHorzTextAlign("center");
+    obj.label34:setMargins({bottom=10});
+    obj.label34:setName("label34");
+    obj.label34:setFontSize(10);
+    obj.label34:setFontColor("white");
+    obj.label34:setTextTrimming("character");
+    obj.label34:setFontFamily("Constantia");
+    obj.label34:setAlign("top");
+    lfm_setPropAsString(obj.label34, "fontStyle", "bold");
 
     obj.flowPart14 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart14:setParent(obj.flowLayout7);
@@ -2383,17 +2239,17 @@ local function constructNew_frmScion2e()
     obj.flowPart15:setMaxWidth(550);
     obj.flowPart15:setHeight(25);
 
-    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label39:setParent(obj.flowPart15);
-    obj.label39:setText("M E N T A L");
-    obj.label39:setName("label39");
-    obj.label39:setFontSize(10);
-    obj.label39:setFontColor("white");
-    obj.label39:setTextTrimming("character");
-    obj.label39:setFontFamily("Constantia");
-    obj.label39:setHorzTextAlign("center");
-    obj.label39:setAlign("top");
-    lfm_setPropAsString(obj.label39, "fontStyle", "bold");
+    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label35:setParent(obj.flowPart15);
+    obj.label35:setText("M E N T A L");
+    obj.label35:setName("label35");
+    obj.label35:setFontSize(10);
+    obj.label35:setFontColor("white");
+    obj.label35:setTextTrimming("character");
+    obj.label35:setFontFamily("Constantia");
+    obj.label35:setHorzTextAlign("center");
+    obj.label35:setAlign("top");
+    lfm_setPropAsString(obj.label35, "fontStyle", "bold");
 
     obj.flowPart16 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart16:setParent(obj.flowLayout9);
@@ -2403,17 +2259,17 @@ local function constructNew_frmScion2e()
     obj.flowPart16:setMaxWidth(550);
     obj.flowPart16:setHeight(25);
 
-    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label40:setParent(obj.flowPart16);
-    obj.label40:setAlign("left");
-    obj.label40:setWidth(100);
-    obj.label40:setText("Inteligência");
-    obj.label40:setName("label40");
-    obj.label40:setFontSize(14);
-    obj.label40:setFontColor("white");
-    lfm_setPropAsString(obj.label40, "fontStyle", "bold");
-    obj.label40:setTextTrimming("character");
-    obj.label40:setFontFamily("Constantia");
+    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label36:setParent(obj.flowPart16);
+    obj.label36:setAlign("left");
+    obj.label36:setWidth(100);
+    obj.label36:setText("Inteligência");
+    obj.label36:setName("label36");
+    obj.label36:setFontSize(14);
+    obj.label36:setFontColor("white");
+    lfm_setPropAsString(obj.label36, "fontStyle", "bold");
+    obj.label36:setTextTrimming("character");
+    obj.label36:setFontFamily("Constantia");
 
     obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.flowPart16);
@@ -2488,17 +2344,17 @@ local function constructNew_frmScion2e()
     obj.flowPart17:setMaxWidth(550);
     obj.flowPart17:setHeight(25);
 
-    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label41:setParent(obj.flowPart17);
-    obj.label41:setAlign("left");
-    obj.label41:setWidth(100);
-    obj.label41:setText("Raciocínio");
-    obj.label41:setName("label41");
-    obj.label41:setFontSize(14);
-    obj.label41:setFontColor("white");
-    lfm_setPropAsString(obj.label41, "fontStyle", "bold");
-    obj.label41:setTextTrimming("character");
-    obj.label41:setFontFamily("Constantia");
+    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label37:setParent(obj.flowPart17);
+    obj.label37:setAlign("left");
+    obj.label37:setWidth(100);
+    obj.label37:setText("Raciocínio");
+    obj.label37:setName("label37");
+    obj.label37:setFontSize(14);
+    obj.label37:setFontColor("white");
+    lfm_setPropAsString(obj.label37, "fontStyle", "bold");
+    obj.label37:setTextTrimming("character");
+    obj.label37:setFontFamily("Constantia");
 
     obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.flowPart17);
@@ -2573,17 +2429,17 @@ local function constructNew_frmScion2e()
     obj.flowPart18:setMaxWidth(550);
     obj.flowPart18:setHeight(25);
 
-    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label42:setParent(obj.flowPart18);
-    obj.label42:setAlign("left");
-    obj.label42:setWidth(100);
-    obj.label42:setText("Determinação");
-    obj.label42:setName("label42");
-    obj.label42:setFontSize(14);
-    obj.label42:setFontColor("white");
-    lfm_setPropAsString(obj.label42, "fontStyle", "bold");
-    obj.label42:setTextTrimming("character");
-    obj.label42:setFontFamily("Constantia");
+    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label38:setParent(obj.flowPart18);
+    obj.label38:setAlign("left");
+    obj.label38:setWidth(100);
+    obj.label38:setText("Determinação");
+    obj.label38:setName("label38");
+    obj.label38:setFontSize(14);
+    obj.label38:setFontColor("white");
+    lfm_setPropAsString(obj.label38, "fontStyle", "bold");
+    obj.label38:setTextTrimming("character");
+    obj.label38:setFontFamily("Constantia");
 
     obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.flowPart18);
@@ -2665,18 +2521,18 @@ local function constructNew_frmScion2e()
     obj.flowLayout10:setMaxColumns(1);
     obj.flowLayout10:setName("flowLayout10");
 
-    obj.label43 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label43:setParent(obj.flowLayout10);
-    obj.label43:setText("V I R T U D E S");
-    obj.label43:setHorzTextAlign("center");
-    obj.label43:setMargins({bottom=10});
-    obj.label43:setName("label43");
-    obj.label43:setFontSize(10);
-    obj.label43:setFontColor("white");
-    obj.label43:setTextTrimming("character");
-    obj.label43:setFontFamily("Constantia");
-    obj.label43:setAlign("top");
-    lfm_setPropAsString(obj.label43, "fontStyle", "bold");
+    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label39:setParent(obj.flowLayout10);
+    obj.label39:setText("V I R T U D E S");
+    obj.label39:setHorzTextAlign("center");
+    obj.label39:setMargins({bottom=10});
+    obj.label39:setName("label39");
+    obj.label39:setFontSize(10);
+    obj.label39:setFontColor("white");
+    obj.label39:setTextTrimming("character");
+    obj.label39:setFontFamily("Constantia");
+    obj.label39:setAlign("top");
+    lfm_setPropAsString(obj.label39, "fontStyle", "bold");
 
     obj.flowPart19 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart19:setParent(obj.flowLayout10);
@@ -2692,24 +2548,24 @@ local function constructNew_frmScion2e()
     obj.flowLayout11:setHorzAlign("center");
     obj.flowLayout11:setName("flowLayout11");
 
-    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit15:setParent(obj.flowLayout11);
-    obj.edit15:setField("Virtude1");
-    obj.edit15:setName("edit15");
-    obj.edit15:setFontSize(14);
-    obj.edit15:setFontColor("#ffffff");
-    obj.edit15:setTextTrimming("character");
-    obj.edit15:setFontFamily("Constantia");
-    obj.edit15:setTransparent(true);
-    obj.edit15:setWidth(92);
-    lfm_setPropAsString(obj.edit15, "fontStyle", "italic");
-    obj.edit15:setTextPrompt("\"Virtude\"");
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit13:setParent(obj.flowLayout11);
+    obj.edit13:setField("Virtude1");
+    obj.edit13:setName("edit13");
+    obj.edit13:setFontSize(14);
+    obj.edit13:setFontColor("#ffffff");
+    obj.edit13:setTextTrimming("character");
+    obj.edit13:setFontFamily("Constantia");
+    obj.edit13:setTransparent(true);
+    obj.edit13:setWidth(92);
+    lfm_setPropAsString(obj.edit13, "fontStyle", "italic");
+    obj.edit13:setTextPrompt("\"Virtude\"");
 
-    obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink24:setParent(obj.flowLayout11);
-    obj.dataLink24:setField("Virtude1");
-    obj.dataLink24:setDefaultValue("Virtude 01");
-    obj.dataLink24:setName("dataLink24");
+    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink20:setParent(obj.flowLayout11);
+    obj.dataLink20:setField("Virtude1");
+    obj.dataLink20:setDefaultValue("Virtude 01");
+    obj.dataLink20:setName("dataLink20");
 
     obj.checkVir_01_Vir = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.checkVir_01_Vir:setParent(obj.flowLayout11);
@@ -2772,25 +2628,25 @@ local function constructNew_frmScion2e()
     obj.checkVir_05_Vir:setAlign("right");
     obj.checkVir_05_Vir:setAutoChange(false);
 
-    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit16:setParent(obj.flowLayout11);
-    obj.edit16:setHorzTextAlign("trailing");
-    obj.edit16:setField("Virtude2");
-    obj.edit16:setName("edit16");
-    obj.edit16:setFontSize(14);
-    obj.edit16:setFontColor("#ffffff");
-    obj.edit16:setTextTrimming("character");
-    obj.edit16:setFontFamily("Constantia");
-    obj.edit16:setTransparent(true);
-    obj.edit16:setWidth(92);
-    lfm_setPropAsString(obj.edit16, "fontStyle", "italic");
-    obj.edit16:setTextPrompt("\"Virtude\"");
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit14:setParent(obj.flowLayout11);
+    obj.edit14:setHorzTextAlign("trailing");
+    obj.edit14:setField("Virtude2");
+    obj.edit14:setName("edit14");
+    obj.edit14:setFontSize(14);
+    obj.edit14:setFontColor("#ffffff");
+    obj.edit14:setTextTrimming("character");
+    obj.edit14:setFontFamily("Constantia");
+    obj.edit14:setTransparent(true);
+    obj.edit14:setWidth(92);
+    lfm_setPropAsString(obj.edit14, "fontStyle", "italic");
+    obj.edit14:setTextPrompt("\"Virtude\"");
 
-    obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink25:setParent(obj.flowLayout11);
-    obj.dataLink25:setField("Virtude2");
-    obj.dataLink25:setDefaultValue("Virtude 02");
-    obj.dataLink25:setName("dataLink25");
+    obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21:setParent(obj.flowLayout11);
+    obj.dataLink21:setField("Virtude2");
+    obj.dataLink21:setDefaultValue("Virtude 02");
+    obj.dataLink21:setName("dataLink21");
 
     obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.layout2);
@@ -2820,17 +2676,17 @@ local function constructNew_frmScion2e()
     obj.rectangle11:setColor("#272727");
     obj.rectangle11:setName("rectangle11");
 
-    obj.label44 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label44:setParent(obj.layout48);
-    obj.label44:setHorzTextAlign("center");
-    obj.label44:setText("H A B I L I D A D E S");
-    obj.label44:setFontSize(20);
-    obj.label44:setFontFamily("Constantia");
-    obj.label44:setAlign("client");
-    obj.label44:setName("label44");
-    obj.label44:setFontColor("white");
-    lfm_setPropAsString(obj.label44, "fontStyle", "bold");
-    obj.label44:setTextTrimming("character");
+    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label40:setParent(obj.layout48);
+    obj.label40:setHorzTextAlign("center");
+    obj.label40:setText("H A B I L I D A D E S");
+    obj.label40:setFontSize(20);
+    obj.label40:setFontFamily("Constantia");
+    obj.label40:setAlign("client");
+    obj.label40:setName("label40");
+    obj.label40:setFontColor("white");
+    lfm_setPropAsString(obj.label40, "fontStyle", "bold");
+    obj.label40:setTextTrimming("character");
 
     obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.layout2);
@@ -2884,17 +2740,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB10:setAlign("left");
     obj.nomeCheckB10:setMargins({top=3, left=20});
 
-    obj.label45 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label45:setParent(obj.rectangle12);
-    obj.label45:setAlign("left");
-    obj.label45:setWidth(100);
-    obj.label45:setText("Academia");
-    obj.label45:setName("label45");
-    obj.label45:setFontSize(14);
-    obj.label45:setFontColor("white");
-    lfm_setPropAsString(obj.label45, "fontStyle", "bold");
-    obj.label45:setTextTrimming("character");
-    obj.label45:setFontFamily("Constantia");
+    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label41:setParent(obj.rectangle12);
+    obj.label41:setAlign("left");
+    obj.label41:setWidth(100);
+    obj.label41:setText("Academia");
+    obj.label41:setName("label41");
+    obj.label41:setFontSize(14);
+    obj.label41:setFontColor("white");
+    lfm_setPropAsString(obj.label41, "fontStyle", "bold");
+    obj.label41:setTextTrimming("character");
+    obj.label41:setFontFamily("Constantia");
 
     obj.nomeBut10 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut10:setParent(obj.rectangle12);
@@ -2956,11 +2812,11 @@ local function constructNew_frmScion2e()
     obj.textEditor1:setFontSize(13);
     obj.textEditor1:setName("textEditor1");
 
-    obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink26:setParent(obj.rectangle14);
-    obj.dataLink26:setField("fldEnfase10");
-    obj.dataLink26:setDefaultValue("Ênfases");
-    obj.dataLink26:setName("dataLink26");
+    obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink22:setParent(obj.rectangle14);
+    obj.dataLink22:setField("fldEnfase10");
+    obj.dataLink22:setDefaultValue("Ênfases");
+    obj.dataLink22:setName("dataLink22");
 
     obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.rectangle12);
@@ -3027,17 +2883,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck10_05:setMargins({left=3});
     obj.nomeCheck10_05:setAutoChange(false);
 
-    obj.label46 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label46:setParent(obj.rectangle12);
-    obj.label46:setAlign("right");
-    obj.label46:setWidth(20);
-    obj.label46:setText(" ");
-    obj.label46:setName("label46");
-    obj.label46:setFontSize(14);
-    obj.label46:setFontColor("white");
-    lfm_setPropAsString(obj.label46, "fontStyle", "bold");
-    obj.label46:setTextTrimming("character");
-    obj.label46:setFontFamily("Constantia");
+    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label42:setParent(obj.rectangle12);
+    obj.label42:setAlign("right");
+    obj.label42:setWidth(20);
+    obj.label42:setText(" ");
+    obj.label42:setName("label42");
+    obj.label42:setFontSize(14);
+    obj.label42:setFontColor("white");
+    lfm_setPropAsString(obj.label42, "fontStyle", "bold");
+    obj.label42:setTextTrimming("character");
+    obj.label42:setFontFamily("Constantia");
 
     obj.flowPart22 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart22:setParent(obj.flowLayout12);
@@ -3062,17 +2918,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB11:setAlign("left");
     obj.nomeCheckB11:setMargins({top=3, left=20});
 
-    obj.label47 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label47:setParent(obj.rectangle15);
-    obj.label47:setAlign("left");
-    obj.label47:setWidth(100);
-    obj.label47:setText("Armas de Fogo");
-    obj.label47:setName("label47");
-    obj.label47:setFontSize(14);
-    obj.label47:setFontColor("white");
-    lfm_setPropAsString(obj.label47, "fontStyle", "bold");
-    obj.label47:setTextTrimming("character");
-    obj.label47:setFontFamily("Constantia");
+    obj.label43 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label43:setParent(obj.rectangle15);
+    obj.label43:setAlign("left");
+    obj.label43:setWidth(100);
+    obj.label43:setText("Armas de Fogo");
+    obj.label43:setName("label43");
+    obj.label43:setFontSize(14);
+    obj.label43:setFontColor("white");
+    lfm_setPropAsString(obj.label43, "fontStyle", "bold");
+    obj.label43:setTextTrimming("character");
+    obj.label43:setFontFamily("Constantia");
 
     obj.nomeBut11 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut11:setParent(obj.rectangle15);
@@ -3134,11 +2990,11 @@ local function constructNew_frmScion2e()
     obj.textEditor2:setFontSize(13);
     obj.textEditor2:setName("textEditor2");
 
-    obj.dataLink27 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink27:setParent(obj.rectangle17);
-    obj.dataLink27:setField("fldEnfase11");
-    obj.dataLink27:setDefaultValue("Ênfases");
-    obj.dataLink27:setName("dataLink27");
+    obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink23:setParent(obj.rectangle17);
+    obj.dataLink23:setField("fldEnfase11");
+    obj.dataLink23:setDefaultValue("Ênfases");
+    obj.dataLink23:setName("dataLink23");
 
     obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.rectangle15);
@@ -3205,17 +3061,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck11_05:setMargins({left=3});
     obj.nomeCheck11_05:setAutoChange(false);
 
-    obj.label48 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label48:setParent(obj.rectangle15);
-    obj.label48:setAlign("right");
-    obj.label48:setWidth(20);
-    obj.label48:setText(" ");
-    obj.label48:setName("label48");
-    obj.label48:setFontSize(14);
-    obj.label48:setFontColor("white");
-    lfm_setPropAsString(obj.label48, "fontStyle", "bold");
-    obj.label48:setTextTrimming("character");
-    obj.label48:setFontFamily("Constantia");
+    obj.label44 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label44:setParent(obj.rectangle15);
+    obj.label44:setAlign("right");
+    obj.label44:setWidth(20);
+    obj.label44:setText(" ");
+    obj.label44:setName("label44");
+    obj.label44:setFontSize(14);
+    obj.label44:setFontColor("white");
+    lfm_setPropAsString(obj.label44, "fontStyle", "bold");
+    obj.label44:setTextTrimming("character");
+    obj.label44:setFontFamily("Constantia");
 
     obj.flowPart23 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart23:setParent(obj.flowLayout12);
@@ -3240,17 +3096,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB12:setAlign("left");
     obj.nomeCheckB12:setMargins({top=3, left=20});
 
-    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label49:setParent(obj.rectangle18);
-    obj.label49:setAlign("left");
-    obj.label49:setWidth(100);
-    obj.label49:setText("Atletismo");
-    obj.label49:setName("label49");
-    obj.label49:setFontSize(14);
-    obj.label49:setFontColor("white");
-    lfm_setPropAsString(obj.label49, "fontStyle", "bold");
-    obj.label49:setTextTrimming("character");
-    obj.label49:setFontFamily("Constantia");
+    obj.label45 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label45:setParent(obj.rectangle18);
+    obj.label45:setAlign("left");
+    obj.label45:setWidth(100);
+    obj.label45:setText("Atletismo");
+    obj.label45:setName("label45");
+    obj.label45:setFontSize(14);
+    obj.label45:setFontColor("white");
+    lfm_setPropAsString(obj.label45, "fontStyle", "bold");
+    obj.label45:setTextTrimming("character");
+    obj.label45:setFontFamily("Constantia");
 
     obj.nomeBut12 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut12:setParent(obj.rectangle18);
@@ -3312,11 +3168,11 @@ local function constructNew_frmScion2e()
     obj.textEditor3:setFontSize(13);
     obj.textEditor3:setName("textEditor3");
 
-    obj.dataLink28 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink28:setParent(obj.rectangle20);
-    obj.dataLink28:setField("fldEnfase12");
-    obj.dataLink28:setDefaultValue("Ênfases");
-    obj.dataLink28:setName("dataLink28");
+    obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink24:setParent(obj.rectangle20);
+    obj.dataLink24:setField("fldEnfase12");
+    obj.dataLink24:setDefaultValue("Ênfases");
+    obj.dataLink24:setName("dataLink24");
 
     obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.rectangle18);
@@ -3383,17 +3239,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck12_05:setMargins({left=3});
     obj.nomeCheck12_05:setAutoChange(false);
 
-    obj.label50 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label50:setParent(obj.rectangle18);
-    obj.label50:setAlign("right");
-    obj.label50:setWidth(20);
-    obj.label50:setText(" ");
-    obj.label50:setName("label50");
-    obj.label50:setFontSize(14);
-    obj.label50:setFontColor("white");
-    lfm_setPropAsString(obj.label50, "fontStyle", "bold");
-    obj.label50:setTextTrimming("character");
-    obj.label50:setFontFamily("Constantia");
+    obj.label46 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label46:setParent(obj.rectangle18);
+    obj.label46:setAlign("right");
+    obj.label46:setWidth(20);
+    obj.label46:setText(" ");
+    obj.label46:setName("label46");
+    obj.label46:setFontSize(14);
+    obj.label46:setFontColor("white");
+    lfm_setPropAsString(obj.label46, "fontStyle", "bold");
+    obj.label46:setTextTrimming("character");
+    obj.label46:setFontFamily("Constantia");
 
     obj.flowPart24 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart24:setParent(obj.flowLayout12);
@@ -3418,17 +3274,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB13:setAlign("left");
     obj.nomeCheckB13:setMargins({top=3, left=20});
 
-    obj.label51 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label51:setParent(obj.rectangle21);
-    obj.label51:setAlign("left");
-    obj.label51:setWidth(100);
-    obj.label51:setText("Briga");
-    obj.label51:setName("label51");
-    obj.label51:setFontSize(14);
-    obj.label51:setFontColor("white");
-    lfm_setPropAsString(obj.label51, "fontStyle", "bold");
-    obj.label51:setTextTrimming("character");
-    obj.label51:setFontFamily("Constantia");
+    obj.label47 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label47:setParent(obj.rectangle21);
+    obj.label47:setAlign("left");
+    obj.label47:setWidth(100);
+    obj.label47:setText("Briga");
+    obj.label47:setName("label47");
+    obj.label47:setFontSize(14);
+    obj.label47:setFontColor("white");
+    lfm_setPropAsString(obj.label47, "fontStyle", "bold");
+    obj.label47:setTextTrimming("character");
+    obj.label47:setFontFamily("Constantia");
 
     obj.nomeBut13 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut13:setParent(obj.rectangle21);
@@ -3490,11 +3346,11 @@ local function constructNew_frmScion2e()
     obj.textEditor4:setFontSize(13);
     obj.textEditor4:setName("textEditor4");
 
-    obj.dataLink29 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink29:setParent(obj.rectangle23);
-    obj.dataLink29:setField("fldEnfase13");
-    obj.dataLink29:setDefaultValue("Ênfases");
-    obj.dataLink29:setName("dataLink29");
+    obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink25:setParent(obj.rectangle23);
+    obj.dataLink25:setField("fldEnfase13");
+    obj.dataLink25:setDefaultValue("Ênfases");
+    obj.dataLink25:setName("dataLink25");
 
     obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.rectangle21);
@@ -3561,17 +3417,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck13_05:setMargins({left=3});
     obj.nomeCheck13_05:setAutoChange(false);
 
-    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label52:setParent(obj.rectangle21);
-    obj.label52:setAlign("right");
-    obj.label52:setWidth(20);
-    obj.label52:setText(" ");
-    obj.label52:setName("label52");
-    obj.label52:setFontSize(14);
-    obj.label52:setFontColor("white");
-    lfm_setPropAsString(obj.label52, "fontStyle", "bold");
-    obj.label52:setTextTrimming("character");
-    obj.label52:setFontFamily("Constantia");
+    obj.label48 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label48:setParent(obj.rectangle21);
+    obj.label48:setAlign("right");
+    obj.label48:setWidth(20);
+    obj.label48:setText(" ");
+    obj.label48:setName("label48");
+    obj.label48:setFontSize(14);
+    obj.label48:setFontColor("white");
+    lfm_setPropAsString(obj.label48, "fontStyle", "bold");
+    obj.label48:setTextTrimming("character");
+    obj.label48:setFontFamily("Constantia");
 
     obj.flowPart25 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart25:setParent(obj.flowLayout12);
@@ -3596,17 +3452,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB14:setAlign("left");
     obj.nomeCheckB14:setMargins({top=3, left=20});
 
-    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label53:setParent(obj.rectangle24);
-    obj.label53:setAlign("left");
-    obj.label53:setWidth(100);
-    obj.label53:setText("Ciência");
-    obj.label53:setName("label53");
-    obj.label53:setFontSize(14);
-    obj.label53:setFontColor("white");
-    lfm_setPropAsString(obj.label53, "fontStyle", "bold");
-    obj.label53:setTextTrimming("character");
-    obj.label53:setFontFamily("Constantia");
+    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label49:setParent(obj.rectangle24);
+    obj.label49:setAlign("left");
+    obj.label49:setWidth(100);
+    obj.label49:setText("Ciência");
+    obj.label49:setName("label49");
+    obj.label49:setFontSize(14);
+    obj.label49:setFontColor("white");
+    lfm_setPropAsString(obj.label49, "fontStyle", "bold");
+    obj.label49:setTextTrimming("character");
+    obj.label49:setFontFamily("Constantia");
 
     obj.nomeBut14 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut14:setParent(obj.rectangle24);
@@ -3668,11 +3524,11 @@ local function constructNew_frmScion2e()
     obj.textEditor5:setFontSize(13);
     obj.textEditor5:setName("textEditor5");
 
-    obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink30:setParent(obj.rectangle26);
-    obj.dataLink30:setField("fldEnfase14");
-    obj.dataLink30:setDefaultValue("Ênfases");
-    obj.dataLink30:setName("dataLink30");
+    obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink26:setParent(obj.rectangle26);
+    obj.dataLink26:setField("fldEnfase14");
+    obj.dataLink26:setDefaultValue("Ênfases");
+    obj.dataLink26:setName("dataLink26");
 
     obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.rectangle24);
@@ -3739,17 +3595,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck14_05:setMargins({left=3});
     obj.nomeCheck14_05:setAutoChange(false);
 
-    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label54:setParent(obj.rectangle24);
-    obj.label54:setAlign("right");
-    obj.label54:setWidth(20);
-    obj.label54:setText(" ");
-    obj.label54:setName("label54");
-    obj.label54:setFontSize(14);
-    obj.label54:setFontColor("white");
-    lfm_setPropAsString(obj.label54, "fontStyle", "bold");
-    obj.label54:setTextTrimming("character");
-    obj.label54:setFontFamily("Constantia");
+    obj.label50 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label50:setParent(obj.rectangle24);
+    obj.label50:setAlign("right");
+    obj.label50:setWidth(20);
+    obj.label50:setText(" ");
+    obj.label50:setName("label50");
+    obj.label50:setFontSize(14);
+    obj.label50:setFontColor("white");
+    lfm_setPropAsString(obj.label50, "fontStyle", "bold");
+    obj.label50:setTextTrimming("character");
+    obj.label50:setFontFamily("Constantia");
 
     obj.flowPart26 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart26:setParent(obj.flowLayout12);
@@ -3774,17 +3630,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB15:setAlign("left");
     obj.nomeCheckB15:setMargins({top=3, left=20});
 
-    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label55:setParent(obj.rectangle27);
-    obj.label55:setAlign("left");
-    obj.label55:setWidth(100);
-    obj.label55:setText("Condução");
-    obj.label55:setName("label55");
-    obj.label55:setFontSize(14);
-    obj.label55:setFontColor("white");
-    lfm_setPropAsString(obj.label55, "fontStyle", "bold");
-    obj.label55:setTextTrimming("character");
-    obj.label55:setFontFamily("Constantia");
+    obj.label51 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label51:setParent(obj.rectangle27);
+    obj.label51:setAlign("left");
+    obj.label51:setWidth(100);
+    obj.label51:setText("Condução");
+    obj.label51:setName("label51");
+    obj.label51:setFontSize(14);
+    obj.label51:setFontColor("white");
+    lfm_setPropAsString(obj.label51, "fontStyle", "bold");
+    obj.label51:setTextTrimming("character");
+    obj.label51:setFontFamily("Constantia");
 
     obj.nomeBut15 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut15:setParent(obj.rectangle27);
@@ -3846,11 +3702,11 @@ local function constructNew_frmScion2e()
     obj.textEditor6:setFontSize(13);
     obj.textEditor6:setName("textEditor6");
 
-    obj.dataLink31 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink31:setParent(obj.rectangle29);
-    obj.dataLink31:setField("fldEnfase15");
-    obj.dataLink31:setDefaultValue("Ênfases");
-    obj.dataLink31:setName("dataLink31");
+    obj.dataLink27 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink27:setParent(obj.rectangle29);
+    obj.dataLink27:setField("fldEnfase15");
+    obj.dataLink27:setDefaultValue("Ênfases");
+    obj.dataLink27:setName("dataLink27");
 
     obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.rectangle27);
@@ -3917,17 +3773,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck15_05:setMargins({left=3});
     obj.nomeCheck15_05:setAutoChange(false);
 
-    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label56:setParent(obj.rectangle27);
-    obj.label56:setAlign("right");
-    obj.label56:setWidth(20);
-    obj.label56:setText(" ");
-    obj.label56:setName("label56");
-    obj.label56:setFontSize(14);
-    obj.label56:setFontColor("white");
-    lfm_setPropAsString(obj.label56, "fontStyle", "bold");
-    obj.label56:setTextTrimming("character");
-    obj.label56:setFontFamily("Constantia");
+    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label52:setParent(obj.rectangle27);
+    obj.label52:setAlign("right");
+    obj.label52:setWidth(20);
+    obj.label52:setText(" ");
+    obj.label52:setName("label52");
+    obj.label52:setFontSize(14);
+    obj.label52:setFontColor("white");
+    lfm_setPropAsString(obj.label52, "fontStyle", "bold");
+    obj.label52:setTextTrimming("character");
+    obj.label52:setFontFamily("Constantia");
 
     obj.flowPart27 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart27:setParent(obj.flowLayout12);
@@ -3952,17 +3808,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB16:setAlign("left");
     obj.nomeCheckB16:setMargins({top=3, left=20});
 
-    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label57:setParent(obj.rectangle30);
-    obj.label57:setAlign("left");
-    obj.label57:setWidth(100);
-    obj.label57:setText("Cultura");
-    obj.label57:setName("label57");
-    obj.label57:setFontSize(14);
-    obj.label57:setFontColor("white");
-    lfm_setPropAsString(obj.label57, "fontStyle", "bold");
-    obj.label57:setTextTrimming("character");
-    obj.label57:setFontFamily("Constantia");
+    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label53:setParent(obj.rectangle30);
+    obj.label53:setAlign("left");
+    obj.label53:setWidth(100);
+    obj.label53:setText("Cultura");
+    obj.label53:setName("label53");
+    obj.label53:setFontSize(14);
+    obj.label53:setFontColor("white");
+    lfm_setPropAsString(obj.label53, "fontStyle", "bold");
+    obj.label53:setTextTrimming("character");
+    obj.label53:setFontFamily("Constantia");
 
     obj.nomeBut16 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut16:setParent(obj.rectangle30);
@@ -4024,11 +3880,11 @@ local function constructNew_frmScion2e()
     obj.textEditor7:setFontSize(13);
     obj.textEditor7:setName("textEditor7");
 
-    obj.dataLink32 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink32:setParent(obj.rectangle32);
-    obj.dataLink32:setField("fldEnfase16");
-    obj.dataLink32:setDefaultValue("Ênfases");
-    obj.dataLink32:setName("dataLink32");
+    obj.dataLink28 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink28:setParent(obj.rectangle32);
+    obj.dataLink28:setField("fldEnfase16");
+    obj.dataLink28:setDefaultValue("Ênfases");
+    obj.dataLink28:setName("dataLink28");
 
     obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.rectangle30);
@@ -4095,17 +3951,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck16_05:setMargins({left=3});
     obj.nomeCheck16_05:setAutoChange(false);
 
-    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label58:setParent(obj.rectangle30);
-    obj.label58:setAlign("right");
-    obj.label58:setWidth(20);
-    obj.label58:setText(" ");
-    obj.label58:setName("label58");
-    obj.label58:setFontSize(14);
-    obj.label58:setFontColor("white");
-    lfm_setPropAsString(obj.label58, "fontStyle", "bold");
-    obj.label58:setTextTrimming("character");
-    obj.label58:setFontFamily("Constantia");
+    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label54:setParent(obj.rectangle30);
+    obj.label54:setAlign("right");
+    obj.label54:setWidth(20);
+    obj.label54:setText(" ");
+    obj.label54:setName("label54");
+    obj.label54:setFontSize(14);
+    obj.label54:setFontColor("white");
+    lfm_setPropAsString(obj.label54, "fontStyle", "bold");
+    obj.label54:setTextTrimming("character");
+    obj.label54:setFontFamily("Constantia");
 
     obj.flowPart28 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart28:setParent(obj.flowLayout12);
@@ -4130,17 +3986,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB17:setAlign("left");
     obj.nomeCheckB17:setMargins({top=3, left=20});
 
-    obj.label59 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label59:setParent(obj.rectangle33);
-    obj.label59:setAlign("left");
-    obj.label59:setWidth(100);
-    obj.label59:setText("Empatia");
-    obj.label59:setName("label59");
-    obj.label59:setFontSize(14);
-    obj.label59:setFontColor("white");
-    lfm_setPropAsString(obj.label59, "fontStyle", "bold");
-    obj.label59:setTextTrimming("character");
-    obj.label59:setFontFamily("Constantia");
+    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label55:setParent(obj.rectangle33);
+    obj.label55:setAlign("left");
+    obj.label55:setWidth(100);
+    obj.label55:setText("Empatia");
+    obj.label55:setName("label55");
+    obj.label55:setFontSize(14);
+    obj.label55:setFontColor("white");
+    lfm_setPropAsString(obj.label55, "fontStyle", "bold");
+    obj.label55:setTextTrimming("character");
+    obj.label55:setFontFamily("Constantia");
 
     obj.nomeBut17 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut17:setParent(obj.rectangle33);
@@ -4202,11 +4058,11 @@ local function constructNew_frmScion2e()
     obj.textEditor8:setFontSize(13);
     obj.textEditor8:setName("textEditor8");
 
-    obj.dataLink33 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink33:setParent(obj.rectangle35);
-    obj.dataLink33:setField("fldEnfase17");
-    obj.dataLink33:setDefaultValue("Ênfases");
-    obj.dataLink33:setName("dataLink33");
+    obj.dataLink29 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink29:setParent(obj.rectangle35);
+    obj.dataLink29:setField("fldEnfase17");
+    obj.dataLink29:setDefaultValue("Ênfases");
+    obj.dataLink29:setName("dataLink29");
 
     obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.rectangle33);
@@ -4273,17 +4129,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck17_05:setMargins({left=3});
     obj.nomeCheck17_05:setAutoChange(false);
 
-    obj.label60 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label60:setParent(obj.rectangle33);
-    obj.label60:setAlign("right");
-    obj.label60:setWidth(20);
-    obj.label60:setText(" ");
-    obj.label60:setName("label60");
-    obj.label60:setFontSize(14);
-    obj.label60:setFontColor("white");
-    lfm_setPropAsString(obj.label60, "fontStyle", "bold");
-    obj.label60:setTextTrimming("character");
-    obj.label60:setFontFamily("Constantia");
+    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label56:setParent(obj.rectangle33);
+    obj.label56:setAlign("right");
+    obj.label56:setWidth(20);
+    obj.label56:setText(" ");
+    obj.label56:setName("label56");
+    obj.label56:setFontSize(14);
+    obj.label56:setFontColor("white");
+    lfm_setPropAsString(obj.label56, "fontStyle", "bold");
+    obj.label56:setTextTrimming("character");
+    obj.label56:setFontFamily("Constantia");
 
     obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.layout49);
@@ -4331,17 +4187,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB18:setAlign("left");
     obj.nomeCheckB18:setMargins({top=3, left=20});
 
-    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label61:setParent(obj.rectangle36);
-    obj.label61:setAlign("left");
-    obj.label61:setWidth(100);
-    obj.label61:setText("Integridade");
-    obj.label61:setName("label61");
-    obj.label61:setFontSize(14);
-    obj.label61:setFontColor("white");
-    lfm_setPropAsString(obj.label61, "fontStyle", "bold");
-    obj.label61:setTextTrimming("character");
-    obj.label61:setFontFamily("Constantia");
+    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label57:setParent(obj.rectangle36);
+    obj.label57:setAlign("left");
+    obj.label57:setWidth(100);
+    obj.label57:setText("Integridade");
+    obj.label57:setName("label57");
+    obj.label57:setFontSize(14);
+    obj.label57:setFontColor("white");
+    lfm_setPropAsString(obj.label57, "fontStyle", "bold");
+    obj.label57:setTextTrimming("character");
+    obj.label57:setFontFamily("Constantia");
 
     obj.nomeBut18 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut18:setParent(obj.rectangle36);
@@ -4403,11 +4259,11 @@ local function constructNew_frmScion2e()
     obj.textEditor9:setFontSize(13);
     obj.textEditor9:setName("textEditor9");
 
-    obj.dataLink34 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink34:setParent(obj.rectangle38);
-    obj.dataLink34:setField("fldEnfase18");
-    obj.dataLink34:setDefaultValue("Ênfases");
-    obj.dataLink34:setName("dataLink34");
+    obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink30:setParent(obj.rectangle38);
+    obj.dataLink30:setField("fldEnfase18");
+    obj.dataLink30:setDefaultValue("Ênfases");
+    obj.dataLink30:setName("dataLink30");
 
     obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.rectangle36);
@@ -4474,17 +4330,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck18_05:setMargins({left=3});
     obj.nomeCheck18_05:setAutoChange(false);
 
-    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label62:setParent(obj.rectangle36);
-    obj.label62:setAlign("right");
-    obj.label62:setWidth(20);
-    obj.label62:setText(" ");
-    obj.label62:setName("label62");
-    obj.label62:setFontSize(14);
-    obj.label62:setFontColor("white");
-    lfm_setPropAsString(obj.label62, "fontStyle", "bold");
-    obj.label62:setTextTrimming("character");
-    obj.label62:setFontFamily("Constantia");
+    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label58:setParent(obj.rectangle36);
+    obj.label58:setAlign("right");
+    obj.label58:setWidth(20);
+    obj.label58:setText(" ");
+    obj.label58:setName("label58");
+    obj.label58:setFontSize(14);
+    obj.label58:setFontColor("white");
+    lfm_setPropAsString(obj.label58, "fontStyle", "bold");
+    obj.label58:setTextTrimming("character");
+    obj.label58:setFontFamily("Constantia");
 
     obj.flowPart31 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart31:setParent(obj.flowLayout13);
@@ -4509,17 +4365,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB19:setAlign("left");
     obj.nomeCheckB19:setMargins({top=3, left=20});
 
-    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label63:setParent(obj.rectangle39);
-    obj.label63:setAlign("left");
-    obj.label63:setWidth(100);
-    obj.label63:setText("Liderança");
-    obj.label63:setName("label63");
-    obj.label63:setFontSize(14);
-    obj.label63:setFontColor("white");
-    lfm_setPropAsString(obj.label63, "fontStyle", "bold");
-    obj.label63:setTextTrimming("character");
-    obj.label63:setFontFamily("Constantia");
+    obj.label59 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label59:setParent(obj.rectangle39);
+    obj.label59:setAlign("left");
+    obj.label59:setWidth(100);
+    obj.label59:setText("Liderança");
+    obj.label59:setName("label59");
+    obj.label59:setFontSize(14);
+    obj.label59:setFontColor("white");
+    lfm_setPropAsString(obj.label59, "fontStyle", "bold");
+    obj.label59:setTextTrimming("character");
+    obj.label59:setFontFamily("Constantia");
 
     obj.nomeBut19 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut19:setParent(obj.rectangle39);
@@ -4581,11 +4437,11 @@ local function constructNew_frmScion2e()
     obj.textEditor10:setFontSize(13);
     obj.textEditor10:setName("textEditor10");
 
-    obj.dataLink35 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink35:setParent(obj.rectangle41);
-    obj.dataLink35:setField("fldEnfase19");
-    obj.dataLink35:setDefaultValue("Ênfases");
-    obj.dataLink35:setName("dataLink35");
+    obj.dataLink31 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink31:setParent(obj.rectangle41);
+    obj.dataLink31:setField("fldEnfase19");
+    obj.dataLink31:setDefaultValue("Ênfases");
+    obj.dataLink31:setName("dataLink31");
 
     obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.rectangle39);
@@ -4652,17 +4508,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck19_05:setMargins({left=3});
     obj.nomeCheck19_05:setAutoChange(false);
 
-    obj.label64 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label64:setParent(obj.rectangle39);
-    obj.label64:setAlign("right");
-    obj.label64:setWidth(20);
-    obj.label64:setText(" ");
-    obj.label64:setName("label64");
-    obj.label64:setFontSize(14);
-    obj.label64:setFontColor("white");
-    lfm_setPropAsString(obj.label64, "fontStyle", "bold");
-    obj.label64:setTextTrimming("character");
-    obj.label64:setFontFamily("Constantia");
+    obj.label60 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label60:setParent(obj.rectangle39);
+    obj.label60:setAlign("right");
+    obj.label60:setWidth(20);
+    obj.label60:setText(" ");
+    obj.label60:setName("label60");
+    obj.label60:setFontSize(14);
+    obj.label60:setFontColor("white");
+    lfm_setPropAsString(obj.label60, "fontStyle", "bold");
+    obj.label60:setTextTrimming("character");
+    obj.label60:setFontFamily("Constantia");
 
     obj.flowPart32 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart32:setParent(obj.flowLayout13);
@@ -4687,17 +4543,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB20:setAlign("left");
     obj.nomeCheckB20:setMargins({top=3, left=20});
 
-    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label65:setParent(obj.rectangle42);
-    obj.label65:setAlign("left");
-    obj.label65:setWidth(100);
-    obj.label65:setText("Medicina");
-    obj.label65:setName("label65");
-    obj.label65:setFontSize(14);
-    obj.label65:setFontColor("white");
-    lfm_setPropAsString(obj.label65, "fontStyle", "bold");
-    obj.label65:setTextTrimming("character");
-    obj.label65:setFontFamily("Constantia");
+    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label61:setParent(obj.rectangle42);
+    obj.label61:setAlign("left");
+    obj.label61:setWidth(100);
+    obj.label61:setText("Medicina");
+    obj.label61:setName("label61");
+    obj.label61:setFontSize(14);
+    obj.label61:setFontColor("white");
+    lfm_setPropAsString(obj.label61, "fontStyle", "bold");
+    obj.label61:setTextTrimming("character");
+    obj.label61:setFontFamily("Constantia");
 
     obj.nomeBut20 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut20:setParent(obj.rectangle42);
@@ -4759,11 +4615,11 @@ local function constructNew_frmScion2e()
     obj.textEditor11:setFontSize(13);
     obj.textEditor11:setName("textEditor11");
 
-    obj.dataLink36 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink36:setParent(obj.rectangle44);
-    obj.dataLink36:setField("fldEnfase20");
-    obj.dataLink36:setDefaultValue("Ênfases");
-    obj.dataLink36:setName("dataLink36");
+    obj.dataLink32 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink32:setParent(obj.rectangle44);
+    obj.dataLink32:setField("fldEnfase20");
+    obj.dataLink32:setDefaultValue("Ênfases");
+    obj.dataLink32:setName("dataLink32");
 
     obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.rectangle42);
@@ -4830,17 +4686,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck20_05:setMargins({left=3});
     obj.nomeCheck20_05:setAutoChange(false);
 
-    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label66:setParent(obj.rectangle42);
-    obj.label66:setAlign("right");
-    obj.label66:setWidth(20);
-    obj.label66:setText(" ");
-    obj.label66:setName("label66");
-    obj.label66:setFontSize(14);
-    obj.label66:setFontColor("white");
-    lfm_setPropAsString(obj.label66, "fontStyle", "bold");
-    obj.label66:setTextTrimming("character");
-    obj.label66:setFontFamily("Constantia");
+    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label62:setParent(obj.rectangle42);
+    obj.label62:setAlign("right");
+    obj.label62:setWidth(20);
+    obj.label62:setText(" ");
+    obj.label62:setName("label62");
+    obj.label62:setFontSize(14);
+    obj.label62:setFontColor("white");
+    lfm_setPropAsString(obj.label62, "fontStyle", "bold");
+    obj.label62:setTextTrimming("character");
+    obj.label62:setFontFamily("Constantia");
 
     obj.flowPart33 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart33:setParent(obj.flowLayout13);
@@ -4865,17 +4721,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB21:setAlign("left");
     obj.nomeCheckB21:setMargins({top=3, left=20});
 
-    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label67:setParent(obj.rectangle45);
-    obj.label67:setAlign("left");
-    obj.label67:setWidth(100);
-    obj.label67:setText("Ocultismo");
-    obj.label67:setName("label67");
-    obj.label67:setFontSize(14);
-    obj.label67:setFontColor("white");
-    lfm_setPropAsString(obj.label67, "fontStyle", "bold");
-    obj.label67:setTextTrimming("character");
-    obj.label67:setFontFamily("Constantia");
+    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label63:setParent(obj.rectangle45);
+    obj.label63:setAlign("left");
+    obj.label63:setWidth(100);
+    obj.label63:setText("Ocultismo");
+    obj.label63:setName("label63");
+    obj.label63:setFontSize(14);
+    obj.label63:setFontColor("white");
+    lfm_setPropAsString(obj.label63, "fontStyle", "bold");
+    obj.label63:setTextTrimming("character");
+    obj.label63:setFontFamily("Constantia");
 
     obj.nomeBut21 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut21:setParent(obj.rectangle45);
@@ -4937,11 +4793,11 @@ local function constructNew_frmScion2e()
     obj.textEditor12:setFontSize(13);
     obj.textEditor12:setName("textEditor12");
 
-    obj.dataLink37 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink37:setParent(obj.rectangle47);
-    obj.dataLink37:setField("fldEnfase21");
-    obj.dataLink37:setDefaultValue("Ênfases");
-    obj.dataLink37:setName("dataLink37");
+    obj.dataLink33 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink33:setParent(obj.rectangle47);
+    obj.dataLink33:setField("fldEnfase21");
+    obj.dataLink33:setDefaultValue("Ênfases");
+    obj.dataLink33:setName("dataLink33");
 
     obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.rectangle45);
@@ -5008,17 +4864,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck21_05:setMargins({left=3});
     obj.nomeCheck21_05:setAutoChange(false);
 
-    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label68:setParent(obj.rectangle45);
-    obj.label68:setAlign("right");
-    obj.label68:setWidth(20);
-    obj.label68:setText(" ");
-    obj.label68:setName("label68");
-    obj.label68:setFontSize(14);
-    obj.label68:setFontColor("white");
-    lfm_setPropAsString(obj.label68, "fontStyle", "bold");
-    obj.label68:setTextTrimming("character");
-    obj.label68:setFontFamily("Constantia");
+    obj.label64 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label64:setParent(obj.rectangle45);
+    obj.label64:setAlign("right");
+    obj.label64:setWidth(20);
+    obj.label64:setText(" ");
+    obj.label64:setName("label64");
+    obj.label64:setFontSize(14);
+    obj.label64:setFontColor("white");
+    lfm_setPropAsString(obj.label64, "fontStyle", "bold");
+    obj.label64:setTextTrimming("character");
+    obj.label64:setFontFamily("Constantia");
 
     obj.flowPart34 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart34:setParent(obj.flowLayout13);
@@ -5043,17 +4899,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB22:setAlign("left");
     obj.nomeCheckB22:setMargins({top=3, left=20});
 
-    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label69:setParent(obj.rectangle48);
-    obj.label69:setAlign("left");
-    obj.label69:setWidth(100);
-    obj.label69:setText("Persuasão");
-    obj.label69:setName("label69");
-    obj.label69:setFontSize(14);
-    obj.label69:setFontColor("white");
-    lfm_setPropAsString(obj.label69, "fontStyle", "bold");
-    obj.label69:setTextTrimming("character");
-    obj.label69:setFontFamily("Constantia");
+    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label65:setParent(obj.rectangle48);
+    obj.label65:setAlign("left");
+    obj.label65:setWidth(100);
+    obj.label65:setText("Persuasão");
+    obj.label65:setName("label65");
+    obj.label65:setFontSize(14);
+    obj.label65:setFontColor("white");
+    lfm_setPropAsString(obj.label65, "fontStyle", "bold");
+    obj.label65:setTextTrimming("character");
+    obj.label65:setFontFamily("Constantia");
 
     obj.nomeBut22 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut22:setParent(obj.rectangle48);
@@ -5115,11 +4971,11 @@ local function constructNew_frmScion2e()
     obj.textEditor13:setFontSize(13);
     obj.textEditor13:setName("textEditor13");
 
-    obj.dataLink38 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink38:setParent(obj.rectangle50);
-    obj.dataLink38:setField("fldEnfase22");
-    obj.dataLink38:setDefaultValue("Ênfases");
-    obj.dataLink38:setName("dataLink38");
+    obj.dataLink34 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink34:setParent(obj.rectangle50);
+    obj.dataLink34:setField("fldEnfase22");
+    obj.dataLink34:setDefaultValue("Ênfases");
+    obj.dataLink34:setName("dataLink34");
 
     obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.rectangle48);
@@ -5186,17 +5042,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck22_05:setMargins({left=3});
     obj.nomeCheck22_05:setAutoChange(false);
 
-    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label70:setParent(obj.rectangle48);
-    obj.label70:setAlign("right");
-    obj.label70:setWidth(20);
-    obj.label70:setText(" ");
-    obj.label70:setName("label70");
-    obj.label70:setFontSize(14);
-    obj.label70:setFontColor("white");
-    lfm_setPropAsString(obj.label70, "fontStyle", "bold");
-    obj.label70:setTextTrimming("character");
-    obj.label70:setFontFamily("Constantia");
+    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label66:setParent(obj.rectangle48);
+    obj.label66:setAlign("right");
+    obj.label66:setWidth(20);
+    obj.label66:setText(" ");
+    obj.label66:setName("label66");
+    obj.label66:setFontSize(14);
+    obj.label66:setFontColor("white");
+    lfm_setPropAsString(obj.label66, "fontStyle", "bold");
+    obj.label66:setTextTrimming("character");
+    obj.label66:setFontFamily("Constantia");
 
     obj.flowPart35 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart35:setParent(obj.flowLayout13);
@@ -5221,17 +5077,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB23:setAlign("left");
     obj.nomeCheckB23:setMargins({top=3, left=20});
 
-    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label71:setParent(obj.rectangle51);
-    obj.label71:setAlign("left");
-    obj.label71:setWidth(100);
-    obj.label71:setText("Sobrevivência");
-    obj.label71:setName("label71");
-    obj.label71:setFontSize(14);
-    obj.label71:setFontColor("white");
-    lfm_setPropAsString(obj.label71, "fontStyle", "bold");
-    obj.label71:setTextTrimming("character");
-    obj.label71:setFontFamily("Constantia");
+    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label67:setParent(obj.rectangle51);
+    obj.label67:setAlign("left");
+    obj.label67:setWidth(100);
+    obj.label67:setText("Sobrevivência");
+    obj.label67:setName("label67");
+    obj.label67:setFontSize(14);
+    obj.label67:setFontColor("white");
+    lfm_setPropAsString(obj.label67, "fontStyle", "bold");
+    obj.label67:setTextTrimming("character");
+    obj.label67:setFontFamily("Constantia");
 
     obj.nomeBut23 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut23:setParent(obj.rectangle51);
@@ -5293,11 +5149,11 @@ local function constructNew_frmScion2e()
     obj.textEditor14:setFontSize(13);
     obj.textEditor14:setName("textEditor14");
 
-    obj.dataLink39 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink39:setParent(obj.rectangle53);
-    obj.dataLink39:setField("fldEnfase23");
-    obj.dataLink39:setDefaultValue("Ênfases");
-    obj.dataLink39:setName("dataLink39");
+    obj.dataLink35 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink35:setParent(obj.rectangle53);
+    obj.dataLink35:setField("fldEnfase23");
+    obj.dataLink35:setDefaultValue("Ênfases");
+    obj.dataLink35:setName("dataLink35");
 
     obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.rectangle51);
@@ -5364,17 +5220,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck23_05:setMargins({left=3});
     obj.nomeCheck23_05:setAutoChange(false);
 
-    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label72:setParent(obj.rectangle51);
-    obj.label72:setAlign("right");
-    obj.label72:setWidth(20);
-    obj.label72:setText(" ");
-    obj.label72:setName("label72");
-    obj.label72:setFontSize(14);
-    obj.label72:setFontColor("white");
-    lfm_setPropAsString(obj.label72, "fontStyle", "bold");
-    obj.label72:setTextTrimming("character");
-    obj.label72:setFontFamily("Constantia");
+    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label68:setParent(obj.rectangle51);
+    obj.label68:setAlign("right");
+    obj.label68:setWidth(20);
+    obj.label68:setText(" ");
+    obj.label68:setName("label68");
+    obj.label68:setFontSize(14);
+    obj.label68:setFontColor("white");
+    lfm_setPropAsString(obj.label68, "fontStyle", "bold");
+    obj.label68:setTextTrimming("character");
+    obj.label68:setFontFamily("Constantia");
 
     obj.flowPart36 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart36:setParent(obj.flowLayout13);
@@ -5399,17 +5255,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB24:setAlign("left");
     obj.nomeCheckB24:setMargins({top=3, left=20});
 
-    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label73:setParent(obj.rectangle54);
-    obj.label73:setAlign("left");
-    obj.label73:setWidth(100);
-    obj.label73:setText("Subterfúgio");
-    obj.label73:setName("label73");
-    obj.label73:setFontSize(14);
-    obj.label73:setFontColor("white");
-    lfm_setPropAsString(obj.label73, "fontStyle", "bold");
-    obj.label73:setTextTrimming("character");
-    obj.label73:setFontFamily("Constantia");
+    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label69:setParent(obj.rectangle54);
+    obj.label69:setAlign("left");
+    obj.label69:setWidth(100);
+    obj.label69:setText("Subterfúgio");
+    obj.label69:setName("label69");
+    obj.label69:setFontSize(14);
+    obj.label69:setFontColor("white");
+    lfm_setPropAsString(obj.label69, "fontStyle", "bold");
+    obj.label69:setTextTrimming("character");
+    obj.label69:setFontFamily("Constantia");
 
     obj.nomeBut24 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut24:setParent(obj.rectangle54);
@@ -5471,11 +5327,11 @@ local function constructNew_frmScion2e()
     obj.textEditor15:setFontSize(13);
     obj.textEditor15:setName("textEditor15");
 
-    obj.dataLink40 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink40:setParent(obj.rectangle56);
-    obj.dataLink40:setField("fldEnfase24");
-    obj.dataLink40:setDefaultValue("Ênfases");
-    obj.dataLink40:setName("dataLink40");
+    obj.dataLink36 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink36:setParent(obj.rectangle56);
+    obj.dataLink36:setField("fldEnfase24");
+    obj.dataLink36:setDefaultValue("Ênfases");
+    obj.dataLink36:setName("dataLink36");
 
     obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.rectangle54);
@@ -5542,17 +5398,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck24_05:setMargins({left=3});
     obj.nomeCheck24_05:setAutoChange(false);
 
-    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label74:setParent(obj.rectangle54);
-    obj.label74:setAlign("right");
-    obj.label74:setWidth(20);
-    obj.label74:setText(" ");
-    obj.label74:setName("label74");
-    obj.label74:setFontSize(14);
-    obj.label74:setFontColor("white");
-    lfm_setPropAsString(obj.label74, "fontStyle", "bold");
-    obj.label74:setTextTrimming("character");
-    obj.label74:setFontFamily("Constantia");
+    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label70:setParent(obj.rectangle54);
+    obj.label70:setAlign("right");
+    obj.label70:setWidth(20);
+    obj.label70:setText(" ");
+    obj.label70:setName("label70");
+    obj.label70:setFontSize(14);
+    obj.label70:setFontColor("white");
+    lfm_setPropAsString(obj.label70, "fontStyle", "bold");
+    obj.label70:setTextTrimming("character");
+    obj.label70:setFontFamily("Constantia");
 
     obj.flowPart37 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart37:setParent(obj.flowLayout13);
@@ -5577,17 +5433,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheckB25:setAlign("left");
     obj.nomeCheckB25:setMargins({top=3, left=20});
 
-    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label75:setParent(obj.rectangle57);
-    obj.label75:setAlign("left");
-    obj.label75:setWidth(100);
-    obj.label75:setText("Tecnologia");
-    obj.label75:setName("label75");
-    obj.label75:setFontSize(14);
-    obj.label75:setFontColor("white");
-    lfm_setPropAsString(obj.label75, "fontStyle", "bold");
-    obj.label75:setTextTrimming("character");
-    obj.label75:setFontFamily("Constantia");
+    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label71:setParent(obj.rectangle57);
+    obj.label71:setAlign("left");
+    obj.label71:setWidth(100);
+    obj.label71:setText("Tecnologia");
+    obj.label71:setName("label71");
+    obj.label71:setFontSize(14);
+    obj.label71:setFontColor("white");
+    lfm_setPropAsString(obj.label71, "fontStyle", "bold");
+    obj.label71:setTextTrimming("character");
+    obj.label71:setFontFamily("Constantia");
 
     obj.nomeBut25 = GUI.fromHandle(_obj_newObject("button"));
     obj.nomeBut25:setParent(obj.rectangle57);
@@ -5649,11 +5505,11 @@ local function constructNew_frmScion2e()
     obj.textEditor16:setFontSize(13);
     obj.textEditor16:setName("textEditor16");
 
-    obj.dataLink41 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink41:setParent(obj.rectangle59);
-    obj.dataLink41:setField("fldEnfase25");
-    obj.dataLink41:setDefaultValue("Ênfases");
-    obj.dataLink41:setName("dataLink41");
+    obj.dataLink37 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink37:setParent(obj.rectangle59);
+    obj.dataLink37:setField("fldEnfase25");
+    obj.dataLink37:setDefaultValue("Ênfases");
+    obj.dataLink37:setName("dataLink37");
 
     obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.rectangle57);
@@ -5720,17 +5576,17 @@ local function constructNew_frmScion2e()
     obj.nomeCheck25_05:setMargins({left=3});
     obj.nomeCheck25_05:setAutoChange(false);
 
-    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label76:setParent(obj.rectangle57);
-    obj.label76:setAlign("right");
-    obj.label76:setWidth(20);
-    obj.label76:setText(" ");
-    obj.label76:setName("label76");
-    obj.label76:setFontSize(14);
-    obj.label76:setFontColor("white");
-    lfm_setPropAsString(obj.label76, "fontStyle", "bold");
-    obj.label76:setTextTrimming("character");
-    obj.label76:setFontFamily("Constantia");
+    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label72:setParent(obj.rectangle57);
+    obj.label72:setAlign("right");
+    obj.label72:setWidth(20);
+    obj.label72:setText(" ");
+    obj.label72:setName("label72");
+    obj.label72:setFontSize(14);
+    obj.label72:setFontColor("white");
+    lfm_setPropAsString(obj.label72, "fontStyle", "bold");
+    obj.label72:setTextTrimming("character");
+    obj.label72:setFontFamily("Constantia");
 
     obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.layout2);
@@ -5766,17 +5622,17 @@ local function constructNew_frmScion2e()
     obj.rectangle60:setColor("#272727");
     obj.rectangle60:setName("rectangle60");
 
-    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label77:setParent(obj.layout70);
-    obj.label77:setHorzTextAlign("center");
-    obj.label77:setText("C A M I N H O S");
-    obj.label77:setFontSize(20);
-    obj.label77:setFontFamily("Constantia");
-    obj.label77:setAlign("client");
-    obj.label77:setName("label77");
-    obj.label77:setFontColor("white");
-    lfm_setPropAsString(obj.label77, "fontStyle", "bold");
-    obj.label77:setTextTrimming("character");
+    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label73:setParent(obj.layout70);
+    obj.label73:setHorzTextAlign("center");
+    obj.label73:setText("C A M I N H O S");
+    obj.label73:setFontSize(20);
+    obj.label73:setFontFamily("Constantia");
+    obj.label73:setAlign("client");
+    obj.label73:setName("label73");
+    obj.label73:setFontColor("white");
+    lfm_setPropAsString(obj.label73, "fontStyle", "bold");
+    obj.label73:setTextTrimming("character");
 
     obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout71:setParent(obj.layout68);
@@ -5807,17 +5663,17 @@ local function constructNew_frmScion2e()
     obj.rectangle61:setColor("#272727");
     obj.rectangle61:setName("rectangle61");
 
-    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label78:setParent(obj.layout72);
-    obj.label78:setHorzTextAlign("center");
-    obj.label78:setText("F E I T O S");
-    obj.label78:setFontSize(20);
-    obj.label78:setFontFamily("Constantia");
-    obj.label78:setAlign("client");
-    obj.label78:setName("label78");
-    obj.label78:setFontColor("white");
-    lfm_setPropAsString(obj.label78, "fontStyle", "bold");
-    obj.label78:setTextTrimming("character");
+    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label74:setParent(obj.layout72);
+    obj.label74:setHorzTextAlign("center");
+    obj.label74:setText("F E I T O S");
+    obj.label74:setFontSize(20);
+    obj.label74:setFontFamily("Constantia");
+    obj.label74:setAlign("client");
+    obj.label74:setName("label74");
+    obj.label74:setFontColor("white");
+    lfm_setPropAsString(obj.label74, "fontStyle", "bold");
+    obj.label74:setTextTrimming("character");
 
     obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout14:setParent(obj.scrollBox2);
@@ -5856,26 +5712,26 @@ local function constructNew_frmScion2e()
     obj.rectangle62:setAlign("client");
     obj.rectangle62:setName("rectangle62");
 
-    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit17:setParent(obj.rectangle62);
-    obj.edit17:setField("fldEditCaminho01");
-    obj.edit17:setAlign("left");
-    obj.edit17:setWidth(363);
-    obj.edit17:setText("Caminho");
-    lfm_setPropAsString(obj.edit17, "fontStyle", "italic");
-    obj.edit17:setMargins({left=5});
-    obj.edit17:setName("edit17");
-    obj.edit17:setFontSize(14);
-    obj.edit17:setFontColor("#cdcdcd");
-    obj.edit17:setTextTrimming("character");
-    obj.edit17:setFontFamily("Constantia");
-    obj.edit17:setTransparent(true);
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit15:setParent(obj.rectangle62);
+    obj.edit15:setField("fldEditCaminho01");
+    obj.edit15:setAlign("left");
+    obj.edit15:setWidth(363);
+    obj.edit15:setText("Caminho");
+    lfm_setPropAsString(obj.edit15, "fontStyle", "italic");
+    obj.edit15:setMargins({left=5});
+    obj.edit15:setName("edit15");
+    obj.edit15:setFontSize(14);
+    obj.edit15:setFontColor("#cdcdcd");
+    obj.edit15:setTextTrimming("character");
+    obj.edit15:setFontFamily("Constantia");
+    obj.edit15:setTransparent(true);
 
-    obj.dataLink42 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink42:setParent(obj.rectangle62);
-    obj.dataLink42:setField("fldEditCaminho01");
-    obj.dataLink42:setDefaultValue("Digite seu Caminho");
-    obj.dataLink42:setName("dataLink42");
+    obj.dataLink38 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink38:setParent(obj.rectangle62);
+    obj.dataLink38:setField("fldEditCaminho01");
+    obj.dataLink38:setDefaultValue("Digite seu Caminho");
+    obj.dataLink38:setName("dataLink38");
 
     obj.nomeCam01 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.nomeCam01:setParent(obj.rectangle62);
@@ -5900,26 +5756,26 @@ local function constructNew_frmScion2e()
     obj.rectangle63:setAlign("client");
     obj.rectangle63:setName("rectangle63");
 
-    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit18:setParent(obj.rectangle63);
-    obj.edit18:setField("fldEditCaminho02");
-    obj.edit18:setAlign("left");
-    obj.edit18:setWidth(363);
-    obj.edit18:setText("Caminho");
-    lfm_setPropAsString(obj.edit18, "fontStyle", "italic");
-    obj.edit18:setMargins({left=5});
-    obj.edit18:setName("edit18");
-    obj.edit18:setFontSize(14);
-    obj.edit18:setFontColor("#cdcdcd");
-    obj.edit18:setTextTrimming("character");
-    obj.edit18:setFontFamily("Constantia");
-    obj.edit18:setTransparent(true);
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit16:setParent(obj.rectangle63);
+    obj.edit16:setField("fldEditCaminho02");
+    obj.edit16:setAlign("left");
+    obj.edit16:setWidth(363);
+    obj.edit16:setText("Caminho");
+    lfm_setPropAsString(obj.edit16, "fontStyle", "italic");
+    obj.edit16:setMargins({left=5});
+    obj.edit16:setName("edit16");
+    obj.edit16:setFontSize(14);
+    obj.edit16:setFontColor("#cdcdcd");
+    obj.edit16:setTextTrimming("character");
+    obj.edit16:setFontFamily("Constantia");
+    obj.edit16:setTransparent(true);
 
-    obj.dataLink43 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink43:setParent(obj.rectangle63);
-    obj.dataLink43:setField("fldEditCaminho02");
-    obj.dataLink43:setDefaultValue("Digite seu Caminho");
-    obj.dataLink43:setName("dataLink43");
+    obj.dataLink39 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink39:setParent(obj.rectangle63);
+    obj.dataLink39:setField("fldEditCaminho02");
+    obj.dataLink39:setDefaultValue("Digite seu Caminho");
+    obj.dataLink39:setName("dataLink39");
 
     obj.nomeCam02 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.nomeCam02:setParent(obj.rectangle63);
@@ -5944,26 +5800,26 @@ local function constructNew_frmScion2e()
     obj.rectangle64:setAlign("client");
     obj.rectangle64:setName("rectangle64");
 
-    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit19:setParent(obj.rectangle64);
-    obj.edit19:setField("fldEditCaminho03");
-    obj.edit19:setAlign("left");
-    obj.edit19:setWidth(363);
-    obj.edit19:setText("Caminho");
-    lfm_setPropAsString(obj.edit19, "fontStyle", "italic");
-    obj.edit19:setMargins({left=5});
-    obj.edit19:setName("edit19");
-    obj.edit19:setFontSize(14);
-    obj.edit19:setFontColor("#cdcdcd");
-    obj.edit19:setTextTrimming("character");
-    obj.edit19:setFontFamily("Constantia");
-    obj.edit19:setTransparent(true);
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit17:setParent(obj.rectangle64);
+    obj.edit17:setField("fldEditCaminho03");
+    obj.edit17:setAlign("left");
+    obj.edit17:setWidth(363);
+    obj.edit17:setText("Caminho");
+    lfm_setPropAsString(obj.edit17, "fontStyle", "italic");
+    obj.edit17:setMargins({left=5});
+    obj.edit17:setName("edit17");
+    obj.edit17:setFontSize(14);
+    obj.edit17:setFontColor("#cdcdcd");
+    obj.edit17:setTextTrimming("character");
+    obj.edit17:setFontFamily("Constantia");
+    obj.edit17:setTransparent(true);
 
-    obj.dataLink44 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink44:setParent(obj.rectangle64);
-    obj.dataLink44:setField("fldEditCaminho03");
-    obj.dataLink44:setDefaultValue("Digite seu Caminho");
-    obj.dataLink44:setName("dataLink44");
+    obj.dataLink40 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink40:setParent(obj.rectangle64);
+    obj.dataLink40:setField("fldEditCaminho03");
+    obj.dataLink40:setDefaultValue("Digite seu Caminho");
+    obj.dataLink40:setName("dataLink40");
 
     obj.nomeCam03 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.nomeCam03:setParent(obj.rectangle64);
@@ -5994,17 +5850,17 @@ local function constructNew_frmScion2e()
     obj.rectangle65:setColor("#272727");
     obj.rectangle65:setName("rectangle65");
 
-    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label79:setParent(obj.layout73);
-    obj.label79:setHorzTextAlign("center");
-    obj.label79:setText("L E G A D O S");
-    obj.label79:setFontSize(20);
-    obj.label79:setFontFamily("Constantia");
-    obj.label79:setAlign("client");
-    obj.label79:setName("label79");
-    obj.label79:setFontColor("white");
-    lfm_setPropAsString(obj.label79, "fontStyle", "bold");
-    obj.label79:setTextTrimming("character");
+    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label75:setParent(obj.layout73);
+    obj.label75:setHorzTextAlign("center");
+    obj.label75:setText("L E G A D O S");
+    obj.label75:setFontSize(20);
+    obj.label75:setFontFamily("Constantia");
+    obj.label75:setAlign("client");
+    obj.label75:setName("label75");
+    obj.label75:setFontColor("white");
+    lfm_setPropAsString(obj.label75, "fontStyle", "bold");
+    obj.label75:setTextTrimming("character");
 
     obj.rclLegados = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclLegados:setParent(obj.flowLayout14);
@@ -6054,17 +5910,17 @@ local function constructNew_frmScion2e()
     obj.rectangle66:setColor("#272727");
     obj.rectangle66:setName("rectangle66");
 
-    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label80:setParent(obj.layout75);
-    obj.label80:setHorzTextAlign("center");
-    obj.label80:setText("T R U Q U E S");
-    obj.label80:setFontSize(20);
-    obj.label80:setFontFamily("Constantia");
-    obj.label80:setAlign("client");
-    obj.label80:setName("label80");
-    obj.label80:setFontColor("white");
-    lfm_setPropAsString(obj.label80, "fontStyle", "bold");
-    obj.label80:setTextTrimming("character");
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label76:setParent(obj.layout75);
+    obj.label76:setHorzTextAlign("center");
+    obj.label76:setText("T R U Q U E S");
+    obj.label76:setFontSize(20);
+    obj.label76:setFontFamily("Constantia");
+    obj.label76:setAlign("client");
+    obj.label76:setName("label76");
+    obj.label76:setFontColor("white");
+    lfm_setPropAsString(obj.label76, "fontStyle", "bold");
+    obj.label76:setTextTrimming("character");
 
     obj.rclTruques = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclTruques:setParent(obj.flowLayout14);
@@ -6123,17 +5979,17 @@ local function constructNew_frmScion2e()
     obj.flowPart41:setMaxWidth(550);
     obj.flowPart41:setHeight(25);
 
-    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label81:setParent(obj.flowPart41);
-    obj.label81:setAlign("left");
-    obj.label81:setWidth(120);
-    obj.label81:setText("Pequeno Feito");
-    obj.label81:setName("label81");
-    obj.label81:setFontSize(14);
-    obj.label81:setFontColor("white");
-    lfm_setPropAsString(obj.label81, "fontStyle", "bold");
-    obj.label81:setTextTrimming("character");
-    obj.label81:setFontFamily("Constantia");
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label77:setParent(obj.flowPart41);
+    obj.label77:setAlign("left");
+    obj.label77:setWidth(120);
+    obj.label77:setText("Pequeno Feito");
+    obj.label77:setName("label77");
+    obj.label77:setFontSize(14);
+    obj.label77:setFontColor("white");
+    lfm_setPropAsString(obj.label77, "fontStyle", "bold");
+    obj.label77:setTextTrimming("character");
+    obj.label77:setFontFamily("Constantia");
 
     obj.rectangle67 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle67:setParent(obj.flowPart41);
@@ -6142,26 +5998,26 @@ local function constructNew_frmScion2e()
     obj.rectangle67:setMargins({left=5});
     obj.rectangle67:setName("rectangle67");
 
-    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit20:setParent(obj.rectangle67);
-    obj.edit20:setField("fldEditFeito01");
-    obj.edit20:setAlign("left");
-    obj.edit20:setWidth(256);
-    obj.edit20:setText("Feito");
-    lfm_setPropAsString(obj.edit20, "fontStyle", "italic");
-    obj.edit20:setMargins({left=5});
-    obj.edit20:setName("edit20");
-    obj.edit20:setFontSize(14);
-    obj.edit20:setFontColor("#cdcdcd");
-    obj.edit20:setTextTrimming("character");
-    obj.edit20:setFontFamily("Constantia");
-    obj.edit20:setTransparent(true);
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit18:setParent(obj.rectangle67);
+    obj.edit18:setField("fldEditFeito01");
+    obj.edit18:setAlign("left");
+    obj.edit18:setWidth(256);
+    obj.edit18:setText("Feito");
+    lfm_setPropAsString(obj.edit18, "fontStyle", "italic");
+    obj.edit18:setMargins({left=5});
+    obj.edit18:setName("edit18");
+    obj.edit18:setFontSize(14);
+    obj.edit18:setFontColor("#cdcdcd");
+    obj.edit18:setTextTrimming("character");
+    obj.edit18:setFontFamily("Constantia");
+    obj.edit18:setTransparent(true);
 
-    obj.dataLink45 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink45:setParent(obj.rectangle67);
-    obj.dataLink45:setField("fldEditFeito01");
-    obj.dataLink45:setDefaultValue("Digite seu Objetivo");
-    obj.dataLink45:setName("dataLink45");
+    obj.dataLink41 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink41:setParent(obj.rectangle67);
+    obj.dataLink41:setField("fldEditFeito01");
+    obj.dataLink41:setDefaultValue("Digite seu Objetivo");
+    obj.dataLink41:setName("dataLink41");
 
     obj.nomeFei01 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.nomeFei01:setParent(obj.rectangle67);
@@ -6180,17 +6036,17 @@ local function constructNew_frmScion2e()
     obj.flowPart42:setMaxWidth(550);
     obj.flowPart42:setHeight(25);
 
-    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label82:setParent(obj.flowPart42);
-    obj.label82:setAlign("left");
-    obj.label82:setWidth(120);
-    obj.label82:setText("Grande Feito");
-    obj.label82:setName("label82");
-    obj.label82:setFontSize(14);
-    obj.label82:setFontColor("white");
-    lfm_setPropAsString(obj.label82, "fontStyle", "bold");
-    obj.label82:setTextTrimming("character");
-    obj.label82:setFontFamily("Constantia");
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label78:setParent(obj.flowPart42);
+    obj.label78:setAlign("left");
+    obj.label78:setWidth(120);
+    obj.label78:setText("Grande Feito");
+    obj.label78:setName("label78");
+    obj.label78:setFontSize(14);
+    obj.label78:setFontColor("white");
+    lfm_setPropAsString(obj.label78, "fontStyle", "bold");
+    obj.label78:setTextTrimming("character");
+    obj.label78:setFontFamily("Constantia");
 
     obj.rectangle68 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle68:setParent(obj.flowPart42);
@@ -6199,26 +6055,26 @@ local function constructNew_frmScion2e()
     obj.rectangle68:setMargins({left=5});
     obj.rectangle68:setName("rectangle68");
 
-    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit21:setParent(obj.rectangle68);
-    obj.edit21:setField("fldEditFeito02");
-    obj.edit21:setAlign("left");
-    obj.edit21:setWidth(256);
-    obj.edit21:setText("Feito");
-    lfm_setPropAsString(obj.edit21, "fontStyle", "italic");
-    obj.edit21:setMargins({left=5});
-    obj.edit21:setName("edit21");
-    obj.edit21:setFontSize(14);
-    obj.edit21:setFontColor("#cdcdcd");
-    obj.edit21:setTextTrimming("character");
-    obj.edit21:setFontFamily("Constantia");
-    obj.edit21:setTransparent(true);
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit19:setParent(obj.rectangle68);
+    obj.edit19:setField("fldEditFeito02");
+    obj.edit19:setAlign("left");
+    obj.edit19:setWidth(256);
+    obj.edit19:setText("Feito");
+    lfm_setPropAsString(obj.edit19, "fontStyle", "italic");
+    obj.edit19:setMargins({left=5});
+    obj.edit19:setName("edit19");
+    obj.edit19:setFontSize(14);
+    obj.edit19:setFontColor("#cdcdcd");
+    obj.edit19:setTextTrimming("character");
+    obj.edit19:setFontFamily("Constantia");
+    obj.edit19:setTransparent(true);
 
-    obj.dataLink46 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink46:setParent(obj.rectangle68);
-    obj.dataLink46:setField("fldEditFeito02");
-    obj.dataLink46:setDefaultValue("Digite seu Objetivo");
-    obj.dataLink46:setName("dataLink46");
+    obj.dataLink42 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink42:setParent(obj.rectangle68);
+    obj.dataLink42:setField("fldEditFeito02");
+    obj.dataLink42:setDefaultValue("Digite seu Objetivo");
+    obj.dataLink42:setName("dataLink42");
 
     obj.nomeFei02 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.nomeFei02:setParent(obj.rectangle68);
@@ -6237,17 +6093,17 @@ local function constructNew_frmScion2e()
     obj.flowPart43:setMaxWidth(550);
     obj.flowPart43:setHeight(25);
 
-    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label83:setParent(obj.flowPart43);
-    obj.label83:setAlign("left");
-    obj.label83:setWidth(120);
-    obj.label83:setText("Feito em Grupo");
-    obj.label83:setName("label83");
-    obj.label83:setFontSize(14);
-    obj.label83:setFontColor("white");
-    lfm_setPropAsString(obj.label83, "fontStyle", "bold");
-    obj.label83:setTextTrimming("character");
-    obj.label83:setFontFamily("Constantia");
+    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label79:setParent(obj.flowPart43);
+    obj.label79:setAlign("left");
+    obj.label79:setWidth(120);
+    obj.label79:setText("Feito em Grupo");
+    obj.label79:setName("label79");
+    obj.label79:setFontSize(14);
+    obj.label79:setFontColor("white");
+    lfm_setPropAsString(obj.label79, "fontStyle", "bold");
+    obj.label79:setTextTrimming("character");
+    obj.label79:setFontFamily("Constantia");
 
     obj.rectangle69 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle69:setParent(obj.flowPart43);
@@ -6256,26 +6112,26 @@ local function constructNew_frmScion2e()
     obj.rectangle69:setMargins({left=5});
     obj.rectangle69:setName("rectangle69");
 
-    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit22:setParent(obj.rectangle69);
-    obj.edit22:setField("fldEditFeito03");
-    obj.edit22:setAlign("left");
-    obj.edit22:setWidth(256);
-    obj.edit22:setText("Feito");
-    lfm_setPropAsString(obj.edit22, "fontStyle", "italic");
-    obj.edit22:setMargins({left=5});
-    obj.edit22:setName("edit22");
-    obj.edit22:setFontSize(14);
-    obj.edit22:setFontColor("#cdcdcd");
-    obj.edit22:setTextTrimming("character");
-    obj.edit22:setFontFamily("Constantia");
-    obj.edit22:setTransparent(true);
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit20:setParent(obj.rectangle69);
+    obj.edit20:setField("fldEditFeito03");
+    obj.edit20:setAlign("left");
+    obj.edit20:setWidth(256);
+    obj.edit20:setText("Feito");
+    lfm_setPropAsString(obj.edit20, "fontStyle", "italic");
+    obj.edit20:setMargins({left=5});
+    obj.edit20:setName("edit20");
+    obj.edit20:setFontSize(14);
+    obj.edit20:setFontColor("#cdcdcd");
+    obj.edit20:setTextTrimming("character");
+    obj.edit20:setFontFamily("Constantia");
+    obj.edit20:setTransparent(true);
 
-    obj.dataLink47 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink47:setParent(obj.rectangle69);
-    obj.dataLink47:setField("fldEditFeito03");
-    obj.dataLink47:setDefaultValue("Digite seu Objetivo");
-    obj.dataLink47:setName("dataLink47");
+    obj.dataLink43 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink43:setParent(obj.rectangle69);
+    obj.dataLink43:setField("fldEditFeito03");
+    obj.dataLink43:setDefaultValue("Digite seu Objetivo");
+    obj.dataLink43:setName("dataLink43");
 
     obj.nomeFei03 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.nomeFei03:setParent(obj.rectangle69);
@@ -6306,17 +6162,17 @@ local function constructNew_frmScion2e()
     obj.rectangle70:setColor("#272727");
     obj.rectangle70:setName("rectangle70");
 
-    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label84:setParent(obj.layout77);
-    obj.label84:setHorzTextAlign("center");
-    obj.label84:setText("H E R A N Ç A S");
-    obj.label84:setFontSize(20);
-    obj.label84:setFontFamily("Constantia");
-    obj.label84:setAlign("client");
-    obj.label84:setName("label84");
-    obj.label84:setFontColor("white");
-    lfm_setPropAsString(obj.label84, "fontStyle", "bold");
-    obj.label84:setTextTrimming("character");
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label80:setParent(obj.layout77);
+    obj.label80:setHorzTextAlign("center");
+    obj.label80:setText("H E R A N Ç A S");
+    obj.label80:setFontSize(20);
+    obj.label80:setFontFamily("Constantia");
+    obj.label80:setAlign("client");
+    obj.label80:setName("label80");
+    obj.label80:setFontColor("white");
+    lfm_setPropAsString(obj.label80, "fontStyle", "bold");
+    obj.label80:setTextTrimming("character");
 
     obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.flowLayout16);
@@ -6349,38 +6205,38 @@ local function constructNew_frmScion2e()
     obj.rectangle71:setAlign("client");
     obj.rectangle71:setName("rectangle71");
 
-    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label85:setParent(obj.rectangle71);
-    obj.label85:setAlign("left");
-    obj.label85:setWidth(108);
-    obj.label85:setMargins({left=5});
-    obj.label85:setText("Título Lendário:");
-    obj.label85:setName("label85");
-    obj.label85:setFontSize(14);
-    obj.label85:setFontColor("white");
-    lfm_setPropAsString(obj.label85, "fontStyle", "bold");
-    obj.label85:setTextTrimming("character");
-    obj.label85:setFontFamily("Constantia");
+    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label81:setParent(obj.rectangle71);
+    obj.label81:setAlign("left");
+    obj.label81:setWidth(108);
+    obj.label81:setMargins({left=5});
+    obj.label81:setText("Título Lendário:");
+    obj.label81:setName("label81");
+    obj.label81:setFontSize(14);
+    obj.label81:setFontColor("white");
+    lfm_setPropAsString(obj.label81, "fontStyle", "bold");
+    obj.label81:setTextTrimming("character");
+    obj.label81:setFontFamily("Constantia");
 
-    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit23:setParent(obj.rectangle71);
-    obj.edit23:setField("fldTitulo");
-    obj.edit23:setAlign("client");
-    obj.edit23:setText("Título Lendário");
-    lfm_setPropAsString(obj.edit23, "fontStyle", "italic");
-    obj.edit23:setMargins({left=2});
-    obj.edit23:setName("edit23");
-    obj.edit23:setFontSize(14);
-    obj.edit23:setFontColor("#cdcdcd");
-    obj.edit23:setTextTrimming("character");
-    obj.edit23:setFontFamily("Constantia");
-    obj.edit23:setTransparent(true);
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit21:setParent(obj.rectangle71);
+    obj.edit21:setField("fldTitulo");
+    obj.edit21:setAlign("client");
+    obj.edit21:setText("Título Lendário");
+    lfm_setPropAsString(obj.edit21, "fontStyle", "italic");
+    obj.edit21:setMargins({left=2});
+    obj.edit21:setName("edit21");
+    obj.edit21:setFontSize(14);
+    obj.edit21:setFontColor("#cdcdcd");
+    obj.edit21:setTextTrimming("character");
+    obj.edit21:setFontFamily("Constantia");
+    obj.edit21:setTransparent(true);
 
-    obj.dataLink48 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink48:setParent(obj.rectangle71);
-    obj.dataLink48:setField("fldTitulo");
-    obj.dataLink48:setDefaultValue("Digite seu Título Lendário");
-    obj.dataLink48:setName("dataLink48");
+    obj.dataLink44 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink44:setParent(obj.rectangle71);
+    obj.dataLink44:setField("fldTitulo");
+    obj.dataLink44:setDefaultValue("Digite seu Título Lendário");
+    obj.dataLink44:setName("dataLink44");
 
     obj.chbTitulo = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.chbTitulo:setParent(obj.rectangle71);
@@ -6438,17 +6294,17 @@ local function constructNew_frmScion2e()
     obj.rectangle72:setColor("#272727");
     obj.rectangle72:setName("rectangle72");
 
-    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label86:setParent(obj.layout80);
-    obj.label86:setHorzTextAlign("center");
-    obj.label86:setText("E S F E R A S   🙵   P O D E R E S");
-    obj.label86:setFontSize(20);
-    obj.label86:setFontFamily("Constantia");
-    obj.label86:setAlign("client");
-    obj.label86:setName("label86");
-    obj.label86:setFontColor("white");
-    lfm_setPropAsString(obj.label86, "fontStyle", "bold");
-    obj.label86:setTextTrimming("character");
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label82:setParent(obj.layout80);
+    obj.label82:setHorzTextAlign("center");
+    obj.label82:setText("E S F E R A S   🙵   P O D E R E S");
+    obj.label82:setFontSize(20);
+    obj.label82:setFontFamily("Constantia");
+    obj.label82:setAlign("client");
+    obj.label82:setName("label82");
+    obj.label82:setFontColor("white");
+    lfm_setPropAsString(obj.label82, "fontStyle", "bold");
+    obj.label82:setTextTrimming("character");
 
     obj.rclEsferas = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclEsferas:setParent(obj.flowLayout16);
@@ -6534,17 +6390,17 @@ local function constructNew_frmScion2e()
     obj.flowPart45:setName("flowPart45");
     obj.flowPart45:setHeight(25);
 
-    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label87:setParent(obj.flowPart45);
-    obj.label87:setText("A P A R Ê N C I A");
-    obj.label87:setName("label87");
-    obj.label87:setFontSize(10);
-    obj.label87:setFontColor("white");
-    obj.label87:setTextTrimming("character");
-    obj.label87:setFontFamily("Constantia");
-    obj.label87:setHorzTextAlign("center");
-    obj.label87:setAlign("top");
-    lfm_setPropAsString(obj.label87, "fontStyle", "bold");
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label83:setParent(obj.flowPart45);
+    obj.label83:setText("A P A R Ê N C I A");
+    obj.label83:setName("label83");
+    obj.label83:setFontSize(10);
+    obj.label83:setFontColor("white");
+    obj.label83:setTextTrimming("character");
+    obj.label83:setFontFamily("Constantia");
+    obj.label83:setHorzTextAlign("center");
+    obj.label83:setAlign("top");
+    lfm_setPropAsString(obj.label83, "fontStyle", "bold");
 
     obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout86:setParent(obj.flowLayout19);
@@ -6564,11 +6420,11 @@ local function constructNew_frmScion2e()
     obj.image4:setHint("Alterar Aparência");
     obj.image4:setName("image4");
 
-    obj.dataLink49 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink49:setParent(obj.layout86);
-    obj.dataLink49:setField("fldFotoPJ");
-    obj.dataLink49:setDefaultValue("/images/scion.png");
-    obj.dataLink49:setName("dataLink49");
+    obj.dataLink45 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink45:setParent(obj.layout86);
+    obj.dataLink45:setField("fldFotoPJ");
+    obj.dataLink45:setDefaultValue("/images/scion.png");
+    obj.dataLink45:setName("dataLink45");
 
     obj.image5 = GUI.fromHandle(_obj_newObject("image"));
     obj.image5:setParent(obj.layout86);
@@ -6583,18 +6439,18 @@ local function constructNew_frmScion2e()
     obj.layout87:setAlign("client");
     obj.layout87:setName("layout87");
 
-    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label88:setParent(obj.layout87);
-    obj.label88:setMargins({bottom=15});
-    obj.label88:setAlign("top");
-    obj.label88:setText("C O N T A T O S");
-    obj.label88:setName("label88");
-    obj.label88:setFontSize(10);
-    obj.label88:setFontColor("white");
-    obj.label88:setTextTrimming("character");
-    obj.label88:setFontFamily("Constantia");
-    obj.label88:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label88, "fontStyle", "bold");
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label84:setParent(obj.layout87);
+    obj.label84:setMargins({bottom=15});
+    obj.label84:setAlign("top");
+    obj.label84:setText("C O N T A T O S");
+    obj.label84:setName("label84");
+    obj.label84:setFontSize(10);
+    obj.label84:setFontColor("white");
+    obj.label84:setTextTrimming("character");
+    obj.label84:setFontFamily("Constantia");
+    obj.label84:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label84, "fontStyle", "bold");
 
     obj.rectangle73 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle73:setParent(obj.layout87);
@@ -6616,11 +6472,11 @@ local function constructNew_frmScion2e()
     obj.nomeBG:setFontFamily("Constantia");
     obj.nomeBG:setFontSize(13);
 
-    obj.dataLink50 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink50:setParent(obj.rectangle73);
-    obj.dataLink50:setField("fldBG");
-    obj.dataLink50:setDefaultValue("Escreva aqui.");
-    obj.dataLink50:setName("dataLink50");
+    obj.dataLink46 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink46:setParent(obj.rectangle73);
+    obj.dataLink46:setField("fldBG");
+    obj.dataLink46:setDefaultValue("Escreva aqui.");
+    obj.dataLink46:setName("dataLink46");
 
     obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout88:setParent(obj.layout82);
@@ -6643,17 +6499,17 @@ local function constructNew_frmScion2e()
     obj.rectangle74:setColor("#272727");
     obj.rectangle74:setName("rectangle74");
 
-    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label89:setParent(obj.layout88);
-    obj.label89:setHorzTextAlign("center");
-    obj.label89:setText("H I S T Ó R I A");
-    obj.label89:setFontSize(20);
-    obj.label89:setFontFamily("Constantia");
-    obj.label89:setAlign("client");
-    obj.label89:setName("label89");
-    obj.label89:setFontColor("white");
-    lfm_setPropAsString(obj.label89, "fontStyle", "bold");
-    obj.label89:setTextTrimming("character");
+    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label85:setParent(obj.layout88);
+    obj.label85:setHorzTextAlign("center");
+    obj.label85:setText("H I S T Ó R I A");
+    obj.label85:setFontSize(20);
+    obj.label85:setFontFamily("Constantia");
+    obj.label85:setAlign("client");
+    obj.label85:setName("label85");
+    obj.label85:setFontColor("white");
+    lfm_setPropAsString(obj.label85, "fontStyle", "bold");
+    obj.label85:setTextTrimming("character");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj.layout82);
@@ -6712,17 +6568,17 @@ local function constructNew_frmScion2e()
     obj.rectangle75:setColor("#272727");
     obj.rectangle75:setName("rectangle75");
 
-    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label90:setParent(obj.layout91);
-    obj.label90:setHorzTextAlign("center");
-    obj.label90:setText("A N O T A Ç Õ E S");
-    obj.label90:setFontSize(20);
-    obj.label90:setFontFamily("Constantia");
-    obj.label90:setAlign("client");
-    obj.label90:setName("label90");
-    obj.label90:setFontColor("white");
-    lfm_setPropAsString(obj.label90, "fontStyle", "bold");
-    obj.label90:setTextTrimming("character");
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label86:setParent(obj.layout91);
+    obj.label86:setHorzTextAlign("center");
+    obj.label86:setText("A N O T A Ç Õ E S");
+    obj.label86:setFontSize(20);
+    obj.label86:setFontFamily("Constantia");
+    obj.label86:setAlign("client");
+    obj.label86:setName("label86");
+    obj.label86:setFontColor("white");
+    lfm_setPropAsString(obj.label86, "fontStyle", "bold");
+    obj.label86:setTextTrimming("character");
 
     obj.richEdit2 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit2:setParent(obj.layout89);
@@ -6785,27 +6641,11 @@ local function constructNew_frmScion2e()
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
-            							if sheet.chcBVidMachucado01 == false then self.rectVidMachucado01.color = '#272727'
-            							else self.rectVidMachucado01.color = '#2d2d2d' end;
-        end);
-
-    obj._e_event7 = obj.dataLink4:addEventListener("onChange",
-        function (field, oldValue, newValue)
-            if(sheet == nil) then return; end;
-            							
-            							if sheet.chcBVidMachucado02 == false then self.rectVidMachucado02.color = '#272727'
-            							else self.rectVidMachucado02.color = '#2d2d2d' end;
-        end);
-
-    obj._e_event8 = obj.dataLink6:addEventListener("onChange",
-        function (field, oldValue, newValue)
-            if(sheet == nil) then return; end;
-            							
             							if sheet.chcBVidMachucado03 == false then self.rectVidMachucado03.color = '#272727'
             							else self.rectVidMachucado03.color = '#2d2d2d' end;
         end);
 
-    obj._e_event9 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink4:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
@@ -6813,7 +6653,7 @@ local function constructNew_frmScion2e()
             							else self.rectVidMachucado04.color = '#2d2d2d' end;
         end);
 
-    obj._e_event10 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event8 = obj.dataLink6:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
@@ -6821,7 +6661,7 @@ local function constructNew_frmScion2e()
             							else self.rectVidMachucado05.color = '#2d2d2d' end;
         end);
 
-    obj._e_event11 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event9 = obj.dataLink8:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
@@ -6829,7 +6669,7 @@ local function constructNew_frmScion2e()
             							else self.rectVidMachucado06.color = '#2d2d2d' end;
         end);
 
-    obj._e_event12 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink10:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
@@ -6837,7 +6677,7 @@ local function constructNew_frmScion2e()
             							else self.rectVidMachucado07.color = '#2d2d2d' end;
         end);
 
-    obj._e_event13 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink12:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							
@@ -6845,7 +6685,7 @@ local function constructNew_frmScion2e()
             							else self.rectVidInconsciente.color = '#2d2d2d' end;
         end);
 
-    obj._e_event14 = obj.nomeCheck01_01:addEventListener("onClick",
+    obj._e_event12 = obj.nomeCheck01_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck01_01 = not sheet.fldCheck01_01;
@@ -6862,7 +6702,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event15 = obj.nomeCheck01_02:addEventListener("onClick",
+    obj._e_event13 = obj.nomeCheck01_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck01_02 = not sheet.fldCheck01_02;
@@ -6885,7 +6725,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event16 = obj.nomeCheck01_03:addEventListener("onClick",
+    obj._e_event14 = obj.nomeCheck01_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck01_03 = not sheet.fldCheck01_03;
@@ -6910,7 +6750,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event17 = obj.nomeCheck01_04:addEventListener("onClick",
+    obj._e_event15 = obj.nomeCheck01_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck01_04 = not sheet.fldCheck01_04;
@@ -6937,7 +6777,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event18 = obj.nomeCheck01_05:addEventListener("onClick",
+    obj._e_event16 = obj.nomeCheck01_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck01_05 = not sheet.fldCheck01_05;
@@ -6958,7 +6798,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event19 = obj.nomeCheck02_01:addEventListener("onClick",
+    obj._e_event17 = obj.nomeCheck02_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck02_01 = not sheet.fldCheck02_01;
@@ -6975,7 +6815,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event20 = obj.nomeCheck02_02:addEventListener("onClick",
+    obj._e_event18 = obj.nomeCheck02_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck02_02 = not sheet.fldCheck02_02;
@@ -6998,7 +6838,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event21 = obj.nomeCheck02_03:addEventListener("onClick",
+    obj._e_event19 = obj.nomeCheck02_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck02_03 = not sheet.fldCheck02_03;
@@ -7023,7 +6863,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event22 = obj.nomeCheck02_04:addEventListener("onClick",
+    obj._e_event20 = obj.nomeCheck02_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck02_04 = not sheet.fldCheck02_04;
@@ -7050,7 +6890,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event23 = obj.nomeCheck02_05:addEventListener("onClick",
+    obj._e_event21 = obj.nomeCheck02_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck02_05 = not sheet.fldCheck02_05;
@@ -7071,7 +6911,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event24 = obj.nomeCheck03_01:addEventListener("onClick",
+    obj._e_event22 = obj.nomeCheck03_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck03_01 = not sheet.fldCheck03_01;
@@ -7088,7 +6928,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event25 = obj.nomeCheck03_02:addEventListener("onClick",
+    obj._e_event23 = obj.nomeCheck03_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck03_02 = not sheet.fldCheck03_02;
@@ -7111,7 +6951,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event26 = obj.nomeCheck03_03:addEventListener("onClick",
+    obj._e_event24 = obj.nomeCheck03_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck03_03 = not sheet.fldCheck03_03;
@@ -7136,7 +6976,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event27 = obj.nomeCheck03_04:addEventListener("onClick",
+    obj._e_event25 = obj.nomeCheck03_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck03_04 = not sheet.fldCheck03_04;
@@ -7163,7 +7003,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event28 = obj.nomeCheck03_05:addEventListener("onClick",
+    obj._e_event26 = obj.nomeCheck03_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck03_05 = not sheet.fldCheck03_05;
@@ -7184,7 +7024,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event29 = obj.checkMulVit_Des_01_Leg:addEventListener("onClick",
+    obj._e_event27 = obj.checkMulVit_Des_01_Leg:addEventListener("onClick",
         function (event)
             
             				if(sheet.checkMulVit_Des_01_Leg == '/images/checkBoxDes.png') then
@@ -7197,7 +7037,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event30 = obj.checkMulVit_Des_02_Leg:addEventListener("onClick",
+    obj._e_event28 = obj.checkMulVit_Des_02_Leg:addEventListener("onClick",
         function (event)
             
             				if(sheet.checkMulVit_Des_02_Leg == '/images/checkBoxDes.png') then
@@ -7210,7 +7050,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event31 = obj.checkMulVit_Des_03_Leg:addEventListener("onClick",
+    obj._e_event29 = obj.checkMulVit_Des_03_Leg:addEventListener("onClick",
         function (event)
             
             				if(sheet.checkMulVit_Des_03_Leg == '/images/checkBoxDes.png') then
@@ -7223,7 +7063,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event32 = obj.checkMulVit_Des_04_Leg:addEventListener("onClick",
+    obj._e_event30 = obj.checkMulVit_Des_04_Leg:addEventListener("onClick",
         function (event)
             
             				if(sheet.checkMulVit_Des_04_Leg == '/images/checkBoxDes.png') then
@@ -7236,7 +7076,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event33 = obj.checkMulVit_Des_05_Leg:addEventListener("onClick",
+    obj._e_event31 = obj.checkMulVit_Des_05_Leg:addEventListener("onClick",
         function (event)
             
             				if(sheet.checkMulVit_Des_05_Leg == '/images/checkBoxDes.png') then
@@ -7249,7 +7089,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event34 = obj.nomeCheck04_01:addEventListener("onClick",
+    obj._e_event32 = obj.nomeCheck04_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck04_01 = not sheet.fldCheck04_01;
@@ -7266,7 +7106,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event35 = obj.nomeCheck04_02:addEventListener("onClick",
+    obj._e_event33 = obj.nomeCheck04_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck04_02 = not sheet.fldCheck04_02;
@@ -7289,7 +7129,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event36 = obj.nomeCheck04_03:addEventListener("onClick",
+    obj._e_event34 = obj.nomeCheck04_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck04_03 = not sheet.fldCheck04_03;
@@ -7314,7 +7154,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event37 = obj.nomeCheck04_04:addEventListener("onClick",
+    obj._e_event35 = obj.nomeCheck04_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck04_04 = not sheet.fldCheck04_04;
@@ -7341,7 +7181,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event38 = obj.nomeCheck04_05:addEventListener("onClick",
+    obj._e_event36 = obj.nomeCheck04_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck04_05 = not sheet.fldCheck04_05;
@@ -7362,7 +7202,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event39 = obj.nomeCheck05_01:addEventListener("onClick",
+    obj._e_event37 = obj.nomeCheck05_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck05_01 = not sheet.fldCheck05_01;
@@ -7379,7 +7219,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event40 = obj.nomeCheck05_02:addEventListener("onClick",
+    obj._e_event38 = obj.nomeCheck05_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck05_02 = not sheet.fldCheck05_02;
@@ -7402,7 +7242,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event41 = obj.nomeCheck05_03:addEventListener("onClick",
+    obj._e_event39 = obj.nomeCheck05_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck05_03 = not sheet.fldCheck05_03;
@@ -7427,7 +7267,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event42 = obj.nomeCheck05_04:addEventListener("onClick",
+    obj._e_event40 = obj.nomeCheck05_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck05_04 = not sheet.fldCheck05_04;
@@ -7454,7 +7294,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event43 = obj.nomeCheck05_05:addEventListener("onClick",
+    obj._e_event41 = obj.nomeCheck05_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck05_05 = not sheet.fldCheck05_05;
@@ -7475,7 +7315,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event44 = obj.nomeCheck06_01:addEventListener("onClick",
+    obj._e_event42 = obj.nomeCheck06_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck06_01 = not sheet.fldCheck06_01;
@@ -7492,7 +7332,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event45 = obj.nomeCheck06_02:addEventListener("onClick",
+    obj._e_event43 = obj.nomeCheck06_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck06_02 = not sheet.fldCheck06_02;
@@ -7515,7 +7355,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event46 = obj.nomeCheck06_03:addEventListener("onClick",
+    obj._e_event44 = obj.nomeCheck06_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck06_03 = not sheet.fldCheck06_03;
@@ -7540,7 +7380,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event47 = obj.nomeCheck06_04:addEventListener("onClick",
+    obj._e_event45 = obj.nomeCheck06_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck06_04 = not sheet.fldCheck06_04;
@@ -7567,7 +7407,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event48 = obj.nomeCheck06_05:addEventListener("onClick",
+    obj._e_event46 = obj.nomeCheck06_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck06_05 = not sheet.fldCheck06_05;
@@ -7588,7 +7428,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event49 = obj.checkImp_01_Imp:addEventListener("onClick",
+    obj._e_event47 = obj.checkImp_01_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_01 = not sheet.fldCheckImp_01;
@@ -7610,7 +7450,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event50 = obj.checkImp_02_Imp:addEventListener("onClick",
+    obj._e_event48 = obj.checkImp_02_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_02 = not sheet.fldCheckImp_02;
@@ -7638,7 +7478,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event51 = obj.checkImp_03_Imp:addEventListener("onClick",
+    obj._e_event49 = obj.checkImp_03_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_03 = not sheet.fldCheckImp_03;
@@ -7668,7 +7508,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event52 = obj.checkImp_04_Imp:addEventListener("onClick",
+    obj._e_event50 = obj.checkImp_04_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_04 = not sheet.fldCheckImp_04;
@@ -7700,7 +7540,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event53 = obj.checkImp_05_Imp:addEventListener("onClick",
+    obj._e_event51 = obj.checkImp_05_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_05 = not sheet.fldCheckImp_05;
@@ -7734,7 +7574,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event54 = obj.checkImp_06_Imp:addEventListener("onClick",
+    obj._e_event52 = obj.checkImp_06_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_06 = not sheet.fldCheckImp_06;
@@ -7770,7 +7610,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event55 = obj.checkImp_07_Imp:addEventListener("onClick",
+    obj._e_event53 = obj.checkImp_07_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_07 = not sheet.fldCheckImp_07;
@@ -7808,7 +7648,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event56 = obj.checkImp_08_Imp:addEventListener("onClick",
+    obj._e_event54 = obj.checkImp_08_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_08 = not sheet.fldCheckImp_08;
@@ -7848,7 +7688,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event57 = obj.checkImp_09_Imp:addEventListener("onClick",
+    obj._e_event55 = obj.checkImp_09_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_09 = not sheet.fldCheckImp_09;
@@ -7890,7 +7730,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event58 = obj.checkImp_10_Imp:addEventListener("onClick",
+    obj._e_event56 = obj.checkImp_10_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_10 = not sheet.fldCheckImp_10;
@@ -7934,7 +7774,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event59 = obj.checkImp_11_Imp:addEventListener("onClick",
+    obj._e_event57 = obj.checkImp_11_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_11 = not sheet.fldCheckImp_11;
@@ -7980,7 +7820,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event60 = obj.checkImp_12_Imp:addEventListener("onClick",
+    obj._e_event58 = obj.checkImp_12_Imp:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckImp_12 = not sheet.fldCheckImp_12;
@@ -8013,7 +7853,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event61 = obj.nomeCheck07_01:addEventListener("onClick",
+    obj._e_event59 = obj.nomeCheck07_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck07_01 = not sheet.fldCheck07_01;
@@ -8030,7 +7870,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event62 = obj.nomeCheck07_02:addEventListener("onClick",
+    obj._e_event60 = obj.nomeCheck07_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck07_02 = not sheet.fldCheck07_02;
@@ -8053,7 +7893,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event63 = obj.nomeCheck07_03:addEventListener("onClick",
+    obj._e_event61 = obj.nomeCheck07_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck07_03 = not sheet.fldCheck07_03;
@@ -8078,7 +7918,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event64 = obj.nomeCheck07_04:addEventListener("onClick",
+    obj._e_event62 = obj.nomeCheck07_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck07_04 = not sheet.fldCheck07_04;
@@ -8105,7 +7945,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event65 = obj.nomeCheck07_05:addEventListener("onClick",
+    obj._e_event63 = obj.nomeCheck07_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck07_05 = not sheet.fldCheck07_05;
@@ -8126,7 +7966,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event66 = obj.nomeCheck08_01:addEventListener("onClick",
+    obj._e_event64 = obj.nomeCheck08_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck08_01 = not sheet.fldCheck08_01;
@@ -8143,7 +7983,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event67 = obj.nomeCheck08_02:addEventListener("onClick",
+    obj._e_event65 = obj.nomeCheck08_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck08_02 = not sheet.fldCheck08_02;
@@ -8166,7 +8006,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event68 = obj.nomeCheck08_03:addEventListener("onClick",
+    obj._e_event66 = obj.nomeCheck08_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck08_03 = not sheet.fldCheck08_03;
@@ -8191,7 +8031,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event69 = obj.nomeCheck08_04:addEventListener("onClick",
+    obj._e_event67 = obj.nomeCheck08_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck08_04 = not sheet.fldCheck08_04;
@@ -8218,7 +8058,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event70 = obj.nomeCheck08_05:addEventListener("onClick",
+    obj._e_event68 = obj.nomeCheck08_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck08_05 = not sheet.fldCheck08_05;
@@ -8239,7 +8079,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event71 = obj.nomeCheck09_01:addEventListener("onClick",
+    obj._e_event69 = obj.nomeCheck09_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck09_01 = not sheet.fldCheck09_01;
@@ -8256,7 +8096,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event72 = obj.nomeCheck09_02:addEventListener("onClick",
+    obj._e_event70 = obj.nomeCheck09_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck09_02 = not sheet.fldCheck09_02;
@@ -8279,7 +8119,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event73 = obj.nomeCheck09_03:addEventListener("onClick",
+    obj._e_event71 = obj.nomeCheck09_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck09_03 = not sheet.fldCheck09_03;
@@ -8304,7 +8144,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event74 = obj.nomeCheck09_04:addEventListener("onClick",
+    obj._e_event72 = obj.nomeCheck09_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck09_04 = not sheet.fldCheck09_04;
@@ -8331,7 +8171,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event75 = obj.nomeCheck09_05:addEventListener("onClick",
+    obj._e_event73 = obj.nomeCheck09_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck09_05 = not sheet.fldCheck09_05;
@@ -8352,7 +8192,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event76 = obj.checkVir_01_Vir:addEventListener("onClick",
+    obj._e_event74 = obj.checkVir_01_Vir:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckVir_01 = true;
@@ -8364,7 +8204,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event77 = obj.checkVir_02_Vir:addEventListener("onClick",
+    obj._e_event75 = obj.checkVir_02_Vir:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckVir_02 = true;
@@ -8376,7 +8216,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event78 = obj.checkVir_03_Vir:addEventListener("onClick",
+    obj._e_event76 = obj.checkVir_03_Vir:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckVir_03 = true;
@@ -8388,7 +8228,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event79 = obj.checkVir_04_Vir:addEventListener("onClick",
+    obj._e_event77 = obj.checkVir_04_Vir:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckVir_04 = true;
@@ -8400,7 +8240,7 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event80 = obj.checkVir_05_Vir:addEventListener("onClick",
+    obj._e_event78 = obj.checkVir_05_Vir:addEventListener("onClick",
         function (event)
             
             							sheet.fldCheckVir_05 = true;
@@ -8412,17 +8252,17 @@ local function constructNew_frmScion2e()
             						
         end);
 
-    obj._e_event81 = obj.nomeBut10:addEventListener("onClick",
+    obj._e_event79 = obj.nomeBut10:addEventListener("onClick",
         function (event)
             self.popUp_10:show('right', self.nomeBut10);
         end);
 
-    obj._e_event82 = obj.nomeBut10B:addEventListener("onClick",
+    obj._e_event80 = obj.nomeBut10B:addEventListener("onClick",
         function (event)
             self.popUp_10:show('right', self.nomeBut10);
         end);
 
-    obj._e_event83 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event81 = obj.dataLink22:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase10 == nil or sheet.fldEnfase10 == "Ênfases") then
@@ -8434,7 +8274,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event84 = obj.nomeCheck10_01:addEventListener("onClick",
+    obj._e_event82 = obj.nomeCheck10_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck10_01 = not sheet.fldCheck10_01;
@@ -8451,7 +8291,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event85 = obj.nomeCheck10_02:addEventListener("onClick",
+    obj._e_event83 = obj.nomeCheck10_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck10_02 = not sheet.fldCheck10_02;
@@ -8474,7 +8314,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event86 = obj.nomeCheck10_03:addEventListener("onClick",
+    obj._e_event84 = obj.nomeCheck10_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck10_03 = not sheet.fldCheck10_03;
@@ -8499,7 +8339,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event87 = obj.nomeCheck10_04:addEventListener("onClick",
+    obj._e_event85 = obj.nomeCheck10_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck10_04 = not sheet.fldCheck10_04;
@@ -8526,7 +8366,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event88 = obj.nomeCheck10_05:addEventListener("onClick",
+    obj._e_event86 = obj.nomeCheck10_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck10_05 = not sheet.fldCheck10_05;
@@ -8547,17 +8387,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event89 = obj.nomeBut11:addEventListener("onClick",
+    obj._e_event87 = obj.nomeBut11:addEventListener("onClick",
         function (event)
             self.popUp_11:show('right', self.nomeBut11);
         end);
 
-    obj._e_event90 = obj.nomeBut11B:addEventListener("onClick",
+    obj._e_event88 = obj.nomeBut11B:addEventListener("onClick",
         function (event)
             self.popUp_11:show('right', self.nomeBut11);
         end);
 
-    obj._e_event91 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event89 = obj.dataLink23:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase11 == nil or sheet.fldEnfase11 == "Ênfases") then
@@ -8569,7 +8409,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event92 = obj.nomeCheck11_01:addEventListener("onClick",
+    obj._e_event90 = obj.nomeCheck11_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck11_01 = not sheet.fldCheck11_01;
@@ -8586,7 +8426,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event93 = obj.nomeCheck11_02:addEventListener("onClick",
+    obj._e_event91 = obj.nomeCheck11_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck11_02 = not sheet.fldCheck11_02;
@@ -8609,7 +8449,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event94 = obj.nomeCheck11_03:addEventListener("onClick",
+    obj._e_event92 = obj.nomeCheck11_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck11_03 = not sheet.fldCheck11_03;
@@ -8634,7 +8474,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event95 = obj.nomeCheck11_04:addEventListener("onClick",
+    obj._e_event93 = obj.nomeCheck11_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck11_04 = not sheet.fldCheck11_04;
@@ -8661,7 +8501,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event96 = obj.nomeCheck11_05:addEventListener("onClick",
+    obj._e_event94 = obj.nomeCheck11_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck11_05 = not sheet.fldCheck11_05;
@@ -8682,17 +8522,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event97 = obj.nomeBut12:addEventListener("onClick",
+    obj._e_event95 = obj.nomeBut12:addEventListener("onClick",
         function (event)
             self.popUp_12:show('right', self.nomeBut12);
         end);
 
-    obj._e_event98 = obj.nomeBut12B:addEventListener("onClick",
+    obj._e_event96 = obj.nomeBut12B:addEventListener("onClick",
         function (event)
             self.popUp_12:show('right', self.nomeBut12);
         end);
 
-    obj._e_event99 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event97 = obj.dataLink24:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase12 == nil or sheet.fldEnfase12 == "Ênfases") then
@@ -8704,7 +8544,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event100 = obj.nomeCheck12_01:addEventListener("onClick",
+    obj._e_event98 = obj.nomeCheck12_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck12_01 = not sheet.fldCheck12_01;
@@ -8721,7 +8561,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event101 = obj.nomeCheck12_02:addEventListener("onClick",
+    obj._e_event99 = obj.nomeCheck12_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck12_02 = not sheet.fldCheck12_02;
@@ -8744,7 +8584,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event102 = obj.nomeCheck12_03:addEventListener("onClick",
+    obj._e_event100 = obj.nomeCheck12_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck12_03 = not sheet.fldCheck12_03;
@@ -8769,7 +8609,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event103 = obj.nomeCheck12_04:addEventListener("onClick",
+    obj._e_event101 = obj.nomeCheck12_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck12_04 = not sheet.fldCheck12_04;
@@ -8796,7 +8636,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event104 = obj.nomeCheck12_05:addEventListener("onClick",
+    obj._e_event102 = obj.nomeCheck12_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck12_05 = not sheet.fldCheck12_05;
@@ -8817,17 +8657,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event105 = obj.nomeBut13:addEventListener("onClick",
+    obj._e_event103 = obj.nomeBut13:addEventListener("onClick",
         function (event)
             self.popUp_13:show('right', self.nomeBut13);
         end);
 
-    obj._e_event106 = obj.nomeBut13B:addEventListener("onClick",
+    obj._e_event104 = obj.nomeBut13B:addEventListener("onClick",
         function (event)
             self.popUp_13:show('right', self.nomeBut13);
         end);
 
-    obj._e_event107 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event105 = obj.dataLink25:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase13 == nil or sheet.fldEnfase13 == "Ênfases") then
@@ -8839,7 +8679,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event108 = obj.nomeCheck13_01:addEventListener("onClick",
+    obj._e_event106 = obj.nomeCheck13_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck13_01 = not sheet.fldCheck13_01;
@@ -8856,7 +8696,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event109 = obj.nomeCheck13_02:addEventListener("onClick",
+    obj._e_event107 = obj.nomeCheck13_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck13_02 = not sheet.fldCheck13_02;
@@ -8879,7 +8719,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event110 = obj.nomeCheck13_03:addEventListener("onClick",
+    obj._e_event108 = obj.nomeCheck13_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck13_03 = not sheet.fldCheck13_03;
@@ -8904,7 +8744,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event111 = obj.nomeCheck13_04:addEventListener("onClick",
+    obj._e_event109 = obj.nomeCheck13_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck13_04 = not sheet.fldCheck13_04;
@@ -8931,7 +8771,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event112 = obj.nomeCheck13_05:addEventListener("onClick",
+    obj._e_event110 = obj.nomeCheck13_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck13_05 = not sheet.fldCheck13_05;
@@ -8952,17 +8792,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event113 = obj.nomeBut14:addEventListener("onClick",
+    obj._e_event111 = obj.nomeBut14:addEventListener("onClick",
         function (event)
             self.popUp_14:show('right', self.nomeBut14);
         end);
 
-    obj._e_event114 = obj.nomeBut14B:addEventListener("onClick",
+    obj._e_event112 = obj.nomeBut14B:addEventListener("onClick",
         function (event)
             self.popUp_14:show('right', self.nomeBut14);
         end);
 
-    obj._e_event115 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event113 = obj.dataLink26:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase14 == nil or sheet.fldEnfase14 == "Ênfases") then
@@ -8974,7 +8814,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event116 = obj.nomeCheck14_01:addEventListener("onClick",
+    obj._e_event114 = obj.nomeCheck14_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck14_01 = not sheet.fldCheck14_01;
@@ -8991,7 +8831,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event117 = obj.nomeCheck14_02:addEventListener("onClick",
+    obj._e_event115 = obj.nomeCheck14_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck14_02 = not sheet.fldCheck14_02;
@@ -9014,7 +8854,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event118 = obj.nomeCheck14_03:addEventListener("onClick",
+    obj._e_event116 = obj.nomeCheck14_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck14_03 = not sheet.fldCheck14_03;
@@ -9039,7 +8879,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event119 = obj.nomeCheck14_04:addEventListener("onClick",
+    obj._e_event117 = obj.nomeCheck14_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck14_04 = not sheet.fldCheck14_04;
@@ -9066,7 +8906,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event120 = obj.nomeCheck14_05:addEventListener("onClick",
+    obj._e_event118 = obj.nomeCheck14_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck14_05 = not sheet.fldCheck14_05;
@@ -9087,17 +8927,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event121 = obj.nomeBut15:addEventListener("onClick",
+    obj._e_event119 = obj.nomeBut15:addEventListener("onClick",
         function (event)
             self.popUp_15:show('right', self.nomeBut15);
         end);
 
-    obj._e_event122 = obj.nomeBut15B:addEventListener("onClick",
+    obj._e_event120 = obj.nomeBut15B:addEventListener("onClick",
         function (event)
             self.popUp_15:show('right', self.nomeBut15);
         end);
 
-    obj._e_event123 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event121 = obj.dataLink27:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase15 == nil or sheet.fldEnfase15 == "Ênfases") then
@@ -9109,7 +8949,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event124 = obj.nomeCheck15_01:addEventListener("onClick",
+    obj._e_event122 = obj.nomeCheck15_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck15_01 = not sheet.fldCheck15_01;
@@ -9126,7 +8966,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event125 = obj.nomeCheck15_02:addEventListener("onClick",
+    obj._e_event123 = obj.nomeCheck15_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck15_02 = not sheet.fldCheck15_02;
@@ -9149,7 +8989,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event126 = obj.nomeCheck15_03:addEventListener("onClick",
+    obj._e_event124 = obj.nomeCheck15_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck15_03 = not sheet.fldCheck15_03;
@@ -9174,7 +9014,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event127 = obj.nomeCheck15_04:addEventListener("onClick",
+    obj._e_event125 = obj.nomeCheck15_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck15_04 = not sheet.fldCheck15_04;
@@ -9201,7 +9041,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event128 = obj.nomeCheck15_05:addEventListener("onClick",
+    obj._e_event126 = obj.nomeCheck15_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck15_05 = not sheet.fldCheck15_05;
@@ -9222,17 +9062,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event129 = obj.nomeBut16:addEventListener("onClick",
+    obj._e_event127 = obj.nomeBut16:addEventListener("onClick",
         function (event)
             self.popUp_16:show('right', self.nomeBut16);
         end);
 
-    obj._e_event130 = obj.nomeBut16B:addEventListener("onClick",
+    obj._e_event128 = obj.nomeBut16B:addEventListener("onClick",
         function (event)
             self.popUp_16:show('right', self.nomeBut16);
         end);
 
-    obj._e_event131 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event129 = obj.dataLink28:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase16 == nil or sheet.fldEnfase16 == "Ênfases") then
@@ -9244,7 +9084,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event132 = obj.nomeCheck16_01:addEventListener("onClick",
+    obj._e_event130 = obj.nomeCheck16_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck16_01 = not sheet.fldCheck16_01;
@@ -9261,7 +9101,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event133 = obj.nomeCheck16_02:addEventListener("onClick",
+    obj._e_event131 = obj.nomeCheck16_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck16_02 = not sheet.fldCheck16_02;
@@ -9284,7 +9124,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event134 = obj.nomeCheck16_03:addEventListener("onClick",
+    obj._e_event132 = obj.nomeCheck16_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck16_03 = not sheet.fldCheck16_03;
@@ -9309,7 +9149,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event135 = obj.nomeCheck16_04:addEventListener("onClick",
+    obj._e_event133 = obj.nomeCheck16_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck16_04 = not sheet.fldCheck16_04;
@@ -9336,7 +9176,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event136 = obj.nomeCheck16_05:addEventListener("onClick",
+    obj._e_event134 = obj.nomeCheck16_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck16_05 = not sheet.fldCheck16_05;
@@ -9357,17 +9197,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event137 = obj.nomeBut17:addEventListener("onClick",
+    obj._e_event135 = obj.nomeBut17:addEventListener("onClick",
         function (event)
             self.popUp_17:show('right', self.nomeBut17);
         end);
 
-    obj._e_event138 = obj.nomeBut17B:addEventListener("onClick",
+    obj._e_event136 = obj.nomeBut17B:addEventListener("onClick",
         function (event)
             self.popUp_17:show('right', self.nomeBut17);
         end);
 
-    obj._e_event139 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event137 = obj.dataLink29:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase17 == nil or sheet.fldEnfase17 == "Ênfases") then
@@ -9379,7 +9219,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event140 = obj.nomeCheck17_01:addEventListener("onClick",
+    obj._e_event138 = obj.nomeCheck17_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck17_01 = not sheet.fldCheck17_01;
@@ -9396,7 +9236,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event141 = obj.nomeCheck17_02:addEventListener("onClick",
+    obj._e_event139 = obj.nomeCheck17_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck17_02 = not sheet.fldCheck17_02;
@@ -9419,7 +9259,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event142 = obj.nomeCheck17_03:addEventListener("onClick",
+    obj._e_event140 = obj.nomeCheck17_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck17_03 = not sheet.fldCheck17_03;
@@ -9444,7 +9284,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event143 = obj.nomeCheck17_04:addEventListener("onClick",
+    obj._e_event141 = obj.nomeCheck17_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck17_04 = not sheet.fldCheck17_04;
@@ -9471,7 +9311,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event144 = obj.nomeCheck17_05:addEventListener("onClick",
+    obj._e_event142 = obj.nomeCheck17_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck17_05 = not sheet.fldCheck17_05;
@@ -9492,17 +9332,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event145 = obj.nomeBut18:addEventListener("onClick",
+    obj._e_event143 = obj.nomeBut18:addEventListener("onClick",
         function (event)
             self.popUp_18:show('right', self.nomeBut18);
         end);
 
-    obj._e_event146 = obj.nomeBut18B:addEventListener("onClick",
+    obj._e_event144 = obj.nomeBut18B:addEventListener("onClick",
         function (event)
             self.popUp_18:show('right', self.nomeBut18);
         end);
 
-    obj._e_event147 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event145 = obj.dataLink30:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase18 == nil or sheet.fldEnfase18 == "Ênfases") then
@@ -9514,7 +9354,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event148 = obj.nomeCheck18_01:addEventListener("onClick",
+    obj._e_event146 = obj.nomeCheck18_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck18_01 = not sheet.fldCheck18_01;
@@ -9531,7 +9371,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event149 = obj.nomeCheck18_02:addEventListener("onClick",
+    obj._e_event147 = obj.nomeCheck18_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck18_02 = not sheet.fldCheck18_02;
@@ -9554,7 +9394,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event150 = obj.nomeCheck18_03:addEventListener("onClick",
+    obj._e_event148 = obj.nomeCheck18_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck18_03 = not sheet.fldCheck18_03;
@@ -9579,7 +9419,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event151 = obj.nomeCheck18_04:addEventListener("onClick",
+    obj._e_event149 = obj.nomeCheck18_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck18_04 = not sheet.fldCheck18_04;
@@ -9606,7 +9446,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event152 = obj.nomeCheck18_05:addEventListener("onClick",
+    obj._e_event150 = obj.nomeCheck18_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck18_05 = not sheet.fldCheck18_05;
@@ -9627,17 +9467,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event153 = obj.nomeBut19:addEventListener("onClick",
+    obj._e_event151 = obj.nomeBut19:addEventListener("onClick",
         function (event)
             self.popUp_19:show('right', self.nomeBut19);
         end);
 
-    obj._e_event154 = obj.nomeBut19B:addEventListener("onClick",
+    obj._e_event152 = obj.nomeBut19B:addEventListener("onClick",
         function (event)
             self.popUp_19:show('right', self.nomeBut19);
         end);
 
-    obj._e_event155 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event153 = obj.dataLink31:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase19 == nil or sheet.fldEnfase19 == "Ênfases") then
@@ -9649,7 +9489,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event156 = obj.nomeCheck19_01:addEventListener("onClick",
+    obj._e_event154 = obj.nomeCheck19_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck19_01 = not sheet.fldCheck19_01;
@@ -9666,7 +9506,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event157 = obj.nomeCheck19_02:addEventListener("onClick",
+    obj._e_event155 = obj.nomeCheck19_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck19_02 = not sheet.fldCheck19_02;
@@ -9689,7 +9529,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event158 = obj.nomeCheck19_03:addEventListener("onClick",
+    obj._e_event156 = obj.nomeCheck19_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck19_03 = not sheet.fldCheck19_03;
@@ -9714,7 +9554,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event159 = obj.nomeCheck19_04:addEventListener("onClick",
+    obj._e_event157 = obj.nomeCheck19_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck19_04 = not sheet.fldCheck19_04;
@@ -9741,7 +9581,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event160 = obj.nomeCheck19_05:addEventListener("onClick",
+    obj._e_event158 = obj.nomeCheck19_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck19_05 = not sheet.fldCheck19_05;
@@ -9762,17 +9602,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event161 = obj.nomeBut20:addEventListener("onClick",
+    obj._e_event159 = obj.nomeBut20:addEventListener("onClick",
         function (event)
             self.popUp_20:show('right', self.nomeBut20);
         end);
 
-    obj._e_event162 = obj.nomeBut20B:addEventListener("onClick",
+    obj._e_event160 = obj.nomeBut20B:addEventListener("onClick",
         function (event)
             self.popUp_20:show('right', self.nomeBut20);
         end);
 
-    obj._e_event163 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event161 = obj.dataLink32:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase20 == nil or sheet.fldEnfase20 == "Ênfases") then
@@ -9784,7 +9624,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event164 = obj.nomeCheck20_01:addEventListener("onClick",
+    obj._e_event162 = obj.nomeCheck20_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck20_01 = not sheet.fldCheck20_01;
@@ -9801,7 +9641,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event165 = obj.nomeCheck20_02:addEventListener("onClick",
+    obj._e_event163 = obj.nomeCheck20_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck20_02 = not sheet.fldCheck20_02;
@@ -9824,7 +9664,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event166 = obj.nomeCheck20_03:addEventListener("onClick",
+    obj._e_event164 = obj.nomeCheck20_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck20_03 = not sheet.fldCheck20_03;
@@ -9849,7 +9689,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event167 = obj.nomeCheck20_04:addEventListener("onClick",
+    obj._e_event165 = obj.nomeCheck20_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck20_04 = not sheet.fldCheck20_04;
@@ -9876,7 +9716,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event168 = obj.nomeCheck20_05:addEventListener("onClick",
+    obj._e_event166 = obj.nomeCheck20_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck20_05 = not sheet.fldCheck20_05;
@@ -9897,17 +9737,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event169 = obj.nomeBut21:addEventListener("onClick",
+    obj._e_event167 = obj.nomeBut21:addEventListener("onClick",
         function (event)
             self.popUp_21:show('right', self.nomeBut21);
         end);
 
-    obj._e_event170 = obj.nomeBut21B:addEventListener("onClick",
+    obj._e_event168 = obj.nomeBut21B:addEventListener("onClick",
         function (event)
             self.popUp_21:show('right', self.nomeBut21);
         end);
 
-    obj._e_event171 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event169 = obj.dataLink33:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase21 == nil or sheet.fldEnfase21 == "Ênfases") then
@@ -9919,7 +9759,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event172 = obj.nomeCheck21_01:addEventListener("onClick",
+    obj._e_event170 = obj.nomeCheck21_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck21_01 = not sheet.fldCheck21_01;
@@ -9936,7 +9776,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event173 = obj.nomeCheck21_02:addEventListener("onClick",
+    obj._e_event171 = obj.nomeCheck21_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck21_02 = not sheet.fldCheck21_02;
@@ -9959,7 +9799,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event174 = obj.nomeCheck21_03:addEventListener("onClick",
+    obj._e_event172 = obj.nomeCheck21_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck21_03 = not sheet.fldCheck21_03;
@@ -9984,7 +9824,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event175 = obj.nomeCheck21_04:addEventListener("onClick",
+    obj._e_event173 = obj.nomeCheck21_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck21_04 = not sheet.fldCheck21_04;
@@ -10011,7 +9851,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event176 = obj.nomeCheck21_05:addEventListener("onClick",
+    obj._e_event174 = obj.nomeCheck21_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck21_05 = not sheet.fldCheck21_05;
@@ -10032,17 +9872,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event177 = obj.nomeBut22:addEventListener("onClick",
+    obj._e_event175 = obj.nomeBut22:addEventListener("onClick",
         function (event)
             self.popUp_22:show('right', self.nomeBut22);
         end);
 
-    obj._e_event178 = obj.nomeBut22B:addEventListener("onClick",
+    obj._e_event176 = obj.nomeBut22B:addEventListener("onClick",
         function (event)
             self.popUp_22:show('right', self.nomeBut22);
         end);
 
-    obj._e_event179 = obj.dataLink38:addEventListener("onChange",
+    obj._e_event177 = obj.dataLink34:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase22 == nil or sheet.fldEnfase22 == "Ênfases") then
@@ -10054,7 +9894,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event180 = obj.nomeCheck22_01:addEventListener("onClick",
+    obj._e_event178 = obj.nomeCheck22_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck22_01 = not sheet.fldCheck22_01;
@@ -10071,7 +9911,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event181 = obj.nomeCheck22_02:addEventListener("onClick",
+    obj._e_event179 = obj.nomeCheck22_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck22_02 = not sheet.fldCheck22_02;
@@ -10094,7 +9934,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event182 = obj.nomeCheck22_03:addEventListener("onClick",
+    obj._e_event180 = obj.nomeCheck22_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck22_03 = not sheet.fldCheck22_03;
@@ -10119,7 +9959,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event183 = obj.nomeCheck22_04:addEventListener("onClick",
+    obj._e_event181 = obj.nomeCheck22_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck22_04 = not sheet.fldCheck22_04;
@@ -10146,7 +9986,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event184 = obj.nomeCheck22_05:addEventListener("onClick",
+    obj._e_event182 = obj.nomeCheck22_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck22_05 = not sheet.fldCheck22_05;
@@ -10167,17 +10007,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event185 = obj.nomeBut23:addEventListener("onClick",
+    obj._e_event183 = obj.nomeBut23:addEventListener("onClick",
         function (event)
             self.popUp_23:show('right', self.nomeBut23);
         end);
 
-    obj._e_event186 = obj.nomeBut23B:addEventListener("onClick",
+    obj._e_event184 = obj.nomeBut23B:addEventListener("onClick",
         function (event)
             self.popUp_23:show('right', self.nomeBut23);
         end);
 
-    obj._e_event187 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event185 = obj.dataLink35:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase23 == nil or sheet.fldEnfase23 == "Ênfases") then
@@ -10189,7 +10029,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event188 = obj.nomeCheck23_01:addEventListener("onClick",
+    obj._e_event186 = obj.nomeCheck23_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck23_01 = not sheet.fldCheck23_01;
@@ -10206,7 +10046,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event189 = obj.nomeCheck23_02:addEventListener("onClick",
+    obj._e_event187 = obj.nomeCheck23_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck23_02 = not sheet.fldCheck23_02;
@@ -10229,7 +10069,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event190 = obj.nomeCheck23_03:addEventListener("onClick",
+    obj._e_event188 = obj.nomeCheck23_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck23_03 = not sheet.fldCheck23_03;
@@ -10254,7 +10094,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event191 = obj.nomeCheck23_04:addEventListener("onClick",
+    obj._e_event189 = obj.nomeCheck23_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck23_04 = not sheet.fldCheck23_04;
@@ -10281,7 +10121,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event192 = obj.nomeCheck23_05:addEventListener("onClick",
+    obj._e_event190 = obj.nomeCheck23_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck23_05 = not sheet.fldCheck23_05;
@@ -10302,17 +10142,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event193 = obj.nomeBut24:addEventListener("onClick",
+    obj._e_event191 = obj.nomeBut24:addEventListener("onClick",
         function (event)
             self.popUp_24:show('right', self.nomeBut24);
         end);
 
-    obj._e_event194 = obj.nomeBut24B:addEventListener("onClick",
+    obj._e_event192 = obj.nomeBut24B:addEventListener("onClick",
         function (event)
             self.popUp_24:show('right', self.nomeBut24);
         end);
 
-    obj._e_event195 = obj.dataLink40:addEventListener("onChange",
+    obj._e_event193 = obj.dataLink36:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase24 == nil or sheet.fldEnfase24 == "Ênfases") then
@@ -10324,7 +10164,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event196 = obj.nomeCheck24_01:addEventListener("onClick",
+    obj._e_event194 = obj.nomeCheck24_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck24_01 = not sheet.fldCheck24_01;
@@ -10341,7 +10181,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event197 = obj.nomeCheck24_02:addEventListener("onClick",
+    obj._e_event195 = obj.nomeCheck24_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck24_02 = not sheet.fldCheck24_02;
@@ -10364,7 +10204,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event198 = obj.nomeCheck24_03:addEventListener("onClick",
+    obj._e_event196 = obj.nomeCheck24_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck24_03 = not sheet.fldCheck24_03;
@@ -10389,7 +10229,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event199 = obj.nomeCheck24_04:addEventListener("onClick",
+    obj._e_event197 = obj.nomeCheck24_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck24_04 = not sheet.fldCheck24_04;
@@ -10416,7 +10256,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event200 = obj.nomeCheck24_05:addEventListener("onClick",
+    obj._e_event198 = obj.nomeCheck24_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck24_05 = not sheet.fldCheck24_05;
@@ -10437,17 +10277,17 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event201 = obj.nomeBut25:addEventListener("onClick",
+    obj._e_event199 = obj.nomeBut25:addEventListener("onClick",
         function (event)
             self.popUp_25:show('right', self.nomeBut25);
         end);
 
-    obj._e_event202 = obj.nomeBut25B:addEventListener("onClick",
+    obj._e_event200 = obj.nomeBut25B:addEventListener("onClick",
         function (event)
             self.popUp_25:show('right', self.nomeBut25);
         end);
 
-    obj._e_event203 = obj.dataLink41:addEventListener("onChange",
+    obj._e_event201 = obj.dataLink37:addEventListener("onChange",
         function (field, oldValue, newValue)
             if(sheet == nil) then return; end;
             									if(sheet.fldEnfase25 == nil or sheet.fldEnfase25 == "Ênfases") then
@@ -10459,7 +10299,7 @@ local function constructNew_frmScion2e()
             									end;
         end);
 
-    obj._e_event204 = obj.nomeCheck25_01:addEventListener("onClick",
+    obj._e_event202 = obj.nomeCheck25_01:addEventListener("onClick",
         function (event)
              
             				sheet.fldCheck25_01 = not sheet.fldCheck25_01;
@@ -10476,7 +10316,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event205 = obj.nomeCheck25_02:addEventListener("onClick",
+    obj._e_event203 = obj.nomeCheck25_02:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck25_02 = not sheet.fldCheck25_02;
@@ -10499,7 +10339,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event206 = obj.nomeCheck25_03:addEventListener("onClick",
+    obj._e_event204 = obj.nomeCheck25_03:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck25_03 = not sheet.fldCheck25_03;
@@ -10524,7 +10364,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event207 = obj.nomeCheck25_04:addEventListener("onClick",
+    obj._e_event205 = obj.nomeCheck25_04:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck25_04 = not sheet.fldCheck25_04;
@@ -10551,7 +10391,7 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event208 = obj.nomeCheck25_05:addEventListener("onClick",
+    obj._e_event206 = obj.nomeCheck25_05:addEventListener("onClick",
         function (event)
             
             				sheet.fldCheck25_05 = not sheet.fldCheck25_05;
@@ -10572,37 +10412,37 @@ local function constructNew_frmScion2e()
             			
         end);
 
-    obj._e_event209 = obj.rclLegados:addEventListener("onItemRemoved",
+    obj._e_event207 = obj.rclLegados:addEventListener("onItemRemoved",
         function (node, form)
             self.idFundo:needRepaint();
         end);
 
-    obj._e_event210 = obj.rclLegados:addEventListener("onSelect",
+    obj._e_event208 = obj.rclLegados:addEventListener("onSelect",
         function ()
             self.rclLegados:sort();
         end);
 
-    obj._e_event211 = obj.rclLegados:addEventListener("onCompare",
+    obj._e_event209 = obj.rclLegados:addEventListener("onCompare",
         function (nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.fldLegados, nodeB.fldLegados);
         end);
 
-    obj._e_event212 = obj.button1:addEventListener("onClick",
+    obj._e_event210 = obj.button1:addEventListener("onClick",
         function (event)
             self.rclLegados:append(); self.idFundo:needRepaint();
         end);
 
-    obj._e_event213 = obj.rclTruques:addEventListener("onItemRemoved",
+    obj._e_event211 = obj.rclTruques:addEventListener("onItemRemoved",
         function (node, form)
             self.idFundo:needRepaint();
         end);
 
-    obj._e_event214 = obj.rclTruques:addEventListener("onSelect",
+    obj._e_event212 = obj.rclTruques:addEventListener("onSelect",
         function ()
             self.rclTruques:sort();
         end);
 
-    obj._e_event215 = obj.rclTruques:addEventListener("onCompare",
+    obj._e_event213 = obj.rclTruques:addEventListener("onCompare",
         function (nodeA, nodeB)
             if nodeA.fldLegado == nodeB.fldLegado then
             															if nodeA.fldGrau == nodeB.fldGrau then
@@ -10615,22 +10455,22 @@ local function constructNew_frmScion2e()
             														end
         end);
 
-    obj._e_event216 = obj.button2:addEventListener("onClick",
+    obj._e_event214 = obj.button2:addEventListener("onClick",
         function (event)
             self.rclTruques:append(); self.idFundo:needRepaint();
         end);
 
-    obj._e_event217 = obj.rclHerancas:addEventListener("onItemRemoved",
+    obj._e_event215 = obj.rclHerancas:addEventListener("onItemRemoved",
         function (node, form)
             self.idFundo:needRepaint();
         end);
 
-    obj._e_event218 = obj.rclHerancas:addEventListener("onSelect",
+    obj._e_event216 = obj.rclHerancas:addEventListener("onSelect",
         function ()
             self.rclHerancas:sort();
         end);
 
-    obj._e_event219 = obj.rclHerancas:addEventListener("onCompare",
+    obj._e_event217 = obj.rclHerancas:addEventListener("onCompare",
         function (nodeA, nodeB)
             if nodeA.fldHerTipo == nodeB.fldHerTipo then
             															return Utils.compareStringPtBr(nodeA.fldHerancas, nodeB.fldHerancas);
@@ -10639,22 +10479,22 @@ local function constructNew_frmScion2e()
             														end
         end);
 
-    obj._e_event220 = obj.button3:addEventListener("onClick",
+    obj._e_event218 = obj.button3:addEventListener("onClick",
         function (event)
             self.rclHerancas:append(); self.idFundo:needRepaint();
         end);
 
-    obj._e_event221 = obj.rclEsferas:addEventListener("onItemRemoved",
+    obj._e_event219 = obj.rclEsferas:addEventListener("onItemRemoved",
         function (node, form)
             self.idFundo:needRepaint();
         end);
 
-    obj._e_event222 = obj.rclEsferas:addEventListener("onSelect",
+    obj._e_event220 = obj.rclEsferas:addEventListener("onSelect",
         function ()
             self.rclEsferas:sort();
         end);
 
-    obj._e_event223 = obj.rclEsferas:addEventListener("onCompare",
+    obj._e_event221 = obj.rclEsferas:addEventListener("onCompare",
         function (nodeA, nodeB)
             if nodeA.fldEsfCategoria == nodeB.fldEsfCategoria then
             															if nodeA.fldEsfTipo == nodeB.fldEsfTipo then
@@ -10667,19 +10507,17 @@ local function constructNew_frmScion2e()
             														end
         end);
 
-    obj._e_event224 = obj.button4:addEventListener("onClick",
+    obj._e_event222 = obj.button4:addEventListener("onClick",
         function (event)
             self.rclEsferas:append(); self.idFundo:needRepaint();
         end);
 
-    obj._e_event225 = obj.image7:addEventListener("onClick",
+    obj._e_event223 = obj.image7:addEventListener("onClick",
         function (event)
             if(sheet==nil) then return end; TrocarAba('D');
         end);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event225);
-        __o_rrpgObjs.removeEventListenerById(self._e_event224);
         __o_rrpgObjs.removeEventListenerById(self._e_event223);
         __o_rrpgObjs.removeEventListenerById(self._e_event222);
         __o_rrpgObjs.removeEventListenerById(self._e_event221);
@@ -10972,18 +10810,18 @@ local function constructNew_frmScion2e()
         if self.flowLayout6 ~= nil then self.flowLayout6:destroy(); self.flowLayout6 = nil; end;
         if self.nomeCheck01_01 ~= nil then self.nomeCheck01_01:destroy(); self.nomeCheck01_01 = nil; end;
         if self.flowPart17 ~= nil then self.flowPart17:destroy(); self.flowPart17 = nil; end;
-        if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
-        if self.nomeCheck08_05 ~= nil then self.nomeCheck08_05:destroy(); self.nomeCheck08_05 = nil; end;
         if self.checkVir_05_Vir ~= nil then self.checkVir_05_Vir:destroy(); self.checkVir_05_Vir = nil; end;
+        if self.nomeCheck08_05 ~= nil then self.nomeCheck08_05:destroy(); self.nomeCheck08_05 = nil; end;
+        if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
         if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
         if self.popUp_23 ~= nil then self.popUp_23:destroy(); self.popUp_23 = nil; end;
-        if self.dataLink41 ~= nil then self.dataLink41:destroy(); self.dataLink41 = nil; end;
         if self.layout67 ~= nil then self.layout67:destroy(); self.layout67 = nil; end;
+        if self.rectangle63 ~= nil then self.rectangle63:destroy(); self.rectangle63 = nil; end;
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
         if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
-        if self.rectangle63 ~= nil then self.rectangle63:destroy(); self.rectangle63 = nil; end;
+        if self.dataLink41 ~= nil then self.dataLink41:destroy(); self.dataLink41 = nil; end;
         if self.dataLink44 ~= nil then self.dataLink44:destroy(); self.dataLink44 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.popUp_24 ~= nil then self.popUp_24:destroy(); self.popUp_24 = nil; end;
@@ -11014,20 +10852,20 @@ local function constructNew_frmScion2e()
         if self.flowPart35 ~= nil then self.flowPart35:destroy(); self.flowPart35 = nil; end;
         if self.flowPart25 ~= nil then self.flowPart25:destroy(); self.flowPart25 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
-        if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
         if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
+        if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
         if self.checkImp_05_Imp ~= nil then self.checkImp_05_Imp:destroy(); self.checkImp_05_Imp = nil; end;
-        if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
         if self.layout48 ~= nil then self.layout48:destroy(); self.layout48 = nil; end;
         if self.dataLink29 ~= nil then self.dataLink29:destroy(); self.dataLink29 = nil; end;
+        if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
         if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
         if self.layout88 ~= nil then self.layout88:destroy(); self.layout88 = nil; end;
         if self.btnImagemFundo ~= nil then self.btnImagemFundo:destroy(); self.btnImagemFundo = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.nomeCheck06_02 ~= nil then self.nomeCheck06_02:destroy(); self.nomeCheck06_02 = nil; end;
-        if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
         if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
+        if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.nomeCheck22_04 ~= nil then self.nomeCheck22_04:destroy(); self.nomeCheck22_04 = nil; end;
         if self.layout24 ~= nil then self.layout24:destroy(); self.layout24 = nil; end;
@@ -11070,7 +10908,6 @@ local function constructNew_frmScion2e()
         if self.nomeBut17 ~= nil then self.nomeBut17:destroy(); self.nomeBut17 = nil; end;
         if self.dataLink37 ~= nil then self.dataLink37:destroy(); self.dataLink37 = nil; end;
         if self.layout72 ~= nil then self.layout72:destroy(); self.layout72 = nil; end;
-        if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
         if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
         if self.nomeBut10 ~= nil then self.nomeBut10:destroy(); self.nomeBut10 = nil; end;
         if self.frmTemplates ~= nil then self.frmTemplates:destroy(); self.frmTemplates = nil; end;
@@ -11088,11 +10925,8 @@ local function constructNew_frmScion2e()
         if self.layout31 ~= nil then self.layout31:destroy(); self.layout31 = nil; end;
         if self.flPart_Machucado04 ~= nil then self.flPart_Machucado04:destroy(); self.flPart_Machucado04 = nil; end;
         if self.flowPart18 ~= nil then self.flowPart18:destroy(); self.flowPart18 = nil; end;
-        if self.rectVidMachucado02 ~= nil then self.rectVidMachucado02:destroy(); self.rectVidMachucado02 = nil; end;
         if self.nomeCheck17_04 ~= nil then self.nomeCheck17_04:destroy(); self.nomeCheck17_04 = nil; end;
-        if self.dataLink49 ~= nil then self.dataLink49:destroy(); self.dataLink49 = nil; end;
         if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
-        if self.flPart_Machucado01 ~= nil then self.flPart_Machucado01:destroy(); self.flPart_Machucado01 = nil; end;
         if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
         if self.nomeCheckB13 ~= nil then self.nomeCheckB13:destroy(); self.nomeCheckB13 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
@@ -11110,9 +10944,9 @@ local function constructNew_frmScion2e()
         if self.layout69 ~= nil then self.layout69:destroy(); self.layout69 = nil; end;
         if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
         if self.nomeCheck20_03 ~= nil then self.nomeCheck20_03:destroy(); self.nomeCheck20_03 = nil; end;
-        if self.dataLink43 ~= nil then self.dataLink43:destroy(); self.dataLink43 = nil; end;
-        if self.nomeCheck01_03 ~= nil then self.nomeCheck01_03:destroy(); self.nomeCheck01_03 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.nomeCheck01_03 ~= nil then self.nomeCheck01_03:destroy(); self.nomeCheck01_03 = nil; end;
+        if self.dataLink43 ~= nil then self.dataLink43:destroy(); self.dataLink43 = nil; end;
         if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
         if self.popUp_21 ~= nil then self.popUp_21:destroy(); self.popUp_21 = nil; end;
         if self.nomeBut21 ~= nil then self.nomeBut21:destroy(); self.nomeBut21 = nil; end;
@@ -11120,15 +10954,14 @@ local function constructNew_frmScion2e()
         if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
         if self.nomeCheck16_05 ~= nil then self.nomeCheck16_05:destroy(); self.nomeCheck16_05 = nil; end;
         if self.rectangle61 ~= nil then self.rectangle61:destroy(); self.rectangle61 = nil; end;
-        if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
-        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
+        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
+        if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
         if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
         if self.nomeCheck08_02 ~= nil then self.nomeCheck08_02:destroy(); self.nomeCheck08_02 = nil; end;
         if self.edit18 ~= nil then self.edit18:destroy(); self.edit18 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.flowLayout16 ~= nil then self.flowLayout16:destroy(); self.flowLayout16 = nil; end;
-        if self.label89 ~= nil then self.label89:destroy(); self.label89 = nil; end;
         if self.checkImp_07_Imp ~= nil then self.checkImp_07_Imp:destroy(); self.checkImp_07_Imp = nil; end;
         if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
         if self.textEditor11 ~= nil then self.textEditor11:destroy(); self.textEditor11 = nil; end;
@@ -11150,7 +10983,6 @@ local function constructNew_frmScion2e()
         if self.nomeCheck15_02 ~= nil then self.nomeCheck15_02:destroy(); self.nomeCheck15_02 = nil; end;
         if self.checkMulVit_Des_03_Leg ~= nil then self.checkMulVit_Des_03_Leg:destroy(); self.checkMulVit_Des_03_Leg = nil; end;
         if self.flowLayout18 ~= nil then self.flowLayout18:destroy(); self.flowLayout18 = nil; end;
-        if self.label87 ~= nil then self.label87:destroy(); self.label87 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
@@ -11182,8 +11014,8 @@ local function constructNew_frmScion2e()
         if self.rclEsferas ~= nil then self.rclEsferas:destroy(); self.rclEsferas = nil; end;
         if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
         if self.popUp_17 ~= nil then self.popUp_17:destroy(); self.popUp_17 = nil; end;
-        if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
         if self.rectangle57 ~= nil then self.rectangle57:destroy(); self.rectangle57 = nil; end;
+        if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
         if self.nomeCheck12_04 ~= nil then self.nomeCheck12_04:destroy(); self.nomeCheck12_04 = nil; end;
         if self.dataLink17 ~= nil then self.dataLink17:destroy(); self.dataLink17 = nil; end;
         if self.checkImp_11_Imp ~= nil then self.checkImp_11_Imp:destroy(); self.checkImp_11_Imp = nil; end;
@@ -11198,7 +11030,6 @@ local function constructNew_frmScion2e()
         if self.nomeBut11B ~= nil then self.nomeBut11B:destroy(); self.nomeBut11B = nil; end;
         if self.nomeBut13B ~= nil then self.nomeBut13B:destroy(); self.nomeBut13B = nil; end;
         if self.nomeCheck21_04 ~= nil then self.nomeCheck21_04:destroy(); self.nomeCheck21_04 = nil; end;
-        if self.label90 ~= nil then self.label90:destroy(); self.label90 = nil; end;
         if self.nomeCheck02_02 ~= nil then self.nomeCheck02_02:destroy(); self.nomeCheck02_02 = nil; end;
         if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
@@ -11208,7 +11039,6 @@ local function constructNew_frmScion2e()
         if self.rectangle72 ~= nil then self.rectangle72:destroy(); self.rectangle72 = nil; end;
         if self.nomeCheck14_04 ~= nil then self.nomeCheck14_04:destroy(); self.nomeCheck14_04 = nil; end;
         if self.nomeCheck21_01 ~= nil then self.nomeCheck21_01:destroy(); self.nomeCheck21_01 = nil; end;
-        if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
         if self.nomeBut15 ~= nil then self.nomeBut15:destroy(); self.nomeBut15 = nil; end;
         if self.nomeCheck13_03 ~= nil then self.nomeCheck13_03:destroy(); self.nomeCheck13_03 = nil; end;
         if self.rectangle75 ~= nil then self.rectangle75:destroy(); self.rectangle75 = nil; end;
@@ -11228,7 +11058,6 @@ local function constructNew_frmScion2e()
         if self.nomeCheck10_05 ~= nil then self.nomeCheck10_05:destroy(); self.nomeCheck10_05 = nil; end;
         if self.layout58 ~= nil then self.layout58:destroy(); self.layout58 = nil; end;
         if self.horzLine5 ~= nil then self.horzLine5:destroy(); self.horzLine5 = nil; end;
-        if self.rectVidMachucado01 ~= nil then self.rectVidMachucado01:destroy(); self.rectVidMachucado01 = nil; end;
         if self.layout33 ~= nil then self.layout33:destroy(); self.layout33 = nil; end;
         if self.nomeBut15B ~= nil then self.nomeBut15B:destroy(); self.nomeBut15B = nil; end;
         if self.flPart_Machucado06 ~= nil then self.flPart_Machucado06:destroy(); self.flPart_Machucado06 = nil; end;
@@ -11249,7 +11078,6 @@ local function constructNew_frmScion2e()
         if self.layout56 ~= nil then self.layout56:destroy(); self.layout56 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.layout64 ~= nil then self.layout64:destroy(); self.layout64 = nil; end;
-        if self.dataLink50 ~= nil then self.dataLink50:destroy(); self.dataLink50 = nil; end;
         if self.flowLayout7 ~= nil then self.flowLayout7:destroy(); self.flowLayout7 = nil; end;
         if self.flowPart14 ~= nil then self.flowPart14:destroy(); self.flowPart14 = nil; end;
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
@@ -11340,13 +11168,11 @@ local function constructNew_frmScion2e()
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.nomeCheck14_01 ~= nil then self.nomeCheck14_01:destroy(); self.nomeCheck14_01 = nil; end;
         if self.nomeCheck21_02 ~= nil then self.nomeCheck21_02:destroy(); self.nomeCheck21_02 = nil; end;
-        if self.checkBox8 ~= nil then self.checkBox8:destroy(); self.checkBox8 = nil; end;
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
         if self.nomeBut16 ~= nil then self.nomeBut16:destroy(); self.nomeBut16 = nil; end;
         if self.rectangle70 ~= nil then self.rectangle70:destroy(); self.rectangle70 = nil; end;
         if self.dataLink36 ~= nil then self.dataLink36:destroy(); self.dataLink36 = nil; end;
         if self.layout71 ~= nil then self.layout71:destroy(); self.layout71 = nil; end;
-        if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
         if self.nomeBut18B ~= nil then self.nomeBut18B:destroy(); self.nomeBut18B = nil; end;
         if self.nomeBut13 ~= nil then self.nomeBut13:destroy(); self.nomeBut13 = nil; end;
@@ -11386,10 +11212,10 @@ local function constructNew_frmScion2e()
         if self.layout19 ~= nil then self.layout19:destroy(); self.layout19 = nil; end;
         if self.nomeCheckB17 ~= nil then self.nomeCheckB17:destroy(); self.nomeCheckB17 = nil; end;
         if self.nomeCheck16_03 ~= nil then self.nomeCheck16_03:destroy(); self.nomeCheck16_03 = nil; end;
-        if self.dataLink40 ~= nil then self.dataLink40:destroy(); self.dataLink40 = nil; end;
+        if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
         if self.nomeCheck20_04 ~= nil then self.nomeCheck20_04:destroy(); self.nomeCheck20_04 = nil; end;
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
-        if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
+        if self.dataLink40 ~= nil then self.dataLink40:destroy(); self.dataLink40 = nil; end;
         if self.nomeCheck01_02 ~= nil then self.nomeCheck01_02:destroy(); self.nomeCheck01_02 = nil; end;
         if self.flowPart16 ~= nil then self.flowPart16:destroy(); self.flowPart16 = nil; end;
         if self.checkVir_04_Vir ~= nil then self.checkVir_04_Vir:destroy(); self.checkVir_04_Vir = nil; end;
@@ -11403,7 +11229,6 @@ local function constructNew_frmScion2e()
         if self.rectangle60 ~= nil then self.rectangle60:destroy(); self.rectangle60 = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
-        if self.dataLink47 ~= nil then self.dataLink47:destroy(); self.dataLink47 = nil; end;
         if self.image6 ~= nil then self.image6:destroy(); self.image6 = nil; end;
         if self.nomeCheck08_03 ~= nil then self.nomeCheck08_03:destroy(); self.nomeCheck08_03 = nil; end;
         if self.popUp_25 ~= nil then self.popUp_25:destroy(); self.popUp_25 = nil; end;
@@ -11434,17 +11259,17 @@ local function constructNew_frmScion2e()
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
-        if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
-        if self.nomeCheck07_02 ~= nil then self.nomeCheck07_02:destroy(); self.nomeCheck07_02 = nil; end;
         if self.dataLink28 ~= nil then self.dataLink28:destroy(); self.dataLink28 = nil; end;
+        if self.nomeCheck07_02 ~= nil then self.nomeCheck07_02:destroy(); self.nomeCheck07_02 = nil; end;
         if self.nomeCheck23_04 ~= nil then self.nomeCheck23_04:destroy(); self.nomeCheck23_04 = nil; end;
+        if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
         if self.nomeBG ~= nil then self.nomeBG:destroy(); self.nomeBG = nil; end;
         if self.layout87 ~= nil then self.layout87:destroy(); self.layout87 = nil; end;
         if self.rclTruques ~= nil then self.rclTruques:destroy(); self.rclTruques = nil; end;
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
         if self.nomeCheck06_01 ~= nil then self.nomeCheck06_01:destroy(); self.nomeCheck06_01 = nil; end;
-        if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
+        if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
         if self.nomeCheck23_01 ~= nil then self.nomeCheck23_01:destroy(); self.nomeCheck23_01 = nil; end;
         if self.popUp_11 ~= nil then self.popUp_11:destroy(); self.popUp_11 = nil; end;
@@ -11475,10 +11300,10 @@ local function constructNew_frmScion2e()
         if self.layNote ~= nil then self.layNote:destroy(); self.layNote = nil; end;
         if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
         if self.layout79 ~= nil then self.layout79:destroy(); self.layout79 = nil; end;
-        if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
+        if self.nomeCheck02_03 ~= nil then self.nomeCheck02_03:destroy(); self.nomeCheck02_03 = nil; end;
         if self.idImgFundo ~= nil then self.idImgFundo:destroy(); self.idImgFundo = nil; end;
         if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
-        if self.nomeCheck02_03 ~= nil then self.nomeCheck02_03:destroy(); self.nomeCheck02_03 = nil; end;
+        if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
         if self.rectangle73 ~= nil then self.rectangle73:destroy(); self.rectangle73 = nil; end;
         if self.nomeCheck14_03 ~= nil then self.nomeCheck14_03:destroy(); self.nomeCheck14_03 = nil; end;
         if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
@@ -11510,9 +11335,7 @@ local function constructNew_frmScion2e()
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.nomeCheck10_01 ~= nil then self.nomeCheck10_01:destroy(); self.nomeCheck10_01 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.dataLink48 ~= nil then self.dataLink48:destroy(); self.dataLink48 = nil; end;
         if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
-        if self.flPart_Machucado02 ~= nil then self.flPart_Machucado02:destroy(); self.flPart_Machucado02 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.rectangle68 ~= nil then self.rectangle68:destroy(); self.rectangle68 = nil; end;
         if self.layout51 ~= nil then self.layout51:destroy(); self.layout51 = nil; end;
@@ -11546,9 +11369,8 @@ local function constructNew_frmScion2e()
         if self.nomeCheck19_05 ~= nil then self.nomeCheck19_05:destroy(); self.nomeCheck19_05 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.nomeCheck24_03 ~= nil then self.nomeCheck24_03:destroy(); self.nomeCheck24_03 = nil; end;
-        if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
         if self.flowLayout17 ~= nil then self.flowLayout17:destroy(); self.flowLayout17 = nil; end;
-        if self.label88 ~= nil then self.label88:destroy(); self.label88 = nil; end;
+        if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
         if self.flowPart22 ~= nil then self.flowPart22:destroy(); self.flowPart22 = nil; end;
         if self.rectangle41 ~= nil then self.rectangle41:destroy(); self.rectangle41 = nil; end;
         if self.checkImp_01_Imp ~= nil then self.checkImp_01_Imp:destroy(); self.checkImp_01_Imp = nil; end;
@@ -11567,8 +11389,8 @@ local function constructNew_frmScion2e()
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.nomeCheck15_05 ~= nil then self.nomeCheck15_05:destroy(); self.nomeCheck15_05 = nil; end;
-        if self.label86 ~= nil then self.label86:destroy(); self.label86 = nil; end;
         if self.flowLayout19 ~= nil then self.flowLayout19:destroy(); self.flowLayout19 = nil; end;
+        if self.label86 ~= nil then self.label86:destroy(); self.label86 = nil; end;
         if self.flowPart28 ~= nil then self.flowPart28:destroy(); self.flowPart28 = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;

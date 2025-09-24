@@ -329,14 +329,12 @@ edit.EditBold{
 												</layout>
 												
 												<!--HEADER SAÚDE-->
-												<layout align="top" height="215" padding="{left=20, right=20}">
+												<layout align="top" height="170" padding="{left=20, right=20}">
 													<Divisor texto="S A Ú D E   🙵   F E R I M E N T O S" largura="275" />
 													<layout align="top" height="20" />
-													<layout align="top" height="165">
+													<layout align="top" height="120">
 																						
 														<flowLayout padding="{right=40}" name="flLayVida" autoHeight="true" align="left" width="620" orientation="vertical" maxControlsPerLine="2" onBeforeLayoutCalc="calcMachucados()" horzAlign="justify">
-															<CampoVida rotulo="Machucado" semAcento="Machucado01" largura="85" valor="01" />
-															<CampoVida rotulo="Machucado" semAcento="Machucado02" largura="85" valor="01" />
 															<CampoVida rotulo="Machucado" semAcento="Machucado03" largura="85" valor="01" />
 															<CampoVida rotulo="Machucado" semAcento="Machucado04" largura="85" valor="01" />
 															<CampoVida rotulo="Machucado" semAcento="Machucado05" largura="85" valor="01" />
