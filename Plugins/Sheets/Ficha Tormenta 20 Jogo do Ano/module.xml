@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b">
+    <id>T20_Fichas_Jogo_do_Ano</id>
+    <version>1.0.3</version>
+
+    <info lang="pt-BR">
+        <name>Fichas para Tormenta20 edição Jogo do Ano</name>
+        <description>Ficha para Tormenta20 edição Jogo do Ano (fichas de jogadores)</description>
+        <author>Gabriel Vilaça</author>
+        <site>https://github.com/VilacaGabriel/Plugin-do-Firecast-T20</site>
+        <contact>gabriel.felipe1234@hotmail.com</contact>
+    </info>
+
+</module>
