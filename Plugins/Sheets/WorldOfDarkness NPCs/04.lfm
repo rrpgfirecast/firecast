@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNPCsIV" align="client" theme="dark">
+		
+		<layout width="460"  align="left" >
+		
+			<layout height="40"  align="top" >
+				<button   height="22" width="400" text="Adicionar NPC"  onClick="self.rclNPC_04:append();" top="10" left="10" />
+				<horzLine height="10" width="430" strokeColor="black"  top="36" left="10" />
+			</layout>
+		
+			<scrollBox  align="client" >
+				<recordList width="430" height="2000" name="rclNPC_04" field="NPC_04" templateForm="frmNPC_04"   autoHeight="true"    />
+			</scrollBox>
+		</layout>
+		<scrollBox  align="client"  >
+			<richEdit align="client"   field="txtAnotacoes_04" backgroundColor="black" defaultFontColor="white" />	
+		</scrollBox>
+</form>  

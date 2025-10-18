@@ -537,7 +537,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.WeirdWizard" name="Shadow of the Weird Wizard" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Weird%20Wizard/output/Shadow%20of%20the%20Weird%20Wizard.rpk?raw=true" fileName="Shadow of the Weird Wizard.rpk" repositoryPath="Sheets/Shadow of the Weird Wizard/" author="Célio Zagalo" description="Ficha de personagem para o RPG Shadow of the Weird Wizard" version="1.2" compilationDate="13072025025554" compilationDigest="69e04ad4052c983a8fe88667f958ee4ceefb89af">
+    <element id="br.com.WeirdWizard" name="Shadow of the Weird Wizard" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Weird%20Wizard/output/Shadow%20of%20the%20Weird%20Wizard.rpk?raw=true" fileName="Shadow of the Weird Wizard.rpk" repositoryPath="Sheets/Shadow of the Weird Wizard/" author="Célio Zagalo" description="Ficha de personagem para o RPG Shadow of the Weird Wizard" version="1.3" compilationDate="17082025140556" compilationDigest="2adee49699ca51c0dc250f7209602eec4bf506e9">
         <info lang="pt-BR" name="Shadow of the Weird Wizard" description="Ficha de personagem para o RPG Shadow of the Weird Wizard" author="Célio Zagalo" site="linkedin.com/in/celiozagalo/"/>
         <dataTypes>
             <dataType id="br.com.firecast.ShadowOfTheWeirdWizard" title="Shadow of the Weird Wizard" formType="sheetTemplate">
@@ -852,6 +852,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="IDDKDIDKFA_WorldOfDarkness" name="Nicolai&apos;s Wod NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/WorldOfDarkness%20NPCs/output/WorldOfDarkness%20NPCs.rpk?raw=true" fileName="WorldOfDarkness NPCs.rpk" repositoryPath="Sheets/WorldOfDarkness NPCs/" author="Nicolai" description="Wod NPCs" version="1.0" compilationDate="18102025003831" compilationDigest="337673bab4fbf85cb39cf15c2d9c9e3db03c406c">
+        <info lang="pt-BR" name="Nicolai&apos;s Wod NPCs" description="Wod NPCs" author="Nicolai" site="http://www.seu.site.com.br"/>
+        <dataTypes>
+            <dataType id="FantasyWarriorsType" title="WOD NPCs" formType="sheetTemplate">
+                <info title="WOD NPCs"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="id_mb_2e_gustavo_muller" name="Ficha MB 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%202e/output/Ficha%20Mighty%20Blade%202e.rpk?raw=true" fileName="Ficha Mighty Blade 2e.rpk" repositoryPath="Sheets/Ficha Mighty Blade 2e/" author="Gustavo Muller" description="Ficha feita para a segunda edição (2.5) de Mighty Blade, um sistema brasileiro de RPG." version="1.0" compilationDate="03032023114055" compilationDigest="abaee603f0b7425452140343e30b7700d457e7a2">
         <info lang="pt-BR" name="Ficha MB 2e" description="Ficha feita para a segunda edição (2.5) de Mighty Blade, um sistema brasileiro de RPG." author="Gustavo Muller" site="Nulo"/>
         <dataTypes>
@@ -1129,7 +1137,7 @@
     <element id="RRPG.ROLETA.RUSSA" name="Plugin de Roleta Russa" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/RoletaRussa/output/RoletaRussa.rpk?raw=true" fileName="RoletaRussa.rpk" repositoryPath="ChatMods/RoletaRussa/" author="AlyssonRPG (RRPG Firecast)" description="Instala comandos no RRPG para automatizar a brincadeira da Roleta Russa" version="1.0" compilationDate="03032023113325" compilationDigest="b706660bd6eb6f0199147f388bccf480630c8714">
         <info lang="pt-BR" name="Plugin de Roleta Russa" description="Instala comandos no RRPG para automatizar a brincadeira da Roleta Russa" author="AlyssonRPG (RRPG Firecast)" site="http://www.rrpg.com.br"/>
     </element>
-    <element id="Scion_2a_Edicao" name="Scion 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Scion%202e/output/Scion%202e.rpk?raw=true" fileName="Scion 2e.rpk" repositoryPath="Sheets/Scion 2e/" author="thirteen" description="Ficha de Personagem do sistema Scion, Segunda edição." version="1.0" compilationDate="16082025020125" compilationDigest="02cb6f890803784b9807c3b9ffab0ba3c6f9e114">
+    <element id="Scion_2a_Edicao" name="Scion 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Scion%202e/output/Scion%202e.rpk?raw=true" fileName="Scion 2e.rpk" repositoryPath="Sheets/Scion 2e/" author="thirteen" description="Ficha de Personagem do sistema Scion, Segunda edição." version="1.1.1" compilationDate="21092025140443" compilationDigest="200dddd3d683eb2be30fd64af6704804febb421c">
         <info lang="pt-BR" name="Scion 2e" description="Ficha de Personagem do sistema Scion, Segunda edição." author="thirteen" site="https://www.twitter.com/i_am_thirteen"/>
         <dataTypes>
             <dataType id="thirteen.Scion2e" title="Scion 2e" formType="sheetTemplate">
