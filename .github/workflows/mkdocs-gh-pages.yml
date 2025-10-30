@@ -58,6 +58,8 @@ jobs:
             cp "{}" "$dest/"
           ' \;
 
+      - name: List published plugin files
+        run: find ./SDK3/Documentation/MkDocs/site/Plugins -type f
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
