@@ -49,17 +49,20 @@ jobs:
           mkdir -p ./SDK3/Documentation/MkDocs/site/Plugins
           cp ./Plugins/plugins.xml ./SDK3/Documentation/MkDocs/site/Plugins/
       
-      - name: Copy .rpk plugin files to site output
+      - name: Copy only .rpk plugin files to site output
         run: |
+          # Create destination folder
           mkdir -p ./SDK3/Documentation/MkDocs/site/Plugins
-          find ./Plugins -type f -name "*.rpk" -exec bash -c '
-            dest="./SDK3/Documentation/MkDocs/site/$(dirname {})"
-            mkdir -p "$dest"
-            cp "{}" "$dest/"
-          ' \;
+
+          # Find all .rpk files and copy them to site/Plugins, preserving folder structure
+          find ./Plugins -type f -name "*.rpk" | while read file; do
+            dest="./SDK3/Documentation/MkDocs/site/${file#./Plugins/}"
+            mkdir -p "$(dirname "$dest")"
+            cp "$file" "$dest"
+          done
 
       - name: List published plugin files
-        run: find ./SDK3/Documentation/MkDocs/site/Plugins -type f
+        run: find ./SDK3/Documentation/MkDocs/site/Plugins -type f -name "*.rpk"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
