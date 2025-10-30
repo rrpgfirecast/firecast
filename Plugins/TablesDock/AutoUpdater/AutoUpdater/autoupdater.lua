@@ -7,7 +7,7 @@ local Internet = require("internet.lua");
 local Locale = require("locale.lua");
 local NDB = require("ndb.lua");
 
-local PLUGINS_XML_URL = "https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml";
+local PLUGINS_XML_URL = "https://sdk3.firecast.app/Plugins/plugins.xml";
 
 function getConfigWindow()
 	local cfgForm = GUI.newForm("autoupdaterPopup");
