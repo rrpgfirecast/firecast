@@ -38,6 +38,12 @@ jobs:
         working-directory: ./SDK3/Documentation/MkDocs/
       - run: mkdocs build
         working-directory: ./SDK3/Documentation/MkDocs/
+
+      - name: Copy plugins.xml to site output
+        run: |
+          mkdir -p ./SDK3/Documentation/MkDocs/site/Plugins
+          cp ./Plugins/plugins.xml ./SDK3/Documentation/MkDocs/site/Plugins/
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
