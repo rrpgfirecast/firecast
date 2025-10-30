@@ -28,6 +28,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Rewrite plugin URLs for Pages
+        run: |
+          sed -i 's#https://github.com/rrpgfirecast/firecast/blob/master#https://sdk3.firecast.app#g' ./Plugins/plugins.xml
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - uses: actions/setup-python@v5
@@ -44,6 +49,16 @@ jobs:
           mkdir -p ./SDK3/Documentation/MkDocs/site/Plugins
           cp ./Plugins/plugins.xml ./SDK3/Documentation/MkDocs/site/Plugins/
       
+      - name: Copy .rpk plugin files to site output
+        run: |
+          mkdir -p ./SDK3/Documentation/MkDocs/site/Plugins
+          find ./Plugins -type f -name "*.rpk" -exec bash -c '
+            dest="./SDK3/Documentation/MkDocs/site/$(dirname {})"
+            mkdir -p "$dest"
+            cp "{}" "$dest/"
+          ' \;
+
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
