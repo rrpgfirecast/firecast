@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="br.com.rrpg.pathfinder2e" formType="sheetTemplate" title="Pathfinder 2e" name="Pathfinder2E" align="client" theme="dark">
+    <import file="templates.xml"/>
+    <import file="styles.xml"/>
+    <import file="popups.xml"/>
+
+	<script>
+		<![CDATA[
+		local function showInfoPopup()
+			local pop = self:findControlByName("popInfo");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:show();
+			else
+				showMessage("Não encontrei o popup de informações para exibir.");
+			end;
+		end;
+
+		local function showTalentosPopup()
+			local pop = self:findControlByName("popTalentos");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:show();
+			else
+				showMessage("Não encontrei o popup de talentos para exibir.");
+			end;
+		end;
+
+		local function showMagiasPopup()
+			local pop = self:findControlByName("popMagias");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:show();
+			else
+				showMessage("Não encontrei o popup de magias para exibir.");
+			end;
+		end;
+
+        local function showDeathPopup()
+            local pop = self:findControlByName("popDeath");
+
+            if pop ~= nil then
+                pop:setNodeObject(self.sheet);
+                pop:showPopupEx("center", sheet);
+            else
+                showMessage("Não encontrei o popup de morte para exibir.");
+            end;
+        end;
+
+		local function showItemPopup()
+			local pop = self:findControlByName("popItem");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:show();
+			else
+				showMessage("Não encontrei o popup de itens para exibir.");
+			end;
+		end;
+		]]>
+	</script>
+
+    <rectangle align="client">
+        <image align="client" style="autoFit" src="/imagens/Fundo 1.jpg"/>
+        <scrollBox align="client">
+            <flowLayout class="janela1">
+                <flowPart class="janela3" width="1200" height="230">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 2.png" opacity="0.1"/>
+
+                        <label left="0" top="5" width="1200" height="25" text="Personagem" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+
+                        <rectangle left="10" top="40" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Nome" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="140" top="40" width="250" height="25" field="nome"/>
+
+                        <rectangle left="10" top="70" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Raça" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="140" top="70" width="250" height="25" field="raca"/>
+
+                        <rectangle left="10" top="100" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Sexo" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="140" top="100" width="250" height="25" field="sexo"/>
+
+                        <rectangle left="10" top="130" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Herança" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="140" top="130" width="250" height="25" field="heranca"/>
+
+                        <rectangle left="10" top="160" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Tamanho" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="140" top="160" width="250" height="25" field="tamanho"/>
+
+                        <rectangle left="10" top="190" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Traços" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="140" top="190" width="250" height="25" field="tracos"/>
+
+                        <rectangle left="408" top="40" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Classe" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="538" top="40" width="250" height="25" field="classe"/>
+
+                        <rectangle left="408" top="70" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Biografia" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="538" top="70" width="250" height="25" field="biografia"/>
+
+                        <rectangle left="408" top="100" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Tendência" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="538" top="100" width="250" height="25" field="tendencia"/>
+
+                        <rectangle left="408" top="130" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Origem" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="538" top="130" width="250" height="25" field="origem"/>
+
+                        <rectangle left="408" top="160" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Divindade" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="538" top="160" width="250" height="25" field="divindade"/>
+
+                        <rectangle left="408" top="190" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Jogador" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatLabelEdit left="538" top="190" width="250" height="25" field="jogador"/>
+
+                        <rectangle left="808" top="40" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Nível" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatNumEdit left="938" top="40" width="250" height="25" field="nivel"/>
+
+                        <rectangle left="808" top="70" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Experiência" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatNumEdit left="938" top="70" width="250" height="25" field="experiencia"/>
+
+                        <rectangle left="808" top="100" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Velocidade" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatNumEdit left="938" top="100" width="250" height="25" field="velocidade" unit="m"/>
+
+                        <rectangle left="808" top="130" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Idade" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatNumEdit left="938" top="130" width="250" height="25" field="idade" unit="anos"/>
+
+                        <rectangle left="808" top="160" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Altura" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatNumEdit left="938" top="160" width="250" height="25" field="altura" unit="m"/>
+
+                        <rectangle left="808" top="190" class="janela5">
+                            <label width="131" height="25" vertTextAlign="center" horzTextAlign="center" text="Peso" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatNumEdit left="938" top="190" width="250" height="25" field="peso" unit="kg"/>
+                    </rectangle>
+                </flowPart>
+
+			    <flowLineBreak/>
+
+                <flowPart class="janela3" width="515" height="382">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="157" top="5" width="201" height="25" text="Atributos" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+
+                        <rectangle left="10" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="ATR" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="65" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Base" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="120" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Raça" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="175" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Bio" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="230" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Classe" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="285" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="340" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Outros" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="395" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Total" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="450" class="janela6" strokeSize="3">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Bônus" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+
+                        <layout left="5" top="64" width="515" height="35">
+                            <atributo atr="For" atrU="FOR" atrN="Força"/>
+                        </layout>
+                        <layout left="5" top="89" width="515" height="35">
+                            <atributo atr="Des" atrU="DES" atrN="Destreza"/>
+                        </layout>
+                        <layout left="5" top="114" width="515" height="35">
+                            <atributo atr="Con" atrU="CON" atrN="Constituição"/>
+                        </layout>
+                        <layout left="5" top="139" width="515" height="35">
+                            <atributo atr="Int" atrU="INT" atrN="Inteligência"/>
+                        </layout>
+                        <layout left="5" top="164" width="515" height="35">
+                            <atributo atr="Sab" atrU="SAB" atrN="Sabedoria"/>
+                        </layout>
+                        <layout left="5" top="189" width="515" height="35">
+                            <atributo atr="Car" atrU="CAR" atrN="Carisma"/>
+                        </layout>
+
+                        <rectangle left="85" top="229" class="janela5">
+                            <label width="131" height="25" text="Condições" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatTextEdit left="5" top="254" width="296" height="118" field="condicoes"/>
+
+                        <layout left="290" top="260" width="250" height="35">
+                            <CondicaoBox text="Heroísmo" field="heroismo"/>
+                        </layout>
+                        <layout left="290" top="297" width="250" height="35">
+                            <CondicaoBox text="Ferido" field="ferido"/>
+                        </layout>
+                        <layout left="290" top="332" width="250" height="35">
+                            <CondicaoBox text="Morrendo" field="morrendo"/>
+                        </layout>
+
+                        <dataLink fields="{'morrendo1', 'morrendo2', 'morrendo3'}">
+                            <event name="onChange"><![CDATA[
+                                if (sheet.morrendo1 == true) and (sheet.morrendo2 == true) and (sheet.morrendo3 == true) then
+                                showDeathPopup();
+                                end;
+                            ]]>
+                            </event>
+                        </dataLink>
+                    </rectangle>
+                </flowPart>
+
+                <flowPart class="janela3" width="295" height="382">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="0" top="5" width="295" height="25" text="Testes" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+
+                        <rectangle left="10" top="64" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Teste" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="65" top="64" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="ATR" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="120" top="64" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Prof" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="175" top="64" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Outros" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="230" top="64" class="janela6" strokeSize="3">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Bônus" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+
+                        <layout left="5" top="89" width="295" height="35">
+                            <salvamento atr="Fort" atrU="FOR" atrN="Fortitude"/>
+                            <rectangle left="60" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="1" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+                                <label width="55" height="25" field="modCon" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+                            </rectangle>
+                        </layout>
+                        <layout left="5" top="114" width="295" height="35">
+                            <salvamento atr="Ref" atrU="REF" atrN="Reflexo"/>
+                            <rectangle left="60" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="1" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+                                <label width="55" height="25" field="modDes" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+                            </rectangle>
+                        </layout>
+                        <layout left="5" top="139" width="295" height="35">
+                            <salvamento atr="Von" atrU="VON" atrN="Vontade"/>
+                            <rectangle left="60" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="1" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+                                <label width="55" height="25" field="modSab" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+                            </rectangle>
+                        </layout>
+                        <layout left="5" top="164" width="295" height="35">
+                            <salvamento atr="Per" atrU="PER" atrN="Percepção"/>
+                            <rectangle left="60" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="1" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+                                <label width="55" height="25" field="modSab" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+                            </rectangle>
+                        </layout>
+                        <rectangle left="82" top="229" class="janela5">
+                            <label width="131" height="25" text="Sentidos" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatTextEdit left="5" top="254" width="281" height="118" field="sentidos"/>
+
+                        <dataLink fields="{'nivel', 'modCon', 'FortProf', 'FortOutros'}">
+                            <event name="onChange"><![CDATA[
+                                if sheet == nil then return end;
+                                local prof = (tonumber(sheet.FortProf) or 0);
+                                if prof > 0 then
+                                sheet.modFort = math.floor((tonumber(sheet.modCon) or 0) +
+                                                    (tonumber(sheet.FortProf) or 0) +
+                                                    (tonumber(sheet.FortOutros) or 0)+
+                                                    (tonumber(sheet.nivel) or 0));
+                                else
+                                sheet.modFort = math.floor((tonumber(sheet.modCon) or 0) +
+                                                    (tonumber(sheet.FortProf) or 0) +
+                                                    (tonumber(sheet.FortOutros) or 0));
+                                end;
+                                local mod = (tonumber(sheet.modFort) or 0);
+                                if mod >= 0 then
+                                    sheet.modFort = "+" .. mod;
+                                else
+                                    sheet.modFort = mod;
+                                end;
+                            ]]>
+                            </event>
+                        </dataLink>
+
+                        <dataLink fields="{'nivel', 'modDes', 'RefProf', 'RefOutros'}">
+                            <event name="onChange"><![CDATA[
+                                if sheet == nil then return end;
+                                local prof = (tonumber(sheet.RefProf) or 0);
+                                if prof > 0 then
+                                sheet.modRef = math.floor((tonumber(sheet.modDes) or 0) +
+                                                    (tonumber(sheet.RefProf) or 0) +
+                                                    (tonumber(sheet.RefOutros) or 0)+
+                                                    (tonumber(sheet.nivel) or 0));
+                                else
+                                sheet.modRef = math.floor((tonumber(sheet.modDes) or 0) +
+                                                    (tonumber(sheet.RefProf) or 0) +
+                                                    (tonumber(sheet.RefOutros) or 0));
+                                end;
+                                local mod = (tonumber(sheet.modRef) or 0);
+                                if mod >= 0 then
+                                    sheet.modRef = "+" .. mod;
+                                else
+                                    sheet.modRef = mod;
+                                end;
+                            ]]>
+                            </event>
+                        </dataLink>
+
+                        <dataLink fields="{'nivel', 'modSab', 'VonProf', 'VonOutros'}">
+                            <event name="onChange"><![CDATA[
+                                if sheet == nil then return end;
+                                local prof = (tonumber(sheet.VonProf) or 0);
+                                if prof > 0 then
+                                sheet.modVon = math.floor((tonumber(sheet.modSab) or 0) +
+                                                    (tonumber(sheet.VonProf) or 0) +
+                                                    (tonumber(sheet.VonOutros) or 0)+
+                                                    (tonumber(sheet.nivel) or 0));
+                                else
+                                sheet.modVon = math.floor((tonumber(sheet.modSab) or 0) +
+                                                    (tonumber(sheet.VonProf) or 0) +
+                                                    (tonumber(sheet.VonOutros) or 0));
+                                end;
+                                local mod = (tonumber(sheet.modVon) or 0);
+                                if mod >= 0 then
+                                    sheet.modVon = "+" .. mod;
+                                else
+                                    sheet.modVon = mod;
+                                end;
+                            ]]>
+                            </event>
+                        </dataLink>
+
+                        <dataLink fields="{'nivel', 'modSab', 'PerProf', 'PerOutros'}">
+                            <event name="onChange"><![CDATA[
+                                if sheet == nil then return end;
+                                local prof = (tonumber(sheet.PerProf) or 0);
+                                if prof > 0 then
+                                sheet.modPer = math.floor((tonumber(sheet.modSab) or 0) +
+                                                    (tonumber(sheet.PerProf) or 0) +
+                                                    (tonumber(sheet.PerOutros) or 0)+
+                                                    (tonumber(sheet.nivel) or 0));
+                                else
+                                sheet.modPer = math.floor((tonumber(sheet.modSab) or 0) +
+                                                    (tonumber(sheet.PerProf) or 0) +
+                                                    (tonumber(sheet.PerOutros) or 0));
+                                end;
+                                local mod = (tonumber(sheet.modPer) or 0);
+                                if mod >= 0 then
+                                    sheet.modPer = "+" .. mod;
+                                else
+                                    sheet.modPer = mod;
+                                end;
+                            ]]>
+                            </event>
+                        </dataLink>
+                    </rectangle>
+                </flowPart>
+
+                <flowPart class="janela3" width="382" height="382">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="0" top="5" width="382" height="25" text="Aparência" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                        <rectangle left="19" top="30" width="340" height="340" color="transparent" strokeColor="Gray" strokeSize="2" margins="{left=2, right=2, top=2, bottom=2}">
+                            <image align="client" style="proportional" src="/imagens/Logo.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                            <image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                                <event name="OnStartDrag">
+                                    drag:addData("imageURL", sheet.avatar);
+                                </event>
+                            </image>
+                        </rectangle>
+                    </rectangle>
+                </flowPart>
+
+			    <flowLineBreak/>
+
+                <flowPart class="janela3" width="405" height="382">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="0" top="5" width="405" height="25" text="Pontos de Vida" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                        <formatEdit left="172" top="40" width="60" height="60" field="pvTotal"/>
+
+                        <rectangle left="92" top="135" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Classe" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="147" top="135" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Raça" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="202" top="135" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Temp" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="257" top="135" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Outros" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+
+                        <formatNumEdit left="92" top="160" width="55" height="25" field="pvClasse" fontStyle="bold"/>
+                        <formatNumEdit left="147" top="160" width="55" height="25" field="pvAncestralidade" fontStyle="bold"/>
+                        <formatNumEdit left="202" top="160" width="55" height="25" field="pvTemp" fontStyle="bold"/>
+                        <formatNumEdit left="257" top="160" width="55" height="25" field="pvOutro" fontStyle="bold"/>
+
+                        <rectangle left="60" top="229" width="285" class="janela5">
+                            <label width="285" height="25" text="Resistências e Imunidades" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatTextEdit left="5" top="254" width="391" height="120" field="resistencias"/>
+
+                        <dataLink fields="{'pvClasse','pvAncestralidade','pvTemp','pvOutro','modCon', 'nivel'}">
+                            <event name="onChange">
+                                if sheet == nil then return end;
+                                sheet.pvTotal = ((tonumber(sheet.pvClasse) or 0)+(tonumber(sheet.modCon) or 0)) * (tonumber(sheet.nivel) or 0)+
+                                                (tonumber(sheet.pvAncestralidade) or 0)+
+                                                (tonumber(sheet.pvTemp) or 0)+
+                                                (tonumber(sheet.pvOutro) or 0);
+                            </event>
+                        </dataLink>
+                    </rectangle>
+                </flowPart>
+
+                <flowPart class="janela3" width="405" height="382">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="0" top="5" width="405" height="25" text="Classe de Armadura" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                        <formatEdit left="172" top="40" width="60" height="60" field="caTotal"/>
+
+                        <rectangle left="64" top="110" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="ARM" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="119" top="110" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="LIM" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="174" top="110" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PROF" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="229" top="110" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PEN" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="284" top="110" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Outros" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+
+                        <formatNumEdit left="64" top="135" width="55" height="25" field="caArmadura" fontStyle="bold"/>
+                        <formatNumEdit left="119" top="135" width="55" height="25" field="caLimit" fontStyle="bold"/>
+                        <comboBox vertTextAlign="center" horzTextAlign="trailing" left="174" top="135" width="55" height="25" field="caProf" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white"/>
+                        <formatNumEdit left="229" top="135" width="55" height="25" field="penalidade" fontStyle="bold"/>
+                        <formatNumEdit left="284" top="135" width="55" height="25" field="caOutros" fontStyle="bold"/>
+
+                        <rectangle left="64" top="170" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="ESC" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="119" top="170" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="DUR" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="174" top="170" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="MÁX" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="229" top="170" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="LQ" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="284" top="170" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PV" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+
+                        <formatNumEdit left="64" top="195" width="55" height="25" field="caEscudo" fontStyle="bold"/>
+                        <formatNumEdit left="119" top="195" width="55" height="25" field="caDureza" fontStyle="bold"/>
+                        <formatNumEdit left="174" top="195" width="55" height="25" field="caEscudoMax" fontStyle="bold"/>
+                        <formatNumEdit left="229" top="195" width="55" height="25" field="caEscudoLQ" fontStyle="bold"/>
+                        <formatNumEdit left="284" top="195" width="55" height="25" field="caEscudoPV" fontStyle="bold"/>
+
+                        <rectangle left="137" top="229" class="janela5">
+                            <label width="131" height="25" text="Movimentos" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatTextEdit left="5" top="254" width="391" height="120" field="movimentos"/>
+
+                        <dataLink fields="{'nivel', 'modDes', 'caArmadura', 'caLimit', 'caProf', 'caOutros','caEscudo'}">
+				            <event name="onChange"><![CDATA[
+                                if sheet == nil then return end;
+                                if (tonumber(sheet.caProf) or 0) > 0 then
+                                    sheet.caTotal = 10 + math.min((tonumber(sheet.modDes) or 0), (tonumber(sheet.caLimit) or 999))+
+                                                    (tonumber(sheet.caArmadura) or 0)+
+                                                    (tonumber(sheet.caProf) or 0)+
+                                                    (tonumber(sheet.caOutros) or 0)+
+                                                    (tonumber(sheet.nivel) or 0);
+                                else
+                                    sheet.caTotal = 10 + math.min((tonumber(sheet.modDes) or 0), (tonumber(sheet.caLimit) or 999))+
+                                                    (tonumber(sheet.caArmadura) or 0)+
+                                                    (tonumber(sheet.caOutros) or 0);
+                                end;
+				        	]]>
+			            	</event>
+			            </dataLink>
+                    </rectangle>
+                </flowPart>
+
+                <flowPart class="janela3" width="382" height="382">
+                       <rectangle align="client" class="janela2">
+                            <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                            <label left="0" top="5" width="382" height="25" text="Habilidades" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+
+                            <rectangle left="101" top="40" width="180" height="40" color="Gray" cornerType="round" xradius="20" yradius="20">
+                                <button name="talentos" left="15" top="5" width="150" height="30" text="Talentos" fontSize="16" vertTextAlign="center" horzTextAlign="center" fontFamily="Stencil" onClick="showTalentosPopup();"/>
+                            </rectangle>
+
+                            <rectangle left="125" top="90" class="janela5">
+                                <label width="131" height="25" text="Ações" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+
+                            <rectangle  left="5" top="115" width="368" height="105" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                                <rectangle left="0" width="100" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="100" height="25" text="Tipo" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="100" width="245" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="245" height="25" text="Ação" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+
+                                <button left="345" top="1" width="23" height="23" text="+">
+                                    <event name="onClick">
+                                        self.rclAcoes:append();
+                                    </event>
+                                </button>
+
+                                <recordList left="0" top="25" name="rclAcoes" field="campoAcoes" templateForm="frmAcoes" width="368" height="75" layout="vertical" minQt="0"/>
+
+                            </rectangle>
+
+                            <rectangle left="125" top="229" class="janela5">
+                                <label width="131" height="25" text="CD de Classe" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+
+                            <rectangle  left="5" top="254" width="368" height="120" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                                <rectangle left="0" width="100" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="100" height="25" text="Classe" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="100" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="ATR" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="155" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Prof" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="210" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Outros" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="265" top="0" width="80" class="janela6" strokeSize="3">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="80" height="25" text="CD" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+
+                                <button left="345" top="1" width="23" height="23" text="+">
+                                    <event name="onClick">
+                                        self.rclClasses:append();
+                                    </event>
+                                </button>
+
+                                <formatLabelEdit left="0" top="25" width="100" height="25" field="nomeClasse"/>
+
+                                <comboBox vertTextAlign="center" horzTextAlign="center" left="100" top="25" width="55" height="25" field="atrBox" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="white">
+                                    <event name="onChange">
+                                        if sheet == nil then return end;
+                                            if sheet.atrBox == "1" then
+                                                 sheet.atrClasse = (tonumber(sheet.modFor) or 0);
+                                            elseif sheet.atrBox == "2" then
+                                                 sheet.atrClasse = (tonumber(sheet.modDes) or 0);
+                                            elseif sheet.atrBox == "3" then
+                                                 sheet.atrClasse = (tonumber(sheet.modCon) or 0);
+                                            elseif sheet.atrBox == "4" then
+                                                 sheet.atrClasse = (tonumber(sheet.modInt) or 0);
+                                            elseif sheet.atrBox == "5" then
+                                                 sheet.atrClasse = (tonumber(sheet.modSab) or 0);
+                                            elseif sheet.atrBox == "6" then
+                                                 sheet.atrClasse = (tonumber(sheet.modCar) or 0);
+                                        end;
+                                    </event>
+                                </comboBox>
+
+                                <comboBox vertTextAlign="center" horzTextAlign="trailing" left="155" top="25" width="55" height="25" field="profClasse" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white"/>
+
+                                <formatLabelEdit left="210" top="25" width="55" height="25" field="outrosClasse"/>
+                                <rectangle left="265" top="25" width="80" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+                                    <label width="80" height="25" field="cdClasse" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+                                </rectangle>
+
+                                <button left="345" top="26" width="23" height="23" text="i" onClick="showMagiasPopup();"/>
+
+                                <recordList left="0" top="50" name="rclClasses" field="campoClasses" templateForm="frmClasses" width="368" height="65" layout="vertical" minQt="0"/>
+                            </rectangle>
+
+                        	<dataLink fields="{'nivel', 'atrClasse', 'profClasse', 'outrosClasse'}">
+                                <event name="onChange"><![CDATA[
+                                    if sheet == nil then return end;
+
+                                    if (tonumber(sheet.profClasse) or 0) > 0 then
+                                        sheet.cdClasse = 10 + (tonumber(sheet.atrClasse) or 0)+
+                                                        (tonumber(sheet.profClasse) or 0)+
+                                                        (tonumber(sheet.outrosClasse) or 0)+
+                                                        (tonumber(sheet.nivel) or 0);
+                                    else
+                                        sheet.cdClasse = 10 + (tonumber(sheet.atrClasse) or 0) + (tonumber(sheet.outrosClasse) or 0);
+                                    end;
+                                ]]>
+                                </event>
+                            </dataLink>
+                       </rectangle>
+                </flowPart>
+
+			    <flowLineBreak/>
+
+                <flowPart class="janela3" width="405" height="628">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="0" top="5" width="405" height="25" text="Perícias" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+
+                        <rectangle left="40" width="100" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="100" height="25" text="Perícia" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="140" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="ATR" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="195" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Prof" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="250" class="janela6">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Outros" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <rectangle left="305" class="janela6" strokeSize="3">
+                            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Bônus" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+
+                        <layout left="15" top="64" width="382" height="35">
+                            <pericia atr="Acrobatismo" atrN="Acrobatismo" periciaAtr="modDes"/>
+                        </layout>
+                        <layout left="15" top="89" width="382" height="35">
+                            <pericia atr="Arcanismo" atrN="Arcanismo" periciaAtr="modInt"/>
+                        </layout>
+                        <layout left="15" top="114" width="382" height="35">
+                            <pericia atr="Atletismo" atrN="Atletismo" periciaAtr="modFor"/>
+                        </layout>
+                        <layout left="15" top="139" width="382" height="35">
+                            <pericia atr="Diplomacia" atrN="Diplomacia" periciaAtr="modCar"/>
+                        </layout>
+                        <layout left="15" top="164" width="382" height="35">
+                            <pericia atr="Dissimulacao" atrN="Dissimulação" periciaAtr="modCar"/>
+                        </layout>
+                        <layout left="15" top="189" width="382" height="35">
+                            <pericia atr="Furtividade" atrN="Furtividade" periciaAtr="modDes"/>
+                        </layout>
+                        <layout left="15" top="214" width="382" height="35">
+                            <pericia atr="Intimidacao" atrN="Intimidação" periciaAtr="modCar"/>
+                        </layout>
+                        <layout left="15" top="239" width="382" height="35">
+                            <pericia atr="Ladroagem" atrN="Ladroagem" periciaAtr="modDes"/>
+                        </layout>
+                        <layout left="15" top="264" width="382" height="35">
+                            <pericia atr="Manufatura" atrN="Manufatura" periciaAtr="modInt"/>
+                        </layout>
+                        <layout left="15" top="289" width="382" height="35">
+                            <pericia atr="Medicina" atrN="Medicina" periciaAtr="modSab"/>
+                        </layout>
+                        <layout left="15" top="314" width="382" height="35">
+                            <pericia atr="Natureza" atrN="Natureza" periciaAtr="modSab"/>
+                        </layout>
+                        <layout left="15" top="339" width="382" height="35">
+                            <pericia atr="Ocultismo" atrN="Ocultismo" periciaAtr="modInt"/>
+                        </layout>
+                        <layout left="15" top="364" width="382" height="35">
+                            <pericia atr="Performance" atrN="Performance" periciaAtr="modCar"/>
+                        </layout>
+                        <layout left="15" top="389" width="382" height="35">
+                            <pericia atr="Religiao" atrN="Religião" periciaAtr="modSab"/>
+                        </layout>
+                        <layout left="15" top="414" width="382" height="35">
+                            <pericia atr="Sobrevivencia" atrN="Sobrevivência" periciaAtr="modSab"/>
+                        </layout>
+                        <layout left="15" top="439" width="382" height="35">
+                            <pericia atr="Sociedade" atrN="Sociedade" periciaAtr="modInt"/>
+                        </layout>
+
+                        <rectangle left="137" top="474" class="janela5">
+                            <label width="131" height="25" text="Saber" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+
+                        <rectangle  left="5" top="499" width="391" height="120" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                                <rectangle left="0" width="100" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="100" height="25" text="Perícia" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="100" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="ATR" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="155" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Prof" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="210" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Outros" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="265" top="0" width="102" class="janela6" strokeSize="3">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="102" height="25" text="Bônus" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+
+                                <button left="367" top="1" width="23" height="23" text="+">
+                                    <event name="onClick">
+                                        self.rclSaber:append();
+                                    </event>
+                                </button>
+
+                                <formatLabelEdit left="0" top="25" width="100" height="25" field="nomeSaber"/>
+
+                                <rectangle left="100" top="25" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="1" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+                                    <label width="55" height="25" field="modInt" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+                                </rectangle>
+
+                                <comboBox vertTextAlign="center" horzTextAlign="trailing" left="155" top="25" width="55" height="25" field="profSaber" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white"/>
+
+                                <formatLabelEdit left="210" top="25" width="55" height="25" field="outrosSaber"/>
+                                <rectangle left="265" top="25" width="102" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+                                    <label width="102" height="25" field="bonusSaber" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+                                </rectangle>
+
+                                <button left="367" top="25" width="23" height="23" text="R">
+                                    <event name="onClick">
+                                        if sheet.bonusSaber ~= nil then
+                                            local mod = tonumber(sheet.bonusSaber);
+                                            local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                                            local mesa = Firecast.getMesaDe(sheet);
+                                            mesa.activeChat:rolarDados(rolagem, "Teste de Saber de " .. (sheet.nome or "Personagem"));
+                                        else
+                                            local rolagem = Firecast.interpretarRolagem("1d20");
+                                            local mesa = Firecast.getMesaDe(sheet);
+                                            mesa.activeChat:rolarDados(rolagem, "Teste de Saber de " .. (sheet.nome or "Personagem"));
+                                        end;
+                                    </event>
+                                </button>
+
+                                <recordList left="0" top="50" name="rclSaber" field="campoSaber" templateForm="frmSaber" width="390" height="65" layout="vertical" minQt="0"/>
+
+                                <dataLink fields="{'nivel', 'modInt', 'profSaber', 'outrosSaber'}">
+                                       <event name="onChange"><![CDATA[
+                                           if sheet == nil then return end;
+
+                                           if (tonumber(sheet.profSaber) or 0) > 0 then
+                                               sheet.bonusSaber = (tonumber(sheet.modInt) or 0)+
+                                                               (tonumber(sheet.profSaber) or 0)+
+                                                               (tonumber(sheet.outrosSaber) or 0)+
+                                                               (tonumber(sheet.nivel) or 0);
+                                           else
+                                               sheet.bonusSaber = (tonumber(sheet.modInt) or 0) + (tonumber(sheet.outrosSaber) or 0);
+                                           end;
+                                       ]]>
+                                       </event>
+                                </dataLink>
+
+                                <dataLink field="bonusSaber">
+                                    <event name="onChange"><![CDATA[
+                                        if sheet == nil then return end;
+                                        local mod = (tonumber(sheet.bonusSaber or 0));
+                                        if (mod >= 0) then
+                                            sheet.bonusSaber = "+" .. mod;
+                                        else
+                                            sheet.bonusSaber = mod;
+                                        end;
+                                    ]]>
+                                    </event>
+                                </dataLink>
+                        </rectangle>
+                    </rectangle>
+                </flowPart>
+
+                <flowPart class="janela3" width="405" height="628">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="0" top="5" width="400" height="25" text="Proficiências" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+
+                        <rectangle left="137" top="70" class="janela5">
+                            <label width="131" height="25" text="Armas" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+
+                        <rectangle left="115" top="95" width="175" height="125" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                            <rectangle left="5" top="5" width="110" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                                <label vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Desarmado" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+                            <comboBox vertTextAlign="center" horzTextAlign="trailing" left="115" top="5" width="55" height="25" field="desarmado" items="{'D', 'T', 'E', 'M', 'L'}" fontColor="white"/>
+
+                            <rectangle left="5" top="35" width="110" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                                <label vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Simples" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+                            <comboBox vertTextAlign="center" horzTextAlign="trailing" left="115" top="35" width="55" height="25" field="simples" items="{'D', 'T', 'E', 'M', 'L'}" fontColor="white"/>
+
+                            <rectangle left="5" top="65" width="110" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                                <label vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Marcial" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+                            <comboBox vertTextAlign="center" horzTextAlign="trailing" left="115" top="65" width="55" height="25" field="marcial" items="{'D', 'T', 'E', 'M', 'L'}" fontColor="white"/>
+
+                            <rectangle left="5" top="95" width="110" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                                <label vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Avançado" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+                            <comboBox vertTextAlign="center" horzTextAlign="trailing" left="115" top="95" width="55" height="25" field="avancado" items="{'D', 'T', 'E', 'M', 'L'}" fontColor="white"/>
+                        </rectangle>
+
+                        <rectangle left="137" top="265" class="janela5">
+                            <label width="131" height="25" text="Armaduras" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+
+                        <rectangle left="115" top="290" width="175" height="125" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                            <rectangle left="5" top="5" width="110" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                                <label vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Sem Armadura" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+                            <comboBox vertTextAlign="center" horzTextAlign="trailing" left="115" top="5" width="55" height="25" field="semArmadura" items="{'D', 'T', 'E', 'M', 'L'}" fontColor="white"/>
+
+                            <rectangle left="5" top="35" width="110" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                                <label vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Leve" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+                            <comboBox vertTextAlign="center" horzTextAlign="trailing" left="115" top="35" width="55" height="25" field="leve" items="{'D', 'T', 'E', 'M', 'L'}" fontColor="white"/>
+
+                            <rectangle left="5" top="65" width="110" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                                <label vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Média" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+                            <comboBox vertTextAlign="center" horzTextAlign="trailing" left="115" top="65" width="55" height="25" field="media" items="{'D', 'T', 'E', 'M', 'L'}" fontColor="white"/>
+
+                            <rectangle left="5" top="95" width="110" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                                <label vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Pesada" fontColor="Gray" fontFamily="Stencil"/>
+                            </rectangle>
+                            <comboBox vertTextAlign="center" horzTextAlign="trailing" left="115" top="95" width="55" height="25" field="pesada" items="{'D', 'T', 'E', 'M', 'L'}" fontColor="white"/>
+                        </rectangle>
+
+                        <rectangle left="137" top="474" class="janela5">
+                            <label width="131" height="25" text="Idiomas" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                        </rectangle>
+                        <formatTextEdit left="5" top="499" width="391" height="120" field="idiomas"/>
+                    </rectangle>
+                </flowPart>
+
+                <flowPart class="janela3" width="382" height="628">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="0" top="5" width="382" height="25" text="Golpes" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+
+                        <rectangle  left="5" top="40" width="368" height="578" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                                <rectangle left="0" width="131" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Golpe" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="131" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="ATR" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="186" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Prof" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="241" top="0" class="janela6">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Outros" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+                                <rectangle left="296" top="0" width="72" class="janela6" strokeSize="3">
+                                    <label  vertTextAlign="center" horzTextAlign="center" width="72" height="25" text="Ataque" fontColor="Gray" fontFamily="Stencil"/>
+                                </rectangle>
+
+                                <rectangle  left="0" top="25" width="368" height="77" color="transparent" strokeColor="Gray" strokeSize="3" cornerType="round" xradius="5" yradius="5" margins="{left=6, right=6, top=6, bottom=6}">
+
+                                    <formatLabelEdit left="0" top="0" width="131" height="25" field="nomeGolpe"/>
+
+                                    <comboBox vertTextAlign="center" horzTextAlign="center" left="131" top="0" width="55" height="25" field="golpeBox" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="white">
+                                        <event name="onChange">
+                                            if sheet == nil then return end;
+                                                if sheet.golpeBox == "1" then
+                                                     sheet.atrGolpe = (tonumber(sheet.modFor) or 0);
+                                                elseif sheet.golpeBox == "2" then
+                                                     sheet.atrGolpe = (tonumber(sheet.modDes) or 0);
+                                                elseif sheet.golpeBox == "3" then
+                                                     sheet.atrGolpe = (tonumber(sheet.modCon) or 0);
+                                                elseif sheet.golpeBox == "4" then
+                                                     sheet.atrGolpe = (tonumber(sheet.modInt) or 0);
+                                                elseif sheet.golpeBox == "5" then
+                                                     sheet.atrGolpe = (tonumber(sheet.modSab) or 0);
+                                                elseif sheet.golpeBox == "6" then
+                                                     sheet.atrGolpe = (tonumber(sheet.modCar) or 0);
+                                            end;
+                                        </event>
+                                    </comboBox>
+
+                                    <comboBox vertTextAlign="center" horzTextAlign="trailing" left="186" top="0" width="55" height="25" field="profGolpe" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white"/>
+
+                                    <formatLabelEdit left="241" top="0" width="55" height="25" field="outrosGolpe"/>
+
+                                    <rectangle left="296" top="0" width="72" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+                                        <label width="72" height="25" field="bonusGolpe" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+                                    </rectangle>
+
+                                    <button left="0" top="25" width="55" height="25" text="Dano" fontFamily="Stencil">
+                                        <event name="onClick">
+                                            if sheet.danoGolpe == nil then
+				                                showMessage("O ataque não possui dano.");
+                                            elseif sheet.bonusGolpe ~= nil then
+                                                local mod = tonumber(sheet.bonusGolpe);
+                                                local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                                                local dano = Firecast.interpretarRolagem(sheet.danoGolpe);
+                                                local mesa = Firecast.getMesaDe(sheet);
+                                                mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpe or "Ataque") .. " de " .. (sheet.nome or "Personagem"),
+                                                    function(rolado)
+                                                        mesa.activeChat:rolarDados(dano, "Primeiro Dano de " .. (sheet.nomeGolpe or "Ataque"))
+                                                    end);
+                                            elseif sheet.bonusGolpe == nil then
+                                                local rolagem = Firecast.interpretarRolagem("1d20");
+                                                local dano = Firecast.interpretarRolagem(sheet.danoGolpe);
+                                                local mesa = Firecast.getMesaDe(sheet);
+                                                mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpe or "Ataque") .. " de " .. (sheet.nome or "Personagem"),
+                                                    function(rolado)
+                                                        mesa.activeChat:rolarDados(dano, "Primeiro Dano de " .. (sheet.nomeGolpe or "Ataque"))
+                                                    end);
+                                            end;
+                                        </event>
+                                    </button>
+                                    <formatLabelEdit left="55" top="25" width="83" height="25" field="danoGolpe"/>
+
+                                    <rectangle left="138" top="25" width="40" class="janela5">
+                                        <label  vertTextAlign="center" horzTextAlign="center" width="40" height="25" text="Pen" fontColor="Gray" fontFamily="Stencil"/>
+                                    </rectangle>
+
+                                    <button left="178" top="26" width="40" height="23" text="2º">
+                                        <event name="onClick">
+                                            if sheet.danoGolpe == nil then
+				                                showMessage("O ataque não possui dano.");
+                                            elseif sheet.bonusGolpe ~= nil then
+                                                local mod = tonumber(sheet.bonusGolpe) + tonumber(sheet.penSegundo);
+                                                local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                                                local dano = Firecast.interpretarRolagem(sheet.danoGolpe);
+                                                local mesa = Firecast.getMesaDe(sheet);
+                                                mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpe or "Ataque") .. " de " .. (sheet.nome or "Personagem"),
+                                                    function(rolado)
+                                                        mesa.activeChat:rolarDados(dano, "Segundo Dano de " .. (sheet.nomeGolpe or "Ataque"))
+                                                    end);
+                                            elseif sheet.bonusGolpe == nil then
+                                                local rolagem = Firecast.interpretarRolagem("1d20 + " .. (tonumber(sheet.penSegundo) or 0));
+                                                local dano = Firecast.interpretarRolagem(sheet.danoGolpe);
+                                                local mesa = Firecast.getMesaDe(sheet);
+                                                mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpe or "Ataque") .. " de " .. (sheet.nome or "Personagem"),
+                                                    function(rolado)
+                                                        mesa.activeChat:rolarDados(dano, "Segundo Dano de " .. (sheet.nomeGolpe or "Ataque"))
+                                                    end);
+                                            end;
+                                        </event>
+                                    </button>
+
+                                    <comboBox vertTextAlign="center" horzTextAlign="trailing" left="218" top="25" width="55" height="25" field="penSegundo" items="{'0', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '-10'}" values="{'0', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '-10'}" fontColor="white"/>
+
+                                    <button left="273" top="26" width="40" height="23" text="3º">
+                                        <event name="onClick">
+                                            if sheet.danoGolpe == nil then
+				                                showMessage("O ataque não possui dano.");
+                                            elseif sheet.bonusGolpe ~= nil then
+                                                local mod = tonumber(sheet.bonusGolpe) + tonumber(sheet.penTerceiro);
+                                                local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                                                local dano = Firecast.interpretarRolagem(sheet.danoGolpe);
+                                                local mesa = Firecast.getMesaDe(sheet);
+                                                mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpe or "Ataque") .. " de " .. (sheet.nome or "Personagem"),
+                                                    function(rolado)
+                                                        mesa.activeChat:rolarDados(dano, "Terceiro Dano de " .. (sheet.nomeGolpe or "Ataque"))
+                                                    end);
+                                            elseif sheet.bonusGolpe == nil then
+                                                local rolagem = Firecast.interpretarRolagem("1d20 + " .. (tonumber(sheet.penTerceiro) or 0));
+                                                local dano = Firecast.interpretarRolagem(sheet.danoGolpe);
+                                                local mesa = Firecast.getMesaDe(sheet);
+                                                mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpe or "Ataque") .. " de " .. (sheet.nome or "Personagem"),
+                                                    function(rolado)
+                                                        mesa.activeChat:rolarDados(dano, "Terceiro Dano de " .. (sheet.nomeGolpe or "Ataque"))
+                                                    end);
+                                            end;
+                                        </event>
+                                    </button>
+
+                                    <comboBox vertTextAlign="center" horzTextAlign="trailing" left="313" top="25" width="55" height="25" field="penTerceiro" items="{'0', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '-10'}" values="{'0', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '-10'}" fontColor="white"/>
+
+                                    <rectangle left="0" top="50" width="55" class="janela5">
+                                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Traços" fontColor="Gray" fontFamily="Stencil"/>
+                                    </rectangle>
+                                    <formatLabelEdit left="55" top="50" width="232" height="25" field="tracosGolpe"/>
+
+                                    <comboBox vertTextAlign="center" horzTextAlign="trailing" left="287" top="50" width="55" height="25" field="tipoDano" items="{'Cn', 'Ct', 'Pf'}" fontColor="white"/>
+
+                                    <button left="342" top="51" width="23" height="23" text="+">
+                                        <event name="onClick">
+                                            self.rclGolpes:append();
+                                        </event>
+                                    </button>
+
+                                    <dataLink fields="{'nivel', 'atrGolpe', 'profGolpe', 'outrosGolpe'}">
+                                           <event name="onChange"><![CDATA[
+                                               if sheet == nil then return end;
+
+                                               if (tonumber(sheet.profGolpe) or 0) > 0 then
+                                                   sheet.bonusGolpe = (tonumber(sheet.atrGolpe) or 0)+
+                                                                   (tonumber(sheet.profGolpe) or 0)+
+                                                                   (tonumber(sheet.outrosGolpe) or 0)+
+                                                                   (tonumber(sheet.nivel) or 0);
+                                               else
+                                                   sheet.bonusGolpe = (tonumber(sheet.atrGolpe) or 0) + (tonumber(sheet.outrosGolpe) or 0);
+                                               end;
+                                           ]]>
+                                           </event>
+                                    </dataLink>
+
+                                    <dataLink field="bonusGolpe">
+                                        <event name="onChange"><![CDATA[
+                                            if sheet == nil then return end;
+                                            local mod = (tonumber(sheet.bonusGolpe or 0));
+                                            if (mod >= 0) then
+                                                sheet.bonusGolpe = "+" .. mod;
+                                            else
+                                                sheet.bonusGolpe = mod;
+                                            end;
+                                        ]]>
+                                        </event>
+                                    </dataLink>
+                                </rectangle>
+
+                                <recordList left="0" top="105" name="rclGolpes" field="campoGolpes" templateForm="frmGolpes" width="368" height="473" layout="vertical" minQt="0"/>
+                        </rectangle>
+                    </rectangle>
+                </flowPart>
+
+			    <flowLineBreak/>
+
+                <flowPart class="janela3" width="405" height="400">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="0" top="5" width="405" height="25" text="Personalidade" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                        <formatTextEdit left="6" top="31" width="389" height="300" field="personalidade"/>
+
+                        <rectangle left="115" top="342" width="180" height="40" color="Gray" cornerType="round" xradius="20" yradius="20">
+                            <button name="inventario" left="15" top="5" width="150" height="30" text="Inventário" fontSize="16" vertTextAlign="center" horzTextAlign="center" fontFamily="Stencil" onClick="showItemPopup();"/>
+                        </rectangle>
+                    </rectangle>
+                </flowPart>
+
+                <flowPart class="janela3" width="791" height="400">
+                    <rectangle align="client" class="janela2">
+                        <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                        <label left="0" top="5" width="791" height="25" text="História" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                        <button name="info" left="756" top="5" width="23" height="23" text="i" onClick="showInfoPopup();"/>
+                        <formatTextEdit left="7" top="31" width="773" height="360" field="historia"/>
+                    </rectangle>
+                </flowPart>
+            </flowLayout>
+        </scrollBox>
+    </rectangle>
+</form>

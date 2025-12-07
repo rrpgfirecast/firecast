@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+	<image align="client" style="autoFit" src="/imagens/Fundo 1.jpg"/>
+	<scrollBox align="client">
+        <flowLayout class="janela1">
+            <flowPart class="janela3" width="300" height="642">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle left="50" top="5" width="200" class="janela5">
+                    <label width="200" height="25" text="Tradições Mágicas" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="5" top="30" width="290" height="116" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="5" top="8" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Arcanas" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="110" top="5" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+                        <CheckBox left="3" top="3" field="arcanas"/>
+                    </rectangle>
+
+                    <rectangle left="5" top="45" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Primais" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="110" top="42" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+                        <CheckBox left="3" top="3" field="primais"/>
+                    </rectangle>
+
+                    <rectangle left="5" top="82" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Preparadas" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="110" top="79" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+                        <CheckBox left="3" top="3" field="preparadas"/>
+                    </rectangle>
+
+                    <rectangle left="170" top="8" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Ocultistas" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="150" top="5" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+                        <CheckBox left="3" top="3" field="ocultistas"/>
+                    </rectangle>
+
+                    <rectangle left="170" top="45" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Divinas" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="150" top="42" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+                        <CheckBox left="3" top="3" field="divinas"/>
+                    </rectangle>
+
+                    <rectangle left="170" top="82" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Espontâneas" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="150" top="79" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+                        <CheckBox left="3" top="3" field="espontaneas"/>
+                    </rectangle>
+                </rectangle>
+
+                <rectangle left="50" top="163" width="200" class="janela5">
+                    <label width="200" height="25" text="CD de Magia" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="27" top="188" width="245" height="50" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="0" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="ATR" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Prof" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="110" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Outros" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="165" top="0" width="80" class="janela6" strokeSize="3">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="80" height="25" text="CD" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+
+                    <comboBox vertTextAlign="center" horzTextAlign="center" left="0" top="25" width="55" height="25" field="atrBoxM" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="white">
+                        <event name="onChange">
+                            if sheet == nil then return end;
+                                if sheet.atrBoxM == "1" then
+                                        sheet.atrMagia = (tonumber(sheet.modFor) or 0);
+                                elseif sheet.atrBoxM == "2" then
+                                        sheet.atrMagia = (tonumber(sheet.modDes) or 0);
+                                elseif sheet.atrBoxM == "3" then
+                                        sheet.atrMagia = (tonumber(sheet.modCon) or 0);
+                                elseif sheet.atrBoxM == "4" then
+                                        sheet.atrMagia = (tonumber(sheet.modInt) or 0);
+                                elseif sheet.atrBoxM == "5" then
+                                        sheet.atrMagia = (tonumber(sheet.modSab) or 0);
+                                elseif sheet.atrBoxM == "6" then
+                                        sheet.atrMagia = (tonumber(sheet.modCar) or 0);
+                            end;
+                        </event>
+                    </comboBox>
+
+                    <comboBox vertTextAlign="center" horzTextAlign="trailing" left="55" top="25" width="55" height="25" field="profMagia" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white"/>
+
+                    <formatLabelEdit left="110" top="25" width="55" height="25" field="outrosMagia"/>
+
+                    <rectangle left="165" top="25" width="80" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+                        <label width="80" height="25" field="cdMagia" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+                    </rectangle>
+
+                    <dataLink fields="{'nivel', 'atrMagia', 'profMagia', 'outrosMagia'}">
+                        <event name="onChange"><![CDATA[
+                            if sheet == nil then return end;
+
+                            if (tonumber(sheet.profMagia) or 0) > 0 then
+                                sheet.cdMagia = 10 + (tonumber(sheet.atrMagia) or 0)+
+                                                (tonumber(sheet.profMagia) or 0)+
+                                                (tonumber(sheet.outrosMagia) or 0)+
+                                                (tonumber(sheet.nivel) or 0);
+                            else
+                                sheet.cdMagia = 10 + (tonumber(sheet.atrMagia) or 0) + (tonumber(sheet.outrosMagia) or 0);
+                            end;
+                        ]]>
+                        </event>
+                    </dataLink>
+                </rectangle>
+
+                <rectangle left="50" top="256" width="200" class="janela5">
+                    <label width="200" height="25" text="Espaços de Magia" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="5" top="281" width="290" height="355" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="63" top="5" width="110" class="janela5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Pontos de Foco" fontColor="Gray" fontFamily="Stencil" fontSize="12"/>
+                    </rectangle>
+
+                    <formatNumEdit left="173" top="5" width="55" height="25" field="pontoFoco" fontStyle="bold"/>
+
+                    <rectangle left="63" top="40" width="110" class="janela5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Nível de Truque" fontColor="Gray" fontFamily="Stencil" fontSize="12"/>
+                    </rectangle>
+
+                    <formatNumEdit left="173" top="40" width="55" height="25" field="nivelTruque" fontStyle="bold"/>
+
+                    <rectangle left="63" top="75" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="118" width="55" top="75" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Máximo" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="173" width="55" top="75" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Usados" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+
+                    <MagiaSlot top="100" nivelSlot="1"  />
+                    <MagiaSlot top="125" nivelSlot="2"  />
+                    <MagiaSlot top="150" nivelSlot="3"  />
+                    <MagiaSlot top="175" nivelSlot="4"  />
+                    <MagiaSlot top="200" nivelSlot="5"  />
+                    <MagiaSlot top="225" nivelSlot="6"  />
+                    <MagiaSlot top="250" nivelSlot="7"  />
+                    <MagiaSlot top="275" nivelSlot="8"  />
+                    <MagiaSlot top="300" nivelSlot="9"  />
+                    <MagiaSlot top="325" nivelSlot="10"  />
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="655" height="642">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle align="client" class="janela2">
+                    <label width="655" height="25" text="Magias Conhecidas" vertTextAlign="center" horzTextAlign="center" fontSize="20" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle left="65" top="30" width="200" class="janela5">
+                    <label width="200" height="25" text="Truques Mágicos" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="25" top="55" width="290" height="253" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+                    <rectangle left="0" width="55" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="212" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="212" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="267" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclTruquesMagicos:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclTruquesMagicos" field="campoTruquesMagicos" templateForm="frmMagiasConhecidas" width="308" height="225" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelMagiaConhec or 0) < (nodeB.nivelMagiaConhec or 0) then return -1;
+                            elseif (nodeA.nivelMagiaConhec or 0) > (nodeB.nivelMagiaConhec or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeMagiaConhec, nodeB.nomeMagiaConhec);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+
+                <rectangle left="385" top="30" width="200" class="janela5">
+                    <label width="200" height="25" text="Magias Inatas" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="340" top="55" width="290" height="253" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+                    <rectangle left="0" width="55" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="212" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="212" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="267" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclMagiasInatas:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclMagiasInatas" field="campoMagiasInatas" templateForm="frmMagiasConhecidas" width="308" height="225" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelMagiaConhec or 0) < (nodeB.nivelMagiaConhec or 0) then return -1;
+                            elseif (nodeA.nivelMagiaConhec or 0) > (nodeB.nivelMagiaConhec or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeMagiaConhec, nodeB.nomeMagiaConhec);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+
+                <rectangle left="65" top="338" width="200" class="janela5">
+                    <label width="200" height="25" text="Magias de Foco" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="25" top="363" width="290" height="253" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+                    <rectangle left="0" width="55" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="212" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="212" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="267" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclMagiasFoco:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclMagiasFoco" field="campoMagiasFoco" templateForm="frmMagiasConhecidas" width="308" height="225" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelMagiaConhec or 0) < (nodeB.nivelMagiaConhec or 0) then return -1;
+                            elseif (nodeA.nivelMagiaConhec or 0) > (nodeB.nivelMagiaConhec or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeMagiaConhec, nodeB.nomeMagiaConhec);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+
+                <rectangle left="385" top="338" width="200" class="janela5">
+                    <label width="200" height="25" text="Magias" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="340" top="363" width="290" height="253" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+                    <rectangle left="0" width="55" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="212" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="212" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="267" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclMagias:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclMagias" field="campoMagias" templateForm="frmMagiasConhecidas" width="308" height="225" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelMagiaConhec or 0) < (nodeB.nivelMagiaConhec or 0) then return -1;
+                            elseif (nodeA.nivelMagiaConhec or 0) > (nodeB.nivelMagiaConhec or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeMagiaConhec, nodeB.nomeMagiaConhec);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="330" height="642">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle align="client" class="janela2">
+                    <label width="330" height="25" text="Magias Preparadas" vertTextAlign="center" horzTextAlign="center" fontSize="20" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="20" top="30" width="290" height="606" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+                    <rectangle left="0" width="157" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="157" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="157" width="55" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="212" width="55" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Slots" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="267" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclMagiasPreparadas:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclMagiasPreparadas" field="campoMagiasPreparadas" templateForm="frmMagiasPreparadas" width="308" height="575" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelMagiaPrep or 0) < (nodeB.nivelMagiaPrep or 0) then return -1;
+                            elseif (nodeA.nivelMagiaPrep or 0) > (nodeB.nivelMagiaPrep or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeMagiaPrep, nodeB.nomeMagiaPrep);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+            </flowPart>
+        </flowLayout>
+    </scrollBox>
+</rectangle>

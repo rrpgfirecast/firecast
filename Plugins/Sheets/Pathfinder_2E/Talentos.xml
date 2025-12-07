@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+	<image align="client" style="autoFit" src="/imagens/Fundo 1.jpg"/>
+	<scrollBox align="client">
+		<flowLayout class="janela1">
+            <flowPart class="janela3" width="350" height="370">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle align="client" class="janela2">
+                    <label width="350" height="25" text="Características" vertTextAlign="center" horzTextAlign="center" fontSize="20" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle left="20" top="30" width="310" height="330" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="0" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="232" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="286" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclCaracteristicas:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclCaracteristicas" field="campoCaracteristicas" templateForm="frmTalentos" width="328" height="300" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelTalento or 0) < (nodeB.nivelTalento or 0) then return -1;
+                            elseif (nodeA.nivelTalento or 0) > (nodeB.nivelTalento or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeTalento, nodeB.nomeTalento);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="350" height="370">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle align="client" class="janela2">
+                    <label width="350" height="25" text="Talentos de Ancestralidade" vertTextAlign="center" horzTextAlign="center" fontSize="20" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle left="20" top="30" width="310" height="330" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="0" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="232" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="286" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclTalAncestralidade:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclTalAncestralidade" field="campoTalAncestralidade" templateForm="frmTalentos" width="328" height="300" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelTalento or 0) < (nodeB.nivelTalento or 0) then return -1;
+                            elseif (nodeA.nivelTalento or 0) > (nodeB.nivelTalento or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeTalento, nodeB.nomeTalento);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="350" height="370">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle align="client" class="janela2">
+                    <label width="350" height="25" text="Talentos de Perícias" vertTextAlign="center" horzTextAlign="center" fontSize="20" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle left="20" top="30" width="310" height="330" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="0" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="232" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="286" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclTalPericias:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclTalPericias" field="campoTalPericias" templateForm="frmTalentos" width="328" height="300" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelTalento or 0) < (nodeB.nivelTalento or 0) then return -1;
+                            elseif (nodeA.nivelTalento or 0) > (nodeB.nivelTalento or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeTalento, nodeB.nomeTalento);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+            </flowPart>
+
+            <flowLineBreak/>
+
+            <flowPart class="janela3" width="350" height="370">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle align="client" class="janela2">
+                    <label width="350" height="25" text="Talentos Gerais" vertTextAlign="center" horzTextAlign="center" fontSize="20" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="20" top="30" width="310" height="330" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="0" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="232" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="286" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclTalGerais:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclTalGerais" field="campoTalGerais" templateForm="frmTalentos" width="328" height="300" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelTalento or 0) < (nodeB.nivelTalento or 0) then return -1;
+                            elseif (nodeA.nivelTalento or 0) > (nodeB.nivelTalento or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeTalento, nodeB.nomeTalento);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="350" height="370">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle align="client" class="janela2">
+                    <label width="350" height="25" text="Talentos de Classe" vertTextAlign="center" horzTextAlign="center" fontSize="20" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="20" top="30" width="310" height="330" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="0" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="232" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="286" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclTalClasse:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclTalClasse" field="campoTalClasse" templateForm="frmTalentos" width="328" height="300" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelTalento or 0) < (nodeB.nivelTalento or 0) then return -1;
+                            elseif (nodeA.nivelTalento or 0) > (nodeB.nivelTalento or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeTalento, nodeB.nomeTalento);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="350" height="370">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle align="client" class="janela2">
+                    <label width="350" height="25" text="Talentos Bônus" vertTextAlign="center" horzTextAlign="center" fontSize="20" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="20" top="30" width="310" height="330" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="0" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <rectangle left="55" width="232" top="0" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <button left="286" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclTalBonus:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclTalBonus" field="campoTalBonus" templateForm="frmTalentos" width="328" height="300" layout="vertical" minQt="0">
+                        <event name="onCompare"><![CDATA[ 
+                            if (nodeA.nivelTalento or 0) < (nodeB.nivelTalento or 0) then return -1;
+                            elseif (nodeA.nivelTalento or 0) > (nodeB.nivelTalento or 0) then return 1;
+                            else
+                                return Utils.compareStringPtBr(nodeA.nomeTalento, nodeB.nomeTalento);
+                            end;
+                            ]]>
+                        </event>
+                    </recordList>
+                </rectangle>
+            </flowPart>
+        </flowLayout>
+    </scrollBox>
+</rectangle>

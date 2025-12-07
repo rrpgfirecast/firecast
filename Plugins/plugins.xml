@@ -522,8 +522,8 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.pathfinder2e" name="Pathfinder 2E" url="https://sdk3.firecast.app/Plugins/Sheets/Pathfinder_2E/output/Pathfinder_2E.rpk?raw=true" fileName="Pathfinder_2E.rpk" repositoryPath="Sheets/Pathfinder_2E/" author="Hirobrin" description="Ficha Pathfinder 2E 2.1" version="2.1" compilationDate="03032023122635" compilationDigest="1f3688f272e4e75fd6c25d299a612cb057855a45">
-        <info lang="pt-BR" name="Pathfinder 2E" description="Ficha Pathfinder 2E 2.1" author="Hirobrin" site="https://firecast.app/pt_br/"/>
+    <element id="br.com.rrpg.pathfinder2e" name="Pathfinder 2E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pathfinder_2E/output/Pathfinder_2E.rpk?raw=true" fileName="Pathfinder_2E.rpk" repositoryPath="Sheets/Pathfinder_2E/" author="Hirobrin" description="Ficha Pathfinder 2E 3.0" version="3.0" compilationDate="07122025134020" compilationDigest="c3a0e9209030e783b67ce0575dddad82294d1073">
+        <info lang="pt-BR" name="Pathfinder 2E" description="Ficha Pathfinder 2E 3.0" author="Hirobrin" site="https://firecast.app/pt_br/"/>
         <dataTypes>
             <dataType id="br.com.rrpg.pathfinder2e" title="Pathfinder 2e" formType="sheetTemplate">
                 <info title="Pathfinder 2e"/>

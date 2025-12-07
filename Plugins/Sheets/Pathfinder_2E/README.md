@@ -4,4 +4,4 @@ Autor: Hirobrin
 
 Plataforma: Firecast
 
-Versão: 1.0
+Versão: 3.0

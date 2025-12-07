@@ -26,8 +26,8 @@
 		]]>
 	</script>
 
-    <formatLabelEdit left="0" top="0" width="177" height="25" field="nomeItem"/>
-    <formatLabelEdit left="177" top="0" width="77" height="25" field="volumeItem"/>
-    <button name="botaoItemInfo" left="254" top="1" width="23" height="23" text="i" onClick="showInvPopup();"/>
-    <button left="277" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+    <formatLabelEdit left="0" top="0" width="297" height="25" field="nomeItem"/>
+    <formatLabelEdit left="297" top="0" width="77" height="25" field="volumeItem"/>
+    <button name="botaoItemInfo" left="374" top="1" width="23" height="23" text="i" onClick="showInvPopup();"/>
+    <button left="397" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
 </form>

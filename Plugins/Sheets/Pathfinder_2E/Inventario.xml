@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+    <image align="client" style="autoFit" src="/imagens/Fundo 1.jpg"/>
+    <scrollBox align="client">
+        <flowLayout class="janela1">
+            <flowPart class="janela3" width="463" height="495">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle align="client" class="janela2">
+                    <label width="463" height="25" text="Equipamentos" vertTextAlign="center" horzTextAlign="center" fontSize="20" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle left="20" top="30" width="422" height="454" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="0" top="0" width="297" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="297" height="25" text="Item" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+
+                    <rectangle left="297" top="0" width="100" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="100" height="25" text="Volume" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+
+                    <button left="397" top="1" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclInventario:append();
+                        </event>
+                    </button>
+
+                    <recordList left="0" top="25" name="rclInventario" field="campoInventario" templateForm="frmInventario" width="440" height="425" layout="vertical" minQt="0"/>
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="343" height="495">
+                <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                <rectangle left="106" top="55" class="janela5">
+                    <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Dinheiro" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="70" top="80" width="204" height="125" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="5" top="5" width="55" class="janela5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PC" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <formatNumEdit left="59" top="5" width="140" height="25" field="pecaCobre"/>
+
+                    <rectangle left="5" top="35" width="55" class="janela5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PP" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <formatNumEdit left="59" top="35" width="140" height="25" field="pecaPrata"/>
+
+                    <rectangle left="5" top="65" width="55" class="janela5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PO" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <formatNumEdit left="59" top="65" width="140" height="25" field="pecaOuro"/>
+
+                    <rectangle left="5" top="95" width="55" class="janela5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PL" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+                    <formatNumEdit left="59" top="95" width="140" height="25" field="pecaPlatina"/>
+                </rectangle>
+
+                <rectangle left="106" top="270" class="janela5">
+                    <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Volume" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <rectangle  left="47" top="295" width="249" height="130" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <rectangle left="95" top="5" width="60" height="60" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="round" xradius="30" yradius="30">
+                        <label left="0" top="0" width="60" height="60" field="volumeAtual" fontSize="16" name="volumeAtualLabel" vertTextAlign="center" horzTextAlign="center" formatFloat="0.##" fontStyle="bold" fontColor="Gray"/>
+                        <event name="onClick">
+                            self.volumeAtualLabel.visible = false;
+                            self.volumeAtualEdit.visible = true;
+                            self.volumeAtualEdit:setFocus();
+                        </event>
+                        <edit field="volumeAtual" left="0" top="0" width="60" height="60" type="float" name="volumeAtualEdit" visible="false" fontSize="16">
+                            <event name="onExit">
+                                self.volumeAtualLabel.visible = true;
+                                self.volumeAtualEdit.visible = false;
+                            </event>
+                        </edit>
+                    </rectangle>
+                    <rectangle left="5" top="70" class="janela5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Sobrecarregado" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+
+                    <rectangle left="135" top="70" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" field="sobrecarga" fontColor="Gray" fontSize="16" fontStyle="bold"/>
+                    </rectangle>
+                    <formatNumEdit left="189" top="70" width="55" height="25" field="outrosSobrecarga"/>
+
+                    <rectangle left="5" top="100" class="janela5">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Máximo" fontColor="Gray" fontFamily="Stencil"/>
+                    </rectangle>
+
+                    <rectangle left="135" top="100" class="janela6">
+                        <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" field="maximo" fontColor="Gray" fontSize="16" fontStyle="bold"/>
+                    </rectangle>
+                    <formatNumEdit left="189" top="100" width="55" height="25" field="outrosMaximo"/>
+
+                    <dataLink fields="{'modFor','outrosSobrecarga','outrosMaximo'}">
+                        <event name="onChange">
+                            if sheet == nil then return end;
+                            sheet.sobrecarga = 5 + (tonumber(sheet.modFor) or 0) + (tonumber(sheet.outrosSobrecarga) or 0);
+                            sheet.maximo = 10 + (tonumber(sheet.modFor) or 0) + (tonumber(sheet.outrosMaximo) or 0);
+                        </event>
+                    </dataLink>
+                </rectangle>
+            </flowPart>
+
+            <flowLineBreak/>
+
+            <flowPart class="janela3" width="816" height="305">
+                <rectangle align="client" class="janela2">
+                    <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                    <label left="0" top="5" width="816" height="25" text="Outros Itens" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                    <formatTextEdit left="7" top="31" width="798" height="265" field="outrosItens"/>
+                </rectangle>
+            </flowPart>
+        </flowLayout>
+    </scrollBox>
+</rectangle>

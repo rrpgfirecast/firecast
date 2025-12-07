@@ -12,17 +12,6 @@
 									end;
 								 end);
 		end;
-
-		local function showMagiaPopup()
-			local pop = self:findControlByName("popMagias");
-
-			if pop ~= nil then
-				pop:setNodeObject(self.sheet);
-				pop:show();
-			else
-				showMessage("Não encontrei o popup de magias para exibir.");
-			end;
-		end;
 		]]>
 	</script>
 
@@ -30,12 +19,11 @@
 	<formatLabelEdit left="100" top="0" width="55" height="25" field="atrClasseEx"/>
 	<formatLabelEdit left="155" top="0" width="55" height="25" field="profClasseEx"/>
 	<formatLabelEdit left="210" top="0" width="55" height="25" field="outrosClasseEx"/>
-    <rectangle left="265" top="0" width="57" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
-        <label width="57" height="25" field="cdClasseEx" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+    <rectangle left="265" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+        <label width="55" height="25" field="cdClasseEx" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
     </rectangle>
 
-    <button left="322" top="1" width="23" height="23" text="i" onClick="showMagiaPopup();"/>
-	<button left="345" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+	<button left="318" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
 
     <dataLink fields="{'atrClasseEx', 'profClasseEx', 'outrosClasseEx'}">
         <event name="onChange"><![CDATA[
