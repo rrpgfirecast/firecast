@@ -3,8 +3,9 @@
 <form formType="sheetTemplate" dataType="br.com.firecast.ShadowOfTheWeirdWizard" 
       title="Shadow of the Weird Wizard" name="frmWeirdWizard">
 
-<scrollBox left="0" top="0" width="827" height="880">
-<tabControl left="0" top="0" width="811" height="1129">
+<!--scrollBox left="0" top="0" width="827" height="880"-->
+<scrollBox align="client" name="scrollBox1">
+<tabControl left="0" top="0" width="811" height="870">
 <!-- Aba Personagem -->
       <tab title="Personagem"> 
             <layout left="0" top="10" width="815" height="825">
@@ -491,8 +492,6 @@
                         </image>
                   </rectangle>
             </layout>
-            
-      <image left="69" top="875" width="676" height="194" src="/img/logo.png"/>      
       </tab>
 
 
@@ -3155,8 +3154,6 @@
                   </rectangle>
                   <image left="0" top="0" width="799" height="825" src="/img/borda.png"/>
             </layout>
-            
-      <image left="69" top="875" width="676" height="194" src="/img/logo.png"/>      
       </tab>
 
 
@@ -3164,6 +3161,7 @@
 <!-- Aba Talentos -->
       <tab title="Benefícios e Talentos"> 
             <scrollBox left="0" top="10" width="815" height="725">
+            <!--scrollBox align="client"-->
             <layout left="0" top="10" width="799" height="3830">
 
                   <rectangle left="0" top="0" width="799" height="3830" color="#D5D5D5">
@@ -3202,24 +3200,6 @@
             <layout left="0" top="10" width="815" height="825">
                   <rectangle left="0" top="725" width="799" height="105" color="#D5D5D5"/>
                         <!-- Rodapé -->
-                        <rectangle left="65" top="650" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="655" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="660" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="665" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="670" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="675" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="680" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="685" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="690" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="695" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="700" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="705" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="710" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="715" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="720" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="725" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="730" width="712" height="1" color="#49244F"/>
-                        <rectangle left="65" top="735" width="712" height="1" color="#49244F"/>
                         <image left="260" top="745" width="324" height="72" src="/img/libelula.png"/>   
                         
                   <!-- Objetos gráficos da ficha -->
@@ -3227,8 +3207,6 @@
                   </rectangle>
                   <image left="0" top="0" width="799" height="825" src="/img/borda.png"/>
             </layout>
-            
-      <image left="69" top="875" width="676" height="194" src="/img/logo.png"/>      
       </tab>
 
 
@@ -3334,8 +3312,6 @@
                   </rectangle>
                   <image left="0" top="0" width="799" height="825" src="/img/borda.png"/>
             </layout>
-            
-      <image left="69" top="875" width="676" height="194" src="/img/logo.png"/>      
       </tab>
 
 
@@ -4688,9 +4664,7 @@
                   <rectangle left="0" top="0" width="799" height="5" color="#D5D5D5">
                   </rectangle>
                   <image left="0" top="0" width="799" height="825" src="/img/borda.png"/>
-            </layout>
-            
-      <image left="69" top="875" width="676" height="194" src="/img/logo.png"/>      
+            </layout>      
       </tab>
 
 
@@ -6044,15 +6018,15 @@
                   </rectangle>
                   <image left="0" top="0" width="799" height="825" src="/img/borda.png"/>
             </layout>
-            
-      <image left="69" top="875" width="676" height="194" src="/img/logo.png"/>      
+                  
       </tab>
 
 
 <!-- ============================================================================================= -->
 <!-- Aba Aflições -->
       <tab title="Aflições"> 
-            <layout left="0" top="10" width="815" height="825">
+            <!--layout left="0" top="10" width="815" height="825"-->
+            <layout align="client">
                   <rectangle left="0" top="0" width="799" height="825" color="#D5D5D5">
                         <!-- Objetos gráficos da ficha -->
                         <image left="0" top="0" width="799" height="825" src="/img/borda.png"/>
@@ -6366,15 +6340,15 @@
                         <rectangle left="65" top="735" width="712" height="1" color="#49244F"/>
                         <image left="83" top="755" width="672" height="65" src="/img/dragao.png"/>
                   </rectangle>
-            </layout>
-      <image left="69" top="875" width="676" height="194" src="/img/logo.png"/>      
+            </layout>    
       </tab>
 
 
 <!-- ============================================================================================= -->
 <!-- Aba Anotações -->
       <tab title="Anotações"> 
-            <layout left="0" top="10" width="799" height="825">
+            <!--layout left="0" top="10" width="799" height="825"-->
+            <layout align="client">
             
                   <rectangle left="0" top="0" width="799" height="825" color="#D5D5D5">
                         
@@ -6392,9 +6366,7 @@
                   <!-- Objetos gráficos da ficha -->
                   </rectangle>
                   <image left="0" top="0" width="799" height="825" src="/img/borda.png"/>
-            </layout>
-            
-      <image left="69" top="875" width="676" height="194" src="/img/logo.png"/>      
+            </layout>     
       </tab>
 
 </tabControl>
@@ -6402,7 +6374,9 @@
 
 <!-- ============================================================================================= -->
 <!-- Formulário Principal -->
-<popup name="popFrmPrincipal" width="791" height="745">
+<!--popup name="popFrmPrincipal" width="791" height="745"-->
+<popup name="popFrmPrincipal" align="client">
+<scrollBox align="client">
       <rectangle color="#D5D5D5" width="781" height="735" left="5" top="5"
             xradius="10" yradius="10" cornerType="round"/>
       <rectangle left="395" top="70" width="1" height="600" color="#49244F"/>
@@ -6741,7 +6715,8 @@
       <edit field="frmVida" left="673" top="575" width="28" fontColor="#D5D5D5" type="number" 
             min="0" max="1000" transparent="true" horzTextAlign="center"/>
       <label left="668" top="625" text="Vida" fontSize="20" fontStyle="bold" fontColor="#49244F"/>
-            
+
+</scrollBox>            
 </popup>
 
 <!-- ============================================================================================= -->
