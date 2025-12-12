@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+    fichaPrincipal = self;
+    
+
+    function verificacaoFichaJogador(self)
+        --verifica se o chamado da função vem de qual ficha
+        local ficha = self.sheet
+        if ficha == nil then 
+            return 
+        else
+            return ficha
+        end
+    end
+-- Funções de rolagem de dados
+    function rolarAtributo(self, fieldName, nomeExibicao)
+        local ficha = verificacaoFichaJogador(self)
+        --Rola teste de atributos
+        local valor = tonumber(ficha[fieldName]) or 0
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. valor)
+        local mesa = Firecast.getMesaDe(ficha)
+        local nomePersonagem = tostring(ficha.fldNomePersonagem)
+        if nomePersonagem == "nil" then
+            nomePersonagem = "Sem nome"
+        end
+        mesa.chat:rolarDados(rolagem, "Teste de " .. nomeExibicao.. " com "..nomePersonagem)
+    end
+    function rolarAtaque(self, testeArma, nomeArma)
+        local ficha = verificacaoFichaJogador(self)
+        --Rola teste de ataques das armas
+        local valorTeste = tonumber(ficha[testeArma]) or 0
+        local rolagemArma = Firecast.interpretarRolagem("1d20 + " .. valorTeste)
+        local arma = tostring(ficha[nomeArma] or "")
+        local mesa = Firecast.getMesaDe(ficha)
+        local nomePersonagem = tostring(ficha.fldNomePersonagem)
+        if nomePersonagem == "nil" then
+            nomePersonagem = "Sem nome"
+        end
+        mesa.chat:rolarDados(rolagemArma, "Ataque com " .. arma.." de "..nomePersonagem) 
+    end
+    function rolarDano(self, dadoArma, nomeArma)
+        local ficha = verificacaoFichaJogador(self)
+        -- Rolagem de dano para armas
+        local valorDado = tostring(ficha[dadoArma] or "")
+        local rolagemDano = Firecast.interpretarRolagem(valorDado)
+        local arma = tostring(ficha[nomeArma] or "")
+        local mesa = Firecast.getMesaDe(ficha)
+        local nomePersonagem = tostring(ficha.fldNomePersonagem)
+        if nomePersonagem == "nil" then
+            nomePersonagem = "Sem nome"
+        end
+        if valorDado == "" then
+            return
+        else
+            mesa.chat:rolarDados(rolagemDano, "Dano com " .. arma.." de "..nomePersonagem) 
+        end
+    end
+    function rolarPericia(self, total_pericia, nomeExibicao)
+        local ficha = verificacaoFichaJogador(self)
+        -- Rolagem dos teste de pericias 
+        local valor = tonumber(ficha[total_pericia]) or 0 
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. valor)
+        local mesa = Firecast.getMesaDe(ficha)
+        local nomePersonagem = tostring(ficha.fldNomePersonagem)
+        if nomePersonagem == "nil" then
+            nomePersonagem = "Sem nome"
+        end
+        mesa.chat:rolarDados(rolagem, "Teste de "..nomeExibicao.." de "..nomePersonagem)
+    end
+-- Funções de modificação da ficha
+    function DesAtivaDefesa(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- ativa e desativa armadura pesada (armaduras pesadas desativa o atributo na defesa)
+        local armadura_pesada = self.cbx_name_armadura_pesada.checked
+        if armadura_pesada == true then
+            self.cbx_name_atrib_defesa.enabled = false
+            ficha.fldValorAtributoDefesa = 0
+            calcDefesa(self)
+        else
+            self.cbx_name_atrib_defesa.enabled = true
+            calcAtributoDefesa(self)
+        end
+    end
+    function DesAtivaPericia(self, pericia_cbx, pericia_btn)
+        local ficha = verificacaoFichaJogador(self)
+        -- ativa e desativa a marcação de pericia treinada
+        if ficha == nil then
+            return 
+        else
+            local checkBox = self[pericia_cbx].checked
+             self[pericia_btn].enabled = (checkBox == true)
+        end
+    end
+    function alteraAtributoChave(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- altera o atributo chave de magia     
+        local valor_atual = self.teste_resistencia.value
+        local atrib_valor = 0
+        if valor_atual == "FOR" then
+            atrib_valor = tonumber(ficha.fldForca) or 0
+        elseif valor_atual == "DES" then
+            atrib_valor = tonumber(ficha.fldDestresa) or 0
+        elseif valor_atual == "CON" then
+            atrib_valor = tonumber(ficha.fldConstituicao) or 0
+        elseif valor_atual == "INT" then
+            atrib_valor = tonumber(ficha.fldInteligencia) or 0
+        elseif valor_atual == "SAB" then
+            atrib_valor = tonumber(ficha.fldSabedoria) or 0
+        elseif valor_atual == "CAR" then
+            atrib_valor = tonumber(ficha.fldCarisma) or 0
+        end
+        cd_resist = atrib_valor + math.floor((ficha.fldNivel or 1)/2) + 10
+        ficha.fldAtributoChave = atrib_valor
+        ficha.fldTesteResistencia = cd_resist
+    end
+    function copiaNome(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- copia o nome do personagem digitado pelo jogador e coloca em cima do avatar 
+        nomePersonagem = tostring(ficha.fldNomePersonagem)
+        if ficha.fldNomePersonagem == nil then
+            ficha.fld_nome_personagem_detalhes = ""
+        else
+            ficha.fld_nome_personagem_detalhes = nomePersonagem
+        end
+    end
+    function alteraTamanho(self)
+        local ficha = verificacaoFichaJogador(self)
+        --Altera o valor dos Modificadores de Furtividade/Manobras
+        local tamanho = tostring(self.cmb_name_tamanho.value)
+        if tamanho == "Minusculo" then
+            ficha.fldValorTamanho = "+5/-5"
+        elseif tamanho == "Pequeno" then
+            ficha.fldValorTamanho = "+2/-2"
+        elseif tamanho == "Medio" then
+            ficha.fldValorTamanho = "0/0"
+        elseif tamanho == "Grande" then
+            ficha.fldValorTamanho = "-2/+2"
+        elseif tamanho == "Enorme" then
+            ficha.fldValorTamanho = "-5/+5"
+        elseif tamanho == "Colossal" then
+            ficha.fldValorTamanho = "-10/+10"
+        end
+    end
+-- Funções de cálculo
+    function calcNivel(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- calcula a metade do nivel e disponibiliza na ficha 
+        local nivel_atual = tonumber(ficha.fldNivel) or 1
+        ficha.fldNivel = nivel_atual
+        -- define o bônus de treinamento
+        if nivel_atual &lt;= 6 then
+            ficha.fldBonusTreinado = "+2"
+        elseif nivel_atual &lt;= 14 then
+            ficha.fldBonusTreinado = "+4"
+        else
+            ficha.fldBonusTreinado = "+6"
+        end
+        ficha.fldMeioNivel = math.floor(nivel_atual / 2)
+    end
+    function calcAtributoDefesa(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- calcula e aplica o atrubuto no somatorio da defesa
+        local valor_atual = self.cbx_name_atrib_defesa.value
+        local atrib_valor = 0
+        if valor_atual == "FOR" then
+            atrib_valor = tonumber(ficha.fldForca) or 0
+        elseif valor_atual == "DES" then
+            atrib_valor = tonumber(ficha.fldDestresa) or 0
+        elseif valor_atual == "CON" then
+            atrib_valor = tonumber(ficha.fldConstituicao) or 0
+        elseif valor_atual == "INT" then
+            atrib_valor = tonumber(ficha.fldInteligencia) or 0
+        elseif valor_atual == "SAB" then
+            atrib_valor = tonumber(ficha.fldSabedoria) or 0
+        elseif valor_atual == "CAR" then
+            atrib_valor = tonumber(ficha.fldCarisma) or 0
+        end
+        ficha.fldValorAtributoDefesa = atrib_valor
+        calcDefesa(self)
+    end
+    function calcBonusArmadura(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- copia o valor do bonus de armadura para a somatoria da defesa
+        ficha.fldBonusArmadura = tonumber(ficha.fldBonusArmadura) or 0
+    end
+    function calcBonusEscudo(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- copia o valor do bonus de escudo para a somatoria da defesa
+        ficha.fldBonusEscudo = tonumber(ficha.fldBonusEscudo) or 0
+    end
+    function calcDefesa(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- soma todos os valor de defesa para formar a defesa total do jogador(CA)
+        local bonus_armadura = tonumber(ficha.fldBonusArmadura) or 0
+        local bonus_escudo   = tonumber(ficha.fldBonusEscudo) or 0
+        local bonus_outros   = tonumber(ficha.fldDefesaOutros) or 0
+        local atrib_defesa   = tonumber(ficha.fldValorAtributoDefesa) or 0 
+        ficha.fldDefesaTotal = 10 + atrib_defesa + bonus_armadura + bonus_escudo + bonus_outros
+    end
+    function calcTotalPericia(self, outrosField, treinoField, atributoField, totalField, penal_arm)
+        local ficha = verificacaoFichaJogador(self)
+        -- Calcula o total da pericia, somando todas as variaveis 
+        local outros = tonumber(ficha[outrosField]) or 0
+        local treino = self[treinoField].checked 
+        local atributo = self[atributoField].value 
+        local nivel = math.floor((ficha.fldNivel or 1)/2)
+        local pena_armadura = (tonumber(ficha.fldPenalidadeArmadura) or 0) + (tonumber(ficha.fldPenalidadeEscudo) or 0)
+        local bonus_treino = tonumber(string.match(ficha.fldBonusTreinado or "0", "%d+")) or 0
+        local atrib_valor = 0
+        if atributo == "FOR" then
+            atrib_valor = tonumber(ficha.fldForca) or 0
+        elseif atributo == "DES" then
+            atrib_valor = tonumber(ficha.fldDestresa) or 0
+        elseif atributo == "CON" then
+            atrib_valor = tonumber(ficha.fldConstituicao) or 0
+        elseif atributo == "INT" then
+            atrib_valor = tonumber(ficha.fldInteligencia) or 0
+        elseif atributo == "SAB" then
+            atrib_valor = tonumber(ficha.fldSabedoria) or 0
+        elseif atributo == "CAR" then
+            atrib_valor = tonumber(ficha.fldCarisma) or 0
+        end         
+        local valor_total = outros + atrib_valor + nivel
+        if treino then valor_total = valor_total + bonus_treino end
+        if penal_arm then valor_total = valor_total + pena_armadura end
+        ficha[totalField] = valor_total
+    end
+    function calcVidaMana(self, max, atu, temp, calc)
+        local ficha = verificacaoFichaJogador(self)
+        -- Calcula adicionando ou subtraindo o valor no campoa da 'calculador' para mana e vida
+        -- Chama funçãoa para mudar valor de mana e vida no token
+        local atual = tonumber(ficha[atu]) or 0
+        local maxima = tonumber(ficha[max]) or 0
+        local valor = tonumber(ficha[calc]) or 0
+        local temporario = tonumber(ficha[temp]) or 0
+        if valor &lt; 0 then
+            temporario = temporario + valor 
+            if temporario &lt; 0 then
+                valor = temporario
+                temporario = 0
+                atual = atual + valor
+            end
+        else
+            atual = atual + valor
+            if atual &gt; maxima then
+                atual = maxima
+            end 
+        end
+        ficha[temp] = temporario
+        ficha[atu] = atual
+        ficha[calc] = ""
+        if max == "fldVidaMaxima" then
+            ponto = true --vida 
+        else 
+            ponto = false --mana
+        end
+        local tokenAtual = atual + temporario
+        mudaToken(self, ponto, maxima, tokenAtual)
+    end
+    function mudaToken(self, pontos, valorMax, valorAtual)
+        local ficha = verificacaoFichaJogador(self)
+        -- Procura token vinculado a ficha, altera o valor de vida e mana no token
+        persona = Firecast.getPersonagemDe(ficha)
+        SceneLib.registerPlugin(
+            function(scene, attachment)
+                -- Percorre todos os objetos dentro do tabuleiro
+                for i = 1, #scene.items do
+                    local item = scene.items[i]
+                    if item.objectType == "token" then
+                        -- Se o token for do mesmo personagem da ficha:
+                        if tonumber(item.ownerCharacter) == tonumber(persona.codigoInterno) then
+                            if pontos then
+                                item.barMax1 = valorMax
+                                item.barValue1 = valorAtual
+                            else
+                                item.barMax2 = valorMax
+                                item.barValue2 = valorAtual
+                            end
+                        end
+                    end
+                end
+            end
+        )
+    end
+    function calcCargaAtual(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- calcula a quatidade e espaços para cargas
+        local carga = 0 
+        local quantidade = 0
+        local sobrecarga = tonumber(ficha.lbl_carga_sobrecarga) or 0
+        local maxima = tonumber(ficha.lbl_carga_maxima) or 0
+        local itens = NDB.getChildNodes(ficha.fldCardItens)
+        for _, item in ipairs(itens) do
+            local qtd = tonumber(item.edt_quantidade) or 0
+            local espaco = tonumber(item.edt_espaco) or 0
+
+            carga = carga + (espaco * qtd)
+            quantidade = quantidade + qtd
+        end         
+        ficha.lbl_total_itens = quantidade
+        ficha.lbl_carga_atual = carga
+        if carga &lt; sobrecarga then
+            ficha.lbl_texto_sobrecarga = ""
+        elseif carga &gt;= sobrecarga and carga &lt;= maxima then
+            if ficha.fld_ckb_sobrecarga == true then 
+                ficha.lbl_texto_sobrecarga = "Você esta sobrecarregado:\n".."-Seu deslocamento é reduzido em –3m.\n".."-Sofre penalidade de armadura –5"
+            else
+                ficha.lbl_texto_sobrecarga = ""
+            end
+        else
+            ficha.lbl_texto_sobrecarga = "Você não pode carregar mais de "..maxima.." espaços: \n-Seu deslocamento é 0m. Você nao pode se mover \n-Sofre penalidade de armadura –5"
+        end
+    end
+    function calcSobrecargaMaxima(self)
+        local ficha = verificacaoFichaJogador(self)
+        -- calcula a quatidade e espaços para cargas
+        local forca = (tonumber(ficha.fldForca) or 0)
+        if forca &lt; 0 then
+            forca = forca
+        else
+            forca = forca *2
+        end
+        local sobrecarga = forca + 10
+        local maxima = sobrecarga*2
+        ficha.lbl_carga_sobrecarga = sobrecarga
+        ficha.lbl_carga_maxima = maxima
+    end
+</script>

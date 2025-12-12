@@ -1,0 +1,146 @@
+﻿local Objs = require("rrpgObjs.lua")
+local SceneWrappers = require("sceneWrappers.dlua");
+require("utils.lua");
+require("rrpg.lua");
+
+local SceneLib = {};
+local LocalSceneLib = {};
+
+
+-- OBJETO SC3PLUGIN
+
+local __runningPlugins = {};
+
+function LocalSceneLib.newPlugin()
+	local handle = _obj_newObject('TSC3LuaPlugin');
+	local o = Objs.objectFromHandle(handle);
+	
+	
+	Objs.registerHandle(handle, o);
+	return o;
+end;
+
+-- Funções públicas da SceneLib
+
+function SceneLib.registerPlugin(attachCallback)
+	local plug = LocalSceneLib.newPlugin();
+	local pluginAttachments = {};
+	
+	__runningPlugins[plug.handle] = plug;
+	
+	setTimeout(
+		function()	
+			if __runningPlugins[plug.handle] ~= nil then		
+				_obj_invoke(plug.handle, "RegisterYourself");	
+			end;	
+		end, 1);
+	
+	local function startAttachToScene(scene)
+		local oID = scene.objectID;
+		local att = pluginAttachments[oID];
+		
+		if att ~= nil then
+			return;
+		end;
+						
+		att = Objs.objectFromHandle(_obj_invoke(plug.handle, "LuaCreatePluginAttachment", oID));
+		
+		if att ~= nil then		
+			Objs.registerHandle(att.handle, att);	
+			
+			local eves = att.eves;
+			
+			if eves == nil then
+				att.eves = {};
+				eves = att.eves;
+			end;
+			
+			eves["OnDettach"] = "";
+			
+			pluginAttachments[oID] = att;
+			
+			if attachCallback ~= nil then
+				setTimeout(function()
+								if scene ~= nil and scene.isObjectAlive then
+									attachCallback(scene, att);
+								end;
+							end, 1)
+			end;
+		end;
+	end;
+
+	local function startDettachFromScene(scene)
+		local oID = scene.objectID;
+		local att = pluginAttachments[oID];
+		
+		if att ~= nil then
+			pluginAttachments[oID] = nil;
+		end;						
+	end;				
+	
+	-- Anexar aos scenes já rodando...
+	local scenes = SceneLib.getLoadedScenes();
+	
+	for i = 1, #scenes, 1 do
+		startAttachToScene(scenes[i]);
+	end;	
+	
+	-- Instalar listeners para detectar novos scenes rodando
+	
+	plug._lstSceneLoaded = RRPG.listen('SC3SceneLoaded',
+		function(msg)
+			if msg.scene ~= nil then
+				startAttachToScene(msg.scene);
+				msg.scene = nil;
+			end;
+		end);
+		
+	plug._lstSceneUnloaded = RRPG.listen('SC3SceneUnloaded',
+		function(msg)
+			if msg.scene ~= nil then
+				startDettachFromScene(msg.scene);
+				msg.scene = nil;
+			end;		
+		end);	
+	
+	return plug.handle;
+end;
+
+function SceneLib.unregisterPlugin(pluginHandle)
+	local plug = __runningPlugins[pluginHandle];
+	
+	if plug ~= nil then
+		if plug._lstSceneUnloaded ~= nil then
+			RRPG.unlisten(plug._lstSceneUnloaded);
+			plug._lstSceneUnloaded = nil;
+		end;
+		
+		if plug._lstSceneLoaded ~= nil then
+			RRPG.unlisten(plug._lstSceneLoaded);
+			plug._lstSceneLoaded = nil;
+		end;		
+	
+		_obj_invoke(plug.handle, "UnregisterYourself");
+		__runningPlugins[pluginHandle] = nil;
+		_obj_invoke(plug.handle, "DettachAllAttachments");
+	end;
+end;
+
+function SceneLib.getLoadedScenes()
+	local L = _scene3_GetLoadedScenesObjectIDs();
+	
+	for i = 1, #L, 1 do
+		L[i] = SceneWrappers.objectFromID(L[i]);
+	end;
+	
+	return L;
+end;
+
+
+SceneLib.Math = {};
+
+SceneLib.Math.newRotationMatrix = _scene3_math_newRotationMatrix;
+SceneLib.Math.transformPoint = _scene3_math_transformPoint;
+SceneLib.Math.rotatePoint = _scene3_math_rotatePoint;
+
+return SceneLib;

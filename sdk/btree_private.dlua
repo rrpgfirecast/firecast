@@ -1,0 +1,849 @@
+﻿local BTreeIN = {};
+
+local ARV_GRAU = 4;
+local MAX_CHAVES = (ARV_GRAU * 2) - 1;
+local MAX_FILHOS = (ARV_GRAU * 2);
+
+local MIN_CHAVES = ARV_GRAU - 1;
+
+
+-- Funções privadas
+
+local function pagina_setCountChaves(pagina, count)
+	if count < pagina.countChaves then
+		for i = count + 1, pagina.countChaves, 1 do
+			pagina.chaves[i].valorChave = nil;
+			pagina.chaves[i].valor = nil;
+		end;												
+	end;
+	
+	pagina.countChaves = count;			
+end;
+	
+function BTreeIN:alocarPagina()
+	local pagina = {countChaves=0, filhos={}, pai=nil, indiceNoPai=1};	
+	local chaves = {};
+	
+	for i = 1, MAX_CHAVES, 1 do
+		chaves[i] = {valorChave = nil, valor = nil};
+	end;
+	
+	pagina.chaves = chaves;			
+	return pagina;
+end;
+
+
+function BTreeIN:innerLocalizarForInsert(paginaOrigem, chaveALocalizar)
+	local comp, pOrg, min, max, meio;
+	
+	pOrg = paginaOrigem;
+	
+	while pOrg ~= nil do
+		min = 1;
+		max = pOrg.countChaves;
+		
+		while min <= max do
+			meio = math.ceil((min + max) / 2);
+			comp = self.comparer(chaveALocalizar, pOrg.chaves[meio].valorChave);
+			
+			if comp == 0 then
+				return pOrg, meio;
+			elseif comp < 0 then
+				max = meio - 1;
+			else
+				min = meio + 1;
+			end;
+		end;
+		
+		if pOrg.filhos[min] ~= nil then
+			pOrg = pOrg.filhos[min];
+		else
+			return pOrg, min;
+		end;
+	end;
+	
+	return nil, -1;
+end;
+
+function BTreeIN:innerAlocarEspaco(pagina, indiceEspaco)
+	local mediana, indiceNoPai, countToLeft, countToRight, countSemMediana, qtRetirado;
+	local novoIrmaoEsq, oPai;
+	
+	if pagina.countChaves >= MAX_CHAVES then
+		-- Vamos precisar dividir a página em 2 páginas.
+		mediana = math.ceil(pagina.countChaves / 2);
+		oPai = pagina.pai;
+		
+		if oPai == nil then
+			-- Estamos na raiz;
+			oPai = self:alocarPagina();
+			self.raiz = oPai;
+		end;
+		
+		indiceNoPai = pagina.indiceNoPai;
+		
+		-- Subir Mediana
+		oPai, indiceNoPai = self:innerAlocarEspaco(oPai, indiceNoPai);
+		oPai.chaves[indiceNoPai].valorChave = pagina.chaves[mediana].valorChave;
+		oPai.chaves[indiceNoPai].valor = pagina.chaves[mediana].valor;
+		
+		novoIrmaoEsq = self:alocarPagina();
+		
+		-- Copiar as chaves que estão antes da mediana para o novo irmão da esquerda
+		
+		countSemMediana = pagina.countChaves - 1;
+		countToLeft = math.ceil(countSemMediana / 2);
+		countToRight = countSemMediana - countToLeft;
+		qtRetirado = pagina.countChaves - countToRight;
+		
+		for i = 1, countToLeft, 1 do
+			novoIrmaoEsq.chaves[i].valorChave = pagina.chaves[i].valorChave;
+			novoIrmaoEsq.chaves[i].valor = pagina.chaves[i].valor;
+		end;
+		
+		for i = 1, countToLeft + 1, 1 do
+			novoIrmaoEsq.filhos[i] = pagina.filhos[i];
+			
+			if novoIrmaoEsq.filhos[i] ~= nil then
+				novoIrmaoEsq.filhos[i].pai = novoIrmaoEsq;
+			end;
+		end;
+		
+		-- Reduzir o tamanho da Direita
+		
+		for i = 1, countToRight, 1 do
+			pagina.chaves[i].valorChave = pagina.chaves[i + qtRetirado].valorChave;
+			pagina.chaves[i].valor = pagina.chaves[i + qtRetirado].valor;
+		end;
+		
+		for i = 1, countToRight + 1, 1 do
+			pagina.filhos[i] = pagina.filhos[i + qtRetirado];
+			
+			if pagina.filhos[i] ~= nil then
+				pagina.filhos[i].indiceNoPai = i;
+			end;
+		end;
+		
+		for i = countToRight + 2, MAX_FILHOS, 1 do
+			pagina.filhos[i] = nil;
+		end;
+		
+		pagina_setCountChaves(novoIrmaoEsq, countToLeft);
+		pagina_setCountChaves(pagina, countToRight);
+		
+		-- Ligar os pontos no OPai
+		oPai.filhos[indiceNoPai] = novoIrmaoEsq;
+		oPai.filhos[indiceNoPai + 1] = pagina;
+		
+		novoIrmaoEsq.pai = oPai;
+		novoIrmaoEsq.indiceNoPai = indiceNoPai;
+		
+		pagina.pai = oPai;
+		pagina.indiceNoPai = indiceNoPai + 1;
+		
+		if indiceEspaco > mediana then
+			indiceEspaco = indiceEspaco - qtRetirado;
+		else
+			pagina = novoIrmaoEsq;
+		end;
+	end;
+	
+	for i = pagina.countChaves + 1, indiceEspaco + 1, -1 do
+		pagina.chaves[i].valorChave = pagina.chaves[i - 1].valorChave;	
+		pagina.chaves[i].valor = pagina.chaves[i - 1].valor;		
+	end;
+	
+	for i = pagina.countChaves + 2, indiceEspaco + 2, -1 do
+		pagina.filhos[i] = pagina.filhos[i - 1];
+		
+		if pagina.filhos[i] ~= nil then
+			pagina.filhos[i].indiceNoPai = i;
+		end;
+	end;
+	
+	pagina.filhos[indiceEspaco + 1] = nil;
+	pagina_setCountChaves(pagina, pagina.countChaves + 1);	
+	return pagina, indiceEspaco;
+end;
+
+function BTreeIN:innerInsertCollated(inserirEm, indice, chave, valor)
+	inserirEm, indice = self:innerAlocarEspaco(inserirEm, indice);
+	inserirEm.chaves[indice].valorChave = chave;
+	inserirEm.chaves[indice].valor = valor;
+	self.count = self.count + 1;
+end;	
+
+function BTreeIN:innerLocateCollated(paginaOrigem, chaveALocalizar)
+	local comp, min, max, meio, pOrg;
+
+	pOrg = paginaOrigem;
+	
+	while pOrg ~= nil do
+		min = 1;
+		max = pOrg.countChaves;
+		
+		while min <= max do
+			meio = math.ceil((min + max) / 2);
+			comp = self.comparer(chaveALocalizar, pOrg.chaves[meio].valorChave);
+			
+			if comp == 0 then
+				return pOrg, meio;
+			elseif comp < 0 then
+				max = meio - 1;
+			else
+				min = meio + 1;
+			end;
+		end;
+		
+		pOrg = pOrg.filhos[min];
+	end;
+	
+	return nil, nil;
+end;			
+
+function BTreeIN:innerFindLowest(pagina)
+	local pOrg = pagina;
+	
+	while (pOrg ~= nil) and (pOrg.countChaves > 0) do 
+		if pOrg.filhos[1] ~= nil then
+			pOrg = pOrg.filhos[1];
+		else
+			return pOrg, 1;
+		end;
+	end;
+end;
+
+function BTreeIN:innerFindHighest(pagina)
+	local pOrg = pagina;
+	
+	while (pOrg ~= nil) and (pOrg.countChaves > 0) do 
+		local ind = pOrg.countChaves;
+	
+		if pOrg.filhos[ind + 1] ~= nil then
+			pOrg = pOrg.filhos[ind + 1];
+		else
+			return pOrg, ind;
+		end;
+	end;
+end;
+
+function BTreeIN:destruirPagina(_)
+	-- faz nada
+end;
+
+function BTreeIN:innerDeletePucharDeCima(pagina, indice)
+	local retIndice;	
+	local oPai, irmaoEsq, irmaoDir, paginaAux;
+	local indiceTemp, qtACopiar, tempChave, tempValor;
+	
+	oPai = pagina.pai;
+	retIndice = indice;
+		
+	if oPai == nil then
+		-- Estamos na raiz, não temos irmao nem pai. nao temos de onde puxar
+		-- Remover a chave
+		
+		for i = indice, pagina.countChaves - 1, 1 do
+			pagina.chaves[i].valorChave = pagina.chaves[i + 1].valorChave;
+			pagina.chaves[i].valor = pagina.chaves[i + 1].valor;
+		end;
+		
+		-- Mover os filhos
+		
+		for i = indice + 1, pagina.countChaves do
+			pagina.filhos[i] = pagina.filhos[i + 1];
+			
+			if pagina.filhos[i] ~= nil then
+				pagina.filhos[i].indiceNoPai = i;
+			end;			
+		end;
+		
+		pagina_setCountChaves(pagina, pagina.countChaves - 1);
+		return pagina, indice, retIndice;		
+	end;
+	
+	if pagina.indiceNoPai > 1 then
+		irmaoEsq = oPai.filhos[pagina.indiceNoPai - 1];
+	else
+		irmaoEsq = nil;
+	end;
+	
+	if pagina.indiceNoPai < oPai.countChaves + 1 then
+		irmaoDir = oPai.filhos[pagina.indiceNoPai + 1];
+	else
+		irmaoDir = nil;
+	end;	
+
+	
+	if (irmaoDir ~= nil) and (irmaoDir.countChaves > MIN_CHAVES) then
+		-- Vamos pegar uma chave do irmão da direita		
+		-- Remover a chave do indice
+			
+		for i = indice, pagina.countChaves - 1, 1 do
+			pagina.chaves[i].valorChave = pagina.chaves[i + 1].valorChave;
+			pagina.chaves[i].valor = pagina.chaves[i + 1].valor;
+		end;		
+		
+		for i = indice + 1, pagina.countChaves, 1 do
+			pagina.filhos[i] = pagina.filhos[i + 1];
+			
+			if pagina.filhos[i] ~= nil then
+				pagina.filhos[i].indiceNoPai = i;
+			end;
+		end;
+		
+		-- Copiar a chave do pai;
+		pagina.chaves[pagina.countChaves].valorChave = oPai.chaves[pagina.indiceNoPai].valorChave;
+		pagina.chaves[pagina.countChaves].valor = oPai.chaves[pagina.indiceNoPai].valor;
+		
+		-- Pegar os primeiros filhos do irmão da direita
+		paginaAux = irmaoDir.filhos[1];
+		pagina.filhos[pagina.countChaves + 1] = paginaAux;
+		
+		if paginaAux ~= nil then
+			paginaAux.pai = pagina;
+			paginaAux.indiceNoPai = pagina.countChaves + 1;
+		end;
+		
+		-- Mover a chave do irmao direita para o pai
+		
+		oPai.chaves[pagina.indiceNoPai].valorChave = irmaoDir.chaves[1].valorChave;
+		oPai.chaves[pagina.indiceNoPai].valor = irmaoDir.chaves[1].valor;
+		
+		-- excluir a chave do irmao da direita
+		
+		for i = 1, irmaoDir.countChaves - 1, 1 do
+			irmaoDir.chaves[i].valorChave = irmaoDir.chaves[i + 1].valorChave;
+			irmaoDir.chaves[i].valor = irmaoDir.chaves[i + 1].valor;
+		end;
+		
+		for i = 1, irmaoDir.countChaves, 1 do
+			irmaoDir.filhos[i] = irmaoDir.filhos[i + 1];
+			
+			if irmaoDir.filhos[i] ~= nil then
+				irmaoDir.filhos[i].indiceNoPai = i;
+			end;
+		end;		
+		
+		pagina_setCountChaves(irmaoDir, irmaoDir.countChaves - 1);		
+		return pagina, indice, retIndice;		
+	end;
+	
+	if (irmaoEsq ~= nil) and (irmaoEsq.countChaves > MIN_CHAVES) then
+		-- Não conseguimos negociar com o irmão da direita. Vamos tentar no da esquerda
+		-- Remover a chave do Indice abrindo espaço no inicio para caber a Chave do Pai		
+		qtACopiar = 1;
+				
+		-- Copiar os que estão do lado esquerdo da chave que vai ser apagada		
+		for i = indice + qtACopiar, qtACopiar + 2, -1 do
+			pagina.chaves[i - 1].valorChave = pagina.chaves[i - qtACopiar - 1].valorChave;
+			pagina.chaves[i - 1].valor = pagina.chaves[i - qtACopiar - 1].valor;
+		end;
+				
+		for i = indice + qtACopiar, qtACopiar + 1, -1 do
+			pagina.filhos[i] = pagina.filhos[i - qtACopiar];
+			
+			if pagina.filhos[i] ~= nil then
+				pagina.filhos[i].indiceNoPai = i;
+			end;
+		end;
+		
+		-- Copiar a chave do pai		
+		pagina.chaves[1].valorChave = oPai.chaves[pagina.indiceNoPai - 1].valorChave;
+		pagina.chaves[1].valor = oPai.chaves[pagina.indiceNoPai - 1].valor;
+		
+		-- Pegar os ultimos filhos do irmao da esquerda
+		paginaAux = irmaoEsq.filhos[irmaoEsq.countChaves + 1];
+		pagina.filhos[1] = paginaAux;
+		
+		if paginaAux ~= nil then
+			paginaAux.pai = pagina;
+			paginaAux.indiceNoPai = 1;
+		end;
+		
+		oPai.chaves[pagina.indiceNoPai - 1].valorChave = irmaoEsq.chaves[irmaoEsq.countChaves].valorChave;
+		oPai.chaves[pagina.indiceNoPai - 1].valor = irmaoEsq.chaves[irmaoEsq.countChaves].valor;
+		pagina_setCountChaves(irmaoEsq, irmaoEsq.countChaves - 1);
+		return pagina, indice, retIndice;		
+	end;
+	
+	-- Se chegou aqui, os irmãos não podem doar uma chave. Devemos mesclar
+	
+	if irmaoDir ~= nil then
+		-- Mesclar com o irmão da direita
+		
+		-- Obtendo a chave que vai vir de cima
+		tempChave = oPai.chaves[pagina.indiceNoPai].valorChave;
+		tempValor = oPai.chaves[pagina.indiceNoPai].valor;
+		
+		-- Remover a chave do indice		
+		for i = indice, pagina.countChaves - 1, 1 do
+			pagina.chaves[i].valorChave = pagina.chaves[i + 1].valorChave;
+			pagina.chaves[i].valor = pagina.chaves[i + 1].valor;
+		end;
+		
+		for i = indice + 1, pagina.countChaves, 1 do
+			pagina.filhos[i] = pagina.filhos[i + 1];
+			
+			if pagina.filhos[i] ~= nil then
+				pagina.filhos[i].indiceNoPai = i;
+			end;
+		end;
+		
+		-- Copiar uma chave do pai
+		pagina.chaves[pagina.countChaves].valorChave = tempChave;
+		pagina.chaves[pagina.countChaves].valor = tempValor;
+		
+		-- Copiar as chaves e filhos do irmão
+		qtACopiar = irmaoDir.countChaves;
+		
+		for i = pagina.countChaves + 1, pagina.countChaves + qtACopiar, 1 do
+			pagina.chaves[i].valorChave = irmaoDir.chaves[i - pagina.countChaves].valorChave;
+			pagina.chaves[i].valor = irmaoDir.chaves[i - pagina.countChaves].valor;
+		end;
+		
+		for i = pagina.countChaves + 1, pagina.countChaves + qtACopiar + 1, 1 do
+			pagina.filhos[i] = irmaoDir.filhos[i - pagina.countChaves];
+			
+			if pagina.filhos[i] ~= nil then
+				pagina.filhos[i].pai = pagina;			
+				pagina.filhos[i].indiceNoPai = i;			
+			end;
+		end;
+		
+		pagina_setCountChaves(pagina, pagina.countChaves + irmaoDir.countChaves);
+		
+		if oPai.countChaves > MIN_CHAVES then			
+			-- Remover a chave
+			
+			for i = pagina.indiceNoPai, oPai.countChaves - 1, 1 do
+				oPai.chaves[i].valorChave = oPai.chaves[i + 1].valorChave;
+				oPai.chaves[i].valor = oPai.chaves[i + 1].valor;
+			end;
+			
+			-- Mover os filhos
+			
+			for i = pagina.indiceNoPai + 1, oPai.countChaves, 1 do
+				oPai.filhos[i] = oPai.filhos[i + 1];
+				
+				if oPai.filhos[i] ~= nil then
+					oPai.filhos[i].indiceNoPai = i;
+				end;
+			end;
+			
+			pagina_setCountChaves(oPai, oPai.countChaves - 1);
+		else
+			--local novoIndiceNoPai;
+			--oPai, novoIndiceNoPai = self:innerDeletePucharDeCima(oPai, pagina.indiceNoPai);
+			--pagina.indiceNoPai = novoIndiceNoPai;
+			self:innerDeletePucharDeCima(oPai, pagina.indiceNoPai);
+			
+			if oPai.countChaves == 0 then
+				self.raiz = pagina;
+				pagina.pai = nil;
+				pagina.indiceNoPai = 1;
+				self:destruirPagina(oPai);
+				--oPai = nil;
+			end;
+		end;
+		
+		self:destruirPagina(irmaoDir);
+		return pagina, indice, retIndice;		
+	end;
+	
+	if irmaoEsq ~= nil then
+		--self.deveValidar = true;		
+	
+		-- Mesclar com o irmão da esquerda		
+		tempChave = oPai.chaves[pagina.indiceNoPai - 1].valorChave;
+		tempValor = oPai.chaves[pagina.indiceNoPai - 1].valor;
+		
+		-- Remover a chave do indice abrinco espaco no inicio para caber a chave do pai + chaves do irmao da esquerda
+		qtACopiar = irmaoEsq.countChaves;
+		
+		-- Copiar os que estão do lado direito da chave que vai ser apagada
+		
+		for i = pagina.countChaves + qtACopiar, indice + qtACopiar + 1, -1 do
+			pagina.chaves[i].valorChave = pagina.chaves[i - qtACopiar].valorChave;
+			pagina.chaves[i].valor = pagina.chaves[i - qtACopiar].valor;
+		end;
+		
+		for i = pagina.countChaves + qtACopiar + 1, indice + qtACopiar + 1, -1 do
+			pagina.filhos[i] = pagina.filhos[i - qtACopiar];
+			
+			if pagina.filhos[i] ~= nil then
+				pagina.filhos[i].indiceNoPai = i;
+			end;
+		end;
+		
+		-- Copiar os que estão do lado esquerdo da chave que vai ser apagada
+		for i = indice + qtACopiar, qtACopiar + 2, -1 do
+			pagina.chaves[i].valorChave = pagina.chaves[i - qtACopiar - 1].valorChave;
+			pagina.chaves[i].valor = pagina.chaves[i - qtACopiar - 1].valor;
+		end;
+		
+		for i = indice + qtACopiar, qtACopiar + 1, -1 do
+			pagina.filhos[i + 1] = pagina.filhos[i - qtACopiar];
+			
+			if pagina.filhos[i + 1] ~= nil then
+				pagina.filhos[i + 1].indiceNoPai = i + 1;
+			end;
+		end;
+		
+		-- Copiar a chave do pai
+		pagina.chaves[irmaoEsq.countChaves + 1].valorChave = tempChave;
+		pagina.chaves[irmaoEsq.countChaves + 1].valor = tempValor;
+		
+		-- copiar as chaves e filhos do irmão da esquerda
+		
+		for i = 1, irmaoEsq.countChaves, 1 do
+			pagina.chaves[i].valorChave = irmaoEsq.chaves[i].valorChave;
+			pagina.chaves[i].valor = irmaoEsq.chaves[i].valor;
+		end;
+		
+		for i = 1, irmaoEsq.countChaves + 1, 1 do
+			pagina.filhos[i]  = irmaoEsq.filhos[i];
+			
+			if pagina.filhos[i] ~= nil then
+				pagina.filhos[i].pai = pagina;
+				pagina.filhos[i].indiceNoPai = i;
+			end;
+		end;
+		
+		pagina_setCountChaves(pagina, pagina.countChaves + irmaoEsq.countChaves);
+		
+		if oPai.countChaves > MIN_CHAVES then	
+			-- Remover a chave
+			
+			for i = pagina.indiceNoPai, oPai.countChaves - 1, 1 do
+				oPai.chaves[i].valorChave = oPai.chaves[i + 1].valorChave;
+				oPai.chaves[i].valor = oPai.chaves[i + 1].valor;
+			end;
+			
+			-- Mover os filhos
+			
+			for i = pagina.indiceNoPai - 1, oPai.countChaves, 1 do
+				oPai.filhos[i] = oPai.filhos[i + 1];
+				
+				if oPai.filhos[i] ~= nil then
+					oPai.filhos[i].indiceNoPai = i;
+				end;
+			end;
+			
+			pagina_setCountChaves(oPai, oPai.countChaves - 1);
+		else
+			indiceTemp = pagina.indiceNoPai - 1;
+			--oPai, indiceTemp = self:innerDeletePucharDeCima(oPai, indiceTemp);
+			oPai = self:innerDeletePucharDeCima(oPai, indiceTemp);
+			
+			if oPai.countChaves == 0 then
+				self.raiz = pagina;
+				pagina.pai = nil;
+				pagina.indiceNoPai = 1;
+				self:destruirPagina(oPai);
+				oPai = nil;
+			end;
+		end;
+		
+		if oPai ~= nil then
+			oPai.filhos[irmaoEsq.indiceNoPai] = pagina;
+		end;
+		
+		pagina.indiceNoPai = irmaoEsq.indiceNoPai;
+		self:destruirPagina(irmaoEsq);
+		return pagina, indice, retIndice;
+	end;
+	
+	error("Ops, não deveria ter chegado até aqui");
+end;
+
+function BTreeIN:innerDelete(pagina, indiceEspaco)
+	local oPai, filhoEsq, filhoDir;
+	local pagToDelete;
+	local indiceToDelete;
+	
+	oPai = pagina.pai;
+	
+	if (pagina.filhos[indiceEspaco] == nil) and (pagina.filhos[indiceEspaco + 1] == nil) then
+		-- É uma página folha
+		
+		if (oPai ~= nil) and (pagina.countChaves <= MIN_CHAVES) then
+			-- Não é root e vai atingir limite minimo
+			indiceToDelete = indiceEspaco;
+			--pagina, indiceToDelete = self:innerDeletePucharDeCima(pagina, indiceToDelete)
+			self:innerDeletePucharDeCima(pagina, indiceToDelete)
+		else			
+			for i = indiceEspaco, pagina.countChaves - 1, 1 do
+				pagina.chaves[i].valorChave = pagina.chaves[i + 1].valorChave;
+				pagina.chaves[i].valor = pagina.chaves[i + 1].valor;
+			end;
+			
+			pagina_setCountChaves(pagina, pagina.countChaves - 1);
+		end;
+	else
+		-- Página nó
+		filhoEsq = pagina.filhos[indiceEspaco];
+		filhoDir = pagina.filhos[indiceEspaco + 1];
+		
+		if filhoDir ~= nil then
+			pagToDelete, indiceToDelete = self:innerFindLowest(filhoDir);
+			
+			if pagToDelete ~= nil then
+				pagina.chaves[indiceEspaco].valorChave = pagToDelete.chaves[indiceToDelete].valorChave;
+				pagina.chaves[indiceEspaco].valor = pagToDelete.chaves[indiceToDelete].valor;
+				self:innerDelete(pagToDelete, indiceToDelete);
+				return;
+			else
+				error("Ops");
+			end;			
+		end;
+		
+		if filhoEsq ~= nil then
+			pagToDelete, indiceToDelete = self:innerFindHighest(filhoEsq);			
+			
+			if pagToDelete ~= nil then
+				pagina.chaves[indiceEspaco].valorChave = pagToDelete.chaves[indiceToDelete].valorChave;
+				pagina.chaves[indiceEspaco].valor = pagToDelete.chaves[indiceToDelete].valor;
+				self:innerDelete(pagToDelete, indiceToDelete);
+				return;
+			else
+				error("Ops");
+			end;					
+		end;
+		
+		error("Ops. Não era para ter chegado ate aqui");
+	end;
+end;	
+	
+function BTreeIN:checarPagina(p, min, max)
+	local vMin , vMax;
+	local last = nil;
+	
+	for i = 1, p.countChaves, 1 do
+		if (min ~= nil) and (self.comparer(p.chaves[i].valorChave, min) < 0) then
+			error("Ops. Existe uma falha na ordem das paginas, min");
+		end;
+		
+		if (max ~= nil) and (self.comparer(p.chaves[i].valorChave, max) > 0) then
+			error("Ops. Existe uma falha na ordem das paginas, max");
+		end;	
+
+		if i > 1 then
+			if self.comparer(p.chaves[i].valorChave, last) <= 0 then
+				error("Ops. os numeros de uma página não estão ordenados de forma crescente");
+			end;
+		end;
+			
+		last = p.chaves[i].valorChave;
+	end;
+	
+	-- Checar Filhos
+	
+	for i = 1, p.countChaves + 1, 1 do
+		if p.filhos[i] ~= nil then
+			if i == 1 then
+				vMax = p.chaves[i].valorChave;
+				self:checarPagina(p.filhos[i], min, vMax);	
+			elseif i == p.countChaves + 1 then
+				vMin = p.chaves[i - 1].valorChave;
+				self:checarPagina(p.filhos[i], vMin, max);	
+			else
+				vMin = p.chaves[i - 1].valorChave;
+				vMax = p.chaves[i].valorChave;
+				self:checarPagina(p.filhos[i], vMin, vMax);
+			end;							
+		end;
+	end;
+	
+	if p.pai ~= nil then
+		if p.pai.filhos[p.indiceNoPai] ~= p then
+			error("Indice no pai de uma pagina esta errada");
+		end;
+	end;
+end;
+
+function BTreeIN:validate(errPrefix)
+	local ok, err = pcall(self.checarPagina, self, self.raiz, nil, nil);
+	
+	if not ok then
+		--error(err .. "\n\n: " .. tableToStr(self.raiz, true));
+		error((errPrefix or "") .. err);
+	end;
+end;				
+
+
+function BTreeIN.createNavigator(bt)
+	local nav = {};
+	
+	local fPaginaAtual = nil;
+	local fIndiceAtual = -1;
+	local fEof = true;
+	local fBof = true;
+		
+	function nav:first()
+		local pagina, indice;
+		local raiz = bt.raiz;
+		
+		if raiz ~= nil then
+			pagina, indice = bt:innerFindLowest(raiz);
+		end;
+		
+		if pagina ~= nil then
+			fPaginaAtual = pagina;
+			fIndiceAtual = indice;
+			fEof = false;
+			fBof = true;
+		else
+			fPaginaAtual = nil;
+			fIndiceAtual = -1;
+			fEof = true;
+			fBof = true;
+		end;
+	end;
+
+	function nav:last()
+		local pagina, indice;
+		local raiz = bt.raiz;
+		
+		if raiz ~= nil then
+			pagina, indice = bt:innerFindHighest(raiz);
+		end;
+		
+		if pagina ~= nil then
+			fPaginaAtual = pagina;
+			fIndiceAtual = indice;
+			fEof = true;
+			fBof = false;
+		else
+			fPaginaAtual = nil;
+			fIndiceAtual = -1;
+			fEof = true;
+			fBof = true;
+		end;	
+	end;	
+	
+	function nav:next()
+		local pagAtual, pagEncontrada, oPai;
+		local indAtual, indEncontrado, indPai;
+		
+		pagAtual = fPaginaAtual;
+		indAtual = fIndiceAtual;
+		
+		if (pagAtual == nil) or (indAtual == -1) then
+			fEof = true;
+			return;
+		end;
+		
+		if pagAtual.filhos[indAtual + 1] ~= nil then
+			pagEncontrada, indEncontrado = bt:innerFindLowest(pagAtual.filhos[indAtual + 1]);
+			
+			fEof = false;
+			fBof = false;
+			fPaginaAtual = pagEncontrada;
+			fIndiceAtual = indEncontrado;
+		else
+			if indAtual < pagAtual.countChaves then
+				fIndiceAtual = fIndiceAtual + 1;
+			else
+				-- Já estamos apontando para o último desta página. vamos procurar recursivamente nos pais
+				oPai = pagAtual.pai;
+				indPai = pagAtual.indiceNoPai;
+				
+				local deveProcurar = true;
+				
+				while deveProcurar do
+					if oPai == nil then
+						fEof = true;
+						deveProcurar = false;
+					else
+						if indPai <= oPai.countChaves then
+							fPaginaAtual = oPai;
+							fIndiceAtual = indPai;
+							deveProcurar = false;
+						else
+							indPai = oPai.indiceNoPai;
+							oPai = oPai.pai;
+						end;
+					end;
+				end;
+			end;
+		end;
+	end;
+		
+	function nav:previous()
+		local pagAtual, pagEncontrada, oPai;
+		local indAtual, indEncontrado, indPai;
+		
+		pagAtual = fPaginaAtual;
+		indAtual = fIndiceAtual;
+		
+		if (pagAtual == nil) or (indAtual == -1) then
+			fBof = true;
+			return;
+		end;
+		
+		if pagAtual.filhos[indAtual] ~= nil then
+			pagEncontrada, indEncontrado = bt:innerFindHighest(pagAtual.filhos[indAtual]);
+			
+			fEof = false;
+			fBof = false;
+			fPaginaAtual = pagEncontrada;
+			fIndiceAtual = indEncontrado;
+		else
+			if indAtual > 1 then
+				fIndiceAtual = fIndiceAtual - 1;
+			else
+				-- Já estamos apontando para o último desta página. vamos procurar recursivamente nos pais
+				oPai = pagAtual.pai;
+				indPai = pagAtual.indiceNoPai;
+				
+				local deveProcurar = true;
+				
+				while deveProcurar do
+					if oPai == nil then
+						fBof = true;
+						deveProcurar = false;
+					else
+						if indPai > 1 then
+							fPaginaAtual = oPai;
+							fIndiceAtual = indPai - 1;
+							deveProcurar = false;
+						else
+							indPai = oPai.indiceNoPai;
+							oPai = oPai.pai;
+						end;
+					end;
+				end;
+			end;
+		end;	
+	end;
+	
+	function nav:key()
+		if fPaginaAtual ~= nil then
+			return fPaginaAtual.chaves[fIndiceAtual].valorChave;
+		else
+			return nil;
+		end;
+	end;
+	
+	function nav:value()
+		if fPaginaAtual ~= nil then
+			return fPaginaAtual.chaves[fIndiceAtual].valor;
+		else
+			return nil;
+		end;	
+	end;
+	
+	function nav:eof()
+		return fEof;
+	end;
+	
+	function nav:bof()
+		return fBof;
+	end;
+		
+	nav:first();
+	return nav;
+end;
+
+return BTreeIN;
