@@ -100,7 +100,7 @@
         <checkBox align="top" height="25" text="@@dialogs.dmOnly" field="dmOnly"/>
         <richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
     </popup>
-    <popup name="SettingsPopup" width="270" height="145" backOpacity="0.4" autoScopeNode="false">
+    <popup name="SettingsPopup" width="270" height="170" backOpacity="0.4" autoScopeNode="false">
         <layout align="top" height="25" margins="{left=5,top=5}">
             <BarSetting field="bar1"/>
         </layout>
@@ -116,6 +116,9 @@
         <layout align="top" height="25" margins="{left=5}">
             <button align="left" text="?" width="25" onClick="GUI.openInBrowser('https://firecast.app/sdk3/StringdecoresnoLuaForm.html')"/>
             <comboBox align="client" field="sortMode" items="{'Organizar: Nome', 'Organizar: Cor'}" values="{'Nome', 'Cor'}" value="Nome"/>
+        </layout>
+        <layout align="top" height="25" margins="{left=5}">
+            <checkBox field="hideBarUpdate" text="Não enviar mudança nas barrinhas."/>
         </layout>
         <event name="onNodeReady">
 
@@ -221,7 +224,7 @@
                     end;
                     
                     local mesa = Firecast.getMesaDe(sheet);
-                    if mesa ~= nil then
+                    if mesa ~= nil and not sheet.hideBarUpdate then
                            mesa.activeChat:enviarMensagem(text);
                     end;
                 end;

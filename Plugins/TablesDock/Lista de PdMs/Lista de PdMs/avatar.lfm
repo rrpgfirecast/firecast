@@ -96,12 +96,12 @@
 			if bibItem==nil then self.loadBT.visible=false;return end
 			
 			local knowDataTypes = {
-				"dataType5919525159726570555",
-				"dataType2850853990837453463",
-				"dataType9150763801005266856",
-				"dataType3259961376468481717",
-				"dataType3655081265232148693",
-				"dataType5216828343016777651"}
+				"dataType5919525159726570555",-- Alterar.DataType.FichaRPGmeister
+				"dataType2850853990837453463",-- Ambesek.Nefertyne.FichaPathfinder
+				"dataType9150763801005266856",-- Ambesek.FichaStarfinder
+				"dataType3259961376468481717",--Ambesek.Starfinder.Veiculos
+				"dataType3655081265232148693",--Ambesek.Starfinder.Nave
+				"dataType5216828343016777651"}--br.com.rrpg.DnD5_S3
 
 			if bibItem.dataType~=nil and bibItem.dataType~="" then
 				local dataType = "dataType"..hash(bibItem.dataType)
@@ -728,7 +728,7 @@
 				</event>
 			</button>
 
-			<button align="top" height="25" text="🎲" margins="{bottom=0,right=0}" hint="@@hint.macro" name="macroBT">
+			<button align="top" height="25" text="🎲" margins="{bottom=0,right=0}" hint="@@hint.macro" name="macroBT" visible="false">
 				<event name="onClick">
 					if sheet==nil then return end
 					local mesa = Firecast.getMesaDe(sheet)

@@ -143,7 +143,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://sdk3.firecast.app/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.8" compilationDate="18052024145707" compilationDigest="7d6ae4fc2610399c215fab7dc0f305c98d2d3fa6">
+    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://sdk3.firecast.app/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.9" compilationDate="18052024145707" compilationDigest="7d6ae4fc2610399c215fab7dc0f305c98d2d3fa6">
         <info lang="pt-BR" name="Lista de PdMs" description="Janela acoplavel que exibe avatares para PdMs." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Lista.PdMs" title="Lista de PdMs" formType="tablesDock">
@@ -222,7 +222,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.13" compilationDate="18052024151826" compilationDigest="20f461877bce749270ac18edacdf97a7c7af1e33">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.14" compilationDate="18052024151826" compilationDigest="20f461877bce749270ac18edacdf97a7c7af1e33">
         <info lang="pt-BR" name="Ficha Reinos d20" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20" formType="sheetTemplate">
@@ -826,7 +826,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://sdk3.firecast.app/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="2.1.1" compilationDate="05032025132655" compilationDigest="431e0b25fbdb963086ec73765a57386803651a01">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://sdk3.firecast.app/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="2.2" compilationDate="05032025132655" compilationDigest="431e0b25fbdb963086ec73765a57386803651a01">
         <info lang="pt-BR" name="Gerenciador de Campanha" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" formType="sheetTemplate">
