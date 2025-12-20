@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Combat" align="client">
+	<script>
+        <![CDATA[
+            local function newMelee()
+                self.rclMelee:append()
+            end
+	        
+            local function newRanged()
+                self.rclRanged:append()
+            end
+
+            local function newProtection()
+                self.rclProtection:append()
+            end
+        ]]> 
+    </script>
+
+    <scrollBox align="client" g-cnt-line-spacing="5">
+
+        <rectangle g="col" g-width="12" g-width-lg="3" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Combate Corpo-a-Corpo" g="col" g-width="12" height="25" onClick="newMelee()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <label g="col" g-width="5" height="25" text="Arma" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Golpe" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Aparo" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Dano" horzTextAlign="center" textTrimming="none"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclMelee" field="rclMelee" templateForm="Melee" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="3" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Combate à Distância" g="col" g-width="12" height="25" onClick="newRanged()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <label g="col" g-width="3" height="25" text="Arma" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="1" height="25" text="TR" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="1" height="25" text="TM" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Dano" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Cad." horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Car." horzTextAlign="center" textTrimming="none"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclRanged" field="rclRanged" templateForm="Ranged" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="3" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Proteção" g="col" g-width="12" height="25" onClick="newProtection()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <label g="col" g-width="1" height="25" text="" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="6" height="25" text="Nome" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Abs." horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Pen." horzTextAlign="center" textTrimming="none"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclProtection" field="rclProtection" templateForm="Protection" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="300" g-vert-tile="true" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+			<Title text="Iniciativa" field="inic"/>
+			<Title text="Ações Físicas" field="actPhys"/>
+			<Title text="Ações Mentais" field="actMind"/>
+			<Title text="Esquiva" field="esq"/>
+
+			<image g="col" g-width="12" g-width-lg="12" g-min-height="300" g-vert-tile="true" style="proportional" src="protection.png"/>
+		</rectangle>
+	</scrollBox>
+</form>

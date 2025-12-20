@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="General" align="client">
+	<script>
+        <![CDATA[
+
+            local function iniRoll()
+	        	local agilidade  = (tonumber(sheet.agilidade) or 0)
+				local rolagem = Firecast.interpretarRolagem("1d6+" .. agilidade)
+				local mesa = Firecast.getMesaDe(sheet)
+				mesa.activeChat:rolarDados(rolagem, "Iniciativa de " .. (sheet.nome or "Nome"))
+	        end
+	        
+            local function newCharacteristic()
+                self.rclCharacteristic:append()
+            end
+    
+            local function newSpecialCharacteristic()
+                self.rclSpecialCharacteristic:append()
+            end
+    
+            local function newAbility()
+                self.rclAbility:append()
+            end
+        ]]> 
+    </script>
+
+    <scrollBox align="client" g-cnt-line-spacing="5">
+		<!-- Title region -->
+		<rectangle g="col" g-width="12" g-width-lg="6" color="black" strokeColor="white" strokeSize="1" g-min-height="60" padding="{left=5,right=5,top=5,bottom=5}">
+			<Title text="PERSONAGEM" field="nome"/>
+			<Title text="PONTOS DE CRIAÇÃO" field="criacao"/>
+		</rectangle>
+		<rectangle g="col" g-width="12" g-width-lg="6" color="black" strokeColor="white" strokeSize="1" g-min-height="60" padding="{left=5,right=5,top=5,bottom=5}">
+			<Title text="JOGADOR" field="jogador"/>
+			<Title text="PONTOS DE EXPERIÊNCIA" field="xp"/>
+		</rectangle>
+
+		<layout g="col" g-width="6" g-width-lg="3" g-min-height="235" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" g-min-height="235" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="4" text="ATRIBUTOS" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="2" text="Orig" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="2" text="Mod" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="2" text="Dano" horzTextAlign="center" height="25"/>
+				<label g="col" g-width="2" text="Atual" horzTextAlign="center" height="25"/>
+				<Attribute text="FÍSICO" field="fisico"/>
+				<Attribute text="DESTREZA" field="destreza"/>
+				<Attribute text="INTELIGÊNCIA" field="inteligencia"/>
+				<Attribute text="VONTADE" field="vontade"/>
+				<Attribute text="MENTE" field="mente"/>
+				<Attribute text="MAGIA" field="magia"/>
+				<Attribute text="PERCEPÇÃO" field="percepcao"/>
+				<Attribute text="SORTE" field="sorte"/>
+			</rectangle>
+		</layout>
+
+		<layout g="col" g-width="6" g-width-lg="3" g-min-height="235" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" g-min-height="235" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" height="25" text="ANOTAÇÕES"/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="notesA"/>
+			</rectangle>
+		</layout>
+
+		<layout g="col" g-width="6" g-width-lg="3" g-min-height="235" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" g-min-height="235" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" height="25" text="ANOTAÇÕES"/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="notesA"/>
+			</rectangle>
+	    </layout>
+
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="235" padding="{left=5,right=5,top=5,bottom=5}">
+			<image align="client" field="avatar" editable="true" style="proportional" >
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar)
+				</event>
+			</image>
+		</rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Nova Característica" g="col" g-width="12" height="25" onClick="newCharacteristic()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <label g="col" g-width="9" height="25" text="Nome" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Custo" horzTextAlign="center" textTrimming="none"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclCharacteristic" field="rclCharacteristic" templateForm="Characteristic" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Nova Característica Especial" g="col" g-width="12" height="25" onClick="newSpecialCharacteristic()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <label g="col" g-width="9" height="25" text="Nome" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Custo" horzTextAlign="center" textTrimming="none"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclSpecialCharacteristic" field="rclSpecialCharacteristic" templateForm="Characteristic" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Nova Habilidade" g="col" g-width="12" height="25" onClick="newAbility()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <label g="col" g-width="7" height="25" text="Nome" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Teste" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="CST" horzTextAlign="center" textTrimming="none"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclAbility" field="rclAbility" templateForm="Ability" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+	</scrollBox>
+</form>

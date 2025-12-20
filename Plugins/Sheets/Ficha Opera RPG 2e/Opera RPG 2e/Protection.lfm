@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Protection" g="col" g-width="12" g-width-lg="12" height="25">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+
+		]]>	
+	</script>
+
+	<layout g="col" g-width="12" height="25">
+		<edit g="col" g-width="1" field="tipo" height="25"/>
+		<edit g="col" g-width="6" field="nome" height="25"/>
+		<edit g="col" g-width="2" field="abs" height="25"/>
+		<edit g="col" g-width="2" field="pen" height="25"/>
+		<button g="col" g-width="1" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+	</layout>
+</form>

@@ -238,8 +238,15 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.OrderMarker" name="Order Marker" url="https://sdk3.firecast.app/Plugins/Scene/OrderMarker/output/OrderMarker.rpk?raw=true" fileName="OrderMarker.rpk" repositoryPath="Scene/OrderMarker/" author="Ambesek" description="Allows for the creation of order marks on scene tokens." version="1.1.1" compilationDate="19072024143600" compilationDigest="76a3477a78b90b26310c6d1869a30bdca0c210ed">
-    <element id="Ambesek.Orbigen" name="FIcha Orgiben" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Orbigen/output/Ficha%20Orbigen.rpk?raw=true" fileName="Ficha Orbigen.rpk" repositoryPath="Sheets/Ficha Orbigen/" author="Ambesek" description="Ficha para Orbigen" version="1.0.1" compilationDate="03122025032716" compilationDigest="886bf31c446ce25a190f9f8dbed3b2476ccfd13f">
+    <element id="Ambesek.OperaRPG.2e" name="Ficha Opera RPG 2e" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Opera%20RPG%202e/output/Ficha%20Opera%20RPG%202e.rpk?raw=true" fileName="Ficha Opera RPG 2e.rpk" repositoryPath="Sheets/Ficha Opera RPG 2e/" author="Ambesek" description="Ficha para o sistema Opera RPG 2e" version="1.0" compilationDate="20122025014123" compilationDigest="70ffde4c55eea9c0523823d6c622dceddf88259b">
+        <info lang="pt-BR" name="Ficha Opera RPG 2e" description="Ficha para o sistema Opera RPG 2e" author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.OperaRPG2e.Ficha" title="Ficha Opera RPG 2e" formType="sheetTemplate">
+                <info title="Ficha Opera RPG 2e"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="Ambesek.Orbigen" name="FIcha Orgiben" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Orbigen/output/Ficha%20Orbigen.rpk?raw=true" fileName="Ficha Orbigen.rpk" repositoryPath="Sheets/Ficha Orbigen/" author="Ambesek" description="Ficha para Orbigen" version="1.0.1" compilationDate="03122025032716" compilationDigest="886bf31c446ce25a190f9f8dbed3b2476ccfd13f">
         <info lang="pt-BR" name="FIcha Orgiben" description="Ficha para Orbigen" author="Ambesek"/>
         <dataTypes>
             <dataType id="Ficha.Ambesek.Orbigen" title="Ficha Orbigen" formType="sheetTemplate">
@@ -247,6 +254,7 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="Ambesek.OrderMarker" name="Order Marker" url="https://sdk3.firecast.app/Plugins/Scene/OrderMarker/output/OrderMarker.rpk?raw=true" fileName="OrderMarker.rpk" repositoryPath="Scene/OrderMarker/" author="Ambesek" description="Allows for the creation of order marks on scene tokens." version="1.1.1" compilationDate="19072024143600" compilationDigest="76a3477a78b90b26310c6d1869a30bdca0c210ed">
         <info lang="pt-BR" name="Order Marker" description="Allows for the creation of order marks on scene tokens." author="Ambesek"/>
     </element>
     <element id="Ambesek.Pathfinder.2e" name="Ficha Pathfinder 2e" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true" fileName="Ficha Pathfinder 2e.rpk" repositoryPath="Sheets/Ficha Pathfinder 2e/" author="Ambesek" description="Ficha feita para o sistema Pathfinder 2e." version="1.0.1" compilationDate="03032023114706" compilationDigest="90accfd2e4328032657636fb0d78d9514a9701b4">
@@ -522,7 +530,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.pathfinder2e" name="Pathfinder 2E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pathfinder_2E/output/Pathfinder_2E.rpk?raw=true" fileName="Pathfinder_2E.rpk" repositoryPath="Sheets/Pathfinder_2E/" author="Hirobrin" description="Ficha Pathfinder 2E 3.0" version="3.0" compilationDate="07122025134020" compilationDigest="c3a0e9209030e783b67ce0575dddad82294d1073">
+    <element id="br.com.rrpg.pathfinder2e" name="Pathfinder 2E" url="https://sdk3.firecast.app/Plugins/Sheets/Pathfinder_2E/output/Pathfinder_2E.rpk?raw=true" fileName="Pathfinder_2E.rpk" repositoryPath="Sheets/Pathfinder_2E/" author="Hirobrin" description="Ficha Pathfinder 2E 3.0" version="3.0" compilationDate="07122025134020" compilationDigest="c3a0e9209030e783b67ce0575dddad82294d1073">
         <info lang="pt-BR" name="Pathfinder 2E" description="Ficha Pathfinder 2E 3.0" author="Hirobrin" site="https://firecast.app/pt_br/"/>
         <dataTypes>
             <dataType id="br.com.rrpg.pathfinder2e" title="Pathfinder 2e" formType="sheetTemplate">
@@ -545,7 +553,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.WeirdWizard" name="Shadow of the Weird Wizard" url="https://sdk3.firecast.app/Plugins/Sheets/Shadow%20of%20the%20Weird%20Wizard/output/Shadow%20of%20the%20Weird%20Wizard.rpk?raw=true" fileName="Shadow of the Weird Wizard.rpk" repositoryPath="Sheets/Shadow of the Weird Wizard/" author="Célio Zagalo" description="Ficha de personagem para o RPG Shadow of the Weird Wizard" version="1.3" compilationDate="17082025140556" compilationDigest="2adee49699ca51c0dc250f7209602eec4bf506e9">
+    <element id="br.com.WeirdWizard" name="Shadow of the Weird Wizard" url="https://sdk3.firecast.app/Plugins/Sheets/Shadow%20of%20the%20Weird%20Wizard/output/Shadow%20of%20the%20Weird%20Wizard.rpk?raw=true" fileName="Shadow of the Weird Wizard.rpk" repositoryPath="Sheets/Shadow of the Weird Wizard/" author="Célio Zagalo" description="Ficha de personagem para o RPG Shadow of the Weird Wizard" version="1.4" compilationDate="08122025171627" compilationDigest="61376aae8deb1b17ce38456f338f8e3eb420976c">
         <info lang="pt-BR" name="Shadow of the Weird Wizard" description="Ficha de personagem para o RPG Shadow of the Weird Wizard" author="Célio Zagalo" site="linkedin.com/in/celiozagalo/"/>
         <dataTypes>
             <dataType id="br.com.firecast.ShadowOfTheWeirdWizard" title="Shadow of the Weird Wizard" formType="sheetTemplate">
