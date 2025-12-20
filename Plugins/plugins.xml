@@ -79,7 +79,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.FireBox" name="FireBox" url="https://sdk3.firecast.app/Plugins/TablesDock/FireBox/output/FireBox.rpk?raw=true" fileName="FireBox.rpk" repositoryPath="TablesDock/FireBox/" author="Ambesek" description="Sincroniza conteudo de uma pasta com o FireDrive." version="0.1" compilationDate="20052023160309" compilationDigest="8e9581a3f194b4e6bf35ca60d0895b0f78fd3eba">
+    <element id="Ambesek.FireBox" name="FireBox" url="https://sdk3.firecast.app/Plugins/TablesDock/FireBox/output/FireBox.rpk?raw=true" fileName="FireBox.rpk" repositoryPath="TablesDock/FireBox/" author="Ambesek" description="Sincroniza conteudo de uma pasta com o FireDrive." version="0.1.1" compilationDate="20122025173756" compilationDigest="b0b391e7ea8f815d9703def01afdcd04931b7cbe">
         <info lang="pt-BR" name="FireBox" description="Sincroniza conteudo de uma pasta com o FireDrive." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.FireBox" title="FireBox" formType="tablesDock">
