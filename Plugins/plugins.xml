@@ -293,7 +293,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Simple.Dealer" name="Card Dealer" url="https://sdk3.firecast.app/Plugins/ChatMods/Dealer/output/Dealer.rpk?raw=true" fileName="Dealer.rpk" repositoryPath="ChatMods/Dealer/" author="Ambesek" description="A simple card dealer for games that use decks of cards." version="0.4" compilationDate="03032023113325" compilationDigest="f96992503b9258d0599259d132528f707093dee0">
+    <element id="Ambesek.Simple.Dealer" name="Card Dealer" url="https://sdk3.firecast.app/Plugins/ChatMods/Dealer/output/Dealer.rpk?raw=true" fileName="Dealer.rpk" repositoryPath="ChatMods/Dealer/" author="Ambesek" description="A simple card dealer for games that use decks of cards." version="0.5" compilationDate="03032023113325" compilationDigest="f96992503b9258d0599259d132528f707093dee0">
         <info lang="pt-BR" name="Card Dealer" description="A simple card dealer for games that use decks of cards." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="ambesek.dealer" title="Dealer" formType="undefined">

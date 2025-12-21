@@ -165,7 +165,9 @@ Firecast.Messaging.listen("ChatMessage",
 				send(activeChat,"> dealer draw <number> <deck, discarded, table> - add number random cards to your hand from the deck, discarded pile or table. Default: deck.");
 				send(activeChat,"> dealer hand - show your hand on active chat");
 				send(activeChat,"> dealer discard <card> - discard the card you named");
+				send(activeChat,"> dealer discardAll - discard all cards you have.");
 				send(activeChat,"> dealer play <card> - place the card on the table");
+				send(activeChat,"> dealer open <number> - place amount of cards from deck to table.");
 				send(activeChat,"> dealer return <card> <top, bottom, shuffle> - put the card you named back to the top or bottom of the deck, or shuffles it. Shuffles by default.");
 				send(activeChat,"> dealer give <card> <login> - gives a card you named to the player");
 				send(activeChat,"> dealer deck - says number of cards remaning in deck and [GM only] lists them");
@@ -247,6 +249,8 @@ Firecast.Messaging.listen("ChatMessage",
 					dealer.hands = {};
 					dealer.discard = {};
 					dealer.numDiscard = 0;
+					dealer.table = {};
+					dealer.numTable = 0;
 					dealer.log = ""
 
 					local txt = "<Dealer>: Deck with " .. dealer.numCards .. " card(s) has been reset.";
@@ -277,6 +281,8 @@ Firecast.Messaging.listen("ChatMessage",
 				dealer.hands = {};
 				dealer.discard = {};
 				dealer.numDiscard = 0;
+				dealer.table = {};
+				dealer.numTable = 0;
 				dealer.log = ""
 
 				local urls = {};
@@ -296,6 +302,11 @@ Firecast.Messaging.listen("ChatMessage",
 					dealer.numCards = 108;
 					dealer.deckSave = {"Red_0", "Red_1", "Red_1", "Red_2", "Red_2", "Red_3", "Red_3", "Red_4", "Red_4", "Red_5", "Red_5", "Red_6", "Red_6", "Red_7", "Red_7", "Red_8", "Red_8", "Red_9", "Red_9", "Red_+2", "Red_+2", "Red_Reverse", "Red_Reverse", "Red_Skip", "Red_Skip", "Yellow_0", "Yellow_1", "Yellow_1", "Yellow_2", "Yellow_2", "Yellow_3", "Yellow_3", "Yellow_4", "Yellow_4", "Yellow_5", "Yellow_5", "Yellow_6", "Yellow_6", "Yellow_7", "Yellow_7", "Yellow_8", "Yellow_8", "Yellow_9", "Yellow_9", "Yellow_+2", "Yellow_+2", "Yellow_Reverse", "Yellow_Reverse", "Yellow_Skip", "Yellow_Skip", "Green_0", "Green_1", "Green_1", "Green_2", "Green_2", "Green_3", "Green_3", "Green_4", "Green_4", "Green_5", "Green_5", "Green_6", "Green_6", "Green_7", "Green_7", "Green_8", "Green_8", "Green_9", "Green_9", "Green_+2", "Green_+2", "Green_Reverse", "Green_Reverse", "Green_Skip", "Green_Skip", "Blue_0", "Blue_1", "Blue_1", "Blue_2", "Blue_2", "Blue_3", "Blue_3", "Blue_4", "Blue_4", "Blue_5", "Blue_5", "Blue_6", "Blue_6", "Blue_7", "Blue_7", "Blue_8", "Blue_8", "Blue_9", "Blue_9", "Blue_+2", "Blue_+2", "Blue_Reverse", "Blue_Reverse", "Blue_Skip", "Blue_Skip", "Wild", "Wild", "Wild", "Wild", "Wild+4", "Wild+4", "Wild+4", "Wild+4"};
 					dealer.numCardsSave = 108;
+				elseif checkCommand(arg[3], "scoundrel") then
+					dealer.deck = {"heal_2", "heal_3", "heal_4", "heal_5", "heal_6", "heal_7", "heal_8", "heal_9", "heal_10", "weapon_2", "weapon_3", "weapon_4", "weapon_5", "weapon_6", "weapon_7", "weapon_8", "weapon_9", "weapon_10", "monster_2", "monster_3", "monster_4", "monster_5", "monster_6", "monster_7", "monster_8", "monster_9", "monster_10", "monster_11", "monster_12", "monster_13", "monster_14", "monster_2", "monster_3", "monster_4", "monster_5", "monster_6", "monster_7", "monster_8", "monster_9", "monster_10", "monster_11", "monster_12", "monster_13", "monster_14"}
+					dealer.numCards = 44;
+					dealer.deckSave = {"heal_2", "heal_3", "heal_4", "heal_5", "heal_6", "heal_7", "heal_8", "heal_9", "heal_10", "weapon_2", "weapon_3", "weapon_4", "weapon_5", "weapon_6", "weapon_7", "weapon_8", "weapon_9", "weapon_10", "monster_2", "monster_3", "monster_4", "monster_5", "monster_6", "monster_7", "monster_8", "monster_9", "monster_10", "monster_11", "monster_12", "monster_13", "monster_14", "monster_2", "monster_3", "monster_4", "monster_5", "monster_6", "monster_7", "monster_8", "monster_9", "monster_10", "monster_11", "monster_12", "monster_13", "monster_14"}
+					dealer.numCardsSave = 44;
 				end
 
 				-- load urls
@@ -436,6 +447,26 @@ Firecast.Messaging.listen("ChatMessage",
 					dealer.players[login][dealer.hands[login]] = nil;
 					dealer.hands[login] = dealer.hands[login] - 1;
 				end;
+			elseif checkCommand(arg[2], "discardAll") then
+				if dealer.players[login] == nil then
+					dealer.players[login] = {};
+					dealer.hands[login] = 0;
+				end;
+
+				for i=1, dealer.hands[login] do
+					dealer.numDiscard = dealer.numDiscard + 1;
+					dealer.discard[dealer.numDiscard] = dealer.players[login][dealer.hands[login]];
+
+					local txt = "<Dealer>: " .. login .. " discarded " .. dealer.players[login][dealer.hands[login]]
+					if dealer.deckURL[dealer.players[login][dealer.hands[login]]] ~= nil then
+						txt = txt .. "\n" .. "[§I " .. (dealer.deckURL[dealer.players[login][dealer.hands[login]]] or "UnamedCard") .. "]";
+					end;
+					send(activeChat, txt);
+					logText(dealer, txt, login);
+
+					dealer.players[login][dealer.hands[login]] = nil;
+					dealer.hands[login] = dealer.hands[login] - 1;
+				end
 			elseif checkCommand(arg[2], "play") then
 				if dealer.players[login] == nil then
 					dealer.players[login] = {};
@@ -466,6 +497,37 @@ Firecast.Messaging.listen("ChatMessage",
 					dealer.players[login][dealer.hands[login]] = nil;
 					dealer.hands[login] = dealer.hands[login] - 1;
 				end;
+			elseif checkCommand(arg[2], "open") then
+				local qtd = tonumber(arg[3]) or 1
+				if qtd < 1 then qtd = 1 end
+
+				-- check if enough cards on pile
+				if qtd > dealer.numCards then
+					local txt = "<Dealer>: Not enough cards in deck: " .. dealer.numCards
+					send(activeChat, txt);
+					logText(dealer, txt, login);
+					return
+				end
+
+				for i=1,qtd,1 do
+					-- place card on the table
+					dealer.numTable = dealer.numTable + 1;
+					dealer.table[dealer.numTable] = dealer.deck[dealer.numCards];
+
+					local txt = "<Dealer>: You opened " .. dealer.deck[dealer.numCards]
+					if dealer.deckURL[dealer.deck[dealer.numCards]] ~= nil then
+						txt = txt .. "\n" .. "[§I " .. (dealer.deckURL[dealer.deck[dealer.numCards]] or "UnamedCard") .. "]";
+					end;
+					table.remove(dealer.deck)
+					dealer.numCards = dealer.numCards - 1;
+
+					send(activeChat, txt);
+					logText(dealer, txt, login);
+				end
+
+				local txt = "<Dealer>: " .. login .. " has opened " .. qtd .. " card(s). The table has " .. dealer.numTable .. " card(s)";
+				send(activeChat, txt);
+				logText(dealer, txt, login);
 			elseif checkCommand(arg[2], "get") then
 				if dealer.players[login] == nil then
 					dealer.players[login] = {};
@@ -599,7 +661,11 @@ Firecast.Messaging.listen("ChatMessage",
 					if arg[4] == "bottom" then
 						-- add card to bottom
 						dealer.numCards = dealer.numCards + 1
-						table.insert(dealer.deck, 1, arg[3])
+						for i = dealer.numCards, 2, -1 do
+						    dealer.deck[i] = dealer.deck[i - 1]
+						end
+
+						dealer.deck[1] = arg[3]
 					else
 					-- add card to top of deck
 						dealer.numCards = dealer.numCards + 1
@@ -642,6 +708,13 @@ Firecast.Messaging.listen("ChatMessage",
 				logText(dealer, txt, login);
 
 				txt = showDeck(dealer.discard, dealer.numDiscard, activeChat, dealer.deckURL);
+				logText(dealer, txt, login);
+
+				local txt = "<Dealer>: The table has " .. dealer.numTable .. " card(s)."
+				send(activeChat, txt);
+				logText(dealer, txt, login);
+
+				txt = showDeck(dealer.table, dealer.numTable, activeChat, dealer.deckURL);
 				logText(dealer, txt, login);
 
 				for k,v in pairs(dealer.players) do
