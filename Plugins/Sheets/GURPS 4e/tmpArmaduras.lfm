@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpArmaduras" height="38" align="top" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" onShow="setDR()">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+		readOnly: true;
+		cursor: default;
+		canFocus: false;
+	}
+	
+	edit.invent, button.invent{
+		fontSize: 12;
+	}
+	
+	</style>
+	<script><![CDATA[	
+		local function formatMoney(value)
+			value = value or 0
+			local inteiro, decimal = math.modf(value)
+			decimal = math.abs(decimal)
+			decimal = string.format("%02d", math.floor(decimal * 100 + 0.5))
+			
+			local formatted = tostring(inteiro)
+			formatted = formatted:reverse():gsub("(%d%d%d)", "%1."):reverse()
+			if formatted:sub(1,1) == "." then
+				formatted = formatted:sub(2)
+			end
+			
+			return string.format("$%s,%s", formatted, decimal)
+		end
+
+		local function parseMoney(str)
+			str = str or "0"
+			local num = str:gsub("[%$%s]", ""):gsub("%.", ""):gsub(",", ".")
+			return tonumber(num)
+		end	
+		
+		local function formatWeight(value)
+			value = value or 0
+			return tostring(value .. " lbs.")
+		end
+
+		local function parseWeight(value)
+			if value == nil then return 0 end
+			local t = type(value)
+			if t == "number" then
+				return value
+			end
+			if t ~= "string" then
+				value = tostring(value)
+			end
+			local ok, s = pcall(function() return value:match("^%s*(.-)%s*$") end)
+			if not ok or not s then s = value end
+			ok, s = pcall(function() return s:gsub("%s*lbs?%.?$", "") end)
+			if not ok or not s then s = value end
+			ok, s = pcall(function() return tonumber(s) end)
+			if not ok then return 0 end
+			return s or 0
+		end
+		
+		local function select()
+			self.recHighlight.visible = not self.recHighlight.visible
+		end
+		
+		local function treatDR(s)
+			if not s or type(s) ~= "string" then return "0" end
+
+			-- normalize: trim and compress spaces, keep original characters for parsing
+			s = s:gsub("^%s+", ""):gsub("%s+$", ""):gsub("%s+", " ")
+			if s == "" then return "0" end
+
+			-- detect flexibility star anywhere, remove stars from stream but remember
+			local flexible = false
+			if s:find("%*") then
+				flexible = true
+				s = s:gsub("%*", "")
+				s = s:gsub("%s+", " ")
+			end
+
+			local i = 1
+			local n = #s
+			local base = nil  -- string: "N" or "N/M"
+			local dirs = {}   -- list of {num=number, dir=letter}
+			local function peek()
+				return s:sub(i,i)
+			end
+			local function isdigit(c) return c and c:match("%d") end
+			local function isupper(c) return c and c:match("%u") end
+
+			local function parse_number()
+				local start = i
+				while i <= n and isdigit(s:sub(i,i)) do i = i + 1 end
+				if start == i then return nil end
+				return tonumber(s:sub(start, i-1)), s:sub(start, i-1)
+			end
+
+			local function skip_spaces()
+				while i <= n and s:sub(i,i):match("%s") do i = i + 1 end
+			end
+
+			skip_spaces()
+			while i <= n do
+				local c = s:sub(i,i)
+				if c == "+" then
+					-- directional with explicit plus: +<num><UpperLetter>
+					i = i + 1
+					skip_spaces()
+					local num, numstr = parse_number()
+					if not num then return "0" end
+					skip_spaces()
+					local letter = s:sub(i,i)
+					if not isupper(letter) then return "0" end
+					i = i + 1
+					skip_spaces()
+					table.insert(dirs, {num=numstr, dir=letter})
+				elseif isdigit(c) then
+					-- Could be: split base (N/M), plain base (N), or directional (N<Letter>) without plus,
+					-- or sequence of directionals like 5T5A
+					local num1, num1str = parse_number()
+					skip_spaces()
+					local nextch = s:sub(i,i)
+					if nextch == "/" then
+						-- parse split base N/M
+						i = i + 1
+						skip_spaces()
+						local num2, num2str = parse_number()
+						if not num2 then return "0" end
+						-- set base if not set
+						if base then return "0" end
+						base = num1str .. "/" .. num2str
+						skip_spaces()
+						-- If immediately followed by uppercase letter with no digits after,
+						-- treat that letter as stray and drop it (per examples like "5/3F" -> "5/3")
+						local after = s:sub(i,i)
+						if isupper(after) then
+							-- consume single letter but ignore it
+							i = i + 1
+							skip_spaces()
+						end
+					else
+						-- if next is uppercase letter -> directional token without plus
+						if isupper(nextch) then
+							local letter = nextch
+							i = i + 1
+							skip_spaces()
+							table.insert(dirs, {num=num1str, dir=letter})
+						else
+							-- plain number -> base
+							if base then
+								-- second plain number that's not directional => invalid
+								return "0"
+							end
+							base = num1str
+							skip_spaces()
+						end
+					end
+				elseif c:match("%s") then
+					skip_spaces()
+				else
+					-- any other chars (lowercase letters, punctuation except +, /, *) -> invalid
+					return "0"
+				end
+			end
+
+			-- final validation: at least one meaningful token (base or directional)
+			if not base and #dirs == 0 then return "0" end
+
+			-- Validate direction letters (must be uppercase only) and numeric strings already checked
+			for _,d in ipairs(dirs) do
+				if not d.dir or not d.dir:match("%u") then return "0" end
+				if not d.num or not tonumber(d.num) then return "0" end
+			end
+
+			-- Build output: base first (if any), then directionals sorted by letter
+			table.sort(dirs, function(a,b)
+				if a.dir == b.dir then
+					-- if same direction, keep order by numeric then original
+					return tonumber(a.num) < tonumber(b.num)
+				end
+				return a.dir < b.dir
+			end)
+
+			local parts = {}
+			if base then table.insert(parts, base) end
+			for _,d in ipairs(dirs) do
+				table.insert(parts, "+" .. d.num .. d.dir)
+			end
+
+			local out = table.concat(parts, " ")
+			if flexible then out = out .. "*" end
+			return out
+		end
+		
+		local function sumDR(a, b)
+			local function trim(s) return (s or ""):gsub("^%s+", ""):gsub("%s+$", "") end
+			local function norm(s) return (s or ""):gsub("%s+", " ") end
+
+			-- split rigid and flex. returns rigid_str, flex_str, or nil,nil on totally invalid input type
+			local function split_rigid_flex(full)
+				if type(full) ~= "string" then return nil, nil end
+				full = norm(full)
+				full = trim(full)
+				if full == "" or full == "0" then return "", "" end
+
+				-- prefer explicit parentheses: first balanced (...) is flex inner
+				local open, close = full:find("%b()")
+				if open then
+					local inside = full:sub(open + 1, close - 1)
+					local outside = (full:sub(1, open - 1) .. " " .. full:sub(close + 1)):gsub("%s+", " ")
+					return trim(outside), trim(inside)
+				end
+
+				-- otherwise tokens containing '*' become flex tokens (remove the star)
+				local rigid_tokens, flex_tokens = {}, {}
+				for tok in full:gmatch("%S+") do
+					if tok:find("%*") then
+						local cleaned = tok:gsub("%*", "")
+						if cleaned ~= "" then table.insert(flex_tokens, cleaned) end
+					else
+						table.insert(rigid_tokens, tok)
+					end
+				end
+				return trim(table.concat(rigid_tokens, " ")), trim(table.concat(flex_tokens, " "))
+			end
+
+			-- parse a token string (no parentheses, no '*'). Returns (base, dirs, ok)
+			-- base: nil or {type="flat", n="N"} or {type="split", a="A", b="B"}
+			-- dirs: map Letter->number-as-string
+			local function parse_part(str)
+				str = trim(str or "")
+				if str == "" then return nil, {}, true end -- empty is valid: no base, no dirs
+
+				local base = nil
+				local dirs = {}
+
+				for tok in (str .. " "):gmatch("(%S+)%s") do
+					local t = tok
+					if t:sub(1,1) == "+" then t = t:sub(2) end
+
+					-- split base like 5/3
+					if t:find("/") then
+						local a,b = t:match("^(%d+)%s*/%s*(%d+)$")
+						if not a or not b then return nil, nil, false end
+						if base then return nil, nil, false end -- multiple bases invalid
+						base = { type = "split", a = tostring(tonumber(a)), b = tostring(tonumber(b)) }
+					else
+						-- directional (digits + UPPER LETTER) OR flat number
+						local num, letter = t:match("^(%d+)(%u)$")
+						if num and letter then
+							dirs[letter] = tostring((tonumber(dirs[letter] or "0") + tonumber(num)))
+						else
+							if t:match("^%d+$") then
+								if base then return nil, nil, false end
+								base = { type = "flat", n = tostring(tonumber(t)) }
+							else
+								return nil, nil, false -- invalid token
+							end
+						end
+					end
+				end
+
+				-- normalize zero base -> treat as nil
+				if base then
+					if base.type == "flat" and tonumber(base.n) == 0 then base = nil end
+					if base.type == "split" and tonumber(base.a) == 0 and tonumber(base.b) == 0 then base = nil end
+				end
+
+				return base, dirs, true
+			end
+
+			-- add bases, dirs (nil allowed)
+			local function add_base(b1, b2)
+				if not b1 and not b2 then return nil end
+				if not b1 then return b2 end
+				if not b2 then return b1 end
+				if b1.type == "flat" and b2.type == "flat" then
+					return { type = "flat", n = tostring(tonumber(b1.n) + tonumber(b2.n)) }
+				elseif b1.type == "split" and b2.type == "split" then
+					return { type = "split",
+							 a = tostring(tonumber(b1.a) + tonumber(b2.a)),
+							 b = tostring(tonumber(b1.b) + tonumber(b2.b)) }
+				else
+					-- mix split + flat: add flat to both parts of split
+					if b1.type == "split" then
+						local add = tonumber((b2.n or 0))
+						return { type = "split", a = tostring(tonumber(b1.a) + add), b = tostring(tonumber(b1.b) + add) }
+					else
+						local add = tonumber((b1.n or 0))
+						return { type = "split", a = tostring(tonumber(b2.a) + add), b = tostring(tonumber(b2.b) + add) }
+					end
+				end
+			end
+
+			local function add_dirs(d1, d2)
+				local out = {}
+				for k,v in pairs(d1 or {}) do out[k] = tonumber(v) end
+				for k,v in pairs(d2 or {}) do out[k] = (tonumber(out[k] or 0) + tonumber(v)) end
+				local res = {}
+				for k,v in pairs(out) do res[k] = tostring(v) end
+				return res
+			end
+
+			local function format_part(base, dirs)
+				local parts = {}
+				if base then
+					if base.type == "flat" then table.insert(parts, base.n)
+					else table.insert(parts, base.a .. "/" .. base.b) end
+				end
+				local letters = {}
+				for k,_ in pairs(dirs or {}) do table.insert(letters, k) end
+				table.sort(letters)
+				for _,L in ipairs(letters) do table.insert(parts, "+" .. tostring(dirs[L]) .. L) end
+				return table.concat(parts, " ")
+			end
+
+			-- main
+			local a_r_s, a_f_s = split_rigid_flex(a)
+			local b_r_s, b_f_s = split_rigid_flex(b)
+			if a_r_s == nil or b_r_s == nil then return "0" end
+
+			local a_r_base, a_r_dirs, ok1 = parse_part(a_r_s)
+			if not ok1 then return "0" end
+			local a_f_base, a_f_dirs, ok2 = parse_part(a_f_s)
+			if not ok2 then return "0" end
+
+			local b_r_base, b_r_dirs, ok3 = parse_part(b_r_s)
+			if not ok3 then return "0" end
+			local b_f_base, b_f_dirs, ok4 = parse_part(b_f_s)
+			if not ok4 then return "0" end
+
+			local rigid_base = add_base(a_r_base, b_r_base)
+			local rigid_dirs = add_dirs(a_r_dirs or {}, b_r_dirs or {})
+
+			local flex_base = add_base(a_f_base, b_f_base)
+			local flex_dirs = add_dirs(a_f_dirs or {}, b_f_dirs or {})
+
+			local rigid_str = format_part(rigid_base, rigid_dirs)
+			local flex_inner = format_part(flex_base, flex_dirs)
+
+			-- compose output:
+			if rigid_str ~= "" and flex_inner ~= "" then
+				local inner = trim(flex_inner)
+				if inner:sub(1,1) ~= "+" then inner = "+" .. inner end
+				return rigid_str .. " (" .. inner .. "*)"
+			elseif rigid_str ~= "" then
+				return rigid_str
+			elseif flex_inner ~= "" then
+				-- only flexible: return without parentheses and with trailing star
+				return trim(flex_inner) .. "*"
+			else
+				return "0"
+			end
+		end
+		
+		local function matrizArmor()
+			local matrizDR = {}
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			local nodoFilho = nodoPai and NDB.getChildNodes(nodoPai["ConfigsGrupos"]) or {}
+			for i = 1, #nodoFilho do
+				local groupName = nodoFilho[i]["nome"] or "sem_nome"
+				local items = {}
+
+				local nodoNeto = NDB.getChildNodes(nodoFilho[i]["ConfigsChecks"]) or {}
+				for j = 1, #nodoNeto do
+					if nodoNeto[j]["flag"] then
+						table.insert(items, nodoNeto[j]["nome"])
+					end
+				end
+				
+				table.insert(matrizDR, { groupName, items })
+			end
+			return matrizDR
+		end
+		
+		local function spacing(texto)
+			if type(texto) ~= "string" then return "" end
+
+			texto = texto:gsub("\239\187\191", "")
+
+			local parts = {}
+			for uchar in texto:gmatch("[%z\1-\127\194-\244][\128-\191]*") do
+				table.insert(parts, uchar)
+			end
+
+			return table.concat(parts, " ")
+		end
+		
+		local function setDR()
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			local nodoArm = NDB.getChildNodes(nodoPai["Armaduras"])
+			local nodoDR = NDB.getChildNodes(nodoPai["GruposDR"])
+			
+			for m = 1, #nodoDR, 1 do
+				nodoDR[m]['ValGruposDR'] = "0"
+				local nodoRegioes = NDB.getChildNodes(nodoDR[m]["Regioes"])
+				for n = 1, #nodoRegioes, 1 do
+					nodoRegioes[n]['valorDR'] = nodoPai["ModArmor"] or 0
+				end
+			end
+			
+			for i = 1, #nodoArm, 1 do
+				local Locais = {}
+				local Grupos = {}
+				local nodoLoc = NDB.getChildNodes(nodoArm[i]["PopLocais"])
+				local nodoGru = NDB.getChildNodes(nodoArm[i]["PopGrupos"])
+				
+				for j = 1, #nodoGru do
+					if nodoGru[j]["flag"] then
+						table.insert(Grupos, nodoGru[j]["nome"])
+					end
+				end
+				
+				for j = 1, #nodoLoc do
+					if nodoLoc[j]["flag"] or not nodoLoc[j]["visivel"] then
+						table.insert(Locais, nodoLoc[j]["nome"])
+					end
+				end
+				
+				for j = 1, #nodoDR do
+					for k = 1, #Grupos do
+						if nodoDR[j]['GruposDR'] == Grupos[k] and nodoArm[i]['equipado'] and nodoArm[i]['Locais'] ~= "Selecione os Locais afetados"  then
+							nodoDR[j]['ValGruposDR'] = sumDR(tostring(nodoDR[j]['ValGruposDR']), tostring(nodoArm[i]["DR"]))
+						end
+					end
+					
+					local nodoRegioes = NDB.getChildNodes(nodoDR[j]["Regioes"])
+					for k = 1, #nodoRegioes do
+						for l = 1, #Locais do
+							if nodoRegioes[k]['nomeReg'] == spacing(string.upper(Locais[l])) and nodoArm[i]['equipado'] and nodoArm[i]['Locais'] ~= "Selecione os Locais afetados" then
+								nodoRegioes[k]['valorDR'] = sumDR(tostring(nodoRegioes[k]['valorDR']), tostring(nodoArm[i]["DR"]))
+							end
+						end
+					end
+				end
+			end
+		end
+		
+		local function calcSomaCarga()
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			nodoPai.cbCargaCalc = not nodoPai.cbCargaCalc
+		end
+	]]></script>
+	
+	<rectangle color="#202020" left="0" width="40" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+	<rectangle color="#202020" left="80" width="183" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+	<rectangle color="#202020" left="643" width="330" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+	<rectangle color="#303030" width="2000" height="38" visible="false" name="recHighlight"/>
+	
+	<layout height="35" align="top" margins="{top=3}">
+	
+		<checkBox align="left" width="30" margins="{left=10}" name="chbEquip" field="equipado" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Item Equipado (Para Cálculo de DR e Carga)" />
+		<dataLink field="equipado" defaultValue="true">
+			<event name="onChange"><![CDATA[
+				setDR() calcSomaCarga()
+			]]></event>
+		</dataLink>
+		
+		<edit align="left" width="40" class="invent" name="edtTL" field="TL" type="number" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="TL da Armadura">
+			<event name="onEnter"><![CDATA[
+				if sheet.TL == "0" then sheet.TL = nil end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				if sheet.TL == nil then sheet.TL = "0" end
+			]]></event>
+		</edit>
+		<dataLink field="TL" defaultValue="0" />
+		
+		<edit align="left" width="183" class="invent" name="edtNome" field="Nome" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" fontStyle="bold" hint="Nome da Armadura">
+			<event name="onEnter"><![CDATA[
+				if sheet.Nome == "—" then sheet.Nome = nil end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				if sheet.Nome == nil then sheet.Nome = "—" end
+			]]></event>
+		</edit>
+		<dataLink field="Nome" defaultValue="—" />
+		
+		<edit align="left" width="90" class="invent" name="edtDR" field="DR" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Damage Reduction da Armadura">
+			<event name="onEnter"><![CDATA[
+				if sheet.DR == "0" then sheet.DR = nil end
+				if sheet.Locais == "Selecione os Locais afetados" then
+					self.btnLocais:setFocus();
+					showMessage("Selecione os Locais afetados primeiro!")
+				end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				if sheet.DR == nil then sheet.DR = "0" end
+				sheet.DR = treatDR(sheet.DR)
+			]]></event>
+			<event name="onChange"><![CDATA[
+				setDR()
+			]]></event>
+		</edit>
+		<dataLink field="DR" defaultValue="0" />
+		
+		<button align="left" width="285" class="invent" margins="{right=5}" name="btnLocais" horzTextAlign="leading" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" fontStyle="italic" hint="Locais de Acerto da Armadura">
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popUp_Locais")
+						
+				if pop ~= nil then
+					pop:showPopupEx("bottomCenter", self.btnLocais)
+					pop:setNodeObject(sheet)
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir")
+				end
+				
+				if sheet.Locais == "Selecione os Locais afetados" or sheet.Locais == nil then
+					NDB.clearNode(sheet.PopGrupos)
+					NDB.clearNode(sheet.PopLocais)
+										
+					local nodoPai = NDB.getParent(NDB.getParent(sheet))
+					local nodoFilho = NDB.getChildNodes(nodoPai["ConfigsLocais"])
+					for i = 1, #nodoFilho, 1 do
+						local item = self.rclPopLocais:append()
+						item.nome = nodoFilho[i]["nome"]
+					end
+					
+					local nodoFilho = NDB.getChildNodes(nodoPai["ConfigsGrupos"])
+					for i = 1, #nodoFilho, 1 do
+						local item = self.rclPopGrupos:append()
+						item.nome = nodoFilho[i]["nome"]
+					end
+						
+					self.popUp_Locais:needRepaint()
+				end
+			]]></event>
+		</button>
+		
+		<template name="DivisorM">
+			<layout align="top" height="12" margins="{top=0, bottom=5}">
+				<label align="left" text="$(texto)" width="$(largura)" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+				<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+			</layout>
+		</template>
+		
+		<popup name="popUp_Locais" width="293" height="690" backOpacity="0" drawContainer="false" autoScopeNode="false">
+			<rectangle align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<scrollBox align="client">
+						<DivisorM texto="G R U P O S   D E   A R M A D U R A" largura="165" />
+						<recordList align="top" autoHeight="true" name="rclPopGrupos" field="PopGrupos" templateForm="tmpConfigsChecksDR" />
+							
+						<layout align="top" height="20" />
+						<DivisorM texto="L O C A I S   D E   A C E R T O" largura="135" />
+						<recordList align="top" autoHeight="true" name="rclPopLocais" field="PopLocais" templateForm="tmpConfigsChecksDR" />
+						
+					</scrollBox>
+				</rectangle>
+			</rectangle>
+			<event name="onClose"><![CDATA[
+				local str = ""
+				local nodoFilho = NDB.getChildNodes(sheet["PopGrupos"])
+				for i = 1, #nodoFilho, 1 do
+					if nodoFilho[i]["flag"] then
+						str = str .. nodoFilho[i]["nome"] .. ", "
+					end
+				end
+				local nodoFilho = NDB.getChildNodes(sheet["PopLocais"])
+				for i = 1, #nodoFilho, 1 do
+					if nodoFilho[i]["flag"] then
+						str = str .. nodoFilho[i]["nome"] .. ", "
+					end
+				end
+				
+				if str == "" then
+					str = nil
+				else
+					str = string.sub(str, 1, -3)
+				end
+				
+				sheet.Locais = str
+				self.popUp_Locais:close()
+			]]></event>
+		</popup>
+		
+		<label name="lblLocais" field="Locais" visible="false" />
+		<dataLink field="Locais" defaultValue="Selecione os Locais afetados">
+			<event name="onChange"><![CDATA[
+				if sheet.Locais == nil then
+					self.btnLocais.text = "Selecione os Locais afetados"
+				else
+					self.btnLocais.text = sheet.Locais
+				end
+				setDR()
+			]]></event>
+		</dataLink>
+		
+		<edit align="left" width="30" class="invent" name="edtLC" field="LC" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Legality Class da Armadura">
+			<event name="onEnter"><![CDATA[
+				if sheet.LC == "—" then sheet.LC = nil end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				if sheet.LC == nil then sheet.LC = "—" end
+			]]></event>
+		</edit>
+		<dataLink field="LC" defaultValue="—" />
+		
+		<edit align="left" width="85" class="invent" name="edtCusto" field="Custo" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Custo da Armadura">
+			<event name="onEnter"><![CDATA[
+				sheet.Custo = parseMoney(sheet.Custo or "0")
+				self.edtCusto.type = "float"
+			]]></event>
+			<event name="onExit"><![CDATA[
+				self.edtCusto.type = "text"
+				sheet.Custo = formatMoney(sheet.Custo or 0)
+			]]></event>
+		</edit>
+		<dataLink field="Custo" defaultValue="$0,00" />
+
+		<edit align="left" width="90" class="invent" name="edtPeso" field="Peso" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Peso da Armadura">
+			<event name="onEnter"><![CDATA[
+				sheet.Peso = parseWeight(sheet.Peso or "0")
+				self.edtPeso.type = "float"
+			]]></event>
+			<event name="onExit"><![CDATA[
+				self.edtPeso.type = "text"
+				sheet.Peso = formatWeight(sheet.Peso or 0)
+			]]></event>
+		</edit>
+		<dataLink field="Peso" defaultValue="0 lbs.">
+			<event name="onChange"><![CDATA[
+				calcSomaCarga()
+			]]></event>
+		</dataLink>
+		
+		<button align="left" width="30" name="btnInfo" text="𝐢" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Informações da Armadura">
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popUp_")
+						
+				if pop ~= nil then
+					pop:showPopupEx("left", self.btnInfo)
+					pop:setNodeObject(sheet)
+					
+					sheet.TLmod = "TL" .. sheet.TL
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir")
+				end
+			]]></event>
+		</button>
+		
+		<popup name="popUp_" width="850" height="700" backOpacity="0" drawContainer="false" autoScopeNode="false">
+			<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<layout align="top" height="40">
+						<label field="TLmod" align="left" textTrimming="character" fontStyle="bold" fontSize="14" width="40" />
+						<label field="Nome" align="client" textTrimming="character" fontStyle="bold" fontColor="white" fontSize="20" />
+						<checkBox text="E Q U I P A D O" align="right" fontSize="10" fontStyle="bold" width="95" field="equipado" hitTest="true" hint="O Peso desse item será contabilizado" />
+					</layout>
+					<DivisorM texto="L O C A L I Z A Ç Õ E S" largura="115" />
+					<label align="top" field="Locais" autoSize="true" fontStyle="italic" fontSize="16" margins="{bottom=10}" />
+					<flowLayout align="top" autoHeight="true" horzAlign="justify" maxControlsPerLine="4">
+							
+							<layout width="190" height="75">
+								<layout align="left" width="90">
+									<DivisorM texto="D R" largura="20" />
+									<edit align="client" field="DR" vertTextAlign="leading">
+										<event name="onEnter"><![CDATA[
+											if sheet.DR == "0" then sheet.DR = nil end
+											if sheet.Locais == "Selecione os Locais afetados" then
+												self.popUp_:close()
+												self.btnLocais:setFocus();
+												showMessage("Selecione os Locais afetados primeiro!")
+											end
+										]]></event>
+										<event name="onExit"><![CDATA[
+											if sheet.DR == nil then sheet.DR = "0" end
+											sheet.DR = treatDR(sheet.DR)
+										]]></event>
+									</edit>
+								</layout>
+								<layout align="right" width="90">	
+									<DivisorM texto="L C" largura="20" />
+									<textEditor field="LC" align="client" hint="Legality Class da Armadura" />
+								</layout>
+							</layout>
+							
+							<layout width="190" height="75">
+								<DivisorM texto="C O S T   F A C T O R" largura="100" />
+								<edit field="CF" name="edtPopCF" align="client" vertTextAlign="leading" hint="Cost Factor da Armadura">
+									<event name="onEnter"><![CDATA[
+										sheet.CF = parseMoney(sheet.CF or "0")
+										self.edtPopCF.type = "float"
+									]]></event>
+									<event name="onExit"><![CDATA[
+										self.edtPopCF.type = "text"
+										sheet.CF = formatMoney(sheet.CF or 0)
+									]]></event>
+								</edit>
+								<dataLink field="CF" defaultValue="$0,00" />
+							</layout>
+							
+							<layout width="190" height="75">
+								<DivisorM texto="C U S T O" largura="50" />
+								<edit field="Custo" name="edtPopCusto" align="client" vertTextAlign="leading" hint="Custo da Armadura">
+									<event name="onEnter"><![CDATA[
+										sheet.Custo = parseMoney(sheet.Custo or "0")
+										self.edtPopCusto.type = "float"
+									]]></event>
+									<event name="onExit"><![CDATA[
+										self.edtPopCusto.type = "text"
+										sheet.Custo = formatMoney(sheet.Custo or 0)
+									]]></event>
+								</edit>
+							</layout>
+							
+							<layout width="190" height="75">
+								<DivisorM texto="P E S O" largura="40" />
+								<edit field="Peso" name="edtPopPeso" align="client" vertTextAlign="leading" hint="Peso da Armadura">
+									<event name="onEnter"><![CDATA[
+										sheet.Peso = parseWeight(sheet.Peso or "0")
+										self.edtPopPeso.type = "float"
+									]]></event>
+									<event name="onExit"><![CDATA[
+										self.edtPopPeso.type = "text"
+										sheet.Peso = formatWeight(sheet.Peso or 0)
+									]]></event>
+								</edit>
+							</layout>
+						</flowLayout>
+						<DivisorM texto="D E S C R I Ç Ã O" largura="95" />
+						<textEditor field="Descricao" align="client" hint="Descrição da Armadura" />
+						<button text="💬" align="bottom" height="30" hint="Enviar Descrição no Chat" margins="{right=10}">
+							<event name="onClick"><![CDATA[
+								local function newlineToSlash(str)
+									if not str then return "" end
+									str = str:gsub("\r\n", "/")
+									str = str:gsub("\n", "/")
+									str = str:gsub("\r", "/")
+									return str
+								end
+							
+								local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+								local meuJogador = mesaDoPersonagem.meuJogador
+								local meuNick = meuJogador.nick
+								
+								local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Armadura:"
+								msg = msg .. "\n****\n### [§K1][§B]".. (sheet.Nome or "") .."[§B]\n###### ".. (sheet.TLmod or "")
+								msg = msg .. "\n [§K1][§B]Locais:[§B] [§K14][§T]".. (sheet.Locais or "") .. "[§T]"
+								msg = msg .. "\n [§K1][§B]DR:[§B] [§K14]".. (sheet.DR or "")
+								msg = msg .. "\n [§K1][§B]LC:[§B] [§K14]".. (newlineToSlash(sheet.LC) or "")
+								msg = msg .. "\n [§K1][§B]Custo:[§B] [§K14]".. (sheet.Custo or "")
+								msg = msg .. "\n [§K1][§B]Peso:[§B] [§K14]".. (sheet.Peso or "")
+								msg = msg .. "\n [§K1][§B]Descrição:[§B] [§K14]".. (sheet.Descricao or "")
+								msg = msg .. "[§T]\n****"
+
+								mesaDoPersonagem.activeChat:enviarMensagem(msg)
+							]]></event>
+						</button>
+				</rectangle>
+			</rectangle>
+		</popup>
+		
+		<button align="left" width="30" text="🞭" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" margins="{left=2}" onClick="NDB.deleteNode(sheet) setDR() calcSomaCarga()" hint="Deletar Armadura" />
+		
+	</layout>
+</form>

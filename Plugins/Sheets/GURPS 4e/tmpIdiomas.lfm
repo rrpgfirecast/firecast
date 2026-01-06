@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpIdiomas" height="33" align="top" onShow="formatColors() calcSomaPontosSobre()">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+	}
+	
+	</style>
+	<script><![CDATA[
+		
+		local function formatColors()
+			local input_text = tostring(sheet.PtsIdioma) or ""
+			local pontos_str = input_text:match("%[([%-]?%d+)%]")
+			
+			local pontos = tonumber(pontos_str) or 0
+			
+			if pontos > 0 then
+				self.edtPtsIdioma.fontColor = '#00ff78'
+			elseif pontos == 0 then
+				self.edtPtsIdioma.fontColor = '#9e9e9e'
+			else
+				self.edtPtsIdioma.fontColor = 'red' 
+			end
+		end
+		
+		local function calcSomaPontosSobre()
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			nodoPai.cbSobreCalc = not nodoPai.cbSobreCalc
+		end
+	]]></script>
+	
+	<rectangle color="#202020" left="430" width="600" />
+	
+	<layout align="top" height="30" margins="{bottom=3, top=3}">
+		
+		<edit align="left" field="NomeIdioma" hint="Nome do Idioma" width="430" fontStyle="bold">
+				<event name="onEnter"><![CDATA[
+					if sheet.NomeIdioma == "Idioma" or sheet.NomeIdioma == "—" then sheet.NomeIdioma = nil end
+				]]></event>
+				<event name="onExit"><![CDATA[
+					if sheet.NomeIdioma == nil then sheet.NomeIdioma = "—" end
+				]]></event>
+			</edit>
+		<dataLink field="NomeIdioma" defaultValue="Idioma" />
+		
+		<comboBox align="left" width="200" name="edtFalado" items="{'Nenhum', 'Rudimentar', 'Com Sotaque', 'Fluente'}" field="IdiomaFalado" hint="Nível do Idioma Falado" />
+		<dataLink field="IdiomaFalado" defaultValue="Nenhum" />
+		
+		<comboBox align="left" width="200" name="edtEscrito" items="{'Nenhum', 'Rudimentar', 'Com Sotaque', 'Fluente'}" field="IdiomaEscrito" hint="Nível do Idioma Escrito" />
+		<dataLink field="IdiomaEscrito" defaultValue="Nenhum" />
+		
+		<edit align="left" width="50" name="edtPtsIdioma" field="PtsIdioma" class="pts" hint="Pontos Gastos no Idioma">
+			<event name="onEnter">
+				sheet.PtsIdioma = nil
+				self.edtPtsIdioma.type = "number"
+			</event>
+			<event name="onExit">
+				self.edtPtsIdioma.type = "text"
+				sheet.PtsIdioma = string.format('[%02d]', sheet.PtsIdioma or 0)
+			</event>
+		</edit>
+		<dataLink field="PtsIdioma" defaultValue="[00]">
+			<event name="onChange">
+				formatColors()
+				calcSomaPontosSobre()
+			</event>
+		</dataLink>
+		
+		<button align="left" text="🞭" width="30" onClick="NDB.deleteNode(sheet) calcSomaPontosSobre()" hint="Apagar Idioma" margins="{left=2}" />
+	</layout>
+	
+</form>

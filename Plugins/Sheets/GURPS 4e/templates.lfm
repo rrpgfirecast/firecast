@@ -1,0 +1,1734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplates">
+	<template name="spacer">
+		<layout align="top" height="40" />
+	</template>
+
+	<template name="btnImgFundo">
+		<button name="btnImagemFundo" anchors="top right" right="95" top="5" text="⚙" height="30" width="30" onClick="self.popImagemFundo:show('left', self.btnImagemFundo);"/>
+		<popup name="popImagemFundo" width="300" height="178" backOpacity="0" drawContainer="false">
+			<rectangle name="recSettings" align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<label align="top" text="F U N D O   D A   F I C H A" margins="{bottom=10}" fontStyle="bold" fontFamily="Constantia"/>
+					<radioButton groupName="rdbFundo" text="Imagem" fieldValue="img" field="rdbFundo" align="top"/>
+					<edit name="edtURLImagem" field="URLImagemFundo" align="top" />
+					<horzLine/>
+					<radioButton groupName="rdbFundo" text="Cor" fieldValue="cor" field="rdbFundo" align="top" />
+					<dataLink field="rdbFundo" defaultValue="img" onChange="
+						if sheet.rdbFundo == 'img' then 
+							self.ccbCorFundo.visible = false
+							self.edtURLImagem.visible = true
+							self.imgFundo.visible = true
+							self.recFundo.visible = false
+							self.recSettings:needRepaint()
+						else 
+							self.edtURLImagem.visible = false 
+							self.ccbCorFundo.visible = true
+							self.imgFundo.visible = false
+							self.recFundo.visible = true
+							self.recSettings:needRepaint()
+						end
+					"/>
+					<colorComboBox name="ccbCorFundo" field="corRetanguloFundo" useAlpha="false" height="30" align="top" />
+					<dataLink field="corRetanguloFundo" defaultValue="#272727" onChange="self.recFundo.color = sheet.corRetanguloFundo" />
+				</rectangle>
+			</rectangle>
+		</popup>
+	</template>
+	
+	<template name="btnConfigsAtributos">
+		<button name="btnConfigsAtrb" align="right" text="⚙" height="30" width="30" margins="{left=5}" onClick="self.popConfigsAtrb:show('left', self.btnConfigsAtrb);"/>
+		<popup name="popConfigsAtrb" width="360" height="590" backOpacity="0" drawContainer="false">
+			<rectangle name="recConfigsAtrb" align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<DivisorD texto="C O N F I G U R A Ç Õ E S" largura="240" topo="0"/>
+					<layout align="client">
+						<ConfigCusto atributo01="ST" atributo02="HP" 	default01="10" default02="2" />
+						<ConfigCusto atributo01="DX" atributo02="Will" 	default01="20" default02="5" />
+						<ConfigCusto atributo01="IQ" atributo02="Per" 	default01="20" default02="5" />
+						<ConfigCusto atributo01="HT" atributo02="FP" 	default01="10" default02="3" />
+						<ConfigCustoDer atributo01="BasicSpeed" atributo02="BasicMove" default01="5" default02="5" />
+						
+						<horzLine />
+						
+						<layout align="top" height="30" margins="{bottom=3}">
+							<label text="Modificadores de Dodge:" align="client" fontStyle="bold"/>
+							<edit width="50" horzTextAlign="center" type="number" align="right" field="EnhancedDodge" />
+							<dataLink field="EnhancedDodge" defaultValue="0" onUserChange="if not tonumber(sheet.EnhancedDodge) then sheet.EnhancedDodge = 0 end calcAtributos() defineDef()" />
+						</layout>
+						
+						<layout align="top" height="30" margins="{bottom=3}">
+							<label text="Modificadores de Parry:" align="client" fontStyle="bold"/>
+							<edit width="50" horzTextAlign="center" type="number" align="right" field="EnhancedParry" />
+							<dataLink field="EnhancedParry" defaultValue="0" onUserChange="if not tonumber(sheet.EnhancedParry) then sheet.EnhancedParry = 0 end calcAtributos() defineDef()" />
+						</layout>
+						
+						<layout align="top" height="30" margins="{bottom=3}">
+							<label text="Modificadores de Block:" align="client" fontStyle="bold"/>
+							<edit width="50" horzTextAlign="center" type="number" align="right" field="EnhancedBlock" />
+							<dataLink field="EnhancedBlock" defaultValue="0" onUserChange="if not tonumber(sheet.EnhancedBlock) then sheet.EnhancedBlock = 0 end calcAtributos() defineDef()" />
+						</layout>
+						
+						<horzLine />
+						
+						<layout align="top" height = "40">
+							<checkBox align="left" name="chcbDisassociarAtr" field="fldDisassociarAtr" width="30">
+								<event name="onChange"><![CDATA[
+									local atributos = {'ST','DX','IQ','HT','HP','Will','Per','FP', 'BasicSpeed', 'BasicMove'}
+									local atributosSemPts = {'ThrDmg', 'SwDmg', 'BasicLift', 'Atributospts', 'Dodge', 'Parry', 'Block'}
+									local tabela = {'Carga01', 'Carga02', 'Carga03', 'Carga04', 'Carga05', 'Move01', 'Move02', 'Move03', 'Move04', 'Move05', 'Dodge01', 'Dodge02', 'Dodge03', 'Dodge04', 'Dodge05'}
+									
+									if(sheet.fldDisassociarAtr) then
+										for i=1, #atributos do
+											self['edt'..atributos[i]].readOnly = false
+											self['edt'..atributos[i]].cursor = 'IBeam'
+											self['edt'..atributos[i]].canFocus = true
+											
+											self['edt'..atributos[i]..'pts'].readOnly = false
+											self['edt'..atributos[i]..'pts'].cursor = 'IBeam'
+											self['edt'..atributos[i]..'pts'].canFocus = true
+										end
+										
+										for i=1, #atributosSemPts do
+											self['edt'..atributosSemPts[i]].readOnly = false
+											self['edt'..atributosSemPts[i]].cursor = 'IBeam'
+											self['edt'..atributosSemPts[i]].canFocus = true
+										end
+										
+										for i=1, #tabela do
+											self['edt'..tabela[i]].readOnly = false
+											self['edt'..tabela[i]].cursor = 'IBeam'
+											self['edt'..tabela[i]].canFocus = true
+										end
+									else
+										for i=1, #atributos do
+											self['edt'..atributos[i]].readOnly = true
+											self['edt'..atributos[i]].cursor = 'default'
+											self['edt'..atributos[i]].canFocus = false
+											
+											self['edt'..atributos[i]..'pts'].readOnly = true
+											self['edt'..atributos[i]..'pts'].cursor = 'default'
+											self['edt'..atributos[i]..'pts'].canFocus = false
+										end
+										
+										for i=1, #atributosSemPts do
+											self['edt'..atributosSemPts[i]].readOnly = true
+											self['edt'..atributosSemPts[i]].cursor = 'default'
+											self['edt'..atributosSemPts[i]].canFocus = false
+										end
+										
+										for i=1, #tabela do
+											self['edt'..tabela[i]].readOnly = true
+											self['edt'..tabela[i]].cursor = 'default'
+											self['edt'..tabela[i]].canFocus = false
+										end
+									end
+								]]></event>
+								<event name="onClick"><![CDATA[
+									resetAtributos()
+								]]></event>
+							</checkBox>
+							<layout align="client">
+								<label text="Desativar Cálculos Automáticos de Atributos" align="top" margins="{top=2}" />
+								<label text="Isso resetará todos os atributos e os Campos serão editáveis" fontStyle="italic" fontSize="10" align="top" />
+							</layout>
+						</layout>
+						<horzLine />
+						<layout align="top" height = "40">
+							<checkBox align="left" name="chcbDisassociarCarga" field="fldDisassociarCarga" width="30" onChange="calcCarga()">
+								<event name="onChange"><![CDATA[
+									if sheet.fldDisassociarCarga then
+										self.rdbCarga01.hitTest = true
+										self.rdbCarga02.hitTest = true
+										self.rdbCarga03.hitTest = true
+										self.rdbCarga04.hitTest = true
+										self.rdbCarga05.hitTest = true
+									else
+										self.rdbCarga01.hitTest = false
+										self.rdbCarga02.hitTest = false
+										self.rdbCarga03.hitTest = false
+										self.rdbCarga04.hitTest = false
+										self.rdbCarga05.hitTest = false
+										calcCarga()
+									end
+								]]></event>
+							</checkBox>
+							<layout align="client">
+								<label text="Desativar Cálculos Automáticos de Carga" align="top" margins="{top=2}" />
+								<label text="Você precisará selecionar o nível de carga manualmente" fontStyle="italic" fontSize="10" align="top" />
+							</layout>
+						</layout>
+						<horzLine />
+						<layout align="top" height = "40">
+							<checkBox align="left" name="chcbTabelaSTRev" field="fldTabelaSTRev" width="30" onChange="calcAtributos()" />
+							<layout align="client">
+								<label text="Utilizar Tabela Revisada de ST" align="top" margins="{top=2}" />
+								<label text="Pg. 17 de Pyramid 3-83, parte do Knowing Your Own Strength" fontStyle="italic" fontSize="10" align="top" />
+							</layout>
+						</layout>
+						<horzLine />
+						<button align="right" text="R E S E T" fontSize="11" fontStyle="bold" onClick="resetAtributos()" />
+					</layout>
+				</rectangle>
+			</rectangle>
+		</popup>
+	</template>
+	
+	<template name="btnPesquisaHab">
+		<button name="btnPesquisaHab" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Habilidades (Tempo de Carregamento demorado)">
+			<event name="onClick"><![CDATA[
+				self.popPesquisaHab:show('right', self.btnPesquisaHab)
+				carregarHabilidadesPesquisa()
+			]]></event>
+		</button>
+		<popup name="popPesquisaHab" width="390" height="760" backOpacity="0" drawContainer="false">
+			<event name="onClose"><![CDATA[
+				sheet.edtPesquisaHab = nil
+			]]></event>
+			<rectangle name="recPesquisaHab" align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<DivisorD texto="P E S Q U I S A" largura="145" topo="0"/>
+					<edit name="edtPesquisaHab" field="edtPesquisaHab" align="top" margins="{bottom=10}">
+						<event name="onUserChange"><![CDATA[
+							pesquisarHabilidades(sheet.edtPesquisaHab)
+						]]></event>
+					</edit>
+						<recordList align="client" name="rlPesquisaHab" field="ResultadosPesquisa" templateForm="pesquisaHab">
+							<event name="onCompare"><![CDATA[
+								return Utils.compareStringPtBr(nodeA.psqHabNome, nodeB.psqHabNome);
+							]]></event>
+						</recordList>
+				</rectangle>
+			</rectangle>
+		</popup>
+	</template>
+	
+	<template name="btnPesquisaTec">
+		<button name="btnPesquisaTec" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Técnicas (Tempo de Carregamento demorado)">
+			<event name="onClick"><![CDATA[
+				self.popPesquisaTec:show('right', self.btnPesquisaTec)
+				carregarTecnicasPesquisa()
+			]]></event>
+		</button>
+		<popup name="popPesquisaTec" width="390" height="760" backOpacity="0" drawContainer="false">
+			<event name="onClose"><![CDATA[
+				sheet.edtPesquisaTec = nil
+			]]></event>
+			<rectangle name="recPesquisaTec" align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<DivisorD texto="P E S Q U I S A" largura="145" topo="0"/>
+					<edit name="edtPesquisaTec" field="edtPesquisaTec" align="top" margins="{bottom=10}">
+						<event name="onUserChange"><![CDATA[
+							pesquisarTecnicas(sheet.edtPesquisaTec)
+						]]></event>
+					</edit>
+						<recordList align="client" name="rlPesquisaTec" field="ResultadosPesquisaTec" templateForm="pesquisaTec">
+							<event name="onCompare"><![CDATA[
+								return Utils.compareStringPtBr(nodeA.psqTecNome, nodeB.psqTecNome);
+							]]></event>
+						</recordList>
+				</rectangle>
+			</rectangle>
+		</popup>
+	</template>
+	
+	<template name="btnPesquisaFei">
+		<button name="btnPesquisaFei" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Feitiços (Tempo de Carregamento demorado)" visible="false">
+			<event name="onClick"><![CDATA[
+				self.popPesquisaFei:show('right', self.btnPesquisaFei)
+			]]></event>
+		</button>
+		<popup name="popPesquisaFei" width="390" height="760" backOpacity="0" drawContainer="false">
+			<event name="onClose"><![CDATA[
+				sheet.edtPesquisaFei = nil
+			]]></event>
+			<rectangle name="recPesquisaFei" align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<DivisorD texto="P E S Q U I S A" largura="145" topo="0"/>
+					<edit name="edtPesquisaFei" field="edtPesquisaFei" align="top" margins="{bottom=10}">
+						<event name="onUserChange"><![CDATA[
+							pesquisarFeiticos(sheet.edtPesquisaFei)
+						]]></event>
+					</edit>
+					<recordList align="client" name="rlPesquisaFei" field="ResultadosPesquisaFei" templateForm="pesquisaFei">
+						<event name="onCompare"><![CDATA[
+							local comp = Utils.compareStringPtBr(nodeA.psqFeiCol, nodeB.psqFeiCol);
+
+							if comp ~= 0 then
+								return comp;
+							else
+								return Utils.compareStringPtBr(nodeA.psqFeiNome, nodeB.psqFeiNome);
+							end
+						]]></event>
+					</recordList>
+				</rectangle>
+			</rectangle>
+		</popup>
+	</template>
+	
+	<template name="DivisorAtributos">
+		<layout align="top" height="30" margins="{top=20, bottom=15}">
+			<label align="left" text="A T R I B U T O S" width="155" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+			<edit align="left" name="edtAtributospts" field="Atributospts" class="pts" />
+			<dataLink field="Atributospts" defaultValue="[00]" />
+			<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+			<btnConfigsAtributos />
+		</layout>
+	</template>
+	
+	<template name="DivisorcomPts">
+		<layout align="top" height="30" margins="{bottom=15}">
+			<label align="left" text="$(texto)" width="$(largura)" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+			<edit align="left" name="edt$(var)pts" field="$(var)pts" class="pts" />
+			<dataLink field="$(var)pts" defaultValue="[00]" onChange="formatColors()" />
+			<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+			<button align="right" width="30" margins="{left=10}" text="⯆" fontSize="8" name="btn$(var)Vis" hint="Exibir/Ocultar a Lista abaixo">
+				<event name="onClick"><![CDATA[					
+					self.flw$(var).visible = not self.flw$(var).visible
+					self.parteEsquerda:needRepaint()
+					
+					if self.flw$(var).visible then
+						self.btn$(var)Vis.text = "⯆"
+					else
+						self.btn$(var)Vis.text = "⯅"
+					end
+				]]></event>
+			</button>
+		</layout>
+	</template>	
+	
+	<template name="DivisorsemPts">
+		<layout align="top" height="30" margins="{bottom=15}">
+			<label align="left" text="$(texto)" width="$(largura)" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+			<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+			<button align="right" width="30" margins="{left=10}" text="⯆" fontSize="8" name="btn$(var)Vis" hint="Exibir/Ocultar a Lista abaixo">
+				<event name="onClick"><![CDATA[					
+					self.flw$(var).visible = not self.flw$(var).visible
+					self.parteEsquerda:needRepaint()
+					
+					if self.flw$(var).visible then
+						self.btn$(var)Vis.text = "⯆"
+					else
+						self.btn$(var)Vis.text = "⯅"
+					end
+				]]></event>
+			</button>
+		</layout>
+	</template>
+
+	<template name="DivisorD">
+		<layout align="top" height="30" margins="{top=0, bottom=15}">
+			<label align="left" text="$(texto)" width="$(largura)" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+			<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+		</layout>
+	</template>
+	
+	<template name="DivisorM">
+		<layout align="top" height="12" margins="{top=0, bottom=5}">
+			<label align="left" text="$(texto)" width="$(largura)" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+			<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+		</layout>
+	</template>
+	
+	<template name="LinhaAtributosDiferentes">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<rectangle align="client" color="#272727" margins="{right=10}" xradius= "3" yradius="3" cornerType="bevel">
+				<AtributoRolavel atributo="$(atributo01)" />
+			</rectangle>
+			<layout align="right" width="150" height="30">
+				<rectangle align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel">
+					<AtributoNaoRolavel atributo="$(atributo02)" />
+				</rectangle>
+			</layout>
+		</layout>
+	</template>
+	
+	<template name="LinhaAtributosIguais">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<rectangle align="client" color="#272727" margins="{right=10}" xradius= "3" yradius="3" cornerType="bevel">
+				<AtributoRolavel atributo="$(atributo01)" />
+			</rectangle>
+			<layout align="right" width="150" height="30">
+				<rectangle align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel">
+					<AtributoRolavel atributo="$(atributo02)" />
+				</rectangle>
+			</layout>
+		</layout>
+	</template>
+	
+	<template name="labelPoints">
+		<edit name="edt$(atributo)pts" field="$(atributo)pts" class="pts">
+			<event name="onEnter"><![CDATA[
+				if(sheet.fldDisassociarAtr) then
+					self.edt$(atributo)pts.text = ""
+				end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				local input = sheet.$(atributo)pts or ""
+				input = string.gsub(input, "%[", "")
+				input = string.gsub(input, "%]", "")
+				input = tonumber(input)
+			
+				if input == nil then 
+					sheet.$(atributo)pts = '[00]'
+				else
+					sheet.$(atributo)pts = string.format('[%02d]', input)
+				end
+				calcSomaPontosAtributos()
+			]]></event>
+		</edit>
+	</template>
+	
+	<template name="labelPointsDer">
+		<edit name="edt$(atributo)pts" field="$(atributo)pts" class="pts" align="none" anchors="top left" top="-3" left="120">
+			<event name="onEnter"><![CDATA[
+				if(sheet.fldDisassociarAtr) then
+					self.edt$(atributo)pts.text = ""
+				end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				local input = sheet.$(atributo)pts or ""
+				input = string.gsub(input, "%[", "")
+				input = string.gsub(input, "%]", "")
+				input = tonumber(input)
+			
+				if input == nil then 
+					sheet.$(atributo)pts = '[00]'
+				else
+					sheet.$(atributo)pts = string.format('[%02d]', input)
+				end
+				calcSomaPontosAtributos()
+			]]></event>
+		</edit>
+	</template>
+	
+	<template name="AtributoRolavel">
+		<button name="btn$(atributo)" text="$(atributo)" class="btnAtrRolavel" onClick="g(sheet.$(atributo), '$(atributo)')" />
+		<edit name="edt$(atributo)" field="$(atributo)" class="edtAtrEditavel" />
+		<dataLink field="$(atributo)" defaultValue="10" onChange="self.rlHabilidades.visible=false self.rlHabilidades.visible=true defineDef()" />
+		<atrDoisBotoes campo="$(atributo)pts" custo="custo$(atributo)" />
+		<labelPoints atributo="$(atributo)" />
+		<dataLink field="$(atributo)pts" defaultValue="[00]" onChange="calcSomaPontosAtributos() formatColors()" />
+	</template>
+	
+	<template name="AtributoNaoRolavel">
+		<label class="AtrInrolavel" text="$(atributo)" />
+		<edit name="edt$(atributo)" field="$(atributo)" class="edtAtrEditavel" />
+		<dataLink field="$(atributo)" defaultValue="10" onChange="" />
+		<atrDerDoisBotoes campo="$(atributo)pts" custo="custo$(atributo)" />
+		<labelPoints atributo="$(atributo)" />
+		<dataLink field="$(atributo)pts" defaultValue="[00]" onChange="calcSomaPontosAtributos() formatColors()" />
+	</template>
+	
+	<template name="atrDoisBotoes">
+		<layout align="left" width="15">
+			<button text="⯅" align="top" height="15" fontSize="6" onClick="
+				if(sheet.fldDisassociarAtr) then
+					local campoSt = '$(campo)'
+					local att = string.sub(campoSt, 1, #campoSt - 3)
+					sheet[att] = sheet[att] + 1
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) + tonumber(sheet['$(custo)']))
+				else
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) + tonumber(sheet['$(custo)']))
+					calcAtributos()
+				end
+				formatColors()
+				calcSomaPontosHabilidades()
+				defineDef()
+			"/>
+			<button text="⯆" align="top" height="15" fontSize="6"  onClick="
+				if(sheet.fldDisassociarAtr) then
+					local campoSt = '$(campo)'
+					local att = string.sub(campoSt, 1, #campoSt - 3)
+					sheet[att] = sheet[att] - 1
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) - tonumber(sheet['$(custo)']))
+				else
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) - tonumber(sheet['$(custo)']))
+					calcAtributos()
+				end
+				formatColors()
+				calcSomaPontosHabilidades()
+				defineDef()
+			"/>
+		</layout>
+	</template>
+	
+	<template name="atrDerDoisBotoes">
+		<layout align="left" width="15">
+			<button text="⯅" align="top" height="15" fontSize="6" onClick="
+				if(sheet.fldDisassociarAtr) then
+					local campoSt = '$(campo)'
+					local att = string.sub(campoSt, 1, #campoSt - 3)
+					sheet[att] = sheet[att] + 1
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) + tonumber(sheet['$(custo)']))
+				else
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) + tonumber(sheet['$(custo)']))
+					calcAtributos()
+				end
+				formatColors()
+			"/>
+			<button text="⯆" align="top" height="15" fontSize="6" onClick="
+				if(sheet.fldDisassociarAtr) then
+					local campoSt = '$(campo)'
+					local att = string.sub(campoSt, 1, #campoSt - 3)
+					sheet[att] = sheet[att] - 1
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) - tonumber(sheet['$(custo)']))
+				else
+					sheet['$(campo)'] = string.format('[%02d]', tonumber(string.sub(sheet['$(campo)'], 2, -2)) - tonumber(sheet['$(custo)']))
+					calcAtributos()
+				end
+				formatColors()
+			"/>
+		</layout>
+	</template>
+	
+	<template name="ConfigCusto">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<ColCusto atributo="$(atributo01)" default="$(default01)" />
+			
+			<layout width="150" align="right" height="30">
+				<ColCusto atributo="$(atributo02)" default="$(default02)" />
+			</layout>
+		</layout>
+	</template>
+	
+	<template name="ConfigCustoDer">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<ColCustoDer atributo="$(atributo01)" default="$(default01)" />
+			
+			<layout width="150" align="right" height="30">
+				<ColCustoDer atributo="$(atributo02)" default="$(default02)" />
+			</layout>
+		</layout>
+	</template>
+	
+	<template name="ColCusto">
+		<label width="100" text="Custo de $(atributo):" align="left" fontStyle="bold"/>
+		<edit width="50" horzTextAlign="center" type="number" min="1" align="left" field="custo$(atributo)" />
+		<dataLink field="custo$(atributo)" defaultValue="$(default)">
+			<event name="onUserChange"><![CDATA[
+				if not (sheet.fldDisassociarAtr) then
+					if oldValue == nil then oldValue = 1 end
+					sheet['$(atributo)' .. 'pts'] = string.format('[%02d]', (tonumber(string.sub(sheet['$(atributo)' .. 'pts'], 2, -2)) / oldValue) * newValue)
+				end
+			]]></event>
+		</dataLink>
+	</template>
+	
+	<template name="ColCustoDer">
+		<label width="100" text="$(atributo):" align="left" fontStyle="bold"/>
+		<edit width="50" horzTextAlign="center" type="number" min="1" align="left" field="custo$(atributo)" />
+		<dataLink field="custo$(atributo)" defaultValue="$(default)">
+			<event name="onUserChange"><![CDATA[
+				if not (sheet.fldDisassociarAtr) then
+					if oldValue == nil then oldValue = 1 end
+					sheet['$(atributo)' .. 'pts'] = string.format('[%02d]', (tonumber(string.sub(sheet['$(atributo)' .. 'pts'], 2, -2)) / oldValue) * newValue)
+				end
+			]]></event>
+		</dataLink>
+	</template>
+	
+	<template name="atributosDerivados">
+		<layout align="top" height="70">
+										
+			<layout align="top" height="20" margins="{bottom=5}">
+				<label text="B A S I C   S P E E D" class="SubAttribute" />
+				<edit name="edtBasicSpeed" field="BasicSpeed" type="float" class="SubAttribute" />
+				<dataLink field="BasicSpeed" defaultValue="5" />
+				<layout align="left" width="15">
+					<button align="top" height="10" padding="{left=0, top=0, right=0, bottom=0}" text="⯅" fontSize="5" onClick="
+						if(sheet.fldDisassociarAtr) then
+							local campoSt = 'BasicSpeedpts'
+							local att = string.sub(campoSt, 1, #campoSt - 3)
+							sheet[att] = sheet[att] + 0.25
+							sheet['BasicSpeedpts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicSpeedpts'], 2, -2)) + tonumber(sheet['custoBasicSpeed']))
+						else
+							sheet['BasicSpeedpts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicSpeedpts'], 2, -2)) + tonumber(sheet['custoBasicSpeed']))
+							calcAtributos()
+						end
+						formatColors()
+					"/>
+					<button align="top" height="10" padding="{left=0, top=0, right=0, bottom=0}" text="⯆" fontSize="5" onClick="
+						if(sheet.fldDisassociarAtr) then
+							local campoSt = 'BasicSpeedpts'
+							local att = string.sub(campoSt, 1, #campoSt - 3)
+							sheet[att] = sheet[att] - 0.25
+							sheet['BasicSpeedpts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicSpeedpts'], 2, -2)) - tonumber(sheet['custoBasicSpeed']))
+						else
+							sheet['BasicSpeedpts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicSpeedpts'], 2, -2)) - tonumber(sheet['custoBasicSpeed']))
+							calcAtributos()
+						end
+						formatColors()
+					"/>
+				</layout>
+				<labelPointsDer atributo="BasicSpeed" />
+				<dataLink field="BasicSpeedpts" defaultValue="[00]" onChange="calcSomaPontosAtributos() formatColors()" />
+				
+				<layout align="right" width="150">
+					<label text="T H R U S T I N G   D M G ." class="SubAttribute" width="90" />
+					<edit name="edtThrDmg" field="ThrDmg" class="SubAttribute" align="client" />
+					<dataLink field="ThrDmg" defaultValue="1d-2" onChange="sheet.ThrDmg = tratarInputDano(newValue, oldValue)" />
+				</layout>
+			</layout>
+			
+			<layout align="top" height="20" margins="{bottom=5}">
+				<label text="B A S I C   M O V E" class="SubAttribute" />
+				<edit  name="edtBasicMove" field="BasicMove"  type="number" class="SubAttribute" />
+				<dataLink field="BasicMove" defaultValue="5" />
+				<layout align="left" width="15">
+					<button align="top" height="10" padding="{left=0, top=0, right=0, bottom=0}" text="⯅" fontSize="5" onClick="
+						if(sheet.fldDisassociarAtr) then
+							local campoSt = 'BasicMovepts'
+							local att = string.sub(campoSt, 1, #campoSt - 3)
+							sheet[att] = sheet[att] + 1
+							sheet['BasicMovepts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicMovepts'], 2, -2)) + tonumber(sheet['custoBasicMove']))
+						else
+							sheet['BasicMovepts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicMovepts'], 2, -2)) + tonumber(sheet['custoBasicMove']))
+							calcAtributos()
+						end
+						formatColors()
+					"/>
+					<button align="top" height="10" padding="{left=0, top=0, right=0, bottom=0}" text="⯆" fontSize="5"  onClick="
+						if(sheet.fldDisassociarAtr) then
+							local campoSt = 'BasicMovepts'
+							local att = string.sub(campoSt, 1, #campoSt - 3)
+							sheet[att] = sheet[att] - 1
+							sheet['BasicMovepts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicMovepts'], 2, -2)) - tonumber(sheet['custoBasicMove']))
+						else
+							sheet['BasicMovepts'] = string.format('[%02d]', tonumber(string.sub(sheet['BasicMovepts'], 2, -2)) - tonumber(sheet['custoBasicMove']))
+							calcAtributos()
+						end
+						formatColors()
+					"/>
+				</layout>
+				<labelPointsDer atributo="BasicMove" />
+				<dataLink field="BasicMovepts" defaultValue="[00]" onChange="calcSomaPontosAtributos() formatColors()" />
+				
+				<layout align="right" width="150">
+					<label text="S W I N G I N G   D M G ." class="SubAttribute" width="90" />
+					<edit name="edtSwDmg" field="SwDmg" class="SubAttribute" align="client"/>
+					<dataLink field="SwDmg" defaultValue="1d" onChange="sheet.SwDmg = tratarInputDano(newValue, oldValue)" />
+				</layout>
+			</layout>
+		
+			<layout align="top" height="20" margins="{bottom=5}">
+				<label text="B A S I C   L I F T" class="SubAttribute" />
+				<edit name="edtBasicLift" field="BasicLift" type="float" class="SubAttribute" align="client" horzTextAlign="leading" margins="{left=12}"/>
+				<dataLink field="BasicLift" defaultValue="20" />
+			</layout>
+			
+		</layout>
+	</template>
+	
+	<template name="NiveisDeCarga">
+		<DivisorD texto="N Í V E I S   D E   C A R G A" largura="250" />
+		<layout align="top" height="30" margins="{bottom=5}">
+			<rectangle align="client" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<label text=" LIMIAR DE CARGA" align="left" width="160" margins="{left=25}" fontStyle="bold" fontColor="white" />
+				<label text="MOVE" align="left" width="48" fontStyle="bold" fontColor="white" />
+				<label text="DODGE" align="left" margins="{left=15}" fontStyle="bold" fontColor="white" />
+			</rectangle>
+		</layout>
+		<layout align="top" height="25" margins="{bottom=5}">
+			<rectangle name="recCarga01" align="client" color="transparent" xradius= "3" yradius="3" cornerType="bevel">
+				<radioButton groupName="nvlCarga" name="rdbCarga01" class="rdbCarga" field="rdbCarga" text=" Nula ₍₀₎" fieldValue="nula" hitTest="false"/>
+				<edit class="edtTblCargaNum" name="edtCarga01" field="Carga01" horzTextAlign="leading" type="float" />
+				<dataLink field="Carga01" defaultValue="20" />
+				<edit class="edtTblCargaNum" name="edtMove01" field="Move01" />
+				<dataLink field="Move01" defaultValue="5" />
+				<edit class="edtTblCargaNum" margins="{left=15}" name="edtDodge01" field="Dodge01" />
+				<dataLink field="Dodge01" defaultValue="8" />
+			</rectangle>
+		</layout>
+		<layout align="top" height="25" margins="{bottom=5}">
+			<rectangle name="recCarga02" align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel">
+				<radioButton groupName="nvlCarga" name="rdbCarga02" class="rdbCarga" field="rdbCarga" text=" Leve ₍₁₎" fieldValue="leve" hitTest="false" />
+				<edit class="edtTblCargaNum" name="edtCarga02" field="Carga02" horzTextAlign="leading" type="float" />
+				<dataLink field="Carga02" defaultValue="40" />
+				<edit class="edtTblCargaNum" name="edtMove02" field="Move02" />
+				<dataLink field="Move02" defaultValue="4" />
+				<edit class="edtTblCargaNum" margins="{left=15}" name="edtDodge02" field="Dodge02" />
+				<dataLink field="Dodge02" defaultValue="7" />
+			</rectangle>
+		</layout>
+		<layout align="top" height="25" margins="{bottom=5}">
+			<rectangle name="recCarga03" align="client" color="transparent" xradius= "3" yradius="3" cornerType="bevel">
+				<radioButton groupName="nvlCarga" name="rdbCarga03" class="rdbCarga" field="rdbCarga" text=" Média ₍₂₎" fieldValue="media" hitTest="false"/>
+				<edit class="edtTblCargaNum" name="edtCarga03" field="Carga03" horzTextAlign="leading" type="float" />
+				<dataLink field="Carga03" defaultValue="60" />
+				<edit class="edtTblCargaNum" name="edtMove03" field="Move03" />
+				<dataLink field="Move03" defaultValue="3" />
+				<edit class="edtTblCargaNum" margins="{left=15}" name="edtDodge03" field="Dodge03" />
+				<dataLink field="Dodge03" defaultValue="6" />
+			</rectangle>
+		</layout>
+		<layout align="top" height="25" margins="{bottom=5}">
+			<rectangle name="recCarga04" align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel">
+				<radioButton groupName="nvlCarga" name="rdbCarga04" class="rdbCarga" field="rdbCarga" text=" Pesada ₍₃₎" fieldValue="pesada" hitTest="false"/>
+				<edit class="edtTblCargaNum" name="edtCarga04" field="Carga04" horzTextAlign="leading" type="float" />
+				<dataLink field="Carga04" defaultValue="120" />
+				<edit class="edtTblCargaNum" name="edtMove04" field="Move04" />
+				<dataLink field="Move04" defaultValue="2" />
+				<edit class="edtTblCargaNum" margins="{left=15}" name="edtDodge04" field="Dodge04" />
+				<dataLink field="Dodge04" defaultValue="5" />
+			</rectangle>
+		</layout>
+		<layout align="top" height="25" margins="{bottom=5}">
+			<rectangle name="recCarga05" align="client" color="transparent" xradius= "3" yradius="3" cornerType="bevel">
+				<radioButton groupName="nvlCarga" name="rdbCarga05" class="rdbCarga" field="rdbCarga" text=" Mt. Pesada ₍₄₎" fieldValue="mtpesada" hitTest="false"/>
+				<edit class="edtTblCargaNum" name="edtCarga05" field="Carga05" horzTextAlign="leading" type="float" />
+				<dataLink field="Carga05" defaultValue="200" />
+				<edit class="edtTblCargaNum" name="edtMove05" field="Move05" />
+				<dataLink field="Move05" defaultValue="1" />
+				<edit class="edtTblCargaNum" margins="{left=15}" name="edtDodge05" field="Dodge05" />
+				<dataLink field="Dodge05" defaultValue="4" />
+			</rectangle>
+		</layout>
+		<dataLink field="rdbCarga" defaultValue="nula">
+			<event name="onChange"><![CDATA[
+				defineDef()
+				
+				if sheet.rdbCarga == "nula" then
+					self.recCarga01.color = "#303030"
+					self.recCarga02.color = "#272727"
+					self.recCarga03.color = "transparent"
+					self.recCarga04.color = "#272727"
+					self.recCarga05.color = "transparent"
+					
+				elseif sheet.rdbCarga == "leve" then
+					self.recCarga01.color = "transparent"
+					self.recCarga02.color = "#303030"
+					self.recCarga03.color = "transparent"
+					self.recCarga04.color = "#272727"
+					self.recCarga05.color = "transparent"
+					
+				elseif sheet.rdbCarga == "media" then
+					self.recCarga01.color = "transparent"
+					self.recCarga02.color = "#272727"
+					self.recCarga03.color = "#303030"
+					self.recCarga04.color = "#272727"
+					self.recCarga05.color = "transparent"
+					
+				elseif sheet.rdbCarga == "pesada" then
+					self.recCarga01.color = "transparent"
+					self.recCarga02.color = "#272727"
+					self.recCarga03.color = "transparent"
+					self.recCarga04.color = "#303030"
+					self.recCarga05.color = "transparent"
+					
+				else
+					self.recCarga01.color = "transparent"
+					self.recCarga02.color = "#272727"
+					self.recCarga03.color = "transparent"
+					self.recCarga04.color = "#272727"
+					self.recCarga05.color = "#303030"
+					
+				end
+			]]></event>
+		</dataLink>
+		<dataLink fields="{'Dodge01', 'Dodge02', 'Dodge03', 'Dodge04', 'Dodge05'}">
+			<event name="onChange"><![CDATA[
+				defineDef()
+			]]></event>
+		</dataLink>
+		<dataLink fields="{'Carga01', 'Carga02', 'Carga03', 'Carga04', 'Carga05'}">
+			<event name="onChange"><![CDATA[
+				calcCarga()
+			]]></event>
+		</dataLink>
+		<rectangle align="top" height="65" color="#101010" xradius= "3" yradius="3" cornerType="bevel" padding="{left=10, right=10, top=10}" margins="{top=10}">
+			<DivisorM texto="C A R G A   A T U A L" largura="100" />
+			<progressBar align="top" height="8" colorMode="hl" field="posBarraDir" name="barraDir" fieldMax="Carga05" hitTest="true" margins="{top=5}" mouseGlow="false" />
+			<label align="top" name="sumCarga" field="sumCarga" horzTextAlign="trailing" vertTextAlign="leading" fontSize="10" fontStyle="italic" height="30" />
+			<rectangle width="1" height="25" color="#101010" left="39" top="25" />
+			<rectangle width="1" height="25" color="#101010" left="68" top="25" />
+			<rectangle width="1" height="25" color="#101010" left="97" top="25" />
+			<rectangle width="1" height="25" color="#101010" left="184" top="25" />
+		</rectangle>
+	</template>
+	
+	<template name="BotoesTabs">
+		<layout align="top" height="30" margins="{top=20, bottom=20}">
+			<button name="btnTabSobre" class="Aba" text="S O B R E" enabled="false"	onClick="Tab(self.btnTabSobre, self.scrbSobre)" />
+			<button name="btnTabPericias" class="Aba" text="P E R Í C I A S"		onClick="Tab(self.btnTabPericias, self.scrbPericias)" />
+			<button name="btnTabTracos" class="Aba" text="T R A Ç O S"				onClick="Tab(self.btnTabTracos, self.scrbTracos)" />
+			<button name="btnTabInventario" class="Aba" text="I N V E N T Á R I O"	onClick="Tab(self.btnTabInventario, self.scrbInventario)" />
+			<button name="btnTabHistoria" class="Aba" text="H I S T Ó R I A"		onClick="Tab(self.btnTabHistoria, self.scrbHistoria)" />
+			<button name="btnTabAnotacoes" class="Aba" text="A N O T A Ç Õ E S"		onClick="Tab(self.btnTabAnotacoes, self.scrbAnotacoes)" />
+		</layout>
+	</template>
+	
+	<template name="Habilidades">
+		<DivisorcomPts texto="H A B I L I D A D E S" largura="188" var="Habilidades" />
+		<flowLayout name="flwHabilidades" align="top" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+			<rectangle name="headerHabilidades" width="926" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<btnPesquisaHab />
+				<label text="NOME"   width="530" fontStyle="bold" fontColor="white" align="left" />
+				<label text="ATR."   width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="DIF."   width="85" fontStyle="bold" fontColor="white" align="left" />
+				<label text="MOD."  width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="NH"     width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="PTS."   width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="INFO"   width="50" fontStyle="bold" fontColor="white" align="left" />
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlHabilidades" field="Habilidades" templateForm="tmpHabilidades">
+				<event name="onCompare"><![CDATA[
+					calcSomaPontosHabilidades()
+					return Utils.compareStringPtBr(nodeA.nomeHab, nodeB.nomeHab)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+					calcSomaPontosHabilidades()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+					calcSomaPontosHabilidades()
+				]]></event>
+			</recordList>
+			<dataLink field="Habilidades" onChange="defineDef()" />
+			<button name="btnAddHabilidades" text="🞧" width="926" height="30" onClick="self.rlHabilidades:append(); self.parteEsquerda:needRepaint(); formatColors();" hint="Nova Habilidade" />
+			<spacer />
+		</flowLayout>
+	</template>
+	
+	<template name="Tecnicas">
+		<DivisorcomPts texto="T É C N I C A S" largura="134" var="Tecnicas" />
+		<flowLayout name="flwTecnicas" align="top" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+			<rectangle name="headerTecnicas" width="926" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<btnPesquisaTec />
+				<label text="NOME"		width="325" fontStyle="bold" fontColor="white" align="left" />
+				<label text="HAB."		width="240" fontStyle="bold" fontColor="white" align="left" />
+				<label text="DFLT."		width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="DIF."		width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="MOD."		width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="NH"		width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="PTS."		width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="INFO"		width="50" fontStyle="bold" fontColor="white" align="left" />
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlTecnicas" field="Tecnicas" templateForm="tmpTecnicas">
+				<event name="onCompare"><![CDATA[
+					calcSomaPontosHabilidades()
+					return Utils.compareStringPtBr(nodeA.nomeTec, nodeB.nomeTec)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button name="btnAddTecnicas" text="🞧" width="926" height="30" onClick="self.rlTecnicas:append(); self.parteEsquerda:needRepaint(); formatColors();" hint="Nova Técnica" />
+			<spacer />
+		</flowLayout>
+	</template>
+	
+	<template name="Feiticos">
+		<DivisorcomPts texto="F E I T I Ç O S" largura="128" var="Feiticos" />
+		<flowLayout name="flwFeiticos" align="top" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+			<rectangle name="headerFeiticos" width="926" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<btnPesquisaFei /><label align="left" width="35" />
+				<label text="NOME"   width="335" fontStyle="bold" fontColor="white" align="left" />
+				<label text="COLLEGE"   width="280" fontStyle="bold" fontColor="white" align="left" />
+				<label text="DIF."   width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="MOD."  width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="NH"     width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="PTS."   width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="INFO"   width="50" fontStyle="bold" fontColor="white" align="left" />
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlFeiticos" field="Feiticos" templateForm="tmpFeiticos">
+				<event name="onCompare"><![CDATA[
+					calcSomaPontosHabilidades()
+					if (nodeA.collegeFei or 0) < (nodeB.collegeFei or 0) then
+						return -1
+					elseif (nodeA.collegeFei or 0) > (nodeB.collegeFei or 0) then
+						return 1
+					else   
+						return Utils.compareStringPtBr(nodeA.nomeFei, nodeB.nomeFei)
+					end
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button name="btnAddFeiticos" text="🞧" width="926" height="30" onClick="self.rlFeiticos:append(); self.parteEsquerda:needRepaint(); formatColors();" hint="Novo Feitiço" />
+			<spacer />
+		</flowLayout>
+	</template>
+	
+	<template name="Vantagens">
+		<DivisorcomPts texto="V A N T A G E N S" largura="160" var="Vantagens" />
+		<flowLayout name="flwVantagens" align="top" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+			<rectangle name="headerVantagens" width="926" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<button name="btnPesquisaVan" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Vantagens (Tempo de Carregamento demorado)" visible="false" /><label align="left" width="35" />
+				<label text="NOME"   width="465" fontStyle="bold" fontColor="white" align="left" />
+				<label text="CATEGORIA"   width="150" fontStyle="bold" fontColor="white" align="left" />
+				<label text="TIPO"   width="150" fontStyle="bold" fontColor="white" align="left" />
+				<label text="PTS."   width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="INFO"   width="50" fontStyle="bold" fontColor="white" align="left" />
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlVantagens" field="Vantagens" templateForm="tmpVantagens">
+				<event name="onCompare"><![CDATA[
+					calcSomaPontosTracos()
+					return Utils.compareStringPtBr(nodeA.nomeVan, nodeB.nomeVan)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button name="btnAddVantagens" text="🞧" width="926" height="30" onClick="self.rlVantagens:append(); self.parteEsquerda:needRepaint(); formatColors();" hint="Nova Vantagem" />
+			<spacer />
+		</flowLayout>
+	</template>
+	
+	<template name="Qualidades">
+		<DivisorcomPts texto="Q U A L I D A D E S" largura="180" var="Qualidades" />
+		<flowLayout name="flwQualidades" align="top" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+			<rectangle name="headerQualidades" width="926" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<button name="btnPesquisaQua" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Qualidades (Tempo de Carregamento demorado)" visible="false" /><label align="left" width="35" />
+				<label text="NOME"   width="465" fontStyle="bold" fontColor="white" align="left" />
+				<label text="CATEGORIA"   width="150" fontStyle="bold" fontColor="white" align="left" />
+				<label text="TIPO"   width="150" fontStyle="bold" fontColor="white" align="left" />
+				<label text="PTS."   width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="INFO"   width="50" fontStyle="bold" fontColor="white" align="left" />
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlQualidades" field="Qualidades" templateForm="tmpQualidades">
+				<event name="onCompare"><![CDATA[
+					calcSomaPontosTracos()
+					return Utils.compareStringPtBr(nodeA.nomeVan, nodeB.nomeVan)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button name="btnAddQualidades" text="🞧" width="926" height="30" onClick="self.rlQualidades:append(); self.parteEsquerda:needRepaint(); formatColors(); calcSomaPontosTracos()" hint="Nova Qualidade" />
+			<spacer />
+		</flowLayout>
+	</template>
+	
+	<template name="Desvantagens">
+		<DivisorcomPts texto="D E S V A N T A G E N S" largura="215" var="Desvantagens" />
+		<flowLayout name="flwDesvantagens" align="top" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+			<rectangle name="headerDesvantagens" width="926" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<button name="btnPesquisaDesvan" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Desvantagens (Tempo de Carregamento demorado)" visible="false" /><label align="left" width="35" />
+				<label text="NOME"   width="465" fontStyle="bold" fontColor="white" align="left" />
+				<label text="CATEGORIA"   width="150" fontStyle="bold" fontColor="white" align="left" />
+				<label text="TIPO"   width="150" fontStyle="bold" fontColor="white" align="left" />
+				<label text="PTS."   width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="INFO"   width="50" fontStyle="bold" fontColor="white" align="left" />
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlDesvantagens" field="Desvantagens" templateForm="tmpDesvantagens">
+				<event name="onCompare"><![CDATA[
+					calcSomaPontosTracos()
+					return Utils.compareStringPtBr(nodeA.nomeVan, nodeB.nomeVan)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button name="btnAddDesvantagens" text="🞧" width="926" height="30" onClick="self.rlDesvantagens:append(); self.parteEsquerda:needRepaint(); formatColors();" hint="Nova Desvantagem" />
+			<spacer />
+		</flowLayout>
+	</template>
+	
+	<template name="Peculiaridades">
+		<DivisorcomPts texto="P E C U L I A R I D A D E S" largura="242" var="Peculiaridades" />
+		<flowLayout name="flwPeculiaridades" align="top" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+			<rectangle name="headerPeculiaridades" width="926" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<button name="btnPesquisaPec" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Peculiaridades (Tempo de Carregamento demorado)" visible="false" /><label align="left" width="35" />
+				<label text="NOME"   width="465" fontStyle="bold" fontColor="white" align="left" />
+				<label text="CATEGORIA"   width="150" fontStyle="bold" fontColor="white" align="left" />
+				<label text="TIPO"   width="150" fontStyle="bold" fontColor="white" align="left" />
+				<label text="PTS."   width="50" fontStyle="bold" fontColor="white" align="left" />
+				<label text="INFO"   width="50" fontStyle="bold" fontColor="white" align="left" />
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlPeculiaridades" field="Peculiaridades" templateForm="tmpPeculiaridades">
+				<event name="onCompare"><![CDATA[
+					calcSomaPontosTracos()
+					return Utils.compareStringPtBr(nodeA.nomeVan, nodeB.nomeVan)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button name="btnAddPeculiaridades" text="🞧" width="926" height="30" onClick="self.rlPeculiaridades:append(); self.parteEsquerda:needRepaint(); formatColors(); calcSomaPontosTracos()" hint="Nova Peculiaridade" />
+			<spacer />
+		</flowLayout>
+	</template>
+	
+	<template name="Defesas">
+		<DivisorD texto="D E F E S A S   A T I V A S" largura="230" />
+		<layout align="top" height="30">
+			<rectangle align="left" color="#272727" margins="{right=5}" xradius= "3" yradius="3" cornerType="bevel" width="100">
+				<button align="left" text="Dodge" fontStyle="bold" width="65" onClick="g(sheet.Dodge, 'Dodge')" hint="Rolar Defesa" />
+				<edit class="edtDefesa" name="edtDodge" field="Dodge" />
+			</rectangle>
+			
+			<rectangle align="left" color="#272727" margins="{right=5}" xradius= "3" yradius="3" cornerType="bevel" width="100">
+				<button align="left" text="Parry" fontStyle="bold" width="65" onClick="g(sheet.Parry, 'Parry')" hint="Rolar Defesa" />
+				<edit class="edtDefesa" name="edtParry" field="Parry" />
+			</rectangle>
+			
+			<rectangle align="left" color="#272727" margins="{right=5}" xradius= "3" yradius="3" cornerType="bevel" width="100">
+				<button align="left" text="Block" fontStyle="bold" width="65" onClick="g(sheet.Block, 'Block')" hint="Rolar Defesa" />
+				<edit class="edtDefesa" name="edtBlock" field="Block" />
+			</rectangle>
+		</layout>
+	</template>
+
+	<template name="Retrato">
+		<image field="Retrato" width="453" align="left" animate="true" editable="true" style="autoFit" hint="Foto do Personagem" />
+		<dataLink field="Retrato" defaultValue="/images/202020.png" />
+	</template>
+
+	<template name="Dados">
+		<rectangle width="453" align="right" color="#202020" xradius= "3" yradius="3" cornerType="bevel"> 
+			<rectangle align="top" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<label text="DADOS DO PERSONAGEM" align="client" margins="{left=20}" fontStyle="bold" fontColor="white" />
+			</rectangle>
+			<layout align="client" padding="{top=10, right=20, bottom=20, left=20}">
+				<campo texto="Nome:"			largura="45" var="Nome" />
+				<campo texto="Jogador:"			largura="60" var="Jogador" />
+				<campo texto="Altura:"			largura="50" var="Altura" />
+				<campo texto="Peso:"			largura="40" var="Peso" />
+				<campo texto="Idade:"			largura="45" var="Idade" />
+				<campo texto="Mod. Tamanho:"	largura="105" var="ModTamanho" />
+				<layout align="top" height="30" margins="{bottom=3}">
+					<label align="left" text="TL:" width="27" fontStyle="bold" />
+					
+					<edit align="right" width="50" name="edtTLpts" field="TLpts" class="pts" hint="Pontos Gastos em TL" horzTextAlign="trailing" readOnly="false" cursor="IBeam" canFocus="true">
+						<event name="onEnter">
+							sheet.TLpts = nil
+							self.edtTLpts.type = "number"
+						</event>
+						<event name="onExit">
+							self.edtTLpts.type = "text"
+							sheet.TLpts = string.format('[%02d]', sheet.TLpts or 0)
+							calcSomaPontosSobre()
+						</event>
+					</edit>
+					<dataLink field="TLpts" defaultValue="[00]">
+						<event name="onChange">
+							formatColors()
+						</event>
+					</dataLink>
+					
+					<edit align="client" field="TL" transparent="true" hint="TL do Personagem">
+						<event name="onEnter"><![CDATA[
+							if sheet.TL == "0" then sheet.TL = nil end
+						]]></event>
+					</edit>
+					<dataLink field="TL" defaultValue="0"/>
+				</layout>
+				<layout align="top" height="10" />
+				<DivisorM texto="A P A R Ê N C I A" largura="85" />
+				<textEditor field="Aparencia" align="client" hint="Descrição da Aparência do Personagem">
+					<event name="onEnter"><![CDATA[
+						if sheet.Aparencia == "—" then sheet.Aparencia = nil end
+					]]></event>
+				</textEditor>
+				<dataLink field="Aparencia" defaultValue="—"/>
+			</layout>
+		</rectangle>
+	</template>
+
+	<template name="Idiomas">
+		<flowLayout align="top" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+			<layout width="926" height="30" margins="{bottom=15}">
+				<label align="left" text="I D I O M A S" width="125" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+				<edit align="left" name="edtIdiomaspts" field="Idiomaspts" class="pts" />
+				<dataLink field="Idiomaspts" defaultValue="[00]" onChange="formatColors()" />
+				<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+			</layout>
+			
+			<rectangle width="926" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<label text="IDIOMA"		width="430" fontStyle="bold" fontColor="white" align="left" margins="{left=5}"/>
+				<label text="NV. FALADO"	width="200" fontStyle="bold" fontColor="white" align="left"/>
+				<label text="NV. ESCRITO"	width="200" fontStyle="bold" fontColor="white" align="left"/>
+				<label text="PTS."			width="50" fontStyle="bold" fontColor="white" align="left"/>
+			</rectangle>
+			
+			<recordList width="926" autoHeight="true" name="rlIdiomas" field="Idiomas" templateForm="tmpIdiomas" minQt="1">
+				<event name="onCompare"><![CDATA[
+					if (nodeA.PtsIdioma or 0) < (nodeB.PtsIdioma or 0) then
+						return -1
+					elseif (nodeA.PtsIdioma or 0) > (nodeB.PtsIdioma or 0) then
+						return 1
+					else   
+						return Utils.compareStringPtBr(nodeA.NomeIdioma, nodeB.NomeIdioma)
+					end
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			
+			<button text="🞧" width="926" height="30" onClick="self.rlIdiomas:append() self.parteEsquerda:needRepaint() formatColors()" hint="Novo Idioma" />
+		</flowLayout>
+	</template>
+
+	<template name="Reacoes">
+		<flowLayout width="453" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+		
+			<layout width="453" height="30" margins="{top=0, bottom=15}">
+				<label align="left" text="R E A Ç Õ E S" width="130" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+				<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+			</layout>
+			
+			<rectangle width="453" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel" margins="{bottom=3}">
+				<label text="ORIGEM DA REAÇÃO" align="left" width="325" margins="{left=5}" fontStyle="bold" fontColor="white" />
+				<label text="BÔNUS" align="left" width="50" fontStyle="bold" fontColor="white" />
+				<label text="INFO." align="left" width="50" fontStyle="bold" fontColor="white" />
+			</rectangle>
+			
+			<recordList width="453" autoHeight="true" name="rlReacoes" field="Reacoes" templateForm="tmpReacoes">
+				<event name="onCompare"><![CDATA[
+					if (nodeA.BonusReact or 0) < (nodeB.BonusReact or 0) then
+						return 1
+					elseif (nodeA.BonusReact or 0) > (nodeB.BonusReact or 0) then
+						return -1
+					else   
+						return Utils.compareStringPtBr(nodeA.NomeReact, nodeB.NomeReact)
+					end
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			
+			<button text="🞧" width="453" height="30" onClick="self.rlReacoes:append() self.parteEsquerda:needRepaint() formatColors()" hint="Novo Bônus de Reação" />
+		</flowLayout>
+	</template>
+
+	<template name="Familiaridades">
+		<flowLayout width="453" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
+											
+			<layout width="453" height="30" margins="{bottom=15}">
+				<label align="left" text="F A M I L I A R I D A D E S" width="237" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+				<edit align="left" name="edtFamiliaridadespts" field="Familiaridadespts" class="pts" />
+				<dataLink field="Familiaridadespts" defaultValue="[00]" onChange="formatColors()" />
+				<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+			</layout>
+			
+			<rectangle width="453" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel" margins="{bottom=3}">
+				<label text="FAMILIARIDADE CULTURAL" align="left" width="383" margins="{left=35}" fontStyle="bold" fontColor="white" />
+				<label text="PTS." align="left" width="50" fontStyle="bold" fontColor="white" />
+			</rectangle>
+			
+			<recordList width="453" autoHeight="true" name="rlFamiliaridades" field="Familiaridades" templateForm="tmpFamiliaridades" minQt="1">
+				<event name="onCompare"><![CDATA[
+					if (nodeA.PtsFam or 0) < (nodeB.PtsFam or 0) then
+						return -1
+					elseif (nodeA.PtsFam or 0) > (nodeB.PtsFam or 0) then
+						return 1
+					else   
+						return Utils.compareStringPtBr(nodeA.FamCult, nodeB.FamCult)
+					end
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+				<event name="onItemAdded"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			
+			<button text="🞧" width="453" height="30" onClick="self.rlFamiliaridades:append() self.parteEsquerda:needRepaint() formatColors()" hint="Nova Peculiaridade" />
+			
+		</flowLayout>
+	</template>
+
+	<template name="campo">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<label align="left" text="$(texto)" width="$(largura)" fontStyle="bold" />
+			<edit align="client" field="$(var)" transparent="true">
+				<event name="onEnter"><![CDATA[
+					if sheet.$(var) == "—" then sheet.$(var) = nil end
+				]]></event>
+				<event name="onExit"><![CDATA[
+					if sheet.$(var) == nil then sheet.$(var) = "—" end
+				]]></event>
+			</edit>
+			<dataLink field="$(var)" defaultValue="—"/>
+		</layout>
+	</template>
+	
+	<template name="sumRow">		
+		<rectangle align="top" xradius= "3" yradius="3" cornerType="bevel" height="30" padding="{left=10, right=10}" color="$(cor)">
+			<label align="client" class="SubAttribute" text="$(nome)" />
+			<edit class="pts" align="right" field="$(campo)" name="edt$(campo)" horzTextAlign="trailing" vertTextAlign="center" />
+			<dataLink field="$(campo)" defaultValue="[00]" />
+		</rectangle>
+	</template>
+
+	<template name="sumRowO">		
+		<rectangle align="top" xradius= "3" yradius="3" cornerType="bevel" height="30" padding="{right=10}" color="$(cor)">
+			<button name="btnOutros" width="30" align="left" text="🛈" margins="{right=10}" hint="Descrição dos Gastos Extras">
+				<event name="onClick"><![CDATA[
+					local pop = self:findControlByName("popUp_Outros");
+							
+					if pop ~= nil then
+						pop:showPopupEx("left", self.btnOutros);
+						pop:setNodeObject(sheet);
+					else
+						showMessage("Ops, não encontrei o pop-up para exibir");
+					end;
+				]]></event>
+			</button>
+			
+			<popup name="popUp_Outros" width="518" height="400" backOpacity="0" drawContainer="false" autoScopeNode="false">
+				<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+					<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=0}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+						<layout align="top" height="40">
+							<label text="Outros Gastos" align="client" textTrimming="character" fontStyle="bold" fontColor="white" fontSize="20" />
+						</layout>
+						<scrollBox align="client" padding="{bottom=0, right=15}">
+							<DivisorM texto="D E S C R I P T I O N" largura="95" />
+							<textEditor field="descOutros" align="client"/>
+						</scrollBox>
+					</rectangle>
+				</rectangle>
+			</popup>
+			
+			<label align="client" class="SubAttribute" text="$(nome)" />
+			<edit class="pts" align="right" field="$(campo)" name="edt$(campo)" horzTextAlign="trailing" vertTextAlign="center" readOnly="false" cursor="IBeam" canFocus="true">
+				<event name="onEnter">
+					sheet.$(campo) = nil
+					self.edt$(campo).type = "number"
+				</event>
+				<event name="onExit">
+					self.edt$(campo).type = "text"
+					sheet.$(campo) = string.format('[%02d]', sheet.$(campo) or 0)
+					Sumario()
+				</event>
+			</edit>
+			<dataLink field="$(campo)" defaultValue="[00]">
+				<event name="onChange">
+					formatColors()
+				</event>
+			</dataLink>
+		</rectangle>
+	</template>
+	
+	<template name="Sumario">
+	
+		<layout align="bottom" height="345">
+			<rectangle align="top" color="transparent" height="260" margins="{bottom=20}">
+				<layout align="top" height="30" margins="{bottom=15}">
+					<label align="left" text="S U M Á R I O" width="135" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+					<edit align="left" name="edtSumariopts" field="Sumariopts" class="pts" />
+					<dataLink field="Sumariopts" defaultValue="[00]" onChange="formatColors()" />
+					<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+				</layout>
+				<sumRow cor="#272727" nome="A T R I B U T O S" campo="sum01pts" />
+				<sumRow cor="#202020" nome="C A R A C T E R Í S T I C A S   S E C U N D Á R I A S" campo="sum02pts" />
+				<sumRow cor="#272727" nome="I D I O M A S ,   T L   E   F A M I L I A R I D A D E S" campo="sum03pts" />
+				<sumRow cor="#202020" nome="V A N T A G E N S   E   Q U A L I D A D E S" campo="sum04pts" />
+				<sumRow cor="#272727" nome="D E S V A N T A G E N S   E   P E C U L I A R I D A D E S" campo="sum05pts" />
+				<sumRow cor="#202020" nome="H A B I L I D A D E S ,   T É C N I C A S   E   F E I T I Ç O S" campo="sum06pts" />
+				<sumRowO cor="#272727" nome="O U T R O S" campo="sum07pts" />
+			</rectangle>
+			<image url="/images/logo.png" height="45" style="proportional" align="top" margins="{left=152,bottom=20}"/>
+		</layout>
+	</template>
+	
+	<template name="linhaDinheiro">
+		<rectangle align="top" height="25" color="$(cor)">
+			<label align="left" text="$(TL)" fontStyle="bold" width="70"/>
+			<label align="left" text="$(SP)" />
+			<label align="left" text="$(MP)" />
+		</rectangle>
+	</template>
+
+	<template name="linhaMult">
+		<rectangle align="top" height="25" color="$(cor)">
+			<label align="left" text="$(WL)" fontStyle="bold" width="160"/>
+			<label align="left" text="$(MUL)" />
+		</rectangle>
+	</template>
+
+	<template name="Dinheiro">
+		<layout align="top" height="30" margins="{bottom=3}">
+			<rectangle align="client" color="#101010" xradius= "3" yradius="3" cornerType="bevel" padding="{left=10}">
+				<label align="left" text="Dinheiro:" width="70" fontStyle="bold" />
+				<edit align="client" field="Dinheiro" name="edtDinheiro" hint="Dinheiro Disponível" transparent="true">
+					<event name="onEnter"><![CDATA[
+						sheet.Dinheiro = parseMoney(sheet.Dinheiro or "0")
+						self.edtDinheiro.type = "float"
+					]]></event>
+					<event name="onExit"><![CDATA[
+						self.edtDinheiro.type = "text"
+						sheet.Dinheiro = formatMoney(sheet.Dinheiro or 0)
+					]]></event>
+				</edit>
+				<dataLink field="Dinheiro" defaultValue="$0,00" />
+				<button name="btnInfoDinheiro" align="right" width="30" text="❔" hint="Informação sobre Dinheiro">
+					<event name="onClick"><![CDATA[
+						local pop = self:findControlByName("popUp_Dinheiro");
+								
+						if pop ~= nil then
+							pop:showPopupEx("left", self.btnInfoDinheiro);
+							pop:setNodeObject(sheet);
+						else
+							showMessage("Ops, não encontrei o pop-up para exibir");
+						end;
+					]]></event>
+				</button>
+				
+				<popup name="popUp_Dinheiro" width="660" height="415" backOpacity="0" drawContainer="false" autoScopeNode="false">
+					<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+						<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+							<layout align="left" width="300" margins="{right=20}">
+								<DivisorM texto="T A B E L A   D E   D I N H E I R O   I N I C I A L" largura="215" />
+								<linhaDinheiro cor="#000000" TL="   TL" SP="Dinheiro Inicial" MP="Salário Típico" />
+								<linhaDinheiro cor="#202020" TL="   TL 0" SP="$250" MP="$625" />
+								<linhaDinheiro cor="transparent" TL="   TL 1" SP="$500" MP="$650" />
+								<linhaDinheiro cor="#202020" TL="   TL 2" SP="$750" MP="$675" />
+								<linhaDinheiro cor="transparent" TL="   TL 3" SP="$1.000" MP="$700" />
+								<linhaDinheiro cor="#202020" TL="   TL 4" SP="$2.000" MP="$800" />
+								<linhaDinheiro cor="transparent" TL="   TL 5" SP="$5.000" MP="$1.100" />
+								<linhaDinheiro cor="#202020" TL="   TL 6" SP="$10.000" MP="$1.600" />
+								<linhaDinheiro cor="transparent" TL="   TL 7" SP="$15.000" MP="$2.100" />
+								<linhaDinheiro cor="#202020" TL="   TL 8" SP="$20.000" MP="$2.600" />
+								<linhaDinheiro cor="transparent" TL="   TL 9" SP="$30.000" MP="$3.600" />
+								<linhaDinheiro cor="#202020" TL="   TL 10" SP="$50.000" MP="$5.600" />
+								<linhaDinheiro cor="transparent" TL="   TL 11" SP="$75.000" MP="$8.100" />
+								<linhaDinheiro cor="#202020" TL="   TL 12" SP="$100.000" MP="$10.600" />
+							</layout>
+							<layout align="left" width="300">
+								<DivisorM texto="T A B E L A   D E   N Í V E I S   D E    R I Q U E Z A" largura="225" />
+								<linhaMult cor="#000000" WL="   Nível de Riqueza" MUL="Multiplicador" />
+								<linhaMult cor="#202020" WL="   Pobre" MUL="✕ ⅕" />
+								<linhaMult cor="transparent" WL="   Batalhador" MUL="✕ ½" />
+								<linhaMult cor="#202020" WL="   Médio" MUL="✕ 1" />
+								<linhaMult cor="transparent" WL="   Confortável" MUL="✕ 2" />
+								<linhaMult cor="#202020" WL="   Rico" MUL="✕ 5" />
+								<linhaMult cor="transparent" WL="   Muito Rico" MUL="✕ 20" />
+								<linhaMult cor="#202020" WL="   Podre de Rico" MUL="✕ 100" />
+								<linhaMult cor="transparent" WL="   Multimilionário 1" MUL="✕ 1.000" />
+								<linhaMult cor="#202020" WL="   Multimilionário 2" MUL="✕ 10.000" />
+								<linhaMult cor="transparent" WL="   Multimilionário 3" MUL="✕ 100.000" />
+								<linhaMult cor="#202020" WL="   Multimilionário 4" MUL="✕ 1.000.000" />
+							</layout>
+						</rectangle>
+					</rectangle>
+				</popup>
+			
+				<button name="btnConfigsInvent" align="right" width="30" margins="{left=2}" text="⚙️" hint="Configurações do Inventário">
+					<event name="onClick"><![CDATA[
+						local pop = self:findControlByName("popConfigsInvent")
+								
+						if pop ~= nil then
+							pop:showPopupEx("left", self.btnConfigsInvent)
+							pop:setNodeObject(sheet)
+						else
+							showMessage("Ops, não encontrei o pop-up para exibir")
+						end
+						
+						checkDRempty()
+					]]></event>
+				</button>
+				
+				<popup name="popConfigsInvent" width="880" height="700" backOpacity="0" drawContainer="false">
+					<rectangle align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+						<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+						
+							<layout align="top" height="602">
+							
+								<layout align="top" height="30" margins="{bottom=15}">
+									<label align="left" text="C O N F I G U R A Ç Õ E S   D E   A R M A D U R A" width="460" fontSize="20" fontFamily="Constantia" fontStyle="bold" />
+									<horzLine align="client" margins="{top=14}" strokeColor="#424242" />
+								</layout>
+								
+								<layout align="left" width="200" margins="{right=10}">
+									<DivisorM texto="L O C A I S   D E   A C E R T O" largura="140" />
+									<rectangle align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel">
+										<scrollBox align="client">
+											<recordList align="top" autoHeight="true" name="rlConfigsLocais" field="ConfigsLocais" templateForm="tmpListaNomeLoc" />
+										</scrollBox>
+									</rectangle>
+									<button text="🞧" align="bottom" height="30" margins="{top=3}" onClick="self.rlConfigsLocais:append()" hint="Adicionar Novo Local">
+										<event name="onClick"><![CDATA[
+											local children = self.rlConfigsGruposExp:getChildren()
+											for i = 1, #children, 1 do 
+												local item = children[i]:findControlByName("rlConfigsChecks"):append()
+												item.nome = "—"
+											end
+										]]></event>
+									</button>
+								</layout>
+								
+								<layout align="left" width="200" margins="{right=10}">
+									<DivisorM texto="G R U P O S   D E   A R M A D U R A" largura="170" />
+									<rectangle align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel">
+										<scrollBox align="client">
+											<recordList align="top" autoHeight="true" name="rlConfigsGrupos" field="ConfigsGrupos" templateForm="tmpListaNome">
+												<event name="onCompare"><![CDATA[
+													return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+												]]></event>
+											</recordList>
+										</scrollBox>
+									</rectangle>
+									<button text="🞧" align="bottom" height="30" margins="{top=3}" onClick="self.rlConfigsGrupos:append()" hint="Adicionar Novo Grupo">
+										<event name="onClick"><![CDATA[
+											local nodoPai = NDB.getChildNodes(sheet.ConfigsGrupos)
+											local children = self.rlConfigsGruposExp:getChildren()
+											
+											for i = 1, #nodoPai, 1 do 
+												local nodoFilho = NDB.getChildNodes(nodoPai[i]["ConfigsChecks"])
+												if #nodoFilho == 0 then
+													local nodoLocais = NDB.getChildNodes(sheet.ConfigsLocais)
+													
+													for j = 1, #nodoLocais, 1 do
+														local item = children[i]:findControlByName("rlConfigsChecks"):append()
+														item.nome = nodoLocais[j]["nome"]
+													end
+												end
+											end
+										]]></event>
+									</button>
+								</layout>
+								
+								<layout align="client">
+									<DivisorM texto="S E L E C I O N E   O S   L O C A I S   D O   G R U P O   S E L E C I O N A D O :" largura="350" />
+									<rectangle align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel">
+											<scrollBox align="client">
+												<recordList align="top" autoHeight="true" name="rlConfigsGruposExp" field="ConfigsGrupos" templateForm="tmpListaNomeExp">
+													<event name="onCompare"><![CDATA[
+														return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+													]]></event>
+												</recordList>
+											</scrollBox>
+									</rectangle>
+								</layout>
+								
+							</layout>
+							
+							<layout align="client">
+								<horzLine />
+								<edit transparent="true" fontSize="10" align="left" name="edtModArmor" field="ModArmor" type="number" width="30" margins="{right=10}" horzTextAlign="center" hint="Modificador aplicado ao DR de todos os Locais">
+									<event name="onEnter"><![CDATA[
+										if sheet.ModArmor == "0" then sheet.ModArmor = nil end
+									]]></event>
+									<event name="onExit"><![CDATA[
+										if sheet.ModArmor == nil then sheet.ModArmor = "0" end
+									]]></event>
+								</edit>
+								<dataLink field="ModArmor" defaultValue="0">
+									<event name="onChange"><![CDATA[
+										self.rlArmaduras.visible = false
+										self.rlArmaduras.visible = true
+									]]></event>
+								</dataLink>
+								<label align="left" text="M O D I F I C A D O R   U N I V E R S A L" fontSize="10" fontStyle="bold" width="190" hitTest="true" hint="Modificador aplicado ao DR de todos os Locais" />
+								<layout align="right" width="360">
+									<layout align="left" width="270" margins="{right=10}">
+										<label text="Aplicar Mudança aos Grupos e Locais de DR" align="top" margins="{top=2}" horzTextAlign="trailing" />
+										<label text="Isso resetará todos os locais de acerto em peças de armadura!" fontStyle="italic" fontSize="10" align="top" horzTextAlign="trailing" />
+									</layout>
+									<button align="left" text="Aplicar" fontStyle="bold" hint="Aplicar Mudança aos Grupos e Locais de DR">
+										<event name="onClick"><![CDATA[
+											NDB.clearNode(sheet.GruposDR)
+											
+											local nodoPai = NDB.getChildNodes(sheet.ConfigsGrupos)
+											for i = 1, #nodoPai, 1 do
+												local item = self.rlGruposDR:append()
+												item.GruposDR = nodoPai[i]["nome"]
+												
+												local children = self.rlGruposDR:getChildren()
+												local nodoFilho = NDB.getChildNodes(nodoPai[i]["ConfigsChecks"])
+												for j = 1, #nodoFilho, 1 do
+													if nodoFilho[j]["flag"] then
+														local itemJ = children[i]:findControlByName("rlRegioes"):append()
+														itemJ.nomeReg = spacing(string.upper(nodoFilho[j]["nome"]))
+													end
+												end
+											end
+											
+											local nodoArmaduras = NDB.getChildNodes(sheet.Armaduras)
+											for i = 1, #nodoArmaduras, 1 do
+												nodoArmaduras[i]["Locais"] = nil
+												NDB.clearNode(nodoArmaduras[i]["PopGrupos"])
+												NDB.clearNode(nodoArmaduras[i]["PopLocais"])
+											end
+											
+											self.popConfigsInvent:close()
+											self.parteEsquerda:needRepaint()
+										]]></event>
+									</button>
+								</layout>
+							</layout>
+							
+						</rectangle>
+					</rectangle>
+				</popup>
+			</rectangle>
+		</layout>
+</template>
+
+	<template name="ArmasMelee">
+		<DivisorsemPts texto="A R M A S   C O R P O   A   C O R P O" largura="340" var="Melee" />
+		<flowLayout name="flwMelee" align="top" orientation="vertical" autoHeight="true">
+			<rectangle height="30" width="926" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+			
+				<label align="left" text="EQP." width="30" class="invent" margins="{left=10}"/>
+				<label align="left" text="TL" width="40" class="invent" />
+				<label align="left" text="NOME" width="183" class="invent" />
+				<label align="left" text="DANO" width="90" class="invent" />
+				<label align="left" text="ALCANCE" width="80" class="invent" />
+				<label align="left" text="PARRY" width="240" class="invent" />
+				<label align="left" text="CUSTO" width="85" class="invent" />
+				<label align="left" text="PESO" width="65" class="invent" />
+				<label align="left" text="ST" width="30" class="invent" />
+				
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlArmasMelee" field="ArmasMelee" templateForm="tmpArmasMelee">
+				<event name="onCompare"><![CDATA[
+					return Utils.compareStringPtBr(nodeA.Nome, nodeB.Nome)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button text="🞧" width="926" height="30" margins="{top=2}" onClick="self.rlArmasMelee:append() self.parteEsquerda:needRepaint()" />
+			<spacer />
+		</flowLayout>
+	</template>
+	
+	<template name="ArmasRanged">
+		<DivisorsemPts texto="A R M A S   À   D I S T Â N C I A" largura="290" var="Ranged" />
+		<flowLayout name="flwRanged" align="top" orientation="vertical" autoHeight="true">
+			<rectangle height="30" width="926" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				<label align="left" text="EQP." width="30" class="invent" margins="{left=10}"/>
+				<label align="left" text="TL" width="40" class="invent" />
+				<label align="left" text="NOME" width="183" class="invent" />
+				<label align="left" text="DANO" width="90" class="invent" />
+				<label align="left" text="ALCANCE" width="80" class="invent" />
+				<label align="left" text="ACC." width="30" class="invent" />
+				<label align="left" text="ROF." width="30" class="invent" />
+				<label align="left" text="TIROS" width="70" class="invent" />
+				<label align="left" text="BULK" width="40" class="invent" />
+				<label align="left" text="RCL." width="40" class="invent" />
+				<label align="left" text="LC" width="30" class="invent" />
+				<label align="left" text="CUSTO" width="85" class="invent" />
+				<label align="left" text="PESO" width="65" class="invent" />
+				<label align="left" text="ST" width="30" class="invent" />
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlArmasRanged" field="ArmasRanged" templateForm="tmpArmasRanged">
+				<event name="onCompare"><![CDATA[
+					return Utils.compareStringPtBr(nodeA.Nome, nodeB.Nome)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button text="🞧" width="926" height="30" margins="{top=2}" onClick="self.rlArmasRanged:append() self.parteEsquerda:needRepaint()" />
+			<spacer />
+		</flowLayout>
+	</template>
+
+	<template name="Armaduras">
+		<DivisorsemPts texto="A R M A D U R A S" largura="180" var="Armor" />
+		<flowLayout name="flwArmor" align="top" orientation="vertical" autoHeight="true">
+			<rectangle height="30" width="926" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+			
+				<label align="left" text="EQP." width="30" class="invent" margins="{left=10}"/>
+				<label align="left" text="TL" width="40" class="invent" />
+				<label align="left" text="NOME" width="183" class="invent" />
+				<label align="left" text="DR" width="90" class="invent" />
+				<label align="left" text="LOCALIZAÇÃO" width="290" class="invent" />
+				<label align="left" text="LC" width="30" class="invent" />
+				<label align="left" text="CUSTO" width="85" class="invent" />
+				<label align="left" text="PESO" width="95" class="invent" />
+				
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlArmaduras" field="Armaduras" templateForm="tmpArmaduras">
+				<event name="onCompare"><![CDATA[
+					return Utils.compareStringPtBr(nodeA.Nome, nodeB.Nome)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button text="🞧" width="926" height="30" margins="{top=2}" onClick="self.rlArmaduras:append() self.parteEsquerda:needRepaint()" />
+			<spacer />
+		</flowLayout>
+	</template>
+
+	<template name="Escudos">
+		<DivisorsemPts texto="E S C U D O S" largura="140" var="Shield" />
+		<flowLayout name="flwShield" align="top" orientation="vertical" autoHeight="true">
+			<rectangle height="30" width="926" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+			
+				<label align="left" text="EQP." width="30" class="invent" margins="{left=10}"/>
+				<label align="left" text="TL" width="40" class="invent" />
+				<label align="left" text="NOME" width="183" class="invent" />
+				<label align="left" text="DB" width="45" class="invent" />
+				<label align="left" text="DR" width="45" class="invent" />
+				<label align="left" text="HP" width="290" class="invent" />
+				<label align="left" text="LC" width="30" class="invent" />
+				<label align="left" text="CUSTO" width="85" class="invent" />
+				<label align="left" text="PESO" width="95" class="invent" />
+				
+			</rectangle>
+			<recordList width="926" autoHeight="true" name="rlEscudos" field="Escudos" templateForm="tmpEscudos">
+				<event name="onCompare"><![CDATA[
+					return Utils.compareStringPtBr(nodeA.Nome, nodeB.Nome)
+				]]></event>
+				<event name="onItemRemoved"><![CDATA[
+					self.parteEsquerda:needRepaint()
+				]]></event>
+			</recordList>
+			<button text="🞧" width="926" height="30" margins="{top=2}" onClick="self.rlEscudos:append() self.parteEsquerda:needRepaint()" />
+			<spacer />
+		</flowLayout>
+	</template>
+
+	<template name="Outros">
+		<DivisorsemPts texto="O U T R O S" largura="125" var="Misc" />
+			<flowLayout name="flwMisc" align="top" orientation="vertical" autoHeight="true">
+				<layout width="926" height="12" margins="{top=0, bottom=3}">
+					<label align="left" text="G R U P O S   D E   I T E N S" width="135" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+					<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+				</layout>
+				<recordList width="926" autoHeight="true" name="rlGruposMisc" field="GruposMisc" templateForm="tmpGruposMisc" layout="horizontalTiles" margins="{top=10}" minQt="1" />
+				<button text="🞧" width="926" height="30" margins="{top=2, bottom=10}" onClick="self.rlGruposMisc:append() self.parteEsquerda:needRepaint()" hint="Novo Grupo de Itens" />
+				
+				<layout width="926" height="12" margins="{top=0, bottom=7}">
+					<label align="left" text="L I S T A   D E   I T E N S" width="115" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+					<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+				</layout>
+				<rectangle height="30" width="926" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+				
+					<label align="left" text="EQP." width="30" class="invent" margins="{left=10}"/>
+					<label align="left" text="TL" width="40" class="invent" />
+					<label align="left" text="QNT." width="50" class="invent" />
+					<label align="left" text="NOME" width="330" class="invent" />
+					<label align="left" text="GRUPO" width="213" class="invent" />
+					<label align="left" text="CUSTO" width="85" class="invent" />
+					<label align="left" text="PESO" width="95" class="invent" />
+					
+				</rectangle>
+				<recordList width="926" autoHeight="true" name="rlMisc" field="Misc" templateForm="tmpMisc">
+					<event name="onCompare"><![CDATA[
+						if (nodeA.Grupo or 0) < (nodeB.Grupo or 0) then
+							return -1
+						elseif (nodeA.Grupo or 0) > (nodeB.Grupo or 0) then
+							return 1
+						else   
+							return Utils.compareStringPtBr(nodeA.Nome, nodeB.Nome)
+						end
+					]]></event>
+					<event name="onItemRemoved"><![CDATA[
+						self.parteEsquerda:needRepaint()
+					]]></event>
+				</recordList>
+				<button text="🞧" width="926" height="30" margins="{top=2}" onClick="self.rlMisc:append() self.parteEsquerda:needRepaint()" hint="Novo Item" />
+			<spacer />
+			</flowLayout>
+	</template>
+
+	<template name="ControlesInvisiveis">
+		<dataLink fields="{'Sobrepts', 'Habilidadespts', 'Tecnicaspts', 'Feiticospts', 'Vantagenspts', 'Desvantagenspts', 'Qualidadespts', 'Peculiaridadespts', 'Atributospts'}">
+			<event name="onChange"><![CDATA[
+				Sumario()
+			]]></event>
+		</dataLink>
+	
+		<checkBox field="cbCargaCalc" visible="false" />
+		<dataLink field="cbCargaCalc">
+			<event name="onChange"><![CDATA[
+				calcCarga()
+			]]></event>
+		</dataLink>
+	
+		<checkBox field="cbHabCalc" visible="false" />
+		<dataLink field="cbHabCalc">
+			<event name="onChange"><![CDATA[
+				calcSomaPontosHabilidades()
+				formatColors()
+			]]></event>
+		</dataLink>
+		
+		<checkBox field="cbTraCalc" visible="false" />
+		<dataLink field="cbTraCalc">
+			<event name="onChange"><![CDATA[
+				calcSomaPontosTracos()
+				formatColors()
+			]]></event>
+		</dataLink>
+		
+		<checkBox field="cbSobreCalc" visible="false" />
+		<dataLink field="cbSobreCalc">
+			<event name="onChange"><![CDATA[
+				calcSomaPontosSobre()
+				formatColors()
+			]]></event>
+		</dataLink>
+		
+		<checkBox field="cbToggleParry" visible="false" />
+		<dataLink field="cbToggleParry">
+			<event name="onChange">	<![CDATA[
+				local count = 0
+				local nodoHab = NDB.getChildNodes(sheet["Habilidades"])
+				for i = 1, #nodoHab, 1 do
+					if nodoHab[i]["idHab"] ~= sheet.idHabParry then
+						nodoHab[i]["cbParry"] = false
+					elseif nodoHab[i]["idHab"] == sheet.idHabParry and nodoHab[i]["cbParry"] == false then
+						count = count + 1
+						sheet.idHabParry = nil
+						self.lblidHabParry.text = nil
+					end
+				end
+				defineDef()
+			]]></event>
+		</dataLink>
+		<label name="lblidHabParry" field="idHabParry" visible="false" />
+		
+		<checkBox field="cbToggleBlock" visible="false" />
+		<dataLink field="cbToggleBlock">
+			<event name="onChange"><![CDATA[
+				local count = 0
+				local nodoHab = NDB.getChildNodes(sheet["Habilidades"])
+				for i = 1, #nodoHab, 1 do
+					if nodoHab[i]["idHab"] ~= sheet.idHabBlock then
+						nodoHab[i]["cbBlock"] = false
+					elseif nodoHab[i]["idHab"] == sheet.idHabBlock and nodoHab[i]["cbBlock"] == false then
+						count = count + 1
+						sheet.idHabBlock = nil
+						self.lblidHabBlock.text = nil
+					end
+				end
+				defineDef()
+			]]></event>
+		</dataLink>
+		<label name="lblidHabBlock" field="idHabBlock" visible="false" />
+		
+		<label name="lbluniverModFei" field="univerModFei" visible="false" />
+		<dataLink field="univerModFei" defaultValue="0">
+			<event name="onChange"><![CDATA[
+				calcSomaPontosHabilidades()
+			]]></event>
+		</dataLink>
+	</template>
+</form>
