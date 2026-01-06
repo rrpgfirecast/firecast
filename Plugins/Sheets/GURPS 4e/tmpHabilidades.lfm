@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpHabilidades" height="33" align="top" onShow="calcularNH() formatColors() identifyHab()" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+		readOnly: true;
+		cursor: default;
+		canFocus: false;
+	}
+	
+	</style>
+	<script><![CDATA[
+		
+		local function g(NH, nome)
+		
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local rolagem = Firecast.interpretarRolagem("3d6")
+			mesaDoPersonagem.activeChat:rolarDados(rolagem, "[§B]Teste de " .. nome .. "[§B], NH ".. NH, function (rolado)
+				
+				local resultado = rolado.resultado
+				local diff = math.abs(NH - resultado)
+				
+				if resultado == 18 or (resultado >= 17 and NH <= 15) or resultado - 10 >= NH then
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K4]Falha Crítica [§K1]por [§K2]" .. diff);
+				elseif resultado<=4 or (resultado<=5 and NH>=15) or (resultado<=6 and NH>=16) then
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K9]Sucesso Crítico [§K1]por [§K2]" .. diff);
+				elseif resultado > NH then
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K7]Falha [§K1]por [§K2]" .. diff);
+				else
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K3]Sucesso [§K1]por [§K2]" .. diff);
+				end
+			end);
+		end
+		
+		local function formatColors()
+			if tonumber(sheet.PtsHab:match("%[(%d+)%]")) > 0 then
+				self.edtPtsHab.fontColor = '#00ff78'
+			else
+				self.edtPtsHab.fontColor = '#9e9e9e'
+			end
+		end
+		
+		local function calcularNH()
+			local PTs = tonumber(sheet.PtsHab:match("%[(%d+)%]"))
+			
+			if PTs == 0 or sheet.atributoHab == nil then
+				sheet.NHHab = "00"
+			else
+				local nodoPai = NDB.getParent(NDB.getParent(sheet))
+				local ATT = nodoPai[sheet.atributoHab]
+				
+				local modDif = 0
+				
+				if sheet.dificuldadeHab == 'E' then
+					modDif = 0
+				elseif sheet.dificuldadeHab == 'A' then
+					modDif = -1
+				elseif sheet.dificuldadeHab == 'H' then
+					modDif = -2
+				elseif sheet.dificuldadeHab == 'VH' then
+					modDif = -3
+				end
+				
+				if PTs == 1 then
+					modPts = 0
+				elseif PTs == 2 then
+					modPts = 1
+				elseif PTs == 4 then
+					modPts = 2
+				else
+					modPts = math.floor((PTs - 4) / 4) + 2
+				end
+				
+				local NHfinal = ATT + sheet.bonusHab + modPts + modDif
+				sheet.NHHab = string.format("%02d", NHfinal)
+			end
+		end
+		
+		local function calcSomaPontosHabilidades()
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			nodoPai.cbHabCalc = not nodoPai.cbHabCalc
+		end
+		
+		local function identifyHab()
+			if sheet.idHab == nil then
+				math.randomseed(os.time() * 1000000)
+				local min = 1
+				local max = 100000000
+				sheet.idHab = tostring(math.random(min, max))
+			end
+		end
+		
+		local function defineDef()
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			if not nodoPai.fldDisassociarAtr then
+				local function defineParry()
+					nodoPai.Parry = math.floor(3 + (nodoPai.DX/2))
+					
+					if nodoPai.idHabParry ~= nil then
+						local nodoHab = NDB.getChildNodes(nodoPai["Habilidades"])
+						for i = 1, #nodoHab, 1 do
+							if nodoHab[i]["idHab"] == nodoPai.idHabParry then
+								nodoPai.Parry = math.floor(3 + (nodoHab[i]["NHHab"]/2))
+							end
+						end
+					end
+				end
+				
+				local function defineBlock()
+					nodoPai.Block = nil
+					
+					if nodoPai.idHabBlock ~= nil then
+						local nodoHab = NDB.getChildNodes(nodoPai["Habilidades"])
+						for i = 1, #nodoHab, 1 do
+							if nodoHab[i]["idHab"] == nodoPai.idHabBlock then
+								nodoPai.Block = math.floor(3 + (nodoHab[i]["NHHab"]/2))
+							end
+						end
+					end
+				end
+				
+				defineParry()
+				defineBlock()
+			end
+		end
+		
+		local function select()
+			self.recHighlight.visible = not self.recHighlight.visible
+		end
+	]]></script>
+	
+	<rectangle color="#202020" width="558" />
+	<rectangle color="#202020" left="745" width="230" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+	<rectangle color="#303030" width="2000" height="33" visible="false" name="recHighlight"/>
+	
+	<layout align="top" height="30" margins="{top=3}">
+		<label align="left" name="lblidHab" field="idHab" visible="false" />
+		<button align="left" width="30" text="🎲" margins="{right=3}" onClick="g(tonumber(sheet.NHHab), sheet.nomeHab)" hint="Rolar Habilidade" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		
+		<edit align="left" width="525" fontStyle="bold" name="edtNomeHab" field="nomeHab" hint="Nome da Habilidade" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="nomeHab" defaultValue="—" />
+		
+		<comboBox align="left" width="50" name="edtAtrHab" items="{'ST', 'DX', 'IQ', 'HT', 'Will', 'Per'}" values="{'ST', 'DX', 'IQ', 'HT', 'Will', 'Per'}" field="atributoHab" hint="Atributo da Habilidade" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="atributoHab">
+			<event name="onUserChange">
+				calcularNH()
+			</event>
+		</dataLink>
+		
+		<comboBox align="left" width="50" name="edtDifHab" items="{'(E)', '(A)', '(H)', '(VH)'}" values="{'E', 'A', 'H', 'VH'}" field="dificuldadeHab" margins="{right=40}" hint="Dificuldade da Habilidade" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="dificuldadeHab" defaultValue="A">
+			<event name="onUserChange">
+				calcularNH()
+			</event>
+		</dataLink>
+		
+		<edit align="left" width="50" name="edtBonusHab" field="bonusHab" type="number" hint="Modificadores no NH da Habilidade" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+			<event name="onExit">
+				if sheet.bonusHab == nil then sheet.bonusHab = 0 end
+			</event>
+		</edit>
+		<dataLink field="bonusHab" defaultValue="0">
+			<event name="onUserChange">
+				calcularNH()
+			</event>
+		</dataLink>
+		
+		<label align="left" width="48" fontStyle="bold" fontColor="white" name="lblNHHab" field="NHHab" hint="NH Final da Habilidade" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="NHHab" defaultValue="00">
+			<event name="onChange">
+				calcSomaPontosHabilidades()
+				defineDef()
+			</event>
+		</dataLink>
+		
+		<edit align="left" width="35" name="edtPtsHab" field="PtsHab" class="pts" hint="Pontos Gastos na Habilidade" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="PtsHab" defaultValue="[00]" />
+		
+		<layout align="left" width="15" margins="{right=2}">
+			<button align="top" height="15" text="⯅" fontSize="6" hint="Aumentar NH com pontos" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+				<event name="onClick"><![CDATA[
+					if sheet.atributoHab ~= nil then
+						local valorOriginal = tonumber(sheet.PtsHab:match("%[(%d+)%]"))
+						
+						if valorOriginal == 0 or valorOriginal == 1 then
+							valorFinal = valorOriginal + 1
+						elseif valorOriginal == 2 then
+							valorFinal = valorOriginal + 2
+						else
+							valorFinal = valorOriginal + 4
+						end
+						sheet.PtsHab = string.format('[%02d]', valorFinal)
+						calcularNH()
+						formatColors()
+						calcSomaPontosHabilidades()
+					else
+						showMessage('Escolha um Atributo Base!')
+					end
+					defineDef()
+				]]></event>
+			</button>
+			<button align="top" height="15" text="⯆" fontSize="6" hint="Diminuir NH com pontos" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+				<event name="onClick"><![CDATA[
+					if sheet.atributoHab ~= nil then
+						local valorOriginal = tonumber(sheet.PtsHab:match("%[(%d+)%]"))
+						
+						if valorOriginal == 0 then
+							return
+						elseif valorOriginal == 1 or valorOriginal == 2 then
+							valorFinal = valorOriginal - 1
+						elseif valorOriginal == 4 then
+							valorFinal = valorOriginal - 2
+						else
+							valorFinal = valorOriginal - 4
+						end
+						sheet.PtsHab = string.format('[%02d]', valorFinal)
+						calcularNH()
+						formatColors()
+						calcSomaPontosHabilidades()
+					else
+						showMessage('Escolha um Atributo Base!')
+					end
+					defineDef()
+				]]></event>
+			</button>
+		</layout>
+		
+		<button align="left" text="𝐢" width="30" name="btnInfo" hint="Informações Extras" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popUp_");
+						
+				if pop ~= nil then
+					pop:showPopupEx("left", self.btnInfo);
+					pop:setNodeObject(sheet);
+					
+					if sheet.dificuldadeHab == 'E' then
+						sheet.AtreDifHab = (sheet.atributoHab or "???") .. "/Easy"
+					elseif sheet.dificuldadeHab == 'A' then
+						sheet.AtreDifHab = (sheet.atributoHab or "???") .. "/Average"
+					elseif sheet.dificuldadeHab == 'H' then
+						sheet.AtreDifHab = (sheet.atributoHab or "???") .. "/Hard"
+					elseif sheet.dificuldadeHab == 'VH' then
+						sheet.AtreDifHab = (sheet.atributoHab or "???") .. "/Very Hard"
+					else
+						sheet.AtreDifHab = (sheet.atributoHab or "???") .. "/None"
+					end
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir");
+				end;
+			]]></event>
+		</button>
+		
+		<template name="DivisorM">
+			<layout align="top" height="12" margins="{top=0, bottom=5}">
+				<label align="left" text="$(texto)" width="$(largura)" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+				<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+			</layout>
+		</template>
+		
+		<popup name="popUp_" width="518" height="795" backOpacity="0" drawContainer="false" autoScopeNode="false">
+			<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=0}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<layout align="top" height="15">
+						<checkBox name="cbParry" text="P A R R Y" align="right" fontSize="10" fontStyle="bold" width="65" margins="{right=20}" field="cbParry" hitTest="true" hint="Usar essa Habilidade para cálculo de Parry">
+							<event name="onClick"><![CDATA[
+								local nodoPai = NDB.getParent(NDB.getParent(sheet))
+								nodoPai.idHabParry = sheet.idHab
+								nodoPai.cbToggleParry = not nodoPai.cbToggleParry
+							]]></event>
+						</checkBox>
+							
+						<checkBox name="cbBlock" text="B L O C K" align="right" fontSize="10" fontStyle="bold" width="65" margins="{right=10}" field="cbBlock" hitTest="true" hint="Usar essa Habilidade para cálculo de Block"> 
+							<event name="onClick"><![CDATA[
+								local nodoPai = NDB.getParent(NDB.getParent(sheet))
+								nodoPai.idHabBlock = sheet.idHab
+								nodoPai.cbToggleBlock = not nodoPai.cbToggleBlock
+							]]></event>
+						</checkBox>
+							
+					</layout>
+					<horzLine margins="{top=7, right=13, bottom=7}" />
+					<layout align="top" height="40">
+						<label field="nomeHab" align="client" textTrimming="character" fontStyle="bold" fontColor="white" fontSize="20" />
+						<label field="AtreDifHab" align="right" horzTextAlign="trailing" width="95" margins="{right=15}" />
+					</layout>
+					<scrollBox align="client" padding="{bottom=0, right=15}">
+						<DivisorM texto="D E F A U L T S" largura="70" />
+						<textEditor field="defaultsHab" align="top" />
+						<DivisorM texto="P R E R E Q U I S I T E S" largura="110" />
+						<textEditor field="prereqHab" align="top" />
+						<DivisorM texto="D E S C R I P T I O N" largura="95" />
+						<textEditor field="descHab" align="top" height="290"/>
+						<DivisorM texto="M O D I F I E R S" largura="80" />
+						<textEditor field="modsHab" align="top" height="105" />
+						<button text="💬" align="top" height="30" hint="Enviar Descrição no Chat">
+							<event name="onClick"><![CDATA[
+								local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+								local meuJogador = mesaDoPersonagem.meuJogador
+								local meuNick = meuJogador.nick
+								
+								local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Habilidade:"
+								msg = msg .. "\n****\n### [§K1][§B]".. (sheet.nomeHab or "") .."[§B]\n###### ".. (sheet.AtreDifHab or "")
+								msg = msg .. "\n [§K1][§B]Defaults:[§B] [§K14][§T]".. (sheet.defaultsHab or "") .. "[§T]"
+								msg = msg .. "\n [§K1][§B]Prerequisites:[§B] [§K14]".. (sheet.prereqHab or "")
+								msg = msg .. "\n [§K1][§B]Description:[§B] [§K14]".. (sheet.descHab or "")
+								msg = msg .. "\n [§K1][§B]Modifiers:[§B] [§K14]".. (sheet.modsHab or "")
+								msg = msg .. "[§T]\n****"
+
+								mesaDoPersonagem.activeChat:enviarMensagem(msg)
+							]]></event>
+						</button>
+					</scrollBox>
+				</rectangle>
+			</rectangle>
+		</popup>
+		
+		<button align="left" text="🞭" width="30" onClick="NDB.deleteNode(sheet) calcularNH() defineDef()" hint="Apagar Habilidade" margins="{left=2}" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		
+	</layout>
+</form>

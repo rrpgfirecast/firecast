@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="pesquisaHab" margins="{bottom=10, right=10}" height="75" align="top">
+<style>
+label, edit, radioButton, checkBox, comboBox, button{
+	fontSize: 14;
+	fontFamily: Cambria;
+	textTrimming: character;
+}
+
+label{
+	fontColor: #cdcdcd;
+}
+</style>
+	<rectangle name="recResult" align="client" color="#303030" padding="{top=10, left=20, bottom=10, right=20}" xradius= "10" yradius="10" cornerType="bevel">
+		<layout name="layNomeeDif" align="top" height="20">
+			<label name="lblHabNome" field="psqHabNome" align="client" textTrimming="character" fontStyle="bold" fontColor="white" />
+			<label field="psqHabAtributoeDif" align="right" horzTextAlign="trailing" width="95" />
+		</layout>
+		<label name="lblDesc" field="psqHabDescricao" align="top" height="30" fontSize="10" fontStyle="italic" textTrimming="character" wordWrap="true" />
+		<label name="lblHabDefaults" field="psqHabDefaults" visible="false" />
+		<label name="lblHabPrereq" field="psqHabPrerequisitos" visible="false" />
+		<label field="psqHabModificadores" visible="false" />
+	</rectangle>
+	<rectangle align="client" opacity="0" cursor="handPoint">
+		<event name="onMouseEnter">
+			self.recResult.color = '#404040'
+		</event>
+		<event name="onMouseLeave">
+			self.recResult.color = '#303030'
+		</event>
+		<event name="onClick">
+			local pop = self:findControlByName("popUp_");
+					
+			if pop ~= nil then
+				pop:setNodeObject(sheet);
+				pop:showPopupEx("right", self.recResult);
+			else
+				showMessage("Ops, não encontrei o pop-up para exibir");
+			end;
+		</event>
+	</rectangle>
+	
+	<template name="DivisorM">
+		<layout align="top" height="12" margins="{top=0, bottom=5}">
+			<label align="left" text="$(texto)" width="$(largura)" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+			<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+		</layout>
+	</template>
+	
+	<popup name="popUp_" width="360" height="540" backOpacity="0" drawContainer="false" autoScopeNode="false">
+		<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+			<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=0}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+				<layout align="top" height="40">
+					<label field="psqHabNome" align="client" textTrimming="character" fontStyle="bold" fontColor="white" fontSize="20" />
+					<label field="psqHabAtributoeDif" align="right" horzTextAlign="trailing" width="95" margins="{right=15}" />
+				</layout>
+				<scrollBox align="top" height="400" padding="{bottom=40, right=15}">
+					<DivisorM texto="D E F A U L T S" largura="70" />
+					<label field="psqHabDefaults" align="top" autoSize="true" fontStyle="italic" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="P R E R E Q U I S I T E S" largura="110" />
+					<label field="psqHabPrerequisitos" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="D E S C R I P T I O N" largura="95" />
+					<label field="psqHabDescricao" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="M O D I F I E R S" largura="80" />
+					<label field="psqHabModificadores" align="top" autoSize="true" fontColor="#a0a0a0" />
+				</scrollBox>
+				<layout align="top" height="30" margins="{top=20, right=15}">
+					<button text="🞧" align="client" hint="Adicionar Habilidade">
+						<event name="onClick"><![CDATA[
+							if string.match(sheet.psqHabAtributoeDif, "/(.*)") == "Easy" then
+								difFinal = 'E'
+							elseif string.match(sheet.psqHabAtributoeDif, "/(.*)") == "Average" then
+								difFinal = 'A'
+							elseif string.match(sheet.psqHabAtributoeDif, "/(.*)") == "Hard" then
+								difFinal = 'H'
+							else
+								difFinal = 'VH'
+							end
+							
+							local item = self:getParent():getParent():findControlByName('rlHabilidades'):append()
+							item.nomeHab = sheet.psqHabNome
+							item.atributoHab =  string.match(sheet.psqHabAtributoeDif, "([^/]+)")
+							item.dificuldadeHab = difFinal
+							item.PtsHab = '[01]'
+							item.defaultsHab = sheet.psqHabDefaults
+							item.prereqHab = sheet.psqHabPrerequisitos
+							item.descHab = sheet.psqHabDescricao
+							item.modsHab = sheet.psqHabModificadores
+							
+							self:getParent():getParent():findControlByName('rlHabilidades').visible = false
+							self:getParent():getParent():findControlByName('rlHabilidades').visible = true
+							self:getParent():getParent():findControlByName('rlHabilidades'):sort()
+							self:getParent():getParent():findControlByName('parteEsquerda'):needRepaint()
+						]]></event>
+					</button>
+					<button text="💬" align="right" margins="{left=5}" width="30" hint="Enviar Descrição no Chat">
+						<event name="onClick"><![CDATA[
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+							local meuJogador = mesaDoPersonagem.meuJogador
+							local meuNick = meuJogador.nick
+							
+							local msg = "💬 ".. meuNick .." [§R][§K2]destacou a Habilidade:"
+							msg = msg .. "\n****\n### [§K1][§B]".. sheet.psqHabNome .."[§B]\n###### ".. sheet.psqHabAtributoeDif
+							msg = msg .. "\n [§K1][§B]Defaults:[§B] [§K14][§T]".. sheet.psqHabDefaults .. "[§T]"
+							msg = msg .. "\n [§K1][§B]Prerequisites:[§B] [§K14]".. sheet.psqHabPrerequisitos
+							msg = msg .. "\n [§K1][§B]Description:[§B] [§K14]".. sheet.psqHabDescricao
+							msg = msg .. "\n [§K1][§B]Modifiers:[§B] [§K14]".. sheet.psqHabModificadores
+							msg = msg .. "[§T]\n****"
+
+							mesaDoPersonagem.activeChat:enviarMensagem(msg)
+						]]></event>
+					</button>
+				</layout>
+			</rectangle>
+		</rectangle>	
+	</popup>		
+</form>

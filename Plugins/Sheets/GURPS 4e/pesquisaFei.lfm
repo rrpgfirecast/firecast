@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="pesquisaFei" margins="{bottom=10, right=10}" g="row" g-min-height="95">
+<style>
+label, edit, radioButton, checkBox, comboBox, button{
+	fontSize: 14;
+	fontFamily: Cambria;
+	textTrimming: character;
+}
+
+label{
+	fontColor: #cdcdcd;
+}
+</style>
+	<rectangle name="recResult" align="client" color="#303030" padding="{top=10, left=20, bottom=10, right=20}" xradius= "10" yradius="10" cornerType="bevel">
+		<label align="top" field="psqFeiCol" fontSize="10" fontFamily="Constantia" fontStyle="italic" margins="{bottom=5}" />
+		<layout name="layNomeeDif" align="top" height="20">
+			<label name="lblFeiNome" field="psqFeiNome" align="client" textTrimming="character" fontStyle="bold" fontColor="white" />
+			<label field="psqFeiDif" align="right" horzTextAlign="trailing" width="95" />
+		</layout>
+		<label name="lblDesc" field="psqFeiDescricao" align="top" height="30" fontSize="10" fontStyle="italic" textTrimming="character" wordWrap="true" />
+		<label name="lblFeiCol" field="psqFeiCol" visible="false" />
+		<label name="lblFeiPrereq" field="psqFeiPrerequisitos" visible="false" />
+	</rectangle>
+	<rectangle align="client" opacity="0" cursor="handPoint">
+		<event name="onMouseEnter">
+			self.recResult.color = '#404040'
+		</event>
+		<event name="onMouseLeave">
+			self.recResult.color = '#303030'
+		</event>
+		<event name="onClick">
+			local pop = self:findControlByName("popUp_");
+					
+			if pop ~= nil then
+				pop:setNodeObject(sheet);
+				pop:showPopupEx("right", self.recResult);
+			else
+				showMessage("Ops, não encontrei o pop-up para exibir");
+			end;
+		</event>
+	</rectangle>
+	
+	<template name="DivisorM">
+		<layout align="top" height="12" margins="{top=0, bottom=5}">
+			<label align="left" text="$(texto)" width="$(largura)" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+			<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+		</layout>
+	</template>
+	
+	<popup name="popUp_" width="360" height="540" backOpacity="0" drawContainer="false" autoScopeNode="false">
+		<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+			<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=0}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+				<layout align="top" height="40">
+					<label field="psqFeiNome" align="client" textTrimming="character" fontStyle="bold" fontColor="white" fontSize="20" />
+					<label field="psqFeiDif" align="right" horzTextAlign="trailing" width="95" margins="{right=15}" />
+				</layout>
+				<scrollBox align="top" height="400" padding="{bottom=40, right=15}">
+					<DivisorM texto="C O L L E G E S" largura="70" />
+					<label field="psqFeiCol" align="top" autoSize="true" fontStyle="italic" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="C L A S S E S" largura="60" />
+					<label field="psqFeiClass" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="P R E R E Q U I S I T E S" largura="110" />
+					<label field="psqFeiPrerequisitos" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="D E S C R I P T I O N" largura="95" />
+					<label field="psqFeiDescricao" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="D U R A T I O N" largura="80" />
+					<label field="psqFeiDura" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="C O S T" largura="40" />
+					<label field="psqFeiCost" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="T I M E   T O   C A S T" largura="100" />
+					<label field="psqFeiTime" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="I T E M" largura="40" />
+					<label field="psqFeiItem" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+				</scrollBox>
+				<layout align="top" height="30" margins="{top=20, right=15}">
+					<button text="🞧" align="client" hint="Adicionar Técnica">
+						<event name="onClick"><![CDATA[
+							local difFinal= nil
+							if sheet.psqFeiDif == "Easy" then
+								difFinal = "E"
+							elseif sheet.psqFeiDif == "Average" then
+								difFinal = "A"
+							elseif sheet.psqFeiDif == "Hard" then
+								difFinal = "H"
+							elseif sheet.psqFeiDif == "Very Hard" then
+								difFinal = "VH"
+							end
+						
+							local item = self:getParent():getParent():findControlByName('rlFeiticos'):append()
+							
+							item.nomeFei = sheet.psqFeiNome
+							item.dificuldadeFei = difFinal
+							item.PtsFei = "[01]"
+							item.collegeFei = sheet.psqFeiCol
+							item.classesFei = sheet.psqFeiClass
+							item.prereqFei = sheet.psqFeiPrerequisitos
+							item.descFei = sheet.psqFeiDescricao
+							item.durationFei = sheet.psqFeiDura
+							item.costFei = sheet.psqFeiCost
+							item.timeFei = sheet.psqFeiTime
+							item.itemFei = sheet.psqFeiItem
+							
+							self:getParent():getParent():findControlByName('rlFeiticos').visible = false
+							self:getParent():getParent():findControlByName('rlFeiticos').visible = true
+							self:getParent():getParent():findControlByName('rlFeiticos'):sort()
+							self:getParent():getParent():findControlByName('parteEsquerda'):needRepaint()
+						]]></event>
+					</button>
+					<button text="💬" align="right" margins="{left=5}" width="30" hint="Enviar Descrição no Chat">
+						<event name="onClick"><![CDATA[
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+							local meuJogador = mesaDoPersonagem.meuJogador
+							local meuNick = meuJogador.nick
+							
+							local msg = "💬 ".. meuNick .." [§R][§K2]destacou o Feitiço:"
+							msg = msg .. "\n****\n### [§K1][§B]".. sheet.psqFeiNome .."[§B]\n###### ".. sheet.psqFeiDif
+							msg = msg .. "\n [§K1][§B]College:[§B] [§K14][§T]".. sheet.psqFeiCol .. "[§T]"
+							msg = msg .. "\n [§K1][§B]Classes:[§B] [§K14]".. sheet.psqFeiClass
+							msg = msg .. "\n [§K1][§B]Prerequisites:[§B] [§K14]".. sheet.psqFeiPrerequisitos
+							msg = msg .. "\n [§K1][§B]Description:[§B] [§K14]".. sheet.psqFeiDescricao
+							msg = msg .. "\n [§K1][§B]Duration:[§B] [§K14]".. sheet.psqFeiDura
+							msg = msg .. "\n [§K1][§B]Cost:[§B] [§K14]".. sheet.psqFeiCost
+							msg = msg .. "\n [§K1][§B]Time to Cast:[§B] [§K14]".. sheet.psqFeiTime
+							msg = msg .. "\n [§K1][§B]Item:[§B] [§K14]".. sheet.psqFeiItem
+							msg = msg .. "[§T]\n****"
+
+							mesaDoPersonagem.activeChat:enviarMensagem(msg)
+						]]></event>
+					</button>
+				</layout>
+			</rectangle>
+		</rectangle>	
+	</popup>		
+</form>

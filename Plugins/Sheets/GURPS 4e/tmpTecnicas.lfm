@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpTecnicas" height="33" align="top" onShow="getHabilidades() calcularNH() formatColors()" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+		readOnly: true;
+		cursor: default;
+		canFocus: false;
+	}
+	
+	</style>
+	<script><![CDATA[
+		
+		local function g(NH, nome)
+		
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local rolagem = Firecast.interpretarRolagem("3d6")
+			mesaDoPersonagem.activeChat:rolarDados(rolagem, "[§B]Teste de " .. nome .. "[§B] (" .. sheet.habilidadeTec .. "), NH ".. NH, function (rolado)
+				
+				local resultado = rolado.resultado
+				local diff = math.abs(NH - resultado)
+				
+				if resultado == 18 or (resultado >= 17 and NH <= 15) or resultado - 10 >= NH then
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K4]Falha Crítica [§K1]por [§K2]" .. diff);
+				elseif resultado<=4 or (resultado<=5 and NH>=15) or (resultado<=6 and NH>=16) then
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K9]Sucesso Crítico [§K1]por [§K2]" .. diff);
+				elseif resultado > NH then
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K7]Falha [§K1]por [§K2]" .. diff);
+				else
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K3]Sucesso [§K1]por [§K2]" .. diff);
+				end
+			end);
+		end
+		
+		local function formatColors()
+			if tonumber(sheet.PtsTec:match("%[(%d+)%]")) > 0 then
+				self.edtPtsTec.fontColor = '#00ff78'
+			else
+				self.edtPtsTec.fontColor = '#9e9e9e'
+			end
+		end
+		
+		local function getHabilidades()
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			local nodoHab = NDB.getChildNodes(nodoPai["Habilidades"])
+			local listaHabs= {}
+				for i = 1, #nodoHab, 1 do
+					pcall(table.insert(listaHabs, nodoHab[i]["nomeHab"]))
+				end
+				
+			local nodoFei = NDB.getChildNodes(nodoPai["Feiticos"])
+				for i = 1, #nodoFei, 1 do
+					pcall(table.insert(listaHabs, nodoFei[i]["nomeFei"]))
+				end
+			table.sort(listaHabs)
+			self.edtHabTec.items = listaHabs
+		end
+		
+		local function calcularNH()
+			if tonumber(sheet.PtsTec:match("%[(%d+)%]")) > 0 and sheet.habilidadeTec ~= nil then
+				local nodoPai = NDB.getParent(NDB.getParent(sheet))
+				local nodoHab = NDB.getChildNodes(nodoPai["Habilidades"])
+				local nodoFei = NDB.getChildNodes(nodoPai["Feiticos"])
+				local NHhab, NHfinal = 0
+				for i = 1, #nodoHab, 1 do
+					if nodoHab[i]["nomeHab"] == sheet.habilidadeTec then
+						NHhab = nodoHab[i]["NHHab"]
+					end
+				end
+				
+				if NHhab == 0 then
+					for i = 1, #nodoFei, 1 do
+						if nodoFei[i]["nomeFei"] == sheet.habilidadeTec then
+							NHhab = nodoFei[i]["NHFei"]
+						end
+					end
+				end
+				
+				NHfinal = NHhab + sheet.defaultTec + sheet.bonusTec + tonumber(sheet.PtsTec:match("%[(%d+)%]")) - 1
+				if sheet.dificuldadeTec == "H" then
+					NHfinal = NHfinal - 1
+				end
+				sheet.NHTec = string.format("%02d", NHfinal)
+				
+				if NHhab == 0 then
+					showMessage("Habilidade Base da seguinte Técnica não foi encontrada:\n" .. sheet.nomeTec .. " (" .. sheet.habilidadeTec .. ")!\nSelecione outra Habilidade para a Técnica!")
+					sheet.NHTec = string.format("%02d", 0)
+				end
+				
+			else
+				sheet.NHTec = "00"
+			end
+		end
+		
+		local function calcSomaPontosHabilidades()
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			nodoPai.cbHabCalc = not nodoPai.cbHabCalc
+		end
+		
+		local function select()
+			self.recHighlight.visible = not self.recHighlight.visible
+			
+			if self.recCombobox.color == "#272727" then
+				self.recCombobox.color = "#303030"
+			else
+				self.recCombobox.color = "#272727"
+			end
+		end
+	]]></script>
+	
+	<rectangle color="#202020" width="358" />
+	<rectangle color="#202020" left="745" width="230" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+	<rectangle color="#303030" width="2000" height="33" visible="false" name="recHighlight"/>
+	
+	<layout align="top" height="30" margins="{top=3}">
+		<button align="left" width="30" text="🎲" margins="{right=3}" onClick="g(tonumber(sheet.NHTec), sheet.nomeTec)" hint="Rolar Técnica" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		
+		<edit align="left" width="325" fontStyle="bold" name="edtNomeTec" field="nomeTec" hint="Nome da Técnica" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="nomeTec" defaultValue="—" />
+		
+		<comboBox align="left" width="240" name="edtHabTec" field="habilidadeTec" hint="Habilidade da Técnica\nAtenção: Caso o nome da Habilidade seja alterado acima\nou ela seja deletada, esse campo precisa ser reselecionado!" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" >
+			<event name="onClick">
+				getHabilidades()
+			</event>
+		</comboBox>
+		<rectangle name="recCombobox" color="#272727" width="225" left="360" onClick="getHabilidades() self.edtHabTec:dropDown()" cursor="handPoint" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<label field="habilidadeTec" width="220" left="360" height="30" hint="Habilidade da Técnica\nAtenção: Caso o nome da Habilidade seja alterado acima\nou ela seja deletada, esse campo precisa ser reselecionado!" onClick="getHabilidades() self.edtHabTec:dropDown()" cursor="handPoint" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="habilidadeTec">
+			<event name="onChange">
+				calcularNH()
+			</event>
+		</dataLink>
+		
+		<edit align="left" width="45" name="edtDefaultTec" field="defaultTec" type="number" horzTextAlign="center" hint="Valor Default da Técnica baseada na Habilidade" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="defaultTec" defaultValue="-1">
+			<event name="onChange">
+				calcularNH()
+			</event>
+		</dataLink>
+		
+		<comboBox align="left" width="50" name="edtDifTec" items="{'(A)', '(H)'}" values="{'A', 'H'}" field="dificuldadeTec" hint="Dificuldade da Técnica" margins="{right=5}" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="dificuldadeTec" defaultValue="A">
+			<event name="onChange">
+				if tonumber(sheet.PtsTec:match("%[(%d+)%]")) == 1 and sheet.dificuldadeTec == "H" then
+					sheet.PtsTec = string.format('[%02d]', 2)
+				end
+				calcularNH()
+			</event>
+		</dataLink>
+		
+		<edit align="left" width="50" name="edtBonusTec" field="bonusTec" type="number" hint="Modificadores no NH da Técnica" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+			<event name="onExit">
+				if sheet.bonusTec == nil then sheet.bonusTec = 0 end
+			</event>
+		</edit>
+		<dataLink field="bonusTec" defaultValue="0">
+			<event name="onChange">
+				calcularNH()
+			</event>
+		</dataLink>
+		
+		<label align="left" width="48" fontStyle="bold" fontColor="white" name="lblNHTec" field="NHTec" hint="NH Final da Técnica" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="NHTec" defaultValue="00" />
+		
+		<edit align="left" width="35" name="edtPtsTec" field="PtsTec" class="pts" hint="Pontos Gastos na Técnica" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="PtsTec" defaultValue="[00]">
+			<event name="onChange">
+				calcSomaPontosHabilidades()
+			</event>
+		</dataLink>
+		
+		<layout align="left" width="15" margins="{right=2}">
+			<button align="top" height="15" text="⯅" fontSize="6" hint="Aumentar NH com pontos" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" >
+				<event name="onClick"><![CDATA[
+					if sheet.habilidadeTec ~= nil then
+						local valorOriginal = tonumber(sheet.PtsTec:match("%[(%d+)%]"))
+						if valorOriginal == 0 and sheet.dificuldadeTec == "H" then
+							valorFinal = valorOriginal + 2
+						else
+							valorFinal = valorOriginal + 1
+						end
+						sheet.PtsTec = string.format('[%02d]', valorFinal)
+						calcularNH()
+						formatColors()
+					else
+						showMessage('Escolha uma Habilidade Base!')
+					end
+				]]></event>
+			</button>
+			<button align="top" height="15" text="⯆" fontSize="6" hint="Diminuir NH com pontos" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" >
+				<event name="onClick"><![CDATA[
+					if sheet.habilidadeTec ~= nil then
+						local valorOriginal = tonumber(sheet.PtsTec:match("%[(%d+)%]"))
+						
+						if valorOriginal == 0 then
+							return
+						elseif valorOriginal == 2 and sheet.dificuldadeTec == "H" then
+							valorFinal = valorOriginal - 2
+						else
+							valorFinal = valorOriginal - 1
+						end
+						sheet.PtsTec = string.format('[%02d]', valorFinal)
+						calcularNH()
+						formatColors()
+					else
+						showMessage('Escolha uma Habilidade Base!')
+					end
+				]]></event>
+			</button>
+		</layout>
+		
+		<button align="left" text="𝐢" width="30" name="btnInfo" hint="Informações Extras" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" >
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popUp_");
+						
+				if pop ~= nil then
+					pop:showPopupEx("left", self.btnInfo);
+					pop:setNodeObject(sheet)
+					
+					local skillTemp = ""
+					if sheet.habilidadeTec == nil then
+						skillTemp = "???"
+					else
+						skillTemp = sheet.habilidadeTec
+					end
+					
+					if sheet.dificuldadeTec == 'A' then
+						sheet.AtreDifHab = skillTemp .. "/Average"
+					elseif sheet.dificuldadeTec == 'H' then
+						sheet.AtreDifHab = skillTemp .. "/Hard"
+					else
+						sheet.AtreDifHab = skillTemp .. "/???"
+					end
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir");
+				end;
+			]]></event>
+		</button>
+		
+		<template name="DivisorM">
+			<layout align="top" height="12" margins="{top=0, bottom=5}">
+				<label align="left" text="$(texto)" width="$(largura)" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+				<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+			</layout>
+		</template>
+		
+		<popup name="popUp_" width="518" height="620" backOpacity="0" drawContainer="false" autoScopeNode="false">
+			<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=0}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<layout align="top" height="40">
+						<label field="nomeTec" align="client" textTrimming="character" fontStyle="bold" fontColor="white" fontSize="20" />
+						<label field="AtreDifHab" align="right" horzTextAlign="trailing" width="115" margins="{right=15}" />
+					</layout>
+					<scrollBox align="client" padding="{bottom=0, right=15}">
+						<DivisorM texto="D E F A U L T S" largura="70" />
+						<textEditor field="defaultsTec" align="top" />
+						<DivisorM texto="P R E R E Q U I S I T E S" largura="110" />
+						<textEditor field="prereqTec" align="top" />
+						<DivisorM texto="D E S C R I P T I O N" largura="95" />
+						<textEditor field="descTec" align="top" height="290"/>
+						<button text="💬" align="top" height="30" hint="Enviar Descrição no Chat">
+							<event name="onClick"><![CDATA[
+								local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+								local meuJogador = mesaDoPersonagem.meuJogador
+								local meuNick = meuJogador.nick
+								
+								local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Técnica:"
+								msg = msg .. "\n****\n### [§K1][§B]".. (sheet.nomeTec or "") .."[§B]\n###### ".. (sheet.AtreDifHab or "")
+								msg = msg .. "\n [§K1][§B]Defaults:[§B] [§K14][§T]".. (sheet.defaultsTec or "") .. "[§T]"
+								msg = msg .. "\n [§K1][§B]Prerequisites:[§B] [§K14]".. (sheet.prereqTec or "")
+								msg = msg .. "\n [§K1][§B]Description:[§B] [§K14]".. (sheet.descTec or "")
+								msg = msg .. "[§T]\n****"
+
+								mesaDoPersonagem.activeChat:enviarMensagem(msg)
+							]]></event>
+						</button>
+					</scrollBox>
+				</rectangle>
+			</rectangle>
+		</popup>
+		
+		<button align="left" text="🞭" width="30" onClick="NDB.deleteNode(sheet) calcSomaPontosHabilidades()" hint="Apagar Técnica" margins="{left=2}" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		
+	</layout>
+</form>

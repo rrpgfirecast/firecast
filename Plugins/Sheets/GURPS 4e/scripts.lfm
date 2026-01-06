@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmScripts">
+	<script><![CDATA[
+	
+	DRdefault = {
+		{"Cabeça", {"Crânio", "Olhos", "Rosto"}},
+		{"Corpo", {"Pescoço", "Tronco", "Virilha"}},
+		{"Membros", {"Braços", "Pernas"}},
+		{"Traje Completo", {"Pescoço", "Tronco", "Virilha", "Braços", "Mãos", "Pernas", "Pés"}}
+	}
+	
+	local function g(NH, nome)
+		NH = NH or 0
+		local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+		local rolagem = Firecast.interpretarRolagem("3d6")
+		mesaDoPersonagem.activeChat:rolarDados(rolagem, "[§B]Teste de " .. nome .. "[§B], NH ".. NH, function (rolado)
+			
+			local resultado = rolado.resultado
+			local diff = math.abs(NH - resultado)
+			
+			if resultado == 18 or (resultado >= 17 and NH <= 15) or resultado - 10 >= NH then
+			  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K4]Falha Crítica [§K1]por [§K2]" .. diff);
+			elseif resultado<=4 or (resultado<=5 and NH>=15) or (resultado<=6 and NH>=16) then
+			  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K9]Sucesso Crítico [§K1]por [§K2]" .. diff);
+			elseif resultado > NH then
+			  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K7]Falha [§K1]por [§K2]" .. diff);
+			else
+			  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K3]Sucesso [§K1]por [§K2]" .. diff);
+			end
+		end);
+	end
+	
+	function calcularDanoBase(st)
+		local tabelaDano = {
+			[1] = {"1d-6", "1d-5"},		[2] = {"1d-6", "1d-5"},		[3] = {"1d-5", "1d-4"},		[4] = {"1d-5", "1d-4"},		[5] = {"1d-4", "1d-3"},
+			[6] = {"1d-4", "1d-3"},		[7] = {"1d-3", "1d-2"},		[8] = {"1d-3", "1d-2"},     [9] = {"1d-2", "1d-1"},		[10] = {"1d-2", "1d"},
+			[11] = {"1d-1", "1d+1"},	[12] = {"1d-1", "1d+2"},    [13] = {"1d", "2d-1"},		[14] = {"1d", "2d"},        [15] = {"1d+1", "2d+1"},
+			[16] = {"1d+1", "2d+2"},    [17] = {"1d+2", "3d-1"},	[18] = {"1d+2", "3d"},      [19] = {"2d-1", "3d+1"},	[20] = {"2d-1", "3d+2"},
+			[21] = {"2d", "4d-1"},		[22] = {"2d", "4d"},		[23] = {"2d+1", "4d+1"},	[24] = {"2d+1", "4d+2"},    [25] = {"2d+2", "5d-1"},
+			[26] = {"2d+2", "5d"},      [27] = {"3d-1", "5d+1"},	[28] = {"3d-1", "5d+1"},    [29] = {"3d", "5d+2"},		[30] = {"3d", "5d+2"},
+			[31] = {"3d+1", "6d-1"},	[32] = {"3d+1", "6d-1"},    [33] = {"3d+2", "6d"},		[34] = {"3d+2", "6d"},      [35] = {"4d-1", "6d+1"},
+			[36] = {"4d-1", "6d+1"},    [37] = {"4d", "6d+2"},		[38] = {"4d", "6d+2"},      [39] = {"4d+1", "7d-1"},	[40] = {"4d+1", "7d-1"},
+			[41] = {"4d+1", "7d-1"},	[42] = {"4d+1", "7d-1"},	[43] = {"4d+1", "7d-1"},	[44] = {"4d+1", "7d-1"},    [45] = {"5d", "7d+1"},
+			[46] = {"5d", "7d+1"},      [47] = {"5d", "7d+1"},      [48] = {"5d", "7d+1"},      [49] = {"5d", "7d+1"},		[50] = {"5d+2", "8d-1"},
+			[51] = {"5d+2", "8d-1"},	[52] = {"5d+2", "8d-1"},	[53] = {"5d+2", "8d-1"},	[54] = {"5d+2", "8d-1"},    [55] = {"6d", "8d+1"},
+			[56] = {"6d", "8d+1"},      [57] = {"6d", "8d+1"},      [58] = {"6d", "8d+1"},      [59] = {"6d", "8d+1"},		[60] = {"7d-1", "9d"},
+			[61] = {"7d-1", "9d"},		[62] = {"7d-1", "9d"},		[63] = {"7d-1", "9d"},		[64] = {"7d-1", "9d"},		[65] = {"7d+1", "9d+2"},    
+			[66] = {"7d+1", "9d+2"},    [67] = {"7d+1", "9d+2"},    [68] = {"7d+1", "9d+2"},    [69] = {"7d+1", "9d+2"},	[70] = {"8d", "10d"},		
+			[71] = {"8d", "10d"},		[72] = {"8d", "10d"},		[73] = {"8d", "10d"},		[74] = {"8d", "10d"},		[75] = {"8d+2", "10d+2"},   
+			[76] = {"8d+2", "10d+2"},   [77] = {"8d+2", "10d+2"},   [78] = {"8d+2", "10d+2"},   [79] = {"8d+2", "10d+2"},	[80] = {"9d", "11d"},       
+			[81] = {"9d", "11d"},		[82] = {"9d", "11d"},		[83] = {"9d", "11d"},		[84] = {"9d", "11d"},		[85] = {"9d+2", "11d+2"},   
+			[86] = {"9d+2", "11d+2"},   [87] = {"9d+2", "11d+2"},   [88] = {"9d+2", "11d+2"},	[89] = {"9d+2", "11d+2"},	[90] = {"10d", "12d"},		
+			[91] = {"10d", "12d"},		[92] = {"10d", "12d"},		[93] = {"10d", "12d"},		[94] = {"10d", "12d"},      [95] = {"10d+2", "12d+2"},  
+			[96] = {"10d+2", "12d+2"},  [97] = {"10d+2", "12d+2"},  [98] = {"10d+2", "12d+2"},	[99] = {"10d+2", "12d+2"},	[100] = {"11d", "13d"}
+		}
+		
+		-- Busca direta na tabela
+		if tabelaDano[st] then
+			return tabelaDano[st][1], tabelaDano[st][2]
+		end
+		
+		-- Para ST acima de 100, calcula baseado no padrão
+		if st > 100 then
+			local extraDice = math.floor((st - 100) / 10)
+			return (11 + extraDice) .. "d", (13 + extraDice) .. "d"
+		end
+		
+		if st < 1 then
+			local thrust = '1d' .. tostring(-2 - math.floor((8 - st) / 2) +1)
+			local swing = '1d' .. tostring(-2 - math.floor((8 - st) / 2))
+			return thrust, swing
+		end
+	end
+	
+	function calcularDanoRevis(st)		
+		local baseDamage = {
+			[1] = {"1d-11", "1d-9"},	[2] = {"1d-10", "1d-8"},	[3] = {"1d-9", "1d-7"},	[4] = {"1d-8", "1d-6"},	[5] = {"1d-7", "1d-5"},
+			[6] = {"1d-6", "1d-4"},		[7] = {"1d-5", "1d-3"},		[8] = {"1d-4", "1d-2"},	[9] = {"1d-3", "1d-1"},	[10] = {"1d-2", "1d"},
+			[11] = {"1d-1", "1d+1"},	[12] = {"1d", "1d+2"},		[13] = {"1d+1", "2d-1"},[14] = {"1d+2", "2d"},	[15] = {"2d-1", "2d+1"},
+			[16] = {"2d", "2d+2"},		[17] = {"2d+1", "3d-1"},	[18] = {"2d+2", "3d"},	[19] = {"3d-1", "3d+1"},[20] = {"3d", "3d+2"}
+		}
+		
+		if st <= 9 then
+			local thrust = '1d-' .. (12-st)
+			local swing = '1d-' .. (10-st)
+			return thrust, swing
+		end
+		
+		if st > 9 and st <= 20 then
+			return baseDamage[st][1], baseDamage[st][2]
+		end
+		
+		-- Find the base ST in range 17-20
+		local baseST = 17 + ((st - 17) % 4)
+		local extraST = st - baseST
+		local extraDice = math.floor(extraST / 4)
+		
+		-- Get base damage for the calculated base ST
+		local baseThrust = baseDamage[baseST][1]
+		local baseSwing = baseDamage[baseST][2]
+		
+		-- Parse base damage and add extra dice
+		local function addExtraDice(damageStr, extra)
+			if extra == 0 then
+				return damageStr
+			end
+
+			local dice, modifier = damageStr:match("(%d+)d([%+%-]?%d*)")
+			dice = tonumber(dice)
+
+			if modifier == "" then
+				modifier = 0
+			else
+				modifier = tonumber(modifier)
+			end
+
+			dice = dice + extra
+
+			if modifier == 0 then
+				return dice .. "d"
+			elseif modifier > 0 then
+				return dice .. "d+" .. modifier
+			else
+				return dice .. "d" .. modifier
+			end
+		end
+
+		
+		local thrust = addExtraDice(baseThrust, extraDice)
+		local swing = addExtraDice(baseSwing, extraDice)
+		
+		return thrust, swing
+	end
+	
+	local function calcSomaPontosAtributos()
+		local somaPts = {
+			tonumber(string.sub(sheet.STpts or "", 2, -2)) or 0,
+			tonumber(string.sub(sheet.DXpts or "", 2, -2)) or 0,
+			tonumber(string.sub(sheet.IQpts or "", 2, -2)) or 0,
+			tonumber(string.sub(sheet.HTpts or "", 2, -2)) or 0,
+			tonumber(string.sub(sheet.HPpts or "", 2, -2)) or 0,
+			tonumber(string.sub(sheet.Willpts or "", 2, -2)) or 0,
+			tonumber(string.sub(sheet.Perpts or "", 2, -2)) or 0,
+			tonumber(string.sub(sheet.FPpts or "", 2, -2)) or 0,
+			tonumber(string.sub(sheet.BasicSpeedpts or "", 2, -2)) or 0,
+			tonumber(string.sub(sheet.BasicMovepts or "", 2, -2)) or 0			
+		}
+		
+		local finalSum = 0
+		for i=1, #somaPts do
+			finalSum = finalSum + somaPts[i]
+		end
+		
+		sheet.Atributospts = string.format('[%02d]', finalSum)
+	end
+	
+	local function calcSomaPontosHabilidades()
+		local children = self.rlHabilidades:getChildren()
+		local finalSum = 0
+		
+		for i = 1, #children, 1 do
+			local valorPts = tonumber(children[i]:findControlByName('edtPtsHab').text:match("%[([%-]?%d+)%]")) or 1
+			finalSum = finalSum + valorPts
+		end
+		
+		sheet.Habilidadespts = string.format('[%02d]', finalSum)
+		
+		local childrenT = self.rlTecnicas:getChildren()
+		local finalSumT = 0
+		
+		for i = 1, #childrenT, 1 do
+			local valorPts = tonumber(childrenT[i]:findControlByName('edtPtsTec').text:match("%[([%-]?%d+)%]")) or 1
+			finalSumT = finalSumT + valorPts
+		end
+		
+		sheet.Tecnicaspts = string.format('[%02d]', finalSumT)
+		
+		self.rlTecnicas.visible = false 
+		self.rlTecnicas.visible = true
+		
+		local childrenF = self.rlFeiticos:getChildren()
+		local finalSumF = 0
+		
+		for i = 1, #childrenF, 1 do
+			local valorPts = tonumber(childrenF[i]:findControlByName('edtPtsFei').text:match("%[([%-]?%d+)%]")) or 1
+			finalSumF = finalSumF + valorPts
+		end
+		
+		sheet.Feiticospts = string.format('[%02d]', finalSumF)
+		
+		self.rlFeiticos.visible = false 
+		self.rlFeiticos.visible = true
+	end
+	
+	local function calcSomaPontosTracos()
+		local children = self.rlVantagens:getChildren()
+		local finalSum = 0
+		for i = 1, #children, 1 do
+			local valorPts = tonumber(children[i]:findControlByName('edtPtsVan').text:match("%[([%-]?%d+)%]")) or 1
+			finalSum = finalSum + valorPts
+		end
+		sheet.Vantagenspts = string.format('[%02d]', finalSum)
+		
+		local childrenQ = self.rlQualidades:getChildren()
+		local finalSumQ = 0
+		for i = 1, #childrenQ, 1 do
+			local valorPts = tonumber(childrenQ[i]:findControlByName('edtPtsVan').text:match("%[([%-]?%d+)%]")) or 1
+			finalSumQ = finalSumQ + valorPts
+		end
+		sheet.Qualidadespts = string.format('[%02d]', finalSumQ)
+		
+		local childrenD = self.rlDesvantagens:getChildren()
+		local finalSumD = 0
+		for i = 1, #childrenD, 1 do
+			local valorPts = tonumber(childrenD[i]:findControlByName('edtPtsVan').text:match("%[([%-]?%d+)%]")) or 1
+			finalSumD = finalSumD + valorPts
+		end
+		sheet.Desvantagenspts = string.format('[%02d]', finalSumD)
+		
+		local childrenP = self.rlPeculiaridades:getChildren()
+		local finalSumP = 0
+		for i = 1, #childrenP, 1 do
+			local valorPts = tonumber(childrenP[i]:findControlByName('edtPtsVan').text:match("%[([%-]?%d+)%]")) or 1
+			finalSumP = finalSumP + valorPts
+		end
+		sheet.Peculiaridadespts = string.format('[%02d]', finalSumP)
+	end
+	
+	local function calcSomaPontosSobre()
+		local children = self.rlFamiliaridades:getChildren()
+		local finalSum = 0
+		for i = 1, #children, 1 do
+			local valorPts = tonumber(children[i]:findControlByName('edtPtsFam').text:match("%[([%-]?%d+)%]")) or 1
+			finalSum = finalSum + valorPts
+		end
+		
+		sheet.Familiaridadespts = string.format('[%02d]', finalSum)
+		
+		finalSum = finalSum + (sheet.TLpts:match("%[([%-]?%d+)%]") or 0)
+		
+		local childrenI = self.rlIdiomas:getChildren()
+		local finalSumI = 0
+		for i = 1, #childrenI, 1 do
+			local valorPts = tonumber(childrenI[i]:findControlByName('edtPtsIdioma').text:match("%[([%-]?%d+)%]")) or 1
+			finalSumI = finalSumI + valorPts
+		end
+		
+		sheet.Idiomaspts = string.format('[%02d]', finalSumI)
+		finalSum = finalSum + finalSumI
+		
+		sheet.Sobrepts = string.format('[%02d]', finalSum)
+	end
+	
+	local function calcAtributos()
+		if not sheet.fldDisassociarAtr then
+			sheet.ST = 10 + (tonumber(string.sub(sheet.STpts, 2, -2)) / sheet.custoST)
+			sheet.DX = 10 + (tonumber(string.sub(sheet.DXpts, 2, -2)) / sheet.custoDX)
+			sheet.IQ = 10 + (tonumber(string.sub(sheet.IQpts, 2, -2)) / sheet.custoIQ)
+			sheet.HT = 10 + (tonumber(string.sub(sheet.HTpts, 2, -2)) / sheet.custoHT)
+			
+			sheet.HP	= sheet.ST + (tonumber(string.sub(sheet.HPpts, 2, -2)) / sheet.custoHP)
+			sheet.Will	= sheet.IQ + (tonumber(string.sub(sheet.Willpts, 2, -2)) / sheet.custoWill)
+			sheet.Per	= sheet.IQ + (tonumber(string.sub(sheet.Perpts, 2, -2)) / sheet.custoPer)
+			sheet.FP	= sheet.HT + (tonumber(string.sub(sheet.FPpts, 2, -2)) / sheet.custoFP)
+			
+			sheet.BasicSpeed = ((sheet.DX + sheet.HT) / 4) + ((tonumber(string.sub(sheet.BasicSpeedpts, 2, -2)) / sheet.custoBasicSpeed) * 0.25)
+			sheet.BasicMove = math.floor(sheet.BasicSpeed) + (tonumber(string.sub(sheet.BasicMovepts, 2, -2)) / sheet.custoBasicMove)
+			
+			if not sheet.fldTabelaSTRev then
+				sheet.ThrDmg, sheet.SwDmg = calcularDanoBase(sheet.ST)
+				
+				if((sheet.ST ^2) / 5) < 10 then
+					sheet.BasicLift = ((sheet.ST ^2) / 5)
+				else
+					sheet.BasicLift = math.floor(((sheet.ST ^2) / 5) + 0.5)
+				end
+				
+				if sheet.ST < 1 then sheet.BasicLift = 0 end
+			else
+				sheet.ThrDmg, sheet.SwDmg = calcularDanoRevis(sheet.ST)
+			
+				if(2 * 10 ^ (sheet.ST / 10)) < 10 then
+					sheet.BasicLift = math.floor(2 * 10 ^ (sheet.ST / 10) * 10 + 0.5) / 10
+				else
+					sheet.BasicLift = math.floor(2 * 10 ^ (sheet.ST / 10) + 0.5)
+				end
+			end
+		end
+		
+		sheet.Carga01 = sheet.BasicLift * 1
+		sheet.Carga02 = sheet.BasicLift * 2
+		sheet.Carga03 = sheet.BasicLift * 3
+		sheet.Carga04 = sheet.BasicLift * 6
+		sheet.Carga05 = sheet.BasicLift * 10
+		
+		sheet.Move01 = math.max(math.floor(sheet.BasicMove * 1), 1)
+		sheet.Move02 = math.max(math.floor(sheet.BasicMove * 0.8), 1)
+		sheet.Move03 = math.max(math.floor(sheet.BasicMove * 0.6), 1)
+		sheet.Move04 = math.max(math.floor(sheet.BasicMove * 0.4), 1)
+		sheet.Move05 = math.max(math.floor(sheet.BasicMove * 0.2), 1)
+		
+		sheet.Dodge01 = math.max(math.floor(sheet.BasicSpeed +3 - 0) + sheet.EnhancedDodge, 1)
+		sheet.Dodge02 = math.max(math.floor(sheet.BasicSpeed +3 - 1) + sheet.EnhancedDodge, 1)
+		sheet.Dodge03 = math.max(math.floor(sheet.BasicSpeed +3 - 2) + sheet.EnhancedDodge, 1)
+		sheet.Dodge04 = math.max(math.floor(sheet.BasicSpeed +3 - 3) + sheet.EnhancedDodge, 1)
+		sheet.Dodge05 = math.max(math.floor(sheet.BasicSpeed +3 - 4) + sheet.EnhancedDodge, 1)
+		calcSomaPontosAtributos()
+	end
+	
+	local function formatColors()
+		local campos = {
+			{self.edtSTpts, sheet.STpts},
+			{self.edtHPpts, sheet.HPpts},
+			{self.edtDXpts, sheet.DXpts},
+			{self.edtWillpts, sheet.Willpts},
+			{self.edtIQpts, sheet.IQpts},
+			{self.edtPerpts, sheet.Perpts},
+			{self.edtHTpts, sheet.HTpts},
+			{self.edtFPpts, sheet.FPpts},
+			{self.edtBasicSpeedpts, sheet.BasicSpeedpts},
+			{self.edtBasicMovepts, sheet.BasicMovepts},
+			{self.edtAtributospts, sheet.Atributospts},
+			{self.edtHabilidadespts, sheet.Habilidadespts},
+			{self.edtTecnicaspts, sheet.Tecnicaspts},
+			{self.edtFeiticospts, sheet.Feiticospts},
+			{self.edtVantagenspts, sheet.Vantagenspts},
+			{self.edtDesvantagenspts, sheet.Desvantagenspts},
+			{self.edtQualidadespts, sheet.Qualidadespts},
+			{self.edtPeculiaridadespts, sheet.Peculiaridadespts},
+			{self.edtSobrepts, sheet.Sobrepts},
+			{self.edtTLpts, sheet.TLpts},
+			{self.edtFamiliaridadespts, sheet.Familiaridadespts},
+			{self.edtIdiomaspts, sheet.Idiomaspts},
+			{self.edtSumariopts, sheet.Sumariopts},
+			{self.edtsum01pts, sheet.sum01pts},
+			{self.edtsum02pts, sheet.sum02pts},
+			{self.edtsum03pts, sheet.sum03pts},
+			{self.edtsum04pts, sheet.sum04pts},
+			{self.edtsum05pts, sheet.sum05pts},
+			{self.edtsum06pts, sheet.sum06pts},
+			{self.edtsum07pts, sheet.sum07pts}
+		}
+		
+		for i=1, #campos do
+			if tonumber(string.sub(campos[i][2] or "[00]", 2, -2)) < 0 then
+				campos[i][1].fontColor = 'red'
+			elseif tonumber(string.sub(campos[i][2] or "[00]", 2, -2)) == 0 then
+				campos[i][1].fontColor = '#9e9e9e'
+			else
+				campos[i][1].fontColor = '#00ff78'
+			end
+		end
+	end
+	
+	local function resetAtributos()
+		local atributos = {'ST','DX','IQ','HT','HP','Will','Per','FP'}
+		
+		for i=1, #atributos do
+			sheet[atributos[i]] = 10
+			sheet[atributos[i] .. 'pts'] = '[00]'
+		end
+		
+		sheet['BasicSpeedpts'] = '[00]'
+		sheet['BasicMovepts'] = '[00]'
+		sheet['BasicSpeed'] = 5
+		sheet['BasicMove'] = 5
+		sheet['BasicLift'] = 20
+		sheet['ThrDmg'] = '1d-2'
+		sheet['SwDmg'] = '1d'
+		
+		sheet.custoST = 10
+		sheet.custoDX = 20
+		sheet.custoIQ = 20
+		sheet.custoHT = 10
+		
+		sheet.custoHP = 2
+		sheet.custoWill = 5
+		sheet.custoPer = 5
+		sheet.custoFP = 3
+		
+		sheet.custoBasicSpeed = 5
+		sheet.custoBasicMove = 5
+		
+		sheet.Carga01 = sheet.BasicLift * 1
+		sheet.Carga02 = sheet.BasicLift * 2
+		sheet.Carga03 = sheet.BasicLift * 3
+		sheet.Carga04 = sheet.BasicLift * 6
+		sheet.Carga05 = sheet.BasicLift * 10
+		
+		sheet.Move01 = math.max(math.floor(sheet.BasicMove * 1), 1)
+		sheet.Move02 = math.max(math.floor(sheet.BasicMove * 0.8), 1)
+		sheet.Move03 = math.max(math.floor(sheet.BasicMove * 0.6), 1)
+		sheet.Move04 = math.max(math.floor(sheet.BasicMove * 0.4), 1)
+		sheet.Move05 = math.max(math.floor(sheet.BasicMove * 0.2), 1)
+		
+		sheet.Dodge01 = math.max(math.floor(sheet.BasicSpeed +3 - 0), 1)
+		sheet.Dodge02 = math.max(math.floor(sheet.BasicSpeed +3 - 1), 1)
+		sheet.Dodge03 = math.max(math.floor(sheet.BasicSpeed +3 - 2), 1)
+		sheet.Dodge04 = math.max(math.floor(sheet.BasicSpeed +3 - 3), 1)
+		sheet.Dodge05 = math.max(math.floor(sheet.BasicSpeed +3 - 4), 1)
+		
+		sheet.EnhancedDodge = 0
+		sheet.EnhancedParry = 0
+		sheet.EnhancedBlock = 0
+		
+		formatColors()
+	end
+	
+	function tratarInputDano(input, default)
+		local function isValidFormat(str)
+			local pattern = "^(%d+)d([%+%-]?)(%d*)$"
+			local x, sign, y = str:match(pattern)
+			
+			if not x then return false end
+			if sign == "" and y == "" then return true end
+			if sign ~= "" and y == "" then return false end
+			if sign == "" and y ~= "" then return false end
+			
+			return true
+		end
+		
+		local function normalizeString(str)
+			str = str:gsub("%s+", "")
+			local x, sign, y = str:match("^(%d+)d([%+%-])(%d+)$")
+			
+			if x and sign and y then
+				if y == "0" and sign == "+" then
+					return x .. "d"
+				else
+					return x .. "d" .. sign .. y
+				end
+			end
+
+			if str:match("^%d+d$") then
+				return str
+			end
+			
+			local x2, y2 = str:match("^(%d+)d(%d+)$")
+			if x2 and y2 then
+				if y2 == "0" then
+					return x2 .. "d"
+				else
+					return x2 .. "d+" .. y2
+				end
+			end
+			
+			return str
+		end
+		
+		if isValidFormat(input) then return input end
+		
+		local normalized = normalizeString(input)
+		if isValidFormat(normalized) then return normalized end
+		
+		showMessage('Formato de dano inválido!')
+		return default
+	end
+		
+	local function carregarHabilidadesPesquisa(input)
+		local children = self.rlPesquisaHab:getChildren()
+		local importSkills = NDB.load('skills.xml')
+		skillsNDBgurps = NDB.getChildNodes(importSkills)
+		
+		if #children ~= #skillsNDBgurps then
+	
+			NDB.clearNode(sheet.ResultadosPesquisa)
+			for i=1, #skillsNDBgurps, 1 do
+				local item = self.rlPesquisaHab:append()
+				item.psqHabNome = skillsNDBgurps[i].name
+				item.psqHabAtributoeDif = skillsNDBgurps[i].stat .. "/" .. skillsNDBgurps[i].difficulty
+				item.psqHabDefaults = skillsNDBgurps[i].default
+				item.psqHabPrerequisitos = skillsNDBgurps[i].prereq or "—"
+				item.psqHabModificadores = skillsNDBgurps[i].mod or "—"
+				item.psqHabDescricao = skillsNDBgurps[i].desc
+			end
+			self.rlPesquisaHab:sort()
+			self.popPesquisaHab:needRepaint()
+		end
+	end
+	
+	function pesquisarHabilidades(input)
+		if input == nil then input = "" end
+		local children = self.rlPesquisaHab:getChildren()
+
+		for i = 1, #children, 1 do
+			children[i].visible = true;
+			children[i].height = 75;
+			local valorNome = string.lower(children[i]:findControlByName('lblHabNome').text)
+			local valorReq = string.lower(children[i]:findControlByName('lblHabPrereq').text)
+			local valorDefaults = string.lower(children[i]:findControlByName('lblHabDefaults').text)
+			
+			if not (string.find(valorNome, string.lower(input)) or string.find(valorReq, string.lower(input)) or string.find(valorDefaults, string.lower(input))) then
+				children[i].visible = false;
+				children[i].height = 0;
+			end
+		end
+		self.rlPesquisaHab:sort()
+		self.popPesquisaHab:needRepaint()
+	end
+		
+	local function carregarTecnicasPesquisa(input)
+		local children = self.rlPesquisaTec:getChildren()
+		local importSkills = NDB.load('techniques.xml')
+		skillsNDBgurps = NDB.getChildNodes(importSkills)
+		
+		if #children ~= #skillsNDBgurps then
+	
+			NDB.clearNode(sheet.ResultadosPesquisaTec)
+			for i=1, #skillsNDBgurps, 1 do
+				local item = self.rlPesquisaTec:append()
+				item.psqTecNome = skillsNDBgurps[i].name
+				item.psqTecDif = skillsNDBgurps[i].difficulty
+				item.psqTecDefaults = skillsNDBgurps[i].default
+				item.psqTecPrerequisitos = skillsNDBgurps[i].prereq
+				item.psqTecDescricao = skillsNDBgurps[i].desc
+			end
+			self.rlPesquisaTec:sort()
+			self.popPesquisaTec:needRepaint()
+		end
+	end
+	
+	function pesquisarTecnicas(input)
+		if input == nil then input = "" end
+		local children = self.rlPesquisaTec:getChildren()
+
+		for i = 1, #children, 1 do
+			children[i].visible = true;
+			children[i].height = 75;
+			local valorNome = string.lower(children[i]:findControlByName('lblTecNome').text)
+			local valorReq = string.lower(children[i]:findControlByName('lblTecPrereq').text)
+			local valorDefaults = string.lower(children[i]:findControlByName('lblTecDefaults').text)
+			
+			if not (string.find(valorNome, string.lower(input)) or string.find(valorReq, string.lower(input)) or string.find(valorDefaults, string.lower(input))) then
+				children[i].visible = false;
+				children[i].height = 0;
+			end
+		end
+		self.rlPesquisaTec:sort()
+		self.popPesquisaTec:needRepaint()
+	end
+	
+	local function defineDef()
+		if not sheet.fldDisassociarAtr then
+			local function defineDodge()
+				if sheet.rdbCarga == "nula" then
+					sheet.Dodge = sheet.Dodge01
+				elseif sheet.rdbCarga == "leve" then
+					sheet.Dodge = sheet.Dodge02
+				elseif sheet.rdbCarga == "media" then
+					sheet.Dodge = sheet.Dodge03
+				elseif sheet.rdbCarga == "pesada" then
+					sheet.Dodge = sheet.Dodge04
+				elseif sheet.rdbCarga == "mtpesada" then
+					sheet.Dodge = sheet.Dodge05
+				else
+					sheet.Dodge = sheet.Dodge01
+				end
+			end
+			
+			local function defineParry()
+				sheet.Parry = math.floor(3 + (sheet.DX/2)) + (tonumber(sheet.EnhancedParry) or 0)
+				
+				if sheet.idHabParry ~= nil then
+					local nodoHab = NDB.getChildNodes(sheet["Habilidades"])
+					for i = 1, #nodoHab, 1 do
+						if nodoHab[i]["idHab"] == sheet.idHabParry then
+							sheet.Parry = math.floor(3 + (nodoHab[i]["NHHab"]/2)) + (tonumber(sheet.EnhancedParry) or 0)
+						end
+					end
+				end
+			end
+			
+			local function defineBlock()
+				sheet.Block = nil
+				
+				if sheet.idHabBlock ~= nil then
+					local nodoHab = NDB.getChildNodes(sheet["Habilidades"])
+					for i = 1, #nodoHab, 1 do
+						if nodoHab[i]["idHab"] == sheet.idHabBlock then
+							sheet.Block = math.floor(3 + (nodoHab[i]["NHHab"]/2)) + (tonumber(sheet.EnhancedBlock) or 0)
+						end
+					end
+				end
+			end
+			
+			defineDodge()
+			defineParry()
+			defineBlock()
+		end
+	end
+	
+	local function Tab(button, tab)
+		local allButtons = {
+			{self.btnTabSobre, self.scrbSobre},
+			{self.btnTabPericias, self.scrbPericias},
+			{self.btnTabTracos, self.scrbTracos},
+			{self.btnTabInventario, self.scrbInventario},
+			{self.btnTabHistoria, self.scrbHistoria},
+			{self.btnTabAnotacoes, self.scrbAnotacoes}
+		}
+		
+		for i = 1, #allButtons, 1 do
+			allButtons[i][1].enabled = true
+			allButtons[i][2].visible = false
+		end
+		
+		button.enabled = false
+		tab.visible = true
+	end
+	
+	local function Sumario()
+		local sum01 = 0
+		local Atributos01 = {sheet.STpts, sheet.DXpts, sheet.IQpts, sheet.HTpts, sheet.HPpts, sheet.Willpts, sheet.Perpts,  sheet.FPpts}
+		for i=1, #Atributos01, 1 do
+			local valor = tonumber(Atributos01[i]:match("%[([%-]?%d+)%]")) or 0
+			sum01 = sum01 + valor
+		end
+		sheet.sum01pts = string.format('[%02d]', sum01)
+		
+		local sum02 = 0
+		local Atributos02 = {sheet.BasicMovepts, sheet.BasicSpeedpts}
+		for i=1, #Atributos02, 1 do
+			local valor = tonumber(Atributos02[i]:match("%[([%-]?%d+)%]")) or 0
+			sum02 = sum02 + valor
+		end
+		sheet.sum02pts = string.format('[%02d]', sum02)
+		
+		local sum03 = 0
+		local Atributos03 = {sheet.Idiomaspts, sheet.TLpts, sheet.Familiaridadespts}
+		for i=1, #Atributos03, 1 do
+			local valor = tonumber(Atributos03[i]:match("%[([%-]?%d+)%]")) or 0
+			sum03 = sum03 + valor
+		end
+		sheet.sum03pts = string.format('[%02d]', sum03)
+		
+		local sum04 = 0
+		local Atributos04 = {sheet.Vantagenspts, sheet.Qualidadespts}
+		for i=1, #Atributos04, 1 do
+			local valor = tonumber(Atributos04[i]:match("%[([%-]?%d+)%]")) or 0
+			sum04 = sum04 + valor
+		end
+		sheet.sum04pts = string.format('[%02d]', sum04)
+		
+		local sum05 = 0
+		local Atributos05 = {sheet.Desvantagenspts, sheet.Peculiaridadespts}
+		for i=1, #Atributos05, 1 do
+			local valor = tonumber(Atributos05[i]:match("%[([%-]?%d+)%]")) or 0
+			sum05 = sum05 + valor
+		end
+		sheet.sum05pts = string.format('[%02d]', sum05)
+		
+		local sum06 = 0
+		local Atributos06 = {sheet.Habilidadespts, sheet.Tecnicaspts, sheet.Feiticospts}
+		for i=1, #Atributos06, 1 do
+			local valor = tonumber(Atributos06[i]:match("%[([%-]?%d+)%]")) or 0
+			sum06 = sum06 + valor
+		end
+		sheet.sum06pts = string.format('[%02d]', sum06)
+		
+		local sum07 = (sheet.sum07pts:match("%[([%-]?%d+)%]")) or 0
+		
+		sheet.Sumariopts = string.format('[%02d]', sum01 + sum02 + sum03 + sum04 + sum05 + sum06 + sum07)
+	end
+	
+	local function formatMoney(value)
+		value = value or 0
+		local inteiro, decimal = math.modf(value)
+		decimal = math.abs(decimal)
+		decimal = string.format("%02d", math.floor(decimal * 100 + 0.5))
+		
+		local formatted = tostring(inteiro)
+		formatted = formatted:reverse():gsub("(%d%d%d)", "%1."):reverse()
+		if formatted:sub(1,1) == "." then
+			formatted = formatted:sub(2)
+		end
+		
+		return string.format("$%s,%s", formatted, decimal)
+	end
+
+	local function parseMoney(str)
+		str = str or "0"
+		local num = str:gsub("[%$%s]", ""):gsub("%.", ""):gsub(",", ".")
+		return tonumber(num)
+	end
+		
+	local function dump(o)
+	   if type(o) == 'table' then
+		  local s = '{ '
+		  for k,v in pairs(o) do
+			 if type(k) ~= 'number' then k = '"'..k..'"' end
+			 s = s .. '['..k..'] = ' .. dump(v) .. ','
+		  end
+		  return s .. '} '
+	   else
+		  return tostring(o)
+	   end
+	end
+	
+	local function removeDuplicates(t)
+		local uniqueElements = {}
+		local seen = {}
+
+		for _, value in ipairs(t) do
+			if not seen[value] then
+				table.insert(uniqueElements, value)
+				seen[value] = true
+			end
+		end
+
+		return uniqueElements
+	end
+		
+	local function spacing(texto)
+		if type(texto) ~= "string" then return "" end
+
+		texto = texto:gsub("\239\187\191", "")
+
+		local parts = {}
+		for uchar in texto:gmatch("[%z\1-\127\194-\244][\128-\191]*") do
+			table.insert(parts, uchar)
+		end
+
+		return table.concat(parts, " ")
+	end
+	
+	local function grupoContemLocal(grupo, localAlvo)
+		for _, entry in ipairs(DRdefault) do
+			local nomeGrupo = entry[1]
+			local locais = entry[2]
+
+			if nomeGrupo == grupo then
+				for _, loc in ipairs(locais) do
+					if loc == localAlvo then
+						return true
+					end
+				end
+				return false
+			end
+		end
+		return false
+	end
+	
+	local function checkDRempty()
+		local nodoLoc = NDB.getChildNodes(sheet.ConfigsLocais)
+		local nodoGru = NDB.getChildNodes(sheet.ConfigsGrupos)
+		if #nodoLoc == 0 and #nodoGru == 0 then
+			NDB.clearNode(sheet.ConfigsLocais)
+			NDB.clearNode(sheet.ConfigsGrupos)
+			NDB.clearNode(sheet.GruposDR)
+			local DRlocais = {}
+			
+			for i = 1, #DRdefault, 1 do
+				local item = self.rlConfigsGrupos:append()
+				item.nome = DRdefault[i][1]
+				for j = 1, #DRdefault[i][2], 1 do
+					table.insert(DRlocais, DRdefault[i][2][j])
+				end
+			end
+			
+			DRlocais = removeDuplicates(DRlocais)
+			for i = 1, #DRlocais, 1 do
+				local item = self.rlConfigsLocais:append()
+				item.nome = DRlocais[i]
+			end
+			
+			for i = 1, #DRdefault, 1 do
+				local item = self.rlGruposDR:append()
+				item.GruposDR = DRdefault[i][1]
+				
+				local children = self.rlGruposDR:getChildren()
+				for j = 1, #DRdefault[i][2], 1 do
+					local itemJ = children[i]:findControlByName("rlRegioes"):append()
+					itemJ.nomeReg = spacing(string.upper(DRdefault[i][2][j]))
+				end
+			end
+			
+			
+			local nodoPai = NDB.getChildNodes(sheet.ConfigsGrupos)
+			local children = self.rlConfigsGruposExp:getChildren()
+			
+			for i = 1, #nodoPai, 1 do 
+				local nodoFilho = NDB.getChildNodes(nodoPai[i]["ConfigsChecks"])
+				if #nodoFilho == 0 then
+					local nodoLocais = NDB.getChildNodes(sheet.ConfigsLocais)
+					
+					for j = 1, #nodoLocais, 1 do
+						local item = children[i]:findControlByName("rlConfigsChecks"):append()
+						item.nome = nodoLocais[j]["nome"]
+						item.flag = grupoContemLocal(nodoPai[i]["nome"], nodoLocais[j]["nome"])
+					end
+				end
+			end
+		end
+	end
+	
+	local function initDR()
+		if #self.rlGruposDR:getChildren() == 0 or self.rlGruposDR:getChildren() == nil then
+		NDB.clearNode(sheet.GruposDR)
+			for i = 1, #DRdefault, 1 do
+				local item = self.rlGruposDR:append()
+				item.GruposDR = DRdefault[i][1]
+				
+				local children = self.rlGruposDR:getChildren()
+				for j = 1, #DRdefault[i][2], 1 do
+					local itemJ = children[i]:findControlByName("rlRegioes"):append()
+					itemJ.nomeReg = spacing(string.upper(DRdefault[i][2][j]))
+				end
+			end
+		end
+	end
+	
+	local function parseWeight(value)
+		if value == nil then return 0 end
+		local t = type(value)
+		if t == "number" then
+			return value
+		end
+		if t ~= "string" then
+			value = tostring(value)
+		end
+		local ok, s = pcall(function() return value:match("^%s*(.-)%s*$") end)
+		if not ok or not s then s = value end
+		ok, s = pcall(function() return s:gsub("%s*lbs?%.?$", "") end)
+		if not ok or not s then s = value end
+		ok, s = pcall(function() return tonumber(s) end)
+		if not ok then return 0 end
+		return s or 0
+	end
+	
+	local function calcCarga()
+		local nodoMelee = NDB.getChildNodes(sheet.ArmasMelee)
+		local nodoRanged = NDB.getChildNodes(sheet.ArmasRanged)
+		local nodoArmor = NDB.getChildNodes(sheet.Armaduras)
+		local nodoShield = NDB.getChildNodes(sheet.Escudos)
+		local nodoMisc = NDB.getChildNodes(sheet.Misc)
+		
+		local function somaTotalCarga(node)
+			local sumCarga = 0
+			for i = 1, #node do
+				if node[i]["equipado"] then
+					sumCarga = sumCarga + parseWeight(tostring(node[i]["Peso"]))
+				end
+			end
+			return sumCarga or 0
+		end
+		
+		local function somaTotalCargaMisc(node)
+			local nodoGrupos = NDB.getChildNodes(sheet.GruposMisc)
+			for i = 1, #nodoGrupos do
+				nodoGrupos[i]["Carga"] = 0
+			end
+			
+			local sumCarga = 0
+			for i = 1, #node do
+				if node[i]["equipado"] then
+					sumCarga = sumCarga + (parseWeight(tostring(node[i]["Peso"])) * tonumber(node[i]["Qnt"]))
+				end
+				
+				for j = 1, #nodoGrupos do
+					if node[i]["Grupo"] == nodoGrupos[j]["Nome"] then
+						nodoGrupos[j]["Carga"] = nodoGrupos[j]["Carga"] + (parseWeight(tostring(node[i]["Peso"])) * tonumber(node[i]["Qnt"]))
+					end
+				end
+			end
+			return sumCarga or 0
+		end
+		
+		local somaTotal = somaTotalCarga(nodoMelee) + somaTotalCarga(nodoRanged) + somaTotalCarga(nodoArmor) + somaTotalCarga(nodoShield) + somaTotalCargaMisc(nodoMisc)
+		sheet.posBarraDir = somaTotal
+		sheet.sumCarga = spacing(string.upper(tostring(somaTotal) .. " lbs."))
+		self.barraDir.hint = "Carga Atual: " .. somaTotal .. "/" .. sheet.Carga05 .. " lbs."
+		if somaTotal <= sheet.Carga01 then
+			self.barraDir.color = "#52BF30"
+		elseif somaTotal <= sheet.Carga02 then
+			self.barraDir.color = "#AFD436"
+		elseif somaTotal <= sheet.Carga03 then
+			self.barraDir.color = "#DAA520"
+		elseif somaTotal <= sheet.Carga04 then
+			self.barraDir.color = "#D96D21"
+		elseif somaTotal <= sheet.Carga05 then
+			self.barraDir.color = "#B22222"
+		else
+			self.barraDir.color = "#610357"
+		end
+		
+		if not sheet.fldDisassociarCarga then
+			if somaTotal <= sheet.Carga01 then
+				sheet.rdbCarga = "nula"
+			elseif somaTotal <= sheet.Carga02 then
+				sheet.rdbCarga = "leve"
+			elseif somaTotal <= sheet.Carga03 then
+				sheet.rdbCarga = "media"
+			elseif somaTotal <= sheet.Carga04 then
+				sheet.rdbCarga = "pesada"
+			else
+				sheet.rdbCarga = "mtpesada"
+			end
+		end
+	end
+	]]></script>
+</form>
