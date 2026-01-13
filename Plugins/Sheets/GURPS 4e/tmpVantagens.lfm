@@ -89,6 +89,7 @@
 			local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Vantagem:"
 			msg = msg .. "\n****\n### [§K1][§B]".. (sheet.nomeVan or "") .."[§B]\n###### ".. (sheet.TipoeCat or "")
 			msg = msg .. "\n [§K1][§B]Description:[§B] [§K14]".. (sheet.descVan or "")
+			msg = msg .. "\n [§K1][§B]Modifiers:[§B] [§K14]".. (sheet.modsVan or "")
 			msg = msg .. "[§T]\n****"
 
 			mesaDoPersonagem.activeChat:enviarMensagem(msg)
@@ -170,6 +171,8 @@
 					<scrollBox align="client" padding="{bottom=0, right=15}">
 						<DivisorM texto="D E S C R I P T I O N" largura="95" />
 						<textEditor field="descVan" align="top" height="290"/>
+						<DivisorM texto="M O D I F I E R S" largura="95" />
+						<textEditor field="modsVan" align="top" height="290"/>
 						<button text="💬" align="top" height="30" hint="Enviar Descrição no Chat" onClick="desc()" />
 					</scrollBox>
 				</rectangle>

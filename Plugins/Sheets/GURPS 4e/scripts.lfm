@@ -478,6 +478,29 @@
 		end
 	end
 	
+	local function carregarVantagensPesquisa(input)
+		local children = self.rlPesquisaVan:getChildren()
+		local importAdvantages = NDB.load('advantages.xml')
+		advantagesNDBgurps = NDB.getChildNodes(importAdvantages)
+		
+		if #children ~= #advantagesNDBgurps then
+	
+			NDB.clearNode(sheet.ResultadosPesquisa)
+			for i=1, #advantagesNDBgurps, 1 do
+				local item = self.rlPesquisaVan:append()
+				item.psqVanNome = advantagesNDBgurps[i].name
+				item.psqVanPts = advantagesNDBgurps[i].pts or "—"
+				item.psqVanTipo = advantagesNDBgurps[i].type
+				item.psqVanCategoria = advantagesNDBgurps[i].category
+				item.psqVanDescricao = advantagesNDBgurps[i].desc
+				item.psqVanIncrementos = advantagesNDBgurps[i].Sp_enh or "—"
+				item.psqVanLimitacoes = advantagesNDBgurps[i].Sp_lim or "-"
+			end
+			self.rlPesquisaVan:sort()
+			self.popPesquisaVan:needRepaint()
+		end
+	end
+	
 	function pesquisarHabilidades(input)
 		if input == nil then input = "" end
 		local children = self.rlPesquisaHab:getChildren()
@@ -496,6 +519,27 @@
 		end
 		self.rlPesquisaHab:sort()
 		self.popPesquisaHab:needRepaint()
+	end
+	
+	function pesquisarVantagens(input)
+		if input == nil then input = "" end
+		local children = self.rlPesquisaVan:getChildren()
+
+		for i = 1, #children, 1 do
+			children[i].visible = true;
+			children[i].height = 75;
+			local valorNome = string.lower(children[i]:findControlByName('lblVanNome').text)
+			local valorPts = string.lower(children[i]:findControlByName('lblVanPts').text)
+			local valorTipo = string.lower(children[i]:findControlByName('lblVanTipo').text)
+			local valorCategoria = string.lower(children[i]:findControlByName('lblVanCategoria').text)
+			
+			if not (string.find(valorNome, string.lower(input)) or string.find(valorPts, string.lower(input)) or (string.lower(valorTipo) == string.lower(input)) or (string.lower(valorCategoria) == string.lower(input))) then
+				children[i].visible = false;
+				children[i].height = 0;
+			end
+		end
+		self.rlPesquisaVan:sort()
+		self.popPesquisaVan:needRepaint()
 	end
 		
 	local function carregarTecnicasPesquisa(input)

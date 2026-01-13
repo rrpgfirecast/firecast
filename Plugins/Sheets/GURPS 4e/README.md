@@ -33,3 +33,8 @@ GURPS (_Generic Universal RolePlaying System_) é um sistema de RPG de mesa alta
 - Customização de locais de acerto e partes do corpo;
 - Agrupamento de itens miscelâneos, permitindo equipá-los e desequipá-los rapidamente (como agrupar vários itens em uma mochila);
 - Guia de História e Anotações.
+
+**Versão 1.0**
+- Pesquisa de Vantagens adicionada, assim como o campo de Modifiers.
+
+Contribuições: ADMCharaio, Lyrax.

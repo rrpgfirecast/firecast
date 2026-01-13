@@ -203,6 +203,35 @@
 		</popup>
 	</template>
 	
+	<template name="btnPesquisaVan">
+		<button name="btnPesquisaVan" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Vantagens (Tempo de Carregamento demorado)">
+			<event name="onClick"><![CDATA[
+				self.popPesquisaVan:show('right', self.btnPesquisaVan)
+				carregarVantagensPesquisa()
+			]]></event> 
+		</button>
+		<popup name="popPesquisaVan" width="390" height="760" backOpacity="0" drawContainer="false">
+			<event name="onClose"><![CDATA[
+				sheet.edtPesquisaVan = nil
+			]]></event> 
+			<rectangle name="recPesquisaVan" align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<DivisorD texto="P E S Q U I S A" largura="145" topo="0"/>
+					<edit name="edtPesquisaVan" field="edtPesquisaVan" align="top" margins="{bottom=10}">
+						<event name="onUserChange"><![CDATA[
+							pesquisarVantagens(sheet.edtPesquisaVan)
+						]]></event>
+					</edit>
+						<recordList align="client" name="rlPesquisaVan" field="ResultadosPesquisa" templateForm="pesquisaVan">
+							<event name="onCompare"><![CDATA[
+								return Utils.compareStringPtBr(nodeA.psqVanNome, nodeB.psqVanNome);
+							]]></event>
+						</recordList>
+				</rectangle>
+			</rectangle>
+		</popup>
+	</template>
+	
 	<template name="btnPesquisaTec">
 		<button name="btnPesquisaTec" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Técnicas (Tempo de Carregamento demorado)">
 			<event name="onClick"><![CDATA[
@@ -862,7 +891,7 @@
 		<DivisorcomPts texto="V A N T A G E N S" largura="160" var="Vantagens" />
 		<flowLayout name="flwVantagens" align="top" autoHeight="true" orientation="vertical" maxControlsPerLine="1">
 			<rectangle name="headerVantagens" width="926" height="30" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
-				<button name="btnPesquisaVan" text="🔎" height="30" width="30" align="left" margins="{right=5}" hint="Pesquisar Vantagens (Tempo de Carregamento demorado)" visible="false" /><label align="left" width="35" />
+				<btnPesquisaVan />
 				<label text="NOME"   width="465" fontStyle="bold" fontColor="white" align="left" />
 				<label text="CATEGORIA"   width="150" fontStyle="bold" fontColor="white" align="left" />
 				<label text="TIPO"   width="150" fontStyle="bold" fontColor="white" align="left" />
