@@ -69,6 +69,17 @@
 									end;
 								 end);
 		end;
+
+		local function showHabilidadePopup()
+			local pop = self:findControlByName("popInfo")
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet)
+				pop:showPopupEx("right", self.btnInfo)
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de habilidades para exibir")
+			end				
+		end
 			
 		]]>		
 	</script>
@@ -78,10 +89,22 @@
 		<button g="block" g-dyn-width-txt="true" g-dyn-height-txt="true" g-min-height="30" g-padding-left="8" g-padding-right="8" g-min-width="64"
 				text="@@DnD5e.tab.equipament.btn.delete" name="btnApagar" onClick="askForDelete();" />	
 	</layout>
+
+	<layout g="block" g-auto-height="true" g-dyn-width-each-line="true" g-vert-tile="true" g-gutter="8">
+		<button g="block" g-dyn-width-txt="true" g-dyn-height-txt="true" g-min-height="30" g-padding-left="8" g-padding-right="8" g-min-width="24"
+				text="i" name="btnInfo" onClick="showHabilidadePopup();" />	
+	</layout>
 		
 	<!-- Atributes of the Equipment -->
 	<layout g="col" g-width="12" g-auto-height="true" g-cnt-line-spacing="8" g-cnt-gutter="12" name="layPrincipal">		
 		<style>
+			.extraLargeField {
+				g: col;
+				g-width-xs: 12;
+				g-width-md: 12;
+				g-width-xl: 6;
+				g-min-width: 300;
+			}	
 			.largeField {
 				g: col;
 				g-width-xs: 12;
@@ -122,26 +145,10 @@
 			}
 		</style>
 	
-		<upperFieldGridEdit class="largeField" field="nome" title="@@DnD5e.tab.equipament.defend.lab.name"/>
-		<upperFieldGridEdit class="smallField" field="peso" title="@@DnD5e.tab.equipament.defend.lab.weight"/>	
-		
-		<upperFieldGridComboBox class="smallToMediumField" baseName="TypeEnum" field="typeEnum" title="@@DnD5e.tab.equipament.defend.lab.type" />					
-		
-		<script>
-			self.cmbTypeEnum.items = { '@@DnD5e.tab.equipament.defend.cmbType.lightArmor', 
-			                           '@@DnD5e.tab.equipament.defend.cmbType.mediumArmor', 
-									   '@@DnD5e.tab.equipament.defend.cmbType.heavyArmor', 
-									   '@@DnD5e.tab.equipament.defend.cmbType.shield',
-									   '@@DnD5e.tab.equipament.defend.cmbType.other' }
-									   
-			self.cmbTypeEnum.values = {'lightArmor', 'mediumArmor', 'heavyArmor', 'shield', 'other'};
-		</script>
-		
-		
-		<upperFieldGridCheckBox class="checkboxField" field="active" title="@@DnD5e.tab.equipament.btn.active"/>			
-		<upperFieldGridEdit class="smallField" field="caBonus" title="@@DnD5e.tab.equipament.defend.lab.ca"/>
-		<upperFieldGridCheckBox class="checkboxField" field="penalidade" title="@@DnD5e.tab.equipament.btn.pen"/>		
-		<upperFieldGridEdit class="mediumField" field="propriedades" title="@@DnD5e.tab.equipament.defend.lab.property"/>			
+		<upperFieldGridEdit class="extraLargeField" field="nome" title="@@DnD5e.tab.equipament.defend.lab.name"/>
+		<upperFieldGridEdit class="largeField" field="mora" title="MORA"/>	
+				
+		<upperFieldGridBar class="smallField" field="qtd" title="QUANTIDADE E USO"/>		
 	</layout>
 	
 	

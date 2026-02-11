@@ -34,6 +34,13 @@
 		</flowPart>
 	</template>
 
+	<template name="magicHeaderNlarge">
+		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header0.xml">
+			<label frameRegion="RegiaoSmallTitulo" text="$(level)" class="magicLevelNumber"/>
+			<label frameRegion="RegiaoConteudo" text="CUSTO $(level)" fontSize="15" horzTextAlign="center" vertTextAlign="center"/>
+		</flowPart>
+	</template>
+
 	<template name="magicHeaderN">
 		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header1.xml">
 			<label frameRegion="RegiaoSmallTitulo" text="$(level)" class="magicLevelNumber"/>
@@ -89,7 +96,7 @@
 
 	<template name="magicsLayoutN">
 		<flowLayout class="halfTile3 magicTile" height="100" avoidScale="true" maxControlsPerLine="1" autoHeight="true">
-			<magicHeaderN level="$(level)"/>
+			<magicHeaderNlarge level="$(level)"/>
 			<magicRecordList level="$(level)"/>
 		</flowLayout>
 	</template>
@@ -105,26 +112,19 @@
 		<edit align="top" class="" field="nome" textPrompt="NOME DA MAGIA" horzTextAlign="center"/>
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
 			<flowPart minWidth="30" maxWidth="800" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="@@DnD5e.spells.formulationTime" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<label align="top" class="tituloCampo" fontSize="10" text="TIPO DE AÇÃO" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 				<comboBox align="client" class="" field="tempoDeFormulacao" horzTextAlign="center" fontSize="12" items="{'Ação Padrão', 'Ação Bônus'}" values="{'padrao', 'bonus'}"/>
 			</flowPart>
 			<magicInfoField text="@@DnD5e.spells.range" field="alcance"/>
-			<magicInfoField text="@@DnD5e.spells.component" field="componentes"/>
 			<magicInfoField text="@@DnD5e.spells.duration" field="duracao"/>
+			<magicInfoField text="ÁREA" field="area"/>
 			<flowPart minWidth="30" maxWidth="800" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="@@DnD5e.generic.attack" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-				<comboBox align="client" class="" field="ataque" horzTextAlign="center" fontSize="12" items="{'@@DnD5e.spells.attack.none', '@@DnD5e.spells.attack.melee', '@@DnD5e.spells.attack.ranger'}" values="{'Sem ataque', 'Ataque Corpo-a-Corpo', 'Ataque a Distância'}"/>
+				<label align="top" class="tituloCampo" fontSize="10" text="TIPO DE MAGIA ELEMENTAL" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<comboBox align="client" class="" field="ataque" horzTextAlign="center" fontSize="12" items="{'Dano Elemental', 'Cura Elemental', 'Escudo Elemental', 'Efeito Elemental'}"/>
 			</flowPart>
-			<flowPart minWidth="30" maxWidth="800" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="@@DnD5e.savingThrows.title" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-				<comboBox align="client" class="" field="resistencia" horzTextAlign="center" fontSize="12" items="{'@@DnD5e.spells.resistance.none', '@@DnD5e.spells.resistance.str', '@@DnD5e.spells.resistance.dex', '@@DnD5e.spells.resistance.con', '@@DnD5e.spells.resistance.int', '@@DnD5e.spells.resistance.wis', '@@DnD5e.spells.resistance.cha'}" values="{'Nenhum', 'Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'}"/>
-			</flowPart>
-			s
-			<flowPart minWidth="30" maxWidth="800" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-				<comboBox align="client" class="" field="damageType" horzTextAlign="center" fontSize="12" items="{'@@DnD5e.spells.damage.none', '@@DnD5e.spells.damage'}" values="{'Sem dano', 'Dano'}"/>
-			</flowPart>
-			<magicInfoField text="@@DnD5e.spells.damage" field="damageValue"/>
+			<magicInfoField text="TESTE DE RESISTÊNCIA" field="resistencia"/>
+			
+			<magicInfoField text="Rolagem" field="damageValue"/>
 		</flowLayout>
 
 		<textEditor align="client" field="descricao" class=""/>
@@ -137,20 +137,20 @@
 				<!-- CLASSE CONJURADORA -->
 				<flowPart class="tile" minWidth="320" maxWidth="1600" frameStyle="frames/banner/magicGroup.xml" height="175" vertAlign="center" avoidScale="true">
 					<layout align="client">
-							<edit field="magias.classeConjuradora" class="transparente vcenter" fontSize="17" align="client"/>
-							<label align="bottom" text="@@DnD5e.spells.spellcasterClass" class="tituloCampo" autoSize="true" margins="{left=3}"/>
+							<comboBox align="client" class="transparente vcenter" field="magias.classeConjuradora" items="{'-', 'ANEMO', 'CRYO', 'DENDRO', 'ELECTRO', 'GEO', 'HYDRO', 'PYRO'}" fontSize="17"/>
+							<label align="bottom" text="VISÃO ELEMENTAL" class="tituloCampo" autoSize="true" margins="{left=3}"/>
 					</layout>
 				</flowPart>
 
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
 				<flowLayout class="halfTile2"  minWidth="320" maxWidth="1600" name="fraUpperGridMagias" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" 
 						maxControlsPerLine="3" horzAlign="center" lineSpacing="8">
-					<upperGridMagicComboBox minWidth="145" field="magias.habilidadeDeConjuracao" titulo="@@DnD5e.spells.spellcasterAbility" items="{'@@DnD5e.frente.box.intelligence'}" values="{'int'}"/>
-					<dataLink field="magias.habilidadeDeConjuracao" defaultValue="int"/>
-					<upperGridMagicBox field="magias.cdDaMagia" titulo="@@DnD5e.spells.spellSaveDC"/>
-					<upperGridMagicBox field="atributos.modcarisma" titulo="@@DnD5e.spells.spellSaveDCExtra"/>
+					<upperGridMagicComboBox minWidth="145" field="magias.habilidadeDeConjuracao" titulo="HABILIDADES DE MANIFESTAÇÃO" items="{'INTELIGÊNCIA', 'INSTINTO'}" values="{'int', 'sab'}"/>
+					<dataLink field="magias.habilidadeDeConjuracao" defaultValue="car"/>
+					<upperGridMagicBox field="magias.cdDaMagia" titulo="CD ELEMENTAL"/>
+					<flowLineBreak/>
 					<upperGridMagicEditBox field="magias.spKi" titulo="@@DnD5e.spells.SP/Ki"/>
-					<upperGridMagicEditBox field="atributos.modcarisma" titulo="@@DnD5e.spells.spellAttackExtra"/>
+					<upperGridMagicBox field="atributos.modcarisma" titulo="@@DnD5e.spells.spellAttackExtra"/>
 				</flowLayout>
 			</flowLayout>
 	
@@ -160,7 +160,7 @@
 					local bonusProficiencia;
 					local spellSaveValue = nil;
 					local spellAttackValue = nil;
-					local modHab = nil;
+					local modHab = 0;
 
 					if sheet.magias == nil then
 						sheet.magias = {};
@@ -173,19 +173,20 @@
 					hab = sheet.magias.habilidadeDeConjuracao;
 
 					if hab == "int" then
-						modHab = tonumber(sheet.atributos.modInteligencia);
+						modHab = tonumber(sheet.atributos.modInteligencia) or 0;
 					elseif hab == "sab" then
-						modHab = tonumber(sheet.atributos.modSabedoria);
+						modHab = tonumber(sheet.atributos.modSabedoria) or 0;
 					elseif hab == "car" then
-						modHab = tonumber(sheet.atributos.modCarisma);
+						modHab = tonumber(sheet.atributos.modCarisma) or 0;
 					end;
+
+					local modcar = tonumber(sheet.atributos.modCarisma) or 0;
 
 					bonusProficiencia = tonumber(sheet.bonusProficiencia) or 0;
 					ataqueExtra = tonumber(sheet.magias.ataqueExtra) or 0;
-					cdExtra = tonumber(sheet.atributos.modcarisma) or 0;
 
 					if modHab ~= nil then
-						spellSaveValue = 8 + modHab + bonusProficiencia + cdExtra;
+						spellSaveValue = 8 + modcar + bonusProficiencia + modHab;
 						spellAttackValue = modHab + bonusProficiencia + ataqueExtra;
 					end;
 
@@ -210,15 +211,13 @@
 			<!-- Itens de Magia -->
 
 			<flowLayout class="oneLineTile2" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical">
-				<magicsLayout0/>
+				<magicsLayoutN level="1"/>
 				<magicsLayoutN level="2"/>
 				<magicsLayoutN level="3"/>
 				<magicsLayoutN level="4"/>
 				<magicsLayoutN level="5"/>
 				<magicsLayoutN level="6"/>
 				<magicsLayoutN level="7"/>
-				<magicsLayoutN level="8"/>
-				<magicsLayoutN level="9"/>
 			</flowLayout>
 		</flowLayout>
 	</scrollBox> 

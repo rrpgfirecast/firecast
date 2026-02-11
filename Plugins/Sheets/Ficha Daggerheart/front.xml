@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="General" align="client">
+	<script>
+        <![CDATA[
+	        local function addXP(installed, downloaded)
+				local xp = (tonumber(sheet.xpAtual) or 0) + (tonumber(sheet.xpNova) or 0)
+				
+				sheet.xpAtual = xp
+				sheet.xpNova = 0
+	        end
+
+            local function basicRoll(text, var, nvNeg)
+	        	local mod = tonumber(sheet[var]) or 0
+                if nvNeg then
+                    mod = mod - math.abs(tonumber(sheet.nvNeg) or 0)
+                end
+				local rolagem = Firecast.interpretarRolagem("1d20+" .. mod)
+				if mod < 0 then
+					rolagem = Firecast.interpretarRolagem("1d20" .. mod)
+				end
+				local mesa = Firecast.getMesaDe(sheet)
+				mesa.activeChat:rolarDados(rolagem, text .. " de " .. (sheet.nome or "Nome"))
+	        end
+
+	        local function rollHD()
+				local mesa = Firecast.getMesaDe(sheet)
+				sheet.modificador = sheet.modificador or 0
+				mesa.activeChat:rolarDados(sheet.dvs, "Pontos de Vigor de " .. (sheet.nome or "Nome"),
+					function (rolagem)
+						local maximo = 0
+						local media = 0
+						local mult = 1
+						for i = 1, #rolagem.ops, 1 do 
+							local operacao = rolagem.ops[i]
+							if operacao.tipo == "dado" then   
+								maximo = maximo + (operacao.quantidade * operacao.face)
+								media = media + (operacao.quantidade * (operacao.face+1)/2)
+								if i==1 then
+									media = media + ((operacao.face-1)/2)
+								end
+							elseif operacao.tipo == "subtracao" then
+								mult = -1
+							elseif operacao.tipo == "soma" then
+								mult = 1
+							elseif operacao.tipo == "imediato" then
+								maximo = maximo + (operacao.valor * mult)
+								media = media + (operacao.valor * mult)
+							end
+						end
+
+						mesa.activeChat:enviarMensagem("PV máximo: " .. maximo .. " PV médio: " .. math.floor(media))
+						sheet.pvTotal = math.floor(media)
+					end)  
+	        end
+
+	        local function ShowPopUp(popup, location, position)
+				local pop = self:findControlByName(popup)
+				
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet)
+					pop:showPopupEx((position or "rightCenter"), location)
+				else
+					showMessage("Ops, bug.. nao encontrei o popup " .. popup .. " para exibir")
+				end
+	        end
+
+			local function updatePenalty()
+				if sheet==nil then return end;
+
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+				for i=1, #nodes, 1 do
+					nodes[i].penalidade = sheet.penalidade;
+				end;
+			end;
+        ]]> 
+    </script>
+
+    <scrollBox align="client" g-cnt-line-spacing="5">
+		<!-- Title region -->
+		<rectangle g="col" g-width="12" g-width-lg="6" color="black" strokeColor="white" strokeSize="1" g-min-height="60" padding="{left=5,right=5,top=5,bottom=5}">
+			<Title text="NAME" field="nome"/>
+			<Title text="HERITAGE" field="heritage"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="12" g-width-lg="5" color="black" strokeColor="white" strokeSize="1" g-min-height="60" padding="{left=5,right=5,top=5,bottom=5}">
+			<Title text="PRONOUNS" field="pronouns"/>
+			<Title text="CLASS &amp; SUBLASS" field="classe"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="12" g-width-lg="1" color="black" strokeColor="white" strokeSize="1" g-min-height="60" padding="{left=5,right=5,top=5,bottom=5}" g-break-line-after="true">
+			<Title text="LEVEL" field="level" widthL="6" widthR="6"/>
+		</rectangle>
+
+		<!-- Attributes -->
+
+		<rectangle g="col" g-width="4" g-width-lg="2" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Attribute text="AGILITY" field="agility" text1="Sprint" text2="Leap" text3="Maneuver"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="4" g-width-lg="2" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Attribute text="STRENGTH" field="strength" text1="Lift" text2="Smash" text3="Grappel"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="4" g-width-lg="2" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Attribute text="FINESSE" field="finesse" text1="Control" text2="Hide" text3="Tinker"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="4" g-width-lg="2" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Attribute text="INSTINCT" field="instinct" text1="Perceive" text2="Sense" text3="Navigate"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="4" g-width-lg="2" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Attribute text="PRESENCE" field="presence" text1="Charm" text2="Perform" text3="Deceive"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="4" g-width-lg="2" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Attribute text="KNOWLEDGE" field="knowledge" text1="Recall" text2="Analyze" text3="Comprehend"/>
+		</rectangle>
+
+		<!-- DEFENSE -->
+
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
+			<label g="col" g-width="12" text="HOPE" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<layout g="col" g-width="1" height="25"/>
+			<checkBox g="col" g-width="2" field="hopeCheck1"/>
+			<checkBox g="col" g-width="2" field="hopeCheck2"/>
+			<checkBox g="col" g-width="2" field="hopeCheck3"/>
+			<checkBox g="col" g-width="2" field="hopeCheck4"/>
+			<checkBox g="col" g-width="2" field="hopeCheck5"/>
+			<checkBox g="col" g-width="1" field="hopeCheck6"/>
+			<textEditor g="col" g-width="12" g-min-height="100" field="hopeFeature"/>
+
+			<label g="col" g-width="12" text="EXPERIENCE" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<Experience field="exp1"/>
+			<Experience field="exp2"/>
+			<Experience field="exp3"/>
+			<Experience field="exp4"/>
+			<Experience field="exp5"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
+			<Title text="EVASION" field="evasion" widthL="3" widthR="3"/>
+			<checkBox g="col" g-width="1" field="armorCheck1"/>
+			<checkBox g="col" g-width="1" field="armorCheck2"/>
+			<checkBox g="col" g-width="1" field="armorCheck3"/>
+			<checkBox g="col" g-width="1" field="armorCheck4"/>
+			<checkBox g="col" g-width="1" field="armorCheck5"/>
+			<checkBox g="col" g-width="1" field="armorCheck6"/>
+			<Title text="ARMOR" field="armor" widthL="3" widthR="3"/>
+			<checkBox g="col" g-width="1" field="armorCheck7"/>
+			<checkBox g="col" g-width="1" field="armorCheck8"/>
+			<checkBox g="col" g-width="1" field="armorCheck9"/>
+			<checkBox g="col" g-width="1" field="armorCheck10"/>
+			<checkBox g="col" g-width="1" field="armorCheck11"/>
+			<checkBox g="col" g-width="1" field="armorCheck12"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
+			<label g="col" g-width="12" text="DAMAGE &amp; HEALTH" horzTextAlign="center" height="25"/>
+
+			<label g="col" g-width="3" text="Minor Damage" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<edit g="col" g-width="1" field="damage1" horzTextAlign="center" height="25"/>
+			<label g="col" g-width="3" text="Major Damage" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<edit g="col" g-width="1" field="damage2" horzTextAlign="center" height="25"/>
+			<label g="col" g-width="3" text="Severe Damage" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<layout g="col" g-width="1" height="25"/>
+
+			<label g="col" g-width="2" text="HP" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<layout g="col" g-width="10" height="25">
+				<checkBox g="col" g-width="1" field="hpCheck1"/>
+				<checkBox g="col" g-width="1" field="hpCheck2"/>
+				<checkBox g="col" g-width="1" field="hpCheck3"/>
+				<checkBox g="col" g-width="1" field="hpCheck4"/>
+				<checkBox g="col" g-width="1" field="hpCheck5"/>
+				<checkBox g="col" g-width="1" field="hpCheck6"/>
+				<checkBox g="col" g-width="1" field="hpCheck7"/>
+				<checkBox g="col" g-width="1" field="hpCheck8"/>
+				<checkBox g="col" g-width="1" field="hpCheck9"/>
+				<checkBox g="col" g-width="1" field="hpCheck10"/>
+				<checkBox g="col" g-width="1" field="hpCheck11"/>
+				<checkBox g="col" g-width="1" field="hpCheck12"/>
+			</layout>
+
+			<label g="col" g-width="2" text="STRESS" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<layout g="col" g-width="10" height="25">
+				<checkBox g="col" g-width="1" field="stressCheck1"/>
+				<checkBox g="col" g-width="1" field="stressCheck2"/>
+				<checkBox g="col" g-width="1" field="stressCheck3"/>
+				<checkBox g="col" g-width="1" field="stressCheck4"/>
+				<checkBox g="col" g-width="1" field="stressCheck5"/>
+				<checkBox g="col" g-width="1" field="stressCheck6"/>
+				<checkBox g="col" g-width="1" field="stressCheck7"/>
+				<checkBox g="col" g-width="1" field="stressCheck8"/>
+				<checkBox g="col" g-width="1" field="stressCheck9"/>
+				<checkBox g="col" g-width="1" field="stressCheck10"/>
+				<checkBox g="col" g-width="1" field="stressCheck11"/>
+				<checkBox g="col" g-width="1" field="stressCheck12"/>
+			</layout>
+		</rectangle>
+
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="350">
+			<image align="client" field="avatar" editable="true" style="autoFit" >
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar)
+				</event>
+			</image>
+		</rectangle>
+
+        <richEdit g="col" g-width="12" g-vert-tile="true" field="classFeature" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+	</scrollBox>
+</form>

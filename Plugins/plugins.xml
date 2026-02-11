@@ -60,6 +60,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="Ambesek.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek" description="Ficha para o sistema Daggerheart" version="1.0" compilationDate="10022026004510" compilationDigest="743a9f8b97be4d57245eb86de995af69416402d2">
+        <info lang="pt-BR" name="Ficha Daggerheart" description="Ficha para o sistema Daggerheart" author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.daggerheart" title="Ficha Daggerheart" formType="sheetTemplate">
+                <info title="Ficha Daggerheart"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.dd2vtt" name="Universal VTT Importer" url="https://sdk3.firecast.app/Plugins/Scene/UniversalVTTImporter/output/UniversalVTTImporter.rpk?raw=true" fileName="UniversalVTTImporter.rpk" repositoryPath="Scene/UniversalVTTImporter/" author="Ambesek" description="Importa arquivos dd2vtt pro Firecast." version="1.2" compilationDate="02042024204439" compilationDigest="830153e17084e1dc7b84c9ce6e4dc6d6c692fb65">
         <info lang="pt-BR" name="Universal VTT Importer" description="Importa arquivos dd2vtt pro Firecast." author="Ambesek"/>
     </element>
@@ -265,7 +273,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Queda.Dos.Sete" name="Ficha A Queda dos Sete" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20A%20Queda%20dos%20Sete/output/Ficha%20A%20Queda%20dos%20Sete.rpk?raw=true" fileName="Ficha A Queda dos Sete.rpk" repositoryPath="Sheets/Ficha A Queda dos Sete/" author="Firecast+Ambesek" description="Ficha para A Queda dos Sete usando D&amp;D 5ª edição" version="1.0.0" compilationDate="24022025210700" compilationDigest="43287ba27e46888dbb3b8f1bcf836101d7a5a96f">
+    <element id="Ambesek.Queda.Dos.Sete" name="Ficha A Queda dos Sete" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20A%20Queda%20dos%20Sete/output/Ficha%20A%20Queda%20dos%20Sete.rpk?raw=true" fileName="Ficha A Queda dos Sete.rpk" repositoryPath="Sheets/Ficha A Queda dos Sete/" author="Firecast+Ambesek" description="Ficha para A Queda dos Sete usando D&amp;D 5ª edição" version="1.1" compilationDate="18012026221108" compilationDigest="4acc52fce3db2c54ba9736bc20f5d57988ddaa66">
         <info lang="pt-BR" name="Ficha A Queda dos Sete" description="Ficha para A Queda dos Sete usando D&amp;D 5ª edição" author="Firecast+Ambesek" site="https://firecast.app/"/>
         <dataTypes>
             <dataType id="Ambesek.Queda.Dos.Sete" title="Ficha A Queda dos Sete" formType="sheetTemplate">
@@ -293,7 +301,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Simple.Dealer" name="Card Dealer" url="https://sdk3.firecast.app/Plugins/ChatMods/Dealer/output/Dealer.rpk?raw=true" fileName="Dealer.rpk" repositoryPath="ChatMods/Dealer/" author="Ambesek" description="A simple card dealer for games that use decks of cards." version="0.5" compilationDate="03032023113325" compilationDigest="f96992503b9258d0599259d132528f707093dee0">
+    <element id="Ambesek.Simple.Dealer" name="Card Dealer" url="https://sdk3.firecast.app/Plugins/ChatMods/Dealer/output/Dealer.rpk?raw=true" fileName="Dealer.rpk" repositoryPath="ChatMods/Dealer/" author="Ambesek" description="A simple card dealer for games that use decks of cards." version="0.5" compilationDate="21122025015429" compilationDigest="72c4657e985f6a8b781d150f1e4199bbab71836d">
         <info lang="pt-BR" name="Card Dealer" description="A simple card dealer for games that use decks of cards." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="ambesek.dealer" title="Dealer" formType="undefined">
@@ -443,6 +451,14 @@
         <dataTypes>
             <dataType id="Echo.Avatar.Legends" title="Avatar Legends" formType="sheetTemplate">
                 <info title="Avatar Legends"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="br.com.boros.circulos.elementais" name="Ficha Círculos Elementais RPG" url="https://sdk3.firecast.app/Plugins/Sheets/DUNGEON%20DOS%20PECADORES/output/DUNGEON%20DOS%20PECADORES.rpk?raw=true" fileName="DUNGEON DOS PECADORES.rpk" repositoryPath="Sheets/DUNGEON DOS PECADORES/" author="Boros" description="Ficha Base Para Jogar Circulos Elementais" version="1.0" compilationDate="11022026232408" compilationDigest="dc5b876548db1647cdf62b2112e2fa8d70c9bb8c">
+        <info lang="pt-BR" name="Ficha Círculos Elementais RPG" description="Ficha Base Para Jogar Circulos Elementais" author="Boros" site="https://example.com"/>
+        <dataTypes>
+            <dataType id="br.com.marcio.circulos.elementais" title="Ficha - Círculos Elementais" formType="sheetTemplate">
+                <info title="Ficha - Círculos Elementais"/>
             </dataType>
         </dataTypes>
     </element>
@@ -857,6 +873,14 @@
         <dataTypes>
             <dataType id="gurpspao" title="GURPS 3+1" formType="sheetTemplate">
                 <info title="GURPS 3+1"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="GURPS_4e_Otimizado" name="GURPS 4e" url="https://sdk3.firecast.app/Plugins/Sheets/GURPS%204e/output/GURPS%204e.rpk?raw=true" fileName="GURPS 4e.rpk" repositoryPath="Sheets/GURPS 4e/" author="thirteen" description="Ficha de Personagem do sistema GURPS, Quarta edição." version="1.1" compilationDate="13012026094100" compilationDigest="acd30dabce34b7372f20a3f2b5a6420261f1e6f7">
+        <info lang="pt-BR" name="GURPS 4e" description="Ficha de Personagem do sistema GURPS, Quarta edição." author="thirteen" site="https://www.twitter.com/i_am_thirteen"/>
+        <dataTypes>
+            <dataType id="thirteen.GURPS4e" title="GURPS 4e" formType="sheetTemplate">
+                <info title="GURPS 4e"/>
             </dataType>
         </dataTypes>
     </element>

@@ -230,7 +230,7 @@
 		
 		<flowPart height="140" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
 			<layout left="6" top="12" width="116" height="115">
-				<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.$(field)" height="30" type="number" min="0" max="99"/>				
+				<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.$(field)" height="30" type="number" min="0" max="99"/>
 			</layout>
 			
 			<label frameRegion="modificador" name="mod$(field)str" field="atributos.mod$(field)str" horzTextAlign="center" vertTextAlign="center" fontSize="46" fontStyle="bold"/>
@@ -246,28 +246,16 @@
 			</layout>
 			
 			<flowLayout frameRegion="RegiaoDePericias" autoHeight="true" lineSpacing="0" horzAlign="leading">			
-				<boxPericia field="$('resistencias.' .. field)" fieldBonus="resistencias.bonus$(field)str" atributo="$(field)" titulo="@@DnD5e.savingThrows.title" losango="true"/>
 				<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'resistencias.$(field)', 'resistencias.$(field)strAltAtr', 'bonusResistencias'}">
 					<event name="onChange">
 							local modificador;
 							local temResistencia;
 									
 							if sheet.atributos ~= nil then
-								if sheet.resistencias.bonus$(field)strAltAtr ~= nil then
-									local mod1 = sheet.atributos["mod"..sheet.resistencias.bonus$(field)strAltAtr]
-									local mod2 = sheet.atributos.mod$(field)
-
-									modificador = math.max(mod1, mod2)
-
-									if modificador ~= nil then
-										modificador = tonumber(modificador);
-									end;
-								else
-									modificador = sheet.atributos.mod$(field);
-									
-									if modificador ~= nil then
-										modificador = tonumber(modificador);
-									end;
+								modificador = sheet.atributos.mod$(field);
+								
+								if modificador ~= nil then
+									modificador = tonumber(modificador);
 								end
 							else
 								modificador = nil;
@@ -557,13 +545,13 @@
 
 				local mensagem = "";
 				if magia.nome then mensagem = mensagem .. "\nNome: '" .. magia.nome .. "'"; end;
-				if magia.tempoDeFormulacao then mensagem = mensagem .. "\nTempo de Formulação: '" .. magia.tempoDeFormulacao .. "'"; end;
+				if magia.tempoDeFormulacao then mensagem = mensagem .. "\nTipo de Ação: '" .. magia.tempoDeFormulacao .. "'"; end;
 				if magia.alcance then mensagem = mensagem .. "\nAlcance: '" .. magia.alcance .. "'"; end;
-				if magia.componentes then mensagem = mensagem .. "\nComponentes: '" .. magia.componentes .. "'"; end;
 				if magia.duracao then mensagem = mensagem .. "\nDuração: '" .. magia.duracao .. "'"; end;
-				if magia.ataque then mensagem = mensagem .. "\nAtaque: '" .. magia.ataque .. "'"; end;
+				if magia.area then mensagem = mensagem .. "\nÁrea: '" .. magia.area .. "'"; end;
+				if magia.ataque then mensagem = mensagem .. "\nTipo de Magia Elemental: '" .. magia.ataque .. "'"; end;
 				if magia.resistencia then mensagem = mensagem .. "\nTeste de Resistência: '" .. magia.resistencia .. "'"; end;
-				if magia.damageValue then mensagem = mensagem .. "\nDano: '" .. magia.damageValue .. "'"; end;
+				if magia.damageValue then mensagem = mensagem .. "\nRolagem: '" .. magia.damageValue .. "'"; end;
 				if magia.descricao then mensagem = mensagem .. "\nDescrição: '" .. magia.descricao .. "'"; end;
 				if mensagem ~= "" then mesa.activeChat:enviarMensagem(mensagem); end;
 			end;
@@ -614,27 +602,150 @@
 				end;
 			 -->
 
-			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="150"	field="$(alcanceOuNome)" hint="$(hint)"/>
 			<optAtaqueField height="$(height or 30)" minWidth="110"	maxWidth="200"	field="ataque"			 hint="Modificador para o acerto"/>
 			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="170"	field="dano"			 hint="Modificador para o dano"/>
-			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="180"	field="tipo"			 hint="Tipo do dano, vazio para o mesmo do ataque"/>
+			<flowPart height="$(height or 30)" minWidth="80" maxWidth="150" avoidScale="true">
+				<comboBox align="client" field="prop" items="{'-', 'Vantagem', 'Desvantagem'}" fontSize="11"/>
+			</flowPart>
+			<flowPart height="$(height or 30)" minWidth="80" maxWidth="180" avoidScale="true">
+				<comboBox align="client" field="tipo" items="{'-', 'Físico', 'Elemental'}" fontSize="11"/>
+			</flowPart>
+			<flowPart height="$(height or 30)" minWidth="80" maxWidth="150" avoidScale="true">
+				<layout top="5" height="15" width="80">
+					<imageCheckBox align="client">
+						<progressBar colorMode="hl" width="80" height="15" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="Red" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
+							<event name="onMouseEnter">
+								self.CorBarrinha.color = "Green"
+								self.ValoresBarrinha.visible = true
+								sheet.InfoBarrinha = (sheet.BarrinhaValor or 0) .. "/"	.. (sheet.BarrinhaValorMax or 0)					
+							</event>
+							<event name="onMouseLeave">
+								self.ValoresBarrinha.visible = false
+							</event>
+							<event name="onDblClick">
+								sheet.BarrinhaID = sheet.index
+								sheet.AtributoBarrinha = sheet.nomeHabilidade
+								
+								sheet.ModificadorBarrinha = "igual"
+								sheet.ModificadorBarrinhaMax = "igual"
+								sheet.ValorTempAtualBarrinha = sheet.BarrinhaValor
+								sheet.ValorTempMaxBarrinha = sheet.BarrinhaValorMax
+								sheet.ValorMudadoAtualBarrinha = sheet.BarrinhaValor
+								sheet.ValorMudadoMaxBarrinha = sheet.BarrinhaValorMax
 
-			<flowPart height="$(height or 30)" minWidth="100" maxWidth="200" avoidScale="true">
-				<comboBox name="cbOptAtaqueMunicao" align="client" class="infoNoTopo" field="municao" hint="Qual 'contador' deve ser gasto"/>
-				<dataLink field="contadoresMudaram">
+								local rec = self:findControlByName("PopupBarColor")
+								if rec~=nil then rec.color = "Green" end
+								
+								local pop = self:findControlByName("BarPopup")
+								if pop~= nil then
+									pop.scopeNode = sheet
+									pop:show("top", self.Barrinha)
+									pop.top = (pop.top + 29 + 10)
+								end
+							</event>
+						</progressBar>
+					</imageCheckBox>
+				</layout>
+				<layout left="80" top="5" height="15" width="30" margins="{top=5,bottom=5}" visible="false" name="ValoresBarrinha">
+					<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha" color="Green">
+						<label align="left" fontColor="white" fontSize="10" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha" field="InfoBarrinha" horzTextAlign="center" text="0/0">
+							<event name="onResize">
+								self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4)
+							</event>
+						</label>
+					</rectangle>
+				</layout>
+				<dataLink field="CorBarrinha" defaultValue="Green">
+					<event name="onUserChange">
+						self.Barrinha.color = "Green"
+					</event>
+				</dataLink>
+				<dataLink field="BarrinhaValor">
 					<event name="onChange">
-						if sheet and sheet.contadoresMudaram then
-							self.cbOptAtaqueMunicao:setItems(common.getNomeContadores(sheet, {""}));
-						end;
+						if sheet.BarrinhaValor==nil then return end
+						if sheet.BarrinhaValor==0 then 
+							self.Barrinha.color = "Yellow"
+						else
+							self.Barrinha.color = "Green"
+						end
 					</event>
 				</dataLink>
 			</flowPart>
-
-			<optAtaqueField height="$(height or 30)" minWidth="25"	maxWidth="50"	field="qtMunicao"		 hint="Quantos usos do contador"/>
 
 			<flowPart height="$(height or 30)" width="25">
 				<button name="btnApagar" align="client" text="✖" onClick="common.askForDelete(self.sheet);" enabled="$(enabled)"/>
 			</flowPart>
 		</flowLayout>
 	</template>
+
+
+	<template name="upperFieldGridBar">
+		<!-- baseName = baseName or uniqueName("UpperFieldGridCntEdit");	-->		
+		
+		<layout name="lay$(baseName)" class="$(class or '')" g-auto-height="true">
+			<layout g="col" g-width="12" class="infoNoTopo">
+				<layout top="5" height="15" width="80">
+					<imageCheckBox align="client">
+						<progressBar colorMode="hl" width="80" height="15" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="Red" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
+							<event name="onMouseEnter">
+								self.CorBarrinha.color = "Green"
+								self.ValoresBarrinha.visible = true
+								sheet.InfoBarrinha = (sheet.BarrinhaValor or 0) .. "/"	.. (sheet.BarrinhaValorMax or 0)					
+							</event>
+							<event name="onMouseLeave">
+								self.ValoresBarrinha.visible = false
+							</event>
+							<event name="onDblClick">
+								sheet.BarrinhaID = sheet.index
+								sheet.AtributoBarrinha = sheet.nomeHabilidade
+								
+								sheet.ModificadorBarrinha = "igual"
+								sheet.ModificadorBarrinhaMax = "igual"
+								sheet.ValorTempAtualBarrinha = sheet.BarrinhaValor
+								sheet.ValorTempMaxBarrinha = sheet.BarrinhaValorMax
+								sheet.ValorMudadoAtualBarrinha = sheet.BarrinhaValor
+								sheet.ValorMudadoMaxBarrinha = sheet.BarrinhaValorMax
+
+								local rec = self:findControlByName("PopupBarColor")
+								if rec~=nil then rec.color = "Green" end
+								
+								local pop = self:findControlByName("BarPopup")
+								if pop~= nil then
+									pop.scopeNode = sheet
+									pop:show("top", self.Barrinha)
+									pop.top = (pop.top + 29 + 10)
+								end
+							</event>
+						</progressBar>
+					</imageCheckBox>
+				</layout>
+				<layout left="80" top="5" height="15" width="30" margins="{top=5,bottom=5}" visible="false" name="ValoresBarrinha">
+					<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha" color="Green">
+						<label align="left" fontColor="white" fontSize="10" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha" field="InfoBarrinha" horzTextAlign="center" text="0/0">
+							<event name="onResize">
+								self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4)
+							</event>
+						</label>
+					</rectangle>
+				</layout>
+				<dataLink field="CorBarrinha" defaultValue="Green">
+					<event name="onUserChange">
+						self.Barrinha.color = "Green"
+					</event>
+				</dataLink>
+				<dataLink field="BarrinhaValor">
+					<event name="onChange">
+						if sheet.BarrinhaValor==nil then return end
+						if sheet.BarrinhaValor==0 then 
+							self.Barrinha.color = "Yellow"
+						else
+							self.Barrinha.color = "Green"
+						end
+					</event>
+				</dataLink>
+			</layout>
+			<label g="col" g-width="12" g-dyn-height-txt="true" g-margin-top="2" name="lab$(baseName)" class="tituloCampo" text="$(title)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>					
+		</layout>
+	</template>
+
 </group>

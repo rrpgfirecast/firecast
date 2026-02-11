@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="DUNGEON DOS PECADORES.rpk" compilationDate="11022026165529" sdkApiVersion="88" sdkMinorApiVersion="2" compilationDigest="38bbd5dd2b8226ffe2d5a825af45a0578318a62d" compilationUniqueID="698cb48182b1f0c3000487a3">
+  <id>br.com.boros.circulos.elementais</id>
+  <version>1.0</version>
+
+  <info lang="pt-BR">
+    <name>Ficha Círculos Elementais RPG</name>
+    <description>Ficha Base Para Jogar Circulos Elementais</description>
+    <author>Boros</author>
+    <site>https://example.com</site>
+    <contact>subquantico@gmail.com</contact>
+  </info>
+
+  <sheetTemplates>
+    <sheet name="Círculos Elementais" dataType="br.com.marcio.circulos.elementais" form="frmFichaCirculosMapa" file="FichaCirculos_Mapa.lfm"/>
+  </sheetTemplates>
+    <dataTypes>
+        <dataType title="Ficha - Círculos Elementais" name="frmFichaCirculosMapa" lfmFile="FichaCirculos_Mapa.lfm">br.com.marcio.circulos.elementais</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="br.com.marcio.circulos.elementais" formType="sheetTemplate" lfmFile="FichaCirculos_Mapa.lfm" formName="frmFichaCirculosMapa">
+                <info title="Ficha - Círculos Elementais"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>Ficha Círculos Elementais RPG</name>
+    <description>Ficha Base Para Jogar Circulos Elementais</description>
+    <author>Boros</author>
+    <site>https://example.com</site>
+    <contact>subquantico@gmail.com</contact>
+</module>
