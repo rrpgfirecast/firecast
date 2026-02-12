@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+    -- Funções de rolagem de dados
+    function rolarDanoMagia(self, fieldName, nomeExibicao)
+        local ficha = verificacaoFichaJogador(self)
+        -- Rola os dados para determinada magia
+        magia = tostring(ficha[nomeExibicao])
+        local valor = tostring(ficha[fieldName])
+        local rolagem = Firecast.interpretarRolagem(valor) or 0
+        local mesa = Firecast.getMesaDe(ficha)
+        local nomePersonagem = tostring(fichaPrincipal.sheet.fldNomePersonagem)
+        if nomePersonagem == "nil" then
+            nomePersonagem = "Sem nome"
+        end
+        if rolagem.asString == "" then
+            showMessage('Dados inválidos!\nDigite apenas um número ou uma expressão de rolagem de dados.\nExemplos:\n- 10\n- 1d20 + 5\n- 1d20 + 1d10 - 5')
+        else
+            mesa.chat:rolarDados(rolagem, "Magia: " .. magia.." de "..nomePersonagem)
+        end
+    end
+    function placeHoderDesativa(self, label, edit, textLabel)
+        local ficha = verificacaoFichaJogador(self)
+        --desativa os textos atraz dos edits nas magias          
+        ficha[label] = ''
+    end
+    function placeHoderAtiva(self, label, edit, textLabel)
+        local ficha = verificacaoFichaJogador(self)
+        --ativa os textos atraz dos edits nas magias  
+        if ficha[edit] == nil then 
+            ficha[label] = tostring(textLabel)
+        end
+    end
+    function executaPlaceholderMagia()
+        --ativa os textos atraz dos edits nas magias  
+        placeHoderAtiva(self, "ph_edt_nome_magia", "edt_nome_magia", "Nome da Magia")
+        placeHoderAtiva(self, "ph_edt_tipo", "edt_tipo", "Tipo")
+        placeHoderAtiva(self, "ph_edt_escola", "edt_escola", "Escola")
+        placeHoderAtiva(self, "ph_edt_circulo", "edt_circulo", "Circulo")
+        placeHoderAtiva(self, "ph_edt_execucao", "edt_execucao", "Execução")
+        placeHoderAtiva(self, "ph_edt_alcance", "edt_alcance", "Alcance")
+        placeHoderAtiva(self, "ph_edt_duracao", "edt_duracao", "Duração")
+        placeHoderAtiva(self, "ph_edt_aae", "edt_aae", "Alvo/Área/Efeito")
+        placeHoderAtiva(self, "ph_edt_resist", "edt_resist", "Resistencia")
+        placeHoderAtiva(self, "ph_edt_dano_magia", "edt_dano_magia", "Dado para magia")
+    end
+</script>

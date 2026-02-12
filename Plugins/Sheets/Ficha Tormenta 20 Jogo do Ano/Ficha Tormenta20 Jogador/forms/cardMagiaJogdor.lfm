@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form class="frm_card_magia" name="frmCardMagiaJogador">  
+    <import file='../assets/style/ficha_css.xml'/>
+    <import file='../script/functionsMagias.xml'/>
+    <import file='../assets/style/geralFichaT20Jogador_css.xml'/>
+    <image class="img_card_magia"/>
+            <layout class="lyt_card_magia">
+                <button class="btn_fecha_card" onClick="NDB.deleteNode(sheet);"/>
+                <label field="ph_edt_nome_magia" fontFamily="Tormenta20" top="15" left="10" width="280" fontSize="16" height="30" horzTextAlign="center" />
+                <edit field="edt_nome_magia" fontFamily="Tormenta20" top="15" left="10" width="280" fontSize="16" wordWrap="true" height="30" onEnter= 'placeHoderDesativa(self, "ph_edt_nome_magia", "edt_nome_magia", "Nome da Magia")' onExit='placeHoderAtiva(self, "ph_edt_nome_magia", "edt_nome_magia", "Nome da Magia")'><horzLine/></edit>
+                <layout top="50" width="300">
+                    <label field="ph_edt_tipo" left="10" width="90" horzTextAlign="center"/>
+                    <edit field="edt_tipo" left="10" width="90"
+                    onEnter= 'placeHoderDesativa(self, "ph_edt_tipo", "edt_tipo", "Tipo")' 
+                    onExit='placeHoderAtiva(self, "ph_edt_tipo", "edt_tipo", "Tipo")'
+                    ><horzLine/></edit> 
+                    <label field="ph_edt_escola" left="105" width="90" horzTextAlign="center"/>
+                    <edit field="edt_escola" left="105" width="90"
+                    onEnter= 'placeHoderDesativa(self, "ph_edt_escola", "edt_escola", "Escola")' 
+                    onExit='placeHoderAtiva(self, "ph_edt_escola", "edt_escola", "Escola")'
+                    ><horzLine/></edit>
+                    <label field="ph_edt_circulo" left="200" width="90" horzTextAlign="center"/>
+                    <edit field="edt_circulo" left="200" width="90"
+                    onEnter= 'placeHoderDesativa(self, "ph_edt_circulo", "edt_circulo", "Circulo")' 
+                    onExit='placeHoderAtiva(self, "ph_edt_circulo", "edt_circulo", "Circulo")'><horzLine/></edit>
+                </layout>
+                <layout top="75" width="300">
+                    <label field="ph_edt_execucao" left="10" width="90" horzTextAlign="center"/>
+                    <edit field="edt_execucao" left="10" width="90"
+                    onEnter= 'placeHoderDesativa(self, "ph_edt_execucao", "edt_execucao", "Execução")' 
+                    onExit='placeHoderAtiva(self, "ph_edt_execucao", "edt_execucao", "Execução")'><horzLine/></edit>
+                    <label field="ph_edt_alcance" left="105" width="90" horzTextAlign="center"/>
+                    <edit field="edt_alcance" left="105" width="90"
+                    onEnter= 'placeHoderDesativa(self, "ph_edt_alcance", "edt_alcance", "Alcance")' 
+                    onExit='placeHoderAtiva(self, "ph_edt_alcance", "edt_alcance", "Alcance")'><horzLine/></edit>
+                    <label field="ph_edt_duracao" left="200" width="90" horzTextAlign="center"/>
+                    <edit field="edt_duracao" left="200" width="90"
+                    onEnter= 'placeHoderDesativa(self, "ph_edt_duracao", "edt_duracao", "Duração")' 
+                    onExit='placeHoderAtiva(self, "ph_edt_duracao", "edt_duracao", "Duração")'><horzLine/></edit>
+                </layout>
+                <layout top="100" width="300">
+                    <label field="ph_edt_aae" left="10" width="138" horzTextAlign="center"/>
+                    <edit field="edt_aae" left="10" width="138"
+                    onEnter= 'placeHoderDesativa(self, "ph_edt_aae", "edt_aae", "Alvo/Área/Efeito")' 
+                    onExit='placeHoderAtiva(self, "ph_edt_aae", "edt_aae", "Alvo/Área/Efeito")'><horzLine/></edit>
+                    <label field="ph_edt_resist" left="152" width="138" horzTextAlign="center"/>
+                    <edit field="edt_resist" left="152" width="138"
+                    onEnter= 'placeHoderDesativa(self, "ph_edt_resist", "edt_resist", "Resistencia")' 
+                    onExit='placeHoderAtiva(self, "ph_edt_resist", "edt_resist", "Resistencia")'><horzLine/></edit>
+                </layout>
+
+                <layout top="140" height="250" width="300">
+                    <textEditor field="descricao" left="15" height="230" width="280" transparent="true"/>
+                </layout>
+                <layout top="368" height="250" width="300" > 
+                    <label left="70" width="100" height="24" field="ph_edt_dano_magia"/>
+
+                    <edit left="70" field="edt_dano_magia" width="100"
+                    onEnter= 'placeHoderDesativa(self, "ph_edt_dano_magia", "edt_dano_magia", "Dado para magia")'
+                    onExit='placeHoderAtiva(self, "ph_edt_dano_magia", "edt_dano_magia", "Dado para magia")'><horzLine/>
+                    </edit>
+                    <button left="180" width="50" text="Dado"  >
+                        <event name='onClick'>
+                            rolarDanoMagia(self, "edt_dano_magia", "edt_nome_magia")
+                        </event>
+                    </button>
+                </layout>
+            </layout>           
+</form>
+
