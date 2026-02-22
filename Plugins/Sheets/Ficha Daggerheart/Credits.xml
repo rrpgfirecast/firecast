@@ -38,11 +38,13 @@
 	</script>
 
     <scrollBox align="client" g-cnt-line-spacing="5">
-        <image g="col" g-width="6" g-width-lg="5" g-min-height="600" g-vert-tile="true" src="images/RPGmeister.jpg" style="proportional" optimize="true"/>
+        <image g="col" g-width="6" g-width-lg="5" g-min-height="600" g-vert-tile="true" src="images/watchLogo.png" style="proportional" optimize="true"/>
 
         <layout g="col" g-width="6" g-width-lg="2" g-min-height="200" g-vert-tile="true" g-auto-height="true" g-cnt-line-spacing="5">
         	<rectangle g="col" g-width="12" g-min-height="125" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
         		<label g="col" g-width="12" height="25" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
+				<label g="col" g-width="12" height="25" text="Modificada por Beloved" horzTextAlign="center"/>
+				<label g="col" g-width="12" height="25" text="Agradecimentos: Carlins, Py e Thirteen" horzTextAlign="center"/>
 				<label g="col" g-width="12" height="25" text="Ficha feita para a mesa: " horzTextAlign="center"/>
 				<label g="col" g-width="12" height="25" text="Watch" horzTextAlign="center"/>
         	</rectangle>

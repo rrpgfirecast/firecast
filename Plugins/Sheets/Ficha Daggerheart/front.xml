@@ -1,80 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="General" align="client">
-	<script>
-        <![CDATA[
-	        local function addXP(installed, downloaded)
-				local xp = (tonumber(sheet.xpAtual) or 0) + (tonumber(sheet.xpNova) or 0)
-				
-				sheet.xpAtual = xp
-				sheet.xpNova = 0
-	        end
-
-            local function basicRoll(text, var, nvNeg)
-	        	local mod = tonumber(sheet[var]) or 0
-                if nvNeg then
-                    mod = mod - math.abs(tonumber(sheet.nvNeg) or 0)
-                end
-				local rolagem = Firecast.interpretarRolagem("1d20+" .. mod)
-				if mod < 0 then
-					rolagem = Firecast.interpretarRolagem("1d20" .. mod)
-				end
-				local mesa = Firecast.getMesaDe(sheet)
-				mesa.activeChat:rolarDados(rolagem, text .. " de " .. (sheet.nome or "Nome"))
-	        end
-
-	        local function rollHD()
-				local mesa = Firecast.getMesaDe(sheet)
-				sheet.modificador = sheet.modificador or 0
-				mesa.activeChat:rolarDados(sheet.dvs, "Pontos de Vigor de " .. (sheet.nome or "Nome"),
-					function (rolagem)
-						local maximo = 0
-						local media = 0
-						local mult = 1
-						for i = 1, #rolagem.ops, 1 do 
-							local operacao = rolagem.ops[i]
-							if operacao.tipo == "dado" then   
-								maximo = maximo + (operacao.quantidade * operacao.face)
-								media = media + (operacao.quantidade * (operacao.face+1)/2)
-								if i==1 then
-									media = media + ((operacao.face-1)/2)
-								end
-							elseif operacao.tipo == "subtracao" then
-								mult = -1
-							elseif operacao.tipo == "soma" then
-								mult = 1
-							elseif operacao.tipo == "imediato" then
-								maximo = maximo + (operacao.valor * mult)
-								media = media + (operacao.valor * mult)
-							end
-						end
-
-						mesa.activeChat:enviarMensagem("PV máximo: " .. maximo .. " PV médio: " .. math.floor(media))
-						sheet.pvTotal = math.floor(media)
-					end)  
-	        end
-
-	        local function ShowPopUp(popup, location, position)
-				local pop = self:findControlByName(popup)
-				
-				if pop ~= nil then
-					pop:setNodeObject(self.sheet)
-					pop:showPopupEx((position or "rightCenter"), location)
-				else
-					showMessage("Ops, bug.. nao encontrei o popup " .. popup .. " para exibir")
-				end
-	        end
-
-			local function updatePenalty()
-				if sheet==nil then return end;
-
-				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
-				for i=1, #nodes, 1 do
-					nodes[i].penalidade = sheet.penalidade;
-				end;
-			end;
-        ]]> 
-    </script>
-
     <scrollBox align="client" g-cnt-line-spacing="5">
 		<!-- Title region -->
 		<rectangle g="col" g-width="12" g-width-lg="6" color="black" strokeColor="white" strokeSize="1" g-min-height="60" padding="{left=5,right=5,top=5,bottom=5}">
@@ -119,18 +44,19 @@
 
 		<!-- DEFENSE -->
 
-		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
-			<label g="col" g-width="12" text="HOPE" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<layout g="col" g-width="1" height="25"/>
-			<checkBox g="col" g-width="2" field="hopeCheck1"/>
-			<checkBox g="col" g-width="2" field="hopeCheck2"/>
-			<checkBox g="col" g-width="2" field="hopeCheck3"/>
-			<checkBox g="col" g-width="2" field="hopeCheck4"/>
-			<checkBox g="col" g-width="2" field="hopeCheck5"/>
-			<checkBox g="col" g-width="1" field="hopeCheck6"/>
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="false">
+			<label g="col" g-width="12" text="HOPE" horzTextAlign="center" vertTextAlign="center" height="15"/>
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck1"/>
+			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck2"/>
+			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck3"/>
+			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck4"/>
+			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck5"/>
+			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck6"/>
+			<label g="col" g-width="12" g-width-lg="3"/>
 			<textEditor g="col" g-width="12" g-min-height="100" field="hopeFeature"/>
 
-			<label g="col" g-width="12" text="EXPERIENCE" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<label g="col" g-width="12" text="EXPERIENCE" horzTextAlign="center" vertTextAlign="center" height="20"/>
 			<Experience field="exp1"/>
 			<Experience field="exp2"/>
 			<Experience field="exp3"/>
@@ -138,64 +64,74 @@
 			<Experience field="exp5"/>
 		</rectangle>
 
-		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
-			<Title text="EVASION" field="evasion" widthL="3" widthR="3"/>
-			<checkBox g="col" g-width="1" field="armorCheck1"/>
-			<checkBox g="col" g-width="1" field="armorCheck2"/>
-			<checkBox g="col" g-width="1" field="armorCheck3"/>
-			<checkBox g="col" g-width="1" field="armorCheck4"/>
-			<checkBox g="col" g-width="1" field="armorCheck5"/>
-			<checkBox g="col" g-width="1" field="armorCheck6"/>
-			<Title text="ARMOR" field="armor" widthL="3" widthR="3"/>
-			<checkBox g="col" g-width="1" field="armorCheck7"/>
-			<checkBox g="col" g-width="1" field="armorCheck8"/>
-			<checkBox g="col" g-width="1" field="armorCheck9"/>
-			<checkBox g="col" g-width="1" field="armorCheck10"/>
-			<checkBox g="col" g-width="1" field="armorCheck11"/>
-			<checkBox g="col" g-width="1" field="armorCheck12"/>
-		</rectangle>
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="false">
+			<layout g="col" g-width="6" height="100">
+				<label g="col" g-width="12"/>
+				<Title text="EVASION" field="evasion" widthL="6" widthR="6"/>
+				<label g="col" g-width="12"/>
+				<Title text="ARMOR" field="armor" widthL="6" widthR="6"/>
+			</layout>
+			<label g="col" g-width="1"/>
+			<layout g="col" g-width="5" height="100">
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck1"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck2"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck3"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck4"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck5"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck6"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck7"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck8"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck9"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck10"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck11"/>
+				<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="3" height="32" field="armorCheck12"/>
+			</layout>
 
-		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
-			<label g="col" g-width="12" text="DAMAGE &amp; HEALTH" horzTextAlign="center" height="25"/>
-
+			<label g="col" g-width="12" text="DAMAGE &amp; HEALTH" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			
 			<label g="col" g-width="3" text="Minor Damage" horzTextAlign="center" vertTextAlign="center" height="25"/>
 			<edit g="col" g-width="1" field="damage1" horzTextAlign="center" height="25"/>
-			<label g="col" g-width="3" text="Major Damage" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<label g="col" g-width="4" text="Major Damage" horzTextAlign="center" vertTextAlign="center" height="25"/>
 			<edit g="col" g-width="1" field="damage2" horzTextAlign="center" height="25"/>
 			<label g="col" g-width="3" text="Severe Damage" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<layout g="col" g-width="1" height="25"/>
 
-			<label g="col" g-width="2" text="HP" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<layout g="col" g-width="10" height="25">
-				<checkBox g="col" g-width="1" field="hpCheck1"/>
-				<checkBox g="col" g-width="1" field="hpCheck2"/>
-				<checkBox g="col" g-width="1" field="hpCheck3"/>
-				<checkBox g="col" g-width="1" field="hpCheck4"/>
-				<checkBox g="col" g-width="1" field="hpCheck5"/>
-				<checkBox g="col" g-width="1" field="hpCheck6"/>
-				<checkBox g="col" g-width="1" field="hpCheck7"/>
-				<checkBox g="col" g-width="1" field="hpCheck8"/>
-				<checkBox g="col" g-width="1" field="hpCheck9"/>
-				<checkBox g="col" g-width="1" field="hpCheck10"/>
-				<checkBox g="col" g-width="1" field="hpCheck11"/>
-				<checkBox g="col" g-width="1" field="hpCheck12"/>
-			</layout>
+			<label g="col" g-width="12"/>
 
-			<label g="col" g-width="2" text="STRESS" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<layout g="col" g-width="10" height="25">
-				<checkBox g="col" g-width="1" field="stressCheck1"/>
-				<checkBox g="col" g-width="1" field="stressCheck2"/>
-				<checkBox g="col" g-width="1" field="stressCheck3"/>
-				<checkBox g="col" g-width="1" field="stressCheck4"/>
-				<checkBox g="col" g-width="1" field="stressCheck5"/>
-				<checkBox g="col" g-width="1" field="stressCheck6"/>
-				<checkBox g="col" g-width="1" field="stressCheck7"/>
-				<checkBox g="col" g-width="1" field="stressCheck8"/>
-				<checkBox g="col" g-width="1" field="stressCheck9"/>
-				<checkBox g="col" g-width="1" field="stressCheck10"/>
-				<checkBox g="col" g-width="1" field="stressCheck11"/>
-				<checkBox g="col" g-width="1" field="stressCheck12"/>
-			</layout>
+			<label g="col" g-width="12" text="HP" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck1"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck2"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck3"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck4"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck5"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck6"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck7"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck8"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck9"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck10"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck11"/>
+			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck12"/>
+			
+			<label g="col" g-width="12"/>
+
+			<label g="col" g-width="12" text="STRESS" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck1"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck2"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck3"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck4"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck5"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck6"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck7"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck8"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck9"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck10"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck11"/>
+			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck12"/>
+
+		</rectangle>
+		
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
+			<label g="col" g-width="12" text="CLASS FEATURE" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<textEditor g="col" g-width="12" g-min-height="300" field="classFeature"/>
 		</rectangle>
 
 		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="350">
@@ -206,6 +142,94 @@
 			</image>
 		</rectangle>
 
-        <richEdit g="col" g-width="12" g-vert-tile="true" field="classFeature" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		<rectangle g="col" g-width="6" g-width-lg="4" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="350">
+		<label g="col" g-width="12" text="Tier 2: LEVELS 2–4 \n" horzTextAlign="center" height="25"/>
+		<label g="col" g-width="12" text="At level 2, gain an additional Experience at +2 and gain a +1 bonus to your Proficiency." horzTextAlign="center" height="40"/>
+		<label g="col" g-width="12" text="Choose two options from the list below and mark them." horzTextAlign="center" height="25"/>
+			<label g="col" g-width="12"/>
+        	<label g="col" g-width="12" g-width-lg="1"/>
+			<checkBox g="col" g-width="1" field="unCharacterTrait1" />
+			<checkBox g="col" g-width="1" field="unCharacterTrait2" />
+			<checkBox g="col" g-width="9" field="unCharacterTrait3" text=" Gain a +1 bonus to two unmarked character traits and mark them." vertTextAlign="center"/>
+        	<label g="col" g-width="12" g-width-lg="2"/>
+			<checkBox g="col" g-width="1" field="extraHPslot1" />
+			<checkBox g="col" g-width="9" field="extraHPslot2" text=" Permanently gain one Hit Point slot." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="2"/>
+			<checkBox g="col" g-width="1" field="extraSressSlot1" />
+			<checkBox g="col" g-width="9" field="extraSressSlot2" text=" Permanently gain one Stress slot." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="expBonus1" text=" Permanently gain a +1 bonus to two Experiences." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="extraDomainCard1" text="Choose an additional domain card of your level or lower from a \n domain you have access to (up to level 4)." height="50"/>
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="extraEvasion1" text=" Permanently gain a +1 bonus to your Evasion." vertTextAlign="center" />
+		<label g="col" g-width="12"/>
+		<label g="col" g-width="12" text="Update your level and adjust your damage thresholds accordingly. \n Take an additional domain card of your level or lower from a domain you have access to. \n Do this for every level up in any tier." horzTextAlign="center" height="50"/>
+		</rectangle>
+		
+		<rectangle g="col" g-width="6" g-width-lg="4" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="350">
+		<label g="col" g-width="12" text="Tier 3: LEVELS 5–7 " horzTextAlign="center" height="25"/>
+		<label g="col" g-width="12" text="At level 5, gain an additional Experience at +2 and clear all marks on character traits. Then gain a +1 bonus to your Proficiency." horzTextAlign="center" height="40"/>
+		<label g="col" g-width="12" text="Choose two options from the list below or any from the previous tier and mark them." horzTextAlign="center" height="25"/>
+			<label g="col" g-width="12"/>
+        	<label g="col" g-width="12" g-width-lg="1"/>
+			<checkBox g="col" g-width="1" field="unCharacterTrait4" />
+			<checkBox g="col" g-width="1" field="unCharacterTrait5" />
+			<checkBox g="col" g-width="9" field="unCharacterTrait6" text=" Gain a +1 bonus to two unmarked character traits and mark them." vertTextAlign="center"/>
+        	<label g="col" g-width="12" g-width-lg="2"/>
+			<checkBox g="col" g-width="1" field="extraHPslot3" />
+			<checkBox g="col" g-width="9" field="extraHPslot4" text=" Permanently gain one Hit Point slot." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="2"/>
+			<checkBox g="col" g-width="1" field="extraSressSlot3" />
+			<checkBox g="col" g-width="9" field="extraSressSlot4" text=" Permanently gain one Stress slot." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="expBonus2" text=" Permanently gain a +1 bonus to two Experiences." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="extraDomainCard2" text="Choose an additional domain card of your level or lower from a \n domain you have access to (up to level 7)." height="50"/>
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="extraEvasion2" text=" Permanently gain a +1 bonus to your Evasion." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="upgradedClass1" text=" Take an upgraded subclass card. Cross out the multiclass option." />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox top="276" left="140" field="extraProficiency1Part1" />
+			<checkBox g="col" g-width="9" field="extraProficiency1Part2" text=" Increase your Proficiency by +1." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox top="295" left="140" field="multiClass1Part1" height="50" />
+			<checkBox g="col" g-width="9" field="multiClass1Part2" text=" Multiclass: Choose an additional class for your character. \n Cross out the upgraded subclass option." vertTextAlign="center" height="50" />
+		</rectangle>
+
+		<rectangle g="col" g-width="6" g-width-lg="4" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="350">
+		<label g="col" g-width="12" text="Tier 3: LEVELS 8–10 " horzTextAlign="center" height="25"/>
+		<label g="col" g-width="12" text="At level 8, gain an additional Experience at +2 and clear all marks on character traits. Then gain a +1 bonus to your Proficiency." horzTextAlign="center" height="40"/>
+		<label g="col" g-width="12" text="Choose two options from the list below or any from the previous tier and mark them." horzTextAlign="center" height="25"/>
+			<label g="col" g-width="12"/>
+        	<label g="col" g-width="12" g-width-lg="1"/>
+			<checkBox g="col" g-width="1" field="unCharacterTrait7" />
+			<checkBox g="col" g-width="1" field="unCharacterTrait8" />
+			<checkBox g="col" g-width="9" field="unCharacterTrait9" text=" Gain a +1 bonus to two unmarked character traits and mark them." vertTextAlign="center"/>
+        	<label g="col" g-width="12" g-width-lg="2"/>
+			<checkBox g="col" g-width="1" field="extraHPslot5" />
+			<checkBox g="col" g-width="9" field="extraHPslot6" text=" Permanently gain one Hit Point slot." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="2"/>
+			<checkBox g="col" g-width="1" field="extraSressSlot5" />
+			<checkBox g="col" g-width="9" field="extraSressSlot6" text=" Permanently gain one Stress slot." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="expBonus3" text=" Permanently gain a +1 bonus to two Experiences." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="extraDomainCard3" text="Choose an additional domain card of your level or lower from a \n domain you have access to (up to level 7)." height="50"/>
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="extraEvasion3" text=" Permanently gain a +1 bonus to your Evasion." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox g="col" g-width="9" field="upgradedClass2" text=" Take an upgraded subclass card. Cross out the multiclass option." />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox top="276" left="140" field="extraProficiency2Part1" />
+			<checkBox g="col" g-width="9" field="extraProficiency2Part2" text=" Increase your Proficiency by +1." vertTextAlign="center" />
+			<label g="col" g-width="12" g-width-lg="3"/>
+			<checkBox top="295" left="140" field="multiClass2Part1" height="50" />
+			<checkBox g="col" g-width="9" field="multiClass2Part2" text=" Multiclass: Choose an additional class for your character. \n Cross out the upgraded subclass option." vertTextAlign="center" height="50" />
+		
+		</rectangle>
+
+
 	</scrollBox>
 </form>

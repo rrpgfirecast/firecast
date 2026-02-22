@@ -60,7 +60,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek" description="Ficha para o sistema Daggerheart" version="1.0" compilationDate="10022026004510" compilationDigest="743a9f8b97be4d57245eb86de995af69416402d2">
+    <element id="Ambesek.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek" description="Ficha para o sistema Daggerheart" version="1.1" compilationDate="10022026004510" compilationDigest="743a9f8b97be4d57245eb86de995af69416402d2">
         <info lang="pt-BR" name="Ficha Daggerheart" description="Ficha para o sistema Daggerheart" author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.daggerheart" title="Ficha Daggerheart" formType="sheetTemplate">

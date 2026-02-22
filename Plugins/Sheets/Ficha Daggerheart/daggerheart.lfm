@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form dataType="Ambesek.daggerheart" formType="sheetTemplate" title="Ficha Daggerheart" name="frmDaggerheart" theme="dark" align="client">
+<form dataType="Beloved.daggerheart" formType="sheetTemplate" title="Ficha Modificada Daggerheart" name="frmDaggerheart" theme="dark" align="client">
     <style>
         label {
                 textTrimming: none;
@@ -68,12 +68,15 @@
 	<import file="templates.xml"/>
 	
 	<tabControl align="client" g-cnt-gutter="5">
-		<tab title="Attributes">
+		<tab title="Atributos">
 			<import file="front.xml"/>
 		</tab>
-		<tab title="Inventory">
+		<tab title="Inventário">
 			<import file="inventory.xml"/>
 		</tab>
+        <tab title="Cartas">
+            <import file="Cards.xml"/>
+        </tab>
         <tab title="Descrição">
             <import file="Description.xml"/>
         </tab>

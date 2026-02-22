@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Cards" align="client">
+    <style>
+        button.btnSlot {
+            cursor: handPoint;
+            fontSize: 9;
+        }
+        label.lblCategoria {
+            fontStyle: bold;
+            fontSize: 13;
+            horzTextAlign: center;
+            height: 22;
+        }
+        label.lblSubCategoria {
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            height: 18;
+            fontColor: #AAAAAA;
+        }
+        rectangle.slotCarta {
+            color: #1a1a1a;
+            strokeColor: #555555;
+            strokeSize: 2;
+        }
+    </style>
+
+    <script>
+        <![CDATA[
+        -- ============================================================
+        -- TABELA DE IMAGENS DAS CARTAS
+        -- Para cada carta, coloque a URL da imagem entre as aspas ""
+        --
+        -- COMO PREENCHER:
+        --   1. Hospede as imagens em algum lugar (imgur, discord, etc)
+        --   2. Copie a URL direta da imagem (que termina em .png ou .jpg)
+        --   3. Cole entre as aspas ao lado do nome da carta
+        --
+        -- EXEMPLO:
+        --   ["Clank"] = "https://i.imgur.com/XXXXXX.png",
+        -- ============================================================
+
+        -- ========================
+        -- ANCESTRY
+        -- ========================
+        local imagensAncestry = {
+            ["Clank"] = "https://i.imgur.com/T8C0C1i.png",
+            ["Drakona"] = "https://i.imgur.com/SvBt1bx.png",
+            ["Dwarf"] = "https://i.imgur.com/eDtc753.png",
+            ["Elf"] = "https://i.imgur.com/5cqfibI.png",
+            ["Faerie"] = "https://i.imgur.com/dl5FM2O.png",
+            ["Faun"] = "https://i.imgur.com/o0Ixg9t.png",
+            ["Firbolg"] = "https://i.imgur.com/3Bhr1QC.png",
+            ["Fungril"] = "https://i.imgur.com/g3eiOLO.png",
+            ["Galapa"] = "https://i.imgur.com/f45FaBC.png",
+            ["Giant"] = "https://i.imgur.com/4FYky8z.png",
+            ["Goblin"] = "https://i.imgur.com/GkRBM1p.png",
+            ["Halfling"] = "https://i.imgur.com/wmnYNXZ.png",
+            ["Human"] = "https://i.imgur.com/1DpUYui.png",
+            ["Inferis"] = "https://i.imgur.com/n8r5y5E.png",
+            ["Katari"] = "https://i.imgur.com/5w6qX1m.png",
+            ["Orc"] = "https://i.imgur.com/JbY6gsb.png",
+            ["Ribbet"] = "https://i.imgur.com/aEffZpS.png",
+            ["Simiah"] = "https://i.imgur.com/kNuYIku.png",
+        }
+
+        -- ========================
+        -- COMMUNITY
+        -- ========================
+        local imagensCommunity = {
+            ["Highborne"] = "https://i.imgur.com/vSsYNDs.png",
+            ["Loreborne"] = "https://i.imgur.com/XTiyPrH.png",
+            ["Orderborne"] = "https://i.imgur.com/D7FLSO6.png",
+            ["Ridgeborne"] = "https://i.imgur.com/JdsHAbc.png",
+            ["Seaborne"] = "https://i.imgur.com/dcUeEi2.png",
+            ["Slyborne"] = "https://i.imgur.com/QL0xdcz.png",
+            ["Underborne"] = "https://i.imgur.com/UIfjMYg.png",
+            ["Wanderborne"] = "https://i.imgur.com/qciyyh5.png",
+            ["Wildborne"] = "https://i.imgur.com/uRniUDo.png",
+        }
+
+        -- ========================
+        -- SUBCLASS - FOUNDATION
+        -- (Cada classe tem 2 subclasses)
+        -- ========================
+        local imagensFoundation = {
+            -- Bard
+            ["Troubadour (F)"] = "https://i.imgur.com/ti4kXkW.png",
+            ["Wordsmith (F)"] = "https://i.imgur.com/GM8nEa2.png",
+            -- Druid
+            ["Warden of the Elements (F)"] = "https://i.imgur.com/BhI3fdY.png",
+            ["Warden of Renewal (F)"] = "https://i.imgur.com/7wFRjpf.png",
+            -- Guardian
+            ["Stalwart (F)"] = "https://i.imgur.com/5pSUHIg.png",
+            ["Vengeance (F)"] = "https://i.imgur.com/km06Ndu.png",
+            -- Ranger
+            ["Beastbound (F)"] = "https://i.imgur.com/H9BbIsp.png",
+            ["Wayfinder (F)"] = "https://i.imgur.com/exrt0Li.png",
+            -- Rogue
+            ["Nightwalker (F)"] = "https://i.imgur.com/jkyNEIR.png",
+            ["Syndicate (F)"] = "https://i.imgur.com/HUVBjaE.png",
+            -- Seraph
+            ["Divine Wielder (F)"] = "https://i.imgur.com/yqqhELZ.png",
+            ["Winged Sentinel (F)"] = "https://i.imgur.com/OXQhbeL.png",
+            -- Sorcerer
+            ["Elemental Origin (F)"] = "https://i.imgur.com/BHqr9GI.png",
+            ["Primal Origin (F)"] = "https://i.imgur.com/6FK0bmG.png",
+            -- Warrior
+            ["Call of the Brave (F)"] = "https://i.imgur.com/9PNicvK.png",
+            ["Call of the Slayer (F)"] = "https://i.imgur.com/mC6IZog.png",
+            -- Wizard
+            ["School of Knowledge (F)"] = "https://i.imgur.com/XLibT54.png",
+            ["School of War (F)"] = "https://i.imgur.com/66MsEuf.png",
+        }
+
+        -- ========================
+        -- SUBCLASS - SPECIALIZATION
+        -- ========================
+        local imagensSpecialization = {
+            -- Bard
+            ["Troubadour (S)"] = "https://i.imgur.com/4CWqmQs.png",
+            ["Wordsmith (S)"] = "https://i.imgur.com/66xvjpf.png",
+            -- Druid
+            ["Warden of the Elements (S)"] = "https://i.imgur.com/kOCeCw2.png",
+            ["Warden of Renewal (S)"] = "https://i.imgur.com/3h7cwAp.png",
+            -- Guardian
+            ["Stalwart (S)"] = "https://i.imgur.com/2WRjyix.png",
+            ["Vengeance (S)"] = "https://i.imgur.com/XgvGPuf.png",
+            -- Ranger
+            ["Beastbound (S)"] = "https://i.imgur.com/sfGMP0S.png",
+            ["Wayfinder (S)"] = "https://i.imgur.com/BCjAY2E.png",
+            -- Rogue
+            ["Nightwalker (S)"] = "https://i.imgur.com/6snLbsE.png",
+            ["Syndicate (S)"] = "https://i.imgur.com/YZxtunx.png",
+            -- Seraph
+            ["Divine Wielder (S)"] = "https://i.imgur.com/RZwcH45.png",
+            ["Winged Sentinel (S)"] = "https://i.imgur.com/f3N598j.png",
+            -- Sorcerer
+            ["Elemental Origin (S)"] = "https://i.imgur.com/Em2VsJo.png",
+            ["Primal Origin (S)"] = "https://i.imgur.com/Vle4l8k.png",
+            -- Warrior
+            ["Call of the Brave (S)"] = "https://i.imgur.com/x8312Bv.png",
+            ["Call of the Slayer (S)"] = "https://i.imgur.com/ytRh7NQ.png",
+            -- Wizard
+            ["School of Knowledge (S)"] = "https://i.imgur.com/Oru7Xly.png",
+            ["School of War (S)"] = "https://i.imgur.com/T7yDk0H.png",
+        }
+
+        -- ========================
+        -- SUBCLASS - MASTERY
+        -- ========================
+        local imagensMastery = {
+            -- Bard
+            ["Troubadour (M)"] = "https://i.imgur.com/pdjZNFO.png",
+            ["Wordsmith (M)"] = "https://i.imgur.com/N1YbxCJ.png",
+            -- Druid
+            ["Warden of the Elements (M)"] = "https://i.imgur.com/4LsStzv.png",
+            ["Warden of Renewal (M)"] = "https://i.imgur.com/tpoVbv8.png",
+            -- Guardian
+            ["Stalwart (M)"] = "https://i.imgur.com/97Bqpbi.png",
+            ["Vengeance (M)"] = "https://i.imgur.com/iXtTfl3.png",
+            -- Ranger
+            ["Beastbound (M)"] = "https://i.imgur.com/9Lhaz0t.png",
+            ["Wayfinder (M)"] = "https://i.imgur.com/bRzaykG.png",
+            -- Rogue
+            ["Nightwalker (M)"] = "https://i.imgur.com/Gq86abw.png",
+            ["Syndicate (M)"] = "https://i.imgur.com/x6ds6PU.png",
+            -- Seraph
+            ["Divine Wielder (M)"] = "https://i.imgur.com/DWA1Xsl.png",
+            ["Winged Sentinel (M)"] = "https://i.imgur.com/nBjukRq.png",
+            -- Sorcerer
+            ["Elemental Origin (M)"] = "https://i.imgur.com/RCwNte0.png",
+            ["Primal Origin (M)"] = "https://i.imgur.com/4iGoXpE.png",
+            -- Warrior
+            ["Call of the Brave (M)"] = "https://i.imgur.com/G2OrpKb.png",
+            ["Call of the Slayer (M)"] = "https://i.imgur.com/kDk2XwN.png",
+            -- Wizard
+            ["School of Knowledge (M)"] = "https://i.imgur.com/HUJrN9X.png",
+            ["School of War (M)"] = "https://i.imgur.com/28o51lB.png",
+        }
+
+        -- ========================
+        -- DOMAIN CARDS
+        -- Formato: ["[Dominio] Nome da Carta"] = "url"
+        -- ========================
+        local imagensDomainCards = {
+            -- ARCANA (Lv1-10)
+            ["[Arcana] Rune Ward"] = "https://i.imgur.com/5XBWcmj.png",
+            ["[Arcana] Unleash Chaos"] = "https://i.imgur.com/fc3karJ.png",
+            ["[Arcana] Wall Walk"] = "https://i.imgur.com/YzYiUqc.png",
+            ["[Arcana] Cinder Grasp"] = "https://i.imgur.com/LGVgBtx.png",
+            ["[Arcana] Floating Eye"] = "https://i.imgur.com/xVbTtmD.png",
+            ["[Arcana] Counterspell"] = "https://i.imgur.com/Fk2MVao.png",
+            ["[Arcana] Flight"] = "https://i.imgur.com/JumroDu.png",
+            ["[Arcana] Blink Out"] = "https://i.imgur.com/xanPG8W.png",
+            ["[Arcana] Preservation Blast"] = "https://i.imgur.com/TehbTwa.png",
+            ["[Arcana] Chain Lightning"] = "https://i.imgur.com/h1SjkNY.png",
+            ["[Arcana] Premonition"] = "https://i.imgur.com/rp2KDGg.png",
+            ["[Arcana] Rift Walker"] = "https://i.imgur.com/MpUW8bC.png",
+            ["[Arcana] Telekinesis"] = "https://i.imgur.com/3RXX6oV.png",
+            ["[Arcana] Arcana-Touched"] = "https://i.imgur.com/A13IYTF.png",
+            ["[Arcana] Cloaking Blast"] = "https://i.imgur.com/ltCm2e3.png",
+            ["[Arcana] Arcane Reflection"] = "https://i.imgur.com/6gskGpG.png",
+            ["[Arcana] Confusing Aura"] = "https://i.imgur.com/hvvRsT1.png",
+            ["[Arcana] Earthquake"] = "https://i.imgur.com/QuSed7m.png",
+            ["[Arcana] Sensory Projection"] = "https://i.imgur.com/4g8jJ5I.png",
+            ["[Arcana] Adjust Reality"] = "https://i.imgur.com/u8udBzR.png",
+            ["[Arcana] Falling Sky"] = "https://i.imgur.com/bYkVgx7.png",
+            -- BLADE (Lv1-10)
+            ["[Blade] Get Back Up"] = "https://i.imgur.com/S2ReyPO.png",
+            ["[Blade] Not Good Enough"] = "https://i.imgur.com/uniKDSV.png",
+            ["[Blade] Whirlwind"] = "https://i.imgur.com/7ThnXlD.png",
+            ["[Blade] A Soldiers Bond"] = "https://i.imgur.com/5w4XRz0.png",
+            ["[Blade] Reckless"] = "https://i.imgur.com/1dHbdDB.png",
+            ["[Blade] Scramble"] = "https://i.imgur.com/axiskQR.png",
+            ["[Blade] Versatile Fighter"] = "https://i.imgur.com/sA06tgj.png",
+            ["[Blade] Deadly Focus"] = "https://i.imgur.com/jbuiNd5.png",
+            ["[Blade] Fortified Armor"] = "https://i.imgur.com/ZvUk0qV.png",
+            ["[Blade] Champions Edge"] = "https://i.imgur.com/2s8dc9h.png",
+            ["[Blade] Vitality"] = "https://i.imgur.com/kMec1cJ.png",
+            ["[Blade] Battle-Hardened"] = "https://i.imgur.com/KdXHTHa.png",
+            ["[Blade] Rage Up"] = "https://i.imgur.com/KezcCzt.png",
+            ["[Blade] Blade-Touched"] = "https://i.imgur.com/E8Im3yf.png",
+            ["[Blade] Glancing Blow"] = "https://i.imgur.com/As41gPk.png",
+            ["[Blade] Battle Cry"] = "https://i.imgur.com/aH7WQX0.png",
+            ["[Blade] Frenzy"] = "https://i.imgur.com/EDVWYho.png",
+            ["[Blade] Gore and Glory"] = "https://i.imgur.com/SUg4GjR.png",
+            ["[Blade] Reapers Strike"] = "https://i.imgur.com/I1yJNrq.png",
+            ["[Blade] Battle Monster"] = "https://i.imgur.com/XcVsYOJ.png",
+            ["[Blade] Onslaught"] = "https://i.imgur.com/kAMPvvP.png",
+            -- BONE (Lv1-10)
+            ["[Bone] Deft Maneuvers"] = "https://i.imgur.com/KzQMDhh.png",
+            ["[Bone] I See It Coming"] = "https://i.imgur.com/AQ76zOL.png",
+            ["[Bone] Untouchable"] = "https://i.imgur.com/lQZq4EF.png",
+            ["[Bone] Ferocity"] = "https://i.imgur.com/X5AI3tb.png",
+            ["[Bone] Strategic Approach"] = "https://i.imgur.com/01VOYTV.png",
+            ["[Bone] Brace"] = "https://i.imgur.com/xltIQXk.png",
+            ["[Bone] Tactician"] = "https://i.imgur.com/5mczxOe.png",
+            ["[Bone] Boost"] = "https://i.imgur.com/KPnDG5V.png",
+            ["[Bone] Redirect"] = "https://i.imgur.com/In0GbIm.png",
+            ["[Bone] Know Thy Enemy"] = "https://i.imgur.com/St2acFB.png",
+            ["[Bone] Signature Move"] = "https://i.imgur.com/NvmleGS.png",
+            ["[Bone] Rapid Riposte"] = "https://i.imgur.com/5W41gja.png",
+            ["[Bone] Recovery"] = "https://i.imgur.com/QYlHU2t.png",
+            ["[Bone] Bone-Touched"] = "https://i.imgur.com/o79HnQq.png",
+            ["[Bone] Cruel Precision"] = "https://i.imgur.com/eKRSbsg.png",
+            ["[Bone] Breaking Blow"] = "https://i.imgur.com/Bm3dSxi.png",
+            ["[Bone] Wrangle"] = "https://i.imgur.com/SShpbvl.png",
+            ["[Bone] On The Brink"] = "https://i.imgur.com/9iTlAPg.png",
+            ["[Bone] Splintering Strike"] = "https://i.imgur.com/NZoQW8S.png",
+            ["[Bone] Deathrun"] = "https://i.imgur.com/ARjXMLj.png",
+            ["[Bone] Swift Step"] = "https://i.imgur.com/ZVUqkSN.png",
+            -- CODEX (Lv1-10)
+            ["[Codex] Book of Ava"] = "https://i.imgur.com/aOt9eCa.png",
+            ["[Codex] Book of Illiat"] = "https://i.imgur.com/HLdZ2hZ.png",
+            ["[Codex] Book of Tyfar"] = "https://i.imgur.com/GEBfVaV.png",
+            ["[Codex] Book of Sitil"] = "https://i.imgur.com/UydlkwA.png",
+            ["[Codex] Book of Vagras"] = "https://i.imgur.com/4K9tH7A.png",
+            ["[Codex] Book of Korvax"] = "https://i.imgur.com/Qd2saFG.png",
+            ["[Codex] Book of Norai"] = "https://i.imgur.com/EhhzUYh.png",
+            ["[Codex] Book of Exota"] = "https://i.imgur.com/4AOnCBY.png",
+            ["[Codex] Book of Grynn"] = "https://i.imgur.com/WpLsZHs.png",
+            ["[Codex] Manifest Wall"] = "https://i.imgur.com/51debkS.png",
+            ["[Codex] Teleport"] = "https://i.imgur.com/cEzYnHS.png",
+            ["[Codex] Banish"] = "https://i.imgur.com/WZ4q75V.png",
+            ["[Codex] Sigil of Retribution"] = "https://i.imgur.com/YmT0RRP.png",
+            ["[Codex] Book of Homet"] = "https://i.imgur.com/t6W2FEY.png",
+            ["[Codex] Codex-Touched"] = "https://i.imgur.com/Ldkx8IW.png",
+            ["[Codex] Book of Vyola"] = "https://i.imgur.com/2yFrdxV.png",
+            ["[Codex] Safe Haven"] = "https://i.imgur.com/oE2AdRX.png",
+            ["[Codex] Book of Ronin"] = "https://i.imgur.com/TRZXp4t.png",
+            ["[Codex] Disintegration Wave"] = "https://i.imgur.com/EdsIGjS.png",
+            ["[Codex] Book of Yarrow"] = "https://i.imgur.com/Yw7ujG0.png",
+            ["[Codex] Transcendent Union"] = "https://i.imgur.com/ZYqmaeK.png",
+            -- GRACE (Lv1-10)
+            ["[Grace] Deft Deceiver"] = "https://i.imgur.com/wItY7FN.png",
+            ["[Grace] Enrapture"] = "https://i.imgur.com/TRu7J21.png",
+            ["[Grace] Inspirational Words"] = "https://i.imgur.com/Mgn3ZNH.png",
+            ["[Grace] Tell No Lies"] = "https://i.imgur.com/QU7n3Fw.png",
+            ["[Grace] Troublemaker"] = "https://i.imgur.com/oSKByGy.png",
+            ["[Grace] Hypnotic Shimmer"] = "https://i.imgur.com/WzjMVrw.png",
+            ["[Grace] Invisibility"] = "https://i.imgur.com/VKmXLWm.png",
+            ["[Grace] Soothing Speech"] = "https://i.imgur.com/PKKqB3r.png",
+            ["[Grace] Through Your Eyes"] = "https://i.imgur.com/kj4Afmu.png",
+            ["[Grace] Thought Delver"] = "https://i.imgur.com/Mg6AveH.png",
+            ["[Grace] Words of Discord"] = "https://i.imgur.com/eUcyzfP.png",
+            ["[Grace] Never Upstaged"] = "https://i.imgur.com/EXvfQF1.png",
+            ["[Grace] Share The Burden"] = "https://i.imgur.com/7aphQYC.png",
+            ["[Grace] Endless Charisma"] = "https://i.imgur.com/Pi4a2ty.png",
+            ["[Grace] Grace-Touched"] = "https://i.imgur.com/P4Wdq2h.png",
+            ["[Grace] Astral Projection"] = "https://i.imgur.com/x51Z2cy.png",
+            ["[Grace] Mass Enrapture"] = "https://i.imgur.com/TtVU0oi.png",
+            ["[Grace] Copycat"] = "https://i.imgur.com/qdK4V9f.png",
+            ["[Grace] Master of The Craft"] = "https://i.imgur.com/EYYGf9E.png",
+            ["[Grace] Encore"] = "https://i.imgur.com/07MAt7F.png",
+            ["[Grace] Notorious"] = "https://i.imgur.com/r6v3LTB.png",
+            -- MIDNIGHT (Lv1-10)
+            ["[Midnight] Pick and Pull"] = "https://i.imgur.com/afAWDJy.png",
+            ["[Midnight] Rain of Blades"] = "https://i.imgur.com/LRSSNMk.png",
+            ["[Midnight] Uncanny Disguise"] = "https://i.imgur.com/Hucoe0c.png",
+            ["[Midnight] Midnight Spirit"] = "https://i.imgur.com/D7iG5ha.png",
+            ["[Midnight] Shadowbind"] = "https://i.imgur.com/Q5THCLq.png",
+            ["[Midnight] Chokehold"] = "https://i.imgur.com/kOB5G3Q.png",
+            ["[Midnight] Veil of Night"] = "https://i.imgur.com/Qz6s1nZ.png",
+            ["[Midnight] Stealth Expertise"] = "https://i.imgur.com/N4QsTwV.png",
+            ["[Midnight] Glyph of Nightfall"] = "https://i.imgur.com/F5b7bzm.png",
+            ["[Midnight] Hush"] = "https://i.imgur.com/NbpESmH.png",
+            ["[Midnight] Phantom Retreat"] = "https://i.imgur.com/RIYzEzt.png",
+            ["[Midnight] Dark Whispers"] = "https://i.imgur.com/IzCYunj.png",
+            ["[Midnight] Mass Disguise"] = "https://i.imgur.com/hSevSf4.png",
+            ["[Midnight] Midnight-Touched"] = "https://i.imgur.com/MGLWtYC.png",
+            ["[Midnight] Vanishing Dodge"] = "https://i.imgur.com/i8jZ7gf.png",
+            ["[Midnight] Shadowhunter"] = "https://i.imgur.com/dq6r0Uo.png",
+            ["[Midnight] Spellcharge"] = "https://i.imgur.com/SqYBK7i.png",
+            ["[Midnight] Night Terror"] = "https://i.imgur.com/MmNK4o7.png",
+            ["[Midnight] Twilight Toll"] = "https://i.imgur.com/GhvatN4.png",
+            ["[Midnight] Eclipse"] = "https://i.imgur.com/AR1JxMX.png",
+            ["[Midnight] Specter of The Dark"] = "https://i.imgur.com/OQgNfPw.png",
+            -- SAGE (Lv1-10)
+            ["[Sage] Gifted Tracker"] = "https://i.imgur.com/LoA3ksa.png",
+            ["[Sage] Natures Tongue"] = "https://i.imgur.com/YvG3lTt.png",
+            ["[Sage] Vicious Entangle"] = "https://i.imgur.com/suSE9yV.png",
+            ["[Sage] Conjure Swarm"] = "https://i.imgur.com/7fud6rj.png",
+            ["[Sage] Natural Familiar"] = "https://i.imgur.com/hKWPKwe.png",
+            ["[Sage] Corrosive Projectile"] = "https://i.imgur.com/3QlWYdW.png",
+            ["[Sage] Towering Stalk"] = "https://i.imgur.com/a6tyZXu.png",
+            ["[Sage] Death Grip"] = "https://i.imgur.com/21P49sO.png",
+            ["[Sage] Healing Field"] = "https://i.imgur.com/wbTRdG4.png",
+            ["[Sage] Thorn Skin"] = "https://i.imgur.com/poY8FTK.png",
+            ["[Sage] Wild Fortress"] = "https://i.imgur.com/XIQcbQa.png",
+            ["[Sage] Conjured Steeds"] = "https://i.imgur.com/PwxFubn.png",
+            ["[Sage] Forager"] = "https://i.imgur.com/dvh5OCV.png",
+            ["[Sage] Sage-Touched"] = "https://i.imgur.com/cfP4Tvi.png",
+            ["[Sage] Wild Surge"] = "https://i.imgur.com/eZWDIUu.png",
+            ["[Sage] Forest Sprites"] = "https://i.imgur.com/ThEtbLk.png",
+            ["[Sage] Rejuvenation Barrier"] = "https://i.imgur.com/BzbGVM2.png",
+            ["[Sage] Fane of The Wilds"] = "https://i.imgur.com/VDh0VZ9.png",
+            ["[Sage] Plant Dominion"] = "https://i.imgur.com/AWe2UrT.png",
+            ["[Sage] Force of Nature"] = "https://i.imgur.com/G8e74OY.png",
+            ["[Sage] Tempest"] = "https://i.imgur.com/t4mWjAs.png",
+            -- SPLENDOR (Lv1-10)
+            ["[Splendor] Bolt Beacon"] = "https://i.imgur.com/IENGcBC.png",
+            ["[Splendor] Mending Touch"] = "https://i.imgur.com/7kL3b3C.png",
+            ["[Splendor] Reassurance"] = "https://i.imgur.com/l58m92L.png",
+            ["[Splendor] Final Words"] = "https://i.imgur.com/anvQXkX.png",
+            ["[Splendor] Healing Hands"] = "https://i.imgur.com/98lw4zG.png",
+            ["[Splendor] Second Wind"] = "https://i.imgur.com/ehM57oo.png",
+            ["[Splendor] Voice of Reason"] = "https://i.imgur.com/7XGaNkT.png",
+            ["[Splendor] Divination"] = "https://i.imgur.com/FWiY8MD.png",
+            ["[Splendor] Life Ward"] = "https://i.imgur.com/UMjNqkD.png",
+            ["[Splendor] Shape Material"] = "https://i.imgur.com/za4G1xF.png",
+            ["[Splendor] Smite"] = "https://i.imgur.com/bh4g3og.png",
+            ["[Splendor] Restoration"] = "https://i.imgur.com/tDnXTE8.png",
+            ["[Splendor] Zone of Protection"] = "https://i.imgur.com/1uzdm3D.png",
+            ["[Splendor] Healing Strike"] = "https://i.imgur.com/IgWD7Xi.png",
+            ["[Splendor] Splendor-Touched"] = "https://i.imgur.com/xCVcWsz.png",
+            ["[Splendor] Shield Aura"] = "https://i.imgur.com/BsERM1D.png",
+            ["[Splendor] Stunning Sunlight"] = "https://i.imgur.com/Q5qsfIU.png",
+            ["[Splendor] Overwhelming Aura"] = "https://i.imgur.com/hDeN9nA.png",
+            ["[Splendor] Salvation Beam"] = "https://i.imgur.com/dhmvZqw.png",
+            ["[Splendor] Invigoration"] = "https://i.imgur.com/NwnfN9T.png",
+            ["[Splendor] Resurrection"] = "https://i.imgur.com/jwfh7fr.png",
+            -- VALOR (Lv1-10)
+            ["[Valor] Bare Bones"] = "https://i.imgur.com/uDi3UZX.png",
+            ["[Valor] Forceful Push"] = "https://i.imgur.com/r72kuEh.png",
+            ["[Valor] I Am Your Shield"] = "https://i.imgur.com/s2jPorU.png",
+            ["[Valor] Body Basher"] = "https://i.imgur.com/bSrNF4O.png",
+            ["[Valor] Bold Presence"] = "https://i.imgur.com/OHx4p5G.png",
+            ["[Valor] Critical Inspiration"] = "https://i.imgur.com/Vpv43Si.png",
+            ["[Valor] Lean on Me"] = "https://i.imgur.com/g17AQBk.png",
+            ["[Valor] Goad Them On"] = "https://i.imgur.com/efen1aI.png",
+            ["[Valor] Support Tank"] = "https://i.imgur.com/9l3XbJT.png",
+            ["[Valor] Armorer"] = "https://i.imgur.com/FOen6aC.png",
+            ["[Valor] Rousing Strike"] = "https://i.imgur.com/ROjhLpk.png",
+            ["[Valor] Inevitable"] = "https://i.imgur.com/dn9v7fR.png",
+            ["[Valor] Rise Up"] = "https://i.imgur.com/GkkC27z.png",
+            ["[Valor] Shrug It Off"] = "https://i.imgur.com/MDi7DLi.png",
+            ["[Valor] Valor-Touched"] = "https://i.imgur.com/hEciBW0.png",
+            ["[Valor] Full Surge"] = "https://i.imgur.com/RHYNxuA.png",
+            ["[Valor] Ground Pound"] = "https://i.imgur.com/jHo21Vw.png",
+            ["[Valor] Hold the Line"] = "https://i.imgur.com/vxiFLHv.png",
+            ["[Valor] Lead by Example"] = "https://i.imgur.com/N8ITudi.png",
+            ["[Valor] Unbreakable"] = "https://i.imgur.com/oGuXRuO.png",
+            ["[Valor] Unyielding Armor"] = "https://i.imgur.com/CPYHjue.png",
+        }
+
+        -- ========================
+        -- CARTAS POR DOMINIO (para filtro dinamico)
+        -- ========================
+        local domainCardsByCategory = {
+            ["Arcana"] = {
+                "Rune Ward", "Unleash Chaos", "Wall Walk", "Cinder Grasp", "Floating Eye",
+                "Counterspell", "Flight", "Blink Out", "Preservation Blast", "Chain Lightning",
+                "Premonition", "Rift Walker", "Telekinesis", "Arcana-Touched", "Cloaking Blast",
+                "Arcane Reflection", "Confusing Aura", "Earthquake", "Sensory Projection",
+                "Adjust Reality", "Falling Sky"
+            },
+            ["Blade"] = {
+                "Get Back Up", "Not Good Enough", "Whirlwind", "A Soldiers Bond", "Reckless",
+                "Scramble", "Versatile Fighter", "Deadly Focus", "Fortified Armor", "Champions Edge",
+                "Vitality", "Battle-Hardened", "Rage Up", "Blade-Touched", "Glancing Blow",
+                "Battle Cry", "Frenzy", "Gore and Glory", "Reapers Strike", "Battle Monster", "Onslaught"
+            },
+            ["Bone"] = {
+                "Deft Maneuvers", "I See It Coming", "Untouchable", "Ferocity", "Strategic Approach",
+                "Brace", "Tactician", "Boost", "Redirect", "Know Thy Enemy", "Signature Move",
+                "Rapid Riposte", "Recovery", "Bone-Touched", "Cruel Precision", "Breaking Blow",
+                "Wrangle", "On The Brink", "Splintering Strike", "Deathrun", "Swift Step"
+            },
+            ["Codex"] = {
+                "Book of Ava", "Book of Illiat", "Book of Tyfar", "Book of Sitil", "Book of Vagras",
+                "Book of Korvax", "Book of Norai", "Book of Exota", "Book of Grynn", "Manifest Wall",
+                "Teleport", "Banish", "Sigil of Retribution", "Book of Homet", "Codex-Touched",
+                "Book of Vyola", "Safe Haven", "Book of Ronin", "Disintegration Wave", "Book of Yarrow",
+                "Transcendent Union"
+            },
+            ["Grace"] = {
+                "Deft Deceiver", "Enrapture", "Inspirational Words", "Tell No Lies", "Troublemaker",
+                "Hypnotic Shimmer", "Invisibility", "Soothing Speech", "Through Your Eyes",
+                "Thought Delver", "Words of Discord", "Never Upstaged", "Share The Burden",
+                "Endless Charisma", "Grace-Touched", "Astral Projection", "Mass Enrapture",
+                "Copycat", "Master of The Craft", "Encore", "Notorious"
+            },
+            ["Midnight"] = {
+                "Pick and Pull", "Rain of Blades", "Uncanny Disguise", "Midnight Spirit", "Shadowbind",
+                "Chokehold", "Veil of Night", "Stealth Expertise", "Glyph of Nightfall", "Hush",
+                "Phantom Retreat", "Dark Whispers", "Mass Disguise", "Midnight-Touched",
+                "Vanishing Dodge", "Shadowhunter", "Spellcharge", "Night Terror", "Twilight Toll",
+                "Eclipse", "Specter of The Dark"
+            },
+            ["Sage"] = {
+                "Gifted Tracker", "Natures Tongue", "Vicious Entangle", "Conjure Swarm",
+                "Natural Familiar", "Corrosive Projectile", "Towering Stalk", "Death Grip",
+                "Healing Field", "Thorn Skin", "Wild Fortress", "Conjured Steeds", "Forager",
+                "Sage-Touched", "Wild Surge", "Forest Sprites", "Rejuvenation Barrier",
+                "Fane of The Wilds", "Plant Dominion", "Force of Nature", "Tempest"
+            },
+            ["Splendor"] = {
+                "Bolt Beacon", "Mending Touch", "Reassurance", "Final Words", "Healing Hands",
+                "Second Wind", "Voice of Reason", "Divination", "Life Ward", "Shape Material",
+                "Smite", "Restoration", "Zone of Protection", "Healing Strike", "Splendor-Touched",
+                "Shield Aura", "Stunning Sunlight", "Overwhelming Aura", "Salvation Beam",
+                "Invigoration", "Resurrection"
+            },
+            ["Valor"] = {
+                "Bare Bones", "Forceful Push", "I Am Your Shield", "Body Basher", "Bold Presence",
+                "Critical Inspiration", "Lean on Me", "Goad Them On", "Support Tank", "Armorer",
+                "Rousing Strike", "Inevitable", "Rise Up", "Shrug It Off", "Valor-Touched",
+                "Full Surge", "Ground Pound", "Hold the Line", "Lead by Example", "Unbreakable",
+                "Unyielding Armor"
+            },
+        }
+
+        -- ============================================================
+        -- FUNCOES AUXILIARES
+        -- ============================================================
+
+        local function atualizarImagem(campo, tabela)
+            local nome = sheet[campo .. "Nome"] or ""
+            if nome ~= "" and tabela[nome] and tabela[nome] ~= "" then
+                sheet[campo .. "URL"] = tabela[nome]
+            end
+        end
+
+        local function atualizarImagemClass(campo, tier)
+            local nome = sheet[campo .. "Nome"] or ""
+            if nome == "" then return end
+            local tabela
+            if tier == "F" then
+                tabela = imagensFoundation
+            elseif tier == "S" then
+                tabela = imagensSpecialization
+            elseif tier == "M" then
+                tabela = imagensMastery
+            end
+            if tabela and tabela[nome] and tabela[nome] ~= "" then
+                sheet[campo .. "URL"] = tabela[nome]
+            end
+        end
+
+        local function atualizarImagemDomain(slotNum)
+            local carta = sheet["cardDomain" .. slotNum .. "Carta"] or ""
+            if carta ~= "" and imagensDomainCards[carta] and imagensDomainCards[carta] ~= "" then
+                sheet["cardDomain" .. slotNum .. "URL"] = imagensDomainCards[carta]
+            end
+        end
+
+        local function filtrarCartasDomain(slotNum)
+            local categoria = sheet["cardDomain" .. slotNum .. "Categoria"] or ""
+            local combo = self:findControlByName("cbDomain" .. slotNum .. "Carta")
+
+            if combo == nil then return end
+
+            local cards = domainCardsByCategory[categoria]
+            if cards == nil then return end
+
+            local items = {"-- Carta --"}
+            local values = {""}
+
+            for _, cardName in ipairs(cards) do
+                local fullName = "[" .. categoria .. "] " .. cardName
+                table.insert(items, fullName)
+                table.insert(values, fullName)
+            end
+
+            combo.items = items
+            combo.values = values
+        end
+        ]]>
+    </script>
+
+
+    <scrollBox align="client" g-cnt-line-spacing="3">
+
+        <!-- ============================================================ -->
+        <!-- LABELS DA LINHA 1                                            -->
+        <!-- ============================================================ -->
+        <label g="col" g-width="12" g-width-lg="1"/>
+        <label g="col" g-width="12" g-width-lg="2" class="lblCategoria" text="Ancestry"/>
+        <label g="col" g-width="12" g-width-lg="2" class="lblCategoria" text="Community"/>
+        <rectangle g="col" g-width="12" g-width-lg="6" height="25" color="transparent">
+            <label align="top" class="lblCategoria" text="Class"/>
+        </rectangle>
+        <label g="col" g-width="12" g-width-lg="1"/>
+
+        <!-- Espaçamento para centralizar as colunas -->
+        <layout g="col" g-width="6" g-width-lg="1"/>
+
+        <!-- SLOT 1: Ancestry -->
+        <layout g="col" g-width="6" g-width-lg="2" g-min-height="450">
+            <rectangle align="top" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardAncestryURL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom1" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardAncestryURL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom1:show()
+                    </event>
+            </rectangle>
+            <comboBox align="left" width="245" height="25" field="cardAncestryNome" margins="{top=3}"
+                items="{'-- Selecione --', 'Clank', 'Drakona', 'Dwarf', 'Elf', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah'}"
+                values="{'', 'Clank', 'Drakona', 'Dwarf', 'Elf', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah'}"
+                fontColor="white" fontSize="10"/>
+            <dataLink field="cardAncestryNome" onChange="atualizarImagem('cardAncestry', imagensAncestry)"/>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardAncestryNome or "") .."[§B]\n###### [§I".. (sheet.cardAncestryURL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardAncestryURL = ""
+                    sheet.cardAncestryNome = ""
+                </event>
+            </button>
+        </layout>
+
+        <!-- SLOT 2: Community -->
+        <layout g="col" g-width="6" g-width-lg="2" g-min-height="450">
+            <rectangle align="top" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardCommunityURL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom2" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardCommunityURL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom2:show()
+                    </event>
+            </rectangle>
+            <comboBox align="left" width="245" height="25" field="cardCommunityNome" margins="{top=3}"
+                items="{'-- Selecione --', 'Highborne', 'Loreborne', 'Orderborne', 'Ridgeborne', 'Seaborne', 'Underborne', 'Slyborne', 'Wanderborne', 'Wildborne'}"
+                values="{'', 'Highborne', 'Loreborne', 'Orderborne', 'Ridgeborne', 'Seaborne', 'Underborne', 'Slyborne', 'Wanderborne', 'Wildborne'}"
+                fontColor="white" fontSize="10"/>
+            <dataLink field="cardCommunityNome" onChange="atualizarImagem('cardCommunity', imagensCommunity)"/>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardCommunityNome or "") .."[§B]\n###### [§I".. (sheet.cardCommunityURL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardCommunityURL = ""
+                    sheet.cardCommunityNome = ""
+                </event>
+            </button>
+        </layout>
+
+        <!-- ============================================================ -->
+        <!-- SLOT 3: Class 1 - SOMENTE FOUNDATION                        -->
+        <!-- ============================================================ -->
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="450">
+            <rectangle align="top" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardClass1URL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom3" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardClass1URL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom3:show()
+                    </event>
+            </rectangle>
+            <comboBox align="left" width="245" height="25" field="cardClass1Nome" margins="{top=3}"
+                items="{'-- Selecione --', '== BARD ==', 'Troubadour (F)', 'Wordsmith (F)', '== DRUID ==', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '== GUARDIAN ==', 'Stalwart (F)', 'Vengeance (F)', '== RANGER ==', 'Beastbound (F)', 'Wayfinder (F)', '== ROGUE ==', 'Nightwalker (F)', 'Syndicate (F)', '== SERAPH ==', 'Divine Wielder (F)', 'Winged Sentinel (F)', '== SORCERER ==', 'Elemental Origin (F)', 'Primal Origin (F)', '== WARRIOR ==', 'Call of the Brave (F)', 'Call of the Slayer (F)', '== WIZARD ==', 'School of Knowledge (F)', 'School of War (F)'}"
+                values="{'', '', 'Troubadour (F)', 'Wordsmith (F)', '', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '', 'Stalwart (F)', 'Vengeance (F)', '', 'Beastbound (F)', 'Wayfinder (F)', '', 'Nightwalker (F)', 'Syndicate (F)', '', 'Divine Wielder (F)', 'Winged Sentinel (F)', '', 'Elemental Origin (F)', 'Primal Origin (F)', '', 'Call of the Brave (F)', 'Call of the Slayer (F)', '', 'School of Knowledge (F)', 'School of War (F)'}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardClass1Nome" onChange="atualizarImagemClass('cardClass1', 'F')"/>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardClass1Nome or "") .."[§B]\n###### [§I".. (sheet.cardClass1URL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardClass1URL = ""
+                    sheet.cardClass1Nome = "-- Selecione --"
+                </event>
+            </button>
+        </layout>
+
+        <!-- ============================================================ -->
+        <!-- SLOT 4: Class 2 - FOUNDATION + SPECIALIZATION               -->
+        <!-- ============================================================ -->
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="450">
+            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardClass2URL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom4" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardClass2URL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom4:show()
+                    </event>
+            </rectangle>
+            <comboBox align="left" width="245" height="25" field="cardClass2Nome" margins="{top=3}"
+                items="{'-- Selecione --', '=== FOUNDATION ===', '== BARD ==', 'Troubadour (F)', 'Wordsmith (F)', '== DRUID ==', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '== GUARDIAN ==', 'Stalwart (F)', 'Vengeance (F)', '== RANGER ==', 'Beastbound (F)', 'Wayfinder (F)', '== ROGUE ==', 'Nightwalker (F)', 'Syndicate (F)', '== SERAPH ==', 'Divine Wielder (F)', 'Winged Sentinel (F)', '== SORCERER ==', 'Elemental Origin (F)', 'Primal Origin (F)', '== WARRIOR ==', 'Call of the Brave (F)', 'Call of the Slayer (F)', '== WIZARD ==', 'School of Knowledge (F)', 'School of War (F)', '=== SPECIALIZATION ===', '== BARD ==', 'Troubadour (S)', 'Wordsmith (S)', '== DRUID ==', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '== GUARDIAN ==', 'Stalwart (S)', 'Vengeance (S)', '== RANGER ==', 'Beastbound (S)', 'Wayfinder (S)', '== ROGUE ==', 'Nightwalker (S)', 'Syndicate (S)', '== SERAPH ==', 'Divine Wielder (S)', 'Winged Sentinel (S)', '== SORCERER ==', 'Elemental Origin (S)', 'Primal Origin (S)', '== WARRIOR ==', 'Call of the Brave (S)', 'Call of the Slayer (S)', '== WIZARD ==', 'School of Knowledge (S)', 'School of War (S)'}"
+                values="{'', '', '', 'Troubadour (F)', 'Wordsmith (F)', '', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '', 'Stalwart (F)', 'Vengeance (F)', '', 'Beastbound (F)', 'Wayfinder (F)', '', 'Nightwalker (F)', 'Syndicate (F)', '', 'Divine Wielder (F)', 'Winged Sentinel (F)', '', 'Elemental Origin (F)', 'Primal Origin (F)', '', 'Call of the Brave (F)', 'Call of the Slayer (F)', '', 'School of Knowledge (F)', 'School of War (F)', '', '', 'Troubadour (S)', 'Wordsmith (S)', '', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '', 'Stalwart (S)', 'Vengeance (S)', '', 'Beastbound (S)', 'Wayfinder (S)', '', 'Nightwalker (S)', 'Syndicate (S)', '', 'Divine Wielder (S)', 'Winged Sentinel (S)', '', 'Elemental Origin (S)', 'Primal Origin (S)', '', 'Call of the Brave (S)', 'Call of the Slayer (S)', '', 'School of Knowledge (S)', 'School of War (S)'}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardClass2Nome">
+                <event name="onChange">
+                    local nome = sheet.cardClass2Nome or ""
+                    if nome:find("%(F%)") then
+                        atualizarImagemClass('cardClass2', 'F')
+                    elseif nome:find("%(S%)") then
+                        atualizarImagemClass('cardClass2', 'S')
+                    end
+                </event>
+            </dataLink>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardClass2Nome or "") .."[§B]\n###### [§I".. (sheet.cardClass2URL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardClass2URL = ""
+                    sheet.cardClass2Nome = "-- Selecione --"
+                </event>
+            </button>
+        </layout>
+
+        <!-- ============================================================ -->
+        <!-- SLOT 5: Class 3 - FOUNDATION + SPECIALIZATION + MASTERY     -->
+        <!-- ============================================================ -->
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="450" g-break-line-after="true">
+            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardClass3URL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom5" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardClass3URL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom5:show()
+                    </event>
+            </rectangle>
+            <comboBox align="left" width="245" height="25" field="cardClass3Nome" margins="{top=3}"
+                items="{'-- Selecione --', '=== FOUNDATION ===', '== BARD ==', 'Troubadour (F)', 'Wordsmith (F)', '== DRUID ==', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '== GUARDIAN ==', 'Stalwart (F)', 'Vengeance (F)', '== RANGER ==', 'Beastbound (F)', 'Wayfinder (F)', '== ROGUE ==', 'Nightwalker (F)', 'Syndicate (F)', '== SERAPH ==', 'Divine Wielder (F)', 'Winged Sentinel (F)', '== SORCERER ==', 'Elemental Origin (F)', 'Primal Origin (F)', '== WARRIOR ==', 'Call of the Brave (F)', 'Call of the Slayer (F)', '== WIZARD ==', 'School of Knowledge (F)', 'School of War (F)', '=== SPECIALIZATION ===', '== BARD ==', 'Troubadour (S)', 'Wordsmith (S)', '== DRUID ==', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '== GUARDIAN ==', 'Stalwart (S)', 'Vengeance (S)', '== RANGER ==', 'Beastbound (S)', 'Wayfinder (S)', '== ROGUE ==', 'Nightwalker (S)', 'Syndicate (S)', '== SERAPH ==', 'Divine Wielder (S)', 'Winged Sentinel (S)', '== SORCERER ==', 'Elemental Origin (S)', 'Primal Origin (S)', '== WARRIOR ==', 'Call of the Brave (S)', 'Call of the Slayer (S)', '== WIZARD ==', 'School of Knowledge (S)', 'School of War (S)', '=== MASTERY ===', '== BARD ==', 'Troubadour (M)', 'Wordsmith (M)', '== DRUID ==', 'Warden of the Elements (M)', 'Warden of Renewal (M)', '== GUARDIAN ==', 'Stalwart (M)', 'Vengeance (M)', '== RANGER ==', 'Beastbound (M)', 'Wayfinder (M)', '== ROGUE ==', 'Nightwalker (M)', 'Syndicate (M)', '== SERAPH ==', 'Divine Wielder (M)', 'Winged Sentinel (M)', '== SORCERER ==', 'Elemental Origin (M)', 'Primal Origin (M)', '== WARRIOR ==', 'Call of the Brave (M)', 'Call of the Slayer (M)', '== WIZARD ==', 'School of Knowledge (M)', 'School of War (M)'}"
+                values="{'', '', '', 'Troubadour (F)', 'Wordsmith (F)', '', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '', 'Stalwart (F)', 'Vengeance (F)', '', 'Beastbound (F)', 'Wayfinder (F)', '', 'Nightwalker (F)', 'Syndicate (F)', '', 'Divine Wielder (F)', 'Winged Sentinel (F)', '', 'Elemental Origin (F)', 'Primal Origin (F)', '', 'Call of the Brave (F)', 'Call of the Slayer (F)', '', 'School of Knowledge (F)', 'School of War (F)', '', '', 'Troubadour (S)', 'Wordsmith (S)', '', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '', 'Stalwart (S)', 'Vengeance (S)', '', 'Beastbound (S)', 'Wayfinder (S)', '', 'Nightwalker (S)', 'Syndicate (S)', '', 'Divine Wielder (S)', 'Winged Sentinel (S)', '', 'Elemental Origin (S)', 'Primal Origin (S)', '', 'Call of the Brave (S)', 'Call of the Slayer (S)', '', 'School of Knowledge (S)', 'School of War (S)', '', '', 'Troubadour (M)', 'Wordsmith (M)', '', 'Warden of the Elements (M)', 'Warden of Renewal (M)', '', 'Stalwart (M)', 'Vengeance (M)', '', 'Beastbound (M)', 'Wayfinder (M)', '', 'Nightwalker (M)', 'Syndicate (M)', '', 'Divine Wielder (M)', 'Winged Sentinel (M)', '', 'Elemental Origin (M)', 'Primal Origin (M)', '', 'Call of the Brave (M)', 'Call of the Slayer (M)', '', 'School of Knowledge (M)', 'School of War (M)'}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardClass3Nome">
+                <event name="onChange">
+                    local nome = sheet.cardClass3Nome or ""
+                    if nome:find("%(F%)") then
+                        atualizarImagemClass('cardClass3', 'F')
+                    elseif nome:find("%(S%)") then
+                        atualizarImagemClass('cardClass3', 'S')
+                    elseif nome:find("%(M%)") then
+                        atualizarImagemClass('cardClass3', 'M')
+                    end
+                </event>
+            </dataLink>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardClass3Nome or "") .."[§B]\n###### [§I".. (sheet.cardClass3URL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardClass3URL = ""
+                    sheet.cardClass3Nome = "-- Selecione --"
+                </event>
+            </button>
+        </layout>
+
+        <!-- ============================================================ -->
+        <!-- ESPACAMENTO                                                  -->
+        <!-- ============================================================ -->
+        <layout g="col" g-width="12" g-min-height="15"/>
+
+        <!-- ============================================================ -->
+        <!-- LABEL LINHA 2: Domain                                        -->
+        <!-- ============================================================ -->
+        <label g="col" g-width="6" g-width-lg="1"/>
+        <rectangle g="col" g-width="10" height="25" color="transparent">
+            <label align="top" class="lblCategoria" text="Domain"/>
+        </rectangle>
+        <label g="col" g-width="6" g-width-lg="1"/>
+
+        <layout g="col" g-width="6" g-width-lg="1"/>
+
+        <!-- SLOT 6: Domain 1 -->
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
+            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardDomain1URL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom6" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardDomain1URL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom6:show()
+                    </event>
+            </rectangle>
+            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
+            <comboBox align="top" height="22" field="cardDomain1Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain1Categoria" onChange="filtrarCartasDomain(1)"/>
+            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
+            <comboBox name="cbDomain1Carta" align="left" width="245" height="25" field="cardDomain1Carta" margins="{top=3}"
+                items="{'-- Selecione Dominio --'}"
+                values="{''}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain1Carta" onChange="atualizarImagemDomain(1)"/>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardDomain1Carta or "") .."[§B]\n###### [§I".. (sheet.cardDomain1URL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardDomain1URL = ""
+                    sheet.cardDomain1Categoria = ""
+                    sheet.cardDomain1Carta = ""
+                    local combo = self:findControlByName("cbDomain1Carta")
+                    if combo then
+                        combo.items = {"-- Selecione Dominio --"}
+                        combo.values = {""}
+                    end
+                </event>
+            </button>
+        </layout>
+
+        <!-- SLOT 7: Domain 2 -->
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
+            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardDomain2URL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom7" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardDomain2URL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom7:show()
+                    </event>
+            </rectangle>
+            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
+            <comboBox align="top" height="22" field="cardDomain2Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain2Categoria" onChange="filtrarCartasDomain(2)"/>
+            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
+            <comboBox name="cbDomain2Carta" align="left" width="245" height="25" field="cardDomain2Carta" margins="{top=3}"
+                items="{'-- Selecione Dominio --'}"
+                values="{''}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain2Carta" onChange="atualizarImagemDomain(2)"/>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardDomain2Carta or "") .."[§B]\n###### [§I".. (sheet.cardDomain2URL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardDomain2URL = ""
+                    sheet.cardDomain2Categoria = ""
+                    sheet.cardDomain2Carta = ""
+                    local combo = self:findControlByName("cbDomain2Carta")
+                    if combo then
+                        combo.items = {"-- Selecione Dominio --"}
+                        combo.values = {""}
+                    end
+                </event>
+            </button>
+        </layout>
+
+        <!-- SLOT 8: Domain 3 -->
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
+            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardDomain3URL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom8" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardDomain3URL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom8:show()
+                    </event>
+            </rectangle>
+            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
+            <comboBox align="top" height="22" field="cardDomain3Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain3Categoria" onChange="filtrarCartasDomain(3)"/>
+            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
+            <comboBox name="cbDomain3Carta" align="left" width="245" height="25" field="cardDomain3Carta" margins="{top=3}"
+                items="{'-- Selecione Dominio --'}"
+                values="{''}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain3Carta" onChange="atualizarImagemDomain(3)"/>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardDomain3Carta or "") .."[§B]\n###### [§I".. (sheet.cardDomain3URL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardDomain3URL = ""
+                    sheet.cardDomain3Categoria = ""
+                    sheet.cardDomain3Carta = ""
+                    local combo = self:findControlByName("cbDomain3Carta")
+                    if combo then
+                        combo.items = {"-- Selecione Dominio --"}
+                        combo.values = {""}
+                    end
+                </event>
+            </button>
+        </layout>
+
+        <!-- SLOT 9: Domain 4 -->
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
+            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardDomain4URL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom9" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardDomain4URL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom9:show()
+                    </event>
+            </rectangle>
+            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
+            <comboBox align="top" height="22" field="cardDomain4Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain4Categoria" onChange="filtrarCartasDomain(4)"/>
+            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
+            <comboBox name="cbDomain4Carta" align="left" width="245" height="25" field="cardDomain4Carta" margins="{top=3}"
+                items="{'-- Selecione Dominio --'}"
+                values="{''}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain4Carta" onChange="atualizarImagemDomain(4)"/>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardDomain4Carta or "") .."[§B]\n###### [§I".. (sheet.cardDomain4URL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardDomain4URL = ""
+                    sheet.cardDomain4Categoria = ""
+                    sheet.cardDomain4Carta = ""
+                    local combo = self:findControlByName("cbDomain4Carta")
+                    if combo then
+                        combo.items = {"-- Selecione Dominio --"}
+                        combo.values = {""}
+                    end
+                </event>
+            </button>
+        </layout>
+
+        <!-- SLOT 10: Domain 5 -->
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
+            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" >
+                <image align="client" field="cardDomain5URL" style="autoFit" editable="false"/>
+                   <popup name="imageZoom10" width="500" height="700" backOpacity="0.5" drawContainer="false">
+                        <image align="client" field="cardDomain5URL"/>       
+                    </popup>  
+                    <event name= "onClick">
+                        self.imageZoom10:show()
+                    </event>
+            </rectangle>
+            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
+            <comboBox align="top" height="22" field="cardDomain5Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain5Categoria" onChange="filtrarCartasDomain(5)"/>
+            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
+            <comboBox name="cbDomain5Carta" align="left" width="245" height="25" field="cardDomain5Carta" margins="{top=3}"
+                items="{'-- Selecione Dominio --'}"
+                values="{''}"
+                fontColor="white" fontSize="9"/>
+            <dataLink field="cardDomain5Carta" onChange="atualizarImagemDomain(5)"/>
+            <button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesaDoPersonagem.meuJogador
+                    local meuNick = meuJogador.nick
+                                
+                    local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+                    msg = msg .. "\n****\n### [§K1][§B]".. (sheet.cardDomain5Carta or "") .."[§B]\n###### [§I".. (sheet.cardDomain5URL or "") .."]\n****"
+                    mesaDoPersonagem.activeChat:enviarMensagem(msg)
+                </event>
+            </button>
+            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    sheet.cardDomain5URL = ""
+                    sheet.cardDomain5Categoria = ""
+                    sheet.cardDomain5Carta = ""
+                    local combo = self:findControlByName("cbDomain5Carta")
+                    if combo then
+                        combo.items = {"-- Selecione Dominio --"}
+                        combo.values = {""}
+                    end
+                </event>
+            </button>
+        </layout>
+        <layout g="col" g-width="12" g-min-height="400">
+            <layout g="col" g-width="1"/>
+            <richEdit g="col" g-width="10" g-min-height="400" g-vert-tile="true" field="ExtraCards" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+            <layout g="col" g-width="1"/>
+        </layout>
+    </scrollBox>
+</form>

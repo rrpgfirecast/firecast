@@ -15,35 +15,284 @@
 			<Title text="SCORE" field="armorScore" widthL="3" widthR="3"/>
 			<Title text="FEATURE" field="armorFeature"/>
 
-			<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="75" field="armorNotes"/></rectangle>
-
+			<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="75" field="armorNotes"/>
+			
+		</rectangle>
 		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
 			<label g="col" g-width="12" text="GOLD" horzTextAlign="center" vertTextAlign="center" height="25"/>
 
-			<label g="col" g-width="3" text="Handfuls" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<checkBox g="col" g-width="1" field="handfulCheck1"/>
-			<checkBox g="col" g-width="1" field="handfulCheck2"/>
-			<checkBox g="col" g-width="1" field="handfulCheck3"/>
-			<checkBox g="col" g-width="1" field="handfulCheck4"/>
-			<checkBox g="col" g-width="1" field="handfulCheck5"/>
-			<checkBox g="col" g-width="1" field="handfulCheck6"/>
-			<checkBox g="col" g-width="1" field="handfulCheck7"/>
-			<checkBox g="col" g-width="1" field="handfulCheck8"/>
-			<checkBox g="col" g-width="1" field="handfulCheck9"/>
+			<label g="col" g-width="2" text="Handfuls" horzTextAlign="center" vertTextAlign="center" height="50"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck1"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck2"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck3"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck4"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck5"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck6"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck7"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck8"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck9"/>
 
-			<label g="col" g-width="3" text="Bags" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<checkBox g="col" g-width="1" field="bagsCheck1"/>
-			<checkBox g="col" g-width="1" field="bagsCheck2"/>
-			<checkBox g="col" g-width="1" field="bagsCheck3"/>
-			<checkBox g="col" g-width="1" field="bagsCheck4"/>
-			<checkBox g="col" g-width="1" field="bagsCheck5"/>
-			<checkBox g="col" g-width="1" field="bagsCheck6"/>
-			<checkBox g="col" g-width="1" field="bagsCheck7"/>
-			<checkBox g="col" g-width="1" field="bagsCheck8"/>
-			<checkBox g="col" g-width="1" field="bagsCheck9"/>
+			<label g="col" g-width="2" text="Bags" horzTextAlign="center" vertTextAlign="center" height="50"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck1"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck2"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck3"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck4"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck5"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck6"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck7"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck8"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck9"/>
+			
+			<label g="col" g-width="2" text="Chest" horzTextAlign="center" vertTextAlign="center" height="50"/>
+			<imageCheckBox g="col" g-width="1" uncheckedImage="images/chestoff.png" checkedImage="images/chest.png" field="chestCheck1"/>
+		</rectangle>
 
-			<label g="col" g-width="3" text="Chest" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<checkBox g="col" g-width="1" field="chestCheck1"/>
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
+			<label g="col" g-width="6" text="ITEM" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<label g="col" g-width="6" text="ROLL" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<edit g="col" g-width="6" field="item1" height="25"/>
+			<edit g="col" g-width="5" field="diceroll1" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll1
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item1 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item2" height="25"/>
+			<edit g="col" g-width="5" field="diceroll2" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll2
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item2 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item3" height="25"/>
+			<edit g="col" g-width="5" field="diceroll3" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll3
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item3 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item4" height="25"/>
+			<edit g="col" g-width="5" field="diceroll4" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll4
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item4 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item5" height="25"/>
+			<edit g="col" g-width="5" field="diceroll5" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll5
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item5 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item6" height="25"/>
+			<edit g="col" g-width="5" field="diceroll6" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll6
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item6 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item7" height="25"/>
+			<edit g="col" g-width="5" field="diceroll7" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll7
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item7 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+		</rectangle>
+
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
+			<label g="col" g-width="6" text="ITEM" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<label g="col" g-width="6" text="ROLL" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<edit g="col" g-width="6" field="item8" height="25"/>
+			<edit g="col" g-width="5" field="diceroll8" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll8
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item8 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item9" height="25"/>
+			<edit g="col" g-width="5" field="diceroll9" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll9
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item9 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item10" height="25"/>
+			<edit g="col" g-width="5" field="diceroll10" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll10
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item10 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item11" height="25"/>
+			<edit g="col" g-width="5" field="diceroll11" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll11
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item11 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item12" height="25"/>
+			<edit g="col" g-width="5" field="diceroll12" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll12
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item12 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item13" height="25"/>
+			<edit g="col" g-width="5" field="diceroll13" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll13
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item13 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
+			<edit g="col" g-width="6" field="item14" height="25"/>
+			<edit g="col" g-width="5" field="diceroll14" height="25"/>
+            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+                <event name="onClick">
+                    local mesa = Firecast.getMesaDe(sheet);
+                    local meuJogador = mesa.meuJogador
+                    local meuNick = meuJogador.nick
+
+					local roll = sheet.diceroll14
+					if roll == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item14 or "")
+                    mesa.activeChat:enviarMensagem(msg)
+					mesa.activeChat:rolarDados(rolagem, nil)
+                </event>
+            </button>
 		</rectangle>
 
         <richEdit g="col" g-width="12" g-vert-tile="true" field="inventory" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
