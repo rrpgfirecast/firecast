@@ -1,0 +1,51 @@
+﻿local objs = require("rrpgObjs.lua");
+local nO = {};
+
+local _observerProps = {};
+local _observerEves = {};
+
+_observerProps["enabled"] = {setter = "setEnabled", getter = "getEnabled", tipo="bool"};		
+
+_observerEves["onChildAdded"] = "node";
+_observerEves["onChildRemoved"] = "node";
+_observerEves["onDeepChildAdded"] = "node";
+_observerEves["onDeepChildRemoved"] = "node";
+_observerEves["onDeleted"] = "node";
+_observerEves["onChanged"] = "node, attribute, oldValue";
+_observerEves["onDeepChanged"] = "node, attribute, oldValue";
+_observerEves["onUserChanged"] = "node, attribute, oldValue";
+_observerEves["onDeepUserChanged"] = "node, attribute, oldValue";
+_observerEves["onPersistedChanged"] = "node, attribute, oldValue";
+_observerEves["onDeepPersistedChanged"] = "node, attribute, oldValue";
+_observerEves["onPermissionListChanged"] = "node";
+_observerEves["onDeepPermissionListChanged"] = "node";
+_observerEves["onFinalPermissionsCouldBeChanged"] = "node";
+_observerEves["onStateChanged"] = "node";
+
+local function _observerFromHandle(handle)
+	local obj = objs.tryFindFromHandle(handle);
+	
+	if obj ~= nil then
+		return obj;
+	end;
+	
+	obj = objs.objectFromHandle(handle);
+	objs.registerHandle(handle, obj);
+	
+	function obj:getEnabled() return _obj_getProp(self.handle, "Enabled"); end;
+	function obj:setEnabled(v) _obj_setProp(self.handle, "Enabled", v); end;
+	
+	
+	obj.props = _observerProps;
+	obj.eves = _observerEves;	
+	return obj;
+end;
+
+function nO.newObserver(nodeHandle, nodeObj)
+	local observer = _observerFromHandle(_obj_newObject("TLuaNodeObserver"));
+	_obj_invokeEx(observer.handle, "SetNodeHandle", nodeHandle);
+	rawset(observer, "node", nodeObj);
+	return observer;
+end;
+
+return nO;

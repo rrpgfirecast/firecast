@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmArmor" height="50">       
+		
+		
+		<image name="ArmorBar" left="10" width="385" height="50" visible="true" field="ArmorBar" src="/frames/ArmorList.png"/>
+		<image name="ArmorBarOn" left="10" width="385" height="50" visible="false" field="ArmorBarOn" src="/frames/ArmorListOn.png"/>
+		
+		<edit name="ArmorName" field="ArmorName" fontColor="white" top="5" left="50" width="315" height="44" fontSize="26" transparent="true" fontFamily="KHMenu">
+				<dataLink field="ArmorName" defaultValue="???"/>
+				<event name="onExit">
+						self.selectedArmor.opacity = "0";
+                </event>
+						<event name="onMouseDown">
+						self.selectedArmor.opacity = "1";
+                </event>
+					</edit>
+		
+		<imageCheckBox name="unequipEquipArmor" autoChange="true" left="15" top="8" width="35" height="35" field="unequipEquipArmor"
+                               checkedImage="/frames/ArmorOnIcon.png"
+                               uncheckedImage="/frames/ArmorOffIcon.png"/>
+							   <dataLink field="unequipEquipArmor">
+				        <event name="onChange">
+						if sheet.unequipEquipArmor == false then
+                        self.ArmorBar.visible = true;
+						self.ArmorBarOn.visible = false;
+						else
+						self.ArmorBar.visible = false;
+						self.ArmorBarOn.visible = true;
+						end
+                </event>
+				</dataLink>
+		
+		
+	   	<image name="eraseArmor" field="eraseArmor" left="395" top="15" width="20" height="20" src="/frames/Erase.png"/>
+		
+		
+		<image name="selectedArmor" field="selectedArmor" top="15" width="25" height="25" opacity="0" src="/images/select.png"/>
+		
+		<button cursor="no" left="395" top="15" width="20" height="20" opacity="0"
+                onClick="NDB.deleteNode(sheet);"/>
+
+</form>
