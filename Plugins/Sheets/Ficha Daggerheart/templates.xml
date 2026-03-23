@@ -103,25 +103,32 @@
 	    			roll = "2d12"..atr
 	    		end
 
+				local mensagem = "[§B][§K#FFEA99]ESPERANÇA[§K0] X [§K#B23EFF]MEDO[§B][§K14] - Teste de $(text)"
+
 	    		if sheet.exp1Check then
 	    			roll = roll .. "+" .. (tonumber(sheet.exp1Bonus) or 0)
+					mensagem = mensagem .. " + Experiência: " .. (sheet.exp1Name or "")
 	    		end
 	    		if sheet.exp2Check then
 	    			roll = roll .. "+" .. (tonumber(sheet.exp2Bonus) or 0)
+					mensagem = mensagem .. " + Experiência: " .. (sheet.exp2Name or "")
 	    		end
 	    		if sheet.exp3Check then
 	    			roll = roll .. "+" .. (tonumber(sheet.exp3Bonus) or 0)
+					mensagem = mensagem .. " + Experiência: " .. (sheet.exp3Name or "")
 	    		end
 	    		if sheet.exp4Check then
 	    			roll = roll .. "+" .. (tonumber(sheet.exp4Bonus) or 0)
+					mensagem = mensagem .. " + Experiência: " .. (sheet.exp4Name or "")
 	    		end
 	    		if sheet.exp5Check then
 	    			roll = roll .. "+" .. (tonumber(sheet.exp5Bonus) or 0)
+					mensagem = mensagem .. " + Experiência: " .. (sheet.exp5Name or "")
 	    		end
 
 				local rolagem = Firecast.interpretarRolagem(roll)
 				local mesa = Firecast.getMesaDe(sheet)
-				mesa.activeChat:rolarDados(rolagem, "[§B][§K#FFEA99]ESPERANÇA[§K0] X [§K#B23EFF]MEDO[§B][§K14] - Teste de $(text)", 
+				mesa.activeChat:rolarDados(rolagem, mensagem, 
 									function (rolado)
 										local hope = rolado.ops[1].resultados[1];
 										local fear = rolado.ops[1].resultados[2];
@@ -291,19 +298,26 @@
 		</flowPart>
 	</template>
 
-	<template name="InventorySlot">
-		<label g="col" g-width="12" height="25" text="$(text)" horzTextAlign="center"/>
-        <textEditor g="col" g-width="12" g-min-height="100" g-vert-tile="true" field="$(field)"/>
-
-        <label g="col" g-width="1" height="25" text="⚖️" horzTextAlign="center"/>
-        <FormatEdit gwidth="5" field="peso$(field2)" formatFloat=",0.## Kg"/>
-        <label g="col" g-width="1" height="25" text="💰" horzTextAlign="center"/>
-        <FormatEdit gwidth="5" field="preco$(field2)" formatFloat=",0.## PO"/>
+	<template name="ShowButton">
+		<button align="left" width="25" height="25" text="💬" class="btnSlot" margins="{top=2}">
+			<event name="onClick">
+				if sheet.$(field)URL == nil then return end
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+				local meuJogador = mesaDoPersonagem.meuJogador
+				local meuNick = meuJogador.nick
+									
+				local msg = "💬 ".. meuNick .."[§R][§K2] destacou a Carta:"
+				msg = msg .. "\n****\n### [§K1][§B]".. (sheet.$(field)Nome or "") .."[§B]\n###### [§I".. (sheet.$(field)URL or "") .."]\n****"
+				mesaDoPersonagem.activeChat:enviarMensagem(msg)
+			</event>
+		</button>
 	</template>
+
+
 
     <template name="Experience">
     	<checkBox g="col" g-width="1" field="$(field)Check" horzTextAlign="center" g-min-height="25"/>
-    	<edit g="col" g-width="9" field="$(field)" horzTextAlign="center" g-min-height="25"/>
+    	<edit g="col" g-width="9" field="$(field)Name" horzTextAlign="center" g-min-height="25"/>
     	<edit g="col" g-width="2" field="$(field)Bonus" horzTextAlign="center" g-min-height="25"/>
     </template>
 
@@ -337,8 +351,9 @@
 					end
 
 					local rolagem = Firecast.interpretarRolagem(roll)
+					if not rolagem.possuiAlgumDado then return end
 					local mesa = Firecast.getMesaDe(sheet)
-					mesa.activeChat:rolarDados(roll, "Dano de " .. (sheet.$(field)Name or "Arma"))
+					mesa.activeChat:rolarDados(rolagem, "Dano " .. (sheet.$(field)Type or "Físico") .. " de " .. (sheet.$(field)Name or "Arma"))
 				</event>
 			</button>
 		<!-- 	
@@ -368,9 +383,33 @@
 			<Title text="RANGE" field="$(field)Range" widthL="3" widthR="3"/>
 			<Title text="DAMAGE" field="$(field)Damage" widthL="3" widthR="3"/>
 			<Title text="TYPE" field="$(field)Type" widthL="3" widthR="3"/>
-			<Title text="FEATURE" field="$(field)Feature"/>
+			<Title text="BURDEN" field="$(field)Burden"/>
+			<label g="col" g-width="12" text="FEATURE" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="100" field="$(field)Feature"/>
 
-			<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="125" field="$(field)Notes"/>
 		</rectangle>
+    </template>
+
+    <template name="InventorySlot">
+		<edit g="col" g-width="6" field="$(field)item" height="25"/>
+		<edit g="col" g-width="5" field="$(field)diceroll" height="25"/>
+        <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
+            <event name="onClick">
+				local roll = sheet.$(field)diceroll
+				if roll == nil then return end
+				local nomeItem = sheet.$(field)item
+				if nomeItem == nil then return end
+
+                local mesa = Firecast.getMesaDe(sheet);
+                local meuJogador = mesa.meuJogador
+                local meuNick = meuJogador.nick
+
+				local rolagem = Firecast.interpretarRolagem(roll)
+				if not rolagem.possuiAlgumDado then return end
+                local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.$(field)item or "")
+                mesa.activeChat:enviarMensagem(msg)
+				mesa.activeChat:rolarDados(rolagem)
+            </event>
+        </button>
     </template>	
 </group>

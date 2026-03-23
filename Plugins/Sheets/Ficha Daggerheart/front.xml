@@ -54,7 +54,7 @@
 			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck5"/>
 			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck6"/>
 			<label g="col" g-width="12" g-width-lg="3"/>
-			<textEditor g="col" g-width="12" g-min-height="100" field="hopeFeature"/>
+			<textEditor g="col" g-width="12" g-min-height="100" field="hopeFeature" horzTextAlign="center"/>
 
 			<label g="col" g-width="12" text="EXPERIENCE" horzTextAlign="center" vertTextAlign="center" height="20"/>
 			<Experience field="exp1"/>
@@ -96,8 +96,9 @@
 			<label g="col" g-width="3" text="Severe Damage" horzTextAlign="center" vertTextAlign="center" height="25"/>
 
 			<label g="col" g-width="12"/>
-
-			<label g="col" g-width="12" text="HP" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<label g="col" g-width="4"/>
+			<Title text="HP - Max:" field="maxHp" widthL="3" widthR="1"/>
+			<label g="col" g-width="4"/>
 			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck1"/>
 			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck2"/>
 			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck3"/>
@@ -112,8 +113,9 @@
 			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" field="hpCheck12"/>
 			
 			<label g="col" g-width="12"/>
-
-			<label g="col" g-width="12" text="STRESS" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<label g="col" g-width="4"/>
+			<Title text="STRESS - Max:" field="maxStress" widthL="3" widthR="1"/>
+			<label g="col" g-width="4"/>
 			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck1"/>
 			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck2"/>
 			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" field="stressCheck3"/>
@@ -131,7 +133,7 @@
 		
 		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="350" padding="{left=5,right=5,top=5,bottom=5}" g-auto-height="true">
 			<label g="col" g-width="12" text="CLASS FEATURE" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<textEditor g="col" g-width="12" g-min-height="300" field="classFeature"/>
+			<textEditor g="col" g-width="12" g-min-height="300" field="classFeature" horzTextAlign="center"/>
 		</rectangle>
 
 		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="350">

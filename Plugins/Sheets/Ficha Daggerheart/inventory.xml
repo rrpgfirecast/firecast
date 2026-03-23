@@ -13,9 +13,8 @@
 			<Title text="NAME" field="armorName"/>
 			<Title text="THRESHOLDS" field="armorThresholds" widthL="3" widthR="3"/>
 			<Title text="SCORE" field="armorScore" widthL="3" widthR="3"/>
-			<Title text="FEATURE" field="armorFeature"/>
-
-			<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="75" field="armorNotes"/>
+			<label g="col" g-width="12" text="FEATURE" horzTextAlign="center" vertTextAlign="center" height="25"/>
+			<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="75" field="armorFeature"/>
 			
 		</rectangle>
 		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
@@ -50,249 +49,25 @@
 		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
 			<label g="col" g-width="6" text="ITEM" horzTextAlign="center" vertTextAlign="center" height="25"/>
 			<label g="col" g-width="6" text="ROLL" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<edit g="col" g-width="6" field="item1" height="25"/>
-			<edit g="col" g-width="5" field="diceroll1" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll1
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item1 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item2" height="25"/>
-			<edit g="col" g-width="5" field="diceroll2" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll2
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item2 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item3" height="25"/>
-			<edit g="col" g-width="5" field="diceroll3" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll3
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item3 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item4" height="25"/>
-			<edit g="col" g-width="5" field="diceroll4" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll4
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item4 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item5" height="25"/>
-			<edit g="col" g-width="5" field="diceroll5" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll5
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item5 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item6" height="25"/>
-			<edit g="col" g-width="5" field="diceroll6" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll6
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item6 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item7" height="25"/>
-			<edit g="col" g-width="5" field="diceroll7" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll7
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item7 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
+			<InventorySlot field="slot1"/>
+			<InventorySlot field="slot2"/>
+			<InventorySlot field="slot3"/>
+			<InventorySlot field="slot4"/>
+			<InventorySlot field="slot5"/>
+			<InventorySlot field="slot6"/>
+			<InventorySlot field="slot7"/>
 		</rectangle>
 
 		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
 			<label g="col" g-width="6" text="ITEM" horzTextAlign="center" vertTextAlign="center" height="25"/>
 			<label g="col" g-width="6" text="ROLL" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<edit g="col" g-width="6" field="item8" height="25"/>
-			<edit g="col" g-width="5" field="diceroll8" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll8
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item8 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item9" height="25"/>
-			<edit g="col" g-width="5" field="diceroll9" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll9
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item9 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item10" height="25"/>
-			<edit g="col" g-width="5" field="diceroll10" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll10
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item10 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item11" height="25"/>
-			<edit g="col" g-width="5" field="diceroll11" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll11
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item11 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item12" height="25"/>
-			<edit g="col" g-width="5" field="diceroll12" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll12
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item12 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item13" height="25"/>
-			<edit g="col" g-width="5" field="diceroll13" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll13
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item13 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
-			<edit g="col" g-width="6" field="item14" height="25"/>
-			<edit g="col" g-width="5" field="diceroll14" height="25"/>
-            <button g="col" g-width="1" text="🎲" class="btnSlot" margins="{top=2}">
-                <event name="onClick">
-                    local mesa = Firecast.getMesaDe(sheet);
-                    local meuJogador = mesa.meuJogador
-                    local meuNick = meuJogador.nick
-
-					local roll = sheet.diceroll14
-					if roll == nil then return end
-
-					local rolagem = Firecast.interpretarRolagem(roll)
-                    local msg = "💬 ".. meuNick .."[§R][§K2] usou: [§K1][§B]" .. (sheet.item14 or "")
-                    mesa.activeChat:enviarMensagem(msg)
-					mesa.activeChat:rolarDados(rolagem, nil)
-                </event>
-            </button>
+			<InventorySlot field="slot8"/>
+			<InventorySlot field="slot9"/>
+			<InventorySlot field="slot10"/>
+			<InventorySlot field="slot11"/>
+			<InventorySlot field="slot12"/>
+			<InventorySlot field="slot13"/>
+			<InventorySlot field="slot14"/>
 		</rectangle>
 
         <richEdit g="col" g-width="12" g-vert-tile="true" field="inventory" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
