@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAcessory" height="50">       
+		
+		
+		<image name="AcessoryBar" left="10" width="385" height="50" visible="true" field="AcessoryBar" src="/frames/AcessoryList.png"/>
+		<image name="AcessoryBarOn" left="10" width="385" height="50" visible="false" field="AcessoryBarOn" src="/frames/AcessoryListOn.png"/>
+		
+		<edit name="AcessoryName" field="AcessoryName" fontColor="white" top="5" left="50" width="315" height="44" fontSize="26" transparent="true" fontFamily="KHMenu">
+				<dataLink field="AcessoryName" defaultValue="???"/>
+				<event name="onExit">
+						self.selectedAce.opacity = "0";
+                </event>
+						<event name="onMouseDown">
+						self.selectedAce.opacity = "1";
+                </event>
+					</edit>
+		
+		<imageCheckBox name="unequipEquipAcessory" autoChange="true" left="15" top="8" width="35" height="35" field="unequipEquipAcessory"
+                               checkedImage="/frames/AcessoryOnIcon.png"
+                               uncheckedImage="/frames/AcessoryOffIcon.png"/>
+							   <dataLink field="unequipEquipAcessory">
+				        <event name="onChange">
+						if sheet.unequipEquipAcessory == false then
+                        self.AcessoryBar.visible = true;
+						self.AcessoryBarOn.visible = false;
+						else
+						self.AcessoryBar.visible = false;
+						self.AcessoryBarOn.visible = true;
+						end
+                </event>
+				</dataLink>
+		
+		
+	   	<image name="eraseAcessory" field="eraseAcessory" left="395" top="15" width="20" height="20" src="/frames/Erase.png"/>
+		
+		<image name="selectedAce" field="selectedAce" top="15" width="25" height="25" opacity="0" src="/images/select.png"/>
+		
+		<button cursor="no" left="395" top="15" width="20" height="20" opacity="0"
+                onClick="NDB.deleteNode(sheet);"/>
+
+</form>

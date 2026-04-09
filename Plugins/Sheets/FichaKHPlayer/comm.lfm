@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCommandos" height="56" width="323">       
+		
+		        <button cursor="no" left="100" top="17" width="25" height="25" opacity="0"
+                onClick="NDB.deleteNode(sheet);"/>
+		
+		<checkBox name="escommando" left="20" top="8" width="35" height="35" opacity="0" field="escommando"/>
+							   <dataLink field="escommando">
+				        <event name="onChange">
+						if sheet.escommando == false then
+                        self.ApenasComm.opacity = 0;
+						else
+						self.ApenasComm.opacity = 1;
+						end
+                </event>
+				</dataLink>
+		
+		
+		<image name="LimitCommOff" left="-33" width="400" height="56" field="LimitCommOff" src="/commands/LimitComOff.png"/>
+		<image name="MagicCommOff" left="-33" width="400" height="56" field="MagicCommOff" src="/commands/MagicComOff.png"/>
+		
+		<image name="CommUnequiped" left="-33" width="400" height="56" field="CommUnequiped" opacity="1" src="/commands/ComUnequiped.png"/>
+		
+		<image name="ApenasComm" left="-33" width="400" height="56" field="ApenasComm" opacity="0" src="/commands/Commando.png"/>
+
+		
+		<imageCheckBox name="magicORlimit" autoChange="true" left="282" top="12" width="35" height="35" field="magicORlimit"
+                               checkedImage="/commands/Limit.png"
+                               uncheckedImage="/commands/Magic.png"/>
+							   <dataLink field="magicORlimit">
+				        <event name="onChange">
+						if sheet.magicORlimit == false then
+                        self.LimitCommOff.opacity = 0;
+						self.MagicCommOff.opacity = 1;
+						else
+						self.MagicCommOff.opacity = 0;
+						self.LimitCommOff.opacity = 1;
+						end
+                </event>
+				</dataLink>
+				
+		<imageCheckBox name="unequipEquip" checked="true" autoChange="true" left="20" top="8" width="25" height="25" field="unequipEquip"
+                               checkedImage="/commands/CommandE.png"
+                               uncheckedImage="/commands/CommandU.png"/>
+							   <dataLink field="unequipEquip">
+				        <event name="onChange">
+						if sheet.unequipEquip == false then
+                        self.CommUnequiped.opacity = 1;
+						else
+						self.CommUnequiped.opacity = 0;
+						end
+                </event>
+				</dataLink>
+					
+					
+					
+		<imageCheckBox name="buttonDisEna" checked="true" autoChange="true" left="20" top="35" width="15" height="15" field="buttonDisEna"
+                               checkedImage=""
+                               uncheckedImage="/frames/Erase.png"/>
+							   <dataLink field="buttonDisEna">
+				        <event name="onChange">
+						if sheet.buttonDisEna == false then
+				self.magicORlimit.visible = true;
+				self.LimitCommOff.visible = true;
+				self.MagicCommOff.visible = true;
+				self.CommUnequiped.visible = true;
+				self.unequipEquip.visible = true;
+				self.commandbarName.visible = true;
+						else
+				self.magicORlimit.visible = false;
+				self.LimitCommOff.visible = false;
+				self.MagicCommOff.visible = false;
+				self.CommUnequiped.visible = false;
+				self.unequipEquip.visible = false;
+				self.commandbarName.visible = false;
+						end
+                </event>
+				</dataLink>
+				
+                <edit name="commandbarName" field="commandbarName" horzTextAlign="center" fontColor="white" top="12" left="40" width="250" height="44" fontSize="26" transparent="true" fontFamily="KHMenu">
+				<dataLink field="commandbarName" defaultValue="?"/>
+				<event name="onExit">
+						self.selectedComm.opacity = "0";
+                </event>
+						<event name="onMouseDown">
+						self.selectedComm.opacity = "1";
+                </event>
+					</edit>
+				
+				<image name="selectedComm" field="selectedComm" top="15" width="25" height="25" opacity="0" src="/images/select.png"/>
+				
+</form>
