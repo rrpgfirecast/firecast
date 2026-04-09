@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmzipe" formType="sheetTemplate" dataType="fib.Tormenta20" title="Ficha de Tormenta 20 (PDF)" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Atributos">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="2.lfm"/>
+        </tab>
+    </tabControl>
+</form>
