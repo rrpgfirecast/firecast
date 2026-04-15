@@ -639,6 +639,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="fib.Tormenta20" name="Ficha T20" url="https://sdk3.firecast.app/Plugins/Sheets/Tormenta%2020%20by%20Fib/output/Tormenta%2020%20by%20Fib.rpk?raw=true" fileName="Tormenta 20 by Fib.rpk" repositoryPath="Sheets/Tormenta 20 by Fib/" author="Fib" description="FIcha para Tormenta 20" version="1.0" compilationDate="15042026032046" compilationDigest="416c23b204c33e1208668004bb7b61c59e9f7560">
+        <info lang="pt-BR" name="Ficha T20" description="FIcha para Tormenta 20" author="Fib" site="https://github.com/oherikee"/>
+        <dataTypes>
+            <dataType id="fib.Tormenta20" title="Ficha de Tormenta 20 (PDF)" formType="sheetTemplate">
+                <info title="Ficha de Tormenta 20 (PDF)"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="ficha.nova.olddragon" name="Old Dragon" url="https://sdk3.firecast.app/Plugins/Sheets/Old%20Dragon/output/Old%20Dragon.rpk?raw=true" fileName="Old Dragon.rpk" repositoryPath="Sheets/Old Dragon/" author="Matheus Furtado" description="Ficha Old Dragon" version="1.0" compilationDate="03032023122432" compilationDigest="4f520ae61b4f84cf31fd612157c0a7c6a4d3c87f">
         <info lang="pt-BR" name="Old Dragon" description="Ficha Old Dragon" author="Matheus Furtado" site="https://matheusfurtado94.wordpress.com/"/>
         <dataTypes>
@@ -993,6 +1001,14 @@
         <dataTypes>
             <dataType id="Loja_pocao_aqui" title="Loja_de_Pocao" formType="sheetTemplate">
                 <info title="Loja_de_Pocao"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="KEY2THEHEART" name="KH2" url="https://sdk3.firecast.app/Plugins/Sheets/FichaKHPlayer/output/FichaKHPlayer.rpk?raw=true" fileName="FichaKHPlayer.rpk" repositoryPath="Sheets/FichaKHPlayer/" author="Tigron" description="Ficha com temática de Kingdom Hearts" version="1.0" compilationDate="12032026004148" compilationDigest="7011b22a4a8d514c0ae7422b83af2b663121cb1d">
+        <info lang="br" name="KH2" description="Ficha com temática de Kingdom Hearts" author="Tigron" site="sem site"/>
+        <dataTypes>
+            <dataType id="br.com.meusite.kingdomheartsficha" title="Ficha Kingdom Hearts" formType="sheetTemplate">
+                <info title="Ficha Kingdom Hearts"/>
             </dataType>
         </dataTypes>
     </element>
