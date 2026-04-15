@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItem" height="50" width="345">       
+		
+		
+		<image name="ItemBar" left="10" width="329" height="50" visible="true" field="ItemBar" src="/frames/ItemList.png"/>
+		<image name="SynthesisBar" left="10" width="329" height="50" visible="false" field="SynthesisBar" src="/frames/SynthesisList.png"/>
+		
+		<edit name="InvName" field="InvName" fontColor="white" top="5" left="50" width="285" height="44" fontSize="22" transparent="true" fontFamily="KHMenu">
+				<dataLink field="InvName" defaultValue="???"/>
+				<event name="onExit">
+						self.selectedItem.opacity = "0";
+                </event>
+						<event name="onMouseDown">
+						self.selectedItem.opacity = "1";
+                </event>
+					</edit>
+		
+		<imageCheckBox name="SwitchInv" autoChange="true" left="15" top="8" width="35" height="35" field="SwitchInv"
+                               checkedImage="/frames/SynthIcon.png"
+                               uncheckedImage="/frames/ItemIcon.png"/>
+							   <dataLink field="SwitchInv">
+				        <event name="onChange">
+						if sheet.SwitchInv == false then
+                        self.ItemBar.visible = true;
+						self.SynthesisBar.visible = false;
+						else
+						self.ItemBar.visible = false;
+						self.SynthesisBar.visible = true;
+						end
+                </event>
+				</dataLink>
+		
+		
+	   	<image name="eraseAcessory" field="eraseAcessory" left="337" top="15" width="20" height="20" src="/frames/Erase.png"/>
+		
+		
+		<image name="selectedItem" field="selectedItem" top="15" width="25" height="25" opacity="0" src="/images/select.png"/>
+		
+		<button cursor="no" left="337" top="15" width="20" height="20" opacity="0"
+                onClick="NDB.deleteNode(sheet);"/>
+
+</form>

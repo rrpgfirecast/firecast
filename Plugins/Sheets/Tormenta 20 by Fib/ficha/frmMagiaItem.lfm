@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiaItem" height="40" margins="{top=2, bottom=2}">
+    <script>
+        <![CDATA[
+        local function entrarEdicao()
+            self.layoutView.visible = false;
+            self.layoutEdit.visible = true;
+            self.height = 320; 
+        end;
+
+        local function salvarEdicao()
+            self.layoutView.visible = true;
+            self.layoutEdit.visible = false;
+            self.height = 40; 
+        end;
+
+        local function interpretarBonus(textoBonus, root)
+            if textoBonus == nil or textoBonus == "" then return "0" end
+            
+            local texto = tostring(textoBonus)
+            local textoLower = string.lower(texto)
+            
+            local dicionario = {
+                ["for"] = root.ModFor or 0, ["des"] = root.ModDes or 0, ["con"] = root.ModCon or 0,
+                ["int"] = root.ModInt or 0, ["sab"] = root.ModSab or 0, ["car"] = root.ModCar or 0
+            }
+            
+            local resultado = string.gsub(textoLower, "%a+", function(palavra)
+                if dicionario[palavra] then
+                    local valor = tonumber(dicionario[palavra]) or 0
+                    if valor < 0 then return "(" .. tostring(valor) .. ")"
+                    else return tostring(valor) end
+                else
+                    return palavra
+                end
+            end)
+            
+            return resultado
+        end
+
+        local function executarMagia(opcaoMenu)
+            local mesa = Firecast.getMesaDe(sheet);
+            if not mesa then return end;
+
+            local root = NDB.getRoot(sheet); 
+            local cd = tostring(root.TesteResist or "10");
+            local nome = tostring(sheet.nomeMagia or "Magia");
+            local resistencia = tostring(sheet.resistencia or "");
+            
+            local danoRaw = sheet.danoMagia
+            local dano = "0"
+            if danoRaw ~= nil and tostring(danoRaw) ~= "" then
+                dano = interpretarBonus(danoRaw, root);
+            end
+
+            -- MÁGICA DO CD: Só mostra se houver texto na resistência
+            local textoCD = ""
+            local resClean = string.match(resistencia, "^%s*(.-)%s*$") -- Remove espaços sobrando
+            if resClean ~= nil and resClean ~= "" and string.lower(resClean) ~= "nenhuma" and string.lower(resClean) ~= "nenhum" then
+                textoCD = " [§K3](CD: " .. cd .. " - " .. resClean .. ")"
+            end
+
+            mesa.chat:enviarMensagem("[§K3]🪄 Conjurando:[§K1] " .. nome .. textoCD);
+
+            if sheet.tipoAtaque == 'cac' or sheet.tipoAtaque == 'dist' then
+                local bonus = interpretarBonus(sheet.bonusAtaque, root);
+                
+                local multiplicador = 2
+                local rangeCritico = 20
+                
+                local danoCritico = dano
+                if dano ~= "0" and dano ~= "" then
+                    local qtdDados, tipoDado, resto = string.match(dano, "^(%d+)d(%d+)(.*)")
+                    if qtdDados then
+                        local novaQtd = tonumber(qtdDados) * multiplicador
+                        danoCritico = novaQtd .. "d" .. tipoDado .. (resto or "")
+                    else
+                        danoCritico = "(" .. dano .. ")*" .. multiplicador
+                    end
+                end
+
+                if opcaoMenu == 3 then
+                    mesa.chat:enviarMensagem("[§K3]🌟 CONJURAÇÃO PERFEITA! (3 Vantagens)[§K1]\nA magia atinge o alvo em cheio!");
+                    if dano ~= "0" and dano ~= "" then
+                        mesa.chat:rolarDados(danoCritico, "🎯 Dano Crítico Automático: " .. nome);
+                    else
+                        mesa.chat:enviarMensagem("[§K3]🎯 Acerto Crítico Garantido! [§K1](Nenhum dano cadastrado).");
+                    end
+                    return; 
+                end
+
+                local strAtaque = "1d20"
+                local bnsClean = string.gsub(bonus, "%s+", "")
+                if bnsClean ~= "0" and bnsClean ~= "" then
+                    if not string.match(bnsClean, "^[+-]") then strAtaque = strAtaque .. "+" end
+                    strAtaque = strAtaque .. bnsClean
+                end
+
+                local textoChat = ""
+                if opcaoMenu == 1 then
+                    strAtaque = strAtaque .. "+5"
+                    textoChat = " (Com 1 Vantagem)"
+                elseif opcaoMenu == 2 then
+                    strAtaque = strAtaque .. "+10"
+                    textoChat = " (Com 2 Vantagens)"
+                elseif opcaoMenu == 4 then
+                    strAtaque = strAtaque .. "-5"
+                    textoChat = " (Com Desvantagem)"
+                end
+
+                mesa.chat:rolarDados(strAtaque, "Ataque" .. textoChat .. ": " .. nome,
+                    function(rolado)
+                        if not rolado or not rolado.ops or not rolado.ops[1] then return end
+                        
+                        local d20 = 0
+                        if rolado.ops[1].tipo == "dado" then
+                            d20 = rolado.ops[1].resultados[1]
+                        end
+
+                        if d20 == 1 then
+                            mesa.chat:enviarMensagem("[§K4]❌ Falha Crítica! (1 natural)[§K1] A magia errou o alvo.");
+                        elseif dano ~= "0" and dano ~= "" then
+                            if d20 >= rangeCritico then
+                                mesa.chat:rolarDados(danoCritico, "🎯 DANO CRÍTICO!! (" .. d20 .. " natural)! Dano: " .. nome);
+                            else
+                                mesa.chat:rolarDados(dano, "💥 Dano: " .. nome);
+                            end
+                        end
+                    end);
+            
+            else
+                if opcaoMenu > 0 then
+                    mesa.chat:enviarMensagem("[§K14]⚠️ Nota:[§K1] Magias em área/sem alvo não usam teste de ataque. Rolando normalmente...");
+                end
+
+                if dano ~= "0" and dano ~= "" then
+                    mesa.chat:rolarDados(dano, "💥 Dano: " .. nome);
+                end
+            end
+        end;
+
+        local function rolarMagiaNormal()
+            executarMagia(0)
+        end
+
+        local function abrirMenuVantagensMagia()
+            local opcoes = {
+                "1 Vantagem (+5 no Acerto)",
+                "2 Vantagens (+10 no Acerto)",
+                "3 Vantagens (Crítico Automático!)",
+                "Desvantagem (-5 no Acerto)"
+            }
+            
+            Dialogs.choose("Canalizar poder como, mestre das artes místicas?", opcoes,
+                function(selecionado, indice, texto)
+                    if selecionado then
+                        executarMagia(indice) 
+                    end
+                end
+            )
+        end
+
+        local function enviarDescricao()
+            local mesa = Firecast.getMesaDe(sheet);
+            
+            local nome = tostring(sheet.nomeMagia or "Magia");
+            local exec = tostring(sheet.execucao or "Não informada");
+            local alc = tostring(sheet.alcance or "Não informada");
+            local duracao = tostring(sheet.duracao or "Não informada");
+            local resist = tostring(sheet.resistencia or "Não informada");
+            local desc = tostring(sheet.descricaoMagia or "Sem descrição.");
+            
+            local mensagem = "[§K3]Magia:[§K1] " .. nome .. "\n" ..
+                             "[§K3]Execução:[§K1] " .. exec .. "\n" ..
+                             "[§K3]Alcance:[§K1] " .. alc .. "\n" ..
+                             "[§K3]Duração:[§K1] " .. duracao .. "\n" ..
+                             "[§K3]Resistência:[§K1] " .. resist .. "\n" ..
+                             "[§K3]Descrição:[§K1] \n" .. desc;
+                             
+            mesa.chat:enviarMensagem(mensagem);
+        end;
+        ]]>
+    </script>
+
+    <layout name="layoutView" align="top" height="40" visible="true">
+        <rectangle align="client" color="#f0f0f0" strokeColor="#cccccc" strokeSize="1" xradius="5" yradius="5"/>
+        <label left="10" top="10" width="300" height="20" field="nomeMagia" fontColor="black" fontStyle="bold" text="Nova Magia..."/>
+        
+        <button left="480" top="5" width="35" height="30" text="🎲" hint="Esquerdo: Normal | Direito: Vantagem/Desvantagem" onClick="rolarMagiaNormal()" onMenu="abrirMenuVantagensMagia()"/>
+        
+        <button left="525" top="5" width="35" height="30" text="💬" onClick="enviarDescricao()"/>
+        <button left="570" top="5" width="35" height="30" text="✏️" onClick="entrarEdicao()"/>
+    </layout>
+
+    <layout name="layoutEdit" align="top" height="320" visible="false">
+        <rectangle align="client" color="#a32424" xradius="10" yradius="10"/> 
+        <label left="10" top="10" width="60" height="20" text="Nome:" fontColor="#ffd700" fontStyle="bold"/>
+        <edit left="70" top="10" width="220" height="20" field="nomeMagia"/>
+        
+        <label left="310" top="10" width="60" height="20" text="Escola:" fontColor="#ffd700" fontStyle="bold"/>
+        <edit left="370" top="10" width="250" height="20" field="escolaCirculo" textPrompt="Ex: Transmutação Divina - 1º círculo"/>
+
+        <label left="10" top="40" width="60" height="20" text="Ataque:" fontColor="#ffd700" fontStyle="bold"/>
+        <comboBox left="70" top="40" width="120" height="20" field="tipoAtaque" items="{'N/A', 'Corpo-a-corpo', 'Distância'}" values="{'na', 'cac', 'dist'}"/>
+        
+        <label left="200" top="40" width="80" height="20" text="Bônus (Atk):" fontColor="#ffd700" fontStyle="bold"/>
+        <edit left="280" top="40" width="60" height="20" field="bonusAtaque" textPrompt="Ex: Int+2"/>
+
+        <label left="370" top="40" width="50" height="20" text="Dano:" fontColor="#ffd700" fontStyle="bold"/>
+        <edit left="420" top="40" width="100" height="20" field="danoMagia" textPrompt="Ex: 2d10+Int"/>
+
+        <label left="10" top="70" width="70" height="20" text="Execução:" fontColor="white"/>
+        <edit left="80" top="70" width="110" height="20" field="execucao"/>
+
+        <label left="200" top="70" width="60" height="20" text="Alcance:" fontColor="white"/>
+        <edit left="260" top="70" width="110" height="20" field="alcance"/>
+
+        <label left="380" top="70" width="60" height="20" text="Duração:" fontColor="white"/>
+        <edit left="440" top="70" width="180" height="20" field="duracao"/>
+
+        <label left="10" top="100" width="110" height="20" text="Alvo/Área/Efeito:" fontColor="white"/>
+        <edit left="120" top="100" width="250" height="20" field="alvoAreaEfeito"/>
+
+        <label left="380" top="100" width="80" height="20" text="Resistência:" fontColor="white"/>
+        <edit left="460" top="100" width="160" height="20" field="resistencia" textPrompt="Ex: Vontade reduz à metade"/>
+
+        <label left="10" top="130" width="100" height="20" text="Descrição / Truque / Aprimoramentos:" fontColor="#ffd700" fontStyle="bold"/>
+        <textEditor left="10" top="150" width="610" height="120" field="descricaoMagia"/>
+
+        <button left="440" top="280" width="80" height="30" text="Excluir" fontColor="red" onClick="NDB.deleteNode(sheet)"/>
+        <button left="530" top="280" width="90" height="30" text="Salvar" onClick="salvarEdicao()"/>
+    </layout>
+</form>

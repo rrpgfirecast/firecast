@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmzipe2_svg" align="client" theme="light" margins="{top=1}">
+    <style>
+        #frmzipe2_svg path {color: black; strokeColor: black; mode: stretch;} 
+        #frmzipe2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}
+    </style>
+
+    <script>
+        <![CDATA[
+        local function atualizarMagiaCD()
+            -- Se a ficha não carregou, não faz nada
+            if sheet == nil then return end
+
+            -- 1. Descobre qual atributo foi escolhido na lista (Padrão: Int)
+            local atributo = sheet.SeleAtribMagia or "Int"
+            
+            -- 2. Puxa o modificador correspondente (Que foi calculado lá na Página 1!)
+            local mod = 0
+            if atributo == "Int" then mod = tonumber(sheet.ModInt) or 0
+            elseif atributo == "Sab" then mod = tonumber(sheet.ModSab) or 0
+            elseif atributo == "Car" then mod = tonumber(sheet.ModCar) or 0
+            end
+            
+            -- Atualiza a Label de Modificador na tela
+            sheet.ModAtribMagia = mod
+
+            -- 3. Calcula o Teste de Resistência (CD)
+            -- Regra: 10 + Metade do Nível + Modificador do Atributo
+            local nivel = tonumber(sheet.Lv) or 1
+            local metadeNivel = math.floor(nivel / 2)
+            
+            sheet.TesteResist = 10 + metadeNivel + mod
+        end
+        ]]>
+    </script>
+
+    <scrollBox align="client">
+        <rectangle width="1162" height="1559" color="white">
+            <image left="0" top="0" width="1162" height="1559" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>
+            
+            <layout left="581" top="88" width="49" height="25" compilerOrder="7">
+                <comboBox transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="49" height="26" field="SeleAtribMagia" items="{'INT', 'SAB', 'CAR'}" values="{'Int', 'Sab', 'Car'}" compilerOrder="8"/>
+            </layout>
+            
+            <layout left="687" top="88" width="46" height="25" compilerOrder="9">
+                <label fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="26" field="ModAtribMagia" compilerOrder="10"/>
+            </layout>
+            
+            <layout left="871" top="89" width="37" height="24" compilerOrder="11">
+                <label fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="TesteResist" compilerOrder="12"/>
+            </layout>
+            
+            <layout left="52" top="110" width="375" height="212" compilerOrder="1">
+                <textEditor left="0" top="0" width="375" height="212" fontSize="16" fontColor="#000000" field="Descrição" transparent="true" compilerOrder="2"/>
+            </layout>
+            
+            <layout left="461" top="130" width="650" height="787" compilerOrder="15">
+                <button left="0" top="0" width="150" height="30" text="➕ Adicionar Magia" onClick="self.rclMagias:append();"/>
+                <recordList name="rclMagias" field="listaDeMagias" templateForm="frmMagiaItem" left="0" top="35" width="650" height="750"/>
+            </layout>     
+                      
+            <layout left="52" top="380" width="375" height="212" compilerOrder="3">
+                <button left="0" top="0" width="160" height="30" text="➕ Adicionar Habilidade" onClick="self.rclRacaOrigem:append();"/>
+                <recordList name="rclRacaOrigem" field="listaRacaOrigem" templateForm="frmHabilidadeItem" left="0" top="35" width="375" height="177"/>
+            </layout>
+
+            <layout left="52" top="675" width="375" height="800" compilerOrder="5">
+                <button left="0" top="0" width="160" height="30" text="➕ Adicionar Poder" onClick="self.rclClassePoderes:append();"/>
+                <recordList name="rclClassePoderes" field="listaClassePoderes" templateForm="frmHabilidadeItem" left="0" top="35" width="375" height="765"/>
+            </layout>
+            
+            <layout left="463" top="1072" width="650" height="414" compilerOrder="17">
+                <textEditor left="0" top="0" width="650" height="414" fontSize="16" fontColor="#000000" field="Anotações__1" transparent="true" compilerOrder="18"/>
+            </layout>
+            
+            <layout left="463" top="1072" width="650" height="414" compilerOrder="13">
+                <textEditor left="0" top="0" width="650" height="414" fontSize="20" fontColor="#000000" field="Anotações__0" transparent="true" compilerOrder="14"/>
+            </layout>
+            
+            <layout left="610" top="135" width="450" height="30" compilerOrder="16">
+                <rectangle top="20" align="client" color="white" xradius="5" yradius="5"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+    
+    <dataLink fields="{'SeleAtribMagia', 'Lv', 'ModInt', 'ModSab', 'ModCar'}">
+        <event name="onChange">
+            atualizarMagiaCD();
+        </event>
+    </dataLink>
+</form>

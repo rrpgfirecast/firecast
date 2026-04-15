@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="1988" height="2520" autoScaleY="false" autoScaleX="false">
+        <draw>
+                <!-- Imagem de fundo -->               
+
+                <image left="0" top="0" right="1988" bottom="2520" overflowX="center" overflowY="center">
+                        <anchors left="true" top="false" bottom="false" right="false"/>
+                        <source url="/images/FrenteEditavel1.png" left="0" right="1988" top="0" bottom="2520"/>
+                </image>                               
+        </draw>
+</frame>
+
