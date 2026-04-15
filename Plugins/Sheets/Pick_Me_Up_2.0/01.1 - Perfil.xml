@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rectangle 	align="client" 	color="black" >
+        <scrollBox align="client" margins="{left=5,right=5}">     
+            
+            <!-- Perfil -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="4" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <label	height="25"	text="Perfil" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=15}"/>
+                <image  field="personagem"  editable="true" animate="true" style="proportional" g="col" g-width="12" height="280" margins="{left=10, top=5, right=10}"/>
+                <dataLink fields="{'personagem', 'nome'}" defaultValues="{'https://images.vexels.com/media/users/3/220516/isolated/preview/7e7c120c190ae032e068975586d25279-silhueta-de-soldado-guerreiro-medieval.png', 'Nome do Personagem'}">
+                    <event name="onChange">
+                        if sheet.personagem == nil then sheet.personagem = "https://images.vexels.com/media/users/3/220516/isolated/preview/7e7c120c190ae032e068975586d25279-silhueta-de-soldado-guerreiro-medieval.png";
+                        end;
+                        if sheet.nome == nil then sheet.nome = "Nome do Personagem";
+                        end;
+                        if sheet.nome == "Nome do Personagem" then
+                        self.edit_nome.fontColor = "gray";
+                        else self.edit_nome.fontColor = "white";
+                        end;
+                    </event>
+                </dataLink>
+					
+                <label		height="15" text="Nome:" 		fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="leading"	margins="{top=5,left=10}"/>
+                <rectangle  height="40"	color="black" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+                    <edit	height="40" name="edit_nome" field="nome" fontColor="white"	fontSize="30" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" vertTextAlign="leading" horzTextAlign="center" />
+                </rectangle>
+					
+                <label		height="25" text="Estrela Origem:" 	fontSize="10" g="col" g-width="3" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5,left=10}"/>
+                <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5}">
+                    <comboBox field="estrela_origem"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="25"   items="{'1', '2', '3', '4', '5'}" margins="{left=3,right=3}">
+                        <label	height="25"	text="☆"					fontSize="16" g="col" g-width="11" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" vertTextAlign="leading" margins="{right=7}"	/>
+                    </comboBox>
+                </rectangle>
+                <label		height="25" fontSize="15" g="col" g-width="1" />
+
+                <label		height="25"	text="Nivel:" 		fontSize="18" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=5}"/>
+                <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10}">
+                    <edit		height="30"	field="nv"			fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" />
+                </rectangle>
+					
+                <label		height="25" text="Estrela Atual:" 	fontSize="15" g="col" g-width="3" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5,left=10}"/>
+                <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5}">
+                    <comboBox field="estrela_atual"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="25"   items="{'1', '2', '3', '4', '5', '6', '7'}" margins="{left=3,right=3}">
+                        <label	height="25"	text="☆"					fontSize="16" g="col" g-width="11" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" vertTextAlign="leading" margins="{right=7}"	/>
+                    </comboBox>
+                    
+                </rectangle>
+                <label		height="25" fontSize="15" g="col" g-width="1" />
+		
+                <dataLink fields="{'estrela_origem', 'estrela_atual', 'xpmax', 'nv'}" defaultValues="{'1', '1', '10', '1'}"/>
+                
+                <label		height="25"	text="XP:" 			fontSize="18" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=5}"/>
+                <rectangle g="col" g-width="4" height="25" strokeSize="1" strokeColor="white" margins="{top=5,right=10}" g-cnt-gutter="0" color="black" cornerType="round" xradius="5" yradius="5">
+                    <edit	height="30"	field="xp"			fontSize="25" g="col" g-width="5" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+                    <edit	height="25"	text="/"			fontSize="30" g="col" g-width="2" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" readOnly="true"/>
+                    <edit	height="30"	field="xpmax"		fontSize="25" g="col" g-width="5" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+                        <dataLink	fields="{'nv', 'estrela_origem'}">
+                            <event name="onChange">
+                                local nv = tonumber(sheet.nv) or 1
+                                local estrela = tonumber(sheet.estrela_origem) or 1
+
+                                if nv &lt; 1 then nv = 1 end
+
+                                local xp = 10
+                                local incremento = 10
+
+                                -- ajustes iniciais por estrela
+                                if estrela == 2 then
+                                    xp = 15
+                                    incremento = 15
+                                elseif estrela == 3 then
+                                    xp = 20
+                                    incremento = 20
+                                elseif estrela == 4 then
+                                    xp = 25
+                                    incremento = 25
+                                elseif estrela == 5 then
+                                    xp = 30
+                                    incremento = 30
+                                end
+
+                                -- calcula até o nível atual
+                                for i = 2, nv do
+
+                                    -- definir incremento normal
+                                    if estrela == 1 then
+                                        if i &lt;= 10 then
+                                            incremento = 10
+                                        elseif i &lt;= 20 then
+                                            incremento = 15
+                                        elseif i &lt;= 40 then
+                                            incremento = 20
+                                        elseif i &lt;= 60 then
+                                            incremento = 25
+                                        elseif i &lt;= 80 then
+                                            incremento = 30
+                                        elseif i &lt;= 99 then
+                                            incremento = 35
+                                        else
+                                            incremento = 40
+                                        end
+
+                                    elseif estrela == 2 and i &lt;= 20 then
+                                        incremento = 15
+
+                                    elseif estrela == 3 and i &lt;= 40 then
+                                        incremento = 20
+
+                                    elseif estrela == 4 and i &lt;= 60 then
+                                        incremento = 25
+
+                                    elseif estrela == 5 and i &lt;= 80 then
+                                        incremento = 30
+                                    end
+
+                                    xp = xp + incremento
+                                end
+
+                                sheet.xpmax = xp
+                            </event>
+                        </dataLink>	
+                        <dataLink	fields="{'xp','xpmax'}" defaultValues="{'0','0'}"/>
+                </rectangle>
+                
+                <label		height="25"	text="Classe:" 		fontSize="15" g="col" g-width="3" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5,left=10}"/>
+                <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="9" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10}">
+                    <edit		height="30"	field="classe"	fontColor="gray" fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+                    <dataLink fields="{'classe'}" defaultValues="{'Novato'}"/>
+                </rectangle>
+
+                <label		height="25"	text="Função:" 		fontSize="15" g="col" g-width="3" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5,left=10}"/>
+                <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="9" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10}">
+                    <edit		height="30"	field="funcao"	fontColor="gray" fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+                    <dataLink fields="{'funcao'}" defaultValues="{'Não Atribuída'}"/>
+                </rectangle>
+
+                <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+                    <comboBox field="tipo_de_energia" name="tipo_de_energia" fontColor="gray" fontSize="18" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" items="{'Ainda a procura do seu caminho', 'Caminho da Aura', 'Caminho da Magia'}" g="col" g-width="12" height="30">
+                    <dataLink field="tipo_de_energia" defaultValue="Ainda a procura do seu caminho">
+                        <event name="onChange">
+                            if self.tipo_de_energia.value == "Ainda a procura do seu caminho" then
+                                self.aba_aura_magia.visible = false
+                            elseif self.tipo_de_energia.value == "Caminho da Aura" then
+                                self.aba_aura_magia.visible = true
+                                self.afinidadesmagia.visible = false
+                                self.afinidadesaura.visible = true
+                                self.afmagias.visible = false
+                                self.afauras.visible = true
+                                self.aptitudemagia.visible = false
+                                self.aptitudeaura.visible = true
+                                self.aba_aura_magia.title = "Aura"
+                                self.titulo_aura_magia.text = "Aura"
+                            elseif self.tipo_de_energia.value == "Caminho da Magia" then
+                                self.aba_aura_magia.visible = true
+                                self.afinidadesaura.visible = false
+                                self.afinidadesmagia.visible = true
+                                self.afmagias.visible = true
+                                self.afauras.visible = false
+                                self.aptitudemagia.visible = true
+                                self.aptitudeaura.visible = false
+                                self.aba_aura_magia.title = "Magia"
+                                self.titulo_aura_magia.text = "Magia"
+                            end;
+                        </event>
+                    </dataLink>
+                </comboBox>
+                </rectangle>
+                
+            </rectangle>
+            
+            <!-- Atributos -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="4" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <rectangle align="client" color="none" name="tabela_atributos" visible="true" g-cnt-gutter="4">
+                    <label	height="25"	text="Atributos" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" 	margins="{top=15}">	
+                        <label g="col" g-width="11"/>
+                        <button g="col" g-width="1" onClick="self.explicacao_att:show()" text="?" margins="{right=5}"/>
+                    </label>
+
+                    <popup name='explicacao_att' width="700" height="600" backOpacity='0.5'>
+                        <rectangle color="black" left="-5" top="-5" width="410" height="610" />
+                            <rectangle color="#150e16" strokeSize="2" strokeColor="white" left="5" top="5" width="690" height="590" cornerType="round" xradius="5" yradius="5">
+                                <scrollBox align="client" margins="{top=5,bottom=5}">
+                                
+                                    <label text="Modificadores e Usos dos Atributos" height="30" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" margins="{top=10}"/>
+
+                                    <label text="Modificadores:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=0,top=10}"/>
+                                    <rectangle height="90" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=0,right=0}">
+                                        <textEditor readOnly="true"  text="Os modificadores de todas as ações são definidas por skills. \nCada skill utiliza um ou mais atributos, sendo esses sempre especificados nela. \nAs skills são divididas em niveis de Maestrias e cada nivel de maestria é dividido do nv 1 ao 10; \nOs modificadorers para cada ação são definidos a partir das skills, sua maestria e nivel, além dos atributos utilizados por elas."  fontSize="12"  align="client" transparent="true"/>
+                                    </rectangle> 
+
+                                    <image src="https://blob.firecast.com.br/blobs/TKDUMLFR_4353758/69de43230884980d0063d0c3.jpg" style="proportional" height="180" g="col" g-width="12"  margins="{left=0,top=10}"/>
+
+                                    <label text="Alguns usos de Força:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=0,top=10}"/>
+                                    <rectangle height="60" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=0,right=0}">
+                                        <textEditor readOnly="true"  text="• Testes de proezas fisicas, como levantar grandes pesos ou saltar grandes distâncias. \n• Influência o modificador de treino de skills de Força. \n• Influência o cálculo de dano de skills de Força, onde é usado o valor total."  fontSize="12"  align="client" transparent="true"/>
+                                    </rectangle>  
+
+                                    <label text="Alguns usos de Destreza:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=0,top=10}"/>
+                                    <rectangle height="90" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=0,right=0}">
+                                        <textEditor readOnly="true"  text="• Testes de esquiva \n• Cálculo de deslocamento \n• Testes de movimentos acrobaticos e semelhantes \n• Influência o modificador de treino de skills de Destreza. \n• Influência o cálculo de dano de skills de Destreza, onde é usado a metade do valor total."  fontSize="12"  align="client" transparent="true"/>
+                                    </rectangle> 
+
+                                    <label text="Alguns usos de Vigor:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=0,top=10}"/>
+                                    <rectangle height="110" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=0,right=0}">
+                                        <textEditor readOnly="true"  text="• Testes de Defesa, onde é usado a metade do valor total \n• Cálculo de pontos de Aura \n• Resistência a venenos e outras condições fisicas \n• Cálculo de Pontos de Vida Máximos \n• Cálculo de Pontos de Energia Máximos \n• Influência o modificador de treino de skills de Vigor."  fontSize="12"  align="client" transparent="true"/>
+                                    </rectangle> 
+
+                                    <label text="Alguns usos de Inteligência:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=0,top=10}"/>
+                                    <rectangle height="90" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=0,right=0}">
+                                        <textEditor readOnly="true"  text="• Testes de inteligência, Intuição e similares \n• Cálculo de pontos de Mana \n• Magias \n• Influência o modificador de treino de skills de Inteligência. \n• Influência o cálculo de dano de skills de Inteligência, onde é usado a metade do valor total."  fontSize="12"  align="client" transparent="true"/>
+                                    </rectangle> 
+
+                                    <label text="Alguns usos de Consciência:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=0,top=10}"/>
+                                    <rectangle height="110" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=0,right=0}">
+                                        <textEditor readOnly="true"  text="• Testes de Sanidade \n• Cálculo de pontos de Sanidade \n• Cálculo de pontos de Mana \n• Cálculo de pontos de Aura \n• Testes de Percepção e resistência mental \n• Influência o modificador de treino de skills de Consciência. "  fontSize="12"  align="client" transparent="true"/>
+                                    </rectangle> 
+
+                                    <label text="Alguns usos de Carisma:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=0,top=10}"/>
+                                    <rectangle height="60" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=0,right=0}">
+                                        <textEditor readOnly="true"  text="• Testes de atuação, enganação, persuasão e similares \n• Influência como seu personagem é visto pelos outros \n• Influência o modificador de treino de skills de Carisma. "  fontSize="12"  align="client" transparent="true"/>
+                                    </rectangle> 
+
+                                    <label text="Alguns usos de Combate:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=0,top=10}"/>
+                                    <rectangle height="50" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=0,right=0}">
+                                        <textEditor readOnly="true"  text="• Testes de acerto corpo a corpo, podendo ser usado a distância dependendo de skills especificas \n• Influência o modificador de treino de skills de Combate corpo a corpo. "  fontSize="12"  align="client" transparent="true"/>
+                                    </rectangle> 
+
+                                    <label text="Alguns usos de Precisão:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=0,top=10}"/>
+                                    <rectangle height="50" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=0,right=0}">
+                                        <textEditor readOnly="true"  text="• Testes de acerto a distância, normalmente impondo demetiros quando usado corpo a corpo \n• Influência o modificador de treino de skills de longo alcance. "  fontSize="12"  align="client" transparent="true"/>
+                                    </rectangle> 
+                                </scrollBox>
+                            </rectangle> 
+                    </popup>
+
+
+                    <label	height="20"					fontSize="15" g="col" g-width="4" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10,}"/>	
+                    <rectangle     height="20"	color="none" cornerType="round"	  g="col" g-width="6"  margins="{top=10}" g-cnt-gutter="4">					
+                        <label	height="20"	text="Base" 	fontSize="15" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"/>	
+                        <label	height="20"	text="Sintese" 	fontSize="15" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"/>	
+                        <label	height="20"	text="Equips" 	fontSize="15" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"/>	
+                        <label	height="20"	text="Buffs" 	fontSize="15" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"/>	
+                    </rectangle>
+                    <label	height="20"	text="Total" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=10,right=10}"/>
+                
+                    <!-- Nomes -->
+                    <rectangle      height="280"	color="none" cornerType="round"	  g="col" g-width="4"  strokeColor="white" xradius="5" yradius="5" margins="{top=10,left=5}">					
+                        <label		height="30"	text="FORÇA" 	        fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"    margins="{top=5}" hint="Usado para proezas de força, dano e treino de skills de força." />	
+                        <label		height="30"	text="DESTREZA" 	    fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+                        <label		height="30"	text="VIGOR" 	        fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+                        <label		height="30"	text="INTELIGÊNCIA"     fontSize="16" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+                        <label		height="30"	text="CONSCIÊNCIA" 	    fontSize="16" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+                        <label		height="30"	text="CARISMA" 	        fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+                        <label		height="30"	text="COMBATE" 	        fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+                        <label		height="30"	text="PRECISÃO" 	    fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+                    </rectangle>
+                    
+                    <rectangle     height="280"	color="none" cornerType="round"	  g="col" g-width="6"  margins="{top=10}" g-cnt-gutter="4">					
+                        <!-- Base -->
+                        <rectangle     height="280"	color="black" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" >					
+                            <edit	    height="30"	field="forcabase" 		    fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="destrezabase" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="vigorbase" 		    fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="inteligenciabase"    fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="conscienciabase" 	fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="carismabase" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="combatebase" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="precisaobase" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        </rectangle>
+                        
+                        <!-- Síntese -->
+                        <rectangle     height="280"	color="black" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" >					
+                            <edit	    height="30"	field="forcasintese" 		fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="destrezasintese" 	fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="vigorsintese" 		fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="inteligenciasintese" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="conscienciasintese" 	fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="carismasintese" 		fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="combatesintese" 		fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="precisaosintese" 	fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        </rectangle>
+
+                        <!-- Equips -->
+                        <rectangle     height="280"	color="black" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" >					
+                            <edit	    height="30"	field="forcaequips" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="destrezaequips" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="vigorequips" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="inteligenciaequips"  fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="conscienciaequips" 	fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="carismaequips" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="combateequips" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="precisaoequips" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        </rectangle>
+
+                        <!-- Buffs -->
+                        <rectangle     height="280"	color="black" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" >					
+                            <edit	    height="30"	field="forcabuffs" 		    fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="destrezabuffs" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="vigorbuffs" 		    fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="inteligenciabuffs"   fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="conscienciabuffs" 	fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="carismabuffs" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="combatebuffs" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                            <edit	    height="30"	field="precisaobuffs" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        </rectangle>
+                    </rectangle>
+                    
+                    <!-- Total -->
+                    <rectangle     height="280"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}" g-cnt-gutter="4">					
+                        <edit	    height="30"	field="forca" 		    fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        <edit	    height="30"	field="destreza" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        <edit	    height="30"	field="vigor" 		    fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        <edit	    height="30"	field="inteligencia"    fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        <edit	    height="30"	field="consciencia" 	fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        <edit	    height="30"	field="carisma" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        <edit	    height="30"	field="combate" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                        <edit	    height="30"	field="precisao" 		fontSize="40" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" margins="{top=5}"/>
+                    </rectangle>
+
+                    <dataLink fields="{'forcabase', 'forcasintese', 'forcaequips', 'forcabuffs', 'destrezabase', 'destrezasintese', 'destrezaequips', 'destrezabuffs', 'vigorbase', 'vigorsintese', 'vigorequips', 'vigorbuffs', 'inteligenciabase', 'inteligenciasintese', 'inteligenciaequips', 'inteligenciabuffs', 'conscienciabase', 'conscienciasintese', 'conscienciaequips', 'conscienciabuffs', 'carismabase', 'carismasintese', 'carismaequips', 'carismabuffs', 'combatebase', 'combatesintese', 'combateequips', 'combatebuffs', 'precisaobase', 'precisaosintese', 'precisaoequips', 'precisaobuffs', 'condicao'}" 
+                    defaultValues="{'0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','Nenhum'}">
+                        <event name="onChange">									
+                            local forca = 			(tonumber(sheet.forcabase)) + (tonumber(sheet.forcasintese)) + (tonumber(sheet.forcaequips)) + (tonumber(sheet.forcabuffs));
+                            local destreza = 		(tonumber(sheet.destrezabase)) + (tonumber(sheet.destrezasintese)) + (tonumber(sheet.destrezaequips)) + (tonumber(sheet.destrezabuffs));
+                            local vigor = 			(tonumber(sheet.vigorbase)) + (tonumber(sheet.vigorsintese)) + (tonumber(sheet.vigorequips)) + (tonumber(sheet.vigorbuffs));
+                            local inteligencia = 	(tonumber(sheet.inteligenciabase)) + (tonumber(sheet.inteligenciasintese)) + (tonumber(sheet.inteligenciaequips)) + (tonumber(sheet.inteligenciabuffs));
+                            local consciencia = 	(tonumber(sheet.conscienciabase)) + (tonumber(sheet.conscienciasintese)) + (tonumber(sheet.conscienciaequips)) + (tonumber(sheet.conscienciabuffs));
+                            local carisma = 		(tonumber(sheet.carismabase)) + (tonumber(sheet.carismasintese)) + (tonumber(sheet.carismaequips)) + (tonumber(sheet.carismabuffs));
+                            local combate = 		(tonumber(sheet.combatebase)) + (tonumber(sheet.combatesintese)) + (tonumber(sheet.combateequips)) + (tonumber(sheet.combatebuffs));
+                            local precisao = 		(tonumber(sheet.precisaobase)) + (tonumber(sheet.precisaosintese)) + (tonumber(sheet.precisaoequips)) + (tonumber(sheet.precisaobuffs));
+                                                        
+                            if 		sheet.condicao == "Medo" then
+                                    sheet.forca = 	        math.floor(forca * 0.7);
+                                    sheet.destreza = 	    math.floor(destreza * 0.7);                  
+                                    sheet.vigor = 	        math.floor(vigor * 0.7);                  
+                                    sheet.inteligencia = 	math.floor(inteligencia * 0.7);                  
+                                    sheet.consciencia = 	math.floor(consciencia * 0.7);                  
+                                    sheet.carisma = 	    math.floor(carisma * 0.7);      
+                                    sheet.combate = 	    math.floor(combate * 0.7);
+                                    sheet.precisao = 	    math.floor(precisao * 0.7);            
+
+                            elseif	sheet.condicao == "Pavor" then
+                                    sheet.forca = 	        math.floor(forca * 0.5);
+                                    sheet.destreza = 	    math.floor(destreza * 0.5);                  
+                                    sheet.vigor = 	        math.floor(vigor * 0.5);                  
+                                    sheet.inteligencia = 	math.floor(inteligencia * 0.5);                  
+                                    sheet.consciencia = 	math.floor(consciencia * 0.5);   
+                                    sheet.carisma = 	    math.floor(carisma * 0.5);   
+                                    sheet.combate = 	    math.floor(combate * 0.5);
+                                    sheet.precisao = 	    math.floor(precisao * 0.5);
+                                    
+                            elseif	sheet.condicao == "Terror" then
+                                    sheet.forca = 	        math.floor(forca * 0.2);
+                                    sheet.destreza = 	    math.floor(destreza * 0.2);                  
+                                    sheet.vigor = 	        math.floor(vigor * 0.2);                  
+                                    sheet.inteligencia = 	math.floor(inteligencia * 0.2);                  
+                                    sheet.consciencia = 	math.floor(consciencia * 0.2);   
+                                    sheet.carisma = 	    math.floor(carisma * 0.2);   
+                                    sheet.combate = 	    math.floor(combate * 0.2);
+                                    sheet.precisao = 	    math.floor(precisao * 0.2);
+
+                            else	sheet.forca = 	        math.floor(forca);
+                                    sheet.destreza = 	    math.floor(destreza);                  
+                                    sheet.vigor = 	        math.floor(vigor);                  
+                                    sheet.inteligencia = 	math.floor(inteligencia);                  
+                                    sheet.consciencia = 	math.floor(consciencia);   					
+                                    sheet.carisma = 	    math.floor(carisma);  
+                                    sheet.combate = 	    math.floor(combate);
+                                    sheet.precisao = 	    math.floor(precisao); 					
+                            end;			
+                        </event>
+                    </dataLink>	
+                    
+                    <rectangle  height="30"	color="black" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10,left=10}">
+                        <label	height="25"	text="Disponível:" 	fontSize="12" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" 	vertTextAlign="center" margins="{top=3}"/>	
+                        <rectangle  height="23"	color="black" cornerType="round"	  g="col" g-width="1" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+                            <edit	height="23"	field="distribuir" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>
+                            <dataLink fields="{'estrela_origem','total','nv','forcabase','destrezabase','vigorbase','inteligenciabase', 'conscienciabase', 'carismabase'}">
+                            <event name="onChange">
+                                    local nv = tonumber(sheet.nv) or 1
+                                    local estrela = tonumber(sheet.estrela_origem) or 1
+
+                                    if nv &lt; 1 then nv = 1 end
+
+                                    local pontos = 0
+
+                                    -- pontos iniciais
+                                    if estrela == 1 then
+                                        pontos = 40
+                                    elseif estrela == 2 then
+                                        pontos = 48
+                                    elseif estrela == 3 then
+                                        pontos = 56
+                                    elseif estrela == 4 then
+                                        pontos = 64
+                                    elseif estrela == 5 then
+                                        pontos = 72
+                                    end
+
+                                    -- soma por nível (começa no 2)
+                                    for i = 2, nv do
+                                        local ganho = 0
+
+                                        if estrela == 2 and i &lt;= 20 then
+                                            ganho = 5
+
+                                        elseif estrela == 3 and i &lt;= 40 then
+                                            ganho = 6
+
+                                        elseif estrela == 4 and i &lt;= 60 then
+                                            ganho = 6
+
+                                        elseif estrela == 5 and i &lt;= 80 then
+                                            ganho = 6
+
+                                        else
+                                            if i &lt;= 10 then
+                                                ganho = 4
+                                            elseif i &lt;= 20 then
+                                                ganho = 5
+                                            elseif i &lt;= 40 then
+                                                ganho = 6
+                                            elseif i &lt;= 60 then
+                                                ganho = 7
+                                            elseif i &lt;= 80 then
+                                                ganho = 8
+                                            elseif i &lt;= 99 then
+                                                ganho = 9
+                                            else
+                                                ganho = 10
+                                            end
+                                        end
+
+                                        pontos = pontos + ganho
+                                    end
+
+                                    sheet.distribuir = pontos - (sheet.forcabase + sheet.destrezabase + sheet.vigorbase + sheet.inteligenciabase + sheet.conscienciabase + sheet.carismabase + sheet.combatebase + sheet.precisaobase) 
+                            
+                            </event>
+                        </dataLink>	
+                        </rectangle>				
+                        
+                        <label	height="25"	text="Totais:" 	fontSize="8" g="col" g-width="1" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" 	vertTextAlign="center" margins="{top=3}"/>	
+                        <rectangle  height="23"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+                            <edit	height="23"	field="basetotal" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+                        </rectangle>
+                        <dataLink fields="{'forcabase', 'destrezabase','vigorbase','inteligenciabase', 'conscienciabase', 'carismabase', 'combatebase', 'precisaobase'}">
+                            <event name="onChange">
+                                sheet.basetotal = 	((tonumber(sheet.forcabase) or 0) +
+                                                    (tonumber(sheet.destrezabase) or 0) +
+                                                    (tonumber(sheet.vigorbase) or 0) +
+                                                    (tonumber(sheet.inteligenciabase) or 0) + 
+                                                    (tonumber(sheet.conscienciabase) or 0) +
+                                                    (tonumber(sheet.carismabase) or 0) + 
+                                                    (tonumber(sheet.combatebase) or 0) +
+                                                    (tonumber(sheet.precisaobase) or 0));
+                            </event>
+                        </dataLink>
+                            
+                        <rectangle  height="23"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+                            <edit	height="23"	field="sintesetotal" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+                        </rectangle>
+                        <dataLink fields="{'forcasintese', 'destrezasintese','vigorsintese','inteligenciasintese', 'conscienciasintese', 'carismasintese', 'combatesintese', 'precisaosintese'}">
+                            <event name="onChange">
+                                sheet.sintesetotal = 	(math.floor(tonumber(sheet.forcasintese) or 0) +
+                                                        math.floor(tonumber(sheet.destrezasintese) or 0) +
+                                                        math.floor(tonumber(sheet.vigorsintese) or 0) +
+                                                        math.floor(tonumber(sheet.inteligenciasintese) or 0) + 
+                                                        math.floor(tonumber(sheet.conscienciasintese) or 0) +
+                                                        math.floor(tonumber(sheet.carismasintese) or 0) +
+                                                        math.floor(tonumber(sheet.combatesintese) or 0) +
+                                                        math.floor(tonumber(sheet.precisaosintese) or 0));
+                            </event>
+                        </dataLink>
+                        
+                        <rectangle  height="23"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+                            <edit	height="23"	field="equipstotal" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+                        </rectangle>
+                        <dataLink fields="{'forcaequips', 'destrezaequips', 'vigorequips', 'inteligenciaequips', 'conscienciaequips', 'carismaequips', 'combateequips', 'precisaoequips'}">
+                            <event name="onChange">
+                                sheet.equipstotal = ((tonumber(sheet.forcaequips) or 0) +
+                                                    (tonumber(sheet.destrezaequips) or 0) +
+                                                    (tonumber(sheet.vigorequips) or 0) +
+                                                    (tonumber(sheet.inteligenciaequips) or 0) + 
+                                                    (tonumber(sheet.conscienciaequips) or 0) +
+                                                    (tonumber(sheet.carismaequips) or 0) + 
+                                                    (tonumber(sheet.combateequips) or 0) +
+                                                    (tonumber(sheet.precisaoequips) or 0));
+                            </event>
+                        </dataLink>
+                        
+                        <rectangle  height="23"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3,right=3}">
+                            <edit	height="23"	field="total" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+                        </rectangle>
+                        <dataLink fields="{'forca', 'destreza', 'vigor', 'inteligencia', 'consciencia', 'carisma', 'combate', 'precisao'}">
+                            <event name="onChange">
+                                sheet.total = 		((tonumber(sheet.forca) or 0) +
+                                                    (tonumber(sheet.destreza) or 0) +
+                                                    (tonumber(sheet.vigor) or 0) +
+                                                    (tonumber(sheet.inteligencia) or 0) + 
+                                                    (tonumber(sheet.consciencia) or 0) + 
+                                                    (tonumber(sheet.carisma) or 0) + 
+                                                    (tonumber(sheet.combate) or 0) +
+                                                    (tonumber(sheet.precisao) or 0));
+    
+                            </event>
+                        </dataLink>
+                    </rectangle>	
+                    
+                    <label		height="25" text="Condição:" 	fontSize="15" g="col" g-width="3" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5,left=10}"/>
+                    <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="9" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10}">
+                            <comboBox field="condicao"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Nenhum', 'Medo', 'Pavor', 'Terror'}" margins="{left=3,right=3}"/>
+                    </rectangle>
+                    
+                    <label	height="25"	text="Vida:" 	fontSize="25" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" fontColor="red"	vertTextAlign="center" margins="{top=25,left=10}"/>	
+                    <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=25}">
+                        <edit	height="30"	field="hptotal" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+                        <dataLink fields="{'vigorbase','vigorsintese','vigorequips', 'nv'}">
+                            <event name="onChange">
+                                sheet.hptotal = 100 + (((tonumber(sheet.vigorbase)) + (math.floor(tonumber(sheet.vigorsintese))) + (tonumber(sheet.vigorequips))) * 24) + ((sheet.nv- 1)* 12);
+                                
+                            </event>
+                        </dataLink>	
+                    </rectangle>	
+                
+                    
+                    <label	height="25"	text="Energia:" 	fontSize="25" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" fontColor="green"	vertTextAlign="center" margins="{top=25}"/>	
+                    <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=25, right=10}">
+                        <edit	height="30"	field="sptotal" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+                        <dataLink fields="{'vigorbase','vigorsintese','vigorequips','nv'}">
+                            <event name="onChange">
+                                sheet.sptotal = 130 + (((tonumber(sheet.vigorbase)) + (math.floor(tonumber(sheet.vigorsintese))) + (tonumber(sheet.vigorequips))) * 36) + math.floor(((sheet.nv)- 1)*18);
+    
+                            </event>
+                        </dataLink>	
+                    </rectangle>	
+                    
+                    <label	height="25"	text="Sanidade:" 	fontSize="20" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" fontColor="purple"	vertTextAlign="center" margins="{top=5,left=10}"/>	
+                    <rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5}">
+                        <edit	height="30"	field="sancidadetotal" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>
+                        <dataLink fields="{'conscienciabase','conscienciasintese','conscienciaequips','nv'}">
+                            <event name="onChange">
+                                sheet.sancidadetotal = 8 + math.floor(((tonumber(sheet.conscienciabase)) + (math.floor(tonumber(sheet.conscienciasintese))) + (tonumber(sheet.conscienciaequips))) * 1.5 + ((sheet.nv)- 1));
+
+                            </event>
+                        </dataLink>	
+                    </rectangle>
+
+                    <label	height="25"	text="Mana:" 	name="label_magia" fontSize="25"                g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" fontColor="blue"	vertTextAlign="center" margins="{top=5}" visible="false"/>	
+                    <rectangle  height="25"	name="retangulo_magia" color="black" cornerType="round"	g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10}" visible="false">
+                        <edit	height="30"	field="mptotal" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+                        <dataLink fields="{'inteligenciabase', 'inteligenciasintese','inteligenciaequips', 'conscienciabase','conscienciasintese','conscienciaequips','nv', 'tipo_de_energia'}">
+                            <event name="onChange">
+                                if      sheet.tipo_de_energia == "Caminho da Magia" then
+                                        self.label_magia.visible = true
+                                        self.retangulo_magia.visible = true
+                                        sheet.mptotal = math.floor(((tonumber(sheet.inteligenciabase)) + (math.floor(tonumber(sheet.inteligenciasintese))) + (tonumber(sheet.inteligenciaequips))+ (tonumber(sheet.conscienciabase)) + (math.floor(tonumber(sheet.conscienciasintese))) + (tonumber(sheet.conscienciaequips))) * 7 + ((sheet.nv)- 1) * 5);
+                                else    self.label_magia.visible = false
+                                        self.retangulo_magia.visible = false
+                                        sheet.mptotal = 0;
+                                end
+                            </event>
+                        </dataLink>	
+                    </rectangle>		
+                    
+                    <label	height="25"	text="Aura:" name="label_aura" 	fontSize="25"               g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" fontColor="yellow"	vertTextAlign="center" margins="{top=5}" visible="false"/>	
+                    <rectangle  height="25"	name="retangulo_aura" color="black" cornerType="round"	g="col" g-width="3" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5, right=10}" visible="false">
+                        <edit	height="30"	field="auratotal" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+                        <dataLink fields="{'vigorbase', 'vigorsintese','vigorequips','conscienciabase','conscienciasintese','conscienciaequips','nv', 'tipo_de_energia'}">
+                            <event name="onChange">
+                                if      sheet.tipo_de_energia == "Caminho da Aura" then
+                                        self.label_aura.visible = true
+                                        self.retangulo_aura.visible = true
+                                        sheet.auratotal = math.floor(((tonumber(sheet.vigorbase)) + (math.floor(tonumber(sheet.vigorsintese))) + (tonumber(sheet.vigorequips)) + (tonumber(sheet.conscienciabase)) + (math.floor(tonumber(sheet.conscienciasintese))) + (tonumber(sheet.conscienciaequips))) * 7 + ((sheet.nv)- 1) * 5);
+                                else    self.label_aura.visible = false
+                                        self.retangulo_aura.visible = false
+                                        sheet.auratotal = 0;
+                                end
+
+                            </event>
+                        </dataLink>	
+                    </rectangle>
+				</rectangle>
+            
+                <!-- Aba Modificadores Fabricação -->
+                <rectangle g="col" g-width="12" height="510" color="none" name="tabela_mods_fabricacao" visible="false" margins="{left=10}">
+                    <label	height="25"	text="Modificadores de Fabricação" 	fontSize="30" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=15}"/>
+                
+                    <scrollBox align="client" margins="{top=60}">
+                        <!-- dataLink Fabricação -->
+                        <dataLink fields="{'nv_forja', 'maestria_forja', 'extra_forja',
+                                            'nv_carpintaria', 'maestria_carpintaria', 'extra_carpintaria',
+                                            'nv_alquimia', 'maestria_alquimia', 'extra_alquimia',
+                                            'nv_alfaiataria', 'maestria_alfaiataria', 'extra_alfaiataria',
+                                            'nv_culinaria', 'maestria_culinaria', 'extra_culinaria',
+                                            'nv_joalheria', 'maestria_joalheria', 'extra_joalheria',
+                                            'nv_ecomorfia', 'maestria_ecomorfia', 'extra_ecomorfia',
+                                            'nv_insetocultura', 'maestria_insetocultura', 'extra_insetocultura',
+                                            'nv_agricultura', 'maestria_agricultura', 'extra_agricultura',
+                                            'nv_pesca', 'maestria_pesca', 'extra_pesca',
+                                            'nv_mineracao', 'maestria_mineracao', 'extra_mineracao',
+                                            'nv_criacao_animal', 'maestria_criacao_animal', 'extra_criacao_animal',
+                                            'nv_pesquisa', 'maestria_pesquisa', 'extra_pesquisa',
+                                            'forca', 'destreza', 'vigor', 'inteligencia', 'consciencia', 'carisma'}" 
+                            defaultValues="{'0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', '0','Sem Skill','0', }">
+                            <event name="onChange">
+                                -- 1. Definição das Profissões e suas fórmulas de Atributos
+                                -- O cálculo aqui é a "Soma Ponderada" (ex: forca * 3 + vigor * 2...)
+                                local profs = {
+                                    {id="forja",           desc="Utilizando os atributos Força, Vigor e Destreza, a Forja permite ao campeão criar itens e armas feitas a partir de metais.", formula = (sheet.vigor or 0)*2 + (sheet.forca or 0)*3 + (sheet.destreza or 0)*1},
+                                    {id="carpintaria",     desc="Utilizando os atributos Inteligência, Força e Destreza, a Carpintaria permite ao campeão criar itens feitos de madeira com diversas finalidades, de escudos e flechas até cadeiras e mesas.", formula = (sheet.inteligencia or 0)*1 + (sheet.forca or 0)*2 + (sheet.destreza or 0)*3},
+                                    {id="alquimia",        desc="Utilizando os atributos Destreza, Consciência e Inteligência, a Alquimia permite ao campeão preparar poções e elixires.", formula = (sheet.destreza or 0)*2 + (sheet.consciencia or 0)*1 + (sheet.inteligencia or 0)*3},
+                                    {id="alfaiataria",     desc="Utilizando os atributos Inteligência, Consciência e Destreza, a Alfaiataria permite ao campeão criar vestimentas, sejam armaduras, capas, cintos ou similares.", formula = (sheet.inteligencia or 0)*1 + (sheet.consciencia or 0)*2 + (sheet.destreza or 0)*3},
+                                    {id="culinaria",       desc="Utilizando os atributos Inteligência, Carisma e Destreza, a Culinária permite ao campeão preparar pratos e alimentos que concedem bonificações ou demeritos.", formula = (sheet.inteligencia or 0)*2 + (sheet.carisma or 0)*3 + (sheet.destreza or 0)*1},
+                                    {id="joalheria",       desc="Utilizando os atributos Consciência, Carisma e Destreza, a Joalheria permite ao campeão lapidar gemas e criar acessórios.", formula = (sheet.consciencia or 0)*1 + (sheet.carisma or 0)*3 + (sheet.destreza or 0)*2},
+                                    {id="ecomorfia",       desc="Utilizando os atributos Força, Consciência e Destreza, a Ecomorfia permite ao campeão processar materias organicas, como carapaças e chifres, e criar itens a partir deles.", formula = (sheet.forca or 0)*2 + (sheet.consciencia or 0)*2 + (sheet.destreza or 0)*2},
+                                    {id="insetocultura",   desc="Utilizando os atributos Vigor, Consciência e Carisma, a Insetocultura permite ao campeão cuidar e criar insetos úteis.", formula = (sheet.vigor or 0)*1 + (sheet.consciencia or 0)*2 + (sheet.carisma or 0)*3},
+                                    {id="agricultura",     desc="Utilizando os atributos Força, Vigor e Carisma, a Agricultura permite ao campeão cultivar plantas e colheitas.", formula = (sheet.forca or 0)*1 + (sheet.vigor or 0)*3 + (sheet.carisma or 0)*2},
+                                    {id="pesca",           desc="Utilizando os atributos Destreza, Consciência e Carisma, a Pesca permite ao campeão conhecer e pescar peixes .", formula = (sheet.destreza or 0)*2 + (sheet.consciencia or 0)*3 + (sheet.carisma or 0)*1},
+                                    {id="mineracao",       desc="Utilizando os atributos Força, Vigor e Consciência, a Mineração permite ao campeão extrair minérios.", formula = (sheet.forca or 0)*2 + (sheet.vigor or 0)*3 + (sheet.consciencia or 0)*1},
+                                    {id="criacao_animal",  desc="Utilizando os atributos Consciência, Vigor e Carisma, a Criação de Animais permite ao campeão domesticar e criar animais.", formula = (sheet.consciencia or 0)*1 + (sheet.vigor or 0)*2 + (sheet.carisma or 0)*3},
+                                    -- Pesquisa usa média simples (divisão por 2 no final), tratada no loop
+                                    {id="pesquisa",        desc="Utilizando os atributos Inteligência e Consciência, a Pesquisa permite ao campeãoresolver problemas complexos no centro de pesquisas para arrecadar pontos de pesquisa.", formula = (sheet.inteligencia or 0) + (sheet.consciencia or 0), isPesquisa = true}
+                                }
+
+                                -- 2. Loop para processar cada profissão individualmente
+                                for _, prof in ipairs(profs) do
+                                    local id = prof.id
+                                    local maestria = sheet["maestria_" .. id] or "Básica"
+                                    local nv = tonumber(sheet["nv_" .. id]) or 0
+                                    local extra = tonumber(sheet["extra_" .. id]) or 0
+                                    
+                                    local mult = 0
+                                    local bonusFixo = 0
+                                    local rank = "F"
+                                    local prog = ""
+                                    local statusDesc = ""
+
+                                    -- Cálculo da Base (Divisor 6 para comuns, Divisor 2 para Pesquisa)
+                                    local divisor = prof.isPesquisa and 2 or 6
+                                    local baseAtributos = prof.formula / divisor
+
+                                    -- 3. Lógica de Maestria (Exatamente como a sua anterior)
+                                    if maestria == "Sem Skill" then
+                                            mult, rank = 0.2, "F"
+                                            statusDesc = "Esse campeão não tem pratica o suficiente nesse ofício."
+                                            prog = "Nv 0: Modificador x0,2"
+                                    elseif maestria == "Básica" and nv ~= 0 then
+                                            mult, rank, bonusFixo = 0.25, "E", math.floor((nv - 1) / 2)
+                                            statusDesc = "Esse campeão tem os fundamentos basicos desse ofício."
+                                            prog = "Nv 1: Modificador x0,25 \nNv 2: 2 slot de receita rank F ou 1 rank E \nNv 3: Aumento de modificador = +1 \nNv 4: 2 slot de receita rank F ou 1 rank E \nNv 5: Aumento de modificador = +2 \nNv 6: 2 slot de receita rank F ou 1 rank E \nNv 7: Aumento de modificador = +3 \nNv 8: 2 slot de receita rank F ou 1 rank E \nNv 9: Aumento de modificador = +4 \nNv 10: 2 slot de receita rank F ou 1 rank E"
+                                    elseif maestria == "Intermediária" and nv ~= 0 then
+                                        mult, rank, bonusFixo = 0.33, "D", 4 + math.floor((nv - 1) / 2)
+                                        statusDesc = "Esse campeão tem habilidades consideráveis nesse ofício."
+                                        prog = "Nv 1: Modificador x0,33 e Aumento de modificador = +4 \nNv 2: 2 slot de receita rank E ou 1 rank D \nNv 3: Aumento de modificador = +5 \nNv 4: 2 slot de receita rank E ou 1 rank D \nNv 5: Aumento de modificador = +6 \nNv 6: 2 slot de receita rank E ou 1 rank D \nNv 7: Aumento de modificador = +7 \nNv 8: 2 slot de receita rank E ou 1 rank D \nNv 9: Aumento de modificador = +8 \nNv 10: 2 slot de receita rank E ou 1 rank D"
+                                    elseif maestria == "Avançada" and nv ~= 0 then
+                                        mult, rank, bonusFixo = 0.5, "B", 8 + math.floor((nv - 1) / 2)
+                                        statusDesc = "Esse campeão é reconhecido como um artesão experiente desse ofício."
+                                        prog = "Nv 1: Modificador x0,5 e Aumento de modificador = +8 \nNv 2: 2 slot de receita rank C ou 1 rank B \nNv 3: Aumento de modificador = +9 \nNv 4: 2 slot de receita rank C ou 1 rank B \nNv 5: Aumento de modificador = +10 \nNv 6: 2 slot de receita rank C ou 1 rank B \nNv 7: Aumento de modificador = +11 \nNv 8: 2 slot de receita rank C ou 1 rank B \nNv 9: Aumento de modificador = +12 \nNv 10: 2 slot de receita rank C ou 1 rank B"
+                                    elseif maestria == "Mestra" and nv ~= 0 then
+                                        mult, rank, bonusFixo = 0.75, "A", 12 + math.floor((nv - 1) / 2)
+                                        statusDesc = "Esse campeão tem um alto grau de maestria nesse ofício."
+                                        prog = "Nv 1: Modificador x0,75 e Aumento de modificador = +12 \nNv 2: 2 slot de receita rank B ou 1 rank A \nNv 3: Aumento de modificador = +13 \nNv 4: 2 slot de receita rank B ou 1 rank A \nNv 5: Aumento de modificador = +14 \nNv 6: 2 slot de receita rank B ou 1 rank A \nNv 7: Aumento de modificador = +15 \nNv 8: 2 slot de receita rank B ou 1 rank A \nNv 9: Aumento de modificador = +16 \nNv 10: 2 slot de receita rank B ou 1 rank A"
+                                    elseif maestria == "Suprema" and nv ~= 0 then
+                                        mult, rank, bonusFixo = 1, "S", 16 + math.floor((nv - 1) / 2)
+                                        statusDesc = "Esse campeão chegou ao ápice desse ofício, sendo reconhecido como um de seus maiores artesãos vivos."
+                                        prog = "Nv 1: Modificador x1 e Aumento de modificador = +16 \nNv 2: 2 slot de receita rank A ou 1 rank S \nNv 3: Aumento de modificador = +17 \nNv 4: 2 slot de receita rank A ou 1 rank S \nNv 5: Aumento de modificador = +18 \nNv 6: 2 slot de receita rank A ou 1 rank S \nNv 7: Aumento de modificador = +19 \nNv 8: 2 slot de receita rank A ou 1 rank S \nNv 9: Aumento de modificador = +20 \nNv 10: 2 slot de receita rank A ou 1 rank S"
+                                    end
+
+                                    -- 4. Aplicação dos Resultados nos campos da Ficha
+                                    local totalMod = math.floor(baseAtributos * mult) + bonusFixo + extra
+                                    
+                                    sheet["mod_" .. id] = "+" .. totalMod
+                                    sheet["limite_" .. id] = "Itens Rank " .. rank
+                                    sheet["progressao_" .. id] = prog
+                                    
+                                    -- Descrição dinâmica: Texto padrão + Descrição da Profissão + Status do Nível
+                                    sheet["descricao_" .. id] = prof.desc .. " \n" .. statusDesc
+                                end
+                            </event>
+                        </dataLink>
+
+                        
+                        
+                        <!-- Template Fabricação -->
+                        <template name="ProfissaoItem">
+                            <rectangle name="rec_$(field)" height="50" color="black" strokeSize="2" strokeColor="white" g="col" g-width="6" cornerType="round" xradius="5" yradius="5" margins="{top=10}">
+                                <label text="$(titulo)" height="50" fontSize="18" g="col" g-width="8" fontFamily="Wishes Script Caps Display" horzTextAlign="leading" vertTextAlign="center" margins="{left=10}"/>
+                                
+                                <label field="nvt_$(field)" g="col" g-width="1" height="50" fontSize="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"/>
+                                    <dataLink field="nv_$(field)">
+                                        <event name='onChange'>
+                                            local nvt = sheet["nv_$(field)"]
+                                            sheet["nvt_$(field)"] = sheet["nv_$(field)"]
+                                        </event>    
+                                    </dataLink>
+
+                                
+
+                                <rectangle height="40" color="black" strokeSize="2" strokeColor="white" g="col" g-width="3" cornerType="round" xradius="5" yradius="5" margins="{top=4,right=4,bottom=4}">
+                                    <label field="mod_$(field)" g="col" g-width="12" height="22" fontSize="20" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="leading"/>
+                                    <dataLink field="mod_$(field)" defaultValue="+0"/>
+                                    <button text="Mais" onClick="self.detalhes_$(field):show();" g="col" g-width="12" height="15" fontSize="11" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" margins="{left=3,right=3}"/>
+                                </rectangle>
+                            </rectangle>
+                            <dataLink field="maestria_$(field)">
+                                <event name="onChange">
+                                    local maestria = sheet["maestria_$(field)"]
+                                    local nv = sheet["nv_$(field)"]
+
+                                    if maestria == "Básica" then
+                                        self["rec_$(field)"].color = "#4e4e4e"
+                                    elseif maestria == "Intermediária" then
+                                        self["rec_$(field)"].color = "#00900c"
+                                    elseif maestria == "Avançada" then
+                                        self["rec_$(field)"].color = "#0032b0"
+                                    elseif maestria == "Mestra" then
+                                        self["rec_$(field)"].color = "#830285"
+                                    elseif maestria == "Suprema" then
+                                        self["rec_$(field)"].color = "#ffd000"
+                                    else
+                                        self["rec_$(field)"].color = "#000000"
+                                    end
+                                </event>
+                            </dataLink>
+
+                            <popup name="detalhes_$(field)" width="400" height="600" left="0" backOpacity="0.4">
+                                <rectangle color="black" left="-5" top="-5" width="410" height="610" />
+                                <rectangle color="#150e16" strokeSize="2" strokeColor="white" left="5" top="5" width="390" height="590" cornerType="round" xradius="5" yradius="5"/>
+                                <label text="$(titulo)" height="30" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" margins="{top=10}"/>
+                                <image animate="true" field="icone_$(field)" style="proportional" g="col" g-width="12" height="200" margins="{top=10}" url="$(url_imagem)"/>
+                                
+                                <label text="Maestria:" g="col" g-width="6" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{top=5}"/>
+                                <label text="Nível:" g="col" g-width="3" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{top=5}"/>
+                                <label text="Mod:" g="col" g-width="3" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{top=5}"/>
+                                
+                                <rectangle height="25" color="black" g="col" g-width="6" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5">
+                                    <comboBox field="maestria_$(field)" g="col" g-width="12" height="30" fontFamily="Wishes Script Caps Display" transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center"  items="{'Sem Skill', 'Básica', 'Intermediária', 'Avançada', 'Mestra', 'Suprema'}"/>
+                                </rectangle>
+                                <rectangle height="25" color="black" g="col" g-width="3" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5">
+                                    <edit field="nv_$(field)" g="col" g-width="12" height="30" fontFamily="Wishes Script Caps Display" transparent="true"  fontSize="20" horzTextAlign="center" vertTextAlign="center"/>
+                                </rectangle>
+                                <rectangle height="25" color="black" g="col" g-width="3" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5">
+                                    <edit field="mod_$(field)" g="col" g-width="12" height="30" fontFamily="Wishes Script Caps Display" transparent="true"  fontSize="20" horzTextAlign="center" vertTextAlign="center"/>
+                                </rectangle>
+
+                                <label text="Limite:" g="col" g-width="9" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{top=5}"/>
+                                <label text="Extra:" g="col" g-width="3" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{top=5}"/>
+                                
+                                <rectangle height="25" color="black" g="col" g-width="9" strokeSize="1" strokeColor="white" cornerType="round">
+                                    <edit field="limite_$(field)" g="col" g-width="12" height="30" fontFamily="Wishes Script Caps Display" readOnly="true" transparent="true"  fontSize="20" horzTextAlign="center" vertTextAlign="center"/>
+                                </rectangle>
+                                <rectangle height="25" color="black" g="col" g-width="3" strokeSize="1" strokeColor="white" cornerType="round">
+                                    <edit field="extra_$(field)" g="col" g-width="12" height="30" fontFamily="Wishes Script Caps Display" transparent="true"  fontSize="20" horzTextAlign="center" vertTextAlign="center"/>
+                                </rectangle>
+
+                                <label text="Descrição:" g="col" g-width="12" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{top=5}"/>
+                                <rectangle height="100" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round">
+                                    <textEditor align="client" field="descricao_$(field)" transparent="true" readOnly="true"/>
+                                </rectangle>
+
+                                <label text="Progressão:" g="col" g-width="12" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{top=5}"/>
+                                <rectangle height="80" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round">
+                                    <textEditor align="client" field="progressao_$(field)" transparent="true" readOnly="true"/>
+                                </rectangle>
+                            </popup>
+                        </template>
+                       
+                        <!-- Chamada Fabricação -->
+                        <ProfissaoItem titulo="Agricultura" field="agricultura" url_imagem="https://64.media.tumblr.com/6f1726e3295fa5783016857264a72196/tumblr_otlgprArnA1wvwhrpo1_500.gifv"/>
+                        <ProfissaoItem titulo="Alfaiataria" field="alfaiataria" url_imagem="https://i.makeagif.com/media/5-22-2015/OKbtX0.gif"/>
+                        <ProfissaoItem titulo="Alquimia" field="alquimia" url_imagem="https://monarchastrology.com/wp-content/uploads/2016/12/tumblr_odkb5iGVfK1vregoso1_500.gif"/>
+                        <ProfissaoItem titulo="Carpintaria" field="carpintaria" url_imagem="https://media1.tenor.com/m/W-eRISSkkeMAAAAd/usopp-hamer.gif"/>
+                        <ProfissaoItem titulo="Criação Animal" field="criacao_animal" url_imagem="https://64.media.tumblr.com/8f19e8ac9cb7a1d8273960a75b85e47c/tumblr_mqr3cza8tw1rdvsijo1_500.gif"/>
+                        <ProfissaoItem titulo="Culinária" field="culinaria" url_imagem="https://media1.tenor.com/m/z-k63cEg48sAAAAd/sanji-cooking.gif"/>
+                        <ProfissaoItem titulo="Ecomorfia" field="ecomorfia" url_imagem="https://blob.firecast.com.br/blobs/CNSAFLKM_4300216/ecomorfia.gif"/>   
+                        <ProfissaoItem titulo="Forja" field="forja" url_imagem="https://art.ngfiles.com/images/1081000/1081135_namenloose_smithing-at-the-smithy.gif?f1573595230"/>
+                        <ProfissaoItem titulo="Insetocultura" field="insetocultura" url_imagem="https://media.tenor.com/2Fwdg49b030AAAAM/honey-pooh.gif"/>
+                        <ProfissaoItem titulo="Joalheira" field="joalheria" url_imagem="https://media.tenor.com/dF8bikX7iQ8AAAAM/jewelry-sailor.gif"/>
+                        <ProfissaoItem titulo="Mineração" field="mineracao" url_imagem="https://media1.tenor.com/m/_s-8iQeg8kIAAAAd/the-strongest-sage-with-the-weakest-crest-iris.gif"/>
+                        <ProfissaoItem titulo="Pesca" field="pesca" url_imagem="https://images.payhip.com/o_1ide1q2ngvumjpvaki7d1hvd10.gif"/>
+                        <ProfissaoItem titulo="Pesquisa" field="pesquisa" url_imagem="https://media1.tenor.com/m/-jncD6Ey3CQAAAAd/studying-anime.gif"/>
+   
+                    </scrollBox>
+                </rectangle>
+
+                <button name="btn_mod_fabricacao" text="Ir para Modificadores de Fabricação" fontSize="20" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="leading" fontColor="white" align="bottom" margins="{bottom=10,right=10,left=10}">
+                    <event name="onClick">
+                        if self.tabela_atributos.visible == false then
+                            self.tabela_atributos.visible = true
+                            self.tabela_mods_fabricacao.visible = false
+                            self.btn_mod_fabricacao.text = "Ir para Modificadores de Fabricação"
+                        else
+                            self.tabela_atributos.visible = false
+                            self.tabela_mods_fabricacao.visible = true
+                            self.btn_mod_fabricacao.text = "Ir para Atributos"
+                        end
+                    </event>     
+                </button>
+            </rectangle>
+
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="4" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <label	height="25"	text="Background" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=15}"/>
+               	<label	height="25"	text="Origem:" 	fontSize="15" g="col" g-width="4" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=10,left=10}"/>
+					<rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="8" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10}">
+						<edit	height="30"	field="origem"	fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center"/>
+                        <dataLink field="origem" defaultValue="Fazendeiro"/>
+                            
+                       
+                    </rectangle>
+					
+					<label	height="25"	text="Tipo de Personagem:" 	fontSize="15" g="col" g-width="4" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=5}"/>
+					<rectangle  height="25"	color="black" cornerType="round"	  g="col" g-width="8" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10}">
+						<comboBox field="tipodepersonagem"   g="col" g-width="12" height="30"	horzTextAlign="center"  fontFamily="Wishes Script Caps Display"	 transparent="true"  fontSize="20"   items="{'Jogador', 'Nativo'}" margins="{left=3,right=3}"/>
+						<dataLink fields="{'tipodepersonagem'}" defaultValues="{'Nativo'}">
+						<event name="onChange">
+						if sheet.tipodepersonagem == "Jogador" then self.aba_minigames.visible = true;
+						else self.aba_minigames.visible = false;
+						end;
+						</event>
+						</dataLink>
+						
+					</rectangle>
+					
+					
+					<rectangle  height="425"	color="black" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=10,right=10,left=10}">
+						<richEdit   align="client" field="bg"  backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="16" animateImages="true" margins="{top=3,right=3,left=3,bottom=3}"/>
+					</rectangle>
+                
+            </rectangle>
+            
+            
+        </scrollBox>    
+    </rectangle >

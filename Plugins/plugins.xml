@@ -60,14 +60,6 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek" description="Ficha para o sistema Daggerheart" version="1.1" compilationDate="10022026004510" compilationDigest="743a9f8b97be4d57245eb86de995af69416402d2">
-        <info lang="pt-BR" name="Ficha Daggerheart" description="Ficha para o sistema Daggerheart" author="Ambesek"/>
-        <dataTypes>
-            <dataType id="Ambesek.daggerheart" title="Ficha Daggerheart" formType="sheetTemplate">
-                <info title="Ficha Daggerheart"/>
-            </dataType>
-        </dataTypes>
-    </element>
     <element id="Ambesek.dd2vtt" name="Universal VTT Importer" url="https://sdk3.firecast.app/Plugins/Scene/UniversalVTTImporter/output/UniversalVTTImporter.rpk?raw=true" fileName="UniversalVTTImporter.rpk" repositoryPath="Scene/UniversalVTTImporter/" author="Ambesek" description="Importa arquivos dd2vtt pro Firecast." version="1.2" compilationDate="02042024204439" compilationDigest="830153e17084e1dc7b84c9ce6e4dc6d6c692fb65">
         <info lang="pt-BR" name="Universal VTT Importer" description="Importa arquivos dd2vtt pro Firecast." author="Ambesek"/>
     </element>
@@ -151,7 +143,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://sdk3.firecast.app/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.9" compilationDate="18052024145707" compilationDigest="7d6ae4fc2610399c215fab7dc0f305c98d2d3fa6">
+    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://sdk3.firecast.app/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.9.1" compilationDate="06012026030315" compilationDigest="b319a91491397238f75d4f5e547d73f094483ae4">
         <info lang="pt-BR" name="Lista de PdMs" description="Janela acoplavel que exibe avatares para PdMs." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Lista.PdMs" title="Lista de PdMs" formType="tablesDock">
@@ -230,7 +222,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.14" compilationDate="18052024151826" compilationDigest="20f461877bce749270ac18edacdf97a7c7af1e33">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.14" compilationDate="20122025175423" compilationDigest="f5fbee3e6e5deb8373f6bd19ca3500363c7dc4f3">
         <info lang="pt-BR" name="Ficha Reinos d20" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20" formType="sheetTemplate">
@@ -451,6 +443,14 @@
         <dataTypes>
             <dataType id="Echo.Avatar.Legends" title="Avatar Legends" formType="sheetTemplate">
                 <info title="Avatar Legends"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="Beloved.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek, Beloved, Carlins, Py." description="Ficha para o sistema Daggerheart" version="1.0" compilationDate="23032026031558" compilationDigest="7b3fe2ba4b7ab2319ae7d89568cd948c5e41f6d7">
+        <info lang="pt-BR" name="Ficha Daggerheart" description="Ficha para o sistema Daggerheart" author="Ambesek, Beloved, Carlins, Py." site="NA"/>
+        <dataTypes>
+            <dataType id="Beloved.daggerheart" title="Ficha Daggerheart" formType="sheetTemplate">
+                <info title="Ficha Daggerheart"/>
             </dataType>
         </dataTypes>
     </element>
@@ -842,7 +842,15 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://sdk3.firecast.app/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="2.2" compilationDate="05032025132655" compilationDigest="431e0b25fbdb963086ec73765a57386803651a01">
+    <element id="Geral_PMU_Tibs" name="Pick Me Up" url="https://sdk3.firecast.app/Plugins/Sheets/Pick_Me_Up_2.0/output/Pick_Me_Up_2.0.rpk?raw=true" fileName="Pick_Me_Up_2.0.rpk" repositoryPath="Sheets/Pick_Me_Up_2.0/" author="Tibs" description="Plugin geral da mesa Pick Me Up." version="2.0" compilationDate="15042026031147" compilationDigest="3706e76c309e49f37cf9681d8c79898af6652681">
+        <info lang="pt-BR" name="Pick Me Up" description="Plugin geral da mesa Pick Me Up." author="Tibs" site="num tem..."/>
+        <dataTypes>
+            <dataType id="Pick_Me_Up_Geral" title="Pick Me Up" formType="sheetTemplate">
+                <info title="Pick Me Up"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://sdk3.firecast.app/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="2.2" compilationDate="20122025175402" compilationDigest="181e473c77edf4564ebf6a0c1b7bbe55757897d7">
         <info lang="pt-BR" name="Gerenciador de Campanha" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" formType="sheetTemplate">

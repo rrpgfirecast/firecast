@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rectangle 	align="client" 	color="black" >
+        <scrollBox align="client" margins="{left=5,right=5}">     
+            
+            <!-- Lista -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="3" g-max-width="1080" g-min-width="300" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <label	name="titulo_aura_magia" height="25" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=15}">    
+                    <label g="col" g-width="10"/>
+                    <button name="btnNova_Aura_Magia" text="+" height="30" g="col" g-width="2" margins="{right=5, top=-10}"/>
+                </label>    
+                    <script>
+                        local filter_Aura_MagiaArgument = "";
+                        
+                        local function prepFilter_Aura_Magia(inputStr)
+                            return string.lower(Utils.removerAcentos(inputStr or ""));
+                        end;
+                        
+                        local function run_Aura_MagiaFilter()           
+                            filter_Aura_MagiaArgument = prepFilter_Aura_Magia(self.edtFiltro_Aura_Magia.text);
+                            self.lista_aura_magia:reorganize();
+                        end;        
+                        
+                        local function check_Aura_MagiaFilter() 
+                            local newArg = prepFilter_Aura_Magia(self.edtFiltro_Aura_Magia.text);
+                            if newArg ~= filter_Aura_MagiaArgument then
+                                run_Aura_MagiaFilter();
+                            end;
+                        end;
+                    </script>
+
+                    <timer name="tmrFiltro_Aura_Magia" interval="1000" onTimer="check_Aura_MagiaFilter()"/>                    
+                    <edit g="row" g-min-height="25" textPrompt="Buscar Item..." name="edtFiltro_Aura_Magia" onChange="run_Aura_MagiaFilter()" margins="{top=5,right=5,left=5}" hint="Buscar Item ou Tag..."/>
+
+                    <scrollBox g="row" g-vert-tile="true" margins="{top=5,right=2,left=2,bottom=2}" g-cnt-gutter="1">
+                        <gridRecordList name="lista_aura_magia" field="itens_Aura_Magia" templateForm="template_Aura_Magia" minQt="0" selectable="true" height="600" g="col" g-width="12">
+                            <event name="onCompare">
+                                return Utils.compareStringPtBr(left.nome_Aura_Magia or "", right.nome_Aura_Magia or "");
+                            </event>
+                            <event name="onFilter">
+                                if (filter_Aura_MagiaArgument == nil) or (filter_Aura_MagiaArgument == "") then
+                                    return true;
+                                end;
+
+                                local nome = prepFilter_Aura_Magia(node.nome_Aura_Magia);
+                                local descCura = prepFilter_Aura_Magia(node.tags_Aura_Magia);
+
+                                return (nome ~= "" and string.find(nome, filter_Aura_MagiaArgument, 1, true)) or 
+                                    (descCura ~= "" and string.find(descCura, filter_Aura_MagiaArgument, 1, true));
+                            </event>
+                        </gridRecordList>
+                                
+                        <script>
+                            -- Função de reordenação específica para a nova lista
+                            local function reordenar_Aura_Magia()
+                                local nodes = NDB.getChildNodes(sheet.itens_Aura_Magia)
+                                table.sort(nodes, function(a, b)
+                                    return (tonumber(a.ordem_Aura_Magia) or 0) &lt; (tonumber(b.ordem_Aura_Magia) or 0)
+                                end)
+                                self.lista_aura_magia:reorganize()
+                            end
+
+                            -- Configuração do botão de adicionar
+                            self.btnNova_Aura_Magia.onClick = function()
+                                local novo = self.lista_aura_magia:append()
+                                if novo then
+                                    novo.nome_Aura_Magia = "Novo Item"
+                                    novo.ordem_Aura_Magia = #NDB.getChildNodes(sheet.itens_Aura_Magia) + 1
+                                    reordenar_Aura_Magia()
+                                end
+                            end
+                            -- Lógica de seleção: agora aponta para o dataScopeBox 'detalheSkill'
+                            self.lista_aura_magia.onSelect = function()
+                                local node = self.lista_aura_magia.selectedNode;
+                                self.detalhe_aura_magia:setNodeObject(node);
+                                self.detalhe_aura_magia.visible = (node ~= nil);
+
+                                self.abertoPeloSlot = false;
+
+                            
+                            end;
+                        </script>
+                    </scrollBox>        
+            </rectangle>
+            
+            <!-- Item da Lista -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="5" g-max-width="1080" g-min-width="300" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <dataScopeBox name="detalhe_aura_magia" align="client" visible="false">
+  
+                    
+                    <label height="20" text="Nome:" fontSize="15" g="col" g-width="1" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" margins="{top=10}"/>
+                    
+                    <rectangle height="30" color="black" cornerType="round" g="col" g-width="8" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}">
+                        <edit field="nome_Aura_Magia" align="client" transparent="true" fontSize="22"  vertTextAlign="center" horzTextAlign="center" fontFamily="Wishes Script Caps Display"  />
+                    </rectangle>
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="3" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=8}">
+                        <colorSelection field="cor_Aura_Magia" height="18" horzTextAlign="center" fontFamily="Wishes Script Caps Display" transparent="true" fontSize="15" margins="{right=3}"/>
+                    </rectangle>
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="12" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}" >
+                        <edit name="tags_Aura_Magia" field="tags_Aura_Magia" g="col" g-width="12" transparent="true" fontSize="14" height="20"  horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+                    </rectangle>
+
+                    <dataLink field="tags_Aura_Magia" defaultValue="Tags">
+                        <event name="onChange">
+                            if sheet ~= nil then
+                                if sheet.tags_Aura_Magia == nil then
+                                    sheet.tags_Aura_Magia = "Tags"
+                                end
+                            end
+                        </event>
+                    </dataLink>
+
+                    <richEdit field="descricaoLongaSkill" align="client" backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="14" animateImages="true" margins="{top=65,right=4,left=4,bottom=4}"/>  
+                </dataScopeBox>
+            </rectangle>
+
+            <!-- Afinidades -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="4" g-max-width="1080" g-min-width="300" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <rectangle height="40" color="black" cornerType="round" g="col" g-width="12" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=10,right=5,left=5}">
+                    <comboBox field="aptitudemagia"  name="aptitudemagia" align="client"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="20"   items="{'Escolha...', 'Divina', 'Clarevidência',	'Mental', 'Produção', 'Demoniaca', 'Invocação', 'Elemental', 'Espiritual'}"/>
+                    <comboBox field="aptitudeaura"  name="aptitudeaura" align="client"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="20"   items="{'Escolha...', 'Reforço Fisico', 'Transmutação', 'Conjuração', 'Reforço Mental', 'Manipulação', 'Emissão'}"/>
+                </rectangle>
+                
+                <dataLink fields="{'aptitudemagia', 'afdivina', 'afclarevidencia', 'afespiritual', 'afmental', 'afelemental', 'afproducao', 'afinvocacao', 'afdemoniaca'}"
+                        defaultValues="{'Escolha...', 'Padrão', 'Padrão', 'Padrão', 'Padrão', 'Padrão', 'Padrão', 'Padrão', 'Padrão'}">
+                    <event name="onChange">
+
+                        local base = "/Imagens/03 - Afinidades/"
+
+                        -- nomes oficiais
+                        local nomes = {
+                            divina="Divina",
+                            clarevidencia="Clarevidência",
+                            espiritual="Espiritual",
+                            mental="Mental",
+                            elemental="Elemental",
+                            producao="Produção",
+                            invocacao="Invocação",
+                            demoniaca="Demoniaca"
+                        }
+
+                        -- cores por rank
+                        local rankCor = {
+                            S="ciano",
+                            A="azul",
+                            B="verde",
+                            C="amarelo",
+                            D="laranja",
+                            E="vermelho",
+                            F="preto"
+                        }
+
+                        -- afinidade base por aptidão
+                        local afinidades = {
+                            ["Escolha..."] = {todos="branco"},
+
+                            ["Divina"] = {
+                                divina="azul", clarevidencia="verde", espiritual="verde", mental="amarelo",
+                                elemental="amarelo", producao="laranja", invocacao="laranja", demoniaca="vermelho"
+                            },
+
+                            ["Clarevidência"] = {
+                                clarevidencia="azul", mental="verde", divina="verde", producao="amarelo",
+                                espiritual="amarelo", elemental="laranja", demoniaca="laranja", invocacao="vermelho"
+                            },
+
+                            ["Mental"] = {
+                                mental="azul", producao="verde", clarevidencia="verde", demoniaca="amarelo",
+                                divina="amarelo", invocacao="laranja", espiritual="laranja", elemental="vermelho"
+                            },
+
+                            ["Produção"] = {
+                                producao="azul", mental="verde", demoniaca="verde", invocacao="amarelo",
+                                clarevidencia="amarelo", divina="laranja", elemental="laranja", espiritual="vermelho"
+                            },
+
+                            ["Demoniaca"] = {
+                                demoniaca="azul", invocacao="verde", producao="verde", elemental="amarelo",
+                                mental="amarelo", espiritual="laranja", clarevidencia="laranja", divina="vermelho"
+                            },
+
+                            ["Invocação"] = {
+                                invocacao="azul", elemental="verde", demoniaca="verde", espiritual="amarelo",
+                                producao="amarelo", divina="laranja", mental="laranja", clarevidencia="vermelho"
+                            },
+
+                            ["Elemental"] = {
+                                elemental="azul", invocacao="verde", espiritual="verde", demoniaca="amarelo",
+                                divina="amarelo", clarevidencia="laranja", producao="laranja", mental="vermelho"
+                            },
+
+                            ["Espiritual"] = {
+                                espiritual="azul", elemental="verde", divina="verde", invocacao="amarelo",
+                                clarevidencia="amarelo", mental="laranja", demoniaca="laranja", producao="vermelho"
+                            }
+                        }
+
+                        -- função pra montar caminho
+                        local function setImg(campo, cor)
+                            sheet["ap"..campo] = base .. cor .. "/" .. nomes[campo] .. " - .png"
+                        end
+
+                        local apt = sheet.aptitudemagia or "Escolha..."
+                        local tabela = afinidades[apt] or afinidades["Escolha..."]
+
+                        -- aplica base
+                        if tabela.todos then
+                            for campo in pairs(nomes) do
+                                setImg(campo, tabela.todos)
+                            end
+                        else
+                            for campo, cor in pairs(tabela) do
+                                setImg(campo, cor)
+                            end
+                        end
+
+                        -- override por rank
+                        for campo in pairs(nomes) do
+                            local rank = sheet["af"..campo]
+                            local cor = rankCor[rank]
+
+                            if cor then
+                                setImg(campo, cor)
+                            end
+                        end
+
+                    </event>
+                </dataLink>
+
+                <dataLink fields="{'aptitudeaura', 'afreforcof', 'aftransmutacao', 'afconjuracao', 'afreforcom', 'afmanipulacao', 'afemissao'}" 
+                            defaultValues="{'Escolha...', 'Padrão', 'Padrão', 'Padrão', 'Padrão', 'Padrão', 'Padrão'}">
+                    <event name="onChange">
+
+                    local function getCorPorRank(rank)
+                        local cores = {
+                            S = "ciano",
+                            A = "azul",
+                            B = "verde",
+                            C = "amarelo",
+                            D = "laranja",
+                            E = "vermelho",
+                            F = "preto"
+                        }
+                        return cores[rank]
+                    end
+
+                    local function setImg(prop, nome, cor)
+                        sheet[prop] = "/Imagens/03 - Afinidades/" .. cor .. "/" .. nome .. " - .png"
+                    end
+
+                    -- ========================
+                    -- BASE POR APTIDÃO
+                    -- ========================
+
+                    local base = {
+                        ["Escolha..."] = {
+                            reforcof="branco", transmutacao="branco", emissao="branco",
+                            conjuracao="branco", manipulacao="branco", reforcom="branco"
+                        },
+
+                        ["Reforço Fisico"] = {
+                            reforcof="azul", transmutacao="verde", emissao="verde",
+                            conjuracao="amarelo", manipulacao="amarelo", reforcom="vermelho"
+                        },
+
+                        ["Transmutação"] = {
+                            reforcof="verde", transmutacao="azul", emissao="amarelo",
+                            conjuracao="verde", manipulacao="vermelho", reforcom="amarelo"
+                        },
+
+                        ["Conjuração"] = {
+                            reforcof="amarelo", transmutacao="verde", emissao="vermelho",
+                            conjuracao="azul", manipulacao="amarelo", reforcom="verde"
+                        },
+
+                        ["Reforço Mental"] = {
+                            reforcof="vermelho", transmutacao="amarelo", emissao="amarelo",
+                            conjuracao="verde", manipulacao="verde", reforcom="azul"
+                        },
+
+                        ["Manipulação"] = {
+                            reforcof="amarelo", transmutacao="vermelho", emissao="verde",
+                            conjuracao="amarelo", manipulacao="azul", reforcom="verde"
+                        },
+
+                        ["Emissão"] = {
+                            reforcof="verde", transmutacao="amarelo", emissao="azul",
+                            conjuracao="vermelho", manipulacao="verde", reforcom="amarelo"
+                        }
+                    }
+
+                    local nomes = {
+                        reforcof = "Reforço Fisico",
+                        transmutacao = "Transmutação",
+                        emissao = "Emissão",
+                        conjuracao = "Conjuração",
+                        manipulacao = "Manipulação",
+                        reforcom = "Reforço Mental"
+                    }
+
+                    local props = {
+                        reforcof = "apreforcofisico",
+                        transmutacao = "aptransmutacao",
+                        emissao = "apemissao",
+                        conjuracao = "apconjuracao",
+                        manipulacao = "apmanipulacao",
+                        reforcom = "apreforcomental"
+                    }
+
+                    -- aplica base
+                    local escolha = base[sheet.aptitudeaura] or base["Escolha..."]
+
+                    for k, cor in pairs(escolha) do
+                        setImg(props[k], nomes[k], cor)
+                    end
+
+                    -- ========================
+                    -- OVERRIDE POR RANK
+                    -- ========================
+
+                    local ranks = {
+                        reforcof = sheet.afreforcof,
+                        transmutacao = sheet.aftransmutacao,
+                        conjuracao = sheet.afconjuracao,
+                        reforcom = sheet.afreforcom,
+                        manipulacao = sheet.afmanipulacao,
+                        emissao = sheet.afemissao
+                    }
+
+                    for k, rank in pairs(ranks) do
+                        local cor = getCorPorRank(rank)
+                        if cor then
+                            setImg(props[k], nomes[k], cor)
+                        end
+                    end
+
+                    </event>
+                </dataLink>
+                
+                <label g="col" g-width="11"/>
+                <button text="?" onClick="self.cores_afinidades:show();" g="col" g-width="1" height="25" fontSize="11" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" margins="{top=5,right=5}"/>
+                
+                <popup name='cores_afinidades' width="400" height="400" backOpacity='0.5'>
+                    <rectangle color="black" left="-5" top="-5" width="410" height="410" />
+                    <rectangle color="#150e16" strokeSize="2" strokeColor="white" left="5" top="5" width="390" height="390" cornerType="round" xradius="5" yradius="5">
+                        <label text="Cores e Afinidades" height="30" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" margins="{top=10}"/>
+                        
+                        <rectangle  height="25"	color="#00ffff" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <label text="S - 130% - Sinergia Perfeita"   fontColor="#003636" g="col" g-width="12" height="25"	horzTextAlign="center"  	   fontSize="12"    />
+                        </rectangle>
+                        
+                        <rectangle  height="25"	color="#0000ff" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <label text="A - 100% - Harmonia Natural"   fontColor="#9c9cff" g="col" g-width="12" height="25"	horzTextAlign="center"  	   fontSize="12"    />
+                        </rectangle>
+
+                        <rectangle  height="25"	color="#00ff00" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <label text="B - 70% - Talento Desenvolvido"   fontColor="#003600" g="col" g-width="12" height="25"	horzTextAlign="center"  	   fontSize="12"    />
+                        </rectangle>
+
+                        <rectangle  height="25"	color="#ffff00" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <label text="C - 50% - Ajuste"   fontColor="#3b3b00" g="col" g-width="12" height="25"	horzTextAlign="center"  	   fontSize="12"    />
+                        </rectangle>
+
+                        <rectangle  height="25"	color="#ff7c00" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <label text="D - 30% - Resistência"   fontColor="#5c2c00" g="col" g-width="12" height="25"	horzTextAlign="center"  	   fontSize="12"    />
+                        </rectangle>
+
+                        <rectangle  height="25"	color="#ff0000" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <label text="E - 10% - Rejeição"   fontColor="#ff9898" g="col" g-width="12" height="25"	horzTextAlign="center"  	   fontSize="12"    />
+                        </rectangle>
+
+                        <rectangle  height="25"	color="#000000" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <label text="F - 00% - Inversão"   fontColor="#fcfcfc" g="col" g-width="12" height="25"	horzTextAlign="center"  	   fontSize="12"    />
+                        </rectangle>
+                    </rectangle>  
+				</popup>               
+                    
+                
+                <image  	style="proportional" align="client" height="530" name="afinidadesmagia" 	src="/Imagens/03 - Afinidades/unico - mana.png" margins="{left=10, top=10, right=10,bottom=15}" visible="false">
+                    <image  style="proportional" align="client" height="530" name="apdivina" 			field="apdivina" />
+                    <image  style="proportional" align="client" height="530" name="apclarevidencia" 	field="apclarevidencia" />
+                    <image  style="proportional" align="client" height="530" name="apespiritual" 		field="apespiritual" />
+                    <image  style="proportional" align="client" height="530" name="apmental" 			field="apmental" />
+                    <image  style="proportional" align="client" height="530" name="apelemental" 		field="apelemental" />
+                    <image  style="proportional" align="client" height="530" name="approducao" 			field="approducao" />
+                    <image  style="proportional" align="client" height="530" name="apinvocacao" 		field="apinvocacao" />
+                    <image  style="proportional" align="client" height="530" name="apdemoniaca" 		field="apdemoniaca" />
+                </image>
+                
+                <image  	style="proportional" align="client" height="530" name="afinidadesaura" 		src="/Imagens/03 - Afinidades/unico - aura.png" margins="{left=10, top=10, right=10,bottom=15}" visible="false">	
+                    <image  style="proportional" align="client" height="530" name="apreforcofisico" 	field="apreforcofisico" />
+                    <image  style="proportional" align="client" height="530" name="aptransmutacao" 		field="aptransmutacao" />
+                    <image  style="proportional" align="client" height="530" name="apconjuracao" 		field="apconjuracao" />
+                    <image  style="proportional" align="client" height="530" name="apreforcomental" 	field="apreforcomental" />
+                    <image  style="proportional" align="client" height="530" name="apmanipulacao" 		field="apmanipulacao" />
+                    <image  style="proportional" align="client" height="530" name="apemissao" 			field="apemissao" />
+                </image>	
+
+                <button  name="botaocondicao" align="bottom" onClick="self.condicoescorpo:show();" text="Alterar" left="10" top="10" height="20" width="10" margins="{left=10, right=10,bottom=10}" /> 
+				
+
+
+
+                <!-- Popup para Mestre-->
+				<popup  name="condicoescorpo" width="400" height="400"  >
+                    <rectangle  name="afmagias" height="200"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{left=15, right=15, top=20}">
+                        <label g="col" g-width="2"/>
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afdivina"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+
+                        <label g="col" g-width="1"/>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afclarevidencia"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"   items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}" />
+                        </rectangle>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afespiritual"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+
+                        <label g="col" g-width="4"/>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afmental"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afelemental"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+
+                        <label g="col" g-width="4"/>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afproducao"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+
+                        <label g="col" g-width="2"/>
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afinvocacao"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+
+                        <label g="col" g-width="1"/>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afdemoniaca"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+                    </rectangle>
+                    
+                    <rectangle  name="afauras" height="200"	color="none" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{left=15, right=15, top=10}">
+                        <label g="col" g-width="4"/>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afreforcof"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"   items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}" />
+                        </rectangle>
+
+                        <label g="col" g-width="4"/>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afemissao"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+                        
+                        <label g="col" g-width="4"/>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="aftransmutacao"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afmanipulacao"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+
+                        <label g="col" g-width="4"/>
+
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afconjuracao"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+                        
+                        <label g="col" g-width="4"/>
+                        
+                        <rectangle  height="25"	color="none" cornerType="round"	  g="col" g-width="4" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=15}">
+                                <comboBox field="afreforcom"   g="col" g-width="12" height="25"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="12"    items="{'Padrão', 'S', 'A', 'B', 'C', 'D', 'E', 'F'}"/>
+                        </rectangle>
+
+                    </rectangle>
+				</popup> 
+
+            </rectangle>
+        </scrollBox>    
+    </rectangle >

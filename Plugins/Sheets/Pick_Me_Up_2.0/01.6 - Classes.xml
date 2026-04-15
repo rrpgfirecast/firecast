@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rectangle 	align="client" 	color="black" >
+        <scrollBox align="client" margins="{left=5,right=5}">     
+            
+            <!-- Raça -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="12" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <!-- Geral -->
+                <label	align="client"	text="Ainda em desenvolvimento. \nEm breve na atualização do sistema." fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" vertTextAlign="center" margins="{top=15}"/>
+                    
+                  
+            </rectangle>
+            
+            
+
+            
+        </scrollBox>    
+    </rectangle >

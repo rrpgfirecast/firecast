@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Textos -->
+    <rectangle 	align="client" name="texto" color="black" visible="false" g-cnt-gutter="10">
+        <scrollBox align="client" margins="{left=5,right=5}">     
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="4" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <button name="btnNovoTexto" text="Adicionar Texto" height="30" g="col" g-width="12" margins="{top=5,right=5,left=5}"/>
+                
+                <script>
+                    local currentFilterTextos = "";
+                    
+                    local function prepareStrForFilterTextos(inputStr)
+                        return string.lower(Utils.removerAcentos(inputStr or ""));
+                    end;
+                    
+                    local function executeFilterTextos()
+                        currentFilterTextos = prepareStrForFilterTextos(self.edtFiltroTextos.text);
+                        self.listatextos:reorganize();
+                    end;
+                    
+                    local function checkNeedExecuteFilterTextos()
+                        local newFilterArgument = prepareStrForFilterTextos(self.edtFiltroTextos.text);
+                        
+                        if newFilterArgument ~= currentFilterTextos then
+                            executeFilterTextos();
+                        end;
+                    end;
+                </script>
+
+                <timer name="tmrFiltroTextos" interval="1000" onTimer="checkNeedExecuteFilterTextos()"/>
+                <edit g="row" g-min-height="25" textPrompt="Filtrar textos..." name="edtFiltroTextos" onChange="executeFilterTextos()" margins="{top=5,right=5,left=5}" />
+
+                <scrollBox g="row" g-vert-tile="true" margins="{top=5,right=2,left=2,bottom=2}" g-cnt-gutter="1">
+                    <gridRecordList name="listatextos" field="textos" templateForm="templateTextos" minQt="0" selectable="true" height="550" g="col" g-width="12">
+                        <event name="onCompare">
+                            return Utils.compareStringPtBr(left.nome or "", right.nome or "");
+                        </event>
+                        <event name="onFilter">
+                            if (currentFilterTextos == nil) or (currentFilterTextos == "") then
+                                return true;
+                            end;
+
+                            local nome = prepFilterVinculo_2(node.nome);
+                            local descricao = prepFilterVinculo_2(node.descricao_texto);
+
+                            return (nome ~= "" and string.find(nome, currentFilterTextos, 1, true)) or 
+                                (descricao ~= "" and string.find(descricao, currentFilterTextos, 1, true));
+                        </event>
+                    </gridRecordList>
+                    <script>
+                        local function reordenarListaTextos()
+                            local nodes = NDB.getChildNodes(sheet.textos)
+                            table.sort(nodes, function(a, b)
+                                return (tonumber(a.ordem) or 0) &lt; (tonumber(b.ordem) or 0)
+                            end)
+                            self.listatextos:reorganize()
+                        end
+
+                        self.btnNovoTexto.onClick = function()
+                            local novo = self.listatextos:append()
+                            if novo then
+                                novo.nome = "Novo Texto"
+                                novo.descricao_texto = "Tags"
+                                novo.ordem = #NDB.getChildNodes(sheet.textos) + 1
+                                reordenarListaTextos()
+                            end
+                        end
+
+                        self.listatextos.onSelect = function()
+                            local node = self.listatextos.selectedNode
+                            self.textodetalhes.node = node
+                            self.textodetalhes.visible = (node ~= nil)
+                        end
+                    </script>
+                </scrollBox>      
+            </rectangle>
+
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="8" g-max-width="1920" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <dataScopeBox name="textodetalhes" align="client" visible="false">
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="12" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5,left=5}">
+                        <edit name="nometexto" field="nome" g="col" g-width="12" transparent="true" fontSize="14" height="20" horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+                    </rectangle>
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="8" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5, left=5}" >
+                        <edit name="descricao_texto" field="descricao_texto" g="col" g-width="12" transparent="true" fontSize="14" height="20"  horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+                        <dataLink field="descricao_texto" defaultValue="Tags"/>
+                    </rectangle>
+                    <label height="20" text="Cor:" fontSize="13" g="col" g-width="1" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" margins="{top=5,right=5}"/>
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="3" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5, right=5}">
+                        <colorSelection field="texto" height="18" horzTextAlign="center" fontFamily="Wishes Script Caps Display" transparent="true" fontSize="15" margins="{right=3}"/>
+                    </rectangle>
+                    <richEdit field="texto_livre" align="client" backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="14" animateImages="true" margins="{top=60,right=4,left=4,bottom=4}"/>  
+                </dataScopeBox>
+            </rectangle>  
+        </scrollBox>
+    </rectangle>

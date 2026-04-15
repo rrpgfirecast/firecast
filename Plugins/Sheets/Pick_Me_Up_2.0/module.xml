@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="Novo inventario.rpk" compilationDate="14042026195239" sdkApiVersion="88" sdkMinorApiVersion="2" compilationDigest="522561088c85b0c99d86e9774d7d0a3163a43ea0" compilationUniqueID="69de9b075963193e00e05089">
+    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
+    <id>Geral_PMU_Tibs</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>2.0</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Pick Me Up</name>
+        <description>Plugin geral da mesa Pick Me Up.</description>
+        <author>Tibs</author>
+        <site>num tem...</site>
+        <contact>Discord -&gt; @tibsss</contact>
+    </info>
+    <dataTypes>
+        <dataType title="Pick Me Up" name="frmPickMeUp" lfmFile="00 - Base.lfm">Pick_Me_Up_Geral</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="Pick_Me_Up_Geral" formType="sheetTemplate" lfmFile="00 - Base.lfm" formName="frmPickMeUp">
+                <info title="Pick Me Up"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>Pick Me Up</name>
+    <description>Plugin geral da mesa Pick Me Up.</description>
+    <author>Tibs</author>
+    <site>num tem...</site>
+    <contact>Discord -&gt; @tibsss</contact>
+</module>

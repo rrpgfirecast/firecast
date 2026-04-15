@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rectangle 	align="client" 	color="black" >
+        <scrollBox align="client" margins="{left=5,right=5}">     
+            
+            <!-- Minigames -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="5" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <!-- Geral -->
+                <label	height="25"	text="Experiência em Jogos" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" 	margins="{top=20}"/>
+					
+					<label		height="25"	text="O que é:" 		fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="leading" 	margins="{top=15,left=10}"/>
+					<rectangle  height="150"	color="black" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{right=10,left=10}">
+						<textEditor	align="client" field="explicacaoxpjogos" fontSize="15" fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" readOnly="true" margins="{top=5,bottom=5,right=5,left=5}"/>
+						<dataLink field="explicacaoxpjogos" defaultValue="Essa é uma mecanica exclusiva dos Jogarores, uma vez que apenas eles tem acesso ao sistema. Essa mecanica é usada para interagir com o sistema de Minigames, onde os Jogadores podem fazer jogos para auxiliar na produção de um item ou equipamento. Essa mecanica demonstra a experiência do jogodor com cada um dos 20 minigames, assim como a possibilidade de melhorar neles. A experienia em cada jogo representa a capacidade que um Jogador possue naquele jogo especifico, facilitando o sucesso no resultado deles quanto maior ela for."/>
+					</rectangle>
+				
+					<label		height="25"	text="Modificador:" 		fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="leading" 	margins="{top=15,left=10}"/>
+				    <rectangle  height="65"	color="black" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{right=10,left=10}">
+					    <textEditor	align="client" field="modxpjogos"		fontSize="15"  fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" readOnly="true" margins="{top=5,bottom=5,right=5,left=5}"/>
+						<dataLink field="modxpjogos" defaultValue="Os modificadores de cada minigame são contados separadamente e aumenta em +1 para cada 10 pontos de XP."/>
+					</rectangle>
+					
+					<label		height="25"	text="Como funciona:" 		fontSize="18" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="leading" 	margins="{top=15,left=10}"/>
+					<rectangle  height="115"	color="black" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{right=10,left=10}">
+						<textEditor	align="client" field="sistematicaxpjogos"		fontSize="15"  fontFamily="Wishes Script Caps Display" transparent="true" horzTextAlign="center" readOnly="true" margins="{top=5,bottom=5,right=5,left=5}"/>
+						<dataLink field="sistematicaxpjogos" defaultValue="O jogador tem 40 pontos de experiencia iniciais para distribuir entre os 20 minigames, \nrepresentando sua experiencia antes de ser invocado. \n \nVitorias concedem +2xp no minigame jogado, derrotas concedem +1xp. \nCada 10 pontos em um minigame aumentam o modificador ao realizar ele em +1. "/>
+					</rectangle>
+            </rectangle>
+            
+            <!-- Minigames -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="7" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <!-- Geral -->
+                    <template name="MiniGameRow">
+                        <label height="30" text="$(title)" fontSize="$(size)" g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" margins="{top=10}" />
+                        <rectangle height="35" color="black" cornerType="round" g="col" g-width="3" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="$(margin)">
+                            <edit height="42" field="$(xpfield)" fontSize="35" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" name="$(xpname)"/>
+                            <edit height="42" field="$(modfield)" fontSize="35" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="center" transparent="true" name="$(modname)" readOnly="true"/>
+                        </rectangle>
+                    </template>
+                    
+                    <label	height="30"	text="Jogo" 		fontSize="20" 		g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+					<rectangle  height="30"	color="none" cornerType="round"	  	g="col" g-width="3"  margins="{top=5}">					
+						<label	height="20"	text="Experiencia" 	fontSize="12" 	g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+						<label	height="20"	text="Mod" 			fontSize="12" 	g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>
+					</rectangle>
+					
+					<label	height="30"	text="Jogo" 		fontSize="20" 		g="col" g-width="3" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+					<rectangle  height="30"	color="none" cornerType="round"	  	g="col" g-width="3" margins="{top=5}">					
+						<label	height="20"	text="Experiencia" 	fontSize="12" 	g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>	
+						<label	height="20"	text="Mod" 			fontSize="12" 	g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center"	margins="{top=5}"/>
+					</rectangle>
+					
+					
+                    <MiniGameRow title="2048" size="22" xpfield="xp2048" modfield="mod2048" xpname="xp2048" modname="mod2048" margin="{top=10}"/>
+                    <MiniGameRow title="Batalha Naval" size="18" xpfield="xpbnaval" modfield="modbnaval" xpname="xpbnaval" modname="modbnaval" margin="{top=10,right=10}"/>
+                    <MiniGameRow title="Bejeweled" size="18" xpfield="xpbejeweled" modfield="modbejeweled" xpname="xpbejeweled" modname="modbejeweled" margin="{top=10}"/>
+                    <MiniGameRow title="Campo Minado" size="18" xpfield="xpcminado" modfield="modcminado" xpname="xpcminado" modname="modcminado" margin="{top=10,right=10}"/>
+                    <MiniGameRow title="Cubo Mágico" size="18" xpfield="xpcmagico" modfield="modcmagico" xpname="xpcmagico" modname="modcmagico" margin="{top=10}"/>
+                    <MiniGameRow title="Genius" size="18" xpfield="xpgenius" modfield="modgenius" xpname="xpgenius" modname="modgenius" margin="{top=10,right=10}"/>
+                    <MiniGameRow title="Jogo da Cobrinha" size="18" xpfield="xpjcobrinha" modfield="modjcobrinha" xpname="xpjcobrinha" modname="modjcobrinha" margin="{top=10}"/>
+                    <MiniGameRow title="Lights Out" size="18" xpfield="xplout" modfield="modlout" xpname="xplout" modname="modlout" margin="{top=10,right=10}"/>
+                    <MiniGameRow title="Mahjong" size="18" xpfield="xpmahjong" modfield="modmahjong" xpname="xpmahjong" modname="modmahjong" margin="{top=10}"/>
+                    <MiniGameRow title="Marble Maze" size="18" xpfield="xpmmaze" modfield="modmmaze" xpname="xpmmaze" modname="modmmaze" margin="{top=10,right=10}"/>
+                    <MiniGameRow title="Mastermind" size="18" xpfield="xpmmind" modfield="modmmind" xpname="xpmastermind" modname="modmastermind" margin="{top=10}"/>
+                    <MiniGameRow title="Pac-Man" size="18" xpfield="xppman" modfield="modpman" xpname="xppman" modname="modpman" margin="{top=10,right=10}"/>
+                    <MiniGameRow title="Paciência" size="18" xpfield="xppaciencia" modfield="modpaciencia" xpname="xppaciencia" modname="modpaciencia" margin="{top=10}"/>
+                    <MiniGameRow title="Piano Tiles" size="18" xpfield="xpptiles" modfield="modptiles" xpname="xpptiles" modname="modptiles" margin="{top=10,right=10}"/>
+                    <MiniGameRow title="Quebra-Cabeça" size="18" xpfield="xpqcabeca" modfield="modqcabeca" xpname="xpqcabeca" modname="modqcabeca" margin="{top=10}"/>
+                    <MiniGameRow title="Rush Hour" size="18" xpfield="xprhour" modfield="modrhour" xpname="xprhour" modname="modrhour" margin="{top=10,right=10}"/>
+                    <MiniGameRow title="Sliding Puzzle" size="18" xpfield="xpspuzzle" modfield="modspuzzle" xpname="xpspuzzle" modname="modspuzzle" margin="{top=10}"/>
+                    <MiniGameRow title="Sudoku" size="18" xpfield="xpsudoku" modfield="modsudoku" xpname="xpsudoku" modname="modsudoku" margin="{top=10,right=10}"/>
+                    <MiniGameRow title="Tetrix" size="18" xpfield="xptetrix" modfield="modtetrix" xpname="xptetrix" modname="modtetrix" margin="{top=10}"/>
+                    <MiniGameRow title="Torre de Hanói" size="18" xpfield="xptdh" modfield="modtdh" xpname="xptdh" modname="modtdh" margin="{top=10,right=10}"/>	
+										
+					<rectangle  height="30"	color="black" cornerType="round"	  g="col" g-width="12" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=25,right=10,left=10}">
+						<label	height="25"	text="Disponível:" 	fontSize="12" g="col" g-width="2" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" 	vertTextAlign="center" margins="{top=3}"/>	
+						<rectangle  height="23"	color="black" cornerType="round"	  g="col" g-width="1" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+							<edit	height="23"	name="xpjogosdisponivel" field="xpjogosdisponivel" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>
+						</rectangle>				
+						
+						<label	height="25"	text="Totais:" 	fontSize="10" g="col" g-width="1" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" 	vertTextAlign="center" margins="{top=3}"/>	
+						<rectangle  height="23"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+							<edit	height="23"	name="xptotaljogos" field="xptotaljogos" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+						</rectangle>
+
+						<label	height="23"	text="Vezes Jogadas" fontSize="15" g="col" g-width="3"  horzTextAlign="center" vertTextAlign="center" />	
+						<rectangle  height="23"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=3}">
+							<edit	height="23"	name="vezesjogadas" field="vezesjogadas" fontSize="15" g="col" g-width="12"  horzTextAlign="center" vertTextAlign="center" transparent="true" readOnly="true"/>	
+							<dataLink fields="{'vezesjogadas'}" defaultValue="0"/>
+						</rectangle>
+
+                        <dataLink fields="{'xpbnaval','xpbejeweled','xpcminado','xpcmagico','xpgenius','xpjcobrinha','xplout','xpmahjong','xpmmaze','xpmmind','xppman','xppaciencia','xpptiles','xpqcabeca','xprhour','xpspuzzle','xpsudoku','xptetrix','xptdh','xp2048'}" defaultValues="{'0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'}">
+                            <event name="onChange">
+                                local function xp(v)
+                                return tonumber(v) or 0
+                                end
+
+                                local function mod(v)
+                                return "+" .. tostring(math.floor(xp(v)/10))
+                                end
+
+                                local total =
+                                xp(sheet.xpbnaval) +
+                                xp(sheet.xpbejeweled) +
+                                xp(sheet.xpcminado) +
+                                xp(sheet.xpcmagico) +
+                                xp(sheet.xpgenius) +
+                                xp(sheet.xpjcobrinha) +
+                                xp(sheet.xplout) +
+                                xp(sheet.xpmahjong) +
+                                xp(sheet.xpmmaze) +
+                                xp(sheet.xpmmind) +
+                                xp(sheet.xppman) +
+                                xp(sheet.xppaciencia) +
+                                xp(sheet.xpptiles) +
+                                xp(sheet.xpqcabeca) +
+                                xp(sheet.xprhour) +
+                                xp(sheet.xpspuzzle) +
+                                xp(sheet.xpsudoku) +
+                                xp(sheet.xptetrix) +
+                                xp(sheet.xptdh) +
+                                xp(sheet.xp2048)
+
+                                sheet.xptotaljogos = total
+                                sheet.xpjogosdisponivel = math.max(0, 40 - total)
+
+                                sheet.modbnaval = mod(sheet.xpbnaval)
+                                sheet.modbejeweled = mod(sheet.xpbejeweled)
+                                sheet.modcminado = mod(sheet.xpcminado)
+                                sheet.modcmagico = mod(sheet.xpcmagico)
+                                sheet.modgenius = mod(sheet.xpgenius)
+                                sheet.modjcobrinha = mod(sheet.xpjcobrinha)
+                                sheet.modlout = mod(sheet.xplout)
+                                sheet.modmahjong = mod(sheet.xpmahjong)
+                                sheet.modmmaze = mod(sheet.xpmmaze)
+                                sheet.modmmind = mod(sheet.xpmmind)
+                                sheet.modpman = mod(sheet.xppman)
+                                sheet.modpaciencia = mod(sheet.xppaciencia)
+                                sheet.modptiles = mod(sheet.xpptiles)
+                                sheet.modqcabeca = mod(sheet.xpqcabeca)
+                                sheet.modrhour = mod(sheet.xprhour)
+                                sheet.modspuzzle = mod(sheet.xpspuzzle)
+                                sheet.modsudoku = mod(sheet.xpsudoku)
+                                sheet.modtetrix = mod(sheet.xptetrix)
+                                sheet.modtdh = mod(sheet.xptdh)
+                                sheet.mod2048 = mod(sheet.xp2048)
+                            </event>
+                        </dataLink>
+                    </rectangle>
+            </rectangle>	
+        </scrollBox>    
+    </rectangle >
