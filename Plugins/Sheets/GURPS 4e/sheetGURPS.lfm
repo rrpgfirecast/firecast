@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form formType="sheetTemplate" dataType="thirteen.GURPS4e" title="GURPS 4e" name="frmGURPS4e" theme="dark" onNodeReady="formatColors() defineDef() initDR() checkDRempty()">
+<form formType="sheetTemplate" dataType="thirteen.GURPS4e" title="GURPS 4e" name="frmGURPS4e" theme="dark" onNodeReady="formatColors() defineDef() initDR() checkDRempty() initMusica()" onHide="pausarMusica()" onShow="resumirMusica()" onExit="pararMusica()">
 <style>
 rectangle {
 	color: #272727;
@@ -192,7 +192,24 @@ label.invent {
 	<rectangle name="recFundo" />
 	<image name="imgFundo" field="URLImagemFundo" onResize="self.imgFundo:needRepaint();" />
 	<dataLink field="URLImagemFundo" defaultValue="/images/background.png" onChange="self.imgFundo:needRepaint();" />
-	<scrollBox align="client">
+	<scrollBox name="FullScreen" align="client">
+		
+		<!-- Barra de Música -->
+		<rectangle name="recBarMus" align="top" margins="{bottom=20}" visible="false">
+			<flowLayout align="top" autoHeight="true" horzAlign="center">
+				<flowPart align="top" minWidth="198" maxWidth="198" height="40">
+					<image url="/images/play.png" hitTest="true" cursor="handPoint" name="imgPlay" align="left" width="20" onClick="confirmarMusica()" hint="Tocar Música" opacity="0.85" onMouseEnter="self.imgPlay.opacity = 1.0" onMouseLeave="self.imgPlay.opacity = 0.85" />
+					<image url="/images/pause.png" hitTest="true" cursor="handPoint" name="imgPause" align="left" width="20" margins="{left=20}" onClick="pararMusica()" hint="Parar Música" opacity="0.85" onMouseEnter="self.imgPause.opacity = 1.0" onMouseLeave="self.imgPause.opacity = 0.85" />
+					
+					<image url="/images/minus.png" hitTest="true" cursor="handPoint" name="imgMinus" align="left" width="10" hint="Aumentar Volume" margins="{left=40}" onClick="abaixarVolume()" opacity="0.85" onMouseEnter="self.imgMinus.opacity = 1.0" onMouseLeave="self.imgMinus.opacity = 0.85" />
+					<label align="left" margins="{left=15}" width="30" field="musicaVolume" horzTextAlign="center" fontSize="9" fontColor="#9e9e9e" />
+					<image url="/images/volume.png" margins="{left=3, right=20}" align="left" width="10" />
+					<image url="/images/plus.png" hitTest="true" cursor="handPoint" name="imgPlus" width="10" align="left" hint="Aumentar Volume" onClick="aumentarVolume()" opacity="0.85" onMouseEnter="self.imgPlus.opacity = 1.0" onMouseLeave="self.imgPlus.opacity = 0.85" />
+					
+					<dataLink field="musicaVolume" defaultValue="20%" onChange="atualizarVolume()" />
+				</flowPart>
+			</flowLayout>
+		</rectangle>
 		
 		<!-- Moldura da ficha -->
 		<flowLayout align="top" autoHeight="true" horzAlign="center">
@@ -327,6 +344,7 @@ label.invent {
 		
 		<!-- Botão de troca de fundo da ficha -->
 		<btnImgFundo />
+		<btnBarraMusica />
 		
 		<ControlesInvisiveis />
 	</scrollBox>

@@ -1,7 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmScripts">
 	<script><![CDATA[
+	require("utils.lua")
 	
+	local Audio = require("audio.lua")
+	local musicaTrackAtual = nil
+	local musicaPosicaoSalva = 0
+	local musicaFoiPausada = false
+	local musicaGeneracao = 0
+	local MUSIC_KEY = "__gurpsMusicaTrack"
+
+	local function getVolume()
+		return (tonumber((sheet.musicaVolume:gsub("%%", ""))) or 20) / 100
+	end
+
+	-- package.loaded é o cache de módulos do Lua — sobrevive ao reload do contexto da ficha
+	local function _getTrackPersistente()
+		return package.loaded[MUSIC_KEY] or rawget(Audio, MUSIC_KEY)
+	end
+	local function _setTrackPersistente(t)
+		package.loaded[MUSIC_KEY] = t
+		rawset(Audio, MUSIC_KEY, t)
+	end
+
+	local function _pararTrack(t)
+		if t ~= nil then
+			pcall(function() t.audioStream.volume = 0 end)
+			pcall(function() t.audioStream.enabled = false end)
+			-- Seek pro fim dispara autoRemoveOnEOF de forma síncrona
+			pcall(function() t.audioStream:setPosition(999999) end)
+			pcall(function() _obj_invoke(t.handle, 'RemoveTrack') end)
+			pcall(function() t:remove() end)
+		end
+	end
+
+	local function _pararTudoNaPlayer()
+		pcall(function() _obj_invoke(Audio.defaultPlayer.handle, 'StopAll') end)
+		pcall(function() _obj_invoke(Audio.defaultPlayer.handle, 'Stop') end)
+		pcall(function() _obj_invoke(Audio.defaultPlayer.handle, 'Clear') end)
+		pcall(function() _obj_invoke(Audio.handle, 'StopAll') end)
+		pcall(function() _obj_invoke(Audio.handle, 'StopAllPlayback') end)
+	end
+
+	function initMusica()
+		musicaFoiPausada = false
+		if sheet.MusicaHabilitada then
+			self.recBarMus.visible = true
+			self.btnBarraMusica.visible = true
+			self.edtMusicaURL.visible = true
+			self.FullScreen:needRepaint()
+
+			local url = sheet.musicaURL
+			if url and url ~= "" then
+				tocarMusica(url)
+			end
+		else
+			self.recBarMus.visible = false
+			self.btnBarraMusica.visible = false
+			self.edtMusicaURL.visible = false
+			self.FullScreen:needRepaint()
+		end
+	end
+
+	function tocarMusica(url)
+		tocarMusicaDePosicao(url, 0)
+	end
+
+	function tocarMusicaDePosicao(url, pos)
+		_pararTrack(musicaTrackAtual)
+		_pararTrack(_getTrackPersistente())
+		_pararTudoNaPlayer()
+		musicaTrackAtual = nil
+		_setTrackPersistente(nil)
+		musicaGeneracao = musicaGeneracao + 1
+		local gen = musicaGeneracao
+		Audio.defaultPlayer:play(url, getVolume()):thenDo(function(track)
+			if gen ~= musicaGeneracao then
+				pcall(function() track:remove() end)
+				return
+			end
+			musicaTrackAtual = track
+			_setTrackPersistente(track)
+			if pos and pos > 0 then
+				pcall(function() track.audioStream:setPosition(pos) end)
+			end
+			musicaPosicaoSalva = 0
+		end)
+	end
+
+	function confirmarMusica()
+		changeImage(self.imgPlay, "/images/play-g.png")
+		self.imgPlay:needRepaint()
+
+		local url = sheet.musicaURL
+		if url and url ~= "" then
+			musicaPosicaoSalva = 0
+			tocarMusica(url)
+		end
+
+		setTimeout(function()
+			changeImage(self.imgPlay, "/images/play.png")
+			self.imgPlay:needRepaint()
+		end, 250)
+	end
+
+	function pausarMusica()
+		local t = musicaTrackAtual or _getTrackPersistente()
+		if t ~= nil then
+			pcall(function()
+				musicaPosicaoSalva = t.audioStream:getPosition()
+			end)
+			_pararTrack(t)
+			musicaFoiPausada = true
+		end
+		musicaTrackAtual = nil
+		_setTrackPersistente(nil)
+	end
+
+	function resumirMusica()
+		if sheet.MusicaHabilitada then
+			if not musicaFoiPausada then return end
+			musicaFoiPausada = false
+			local url = sheet.musicaURL
+			if url and url ~= "" then
+				tocarMusicaDePosicao(url, musicaPosicaoSalva)
+			end
+		end
+	end
+
+	function pararMusica()
+		musicaPosicaoSalva = 0
+		_pararTrack(musicaTrackAtual or _getTrackPersistente())
+		musicaTrackAtual = nil
+		_setTrackPersistente(nil)
+
+		changeImage(self.imgPause, "/images/pause-g.png")
+		self.imgPause:needRepaint()
+
+		setTimeout(function()
+			changeImage(self.imgPause, "/images/pause.png")
+			self.imgPause:needRepaint()
+		end, 250)
+	end
+
+	function atualizarVolume()
+		local t = musicaTrackAtual or _getTrackPersistente()
+		if t ~= nil then
+			pcall(function() t.audioStream.volume = getVolume() end)
+		end
+	end
+	
+	function abaixarVolume()
+		local volAtual = tonumber((sheet.musicaVolume:gsub("%%", "")))
+		volAtual = volAtual or 0
+		
+		if volAtual > 0 then
+			sheet.musicaVolume = tostring(volAtual - 10) .. "%"
+		end
+		
+		changeImage(self.imgMinus, "/images/minus-g.png")
+		self.imgMinus:needRepaint()
+
+		setTimeout(function()
+			changeImage(self.imgMinus, "/images/minus.png")
+			self.imgMinus:needRepaint()
+		end, 250)
+	end
+	
+	function aumentarVolume()
+		local volAtual = tonumber((sheet.musicaVolume:gsub("%%", "")))
+		volAtual = volAtual or 0
+		
+		if volAtual < 100 then
+			sheet.musicaVolume = tostring(volAtual + 10) .. "%"
+		end
+		
+		changeImage(self.imgPlus, "/images/plus-g.png")
+		self.imgPlus:needRepaint()
+
+		setTimeout(function()
+			changeImage(self.imgPlus, "/images/plus.png")
+			self.imgPlus:needRepaint()
+		end, 250)
+	end
+	
+	function changeImage(objImg, urlImg)
+		objImg.url = urlImg
+	end
+
 	DRdefault = {
 		{"Cabeça", {"Crânio", "Olhos", "Rosto"}},
 		{"Corpo", {"Pescoço", "Tronco", "Virilha"}},
