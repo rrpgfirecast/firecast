@@ -2,48 +2,49 @@
 <form name="frmScripts">
 	<script><![CDATA[
 	require("utils.lua")
-	
+
 	local Audio = require("audio.lua")
-	local musicaTrackAtual = nil
-	local musicaPosicaoSalva = 0
-	local musicaFoiPausada = false
-	local musicaGeneracao = 0
-	local MUSIC_KEY = "__gurpsMusicaTrack"
+
+	-- Track global único: apenas uma música toca de cada vez, em qualquer ficha
+	local _TRACK_KEY = "__gurps4e_trackAtivo"
+	local _GEN_KEY   = "__gurps4e_genAtivo"
+
+	local function _getGlobalTrack() return package.loaded[_TRACK_KEY] end
+	local function _setGlobalTrack(t) package.loaded[_TRACK_KEY] = t end
+	local function _getGlobalGen()   return package.loaded[_GEN_KEY] or 0 end
+	local function _bumpGlobalGen()
+		local g = (package.loaded[_GEN_KEY] or 0) + 1
+		package.loaded[_GEN_KEY] = g
+		return g
+	end
+
+	-- Estado por instância: trackAtual é a referência própria de cada ficha
+	local _estados = {}
+
+	local function _estado()
+		if not _estados[self] then
+			_estados[self] = {foiPausada = false, posicaoSalva = 0, genLocal = 0, trackAtual = nil}
+		end
+		return _estados[self]
+	end
 
 	local function getVolume()
-		return (tonumber((sheet.musicaVolume:gsub("%%", ""))) or 20) / 100
-	end
-
-	-- package.loaded é o cache de módulos do Lua — sobrevive ao reload do contexto da ficha
-	local function _getTrackPersistente()
-		return package.loaded[MUSIC_KEY] or rawget(Audio, MUSIC_KEY)
-	end
-	local function _setTrackPersistente(t)
-		package.loaded[MUSIC_KEY] = t
-		rawset(Audio, MUSIC_KEY, t)
+		return (tonumber((tostring(sheet.musicaVolume or ""):gsub("%%", ""))) or 20) / 100
 	end
 
 	local function _pararTrack(t)
 		if t ~= nil then
 			pcall(function() t.audioStream.volume = 0 end)
 			pcall(function() t.audioStream.enabled = false end)
-			-- Seek pro fim dispara autoRemoveOnEOF de forma síncrona
-			pcall(function() t.audioStream:setPosition(999999) end)
 			pcall(function() _obj_invoke(t.handle, 'RemoveTrack') end)
 			pcall(function() t:remove() end)
 		end
 	end
 
-	local function _pararTudoNaPlayer()
-		pcall(function() _obj_invoke(Audio.defaultPlayer.handle, 'StopAll') end)
-		pcall(function() _obj_invoke(Audio.defaultPlayer.handle, 'Stop') end)
-		pcall(function() _obj_invoke(Audio.defaultPlayer.handle, 'Clear') end)
-		pcall(function() _obj_invoke(Audio.handle, 'StopAll') end)
-		pcall(function() _obj_invoke(Audio.handle, 'StopAllPlayback') end)
-	end
-
 	function initMusica()
-		musicaFoiPausada = false
+		local e = _estado()
+		e.foiPausada = false
+		e.trackAtual = nil
 		if sheet.MusicaHabilitada then
 			self.recBarMus.visible = true
 			self.btnBarraMusica.visible = true
@@ -67,24 +68,25 @@
 	end
 
 	function tocarMusicaDePosicao(url, pos)
-		_pararTrack(musicaTrackAtual)
-		_pararTrack(_getTrackPersistente())
-		_pararTudoNaPlayer()
-		musicaTrackAtual = nil
-		_setTrackPersistente(nil)
-		musicaGeneracao = musicaGeneracao + 1
-		local gen = musicaGeneracao
+		local e = _estado()
+		-- Para qualquer track ativa globalmente (de qualquer instância)
+		_pararTrack(_getGlobalTrack())
+		_setGlobalTrack(nil)
+		e.trackAtual = nil
+		e.genLocal = e.genLocal + 1
+		local genL = e.genLocal
+		local genG = _bumpGlobalGen()
 		Audio.defaultPlayer:play(url, getVolume()):thenDo(function(track)
-			if gen ~= musicaGeneracao then
+			if genL ~= e.genLocal or genG ~= _getGlobalGen() then
 				pcall(function() track:remove() end)
 				return
 			end
-			musicaTrackAtual = track
-			_setTrackPersistente(track)
+			e.trackAtual = track
+			_setGlobalTrack(track)
 			if pos and pos > 0 then
 				pcall(function() track.audioStream:setPosition(pos) end)
 			end
-			musicaPosicaoSalva = 0
+			e.posicaoSalva = 0
 		end)
 	end
 
@@ -92,9 +94,10 @@
 		changeImage(self.imgPlay, "/images/play-g.png")
 		self.imgPlay:needRepaint()
 
+		local e = _estado()
 		local url = sheet.musicaURL
 		if url and url ~= "" then
-			musicaPosicaoSalva = 0
+			e.posicaoSalva = 0
 			tocarMusica(url)
 		end
 
@@ -105,34 +108,45 @@
 	end
 
 	function pausarMusica()
-		local t = musicaTrackAtual or _getTrackPersistente()
+		local e = _estado()
+		e.foiPausada = true
+		e.genLocal = e.genLocal + 1
+		-- Salva posição e para apenas a track DESTA instância (não _getGlobalTrack)
+		local t = e.trackAtual
 		if t ~= nil then
-			pcall(function()
-				musicaPosicaoSalva = t.audioStream:getPosition()
-			end)
+			pcall(function() e.posicaoSalva = t.audioStream:getPosition() end)
 			_pararTrack(t)
-			musicaFoiPausada = true
+			-- Só limpa o global se esta instância ainda o possui
+			if _getGlobalTrack() == t then
+				_setGlobalTrack(nil)
+			end
+			e.trackAtual = nil
 		end
-		musicaTrackAtual = nil
-		_setTrackPersistente(nil)
 	end
 
 	function resumirMusica()
+		local e = _estado()
 		if sheet.MusicaHabilitada then
-			if not musicaFoiPausada then return end
-			musicaFoiPausada = false
+			if not e.foiPausada then return end
+			e.foiPausada = false
 			local url = sheet.musicaURL
 			if url and url ~= "" then
-				tocarMusicaDePosicao(url, musicaPosicaoSalva)
+				tocarMusicaDePosicao(url, e.posicaoSalva)
 			end
 		end
 	end
 
 	function pararMusica()
-		musicaPosicaoSalva = 0
-		_pararTrack(musicaTrackAtual or _getTrackPersistente())
-		musicaTrackAtual = nil
-		_setTrackPersistente(nil)
+		local e = _estado()
+		e.posicaoSalva = 0
+		local t = e.trackAtual
+		if t ~= nil then
+			_pararTrack(t)
+			if _getGlobalTrack() == t then
+				_setGlobalTrack(nil)
+			end
+			e.trackAtual = nil
+		end
 
 		changeImage(self.imgPause, "/images/pause-g.png")
 		self.imgPause:needRepaint()
@@ -144,20 +158,19 @@
 	end
 
 	function atualizarVolume()
-		local t = musicaTrackAtual or _getTrackPersistente()
+		local e = _estado()
+		local t = e.trackAtual
 		if t ~= nil then
 			pcall(function() t.audioStream.volume = getVolume() end)
 		end
 	end
-	
+
 	function abaixarVolume()
-		local volAtual = tonumber((sheet.musicaVolume:gsub("%%", "")))
-		volAtual = volAtual or 0
-		
+		local volAtual = tonumber((tostring(sheet.musicaVolume or ""):gsub("%%", ""))) or 0
 		if volAtual > 0 then
 			sheet.musicaVolume = tostring(volAtual - 10) .. "%"
 		end
-		
+
 		changeImage(self.imgMinus, "/images/minus-g.png")
 		self.imgMinus:needRepaint()
 
@@ -166,15 +179,13 @@
 			self.imgMinus:needRepaint()
 		end, 250)
 	end
-	
+
 	function aumentarVolume()
-		local volAtual = tonumber((sheet.musicaVolume:gsub("%%", "")))
-		volAtual = volAtual or 0
-		
+		local volAtual = tonumber((tostring(sheet.musicaVolume or ""):gsub("%%", ""))) or 0
 		if volAtual < 100 then
 			sheet.musicaVolume = tostring(volAtual + 10) .. "%"
 		end
-		
+
 		changeImage(self.imgPlus, "/images/plus-g.png")
 		self.imgPlus:needRepaint()
 
@@ -183,7 +194,7 @@
 			self.imgPlus:needRepaint()
 		end, 250)
 	end
-	
+
 	function changeImage(objImg, urlImg)
 		objImg.url = urlImg
 	end
