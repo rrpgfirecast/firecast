@@ -6,10 +6,31 @@
 
 	<template name="btnImgFundo">
 		<button name="btnImagemFundo" anchors="top right" right="95" top="5" text="⚙" height="30" width="30" onClick="self.popImagemFundo:show('left', self.btnImagemFundo);"/>
-		<popup name="popImagemFundo" width="300" height="178" backOpacity="0" drawContainer="false">
+		<popup name="popImagemFundo" width="300" height="320" backOpacity="0" drawContainer="false">
 			<rectangle name="recSettings" align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
 				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
-					<label align="top" text="F U N D O   D A   F I C H A" margins="{bottom=10}" fontStyle="bold" fontFamily="Constantia"/>
+					<label align="top" text="M Ú S I C A   T E M A" margins="{bottom=10}" fontStyle="bold" fontFamily="Constantia"/>
+					<checkBox align="top" name="chbMusicaHabi" field="MusicaHabilitada" text="Habilitar Música Tema" />
+					<dataLink field="MusicaHabilitada" onChange="
+						if sheet.MusicaHabilitada then
+							self.recBarMus.visible = true
+							self.btnBarraMusica.visible = true
+							self.edtMusicaURL.visible = true
+							self.recSettings:needRepaint()
+							self.FullScreen:needRepaint()
+						else
+							pararMusica()
+							self.recBarMus.visible = false
+							self.btnBarraMusica.visible = false
+							self.edtMusicaURL.visible = false
+							self.recSettings:needRepaint()
+							self.FullScreen:needRepaint()
+						end
+					"/>
+					<label text="Insira um link que direciona diretamente para um arquivo mp3 ou ogg." fontStyle="italic" fontSize="10" align="top" autoSize="true" margins="{left=20, bottom=15}"/>
+					<edit name="edtMusicaURL" align="top" field="musicaURL" hint="Cole o link da música do personagem (.mp3 ou .ogg): https://exemplo.com/musica.mp3" />
+				
+					<label align="top" text="F U N D O   D A   F I C H A" margins="{bottom=10, top=20}" fontStyle="bold" fontFamily="Constantia"/>
 					<radioButton groupName="rdbFundo" text="Imagem" fieldValue="img" field="rdbFundo" align="top"/>
 					<edit name="edtURLImagem" field="URLImagemFundo" align="top" />
 					<horzLine/>
@@ -34,6 +55,22 @@
 				</rectangle>
 			</rectangle>
 		</popup>
+	</template>
+	
+
+	<template name="btnBarraMusica">
+		<button name="btnBarraMusica" anchors="top left" left="5" top="5" text="⯅" height="30" width="30" hint="Exibir/Ocultar a Barra de Música" visible="false">
+			<event name="onClick"><![CDATA[					
+				self.recBarMus.visible = not self.recBarMus.visible
+				self.FullScreen:needRepaint()
+				
+				if self.recBarMus.visible then
+					self.btnBarraMusica.text = "⯅"
+				else
+					self.btnBarraMusica.text = "⯆"
+				end
+			]]></event>
+		</button>
 	</template>
 	
 	<template name="btnConfigsAtributos">
