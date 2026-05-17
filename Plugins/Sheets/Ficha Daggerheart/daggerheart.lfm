@@ -3,9 +3,20 @@
     <style>
         label {
                 textTrimming: none;
+                fontColor: #EAE2D0;
         }
         button {
                 textTrimming: none;
+                fontColor: #F6E7BE;
+        }
+        edit {
+                fontColor: #FFF7E8;
+        }
+        comboBox {
+                fontColor: #FFF7E8;
+        }
+        checkBox {
+                fontColor: #EAE2D0;
         }
     </style>
     <script>
@@ -68,24 +79,76 @@
 	<import file="templates.xml"/>
     <import file="cardDataBase.xml"/>
 	
-	<tabControl align="client" g-cnt-gutter="5">
-		<tab title="Atributos">
+    <rectangle align="top" height="142" color="#13110E" strokeColor="#6E5531" strokeSize="1" padding="{left=12,right=12,top=10,bottom=10}" margins="{left=8,right=8,top=8,bottom=4}" cornerType="round" xradius="8" yradius="8">
+        <layout align="left" width="112" margins="{right=12}">
+            <rectangle align="client" color="#0B0B0B" strokeColor="#A77B32" strokeSize="1" padding="{left=4,right=4,top=4,bottom=4}" cornerType="round" xradius="6" yradius="6">
+                <image align="client" field="avatar" editable="true" style="proportional">
+                    <event name="OnStartDrag">
+                        drag:addData("imageURL", sheet.avatar)
+                    </event>
+                </image>
+            </rectangle>
+        </layout>
+
+        <layout align="client" g-cnt-line-spacing="6">
+            <label g="col" g-width="12" height="18" text="DAGGERHEART" fontSize="11" fontColor="#CDAA57" fontStyle="bold" horzTextAlign="leading"/>
+
+            <layout g="col" g-width="12" g-width-lg="5" height="42">
+                <label align="top" height="14" text="NAME" fontSize="10" fontColor="#B9A27B"/>
+                <edit align="client" field="nome" fontSize="18" transparent="false" textPrompt="Nome do personagem"/>
+            </layout>
+            <layout g="col" g-width="6" g-width-lg="3" height="42">
+                <label align="top" height="14" text="CLASS AND SUBCLASS" fontSize="10" fontColor="#B9A27B"/>
+                <edit align="client" field="classe" transparent="false" textPrompt="Classe"/>
+            </layout>
+            <layout g="col" g-width="6" g-width-lg="3" height="42">
+                <label align="top" height="14" text="HERITAGE" fontSize="10" fontColor="#B9A27B"/>
+                <edit align="client" field="heritage" transparent="false" textPrompt="Ancestry / Community"/>
+            </layout>
+            <layout g="col" g-width="12" g-width-lg="1" height="42">
+                <label align="top" height="14" text="LEVEL" fontSize="10" fontColor="#B9A27B" horzTextAlign="center"/>
+                <edit align="client" field="level" transparent="false" horzTextAlign="center" fontSize="18"/>
+            </layout>
+
+            <layout g="col" g-width="6" g-width-lg="2" height="34">
+                <label align="top" height="14" text="PRONOUNS" fontSize="10" fontColor="#B9A27B"/>
+                <edit align="client" field="pronouns" transparent="false"/>
+            </layout>
+            <layout g="col" g-width="6" g-width-lg="2" height="34">
+                <label align="top" height="14" text="EVASION" fontSize="10" fontColor="#B9A27B"/>
+                <edit align="client" field="evasion" transparent="false" horzTextAlign="center"/>
+            </layout>
+            <layout g="col" g-width="6" g-width-lg="2" height="34">
+                <label align="top" height="14" text="ARMOR SLOTS" fontSize="10" fontColor="#B9A27B"/>
+                <edit align="client" field="armor" transparent="false" horzTextAlign="center"/>
+            </layout>
+            <layout g="col" g-width="6" g-width-lg="2" height="34">
+                <label align="top" height="14" text="DAMAGE THRESHOLDS" fontSize="10" fontColor="#B9A27B"/>
+                <edit align="client" field="damageThresholds" transparent="false" horzTextAlign="center"/>
+            </layout>
+            <layout g="col" g-width="6" g-width-lg="2" height="34">
+                <label align="top" height="14" text="MAX HP" fontSize="10" fontColor="#B9A27B"/>
+                <edit align="client" field="maxHp" transparent="false" horzTextAlign="center"/>
+            </layout>
+            <layout g="col" g-width="6" g-width-lg="2" height="34">
+                <label align="top" height="14" text="MAX STRESS" fontSize="10" fontColor="#B9A27B"/>
+                <edit align="client" field="maxStress" transparent="false" horzTextAlign="center"/>
+            </layout>
+        </layout>
+    </rectangle>
+
+	<tabControl align="client" g-cnt-gutter="5" margins="{left=8,right=8,bottom=8}">
+		<tab title="Frente">
 			<import file="front.xml"/>
 		</tab>
-		<tab title="Inventário">
+		<tab title="Inventory">
 			<import file="inventory.xml"/>
 		</tab>
-        <tab title="Cartas">
+        <tab title="Cards">
             <import file="Cards.xml"/>
         </tab>
-        <tab title="Descrição">
+        <tab title="Info and Background">
             <import file="Description.xml"/>
-        </tab>
-        <tab title="Anotações">
-            <import file="Notes.xml"/>
-        </tab>
-        <tab title="Creditos">
-            <import file="Credits.xml"/>
         </tab>
 	</tabControl>
     <event name="onNodeReady">

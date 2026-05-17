@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="Cards" align="client" onShow="">
+<form name="Cards" align="client" onShow="inicializarSlotsDomain()">
     <style>
         button.btnSlot {
             cursor: handPoint;
@@ -16,11 +16,11 @@
             fontSize: 10;
             horzTextAlign: center;
             height: 18;
-            fontColor: #AAAAAA;
+            fontColor: #BEB39B;
         }
         rectangle.slotCarta {
-            color: #1a1a1a;
-            strokeColor: #555555;
+            color: #171512;
+            strokeColor: #6E5531;
             strokeSize: 2;
         }
     </style>
@@ -83,6 +83,29 @@
             combo.items = items
             combo.values = values
         end
+
+        local function inicializarSlotsDomain()
+            for slot = 1, 5 do  -- Ajuste conforme o número de slots (1 a 5)
+                local categoria = sheet["cardDomain" .. slot .. "Categoria"]
+                if categoria and categoria ~= "" then
+                    -- 1. Popula a combobox de nomes
+                    filtrarCartasDomain(slot)
+                    
+                    -- 2. Restaura o nome salvo
+                    local nomeSalvo = sheet["cardDomain" .. slot .. "Nome"]
+                    if nomeSalvo and nomeSalvo ~= "" then
+                        local combo = self:findControlByName("cbDomain" .. slot .. "Nome")
+                        if combo then
+                            combo.value = nomeSalvo
+                        end
+                    end
+                    
+                    -- 3. (Opcional) Força a atualização da imagem
+                    atualizarImagemDomain(slot)
+                end
+            end
+        end
+
         ]]>
     </script>
 
@@ -92,32 +115,31 @@
         <!-- ============================================================ -->
         <!-- LABELS DA LINHA 1                                            -->
         <!-- ============================================================ -->
-        <label g="col" g-width="12" g-width-lg="1"/>
-        <label g="col" g-width="12" g-width-lg="2" class="lblCategoria" text="Ancestry"/>
-        <label g="col" g-width="12" g-width-lg="2" class="lblCategoria" text="Community"/>
-        <rectangle g="col" g-width="12" g-width-lg="6" height="25" color="transparent">
-            <label align="top" class="lblCategoria" text="Class"/>
+        <label g="col" g-width="6" g-width-lg="3"/>
+        <rectangle g="col" g-width="6" height="25" color="transparent">
+            <label g="col" g-width="6" class="lblCategoria" text="Ancestry"/>
+            <label  g="col" g-width="6" class="lblCategoria" text="Community"/>
         </rectangle>
-        <label g="col" g-width="12" g-width-lg="1"/>
+        <label g="col" g-width="6" g-width-lg="3"/>
 
         <!-- Espaçamento para centralizar as colunas -->
-        <layout g="col" g-width="6" g-width-lg="1"/>
+        <layout g="col" g-width="6" g-width-lg="3"/>
 
         <!-- SLOT 1: Ancestry -->
-        <layout g="col" g-width="6" g-width-lg="2" g-min-height="450">
-            <rectangle align="top" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom1:show()">
-                <image align="client" field="cardAncestryURL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom1" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="6" g-width-lg="3" g-min-height="645">
+            <rectangle g="col" g-width="12" g-width-lg="12" g-min-height="620" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom1:show()">
+                <image align="client" field="cardAncestryURL" style="proportional" editable="false"/>
+                   <popup name="imageZoom1" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardAncestryURL"/>       
                     </popup>
             </rectangle>
-            <comboBox align="left" width="245" height="25" field="cardAncestryNome" margins="{top=3}"
-                items="{'-- Selecione --', 'Clank', 'Drakona', 'Dwarf', 'Elf', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah'}"
-                values="{'', 'Clank', 'Drakona', 'Dwarf', 'Elf', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah'}"
+            <comboBox g="col" g-width="12" g-width-lg="8" field="cardAncestryNome" margins="{top=3, right=3, bottom=3}"
+                items="{'-- Selecione --', 'Aetheris', 'Clank', 'Drakona', 'Dwarf', 'Earthkin', 'Elf', 'Emberkin', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Gnome', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah', 'Skykin', 'Tidekin'}"
+                values="{'', 'Aetheris', 'Clank', 'Drakona', 'Dwarf', 'Earthkin', 'Elf', 'Emberkin', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Gnome', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah', 'Skykin', 'Tidekin'}"
                 fontColor="white" fontSize="10"/>
             <dataLink field="cardAncestryNome" onChange="atualizarImagem('cardAncestry', imagensAncestry)"/>
             <ShowButton field="cardAncestry"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardAncestryURL = ""
                     sheet.cardAncestryNome = "-- Selecione --"
@@ -126,44 +148,52 @@
         </layout>
 
         <!-- SLOT 2: Community -->
-        <layout g="col" g-width="6" g-width-lg="2" g-min-height="450">
-            <rectangle align="top" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom2:show()">
-                <image align="client" field="cardCommunityURL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom2" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="6" g-width-lg="3" g-min-height="645">
+            <rectangle g="col" g-width="12" g-width-lg="12" height="620" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom2:show()">
+                <image align="client" field="cardCommunityURL" style="proportional" editable="false"/>
+                   <popup name="imageZoom2" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardCommunityURL"/>       
                     </popup>  
             </rectangle>
-            <comboBox align="left" width="245" height="25" field="cardCommunityNome" margins="{top=3}"
-                items="{'-- Selecione --', 'Highborne', 'Loreborne', 'Orderborne', 'Ridgeborne', 'Seaborne', 'Underborne', 'Slyborne', 'Wanderborne', 'Wildborne'}"
-                values="{'', 'Highborne', 'Loreborne', 'Orderborne', 'Ridgeborne', 'Seaborne', 'Underborne', 'Slyborne', 'Wanderborne', 'Wildborne'}"
+            <comboBox g="col" g-width="12" g-width-lg="8" field="cardCommunityNome" margins="{top=3, right=3, bottom=3}"
+                items="{'-- Selecione --', 'Duneborne', 'Freeborne', 'Frostborne', 'Hearthborne', 'Highborne', 'Loreborne', 'Orderborne', 'Reborne', 'Ridgeborne', 'Seaborne', 'Slyborne', 'Underborne', 'Wanderborne', 'Warborne', 'Wildborne'}"
+                values="{'', 'Duneborne', 'Freeborne', 'Frostborne', 'Hearthborne', 'Highborne', 'Loreborne', 'Orderborne', 'Reborne', 'Ridgeborne', 'Seaborne', 'Slyborne', 'Underborne', 'Wanderborne', 'Warborne', 'Wildborne'}"
                 fontColor="white" fontSize="10"/>
             <dataLink field="cardCommunityNome" onChange="atualizarImagem('cardCommunity', imagensCommunity)"/>
             <ShowButton field="cardCommunity"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardCommunityURL = ""
                     sheet.cardCommunityNome = "-- Selecione --"
                 </event>
             </button>
         </layout>
+        <layout g="col" g-width="6" g-width-lg="3"/>
+
+        <!-- ============================================================ -->
+        <!-- LABELS DA LINHA 2: Class                                     -->
+        <!-- ============================================================ -->
+        <rectangle g="col" g-width="12" g-width-lg="12" height="25" color="transparent">
+            <label align="top" class="lblCategoria" text="Class"/>
+        </rectangle>
 
         <!-- ============================================================ -->
         <!-- SLOT 3: Class 1 - SOMENTE FOUNDATION                        -->
         <!-- ============================================================ -->
-        <layout g="col" g-width="4" g-width-lg="2" g-min-height="450">
-            <rectangle align="top" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom3:show()">
-                <image align="client" field="cardClass1URL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom3" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="4" g-width-lg="4" g-min-height="855">
+            <rectangle g="col" g-width="12" g-width-lg="12" height="830" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom3:show()">
+                <image align="client" field="cardClass1URL" style="proportional" editable="false"/>
+                   <popup name="imageZoom3" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardClass1URL"/>       
                     </popup>  
             </rectangle>
-            <comboBox align="left" width="245" height="25" field="cardClass1Nome" margins="{top=3}"
-                items="{'-- Selecione --', '== BARD ==', 'Troubadour (F)', 'Wordsmith (F)', '== DRUID ==', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '== GUARDIAN ==', 'Stalwart (F)', 'Vengeance (F)', '== RANGER ==', 'Beastbound (F)', 'Wayfinder (F)', '== ROGUE ==', 'Nightwalker (F)', 'Syndicate (F)', '== SERAPH ==', 'Divine Wielder (F)', 'Winged Sentinel (F)', '== SORCERER ==', 'Elemental Origin (F)', 'Primal Origin (F)', '== WARRIOR ==', 'Call of the Brave (F)', 'Call of the Slayer (F)', '== WIZARD ==', 'School of Knowledge (F)', 'School of War (F)'}"
-                values="{'', '', 'Troubadour (F)', 'Wordsmith (F)', '', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '', 'Stalwart (F)', 'Vengeance (F)', '', 'Beastbound (F)', 'Wayfinder (F)', '', 'Nightwalker (F)', 'Syndicate (F)', '', 'Divine Wielder (F)', 'Winged Sentinel (F)', '', 'Elemental Origin (F)', 'Primal Origin (F)', '', 'Call of the Brave (F)', 'Call of the Slayer (F)', '', 'School of Knowledge (F)', 'School of War (F)'}"
+            <comboBox g="col" g-width="12" g-width-lg="8" field="cardClass1Nome" margins="{top=3, right=3, bottom=3}"
+            items="{'-- Selecione --', '== ASSASSIN ==', 'Executioners Guild (F)', 'Poisoners Guild (F)', '== BARD ==', 'Troubadour (F)', 'Wordsmith (F)', '== BRAWLER ==', 'Juggernaut (F)', 'Martial Artist (F)', '== DRUID ==', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '== GUARDIAN ==', 'Stalwart (F)', 'Vengeance (F)', '== RANGER ==', 'Beastbound (F)', 'Wayfinder (F)', '== ROGUE ==', 'Nightwalker (F)', 'Syndicate (F)', '== SERAPH ==', 'Divine Wielder (F)', 'Winged Sentinel (F)', '== SORCERER ==', 'Elemental Origin (F)', 'Primal Origin (F)', '== WARLOCK ==', 'Pact of the Endless (F)', 'Pact of the Wrathful (F)', '== WARRIOR ==', 'Call of the Brave (F)', 'Call of the Slayer (F)', '== WITCH ==', 'Hedge (F)', 'Moon (F)', '== WIZARD ==', 'School of Knowledge (F)', 'School of War (F)'}"
+            values="{'', '', 'Executioners Guild (F)', 'Poisoners Guild (F)', '', 'Troubadour (F)', 'Wordsmith (F)', '', 'Juggernaut (F)', 'Martial Artist (F)', '', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '', 'Stalwart (F)', 'Vengeance (F)', '', 'Beastbound (F)', 'Wayfinder (F)', '', 'Nightwalker (F)', 'Syndicate (F)', '', 'Divine Wielder (F)', 'Winged Sentinel (F)', '', 'Elemental Origin (F)', 'Primal Origin (F)', '', 'Pact of the Endless (F)', 'Pact of the Wrathful (F)', '', 'Call of the Brave (F)', 'Call of the Slayer (F)', '', 'Hedge (F)', 'Moon (F)', '', 'School of Knowledge (F)', 'School of War (F)'}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardClass1Nome" onChange="atualizarImagemClass('cardClass1', 'F')"/>
             <ShowButton field="cardClass1"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardClass1URL = ""
                     sheet.cardClass1Nome = "-- Selecione --"
@@ -174,16 +204,16 @@
         <!-- ============================================================ -->
         <!-- SLOT 4: Class 2 - FOUNDATION + SPECIALIZATION               -->
         <!-- ============================================================ -->
-        <layout g="col" g-width="4" g-width-lg="2" g-min-height="450">
-            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom4:show()">
-                <image align="client" field="cardClass2URL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom4" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="4" g-width-lg="4" g-min-height="855">
+           <rectangle g="col" g-width="12" g-width-lg="12" height="830" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom4:show()">
+                <image align="client" field="cardClass2URL" style="proportional" editable="false"/>
+                   <popup name="imageZoom4" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardClass2URL"/>       
                     </popup> 
             </rectangle>
-            <comboBox align="left" width="245" height="25" field="cardClass2Nome" margins="{top=3}"
-                items="{'-- Selecione --', '=== FOUNDATION ===', '== BARD ==', 'Troubadour (F)', 'Wordsmith (F)', '== DRUID ==', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '== GUARDIAN ==', 'Stalwart (F)', 'Vengeance (F)', '== RANGER ==', 'Beastbound (F)', 'Wayfinder (F)', '== ROGUE ==', 'Nightwalker (F)', 'Syndicate (F)', '== SERAPH ==', 'Divine Wielder (F)', 'Winged Sentinel (F)', '== SORCERER ==', 'Elemental Origin (F)', 'Primal Origin (F)', '== WARRIOR ==', 'Call of the Brave (F)', 'Call of the Slayer (F)', '== WIZARD ==', 'School of Knowledge (F)', 'School of War (F)', '=== SPECIALIZATION ===', '== BARD ==', 'Troubadour (S)', 'Wordsmith (S)', '== DRUID ==', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '== GUARDIAN ==', 'Stalwart (S)', 'Vengeance (S)', '== RANGER ==', 'Beastbound (S)', 'Wayfinder (S)', '== ROGUE ==', 'Nightwalker (S)', 'Syndicate (S)', '== SERAPH ==', 'Divine Wielder (S)', 'Winged Sentinel (S)', '== SORCERER ==', 'Elemental Origin (S)', 'Primal Origin (S)', '== WARRIOR ==', 'Call of the Brave (S)', 'Call of the Slayer (S)', '== WIZARD ==', 'School of Knowledge (S)', 'School of War (S)'}"
-                values="{'', '', '', 'Troubadour (F)', 'Wordsmith (F)', '', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '', 'Stalwart (F)', 'Vengeance (F)', '', 'Beastbound (F)', 'Wayfinder (F)', '', 'Nightwalker (F)', 'Syndicate (F)', '', 'Divine Wielder (F)', 'Winged Sentinel (F)', '', 'Elemental Origin (F)', 'Primal Origin (F)', '', 'Call of the Brave (F)', 'Call of the Slayer (F)', '', 'School of Knowledge (F)', 'School of War (F)', '', '', 'Troubadour (S)', 'Wordsmith (S)', '', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '', 'Stalwart (S)', 'Vengeance (S)', '', 'Beastbound (S)', 'Wayfinder (S)', '', 'Nightwalker (S)', 'Syndicate (S)', '', 'Divine Wielder (S)', 'Winged Sentinel (S)', '', 'Elemental Origin (S)', 'Primal Origin (S)', '', 'Call of the Brave (S)', 'Call of the Slayer (S)', '', 'School of Knowledge (S)', 'School of War (S)'}"
+            <comboBox g="col" g-width="12" g-width-lg="8" field="cardClass2Nome" margins="{top=3, right=3, bottom=3}"
+                items="{'-- Selecione --', '=== FOUNDATION ===', '== ASSASSIN ==', 'Executioners Guild (F)', 'Poisoners Guild (F)', '== BARD ==', 'Troubadour (F)', 'Wordsmith (F)', '== BRAWLER ==', 'Juggernaut (F)', 'Martial Artist (F)', '== DRUID ==', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '== GUARDIAN ==', 'Stalwart (F)', 'Vengeance (F)', '== RANGER ==', 'Beastbound (F)', 'Wayfinder (F)', '== ROGUE ==', 'Nightwalker (F)', 'Syndicate (F)', '== SERAPH ==', 'Divine Wielder (F)', 'Winged Sentinel (F)', '== SORCERER ==', 'Elemental Origin (F)', 'Primal Origin (F)', '== WARLOCK ==', 'Pact of the Endless (F)', 'Pact of the Wrathful (F)', '== WARRIOR ==', 'Call of the Brave (F)', 'Call of the Slayer (F)', '== WITCH ==', 'Hedge (F)', 'Moon (F)', '== WIZARD ==', 'School of Knowledge (F)', 'School of War (F)', '=== SPECIALIZATION ===', '== ASSASSIN ==', 'Executioners Guild (S)', 'Poisoners Guild (S)', '== BARD ==', 'Troubadour (S)', 'Wordsmith (S)', '== BRAWLER ==', 'Juggernaut (S)', 'Martial Artist (S)', '== DRUID ==', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '== GUARDIAN ==', 'Stalwart (S)', 'Vengeance (S)', '== RANGER ==', 'Beastbound (S)', 'Wayfinder (S)', '== ROGUE ==', 'Nightwalker (S)', 'Syndicate (S)', '== SERAPH ==', 'Divine Wielder (S)', 'Winged Sentinel (S)', '== SORCERER ==', 'Elemental Origin (S)', 'Primal Origin (S)', '== WARLOCK ==', 'Pact of the Endless (S)', 'Pact of the Wrathful (S)', '== WARRIOR ==', 'Call of the Brave (S)', 'Call of the Slayer (S)', '== WITCH ==', 'Hedge (S)', 'Moon (S)', '== WIZARD ==', 'School of Knowledge (S)', 'School of War (S)'}"
+                values="{'', '', '', 'Executioners Guild (F)', 'Poisoners Guild (F)', '', 'Troubadour (F)', 'Wordsmith (F)', '', 'Juggernaut (F)', 'Martial Artist (F)', '', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '', 'Stalwart (F)', 'Vengeance (F)', '', 'Beastbound (F)', 'Wayfinder (F)', '', 'Nightwalker (F)', 'Syndicate (F)', '', 'Divine Wielder (F)', 'Winged Sentinel (F)', '', 'Elemental Origin (F)', 'Primal Origin (F)', '', 'Pact of the Endless (F)', 'Pact of the Wrathful (F)', '', 'Call of the Brave (F)', 'Call of the Slayer (F)', '', 'Hedge (F)', 'Moon (F)', '', 'School of Knowledge (F)', 'School of War (F)', '', '', 'Executioners Guild (S)', 'Poisoners Guild (S)', '', 'Troubadour (S)', 'Wordsmith (S)', '', 'Juggernaut (S)', 'Martial Artist (S)', '', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '', 'Stalwart (S)', 'Vengeance (S)', '', 'Beastbound (S)', 'Wayfinder (S)', '', 'Nightwalker (S)', 'Syndicate (S)', '', 'Divine Wielder (S)', 'Winged Sentinel (S)', '', 'Elemental Origin (S)', 'Primal Origin (S)', '', 'Pact of the Endless (S)', 'Pact of the Wrathful (S)', '', 'Call of the Brave (S)', 'Call of the Slayer (S)', '', 'Hedge (S)', 'Moon (S)', '', 'School of Knowledge (S)', 'School of War (S)'}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardClass2Nome">
                 <event name="onChange">
@@ -196,7 +226,7 @@
                 </event>
             </dataLink>
             <ShowButton field="cardClass2"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardClass2URL = ""
                     sheet.cardClass2Nome = "-- Selecione --"
@@ -207,16 +237,16 @@
         <!-- ============================================================ -->
         <!-- SLOT 5: Class 3 - FOUNDATION + SPECIALIZATION + MASTERY     -->
         <!-- ============================================================ -->
-        <layout g="col" g-width="4" g-width-lg="2" g-min-height="450" g-break-line-after="true">
-            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom5:show()">
-                <image align="client" field="cardClass3URL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom5" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="4" g-width-lg="4" g-min-height="855" g-break-line-after="true">
+           <rectangle g="col" g-width="12" g-width-lg="12" height="830" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom5:show()">
+                <image align="client" field="cardClass3URL" style="proportional" editable="false"/>
+                   <popup name="imageZoom5" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardClass3URL"/>       
                     </popup>
             </rectangle>
-            <comboBox align="left" width="245" height="25" field="cardClass3Nome" margins="{top=3}"
-                items="{'-- Selecione --', '=== FOUNDATION ===', '== BARD ==', 'Troubadour (F)', 'Wordsmith (F)', '== DRUID ==', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '== GUARDIAN ==', 'Stalwart (F)', 'Vengeance (F)', '== RANGER ==', 'Beastbound (F)', 'Wayfinder (F)', '== ROGUE ==', 'Nightwalker (F)', 'Syndicate (F)', '== SERAPH ==', 'Divine Wielder (F)', 'Winged Sentinel (F)', '== SORCERER ==', 'Elemental Origin (F)', 'Primal Origin (F)', '== WARRIOR ==', 'Call of the Brave (F)', 'Call of the Slayer (F)', '== WIZARD ==', 'School of Knowledge (F)', 'School of War (F)', '=== SPECIALIZATION ===', '== BARD ==', 'Troubadour (S)', 'Wordsmith (S)', '== DRUID ==', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '== GUARDIAN ==', 'Stalwart (S)', 'Vengeance (S)', '== RANGER ==', 'Beastbound (S)', 'Wayfinder (S)', '== ROGUE ==', 'Nightwalker (S)', 'Syndicate (S)', '== SERAPH ==', 'Divine Wielder (S)', 'Winged Sentinel (S)', '== SORCERER ==', 'Elemental Origin (S)', 'Primal Origin (S)', '== WARRIOR ==', 'Call of the Brave (S)', 'Call of the Slayer (S)', '== WIZARD ==', 'School of Knowledge (S)', 'School of War (S)', '=== MASTERY ===', '== BARD ==', 'Troubadour (M)', 'Wordsmith (M)', '== DRUID ==', 'Warden of the Elements (M)', 'Warden of Renewal (M)', '== GUARDIAN ==', 'Stalwart (M)', 'Vengeance (M)', '== RANGER ==', 'Beastbound (M)', 'Wayfinder (M)', '== ROGUE ==', 'Nightwalker (M)', 'Syndicate (M)', '== SERAPH ==', 'Divine Wielder (M)', 'Winged Sentinel (M)', '== SORCERER ==', 'Elemental Origin (M)', 'Primal Origin (M)', '== WARRIOR ==', 'Call of the Brave (M)', 'Call of the Slayer (M)', '== WIZARD ==', 'School of Knowledge (M)', 'School of War (M)'}"
-                values="{'', '', '', 'Troubadour (F)', 'Wordsmith (F)', '', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '', 'Stalwart (F)', 'Vengeance (F)', '', 'Beastbound (F)', 'Wayfinder (F)', '', 'Nightwalker (F)', 'Syndicate (F)', '', 'Divine Wielder (F)', 'Winged Sentinel (F)', '', 'Elemental Origin (F)', 'Primal Origin (F)', '', 'Call of the Brave (F)', 'Call of the Slayer (F)', '', 'School of Knowledge (F)', 'School of War (F)', '', '', 'Troubadour (S)', 'Wordsmith (S)', '', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '', 'Stalwart (S)', 'Vengeance (S)', '', 'Beastbound (S)', 'Wayfinder (S)', '', 'Nightwalker (S)', 'Syndicate (S)', '', 'Divine Wielder (S)', 'Winged Sentinel (S)', '', 'Elemental Origin (S)', 'Primal Origin (S)', '', 'Call of the Brave (S)', 'Call of the Slayer (S)', '', 'School of Knowledge (S)', 'School of War (S)', '', '', 'Troubadour (M)', 'Wordsmith (M)', '', 'Warden of the Elements (M)', 'Warden of Renewal (M)', '', 'Stalwart (M)', 'Vengeance (M)', '', 'Beastbound (M)', 'Wayfinder (M)', '', 'Nightwalker (M)', 'Syndicate (M)', '', 'Divine Wielder (M)', 'Winged Sentinel (M)', '', 'Elemental Origin (M)', 'Primal Origin (M)', '', 'Call of the Brave (M)', 'Call of the Slayer (M)', '', 'School of Knowledge (M)', 'School of War (M)'}"
+            <comboBox g="col" g-width="12" g-width-lg="8" field="cardClass3Nome" margins="{top=3, right=3, bottom=3}"
+                items="{'-- Selecione --', '=== FOUNDATION ===', '== ASSASSIN ==', 'Executioners Guild (F)', 'Poisoners Guild (F)', '== BARD ==', 'Troubadour (F)', 'Wordsmith (F)', '== BRAWLER ==', 'Juggernaut (F)', 'Martial Artist (F)', '== DRUID ==', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '== GUARDIAN ==', 'Stalwart (F)', 'Vengeance (F)', '== RANGER ==', 'Beastbound (F)', 'Wayfinder (F)', '== ROGUE ==', 'Nightwalker (F)', 'Syndicate (F)', '== SERAPH ==', 'Divine Wielder (F)', 'Winged Sentinel (F)', '== SORCERER ==', 'Elemental Origin (F)', 'Primal Origin (F)', '== WARLOCK ==', 'Pact of the Endless (F)', 'Pact of the Wrathful (F)', '== WARRIOR ==', 'Call of the Brave (F)', 'Call of the Slayer (F)', '== WITCH ==', 'Hedge (F)', 'Moon (F)', '== WIZARD ==', 'School of Knowledge (F)', 'School of War (F)', '=== SPECIALIZATION ===', '== ASSASSIN ==', 'Executioners Guild (S)', 'Poisoners Guild (S)', '== BARD ==', 'Troubadour (S)', 'Wordsmith (S)', '== BRAWLER ==', 'Juggernaut (S)', 'Martial Artist (S)', '== DRUID ==', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '== GUARDIAN ==', 'Stalwart (S)', 'Vengeance (S)', '== RANGER ==', 'Beastbound (S)', 'Wayfinder (S)', '== ROGUE ==', 'Nightwalker (S)', 'Syndicate (S)', '== SERAPH ==', 'Divine Wielder (S)', 'Winged Sentinel (S)', '== SORCERER ==', 'Elemental Origin (S)', 'Primal Origin (S)', '== WARLOCK ==', 'Pact of the Endless (S)', 'Pact of the Wrathful (S)', '== WARRIOR ==', 'Call of the Brave (S)', 'Call of the Slayer (S)', '== WITCH ==', 'Hedge (S)', 'Moon (S)', '== WIZARD ==', 'School of Knowledge (S)', 'School of War (S)', '=== MASTERY ===', '== ASSASSIN ==', 'Executioners Guild (M)', 'Poisoners Guild (M)', '== BARD ==', 'Troubadour (M)', 'Wordsmith (M)', '== BRAWLER ==', 'Juggernaut (M)', 'Martial Artist (M)', '== DRUID ==', 'Warden of the Elements (M)', 'Warden of Renewal (M)', '== GUARDIAN ==', 'Stalwart (M)', 'Vengeance (M)', '== RANGER ==', 'Beastbound (M)', 'Wayfinder (M)', '== ROGUE ==', 'Nightwalker (M)', 'Syndicate (M)', '== SERAPH ==', 'Divine Wielder (M)', 'Winged Sentinel (M)', '== SORCERER ==', 'Elemental Origin (M)', 'Primal Origin (M)', '== WARLOCK ==', 'Pact of the Endless (M)', 'Pact of the Wrathful (M)', '== WARRIOR ==', 'Call of the Brave (M)', 'Call of the Slayer (M)', '== WITCH ==', 'Hedge (M)', 'Moon (M)', '== WIZARD ==', 'School of Knowledge (M)', 'School of War (M)'}"
+                values="{'', '', '', 'Executioners Guild (F)', 'Poisoners Guild (F)', '', 'Troubadour (F)', 'Wordsmith (F)', '', 'Juggernaut (F)', 'Martial Artist (F)', '', 'Warden of the Elements (F)', 'Warden of Renewal (F)', '', 'Stalwart (F)', 'Vengeance (F)', '', 'Beastbound (F)', 'Wayfinder (F)', '', 'Nightwalker (F)', 'Syndicate (F)', '', 'Divine Wielder (F)', 'Winged Sentinel (F)', '', 'Elemental Origin (F)', 'Primal Origin (F)', '', 'Pact of the Endless (F)', 'Pact of the Wrathful (F)', '', 'Call of the Brave (F)', 'Call of the Slayer (F)', '', 'Hedge (F)', 'Moon (F)', '', 'School of Knowledge (F)', 'School of War (F)', '', '', 'Executioners Guild (S)', 'Poisoners Guild (S)', '', 'Troubadour (S)', 'Wordsmith (S)', '', 'Juggernaut (S)', 'Martial Artist (S)', '', 'Warden of the Elements (S)', 'Warden of Renewal (S)', '', 'Stalwart (S)', 'Vengeance (S)', '', 'Beastbound (S)', 'Wayfinder (S)', '', 'Nightwalker (S)', 'Syndicate (S)', '', 'Divine Wielder (S)', 'Winged Sentinel (S)', '', 'Elemental Origin (S)', 'Primal Origin (S)', '', 'Pact of the Endless (S)', 'Pact of the Wrathful (S)', '', 'Call of the Brave (S)', 'Call of the Slayer (S)', '', 'Hedge (S)', 'Moon (S)', '', 'School of Knowledge (S)', 'School of War (S)', '', '', 'Executioners Guild (M)', 'Poisoners Guild (M)', '', 'Troubadour (M)', 'Wordsmith (M)', '', 'Juggernaut (M)', 'Martial Artist (M)', '', 'Warden of the Elements (M)', 'Warden of Renewal (M)', '', 'Stalwart (M)', 'Vengeance (M)', '', 'Beastbound (M)', 'Wayfinder (M)', '', 'Nightwalker (M)', 'Syndicate (M)', '', 'Divine Wielder (M)', 'Winged Sentinel (M)', '', 'Elemental Origin (M)', 'Primal Origin (M)', '', 'Pact of the Endless (M)', 'Pact of the Wrathful (M)', '', 'Call of the Brave (M)', 'Call of the Slayer (M)', '', 'Hedge (M)', 'Moon (M)', '', 'School of Knowledge (M)', 'School of War (M)'}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardClass3Nome">
                 <event name="onChange">
@@ -231,7 +261,7 @@
                 </event>
             </dataLink>
             <ShowButton field="cardClass3"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardClass3URL = ""
                     sheet.cardClass3Nome = "-- Selecione --"
@@ -240,12 +270,7 @@
         </layout>
 
         <!-- ============================================================ -->
-        <!-- ESPACAMENTO                                                  -->
-        <!-- ============================================================ -->
-        <layout g="col" g-width="12" g-min-height="15"/>
-
-        <!-- ============================================================ -->
-        <!-- LABEL LINHA 2: Domain                                        -->
+        <!-- LABEL LINHA 3: Domain                                        -->
         <!-- ============================================================ -->
         <label g="col" g-width="6" g-width-lg="1"/>
         <rectangle g="col" g-width="10" height="25" color="transparent">
@@ -256,27 +281,25 @@
         <layout g="col" g-width="6" g-width-lg="1"/>
 
         <!-- SLOT 6: Domain 1 -->
-        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
-            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom6:show()">
-                <image align="client" field="cardDomain1URL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom6" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="500">
+           <rectangle g="col" g-width="12" g-width-lg="12" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom6:show()">
+                <image align="client" field="cardDomain1URL" style="proportional" editable="false"/>
+                   <popup name="imageZoom6" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardDomain1URL"/>       
                     </popup>
             </rectangle>
-            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
-            <comboBox align="top" height="22" field="cardDomain1Categoria" margins="{top=1}"
-                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
-                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+            <comboBox g="col" g-width="12" g-width-lg="12" field="cardDomain1Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain1Categoria" onChange="filtrarCartasDomain(1)"/>
-            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
-            <comboBox name="cbDomain1Nome" align="left" width="245" height="25" field="cardDomain1Nome" margins="{top=3}"
+            <comboBox name="cbDomain1Nome" g="col" g-width="12" g-width-lg="8" field="cardDomain1Nome" margins="{top=3, right=3, bottom=3}"
                 items="{'-- Selecione Dominio --'}"
                 values="{''}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain1Nome" onChange="atualizarImagemDomain(1)"/>
             <ShowButton field="cardDomain1"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardDomain1URL = ""
                     sheet.cardDomain1Categoria = ""
@@ -291,27 +314,25 @@
         </layout>
 
         <!-- SLOT 7: Domain 2 -->
-        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
-            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom7:show()">
-                <image align="client" field="cardDomain2URL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom7" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="500">
+           <rectangle g="col" g-width="12" g-width-lg="12" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom7:show()">
+                <image align="client" field="cardDomain2URL" style="proportional" editable="false"/>
+                   <popup name="imageZoom7" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardDomain2URL"/>       
                     </popup>
             </rectangle>
-            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
-            <comboBox align="top" height="22" field="cardDomain2Categoria" margins="{top=1}"
-                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
-                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+           <comboBox g="col" g-width="12" g-width-lg="12" field="cardDomain2Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain2Categoria" onChange="filtrarCartasDomain(2)"/>
-            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
-            <comboBox name="cbDomain2Nome" align="left" width="245" height="25" field="cardDomain2Nome" margins="{top=3}"
+            <comboBox name="cbDomain2Nome" g="col" g-width="12" g-width-lg="8" field="cardDomain2Nome" margins="{top=3, right=3, bottom=3}"
                 items="{'-- Selecione Dominio --'}"
                 values="{''}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain2Nome" onChange="atualizarImagemDomain(2)"/>
             <ShowButton field="cardDomain2"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardDomain2URL = ""
                     sheet.cardDomain2Categoria = ""
@@ -326,27 +347,25 @@
         </layout>
 
         <!-- SLOT 8: Domain 3 -->
-        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
-            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom8:show()">
-                <image align="client" field="cardDomain3URL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom8" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="500">
+           <rectangle g="col" g-width="12" g-width-lg="12" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom8:show()">
+                <image align="client" field="cardDomain3URL" style="proportional" editable="false"/>
+                   <popup name="imageZoom8" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardDomain3URL"/>       
                     </popup>
             </rectangle>
-            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
-            <comboBox align="top" height="22" field="cardDomain3Categoria" margins="{top=1}"
-                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
-                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+           <comboBox g="col" g-width="12" g-width-lg="12" field="cardDomain3Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain3Categoria" onChange="filtrarCartasDomain(3)"/>
-            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
-            <comboBox name="cbDomain3Nome" align="left" width="245" height="25" field="cardDomain3Nome" margins="{top=3}"
+            <comboBox name="cbDomain3Nome" g="col" g-width="12" g-width-lg="8" field="cardDomain3Nome" margins="{top=3, right=3, bottom=3}"
                 items="{'-- Selecione Dominio --'}"
                 values="{''}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain3Nome" onChange="atualizarImagemDomain(3)"/>
             <ShowButton field="cardDomain3"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardDomain3URL = ""
                     sheet.cardDomain3Categoria = ""
@@ -361,27 +380,25 @@
         </layout>
 
         <!-- SLOT 9: Domain 4 -->
-        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
-            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom9:show()">
-                <image align="client" field="cardDomain4URL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom9" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="500">
+           <rectangle g="col" g-width="12" g-width-lg="12" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom9:show()">
+                <image align="client" field="cardDomain4URL" style="proportional" editable="false"/>
+                   <popup name="imageZoom9" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardDomain4URL"/>       
                     </popup>
             </rectangle>
-            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
-            <comboBox align="top" height="22" field="cardDomain4Categoria" margins="{top=1}"
-                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
-                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+           <comboBox g="col" g-width="12" g-width-lg="12" field="cardDomain4Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain4Categoria" onChange="filtrarCartasDomain(4)"/>
-            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
-            <comboBox name="cbDomain4Nome" align="left" width="245" height="25" field="cardDomain4Nome" margins="{top=3}"
+            <comboBox name="cbDomain4Nome" g="col" g-width="12" g-width-lg="8" field="cardDomain4Nome" margins="{top=3, right=3, bottom=3}"
                 items="{'-- Selecione Dominio --'}"
                 values="{''}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain4Nome" onChange="atualizarImagemDomain(4)"/>
             <ShowButton field="cardDomain4"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardDomain4URL = ""
                     sheet.cardDomain4Categoria = ""
@@ -396,27 +413,25 @@
         </layout>
 
         <!-- SLOT 10: Domain 5 -->
-        <layout g="col" g-width="4" g-width-lg="2" g-min-height="505">
-            <rectangle align="top" height="424" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom10:show()">
-                <image align="client" field="cardDomain5URL" style="autoFit" editable="false"/>
-                   <popup name="imageZoom10" width="500" height="700" backOpacity="0.5" drawContainer="false">
+        <layout g="col" g-width="4" g-width-lg="2" g-min-height="500">
+           <rectangle g="col" g-width="12" g-width-lg="12" height="425" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom10:show()">
+                <image align="client" field="cardDomain5URL" style="proportional" editable="false"/>
+                   <popup name="imageZoom10" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardDomain5URL"/>       
                     </popup>
             </rectangle>
-            <label align="top" height="14" text="Dominio:" fontColor="#999999" fontSize="8" margins="{top=3}"/>
-            <comboBox align="top" height="22" field="cardDomain5Categoria" margins="{top=1}"
-                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
-                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+           <comboBox g="col" g-width="12" g-width-lg="12" field="cardDomain5Categoria" margins="{top=1}"
+                items="{'-- Dominio --', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
+                values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain5Categoria" onChange="filtrarCartasDomain(5)"/>
-            <label align="top" height="14" text="Carta:" fontColor="#999999" fontSize="8" margins="{top=2}"/>
-            <comboBox name="cbDomain5Nome" align="left" width="245" height="25" field="cardDomain5Nome" margins="{top=3}"
+            <comboBox name="cbDomain5Nome" g="col" g-width="12" g-width-lg="8" field="cardDomain5Nome" margins="{top=3, right=3, bottom=3}"
                 items="{'-- Selecione Dominio --'}"
                 values="{''}"
                 fontColor="white" fontSize="9"/>
             <dataLink field="cardDomain5Nome" onChange="atualizarImagemDomain(5)"/>
             <ShowButton field="cardDomain5"/>
-            <button align="left" width="25" height="25" text="🞭" class="btnSlot" margins="{top=2}">
+            <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardDomain5URL = ""
                     sheet.cardDomain5Categoria = ""
@@ -429,9 +444,9 @@
                 </event>
             </button>
         </layout>
-        <layout g="col" g-width="12" g-min-height="400">
+        <layout g="col" g-width="12" g-min-height="600">
             <layout g="col" g-width="1"/>
-            <richEdit g="col" g-width="10" g-min-height="400" g-vert-tile="true" field="ExtraCards" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+            <richEdit g="col" g-width="10" g-min-height="600" g-vert-tile="true" field="ExtraCards" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
             <layout g="col" g-width="1"/>
         </layout>
     </scrollBox>

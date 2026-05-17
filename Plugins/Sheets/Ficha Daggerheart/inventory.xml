@@ -1,54 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="Inventory" align="client">
+    <scrollBox align="client" g-cnt-line-spacing="8" padding="{left=2,right=2,top=2,bottom=8}">
 
-    <scrollBox align="client" g-cnt-line-spacing="5">
+    	<label g="col" g-width="12" text="WEAPONS" height="24" horzTextAlign="center" vertTextAlign="center" fontSize="16" fontStyle="bold" fontColor="#CDAA57"/>
     	<Weapon text="PRIMARY WEAPON" field="primWeap" prof="true"/>
     	<Weapon text="SECONDARY WEAPON" field="secWeap" prof="false"/>
     	<Weapon text="INVENTORY WEAPON" field="invWeap1" prof="false"/>
     	<Weapon text="INVENTORY WEAPON" field="invWeap2" prof="false"/>
 
-		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
-			<label g="col" g-width="12" text="ACTIVE ARMOR" horzTextAlign="center" vertTextAlign="center" height="25"/>
+		<label g="col" g-width="12" text="EQUIPMENT" height="24" horzTextAlign="center" vertTextAlign="center" fontSize="16" fontStyle="bold" fontColor="#CDAA57"/>
 
-			<Title text="NAME" field="armorName"/>
+		<rectangle g="col" g-width="12" g-width-lg="4" color="#151419" strokeColor="#564C76" strokeSize="1" g-min-height="250" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" text="ACTIVE ARMOR" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="14" fontStyle="bold" fontColor="#C5B7EA"/>
+			<label g="col" g-width="12"/>
+			<Title text="NAME" field="armorName" widthL="3" widthR="9"/>
 			<Title text="THRESHOLDS" field="armorThresholds" widthL="3" widthR="3"/>
 			<Title text="SCORE" field="armorScore" widthL="3" widthR="3"/>
-			<label g="col" g-width="12" text="FEATURE" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="75" field="armorFeature"/>
-			
-		</rectangle>
-		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
-			<label g="col" g-width="12" text="GOLD" horzTextAlign="center" vertTextAlign="center" height="25"/>
-
-			<label g="col" g-width="2" text="Handfuls" horzTextAlign="center" vertTextAlign="center" height="50"/>
-			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck1"/>
-			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck2"/>
-			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck3"/>
-			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck4"/>
-			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck5"/>
-			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck6"/>
-			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck7"/>
-			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck8"/>
-			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" field="handfulCheck9"/>
-
-			<label g="col" g-width="2" text="Bags" horzTextAlign="center" vertTextAlign="center" height="50"/>
-			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck1"/>
-			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck2"/>
-			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck3"/>
-			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck4"/>
-			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck5"/>
-			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck6"/>
-			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck7"/>
-			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck8"/>
-			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" field="bagsCheck9"/>
-			
-			<label g="col" g-width="2" text="Chest" horzTextAlign="center" vertTextAlign="center" height="50"/>
-			<imageCheckBox g="col" g-width="1" uncheckedImage="images/chestoff.png" checkedImage="images/chest.png" field="chestCheck1"/>
+			<label g="col" g-width="12" text="FEATURE" horzTextAlign="center" vertTextAlign="center" height="24" fontSize="10" fontColor="#C5B7EA" fontStyle="bold"/>
+			<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="88" field="armorFeature" fontColor="#FFF7E8"/>
 		</rectangle>
 
-		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
-			<label g="col" g-width="6" text="ITEM" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<label g="col" g-width="6" text="ROLL" horzTextAlign="center" vertTextAlign="center" height="25"/>
+		<rectangle g="col" g-width="12" g-width-lg="4" color="#161B18" strokeColor="#577154" strokeSize="1" g-min-height="250" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" text="GOLD" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="14" fontStyle="bold" fontColor="#D3C36E"/>
+
+			<label g="col" g-width="12"/>
+			<Title text="Coins" field="coins" widthL="3" widthR="3" fontSize="13" fontStyle=""/>
+			<label g="col" g-width="6"/>
+			<label g="col" g-width="3" text="Handfuls" horzTextAlign="center" vertTextAlign="center" height="46" fontColor="#C8B78E"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" height="34" field="handfulCheck1"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" height="34" field="handfulCheck2"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" height="34" field="handfulCheck3"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" height="34" field="handfulCheck4"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" height="34" field="handfulCheck5"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" height="34" field="handfulCheck6"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" height="34" field="handfulCheck7"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" height="34" field="handfulCheck8"/>
+			<imageCheckBox uncheckedImage="images/coinsoff.png" checkedImage="images/coins.png" g="col" g-width="1" height="34" field="handfulCheck9"/>
+
+			<label g="col" g-width="3" text="Bags" horzTextAlign="center" vertTextAlign="center" height="46" fontColor="#C8B78E"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" height="34" field="bagsCheck1"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" height="34" field="bagsCheck2"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" height="34" field="bagsCheck3"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" height="34" field="bagsCheck4"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" height="34" field="bagsCheck5"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" height="34" field="bagsCheck6"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" height="34" field="bagsCheck7"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" height="34" field="bagsCheck8"/>
+			<imageCheckBox uncheckedImage="images/bagoff.png" checkedImage="images/bag.png" g="col" g-width="1" height="34" field="bagsCheck9"/>
+			
+			<label g="col" g-width="3" text="Chest" horzTextAlign="center" vertTextAlign="center" height="46" fontColor="#C8B78E"/>
+			<imageCheckBox g="col" g-width="1" height="34" uncheckedImage="images/chestoff.png" checkedImage="images/chest.png" field="chestCheck1"/>
+			<label g="col" g-width="8"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="12" g-width-lg="4" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="250" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" text="QUICK ITEMS" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="15" fontStyle="bold" fontColor="#CDAA57"/>
+			<label g="col" g-width="6" text="ITEM" horzTextAlign="center" vertTextAlign="center" height="22" fontSize="10" fontColor="#C8B78E"/>
+			<label g="col" g-width="5" text="ROLL" horzTextAlign="center" vertTextAlign="center" height="22" fontSize="10" fontColor="#C8B78E"/>
+			<label g="col" g-width="1"/>
 			<InventorySlot field="slot1"/>
 			<InventorySlot field="slot2"/>
 			<InventorySlot field="slot3"/>
@@ -58,18 +67,9 @@
 			<InventorySlot field="slot7"/>
 		</rectangle>
 
-		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
-			<label g="col" g-width="6" text="ITEM" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<label g="col" g-width="6" text="ROLL" horzTextAlign="center" vertTextAlign="center" height="25"/>
-			<InventorySlot field="slot8"/>
-			<InventorySlot field="slot9"/>
-			<InventorySlot field="slot10"/>
-			<InventorySlot field="slot11"/>
-			<InventorySlot field="slot12"/>
-			<InventorySlot field="slot13"/>
-			<InventorySlot field="slot14"/>
+		<rectangle g="col" g-width="12" g-width-lg="12" color="#141414" strokeColor="#3A3329" strokeSize="1" g-min-height="300" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" text="INVENTORY NOTES" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="14" fontStyle="bold" fontColor="#CDAA57"/>
+        	<richEdit g="col" g-width="12" g-vert-tile="true" g-min-height="205" field="inventory" backgroundColor="#171512" defaultFontSize="12" defaultFontColor="#FFF7E8"/>
 		</rectangle>
-
-        <richEdit g="col" g-width="12" g-vert-tile="true" field="inventory" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 	</scrollBox>
 </form>

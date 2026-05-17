@@ -18,16 +18,20 @@
         -- ANCESTRY
         -- ========================
         local imagensAncestry = {
+            ["Aetheris"] = "https://i.imgur.com/utPnfI2.png",
             ["Clank"] = "https://i.imgur.com/T8C0C1i.png",
             ["Drakona"] = "https://i.imgur.com/SvBt1bx.png",
             ["Dwarf"] = "https://i.imgur.com/eDtc753.png",
+            ["Earthkin"] = "https://i.imgur.com/rHshEcO.png",
             ["Elf"] = "https://i.imgur.com/5cqfibI.png",
+            ["Emberkin"] = "https://i.imgur.com/AzL5JBW.png",
             ["Faerie"] = "https://i.imgur.com/dl5FM2O.png",
             ["Faun"] = "https://i.imgur.com/o0Ixg9t.png",
             ["Firbolg"] = "https://i.imgur.com/3Bhr1QC.png",
             ["Fungril"] = "https://i.imgur.com/g3eiOLO.png",
             ["Galapa"] = "https://i.imgur.com/f45FaBC.png",
             ["Giant"] = "https://i.imgur.com/4FYky8z.png",
+            ["Gnome"] = "https://i.imgur.com/MRBB5Zw.png",
             ["Goblin"] = "https://i.imgur.com/GkRBM1p.png",
             ["Halfling"] = "https://i.imgur.com/wmnYNXZ.png",
             ["Human"] = "https://i.imgur.com/1DpUYui.png",
@@ -36,20 +40,28 @@
             ["Orc"] = "https://i.imgur.com/JbY6gsb.png",
             ["Ribbet"] = "https://i.imgur.com/aEffZpS.png",
             ["Simiah"] = "https://i.imgur.com/kNuYIku.png",
+            ["Skykin"] = "https://i.imgur.com/j6st8tE.png",
+            ["Tidekin"] = "https://i.imgur.com/fh0pRse.png",
         }
 
         -- ========================
         -- COMMUNITY
         -- ========================
         local imagensCommunity = {
+            ["Duneborne"] = "https://i.imgur.com/dq9lbEc.png",
+            ["Freeborne"] = "https://i.imgur.com/ccSIE9j.png",
+            ["Frostborne"] = "https://i.imgur.com/A7fVUZ4.png",
+            ["Hearthborne"] = "https://i.imgur.com/HxvFrWE.png",
             ["Highborne"] = "https://i.imgur.com/vSsYNDs.png",
             ["Loreborne"] = "https://i.imgur.com/XTiyPrH.png",
             ["Orderborne"] = "https://i.imgur.com/D7FLSO6.png",
+            ["Reborne"] = "https://i.imgur.com/hxYWEVx.png",
             ["Ridgeborne"] = "https://i.imgur.com/JdsHAbc.png",
             ["Seaborne"] = "https://i.imgur.com/dcUeEi2.png",
             ["Slyborne"] = "https://i.imgur.com/QL0xdcz.png",
             ["Underborne"] = "https://i.imgur.com/UIfjMYg.png",
             ["Wanderborne"] = "https://i.imgur.com/qciyyh5.png",
+            ["Warborne"] = "https://i.imgur.com/0mQI9Lb.png",
             ["Wildborne"] = "https://i.imgur.com/uRniUDo.png",
         }
 
@@ -58,9 +70,15 @@
         -- (Cada classe tem 2 subclasses)
         -- ========================
         local imagensFoundation = {
+            -- Assassin
+            ["Executioners Guild (F)"] = "https://i.imgur.com/9nEKTN3.png",
+            ["Poisoners Guild (F)"] = "https://i.imgur.com/s8odxXv.png",
             -- Bard
             ["Troubadour (F)"] = "https://i.imgur.com/ti4kXkW.png",
             ["Wordsmith (F)"] = "https://i.imgur.com/GM8nEa2.png",
+            -- Brawler
+            ["Juggernaut (F)"] = "https://i.imgur.com/tOd5PZj.png",
+            ["Martial Artist (F)"] = "https://i.imgur.com/eKqNtvg.png",
             -- Druid
             ["Warden of the Elements (F)"] = "https://i.imgur.com/BhI3fdY.png",
             ["Warden of Renewal (F)"] = "https://i.imgur.com/7wFRjpf.png",
@@ -79,9 +97,15 @@
             -- Sorcerer
             ["Elemental Origin (F)"] = "https://i.imgur.com/BHqr9GI.png",
             ["Primal Origin (F)"] = "https://i.imgur.com/6FK0bmG.png",
+            -- Warlock
+            ["Pact of the Endless (F)"] = "https://i.imgur.com/UGD8HxX.png",
+            ["Pact of the Wrathful (F)"] = "https://i.imgur.com/dT6SttD.png",
             -- Warrior
             ["Call of the Brave (F)"] = "https://i.imgur.com/9PNicvK.png",
             ["Call of the Slayer (F)"] = "https://i.imgur.com/mC6IZog.png",
+            -- Witch
+            ["Hedge (F)"] = "https://i.imgur.com/xZ91VpI.png",
+            ["Moon (F)"] = "https://i.imgur.com/y22YsKg.png",
             -- Wizard
             ["School of Knowledge (F)"] = "https://i.imgur.com/XLibT54.png",
             ["School of War (F)"] = "https://i.imgur.com/66MsEuf.png",
@@ -91,9 +115,15 @@
         -- SUBCLASS - SPECIALIZATION
         -- ========================
         local imagensSpecialization = {
+            -- Assassin
+            ["Executioners Guild (S)"] = "https://i.imgur.com/cgFTuIg.png",
+            ["Poisoners Guild (S)"] = "https://i.imgur.com/kY5WZXK.png",
             -- Bard
             ["Troubadour (S)"] = "https://i.imgur.com/4CWqmQs.png",
             ["Wordsmith (S)"] = "https://i.imgur.com/66xvjpf.png",
+            -- Brawler
+            ["Juggernaut (S)"] = "https://i.imgur.com/pnMdc3l.png",
+            ["Martial Artist (S)"] = "https://i.imgur.com/zWqgrHE.png",
             -- Druid
             ["Warden of the Elements (S)"] = "https://i.imgur.com/kOCeCw2.png",
             ["Warden of Renewal (S)"] = "https://i.imgur.com/3h7cwAp.png",
@@ -112,9 +142,15 @@
             -- Sorcerer
             ["Elemental Origin (S)"] = "https://i.imgur.com/Em2VsJo.png",
             ["Primal Origin (S)"] = "https://i.imgur.com/Vle4l8k.png",
+            -- Warlock
+            ["Pact of the Endless (S)"] = "https://i.imgur.com/zW5XuBS.png",
+            ["Pact of the Wrathful (S)"] = "https://i.imgur.com/WUe3LL7.png",
             -- Warrior
             ["Call of the Brave (S)"] = "https://i.imgur.com/x8312Bv.png",
             ["Call of the Slayer (S)"] = "https://i.imgur.com/ytRh7NQ.png",
+            -- Witch
+            ["Hedge (S)"] = "https://i.imgur.com/djdLejR.png",
+            ["Moon (S)"] = "https://i.imgur.com/Ngmes0l.png",
             -- Wizard
             ["School of Knowledge (S)"] = "https://i.imgur.com/Oru7Xly.png",
             ["School of War (S)"] = "https://i.imgur.com/T7yDk0H.png",
@@ -124,9 +160,15 @@
         -- SUBCLASS - MASTERY
         -- ========================
         local imagensMastery = {
+            -- Assassin
+            ["Executioners Guild (M)"] = "https://i.imgur.com/H67vOwK.png",
+            ["Poisoners Guild (M)"] = "https://i.imgur.com/TaP0OJK.png",
             -- Bard
             ["Troubadour (M)"] = "https://i.imgur.com/pdjZNFO.png",
             ["Wordsmith (M)"] = "https://i.imgur.com/N1YbxCJ.png",
+            -- Brawler
+            ["Juggernaut (M)"] = "https://i.imgur.com/9EFNF21.png",
+            ["Martial Artist (M)"] = "https://i.imgur.com/zk7Jw8E.png",
             -- Druid
             ["Warden of the Elements (M)"] = "https://i.imgur.com/4LsStzv.png",
             ["Warden of Renewal (M)"] = "https://i.imgur.com/tpoVbv8.png",
@@ -145,9 +187,15 @@
             -- Sorcerer
             ["Elemental Origin (M)"] = "https://i.imgur.com/RCwNte0.png",
             ["Primal Origin (M)"] = "https://i.imgur.com/4iGoXpE.png",
+            -- Warlock
+            ["Pact of the Endless (M)"] = "https://i.imgur.com/f3nXNEs.png",
+            ["Pact of the Wrathful (M)"] = "https://i.imgur.com/h4lypli.png",
             -- Warrior
             ["Call of the Brave (M)"] = "https://i.imgur.com/G2OrpKb.png",
             ["Call of the Slayer (M)"] = "https://i.imgur.com/kDk2XwN.png",
+            -- Witch
+            ["Hedge (M)"] = "https://i.imgur.com/x5eWf5V.png",
+            ["Moon (M)"] = "https://i.imgur.com/UxLzo7v.png",
             -- Wizard
             ["School of Knowledge (M)"] = "https://i.imgur.com/HUJrN9X.png",
             ["School of War (M)"] = "https://i.imgur.com/28o51lB.png",
@@ -246,6 +294,28 @@
             ["[Codex] Disintegration Wave"] = "https://i.imgur.com/EdsIGjS.png",
             ["[Codex] Book of Yarrow"] = "https://i.imgur.com/Yw7ujG0.png",
             ["[Codex] Transcendent Union"] = "https://i.imgur.com/ZYqmaeK.png",
+            -- DREAD (Lv1-10)
+            ["[Dread] Blighting Strike"] = "https://i.imgur.com/FVYd5Zd.png",
+            ["[Dread] Voice of Dread"] = "https://i.imgur.com/DXD5ww8.png",
+            ["[Dread] Umbral Veil"] = "https://i.imgur.com/libxiZQ.png",
+            ["[Dread] Hideous Retribution"] = "https://i.imgur.com/rWLy1qA.png",
+            ["[Dread] Siphon Essence"] = "https://i.imgur.com/otrC9YJ.png",
+            ["[Dread] Terrify"] = "https://i.imgur.com/Fd1tZLn.png",
+            ["[Dread] Shared Trauma"] = "https://i.imgur.com/V467Hum.png",
+            ["[Dread] Chains of Affliction"] = "https://i.imgur.com/uoMDoa8.png",
+            ["[Dread] Summon Horror"] = "https://i.imgur.com/sPlIcVg.png",
+            ["[Dread] Spectral Mist"] = "https://i.imgur.com/ok6I6qW.png",
+            ["[Dread] Dire Strike"] = "https://i.imgur.com/NcK8B4C.png",
+            ["[Dread] Darkfire"] = "https://i.imgur.com/gCglkTF.png",
+            ["[Dread] Jump Scare"] = "https://i.imgur.com/ih2rL15.png",
+            ["[Dread] Dread-Touched"] = "https://i.imgur.com/3PeYPgV.png",
+            ["[Dread] Wall of Hunger"] = "https://i.imgur.com/NCZQti6.png",
+            ["[Dread] Dark Army"] = "https://i.imgur.com/afB7CZP.png",
+            ["[Dread] Eldritch Flesh"] = "https://i.imgur.com/IX7zi0F.png",
+            ["[Dread] Damnation"] = "https://i.imgur.com/NCvAoJn.png",
+            ["[Dread] Savor The Anguish"] = "https://i.imgur.com/yswngjk.png",
+            ["[Dread] Invoke Torment"] = "https://i.imgur.com/539x2jr.png",
+            ["[Dread] Avatar of Terror"] = "https://i.imgur.com/TyThZbr.png",
             -- GRACE (Lv1-10)
             ["[Grace] Deft Deceiver"] = "https://i.imgur.com/wItY7FN.png",
             ["[Grace] Enrapture"] = "https://i.imgur.com/TRu7J21.png",
@@ -387,6 +457,13 @@
                 "Teleport", "Banish", "Sigil of Retribution", "Book of Homet", "Codex-Touched",
                 "Book of Vyola", "Safe Haven", "Book of Ronin", "Disintegration Wave", "Book of Yarrow",
                 "Transcendent Union"
+            },
+            ["Dread"] = {
+                "Blighting Strike", "Voice of Dread", "Umbral Veil", "Hideous Retribution", "Siphon Essence",
+                "Terrify", "Shared Trauma", "Chains of Affliction", "Summon Horror", "Spectral Mist",
+                "Dire Strike", "Darkfire", "Jump Scare", "Dread-Touched", "Wall of Hunger",
+                "Dark Army", "Eldritch Flesh", "Damnation", "Savor The Anguish", "Invoke Torment",
+                "Avatar of Terror"
             },
             ["Grace"] = {
                 "Deft Deceiver", "Enrapture", "Inspirational Words", "Tell No Lies", "Troublemaker",

@@ -1,46 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="Description" align="client" margins="{top=1}">
-	<scrollBox align="client" g-cnt-line-spacing="5">
-		<rectangle g="col" g-width="12" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
-			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
-				<label g="col" g-width="3" height="25" text="TAMANHO" horzTextAlign="center"/>
-				<comboBox g="col" g-width="5" height="25" field="tamanho" fontColor="white" items="{'Minúsculo', 'Diminuto', 'Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'-4','-3','-2','-1','0','1','2','3','4'}" horzTextAlign="center"/>
-				<checkBox g="col" g-width="4" height="25" field="quadrupede" text="Quadrúpede" />
+	<scrollBox align="client" g-cnt-line-spacing="8" padding="{left=2,right=2,top=2,bottom=8}">
+		<label g="col" g-width="12" text="CHARACTER INFORMATION" height="24" horzTextAlign="center" vertTextAlign="center" fontSize="13" fontStyle="bold" fontColor="#CDAA57"/>
 
-				<Title text="ALTURA" field="altura"/>
-				<Title text="PESO" field="peso"/>
+		<rectangle g="col" g-width="12" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-auto-height="true" g-min-height="124" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<layout g="col" g-width="12" g-width-lg="3" g-min-height="104">
+				<label g="col" g-width="3" height="26" text="SIZE" horzTextAlign="center" vertTextAlign="center" fontSize="10" fontColor="#C8B78E" fontStyle="bold"/>
+				<comboBox g="col" g-width="5" height="26" field="tamanho" fontColor="#FFF7E8" items="{'Minusculo', 'Diminuto', 'Miudo', 'Pequeno', 'Medio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'-4','-3','-2','-1','0','1','2','3','4'}" horzTextAlign="center"/>
+				<checkBox g="col" g-width="4" height="26" field="quadruped" text="Quadruped"/>
+				<Title text="HEIGHT" field="altura"/>
+				<Title text="WEIGHT" field="peso"/>
+				<Title text="AGE" field="idade"/>
 			</layout>
-			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
-				<Title text="IDADE" field="idade"/>
-				<Title text="SEXO" field="sexo"/>
-				<Title text="OUTROS" field="aparenciaOutros"/>
+			<layout g="col" g-width="12" g-width-lg="3" g-min-height="104">
+				<Title text="SEX" field="sexo"/>
+				<Title text="EYES" field="aparenciaOlhos"/>
+				<Title text="SKIN" field="pele"/>
+				<Title text="HAIR" field="cabelo"/>
 			</layout>
-			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
-				<Title text="OLHOS" field="aparenciaOlhos"/>
-				<Title text="PELE" field="pele"/>
-				<Title text="CABELO" field="cabelo"/>
+			<layout g="col" g-width="12" g-width-lg="3" g-min-height="104">
+				<Title text="PLANE" field="plano"/>
+				<Title text="REGION" field="regiao"/>
+				<Title text="KINGDOM" field="reino"/>
+				<Title text="OTHER" field="aparenciaOutros"/>
 			</layout>
-			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
-				<Title text="PLANO" field="plano"/>
-				<Title text="REGIÃO" field="regiao"/>
-				<Title text="REINO" field="reino"/>
+			<layout g="col" g-width="12" g-width-lg="3" g-min-height="104">
+				<label g="col" g-width="12" text="QUICK NOTES" horzTextAlign="center" vertTextAlign="center" height="24" fontSize="11" fontStyle="bold" fontColor="#CDAA57"/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="78" field="anotacoes1" fontColor="#FFF7E8"/>
 			</layout>
 		</rectangle>
 
-		<layout g="col" g-width="12" g-width-lg="3" g-vert-tile="true" g-cnt-line-spacing="5">
-			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
-				<label g="col" g-width="12" height="25" text="APARÊNCIA"/>
-				<textEditor g="col" g-width="12" g-vert-tile="true" field="aparencia"/>
-			</rectangle>
-			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
-				<label g="col" g-width="12" height="25" text="PERSONALIDADE"/>
-				<textEditor g="col" g-width="12" g-vert-tile="true" field="personalidade"/>
-			</rectangle>
-		</layout>
+		<rectangle g="col" g-width="12" g-width-lg="4" g-vert-tile="true" color="#161B18" strokeColor="#577154" strokeSize="1" g-min-height="300" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" height="26" text="APPEARANCE" horzTextAlign="center" vertTextAlign="center" fontSize="12" fontStyle="bold" fontColor="#D3C36E"/>
+			<textEditor g="col" g-width="12" g-vert-tile="true" field="aparencia" fontColor="#FFF7E8"/>
+		</rectangle>
 
-		<rectangle g="col" g-width="12" g-width-lg="9" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
-			<label g="col" g-width="12" height="25" text="HISTORIA"/>
-			<richEdit g="col" g-width="12" g-vert-tile="true" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		<rectangle g="col" g-width="12" g-width-lg="4" g-vert-tile="true" color="#151419" strokeColor="#564C76" strokeSize="1" g-min-height="300" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" height="26" text="PERSONALITY" horzTextAlign="center" vertTextAlign="center" fontSize="12" fontStyle="bold" fontColor="#C5B7EA"/>
+			<textEditor g="col" g-width="12" g-vert-tile="true" field="personalidade" fontColor="#FFF7E8"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="12" g-width-lg="4" g-vert-tile="true" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="300" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" height="26" text="NOTES" horzTextAlign="center" vertTextAlign="center" fontSize="12" fontStyle="bold" fontColor="#CDAA57"/>
+			<textEditor g="col" g-width="6" g-vert-tile="true" field="anotacoes2" fontColor="#FFF7E8"/>
+			<textEditor g="col" g-width="6" g-vert-tile="true" field="anotacoes3" fontColor="#FFF7E8"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="12" g-width-lg="8" g-vert-tile="true" color="#141414" strokeColor="#3A3329" strokeSize="1" g-min-height="700" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" height="26" text="BACKGROUND" horzTextAlign="center" vertTextAlign="center" fontSize="12" fontStyle="bold" fontColor="#CDAA57"/>
+			<richEdit g="col" g-width="12" g-vert-tile="true" field="background" backgroundColor="#171512" defaultFontSize="12" defaultFontColor="#FFF7E8"/>
+		</rectangle>
+
+		<rectangle g="col" g-width="12" g-width-lg="4" g-vert-tile="true" color="#141414" strokeColor="#3A3329" strokeSize="1" g-min-height="700" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" height="26" text="CAMPAIGN NOTES" horzTextAlign="center" vertTextAlign="center" fontSize="12" fontStyle="bold" fontColor="#CDAA57"/>
+			<textEditor g="col" g-width="6" g-vert-tile="true" field="anotacoes4" fontColor="#FFF7E8"/>
+			<textEditor g="col" g-width="6" g-vert-tile="true" field="anotacoes5" fontColor="#FFF7E8"/>
+			<textEditor g="col" g-width="6" g-vert-tile="true" field="anotacoes6" fontColor="#FFF7E8"/>
+			<textEditor g="col" g-width="6" g-vert-tile="true" field="anotacoes7" fontColor="#FFF7E8"/>
+			<textEditor g="col" g-width="6" g-vert-tile="true" field="anotacoes8" fontColor="#FFF7E8"/>
+			<textEditor g="col" g-width="6" g-vert-tile="true" field="anotacoes9" fontColor="#FFF7E8"/>
 		</rectangle>
 	</scrollBox>
 </form>
