@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" dataType="Ficha_Tormenta20_E_Jogo_do_Ano" title="Tormenta20 - Ficha Jogodor" name="frmFichaJogodor">
+    <import file='script/functionsFichaJogador.xml'/>
+    <import file='assets/style/ficha_css.xml'/>
+    <import file='assets/style/geralFichaT20Jogador_css.xml'/>
+    <tabControl>
+        <tab title='Geral'>
+            <scrollBox align="client">
+                <layout class="lyt_info_personagem">
+                    <image class="img_info_personagem"/>
+                    <edit class="edt_nome_personagem " field="fldNomePersonagem" onChange="copiaNome(self)"/>
+                    <edit class="edt_nome_jogador" field="fldNomeJogador"/>
+                    <edit class="edt_raca edt_info" field="fldRaca"/>
+                    <edit class="edt_origem edt_info" field="fldOrigem"/>
+                    <edit class="edt_classe edt_info" field="fldClasse"/>
+                    <edit class="edt_nivel edt_info" field="fldNivel"/>
+                    <edit class="edt_divindade edt_info" field="fldDivindade"/>
+                    <label class="lbl_nome_personagem"/>
+                    <label class="lbl_nome_jogador"/>
+                    <label class="lbl_raca"/>
+                    <label class="lbl_origem"/>
+                    <label class="lbl_classe"/>
+                    <label class="lbl_nivel"/>
+                    <label class="lbl_divindade"/>
+                </layout>
+
+                <layout class="lyt_deslocamento">
+                    <image class="img_xp"/>
+                    <image class="img_deslocamento"/>
+                    <image class="img_tamanho"/>
+                    <label class="lbl_xp"/>
+                    <label class="lbl_deslocamento"/>
+                    <label class="lbl_tamanho" field="fldValorTamanho"/>
+                    <comboBox class="cmb_tamanho" field="fldTamanho" name="cmb_name_tamanho" onchange="alteraTamanho(self)"/>
+                    <edit class="edt_xp" field="fldXp"><horzLine/></edit>
+                    <edit class="edt_deslocamento" field="fldDeslocamento"><horzLine/></edit>
+                </layout>
+
+                <layout class="lyt_atributos">
+                    <image class="img_atributos"/>
+                    <layout class="lyt_quadro_atributos lyt_forca">
+                        <button class="btn_atributos btn_forca" onClick='rolarAtributo(self, "fldForca", "Força")'/>
+                        <edit class="edt_atributos" field="fldForca"/>
+                    </layout>
+                    <layout class="lyt_quadro_atributos lyt_destresa">
+                        <button class="btn_atributos btn_destresa" onClick='rolarAtributo(self, "fldDestresa", "Destresa")'/>
+                        <edit class="edt_atributos" field="fldDestresa"/>
+                    </layout>
+                    <layout class="lyt_quadro_atributos lyt_constituicao">
+                        <button class="btn_atributos btn_constituicao" onClick='rolarAtributo(self, "fldConstituicao", "Constituição")'/>
+                        <edit class="edt_atributos" field="fldConstituicao"/>
+                    </layout>
+                    <layout class="lyt_quadro_atributos lyt_inteligencia">
+                        <button class="btn_atributos btn_inteligencia" onClick='rolarAtributo(self, "fldInteligencia", "Inteligencia")'/>
+                        <edit class="edt_atributos" field="fldInteligencia"/>
+                    </layout>
+                    <layout class="lyt_quadro_atributos lyt_sabedoria">
+                        <button class="btn_atributos btn_sabedoria" onClick='rolarAtributo(self, "fldSabedoria", "Sabedoria")'/>
+                        <edit class="edt_atributos" field="fldSabedoria"/>
+                    </layout>
+                    <layout class="lyt_quadro_atributos lyt_carisma">
+                        <button class="btn_atributos btn_carisma" onClick='rolarAtributo(self, "fldCarisma", "Carisma")'/>
+                        <edit class="edt_atributos" field="fldCarisma"/>
+                    </layout>
+                </layout>
+
+                <layout class="lyt_vida_mana">
+                    <image class="img_vida_mana"/>
+                    <layout class="lyt_pontos">
+                        <label class="lbl_pontos lbl_pv_maximo"/>
+                        <label class="lbl_pontos lbl_pv_atual"/>
+                        <label class="lbl_pontos lbl_pv_temporario"/>
+                        <label class="lbl_calculadora"/>
+                        
+                        <edit class="edt_pontos" field="fldVidaMaxima"/>
+                        <edit class="edt_pontos edt_atual" field="fldVidaAtual"><horzLine/></edit>
+                        <edit class="edt_pontos edt_temporario" field="fldVidaTemporaria"><horzLine/></edit>
+                        <edit class="edt_pontos edt_calcula" field="fldCalculadoraVida"/>
+                        <button class="btn_calcular" onclick='calcVidaMana(self, "fldVidaMaxima", "fldVidaAtual","fldVidaTemporaria","fldCalculadoraVida")'/>
+                    </layout>
+                    <layout class="lyt_pontos_pm lyt_pontos_pm">
+                        <label class="lbl_pontos lbl_pm_maximo"/>
+                        <label class="lbl_pontos lbl_pm_atual"/>
+                        <label class="lbl_pontos lbl_pm_temporario"/>
+                        <label class="lbl_calculadora"/>
+                        <edit class="edt_pontos" field="fldManaMaxima"/>
+                        <edit class="edt_pontos edt_atual" field="fldManaAtual"><horzLine/></edit>
+                        <edit class="edt_pontos edt_temporario" field="fldManaTemporaria"><horzLine/></edit>
+                        <edit class="edt_pontos edt_calcula" field="fldCalculadoraMana"/>
+                        <button class="btn_calcular" onClick='calcVidaMana(self, "fldManaMaxima", "fldManaAtual","fldManaTemporaria","fldCalculadoraMana")'/>
+                    </layout>
+                </layout>
+
+                <layout class="lyt_defesa">
+                    <image class="img_defesa"/>
+                    <label class="lbl_defesa"/>
+                    <label class="lbl_10"/>
+                    <label class="lbl_bonus_armadura"/>
+                    <label class="lbl_bonus_escudo"/>
+                    <label class="lbl_defesa_outros"/>
+                    <label class="lbl_valor_defesa_total" field="fldDefesaTotal"/>
+                    <label class="lbl_valor_atributo_defesa" field="fldValorAtributoDefesa"><horzLine/></label>
+                    <label class="lbl_valor_bonus_armadura" field="fldBonusArmadura"><horzLine/></label>
+                    <label class="lbl_valor_bonus_escudo" field="fldBonusEscudo"><horzLine/></label>
+                    <comboBox class="cmb_atributo_defesa" name="cbx_name_atrib_defesa" field="fldAtributoefesa" onChange="calcAtributoDefesa(self)"/>
+                    <edit class="edt_defesa_outros" field="fldDefesaOutros"><horzLine/></edit>
+                    <label class="lbl_proficiencias"/>
+                    <textEditor class="txe_proficiencia" field="fldProficiencia"/>
+                </layout>
+
+                <layout class="lyt_armadura_escudo" >
+                    <image class="img_armadura_escudo"/>
+                    <label class="lbl_titulo_armadura_escudo"/>
+                    <checkBox class="ckb_armadura_pesada" name="cbx_name_armadura_pesada" field="fldArmaduraPesada" onChange="DesAtivaDefesa(self)"/>
+                    <layout class="lyt_linha_armadura">  
+                        <label class="lbl_armadura"/>
+                        <label class="lbl_penalidade"/>
+                        <edit class="edt_armadura" field="edtNomeArmadura"><horzLine/></edit>
+                        <edit class="edt_bonus_armadura" field="fldBonusArmadura"><horzLine/></edit>
+                        <edit class="edt_penalidade_armadura" field="fldPenalidadeArmadura"><horzLine/></edit>
+                        <textEditor class="txe_descricao_armadura" field="fldDescricaoArmadura"/>
+                        <image class="img_seta"/>
+                    </layout>
+                    <layout class="lyt_linha_escudo"> 
+                        <label class="lbl_armadura"/>
+                        <label class="lbl_penalidade"/>
+                        <edit class="edt_escudo" field="edtNomeEscudo"><horzLine/></edit>
+                        <edit class="edt_bonus_armadura" field="fldBonusEscudo"><horzLine/></edit>
+                        <edit class="edt_penalidade_armadura" field="fldPenalidadeEscudo"><horzLine/></edit>
+                        <textEditor class="txe_descricao_armadura" field="fldDescricaoEscudo"/>
+                        <image class="img_seta"/>
+                    </layout>
+                </layout>
+
+                <layout class="lyt_pericias" >
+                    <image class="img_pericias"/>
+                    <layout class="lyt_titulo_pericias">
+                        <label class="lbl_titulo_total"/>
+                        <label class="lbl_titulo_pericias"/>
+                        <label class="lbl_titulo_treino"/>
+                        <label class="lbl_titulo_outros"/>
+                    </layout>
+                    <layout class="lyt_lista_pericias">
+                    <!-- Acrobacia -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldAcrobaciaTotal"><horzLine/></label>
+                            <button text="Acrobacia✠" class="btn_pericia" onclick='rolarPericia(self, "fldAcrobaciaTotal","Acrobacia")'>
+                                <comboBox class="cmb_pericia cmb_atrib_des" name="acro_atrib_name" field="fldAcrobaciaAtributo" onChange='calcTotalPericia(self, "fldAcrobaciaOutros","acro_treino","acro_atrib_name","fldAcrobaciaTotal",true)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="acro_treino" field="fldAcrobaciaTreino" onChange='calcTotalPericia(self, "fldAcrobaciaOutros","acro_treino","acro_atrib_name","fldAcrobaciaTotal",true)'/>
+                            <edit class="edt_pericia_outros" field="fldAcrobaciaOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Adestramento -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldAdestramentoTotal"><horzLine/></label>
+                            <button text="Adestramento✯" name="btn_ades" class=" btn_pericia so_treinada" onclick='rolarPericia(self, "fldAdestramentoTotal","Adestramento")'>
+                                <comboBox class="cmb_pericia cmb_atrib_car" name="ades_atrib_name" field="fldAdestramentoAtributo" onChange='calcTotalPericia(self, "fldAdestramentoOutros","ades_treino","ades_atrib_name","fldAdestramentoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="ades_treino" field="fldAdestrementoTreino" onChange='DesAtivaPericia(self, "ades_treino","btn_ades") calcTotalPericia(self, "fldAdestramentoOutros","ades_treino","ades_atrib_name","fldAdestramentoTotal",false)'/>
+                            <edit class="edt_pericia_outros"  field="fldAdestramentoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Atletismo -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldAtletismoTotal"><horzLine/></label>
+                            <button text="Atletismo" class="btn_pericia" onclick='rolarPericia(self, "fldAtletismoTotal","Atletismo")'>
+                                <comboBox class="cmb_pericia cmb_atrib_for" name="atle_atrib_name" field="fldAtletismoAtributo" onChange='calcTotalPericia(self, "fldAtletismoOutros","atle_treino","atle_atrib_name","fldAtletismoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="atle_treino" field="fldAtletismoTreino" onChange='calcTotalPericia(self, "fldAtletismoOutros","atle_treino","atle_atrib_name","fldAtletismoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldAtletismoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Atuação -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldAtuacaoTotal"><horzLine/></label>
+                            <button text="Atuação✯" class="btn_pericia so_treinada" name="btn_atua_name" onClick='rolarPericia(self, "fldAtuacaoTotal","Atuação")'>
+                                <comboBox class="cmb_pericia cmb_atrib_car" name="atua_atrib_name" field="fldAtuacaoAtributo" onchange='calcTotalPericia(self, "fldAtuacaoOutros","atua_treino","atua_atrib_name","fldAtuacaoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="atua_treino" field="fldAtuacaoTreino" onChange='DesAtivaPericia(self, "atua_treino","btn_atua_name") calcTotalPericia(self, "fldAtuacaoOutros","atua_treino","atua_atrib_name","fldAtuacaoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldAtuacaoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Cavalgar -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldCavalgarTotal"><horzLine/></label>
+                            <button text="Cavalgar" class="btn_pericia" onClick='rolarPericia(self, "fldCavalgarTotal","Cavalgar")'>
+                                <comboBox class="cmb_pericia cmb_atrib_des" name="cava_atrib_name" field="fldCavalgarAtributo" onChange='calcTotalPericia(self, "fldCavalgarOutros","cava_treino","cava_atrib_name","fldCavalgarTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="cava_treino" field="fldCavalgarTreino" onChange='calcTotalPericia(self, "fldCavalgarOutros","cava_treino","cava_atrib_name","fldCavalgarTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldCavalgarOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Conhecimento -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldConhecimentoTotal"><horzLine/></label>
+                            <button text="Conhecimento✯" class="btn_pericia so_treinada" name="btn_conh_name" onClick='rolarPericia(self, "fldConhecimentoTotal","Conhecimento")'>
+                                <comboBox class="cmb_pericia cmb_atrib_int" name="conh_atrib_name" field="fldConhecimentoAtributo" onChange='calcTotalPericia(self, "fldConhecimentoOutros","conh_treino","conh_atrib_name","fldConhecimentoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="conh_treino" field="fldConhecimentoTreino" onChange='DesAtivaPericia(self, "conh_treino","btn_conh_name") calcTotalPericia(self, "fldConhecimentoOutros","conh_treino","conh_atrib_name","fldConhecimentoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldConhecimentoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Cura -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldCuraTotal"><horzLine/></label>
+                            <button text="Cura" class="btn_pericia" onClick='rolarPericia(self, "fldCuraTotal","Cura")'>
+                                <comboBox class="cmb_pericia cmb_atrib_sab" name="cura_atrib_name" field="fldCuraAtributo" onChange='calcTotalPericia(self, "fldCuraOutros","cura_treino","cura_atrib_name","fldCuraTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="cura_treino" field="fldCuraTreino" onChange='calcTotalPericia(self, "fldCuraOutros","cura_treino","cura_atrib_name","fldCuraTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldCuraOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Diplomacia -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldDiplomaciaTotal"><horzLine/></label>
+                            <button text="Diplomacia" class="btn_pericia" onClick='rolarPericia(self, "fldDiplomaciaTotal","Diplomacia")'>
+                                <comboBox class="cmb_pericia cmb_atrib_car" name="dipl_atrib_name" field="fldDiplomaciaAtributo" onChange='calcTotalPericia(self, "fldDiplomaciaOutros","dipl_treino","dipl_atrib_name","fldDiplomaciaTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="dipl_treino" field="fldDiplomaciaTreino" onChange='calcTotalPericia(self, "fldDiplomaciaOutros","dipl_treino","dipl_atrib_name","fldDiplomaciaTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldDiplomaciaOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Enganação -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldEnganacaoTotal"><horzLine/></label>
+                            <button text="Enganação" class="btn_pericia" onClick='rolarPericia(self, "fldEnganacaoTotal","Enganação")'>
+                                <comboBox class="cmb_pericia cmb_atrib_car" name="enga_atrib_name" field="fldEnganacaoAtributo" onChange='calcTotalPericia(self, "fldEnganacaoOutros","enga_treino","enga_atrib_name","fldEnganacaoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="enga_treino" field="fldEnganacaoTreino" onChange='calcTotalPericia(self, "fldEnganacaoOutros","enga_treino","enga_atrib_name","fldEnganacaoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldEnganacaoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Fortitude -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldFortitudeTotal"><horzLine/></label>
+                            <button text="Fortitude" class="btn_pericia" onClick='rolarPericia(self, "fldFortitudeTotal","Fortitude")'>
+                                <comboBox class="cmb_pericia cmb_atrib_con" name="fort_atrib_name" field="fldFortitudeAtributo" onChange='calcTotalPericia(self, "fldFortitudeOutros","fort_treino","fort_atrib_name","fldFortitudeTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="fort_treino" field="fldFortitudeTreino" onChange='calcTotalPericia(self, "fldFortitudeOutros","fort_treino","fort_atrib_name","fldFortitudeTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldFortitudeOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Furtividade -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldFurtividadeTotal"><horzLine/></label>
+                            <button text="Furtividade✠" class="btn_pericia" onClick='rolarPericia(self, "fldFurtividadeTotal","Furtividade")'>
+                                <comboBox class="cmb_pericia cmb_atrib_des" name="furt_atrib_name" field="fld_furt_atrib" onChange='calcTotalPericia(self, "fldFurtividadeOutros","furt_treino","furt_atrib_name","fldFurtividadeTotal",true)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="furt_treino" field="fldFurtividadeTreino" onChange='calcTotalPericia(self, "fldFurtividadeOutros","furt_treino","furt_atrib_name","fldFurtividadeTotal",true)'/>
+                            <edit class="edt_pericia_outros" field="fldFurtividadeOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Guerra -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldGuerraTotal"><horzLine/></label>
+                            <button text="Guerra✯" class="btn_pericia so_treinada" name="btn_guer_name" onClick='rolarPericia(self, "fldGuerraTotal","Guerra")'>
+                                <comboBox class="cmb_pericia cmb_atrib_int" name="guer_atrib_name" field="fldGuerraAtributo" onChange='calcTotalPericia(self, "fldGuerraOutros","guer_treino","guer_atrib_name","fldGuerraTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="guer_treino" field="fldGuerraTreino" onchange='DesAtivaPericia(self, "guer_treino","btn_guer_name") calcTotalPericia(self, "fldGuerraOutros","guer_treino","guer_atrib_name","fldGuerraTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldGuerraOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Iniciativa -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldIniciativaTotal"><horzLine/></label>
+                            <button text="Iniciativa" class="btn_pericia" onClick='rolarPericia(self, "fldIniciativaTotal","Iniciativa")'>
+                                <comboBox class="cmb_pericia cmb_atrib_des" name="inic_atrib_name" field="fldIniciativaAtributo" onChange='calcTotalPericia(self, "fldIniciativaOutros","inic_treino","inic_atrib_name","fldIniciativaTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="inic_treino" field="fldIniciativaTreino" onchange='calcTotalPericia(self, "fldIniciativaOutros","inic_treino","inic_atrib_name","fldIniciativaTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldIniciativaOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Intimidação -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldInitimidacaoTotal"><horzLine/></label>
+                            <button text="Intimidação" class="btn_pericia" onClick='rolarPericia(self, "fldInitimidacaoTotal","Intimidação")'>
+                                <comboBox class="cmb_pericia cmb_atrib_car" name="inti_atrib_name" field="fldIntimidacaoAtributo" onChange='calcTotalPericia(self, "fldIntimidacaoOutros","init_treino","inti_atrib_name","fldInitimidacaoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="init_treino" field="fldIntimidacaoTreino" onChange='calcTotalPericia(self, "fldIntimidacaoOutros","init_treino","inti_atrib_name","fldInitimidacaoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldIntimidacaoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Intuição -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldIntuicaoTotal"><horzLine/></label>
+                            <button text="Intuição" class="btn_pericia" onClick='rolarPericia(self, "fldIntuicaoTotal","Intuição")'>
+                                <comboBox class="cmb_pericia cmb_atrib_sab" name="intu_atrib_name" field="fldIntuicaoAtributo" onChange='calcTotalPericia(self, "fldIntuicaoOutros","intu_treino","intu_atrib_name","fldIntuicaoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="intu_treino" field="fldIntuicaoTreino" onChange='calcTotalPericia(self, "fldIntuicaoOutros","intu_treino","intu_atrib_name","fldIntuicaoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldIntuicaoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Investigação -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldInvestigacaoTotal"><horzLine/></label>
+                            <button text="Investigação" class="btn_pericia" onClick='rolarPericia(self, "fldInvestigacaoTotal","Investigação")'>
+                                <comboBox class="cmb_pericia cmb_atrib_int" name="inve_atrib_name" field="fldInvestigacaoAtributo" onChange='calcTotalPericia(self, "fldInvestigacaoOutros","inve_treino","inve_atrib_name","fldInvestigacaoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="inve_treino" field="fldInvestigacaoTreino" onChange='calcTotalPericia(self, "fldInvestigacaoOutros","inve_treino","inve_atrib_name","fldInvestigacaoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldInvestigacaoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Jogatina -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldJogatinaTotal"><horzLine/></label>
+                            <button text="Jogatina✯" class="btn_pericia so_treinada" name="btn_joga_name" onClick='rolarPericia(self, "fldJogatinaTotal","Jogatina")'>
+                                <comboBox class="cmb_pericia cmb_atrib_car" name="joga_atrib_name" field="fldJogatinaAtribudo" onChange='calcTotalPericia(self, "fldJogatinaOutros","joga_treino","joga_atrib_name","fldJogatinaTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="joga_treino" field="fldJogaTreino" onChange='DesAtivaPericia(self, "joga_treino","btn_joga_name") calcTotalPericia(self, "fldJogatinaOutros","joga_treino","joga_atrib_name","fldJogatinaTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldJogatinaOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Ladinagem -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldLadinagemTotal"><horzLine/></label>
+                            <button text="Ladinagem✯✠" class="btn_pericia so_treinada" name="btn_ladi_name" onClick='rolarPericia(self, "fldLadinagemTotal","Ladinagem")'>
+                                <comboBox class="cmb_pericia cmb_atrib_des" name="ladi_atrib_name" field="fldLadinagemAtributo" onChange='calcTotalPericia(self, "fldLadinagemOutros","ladi_treino","ladi_atrib_name","fldLadinagemTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="ladi_treino" field="fldLadinagemTreino" onChange='DesAtivaPericia(self, "ladi_treino","btn_ladi_name") calcTotalPericia(self, "fldLadinagemOutros","ladi_treino","ladi_atrib_name","fldLadinagemTotal",true)'/>
+                            <edit class="edt_pericia_outros" field="fldLadinagemOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Luta -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldLutaTotal"><horzLine/></label>
+                            <button text="Luta" class="btn_pericia" onClick='rolarPericia(self, "fldLutaTotal","Luta")'>
+                                <comboBox class="cmb_pericia cmb_atrib_for" name="luta_atrib_name" field="fldLutaAtributo" onChange='calcTotalPericia(self, "fldLutaOutros","luta_treino","luta_atrib_name","fldLutaTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="luta_treino" field="fldLutaTreino" onChange='calcTotalPericia(self, "fldLutaOutros","luta_treino","luta_atrib_name","fldLutaTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldLutaOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Misticismo -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldMisticismoTotal"><horzLine/></label>
+                            <button text="Misticismo✯" class="btn_pericia so_treinada" name="btn_mist_name" onClick='rolarPericia(self, "fldMisticismoTotal","Misticismo")'>
+                                <comboBox class="cmb_pericia cmb_atrib_int" name="mist_atrib_name" field="fldMisticismaAtributo" onChange='calcTotalPericia(self, "fldMisticismoOutros","mist_treino","mist_atrib_name","fldMisticismoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="mist_treino" field="fldMisticismoTreino" onChange='DesAtivaPericia(self, "mist_treino","btn_mist_name") calcTotalPericia(self, "fldMisticismoOutros","mist_treino","mist_atrib_name","fldMisticismoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldMisticismoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Nobreza -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldNobrezaTotal"><horzLine/></label>
+                            <button text="Nobreza✯" class="btn_pericia so_treinada" name="btn_nobr_name" onClick='rolarPericia(self, "fldNobrezaTotal","Nobreza")'>
+                                <comboBox class="cmb_pericia cmb_atrib_int"  name="nobr_atrib_name" field="fldNobrezaAtributo" onChange='calcTotalPericia(self, "fldNobrezaOutros","nobr_treino","nobr_atrib_name","fldNobrezaTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="nobr_treino" field="fldNobrezaTreino" onChange='DesAtivaPericia(self, "nobr_treino","btn_nobr_name") calcTotalPericia(self, "fldNobrezaOutros","nobr_treino","nobr_atrib_name","fldNobrezaTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldNobrezaOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Ofício -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldOficio1Total"><horzLine/></label>
+                            <button text="Ofício✯" class="btn_pericia so_treinada" name="btn_ofi1_name" onClick='local oficio1 = "ofício: " .. tostring(sheet.fldOficio1Edt) rolarPericia(self, "fldOficio1Total", oficio1)'>
+                                <edit class="edt_oficio" field="fldOficio1Edt"><horzLine/></edit>
+                                <comboBox class="cmb_pericia cmb_atrib_int" name="ofi1_atrib_name" field="fldOficio1Atributo" onChange='calcTotalPericia(self, "fldOficio1Outros","ofi1_treino","ofi1_atrib_name","fldOficio1Total",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="ofi1_treino" field="fldOficio1Treino" onchange='DesAtivaPericia(self, "ofi1_treino","btn_ofi1_name") calcTotalPericia(self, "fldOficio1Outros","ofi1_treino","ofi1_atrib_name","fldOficio1Total",false)'/>
+                            <edit class="edt_pericia_outros" field="fldOficio1Outros"><horzLine/></edit>
+                        </layout>
+                    <!-- Ofício -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldOficio2Total"><horzLine/></label>
+                            <button text="Ofício✯" class="btn_pericia so_treinada" name="btn_ofi2_name" onClick=' local oficio2 = "ofício: " .. tostring(sheet.ofi2_edt) rolarPericia(self, "fldOficio2Total", oficio2)'>
+                                <edit class="edt_oficio" field="fldOficio2Edt"><horzLine/></edit>
+                                <comboBox class="cmb_pericia cmb_atrib_int" name="ofi2_atrib" field="fldOficio2Atributo" onChange='calcTotalPericia(self, "fldOficio2Outros","ofi2_treino","ofi2_atrib","fldOficio2Total",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="ofi2_treino" field="fldOficio2Treino" onChange='DesAtivaPericia(self, "ofi2_treino","btn_ofi2_name") calcTotalPericia(self, "fldOficio2Outros","ofi2_treino","ofi2_atrib","fldOficio2Total",false)'/>
+                            <edit class="edt_pericia_outros" field="fldOficio2Outros"><horzLine/></edit>
+                        </layout>
+                    <!-- Percepção -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldPercepcaoTotal"><horzLine/></label>
+                            <button text="Percepção" class="btn_pericia" onClick='rolarPericia(self, "fldPercepcaoTotal","Percepção")'>
+                                <comboBox class="cmb_pericia cmb_atrib_sab" name="perc_atrib_name" field="fldPercepcaoAtributo" onChange='calcTotalPericia(self, "fldPercepcaoOutros","perc_treino","perc_atrib_name","fldPercepcaoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="perc_treino" field="fldPercepcaoTreino" onChange='calcTotalPericia(self, "fldPercepcaoOutros","perc_treino","perc_atrib_name","fldPercepcaoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldPercepcaoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Pilotagem -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldPilotagemTotal"><horzLine/></label>
+                            <button text="Pilotagem✯"  class="btn_pericia so_treinada" name="btn_pilo_name" onClick='rolarPericia(self, "fldPilotagemTotal","Pilotagem")'>
+                                <comboBox class="cmb_pericia cmb_atrib_des" name="pilo_atrib_name" field="fldPilotagemAtributo" onChange='calcTotalPericia(self, "fldPilotagemOutros","pilo_treino","pilo_atrib_name","fldPilotagemTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="pilo_treino" field="fldPilotagemTreino" onChange='DesAtivaPericia(self, "pilo_treino","btn_pilo_name") calcTotalPericia(self, "fldPilotagemOutros","pilo_treino","pilo_atrib_name","fldPilotagemTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldPilotagemOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Pontaria -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldPontariaTotal"><horzLine/></label>
+                            <button text="Pontaria" class="btn_pericia" onClick='rolarPericia(self, "fldPontariaTotal","Pontaria")'>
+                                <comboBox class="cmb_pericia cmb_atrib_des" name="pont_atrib_name" field="fldPontariaAtributo" onChange='calcTotalPericia(self, "fldPontariaOutros","pont_treino","pont_atrib_name","fldPontariaTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="pont_treino" field="fldPontariaTreino" onChange='calcTotalPericia(self, "fldPontariaOutros","pont_treino","pont_atrib_name","fldPontariaTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldPontariaOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Reflexos -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldReflexosTotal"><horzLine/></label>
+                            <button text="Reflexos" class="btn_pericia" onClick='rolarPericia(self, "fldReflexosTotal","Reflexos")'>
+                                <comboBox class="cmb_pericia cmb_atrib_des" name="refl_atrib" field="fldReflexoAtributo" onChange='calcTotalPericia(self, "fldReflexosOutros","refl_treino","refl_atrib","fldReflexosTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="refl_treino" field="fldReflexosTreino" onChange='calcTotalPericia(self, "fldReflexosOutros","refl_treino","refl_atrib","fldReflexosTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldReflexosOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Religião -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldReligiaoTotal"><horzLine/></label>
+                            <button text="Religião✯" class="btn_pericia so_treinada" name="btn_reli_name" onClick='rolarPericia(self, "fldReligiaoTotal","Religião")'>
+                                <comboBox class="cmb_pericia cmb_atrib_sab" name="reli_atrib_name" field="fldReligiaoAtributo" onChange='calcTotalPericia(self, "fldReligiaoOutros","reli_treino","reli_atrib_name","fldReligiaoTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="reli_treino" field="fldReligiaoTreino" onChange='DesAtivaPericia(self, "reli_treino","btn_reli_name") calcTotalPericia(self, "fldReligiaoOutros","reli_treino","reli_atrib_name","fldReligiaoTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldReligiaoOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Sobrevivência -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldSobrevivenciaTotal"><horzLine/></label>
+                            <button text="Sobrevivência" class="btn_pericia" onClick='rolarPericia(self, "fldSobrevivenciaTotal","Reflexos")'>
+                                <comboBox class="cmb_pericia cmb_atrib_sab" name="sobr_atrib_name" field="fld_sobr_atrib" onChange='calcTotalPericia(self, "fldSobrevivenciaOutros","sobr_treino","sobr_atrib_name","fldSobrevivenciaTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="sobr_treino" field="fldSobrevivenciaTreino" onChange='calcTotalPericia(self, "fldSobrevivenciaOutros","sobr_treino","sobr_atrib_name","fldSobrevivenciaTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldSobrevivenciaOutros"><horzLine/></edit>
+                        </layout>
+                    <!-- Vontade   -->
+                        <layout class="lyt_linha_pericia">
+                            <label class="lbl_pericia" field="fldVontadeTotal"><horzLine/></label>
+                            <button text="Vontade" class="btn_pericia" onClick='rolarPericia(self, "fldVontadeTotal","Vontade")'>
+                                <comboBox class="cmb_pericia cmb_atrib_sab" name="vont_atrib_name" field="fldVontadeAtributo" onchange='calcTotalPericia(self, "fldVontadeOutros","vont_treino","vont_atrib_name","fldVontadeTotal",false)'/>
+                            </button>
+                            <checkBox class="ckb_treino" name="vont_treino" field="fldVontadeTreino" onChange='calcTotalPericia(self, "fldVontadeOutros","vont_treino","vont_atrib_name","fldVontadeTotal",false)'/>
+                            <edit class="edt_pericia_outros" field="fldVontadeOutros"><horzLine/></edit>
+                        </layout>
+                    </layout>
+                    <label class="lbl_lateral_nivel"/>
+                    <label class="lbl_lateral_bonus"/>
+                    <label class="lbl_legenda_bonus"/>
+                    <label class="lbl_legenda_penalidade" />
+                    <label class="lvl_valor_bonus" field="fldBonusTreinado"/>
+                    <label class="lvl_valor_meio_nivel" field="fldMeioNivel"/>
+                </layout>
+
+
+                <layout class="lyt_armas">
+                    <image class="img_armas"/>
+                    <layout class="lyt_quadro_armas">
+                        <layout class="lyt_linha_armas">
+                            <label class="lbl_ataque lbl_titulos"/>
+                            <label class="lbl_critico lbl_titulos"/>
+                            <label class="lbl_tipo lbl_titulos"/>
+                            <label class="lbl_alcance lbl_titulos"/>
+                            <button class="btn_teste" onClick='rolarAtaque(self, "fldTesteArma1","fldNomeArma1")'/>
+                            <button class="btn_dano" onClick='rolarDano(self, "fldDanoArma1","fldNomeArma1")'/>
+                            <edit class="edt_ataque edt_armas" field="fldNomeArma1"><horzLine/></edit>
+                            <edit class="edt_teste edt_armas" field="fldTesteArma1" ><horzLine/></edit>
+                            <edit class="edt_dano edt_armas" field="fldDanoArma1"><horzLine/></edit>
+                            <edit class="edt_critico edt_armas" field="fldCritico1"><horzLine/></edit>
+                            <edit class="edt_tipo edt_armas" field="fldTipo1"><horzLine/></edit>
+                            <edit class="edt_alcance edt_armas" field="fldAlcance1"><horzLine/></edit>
+                        </layout>
+                        <layout class="lyt_linha_armas">
+                            <label class="lbl_ataque lbl_titulos"/>
+                            <label class="lbl_critico lbl_titulos"/>
+                            <label class="lbl_tipo lbl_titulos"/>
+                            <label class="lbl_alcance lbl_titulos"/>
+                            <button class="btn_teste" onClick='rolarAtaque(self, "fldTesteArma2","fldNomeArma2")'/>
+                            <button class="btn_dano" onClick='rolarDano(self, "fldDanoArma2","fldNomeArma2")'/>
+                            <edit class="edt_ataque edt_armas" field="fldNomeArma2"><horzLine/></edit>
+                            <edit class="edt_teste edt_armas" field="fldTesteArma2" ><horzLine/></edit>
+                            <edit class="edt_dano edt_armas" field="fldDanoArma2"><horzLine/></edit>
+                            <edit class="edt_critico edt_armas" field="fldCritico2"><horzLine/></edit>
+                            <edit class="edt_tipo edt_armas" field="fldTipo2"><horzLine/></edit>
+                            <edit class="edt_alcance edt_armas" field="fldAlcance2"><horzLine/></edit>
+                        </layout>
+                        <layout class="lyt_linha_armas">
+                            <label class="lbl_ataque lbl_titulos"/>
+                            <label class="lbl_critico lbl_titulos"/>
+                            <label class="lbl_tipo lbl_titulos"/>
+                            <label class="lbl_alcance lbl_titulos"/>
+                            <button class="btn_teste" onClick='rolarAtaque(self, "fldTesteArma3","fldNomeArma3")'/>
+                            <button class="btn_dano" onClick='rolarDano(self, "fldDanoArma3","fldNomeArma3")'/>
+                            <edit class="edt_ataque edt_armas" field="fldNomeArma3"><horzLine/></edit>
+                            <edit class="edt_teste edt_armas" field="fldTesteArma3" ><horzLine/></edit>
+                            <edit class="edt_dano edt_armas" field="fldDanoArma3"><horzLine/></edit>
+                            <edit class="edt_critico edt_armas" field="fldCritico3"><horzLine/></edit>
+                            <edit class="edt_tipo edt_armas" field="fldTipo3"><horzLine/></edit>
+                            <edit class="edt_alcance edt_armas" field="fldAlcance3"><horzLine/></edit>
+                        </layout>
+                        <layout class="lyt_linha_armas">
+                            <label class="lbl_ataque lbl_titulos"/>
+                            <label class="lbl_critico lbl_titulos"/>
+                            <label class="lbl_tipo lbl_titulos"/>
+                            <label class="lbl_alcance lbl_titulos"/>
+                            <button class="btn_teste" onClick='rolarAtaque(self, "fldTesteArma4","fldNomeArma4")'/>
+                            <button class="btn_dano" onClick='rolarDano(self, "fldDanoArma4","fldNomeArma4")'/>
+                            <edit class="edt_ataque edt_armas" field="fldNomeArma4"><horzLine/></edit>
+                            <edit class="edt_teste edt_armas" field="fldTesteArma4" ><horzLine/></edit>
+                            <edit class="edt_dano edt_armas" field="fldDanoArma4"><horzLine/></edit>
+                            <edit class="edt_critico edt_armas" field="fldCritico4"><horzLine/></edit>
+                            <edit class="edt_tipo edt_armas" field="fldTipo4"><horzLine/></edit>
+                            <edit class="edt_alcance edt_armas" field="fldAlcance4"><horzLine/></edit>
+                        </layout>
+                    </layout>
+                </layout>
+            </scrollBox>
+        </tab>
+        
+        <tab title='Habilidade e Poderes'>
+            <scrollBox align="client">
+                <layout class="lyt_poderes_classe">
+                    <image src='assets/imgs/quadro_poderes_classe.png' height='870' width="420"/>
+                    <label text='Poderes de Classe' fontFamily="Tormenta20" left="110" top="3" width="210" fontSize="16" horzTextAlign="center"/>
+                    
+                    <layout class="lyt_novato">
+                        <textEditor class="txe_niveis" field="txe_nivel1" hint="Coloque aqui poderes de classe do Nível 1" height='48' text='Nível 1'/>
+                        <textEditor class="txe_niveis" field="txe_nivel2" hint="Coloque aqui poderes de classe do Nível 2" height='48' text='Nível 2'/>
+                        <textEditor class="txe_niveis" field="txe_nivel3" hint="Coloque aqui poderes de classe do Nível 3" height='48' text='Nível 3'/>
+                        <textEditor class="txe_niveis" field="txe_nivel4" hint="Coloque aqui poderes de classe do Nível 4" height='48' text='Nível 4'/>
+                    </layout>
+                    <layout class="lyt_veterano">
+                        <textEditor class="txe_niveis" field="txe_nivel5" hint="Coloque aqui poderes de classe do Nível 5" height='39' text='Nível 5'/>
+                        <textEditor class="txe_niveis" field="txe_nivel6" hint="Coloque aqui poderes de classe do Nível 6" height='39' text='Nível 6'/>
+                        <textEditor class="txe_niveis" field="txe_nivel7" hint="Coloque aqui poderes de classe do Nível 7" height='39' text='Nível 7'/>
+                        <textEditor class="txe_niveis" field="txe_nivel8" hint="Coloque aqui poderes de classe do Nível 8" height='39' text='Nível 8'/>
+                        <textEditor class="txe_niveis" field="txe_nivel9" hint="Coloque aqui poderes de classe do Nível 9" height='39' text='Nível 9'/>
+                        <textEditor class="txe_niveis" field="txe_nivel10" hint="Coloque aqui poderes de classe do Nível 10" height='39' text='Nível 10'/>
+                    </layout>
+                    <layout class="lyt_campeao">
+                        <textEditor class="txe_niveis" field="txe_nivel11" hint="Coloque aqui poderes de classe do Nível 11" height='38' text='Nível 11'/>
+                        <textEditor class="txe_niveis" field="txe_nivel12" hint="Coloque aqui poderes de classe do Nível 12" height='38' text='Nível 12'/>
+                        <textEditor class="txe_niveis" field="txe_nivel13" hint="Coloque aqui poderes de classe do Nível 13" height='38' text='Nível 13'/>
+                        <textEditor class="txe_niveis" field="txe_nivel14" hint="Coloque aqui poderes de classe do Nível 14" height='38' text='Nível 14'/>
+                        <textEditor class="txe_niveis" field="txe_nivel15" hint="Coloque aqui poderes de classe do Nível 15" height='38' text='Nível 15'/>
+                        <textEditor class="txe_niveis" field="txe_nivel16" hint="Coloque aqui poderes de classe do Nível 16" height='38' text='Nível 16'/>
+                    </layout>
+                    <layout class="lyt_lenda">
+                        <textEditor class="txe_niveis" field="txe_nivel17" hint="Coloque aqui poderes de classe do Nível 17" height='43' text='Nível 17'/>
+                        <textEditor class="txe_niveis" field="txe_nivel18" hint="Coloque aqui poderes de classe do Nível 18" height='43' text='Nível 18'/>
+                        <textEditor class="txe_niveis" field="txe_nivel19" hint="Coloque aqui poderes de classe do Nível 19" height='43' text='Nível 19'/>
+                        <textEditor class="txe_niveis" field="txe_nivel20" hint="Coloque aqui poderes de classe do Nível 20" height='43' text='Nível 20'/>
+                    </layout>
+
+                    <label class="lbl_novato"/> 
+                    <label class="lbl_veterano"/>
+                    <label class="lbl_campeao"/>
+                    <label class="lbl_lenda"/>
+                </layout>
+                <layout class="lyt_poderes_origem">
+                    <image class="img_poderes"/>
+                    <label class="lbl_poder_titulo lbl_poder_origem" />
+                    <textEditor class="txe_poderes" field="fldPoderesOrigem"/>
+                </layout>
+                <layout class="lyt_poderes_divindade">
+                    <image class="img_poderes"/>
+                    <label  class="lbl_poder_titulo lbl_poder_divindade"/>
+                    <textEditor class="txe_poderes" field="fldPoderesDivindade"/>
+                </layout>
+                <layout class="lyt_poderes_raca">
+                    <image class="img_poderes"/>
+                    <label class="lbl_poder_titulo lbl_poder_raca"/>
+                    <textEditor class="txe_poderes" field="fldPoderesRaca"/>
+                </layout>
+                <layout class="lyt_poderes_habilidades">
+                    <image class="img_poderes_habilidades"/>
+                    <label class="lbl_poderes_habilidades" />
+                    <textEditor class="txe_poderes_habilidades" field="fldPoderesHabilidade"/>
+                </layout>
+            </scrollBox>
+        </tab>
+
+        <tab title='Magias'>
+            <scrollBox align="client">
+            <layout class="lyt_magia">
+                <image class="img_info_magia"/>
+                <button class="btn_nova_magia" onClick='self.cardMagiaJogador:append() executaPlaceholderMagia()'/>
+                <label class="lbl_atrib_chave"/>
+                <label class="lbl_teste_resistencia"/>
+                <label class="lbl_valor_atrib_chave" field="fldAtributoChave" />
+                <label class="lbl_valor_teste_resistencia" field="fldTesteResistencia"/>
+                <comboBox class="cmb_atrib_chave" name="teste_resistencia" field="fld_test_resist" onChange='alteraAtributoChave(self)'/>
+            </layout>
+            <recordList class="janela_util" name="cardMagiaJogador" layout="horizontalTiles" field="fldCardMagia" top="30" templateForm="frmCardMagiaJogador"/>
+            </scrollBox>
+        </tab>
+
+        <tab title='Mochila'>
+            <scrollBox align="client">
+            <layout align="top" height="30">
+                <button align="left" text="Novo">
+                    <event name='onClick'>
+                        self.cardItemJogador:append();
+                        calcCargaAtual(self)
+                    </event>
+                </button>
+            </layout>
+            <layout width="335" height="900" left="920">
+                <layout width="335" height="60">
+                    <image src='assets/imgs/fundo_dinheiro.png' width="335" height="60"/>
+                    <image src='assets/imgs/quadro_dinheiro.png' top="5" width="113" height="30"/>
+                    <image src='assets/imgs/quadro_dinheiro.png' top="5" left="113" width="113" height="30"/>
+                    <image src='assets/imgs/quadro_dinheiro.png' top="5" left="226" width="113" height="30"/>
+                    <label text='TC$' top="5" height="30" vertTextAlign="center" left="10"/>
+                    <label text='1TC = 1/10T$' top="35" left="15"/>
+                    <label text='T$' top="5" height="30" vertTextAlign="center" left="123"/>
+                    <label text='TO$' top="5" height="30" vertTextAlign="center" left="236"/>
+                    <label text='1T0 = 10T$' top="35" left="240"/>
+                    <edit height="28" width="70" top="5" left="35" field="fldTibarCobre"><horzLine/></edit>
+                    <edit height="28" width="70" top="5" left="148" field="fldTibarPrata"><horzLine/></edit>
+                    <edit height="28" width="70" top="5" left="261" field="fldTibarOuro"><horzLine/></edit>
+                </layout>
+                <layout width="335" height="174" top="60">
+                    <image src='assets/imgs/quadro_carga.png' width="335" height="174"/>
+                    <label text='Quantidade de Itens:' top="23" left="15" width="220" fontFamily="tormenta20" fontSize="20"/>
+                    <label text='0' top="23" left="230" width="40" fontFamily="tormenta20" fontSize="20" horzTextAlign="center" field="lbl_total_itens"/>
+
+                    <label text='Carga:' top="70" left="15" fontFamily="tormenta20" fontSize="20" height="20"/>
+                    <label text='0' top="70" left="80" width="40" fontFamily="tormenta20" fontSize="20" horzTextAlign="center" field="lbl_carga_atual"/>
+                    <label text='(' top="70" left="120" fontFamily="tormenta20" fontSize="20"/>
+                    <label text='0' top="70" left="127" width="40" fontFamily="tormenta20" fontSize="20" horzTextAlign="center" field="lbl_carga_sobrecarga"/>
+                    <label text='/' top="70" left="165" fontFamily="tormenta20" fontSize="20"/>
+                    <label text='0' top="70" left="180" width="40" fontFamily="tormenta20" fontSize="20" horzTextAlign="center" field="lbl_carga_maxima"/>
+                    <label text=')' top="70" left="225" fontFamily="tormenta20" fontSize="20"/>
+
+                    <label field="lbl_texto_sobrecarga" top="105" left="15" width="320" height="60"/>
+                </layout>
+
+            </layout>
+            <recordList class="janela_util" name="cardItemJogador" layout="horizontalTiles" field="fldCardItens" top="30" templateForm="frmCardItemJogador"/>
+            <checkBox class="marcador_sobrecarga" text="Pode ficar sobrecarregado" name="ckb_sobrecarga" field="fld_ckb_sobrecarga" checked="true">
+                <event name='onChange'>
+                    calcCargaAtual(self)
+                </event>
+            </checkBox>
+            </scrollBox>
+        </tab>
+        
+        <tab title='Detalhes'>
+            <scrollBox align="client">
+            <layout width="300" height="400">
+                <image src='assets/imgs/quadro_imagem.png' height='400' width="300"/>
+                <label field="fld_nome_personagem_detalhes" fontFamily="Tormenta20"  top="15" width="290" fontSize="16" horzTextAlign="center"/>
+                <label text='Avatar' top="40" left="10" horzTextAlign="center" vertTextAlign="center" width="280" height="345"/>
+                <image field="imagemDoPersonagem" editable="true" style="autoFit" left="10" top="40" width="280" height="345">
+               </image>
+            </layout>
+            <layout class="poderes_classe" left="300">
+                <image src='assets/imgs/quadro_raca_divindade_origem.png' height='290' width="420"/>
+                <label  text='Aparencia' fontFamily="Tormenta20"  top="5" width="400" fontSize="16" horzTextAlign="center"/>
+                <textEditor field="fldAparencia" height='250' width="403" top="30" left="7" align="none"/>
+            </layout>
+            <layout class="poderes_classe" left="720">
+                <image src='assets/imgs/quadro_raca_divindade_origem.png' height='290' width="420"/>
+                <label  text='Personalidade' fontFamily="Tormenta20"  top="5" width="400" fontSize="16" horzTextAlign="center"/>
+                <textEditor field="fldPersonalidade" height='250' width="403" top="30" left="7" align="none"/>
+            </layout>
+            <layout top="290" left="300" height="500" width="840">
+                <image src='assets/imgs/quadro_detalhes.png' height='500' width="840"/>
+                <label  text='Historia' fontFamily="Tormenta20"  top="7" width="840" fontSize="16" horzTextAlign="center"/>
+                <richEdit field="fldHistoria"  height='458' width="816" top="27" left="12" backgroundColor="#505050" defaultFontColor="white" />
+            </layout>
+            <layout top="400" width="300" height="400">
+                <image src='assets/imgs/quadro_imagem.png' height='400' width="300"/>
+                <label  text='caracteristicas' fontFamily="Tormenta20"  top="15" width="290" fontSize="16" horzTextAlign="center"/>
+                    <layout width="50" height="300" top="50" left="15">
+                        <label class="lbl_caracteristicas" text='Idade:'/>
+                        <label class="lbl_caracteristicas" text='Sexo:'/>
+                        <label class="lbl_caracteristicas" text='Altura:'/>
+                        <label class="lbl_caracteristicas" text='Peso:'/>
+                        <label class="lbl_caracteristicas" text='Olhos:'/>
+                        <label class="lbl_caracteristicas" text='Pele:'/>
+                        <label class="lbl_caracteristicas" text='Cabelo:'/>
+                        <label class="lbl_caracteristicas" text='Reino:'/>
+                    </layout>
+                    <layout top="50" left="70" width="220" height="300">
+                        <edit class="edt_caracteristicas" field="fldIdade"><horzLine/></edit>
+                        <edit class="edt_caracteristicas" field="fldSexo"><horzLine/></edit>
+                        <edit class="edt_caracteristicas" field="fldAltura"><horzLine/></edit>
+                        <edit class="edt_caracteristicas" field="fldPeso"><horzLine/></edit>
+                        <edit class="edt_caracteristicas" field="fldOlhos"><horzLine/></edit>
+                        <edit class="edt_caracteristicas" field="fldPele"><horzLine/></edit>
+                        <edit class="edt_caracteristicas" field="fldCabelo"><horzLine/></edit>
+                        <edit class="edt_caracteristicas" field="fldReino"><horzLine/></edit>
+
+                    </layout>
+            </layout>
+            </scrollBox>
+        </tab>
+
+        <tab title='Anotações'>
+            <scrollBox align="client">
+            <layout class="lyt_anotacoes">
+                <image src='assets/imgs/quadro_outros_poderes.png' height='870' width="420"/>
+                <label class="lbl_anotacoes"/>
+                <textEditor class="ted_anotacoes" field="fldAnotacao1"/>
+            </layout>
+            <layout class="lyt_anotacoes" left="420">
+                <image src='assets/imgs/quadro_outros_poderes.png' height='870' width="420"/>
+                <label class="lbl_anotacoes"/>
+                <textEditor class="ted_anotacoes" field="fldAnotacao2"/>
+            </layout>
+            <layout class="lyt_anotacoes" left="840">
+                <image src='assets/imgs/quadro_outros_poderes.png' height='870' width="420"/>
+                <label class="lbl_anotacoes"/>
+                <textEditor class="ted_anotacoes" field="fldAnotacao3"/>
+            </layout>
+            </scrollBox>
+        </tab>
+    </tabControl>
+
+    <dataLink field="fldNivel">
+                <event name='onChange'>
+                    calcNivel(self)
+                </event>
+            </dataLink>
+            <dataLink fields="{'fldVidaMaxima','fldVidaAtual','fldVidaTemporaria'}">
+                <event name='onChange'>
+                    calcVidaMana(self, "fldVidaMaxima", "fldVidaAtual","fldVidaTemporaria","fldCalculadoraVida")
+                </event>
+            </dataLink>
+            <dataLink fields="{'fldManaMaxima','fldManaAtual','fldManaTemporaria'}">
+                <event name='onChange'>
+                    calcVidaMana(self, "fldManaMaxima", "fldManaAtual","fldManaTemporaria","fldCalculadoraMana")
+                </event>
+            </dataLink>
+            <dataLink field="fldBonusArmadura">
+                <event name='onChange'>
+                    calcBonusArmadura(self)
+                </event>
+            </dataLink>
+            <dataLink field="fldBonusEscudo">
+                <event name='onChange'>
+                    calcBonusEscudo(self)
+                </event>
+            </dataLink>
+            <dataLink fields="{'fldBonusArmadura','fldBonusEscudo','fldDefesaOutros','fldForca','fldDestresa','fldConstituicao','fldInteligencia','fldSabedoria','fldCarisma'}">
+                <event name='onChange'>
+                    calcAtributoDefesa(self)
+                </event>
+            </dataLink>
+            <dataLink fields="{'fldForca','fldDestresa','fldConstituicao','fldInteligencia','fldSabedoria','fldCarisma',
+            'fldNivel','fldPenalidadeArmadura','fldPenalidadeEscudo',
+            'fldAcrobaciaOutros'
+            ,'flsAdestramentoOutros'
+            ,'fldAtletismoOutros'
+            ,'fldAtuacaoOutros'
+            ,'fldCavalgarOutros'
+            ,'fldConhecimentoOutros'
+            ,'fldCuraOutros'
+            ,'fldDiplomaciaOutros'
+            ,'fldEnganacaoOutros'
+            ,'fldFortitudeOutros'
+            ,'fldFurtividadeOutros'
+            ,'fldGuerraOutros'
+            ,'fldIniciativaOutros'
+            ,'fldIntimidacaoOutros'
+            ,'fldIntuicaoOutros'
+            ,'fldInvestigacaoOutros'
+            ,'fldJogatinaOutros'
+            ,'fldLadinagemOutros'
+            ,'fldLutaOutros'
+            ,'fldMisticismoOutros'
+            ,'fldNobrezaOutros'
+            ,'fldOficio1Outros'
+            ,'fldOficio2Outros'
+            ,'fldPercepcaoOutros'
+            ,'fldPilotagemOutros'
+            ,'fldPontariaOutros'
+            ,'fldReflexosOutros'
+            ,'fldReligiaoOutros'
+            ,'fldSobrevivenciaOutros'
+            ,'fldVontadeOutros'
+            }">
+            <event name='onChange'>
+                alteraAtributoChave(self)
+                calcSobrecargaMaxima(self)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldAcrobaciaOutros","acro_treino","acro_atrib_name","fldAcrobaciaTotal",true)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "flsAdestramentoOutros","ades_treino","ades_atrib_name","fldAdestramentoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldAtletismoOutros","atle_treino","atle_atrib_name","fldAtletismoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldAtuacaoOutros","atua_treino","atua_atrib_name","fldAtuacaoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldCavalgarOutros","cava_treino","cava_atrib_name","fldCavalgarTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldConhecimentoOutros","conh_treino","conh_atrib_name","fldConhecimentoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldCuraOutros","cura_treino","cura_atrib_name","fldCuraTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldDiplomaciaOutros","dipl_treino","dipl_atrib_name","fldDiplomaciaTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldEnganacaoOutros","enga_treino","enga_atrib_name","fldEnganacaoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldFortitudeOutros","fort_treino","fort_atrib_name","fldFortitudeTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldFurtividadeOutros","furt_treino","furt_atrib_name","fldFurtividadeTotal",true)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldGuerraOutros","guer_treino","guer_atrib_name","fldGuerraTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldIniciativaOutros","inic_treino","inic_atrib_name","fldIniciativaTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldIntimidacaoOutros","init_treino","inti_atrib_name","fldInitimidacaoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldIntuicaoOutros","intu_treino","intu_atrib_name","fldIntuicaoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldInvestigacaoOutros","inve_treino","inve_atrib_name","fldInvestigacaoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldJogatinaOutros","joga_treino","joga_atrib_name","fldJogatinaTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldLadinagemOutros","ladi_treino","ladi_atrib_name","fldLadinagemTotal",true)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldLutaOutros","luta_treino","luta_atrib_name","fldLutaTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldMisticismoOutros","mist_treino","mist_atrib_name","fldMisticismoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldNobrezaOutros","nobr_treino","nobr_atrib_name","fldNobrezaTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldOficio1Outros","ofi1_treino","ofi1_atrib_name","fldOficio1Total",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldOficio2Outros","ofi2_treino","ofi2_atrib","fldOficio2Total",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldPercepcaoOutros","perc_treino","perc_atrib_name","fldPercepcaoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldPilotagemOutros","pilo_treino","pilo_atrib_name","fldPilotagemTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldPontariaOutros","pont_treino","pont_atrib_name","fldPontariaTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldReflexosOutros","refl_treino","refl_atrib","fldReflexosTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldReligiaoOutros","reli_treino","reli_atrib_name","fldReligiaoTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldSobrevivenciaOutros","sobr_treino","sobr_atrib_name","fldSobrevivenciaTotal",false)
+                </event>
+                <event name='onChange'>
+                    calcTotalPericia(self, "fldVontadeOutros","vont_treino","vont_atrib_name","fldVontadeTotal",false)
+                </event>
+         </dataLink>
+         <dataLink fields="{'edt_quantidade', 'edt_espaco'}">
+        <event name='onchange'>
+            calcCargaAtual(self)
+        </event>
+    </dataLink>
+
+</form>
