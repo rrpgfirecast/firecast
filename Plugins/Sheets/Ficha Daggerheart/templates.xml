@@ -399,10 +399,13 @@
     </template>
 
     <template name="InventorySlot">
+		<rectangle g="col" g-width="2" height="26" color="#181512" strokeColor="#3A3329" strokeSize="1">
+			<edit align="client" field="$(field)itemquantity" transparent="true" fontColor="#FFF7E8"/>
+		</rectangle>
 		<rectangle g="col" g-width="6" height="26" color="#181512" strokeColor="#3A3329" strokeSize="1">
 			<edit align="client" field="$(field)item" transparent="true" fontColor="#FFF7E8"/>
 		</rectangle>
-		<rectangle g="col" g-width="5" height="26" color="#181512" strokeColor="#3A3329" strokeSize="1">
+		<rectangle g="col" g-width="3" height="26" color="#181512" strokeColor="#3A3329" strokeSize="1">
 			<edit align="client" field="$(field)diceroll" transparent="true" fontColor="#FFF7E8"/>
 		</rectangle>
         <button g="col" g-width="1" text="R" class="btnSlot" margins="{top=2}" hint="Rolar item">
