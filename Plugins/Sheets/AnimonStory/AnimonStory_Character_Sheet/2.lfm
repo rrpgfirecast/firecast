@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAnimonStory_Character_Sheet2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmAnimonStory_Character_Sheet2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmAnimonStory_Character_Sheet2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1012" height="1431" color="white">&#xD;
+            <image left="0" top="0" width="1012" height="1431" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="828" top="79" width="103" height="27" compilerOrder="5">
+                <edit transparent="true" fontSize="18" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="103" height="28" field="Max_BP_6" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="339" top="80" width="176" height="25" compilerOrder="9">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="176" height="26" field="Max_BP_8" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="597" top="80" width="126" height="27" compilerOrder="7">
+                <edit transparent="true" fontSize="18" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="126" height="28" field="Max_BP_7" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="370" top="146" width="52" height="33" compilerOrder="1">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="52" height="34" field="Max_BP_4" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="553" top="150" width="89" height="42" compilerOrder="45">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="43" field="Max_BP_2" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="691" top="150" width="89" height="42" compilerOrder="47">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="43" field="Max_BP_3" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="829" top="150" width="89" height="42" compilerOrder="49">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="43" field="Max_BP_13" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="121" top="154" width="44" height="29" compilerOrder="11">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="30" field="Max_BP_9" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="175" top="154" width="44" height="29" compilerOrder="13">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="30" field="Max_BP_10" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="228" top="154" width="44" height="29" compilerOrder="15">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="30" field="Max_BP_11" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="283" top="154" width="44" height="29" compilerOrder="17">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="30" field="Max_BP_12" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="455" top="163" width="52" height="33" compilerOrder="3">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="52" height="34" field="Max_BP_5" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="440" top="238" width="483" height="33" compilerOrder="19">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="483" height="34" field="Max_BP_24" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="219" top="261" width="61" height="33" compilerOrder="145">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="34" field="Current_HP_B_1" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="285" top="286" width="58" height="32" compilerOrder="147">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="58" height="33" field="Max_HP_B_1" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="440" top="288" width="207" height="33" compilerOrder="21">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="207" height="34" field="Max_BP_25" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="781" top="288" width="141" height="33" compilerOrder="23">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="141" height="34" field="Max_BP_26" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="108" top="336" width="64" height="42" compilerOrder="37">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_37" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="238" top="363" width="89" height="43" compilerOrder="139">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="44" field="B_Heart_4" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="431" top="366" width="496" height="22" compilerOrder="25">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="496" height="23" field="Max_BP_27" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="431" top="393" width="108" height="22" compilerOrder="29">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="108" height="23" field="Max_BP_29" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="634" top="393" width="296" height="22" compilerOrder="27">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="296" height="23" field="Max_BP_28" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="108" top="405" width="64" height="42" compilerOrder="39">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_38" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="455" top="421" width="472" height="22" compilerOrder="31">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="472" height="23" field="Max_BP_30" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="455" top="448" width="472" height="22" compilerOrder="33">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="472" height="23" field="Max_BP_31" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="236" top="451" width="89" height="43" compilerOrder="141">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="44" field="B_Heart_5" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="108" top="474" width="64" height="42" compilerOrder="41">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_39" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="455" top="475" width="473" height="22" compilerOrder="35">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="473" height="23" field="Max_BP_32" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="236" top="538" width="89" height="44" compilerOrder="143">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="45" field="B_Heart_6" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="404" top="538" width="384" height="20" compilerOrder="149">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="384" height="21" field="B_Sig_Name_10" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="797" top="538" width="112" height="20" compilerOrder="153">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="112" height="21" field="B_Sig_Name_12" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="108" top="543" width="64" height="42" compilerOrder="43">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_40" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="797" top="560" width="112" height="20" compilerOrder="155">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="112" height="21" field="B_Sig_Name_13" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="404" top="562" width="384" height="20" compilerOrder="151">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="384" height="21" field="B_Sig_Name_11" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="440" top="622" width="483" height="33" compilerOrder="59">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="483" height="34" field="Max_BP_33" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="219" top="646" width="61" height="33" compilerOrder="83">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="34" field="Current_HP_B_2" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="285" top="671" width="58" height="32" compilerOrder="85">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="58" height="33" field="Max_HP_B_2" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="440" top="672" width="207" height="33" compilerOrder="73">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="207" height="34" field="Max_BP_48" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="781" top="672" width="141" height="33" compilerOrder="75">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="141" height="34" field="Max_BP_49" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="108" top="720" width="64" height="42" compilerOrder="51">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_41" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="238" top="747" width="89" height="43" compilerOrder="77">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="44" field="B_Heart_7" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="431" top="750" width="496" height="22" compilerOrder="61">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="496" height="23" field="Max_BP_34" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="431" top="778" width="108" height="22" compilerOrder="71">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="108" height="23" field="Max_BP_47" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="634" top="778" width="296" height="22" compilerOrder="69">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="296" height="23" field="Max_BP_46" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="108" top="790" width="64" height="42" compilerOrder="53">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_42" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="455" top="806" width="472" height="22" compilerOrder="63">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="472" height="23" field="Max_BP_35" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="455" top="833" width="472" height="22" compilerOrder="65">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="472" height="23" field="Max_BP_36" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="236" top="835" width="89" height="43" compilerOrder="79">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="44" field="B_Heart_8" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="108" top="859" width="64" height="42" compilerOrder="55">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_43" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="455" top="859" width="473" height="22" compilerOrder="67">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="473" height="23" field="Max_BP_45" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="404" top="922" width="384" height="20" compilerOrder="87">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="384" height="21" field="B_Sig_Name_14" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="797" top="922" width="112" height="20" compilerOrder="91">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="112" height="21" field="B_Sig_Name_16" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="236" top="923" width="89" height="44" compilerOrder="81">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="45" field="B_Heart_9" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="108" top="927" width="64" height="42" compilerOrder="57">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_44" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="797" top="945" width="112" height="20" compilerOrder="93">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="112" height="21" field="B_Sig_Name_17" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="404" top="947" width="384" height="20" compilerOrder="89">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="384" height="21" field="B_Sig_Name_15" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="440" top="1007" width="483" height="33" compilerOrder="103">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="483" height="34" field="Max_BP_54" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="219" top="1031" width="61" height="33" compilerOrder="127">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="34" field="Current_HP_B_3" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="285" top="1055" width="58" height="32" compilerOrder="129">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="58" height="33" field="Max_HP_B_3" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="440" top="1057" width="207" height="33" compilerOrder="117">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="207" height="34" field="Max_BP_61" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="781" top="1057" width="141" height="33" compilerOrder="119">
+                <edit transparent="true" fontSize="16.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="141" height="34" field="Max_BP_62" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="108" top="1105" width="64" height="42" compilerOrder="95">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_50" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="238" top="1132" width="89" height="43" compilerOrder="121">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="44" field="B_Heart_10" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="431" top="1135" width="496" height="22" compilerOrder="105">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="496" height="23" field="Max_BP_55" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="431" top="1162" width="108" height="22" compilerOrder="115">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="108" height="23" field="Max_BP_60" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="634" top="1162" width="296" height="22" compilerOrder="113">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="296" height="23" field="Max_BP_59" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="108" top="1174" width="64" height="42" compilerOrder="97">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_51" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="455" top="1191" width="472" height="22" compilerOrder="107">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="472" height="23" field="Max_BP_56" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="455" top="1218" width="472" height="22" compilerOrder="109">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="472" height="23" field="Max_BP_57" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="236" top="1220" width="89" height="43" compilerOrder="123">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="44" field="B_Heart_11" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="108" top="1243" width="64" height="42" compilerOrder="99">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_52" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="455" top="1244" width="473" height="22" compilerOrder="111">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="473" height="23" field="Max_BP_58" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="236" top="1307" width="89" height="44" compilerOrder="125">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="45" field="B_Heart_12" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="404" top="1307" width="384" height="20" compilerOrder="131">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="384" height="21" field="B_Sig_Name_18" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="797" top="1307" width="112" height="20" compilerOrder="135">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="112" height="21" field="B_Sig_Name_20" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="108" top="1312" width="64" height="42" compilerOrder="101">
+                <edit transparent="true" fontSize="20.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="64" height="43" field="Max_BP_53" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="797" top="1329" width="112" height="20" compilerOrder="137">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="112" height="21" field="B_Sig_Name_21" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="404" top="1331" width="384" height="20" compilerOrder="133">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="384" height="21" field="B_Sig_Name_19" compilerOrder="134"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

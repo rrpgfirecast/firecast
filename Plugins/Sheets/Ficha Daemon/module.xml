@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.6c">
+<module sdkVersion="3.7b" originalPluginFileName="Ficha Daemon v2.0.rpk" compilationDate="02092023171033" sdkApiVersion="87" compilationDigest="ef4b5fc7fd02a54c4242cd9a80cd169d339d3630">
 	<id>Ambesek.Daemon</id>
-	<version>1.3</version>
+	<version>5.7</version>
     <info lang="pt-BR">
         <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
-        <name>Ficha Daemon</name>
+        <name>Ficha Daemon v2.0</name>
         <description>Ficha para o sistema Daemon.</description>
         <author>Ambesek</author>
         <site>none</site>
@@ -13,4 +13,11 @@
     <settings>
         <automaticStringLocalization>true</automaticStringLocalization>
     </settings>    
+    
+    
+    
+    
+    
+    
+    
 </module>

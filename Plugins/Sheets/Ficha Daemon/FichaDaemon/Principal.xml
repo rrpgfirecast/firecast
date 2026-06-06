@@ -1,144 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmPrincipal" align="client" scale="1.25">
 	<template name="Title">
-		<label text="$(text)" align="left" width="$(width or 90)" fontSize="$(fontSize or 13)"/>
+		<label text="$(text)" align="left" width="$(width or 90)" fontSize="$(fontSize or 13)" fontColor="#D8CBB0"/>
 		<edit field="$(field)" align="client" fontSize="$(fontSize or 13)"/>
 	</template>
 	<template name="Title2">
-		<label text="$(text)" align="left" width="90"/>
+		<label text="$(text)" align="left" width="90" fontColor="#D8CBB0"/>
 		<edit field="$(field)" align="client"/>
 		<edit field="$(field2)" align="right" width="50"/>
 	</template>
 	<template name="Title3">
-		<label text="$(text)" align="client"/>
+		<label text="$(text)" align="client" fontColor="#D8CBB0"/>
 		<edit field="$(field)" align="right" width="50"/>
 		<edit field="$(field2)" align="right" width="50"/>
 	</template>
 	<template name="Title4">
-		<label text="$(text)" align="client"/>
+		<label text="$(text)" align="client" fontColor="#D8CBB0"/>
 		<edit field="$(field)" align="right" width="50" compilerOrder="1"/>
-		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="2">
-			<label field="$(field2)" align="client" horzTextAlign="center"/>
+		<rectangle align="right" width="50" color="#272C36" strokeColor="#8A6C30" strokeSize="1" compilerOrder="2">
+			<label field="$(field2)" align="client" horzTextAlign="center" fontColor="#F2E8CE"/>
+		</rectangle>
+	</template>
+	<template name="Title3i">
+		<image align="left" width="22" margins="{right=5, top=1, bottom=1}" style="autoFit" src="images/$(icon)"/>
+		<label text="$(text)" align="client" fontColor="#D8CBB0"/>
+		<edit field="$(field)" align="right" width="50"/>
+		<edit field="$(field2)" align="right" width="50"/>
+	</template>
+	<template name="Title4i">
+		<image align="left" width="22" margins="{right=5, top=1, bottom=1}" style="autoFit" src="images/$(icon)"/>
+		<label text="$(text)" align="client" fontColor="#D8CBB0"/>
+		<edit field="$(field)" align="right" width="50" compilerOrder="1"/>
+		<rectangle align="right" width="50" color="#272C36" strokeColor="#8A6C30" strokeSize="1" compilerOrder="2">
+			<label field="$(field2)" align="client" horzTextAlign="center" fontColor="#F2E8CE"/>
 		</rectangle>
 	</template>
 	<template name="Title5">
-		<label text="$(text)" align="client"/>
-		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1">
+		<label text="$(text)" align="client" fontColor="#D8CBB0"/>
+		<rectangle align="right" width="50" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
 			<label field="$(field)" align="client" horzTextAlign="center"/>
 		</rectangle>
 	</template>
-	<template name="Atributo">
-		<button text="$(text)" align="client" margins="{right=5}">
-			<event name="onClick">
-				sheet.rollText = "$(text)"
-				sheet.rollValue = tonumber(sheet.$(field)Perc) or 0
-				AskToRoll(true)
-			</event>
-		</button>
-		<edit field="$(field)Base" align="right" width="33" horzTextAlign="center" compilerOrder="1"/>
-		<edit field="$(field)Mod" align="right" width="33" horzTextAlign="center" compilerOrder="2"/>
-		<edit field="$(field)Out" align="right" width="33" horzTextAlign="center" compilerOrder="3"/>
-		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="4">
-			<label field="$(field)Perc" align="client" horzTextAlign="center"/>
+	<template name="Title5b">
+		<label text="$(text)" align="left" width="140" fontColor="#D8CBB0"/>
+		<rectangle align="left" width="50" margins="{left=8}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+			<label field="$(gasto)" align="client" horzTextAlign="center"/>
 		</rectangle>
-		<dataLink fields="{'$(field)Base', '$(field)Mod', '$(field)Out'}">
-			<event name="onChange">
-				if sheet==nil then return end
-				local base = (tonumber(sheet.$(field)Base) or 0)
-				local mod = (tonumber(sheet.$(field)Mod) or 0)
-				local out = (tonumber(sheet.$(field)Out) or 0)
-				local total = (mod + base + out)
-				sheet.$(field)Perc = total * 4
-				sheet.$(field)Total = total
-
-	            local nodes = NDB.getChildNodes(sheet.periciasArmas); 
-	            for i=1, #nodes, 1 do
-	                nodes[i].$(field) = total
-	            end
-
-	            nodes = NDB.getChildNodes(sheet.pericias); 
-	            for i=1, #nodes, 1 do
-	                nodes[i].$(field) = total
-	            end
-			</event>
-		</dataLink>
+		<rectangle align="left" width="50" margins="{left=8}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+			<label field="$(disp)" align="client" horzTextAlign="center"/>
+		</rectangle>
 	</template>
+
 
 	<popup name="popAprimoramento" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
 		<textEditor align="client" field="descricao"/>
 	</popup>
 	
 	<scrollBox align="client">
-		<layout width="1015" height="655">
+		<layout align="top" width="1015" height="900">
+			<image left="0" top="0" width="1015" height="900" style="stretch" src="images/fundo.png"/>
 
 			<layout align="left" width="300" margins="{right=5}">
-				<rectangle align="top" height="155" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+				<rectangle align="top" height="185" margins="{bottom=5}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+					<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 						<Title field="nome" text="Nome"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title field="raca" text="Raça"/>
+					<layout align="top" height="22" margins="{top=2,left=5,right=5}">
+						<label align="left" width="35" text="Raça" fontColor="#D8CBB0"/>
+						<button align="right" width="70" text="Aplicar" fontColor="#E6C24A">
+							<event name="onClick">
+								aplicarRaca()
+							</event>
+						</button>
+						<comboBox align="client" field="racaSel" items="{'-','Anao','Elfo','Gnomo','Halfling','Humano','Meio-Elfo'}" values="{'none','anao','elfo','gnomo','halfling','humano','meioelfo'}"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 						<Title field="religiao" text="Religião"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<layout align="top" height="22" margins="{top=2,left=5,right=5}">
+						<label align="left" width="35" text="Kit" fontColor="#D8CBB0"/>
+						<button align="right" width="70" text="Aplicar" fontColor="#E6C24A">
+							<event name="onClick">
+								aplicarKit()
+							</event>
+						</button>
+						<comboBox align="client" field="kitSel" items="{'-','Alquimista','Arqueiro','Assassino','Barbaro','Bardo','Brujas','Cacador de Recompensas','Casa de Chronos','Cavaleiro','Cavaleiro do Graal','Clerigo','Contrabandista','Druida','Escola de Luft','Escola de Pyros','Escola de Tenebras','Escola de Yamesh','Espiao','Feiticeiro','Guarda-Costas','Guerreiro','Herbalista','Jogador','Ladrao','Ladrao de Tumbas','Mago','Magos Aquos','Magos Atlantes','Magos Corrosivos','Magos da Tempestade','Magos das Sombras','Magos do Vacuo','Magos Petros','Magos Vermelhos','Menestrel','Menestrel Sombrio','Mercador','Mercenario','Monge','Ordem de Salomao (Guerreiro)','Ordem de Salomao (Mago)','Ordem do Dragao','Ordem Marmore','Padre','Paladino','Paladinos do Graal','Ranger','Sociedade de Hassan','Templo de Isis e Osiris'}" values="{'none','alquimista','arqueiro','assassino','barbaro','bardo','brujas','cacadorrecompensas','chronos','cavaleiro','cavaleirograal','clerigo','contrabandista','druida','luft','pyros','tenebras','yamesh','espiao','feiticeiro','guardacostas','guerreiro','herbalista','jogador','ladrao','ladraotumbas','mago','magosaquos','magosatlantes','corrosivos','tempestade','sombras','vacuo','petros','magosvermelhos','menestrel','menestrelsombrio','mercador','mercenario','monge','salomaoguerreiro','salomaomago','dragao','marmore','padre','paladino','paladinograal','ranger','hassan','isisosiris'}"/>
+					</layout>
+					<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 						<Title2 field="kit" field2="level" text="Kit (Nível)"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 						<Title3 field="xpAtual" field2="xpObjetivo" text="Experiência"/>
 					</layout>
 				</rectangle>
 
-				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Atributo field="constituicao" text="Constituição"/>
+				<rectangle align="top" height="245" margins="{bottom=5}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+					<layout align="top" height="25" margins="{top=3,left=5,right=5}">
+						<comboBox align="left" width="95" field="atribDificuldade" items="{'Facil','Normal','Dificil'}" values="{'facil','normal','dificil'}" fontColor="white" horzTextAlign="center"/>
+						<imageCheckBox name="cbxAtribResist" align="left" width="24" height="24" margins="{left=10,right=3,top=2}" field="atribResistido" optimize="false" opacity="0.55" onMouseEnter="self.cbxAtribResist.opacity = 1;" onMouseLeave="self.cbxAtribResist.opacity = 0.55;" imageChecked="images/ic_resist_on.png" imageUnchecked="images/ic_resist_off.png"/>
+						<label align="left" width="52" text="Resist." fontColor="#E6C24A" vertTextAlign="center"/>
+						<edit align="left" width="42" field="atribDefesa" horzTextAlign="center" vertTextAlign="center"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Atributo field="forca" text="Força"/>
+					<dataLink field="atribDificuldade" defaultValue="normal"/>
+					<layout align="top" height="24" margins="{top=3,left=5,right=5}">
+						<Atributo field="constituicao" text="Constituição" icon="ic_constituicao.png"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Atributo field="destreza" text="Destreza"/>
+					<layout align="top" height="24" margins="{top=3,left=5,right=5}">
+						<Atributo field="forca" text="Força" icon="ic_forca.png"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Atributo field="agilidade" text="Agilidade"/>
+					<layout align="top" height="24" margins="{top=3,left=5,right=5}">
+						<Atributo field="destreza" text="Destreza" icon="ic_destreza.png"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Atributo field="inteligencia" text="Inteligência"/>
+					<layout align="top" height="24" margins="{top=3,left=5,right=5}">
+						<Atributo field="agilidade" text="Agilidade" icon="ic_agilidade.png"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Atributo field="vontade" text="Força de Vontade"/>
+					<layout align="top" height="24" margins="{top=3,left=5,right=5}">
+						<Atributo field="inteligencia" text="Inteligência" icon="ic_inteligencia.png"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Atributo field="percepcao" text="Percepção"/>
+					<layout align="top" height="24" margins="{top=3,left=5,right=5}">
+						<Atributo field="vontade" text="Força de Vontade" icon="ic_vontade.png"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Atributo field="carisma" text="Carisma"/>
+					<layout align="top" height="24" margins="{top=3,left=5,right=5}">
+						<Atributo field="percepcao" text="Percepção" icon="ic_percepcao.png"/>
+					</layout>
+					<layout align="top" height="24" margins="{top=3,left=5,right=5}">
+						<Atributo field="carisma" text="Carisma" icon="ic_carisma.png"/>
 					</layout>
 				</rectangle>
 
-				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+				<rectangle align="top" height="215" margins="{bottom=5}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<label align="client" text="TOTAL DE PONTOS GASTOS" margins="{left=5}"/>
+						<label align="left" width="140" text="Pontos" fontColor="#E6C24A" fontSize="14"/>
+						<label align="left" width="50" margins="{left=8}" text="Gasto" fontColor="#E6C24A" horzTextAlign="center" fontSize="11"/>
+						<label align="left" width="50" margins="{left=8}" text="Disp." fontColor="#E6C24A" horzTextAlign="center" fontSize="11"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title5 field="ptsAtributos" text="Atributos"/>
+						<Title5b text="Atributos" gasto="ptsAtributos" disp="ptsAtribDisp"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title5 field="ptsPericiasTotais" text="Perícias"/>
+						<Title5b text="Perícias" gasto="ptsPericiasTotais" disp="ptsPericiaDisp"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title5 field="ptsAprimoramentos" text="Aprimoramentos"/>
+						<Title5b text="Aprimoramentos" gasto="ptsAprimGasto" disp="ptsAprimDisp"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title5 field="ptsPoderes" text="Poderes"/>
+						<Title5b text="Poderes" gasto="ptsPoderes" disp="poderesDispVazio"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<button text="Iniciativa" align="client" margins="{right=5}">
+						<image align="left" width="22" margins="{right=5, top=1, bottom=1}" style="autoFit" src="images/ic_iniciativa.png"/>
+							<button text="Iniciativa" align="client" margins="{right=5}">
 							<event name="onClick">
 			                    local mesa = rrpg.getMesaDe(sheet);                     
 
@@ -146,14 +156,14 @@
 							</event>
 						</button>
 						<edit field="iniciativaBonus" align="right" width="50" horzTextAlign="center" compilerOrder="1"/>
-						<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
+						<rectangle align="right" width="50" color="#272C36" strokeColor="#8A6C30" strokeSize="1" compilerOrder="3">
 							<label field="iniciativa" align="client" horzTextAlign="center"/>
 						</rectangle>
-						<dataLink fields="{'iniciativaBonus', 'agilidadeTotal'}">
+						<dataLink fields="{'iniciativaBonus','agilidadeBase','agilidadeMod','agilidadeOut'}">
 							<event name="onChange">
 								if sheet==nil then return end
 								local bonus = (tonumber(sheet.iniciativaBonus) or 0)
-								local total = (tonumber(sheet.agilidadeTotal) or 0)
+								local total = ((tonumber(sheet.agilidadeBase) or 0) + (tonumber(sheet.agilidadeMod) or 0) + (tonumber(sheet.agilidadeOut) or 0))
 								sheet.iniciativa = (bonus + total)
 							</event>
 						</dataLink>
@@ -173,6 +183,13 @@
 						</event>
 					</dataLink>
 
+					<dataLink fields="{'ptsAtributos','level'}">
+						<event name="onChange">
+							if sheet==nil then return end
+							sheet.ptsAtribDisp = (100 + (tonumber(sheet.level) or 0)) - (tonumber(sheet.ptsAtributos) or 0)
+						</event>
+					</dataLink>
+
 					<dataLink fields="{'ptsPericiasArmas','ptsPericias'}">
 						<event name="onChange">
 							if sheet==nil then return end
@@ -185,45 +202,68 @@
 							sheet.ptsPericiasTotais = pts
 						</event>
 					</dataLink>
+
+						<dataLink fields="{'idade','inteligenciaBase','inteligenciaMod','inteligenciaOut','level','ptsPericias','ptsPericiasArmas','ptsKitPericia'}">
+							<event name="onChange">
+								if sheet==nil then return end
+								local int = (tonumber(sheet.inteligenciaBase) or 0) + (tonumber(sheet.inteligenciaMod) or 0) + (tonumber(sheet.inteligenciaOut) or 0)
+								local teto = 10 * (tonumber(sheet.idade) or 0) + 5 * int
+								if teto > 500 then teto = 500 end
+								teto = teto + 25 * (tonumber(sheet.level) or 0)
+								local gasto = (tonumber(sheet.ptsPericias) or 0) + (tonumber(sheet.ptsPericiasArmas) or 0) + (tonumber(sheet.ptsKitPericia) or 0)
+								sheet.ptsPericiaDisp = teto - gasto
+							</event>
+						</dataLink>
+
+						<dataLink fields="{'ptsAprimoramentos','ptsKitAprim','level'}">
+							<event name="onChange">
+								if sheet==nil then return end
+								local lv = tonumber(sheet.level) or 0
+								local bonus = 0
+								if lv >= 3 then bonus = math.floor((lv - 1) / 2) end
+								sheet.ptsAprimDisp = (5 + bonus) - (tonumber(sheet.ptsKitAprim) or 0) - (tonumber(sheet.ptsAprimoramentos) or 0)
+								sheet.ptsAprimGasto = (tonumber(sheet.ptsAprimoramentos) or 0) + (tonumber(sheet.ptsKitAprim) or 0)
+							</event>
+						</dataLink>
 				</rectangle>
 			</layout>
 
 			<layout align="left" width="300" margins="{right=5}">
-				<rectangle align="top" height="155" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+				<rectangle align="top" height="155" margins="{bottom=5}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+					<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 						<Title text="ALTURA" field="altura" width="60"/>
 					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 						<Title text="PESO" field="peso" width="60"/>
 					</layout>
 					<layout align="left" width="150">
-						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 							<Title text="IDADE" field="idade" width="60"/>
 						</layout>
-						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 							<Title text="GÊNERO" field="genero" width="60"/>
 						</layout>
-						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 							<Title text="OUTROS" field="aparenciaOutros" width="60"/>
 						</layout>
 						</layout>
 						<layout align="left" width="150">
-						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 							<Title text="OLHOS" field="aparenciaOlhos" width="60"/>
 						</layout>
-						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 							<Title text="PELE" field="pele" width="60"/>
 						</layout>
-						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<layout align="top" height="22" margins="{top=2,left=5,right=5}">
 							<Title text="CABELO" field="cabelo" width="60"/>
 						</layout>
 					</layout>
 				</rectangle>
 
-				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+				<rectangle align="top" height="245" margins="{bottom=5}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 						<button text="+" align="left" width="25" onClick="self.aprimoramentos:append();"/>
-						<label align="client" text="Aprimoramentos" margins="{left=5}"/>
+						<label align="client" text="Aprimoramentos" margins="{left=5}" fontColor="#E6C24A" fontSize="14"/>
 					</layout>
 					<recordList name="aprimoramentos" field="aprimoramentos" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
 						<event name="onCompare">
@@ -232,10 +272,10 @@
 					</recordList>
 				</rectangle>
 
-				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+				<rectangle align="top" height="245" margins="{bottom=5}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 						<button text="+" align="left" width="25" onClick="self.poderes:append();"/>
-						<label align="client" text="Poderes" margins="{left=5}"/>
+						<label align="client" text="Poderes" margins="{left=5}" fontColor="#E6C24A" fontSize="14"/>
 					</layout>
 					<recordList name="poderes" field="poderes" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
 						<event name="onCompare">
@@ -247,7 +287,7 @@
 
 			<layout align="left" width="405" margins="{right=5}">
 				<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
-				<rectangle align="top" height="405" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+				<rectangle align="top" height="405" margins="{bottom=5}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
 					<label left="0" top="112.5" width="245" height="20" text="Avatar" horzTextAlign="center"/>
 					<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
 						<event name="OnStartDrag">
@@ -256,44 +296,45 @@
 					</image>
 				</rectangle>
 
-				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+				<rectangle align="top" height="245" margins="{bottom=5}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title4 field="pv" field2="pvTotal" text="Pontos de Vida"/>
+						<Title4i field="pv" field2="pvTotal" text="Pontos de Vida" icon="ic_vida.png"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title3 field="ph" field2="phTotal" text="Pontos Heróicos"/>
+						<Title3i field="ph" field2="phTotal" text="Pontos Heróicos" icon="ic_carisma.png"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title3 field="pm" field2="pmTotal" text="Pontos de Magia"/>
+						<Title3i field="pm" field2="pmTotal" text="Pontos de Magia" icon="ic_magia.png"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title3 field="pf" field2="pfTotal" text="Pontos de Fé"/>
+						<Title3i field="pf" field2="pfTotal" text="Pontos de Fé" icon="ic_vontade.png"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title3 field="psi" field2="psiTotal" text="Pontos Psiônicos"/>
-					</layout>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}"/>
-					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title4 field="bforcaBonus" field2="bforcaTotal" text="Bônus de Força"/>
+						<Title3i field="psi" field2="psiTotal" text="Pontos Psiônicos" icon="ic_inteligencia.png"/>
 					</layout>
 					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-						<Title4 field="movimencacaoBonus" field2="movimencacaoTotal" text="Movimentação"/>
+						<Title3i field="visao" field2="visaoTotal" text="Visão" icon="ic_percepcao.png"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title4i field="bforcaBonus" field2="bforcaTotal" text="Bônus de Força" icon="ic_bforca.png"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title4i field="movimencacaoBonus" field2="movimencacaoTotal" text="Movimentação" icon="ic_agilidade.png"/>
 					</layout>
 
 
-					<dataLink fields="{'constituicaoTotal','forcaTotal', 'level'}">
+					<dataLink fields="{'constituicaoBase','constituicaoMod','constituicaoOut','forcaBase','forcaMod','forcaOut','level'}">
+							<event name="onChange">
+								if sheet==nil then return end
+								local con = (tonumber(sheet.constituicaoBase) or 0) + (tonumber(sheet.constituicaoMod) or 0) + (tonumber(sheet.constituicaoOut) or 0)
+								local forca = (tonumber(sheet.forcaBase) or 0) + (tonumber(sheet.forcaMod) or 0) + (tonumber(sheet.forcaOut) or 0)
+								sheet.pvTotal = math.ceil((con + forca)/2.0) + (tonumber(sheet.level) or 0)
+							</event>
+						</dataLink>
+					<dataLink fields="{'movimencacaoBonus','agilidadeBase','agilidadeMod','agilidadeOut'}">
 						<event name="onChange">
 							if sheet==nil then return end
-							local total = (tonumber(sheet.constituicaoTotal) or 0) + 
-										(tonumber(sheet.forcaTotal) or 0)
-							local level = (tonumber(sheet.level) or 0)
-							sheet.pvTotal = math.ceil(total/2.0) + level
-						</event>
-					</dataLink>
-					<dataLink fields="{'agilidadeTotal'}">
-						<event name="onChange">
-							if sheet==nil then return end
-							local total = (tonumber(sheet.agilidadeTotal) or 0)
+							local total = ((tonumber(sheet.agilidadeBase) or 0) + (tonumber(sheet.agilidadeMod) or 0) + (tonumber(sheet.agilidadeOut) or 0))
 							local bonus = (tonumber(sheet.movimencacaoBonus) or 0)
 
 							local table = {1.5,1.5,2,2,2.5,2.5,3,3,3.5,4,4.5,5,5.5,6,7,8,9,10,11,12,14,16,18,20,22,25,28,30,35,40,45,50,56,63,70,80,90,100,110,125,140,160,180,200,220}
@@ -307,10 +348,10 @@
 							sheet.movimencacaoTotal = extra + bonus
 						</event>
 					</dataLink>
-					<dataLink fields="{'forcaTotal'}">
+					<dataLink fields="{'bforcaBonus','forcaBase','forcaMod','forcaOut'}">
 						<event name="onChange">
 							if sheet==nil then return end
-							local total = (tonumber(sheet.forcaTotal) or 0)
+							local total = ((tonumber(sheet.forcaBase) or 0) + (tonumber(sheet.forcaMod) or 0) + (tonumber(sheet.forcaOut) or 0))
 							local bonus = (tonumber(sheet.bforcaBonus) or 0)
 
 							local table = {-3,-3,-2,-2,-1,-1,-1,-1,0,0,0,0,0,0}
@@ -326,6 +367,24 @@
 					</dataLink>
 				</rectangle>
 			</layout>
+			<rectangle left="5" top="658" width="1005" height="232" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<button text="+" align="left" width="25" onClick="self.ataquesPrincipal:append();"/>
+					<label align="left" width="60" text="Ataque" margins="{left=5}" fontColor="#E6C24A" fontSize="14"/>
+				</layout>
+				<layout align="top" height="20" margins="{left=5,right=5,top=2,bottom=2}">
+					<label align="left" width="35" text="" fontColor="#8A6C30" fontSize="11"/>
+					<label align="left" width="150" text="NOME" fontColor="#8A6C30" fontSize="11" horzTextAlign="leading"/>
+					<label align="left" width="65" text="ATAQUE %" fontColor="#8A6C30" fontSize="11" horzTextAlign="center"/>
+					<label align="left" width="65" text="DEFESA %" fontColor="#8A6C30" fontSize="11" horzTextAlign="center"/>
+					<label align="left" width="75" text="DEFESA ALVO" fontColor="#8A6C30" fontSize="11" horzTextAlign="center"/>
+					<label align="left" width="70" text="DANO" fontColor="#8A6C30" fontSize="11" horzTextAlign="leading"/>
+					<label align="left" width="80" text="TIPO" fontColor="#8A6C30" fontSize="11" horzTextAlign="leading"/>
+					<label align="left" width="100" text="QTD MUNICAO" fontColor="#8A6C30" fontSize="11" horzTextAlign="center"/>
+					<label align="right" width="25" text="" fontColor="#8A6C30" fontSize="11"/>
+				</layout>
+				<recordList name="ataquesPrincipal" field="equipamentos.ataques" templateForm="frmAtaquePrincipal" align="client" minQt="1" margins="{top=0,left=5,right=5,bottom=5}"/>
+			</rectangle>
 		</layout>
 	</scrollBox>
 </form>

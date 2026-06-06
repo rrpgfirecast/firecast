@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmPericiaArmaItem" height="25" width="350" margins="{top=2}">
+<form name="frmPericiaArmaItem" height="25" width="850" margins="{top=2}">
 	 <script> 
 		<![CDATA[			
 		local function askForDelete()
@@ -24,91 +24,74 @@
 	]]>
 	</script>
 
-	<edit align="client" vertTextAlign="center" field="nome"/>
-	<button align="right" width="30" text="i" onClick="showHabilidadePopup();"/>
-	<layout align="right" width="420">
-		<comboBox align="left" width="50" field="atributo" items="{'DEX','AGI'}" values="{'destreza', 'agilidade'}"/>
-		<comboBox align="left" width="50" field="tipo" items="{'C.a.C','Dist'}"/>
+	<button align="left" width="30" text="i" onClick="showHabilidadePopup();" fontColor="#D8CBB0"/>
+	<edit align="left" width="160" field="nome" vertTextAlign="center" horzTextAlign="leading"/>
+	<comboBox align="left" width="50" field="atributo" items="{'DEX','AGI'}" values="{'destreza', 'agilidade'}" horzTextAlign="center"/>
+	<comboBox align="left" width="60" field="tipo" items="{'C.a.C','Dist'}" horzTextAlign="center"/>
+	<edit align="left" width="35" field="gastoAtk" type="number" vertTextAlign="center" horzTextAlign="center"/>
+	<button align="left" width="25" text="R" fontColor="#E6C24A">
+		<event name="onClick">
+			local node = NDB.getRoot(sheet)
+			node.rollText = sheet.nome or "ataque"
+			node.rollValue = tonumber(sheet.totalAtk) or 0
+			node.roll = true
+			node.rollDamage = true
+			node.rollDamageValue = sheet.dano
+			node.rollDamageValueCrit = sheet.critico
+		</event>
+	</button>
+	<rectangle align="left" width="55" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+		<label field="totalAtk" align="client" horzTextAlign="center" fontColor="#D8CBB0"/>
+	</rectangle>
+	<rectangle align="left" width="55" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+		<label field="totalDef" align="client" horzTextAlign="center" fontColor="#D8CBB0"/>
+	</rectangle>
+	<button align="left" width="25" text="R" fontColor="#E6C24A">
+		<event name="onClick">
+			local node = NDB.getRoot(sheet)
+			node.rollText = sheet.nome or "defesa"
+			node.rollValue = tonumber(sheet.totalDef) or 0
+			node.roll = true
+		</event>
+	</button>
+	<button align="right" width="25" text="X" onClick="askForDelete();" fontColor="#E6140F0C"/>
 
-		<layout align="right" width="320">
-			<layout align="left" width="85">
-				<edit align="left" width="30" field="gastoAtk" type="number" vertTextAlign="center" horzTextAlign="center"/>
-				<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
-					<label field="totalAtk" align="client" horzTextAlign="center"/>
-				</rectangle>
-				<button text="R" align="right" width="25">
-					<event name="onClick">
-						local node = NDB.getRoot(sheet)
-						node.rollText = sheet.nome or "ataque"
-						node.rollValue = tonumber(sheet.totalAtk) or 0
-						node.roll = true
+	<dataLink fields="{'tipo','atributo','destreza','agilidade','gastoAtk'}">
+		<event name="onChange">
+			if sheet==nil then return end
+			local atr = sheet.atributo or "none"
+			local gasto = (tonumber(sheet.gastoAtk) or 0)
+			if sheet.tipo == "Dist" then
+				gasto = math.floor(gasto/2)
+			end
+			sheet.totalAtk = gasto + (tonumber(sheet[atr]) or 0)
+		</event>
+	</dataLink>
 
-						node.rollDamage = true
-						node.rollDamageValue = sheet.dano
-						node.rollDamageValueCrit = sheet.critico
-					</event>
-				</button>
-			</layout>
-			<dataLink fields="{'tipo','atributo','destreza','agilidade','gastoAtk'}">
-				<event name="onChange">
-					if sheet==nil then return end
-
-					local atr = sheet.atributo or "none"
-					local gasto = (tonumber(sheet.gastoAtk) or 0)
-					if sheet.tipo == "Dist" then
-						gasto = math.floor(gasto/2)
-					end
-					sheet.totalAtk = gasto + (tonumber(sheet[atr]) or 0)
-				</event>
-			</dataLink>
-
-			<layout align="left" width="85">
-				<button text="R" align="left" width="25">
-					<event name="onClick">
-						local node = NDB.getRoot(sheet)
-						node.rollText = sheet.nome or "defesa"
-						node.rollValue = tonumber(sheet.totalDef) or 0
-						node.roll = true
-					</event>
-				</button>
-				<rectangle align="left" width="30" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
-					<label field="totalDef" align="client" horzTextAlign="center"/>
-				</rectangle>
-				<edit align="right" width="30" field="gastoDef" type="number" vertTextAlign="center" horzTextAlign="center"/>
-			</layout>
-			<dataLink fields="{'tipo','atributo','destreza','agilidade','gastoDef'}">
-				<event name="onChange">
-					if sheet==nil then return end
-
-					local atr = sheet.atributo or "none"
-					local gasto = (tonumber(sheet.gastoDef) or 0)
-					if sheet.tipo == "Dist" then
-						gasto = math.floor(gasto/2)
-					end
-					sheet.totalDef = gasto + (tonumber(sheet[atr]) or 0)
-				</event>
-			</dataLink>
-
-			<layout align="right" width="150">
-				<edit align="left" width="60" field="dano" vertTextAlign="center"/>
-				<edit align="left" width="60" field="critico" vertTextAlign="center"/>
-				<button align="right" width="30" text="X" onClick="askForDelete();"/>
-			</layout>
-		</layout>
-	</layout>
+	<dataLink fields="{'tipo','atributo','destreza','agilidade','gastoDef'}">
+		<event name="onChange">
+			if sheet==nil then return end
+			local atr = sheet.atributo or "none"
+			local gasto = (tonumber(sheet.gastoDef) or 0)
+			if sheet.tipo == "Dist" then
+				gasto = math.floor(gasto/2)
+			end
+			sheet.totalDef = gasto + (tonumber(sheet[atr]) or 0)
+		</event>
+	</dataLink>
 
 	<dataLink fields="{'gastoAtk','gastoDef'}">
 		<event name="onChange">
 			if sheet==nil then return end
-
 			local node = NDB.getRoot(sheet)
 			local nodes = NDB.getChildNodes(node.periciasArmas)
 			local pts = 0
 			for i=1, #nodes, 1 do
-				pts = pts + (tonumber(nodes[i].gastoAtk) or 0)
-				pts = pts + (tonumber(nodes[i].gastoDef) or 0)
+				if nodes[i].kit == nil or nodes[i].kit == "" then
+					pts = pts + (tonumber(nodes[i].gastoAtk) or 0)
+					pts = pts + (tonumber(nodes[i].gastoDef) or 0)
+				end
 			end
-
 			node.ptsPericiasArmas = pts
 		</event>
 	</dataLink>

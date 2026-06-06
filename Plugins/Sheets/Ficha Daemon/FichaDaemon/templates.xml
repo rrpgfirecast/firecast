@@ -28,7 +28,7 @@
 				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
 				  name="$(baseName)">
 				  
-				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
+				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="$(fontSize or 13)"/>
 				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
 				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
 				
@@ -44,7 +44,7 @@
 				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
 				  name="$(baseName)">
 				  
-				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13" transparent="false" vertTextAlign="center"/>
+				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="$(fontSize or 13)" transparent="false" vertTextAlign="center"/>
 				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
 				
 				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight());</script>				
@@ -108,7 +108,7 @@
 				</script>				  
 				  
 				<frame name="pan$(baseName)" align="top" frameStyle="frames/panel6/panel6.xml" height="60">
-					<comboBox name="cmb$(baseName)" frameRegion="ContentRegion" class="transparente" field="$(field)" items="$(items or {})" values="$(values or {})" horzTextAlign="center" vertTextAlign="center" fontSize="13"/>	
+					<comboBox name="cmb$(baseName)" frameRegion="ContentRegion" class="transparente" field="$(field)" items="$(items or {})" values="$(values or {})" horzTextAlign="center" vertTextAlign="center" fontSize="$(fontSize or 13)"/>	
 				</frame>
 				
 				<label name="lab$(baseName)" align="top" class="tituloCampo" autoSize="true" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"
@@ -398,5 +398,42 @@
 		<!-- end; -->
 		
 		<script>self.height=32;</script>
+	</template>
+	<template name="Atributo">
+		<image align="left" width="24" margins="{right=4, top=1, bottom=1}" style="autoFit" src="images/$(icon)"/>
+		<button text="$(text)" align="client" margins="{right=5}" fontColor="#E6C24A" fontSize="12" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.rollText = "$(text)"
+				sheet.rollValue = tonumber(sheet.$(field)Perc) or 0
+				RolarAtributo()
+			</event>
+		</button>
+		<edit field="$(field)Base" align="right" width="30" horzTextAlign="center" compilerOrder="1"/>
+		<edit field="$(field)Mod" align="right" width="30" horzTextAlign="center" compilerOrder="2"/>
+		<edit field="$(field)Out" align="right" width="30" horzTextAlign="center" compilerOrder="3"/>
+		<rectangle align="right" width="44" color="#E6140F0C" strokeColor="#8A6C30" strokeSize="1" compilerOrder="4">
+			<label field="$(field)Perc" align="client" horzTextAlign="center" fontColor="#F2E8CE"/>
+		</rectangle>
+		<dataLink fields="{'$(field)Base', '$(field)Mod', '$(field)Out'}">
+			<event name="onChange">
+				if sheet==nil then return end
+				local base = (tonumber(sheet.$(field)Base) or 0)
+				local mod = (tonumber(sheet.$(field)Mod) or 0)
+				local out = (tonumber(sheet.$(field)Out) or 0)
+				local total = (mod + base + out)
+				sheet.$(field)Perc = total * 4
+				sheet.$(field)Total = total
+
+	            local nodes = NDB.getChildNodes(sheet.periciasArmas); 
+	            for i=1, #nodes, 1 do
+	                nodes[i].$(field) = total
+	            end
+
+	            nodes = NDB.getChildNodes(sheet.pericias); 
+	            for i=1, #nodes, 1 do
+	                nodes[i].$(field) = total
+	            end
+			</event>
+		</dataLink>
 	</template>
 </group>

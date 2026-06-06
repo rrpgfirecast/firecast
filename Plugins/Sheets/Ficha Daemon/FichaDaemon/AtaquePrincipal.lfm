@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaquePrincipal" height="25" width="950" margins="{top=2}">
+	<import file="templates.xml"/>
+	<import file="styles.xml"/>
+
+	<script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(self.sheet);
+									end;
+								 end);
+		end;
+
+		local function rolarDano(mesa, nome, critico)
+			local root = NDB.getRoot(sheet);
+			local bforca = tonumber(root.bforcaTotal) or 0;
+			local dano = sheet.dano or "";
+			if dano == "" then return; end;
+
+			local expr, lbl;
+			if critico then
+				expr = dano .. " + " .. dano .. " + " .. (bforca * 2);
+				lbl = "Dano CRITICO - " .. nome;
+			else
+				expr = dano .. " + " .. bforca;
+				lbl = "Dano - " .. nome;
+			end;
+
+			local rd = Firecast.interpretarRolagem(expr);
+			if (rd ~= nil) and rd.possuiAlgumDado then
+				mesa.activeChat:rolarDados(rd, lbl);
+			end;
+		end;
+
+		local function doRoll(mesa, rollText, rollCrit, rollTarget, nome)
+			mesa.activeChat:rolarDados("1d100", rollText,
+				function (rolado)
+					local r = rolado.resultado;
+					if r <= rollCrit then
+						mesa.activeChat:enviarMensagem("SUCESSO CRITICO =D");
+						rolarDano(mesa, nome, true);
+					elseif r >= 95 then
+						mesa.activeChat:enviarMensagem("FALHA CRITICA =(");
+					elseif r <= rollTarget then
+						mesa.activeChat:enviarMensagem("SUCESSO =)");
+						rolarDano(mesa, nome, false);
+					else
+						mesa.activeChat:enviarMensagem("FALHA =/");
+					end;
+				end);
+		end;
+
+		local function rolarAtaque()
+			local personagem = Firecast.getPersonagemDe(sheet);
+			if personagem == nil then return; end;
+			local mesa = personagem.mesa;
+			if not ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+				showMessage("Voce nao pode rolar para este personagem.");
+				return;
+			end;
+
+			local root = NDB.getRoot(sheet);
+			local value = tonumber(sheet.periciaArma) or 0;
+			local nome = sheet.nome or "Arma";
+			local dif = string.lower(tostring(root.atribDificuldade or "normal"));
+
+			local alvoBase, sufixo;
+			if dif == "facil" then
+				alvoBase = value * 2; sufixo = "Facil";
+			elseif dif == "dificil" then
+				alvoBase = math.floor(value / 2); sufixo = "Dificil";
+			else
+				alvoBase = value; sufixo = "Normal";
+			end;
+
+			local crit = math.max(math.ceil(value / 4), 5);
+			local rollText = "Ataque - " .. nome .. " " .. sufixo;
+
+			local _resist = root.atribResistido; _resist = (_resist == true) or (_resist == 1) or (_resist == "true");
+			if _resist then
+				local def = math.abs(tonumber(sheet.defesaAlvo) or 0);
+				local alvo = alvoBase + 50 - def;
+				local rt = rollText .. " [" .. alvoBase .. "+50-" .. def .. " = " .. alvo .. "%] (Crit " .. crit .. ")";
+				if alvo >= 100 then
+					mesa.activeChat:enviarMensagem(rt .. " -> SUCESSO AUTOMATICO =D");
+					rolarDano(mesa, nome, false);
+					return;
+				elseif alvo <= 0 then
+					mesa.activeChat:enviarMensagem(rt .. " -> FALHA AUTOMATICA =/");
+					return;
+				end;
+				doRoll(mesa, rt, crit, alvo, nome);
+			else
+				doRoll(mesa, rollText .. " [" .. alvoBase .. "%] (Crit " .. crit .. ")", crit, alvoBase, nome);
+			end;
+		end;
+		]]>
+	</script>
+
+	<button align="left" width="35" fontColor="#E6C24A" onClick="rolarAtaque();">
+		<image align="client" height="20" width="20" style="autoFit" src="images/ic_dadod20.png"/>
+	</button>
+	<rectangle align="left" width="150" color="#1B1F27" strokeColor="#4A5365" strokeSize="1" margins="{top=3,bottom=3}">
+		<edit align="client" class="transparente" field="nome" vertTextAlign="center" horzTextAlign="leading" margins="{left=4,right=4}"/>
+	</rectangle>
+	<rectangle align="left" width="65" color="#1B1F27" strokeColor="#4A5365" strokeSize="1" margins="{top=3,bottom=3}">
+		<edit align="client" class="transparente" field="periciaArma" type="number" vertTextAlign="center" horzTextAlign="center"/>
+	</rectangle>
+	<rectangle align="left" width="65" color="#1B1F27" strokeColor="#4A5365" strokeSize="1" margins="{top=3,bottom=3}">
+		<edit align="client" class="transparente" field="periciaDefesa" type="number" vertTextAlign="center" horzTextAlign="center"/>
+	</rectangle>
+	<rectangle align="left" width="75" color="#1B1F27" strokeColor="#4A5365" strokeSize="1" margins="{top=3,bottom=3}">
+		<edit align="client" class="transparente" field="defesaAlvo" type="number" vertTextAlign="center" horzTextAlign="center"/>
+	</rectangle>
+	<rectangle align="left" width="70" color="#1B1F27" strokeColor="#4A5365" strokeSize="1" margins="{top=3,bottom=3}">
+		<edit align="client" class="transparente" field="dano" vertTextAlign="center" horzTextAlign="leading" margins="{left=4,right=4}"/>
+	</rectangle>
+	<rectangle align="left" width="80" color="#1B1F27" strokeColor="#4A5365" strokeSize="1" margins="{top=3,bottom=3}">
+		<edit align="client" class="transparente" field="tipo" vertTextAlign="center" horzTextAlign="leading" margins="{left=4,right=4}"/>
+	</rectangle>
+	<rectangle align="left" width="100" color="#1B1F27" strokeColor="#4A5365" strokeSize="1" margins="{top=3,bottom=3}">
+		<edit align="client" class="transparente" field="qtMunicao" vertTextAlign="center" horzTextAlign="center"/>
+	</rectangle>
+	<button align="right" width="25" text="X" onClick="askForDelete();" fontColor="#E6140F" fontStyle="bold"/>
+
+</form>

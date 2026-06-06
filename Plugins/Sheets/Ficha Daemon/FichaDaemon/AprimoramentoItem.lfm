@@ -37,7 +37,9 @@
 			local nodes = NDB.getChildNodes(node.aprimoramentos)
 			local pts = 0
 			for i=1, #nodes, 1 do
-				pts = pts + (tonumber(nodes[i].custo) or 0)
+				if nodes[i].kit == nil or nodes[i].kit == "" then
+					pts = pts + (tonumber(nodes[i].custo) or 0)
+				end
 			end
 			node.ptsAprimoramentos = pts
 

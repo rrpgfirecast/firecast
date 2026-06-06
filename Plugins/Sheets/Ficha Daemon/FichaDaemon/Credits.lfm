@@ -64,6 +64,38 @@
 				return filterByClass(className, controls);
 			end;
 
+			-- Reaplica tema/cores salvos a partir de um root (usado no carregamento da ficha)
+			function aplicarCoresDaemon(root, sheetNode)
+				if root == nil or sheetNode == nil then return; end;
+				if sheetNode.coresAtivas == false then return; end;
+
+				local controls = {root};
+				recursiveFindControls(root, controls);
+
+				-- Tema
+				local theme = sheetNode.theme;
+				if theme == "Claro" then theme = "light"; else theme = "dark"; end;
+				local forms = filterByClass("form", controls);
+				for i=1, #forms, 1 do forms[i].theme = theme; end;
+
+				-- Fundo e linhas (rectangles)
+				local color = sheetNode.colorBackground or "#000000";
+				local strokeColor = sheetNode.colorStroke or "#FFFFFF";
+				local rectangles = filterByClass("rectangle", controls);
+				for i=1, #rectangles, 1 do
+					rectangles[i].color = color;
+					rectangles[i].strokeColor = strokeColor;
+				end;
+
+				-- Fonte
+				local fontColor = sheetNode.colorFont or "#FFFFFF";
+				local classes = {"edit", "label", "comboBox", "textEditor", "checkBox", "button"};
+				for c=1, #classes, 1 do
+					local list = filterByClass(classes[c], controls);
+					for i=1, #list, 1 do list[i].fontColor = fontColor; end;
+				end;
+			end;
+
 		]]>	
 	</script>
 
@@ -76,7 +108,7 @@
 		<image left="0" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
 
 		<layout left="0" top="260" width="200" height="160">
-			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+			<rectangle align="client" color="#272C36" xradius="5" yradius="15" cornerType="round">
 				<label align="top" height="20" text="Plugin feito por: " horzTextAlign="center" margins="{top=5}"/>
 				<label align="top" height="20" text="Vinny (Ambesek)" horzTextAlign="center" margins="{top=5}"/>
 				<label align="top" height="20" text="Consultores: " horzTextAlign="center" margins="{top=5}"/>
@@ -85,14 +117,14 @@
 			</rectangle>
 		</layout>
 
-		<layout left="0" top="430" width="200" height="150">
-			<rectangle left="0" top="0" width="200" height="150" color="black"/>
+		<layout left="0" top="430" width="200" height="190">
+			<rectangle left="0" top="0" width="200" height="190" color="#272C36"/>
 
 			<label left="0" top="10" width="80" height="20" text="Tema:" horzTextAlign="center"/>
 			<comboBox left="95" top="10" width="90" field="theme" fontColor="white" items="{'Escuro', 'Claro'}" horzTextAlign="center"/>
 			<dataLink field="theme" defaultValue="Escuro">
 				<event name="onChange">
-					if sheet == nil then return end;
+					if sheet == nil or sheet.coresAtivas == false then return end;
 					local theme = sheet.theme;
 					if theme == "Claro" then
 						theme = "light";
@@ -114,7 +146,7 @@
 			<colorSelection top="60" field="colorBackground"/>
 			<dataLink field="colorBackground" defaultValue="#000000">
 		        <event name="onChange">
-		            if sheet==nil then return end;
+		            if sheet==nil or sheet.coresAtivas == false then return end;
 					local color = sheet.colorBackground or "#000000";
 
 		            local rectangles = findClass("rectangle");
@@ -129,7 +161,7 @@
 			<colorSelection top="85" field="colorStroke"/>
 			<dataLink field="colorStroke" defaultValue="#FFFFFF">
 		        <event name="onChange">
-		            if sheet==nil then return end;
+		            if sheet==nil or sheet.coresAtivas == false then return end;
 					local strokeColor = sheet.colorStroke or "#FFFFFF";
 
 		            local rectangles = findClass("rectangle");
@@ -144,7 +176,7 @@
 			<colorSelection top="110" field="colorFont"/>
 			<dataLink field="colorFont" defaultValue="#FFFFFF">
 		        <event name="onChange">
-		            if sheet==nil then return end;
+		            if sheet==nil or sheet.coresAtivas == false then return end;
 					local fontColor = sheet.colorFont or "#FFFFFF";
 
 					local controls = findAllControls();
@@ -180,10 +212,20 @@
 					end;
 		        </event>
 		    </dataLink>
+
+			<checkBox left="10" top="145" width="180" height="20" field="coresAtivas" text="Controle de cores ativo" fontColor="white"/>
+			<dataLink field="coresAtivas" defaultValue="false">
+				<event name="onChange">
+					if sheet == nil then return end;
+					if sheet.coresAtivas ~= false and aplicarCoresDaemon ~= nil then
+						aplicarCoresDaemon(self, sheet);
+					end;
+				</event>
+			</dataLink>
 		</layout>
 		
-		<label left="300" top="0" width="200" height="20" text="Versão Atual: " horzTextAlign="center" field="versionInstalled"/>
-		<label left="300" top="25" width="200" height="20" text="Sua Versão: " horzTextAlign="center" field="versionDownloaded"/>
+		<label left="300" top="0" width="200" height="20" text="" horzTextAlign="center" field="versionInstalled"/>
+		<label left="300" top="25" width="200" height="20" text="" horzTextAlign="center" field="versionDownloaded"/>
 		<checkBox left="300" top="50" width="200" height="20" field="noUpdate" text="Não pedir para atualizar."/>
 			
 		<button left="300" top="75" width="100" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Daemon/README.md')" />
@@ -226,5 +268,7 @@
 					end);
 			</event>
 		</button>
+		<label left="300" top="240" width="500" height="20" text="Creditos de icones:" horzTextAlign="leading"/>
+		<label left="300" top="262" width="600" height="20" text="Icone do escudo (Resistido): Flaticon - www.flaticon.com" horzTextAlign="leading"/>
 	</scrollBox>
 </form>

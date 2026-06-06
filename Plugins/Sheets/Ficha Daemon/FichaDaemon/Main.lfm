@@ -86,42 +86,99 @@
             options[1] = "Fácil: " .. roll[1]
             options[2] = "Normal: " .. roll[2]
             options[3] = "Difícil: " .. roll[3]
-            
+
+            local resist = sheet.atribResistido
+            resist = (resist == true) or (resist == 1) or (resist == "true")
+            local passivo = math.abs(tonumber(sheet.atribDefesa) or 0)
+
             Dialogs.choose("Selecione uma das opções. Crítico: " .. crit, options,
                function(selected, selectedIndex, selectedText)
                     if selected then
-                        -- roll type + difficulty
                         local rollText = text .. " " .. selectedText
                         local rollCrit = crit
                         local rollTarget = roll[selectedIndex]
 
-                        Dialogs.confirmYesNo("É resistido?",
-                            function (confirmado)
-                                if confirmado then
-                                    Dialogs.inputQuery("Valor Resistido.", "Informe o valor a resistir.", "",
-                                        function (penalty)
-                                            -- For atribute resisted test
-                                            penalty = math.abs( tonumber(penalty) or 0 )
-                                            if alternative then
-                                                rollTarget = math.floor(value/4)
-                                                rollTarget = ((rollTarget - penalty) * 5) + 50
+                        if resist then
+                            if alternative then
+                                local ativo = math.floor(value/4)
+                                rollTarget = ((ativo - passivo) * 5) + 50
+                                rollText = text .. " " .. selectedText .. " [" .. ativo .. "-" .. passivo .. " Resistido = " .. rollTarget .. "%]"
+                            else
+                                rollTarget = rollTarget + 50 - passivo
+                                rollText = rollText .. " [Resistido vs " .. passivo .. " = " .. rollTarget .. "%]"
+                            end
+                        end
 
-                                                rollText = text .. " " .. math.floor(value/4) .. "-" .. penalty
-                                            else
-                                                -- Added 50-penalty
-                                                rollTarget = rollTarget + 50 - penalty
-                                            end
-
-                                            local rollText = rollText .. " [Resistido: " .. rollTarget .."]"
-                                            
-                                            DoRoll(rollText, rollCrit, rollTarget)
-                                        end)
-                                else
-                                    DoRoll(rollText, rollCrit, rollTarget)
-                                end;
-                            end);
+                        DoRoll(rollText, rollCrit, rollTarget)
                     end;
                end)
+        end
+
+        local function RolarAtributo()
+            local text = sheet.rollText or ""
+            local value = tonumber(sheet.rollValue) or 0
+            local crit = math.max(math.ceil(value/4),5)
+
+            local resist = sheet.atribResistido
+            resist = (resist == true) or (resist == 1) or (resist == "true")
+
+            local raw, label, calcStr
+            if resist then
+                -- Atributo vs Atributo: dificuldade dobra/divide o ATRIBUTO, depois (ativo-passivo)*5+50
+                local passivo = math.abs(tonumber(sheet.atribDefesa) or 0)
+                local ativoBase = math.floor(value/4)
+                local dif = string.lower(tostring(sheet.atribDificuldade or "normal"))
+                local ativo, sufixo
+                if dif == "facil" then
+                    ativo = ativoBase * 2; sufixo = "Fácil"
+                elseif dif == "dificil" then
+                    ativo = math.floor(ativoBase / 2); sufixo = "Difícil"
+                else
+                    ativo = ativoBase; sufixo = "Normal"
+                end
+                raw = ((ativo - passivo) * 5) + 50
+                label = " vs " .. passivo .. " " .. sufixo
+                calcStr = "(" .. ativo .. "-" .. passivo .. ")] = " .. raw .. "%"
+            else
+                local dif = string.lower(tostring(sheet.atribDificuldade or "normal"))
+                if dif == "facil" then
+                    raw = value*2; label = " Fácil"
+                elseif dif == "dificil" then
+                    raw = math.floor(value/2); label = " Difícil"
+                else
+                    raw = value; label = " Normal"
+                end
+                calcStr = raw .. "%]"
+            end
+
+            local rollText = text .. label .. " [" .. calcStr .. " (Crit " .. crit .. ")"
+
+            local mesa = rrpg.getMesaDe(sheet);
+
+            if raw > 100 then
+                mesa.activeChat:enviarMensagem(rollText .. "  => SUCESSO AUTOMATICO =D");
+                return;
+            elseif raw <= 0 then
+                mesa.activeChat:enviarMensagem(rollText .. "  => FALHA AUTOMATICA =(");
+                return;
+            end
+
+            local rollTarget = raw
+            mesa.activeChat:rolarDados("1d100", rollText,
+                function (rolado)
+                    local r = rolado.resultado
+                    if r > 95 then
+                        mesa.activeChat:enviarMensagem("FALHA CRÍTICA =(");
+                    elseif r <= crit then
+                        mesa.activeChat:enviarMensagem("SUCESSO CRÍTICO =D");
+                        if sheet.rollDamage then DoRollDamage(true) end
+                    elseif r <= rollTarget then
+                        mesa.activeChat:enviarMensagem("SUCESSO =)");
+                        if sheet.rollDamage then DoRollDamage(false) end
+                    else
+                        mesa.activeChat:enviarMensagem("FALHA =/");
+                    end;
+                end);
         end
 
         -- DEBUG FUNCTIONS
@@ -139,6 +196,693 @@
            end
         end
         
+        local DANO = {
+            ["Espada Longa"] = "1d10",
+            ["Espada Curta"] = "1d6",
+            ["Espada Bastarda"] = "1d10",
+            ["Sabre"] = "1d6+2",
+            ["Cimitarra Curta"] = "1d6",
+            ["Adaga"] = "1d3",
+            ["Punhal"] = "1d3",
+            ["Waqqif"] = "1d3+1",
+            ["Machado de Combate"] = "1d6+3",
+            ["Cajado"] = "1d6",
+            ["Martelo"] = "1d6",
+            ["Lanca"] = "1d10",
+            ["Lanca de Justa"] = "1d6",
+            ["Arco Longo"] = "1d6+2",
+            ["Arco"] = "1d6",
+            ["Zarabatana"] = "1",
+        }
+
+        local _kitSeq = 0
+        local function _kitNome()
+            _kitSeq = _kitSeq + 1
+            return "kit" .. tostring(os.time()) .. "_" .. tostring(_kitSeq) .. "_" .. tostring(math.random(1000,9999))
+        end
+
+        local function _kitAtr(r, n)
+            return (tonumber(r[n.."Base"]) or 0) + (tonumber(r[n.."Mod"]) or 0)
+        end
+
+        local function _kitArma(r, sel, nome, atk, def, tipo)
+            local nd = NDB.createChildNode(r.equipamentos.ataques, _kitNome())
+            if nd == nil then return end
+            nd.kit = sel
+            nd.nome = nome
+            nd.periciaArma = atk
+            nd.periciaDefesa = def
+            nd.dano = DANO[nome] or ""
+        end
+
+        local function _kitPericia(r, sel, nome, valor)
+            local nd = NDB.createChildNode(r.pericias, _kitNome())
+            if nd == nil then return end
+            nd.kit = sel
+            nd.nome = nome
+            nd.atributo = "none"
+            nd.constituicao = _kitAtr(r,"constituicao"); nd.forca = _kitAtr(r,"forca"); nd.destreza = _kitAtr(r,"destreza")
+            nd.agilidade = _kitAtr(r,"agilidade"); nd.inteligencia = _kitAtr(r,"inteligencia"); nd.vontade = _kitAtr(r,"vontade")
+            nd.percepcao = _kitAtr(r,"percepcao"); nd.carisma = _kitAtr(r,"carisma")
+            nd.gasto = valor
+        end
+
+        local DESC = {
+            ["pontos de fe"] = [==[APRIMORAMENTO — PONTOS DE FÉ
+
+Em termos de jogo, a Fé representa os pequenos milagres que um personagem dedicado pode alcançar através da devoção a uma entidade. Qualquer divindade maior de Arton — assim como as várias divindades menores deste mundo — pode conceder estes pequenos milagres a seus adoradores.
+
+Este aprimoramento é obrigatório para personagens clérigos, paladinos ou devotos fervorosos de alguma divindade específica.
+
+1 ponto: Seguidor. 1 ponto de Fé + 1 a cada 2 níveis.
+2 pontos: Fiel. 2 pontos de Fé + 1 a cada 2 níveis.
+3 pontos: Entusiasta. 3 pontos de Fé + 1 por nível.
+4 pontos: Fanático. 5 pontos de Fé + 1 por nível.
+5 pontos: Radical. 7 pontos de Fé + 1 por nível.]==],
+            ["pontos heroicos"] = [==[PONTOS HERÓICOS
+
+Pontos heróicos funcionam como uma medida abstrata de heroísmo. Não são exatamente pontos de vida extras, mas funcionam na maioria dos casos como tal. São uma espécie de "aura heróica" ou "sorte" que protege o corpo do Personagem de dano quando executa atos de herói (pular de um prédio para outro, ser arrastado por um cavalo, levar seis tiros em uma rodada, enfrentar mais de 2 oponentes ao mesmo tempo e outros atos que humanos normais não conseguiriam fazer saindo inteiros).
+
+POR QUE PONTOS HERÓICOS?
+O Sistema Daemon foi desenvolvido para ambientes realistas, onde os humanos são "frágeis" e o dano é mortal — interessante para um RPG de horror (Trevas, Arkanun, Invasão), mas isso impedia os Narradores de envolverem seus Personagens em Campanhas de Ação e Aventura. Os pontos heróicos resolvem isso.
+
+COMO FUNCIONAM?
+Funcionam como Pontos de Vida a mais que o personagem possui, mas que só podem ser usados quando ele realiza um ato heróico. O uso não conta como ação na rodada, mas há direito a apenas UMA utilização por rodada. NÃO podem ser usados em condições não-heróicas (dormindo e cortarem sua garganta, comer algo envenenado, levar um tiro pelas costas etc.). A regra do bom senso vale para casos omissos. SEMPRE que possível, é aconselhado usar pelo menos parte dos PHs para absorver dano; o que não for absorvido é dano normal.
+
+QUANDO USAR E QUANDO NÃO USAR
+O Narrador decide se permite PHs na campanha. Campanhas de ação/aventura devem usá-los; campanhas de suspense podem desconsiderá-los. Uma vez que os PJs possuam PHs, vilões e NPCs que o Narrador julgar válidos TAMBÉM os terão. PHs estão ligados à capacidade de realizar atos sobre-humanos ou corajosos, não necessariamente "heróicos".
+
+RECUPERANDO PONTOS HERÓICOS
+Um humano normal (3D em Força de Vontade) recupera 1 PH a cada 8 horas — é 1 PH por dia por dado de Força de Vontade. A recuperação é independente da de pontos de fé ou de vida. Existem rituais, poderes e efeitos raros que conferem PHs extras temporariamente, e mais raros ainda os que RECUPERAM PHs.
+
+NÍVEIS DO APRIMORAMENTO
+1 ponto: Corajoso. 3 PHs iniciais. +1 PH a cada nível. Até 2 PHs por rodada.
+2 pontos: Valoroso. 6 PHs iniciais. +1 PH a cada nível. Até 4 PHs por rodada.
+3 pontos: Intrépido. 9 PHs iniciais. +1 PH a cada nível. Até 6 PHs por rodada.
+4 pontos: Herói. 12 PHs iniciais. +1 PH a cada nível. Até 8 PHs por rodada.
+5 pontos: Bárbaro. 15 PHs iniciais. +1 PH a cada nível. Até 10 PHs por rodada.
+6 pontos: Super. 18 PHs iniciais. +1 PH a cada nível. Até 12 PHs por rodada.
+
+PONTOS HERÓICOS SOBRENATURAIS
+Personagens com background ligado ao sobrenatural (antepassado sobrenatural, superpoderes) podem ter um tipo novo: os PHs sobrenaturais. Usados como os normais, mas contam como aprimoramento diferente — o Personagem pode ter 2, 3 ou 4 pontos em cada um, ultrapassando o limite inicial de 5 por nível. Aptos: filhos de Marte e aliens, lobisomens, vampiros e mortos-vivos, demônios, anjos, dragões, seres de Arcádia, raças de fantasia medieval/futurista, supers e descendentes. O Narrador tem a palavra final.
+
+NOVAS REGRAS
+PHs normalmente são pontos de vida extra, mas também servem como "energia" para realizar atos heróicos. Inicialmente o Personagem só converte PH em PV; com o avanço de nível aprende outros esforços, na razão de UM esforço heróico novo por nível (independente de kit ou de o kit ser heróico). Colisões entre esforços (acerto de ataque x acerto de esquiva) se cancelam. Em TODOS os efeitos, como padrão Daemon, arredonde os valores quebrados para CIMA.
+
+ESFORÇOS HERÓICOS
+- Ataque extra — 2 PHs: realiza UM ataque extra na rodada (regras de múltiplos ataques).
+- Acerto automático (ataque) — 1 PH por 3 níveis do defensor: acerta sem teste. Não vale para "ataque extra".
+- Acerto automático (defesa) — 1 PH por 3 níveis do atacante: acerta sem teste.
+- Acerto automático (esquiva) — 1 PH por 2 níveis do atacante: acerta sem teste.
+- Aumento de Atributo (AGI/CON/DES/FOR/Iniciativa/Índice de Proteção) — variável: +X no atributo até o fim da cena (X = PHs gastos).
+- Bônus em combate (ataque) — variável: +5% por PH gasto, até o fim da cena.
+- Bônus em combate (defesa) — variável: +10% por PH gasto, até o fim da cena.
+- Bônus em combate (esquiva) — variável: +5% por PH gasto, até o fim da cena.
+- Defesa extra — 1 PH por defesa: uma ou mais defesas extras na rodada.
+- Esquiva extra — 2 PHs por esquiva: uma ou mais esquivas extras na rodada.
+- Resistência à magia (dano) — 2 PHs por dado: +Xd6 na absorção de dano mágico até o fim da cena (X = metade dos PHs gastos).
+- Resistência à magia (efeito) — 1 PH por 5%: +X% em resistência a efeitos mágicos/sobrenaturais.
+- Salto — 1 PH por 3 metros (altura ou distância): grande/longo salto.
+- Teste de Resistência (AGI/CON/Força de Vontade) — 1 PH por 2 níveis do ofensor: acerta sem rolar.
+- Teste Físico (Camuflagem/Escapismo/Esportes/Furtividade) — 2 PHs: acerta o teste sem rolar.
+- Trocar PHs por PMs — 2 PHs para 1 PM.
+- Trocar PHs por PsFé — 3 PHs para 2 PsFé.]==],
+            ["sortudo"] = [==[SORTUDO
+2 pontos: o Personagem é portador de uma sorte incrível. Uma vez por sessão de jogo, o Jogador pode rolar novamente um dado caso tenha falhado em um Teste (qualquer tipo de rolagem). Deve anunciar essa decisão ANTES de rolar os dados — se conseguir logo na primeira tentativa, mesmo assim terá gasto a "sorte" da sessão.
+3 pontos: você tem o direito de declarar que um rolamento teve acerto crítico, uma vez por sessão de jogo. Essa decisão deve ser tomada antes de rolar os dados.]==],
+            ["alma pura"] = [==[ALMA PURA
+Apenas para Personagens cristãos.
+2 pontos: Nenhum demônio é capaz de chegar perto do Personagem, muito menos tocá-lo ou atacá-lo enquanto ele mantiver a alma limpa (sem nenhum pecado). O demônio pode permanecer na mesma sala ou dialogar com ele, mas será incapaz de atacá-lo fisicamente. Caso o Personagem quebre algum dos dez mandamentos, sua alma fica maculada por, no mínimo, uma semana e um dia, e os demônios podem atacá-lo nesse período. Ele deve se confessar e pagar a penitência adequada para recuperar a pureza. Magias demoníacas sofrem um redutor de 4D em relação ao Personagem enquanto este mantiver a alma pura.]==],
+            ["cacador de demonios"] = [==[CAÇADOR DE DEMÔNIOS OU ANJOS
+O Personagem tem a "missão" de caçar e exterminar Anjos ou Demônios por um motivo qualquer (vingança, ódio, dinheiro, um juramento). Passará a vida atrás desse objetivo e sempre se aliará a outros caçadores.
+1 ponto: possui Conhecimentos sobre a criatura que caça (Anjos ou Demônios) com até 30%, além de saber como encontrá-los e destruí-los.
+2 pontos: Conhecimentos sobre o tipo de criatura com 45%, e conhece outros caçadores. Pode pertencer a uma Sociedade Secreta com este fim (os Magos Atlantes, os Templários, a AGNI ou os Hiotas).]==],
+            ["poderes magicos"] = [==[PODERES MÁGICOS
+1 ponto: começou a estudar as artes arcanas há muito pouco tempo. Possui 2 pontos de Focus e 1 ponto de Magia.
+2 pontos: possui alguns conhecimentos de Magia. 3 pontos de Focus para dividir entre os caminhos que desejar. Começa com 2 pontos de Magia.
+3 pontos: Mago. Já praticava as artes arcanas há algum tempo. Começa com 5 pontos de Focus e 3 pontos de Magia.
+4 pontos: Mago desenvolvido. 7 pontos de Focus para dividir entre os caminhos, e pelo menos um inimigo mortal a mais (a cargo do Mestre). Possui 5 pontos de Magia.
+5 pontos: personagens mais velhos, com muito poder e conhecimento acumulado. Pelo menos DOIS inimigos mortais a mais (a cargo do Mestre). Dispõe de 9 pontos de Focus e 7 pontos de Magia.]==],
+            ["contatos e aliados"] = [==[CONTATOS E ALIADOS
+Os aliados podem morrer com o tempo; quando isso ocorre, assume-se que o Personagem conseguiu outro aliado no mesmo ramo, ou passou a conhecer um descendente/sucessor. Os contatos têm seus próprios problemas e nem sempre estão à disposição; ocasionalmente cobram favores ou pedem ajuda (fonte de aventuras para o Mestre). Cada Ponto de Contato equivale a alguns pequenos contatos (o Jogador especifica quais) ou a um contato importante (NPC). Cada subgrupo é comprado separadamente.
+1 ponto: um aliado importante.
+2 pontos: dois aliados importantes.
+3 pontos: quatro aliados importantes.
+4 pontos: oito aliados importantes.]==],
+            ["sociedade secreta"] = [==[SOCIEDADE SECRETA
+Obrigatório se o Personagem deseja pertencer ao Arkanun Arcanorum, Escola de Magia ou Ordem de Cavaleiros. Por suas habilidades, você foi recrutado por uma Ordem Mística, onde será treinado e refinará suas aptidões. Como membro, recebe regalias e inimigos. Existem várias ordens (de magos e de cavaleiros); consulte o Mestre sobre benefícios e malefícios de cada uma.
+1 ponto: pertence à Sociedade como membro dos círculos externos ou aprendizes.
+2 pontos: já possui maior influência, pertencendo aos círculos mais internos (talvez com algum título importante).]==],
+            ["biblioteca"] = [==[BIBLIOTECA
+O Personagem possui uma vasta biblioteca em seu refúgio (herança, roubada, adquirida ou criada por ele). Se puder consultá-la, ela aumenta seus conhecimentos em alguns assuntos — apenas conhecimentos estudados em livros. Em termos de jogo, triplica (até no máximo 90%) o valor de alguns Subgrupos de Perícias ligados a conhecimentos, especificados na criação do Personagem (podem ser de várias Perícias diferentes).
+1 ponto: 2 Subgrupos de Perícias.
+2 pontos: 6 Subgrupos.
+3 pontos: 10 Subgrupos.
+4 pontos: 14 Subgrupos.]==],
+            ["recursos"] = [==[RECURSOS E DINHEIRO
+Quanto de dinheiro, joias e posses o Personagem reuniu ao longo da vida, incluindo propriedades e fontes de renda que levam tempo para virar dinheiro. Os valores estão em dólares (época atual) e florins (campanhas medievais), ajustáveis conforme a época/local. O Personagem possui ao todo cerca de 50 vezes o valor de sua renda.
+1 ponto: renda de até US$ 2.000 (ou 100 florins) mensais.
+2 pontos: até US$ 4.000 (ou 200 florins).
+3 pontos: até US$ 8.000 (ou 400 florins).
+4 pontos: até US$ 16.000 (ou 800 florins).
+5 pontos: até US$ 32.000 (ou 1.600 florins).]==],
+            ["clero"] = [==[CLERO
+1 ponto: o Personagem é um padre ou clérigo responsável por um pequeno templo em um vilarejo ou cidade pequena, encarregado dos fiéis e da organização da comunidade.
+2 pontos: é um bispo/clérigo responsável por uma região ou condado, com um templo de tamanho razoável em uma cidade maior; cuida de assuntos mais amplos (como organizar paladinos para missões) e supervisiona os padres da região.
+3 pontos: é um arcebispo ou alto sacerdote responsável por grande área e os vários templos nela, com notória influência sobre a política regional.]==],
+            ["inocencia"] = [==[INOCÊNCIA
+1 ponto: o Personagem tem uma habilidade quase sobrenatural de passar a impressão de ser inocente em qualquer acusação sem testemunhas. Arruma álibis com facilidade, provando que "comprou aquela bolsa na feira local" ou que outra pessoa arrombou a porta.
+2 pontos: como o anterior, mas até uma testemunha pode se convencer de que se enganou ao acusá-lo (Teste Normal de Lábia). Também torna Difíceis todos os Testes de Interrogatório contra ele.]==],
+        }
+        DESC["aliados e contatos"] = DESC["contatos e aliados"]
+        DESC["contatos"] = DESC["contatos e aliados"]
+        local function _apBase(nome)
+            local b = tostring(nome or "")
+            b = b:gsub("%s+%d+%s*$", "")
+            b = b:gsub("^%s+", ""):gsub("%s+$", "")
+            return string.lower(b)
+        end
+
+        local function _kitAprim(r, sel, nome)
+            local nd = NDB.createChildNode(r.aprimoramentos, _kitNome())
+            if nd == nil then return end
+            nd.kit = sel
+            nd.nome = nome
+            nd.custo = 0
+            nd.descricao = DESC[_apBase(nome)] or ""
+        end
+
+        local function _kitLimpaLista(lista)
+            local nodes = NDB.getChildNodes(lista)
+            local apagar = {}
+            for i=1, #nodes do
+                local k = nodes[i].kit
+                if k ~= nil and k ~= "" then apagar[#apagar+1] = nodes[i] end
+            end
+            for i=1, #apagar do NDB.deleteNode(apagar[i]) end
+        end
+
+        local function _racaLimpar(r)
+            local function limpar(lista)
+                local nds = NDB.getChildNodes(lista)
+                local apagar = {}
+                for i=1, #nds do
+                    if nds[i].raca == true then apagar[#apagar+1] = nds[i] end
+                end
+                for i=1, #apagar do NDB.deleteNode(apagar[i]) end
+            end
+            limpar(r.pericias)
+            limpar(r.periciasArmas)
+            limpar(r.equipamentos.ataques)
+        end
+
+        local function _racaArma(r, sel, nome, atk, def, tipo)
+            local nd = NDB.createChildNode(r.equipamentos.ataques, _kitNome())
+            if nd == nil then return end
+            nd.raca = true
+            nd.nome = nome .. " (racial)"
+            nd.periciaArma = atk
+            nd.periciaDefesa = def
+            nd.dano = DANO[nome] or ""
+        end
+
+        local function _racaPericia(r, sel, nome, valor)
+            local nd = NDB.createChildNode(r.pericias, _kitNome())
+            if nd == nil then return end
+            nd.raca = true
+            nd.nome = nome
+            nd.atributo = "none"
+            nd.constituicao = _kitAtr(r,"constituicao"); nd.forca = _kitAtr(r,"forca"); nd.destreza = _kitAtr(r,"destreza")
+            nd.agilidade = _kitAtr(r,"agilidade"); nd.inteligencia = _kitAtr(r,"inteligencia"); nd.vontade = _kitAtr(r,"vontade")
+            nd.percepcao = _kitAtr(r,"percepcao"); nd.carisma = _kitAtr(r,"carisma")
+            nd.gasto = valor
+        end
+
+        local function _kitLimpar(r)
+            _kitLimpaLista(r.pericias)
+            _kitLimpaLista(r.periciasArmas)
+            _kitLimpaLista(r.equipamentos.ataques)
+            _kitLimpaLista(r.aprimoramentos)
+            r.ptsKitPericia = 0
+            r.ptsKitAprim = 0
+        end
+
+        local KITS = {
+            ["guerreiro"] = { p=200, a=2, ap={"Pontos Heroicos 4"}, armas={{"Espada Longa",40,40,"cac"}, {"Machado de Combate",30,20,"cac"}, {"Escolha outra arma",20,10,"cac"}}, per={{"Escolha uma manobra de combate",50}, {"Manipulacao (Intimidacao)",20}, {"Montaria",20}, {"Sobrevivencia (escolha um ambiente)",30}} },
+            ["ranger"] = { p=240, a=2, ap={"Pontos Heroicos 4"}, armas={{"Arco Longo",40,0,"dist"}, {"Espada Curta",30,30,"cac"}, {"Adaga",0,20,"cac"}}, per={{"Armadilhas",20}, {"Camuflagem",20}, {"Ciencias (Herbalismo)",10}, {"Furtividade",20}, {"Montaria",30}, {"Rastreio",30}, {"Sobrevivencia (Floresta)",40}} },
+            ["guardacostas"] = { p=230, a=2, ap={"Pontos Heroicos 4"}, armas={{"Espada Curta",40,30,"cac"}, {"Adaga",40,20,"cac"}, {"Escolha outra arma",0,30,"cac"}}, per={{"Manobra de Combate (Luta as Cegas)",40}, {"Etiqueta",30}, {"Manipulacao (Intimidacao)",20}, {"Montaria",30}, {"Sobrevivencia (escolha um ambiente)",30}} },
+            ["cacadorrecompensas"] = { p=260, a=2, ap={"Pontos Heroicos 4"}, armas={{"Escolha uma arma",30,30,"cac"}}, per={{"Armadilhas",30}, {"Arrombamento",20}, {"Camuflagem",20}, {"Disfarce",20}, {"Furtar",15}, {"Furtividade",25}, {"Manipulacao (Interrogatorio)",25}, {"Manipulacao (Intimidacao)",25}, {"Manipulacao (Labia)",20}, {"Investigacao",40}, {"Rastreio",40}, {"Sobrevivencia (escolha um ambiente)",10}, {"Subterfugio",20}} },
+            ["arqueiro"] = { p=200, a=2, ap={"Pontos Heroicos 4"}, armas={{"Escolha um Arco",40,0,"dist"}, {"Espada Curta",20,20,"cac"}}, per={{"Camuflagem",20}, {"Ciencias (Herbalismo)",20}, {"Escutar",30}, {"Furtividade",20}, {"Montaria",30}, {"Rastreio",20}, {"Sobrevivencia (Floresta)",20}} },
+            ["paladino"] = { p=380, a=4, ap={"Pontos Heroicos 4", "Pontos de Fe 1", "Sortudo", "Alma Pura", "Status"}, armas={{"Espada Longa",40,40,"cac"}, {"Lanca",40,25,"cac"}, {"Adaga",40,30,"cac"}}, per={{"Etiqueta",30}, {"Heraldica",20}, {"Idiomas (Idioma Nativo)",20}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Latim)",30}, {"Legislacao",30}, {"Manipulacao (Empatia)",20}, {"Manipulacao (Intimidacao)",20}, {"Manipulacao (Lideranca)",20}, {"Montaria",30}, {"Rastreio",20}, {"Religiao",30}, {"Sobrevivencia (Floresta)",20}, {"Sobrevivencia (Montanha)",30}, {"Esquiva",25}} },
+            ["mercenario"] = { p=210, a=2, ap={"Pontos Heroicos 4"}, armas={{"Espada Longa",40,40,"cac"}, {"Adaga",20,20,"cac"}, {"Escolha outra arma",20,20,"cac"}}, per={{"Armadilhas",20}, {"Investigacao",20}, {"Manipulacao (Interrogatorio)",20}, {"Primeiros Socorros",20}, {"Rastreio",20}, {"Sobrevivencia (escolha um ambiente)",30}} },
+            ["cavaleiro"] = { p=250, a=2, ap={"Pontos Heroicos 4"}, armas={{"Lanca de Justa",40,40,"cac"}, {"Espada Curta",30,20,"cac"}, {"Adaga",20,10,"cac"}}, per={{"Etiqueta",50}, {"Heraldica",50}, {"Ciencias (Historia)",20}, {"Idiomas (Idioma Nativo)",20}, {"Montaria",30}, {"Religiao",20}} },
+            ["ladrao"] = { p=250, a=2, ap={"Pontos Heroicos 3"}, armas={{"Adaga",40,20,"cac"}}, per={{"Armadilhas",30}, {"Arrombamento",30}, {"Barganha",10}, {"Camuflagem",20}, {"Disfarce",20}, {"Escapismo",30}, {"Escutar",20}, {"Falsificacao",20}, {"Furtar",40}, {"Furtividade",30}, {"Joalheria",20}, {"Subterfugio",30}} },
+            ["ladraotumbas"] = { p=250, a=2, ap={"Pontos Heroicos 3"}, armas={{"Adaga",30,30,"cac"}}, per={{"Armadilhas",40}, {"Arrombamento",30}, {"Barganha",10}, {"Camuflagem",20}, {"Ciencias (Historia)",40}, {"Escapismo",20}, {"Furtar",20}, {"Investigacao",20}, {"Joalheria",20}, {"Linguas Antigas",30}, {"Pesquisa",30}, {"Subterfugio",20}} },
+            ["jogador"] = { p=220, a=2, ap={"Pontos Heroicos 2", "Contatos e Aliados 1"}, armas={{"Adaga",20,30,"cac"}}, per={{"Barganha",20}, {"Etiqueta",20}, {"Falsificacao",40}, {"Intimidacao",20}, {"Jogos de Azar",50}, {"Manipulacao (Empatia)",50}, {"Manipulacao (Labia)",30}, {"Subterfugio",30}} },
+            ["menestrel"] = { p=220, a=3, ap={"Pontos Heroicos 1", "Contatos e Aliados 2"}, armas={}, per={{"Atuacao",40}, {"Camuflagem",20}, {"Ciencias (Historia)",30}, {"Disfarce",20}, {"Etiqueta",40}, {"Idiomas (Idioma Nativo)",20}, {"Idiomas (Ler e Escrever)",20}, {"Instrumento Musical",50}, {"Investigacao",10}, {"Manipulacao (Labia)",20}, {"Manipulacao (Seducao)",20}, {"Subterfugio",20}} },
+            ["menestrelsombrio"] = { p=250, a=3, ap={"Poderes Magicos 1", "Pontos Heroicos 1", "Aliados e Contatos 1"}, armas={}, per={{"Atuacao",40}, {"Camuflagem",20}, {"Ciencias (Historia)",20}, {"Disfarce",30}, {"Etiqueta",30}, {"Falsificacao",20}, {"Idiomas (Idioma Nativo)",20}, {"Idiomas (Ler e Escrever)",20}, {"Instrumento Musical",50}, {"Investigacao",20}, {"Manipulacao (Labia)",30}, {"Manipulacao (Seducao)",30}, {"Subterfugio",20}} },
+            ["espiao"] = { p=330, a=3, ap={"Pontos Heroicos 2", "Aliados e Contatos 2", "Sociedade Secreta 1"}, armas={{"Punhal",20,30,"cac"}}, per={{"Arrombamento",40}, {"Camuflagem",40}, {"Disfarce",40}, {"Escapismo",30}, {"Escutar",50}, {"Etiqueta",20}, {"Falsificacao",20}, {"Interrogatorio",30}, {"Manipulacao (Labia)",30}, {"Manipulacao (Tortura)",20}, {"Primeiros Socorros",20}, {"Subterfugio",20}} },
+            ["contrabandista"] = { p=200, a=2, ap={"Pontos Heroicos 1", "Aliados e Contatos 3"}, armas={}, per={{"Barganha",50}, {"Empatia",30}, {"Escutar",30}, {"Etiqueta",20}, {"Falsificacao",40}, {"Joalheria",30}, {"Manipulacao (Labia)",30}, {"Navegacao",20}, {"Subterfugio",30}} },
+            ["assassino"] = { p=230, a=2, ap={"Pontos Heroicos 2", "Aliados e Contatos 1"}, armas={{"Punhal",30,10,"cac"}, {"Zarabatana",20,0,"dist"}}, per={{"Armadilhas",20}, {"Arrombamento",30}, {"Camuflagem",30}, {"Disfarce",30}, {"Escapismo",20}, {"Falsificacao",10}, {"Furtar",10}, {"Furtividade",30}, {"Sobrevivencia (escolha um ambiente)",20}, {"Subterfugio",10}, {"Venenos",30}} },
+            ["alquimista"] = { p=280, a=3, ap={"Poderes Magicos 1", "Pontos Heroicos 1", "Aliados e Contatos 1", "Biblioteca 1", "Recursos 1"}, armas={}, per={{"Barganha",40}, {"Ciencias (Herbalismo)",40}, {"Ciencias Proibidas (Alquimia)",50}, {"Ciencias Proibidas (Cabala)",30}, {"Ciencias Proibidas (Ocultismo)",30}, {"Ciencias Proibidas (Rituais)",30}, {"Idiomas (Hebraico)",20}, {"Idiomas (Ler e Escrever Idioma Nativo)",25}, {"Idiomas (Ler e Escrever Hebraico)",35}, {"Medicina",25}, {"Primeiros Socorros",25}, {"Subterfugio",20}, {"Venenos",30}} },
+            ["mercador"] = { p=190, a=2, ap={"Pontos Heroicos 1", "Recursos 3"}, armas={}, per={{"Artes (Atuacao)",10}, {"Barganha",50}, {"Ciencias (Historia)",10}, {"Escutar",10}, {"Etiqueta",30}, {"Falsificacao",10}, {"Joalheria",40}, {"Manipulacao (Empatia)",30}, {"Manipulacao (Labia)",30}, {"Pesquisa",10}, {"Religiao",10}, {"Subterfugio",20}} },
+            ["herbalista"] = { p=200, a=3, ap={"Poderes Magicos 2", "Pontos Heroicos 1", "Aliados e Contatos"}, armas={}, per={{"Armadilhas",40}, {"Barganha",30}, {"Ciencias (Herbalismo)",50}, {"Ciencias (Historia)",20}, {"Ciencias Proibidas (Rituais)",20}, {"Etiqueta",10}, {"Heraldica",10}, {"Medicina",20}, {"Primeiros Socorros",20}, {"Sobrevivencia (Floresta)",40}, {"Subterfugio",20}} },
+            ["padre"] = { p=190, a=2, ap={"Pontos de Fe 2", "Clero 1", "Recursos 1"}, armas={}, per={{"Barganha",30}, {"Burocracia",10}, {"Ciencias (Historia)",20}, {"Escutar",10}, {"Etiqueta",20}, {"Heraldica",10}, {"Idiomas (Latim)",30}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Ler e Escrever Latim)",20}, {"Manipulacao (Empatia)",30}, {"Manipulacao (Interrogatorio)",20}, {"Religiao",50}} },
+            ["druida"] = { p=240, a=3, ap={"Poderes Magicos 2", "Pontos Heroicos 1", "Sociedade Secreta 1"}, armas={{"Cajado",30,30,"cac"}}, per={{"Camuflagem",25}, {"Ciencias (Herbalismo)",20}, {"Ciencias (Teologia)",15}, {"Ciencias Proibidas (Alquimia)",25}, {"Ciencias Proibidas (Astrologia)",20}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Teoria da Magia)",25}, {"Linguagem Secreta",30}, {"Manipulacao (Intimidacao)",20}, {"Navegacao",20}, {"Pesquisa",40}} },
+            ["pyros"] = { p=230, a=3, ap={"Poderes Magicos 2"}, armas={{"Escolha uma arma",40,40,"cac"}}, per={{"Armadilhas",20}, {"Ciencias Proibidas (Alquimia)",10}, {"Ciencias Proibidas (Ocultismo)",30}, {"Ciencias Proibidas (Rituais)",30}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Escolha outro Idioma)",30}, {"Manipulacao (Interrogatorio)",20}, {"Manipulacao (Intimidacao)",20}, {"Religiao",30}, {"Sobrevivencia (escolha um ambiente)",30}} },
+            ["magosvermelhos"] = { p=210, a=3, ap={"Poderes Magicos 2"}, armas={{"Escolha uma arma",40,40,"cac"}}, per={{"Armadilhas",20}, {"Ciencias Proibidas (Alquimia)",10}, {"Ciencias Proibidas (Ocultismo)",30}, {"Ciencias Proibidas (Rituais)",30}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Escolha outro Idioma)",30}, {"Manipulacao (Interrogatorio)",10}, {"Religiao",30}, {"Sobrevivencia (escolha um ambiente)",30}} },
+            ["magosaquos"] = { p=210, a=3, ap={"Poderes Magicos 2", "Pontos de Fe 1"}, armas={}, per={{"Ciencias (Herbalismo)",10}, {"Ciencias Proibidas (Alquimia)",40}, {"Ciencias Proibidas (Arkanun)",30}, {"Ciencias Proibidas (Astrologia)",20}, {"Ciencias Proibidas (Ocultismo)",40}, {"Ciencias Proibidas (Rituais)",40}, {"Ciencias Proibidas (Teoria da Magia)",30}, {"Esportes (Natacao)",30}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Navegacao",10}} },
+            ["magosatlantes"] = { p=190, a=3, ap={"Poderes Magicos 2"}, armas={}, per={{"Ciencias (Historia)",30}, {"Ciencias Proibidas (Alquimia)",20}, {"Ciencias Proibidas (Astrologia)",30}, {"Ciencias Proibidas (Atlandida)",50}, {"Ciencias Proibidas (Ocultismo)",40}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Teoria da Magia)",30}, {"Esportes (Natacao)",30}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}} },
+            ["yamesh"] = { p=290, a=3, ap={"Poderes Magicos 2", "Pontos de Fe 1"}, armas={}, per={{"Artes (Desenho e Pintura)",10}, {"Ciencias (Herbalismo)",10}, {"Ciencias (Historia)",30}, {"Ciencias Proibidas (Alquimia)",20}, {"Ciencias Proibidas (Astrologia)",20}, {"Ciencias Proibidas (Encantamentos)",20}, {"Ciencias Proibidas (Ocultismo)",40}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Tarot)",30}, {"Ciencias Proibidas (Teoria da Magia)",30}, {"Etiqueta",10}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Latim)",30}, {"Idiomas (Ler e Escrever Latim)",30}, {"Linguagem Secreta",30}, {"Religiao",30}} },
+            ["luft"] = { p=250, a=3, ap={"Poderes Magicos 2"}, armas={{"Cajado",30,30,"cac"}}, per={{"Camuflagem",25}, {"Ciencias (Herbalismo)",20}, {"Ciencias (Teologia)",15}, {"Ciencias Proibidas (Alquimia)",35}, {"Ciencias Proibidas (Astrologia)",20}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Teoria da Magia)",25}, {"Etiqueta",10}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Linguagem Secreta",30}, {"Manipulacao (Intimidacao)",20}, {"Navegacao",20}, {"Pesquisa",40}} },
+            ["vacuo"] = { p=250, a=3, ap={"Poderes Magicos 2", "Inocencia 1"}, armas={{"Adaga",30,30,"cac"}}, per={{"Camuflagem",25}, {"Ciencias (Historia)",20}, {"Ciencias (Teologia)",15}, {"Ciencias Proibidas (Alquimia)",25}, {"Ciencias Proibidas (Astrologia)",10}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Teoria da Magia)",25}, {"Esportes (Natacao)",30}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Linguagem Secreta",30}, {"Investigacao",20}, {"Manipulacao (Interrogatorio)",20}, {"Manipulacao (Intimidacao)",20}, {"Pesquisa",30}} },
+            ["tempestade"] = { p=270, a=3, ap={"Poderes Magicos 2"}, armas={{"Martelo",40,40,"cac"}, {"Adaga",20,20,"cac"}}, per={{"Ciencias (Herbalismo)",10}, {"Ciencias (Teologia)",15}, {"Ciencias Proibidas (Alquimia)",25}, {"Ciencias Proibidas (Astrologia)",20}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Teoria da Magia)",25}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Linguagem Secreta",30}, {"Manipulacao (Intimidacao)",20}, {"Navegacao",20}, {"Pesquisa",30}} },
+            ["petros"] = { p=270, a=3, ap={"Poderes Magicos 2", "Pontos de Fe 1"}, armas={{"Cimitarra Curta",40,30,"cac"}, {"Waqqif",30,20,"cac"}}, per={{"Armadilhas",10}, {"Ciencias Proibidas (Alquimia)",20}, {"Ciencias Proibidas (Astrologia)",30}, {"Ciencias Proibidas (Rituais)",30}, {"Idiomas (Arabe)",30}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Manipulacao (Interrogatorio)",30}, {"Manipulacao (Intimidacao)",20}, {"Religiao (Islamismo)",30}, {"Sobrevivencia (Deserto)",30}} },
+            ["marmore"] = { p=280, a=3, ap={"Poderes Magicos 2", "Pontos de Fe 1"}, armas={{"Adaga",30,30,"cac"}}, per={{"Manobra de Combate (luta as cegas)",0}, {"Armadilhas",30}, {"Ciencias Proibidas (Alquimia)",20}, {"Ciencias Proibidas (Rituais)",20}, {"Idiomas (Arabe)",30}, {"Idiomas (Ler e Escrever Idioma Nativo)",20}, {"Manipulacao (Interrogatorio)",30}, {"Manipulacao (Intimidacao)",30}, {"Manipulacao (Tortura)",30}, {"Religiao (Ismalismo)",30}, {"Sobrevivencia (escolha um ambiente)",30}} },
+            ["corrosivos"] = { p=200, a=3, ap={"Poderes Magicos 2"}, armas={}, per={{"Armadilhas",20}, {"Ciencias Proibidas (Alquimia)",30}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Teoria da Magia)",30}, {"Disfarce",20}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Investigacao",30}, {"Manipulacao (Interrogatorio)",30}, {"Manipulacao (Intimidacao)",30}, {"Pesquisa",30}} },
+            ["chronos"] = { p=190, a=3, ap={"Poderes Magicos 2"}, armas={}, per={{"Ciencias (Historia)",30}, {"Ciencias Proibidas (Alquimia)",20}, {"Ciencias Proibidas (Astrologia)",20}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Teoria da Magia)",30}, {"Etiqueta",10}, {"Heraldica",20}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Latim)",30}, {"Idiomas (Ler e Escrever Latim)",30}, {"Religiao",20}} },
+            ["tenebras"] = { p=270, a=3, ap={"Poderes Magicos 2"}, armas={{"Adaga",30,30,"cac"}}, per={{"Ciencias (Herbalismo)",20}, {"Ciencias Proibidas (Alquimia)",35}, {"Ciencias Proibidas (Astrologia)",20}, {"Ciencias Proibidas (Rituais)",30}, {"Etiqueta",10}, {"Falsificacao",20}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Latim)",30}, {"Idiomas (Ler e Escrever Latim)",30}, {"Manipulacao (Interrogatorio)",30}, {"Manipulacao (Intimidacao)",20}, {"Manipulacao (Tortura)",40}} },
+            ["sombras"] = { p=250, a=3, ap={"Poderes Magicos 2"}, armas={{"Adaga",30,30,"cac"}}, per={{"Ciencias (Herbalismo)",20}, {"Ciencias Proibidas (Alquimia)",35}, {"Ciencias Proibidas (Astrologia)",20}, {"Ciencias Proibidas (Rituais)",30}, {"Falsificacao",20}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Latim)",30}, {"Idiomas (Ler e Escrever Latim)",30}, {"Manipulacao (Interrogatorio)",20}, {"Manipulacao (Intimidacao)",20}, {"Manipulacao (Tortura)",40}} },
+            ["salomaomago"] = { p=250, a=5, ap={"Poderes Magicos 3", "Pontos Heroicos 2", "Pontos de Fe 1", "Cacador de Demonios 1"}, armas={}, per={{"Ciencias (Herbalismo)",25}, {"Ciencias Proibidas (Alquimia)",30}, {"Ciencias Proibidas (Ocultismo)",40}, {"Ciencias Proibidas (Seres Sobrenaturais)",40}, {"Ciencias Proibidas (Rituais)",40}, {"Falsificacao",20}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Hebraico)",40}, {"Idiomas (Ler e Escrever Hebraico)",25}, {"Manipulacao (Empatia)",35}, {"Religiao",40}, {"Sobrevivencia (Deserto)",25}} },
+            ["salomaoguerreiro"] = { p=250, a=4, ap={"Cacador de Demonios 2", "Pontos Heroicos 4", "Pontos de Fe 1"}, armas={{"Sabre",20,30,"cac"}, {"Lanca",20,25,"cac"}, {"Adaga",20,20,"cac"}}, per={{"Armadilhas",15}, {"Camuflagem",25}, {"Ciencias Proibidas (Seres Sobrenaturais)",30}, {"Esquiva",35}, {"Montaria",40}, {"Rastreio",40}, {"Sobrevivencia (Deserto)",35}} },
+            ["isisosiris"] = { p=280, a=3, ap={"Poderes Magicos 2", "Pontos de Fe 1"}, armas={}, per={{"Ciencias (Herbalismo)",25}, {"Ciencias Proibidas (Alquimia)",35}, {"Ciencias Proibidas (Ocultismo)",40}, {"Ciencias Proibidas (Rituais)",40}, {"Ciencias Proibidas (Seres Sobrenaturais)",40}, {"Idiomas (Ler e Escrever Idioma Nativo)",30}, {"Idiomas (Egipcio)",40}, {"Idiomas (Ler e Escrever Egipcio)",25}, {"Manipulacao (Empatia)",30}, {"Primeiros Socorros",25}, {"Religiao",35}, {"Sobrevivencia (Deserto)",30}} },
+            ["dragao"] = { p=230, a=3, ap={"Poderes Magicos 2", "Pontos Heroicos 3"}, armas={{"Espada Bastarda",20,30,"cac"}, {"Lanca",20,25,"cac"}, {"Adaga",20,20,"cac"}}, per={{"Esquiva",25}, {"Ciencias Proibidas (Vampiros)",20}, {"Heraldica",20}, {"Manipulacao (Tortura)",20}, {"Montaria",30}, {"Rastreio",20}, {"Sobrevivencia (Deserto)",20}, {"Sobrevivencia (Montanha)",30}} },
+            ["cavaleirograal"] = { p=250, a=2, ap={"Pontos Heroicos 4"}, armas={{"Espada Longa",40,30,"cac"}, {"Lanca",30,25,"cac"}, {"Adaga",30,20,"cac"}}, per={{"Esquiva",25}, {"Heraldica",40}, {"Montaria",30}, {"Rastreio",20}, {"Sobrevivencia (Floresta)",30}, {"Sobrevivencia (Montanha)",30}} },
+            ["paladinograal"] = { p=380, a=4, ap={"Sortudo", "Alma Pura", "Status", "Pontos de Fe 2", "Pontos Heroicos 4"}, armas={{"Espada Longa",40,40,"cac"}, {"Lanca",40,25,"cac"}, {"Adaga",40,30,"cac"}}, per={{"Esquiva",25}, {"Direito",30}, {"Etiqueta",30}, {"Heraldica",20}, {"Idiomas (Latim)",30}, {"Idiomas (Ler e Escrever)",30}, {"Manipulacao (Empatia)",20}, {"Manipulacao (Lideranca)",20}, {"Manipulacao (Intimidacao)",20}, {"Montaria",30}, {"Rastreio",20}, {"Religiao",30}, {"Sobrevivencia (Floresta)",20}, {"Sobrevivencia (Montanha)",30}} },
+            ["brujas"] = { p=285, a=3, ap={"Poderes Magicos 2", "Aliados e Contatos 1", "Biblioteca 1", "Recursos 1"}, armas={}, per={{"Barganha",20}, {"Ciencias (Herbalismo)",40}, {"Ciencias Proibidas (Alquimia)",30}, {"Ciencias Proibidas (Cabala)",30}, {"Ciencias Proibidas (Ocultismo)",30}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Venenos)",30}, {"Idiomas (Idioma Nativo)",25}, {"Idiomas (Ler e Escrever)",35}, {"Manipulacao (Empatia)",20}, {"Manipulacao (Seducao)",50}, {"Medicina",20}, {"Primeiros Socorros",25}, {"Subterfugio",20}} },
+            ["hassan"] = { p=300, a=3, ap={"Contatos 1", "Recursos 2", "Pontos de Fe 1"}, armas={{"Sabre",40,30,"cac"}, {"Escolha outra arma",40,30,"cac"}}, per={{"Arrombamento",35}, {"Camuflagem",25}, {"Disfarce",30}, {"Escalada",30}, {"Furtar Objetos",20}, {"Furtividade",40}, {"Herbalismo",20}, {"Religiao",40}, {"Sobrevivencia (Deserto)",30}, {"Venenos",40}} },
+            ["barbaro"] = { p=250, a=2, ap={"Pontos Heroicos 4", "Furia"}, armas={{"Machado",40,40,"cac"}, {"Clava",30,20,"cac"}}, per={{"Esquiva",20}, {"Montaria",20}, {"Armadilhas",20}, {"Caca",20}, {"Ciencias (Herbalismo)",10}, {"Esportes (Escalada)",20}, {"Esportes (Natacao)",20}, {"Esportes (Corrida)",20}, {"Rastreio",20}, {"Sobrevivencia (escolha um tipo)",40}, {"Venenos",20}} },
+            ["bardo"] = { p=220, a=3, ap={"Pontos Heroicos 1", "Poderes Magicos 1", "Contatos e Aliados 2"}, armas={}, per={{"Artes (Atuacao)",20}, {"Artes (Canto)",30}, {"Artes (Instrumento Musical)",40}, {"Ciencias (Historia)",20}, {"Ciencias Proibidas (Teoria da Magia)",20}, {"Camuflagem",20}, {"Conhecimento (Lendas)",30}, {"Disfarce",20}, {"Etiqueta",20}, {"Idiomas (Idioma Nativo)",10}, {"Idiomas (Ler e Escrever)",10}, {"Investigacao",10}, {"Manipulacao (Diplomacia)",20}, {"Manipulacao (Impressionar)",10}, {"Manipulacao (Labia)",10}, {"Manipulacao (Seducao)",10}, {"Subterfugio",10}} },
+            ["clerigo"] = { p=200, a=4, ap={"Pontos Heroicos 2", "Pontos de Fe 4"}, armas={{"Maca",30,30,"cac"}, {"Cajado",20,20,"cac"}}, per={{"Ciencias (Teologia)",40}, {"Conhecimento (area da divindade)",30}, {"Concentracao",30}, {"Etiqueta",30}, {"Primeiros Socorros",30}} },
+            ["feiticeiro"] = { p=150, a=2, ap={"Pontos Heroicos 1", "Poderes Magicos 1", "Familiar"}, armas={{"Adaga",10,10,"cac"}, {"Bastao",10,10,"cac"}}, per={{"Esquiva",20}, {"Ciencias Proibidas (Alquimia)",30}, {"Ciencias Proibidas (Ocultismo)",20}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Teoria da Magia)",30}, {"Concentracao",20}, {"Escutar",10}} },
+            ["mago"] = { p=200, a=3, ap={"Pontos Heroicos 1", "Poderes Magicos 1", "Familiar"}, armas={{"Bastao",10,10,"cac"}, {"Adaga",10,10,"cac"}}, per={{"Ciencias (Herbalismo)",20}, {"Ciencias Proibidas (Alquimia)",30}, {"Ciencias Proibidas (Astrologia)",20}, {"Ciencias Proibidas (Ocultismo)",20}, {"Ciencias Proibidas (Rituais)",30}, {"Ciencias Proibidas (Teoria da Magia)",30}, {"Concentracao",10}, {"Conhecimentos",20}, {"Investigacao",20}} },
+            ["monge"] = { p=250, a=3, ap={"Pontos Heroicos 3", "Ataque Desarmado"}, armas={{"Artes Marciais",40,40,"cac"}, {"Bastao",30,30,"cac"}}, per={{"Concentracao",20}, {"Ciencias (Filosofia)",30}, {"Esquiva",40}, {"Esportes (Acrobacia)",20}, {"Esportes (Salto)",20}, {"Furtividade",20}, {"Manipulacao (Empatia)",20}, {"Manipulacao (Impressionar)",20}, {"Manipulacao (Intimidacao)",20}, {"Subterfugio",30}} },
+        }
+
+        local function aplicarKit()
+            local r = NDB.getRoot(sheet)
+            local sel = r.kitSel
+            if sel == nil or sel == "none" then
+                showMessage("Selecione um kit primeiro.")
+                return
+            end
+            if r.kitAplicado == sel then
+                showMessage("Esse kit ja esta aplicado.")
+                return
+            end
+            local def = KITS[sel]
+            if def == nil then
+                showMessage("Kit nao encontrado.")
+                return
+            end
+
+            _kitLimpar(r)
+
+            for i=1, #def.armas do
+                local w = def.armas[i]
+                _kitArma(r, sel, w[1], w[2], w[3], w[4])
+            end
+            for i=1, #def.per do
+                local pp = def.per[i]
+                _kitPericia(r, sel, pp[1], pp[2])
+            end
+            for i=1, #def.ap do
+                _kitAprim(r, sel, def.ap[i])
+            end
+            r.ptsKitPericia = def.p
+            r.ptsKitAprim = def.a
+            r.kitAplicado = sel
+            r.kitAplicadoTxt = "Kit: " .. sel
+            showMessage("Kit aplicado (substituindo o anterior, se houver): -" .. tostring(def.p) .. " Pericia, -" .. tostring(def.a) .. " Aprimoramento.")
+        end
+
+        local ARMAS = {
+            ["faca"] = { n="Faca", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["facadepedra"] = { n="Faca de Pedra", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["facadecaca"] = { n="Faca de Caça", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["navaja"] = { n="Navaja", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["punhal"] = { n="Punhal", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["punhalmexicano"] = { n="Punhal Mexicano", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["punhallongo"] = { n="Punhal Longo", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["punhalescoces"] = { n="Punhal Escocês", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["punhalespadaouestilete"] = { n="Punhal-espada ou Estilete", d="1d3+2", t="Perfuração / Corte", c="cac" },
+            ["picador"] = { n="Picador", d="1d3", t="Perfuração", c="cac" },
+            ["stiletto"] = { n="Stiletto", d="1d3", t="Perfuração", c="cac" },
+            ["foicedruidica"] = { n="Foice Druídica", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["baselard"] = { n="Baselard", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["drachenzahndentededragao"] = { n="Drachenzahn (Dente de Dragão)", d="1d6", t="Corte", c="cac" },
+            ["holbein"] = { n="Holbein", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["eberfangerpresasdejavali"] = { n="Eberfänger (Presas de Javali)", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["rondel"] = { n="Rondel", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["earrondel"] = { n="Ear Rondel", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["cinquedea"] = { n="Cinquedea", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["garradebasilisco"] = { n="Garra de Basilisco", d="1d3+2", t="Perfuração / Corte", c="cac" },
+            ["adagasuica"] = { n="Adaga Suíça", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["adagagermanica"] = { n="Adaga Germânica", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["hauswehren"] = { n="Hauswehren", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["adagadearremesso"] = { n="Adaga de Arremesso", d="1d3", t="Perfuração", c="dist" },
+            ["maingaunche"] = { n="Main-gaunche", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["canhestro"] = { n="Canhestro", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["machete"] = { n="Machete", d="1d6", t="Corte / Perfuração", c="cac" },
+            ["cutelo"] = { n="Cutelo", d="1d6", t="Corte", c="cac" },
+            ["espadadetreinamento"] = { n="Espada de Treinamento", d="1d6", t="Perfuração", c="cac" },
+            ["espadacurta"] = { n="Espada Curta", d="1d6", t="Corte / Perfuração", c="cac" },
+            ["gladio"] = { n="Gládio", d="1d6+1", t="Corte / Perfuração", c="cac" },
+            ["espadadeassassinos"] = { n="Espada de Assassinos", d="1d6", t="Corte / Perfuração", c="cac" },
+            ["espadacurtaitaliana"] = { n="Espada Curta Italiana", d="1d6", t="Corte / Perfuração", c="cac" },
+            ["espadafrancesa"] = { n="Espada Francesa", d="1d6", t="Corte / Perfuração", c="cac" },
+            ["espadaholandesa"] = { n="Espada Holandesa", d="1d6+1", t="Corte", c="cac" },
+            ["arbach"] = { n="Arbach", d="1d6+1", t="Corte / Perfuração / Veneno", c="cac" },
+            ["rapier"] = { n="Rapier", d="1d6+1", t="Perfuração", c="cac" },
+            ["rapierdeduelos"] = { n="Rapier de Duelos", d="1d6+1", t="Perfuração", c="cac" },
+            ["rapierdepiratas"] = { n="Rapier de Piratas", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["florete"] = { n="Florete", d="1d6", t="Perfuração", c="cac" },
+            ["floretedemagos"] = { n="Florete de Magos", d="1d6", t="Perfuração", c="cac" },
+            ["espadamaconica"] = { n="Espada Maçônica", d="1d6+2", t="Perfuração", c="cac" },
+            ["sabre"] = { n="Sabre", d="1d6+2", t="Corte / Perfuração", c="cac" },
+            ["sabreescoces"] = { n="Sabre Escocês", d="1d6+2", t="Corte / Perfuração", c="cac" },
+            ["sabredepiratas"] = { n="Sabre de Piratas", d="1d6+2", t="Corte / Perfuração", c="cac" },
+            ["sabredasamazonas"] = { n="Sabre das Amazonas", d="1d6+2", t="Corte / Perfuração", c="cac" },
+            ["hunger"] = { n="Hunger", d="1d6+2", t="Corte / Perfuração", c="cac" },
+            ["falchionaustriaco"] = { n="Falchion Austríaco", d="1d6", t="Corte / Perfuração", c="cac" },
+            ["falchionitaliano"] = { n="Falchion Italiano", d="1d6", t="Corte / Perfuração", c="cac" },
+            ["cutlass"] = { n="Cutlass", d="1d6+1", t="Corte / Perfuração", c="cac" },
+            ["dusaggenaval"] = { n="Dusägge Naval", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["dusaggedeinfantaria"] = { n="Dusägge de Infantaria", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["espadacabocesta"] = { n="Espada Cabo-Cesta", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["espadalonga"] = { n="Espada Longa", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["espadaafricana"] = { n="Espada Africana", d="1d6+1", t="Corte / Perfuração", c="cac" },
+            ["broadswordespadalarga"] = { n="Broadsword (Espada Larga)", d="1d10+1", t="Corte / Perfuração", c="cac" },
+            ["espadabarbara"] = { n="Espada Bárbara", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["espadabastarda"] = { n="Espada Bastarda", d="1d10", t="Corte", c="cac" },
+            ["twohandswordespadade2maos"] = { n="Two-hand Sword (Espada de 2 mãos)", d="2d6", t="Corte", c="cac" },
+            ["swordofjustice"] = { n="Sword of Justice", d="1d10", t="Corte", c="cac" },
+            ["rondrakamm"] = { n="Rondrakamm", d="2d6", t="Corte", c="cac" },
+            ["claymore"] = { n="Claymore", d="2d6", t="Corte", c="cac" },
+            ["flamberge"] = { n="Flamberge", d="1d10", t="Corte", c="cac" },
+            ["montante"] = { n="Montante", d="2d6+2", t="Corte / Esmagamento", c="cac" },
+            ["machadodemao"] = { n="Machado de Mão", d="1d6", t="Corte", c="cac" },
+            ["machadodelenhador"] = { n="Machado de Lenhador", d="1d6+1", t="Corte", c="cac" },
+            ["orknase"] = { n="Orknase", d="1d6+2", t="Corte", c="cac" },
+            ["machadinha"] = { n="Machadinha", d="1d3+2", t="Corte", c="dist" },
+            ["machadodearremesso"] = { n="Machado de Arremesso", d="1d3+2", t="Corte", c="dist" },
+            ["machadodeponta"] = { n="Machado de Ponta", d="1d6", t="Corte", c="cac" },
+            ["machadonavalha"] = { n="Machado-Navalha", d="1d6+2", t="Corte", c="cac" },
+            ["machadosinuoso"] = { n="Machado Sinuoso", d="1d6+2", t="Corte", c="cac" },
+            ["machadomilitar"] = { n="Machado Militar", d="1d6+3", t="Corte", c="cac" },
+            ["machadodebatalhacurvo"] = { n="Machado de Batalha Curvo", d="1d6+3", t="Corte", c="cac" },
+            ["machadodebatalhareto"] = { n="Machado de Batalha Reto", d="1d6+3", t="Corte", c="cac" },
+            ["machadobarbaro"] = { n="Machado Bárbaro", d="1d10", t="Corte", c="cac" },
+            ["thorwaler"] = { n="Thorwaler", d="1d10", t="Corte", c="cac" },
+            ["machadomolok"] = { n="Machado Molok", d="1d10", t="Corte", c="cac" },
+            ["stonecutter"] = { n="Stonecutter", d="1d10", t="Corte", c="cac" },
+            ["chicote"] = { n="Chicote", d="1d3", t="Corte", c="cac" },
+            ["gatodenovecaudas"] = { n="Gato de Nove Caudas", d="1d3", t="Corte", c="cac" },
+            ["maquarri"] = { n="Maquarri", d="1d3", t="Corte", c="cac" },
+            ["mangual"] = { n="Mangual", d="1d6+1", t="Esmagamento", c="cac" },
+            ["mangualdeguerra"] = { n="Mangual de Guerra", d="1d10", t="Esmagamento", c="cac" },
+            ["mangualmetalico"] = { n="Mangual Metálico", d="1d6+1", t="Corte / Esmagamento", c="cac" },
+            ["mangualduplo"] = { n="Mangual Duplo", d="1d6+1", t="Esmagamento", c="cac" },
+            ["mangualtriplo"] = { n="Mangual Triplo", d="1d6+2", t="Esmagamento", c="cac" },
+            ["mangualmilitar"] = { n="Mangual Militar", d="1d6+2", t="Esmagamento", c="cac" },
+            ["mangualdecorrente"] = { n="Mangual de Corrente", d="1d6", t="Esmagamento", c="cac" },
+            ["correntecombola"] = { n="Corrente com Bola", d="1d10", t="Esmagamento", c="cac" },
+            ["mangualdegancho"] = { n="Mangual de Gancho", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["clava"] = { n="Clava", d="1d6", t="Esmagamento", c="cac" },
+            ["clavadepedra"] = { n="Clava de Pedra", d="1d6", t="Esmagamento", c="cac" },
+            ["clavaespinho"] = { n="Clava-Espinho", d="1d6", t="Esmagamento", c="cac" },
+            ["macadeexercito"] = { n="Maça de Exército", d="1d6", t="Esmagamento", c="cac" },
+            ["macadeguerra"] = { n="Maça de Guerra", d="1d10", t="Esmagamento", c="cac" },
+            ["morningstar"] = { n="Morningstar", d="1d6+1", t="Esmagamento", c="cac" },
+            ["macagermanica"] = { n="Maça Germânica", d="1d6", t="Esmagamento", c="cac" },
+            ["porrete"] = { n="Porrete", d="1d3+1", t="Esmagamento", c="cac" },
+            ["bastao"] = { n="Bastão", d="1d6", t="Esmagamento", c="cac" },
+            ["martelodeguerra"] = { n="Martelo de Guerra", d="1d6", t="Esmagamento", c="cac" },
+            ["marteloritual"] = { n="Martelo Ritual", d="1d6", t="Esmagamento", c="cac" },
+            ["martelodeduascabecas"] = { n="Martelo de Duas Cabeças", d="1d6+2", t="Esmagamento / Perfuração", c="cac" },
+            ["awlpike"] = { n="Awl Pike", d="1d6+1", t="Esmagamento", c="cac" },
+            ["martelocabecadecorvo"] = { n="Martelo Cabeça-de-Corvo", d="1d6+1", t="Esmagamento", c="cac" },
+            ["gruufhai"] = { n="Gruufhai", d="1d10", t="Esmagamento", c="cac" },
+            ["arcocurto"] = { n="Arco Curto", d="1d6", t="Perfuração", c="dist" },
+            ["arcolongo"] = { n="Arco Longo", d="1d6+2", t="Perfuração", c="dist" },
+            ["arcocomposto"] = { n="Arco Composto", d="1d6+2", t="Perfuração", c="dist" },
+            ["arcodeguerra"] = { n="Arco de Guerra", d="1d6+2", t="Perfuração", c="dist" },
+            ["bestaleve"] = { n="Besta Leve", d="1d6", t="Perfuração", c="dist" },
+            ["bestapesada"] = { n="Besta Pesada", d="1d6+2", t="Perfuração", c="dist" },
+            ["bestaderepeticao"] = { n="Besta de Repetição", d="1d6", t="Perfuração", c="dist" },
+            ["balestra"] = { n="Balestra", d="1d3+1", t="Perfuração / Esmagamento", c="dist" },
+            ["lancadegolpe"] = { n="Lança de Golpe", d="1d6+3", t="Perfuração", c="cac" },
+            ["lancademao"] = { n="Lança de Mão", d="1d6+1", t="Perfuração", c="dist" },
+            ["pike"] = { n="Pike", d="1d6+1", t="Perfuração", c="cac" },
+            ["lancamolok"] = { n="Lança Molok", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["partisan"] = { n="Partisan", d="1d6+1", t="Perfuração", c="cac" },
+            ["lancademaosemponta"] = { n="Lança de Mão sem Ponta", d="1d6", t="Perfuração", c="dist" },
+            ["tridente"] = { n="Tridente", d="1d6", t="Perfuração", c="cac" },
+            ["tridenteritual"] = { n="Tridente Ritual", d="1d6", t="Perfuração", c="cac" },
+            ["dreizak"] = { n="Dreizak", d="1d6", t="Perfuração", c="cac" },
+            ["arpaodepesca"] = { n="Arpão de Pesca", d="1d6", t="Perfuração", c="dist" },
+            ["lancadearremesso"] = { n="Lança de Arremesso", d="1d3", t="Perfuração", c="dist" },
+            ["lancadeduaspontas"] = { n="Lança de Duas Pontas", d="1d6", t="Perfuração", c="cac" },
+            ["sturmsense"] = { n="Sturmsense", d="1d6+1", t="Perfuração", c="cac" },
+            ["lancadeguerra"] = { n="Lança de Guerra", d="1d10", t="Perfuração", c="cac" },
+            ["halberdlongo"] = { n="Halberd Longo", d="2d6", t="Perfuração / Corte", c="cac" },
+            ["glefe"] = { n="Glefe", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["schnitter"] = { n="Schnitter", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["lancamachado"] = { n="Lança-machado", d="1d6+3", t="Perfuração / Corte", c="cac" },
+            ["matadragao"] = { n="Mata-dragão", d="1d10", t="Perfuração", c="cac" },
+            ["lancadecaca"] = { n="Lança de Caça", d="1d6", t="Perfuração", c="cac" },
+            ["lancadehaken"] = { n="Lança de Haken", d="1d10", t="Perfuração", c="cac" },
+            ["lancadejusta"] = { n="Lança de Justa", d="1d6", t="Perfuração", c="cac" },
+            ["pailos"] = { n="Pailos", d="1d10", t="Perfuração / Corte", c="cac" },
+            ["dragonlance"] = { n="Dragonlance", d="2d6", t="Perfuração", c="cac" },
+            ["bumerangue"] = { n="Bumerangue", d="1d3", t="Esmagamento / Corte", c="dist" },
+            ["socoingles"] = { n="Soco Inglês", d="+2", t="Esmagamento", c="cac" },
+            ["gauntletluvadecombate"] = { n="Gauntlet (Luva de Combate)", d="+3", t="Esmagamento", c="cac" },
+            ["orchidmaodeveterano"] = { n="Orchid / Mão de Veterano", d="+4", t="Penetração / Esmagamento", c="cac" },
+            ["funda"] = { n="Funda", d="1", t="Perfuração / Veneno", c="dist" },
+            ["cajadofunda"] = { n="Cajado-funda", d="1d3", t="Esmagamento", c="dist" },
+            ["dardo"] = { n="Dardo", d="1d3", t="Perfuração / Veneno", c="dist" },
+            ["zarabatana"] = { n="Zarabatana", d="1", t="Perfuração / Veneno", c="dist" },
+            ["boleadeira"] = { n="Boleadeira", d="1d3+1", t="Esmagamento", c="dist" },
+            ["foice"] = { n="Foice", d="1d6+1", t="Corte / Perfuração", c="cac" },
+            ["umabari"] = { n="Umabari", d="1d2", t="Perfuração / Veneno", c="cac" },
+            ["saipunhal"] = { n="Sai (Punhal)", d="1d6", t="Perfuração", c="cac" },
+            ["kogai"] = { n="Kogai", d="1d2", t="Perfuração / Veneno", c="cac" },
+            ["tanto"] = { n="Tanto", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["masamune"] = { n="Masamune", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["hamidashi"] = { n="Hamidashi", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["jitte"] = { n="Jitte", d="1d3", t="Perfuração", c="cac" },
+            ["kamafoice"] = { n="Kama (Foice)", d="1d3+1", t="Corte", c="cac" },
+            ["bichwa"] = { n="Bichwa", d="1d6", t="Perfuração / Corte / Veneno", c="cac" },
+            ["moghul"] = { n="Moghul", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["katar"] = { n="Katar", d="1d10", t="Perfuração / Corte", c="cac" },
+            ["katardeduaspontas"] = { n="Katar de Duas Pontas", d="1d10", t="Perfuração / Corte", c="cac" },
+            ["golok"] = { n="Golok", d="1d6", t="Corte", c="cac" },
+            ["khurki"] = { n="Khurki", d="1d6", t="Corte", c="cac" },
+            ["leque"] = { n="Leque", d="1d3+2", t="Corte / Veneno", c="cac" },
+            ["espinhodeemei"] = { n="Espinho de Emei", d="1d6", t="Perfuração", c="cac" },
+            ["espinhodepassaro"] = { n="Espinho de Pássaro", d="1d6", t="Perfuração", c="cac" },
+            ["facaborboleta"] = { n="Faca Borboleta", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["luadupla"] = { n="Lua Dupla", d="1d6", t="Corte", c="cac" },
+            ["garrasdetigre"] = { n="Garras de Tigre", d="1d6", t="Perfuração", c="cac" },
+            ["circulodeqiankun"] = { n="Círculo de Qian Kun", d="1d6+1", t="Corte", c="cac" },
+            ["tonfa"] = { n="Tonfa", d="1d6", t="Esmagamento", c="cac" },
+            ["katana"] = { n="Katana", d="1d10+1", t="Corte / Perfuração", c="cac" },
+            ["wakizashi"] = { n="Wakizashi", d="1d6+2", t="Corte / Perfuração", c="cac" },
+            ["foratachi"] = { n="Fora Tachi", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["espadalongaperiodoyamato"] = { n="Espada Longa (período Yamato)", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["espadalongaperiodokoto"] = { n="Espada Longa (período Koto)", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["espadalongaperiodomuromashi"] = { n="Espada Longa (período Muromashi)", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["nodachi"] = { n="No Dachi", d="2d6+2", t="Corte / Esmagamento", c="cac" },
+            ["ninjato"] = { n="Ninja-to", d="1d6+2", t="Corte / Perfuração", c="cac" },
+            ["nightwind"] = { n="Nightwind", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["zafartakia"] = { n="Zafar Takia", d="1d6+1", t="Corte / Perfuração", c="cac" },
+            ["cimitarraindiana"] = { n="Cimitarra Indiana", d="1d6+2", t="Corte / Perfuração", c="cac" },
+            ["facao"] = { n="Facão", d="1d6", t="Corte", c="cac" },
+            ["facao9argolas"] = { n="Facão 9 Argolas", d="1d6", t="Corte", c="cac" },
+            ["tienespadareta"] = { n="Tien (Espada Reta)", d="1d6+2", t="Corte / Perfuração", c="cac" },
+            ["naga"] = { n="Naga", d="1d6+1", t="Corte", c="cac" },
+            ["buhj"] = { n="Buhj", d="1d10", t="Corte", c="cac" },
+            ["tabar"] = { n="Tabar", d="1d6+1", t="Corte", c="cac" },
+            ["nunchakulientienkwan"] = { n="Nunchaku / Lien-Tien-Kwan", d="1d6", t="Esmagamento", c="cac" },
+            ["santienkwan"] = { n="San-Tien-Kwan", d="1d6+2", t="Esmagamento", c="cac" },
+            ["bastaoderato"] = { n="Bastão de Rato", d="1d6", t="Esmagamento", c="cac" },
+            ["kawanaga"] = { n="Kawanaga", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["kusarigama"] = { n="Kusarigama", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["tetsubo"] = { n="Tetsubo", d="1d10", t="Esmagamento", c="cac" },
+            ["kanabo"] = { n="Kanabo", d="1d6", t="Esmagamento", c="cac" },
+            ["bastaochines"] = { n="Bastão Chinês", d="1d8", t="Esmagamento", c="cac" },
+            ["shuriken"] = { n="Shuriken", d="1d3", t="Perfuração / Veneno", c="dist" },
+            ["machadochines"] = { n="Machado Chinês", d="1d6", t="Corte", c="cac" },
+            ["foicedupla"] = { n="Foice Dupla", d="1d6+1", t="Corte / Perfuração", c="cac" },
+            ["martelochines"] = { n="Martelo Chinês", d="1d6", t="Esmagamento", c="cac" },
+            ["petjat"] = { n="Petjat", d="1d2", t="Corte", c="cac" },
+            ["chemti"] = { n="Chemti", d="1d3", t="Corte", c="cac" },
+            ["correntechinesa"] = { n="Corrente Chinesa", d="1d6+2", t="Perfuração", c="cac" },
+            ["meteoro"] = { n="Meteoro", d="1d6", t="Perfuração", c="cac" },
+            ["kausinke"] = { n="Kau-sin-Ke", d="1d2", t="Corte", c="cac" },
+            ["hankyu"] = { n="Han kyu", d="1d6", t="Perfuração", c="dist" },
+            ["daikyu"] = { n="Dai kyu", d="1d6+1", t="Perfuração", c="dist" },
+            ["kagohankyu"] = { n="Kago hankyu", d="1d6", t="Perfuração", c="dist" },
+            ["naginata"] = { n="Naginata", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["nagamaki"] = { n="Nagamaki", d="1d6+2", t="Perfuração / Corte", c="cac" },
+            ["kumade"] = { n="Kumade", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["yari"] = { n="Yari", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["jumonjiyari"] = { n="Jumonji Yari", d="1d6+1", t="Perfuração / Corte", c="cac" },
+            ["sickleyari"] = { n="Sickle Yari", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["facaturca"] = { n="Faca Turca", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["keris"] = { n="Keris", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["waqqif"] = { n="Waqqif", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["jambiya"] = { n="Jambiya", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["punhalsudanes"] = { n="Punhal Sudanês", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["facaarabe"] = { n="Faca Árabe", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["adagafoice"] = { n="Adaga Foice", d="1d3", t="Perfuração / Corte", c="cac" },
+            ["khanjar"] = { n="Khanjar", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["bichaq"] = { n="Bichaq", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["rashaq"] = { n="Rashaq", d="1d6", t="Corte / Perfuração", c="cac" },
+            ["espadaturca"] = { n="Espada Turca", d="1d6+1", t="Corte", c="cac" },
+            ["slavekillercurta"] = { n="Slavekiller Curta", d="1d6+1", t="Corte / Perfuração", c="cac" },
+            ["slavekillerlonga"] = { n="Slavekiller Longa", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["espadapersa"] = { n="Espada Persa", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["cimitarracurta"] = { n="Cimitarra Curta", d="1d6", t="Corte / Perfuração", c="cac" },
+            ["cimitarralonga"] = { n="Cimitarra Longa", d="1d6+1", t="Corte / Perfuração", c="cac" },
+            ["kopesh"] = { n="Kopesh", d="1d6+1", t="Corte / Perfuração", c="cac" },
+            ["garfopersadeexercito"] = { n="Garfo Persa de Exército", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["tridentepersa"] = { n="Tridente Persa", d="1d3+1", t="Perfuração / Corte", c="cac" },
+            ["tuzak"] = { n="Tuzak", d="1d10", t="Corte / Perfuração", c="cac" },
+            ["espadafalciforme"] = { n="Espada Falciforme", d="2d6", t="Corte", c="cac" },
+            ["yataghan"] = { n="Yataghan", d="1d6", t="Perfuração / Corte", c="cac" },
+            ["baltaturco"] = { n="Balta Turco", d="1d6+1", t="Corte", c="cac" },
+        }
+
+        local function _normArma(s)
+            s = tostring(s or "")
+            s = s:lower()
+            s = s:gsub("á","a"):gsub("à","a"):gsub("â","a"):gsub("ã","a"):gsub("ä","a")
+            s = s:gsub("é","e"):gsub("è","e"):gsub("ê","e"):gsub("ë","e")
+            s = s:gsub("í","i"):gsub("ì","i"):gsub("î","i"):gsub("ï","i")
+            s = s:gsub("ó","o"):gsub("ò","o"):gsub("ô","o"):gsub("õ","o"):gsub("ö","o")
+            s = s:gsub("ú","u"):gsub("ù","u"):gsub("û","u"):gsub("ü","u")
+            s = s:gsub("ç","c")
+            s = s:gsub("^%s+",""):gsub("%s+$","")
+            return s
+        end
+
+        local function _addArmaNode(r, a, key)
+            local nm = "arma" .. tostring(os.time()) .. "_" .. tostring(math.random(1000,9999))
+            local nd = NDB.createChildNode(r.equipamentos.ataques, nm)
+            if nd == nil then return end
+            nd.nome = a.n
+            nd.dano = a.d
+            nd.tipo = a.t
+            nd.arma = key
+            showMessage("Arma adicionada: " .. a.n .. " (" .. a.d .. " / " .. a.t .. ")")
+        end
+
+        local function _acharArma(txt)
+            local q = _normArma(txt)
+            if q == "" then return nil end
+            local melhor, melhorNome
+            for k, w in pairs(ARMAS) do
+                local n = _normArma(w.n)
+                if n == q then return k end
+                if string.find(n, q, 1, true) ~= nil then
+                    if melhor == nil or string.len(w.n) < string.len(melhorNome) then
+                        melhor = k; melhorNome = w.n
+                    end
+                end
+            end
+            return melhor
+        end
+
+        local function aplicarArma()
+            local r = NDB.getRoot(sheet)
+            local sel = r.armaSel
+            if sel ~= nil and sel ~= "none" and ARMAS[sel] ~= nil then
+                _addArmaNode(r, ARMAS[sel], sel)
+                return
+            end
+            Dialogs.inputQuery("Buscar arma", "Digite o nome da arma:", "",
+                function(txt)
+                    local key = _acharArma(txt)
+                    if key == nil then
+                        showMessage("Nenhuma arma encontrada para: " .. tostring(txt))
+                        return
+                    end
+                    _addArmaNode(r, ARMAS[key], key)
+                end)
+        end
+
+
+        local RACAS = {
+            ["humano"] = { nome="Humano", custo=0, atr={},
+                idioma="Idioma Comum", idioma_valor=30,
+                info="Idioma Comum 30%. +5 pontos de pericia no 1o nivel e a cada novo nivel." },
+            ["anao"] = { nome="Anao", custo=1, atr={constituicao=2, forca=1, agilidade=-1, carisma=-2},
+                idioma="Idioma Anao", idioma_valor=30,
+                info="Enxerga no escuro. +10% testes com pedras/metais/cavernas/montanhas. +5% resist. veneno. +15% resist. magia. +5% ataque vs orcs/goblinoides. +5% oficios com pedra/metal. DESV: -15% ao usar item magico; nao pode Poderes Magicos." },
+            ["elfo"] = { nome="Elfo", custo=1, atr={agilidade=2, constituicao=-2, carisma=2},
+                idioma="Idioma Elfico", idioma_valor=30,
+                bonus_armas={{"Arco",10,0,"dist"}, {"Espada Longa",10,0,"cac"}},
+                info="Imune a sono e magias similares. Enxerga 2x na penumbra (cores/detalhes). +10% ataque com Arco e Espada Longa." },
+            ["gnomo"] = { nome="Gnomo", custo=2, atr={constituicao=2, forca=-2},
+                idioma="Idioma Gnomo", idioma_valor=30,
+                bonus_pericias={{"Alquimia",10}},
+                info="Enxerga 2x na penumbra. +10% resist. ilusoes. +5% ataque vs orcs/goblinoides/kobolds. +10% Alquimia. Ilusionista gasta -1 PM em magias de Luz. DESV: so usa equipamentos de criaturas pequenas." },
+            ["meioelfo"] = { nome="Meio-Elfo", custo=1, atr={agilidade=1, constituicao=-1},
+                idioma="Idioma Elfico ou Comum", idioma_valor=30,
+                info="Escolha Idioma Elfico ou Comum (30%). Enxerga 2x na penumbra (cores/detalhes)." },
+            ["halfling"] = { nome="Halfling", custo=1, atr={agilidade=3, destreza=3, forca=-4, constituicao=-2},
+                idioma="Idioma Halfling", idioma_valor=30,
+                bonus_pericias={{"Furtividade",10}, {"Esportes (Escalada)",10}, {"Arremesso",5}},
+                info="Idioma Halfling 30%. +10% Furtividade e Esportes (Escalada). +5% Arremesso (e ataque com armas de arremesso). DESV: so usa equipamentos de criaturas pequenas." },
+        }
+
+        local function aplicarRaca()
+            local r = NDB.getRoot(sheet)
+            local sel = r.racaSel
+            if sel == nil or sel == "none" or sel == "" then showMessage("Selecione uma raca primeiro."); return end
+            local nova = RACAS[sel]
+            if nova == nil then showMessage("Raca nao encontrada."); return end
+            if r.racaAplicada == sel then showMessage("Essa raca ja esta aplicada."); return end
+
+            _racaLimpar(r)
+
+            local atribs = {"constituicao","forca","destreza","agilidade","inteligencia","vontade","carisma","percepcao"}
+            local antiga = RACAS[r.racaAplicada or ""]
+            if antiga ~= nil and antiga.atr ~= nil then
+                for i=1,#atribs do local n=atribs[i]; local v=antiga.atr[n]; if v ~= nil then r[n.."Mod"] = (tonumber(r[n.."Mod"]) or 0) - v end end
+            end
+            if nova.atr ~= nil then
+                for i=1,#atribs do local n=atribs[i]; local v=nova.atr[n]; if v ~= nil then r[n.."Mod"] = (tonumber(r[n.."Mod"]) or 0) + v end end
+            end
+
+            if nova.idioma then _racaPericia(r, sel, nova.idioma, nova.idioma_valor or 30) end
+            if nova.bonus_armas then
+                for i=1, #nova.bonus_armas do
+                    local w = nova.bonus_armas[i]
+                    _racaArma(r, sel, w[1], w[2], w[3], w[4])
+                end
+            end
+            if nova.bonus_pericias then
+                for i=1, #nova.bonus_pericias do
+                    local p = nova.bonus_pericias[i]
+                    _racaPericia(r, sel, "BONUS RACIAL: " .. p[1] .. " +" .. p[2] .. "%", p[2])
+                end
+            end
+
+            r.raca = nova.nome
+            r.racaCusto = nova.custo
+            r.racaAplicada = sel
+
+            local custoTotal = nova.custo + (tonumber(r.ptsKitAprim) or 0)
+            local paDisponivelEstimado = 5 - custoTotal
+            showMessage("Raca: " .. nova.nome .. " (" .. nova.custo .. " PA)\n" ..
+                "Custo total: " .. nova.custo .. " PA (raca) + " .. (tonumber(r.ptsKitAprim) or 0) .. " PA (kit) = " .. custoTotal .. " PA\n" ..
+                "Pontos de Aprimoramento disponivel estimado: " .. paDisponivelEstimado .. " PA\n\n" ..
+                (nova.info or ""))
+        end
+
         local function write(str)
             local mesa = Firecast.getMesaDe(sheet);
             if str then
@@ -163,11 +907,8 @@
         <tab title="Principal">
             <import file="Principal.xml"/>
         </tab>
-        <tab title="Perícias">
+        <tab title="Perícias / Inventário">
             <import file="Pericias.xml"/>
-        </tab>
-        <tab title="Inventário">
-            <import file="Equipamento.xml"/>
         </tab>
         <tab title="Grimório">
             <import file="Grimorio.xml"/>
@@ -183,39 +924,13 @@
         </tab>
     </tabControl>
     <event name="onNodeReady">
-        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Daemon/output/Ficha%20Daemon.rpk?raw=true",
-            function(stream, contentType)
-                local info = Firecast.Plugins.getRPKDetails(stream);
-                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
-
-                local installed = Firecast.Plugins.getInstalledPlugins();
-                local myself;
-                for i=1, #installed, 1 do
-                    if installed[i].moduleId == info.moduleId then
-                        myself = installed[i];
-                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
-                    end;
-                end;
-
-                if sheet.noUpdate==true then return end;
-                if myself~= nil and isNewVersion(myself.version, info.version) then
-                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
-                        function(selected, selectedIndex, selectedText)
-                            if selected and selectedIndex == 1 then
-                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Daemon/output/Ficha%20Daemon.rpk?raw=true');
-                            elseif selected and selectedIndex == 3 then
-                                sheet.noUpdate = true;
-                            end;
-                        end);
-                end;
-            end,       
-            function (errorMsg)
-                --showMessage(errorMsg);
-            end,       
-            function (downloaded, total)
-                -- esta função será chamada constantemente.
-                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-            end,
-            "checkForModification");
+        -- auto-update desativado (evita baixar a versao oficial do GitHub e conflitar com o build local)
+        -- versao exibida na aba Creditos (estatica, sem fetch remoto)
+        sheet.versionInstalled = "Versão Instalada: 2.0"
+        sheet.versionDownloaded = "Versão Disponível: 2.0"
+        -- reaplica tema/cores salvos ao abrir a ficha (senao volta ao padrao do XML)
+        if aplicarCoresDaemon ~= nil then
+            aplicarCoresDaemon(self, sheet);
+        end;
     </event>
 </form>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBagItem" height="25" width="950" margins="{top=2}">
+	<script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse item?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(self.sheet);
+									end;
+								 end);
+		end;
+		]]>
+	</script>
+
+	<edit align="left" width="200" field="nome" vertTextAlign="center" horzTextAlign="leading"/>
+	<edit align="left" width="90" field="quantidade" type="number" vertTextAlign="center" horzTextAlign="center"/>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	<edit align="client" field="descricao" vertTextAlign="center" horzTextAlign="leading" margins="{left=5}"/>
+</form>

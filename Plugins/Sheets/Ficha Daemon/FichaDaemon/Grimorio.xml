@@ -115,13 +115,13 @@
 		<label text="$(text)" align="client"/>
 		<edit field="$(field)" align="right" width="30" horzTextAlign="center"/>
 		<layout align="right" width="90">
-			<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" hint="Entender">
+			<rectangle align="right" width="30" color="#272C36" strokeColor="#8A6C30" strokeSize="1" hint="Entender">
 				<label field="$(field)Entender" align="client" horzTextAlign="center"/>
 			</rectangle>
-			<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" hint="Controlar">
+			<rectangle align="right" width="30" color="#272C36" strokeColor="#8A6C30" strokeSize="1" hint="Controlar">
 				<label field="$(field)Controlar" align="client" horzTextAlign="center"/>
 			</rectangle>
-			<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" hint="Criar">
+			<rectangle align="right" width="30" color="#272C36" strokeColor="#8A6C30" strokeSize="1" hint="Criar">
 				<label field="$(field)Criar" align="client" horzTextAlign="center"/>
 			</rectangle>
 		</layout>
@@ -150,17 +150,17 @@
 	</template>
 	<template name="CaminhosSecundario">
 		<label text="$(text)" align="client"/>
-		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1">
+		<rectangle align="right" width="50" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
 			<label field="$(field)" align="client" horzTextAlign="center"/>
 		</rectangle>
 		<layout align="right" width="90">
-			<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" hint="Entender">
+			<rectangle align="right" width="30" color="#272C36" strokeColor="#8A6C30" strokeSize="1" hint="Entender">
 				<label field="$(field)Entender" align="client" horzTextAlign="center"/>
 			</rectangle>
-			<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" hint="Controlar">
+			<rectangle align="right" width="30" color="#272C36" strokeColor="#8A6C30" strokeSize="1" hint="Controlar">
 				<label field="$(field)Controlar" align="client" horzTextAlign="center"/>
 			</rectangle>
-			<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" hint="Criar">
+			<rectangle align="right" width="30" color="#272C36" strokeColor="#8A6C30" strokeSize="1" hint="Criar">
 				<label field="$(field)Criar" align="client" horzTextAlign="center"/>
 			</rectangle>
 		</layout>
@@ -192,7 +192,7 @@
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraMagiasLayout">
 			<!-- Primeira Linha -->
 			<flowLayout class="oneLineTile2" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical">
-				<rectangle width="600" height="220" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}">
+				<rectangle width="600" height="220" color="#272C36" strokeColor="#8A6C30" strokeSize="1" margins="{bottom=5}">
 						<label align="top" height="25" text="CAMINHOS PRIMÁRIOS" margins="{top=5,left=5,right=5,bottom=5}"/>
 						<layout align="left" width="150" margins="{right=5}">
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
@@ -270,7 +270,7 @@
 							</event>
 						</dataLink>
 				</rectangle>
-				<rectangle width="585" height="220" color="black" strokeColor="white" strokeSize="1" margins="{left=5}">
+				<rectangle width="585" height="220" color="#272C36" strokeColor="#8A6C30" strokeSize="1" margins="{left=5}">
 					<label align="top" height="25" text="CAMINHOS SECUNDÁRIOS" margins="{top=5,left=5,right=5,bottom=5}"/>
 					<layout align="left" width="290" margins="{right=0}">
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">

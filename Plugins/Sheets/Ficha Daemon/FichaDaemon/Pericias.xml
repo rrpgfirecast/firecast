@@ -1,58 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmPericias" align="client">
 	<scrollBox align="client">
-		<rectangle align="left" width="610" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-			<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-				<button text="+" align="left" width="25">
-					<event name="onClick">
-						local node = self.periciasArmas:append()
-						if node then
-							local base = (tonumber(sheet.destrezaBase) or 0)
-							local mod = (tonumber(sheet.destrezaMod) or 0)
-							node.destreza = base + mod
-							local base = (tonumber(sheet.agilidadeBase) or 0)
-							local mod = (tonumber(sheet.agilidadeMod) or 0)
-							node.agilidade = base + mod
-						end
-					</event>
-				</button>
 
-				<label align="client" text="Perícias com Armas" margins="{left=5}"/>
-			</layout>
-			<recordList name="periciasArmas" field="periciasArmas" templateForm="frmPericiaArmaItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
-				<event name="onCompare">
-			        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
-			    </event>
-			</recordList>
-		</rectangle>
-		<rectangle align="left" width="425" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-			<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-				<button text="+" align="left" width="25">
-					<event name="onClick">
-						local node = self.pericias:append()
-						if node then
-							local atrs = {"constituicao","forca","destreza","agilidade","inteligencia","vontade","percepcao","carisma"}
-							for i,v in ipairs(atrs) do
-								local base = (tonumber(sheet[v.."Base"]) or 0)
-								local mod = (tonumber(sheet[v.."Mod"]) or 0)
-								node[v] = base + mod
+		<!-- Perícias: altura fixa (ajuste o height) -->
+		<layout align="top" height="500" margins="{left=10,right=10,top=10,bottom=8}">
+			<rectangle align="left" width="700" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<button text="+" align="left" width="25">
+						<event name="onClick">
+							local node = self.pericias:append()
+							if node then
+								local atrs = {"constituicao","forca","destreza","agilidade","inteligencia","vontade","percepcao","carisma"}
+								for i,v in ipairs(atrs) do
+									local base = (tonumber(sheet[v.."Base"]) or 0)
+									local mod = (tonumber(sheet[v.."Mod"]) or 0)
+									node[v] = base + mod
+								end
 							end
-						end
+						</event>
+					</button>
+					<label align="client" text="Perícias" margins="{left=5}" fontColor="#E6C24A" fontSize="14"/>
+				</layout>
+				<recordList name="pericias" field="pericias" templateForm="frmPericiaItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
+					<event name="onCompare">
+						local kitA = (nodeA.kit ~= nil and nodeA.kit ~= "") and 1 or 0
+						local kitB = (nodeB.kit ~= nil and nodeB.kit ~= "") and 1 or 0
+						if kitA ~= kitB then return kitA > kitB end
+						return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
 					</event>
-				</button>"/>
-				<label align="client" text="Perícias" margins="{left=5}"/>
-			</layout>
-			<recordList name="pericias" field="pericias" templateForm="frmPericiaItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
-				<event name="onCompare">
-			        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
-			    </event>
-			</recordList>
-		</rectangle>
-		<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-			<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-				<label align="client" text="Idiomas" margins="{left=5}"/>
-			</layout>
-			<textEditor align="client" field="idiomas" margins="{left=5,right=5,bottom=5}"/>
-		</rectangle>
+				</recordList>
+			</rectangle>
+			<!-- Inventário ao lado das Perícias (icone grande na coluna esquerda) -->
+			<rectangle align="client" margins="{left=10}" color="#272C36" strokeColor="#8A6C30" strokeSize="1">
+				<layout align="top" height="50" margins="{top=4,left=8,right=5}">
+					<rectangle align="right" width="150" margins="{top=9,bottom=9,right=2}" color="#1B1F27" strokeColor="#8A6C30" strokeSize="1">
+						<label align="left" width="26" text="$" fontColor="#E6C24A" fontStyle="bold" fontSize="16" horzTextAlign="center" vertTextAlign="center"/>
+						<edit align="client" class="transparente" field="equipamento.dinheiro.pc" type="number" fontColor="#F2E8CE" fontSize="16" horzTextAlign="center" vertTextAlign="center"/>
+					</rectangle>
+					<!-- indicador de bolsa conforme quantidade de moedas -->
+					<layout align="right" width="46" margins="{right=8}">
+						<image name="imgBolsaCheia"  left="0" top="0" width="46" height="46" style="autoFit" src="images/bolsa_cheia.png"  visible="false"/>
+						<image name="imgBolsaMetade" left="0" top="0" width="46" height="46" style="autoFit" src="images/bolsa_metade.png" visible="false"/>
+						<image name="imgBolsaVazia"  left="0" top="0" width="46" height="46" style="autoFit" src="images/bolsa_vazia.png"  visible="false"/>
+					</layout>
+					<label align="client" text="Inventário" vertTextAlign="center" fontStyle="bold" fontColor="#E6C24A" fontSize="14"/>
+					<horzLine align="bottom" strokeColor="#E6C24A" strokeSize="2"/>
+				</layout>
+				<dataLink field="equipamento.dinheiro.pc">
+					<event name="onChange">
+						local v = tonumber(sheet.equipamento.dinheiro.pc) or 0
+						self.imgBolsaCheia.visible  = (v > 100)
+						self.imgBolsaMetade.visible = (v >= 40 and v &lt;= 100)
+						self.imgBolsaVazia.visible  = (v &lt;= 39)
+					</event>
+				</dataLink>
+				<layout align="left" width="200" margins="{left=5,right=5,bottom=5}">
+					<image align="top" height="200" style="autoFit" src="images/bolsa.png" margins="{top=15}"/>
+				</layout>
+				<layout align="client" margins="{right=5,bottom=5}">
+					<layout align="top" height="22" margins="{top=2}">
+						<label align="left" width="200" text="Item" fontStyle="bold" fontColor="#8A6C30" fontSize="11" margins="{left=2}"/>
+						<label align="left" width="90" text="Qtd" fontStyle="bold" fontColor="#8A6C30" fontSize="11" horzTextAlign="center"/>
+						<button align="right" width="25" text="+">
+							<event name="onClick">
+								self.bag:append()
+							</event>
+						</button>
+						<label align="client" text="Descrição / Notas" fontStyle="bold" fontColor="#8A6C30" fontSize="11" margins="{left=5}"/>
+					</layout>
+					<recordList name="bag" field="equipamento.bag" templateForm="frmBagItem" align="client" layout="vertical"/>
+				</layout>
+			</rectangle>
+		</layout>
+
 	</scrollBox>
 </form>

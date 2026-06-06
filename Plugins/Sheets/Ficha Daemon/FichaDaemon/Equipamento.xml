@@ -7,13 +7,7 @@
 
 			<script>
 				<![CDATA[
-					local function recalcularTamanhoEquipsEAtaques()
-						self.flwPartEquipAtack.height = self.rclEquips.height + self.labEquipAtackTit.height +
-														self.layEquipAtackBottom.height + 
-														self.flwPartEquipAtack.padding.top + self.flwPartEquipAtack.padding.bottom + 7;
-					end;
-					
-					local function recalcularTamanhoEquipsDefesa()
+						local function recalcularTamanhoEquipsDefesa()
 						self.flwPartEquipDefense.height = self.rclEquipsDefense.height + self.labEquipDefense.height +
 														self.layEquipDefenseBottom.height + 
 														self.flwPartEquipDefense.padding.top + self.flwPartEquipDefense.padding.bottom + 7;
@@ -21,22 +15,7 @@
 				]]>
 			</script>
 			
-			<!-- Equipamentos e Ataques -->
 			
-			
-			<flowPart name="flwPartEquipAtack" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">	
-			
-				<label name="labEquipAtackTit" align="top" autoSize="true" text="@@DnD5e.tab.equipament.attack.title" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsEAtaques();"/>										
-															
-				<recordList name="rclEquips" align="top" field="equipamentos.ataques" templateForm="frmEquipamentoItem" 
-							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsEAtaques();" minQt="1" hitTest="false"/>					
-							
-				<layout name="layEquipAtackBottom" align="top" height="40">
-					<button name="btnEquipAtackNew" align="left" onClick="self.rclEquips:append();" text="@@DnD5e.tab.equipament.btn.newItem" width="160" margins="{top=4, bottom=4}"/>								
-				</layout>															
-			</flowPart>		
-				
-			<flowLineBreak/>
 			
 			
 			<!-- Equipamentos de Defesa -->

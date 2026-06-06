@@ -59,6 +59,7 @@
 					<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="@@DnD5e.tab.equipament.defend.lab.name"/>
 					<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="@@DnD5e.tab.equipament.defend.lab.weight"/>											
 					<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="@@DnD5e.tab.equipament.defend.lab.type"/>				
+					<upperGridCampoSolido height="40" field="pericia" minWidth="70" maxWidth="100" titulo="Pericia %"/>
 					<upperGridCampoSolido height="40" field="caBonus" titulo="@@DnD5e.tab.equipament.defend.lab.ca"/>		
 					<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="INICIATIVA"/>
 			</flowLayout>	
