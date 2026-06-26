@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHeroicos" width="440" height="25" theme="light">
+    <import file="templates.xml"/>
+
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse poder?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showHerPopup()
+			local pop = self:findControlByName("popHeroicos");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Não encontrei o popup do poder para exibir.");
+			end;
+		end;
+		]]>
+	</script>
+
+	<formatLabelEdit left="26" top="1" width="290" height="23" field="nomeHeroico"/>
+	<button left="316" top="1" width="23" height="23" text="i" onClick="showHerPopup();"/>
+	<button left="339" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

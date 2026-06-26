@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmzipe1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmzipe1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmzipe1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <script>
+        <![CDATA[
+        local atualizarDefesa;
+        local atualizarPericias;
+
+        -- 1. ATRIBUTOS
+        local function atualizarAtributos()
+            if sheet == nil then return end
+            local atributos = {
+                {base="For", mod="ModFor"}, {base="Des", mod="ModDes"}, {base="Con", mod="ModCon"},
+                {base="Int", mod="ModInt"}, {base="Sab", mod="ModSab"}, {base="Car", mod="ModCar"}
+            }
+            for i=1, #atributos do
+                local at = atributos[i]
+                local valorBase = tonumber(sheet[at.base]) or 10 
+                local modificador = math.floor((valorBase - 10) / 2)
+                sheet[at.mod] = modificador
+            end
+            
+            atualizarDefesa()
+        end
+
+        -- 2. DEFESA (E a regra da Armadura Pesada)
+        atualizarDefesa = function()
+            if sheet == nil then return end
+            
+            local bonusArmadura = tonumber(sheet.B_Arm1) or 0
+            local bonusEscudo = tonumber(sheet.B_Esc2) or 0
+            local penArmadura = math.abs(tonumber(sheet.Pa) or 0)
+            local penEscudo = math.abs(tonumber(sheet.Pe) or 0)
+            
+            sheet.B_Arm = bonusArmadura
+            sheet.B_Esc = bonusEscudo
+            sheet.PArmTotal = penArmadura + penEscudo
+            
+            local atributoDefesa = sheet.SeleAtribDefe or "Des"
+            local modDefesa = 0
+            
+            if atributoDefesa == "For" then modDefesa = tonumber(sheet.ModFor) or 0
+            elseif atributoDefesa == "Des" then modDefesa = tonumber(sheet.ModDes) or 0
+            elseif atributoDefesa == "Con" then modDefesa = tonumber(sheet.ModCon) or 0
+            elseif atributoDefesa == "Int" then modDefesa = tonumber(sheet.ModInt) or 0
+            elseif atributoDefesa == "Sab" then modDefesa = tonumber(sheet.ModSab) or 0
+            elseif atributoDefesa == "Car" then modDefesa = tonumber(sheet.ModCar) or 0
+            end
+            
+            if not sheet.arm_pesa then
+                modDefesa = 0
+            end
+            
+            sheet.ModAtribDefe = modDefesa
+            
+            local base = 10
+            local outrosCA = tonumber(sheet.Outros_B_CA) or 0
+            
+            sheet.CA = base + modDefesa + bonusArmadura + bonusEscudo + outrosCA
+            
+            atualizarPericias()
+        end
+
+        -- 3. PERÍCIAS (Com a penalidade puxada da Defesa)
+        atualizarPericias = function()
+            if sheet == nil then return end
+
+            local nivel = tonumber(sheet.Lv) or 1
+            local metadeNivel = math.floor(nivel / 2)
+            local bonusTreino = 2
+            if nivel >= 7 and nivel <= 14 then bonusTreino = 4
+            elseif nivel >= 15 then bonusTreino = 6 end
+
+            local pericias = {
+                {id="Acro", atrib="ModDes"}, {id="Ades", atrib="ModCar"}, {id="Atle", atrib="ModFor"},
+                {id="Atua", atrib="ModCar"}, {id="Cava", atrib="ModDes"}, {id="Conh", atrib="ModInt"},
+                {id="Cura", atrib="ModSab"}, {id="Dipl", atrib="ModCar"}, {id="Enga", atrib="ModCar"},
+                {id="Fort", atrib="ModCon"}, {id="Furt", atrib="ModDes"}, {id="Guer", atrib="ModInt"},
+                {id="Inic", atrib="ModDes"}, {id="Inti", atrib="ModCar"}, {id="Intu", atrib="ModSab"},
+                {id="Inve", atrib="ModInt"}, {id="Joga", atrib="ModCar"}, {id="Ladi", atrib="ModDes"},
+                {id="Luta", atrib="ModFor"}, {id="Mist", atrib="ModInt"}, {id="Nobr", atrib="ModCar"},
+                {id="Ofi1", atrib="ModInt"}, {id="Ofi2", atrib="ModInt"}, {id="Perc", atrib="ModSab"},
+                {id="Pilo", atrib="ModDes"}, {id="Pont", atrib="ModDes"}, {id="Refl", atrib="ModDes"},
+                {id="Reli", atrib="ModSab"}, {id="Sobr", atrib="ModSab"}, {id="Vont", atrib="ModSab"}
+            }
+
+            local penArmadura = tonumber(sheet.PArmTotal) or 0
+
+            for i=1, #pericias do
+                local p = pericias[i]
+                sheet["nv" .. p.id] = metadeNivel
+                local modAtrib = tonumber(sheet[p.atrib]) or 0
+                sheet["atrib" .. p.id] = string.sub(p.atrib, 4)
+                
+                local treino = 0
+                if sheet["checkTrei" .. p.id] then treino = bonusTreino end
+                sheet["trei" .. p.id] = treino
+                
+                local outros = tonumber(sheet["outr" .. p.id]) or 0
+                
+                local penalidadeFinal = 0
+                if p.id == "Acro" or p.id == "Furt" or p.id == "Ladi" or p.id == "Pilo" then
+                    penalidadeFinal = -penArmadura 
+                end
+                
+                sheet["total" .. p.id] = metadeNivel + modAtrib + treino + outros + penalidadeFinal
+            end
+        end
+        -- 4. Rolar Atributo
+        local function rolarAtributo(atributo, nomeEmoji, isResistencia)
+            local mesa = Firecast.getMesaDe(sheet);
+            if not mesa then return end;
+
+            -- Pega o modificador (Ex: sheet.ModFor)
+            local mod = tonumber(sheet["Mod" .. atributo]) or 0
+            
+            -- Pega a metade do nível para as resistências
+            local nivel = tonumber(sheet.Lv) or 1
+            local metadeNivel = math.floor(nivel / 2)
+
+            local bonusTotal = mod
+            local tipoRolagem = "Teste de " .. atributo
+
+            -- Se for resistência, soma a metade do nível
+            if isResistencia then
+                bonusTotal = mod + metadeNivel
+                tipoRolagem = "Resistência de " .. atributo
+            end
+
+            -- Rola no chat!
+            mesa.chat:rolarDados("1d20 + " .. bonusTotal, nomeEmoji .. " " .. tipoRolagem);
+        end
+        -- 5. Form do Atributo
+        local function pedirRolagemAtributo(atributo, nomeEmoji)
+            local opcoes = {
+                "Teste de Habilidade",
+                "Teste de Resistência"
+            }
+            
+            Dialogs.choose("O que você deseja rolar para " .. atributo .. "?", opcoes,
+                function(selecionado, indice, texto)
+                    -- O "selecionado" verifica se o jogador realmente clicou em algo ou se só fechou a janela
+                    if selecionado then
+                        if indice == 1 then
+                            -- Selecionou a primeira opção: Teste normal
+                            rolarAtributo(atributo, nomeEmoji, false)
+                        elseif indice == 2 then
+                            -- Selecionou a segunda opção: Resistência
+                            rolarAtributo(atributo, nomeEmoji, true)
+                        end
+                    end
+                end
+            )
+        end
+        -- 6. Form da Perícia
+        local function rolarPericia(nomePericia, valorTotal)
+            local mesa = Firecast.getMesaDe(sheet);
+            if not mesa then return end;
+
+            -- Garante que o valor é um número (se estiver vazio, rola +0)
+            local bonus = tonumber(valorTotal) or 0
+            
+            -- Rola direto no chat!
+            mesa.chat:rolarDados("1d20 + " .. bonus, "🎲 Teste de " .. nomePericia);
+        end
+        ]]>
+    </script>
+    <scrollBox align="client">
+        <rectangle width="1162" height="1559" color="white">&#xD;
+            <image left="0" top="0" width="1162" height="1559" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="60" top="70" width="426" height="45" compilerOrder="3">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="426" height="46" field="NOME_DO_PERSONAGEM" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="512" top="85" width="261" height="30" compilerOrder="5">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="261" height="31" field="JOGADOR" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="219" top="135" width="156" height="30" compilerOrder="7">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="156" height="31" field="RAÇA" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="393" top="135" width="204" height="30" compilerOrder="9">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="204" height="31" field="ORIGEM" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="618" top="135" width="260" height="30" compilerOrder="11">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="260" height="31" field="CLASSE" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="880" top="135" width="38" height="30" compilerOrder="13">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="31" field="Lv" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="937" top="135" width="175" height="30" compilerOrder="15">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="175" height="31" field="DIVINDADE" compilerOrder="16"/>
+            </layout>&#xD;
+
+            <layout left="54" top="220" width="78" height="58" compilerOrder="19">
+                <label autoSize="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="78" height="59" field="ModFor" hitTest="true" cursor="handPoint" hint="Clique para rolar Força" onClick="pedirRolagemAtributo('For', '💪')" compilerOrder="20"/>
+            </layout>
+            <layout left="168" top="220" width="78" height="58" compilerOrder="21">
+                <label autoSize="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="78" height="59" field="ModDes" hitTest="true" cursor="handPoint" hint="Clique para rolar Destreza" onClick="pedirRolagemAtributo('Des', '🥷')" compilerOrder="22"/>
+            </layout>
+            <layout left="281" top="220" width="78" height="58" compilerOrder="25">
+                <label autoSize="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="78" height="59" field="ModCon" hitTest="true" cursor="handPoint" hint="Clique para rolar Constituição" onClick="pedirRolagemAtributo('Con', '🧱')" compilerOrder="26"/>
+            </layout>
+            <layout left="395" top="220" width="78" height="58" compilerOrder="29">
+                <label autoSize="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="78" height="59" field="ModInt" hitTest="true" cursor="handPoint" hint="Clique para rolar Inteligência" onClick="pedirRolagemAtributo('Int', '🧠')" compilerOrder="30"/>
+            </layout>
+            <layout left="508" top="220" width="78" height="58" compilerOrder="33">
+                <label autoSize="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="78" height="59" field="ModSab" hitTest="true" cursor="handPoint" hint="Clique para rolar Sabedoria" onClick="pedirRolagemAtributo('Sab', '🦉')" compilerOrder="34"/>
+            </layout>
+            <layout left="622" top="220" width="78" height="58" compilerOrder="37">
+                <label autoSize="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="78" height="59" field="ModCar" hitTest="true" cursor="handPoint" hint="Clique para rolar Carisma" onClick="pedirRolagemAtributo('Car', '🎭')" compilerOrder="38"/>
+            </layout>
+
+            <layout left="74" top="284" width="38" height="25" compilerOrder="17">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="26" field="For" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="188" top="284" width="38" height="25" compilerOrder="23">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="26" field="Des" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="302" top="284" width="38" height="25" compilerOrder="27">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="26" field="Con" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="415" top="284" width="38" height="25" compilerOrder="31">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="26" field="Int" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="529" top="284" width="38" height="25" compilerOrder="35">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="26" field="Sab" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="643" top="284" width="38" height="25" compilerOrder="39">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="26" field="Car" compilerOrder="40"/>
+            </layout>&#xD;
+
+            <layout left="58" top="344" width="76" height="68" compilerOrder="41">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="76" height="69" field="PVs_Totais" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="401" top="344" width="75" height="68" compilerOrder="45">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="75" height="69" field="PMs_Totais" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="149" top="372" width="203" height="40" compilerOrder="43">
+                <textEditor left="0" top="0" width="203" height="40" fontSize="19" fontColor="#808080" field="PVs_Atuais" transparent="true" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="495" top="372" width="199" height="40" compilerOrder="47">
+                <textEditor left="0" top="0" width="199" height="40" fontSize="19" fontColor="#808080" field="PMs_Atuais" transparent="true" compilerOrder="48"/>
+            </layout>&#xD;
+
+            <layout left="50" top="500" width="654" height="230">
+                <rectangle top="20" align="client" color="white" xradius="5" yradius="5"/>
+            </layout>
+
+            <layout left="180" top="470" width="520" height="230">
+                <rectangle top="20" align="client" color="white" xradius="5" yradius="5"/>
+            </layout>
+
+            <layout left="60" top="493" width="639" height="230">
+                <rectangle top="20" align="client" color="white" xradius="5" yradius="5"/>
+                
+                <button left="0" top="0" width="150" height="25" text="➕ Adicionar Ataque" onClick="self.rclAtaques:append();"/>
+                <recordList name="rclAtaques" field="listaDeAtaques" templateForm="frmAtaqueItem" left="0" top="30" width="635" height="195"/>
+            </layout>
+
+            <layout left="714" top="251" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiAcro"/></layout>
+            <layout left="875" top="244" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalAcro" hitTest="true" cursor="handPoint" hint="Rolar Acrobacia" onClick="rolarPericia('Acrobacia', sheet.totalAcro)"/></layout>
+            <layout left="929" top="244" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvAcro"/></layout>
+            <layout left="980" top="244" width="49" height="25"><label autoSize="false" text="Des" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribAcro"/></layout>
+            <layout left="1026" top="244" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiAcro"/></layout>
+            <layout left="1072" top="244" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrAcro"/></layout>
+
+            <layout left="714" top="277" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiAdes"/></layout>
+            <layout left="875" top="271" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalAdes" hitTest="true" cursor="handPoint" hint="Rolar Adestramento" onClick="rolarPericia('Adestramento', sheet.totalAdes)"/></layout>
+            <layout left="929" top="271" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvAdes"/></layout>
+            <layout left="980" top="270" width="49" height="25"><label autoSize="false" text="Car" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribAdes"/></layout>
+            <layout left="1026" top="271" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiAdes"/></layout>
+            <layout left="1072" top="271" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrAdes"/></layout>
+
+            <layout left="714" top="303" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiAtle"/></layout>
+            <layout left="875" top="296" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalAtle" hitTest="true" cursor="handPoint" hint="Rolar Atletismo" onClick="rolarPericia('Atletismo', sheet.totalAtle)"/></layout>
+            <layout left="929" top="296" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvAtle"/></layout>
+            <layout left="980" top="296" width="49" height="25"><label autoSize="false" text="For" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribAtle"/></layout>
+            <layout left="1026" top="297" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiAtle"/></layout>
+            <layout left="1072" top="297" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrAtle"/></layout>
+
+            <layout left="714" top="329" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiAtua"/></layout>
+            <layout left="875" top="324" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalAtua" hitTest="true" cursor="handPoint" hint="Rolar Atuação" onClick="rolarPericia('Atuação', sheet.totalAtua)"/></layout>
+            <layout left="929" top="324" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvAtua"/></layout>
+            <layout left="980" top="323" width="49" height="25"><label autoSize="false" text="Car" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribAtua"/></layout>
+            <layout left="1026" top="324" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiAtua"/></layout>
+            <layout left="1072" top="324" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrAtua"/></layout>
+
+            <layout left="714" top="356" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiCava"/></layout>
+            <layout left="875" top="350" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalCava" hitTest="true" cursor="handPoint" hint="Rolar Cavalgar" onClick="rolarPericia('Cavalgar', sheet.totalCava)"/></layout>
+            <layout left="929" top="350" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvCava"/></layout>
+            <layout left="980" top="349" width="49" height="25"><label autoSize="false" text="Des" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribCava"/></layout>
+            <layout left="1026" top="350" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiCava"/></layout>
+            <layout left="1072" top="350" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrCava"/></layout>
+
+            <layout left="714" top="382" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiConh"/></layout>
+            <layout left="875" top="376" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="totalConh" hitTest="true" cursor="handPoint" hint="Rolar Conhecimento" onClick="rolarPericia('Conhecimento', sheet.totalConh)"/></layout>
+            <layout left="929" top="376" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="nvConh"/></layout>
+            <layout left="980" top="375" width="49" height="25"><label autoSize="false" text="Int" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribConh"/></layout>
+            <layout left="1026" top="376" width="35" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="25" field="treiConh"/></layout>
+            <layout left="1072" top="376" width="37" height="24"><edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="outrConh"/></layout>
+
+            <layout left="714" top="408" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiCura"/></layout>
+            <layout left="875" top="403" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalCura" hitTest="true" cursor="handPoint" hint="Rolar Cura" onClick="rolarPericia('Cura', sheet.totalCura)"/></layout>
+            <layout left="929" top="402" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvCura"/></layout>
+            <layout left="980" top="402" width="49" height="25"><label autoSize="false" text="Sab" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribCura"/></layout>
+            <layout left="1026" top="402" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiCura"/></layout>
+            <layout left="1072" top="402" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrCura"/></layout>
+
+            <layout left="714" top="434" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiDipl"/></layout>
+            <layout left="875" top="429" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalDipl" hitTest="true" cursor="handPoint" hint="Rolar Diplomacia" onClick="rolarPericia('Diplomacia', sheet.totalDipl)"/></layout>
+            <layout left="929" top="429" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvDipl"/></layout>
+            <layout left="980" top="428" width="49" height="25"><label autoSize="false" text="Car" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribDipl"/></layout>
+            <layout left="1026" top="429" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiDipl"/></layout>
+            <layout left="1072" top="429" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrDipl"/></layout>
+
+            <layout left="714" top="460" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiEnga"/></layout>
+            <layout left="875" top="455" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalEnga" hitTest="true" cursor="handPoint" hint="Rolar Enganação" onClick="rolarPericia('Enganação', sheet.totalEnga)"/></layout>
+            <layout left="929" top="455" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvEnga"/></layout>
+            <layout left="980" top="454" width="49" height="25"><label autoSize="false" text="Car" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribEnga"/></layout>
+            <layout left="1026" top="455" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiEnga"/></layout>
+            <layout left="1072" top="455" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrEnga"/></layout>
+
+            <layout left="714" top="486" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiFort"/></layout>
+            <layout left="875" top="482" width="37" height="23"><label autoSize="false" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="24" field="totalFort" hitTest="true" cursor="handPoint" hint="Rolar Fortitude" onClick="rolarPericia('Fortitude', sheet.totalFort)"/></layout>
+            <layout left="929" top="482" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="nvFort"/></layout>
+            <layout left="980" top="481" width="49" height="25"><label autoSize="false" text="Con" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribFort"/></layout>
+            <layout left="1026" top="482" width="35" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="25" field="treiFort"/></layout>
+            <layout left="1072" top="482" width="37" height="24"><edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="outrFort"/></layout>
+
+            <layout left="714" top="512" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiFurt"/></layout>
+            <layout left="875" top="508" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalFurt" hitTest="true" cursor="handPoint" hint="Rolar Furtividade" onClick="rolarPericia('Furtividade', sheet.totalFurt)"/></layout>
+            <layout left="929" top="508" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvFurt"/></layout>
+            <layout left="980" top="507" width="49" height="25"><label autoSize="false" text="Des" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribFurt"/></layout>
+            <layout left="1026" top="508" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiFurt"/></layout>
+            <layout left="1072" top="508" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrFurt"/></layout>
+
+            <layout left="714" top="539" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiGuer"/></layout>
+            <layout left="875" top="534" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalGuer" hitTest="true" cursor="handPoint" hint="Rolar Guerra" onClick="rolarPericia('Guerra', sheet.totalGuer)"/></layout>
+            <layout left="929" top="534" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvGuer"/></layout>
+            <layout left="980" top="533" width="49" height="25"><label autoSize="false" text="Int" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribGuer"/></layout>
+            <layout left="1026" top="534" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiGuer"/></layout>
+            <layout left="1072" top="534" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrGuer"/></layout>
+
+            <layout left="714" top="567" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiInic"/></layout>
+            <layout left="875" top="562" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalInic" hitTest="true" cursor="handPoint" hint="Rolar Iniciativa" onClick="rolarPericia('Iniciativa', sheet.totalInic)"/></layout>
+            <layout left="929" top="561" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvInic"/></layout>
+            <layout left="980" top="560" width="49" height="25"><label autoSize="false" text="Des" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribInic"/></layout>
+            <layout left="1026" top="561" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiInic"/></layout>
+            <layout left="1072" top="562" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrInic"/></layout>
+
+            <layout left="714" top="594" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiInti"/></layout>
+            <layout left="875" top="587" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="totalInti" hitTest="true" cursor="handPoint" hint="Rolar Intimidação" onClick="rolarPericia('Intimidação', sheet.totalInti)"/></layout>
+            <layout left="929" top="587" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="nvInti"/></layout>
+            <layout left="980" top="587" width="49" height="25"><label autoSize="false" text="Car" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribInti"/></layout>
+            <layout left="1026" top="587" width="35" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="25" field="treiInti"/></layout>
+            <layout left="1072" top="587" width="37" height="24"><edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="outrInti"/></layout>
+
+            <layout left="714" top="620" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiIntu"/></layout>
+            <layout left="875" top="613" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalIntu" hitTest="true" cursor="handPoint" hint="Rolar Intuição" onClick="rolarPericia('Intuição', sheet.totalIntu)"/></layout>
+            <layout left="929" top="613" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvIntu"/></layout>
+            <layout left="980" top="613" width="49" height="25"><label autoSize="false" text="Sab" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribIntu"/></layout>
+            <layout left="1026" top="613" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiIntu"/></layout>
+            <layout left="1072" top="613" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrIntu"/></layout>
+
+            <layout left="714" top="646" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiInve"/></layout>
+            <layout left="875" top="640" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalInve" hitTest="true" cursor="handPoint" hint="Rolar Investigação" onClick="rolarPericia('Investigação', sheet.totalInve)"/></layout>
+            <layout left="929" top="640" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvInve"/></layout>
+            <layout left="980" top="640" width="49" height="25"><label autoSize="false" text="Int" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribInve"/></layout>
+            <layout left="1026" top="640" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiInve"/></layout>
+            <layout left="1072" top="640" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrInve"/></layout>
+
+            <layout left="714" top="672" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiJoga"/></layout>
+            <layout left="875" top="666" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalJoga" hitTest="true" cursor="handPoint" hint="Rolar Jogatina" onClick="rolarPericia('Jogatina', sheet.totalJoga)"/></layout>
+            <layout left="929" top="666" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvJoga"/></layout>
+            <layout left="980" top="666" width="49" height="25"><label autoSize="false" text="Car" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribJoga"/></layout>
+            <layout left="1026" top="666" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiJoga"/></layout>
+            <layout left="1072" top="666" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrJoga"/></layout>
+
+            <layout left="714" top="699" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiLadi"/></layout>
+            <layout left="875" top="692" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalLadi" hitTest="true" cursor="handPoint" hint="Rolar Ladinagem" onClick="rolarPericia('Ladinagem', sheet.totalLadi)"/></layout>
+            <layout left="929" top="692" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvLadi"/></layout>
+            <layout left="980" top="692" width="49" height="25"><label autoSize="false" text="Des" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribLadi"/></layout>
+            <layout left="1026" top="692" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiLadi"/></layout>
+            <layout left="1072" top="692" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrLadi"/></layout>
+
+            <layout left="714" top="725" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiLuta"/></layout>
+            <layout left="875" top="719" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="totalLuta" hitTest="true" cursor="handPoint" hint="Rolar Luta" onClick="rolarPericia('Luta', sheet.totalLuta)"/></layout>
+            <layout left="929" top="719" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="nvLuta"/></layout>
+            <layout left="980" top="718" width="49" height="25"><label autoSize="false" text="For" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribLuta"/></layout>
+            <layout left="1026" top="719" width="35" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="25" field="treiLuta"/></layout>
+            <layout left="1072" top="719" width="37" height="24"><edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="outrLuta"/></layout>
+
+            <layout left="714" top="751" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiMist"/></layout>
+            <layout left="875" top="745" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalMist" hitTest="true" cursor="handPoint" hint="Rolar Misticismo" onClick="rolarPericia('Misticismo', sheet.totalMist)"/></layout>
+            <layout left="929" top="745" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvMist"/></layout>
+            <layout left="980" top="745" width="49" height="25"><label autoSize="false" text="Int" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribMist"/></layout>
+            <layout left="1026" top="745" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiMist"/></layout>
+            <layout left="1072" top="745" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrMist"/></layout>
+
+            <layout left="714" top="776" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiNobr"/></layout>
+            <layout left="875" top="772" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalNobr" hitTest="true" cursor="handPoint" hint="Rolar Nobreza" onClick="rolarPericia('Nobreza', sheet.totalNobr)"/></layout>
+            <layout left="929" top="772" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvNobr"/></layout>
+            <layout left="980" top="771" width="49" height="25"><label autoSize="false" text="Car" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribNobr"/></layout>
+            <layout left="1026" top="772" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiNobr"/></layout>
+            <layout left="1072" top="772" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrNobr"/></layout>
+
+            <layout left="714" top="801" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiOfi1"/></layout>
+            <layout left="875" top="798" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="totalOfi1" hitTest="true" cursor="handPoint" hint="Rolar Ofício 1" onClick="rolarPericia('Ofício 1', sheet.totalOfi1)"/></layout>
+            <layout left="929" top="798" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="nvOfi1"/></layout>
+            <layout left="980" top="798" width="49" height="25"><label autoSize="false" text="Int" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribOfi1"/></layout>
+            <layout left="1026" top="798" width="35" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="25" field="treiOfi1"/></layout>
+            <layout left="1072" top="798" width="37" height="24"><edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="outrOfi1"/></layout>
+
+            <layout left="714" top="826" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiOfi2"/></layout>
+            <layout left="875" top="824" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalOfi2" hitTest="true" cursor="handPoint" hint="Rolar Ofício 2" onClick="rolarPericia('Ofício 2', sheet.totalOfi2)"/></layout>
+            <layout left="929" top="824" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvOfi2"/></layout>
+            <layout left="980" top="824" width="49" height="25"><label autoSize="false" text="Int" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribOfi2"/></layout>
+            <layout left="1026" top="824" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiOfi2"/></layout>
+            <layout left="1072" top="824" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrOfi2"/></layout>
+
+            <layout left="714" top="854" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiPerc"/></layout>
+            <layout left="875" top="851" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalPerc" hitTest="true" cursor="handPoint" hint="Rolar Percepção" onClick="rolarPericia('Percepção', sheet.totalPerc)"/></layout>
+            <layout left="929" top="851" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvPerc"/></layout>
+            <layout left="980" top="850" width="49" height="25"><label autoSize="false" text="Sab" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribPerc"/></layout>
+            <layout left="1026" top="851" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiPerc"/></layout>
+            <layout left="1072" top="851" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrPerc"/></layout>
+
+            <layout left="714" top="881" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiPilo"/></layout>
+            <layout left="875" top="877" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalPilo" hitTest="true" cursor="handPoint" hint="Rolar Pilotagem" onClick="rolarPericia('Pilotagem', sheet.totalPilo)"/></layout>
+            <layout left="929" top="877" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvPilo"/></layout>
+            <layout left="980" top="876" width="49" height="25"><label autoSize="false" text="Des" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribPilo"/></layout>
+            <layout left="1026" top="877" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiPilo"/></layout>
+            <layout left="1072" top="877" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrPilo"/></layout>
+
+            <layout left="714" top="908" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiPont"/></layout>
+            <layout left="875" top="903" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalPont" hitTest="true" cursor="handPoint" hint="Rolar Pontaria" onClick="rolarPericia('Pontaria', sheet.totalPont)"/></layout>
+            <layout left="929" top="903" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvPont"/></layout>
+            <layout left="980" top="903" width="49" height="25"><label autoSize="false" text="Des" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribPont"/></layout>
+            <layout left="1026" top="903" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiPont"/></layout>
+            <layout left="1072" top="903" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrPont"/></layout>
+
+            <layout left="714" top="934" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiRefl"/></layout>
+            <layout left="875" top="930" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalRefl" hitTest="true" cursor="handPoint" hint="Rolar Reflexos" onClick="rolarPericia('Reflexos', sheet.totalRefl)"/></layout>
+            <layout left="929" top="930" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvRefl"/></layout>
+            <layout left="980" top="929" width="49" height="25"><label autoSize="false" text="Des" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribRefl"/></layout>
+            <layout left="1026" top="930" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiRefl"/></layout>
+            <layout left="1072" top="930" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrRefl"/></layout>
+
+            <layout left="714" top="960" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiReli"/></layout>
+            <layout left="875" top="956" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalReli" hitTest="true" cursor="handPoint" hint="Rolar Religião" onClick="rolarPericia('Religião', sheet.totalReli)"/></layout>
+            <layout left="929" top="956" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvReli"/></layout>
+            <layout left="980" top="955" width="49" height="25"><label autoSize="false" text="Sab" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribReli"/></layout>
+            <layout left="1026" top="956" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiReli"/></layout>
+            <layout left="1072" top="956" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrReli"/></layout>
+
+            <layout left="714" top="987" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiSobr"/></layout>
+            <layout left="875" top="982" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="totalSobr" hitTest="true" cursor="handPoint" hint="Rolar Sobrevivência" onClick="rolarPericia('Sobrevivência', sheet.totalSobr)"/></layout>
+            <layout left="929" top="982" width="37" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="nvSobr"/></layout>
+            <layout left="980" top="981" width="49" height="25"><label autoSize="false" text="Sab" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribSobr"/></layout>
+            <layout left="1026" top="982" width="35" height="25"><label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="26" field="treiSobr"/></layout>
+            <layout left="1072" top="982" width="37" height="25"><edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="26" field="outrSobr"/></layout>
+
+            <layout left="714" top="1013" width="16" height="17"><checkBox left="0" top="0" width="16" height="18" field="checkTreiVont"/></layout>
+            <layout left="875" top="1009" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="totalVont" hitTest="true" cursor="handPoint" hint="Rolar Vontade" onClick="rolarPericia('Vontade', sheet.totalVont)"/></layout>
+            <layout left="929" top="1009" width="37" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="nvVont"/></layout>
+            <layout left="980" top="1008" width="49" height="25"><label autoSize="false" text="Sab" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="atribVont"/></layout>
+            <layout left="1026" top="1009" width="35" height="24"><label autoSize="false" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="25" field="treiVont"/></layout>
+            <layout left="1072" top="1009" width="37" height="24"><edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="25" field="outrVont"/></layout>
+
+            <layout left="174" top="778" width="10" height="11" compilerOrder="111">
+                <checkBox left="0" top="0" width="10" height="12" field="arm_pesa" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="188" top="784" width="49" height="25" compilerOrder="113">
+                <label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="26" field="SeleAtribDefe" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="794" top="792" width="59" height="25" compilerOrder="403">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="59" height="26" field="Ofício_1" compilerOrder="404"/>
+            </layout>&#xD;
+            <layout left="60" top="795" width="65" height="65" compilerOrder="109">
+                <label autoSize="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="65" height="66" field="CA" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="450" top="810" width="251" height="101" compilerOrder="139">
+                <textEditor left="0" top="0" width="251" height="101" fontSize="16" fontColor="#000000" field="Proficiências" transparent="true" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="189" top="813" width="46" height="25" compilerOrder="115">
+                <label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="26" field="ModAtribDefe" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="245" top="813" width="45" height="25" compilerOrder="117">
+                <label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="26" field="B_Arm" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="304" top="813" width="44" height="25" compilerOrder="119">
+                <label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="26" field="B_Esc" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="361" top="813" width="49" height="25" compilerOrder="121">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="49" height="26" field="Outros_B_CA" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="794" top="818" width="59" height="25" compilerOrder="417">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="59" height="26" field="Ofício_2" compilerOrder="418"/>
+            </layout>&#xD;
+            <layout left="332" top="849" width="49" height="25" compilerOrder="123">
+                <label autoSize="false" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="49" height="26" field="PArmTotal" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="65" top="921" width="186" height="25" compilerOrder="125">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="186" height="26" field="Armadura" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="263" top="921" width="67" height="25" compilerOrder="127">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="26" field="B_Arm1" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="343" top="921" width="67" height="25" compilerOrder="129">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="26" field="Pa" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="618" top="952" width="33" height="44" compilerOrder="143">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="45" field="ModFurtTam" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="663" top="952" width="32" height="44" compilerOrder="145">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="32" height="45" field="ModManTam" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="525" top="954" width="82" height="40" compilerOrder="141">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="41" field="SeleTamanho" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="65" top="958" width="186" height="25" compilerOrder="131">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="186" height="26" field="Escudo" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="263" top="958" width="67" height="25" compilerOrder="133">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="26" field="B_Esc2" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="343" top="958" width="67" height="25" compilerOrder="135">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="26" field="Pe" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="243" top="1020" width="174" height="38" compilerOrder="137">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="174" height="39" field="Exp" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="569" top="1020" width="131" height="38" compilerOrder="147">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="131" height="39" field="Desloc" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="56" top="1137" width="426" height="29" compilerOrder="517">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item1" compilerOrder="518"/>
+            </layout>&#xD;
+            <layout left="500" top="1137" width="71" height="29" compilerOrder="519">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem1" compilerOrder="520"/>
+            </layout>&#xD;
+            <layout left="601" top="1138" width="426" height="29" compilerOrder="553">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item10" compilerOrder="554"/>
+            </layout>&#xD;
+            <layout left="1045" top="1138" width="71" height="29" compilerOrder="555">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem10" compilerOrder="556"/>
+            </layout>&#xD;
+            <layout left="56" top="1177" width="426" height="29" compilerOrder="521">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item2" compilerOrder="522"/>
+            </layout>&#xD;
+            <layout left="499" top="1177" width="71" height="29" compilerOrder="523">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem2" compilerOrder="524"/>
+            </layout>&#xD;
+            <layout left="601" top="1178" width="426" height="29" compilerOrder="557">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item11" compilerOrder="558"/>
+            </layout>&#xD;
+            <layout left="1044" top="1178" width="71" height="29" compilerOrder="559">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem11" compilerOrder="560"/>
+            </layout>&#xD;
+            <layout left="56" top="1214" width="426" height="29" compilerOrder="525">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item3" compilerOrder="526"/>
+            </layout>&#xD;
+            <layout left="500" top="1214" width="71" height="29" compilerOrder="527">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem3" compilerOrder="528"/>
+            </layout>&#xD;
+            <layout left="602" top="1215" width="426" height="29" compilerOrder="561">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item12" compilerOrder="562"/>
+            </layout>&#xD;
+            <layout left="1045" top="1215" width="71" height="29" compilerOrder="563">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem12" compilerOrder="564"/>
+            </layout>&#xD;
+            <layout left="56" top="1254" width="426" height="29" compilerOrder="529">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item4" compilerOrder="530"/>
+            </layout>&#xD;
+            <layout left="499" top="1254" width="71" height="29" compilerOrder="531">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem4" compilerOrder="532"/>
+            </layout>&#xD;
+            <layout left="601" top="1255" width="426" height="29" compilerOrder="565">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item13" compilerOrder="566"/>
+            </layout>&#xD;
+            <layout left="1045" top="1256" width="71" height="29" compilerOrder="567">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem13" compilerOrder="568"/>
+            </layout>&#xD;
+            <layout left="56" top="1291" width="426" height="29" compilerOrder="533">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item5" compilerOrder="534"/>
+            </layout>&#xD;
+            <layout left="500" top="1291" width="71" height="29" compilerOrder="535">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem5" compilerOrder="536"/>
+            </layout>&#xD;
+            <layout left="601" top="1292" width="426" height="29" compilerOrder="569">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item14" compilerOrder="570"/>
+            </layout>&#xD;
+            <layout left="1045" top="1293" width="71" height="29" compilerOrder="571">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem14" compilerOrder="572"/>
+            </layout>&#xD;
+            <layout left="56" top="1331" width="426" height="29" compilerOrder="537">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item6" compilerOrder="538"/>
+            </layout>&#xD;
+            <layout left="499" top="1331" width="71" height="29" compilerOrder="539">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem6" compilerOrder="540"/>
+            </layout>&#xD;
+            <layout left="601" top="1332" width="426" height="29" compilerOrder="573">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item15" compilerOrder="574"/>
+            </layout>&#xD;
+            <layout left="1044" top="1333" width="71" height="29" compilerOrder="575">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem15" compilerOrder="576"/>
+            </layout>&#xD;
+            <layout left="56" top="1368" width="426" height="29" compilerOrder="541">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item7" compilerOrder="542"/>
+            </layout>&#xD;
+            <layout left="500" top="1368" width="71" height="29" compilerOrder="543">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem7" compilerOrder="544"/>
+            </layout>&#xD;
+            <layout left="602" top="1384" width="512" height="16" compilerOrder="577">
+                <textEditor left="0" top="0" width="512" height="16" fontSize="19" fontColor="#404040" field="Observação" transparent="true" compilerOrder="578"/>
+            </layout>&#xD;
+            <layout left="848" top="1406" width="265" height="28" compilerOrder="513">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="265" height="29" field="T" compilerOrder="514"/>
+            </layout>&#xD;
+            <layout left="620" top="1407" width="44" height="27" compilerOrder="583">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="28" field="CargaTotal" compilerOrder="584"/>
+            </layout>&#xD;
+            <layout left="698" top="1407" width="89" height="27" compilerOrder="581">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="89" height="28" field="Levantar" compilerOrder="582"/>
+            </layout>&#xD;
+            <layout left="56" top="1408" width="426" height="29" compilerOrder="545">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item8" compilerOrder="546"/>
+            </layout>&#xD;
+            <layout left="499" top="1408" width="71" height="29" compilerOrder="547">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem8" compilerOrder="548"/>
+            </layout>&#xD;
+            <layout left="56" top="1444" width="426" height="29" compilerOrder="549">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="426" height="30" field="Item9" compilerOrder="550"/>
+            </layout>&#xD;
+            <layout left="499" top="1444" width="71" height="29" compilerOrder="551">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="30" field="PesoItem9" compilerOrder="552"/>
+            </layout>&#xD;
+            <layout left="848" top="1444" width="265" height="28" compilerOrder="515">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="265" height="29" field="TO" compilerOrder="516"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+    <dataLink 
+        fields="{'Lv', 'ModFor', 'ModDes', 'ModCon', 'ModInt', 'ModSab', 'ModCar', 
+        'checkTreiAcro', 'outrAcro', 'checkTreiAdes', 'outrAdes', 'checkTreiAtle', 'outrAtle', 
+        'checkTreiAtua', 'outrAtua', 'checkTreiCava', 'outrCava', 'checkTreiConh', 'outrConh', 
+        'checkTreiCura', 'outrCura', 'checkTreiDipl', 'outrDipl', 'checkTreiEnga', 'outrEnga', 
+        'checkTreiFort', 'outrFort', 'checkTreiFurt', 'outrFurt', 'checkTreiGuer', 'outrGuer', 
+        'checkTreiInic', 'outrInic', 'checkTreiInti', 'outrInti', 'checkTreiIntu', 'outrIntu', 
+        'checkTreiInve', 'outrInve', 'checkTreiJoga', 'outrJoga', 'checkTreiLadi', 'outrLadi', 
+        'checkTreiLuta', 'outrLuta', 'checkTreiMist', 'outrMist', 'checkTreiNobr', 'outrNobr', 
+        'checkTreiOfi1', 'outrOfi1', 'checkTreiOfi2', 'outrOfi2', 'checkTreiPerc', 'outrPerc', 
+        'checkTreiPilo', 'outrPilo', 'checkTreiPont', 'outrPont', 'checkTreiRefl', 'outrRefl', 
+        'checkTreiReli', 'outrReli', 'checkTreiSobr', 'outrSobr', 'checkTreiVont', 'outrVont'}">
+        <event name="onChange">
+            atualizarPericias();
+        </event>
+    </dataLink>
+    <dataLink 
+        fields="{'For', 'Des', 'Con', 'Int', 'Sab', 'Car'}">
+        <event name="onChange">
+            atualizarAtributos();
+        </event>
+    </dataLink>
+    <dataLink fields="{'B_Arm1', 'B_Esc2', 'Pa', 'Pe', 'ModAtribDefe', 'Outros_B_CA', 'SeleAtribDefe', 'arm_pesa'}">
+        <event name="onChange">
+            atualizarDefesa();
+        </event>
+    </dataLink>
+</form>

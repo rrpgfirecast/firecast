@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaqueItem" height="40" margins="{top=2, bottom=2}">
+    <script>
+        <![CDATA[
+        local function entrarEdicao()
+            self.layoutView.visible = false;
+            self.layoutEdit.visible = true;
+            self.height = 160; 
+        end;
+
+        local function salvarEdicao()
+            self.layoutView.visible = true;
+            self.layoutEdit.visible = false;
+            self.height = 40; 
+        end;
+
+        local function interpretarBonus(textoBonus, root)
+            if textoBonus == nil or textoBonus == "" then return "0" end
+            
+            local texto = tostring(textoBonus)
+            local textoLower = string.lower(texto)
+            
+            local dicionario = {
+                ["for"] = root.ModFor or 0, ["des"] = root.ModDes or 0, ["con"] = root.ModCon or 0,
+                ["int"] = root.ModInt or 0, ["sab"] = root.ModSab or 0, ["car"] = root.ModCar or 0
+            }
+            
+            local resultado = string.gsub(textoLower, "%a+", function(palavra)
+                if dicionario[palavra] then
+                    local valor = tonumber(dicionario[palavra]) or 0
+                    if valor < 0 then return "(" .. tostring(valor) .. ")"
+                    else return tostring(valor) end
+                else
+                    return palavra
+                end
+            end)
+            
+            return resultado
+        end
+
+        local function executarRolagem(opcaoMenu)
+            local mesa = Firecast.getMesaDe(sheet);
+            if not mesa then return end;
+
+            local root = NDB.getRoot(sheet); 
+            local nome = tostring(sheet.nomeAtaque or "Ataque");
+            
+            local bonus = interpretarBonus(sheet.bonusAtaque, root);
+            local dano = interpretarBonus(sheet.danoAtaque, root);
+            local crit = tostring(sheet.criticoAtaque or "20");
+
+            local rangeCritico = 20
+            local matchRange = string.match(crit, "^(%d+)")
+            if matchRange then rangeCritico = tonumber(matchRange) end
+            
+            local multiplicador = 2
+            local matchMult = string.match(crit, "x(%d+)")
+            if matchMult then multiplicador = tonumber(matchMult) end
+            
+            local danoCritico = dano
+            if dano ~= "0" and dano ~= "" then
+                local qtdDados, tipoDado, resto = string.match(dano, "^(%d+)d(%d+)(.*)")
+                if qtdDados then
+                    local novaQtd = tonumber(qtdDados) * multiplicador
+                    danoCritico = novaQtd .. "d" .. tipoDado .. (resto or "")
+                else
+                    danoCritico = "(" .. dano .. ")*" .. multiplicador
+                end
+            end
+
+            -- 3 Vantagens = Crítico Automático
+            if opcaoMenu == 3 then
+                mesa.chat:enviarMensagem("[§K3]🌟 GOLPE DE MESTRE! (3 Vantagens)[§K1]\nO ataque encontra o ponto fraco perfeitamente!");
+                if dano ~= "0" and dano ~= "" then
+                    mesa.chat:rolarDados(danoCritico, "🎯 Dano Crítico Automático: " .. nome);
+                else
+                    mesa.chat:enviarMensagem("[§K3]🎯 Acerto Crítico Garantido! [§K1](Nenhum dano cadastrado).");
+                end
+                return;
+            end
+
+            local strAtaque = "1d20"
+            local bnsClean = string.gsub(bonus, "%s+", "")
+            if bnsClean ~= "0" and bnsClean ~= "" then
+                if not string.match(bnsClean, "^[+-]") then strAtaque = strAtaque .. "+" end
+                strAtaque = strAtaque .. bnsClean
+            end
+
+            local textoChat = ""
+            if opcaoMenu == 1 then
+                strAtaque = strAtaque .. "+5"
+                textoChat = " (Com 1 Vantagem)"
+            elseif opcaoMenu == 2 then
+                strAtaque = strAtaque .. "+10"
+                textoChat = " (Com 2 Vantagens)"
+            elseif opcaoMenu == 4 then
+                strAtaque = strAtaque .. "-5"
+                textoChat = " (Com Desvantagem)"
+            end
+
+            mesa.chat:rolarDados(strAtaque, "⚔️ Ataque" .. textoChat .. ": " .. nome, 
+                function (rolado)
+                    if not rolado or not rolado.ops or not rolado.ops[1] then return end
+
+                    local d20 = 0
+                    if rolado.ops[1].tipo == "dado" then
+                        d20 = rolado.ops[1].resultados[1]
+                    end
+                    
+                    if d20 == 1 then
+                        mesa.chat:enviarMensagem("[§K4]❌ Falha Crítica! (1 natural)[§K1] O ataque errou.");
+                    elseif dano == "0" or dano == "" then
+                        if d20 >= rangeCritico then
+                            mesa.chat:enviarMensagem("[§K3]🎯 AMEAÇA DE CRÍTICO (" .. d20 .. ")! [§K1](Nenhum dano cadastrado).");
+                        else
+                            mesa.chat:enviarMensagem("[§K3]⚔️ Ataque executado! [§K1](Nenhum dano cadastrado).");
+                        end
+                    elseif d20 >= rangeCritico then
+                        mesa.chat:rolarDados(danoCritico, "🎯 Dano Crítico!! (" .. d20 .. " natural)! Dano: " .. nome);
+                    else
+                        mesa.chat:rolarDados(dano, "💥 Dano: " .. nome);
+                    end
+                end);
+        end;
+
+        local function rolarAtaqueEDano()
+            executarRolagem(0)
+        end
+
+        local function abrirMenuVantagens()
+            local opcoes = {
+                "1 Vantagem (+5 no Acerto)",
+                "2 Vantagens (+10 no Acerto)",
+                "3 Vantagens (Crítico Automático!)",
+                "Desvantagem (-5 no Acerto)"
+            }
+            
+            Dialogs.choose("Como será a sua rolagem, guerreiro?", opcoes,
+                function(selecionado, indice, texto)
+                    if selecionado then
+                        executarRolagem(indice) 
+                    end
+                end
+            )
+        end
+        ]]>
+    </script>
+
+    <layout name="layoutView" align="top" height="40" visible="true">
+        <rectangle align="client" color="#f0f0f0" strokeColor="#cccccc" strokeSize="1" xradius="5" yradius="5"/>
+        <label left="10" top="10" width="350" height="20" field="nomeAtaque" fontColor="black" fontStyle="bold" text="Novo Ataque..."/>
+        
+        <button left="525" top="5" width="40" height="30" text="🎲" hint="Esquerdo: Normal | Direito: Vantagem/Desvantagem" onClick="rolarAtaqueEDano()" onMenu="abrirMenuVantagens()"/>
+        
+        <button left="570" top="5" width="40" height="30" text="✏️" hint="Editar" onClick="entrarEdicao()"/>
+    </layout>
+
+    <layout name="layoutEdit" align="top" height="160" visible="false">
+        <rectangle align="client" color="#a32424" xradius="10" yradius="10"/> 
+        <label left="10" top="10" width="60" height="20" text="Arma:" fontColor="white" fontStyle="bold"/>
+        <edit left="70" top="10" width="220" height="20" field="nomeAtaque"/>
+        
+        <label left="310" top="10" width="60" height="20" text="Alcance:" fontColor="white" fontStyle="bold"/>
+        <edit left="370" top="10" width="100" height="20" field="alcanceAtaque" textPrompt="Ex: Curto"/>
+
+        <label left="10" top="40" width="80" height="20" text="Bônus (Atk):" fontColor="white" fontStyle="bold"/>
+        <edit left="90" top="40" width="60" height="20" field="bonusAtaque" textPrompt="Ex: For+2"/>
+
+        <label left="170" top="40" width="50" height="20" text="Dano:" fontColor="white" fontStyle="bold"/>
+        <edit left="220" top="40" width="100" height="20" field="danoAtaque" textPrompt="Ex: 1d8+For"/>
+
+        <label left="340" top="40" width="50" height="20" text="Crítico:" fontColor="white" fontStyle="bold"/>
+        <edit left="390" top="40" width="60" height="20" field="criticoAtaque" textPrompt="Ex: 19/x3"/>
+
+        <label left="470" top="40" width="40" height="20" text="Tipo:" fontColor="white" fontStyle="bold"/>
+        <edit left="510" top="40" width="100" height="20" field="tipoAtaque" textPrompt="Ex: Corte"/>
+
+        <label left="10" top="70" width="150" height="20" text="Efeito Extra / Descrição:" fontColor="white" fontStyle="bold"/>
+        <edit left="10" top="90" width="600" height="20" field="descricaoAtaque"/>
+
+        <button left="440" top="120" width="80" height="30" text="Excluir" fontColor="red" onClick="NDB.deleteNode(sheet)"/>
+        <button left="530" top="120" width="80" height="30" text="Salvar" onClick="salvarEdicao()"/>
+    </layout>
+</form>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <template name="formatNumEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="White" strokeSize="1" name="$(field)Label" visible="true" cornerType="round" xradius="5" yradius="5">
+            <label width="$(width)" height="$(height)" field="$(field)" fontSize="16" vertTextAlign="center" horzTextAlign="center" formatFloat="0.## $(unit)" fontFamily="Courier New" fontColor="White"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit field="$(field)" left="$(left)" top="$(top)" width="$(width)" height="$(height)" type="float" name="$(field)Edit" visible="false" fontSize="16">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </edit>
+    </template>
+
+    <template name="formatNum">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="White" strokeSize="0" name="$(field)Label" visible="true" cornerType="round" xradius="5" yradius="5">
+            <label width="$(width)" height="$(height)" field="$(field)" fontSize="24" vertTextAlign="center" horzTextAlign="center" formatFloat="0.## $(unit)" fontFamily="Courier New" fontColor="$(fontColor)"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit field="$(field)" left="$(left)" top="$(top)" width="$(width)" height="$(height)" type="float" name="$(field)Edit" visible="false" fontSize="16">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </edit>
+    </template>
+
+    <template name="formatEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="$(color)" strokeColor="White" strokeSize="2" name="$(field)Label" cornerType="round" xradius="30" yradius="30">
+            <label width="$(width)" height="$(height)" field="$(field)" fontSize="24" vertTextAlign="center" horzTextAlign="center" formatFloat="0.## $(unit)" fontFamily="Courier New" fontColor="White"/>
+        </rectangle>
+    </template>
+
+    <template name="formatLabelEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="White" strokeSize="1" name="$(field)Label" visible="true" cornerType="round" xradius="5" yradius="5">
+            <label width="$(width)" height="$(height)" field="$(field)"  fontSize="16" vertTextAlign="center" horzTextAlign="center" fontFamily="Courier New" fontColor="White"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit field="$(field)" left="$(left)" top="$(top)" width="$(width)" height="$(height)" name="$(field)Edit" visible="false" fontSize="16">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </edit>
+    </template>
+
+    <template name="formatVinEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="White" strokeSize="2" name="$(field)Label" visible="true">
+            <label width="$(width)" height="$(height)" field="$(field)"  fontSize="16" vertTextAlign="center" horzTextAlign="center" fontFamily="Courier New" fontColor="White"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit field="$(field)" left="$(left)" top="$(top)" width="$(width)" height="$(height)" name="$(field)Edit" visible="false" fontSize="16">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </edit>
+    </template>
+
+    <template name="formatIntEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="White" strokeSize="1" name="$(field)Label" visible="true" cornerType="round" xradius="5" yradius="5">
+            <label width="$(width)" height="$(height)" field="$(field)"  fontSize="16" vertTextAlign="center" horzTextAlign="center" format="$(prefix)%d $(unit)" fontFamily="Courier New" fontColor="White"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit field="$(field)" left="$(left)" top="$(top)" width="$(width)" height="$(height)" type="number" name="$(field)Edit" visible="false" fontSize="16">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </edit>
+    </template>
+
+    <template name="formatTextEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="White" strokeSize="1" name="$(field)Label" visible="true" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+            <label align="client" field="$(field)" fontSize="16" horzTextAlign="leading" vertTextAlign="leading" margins="{left=4, right=4, top=4, bottom=4}" fontFamily="Courier New" fontColor="White"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <textEditor field="$(field)" left="$(left)" top="$(top)" width="$(width)" height="$(height)" name="$(field)Edit" visible="false" fontSize="16" margins="{left=6, right=6, top=6, bottom=6}">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </textEditor>
+    </template>
+
+    <template name="AtributoBox">
+        <rectangle left="4" top="10" width="85" height="25" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+            <label vertTextAlign="center" horzTextAlign="center" align="client" text="$(text)" fontColor="White" fontFamily="Courier New"/>
+        </rectangle>
+        <formatIntEdit left="88" top="10" width="53" height="25" field="$(field)" prefix="d"/>
+        <formatIntEdit left="141" top="10" width="53" height="25" field="$(field)Atual" prefix="d"/>
+    </template>
+
+    <template name="SubAtributoBox">
+        <rectangle left="4" top="18" width="50" height="25" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+            <label vertTextAlign="center" horzTextAlign="center" align="client" text="$(text)" fontColor="White" fontStyle="bold" fontFamily="Courier New"/>
+        </rectangle>
+        <formatIntEdit left="53" top="18" width="50" height="25" field="$(field)Bonus"/>
+        <formatEdit left="99" top="0" width="60" height="60" field="$(field)" color="$(color)"/>
+    </template>
+    
+    <template name="CheckBox">
+        <imageCheckBox left="$(left)" top="$(top)" field="$(field)" width="25" height="25" checkedImage="/imagens/checked.png" uncheckedImage="/imagens/unchecked.png"/>
+    </template>
+
+    <template name="CondicaoBox">
+        <rectangle left="4" top="10" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+            <CheckBox left="0" top="0" field="$(field)"/>
+        </rectangle>
+        <rectangle left="27" top="10" width="85" height="25" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+            <label vertTextAlign="center" horzTextAlign="center" width="85" height="25" text="$(text)" fontColor="White" fontFamily="Courier New"/>
+        </rectangle>
+    </template>
+
+    <template name="LacoBox">
+        <rectangle left="4" top="0" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+            <CheckBox left="0" top="0" field="$(field)"/>
+        </rectangle>
+        <rectangle left="27" top="0" width="120" height="25" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+            <label vertTextAlign="center" horzTextAlign="center" align="client" text="$(text)" fontColor="White" fontFamily="Courier New"/>
+        </rectangle>
+    </template>
+
+    <template name="EquipBox">
+        <rectangle left="4" top="0" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+            <CheckBox left="0" top="0" field="$(field)"/>
+        </rectangle>
+        <rectangle left="27" top="0" width="250" height="25" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+            <label vertTextAlign="center" horzTextAlign="center" align="client" text="$(text)" fontColor="White" fontFamily="Courier New"/>
+        </rectangle>
+    </template>
+
+    <template name="RitualBox">
+        <rectangle left="4" top="0" width="23" height="23" color="transparent" cornerType="round" xradius="9" yradius="9">
+            <CheckBox left="0" top="0" field="$(field)"/>
+        </rectangle>
+        <rectangle left="27" top="0" width="120" height="25" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+            <label vertTextAlign="center" horzTextAlign="center" align="client" text="$(text)" fontColor="White" fontFamily="Courier New"/>
+        </rectangle>
+    </template>
+
+    <template name="VinculoBox">
+        <rectangle left="4" top="5" width="714" height="60" color="transparent" strokeColor="White" strokeSize="2">
+
+            <rectangle left="0" top="0" width="220" height="25" color="transparent" strokeColor="White" strokeSize="2">
+                <label vertTextAlign="center" horzTextAlign="center" width="220" height="25" text="Nome" fontColor="White" fontFamily="Courier New"/>
+            </rectangle>
+
+            <formatVinEdit left="0" top="23" width="220" height="37" field="$(field)Label"/>
+
+            <rectangle left="220" top="3" width="100" height="30" color="transparent">
+                <LacoBox text="Admiração" field="$(field)Admiracao"/>
+            </rectangle>
+
+            <rectangle left="220" top="31" width="100" height="30" color="transparent">
+                <LacoBox text="Inferioridade" field="$(field)Inferioridade"/>
+            </rectangle>
+
+            <rectangle left="390" top="3" width="100" height="30" color="transparent">
+                <LacoBox text="Lealdade" field="$(field)Lealdade"/>
+            </rectangle>
+
+            <rectangle left="390" top="31" width="100" height="30" color="transparent">
+                <LacoBox text="Desconfiança" field="$(field)Desconfianca"/>
+            </rectangle>
+
+            <rectangle left="560" top="3" width="100" height="30" color="transparent">
+                <LacoBox text="Afeto" field="$(field)Afeto"/>
+            </rectangle>
+
+            <rectangle left="560" top="31" width="100" height="30" color="transparent">
+                <LacoBox text="Ódio" field="$(field)Odio"/>
+            </rectangle>
+		</rectangle>
+    </template>
+</group>

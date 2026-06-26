@@ -47,7 +47,7 @@ for (var i = 0; i < filelist.length; i++) {
 		xml = xml + "	<element name=\"";
 		xml = xml + fullPath.split('/').pop().split('.')[0];
 		xml = xml + "\" path=\"" + safePath;
-		xml = xml + "\" link=\"" + "https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/" + safePath;
+		xml = xml + "\" link=\"" + "https://sdk3.firecast.app/Macros/" + safePath;
 
 		xml = xml + "\"/>\n";
 	}

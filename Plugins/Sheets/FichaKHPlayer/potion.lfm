@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPotion" height="50" width="320">       
+		
+		
+		<image name="PotionBarOn" left="10" width="302" height="50" visible="true" field="PotionBarOn" src="/frames/PotionListOn.png"/>
+		
+		<imageCheckBox name="PotionIcon" left="13" top="10" width="30" height="30" field="PotionIcon"
+								checkedImage="/frames/OutCombatOnIcon.png"
+                               uncheckedImage="/frames/PotionOnIcon.png"/>
+		
+		<edit name="PotionName" field="PotionName" fontColor="white" top="5" left="42" width="265" height="44" fontSize="24" transparent="true" fontFamily="KHMenu">
+				<dataLink field="PotionName" defaultValue="???"/>
+				<event name="onExit">
+						self.selectedPotion.opacity = "0";
+                </event>
+						<event name="onMouseDown">
+						self.selectedPotion.opacity = "1";
+                </event>
+					</edit>
+		
+		
+	   	<image name="erasePotion" field="erasePotion" left="310" top="15" width="20" height="20" src="/frames/Erase.png"/>
+		
+		<image name="selectedPotion" field="selectedPotion" top="15" width="25" height="25" opacity="0" src="/images/select.png"/>
+		
+		
+		<button cursor="no" left="310" top="15" width="20" height="20" opacity="0"
+                onClick="NDB.deleteNode(sheet);"/>
+
+</form>

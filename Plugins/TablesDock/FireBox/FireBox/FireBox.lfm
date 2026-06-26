@@ -135,7 +135,7 @@
 	        <layout align="top" height="25">
 	        	<label align="left" width="100" text="FireDrive Folder: " hint="Em que pasta do FireDrive vai colocar os arquivos do FireBox."/>
 	        	<edit align="client" margins="{left=5}" field="firedrive"/>
-	        	<dataLink field="firedrive" defaultValue="firebox"/>
+	        	<dataLink field="firedrive" defaultValue="/"/>
 	        </layout>
 	        <layout align="top" height="25">
 		        <button align="left" width="100" text="Copiar" hint="Coloque nessa pasta os arquivos e pastas que quer sincronizar.">

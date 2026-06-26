@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpListaNomeExp" height="250" padding="{top=3, right=3, left=3}">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+	}
+	
+	</style>
+	<scrollBox align="client">
+		<rectangle align="top" color="#101010" name="fundoRec" height="30" margins="{bottom=3}">
+			<button align="right" text="🞭" width="27" onClick="NDB.deleteNode(sheet)" hint="Apagar este Item" margins="{left=2}" />
+			<edit align="client" name="edtNome" field="nome" fontStyle="bold" margins="{left=15}">
+				<event name="onEnter"><![CDATA[
+					if sheet.nome == "—" then sheet.nome = nil end
+				]]></event>
+				<event name="onExit"><![CDATA[
+					if sheet.nome == nil then sheet.nome = "—" end
+				]]></event>
+			</edit>
+			<dataLink field="nome" defaultValue="—" />
+		</rectangle>
+		<recordList align="top" autoHeight="true" name="rlConfigsChecks" field="ConfigsChecks" templateForm="tmpConfigsChecks" layout="horizontalTiles" margins="{left=10}" />
+	</scrollBox>
+</form>

@@ -4,20 +4,24 @@
 	<import file="templates.xml"/>
 	
 	<tabControl align="client" name="pgcPrincipal">
-		<tab title="@@DnD5e.tabControl.tab.front">
+		<tab title="Atributos">
 			<import file="frente.xml"/>
 		</tab>
 		
-		<tab title="@@DnD5e.tabControl.tab.feature">
+		<tab title="Características Raciais">
 			<import file="caracteristicas.xml"/>
 		</tab>
 		
-		<tab title="@@DnD5e.tabControl.tab.equipment">
+		<tab title="Classe">
 			<import file="equipamento.xml"/>
 		</tab>
 
-		<tab title="@@DnD5e.tabControl.tab.spells">
+		<tab title="Magias Elementais">
 			<import file="magias.xml"/>
+		</tab>
+
+		<tab title="Inventário">
+			<import file="inventario.xml"/>
 		</tab>
 
 		<tab title="@@DnD5e.tabControl.tab.counter">

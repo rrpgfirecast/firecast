@@ -9,7 +9,7 @@ function system.getClipboardText()
 end;
 
 function system.readClipboardAsDragNDrop(callback, options)
-	if (type(callback) ~= 'function') or not system.checkAPIVersion(87, 2) then
+	if (type(callback) ~= 'function') then
 		return false;
 	end;
 	

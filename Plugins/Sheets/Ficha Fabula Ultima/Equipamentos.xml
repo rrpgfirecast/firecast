@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+
+	<script> 
+		<![CDATA[			
+		local function showEquipPopup1()
+			local pop = self:findControlByName("popInv1");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self.maoP);
+			else
+				showMessage("Não encontrei o popup do equipamento para exibir.");
+			end;
+		end;
+
+		local function showEquipPopup2()
+			local pop = self:findControlByName("popInv2");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self.maoS);
+			else
+				showMessage("Não encontrei o popup do equipamento para exibir.");
+			end;
+		end;
+
+		local function showEquipPopup3()
+			local pop = self:findControlByName("popInv3");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self.armaduraItem);
+			else
+				showMessage("Não encontrei o popup do equipamento para exibir.");
+			end;
+		end;
+
+		local function showEquipPopup4()
+			local pop = self:findControlByName("popInv4");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self.acessorio);
+			else
+				showMessage("Não encontrei o popup do equipamento para exibir.");
+			end;
+		end;
+		]]>
+	</script>
+
+    <image align="client" style="autoFit" src="/imagens/Fundo.jpg"/>
+    <scrollBox align="client">
+        <flowLayout class="janela1">
+
+            <flowPart class="janela3" width="800" height="250">
+                <rectangle align="client" class="janela2">
+                <image align="client" style="stretch" src="/imagens/Janela0.png"/>
+                    <label left="300" top="5" width="200" height="25" text="Equipamentos" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+					
+                    <rectangle left="21" top="40" width="180" height="35" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+						<label vertTextAlign="center" left="44" width="140" height="35" text="Mão Primária" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+                    <image left="28" top="47" width="20" height="20" style="stretch" src="/imagens/Primaria.png"/>
+					<formatLabelEdit left="199" top="45" width="240" height="25" field="maoP"/>
+                    <button name="maoP" left="439" top="46" width="23" height="23" text="i" onClick="showEquipPopup1();"/>
+
+                    <rectangle left="21" top="80" width="180" height="35" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+						<label vertTextAlign="center" left="36" width="140" height="35" text="Mão Secundária" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatLabelEdit left="199" top="85" width="240" height="25" field="maoS"/>
+                    <image left="28" top="87" width="20" height="20" style="stretch" src="/imagens/Secundaria.png"/>
+                    <button name="maoS" left="439" top="86" width="23" height="23" text="i" onClick="showEquipPopup2();"/>
+
+                    <rectangle left="21" top="120" width="180" height="35" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+						<label vertTextAlign="center" left="62" width="140" height="35" text="Armadura" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatLabelEdit left="199" top="125" width="240" height="25" field="armaduraItem"/>
+                    <image left="28" top="127" width="20" height="20" style="stretch" src="/imagens/Armadura.png"/>
+                    <button name="armaduraItem" left="439" top="126" width="23" height="23" text="i" onClick="showEquipPopup3();"/>
+
+                    <rectangle left="21" top="160" width="180" height="35" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+						<label vertTextAlign="center" left="57" width="140" height="35" text="Acessório" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+					</rectangle>
+					<formatLabelEdit left="199" top="165" width="240" height="25" field="acessorio"/>
+                    <image left="28" top="167" width="20" height="20" style="stretch" src="/imagens/Acessorio.png"/>
+                    <button name="acessorio" left="439" top="166" width="23" height="23" text="i" onClick="showEquipPopup4();"/>
+
+                    <rectangle left="21" top="200" width="180" height="35" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+                        <label vertTextAlign="center" left="65" width="140" height="35" text="Zênites" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+                    </rectangle>
+                    <image left="28" top="207" width="20" height="20" style="stretch" src="/imagens/Zenit.png"/>
+                    <formatIntEdit left="199" top="205" width="120" height="25" field="zenit" unit="z"/>
+
+                    <rectangle left="531" top="58" width="200" height="30" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="10" yradius="10">
+                        <label vertTextAlign="center" horzTextAlign="center" align="client" fontSize="16" text="Equipável" fontColor="White" fontFamily="Courier New"/>
+                    </rectangle>
+                    <rectangle left="490" top="87" width="282" height="126" color="transparent" strokeColor="White" strokeSize="1" cornerType="round" xradius="10" yradius="10">
+                        <layout left="0" top="5" width="400" height="35">
+                            <EquipBox text="Arma Corpo a Corpo Marcial" field="ProfCoC"/>
+                        </layout>
+
+                        <layout left="0" top="35" width="400" height="35">
+                            <EquipBox text="Arma à Distância Marcial" field="ProfAD"/>
+                        </layout>
+
+                        <layout left="0" top="65" width="400" height="35">
+                            <EquipBox text="Armadura Marcial" field="ProfArm"/>
+                        </layout>
+
+                        <layout left="0" top="95" width="400" height="35">
+                            <EquipBox text="Escudo Marcial" field="ProfEsc"/>
+                        </layout>
+                    </rectangle>
+                </rectangle>
+            </flowPart>
+
+			<flowLineBreak/>
+
+            <flowPart class="janela3" width="400" height="330">
+                <rectangle align="client" class="janela2">
+                <image align="client" style="stretch" src="/imagens/Janela1.png"/>
+                    <label left="98" top="5" width="200" height="25" text="Mochila" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+                    <button left="7" top="6" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclInventario:append();
+                        </event>
+                    </button>
+                    <recordList name="rclInventario" field="campoInventario" templateForm="frmInventario" left="6" top="35" width="382" height="275" layout="vertical" minQt="0"/>
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="400" height="330">
+                <rectangle align="client" class="janela2">
+                <image align="client" style="stretch" src="/imagens/Janela1.png"/>
+                    <label left="98" top="5" width="200" height="25" text="Ataques" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="White" fontFamily="Courier New"/>
+                    <button left="7" top="6" width="23" height="23" text="+">
+                        <event name="onClick">
+                            self.rclAtaques:append();
+                        </event>
+                    </button>
+                    <recordList name="rclAtaques" field="campoAtaques" templateForm="frmAtaques" left="11" top="35" width="382" height="275" layout="vertical" minQt="0"/>
+                </rectangle>
+            </flowPart>
+
+			<flowLineBreak/>
+
+            <flowPart class="janela3" width="800" height="220">
+                <rectangle align="client" class="janela2">
+                <image align="client" style="stretch" src="/imagens/Janela0.png"/>
+                	<label left="300" top="5" width="200" height="25" text="Anotações" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontColor="White" fontStyle="bold" fontFamily="Courier New"/>
+					<formatTextEdit left="7" top="31" width="786" height="182" field="anotacoes"/>
+                    <button name="info" left="768" top="5" width="25" height="25" text="⚙️" onClick="showInfoPopup();"/>
+				</rectangle>
+		    </flowPart>
+		</flowLayout>
+	</scrollBox>
+</rectangle>

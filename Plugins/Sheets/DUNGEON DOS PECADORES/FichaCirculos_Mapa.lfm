@@ -1,0 +1,1709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaCirculosMapa"
+      formType="sheetTemplate"
+      dataType="br.com.marcio.circulos.elementais"
+      title="Ficha - Círculos Elementais"
+      align="client"
+      theme="light"
+      margins="{left=0, top=0, right=0, bottom=0}">
+
+  <!-- FUNDO TOTAL -->
+  <rectangle name="bgTotal"
+             align="client"
+             color="#1F1F1F"
+             strokeColor="#1F1F1F"
+             strokeSize="0"/>
+
+  <!-- ÁREA DA FICHA -->
+  <layout name="lyQuadro"
+          align="client"
+          margins="{left=20, top=20, right=20, bottom=20}">
+
+    <!-- FUNDO PERGAMINHO -->
+    <rectangle name="bgFicha"
+               align="client"
+               color="#D6C6A3"
+               strokeColor="#D6C6A3"
+               strokeSize="0"/>
+
+    <!-- NUVENS -->
+    <image name="imgNuvemSE" src="images/NuvemSE.png" left="-100" top="-95" width="500" height="350" style="proportional"/>
+    <image name="imgNuvemSD" src="images/NuvemSD.png" left="900"  top="-80" width="500" height="350" style="proportional"/>
+    <image name="imgNuvemIE" src="images/NuvemIE.png" left="-10"  top="350" width="550" height="350" style="proportional"/>
+    <image name="imgNuvemID" src="images/NuvemID.png" left="950"  top="370" width="600" height="350" style="proportional"/>
+
+    <!-- TÍTULO -->
+    <image name="imgTitle"
+           src="images/TITTLE.png"
+           left="185"
+           top="-20"
+           width="1000"
+           height="350"
+           style="proportional"/>
+
+    <!-- DRAGÃO -->
+    <image name="imgDragon"
+           src="images/dragon.png"
+           right="1020"
+           top="-150"
+           width="520"
+           height="520"
+           style="proportional"/>
+
+    <!-- DOG -->
+    <image name="imgDog"
+           src="images/dog_samurai.png"
+           right="90"
+           top="350"
+           width="200"
+           height="400"
+           style="proportional"/>
+
+    <!-- ========================= -->
+    <!-- ABA ATRIBUTOS -->
+    <!-- ========================= -->
+    <layout name="abaAtributos"
+            align="client"
+            visible="true">
+
+      <layout name="menuAtributos"
+              left="440"
+              top="-10"
+              width="600"
+              height="500">
+        <button name="btnAttrSlayers" text="SLAYERS" left="34"  top="118" width="78"  height="23"/>
+        <button name="btnAttrBagagem" text="BAGAGEM" left="188" top="101" width="125" height="25"/>
+        <button name="btnAttrSocial"  text="SOCIAL"  left="388" top="118" width="78"  height="23"/>
+      </layout>
+
+      <!-- ========================= -->
+      <!-- TOPO (PLACEHOLDERS) -->
+      <!-- ========================= -->
+      <layout name="conteudoAtributos"
+              left="180"
+              top="35"
+              width="720"
+              height="150">
+
+        <!-- NOME -->
+        <rectangle name="bgNome" left="0" top="0" width="150" height="28" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit name="edtNome" left="6" top="4" width="138" height="20" field="nomeJogador" fontColor="#5F513E" transparent="true"/>
+        <label name="phNome" left="8" top="6" width="134" height="18" text="Clique e digite o nome" fontColor="#7A6A52"/>
+
+        <!-- IDADE -->
+        <rectangle name="bgIdade" left="160" top="0" width="60" height="28" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit name="edtIdade" left="160" top="4" width="60" height="20" field="idade" fontColor="#5F513E" transparent="true" horzTextAlign="center"/>
+        <label name="phIdade" left="163" top="6" width="54" height="18" text="Idade" fontColor="#7A6A52" horzTextAlign="center"/>
+
+        <!-- NÍVEL -->
+        <rectangle name="bgNivel" left="0" top="40" width="60" height="28" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit name="edtNivel" left="0" top="44" width="60" height="20" field="nivel" fontColor="#5F513E" transparent="true" horzTextAlign="center"/>
+        <label name="phNivel" left="3" top="46" width="54" height="18" text="Nível" fontColor="#7A6A52" horzTextAlign="center"/>
+
+        <!-- NACIONALIDADE -->
+        <rectangle name="bgNac" left="80" top="40" width="140" height="32" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit name="edtNac" left="86" top="44" width="128" height="24" field="nacionalidade" fontColor="#5F513E" transparent="true"/>
+        <label name="phNac" left="88" top="48" width="128" height="18" text="Reino de Origem" fontColor="#7A6A52"/>
+
+        <!-- RAÇA -->
+        <rectangle name="bgRaca" left="0" top="80" width="220" height="28" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <comboBox name="cbRaca"
+                  left="0" top="80" width="220" height="28"
+                  field="raca" transparent="true" fontColor="#5F513E"
+                  items="{'Humano','Elfo','Anão','Gnomo','Sereiano','Orc','Goblin','Draconiano','Homem-fera','Morto-vivo'}"/>
+        <label name="phRaca" left="8" top="86" width="205" height="18" text="Raça" fontColor="#7A6A52"/>
+
+        <!-- CLASSE (embaixo da raça) -->
+        <rectangle name="bgClasse" left="0" top="115" width="220" height="28" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <comboBox name="cbClasse"
+                  left="0" top="115" width="220" height="28"
+                  field="classe" transparent="true" fontColor="#5F513E"
+                  items="{'Guerreiro','Ladino','Arqueiro','Conjurador','Guardião','Andarilho'}"/>
+        <label name="phClasse" left="8" top="121" width="205" height="18" text="Classe" fontColor="#7A6A52"/>
+
+      </layout>
+
+      <!-- ========================= -->
+      <!-- RECURSOS (FIXO NA ESQUERDA ENTRE AS NUVENS) -->
+      <!-- ========================= -->
+      <layout name="blocoRecursos"
+              left="20"
+              top="300"
+              width="260"
+              height="130">
+
+        <label left="0" top="0" width="260" height="18" text="Recursos (Rolagem + Total)" fontColor="#2B2418"/>
+
+        <!-- HP -->
+        <label left="0" top="25" width="80" height="18" text="HP (1d20)" fontColor="#2B2418"/>
+        <rectangle left="85" top="21" width="55" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="85" top="21" width="55" height="26" field="hpRoll" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        <label left="145" top="25" width="45" height="18" text="Total" fontColor="#2B2418"/>
+        <rectangle left="190" top="21" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="190" top="21" width="70" height="26" field="hpTotal" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <!-- MP -->
+        <label left="0" top="55" width="80" height="18" text="MP (1d10)" fontColor="#2B2418"/>
+        <rectangle left="85" top="51" width="55" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="85" top="51" width="55" height="26" field="mpRoll" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        <label left="145" top="55" width="45" height="18" text="Total" fontColor="#2B2418"/>
+        <rectangle left="190" top="51" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="190" top="51" width="70" height="26" field="mpTotal" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <!-- SAN -->
+        <label left="0" top="85" width="80" height="18" text="SAN (1d15)" fontColor="#2B2418"/>
+        <rectangle left="85" top="81" width="55" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="85" top="81" width="55" height="26" field="sanRoll" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        <label left="145" top="85" width="45" height="18" text="Total" fontColor="#2B2418"/>
+        <rectangle left="190" top="81" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="190" top="81" width="70" height="26" field="sanTotal" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+      </layout>
+
+      <!-- ========================= -->
+      <!-- COMBATE (AUTO) -->
+      <!-- ========================= -->
+      <layout name="blocoCombate"
+              left="1050"
+              top="273"
+              width="1000"
+              height="1000">
+
+        <label left="0" top="0" width="260" height="18" text="Combate" fontColor="#2B2418"/>
+
+        <label left="0" top="28" width="140" height="18" text="Acerto (Melee)" fontColor="#2B2418"/>
+        <rectangle left="160" top="24" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="160" top="24" width="70" height="26" field="hitMelee" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <label left="0" top="58" width="140" height="18" text="Acerto (Dist.)" fontColor="#2B2418"/>
+        <rectangle left="160" top="54" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="160" top="54" width="70" height="26" field="hitDist" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <label left="0" top="88" width="140" height="18" text="Acerto (Mágico)" fontColor="#2B2418"/>
+        <rectangle left="160" top="84" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="160" top="84" width="70" height="26" field="hitMag" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <label left="0" top="118" width="140" height="18" text="Esquiva" fontColor="#2B2418"/>
+        <rectangle left="160" top="114" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="160" top="114" width="70" height="26" field="esquiva" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <label left="0" top="148" width="140" height="18" text="Res. Física" fontColor="#2B2418"/>
+        <rectangle left="160" top="144" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="160" top="144" width="70" height="26" field="resFis" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <label left="0" top="178" width="140" height="18" text="Res. Mágica" fontColor="#2B2418"/>
+        <rectangle left="160" top="174" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="160" top="174" width="70" height="26" field="resMag" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <!-- DANO PURO (auto) -->
+        <label left="0" top="208" width="140" height="18" text="Dano Puro" fontColor="#2B2418"/>
+        <rectangle left="160" top="204" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="160" top="204" width="70" height="26" field="danoBase" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+      </layout>
+
+      <!-- ========================= -->
+      <!-- CALCULADORA (CENTRALIZADA) -->
+      <!-- ========================= -->
+      <layout name="calcAtributos"
+              left="320"
+              top="210"
+              width="900"
+              height="560">
+
+        <!-- Cabeçalho -->
+        <layout left="0" top="60" width="900" height="24">
+          <label left="0"   top="3" width="150" height="18" text="Atributo" fontColor="#2B2418"/>
+          <label left="160" top="3" width="70"  height="18" text="Base"     fontColor="#2B2418"/>
+          <label left="240" top="3" width="80"  height="18" text="Raça"     fontColor="#2B2418"/>
+          <label left="330" top="3" width="80"  height="18" text="Classe"   fontColor="#2B2418"/>
+          <label left="420" top="3" width="80"  height="18" text="Extra"    fontColor="#2B2418"/>
+          <label left="510" top="3" width="80"  height="18" text="Total"    fontColor="#2B2418"/>
+        </layout>
+
+        <!-- FOR -->
+        <layout left="0" top="88" width="900" height="28">
+          <label left="0" top="6" width="150" height="18" text="Força (For)" fontColor="#2B2418"/>
+          <rectangle left="160" top="1" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="160" top="1" width="70" height="26" field="baseFor" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="240" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit name="edtRaceFor" left="240" top="1" width="80" height="26" field="raceFor" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="330" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="330" top="1" width="80" height="26" field="classFor" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="420" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="420" top="1" width="80" height="26" field="extraFor" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="510" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="510" top="1" width="80" height="26" field="totalFor" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        </layout>
+
+        <!-- DES -->
+        <layout left="0" top="118" width="900" height="28">
+          <label left="0" top="6" width="150" height="18" text="Destreza (Des)" fontColor="#2B2418"/>
+          <rectangle left="160" top="1" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="160" top="1" width="70" height="26" field="baseDes" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="240" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit name="edtRaceDes" left="240" top="1" width="80" height="26" field="raceDes" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="330" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="330" top="1" width="80" height="26" field="classDes" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="420" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="420" top="1" width="80" height="26" field="extraDes" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="510" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="510" top="1" width="80" height="26" field="totalDes" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        </layout>
+
+        <!-- AGI -->
+        <layout left="0" top="148" width="900" height="28">
+          <label left="0" top="6" width="150" height="18" text="Agilidade (Agi)" fontColor="#2B2418"/>
+          <rectangle left="160" top="1" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="160" top="1" width="70" height="26" field="baseAgi" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="240" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit name="edtRaceAgi" left="240" top="1" width="80" height="26" field="raceAgi" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="330" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="330" top="1" width="80" height="26" field="classAgi" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="420" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="420" top="1" width="80" height="26" field="extraAgi" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="510" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="510" top="1" width="80" height="26" field="totalAgi" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        </layout>
+
+        <!-- CON -->
+        <layout left="0" top="178" width="900" height="28">
+          <label left="0" top="6" width="150" height="18" text="Constituição (Con)" fontColor="#2B2418"/>
+          <rectangle left="160" top="1" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="160" top="1" width="70" height="26" field="baseCon" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="240" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit name="edtRaceCon" left="240" top="1" width="80" height="26" field="raceCon" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="330" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="330" top="1" width="80" height="26" field="classCon" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="420" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="420" top="1" width="80" height="26" field="extraCon" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="510" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="510" top="1" width="80" height="26" field="totalCon" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        </layout>
+
+        <!-- INT -->
+        <layout left="0" top="208" width="900" height="28">
+          <label left="0" top="6" width="150" height="18" text="Inteligência (Int)" fontColor="#2B2418"/>
+          <rectangle left="160" top="1" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="160" top="1" width="70" height="26" field="baseInt" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="240" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit name="edtRaceInt" left="240" top="1" width="80" height="26" field="raceInt" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="330" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="330" top="1" width="80" height="26" field="classInt" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="420" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="420" top="1" width="80" height="26" field="extraInt" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="510" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="510" top="1" width="80" height="26" field="totalInt" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        </layout>
+
+        <!-- SAB -->
+        <layout left="0" top="238" width="900" height="28">
+          <label left="0" top="6" width="150" height="18" text="Sabedoria (Sab)" fontColor="#2B2418"/>
+          <rectangle left="160" top="1" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="160" top="1" width="70" height="26" field="baseSab" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="240" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit name="edtRaceSab" left="240" top="1" width="80" height="26" field="raceSab" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="330" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="330" top="1" width="80" height="26" field="classSab" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="420" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="420" top="1" width="80" height="26" field="extraSab" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="510" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="510" top="1" width="80" height="26" field="totalSab" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        </layout>
+
+        <!-- COJ -->
+        <layout left="0" top="268" width="900" height="28">
+          <label left="0" top="6" width="150" height="18" text="Conjuração (Coj)" fontColor="#2B2418"/>
+          <rectangle left="160" top="1" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="160" top="1" width="70" height="26" field="baseCoj" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="240" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit name="edtRaceCoj" left="240" top="1" width="80" height="26" field="raceCoj" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="330" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="330" top="1" width="80" height="26" field="classCoj" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="420" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="420" top="1" width="80" height="26" field="extraCoj" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="510" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="510" top="1" width="80" height="26" field="totalCoj" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        </layout>
+
+        <!-- CAR -->
+        <layout left="0" top="298" width="900" height="28">
+          <label left="0" top="6" width="150" height="18" text="Carisma (Car)" fontColor="#2B2418"/>
+          <rectangle left="160" top="1" width="70" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="160" top="1" width="70" height="26" field="baseCar" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="240" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit name="edtRaceCar" left="240" top="1" width="80" height="26" field="raceCar" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="330" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="330" top="1" width="80" height="26" field="classCar" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="420" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="420" top="1" width="80" height="26" field="extraCar" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <rectangle left="510" top="1" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="510" top="1" width="80" height="26" field="totalCar" readOnly="true"
+                transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        </layout>
+
+        <!-- SOMATÓRIO -->
+        <layout name="somatorioAbaixoTotal" left="0" top="330" width="900" height="34">
+          <label left="440" top="8" width="110" height="20" text="Somatório" fontColor="#2B2418"/>
+          <rectangle left="510" top="4" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="510" top="4" width="80" height="26" field="atributosSoma" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        </layout>
+
+        <!-- BARRA INFERIOR -->
+        <layout name="barraInferior" left="165" top="380" width="900" height="34">
+
+          <label left="0" top="8" width="40" height="20" text="Pts" fontColor="#2B2418"/>
+          <rectangle left="40" top="4" width="60" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="40" top="4" width="60" height="26" field="pontosTotal" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <label left="120" top="8" width="55" height="20" text="Gastos" fontColor="#2B2418"/>
+          <rectangle left="175" top="4" width="60" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="175" top="4" width="60" height="26" field="pontosGastos" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+          <label left="255" top="8" width="55" height="20" text="Restam" fontColor="#2B2418"/>
+          <rectangle left="315" top="4" width="60" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+          <edit left="315" top="4" width="60" height="26" field="pontosRestantes" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        </layout>
+
+      </layout> <!-- /calcAtributos -->
+
+      <!-- ========================= -->
+      <!-- LÓGICA DA CALCULADORA -->
+      <!-- ========================= -->
+      <dataLink fields="{'nivel','raca','classe',
+                        'baseFor','baseDes','baseAgi','baseCon','baseInt','baseSab','baseCoj','baseCar',
+                        'raceFor','raceDes','raceAgi','raceCon','raceInt','raceSab','raceCoj','raceCar',
+                        'extraFor','extraDes','extraAgi','extraCon','extraInt','extraSab','extraCoj','extraCar',
+                        'hpRoll','mpRoll','sanRoll',
+                        'bagPenEsqPct'}">
+        <event name="onChange">
+          local function n(v) return tonumber(v) or 0 end
+          local function clamp(v, mn, mx)
+            if v &lt; mn then return mn end
+            if v &gt; mx then return mx end
+            return v
+          end
+
+          if sheet._budgetGuard == true then
+            sheet._budgetGuard = false
+            return
+          end
+
+          local nivel = clamp(n(sheet.nivel), 1, 30)
+          sheet.nivel = nivel
+
+          local pontosTotal = 12 + (math.floor((nivel - 1) / 3) * 3)
+          sheet.pontosTotal = pontosTotal
+
+          local function clampBase(v)
+            v = clamp(v, 0, 99)
+            if nivel == 1 then v = clamp(v, 0, 3) end
+            return v
+          end
+          local function clampExtra(v) return clamp(v, 0, 999) end
+
+          sheet.baseFor = clampBase(n(sheet.baseFor))
+          sheet.baseDes = clampBase(n(sheet.baseDes))
+          sheet.baseAgi = clampBase(n(sheet.baseAgi))
+          sheet.baseCon = clampBase(n(sheet.baseCon))
+          sheet.baseInt = clampBase(n(sheet.baseInt))
+          sheet.baseSab = clampBase(n(sheet.baseSab))
+          sheet.baseCoj = clampBase(n(sheet.baseCoj))
+          sheet.baseCar = clampBase(n(sheet.baseCar))
+
+          -- EXTRA livre (não conta em gastos)
+          sheet.extraFor = clampExtra(n(sheet.extraFor))
+          sheet.extraDes = clampExtra(n(sheet.extraDes))
+          sheet.extraAgi = clampExtra(n(sheet.extraAgi))
+          sheet.extraCon = clampExtra(n(sheet.extraCon))
+          sheet.extraInt = clampExtra(n(sheet.extraInt))
+          sheet.extraSab = clampExtra(n(sheet.extraSab))
+          sheet.extraCoj = clampExtra(n(sheet.extraCoj))
+          sheet.extraCar = clampExtra(n(sheet.extraCar))
+
+          -- Gastos = SÓ BASE (extra não entra)
+          local gastos =
+            n(sheet.baseFor)+n(sheet.baseDes)+n(sheet.baseAgi)+n(sheet.baseCon)+
+            n(sheet.baseInt)+n(sheet.baseSab)+n(sheet.baseCoj)+n(sheet.baseCar)
+
+          sheet.pontosGastos = gastos
+          sheet.pontosRestantes = pontosTotal - gastos
+
+          local function saveSnapshot()
+            sheet._pBaseFor = sheet.baseFor; sheet._pBaseDes = sheet.baseDes; sheet._pBaseAgi = sheet.baseAgi; sheet._pBaseCon = sheet.baseCon;
+            sheet._pBaseInt = sheet.baseInt; sheet._pBaseSab = sheet.baseSab; sheet._pBaseCoj = sheet.baseCoj; sheet._pBaseCar = sheet.baseCar;
+
+            sheet._pExtraFor = sheet.extraFor; sheet._pExtraDes = sheet.extraDes; sheet._pExtraAgi = sheet.extraAgi; sheet._pExtraCon = sheet.extraCon;
+            sheet._pExtraInt = sheet.extraInt; sheet._pExtraSab = sheet.extraSab; sheet._pExtraCoj = sheet.extraCoj; sheet._pExtraCar = sheet.extraCar;
+          end
+
+          local function restoreSnapshot()
+            if sheet._pBaseFor == nil then return end
+            sheet._budgetGuard = true
+
+            sheet.baseFor = n(sheet._pBaseFor); sheet.baseDes = n(sheet._pBaseDes); sheet.baseAgi = n(sheet._pBaseAgi); sheet.baseCon = n(sheet._pBaseCon);
+            sheet.baseInt = n(sheet._pBaseInt); sheet.baseSab = n(sheet._pBaseSab); sheet.baseCoj = n(sheet._pBaseCoj); sheet.baseCar = n(sheet._pBaseCar);
+
+            sheet.extraFor = n(sheet._pExtraFor); sheet.extraDes = n(sheet._pExtraDes); sheet.extraAgi = n(sheet._pExtraAgi); sheet.extraCon = n(sheet._pExtraCon);
+            sheet.extraInt = n(sheet._pExtraInt); sheet.extraSab = n(sheet._pExtraSab); sheet.extraCoj = n(sheet._pExtraCoj); sheet.extraCar = n(sheet._pExtraCar);
+          end
+
+          if sheet.pontosRestantes &lt; 0 then
+            sheet.pontosAviso = "Limite excedido: revertendo para o último estado válido."
+            restoreSnapshot()
+            return
+          else
+            sheet.pontosAviso = "OK"
+            saveSnapshot()
+          end
+
+          -- ===== BÔNUS DE RAÇA =====
+          local r = sheet.raca or ""
+
+          if r ~= "Humano" then
+            sheet.humanoInfo = ""
+
+            sheet.raceFor=0; sheet.raceDes=0; sheet.raceAgi=0; sheet.raceCon=0;
+            sheet.raceInt=0; sheet.raceSab=0; sheet.raceCoj=0; sheet.raceCar=0;
+
+            if r == "Elfo" then
+              sheet.raceDes=2; sheet.raceAgi=1; sheet.raceCoj=1; sheet.raceFor=-1; sheet.raceCon=-1;
+            elseif r == "Anão" then
+              sheet.raceCon=2; sheet.raceFor=1; sheet.raceSab=1; sheet.raceAgi=-1; sheet.raceDes=-1;
+            elseif r == "Gnomo" then
+              sheet.raceInt=2; sheet.raceCoj=1; sheet.raceDes=1; sheet.raceFor=-1; sheet.raceCon=-1;
+            elseif r == "Sereiano" then
+              sheet.raceAgi=2; sheet.raceCon=1; sheet.raceSab=1; sheet.raceFor=-1; sheet.raceInt=-1;
+            elseif r == "Orc" then
+              sheet.raceFor=2; sheet.raceCon=1; sheet.raceAgi=1; sheet.raceInt=-1; sheet.raceSab=-1;
+            elseif r == "Goblin" then
+              sheet.raceAgi=2; sheet.raceDes=1; sheet.raceInt=1; sheet.raceFor=-1; sheet.raceCon=-1;
+            elseif r == "Draconiano" then
+              sheet.raceFor=2; sheet.raceCon=1; sheet.raceCoj=1; sheet.raceAgi=-1; sheet.raceDes=-1;
+            elseif r == "Homem-fera" then
+              sheet.raceAgi=2; sheet.raceFor=1; sheet.raceSab=1; sheet.raceInt=-1; sheet.raceCar=-1;
+            elseif r == "Morto-vivo" then
+              sheet.raceCon=2; sheet.raceCoj=1; sheet.raceSab=1; sheet.raceAgi=-1; sheet.raceCar=-1;
+            end
+
+          else
+            sheet.humanoInfo = "Humano: distribua 3 pontos na coluna Raça (somatório máximo 3)."
+
+            sheet.raceFor = clamp(n(sheet.raceFor), 0, 3)
+            sheet.raceDes = clamp(n(sheet.raceDes), 0, 3)
+            sheet.raceAgi = clamp(n(sheet.raceAgi), 0, 3)
+            sheet.raceCon = clamp(n(sheet.raceCon), 0, 3)
+            sheet.raceInt = clamp(n(sheet.raceInt), 0, 3)
+            sheet.raceSab = clamp(n(sheet.raceSab), 0, 3)
+            sheet.raceCoj = clamp(n(sheet.raceCoj), 0, 3)
+            sheet.raceCar = clamp(n(sheet.raceCar), 0, 3)
+
+            local somaHum =
+              n(sheet.raceFor)+n(sheet.raceDes)+n(sheet.raceAgi)+n(sheet.raceCon)+
+              n(sheet.raceInt)+n(sheet.raceSab)+n(sheet.raceCoj)+n(sheet.raceCar)
+
+            local function saveRaceSnapshot()
+              sheet._rFor=sheet.raceFor; sheet._rDes=sheet.raceDes; sheet._rAgi=sheet.raceAgi; sheet._rCon=sheet.raceCon;
+              sheet._rInt=sheet.raceInt; sheet._rSab=sheet.raceSab; sheet._rCoj=sheet.raceCoj; sheet._rCar=sheet.raceCar;
+            end
+
+            local function restoreRaceSnapshot()
+              if sheet._rFor == nil then return end
+              sheet._budgetGuard = true
+              sheet.raceFor=n(sheet._rFor); sheet.raceDes=n(sheet._rDes); sheet.raceAgi=n(sheet._rAgi); sheet.raceCon=n(sheet._rCon);
+              sheet.raceInt=n(sheet._rInt); sheet.raceSab=n(sheet._rSab); sheet.raceCoj=n(sheet._rCoj); sheet.raceCar=n(sheet._rCar);
+            end
+
+            if somaHum &gt; 3 then
+              sheet.humanoInfo = "Humano: somatório passou de 3 (" .. tostring(somaHum) .. "/3). Revertendo."
+              restoreRaceSnapshot()
+              return
+            else
+              if somaHum ~= 3 then
+                sheet.humanoInfo = "Humano: distribua 3 pontos na coluna Raça (AGORA: " .. tostring(somaHum) .. "/3)."
+              end
+              saveRaceSnapshot()
+            end
+          end
+
+          -- ===== BÔNUS DE CLASSE (fixo) =====
+          sheet.classFor=0; sheet.classDes=0; sheet.classAgi=0; sheet.classCon=0;
+          sheet.classInt=0; sheet.classSab=0; sheet.classCoj=0; sheet.classCar=0;
+
+          local c = sheet.classe or ""
+          if c == "Guerreiro" then
+            sheet.classFor=2; sheet.classDes=-1;
+          elseif c == "Ladino" then
+            sheet.classAgi=2; sheet.classCon=-1;
+          elseif c == "Arqueiro" then
+            sheet.classDes=2; sheet.classCar=-1;
+          elseif c == "Conjurador" then
+            sheet.classCoj=2; sheet.classCon=-1;
+          elseif c == "Guardião" then
+            sheet.classCon=2; sheet.classAgi=-1;
+          elseif c == "Andarilho" then
+            sheet.classSab=2; sheet.classCar=-1;
+          end
+
+          -- ===== Totais =====
+          sheet.totalFor = n(sheet.baseFor) + n(sheet.raceFor) + n(sheet.classFor) + n(sheet.extraFor)
+          sheet.totalDes = n(sheet.baseDes) + n(sheet.raceDes) + n(sheet.classDes) + n(sheet.extraDes)
+          sheet.totalAgi = n(sheet.baseAgi) + n(sheet.raceAgi) + n(sheet.classAgi) + n(sheet.extraAgi)
+          sheet.totalCon = n(sheet.baseCon) + n(sheet.raceCon) + n(sheet.classCon) + n(sheet.extraCon)
+          sheet.totalInt = n(sheet.baseInt) + n(sheet.raceInt) + n(sheet.classInt) + n(sheet.extraInt)
+          sheet.totalSab = n(sheet.baseSab) + n(sheet.raceSab) + n(sheet.classSab) + n(sheet.extraSab)
+          sheet.totalCoj = n(sheet.baseCoj) + n(sheet.raceCoj) + n(sheet.classCoj) + n(sheet.extraCoj)
+          sheet.totalCar = n(sheet.baseCar) + n(sheet.raceCar) + n(sheet.classCar) + n(sheet.extraCar)
+
+          sheet.atributosSoma =
+            n(sheet.totalFor)+n(sheet.totalDes)+n(sheet.totalAgi)+n(sheet.totalCon)+
+            n(sheet.totalInt)+n(sheet.totalSab)+n(sheet.totalCoj)+n(sheet.totalCar)
+
+          -- ===== COMBATE (auto) - AJUSTADO =====
+          local ForT = n(sheet.totalFor)
+          local DesT = n(sheet.totalDes)
+          local AgiT = n(sheet.totalAgi)
+          local ConT = n(sheet.totalCon)
+          local IntT = n(sheet.totalInt)
+          local SabT = n(sheet.totalSab)
+          local CojT = n(sheet.totalCoj)
+
+          -- Acertos (sempre média de 2 atributos, arredonda pra baixo)
+          sheet.hitMelee = math.floor((ForT + AgiT) / 2)
+          sheet.hitDist  = math.floor((DesT + AgiT) / 2)
+          sheet.hitMag   = math.floor((CojT + IntT) / 2)
+
+          -- Esquiva base (SEM +10) e NÃO igual ao hitDist
+          -- (puxa mais para Agilidade)
+          local esquivaBase = math.floor((AgiT * 2 + DesT) / 3)
+
+          -- Penalidade de bagagem (regra final): pen% = floor(carga% * 50)
+          -- Aqui já vem pronta do sistema de bagagem em bagPenEsqPct (inteiro)
+          local penEsqPct = math.floor(n(sheet.bagPenEsqPct))
+
+          local fatorEsq = 1 - (penEsqPct / 100)
+          if fatorEsq &lt; 0 then fatorEsq = 0 end
+
+          -- Esquiva final (arredonda pra baixo)
+          sheet.esquiva = math.floor(esquivaBase * fatorEsq)
+
+          -- Resistências (SEM +10) e com fórmula diferente do acerto mágico
+          sheet.resFis = math.floor(ConT + (ForT / 2))
+          sheet.resMag = math.floor(SabT + (CojT / 2))
+
+          -- Dano Puro (maior entre bases físicas/mágicas)
+          local dM = math.floor(ForT / 2)
+          local dD = math.floor(DesT / 2)
+          local dG = math.floor(CojT / 2)
+          sheet.danoBase = math.max(dM, dD, dG)
+
+          -- ===== RECURSOS (Rolagem + atributo) =====
+          sheet.hpTotal  = n(sheet.hpRoll)  + 10 + n(sheet.totalCon)
+          sheet.mpTotal  = n(sheet.mpRoll)  + 5  + n(sheet.totalCoj)
+          sheet.sanTotal = n(sheet.sanRoll) + 5  + n(sheet.totalSab)
+        </event>
+      </dataLink>
+
+    </layout> <!-- /abaAtributos -->
+
+    <!-- ========================= -->
+    <!-- ABA SLAYERS -->
+    <!-- ========================= -->
+    <layout name="abaSlayers" align="client" visible="false">
+      <layout name="menuSlayers" left="440" top="-10" width="600" height="500">
+        <button name="btnSlayersAttr" text="ATRIBUTOS" left="34" top="118" width="78" height="23"/>
+        <button name="btnSlayersBag"  text="BAGAGEM"   left="188" top="101" width="125" height="25"/>
+        <button name="btnSlayersSoc"  text="SOCIAL"    left="388" top="118" width="78" height="23"/>
+      </layout>
+
+      <layout name="slayersConteudo"
+              left="280"
+              top="255"
+              width="900"
+              height="500">
+
+        <!-- Seletor -->
+        <label left="0" top="0" width="360" height="18"
+              text="Elemento do Slayer (único no mundo)"
+              fontColor="#2B2418"/>
+
+        <rectangle left="0" top="22" width="360" height="26"
+                  color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+
+        <comboBox name="cbSlayerElemento"
+                  left="0" top="22" width="360" height="26"
+                  field="slayerElemento"
+                  transparent="true"
+                  fontColor="#5F513E"
+                  items="{'Fogo','Água','Gelo','Ar','Terra','Raio','Metal','Madeira','Sombra','Luz','Sangue','Éter'}"/>
+
+        <label left="375" top="26" width="520" height="18"
+              text="Escolha acima para preencher as habilidades (somente leitura)."
+              fontColor="#2B2418"/>
+
+        <!-- N1 -->
+        <rectangle left="0" top="56" width="410" height="92"
+                  color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+
+        <edit name="edtSlayN1Titulo"
+              left="10" top="60" width="390" height="20"
+              field="slayN1Titulo"
+              readOnly="true"
+              transparent="true"
+              horzTextAlign="center"
+              fontSize="12"
+              fontColor="#2B2418"/>
+
+        <textEditor name="txtSlayN1Desc"
+                    left="10" top="80" width="390" height="66"
+                    field="slayN1Desc"
+                    readOnly="true"
+                    transparent="true"
+                    fontSize="11"
+                    fontColor="#2B2418"/>
+
+        <!-- N5 -->
+        <rectangle left="440" top="56" width="410" height="92"
+                  color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+
+        <edit name="edtSlayN5Titulo"
+              left="450" top="60" width="390" height="20"
+              field="slayN5Titulo"
+              readOnly="true"
+              transparent="true"
+              horzTextAlign="center"
+              fontSize="12"
+              fontColor="#2B2418"/>
+
+        <textEditor name="txtSlayN5Desc"
+                    left="450" top="80" width="390" height="66"
+                    field="slayN5Desc"
+                    readOnly="true"
+                    transparent="true"
+                    fontSize="11"
+                    fontColor="#2B2418"/>
+
+        <!-- N10 -->
+        <rectangle left="0" top="162" width="410" height="92"
+                  color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+
+        <edit name="edtSlayN10Titulo"
+              left="10" top="166" width="390" height="20"
+              field="slayN10Titulo"
+              readOnly="true"
+              transparent="true"
+              horzTextAlign="center"
+              fontSize="12"
+              fontColor="#2B2418"/>
+
+        <textEditor name="txtSlayN10Desc"
+                    left="10" top="186" width="390" height="66"
+                    field="slayN10Desc"
+                    readOnly="true"
+                    transparent="true"
+                    fontSize="11"
+                    fontColor="#2B2418"/>
+
+        <!-- N15 -->
+        <rectangle left="440" top="162" width="410" height="92"
+                  color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+
+        <edit name="edtSlayN15Titulo"
+              left="450" top="166" width="390" height="20"
+              field="slayN15Titulo"
+              readOnly="true"
+              transparent="true"
+              horzTextAlign="center"
+              fontSize="12"
+              fontColor="#2B2418"/>
+
+        <textEditor name="txtSlayN15Desc"
+                    left="450" top="186" width="390" height="66"
+                    field="slayN15Desc"
+                    readOnly="true"
+                    transparent="true"
+                    fontSize="11"
+                    fontColor="#2B2418"/>
+
+        <!-- N20 -->
+        <rectangle left="220" top="272" width="410" height="110"
+                  color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+
+        <edit name="edtSlayN20Titulo"
+              left="230" top="276" width="390" height="20"
+              field="slayN20Titulo"
+              readOnly="true"
+              transparent="true"
+              horzTextAlign="center"
+              fontSize="12"
+              fontColor="#2B2418"/>
+
+        <textEditor name="txtSlayN20Desc"
+                    left="230" top="296" width="390" height="84"
+                    field="slayN20Desc"
+                    readOnly="true"
+                    transparent="true"
+                    fontSize="11"
+                    fontColor="#2B2418"/>
+
+      </layout>
+
+      <!-- PREENCHIMENTO AUTOMÁTICO AO TROCAR slayerElemento -->
+      <dataLink field="slayerElemento">
+        <event name="onChange">
+        if sheet == nil then return end
+
+        local function J(...)
+          local t = {...}
+          return table.concat(t)
+        end
+
+        local el = tostring(sheet.slayerElemento or "")
+
+        local function setAll(t1,d1,t5,d5,t10,d10,t15,d15,t20,d20)
+          sheet.slayN1Titulo  = t1  or ""
+          sheet.slayN1Desc    = d1  or ""
+          sheet.slayN5Titulo  = t5  or ""
+          sheet.slayN5Desc    = d5  or ""
+          sheet.slayN10Titulo = t10 or ""
+          sheet.slayN10Desc   = d10 or ""
+          sheet.slayN15Titulo = t15 or ""
+          sheet.slayN15Desc   = d15 or ""
+          sheet.slayN20Titulo = t20 or ""
+          sheet.slayN20Desc   = d20 or ""
+        end
+
+        local DB = {}
+
+        -- =========================
+        -- FOGO
+        -- =========================
+        DB["Fogo"] = {
+          "Nível 1 — Faísca Predadora",
+          "MP: 6\nAlcance: 4m\nDano: danoBase + 1d6\nSAN: 1d2\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: chama direta em 1 alvo.",
+
+          "Nível 5 — Lança Ígnea",
+          "MP: 10\nAlcance: 6m\nDano: danoBase + 1d8\nSAN: 1d3\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: dano + queimadura (1d6/turno por 2 turnos).",
+
+          "Nível 10 — Selo da Combustão Total",
+          "MP: 14\nAlcance: 6m\nSAN: 1d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: por 4 turnos, dano de Fogo recebido pelo alvo é DOBRADO.",
+
+          "Nível 15 — Forno Carmesim",
+          "MP: 18\nÁrea: raio 5m\nDano: danoBase + 3d6\nSAN: 1d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: calor massivo em área (pressão contínua).",
+
+          "Nível 20 — Sol Negro (Domínio)",
+          "MP: 30\nÁrea: raio 12m\nDano: danoBase + 6d10\nSAN: 3d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: tempestade solar devastadora na área."
+        }
+
+        -- =========================
+        -- ÁGUA
+        -- =========================
+        DB["Água"] = {
+          "Nível 1 — Lâminas da Maré Cortante",
+          "MP: 8\nAlcance: 4m\nDano: danoBase + 1d6\nSAN: 1d2\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: lâminas d’água cortam 1 alvo.",
+
+          "Nível 5 — Impacto Hidráulico",
+          "MP: 10\nAlcance: 5m\nDano: danoBase + 1d8\nSAN: 1d3\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: impacto esmagador (empurra/derruba a critério).",
+
+          "Nível 10 — Cápsula Abissal",
+          "MP: 13\nAlcance: 6m\nDano: danoBase + 2d6\nSAN: 1d4\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: aprisiona em redemoinho por 1 turno.",
+
+          "Nível 15 — Dilúvio Triturador",
+          "MP: 18\nAlcance: 6m\nDano: danoBase + 3d6\nSAN: 1d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: esmagamento por massas d’água (até 3 alvos).",
+
+          "Nível 20 — Tsunami da Extinção (Domínio)",
+          "MP: 30\nÁrea: campo inteiro\nDano: danoBase + 6d10\nSAN: 3d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: onda colossal varre todo o combate."
+        }
+
+        -- =========================
+        -- GELO
+        -- =========================
+        DB["Gelo"] = {
+          "Nível 1 — Lança Polar de Massa",
+          "MP: 6\nAlcance: 6m\nDano: danoBase + 1d8\nSAN: 1d2\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: perfura e prepara bônus de Gelo no próximo acerto.",
+
+          "Nível 5 — Congelamento Instantâneo",
+          "MP: 10\nAlcance: 4m\nDano: danoBase + 2d6\nSAN: 1d3\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: congela o alvo por 1 turno.",
+
+          "Nível 10 — Prisão Polar Total",
+          "MP: 14\nAlcance: 6m\nDano: danoBase + 3d6 por turno (2)\nSAN: 1d5\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: selamento em gelo (alvo não age).",
+
+          "Nível 15 — Tempestade de Cristais Glaciais",
+          "MP: 18\nÁrea: raio 6m\nDano: danoBase + 5d6\nSAN: 1d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: lâminas de gelo em área (dano pesado).",
+
+          "Nível 20 — Idade do Gelo Absoluto (Domínio)",
+          "MP: 30\nÁrea: raio 12m\nDano: danoBase + 8d10\nSAN: 3d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: congelamento absoluto na área."
+        }
+
+        -- =========================
+        -- AR
+        -- =========================
+        DB["Ar"] = {
+          "Nível 1 — Corte Invisível",
+          "MP: 5\nAlcance: 6m\nDano: danoBase + 1d8\nSAN: 1d2\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: lâmina de vento rápida corta 1 alvo.",
+
+          "Nível 5 — Passo do Vácuo",
+          "MP: 7\nDeslocamento: 3m\nSAN: 1d3\nEfeito: reposiciona e melhora esquiva por 2 turnos.",
+
+          "Nível 10 — Câmara de Pressão",
+          "MP: 11\nAlcance: 6m\nDano: danoBase + 2d6 por turno (2)\nSAN: 1d4\nTeste: (1d10 + Resistência Física) vs (1d10 + Conjuração)\nEfeito: compressão sufocante (esmagamento contínuo).",
+
+          "Nível 15 — Furacão Condensado",
+          "MP: 16\nÁrea: linha 5m\nDano: danoBase + 4d6\nSAN: 1d6\nTeste: (1d10 + Resistência Física) vs (1d10 + Conjuração)\nEfeito: rajada destrutiva em linha.",
+
+          "Nível 20 — Cataclismo dos Céus (Domínio)",
+          "MP: 30\nÁrea: raio 12m\nDano: danoBase + 4d10 por turno (5)\nSAN: 3d6\nTeste: (1d10 + Resistência Física) vs (1d10 + Conjuração)\nEfeito: furacão colossal contínuo na área."
+        }
+
+        -- =========================
+        -- TERRA
+        -- =========================
+        DB["Terra"] = {
+          "Nível 1 — Martelo de Rocha",
+          "MP: 6\nAlcance: 6m\nDano: danoBase + 1d8\nSAN: 1d2\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: impacto bruto de pedra em 1 alvo.",
+
+          "Nível 5 — Armadura do Titã",
+          "MP: 9\nAlcance: pessoal\nSAN: 1d3\nEfeito: +6 Resistência Física por 3 turnos.",
+
+          "Nível 10 — Prisão de Pedra Viva",
+          "MP: 13\nAlcance: 6m\nDano: danoBase + 2d6 por turno (2)\nSAN: 1d4\nTeste: (1d10 + Resistência Física) vs (1d10 + Conjuração)\nEfeito: prende e esmaga o alvo dentro da rocha.",
+
+          "Nível 15 — Golem de Terra Ancestral",
+          J(
+            "MP inicial: 18\nAlcance: invocação até 6m\n",
+            "Manutenção: 1d6 + 1 − (Conj÷3) (mín 1)\n",
+            "PV: (10 + Conj + (ResMag÷2)) × 2\n",
+            "ResFis: 6 + (Conj÷2)\n",
+            "ResMag: 5 + (Conj÷2)\n",
+            "Ataques/turno: 1\n",
+            "Mov: 6m | Alc: 2m | Tamanho: Enorme\n",
+            "Dano: 2 × 1d20 físico\n",
+            "Efeito: colosso de pedra combate enquanto houver mana."
+          ),
+
+          "Nível 20 — Ruína Continental (Domínio)",
+          "MP: 35\nÁrea: raio 12m\nDano: danoBase + 5d10 por turno (5)\nSAN: 4d6\nTeste: (1d10 + Resistência Física) vs (1d10 + Conjuração)\nEfeito: colapso do solo, fendas e soterramento."
+        }
+
+        -- =========================
+        -- RAIO
+        -- =========================
+        DB["Raio"] = {
+          "Nível 1 — Relâmpago Divino Instantâneo",
+          "MP: 6\nAlcance: 5m\nDano: danoBase + 1d10\nSAN: 1d2\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: dano elétrico (stun a critério do mestre).",
+
+          "Nível 5 — Arco Celestial em Cadeia",
+          "MP: 10\nAlcance: 6m\nDano: danoBase + 1d8 (salta)\nSAN: 1d4\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: raio em cadeia (multiplica por salto).",
+
+          "Nível 10 — Corpo de Relâmpago",
+          "MP: 12\nAlcance: pessoal\nSAN: 1d4\nEfeito: forma elétrica por 2 turnos (reduz dano físico; choque em contato).",
+
+          "Nível 15 — Julgamento dos Céus",
+          "MP: 18\nÁrea: linha 6m\nDano: danoBase + 4d6\nSAN: 1d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: linha elétrica (stun em massa a critério).",
+
+          "Nível 20 — Ira do Deus do Trovão (Domínio)",
+          "MP: 35\nÁrea: raio 12m\nDano: danoBase + 5d10 por turno (5)\nSAN: 4d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: tempestade divina fulmina continuamente."
+        }
+
+        -- =========================
+        -- METAL
+        -- =========================
+        DB["Metal"] = {
+          "Nível 1 — Revestimento de Aço",
+          "MP: 6\nAlcance: pessoal\nSAN: 1d2\nEfeito: +4 ResFis por 2 turnos; contato causa 1d6 dano metálico.",
+
+          "Nível 5 — Lâmina de Liga Cortante",
+          "MP: 8\nAlcance: 2m\nDano: danoBase + 2d6\nSAN: 1d3\nTeste: (1d10 + Ataque Físico) vs (1d10 + Defesa Física)\nEfeito: corte pesado (bônus se alvo usa metal).",
+
+          "Nível 10 — Arsenal Vivo de Aço",
+          "MP: 1d10 por espada por turno\nAlcance: controle até 8m\nDano: danoBase + 1d6 por espada\nSAN: 1d4\nPV de cada espada: 1d10 + Conjuração\nEfeito: espadas flutuantes atacam por comando.",
+
+          "Nível 15 — Golem de Ferro",
+          J(
+            "MP inicial: 18\nAlcance: invocação até 6m\n",
+            "Manutenção: 1d6 + 1 − (Conj÷3) (mín 1)\n",
+            "PV: (10 + Conj + (ResMag÷2)) × 2\n",
+            "ResFis: 6 + (Conj÷2)\n",
+            "ResMag: metade da ResFis\n",
+            "Ataques/turno: 1\n",
+            "Mov: 6m | Alc: 2m | Tamanho: Enorme\n",
+            "Dano: 2 × 1d20 físico\n",
+            "Efeito: colosso metálico combate enquanto houver mana."
+          ),
+
+          "Nível 20 — Fornalha da Guerra Eterna (Domínio)",
+          J(
+            "MP: 35\nÁrea: raio 12m\nSAN: 4d6\n",
+            "Efeito: domínio fortalece metal; golens regeneram 1d6 PV/turno.\n",
+            "Fusão: 3 golens viram Dragão de Metal.\n",
+            "Dragão — PV: (10 + Conj + (ResMag÷2)) × 4\n",
+            "Dragão — ResFis: 5× base | ResMag: metade da ResFis\n",
+            "Dragão — Ataques/turno: 1 | Mov: 8m | Alc: 3m | Tamanho: Colossal\n",
+            "Dragão — Dano: 1d60"
+          )
+        }
+
+        -- =========================
+        -- MADEIRA
+        -- =========================
+        DB["Madeira"] = {
+          "Nível 1 — Chicotes de Cipó",
+          "MP: 6\nAlcance: 6m\nDano: danoBase + 1d6\nSAN: 1d2\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: vinhas açoitam 1 alvo.",
+
+          "Nível 5 — Casca Viva",
+          "MP: 8\nAlcance: pessoal\nSAN: 1d3\nEfeito: +5 ResFis por 2 turnos; regenera 1d6 PV/turno.",
+
+          "Nível 10 — Enraizamento Mortal",
+          "MP: 12\nAlcance: 6m\nDano: danoBase + 2d6 por turno (2)\nSAN: 1d4\nTeste: (1d10 + Resistência Física) vs (1d10 + Conjuração)\nEfeito: vinhas prendem (solta por força/rompimento).",
+
+          "Nível 15 — Guardião de Madeira (Ent)",
+          J(
+            "MP inicial: 16\nAlcance: invocação até 6m\n",
+            "Manutenção: 1d6 + 1 − (Conj÷3) (mín 1)\n",
+            "PV: (10 + Conj + (ResMag÷2)) × 2\n",
+            "ResMag: 2× ResMag do conjurador\n",
+            "ResFis: metade da ResMag\n",
+            "Ataques/turno: 1\n",
+            "Mov: 6m | Alc: 2m | Tamanho: Enorme\n",
+            "Dano: danoBase + 3d6\n",
+            "Regen: 1d3 PV/turno perto de árvores\n",
+            "Efeito: Ent combate e protege o campo."
+          ),
+
+          "Nível 20 — Floresta Devoradora (Domínio)",
+          "MP: 34\nÁrea: raio 12m\nDano: danoBase + 4d10 por turno (5)\nSAN: 4d6\nTeste: (1d10 + Resistência Física) vs (1d10 + Conjuração)\nEfeito: floresta colossal nasce e esmaga."
+        }
+
+        -- =========================
+        -- SOMBRA
+        -- =========================
+        DB["Sombra"] = {
+          "Nível 1 — Toque da Ruína",
+          "MP: 6\nAlcance: 2m\nDano: danoBase + 1d6\nSAN: 1d2\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: acerto drena SAN (perda permanente).",
+
+          "Nível 5 — Véu da Escuridão",
+          "MP: 8\nÁrea: raio 5m\nSAN: 1d3\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: névoa por 2 turnos; inimigos atacam com desvantagem.",
+
+          "Nível 10 — Espinhos Negros da Penumbra",
+          J(
+            "MP: 12\nAlcance: 6m\nDano: danoBase + 2d6\nSAN: 1d4\n",
+            "Teste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\n",
+            "Efeito: perfura; Cegueira: (1d10+ResMag) vs (1d10+(danoMag/2)), falha = cego 1d5 turnos."
+          ),
+
+          "Nível 15 — Domínio da Noite",
+          "MP: 14\nAlcance: pessoal\nSAN: 1d5\nEfeito: à noite, seus danos viram críticos (ainda precisa acertar).",
+
+          "Nível 20 — Soberania das Trevas",
+          "MP: 26\nAlcance: pessoal\nSAN: 3d6\nEfeito: à noite, resultados dobram; lua de sangue triplica (emboscada)."
+        }
+
+        -- =========================
+        -- LUZ
+        -- =========================
+        DB["Luz"] = {
+          "Nível 1 — Raio Purificador",
+          "MP: 6\nAlcance: 6m\nDano: danoBase + 1d6\nSAN: 1\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: dano; morto-vivo leva DOBRO; remove 1 status negativo.",
+
+          "Nível 5 — Bênção Radiante",
+          "MP: 8\nAlcance: 6m\nSAN: 1\nEfeito: +5 ResMag por 2 turnos; vantagem contra status.",
+
+          "Nível 10 — Explosão Solar",
+          "MP: 12\nÁrea: raio 5m\nDano: danoBase + 2d6 (área)\nSAN: 1d2\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: clarão em área (bônus contra Trevas/Sombra).",
+
+          "Nível 15 — Aura da Alvorada",
+          "MP inicial: 14\nÁrea: raio 5m (no usuário)\nManutenção: 1d6 + 1 − (Conj÷3) (mín 1)\nSAN: 1d3\nEfeito: aliados curam 1d6 PV/turno e 1d6 SAN/turno.",
+
+          "Nível 20 — Julgamento Celestial (Domínio)",
+          "MP: 32\nÁrea: raio 12m\nDano: danoBase + 4d10 (área)\nSAN: 2d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: purifica espíritos; rankeados sobrevivem com debuffs extremos."
+        }
+
+        -- =========================
+        -- SANGUE
+        -- =========================
+        DB["Sangue"] = {
+          "Nível 1 — Senso Hemático",
+          "MP: 6\nÁrea: raio 6m\nSAN: 1d2\nEfeito: detecta criaturas vivas com sangue (mesmo sem visão).",
+
+          "Nível 5 — Colapso Circulatório",
+          "MP: 9\nAlcance: 5m\nSAN: 1d3\nTeste: (1d10 + ResMag + Consciência) vs (1d10 + Conjuração)\nEfeito: lentidão e fraqueza por 2 turnos.",
+
+          "Nível 10 — Marionete de Sangue",
+          "MP: 13\nAlcance: 6m\nSAN: 1d4\nTeste: (1d10 + ResMag + Consciência) vs (1d10 + Conjuração)\nEfeito: controle parcial (movimento + 1 ação simples) por 1 turno.",
+
+          "Nível 15 — Ruptura Vital Interna",
+          "MP: 18\nAlcance: 6m\nDano: danoBase + 4d6\nSAN: 1d6\nTeste: (1d10 + ResMag + Consciência) vs (1d10 + Conjuração)\nEfeito: dano interno; falha = atordoado 1 turno e sem conjurar no próximo.",
+
+          "Nível 20 — Trono Carmesim da Subjugação Vital (Domínio)",
+          J(
+            "MP: 30\nÁrea: raio 12m\nSAN inicial: 4d6\nSAN por turno: 1d6\n",
+            "Teste: inimigo (1d10 + ResMag + Consciência) vs usuário 2×(1d10 + Conjuração)\n",
+            "Efeito: domina criaturas com sangue; baixa consciência é controle automático enquanto ativo."
+          )
+        }
+
+        -- =========================
+        -- ÉTER
+        -- =========================
+        DB["Éter"] = {
+          "Nível 1 — Rasgo do Vazio",
+          "MP: 6\nAlcance: 6m\nDano: danoBase + 1d8\nSAN: 1d4\nTeste: (1d10 + Conjuração) vs (1d10 + Resistência Mágica)\nEfeito: corte espacial; alvo desorientado 1 turno.",
+
+          "Nível 5 — Passagem Proibida",
+          "MP: 12\nDeslocamento: 8m\nSAN: 1d6\nEfeito: teleporte tático (reposicionamento).",
+
+          "Nível 10 — Prisão de Dobra Espacial",
+          "MP: 18\nAlcance: 6m\nDano: danoBase + 3d6\nSAN: 2d6\nTeste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\nEfeito: remove 1 alvo por 1 turno (banimento temporário).",
+
+          "Nível 15 — Reino do Vazio (Duelo Dimensional)",
+          J(
+            "MP: 24\nAlcance: 6m\nSAN: 3d6\n",
+            "Teste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\n",
+            "Buffs: dano dobrado, +8 ResFis, +8 ResMag, +6 Agi, roubo de vida\n",
+            "Debuffs alvo: -6 Defesa, -4 Agi, desvantagem em ações\n",
+            "Efeito: puxa para x1 por 2 turnos."
+          ),
+
+          "Nível 20 — Vazio Soberano (Domínio Absoluto)",
+          J(
+            "MP: 40\nÁrea: raio 12m\nDano: danoBase + 4d6 por turno\n",
+            "SAN inicial: 5d6\nSAN por turno: 2d6\n",
+            "Teste: (1d10 + Resistência Mágica) vs (1d10 + Conjuração)\n",
+            "Efeito: domínio espacial; esmagamento/banimento contínuo na área."
+          )
+        }
+
+        local pack = DB[el]
+        if pack == nil then
+          setAll("", "", "", "", "", "", "", "", "", "")
+          return
+        end
+
+        setAll(pack[1], pack[2], pack[3], pack[4], pack[5], pack[6], pack[7], pack[8], pack[9], pack[10])
+      </event>
+      </dataLink>
+    </layout>
+
+    <!-- ========================= -->
+    <!-- ABA BAGAGEM -->
+    <!-- ========================= -->
+    <layout name="abaBagagem" align="client" visible="false">
+
+      <layout name="menuBagagem" left="440" top="-10" width="600" height="500">
+        <button name="btnBagAttr" text="ATRIBUTOS" left="34"  top="118" width="78"  height="23"/>
+        <button name="btnBagSlay" text="SLAYERS"   left="188" top="101" width="125" height="25"/>
+        <button name="btnBagSoc"  text="SOCIAL"    left="388" top="118" width="78"  height="23"/>
+      </layout>
+
+      <!-- BLOCO COM OS SLOTS (2 COLUNAS x 5 LINHAS) -->
+      <layout name="blocoBagagem"
+              left="330"
+              top="280"
+              width="1000"
+              height="1000">
+
+        <label left="0" top="0" width="720" height="24"
+              text="Bagagem — 10 slots (Item + Peso em Kg) — Peso Total automático"
+              fontColor="#2B2418"/>
+
+        <!-- Cabeçalhos -->
+        <label left="0"   top="26" width="260" height="18" text="Item"     fontColor="#2B2418"/>
+        <label left="270" top="26" width="80"  height="18" text="Peso (Kg)" fontColor="#2B2418"/>
+
+        <label left="370" top="26" width="260" height="18" text="Item"     fontColor="#2B2418"/>
+        <label left="640" top="26" width="80"  height="18" text="Peso (Kg)" fontColor="#2B2418"/>
+
+        <!-- ===== COLUNA 1: 01..05 ===== -->
+        <rectangle left="0"   top="46" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6"   top="46" width="248" height="26" field="bagItem01" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="270" top="46" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="270" top="46" width="80"  height="26" field="bagPeso01" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <rectangle left="0"   top="74" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6"   top="74" width="248" height="26" field="bagItem02" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="270" top="74" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="270" top="74" width="80"  height="26" field="bagPeso02" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <rectangle left="0"   top="102" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6"   top="102" width="248" height="26" field="bagItem03" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="270" top="102" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="270" top="102" width="80"  height="26" field="bagPeso03" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <rectangle left="0"   top="130" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6"   top="130" width="248" height="26" field="bagItem04" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="270" top="130" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="270" top="130" width="80"  height="26" field="bagPeso04" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <rectangle left="0"   top="158" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6"   top="158" width="248" height="26" field="bagItem05" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="270" top="158" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="270" top="158" width="80"  height="26" field="bagPeso05" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <!-- ===== COLUNA 2: 06..10 ===== -->
+        <rectangle left="370" top="46" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="376" top="46" width="248" height="26" field="bagItem06" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="640" top="46" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="640" top="46" width="80"  height="26" field="bagPeso06" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <rectangle left="370" top="74" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="376" top="74" width="248" height="26" field="bagItem07" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="640" top="74" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="640" top="74" width="80"  height="26" field="bagPeso07" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <rectangle left="370" top="102" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="376" top="102" width="248" height="26" field="bagItem08" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="640" top="102" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="640" top="102" width="80"  height="26" field="bagPeso08" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <rectangle left="370" top="130" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="376" top="130" width="248" height="26" field="bagItem09" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="640" top="130" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="640" top="130" width="80"  height="26" field="bagPeso09" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <rectangle left="370" top="158" width="260" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="376" top="158" width="248" height="26" field="bagItem10" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="640" top="158" width="80"  height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="640" top="158" width="80"  height="26" field="bagPeso10" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+      </layout>
+
+      <!-- RESUMO + BARRA -->
+      <layout name="resumoBagagem"
+              left="329"
+              top="520"
+              width="1000"
+              height="1000">
+
+        <label left="0" top="4" width="90" height="18" text="Peso Total:" fontColor="#2B2418"/>
+        <rectangle left="95" top="0" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="95" top="0" width="80" height="26" field="bagPesoTotal" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        <label left="180" top="4" width="30" height="18" text="kg" fontColor="#2B2418"/>
+
+        <label left="240" top="4" width="85" height="18" text="Capacidade:" fontColor="#2B2418"/>
+        <rectangle left="325" top="0" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="325" top="0" width="80" height="26" field="bagCapMax" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        <label left="410" top="4" width="30" height="18" text="kg" fontColor="#2B2418"/>
+
+        <label left="470" top="4" width="55" height="18" text="Status:" fontColor="#2B2418"/>
+        <rectangle left="525" top="0" width="140" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="525" top="0" width="140" height="26" field="bagStatus" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+
+        <!-- MOVIMENTO (metros) -->
+        <label left="680" top="4" width="85" height="18" text="Movimento:" fontColor="#2B2418"/>
+        <rectangle left="765" top="0" width="80" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="765" top="0" width="80" height="26" field="bagMovFinal" readOnly="true" transparent="true" horzTextAlign="center" fontColor="#5F513E"/>
+        <label left="850" top="4" width="30" height="18" text="m" fontColor="#2B2418"/>
+
+        <!-- Barra -->
+        <label left="0" top="40" width="45" height="18" text="Carga:" fontColor="#2B2418"/>
+        <rectangle name="rectCargaBg" left="55" top="38" width="430" height="18" color="#DCCDAE" strokeColor="#5F513E" strokeSize="1"/>
+        <rectangle name="rectCargaFill" left="55" top="38" width="0" height="18" color="#49B675" strokeColor="#5F513E" strokeSize="0"/>
+        <label name="lblCargaTxt" left="495" top="38" width="160" height="18" text="0.00/0.00 kg" fontColor="#2B2418"/>
+
+        <!-- Penalidades (somente esquiva e movimento, conforme regra final) -->
+        <label name="lblPenalidade" left="0" top="70" width="900" height="18" text="" fontColor="#2B2418"/>
+      </layout>
+
+      <!-- ====== LÓGICA DA BAGAGEM (SOMA 10 SLOTS + CAPACIDADE + BARRA + MOV) ====== -->
+      <dataLink fields="{'totalFor','totalCon',
+                        'bagPeso01','bagPeso02','bagPeso03','bagPeso04','bagPeso05',
+                        'bagPeso06','bagPeso07','bagPeso08','bagPeso09','bagPeso10'}">
+        <event name="onChange">
+          local formBag = self
+          local function n(v) return tonumber(v) or 0 end
+          local function clamp(v, mn, mx)
+            if v &lt; mn then return mn end
+            if v &gt; mx then return mx end
+            return v
+          end
+
+          local function clamp2(v)
+            v = tonumber(v) or 0
+            v = clamp(v, 0, 9999)
+            return v
+          end
+
+          sheet.bagPeso01 = clamp2(sheet.bagPeso01)
+          sheet.bagPeso02 = clamp2(sheet.bagPeso02)
+          sheet.bagPeso03 = clamp2(sheet.bagPeso03)
+          sheet.bagPeso04 = clamp2(sheet.bagPeso04)
+          sheet.bagPeso05 = clamp2(sheet.bagPeso05)
+          sheet.bagPeso06 = clamp2(sheet.bagPeso06)
+          sheet.bagPeso07 = clamp2(sheet.bagPeso07)
+          sheet.bagPeso08 = clamp2(sheet.bagPeso08)
+          sheet.bagPeso09 = clamp2(sheet.bagPeso09)
+          sheet.bagPeso10 = clamp2(sheet.bagPeso10)
+
+          local totalPeso =
+            n(sheet.bagPeso01)+n(sheet.bagPeso02)+n(sheet.bagPeso03)+n(sheet.bagPeso04)+n(sheet.bagPeso05)+
+            n(sheet.bagPeso06)+n(sheet.bagPeso07)+n(sheet.bagPeso08)+n(sheet.bagPeso09)+n(sheet.bagPeso10)
+
+          sheet.bagPesoTotal = math.floor(totalPeso * 100) / 100
+
+          local ForT = n(sheet.totalFor)
+          local ConT = n(sheet.totalCon)
+
+          local capMax = 10 + (ForT * 5) + (ConT * 3)
+          capMax = clamp(capMax, 1, 9999)
+          sheet.bagCapMax = capMax
+
+          local ratio = 0
+          if capMax &gt; 0 then ratio = totalPeso / capMax end
+          if ratio &lt; 0 then ratio = 0 end
+
+          -- Movimento base fixo (sempre 6m)
+          sheet.bagMovBase = 6
+
+          -- =========================
+          -- REGRAS FINAIS (bagagem só afeta esquiva e movimento)
+          --
+          -- Esquiva (contínuo):
+          -- pen% = floor(percentual_carga * 50)  [percentual_carga = ratio, 0..]
+          --
+          -- Movimento (degraus):
+          -- ≤50%: 6m
+          -- 60%: 5m
+          -- 70%: 4m
+          -- 80%: 3m
+          -- 90%: 2m
+          -- ≥100%: 1m
+          --
+          -- Status:
+          -- ≤50%: Leve
+          -- 51–70: Média
+          -- 71–100: Pesada
+          -- >100: Excedida
+          -- =========================
+
+          local pct = ratio * 100
+
+          -- Status
+          if pct &lt;= 50 then
+            sheet.bagStatus = "Leve"
+          elseif pct &lt;= 70 then
+            sheet.bagStatus = "Média"
+          elseif pct &lt;= 100 then
+            sheet.bagStatus = "Pesada"
+          else
+            sheet.bagStatus = "Excedida"
+          end
+
+          local penEsqPct = 0
+
+          if ratio > 0.5 then
+            penEsqPct = math.floor((ratio - 0.5) * 100)
+          end
+
+          sheet.bagPenEsqPct = penEsqPct
+
+          -- Movimento por degraus (inteiro) — sem variável local "movFinal"
+          if pct &lt;= 50 then
+            sheet.bagMovFinal = 6
+          elseif pct &lt;= 60 then
+            sheet.bagMovFinal = 5
+          elseif pct &lt;= 70 then
+            sheet.bagMovFinal = 4
+          elseif pct &lt;= 80 then
+            sheet.bagMovFinal = 3
+          elseif pct &lt;= 90 then
+            sheet.bagMovFinal = 2
+          else
+            -- acima de 90% continua 2m até bater 100%; ≥100% vira 1m
+            if pct &gt;= 100 then
+              sheet.bagMovFinal = 1
+            else
+              sheet.bagMovFinal = 2
+            end
+          end
+
+          local perdaMov = 6 - n(sheet.bagMovFinal)
+
+          if ratio &lt;= 0.5 then
+            sheet.bagPenTxt = ""
+          else
+            local parts = {}
+            if penEsqPct &gt; 0 then table.insert(parts, "-" .. tostring(penEsqPct) .. "% Esquiva") end
+            if perdaMov &gt; 0 then table.insert(parts, "-" .. tostring(perdaMov) .. " Movimento") end
+
+            if #parts == 0 then
+              sheet.bagPenTxt = ""
+            else
+              sheet.bagPenTxt = "Penalidades: " .. table.concat(parts, " • ")
+            end
+          end
+
+          -- Barra e labels (mantém visual)
+          if formBag ~= nil and formBag.rectCargaBg ~= nil and formBag.rectCargaFill ~= nil and formBag.lblCargaTxt ~= nil then
+            local fullW = formBag.rectCargaBg.width or 430
+            local fillRatio = ratio
+            if fillRatio &gt; 1 then fillRatio = 1 end
+            if fillRatio &lt; 0 then fillRatio = 0 end
+
+            local fillW = math.floor(fillRatio * fullW)
+            formBag.rectCargaFill.width = fillW
+
+            if ratio &lt;= 0.50 then
+              formBag.rectCargaFill.color = "#49B675"
+            elseif ratio &lt;= 0.70 then
+              formBag.rectCargaFill.color = "#D2B34C"
+            elseif ratio &lt;= 1.00 then
+              formBag.rectCargaFill.color = "#D08A3C"
+            else
+              formBag.rectCargaFill.color = "#C84A4A"
+              formBag.rectCargaFill.width = fullW
+            end
+
+            formBag.lblCargaTxt.text = string.format("%.2f/%.2f kg", totalPeso, capMax)
+
+            if formBag.lblPenalidade ~= nil then
+              formBag.lblPenalidade.text = sheet.bagPenTxt or ""
+            end
+          end
+        </event>
+      </dataLink>
+
+      <!-- ========================= -->
+      <!-- DINHEIRO (COLUNA – SOMENTE NÚMEROS) -->
+      <!-- + Texto acima: 1d100 bronze inicial -->
+      <!-- ========================= -->
+      <label left="1100" top="305" width="260" height="18" text="1d100 de Bronze inicial" fontColor="#2B2418"/>
+
+      <layout name="bagDinheiroLivre"
+              left="1100"
+              top="325"
+              width="220"
+              height="130">
+
+        <!-- Bronze -->
+        <label left="0" top="6" width="70" height="18" text="Bronze:" fontColor="#2B2418"/>
+        <rectangle left="75" top="2" width="120" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="75" top="2" width="120" height="26"
+              field="dinBronze"
+              transparent="true"
+              horzTextAlign="center"
+              fontColor="#5F513E"/>
+
+        <!-- Prata -->
+        <label left="0" top="36" width="70" height="18" text="Prata:" fontColor="#2B2418"/>
+        <rectangle left="75" top="32" width="120" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="75" top="32" width="120" height="26"
+              field="dinPrata"
+              transparent="true"
+              horzTextAlign="center"
+              fontColor="#5F513E"/>
+
+        <!-- Ouro -->
+        <label left="0" top="66" width="70" height="18" text="Ouro:" fontColor="#2B2418"/>
+        <rectangle left="75" top="62" width="120" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="75" top="62" width="120" height="26"
+              field="dinOuro"
+              transparent="true"
+              horzTextAlign="center"
+              fontColor="#5F513E"/>
+
+        <!-- Platina -->
+        <label left="0" top="96" width="70" height="18" text="Platina:" fontColor="#2B2418"/>
+        <rectangle left="75" top="92" width="120" height="26" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit left="75" top="92" width="120" height="26"
+              field="dinPlatina"
+              transparent="true"
+              horzTextAlign="center"
+              fontColor="#5F513E"/>
+
+      </layout>
+
+      <!-- TRAVA: limpa letras e deixa só números -->
+      <dataLink fields="{'dinBronze','dinPrata','dinOuro','dinPlatina'}">
+        <event name="onChange">
+          if sheet == nil then return end
+          if sheet._moneyGuard == true then
+            sheet._moneyGuard = false
+            return
+          end
+
+          local function onlyDigits(v)
+            v = tostring(v or "")
+            v = v:gsub("%D", "")
+            if v == "" then return 0 end
+            return tonumber(v) or 0
+          end
+
+          sheet._moneyGuard = true
+          sheet.dinBronze  = onlyDigits(sheet.dinBronze)
+          sheet.dinPrata   = onlyDigits(sheet.dinPrata)
+          sheet.dinOuro    = onlyDigits(sheet.dinOuro)
+          sheet.dinPlatina = onlyDigits(sheet.dinPlatina)
+        </event>
+      </dataLink>
+
+    </layout>
+
+    <!-- ========================= -->
+    <!-- ABA SOCIAL -->
+    <!-- ========================= -->
+    <layout name="abaSocial" align="client" visible="false">
+      <layout name="menuSocial" left="440" top="-10" width="600" height="500">
+        <button name="btnSocAttr" text="ATRIBUTOS" left="34" top="118" width="78" height="23"/>
+        <button name="btnSocSlay" text="SLAYERS"   left="188" top="101" width="125" height="25"/>
+        <button name="btnSocBag"  text="BAGAGEM"   left="388" top="118" width="78" height="23"/>
+      </layout>
+
+      <layout name="blocoEncontrados"
+              left="300"
+              top="230"
+              width="760"
+              height="190">
+
+        <label left="0" top="0" width="400" height="18"
+               text="Pessoas Encontradas"
+               fontColor="#2B2418"/>
+
+        <!-- Cabeçalhos -->
+        <label left="0"   top="22" width="160" height="18" text="Nome"       fontColor="#2B2418"/>
+        <label left="170" top="22" width="200" height="18" text="Descrição"  fontColor="#2B2418"/>
+
+        <label left="390" top="22" width="160" height="18" text="Nome"       fontColor="#2B2418"/>
+        <label left="560" top="22" width="200" height="18" text="Descrição"  fontColor="#2B2418"/>
+
+        <!-- Linhas -->
+        <rectangle left="0" top="44" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6" top="44" width="148" height="20" field="encNome01" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="170" top="44" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="176" top="44" width="188" height="20" field="encDesc01" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="0" top="66" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6" top="66" width="148" height="20" field="encNome02" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="170" top="66" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="176" top="66" width="188" height="20" field="encDesc02" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="0" top="88" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6" top="88" width="148" height="20" field="encNome03" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="170" top="88" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="176" top="88" width="188" height="20" field="encDesc03" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="0" top="110" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6" top="110" width="148" height="20" field="encNome04" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="170" top="110" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="176" top="110" width="188" height="20" field="encDesc04" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="0" top="132" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6" top="132" width="148" height="20" field="encNome05" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="170" top="132" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="176" top="132" width="188" height="20" field="encDesc05" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="0" top="154" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="6" top="154" width="148" height="20" field="encNome06" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="170" top="154" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="176" top="154" width="188" height="20" field="encDesc06" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="390" top="44" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="396" top="44" width="148" height="20" field="encNome07" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="560" top="44" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="566" top="44" width="188" height="20" field="encDesc07" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="390" top="66" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="396" top="66" width="148" height="20" field="encNome08" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="560" top="66" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="566" top="66" width="188" height="20" field="encDesc08" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="390" top="88" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="396" top="88" width="148" height="20" field="encNome09" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="560" top="88" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="566" top="88" width="188" height="20" field="encDesc09" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="390" top="110" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="396" top="110" width="148" height="20" field="encNome10" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="560" top="110" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="566" top="110" width="188" height="20" field="encDesc10" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="390" top="132" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="396" top="132" width="148" height="20" field="encNome11" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="560" top="132" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="566" top="132" width="188" height="20" field="encDesc11" transparent="true" fontColor="#5F513E"/>
+
+        <rectangle left="390" top="154" width="160" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="396" top="154" width="148" height="20" field="encNome12" transparent="true" fontColor="#5F513E"/>
+        <rectangle left="560" top="154" width="200" height="20" color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+        <edit      left="566" top="154" width="188" height="20" field="encDesc12" transparent="true" fontColor="#5F513E"/>
+
+      </layout>
+
+      <layout name="blocoHistoria"
+              left="300"
+              top="410"
+              width="760"
+              height="200">
+
+        <label left="0" top="0" width="400" height="18"
+               text="História do Personagem"
+               fontColor="#2B2418"/>
+
+        <rectangle left="0" top="22" width="760" height="178"
+                   color="#E6D6B5" strokeColor="#5F513E" strokeSize="1"/>
+
+        <textEditor name="txtHistoria"
+                    left="8" top="30" width="744" height="162"
+                    field="historiaPersonagem"
+                    fontColor="#2B2418"
+                    transparent="true"/>
+      </layout>
+    </layout>
+
+  </layout> <!-- /lyQuadro -->
+
+  <!-- ========================= -->
+  <!-- SCRIPT (NAVEGAÇÃO + PLACEHOLDERS + LOCK RAÇA) -->
+  <!-- ========================= -->
+  <script>
+    <![CDATA[
+      local frm = self;
+
+      local function showTab(tab)
+        if frm == nil then return end
+        if frm.abaAtributos then frm.abaAtributos.visible = false end
+        if frm.abaSlayers then frm.abaSlayers.visible = false end
+        if frm.abaBagagem then frm.abaBagagem.visible = false end
+        if frm.abaSocial then frm.abaSocial.visible = false end
+        if frm[tab] then frm[tab].visible = true end
+      end
+
+      -- Navegação
+      if frm.btnAttrSlayers then frm.btnAttrSlayers.onClick = function() showTab("abaSlayers"); end end
+      if frm.btnAttrBagagem then frm.btnAttrBagagem.onClick = function() showTab("abaBagagem"); end end
+      if frm.btnAttrSocial  then frm.btnAttrSocial.onClick  = function() showTab("abaSocial");  end end
+
+      if frm.btnSlayersAttr then frm.btnSlayersAttr.onClick = function() showTab("abaAtributos"); end end
+      if frm.btnSlayersBag  then frm.btnSlayersBag.onClick  = function() showTab("abaBagagem");   end end
+      if frm.btnSlayersSoc  then frm.btnSlayersSoc.onClick  = function() showTab("abaSocial");    end end
+
+      if frm.btnBagAttr then frm.btnBagAttr.onClick = function() showTab("abaAtributos"); end end
+      if frm.btnBagSlay then frm.btnBagSlay.onClick = function() showTab("abaSlayers");   end end
+      if frm.btnBagSoc  then frm.btnBagSoc.onClick  = function() showTab("abaSocial");    end end
+
+      if frm.btnSocAttr then frm.btnSocAttr.onClick = function() showTab("abaAtributos"); end end
+      if frm.btnSocSlay then frm.btnSocSlay.onClick = function() showTab("abaSlayers");   end end
+      if frm.btnSocBag  then frm.btnSocBag.onClick  = function() showTab("abaBagagem");   end end
+
+      -- Placeholders
+      local function empty(v) return v == nil or tostring(v) == "" end
+
+      local function refreshPlaceholders()
+        local sh = frm.sheet
+        if sh == nil then return end
+        if frm.phNome then frm.phNome.visible = empty(sh.nomeJogador) end
+        if frm.phIdade then frm.phIdade.visible = empty(sh.idade) end
+        if frm.phNivel then frm.phNivel.visible = empty(sh.nivel) end
+        if frm.phNac then frm.phNac.visible = empty(sh.nacionalidade) end
+        if frm.phRaca then frm.phRaca.visible = empty(sh.raca) end
+        if frm.phClasse then frm.phClasse.visible = empty(sh.classe) end
+      end
+
+      -- ===== LOCK/UNLOCK COLUNA RAÇA =====
+      local function refreshRaceLocks()
+        local sh = frm.sheet
+        if sh == nil then return end
+
+        local isHumano = (sh.raca == "Humano")
+        local ro = (not isHumano)
+
+        if frm.edtRaceFor then frm.edtRaceFor.readOnly = ro end
+        if frm.edtRaceDes then frm.edtRaceDes.readOnly = ro end
+        if frm.edtRaceAgi then frm.edtRaceAgi.readOnly = ro end
+        if frm.edtRaceCon then frm.edtRaceCon.readOnly = ro end
+        if frm.edtRaceInt then frm.edtRaceInt.readOnly = ro end
+        if frm.edtRaceSab then frm.edtRaceSab.readOnly = ro end
+        if frm.edtRaceCoj then frm.edtRaceCoj.readOnly = ro end
+        if frm.edtRaceCar then frm.edtRaceCar.readOnly = ro end
+      end
+
+      if frm.edtNome then
+        frm.edtNome.onEnter = function() if frm.phNome then frm.phNome.visible = false end end
+        frm.edtNome.onExit  = function() refreshPlaceholders() end
+      end
+
+      if frm.edtIdade then
+        frm.edtIdade.onEnter = function() if frm.phIdade then frm.phIdade.visible = false end end
+        frm.edtIdade.onExit  = function() refreshPlaceholders() end
+      end
+
+      if frm.edtNivel then
+        frm.edtNivel.onEnter = function() if frm.phNivel then frm.phNivel.visible = false end end
+        frm.edtNivel.onExit  = function() refreshPlaceholders() end
+      end
+
+      if frm.edtNac then
+        frm.edtNac.onEnter = function() if frm.phNac then frm.phNac.visible = false end end
+        frm.edtNac.onExit  = function() refreshPlaceholders() end
+      end
+
+      if frm.cbRaca then
+        frm.cbRaca.onChange = function()
+          refreshPlaceholders()
+          refreshRaceLocks()
+        end
+      end
+
+      if frm.cbClasse then frm.cbClasse.onChange = function() refreshPlaceholders() end end
+
+      frm.onNodeReady = function()
+        refreshPlaceholders()
+        refreshRaceLocks()
+      end
+    ]]>
+  </script>
+
+</form>

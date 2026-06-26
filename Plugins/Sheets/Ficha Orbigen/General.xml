@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="General" align="client">
+	<script>
+        <![CDATA[
+
+            local function iniRoll()
+	        	local agilidade  = (tonumber(sheet.agilidade) or 0)
+				local rolagem = Firecast.interpretarRolagem("1d6+" .. agilidade)
+				local mesa = Firecast.getMesaDe(sheet)
+				mesa.activeChat:rolarDados(rolagem, "Iniciativa de " .. (sheet.nome or "Nome"))
+	        end
+	        
+            local function newAbility()
+                self.rclAbilities:append()
+            end
+    
+            local function newTechnique()
+                self.rclTechniques:append()
+            end
+
+            local function defaultAbilities()
+                Dialogs.confirmOkCancel("Vai apagar todas habilidades atuais.",
+                        function (confirmado)
+                                if confirmado then
+                                    sheet.rclAbilities = {}
+                                    local habilidades = {
+                                        {nome = "Acrobacia", chave = "2"},
+                                        {nome = "Cartografia", chave = "3"},
+                                        {nome = "Primeiros Socorros", chave = "3"},
+                                        {nome = "Natação", chave = "2"},
+                                        {nome = "Prestidigitação", chave = "2"},
+                                        {nome = "Intimidação", chave = "1"},
+                                        {nome = "Furtividade", chave = "2"},
+                                        {nome = "Armadilhas", chave = "3"},
+                                        {nome = "Comida Silvestre", chave = "3"},
+                                        {nome = "Escalada", chave = "2"},
+                                        {nome = "Oculto", chave = "3"},
+                                        {nome = "Medicina Natural", chave = "3"},
+                                        {nome = "Navegação Terrestre", chave = "3"},
+                                        {nome = "Rastreamento", chave = "3"},
+                                        {nome = "Cavalgar", chave = "2"},
+                                        {nome = "Armas de Arremesso", chave = "2"},
+                                        {nome = "Armas de Combate", chave = "2"},
+                                        {nome = "Armas de Duas Mãos", chave = "2"},
+                                        {nome = "Armas de Impacto", chave = "2"},
+                                        {nome = "Armas de Sopro", chave = "2"},
+                                        {nome = "Armas de Longo Alcance", chave = "2"},
+                                        {nome = "Briga", chave = "2"},
+                                        {nome = "Luta Livre", chave = "1"},
+                                        {nome = "Comércio", chave = "3"},
+                                        {nome = "Lábia", chave = "3"},
+                                        {nome = "Heráldica", chave = "3"},
+                                        {nome = "Alfabetizado", chave = "3"},
+                                        {nome = "Sex-Appeal", chave = "3"},
+                                        {nome = "Estratégia", chave = "3"},
+                                        {nome = "Náutica", chave = "3"},
+                                        {nome = "Alfaiate", chave = "3"},
+                                        {nome = "Ferreiro", chave = "3"},
+                                        {nome = "Marceneiro", chave = "3"},
+                                        {nome = "Ourivesaria", chave = "3"},
+                                        {nome = "Dança", chave = "3"},
+                                        {nome = "Culinária", chave = "3"},
+                                        {nome = "Teatro", chave = "3"},
+                                        {nome = "Música", chave = "3"},
+                                        {nome = "Médico", chave = "3"},
+                                    }
+
+                                    for i = 1, #habilidades do
+                                        local hab = self.rclAbilities:append()
+                                        hab.nome = habilidades[i].nome
+                                        hab.chavePericia = habilidades[i].chave
+                                    end
+
+                                    self.rclAbilities:reorganize()
+                                end;
+                        end);
+
+            end
+        ]]> 
+    </script>
+
+    <scrollBox align="client" g-cnt-line-spacing="5">
+		<!-- Title region -->
+		<rectangle g="col" g-width="12" g-width-lg="6" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Title text="PERSONAGEM" field="nome"/>
+			<Title text="JOGADOR" field="jogador"/>
+			<Title text="NÍVEL" field="nivel"/>
+			<Title text="RAÇA" field="raca"/>
+		</rectangle>
+		<rectangle g="col" g-width="12" g-width-lg="6" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+			<Title text="CLASSE" field="classe"/>
+			<Title text="PROFISSÃO" field="profissao"/>
+			<Title text="PONTOS" field="pontos"/>
+			<Title text="P. de SORTE" field="sorte"/>
+		</rectangle>
+
+		<layout g="col" g-width="6" g-width-lg="3" g-min-height="250" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" g-min-height="135" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" text="ATRIBUTOS" horzTextAlign="center" height="25"/>
+				<Title text="FORÇA" field="forca"/>
+				<Title text="AGILIDADE" field="agilidade"/>
+				<Title text="INTELIGÊNCIA" field="inteligencia"/>
+				<Title text="RESISTÊNCIA" field="resistencia"/>
+			</rectangle>
+			
+			<dataLink fields="{'forca','resistencia'}">
+				<event name="onChange">
+					if sheet == nil then return end
+
+		            local hp  = (tonumber(sheet.forca) or 0) +
+		            			(tonumber(sheet.resistencia) or 0) + 10
+
+					sheet.hp = hp
+				</event>
+			</dataLink>
+			<dataLink fields="{'agilidade'}">
+				<event name="onChange">
+					if sheet == nil then return end
+
+					local agilidade  = (tonumber(sheet.agilidade) or 0)
+
+					sheet.iniciativa = "1d6 + " .. agilidade
+				</event>
+			</dataLink>
+			<dataLink fields="{'inteligencia'}">
+				<event name="onChange">
+					if sheet == nil then return end
+
+		            local energia  = (tonumber(sheet.inteligencia) or 0) + 10
+
+					sheet.energia = energia
+				</event>
+			</dataLink>
+			<dataLink fields="{'agilidade','resistencia'}">
+				<event name="onChange">
+					if sheet == nil then return end
+
+		            local deslocamento  = (tonumber(sheet.agilidade) or 0) +
+		            			(tonumber(sheet.resistencia) or 0) + 3
+
+					sheet.deslocamento = deslocamento
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'forca'}">
+				<event name="onChange">
+					if sheet == nil then return end
+
+					local nodes = NDB.getChildNodes(sheet.rclAbilities) 
+					for i=1, #nodes, 1 do
+						nodes[i].forca = sheet.forca
+					end
+				</event>
+			</dataLink>
+			<dataLink fields="{'agilidade'}">
+				<event name="onChange">
+					if sheet == nil then return end
+
+					local nodes = NDB.getChildNodes(sheet.rclAbilities) 
+					for i=1, #nodes, 1 do
+						nodes[i].agilidade = sheet.agilidade
+					end
+				</event>
+			</dataLink>
+			<dataLink fields="{'inteligencia'}">
+				<event name="onChange">
+					if sheet == nil then return end
+
+					local nodes = NDB.getChildNodes(sheet.rclAbilities) 
+					for i=1, #nodes, 1 do
+						nodes[i].inteligencia = sheet.inteligencia
+					end
+				</event>
+			</dataLink>
+			<dataLink fields="{'resistencia'}">
+				<event name="onChange">
+					if sheet == nil then return end
+
+					local nodes = NDB.getChildNodes(sheet.rclAbilities) 
+					for i=1, #nodes, 1 do
+						nodes[i].resistencia = sheet.resistencia
+					end
+				</event>
+			</dataLink>
+
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" text="CARACTERISTICAS INTERPRETATIVAS" horzTextAlign="center" height="25"/>
+				<Title text="1" field="interpretativa1"/>
+				<Title text="2" field="interpretativa2"/>
+				<Title text="3" field="interpretativa3"/>
+			</rectangle>
+		</layout>
+
+		<layout g="col" g-width="6" g-width-lg="3" g-min-height="250" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" g-min-height="135" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" text="" horzTextAlign="center" height="25"/>
+				<TitleLabel text="HP ❤️‍" field="hp"/>
+				<TitleLabel text="ENERGIA 🗲" field="energia"/>
+				<TitleLabelButton text="INICIATIVA" field="iniciativa" onClick="iniRoll()"/>
+				<TitleLabel text="DESLOCAMENTO" field="deslocamento"/>
+			</rectangle>
+
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" text="" horzTextAlign="center" height="25"/>
+				<Title text="4" field="interpretativa4"/>
+				<Title text="5" field="interpretativa5"/>
+				<Title text="6" field="interpretativa6"/>
+			</rectangle>
+		</layout>
+
+		<layout g="col" g-width="6" g-width-lg="3" g-min-height="250" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="12" color="black" strokeColor="white" strokeSize="1" g-min-height="135" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" text="DEFESAS" horzTextAlign="center" height="25"/>
+				<Title text="DP" field="dp"/>
+				<Title text="DA" field="da"/>
+				<Title text="APARAR" field="aparar"/>
+				<Title text="IDIOMA" field="idioma"/>
+			</rectangle>
+	        <rectangle g="col" g-width="12" g-min-height="110" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+	            <label g="col" g-width="12" text="OUTROS" horzTextAlign="center" height="25"/>
+	            <textEditor g="col" g-width="12" g-vert-tile="true" field="otherNotes"/>
+	        </rectangle>
+	    </layout>
+
+		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" g-min-height="250" padding="{left=5,right=5,top=5,bottom=5}">
+			<image align="client" field="avatar" editable="true" style="proportional" >
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar)
+				</event>
+			</image>
+		</rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="6" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <button text="Nova Habilidade" g="col" g-width="6" height="25" onClick="newAbility()" hint="" padding="{right=5}"/>
+                <button text="Add Todas as Habilidades" g="col" g-width="6" height="25" onClick="defaultAbilities()" hint=""/>
+            </layout>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <layout g="col" g-width="8" height="25">
+                    <label g="col" g-width="9" height="25" text="Nome" horzTextAlign="center" textTrimming="none"/>
+                    <label g="col" g-width="3" height="25" text="Atributo" horzTextAlign="center" textTrimming="none"/>
+                </layout>
+
+                <layout g="col" g-width="4" height="25" margins="{left=-5}">
+                    <label g="col" g-width="3" height="25" text="Nível" horzTextAlign="center" textTrimming="none"/>
+                    <label g="col" g-width="3" height="25" text="Total" horzTextAlign="center" textTrimming="none"/>
+                </layout>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclAbilities" field="rclAbilities" templateForm="AbilitiesAbility" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="6" g-min-height="300" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Nova Tecnica" g="col" g-width="12" height="25" onClick="newTechnique()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <layout g="col" g-width="11" height="25">
+                    <label g="col" g-width="3" height="25" text="Nome" horzTextAlign="center" textTrimming="none"/>
+                    <label g="col" g-width="9" height="25" text="Efeito" horzTextAlign="center" textTrimming="none"/>
+                </layout>
+
+                <layout g="col" g-width="1" height="25">
+                    <label g="col" g-width="6" height="25" text="Nível" horzTextAlign="center" textTrimming="none"/>
+                </layout>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclTechniques" field="rclTechniques" templateForm="AbilitiesTechnique" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+	</scrollBox>
+</form>

@@ -1,10 +1,32 @@
 ﻿local objs = require("rrpgObjs.lua");
 local utils = require("rrpgUtil.lua");
+local Async = require("async.lua");
 
 local lInternet = {};
 local _downloadIdGenerator = 1;
 local _downloads = {};
 local internet = lInternet;
+
+function internet.asyncDownload(url, cacheMode, progressCallback)
+	local promise, resolution = Async.Promise.pending();
+	assert((promise ~= nil) and (resolution ~= nil));	
+	
+	internet.download(url, 
+		function (stream, contentType)
+			assert(resolution ~= nil);
+			assert(stream ~= nil);
+			
+			resolution:setSuccess(stream, contentType);
+		end,
+		function (errorMessage)
+			assert(resolution ~= nil);
+			resolution:setFailure(errorMessage);
+		end,
+		progressCallback,
+		cacheMode);
+	
+	return promise;
+end;
 
 function internet.download(url, finishCallback, errorCallback, progressCallback, cacheMode)
 	local urlGetter = objs.objectFromHandle(_obj_newObject("TLuaURLGetter"));

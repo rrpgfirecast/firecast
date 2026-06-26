@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNPC_02" width="400" height="110"  >
+
+
+	<import file="templatesNPC.lfm" />
+
+			<layout top="0" left="0" width="400" height="110" >			
+
+				<button name="btnNomeNPC_02" text="f" width="24" height="24"  top="10" left="0" >
+					<event name="onClick">
+						<![CDATA[
+							local pop = self:findControlByName("popUp_");
+							
+							if pop ~= nil then
+								pop:setNodeObject(sheet);
+								pop:showPopupEx("bottom", self.btnNomeNPC_02);
+							else
+								showMessage("Ops, não encontrei o pop-up para exibir");
+							end;
+						]]>
+					</event>
+				</button>
+				
+				
+				<button name="btnNotaNPC_02" text="A" width="24" height="24"  top="10" left="30" >
+					<event name="onClick">
+						<![CDATA[
+							local pop = self:findControlByName("popUpAnotacao_");
+							
+							if pop ~= nil then
+								pop:setNodeObject(sheet);
+								pop:showPopupEx("bottom", self.btnNotaNPC_02);
+							else
+								showMessage("Ops, não encontrei o pop-up para exibir");
+							end;
+						]]>
+					</event>
+				</button>
+				
+				
+				
+				<edit  		type="text"  width="300"  height="24"  field="txtNPC_02"  top="10" left="50" />
+							  
+				<button  name="btnExcluir" text="X" width="24"   height="24"  top="10" left="366" >
+						<event name="onClick" >
+								Dialogs.confirmYesNo("Deseja realmente excluir o NPC?",
+									
+									function (confirmado)
+										if confirmado then
+												NDB.deleteNode(sheet);
+										end;
+								end);
+						</event>
+				</button>
+			
+			   <rectangle  	left="10" top="40" width="60" height="60" color="#330000" xradius="30" yradius="30"  cornerType="round" /> 	
+			   <image name="npcPicture" field="imgPicture" left="10" top="40" width="60" height="60"  style="proportional" editable="true" />
+			  
+				
+			<flowLayout top="36" left="80" orientation="horizontal" autoHeight="true" width="260" >
+				<bar lbl="Vontade" id="bVontade" color="#5DE2E7" popup="vontade1" />
+				<flowLineBreak/>
+
+				<bar lbl="Sanidade" id="bSanidade" color="#58DCB3" popup="sanidade1" />
+				<flowLineBreak/>
+
+				<bar lbl="Vitalidade" id="bVitalidade" color="#EF2929" popup="vitalidade1" />
+				<flowLineBreak/>
+
+				<bar lbl="Pts Sangue" id="bPtsSangue" color="#940B0D" popup="ptsSangue1"/>
+				<flowLineBreak/>
+			</flowLayout>
+	
+			</layout>
+			
+			
+			<popup name="popUpAnotacao_" width="440" height="440" backOpacity="0.5">
+				<label text="Anotações" align="top" />
+				<textEditor align="client" field="txtAnotacaoFicha_02" />
+			</popup>
+	
+			<popup name="popUp_" width="440" height="440" backOpacity="0.5">
+				<flowLayout top="10" left="10" orientation="horizontal" autoHeight="true" width="130" >
+						
+						<atr lbl="Força" id="txtForca" />
+						<flowLineBreak/>
+						
+						<atr lbl="Destreza" id="txtDestreza" />
+						<flowLineBreak/>
+						
+						<atr lbl="Vigor" id="txtVigor" />
+						<flowLineBreak/>	
+
+						<horzLine  width="400" strokeColor="white"/>
+						<flowLineBreak/>	
+						
+						<hab lbl="Prontidão" id="txtProntidao" />
+						<flowLineBreak/>
+						
+						<hab lbl="Esportes" id="txtEsportes" />
+						<flowLineBreak/>
+						
+						<hab lbl="Briga" id="txtBriga" />
+						<flowLineBreak/>
+
+						<hab lbl="Esquiva" id="txtEsquiva" />
+						<flowLineBreak/>
+
+						<hab lbl="Empatia" id="txtEmpatia" />
+						<flowLineBreak/>
+						
+						<hab lbl="Expressão" id="txtExpressao" />
+						<flowLineBreak/>
+						
+						<hab lbl="Intimidação" id="txtIntimidacao" />
+						<flowLineBreak/>
+						
+						<hab lbl="Liderança" id="txtLideranca" />
+						<flowLineBreak/>
+						
+						<hab lbl="Manha" id="txtManha" />
+						<flowLineBreak/>
+						
+						<hab lbl="Lábia" id="txtLabia" />
+						<flowLineBreak/>
+						
+						
+						
+						
+				</flowLayout>
+				<flowLayout top="10" left="150" orientation="horizontal" autoHeight="true" width="130" >
+						<atr lbl="Carisma" id="txtCarisma" />
+						<flowLineBreak/>
+						
+						<atr lbl="Manipulação" id="txtManipulacao" />
+						<flowLineBreak/>
+						
+						<atr lbl="Aparência" id="txtAparencia" />
+						<flowLineBreak/>	
+
+						<horzLine  width="400" strokeColor="white"/>
+						<flowLineBreak/>
+
+						<hab lbl="E. Animais" id="txtEAnimais" />
+						<flowLineBreak/>
+						
+						<hab lbl="Ofícios" id="txtOficios" />
+						<flowLineBreak/>
+						
+						<hab lbl="Condução" id="txtConducao" />
+						<flowLineBreak/>
+						
+						<hab lbl="Etiqueta" id="txtEtiqueta" />
+						<flowLineBreak/>
+						
+						<hab lbl="Arma Fogo" id="txtArmasFogo" />
+						<flowLineBreak/>
+						
+						<hab lbl="Arma Branca" id="txtArmasBrancas" />
+						<flowLineBreak/>
+						
+						<hab lbl="Performance" id="txtPerformance" />
+						<flowLineBreak/>
+						
+						<hab lbl="Segurança" id="txtSeguranca" />
+						<flowLineBreak/>
+						
+						<hab lbl="Furtividade" id="txtFurtividade" />
+						<flowLineBreak/>
+						
+						<hab lbl="Sobrevivência" id="txtSobrevivencia" />
+						<flowLineBreak/>
+						
+				</flowLayout>				
+				<flowLayout top="10" left="290" orientation="horizontal" autoHeight="true" width="130" >
+						<atr lbl="Percepção" id="txtPercepcao" />
+						<flowLineBreak/>
+						
+						<atr lbl="Inteligência" id="txtInteligencia" />
+						<flowLineBreak/>
+						
+						<atr lbl="Raciocínio" id="txtRaciocinio" />
+						<flowLineBreak/>
+
+						<horzLine  width="400" strokeColor="white"/>
+						<flowLineBreak/>
+
+						<hab lbl="Acadêmicos" id="txtAcademicos" />
+						<flowLineBreak/>
+						
+						<hab lbl="Tecnologia" id="txtTecnologia" />
+						<flowLineBreak/>
+						
+						<hab lbl="Finanças" id="txtFinancas" />
+						<flowLineBreak/>
+						
+						<hab lbl="Investigação" id="txtInvestigacao" />
+						<flowLineBreak/>
+						
+						<hab lbl="Direito" id="txtDireito" />
+						<flowLineBreak/>
+						
+						<hab lbl="Linguística" id="txtLinguistica" />
+						<flowLineBreak/>
+						
+						<hab lbl="Medicina" id="txtMedicina" />
+						<flowLineBreak/>
+						
+						<hab lbl="Ocultismo" id="txtOcultismo" />
+						<flowLineBreak/>
+						
+						<hab lbl="Política" id="txtPolitica" />
+						<flowLineBreak/>
+													
+						<hab lbl="Ciência" id="txtCiencia" />
+						<flowLineBreak/>
+
+						<horzLine  width="400" strokeColor="white"/>
+						
+						<hab lbl="Consciência" id="txtConsciencia" />
+						<hab lbl="Autocontrole" id="txtAutocontrole" />
+						<hab lbl="Coragem" id="txtCoragem" />
+				</flowLayout>
+				
+				
+				
+				<flowLayout top="300" left="10" orientation="horizontal" autoHeight="true" width="260" >
+					
+					<bar lbl="Vontade" id="bVontade" color="#5DE2E7" popup="vontade2" />
+					<flowLineBreak/>
+
+					<bar lbl="Sanidade" id="bSanidade" color="#58DCB3" popup="sanidade2" />
+					<flowLineBreak/>
+
+					<bar lbl="Vitalidade" id="bVitalidade" color="#EF2929" popup="vitalidade2" />
+					<flowLineBreak/>
+
+					<bar lbl="Pts Sangue" id="bPtsSangue" color="#940B0D" popup="ptsSangue2"/>
+					<flowLineBreak/>
+					
+					<label text="Disciplinas" width="80" />
+					<textEditor  width="180" height="50" field="txtDisciplinas" />
+					<flowLineBreak/>
+					
+					
+				</flowLayout>
+				
+				
+			</popup>
+				
+</form>

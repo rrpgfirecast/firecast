@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplates">
+        
+	
+	<template name="atr">
+			<label text="$(lbl)" width="80" height="22" />
+			<edit field="txt_$(id)"  width="50" height="22" type="number" min="0" max="10" horzTextAlign="center"/>			
+	</template>
+	
+	
+	
+	<template name="hab" width="320">
+	
+	<label text="$(lbl)" align="top" horzTextAlign="leading" autoSize = "false"   width="80" height="22" />
+	
+	
+	<edit align="top" horzTextAlign="center" visible="false" field="txt_$(id)"   />					
+	<edit align="top" horzTextAlign="center" visible="false" field="chk_$(id)_1" />
+	<edit align="top" horzTextAlign="center" visible="false" field="chk_$(id)_2" />
+	<edit align="top" horzTextAlign="center" visible="false" field="chk_$(id)_3" />
+	<edit align="top" horzTextAlign="center" visible="false" field="chk_$(id)_4" />
+	<edit align="top" horzTextAlign="center" visible="false" field="chk_$(id)_5" />
+
+	<progressBar width="10" height="10" color="#3399FF"   max="1" field="chk_$(id)_1" visible="true" >
+		<button width="10" height="10"  opacity="0.0" >
+			<event name="onClick" >
+			
+				if  sheet.chk_$(id)_1 == "1" then				
+					sheet.txt_$(id)   = "0";
+					sheet.chk_$(id)_1 = "0";
+					sheet.chk_$(id)_2 = "0";
+					sheet.chk_$(id)_3 = "0";
+					sheet.chk_$(id)_4 = "0";
+					sheet.chk_$(id)_5 = "0";
+				else
+					sheet.txt_$(id)   = "1";
+					sheet.chk_$(id)_1 = "1";
+					sheet.chk_$(id)_2 = "0";
+					sheet.chk_$(id)_3 = "0";
+					sheet.chk_$(id)_4 = "0";
+					sheet.chk_$(id)_5 = "0";							
+				end;	 
+			</event>				
+		</button>
+	</progressBar>
+
+
+	<progressBar width="10" height="10" color="#3399FF"   max="1" field="chk_$(id)_2" visible="true" >
+		<button width="10" height="10"  opacity="0.0">
+			<event name="onClick" >
+				sheet.txt_$(id)   = "2";
+				sheet.chk_$(id)_1 = "1";
+				sheet.chk_$(id)_2 = "1";
+				sheet.chk_$(id)_3 = "0";
+				sheet.chk_$(id)_4 = "0";
+				sheet.chk_$(id)_5 = "0";
+			</event>				
+		</button>
+	</progressBar>
+
+
+	<progressBar width="10" height="10" color="#3399FF"   max="1" field="chk_$(id)_3" visible="true" >
+		<button width="10" height="10"  opacity="0.0">
+			<event name="onClick" >
+				sheet.txt_$(id)   = "3";
+				sheet.chk_$(id)_1 = "1";
+				sheet.chk_$(id)_2 = "1";
+				sheet.chk_$(id)_3 = "1";
+				sheet.chk_$(id)_4 = "0";
+				sheet.chk_$(id)_5 = "0";
+			</event>				
+		</button>
+	</progressBar>
+
+		
+	<progressBar width="10" height="10" color="blue"   max="1" field="chk_$(id)_4" visible="true" >
+		<button width="10" height="10"  opacity="0.0">
+			<event name="onClick" >
+				sheet.txt_$(id)   = "4";
+				sheet.chk_$(id)_1 = "1";
+				sheet.chk_$(id)_2 = "1";
+				sheet.chk_$(id)_3 = "1";
+				sheet.chk_$(id)_4 = "1";
+				sheet.chk_$(id)_5 = "0";
+			</event>				
+		</button>
+	</progressBar>
+		
+	<progressBar width="10" height="10" color="blue"   max="1" field="chk_$(id)_5" visible="true" >
+		<button width="10" height="10"  opacity="0.0">
+			<event name="onClick" >
+				sheet.txt_$(id)   = "5";
+				sheet.chk_$(id)_1 = "1";
+				sheet.chk_$(id)_2 = "1";
+				sheet.chk_$(id)_3 = "1";
+				sheet.chk_$(id)_4 = "1";
+				sheet.chk_$(id)_5 = "1";
+			</event>				
+		</button>
+	</progressBar>	
+</template>	
+	
+	
+	
+	
+	
+	<template name="bar">
+		<label text="$(lbl)" width="80" />						
+		<progressBar field="txtAtual_$(id)" fieldMax="txtMax_$(id)" width="180" height="12" color="$(color)"   min="0" top="46" left="0" >
+			<button name="btn_$(popup)_"  width="180" height="12"   opacity="0.0"  margins="{top=-12}">
+				<event name="onDblClick">
+					<![CDATA[
+						local pop = self:findControlByName("pop_$(popup)_");
+						
+						if pop ~= nil then
+							pop:setNodeObject(sheet);
+							pop:showPopupEx("mouse", self.txtAtual_$(id));
+						else
+							showMessage("Ops, não encontrei o pop-up para exibir");
+						end;
+					]]>
+				</event>				
+			</button>			
+	</progressBar>
+
+
+	<popup name="pop_$(popup)_" width="100" height="80" backOpacity="0.5" >
+		<flowLayout top="10" left="10" orientation="horizontal" autoHeight="true" width="320" >
+			<label text="Atual:" width="40" height="24"/>
+			<edit field="txtAtual_$(id)" type="number" width="40" height="24" top="40" left="0" horzTextAlign="center"  />
+			<flowLineBreak/>
+			
+			<label text="Max:" width="40" height="24"/>
+			<edit field="txtMax_$(id)" type="number" width="40" height="24" top="40" left="70" horzTextAlign="center"  />				
+			<flowLineBreak/>
+		</flowLayout>
+	</popup>	
+
+</template>	 
+	
+</form>
+
+
+
+

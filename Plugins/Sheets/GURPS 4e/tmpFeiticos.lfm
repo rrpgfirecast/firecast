@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpFeiticos" height="33" align="top" onShow="calcularNH() formatColors()" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+		readOnly: true;
+		cursor: default;
+		canFocus: false;
+	}
+	
+	</style>
+	<script><![CDATA[
+		
+		local function g(NH, nome)
+		
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local rolagem = Firecast.interpretarRolagem("3d6")
+			mesaDoPersonagem.activeChat:rolarDados(rolagem, "[§B]Teste de " .. nome .. "[§B], NH ".. NH, function (rolado)
+				
+				local resultado = rolado.resultado
+				local diff = math.abs(NH - resultado)
+				
+				if resultado == 18 or (resultado >= 17 and NH <= 15) or resultado - 10 >= NH then
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K4]Falha Crítica [§K1]por [§K2]" .. diff);
+				elseif resultado<=4 or (resultado<=5 and NH>=15) or (resultado<=6 and NH>=16) then
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K9]Sucesso Crítico [§K1]por [§K2]" .. diff);
+				elseif resultado > NH then
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K7]Falha [§K1]por [§K2]" .. diff);
+				else
+				  mesaDoPersonagem.activeChat:enviarMensagem("[§K2][§B]Resultado:[§R] [§K3]Sucesso [§K1]por [§K2]" .. diff);
+				end
+			end);
+		end
+		
+		local function formatColors()
+			if tonumber(sheet.PtsFei:match("%[(%d+)%]")) > 0 then
+				self.edtPtsFei.fontColor = '#00ff78'
+			else
+				self.edtPtsFei.fontColor = '#9e9e9e'
+			end
+		end
+		
+		local function calcularNH()
+			local PTs = tonumber(sheet.PtsFei:match("%[(%d+)%]"))
+			
+			if PTs == 0 then
+				sheet.NHFei = "00"
+			else
+				local nodoPai = NDB.getParent(NDB.getParent(sheet))
+				local ATT = nodoPai["IQ"]
+				
+				local modDif = 0
+				
+				if sheet.dificuldadeFei == 'E' then
+					modDif = 0
+				elseif sheet.dificuldadeFei == 'A' then
+					modDif = -1
+				elseif sheet.dificuldadeFei == 'H' then
+					modDif = -2
+				elseif sheet.dificuldadeFei == 'VH' then
+					modDif = -3
+				end
+				
+				if PTs == 1 then
+					modPts = 0
+				elseif PTs == 2 then
+					modPts = 1
+				elseif PTs == 4 then
+					modPts = 2
+				else
+					modPts = math.floor((PTs - 4) / 4) + 2
+				end
+				
+				local NHfinal = ATT + sheet.bonusFei + modPts + modDif + nodoPai.univerModFei
+				sheet.NHFei = string.format("%02d", NHfinal)
+			end
+		end
+		
+		local function calcSomaPontosHabilidades()
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			nodoPai.cbHabCalc = not nodoPai.cbHabCalc
+		end
+		
+		local function select()
+			self.recHighlight.visible = not self.recHighlight.visible
+		end
+		
+	]]></script>
+	
+	<rectangle color="#202020" width="358" />
+	<rectangle color="#202020" left="745" width="230" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+	<rectangle color="#303030" width="2000" height="33" visible="false" name="recHighlight"/>
+	
+	<layout align="top" height="30" margins="{top=3}">
+		<button align="left" width="30" text="🎲" margins="{right=3}" onClick="g(tonumber(sheet.NHFei), sheet.nomeFei)" hint="Rolar Feitiço" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		
+		<edit align="left" width="325" fontStyle="bold" name="edtNomeFei" field="nomeFei" hint="Nome do Feitiço" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="nomeFei" defaultValue="—" />
+		
+		<edit align="left" width="285" name="edtCollegeFei" field="collegeFei" hint="Colégio do Feitiço" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="collegeFei" defaultValue="—" />
+		
+		<comboBox align="left" width="50" name="edtDifFei" items="{'(E)', '(A)', '(H)', '(VH)'}" values="{'E', 'A', 'H', 'VH'}" field="dificuldadeFei" hint="Dificuldade do Feitiço" margins="{right=5}" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="dificuldadeFei" defaultValue="H">
+			<event name="onUserChange">
+				calcularNH()
+			</event>
+		</dataLink>
+		
+		<edit align="left" width="50" name="edtBonusFei" field="bonusFei" type="number" hint="Modificadores no NH do Feitiço" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+			<event name="onExit">
+				if sheet.bonusFei == nil then sheet.bonusFei = 0 end
+			</event>
+		</edit>
+		<dataLink field="bonusFei" defaultValue="0">
+			<event name="onUserChange">
+				calcularNH()
+			</event>
+		</dataLink>
+		
+		<label align="left" width="48" fontStyle="bold" fontColor="white" name="lblNHFei" field="NHFei" hint="NH Final do Feitiço" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="NHFei" defaultValue="00" />
+		
+		<edit align="left" width="35" name="edtPtsFei" field="PtsFei" class="pts" hint="Pontos Gastos no Feitiço" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		<dataLink field="PtsFei" defaultValue="[00]" />
+		
+		<layout align="left" width="15" margins="{right=2}">
+			<button align="top" height="15" text="⯅" fontSize="6" hint="Aumentar NH com pontos" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" >
+				<event name="onClick"><![CDATA[
+						local valorOriginal = tonumber(sheet.PtsFei:match("%[(%d+)%]"))
+						
+						if valorOriginal == 0 or valorOriginal == 1 then
+							valorFinal = valorOriginal + 1
+						elseif valorOriginal == 2 then
+							valorFinal = valorOriginal + 2
+						else
+							valorFinal = valorOriginal + 4
+						end
+						sheet.PtsFei = string.format('[%02d]', valorFinal)
+						calcularNH()
+						formatColors()
+						calcSomaPontosHabilidades()
+				]]></event>
+			</button>
+			<button align="top" height="15" text="⯆" fontSize="6" hint="Diminuir NH com pontos" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" >
+				<event name="onClick"><![CDATA[
+						local valorOriginal = tonumber(sheet.PtsFei:match("%[(%d+)%]"))
+						
+						if valorOriginal == 0 then
+							return
+						elseif valorOriginal == 1 or valorOriginal == 2 then
+							valorFinal = valorOriginal - 1
+						elseif valorOriginal == 4 then
+							valorFinal = valorOriginal - 2
+						else
+							valorFinal = valorOriginal - 4
+						end
+						sheet.PtsFei = string.format('[%02d]', valorFinal)
+						calcularNH()
+						formatColors()
+						calcSomaPontosHabilidades()
+				]]></event>
+			</button>
+		</layout>
+		
+		<button align="left" text="𝐢" width="30" name="btnInfo" hint="Informações Extras" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" >
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popUp_");
+						
+				if pop ~= nil then
+					pop:showPopupEx("left", self.btnInfo);
+					pop:setNodeObject(sheet);
+					
+					if sheet.dificuldadeFei == 'E' then
+						sheet.AtreDifHab = "IQ/Easy"
+					elseif sheet.dificuldadeFei == 'A' then
+						sheet.AtreDifHab = "IQ/Average"
+					elseif sheet.dificuldadeFei == 'H' then
+						sheet.AtreDifHab = "IQ/Hard"
+					elseif sheet.dificuldadeFei == 'VH' then
+						sheet.AtreDifHab = "IQ/Very Hard"
+					else
+						sheet.AtreDifHab = "IQ/None"
+					end
+					
+					local nodoPai = NDB.getParent(NDB.getParent(sheet))
+					sheet.univerModFei = nodoPai.univerModFei
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir");
+				end;
+			]]></event>
+		</button>
+		
+		<template name="DivisorM">
+			<layout align="top" height="12" margins="{top=0, bottom=5}">
+				<label align="left" text="$(texto)" width="$(largura)" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+				<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+			</layout>
+		</template>
+		
+		<popup name="popUp_" width="518" height="858" backOpacity="0" drawContainer="false" autoScopeNode="false">
+			<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=0}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<layout align="top" height="15" margins="{right=13}">
+						<layout align="right" width="210">
+							<label align="left" text="M O D I F I C A D O R   U N I V E R S A L :" fontSize="10" fontStyle="bold" width="180" hitTest="true" hint="Modificador aplicado ao NH de todos os Feitiços" />
+							<edit align="left" fontSize="10" horzTextAlign="trailing" field="univerModFei" type="number" width="30" hint="Modificador aplicado ao NH de todos os Feitiços">
+								<event name="onExit">
+									if sheet.univerModFei == nil then sheet.univerModFei = 0 end
+								</event>
+								<event name="onChange"><![CDATA[
+									local nodoPai = NDB.getParent(NDB.getParent(sheet))
+									nodoPai.univerModFei = sheet.univerModFei
+								]]></event>
+							</edit>
+							<dataLink field="univerModFei" defaultValue="0" />
+						</layout>
+					</layout>
+					<horzLine margins="{top=7, right=13, bottom=7}" />
+					<layout align="top" height="40">
+						<label field="nomeFei" align="client" textTrimming="character" fontStyle="bold" fontColor="white" fontSize="20" />
+						<label field="AtreDifHab" align="right" horzTextAlign="trailing" width="95" margins="{right=15}" />
+					</layout>
+					<scrollBox align="client" padding="{bottom=0, right=15}">
+						<DivisorM texto="C L A S S E S" largura="55" />
+						<edit field="classesFei" align="top" height="40" />
+						<DivisorM texto="D E S C R I P T I O N" largura="95" />
+						<textEditor field="descFei" align="top" height="190"/>
+						<DivisorM texto="D U R A T I O N" largura="75" />
+						<textEditor field="durationFei" align="top" />
+						<DivisorM texto="C O S T" largura="37" />
+						<textEditor field="costFei" align="top" height="45" />
+						<DivisorM texto="T I M E   T O   C A S T" largura="97" />
+						<textEditor field="timeFei" align="top" height="45" />
+						<DivisorM texto="P R E R E Q U I S I T E S" largura="110" />
+						<textEditor field="prereqFei" align="top" />
+						<DivisorM texto="I T E M" largura="35" />
+						<textEditor field="itemFei" align="top" />
+						<button text="💬" align="top" height="30" hint="Enviar Descrição no Chat">
+							<event name="onClick"><![CDATA[
+								local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+								local meuJogador = mesaDoPersonagem.meuJogador
+								local meuNick = meuJogador.nick
+								
+								local msg = "💬 ".. meuNick .."[§R][§K2] destacou o Feitiço:"
+								msg = msg .. "\n****\n### [§K1][§B]".. (sheet.nomeFei or "") .."[§B]\n###### ".. (sheet.AtreDifHab or "")
+								msg = msg .. "\n [§K1][§B]Description:[§B] [§K14]".. (sheet.descFei or "")
+								msg = msg .. "\n [§K1][§B]Duration:[§B] [§K14]".. (sheet.durationFei or "")
+								msg = msg .. "\n [§K1][§B]Cost:[§B] [§K14]".. (sheet.costFei or "")
+								msg = msg .. "\n [§K1][§B]Time to Cast:[§B] [§K14]".. (sheet.timeFei or "")
+								msg = msg .. "\n [§K1][§B]Prerequisites:[§B] [§K14]".. (sheet.prereqFei or "")
+								msg = msg .. "\n [§K1][§B]Item:[§B] [§K14]".. (sheet.itemFei or "")
+								msg = msg .. "[§T]\n****"
+
+								mesaDoPersonagem.activeChat:enviarMensagem(msg)
+							]]></event>
+						</button>
+					</scrollBox>
+				</rectangle>
+			</rectangle>
+		</popup>
+		
+		<button align="left" text="🞭" width="30" onClick="NDB.deleteNode(sheet) calcularNH() calcSomaPontosHabilidades()" hint="Apagar Feitiço" margins="{left=2}" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+		
+	</layout>
+</form>

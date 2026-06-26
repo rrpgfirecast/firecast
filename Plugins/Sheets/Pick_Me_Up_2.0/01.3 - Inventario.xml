@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rectangle 	align="client" 	color="black" >
+        <scrollBox align="client" margins="{left=5,right=5}"> 
+           
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="4" g-max-width="340" g-min-width="300" g-min-height="550" g-max-height="1080" margins="{top=15}">	
+				
+                <!-- Equipamentos Equipados--> 
+                <rectangle	color="none" name="equipamentos_equipados" g="col" g-width="12" height="510">	    
+                    <image  field="fundoequips"  editable="false" animate="false" style="proportional" g="col" g-width="12" height="520" src="https://blob.firecast.com.br/blobs/TNKACCID_4300210/07.png" margins="{left=10, top=10, right=10,bottom=15}">	
+                        
+                        <template name="EquipSlot">
+                            <rectangle height="70" color="#150e16" cornerType="round" g="col" g-width="3" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+                                <button align="client" name="btn_$(slot)" g="col" g-width="12" height="64" margins="{left=3, top=3, right=3,bottom=3}"> 
+                                    <event name="onClick">
+                                        local idx = sheet["id_$(slot)"];
+                                        local nodeReal = nil;
+
+                                        if idx ~= nil then
+                                            local nodes = NDB.getChildNodes(sheet.itensEquipamento);
+                                            nodeReal = nodes[idx];
+                                        end
+
+                                        if nodeReal ~= nil then                                             
+                                            self.detalheEquipamento:setNodeObject(nodeReal);
+                                            atualizarVisibilidadeSlots()
+                                            nodeReal.isEquipado = true; 
+                                            
+                                            self.detalheEquipamento.visible = true;
+                                            self.abertoPeloSlot = true;
+                                        else
+                                            showMessage("Não há nenhum item equipado neste slot ou o item foi deletado.");
+                                            sheet["id_$(slot)"] = nil;
+                                        end;
+                                    </event>
+                                    <image field="$(field)" editable="false" animate="true" style="proportional" g="col" g-width="12" height="64">
+                                        <edit name="d$(num)" field="d$(num)" visible="false" g="col" g-width="12" height="24" fontSize="10" horzTextAlign="center" margins="{left=5, top=20, right=5,bottom=20}"/>
+                                    </image>
+                                </button> 
+                            </rectangle>
+                        </template>
+
+                        <EquipSlot num="1" field="cabecaequip" slot="cabecaequip"/>
+                        <label height="15" g="col" g-width="1" margins="{top=10,left=10}"/> 
+                        <rectangle height="30" color="#150e16" cornerType="round" g="col" g-width="4" strokeSize="1" strokeColor="white" xradius="5" yradius="5">
+                            <button align="client" text="Durabilidades" g="col" g-width="12" height="24" fontSize="12" margins="{left=3, top=3, right=3, bottom=3}"> 
+                                <event name="onClick">
+                                    -- Inverte o estado de visibilidade baseado no primeiro elemento
+                                    local novoEstado = not self.d1.visible;
+                                    
+                                    for i = 1, 14 do 
+                                        local campo = self["d" .. i];
+                                        if campo ~= nil then 
+                                            campo.visible = novoEstado;
+                                        end;
+                                    end;
+                                </event>
+                            </button>
+                            <dataLink fields="{'d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11', 'd12', 'd13', 'd14'}" defaultValues="{'100%', '100%', '100%', '100%', '100%', '100%', '100%', '100%', '100%', '100%', '100%', '100%', '100%', '100%'}">
+                                <event name="onChange">
+                                    for i = 1, 14 do
+                                        local prop = "d" .. i;
+                                        if sheet[prop] == nil then 
+                                            sheet[prop] = "100%"; 
+                                        end;
+                                    end;
+                                </event>
+                            </dataLink>
+
+                            <dataLink fields="{'cabecaequip', 'maoesquerdaequip', 'ombroequip', 'pescocoequip', 'torsoequip', 'costasequip', 'maodireitaequip', 'cintoequip', 'armadireitaequip', 'armaesquerdaequip', 'botaequip', 'pernaequip', 'acessorio1equip', 'acessorio2equip'}" 
+                                defaultValues="{'http://blob.firecast.com.br/blobs/VSBKJVLE_3196991/capacete.png', 'http://blob.firecast.com.br/blobs/MHJOGVIJ_3197013/mao_esquerda.png', 'http://blob.firecast.com.br/blobs/VWWCJLAI_3197011/ombros.png', 'http://blob.firecast.com.br/blobs/KQTJSRMC_3196994/colar.png', 'http://blob.firecast.com.br/blobs/BHSFRPKJ_3197012/torso.png', 'http://blob.firecast.com.br/blobs/PFNJLMSL_3196996/costas.png', 'http://blob.firecast.com.br/blobs/KAOFDIWM_3196998/mao_direita.png', 'http://blob.firecast.com.br/blobs/VIKSJTAS_3196995/cinto.png', 'http://blob.firecast.com.br/blobs/MRUHMKWV_3196993/arma_direita.png', 'http://blob.firecast.com.br/blobs/QQBQUNJS_3196992/arma_esqueda.png', 'http://blob.firecast.com.br/blobs/ODHJPRVJ_3196989/bota.png', 'http://blob.firecast.com.br/blobs/ADULDOEJ_3196997/cal_a.png', 'http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png', 'http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png'}">
+                                <event name="onChange">
+                                    -- Mapeamento exato dos campos que você usou nos EquipSlot e EquipPopup
+                                    local icones = {
+                                        cabecaequip = "http://blob.firecast.com.br/blobs/VSBKJVLE_3196991/capacete.png",
+                                        maoesquerdaequip = "http://blob.firecast.com.br/blobs/MHJOGVIJ_3197013/mao_esquerda.png",
+                                        ombroequip = "http://blob.firecast.com.br/blobs/VWWCJLAI_3197011/ombros.png",
+                                        pescocoequip = "http://blob.firecast.com.br/blobs/KQTJSRMC_3196994/colar.png",
+                                        torsoequip = "http://blob.firecast.com.br/blobs/BHSFRPKJ_3197012/torso.png",
+                                        costasequip = "http://blob.firecast.com.br/blobs/PFNJLMSL_3196996/costas.png",
+                                        maodireitaequip = "http://blob.firecast.com.br/blobs/KAOFDIWM_3196998/mao_direita.png",
+                                        cintoequip = "http://blob.firecast.com.br/blobs/VIKSJTAS_3196995/cinto.png",
+                                        armadireitaequip = "http://blob.firecast.com.br/blobs/MRUHMKWV_3196993/arma_direita.png",
+                                        armaesquerdaequip = "http://blob.firecast.com.br/blobs/QQBQUNJS_3196992/arma_esqueda.png",
+                                        botaequip = "http://blob.firecast.com.br/blobs/ODHJPRVJ_3196989/bota.png",
+                                        pernaequip = "http://blob.firecast.com.br/blobs/ADULDOEJ_3196997/cal_a.png",
+                                        acessorio1equip = "http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png",
+                                        acessorio2equip = "http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png"
+                                    }
+
+                                    -- Verifica cada campo. Se estiver vazio (nil), coloca o ícone padrão.
+                                    for nomeCampo, linkIcone in pairs(icones) do
+                                        if sheet[nomeCampo] == nil or sheet[nomeCampo] == "" then
+                                            sheet[nomeCampo] = linkIcone
+                                        end
+                                    end
+                                </event>
+                            </dataLink>
+                        </rectangle>
+
+                        <label height="15" g="col" g-width="1" margins="{top=10,left=10}"/> 
+                        <EquipSlot num="2" field="maoesquerdaequip" slot="maoesquerdaequip"/>
+                        
+                        <EquipSlot num="3" field="ombroequip" slot="ombroequip"/>
+                        <label height="15" g="col" g-width="6" margins="{top=10,left=10}"/> 
+                        <EquipSlot num="4" field="pescocoequip" slot="pescocoequip"/>
+                        
+                        <EquipSlot num="5" field="torsoequip" slot="torsoequip"/>
+                        <label height="15" g="col" g-width="6" margins="{top=10,left=10}"/> 
+                        <EquipSlot num="6" field="costasequip" slot="costasequip"/>
+                        
+                        <EquipSlot num="7" field="maodireitaequip" slot="maodireitaequip"/>
+                        <label height="15" g="col" g-width="6" margins="{top=10,left=10}"/> 
+                        <EquipSlot num="8" field="cintoequip" slot="cintoequip"/>
+                        
+                        <EquipSlot num="9" field="armadireitaequip" slot="armadireitaequip"/>
+                        <label height="15" g="col" g-width="6" margins="{top=10,left=10}"/> 
+                        <EquipSlot num="10" field="armaesquerdaequip" slot="armaesquerdaequip"/>
+                        
+                        <EquipSlot num="11" field="botaequip" slot="botaequip"/>
+                        <label height="15" g="col" g-width="6" margins="{top=10,left=10}"/> 
+                        <EquipSlot num="12" field="pernaequip" slot="pernaequip"/>
+                        
+                        <EquipSlot num="13" field="acessorio1equip" slot="acessorio1equip"/>
+                        <label height="15" g="col" g-width="6" margins="{top=10,left=10}"/> 
+                        <EquipSlot num="14" field="acessorio2equip" slot="acessorio2equip"/>
+
+                    </image>
+                </rectangle>
+
+                <!-- Lista Inventario--> 
+                <rectangle	color="none" name="lista_equipamentos" g="col" g-width="12" height="510" visible="false">	        
+                    <label	height="25"	text="Inventário" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=15}"/>
+                
+                    <button name="btnNovoEquipamento" text="Adicionar Item" height="30" g="col" g-width="12" margins="{top=5,right=5,left=5}"/>
+
+                    <script>
+                        local filterEquipArgument = "";
+                        
+                        local function prepFilterEquip(inputStr)
+                            return string.lower(Utils.removerAcentos(inputStr or ""));
+                        end;
+                        
+                        local function runEquipFilter()           
+                            filterEquipArgument = prepFilterEquip(self.edtFiltroEquipamentos.text);
+                            self.listaequipamento:reorganize();
+                        end;        
+                        
+                        local function checkEquipFilter() 
+                            local newArg = prepFilterEquip(self.edtFiltroEquipamentos.text);
+                            if newArg ~= filterEquipArgument then
+                                runEquipFilter();
+                            end;
+                        end;
+                    </script>
+
+                    <timer name="tmrFiltroEquipamentos" interval="1000" onTimer="checkEquipFilter()"/>
+                    <edit g="row" g-min-height="25" textPrompt="Buscar equipamento..." name="edtFiltroEquipamentos" onChange="runEquipFilter()" margins="{top=5,right=5,left=5}" hint="Buscar item ou tag..."/>
+
+                    <scrollBox g="row" g-vert-tile="true" margins="{top=5,right=2,left=2,bottom=2}" g-cnt-gutter="1">
+                        <gridRecordList name="listaequipamento" field="itensEquipamento" templateForm="templateEquipamentoItem" minQt="0" selectable="true" height="550" g="col" g-width="12">
+                            <event name="onCompare">
+                                return Utils.compareStringPtBr(left.nomeEquip or "", right.nomeEquip or "");
+                            </event>
+                            <event name="onFilter">
+                                if (filterEquipArgument == nil) or (filterEquipArgument == "") then
+                                    return true;
+                                end;
+
+                                local nome = prepFilterEquip(node.nomeEquip);
+                                local descCura = prepFilterEquip(node.tags_equip);
+
+                                return (nome ~= "" and string.find(nome, filterEquipArgument, 1, true)) or 
+                                    (descCura ~= "" and string.find(descCura, filterEquipArgument, 1, true));
+                            </event>
+                        </gridRecordList>
+                                
+                        <script>
+                            -- Função de reordenação específica para a nova lista
+                            local function reordenarEquips()
+                                local nodes = NDB.getChildNodes(sheet.itensEquipamento)
+                                table.sort(nodes, function(a, b)
+                                    return (tonumber(a.ordemEquip) or 0) &lt; (tonumber(b.ordemEquip) or 0)
+                                end)
+                                self.listaequipamento:reorganize()
+                            end
+
+                            -- Configuração do botão de adicionar
+                            self.btnNovoEquipamento.onClick = function()
+                                local novo = self.listaequipamento:append()
+                                if novo then
+                                    novo.nomeEquip = "Novo Equipamento"
+                                    novo.qtdEquip = "1x"
+                                    novo.rankEquip = "F-"
+                                    novo.ordemEquip = #NDB.getChildNodes(sheet.itensEquipamento) + 1
+                                    reordenarEquips()
+                                end
+                            end
+
+                            -- Lógica de seleção: agora aponta para o dataScopeBox 'detalheEquipamento'
+                            self.listaequipamento.onSelect = function()
+                                local node = self.listaequipamento.selectedNode;
+                                self.detalheEquipamento:setNodeObject(node);
+                                self.detalheEquipamento.visible = (node ~= nil);
+
+                                self.abertoPeloSlot = false;
+
+                                atualizarVisibilidadeSlots()
+                            end;
+
+                            
+                        </script>
+                    </scrollBox>      
+                </rectangle>
+                
+                <label g="col" g-width="3" height="10"/>
+                <button name="btn_lista_equipamentos" text="Ir para Lista de Itens" fontSize="18" g="col" g-width="6" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="leading" fontColor="white" margins="{top=10,bottom=10,right=10,left=10}">
+                    <event name="onClick">
+                        if self.lista_equipamentos.visible == false then
+                            self.lista_equipamentos.visible = true
+                            self.equipamentos_equipados.visible = false
+                            self.btn_lista_equipamentos.text = "Ir para Itens Equipados"
+                        else
+                            self.lista_equipamentos.visible = false
+                            self.equipamentos_equipados.visible = true
+                            self.btn_lista_equipamentos.text = "Ir para Lista de Itens"
+                        end
+                    </event>     
+                </button>
+                <label g="col" g-width="3" height="10"/>
+            </rectangle>
+
+            <rectangle color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="8" g-max-width="1920" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <dataScopeBox name="detalheEquipamento" align="client" visible="false">
+                    <script>
+                        function atualizarVisibilidadeSlots()
+                            -- Garantimos que estamos pegando o node do item detalhado
+                            local node = self.detalheEquipamento.node;
+                            if node == nil then return end;
+
+                            local mesa = Firecast.getMesaDe(node);
+                            if mesa == nil or mesa.meuJogador == nil then return end;
+
+                            local isMestre = mesa.meuJogador.isMestre;
+
+                            local campos = {
+                                "cabeca","maoesquerda","ombro","pescoco","torso","costas",
+                                "maodireita","cinto","armadireita","armaesquerda",
+                                "bota","perna","acessorio1","acessorio2"
+                            };
+
+                            for _, campo in ipairs(campos) do
+                                local chk = self:findControlByName("chk_" .. campo);
+                                if chk ~= nil then
+                                    -- Verifica se o campo está marcado no item
+                                    local marcado = (node["vis_" .. campo] == true) or (node["vis_" .. campo] == "true");
+
+                                    if isMestre then
+                                        -- Mestre vê tudo e pode editar
+                                        chk.visible = true;
+                                        chk.enabled = true; -- Garante interação
+                                        chk.autoChange = true;
+                                    else
+                                        -- Jogador vê apenas se estiver marcado e não pode alterar
+                                        chk.visible = marcado;
+                                        chk.autoChange = false;
+                                        chk.enabled = true; -- Bloqueia o clique visualmente e funcionalmente
+                                    end;
+                                end;
+                            end;
+                        end;
+                    </script>
+                    <event name="onNodeReady">
+                        atualizarVisibilidadeSlots();
+                    </event>
+
+                    <event name="onNodeChanged">
+                        atualizarVisibilidadeSlots();
+                    </event>
+                    <button name="btn_equipar_acao" text="Equipar" g="col" g-width="1" height="20" fontSize="10" margins="{top=5}" visible="true">
+                        <event name="onClick">
+                            local itemNode = self.detalheEquipamento.node;
+                            if itemNode == nil then return end;
+
+                            local ficha = NDB.getRoot(itemNode); 
+
+                            local mapa = {
+                                {c="cabeca", s="cabecaequip", d="d1", p="http://blob.firecast.com.br/blobs/VSBKJVLE_3196991/capacete.png"},
+                                {c="maoesquerda", s="maoesquerdaequip", d="d2", p="http://blob.firecast.com.br/blobs/MHJOGVIJ_3197013/mao_esquerda.png"},
+                                {c="ombro", s="ombroequip", d="d3", p="http://blob.firecast.com.br/blobs/VWWCJLAI_3197011/ombros.png"},
+                                {c="pescoco", s="pescocoequip", d="d4", p="http://blob.firecast.com.br/blobs/KQTJSRMC_3196994/colar.png"},
+                                {c="torso", s="torsoequip", d="d5", p="http://blob.firecast.com.br/blobs/BHSFRPKJ_3197012/torso.png"},
+                                {c="costas", s="costasequip", d="d6", p="http://blob.firecast.com.br/blobs/PFNJLMSL_3196996/costas.png"},
+                                {c="maodireita", s="maodireitaequip", d="d7", p="http://blob.firecast.com.br/blobs/KAOFDIWM_3196998/mao_direita.png"},
+                                {c="cinto", s="cintoequip", d="d8", p="http://blob.firecast.com.br/blobs/VIKSJTAS_3196995/cinto.png"},
+                                {c="armadireita", s="armadireitaequip", d="d9", p="http://blob.firecast.com.br/blobs/MRUHMKWV_3196993/arma_direita.png"},
+                                {c="armaesquerda", s="armaesquerdaequip", d="d10", p="http://blob.firecast.com.br/blobs/QQBQUNJS_3196992/arma_esqueda.png"},
+                                {c="bota", s="botaequip", d="d11", p="http://blob.firecast.com.br/blobs/ODHJPRVJ_3196989/bota.png"},
+                                {c="perna", s="pernaequip", d="d12", p="http://blob.firecast.com.br/blobs/ADULDOEJ_3196997/cal_a.png"},
+                                {c="acessorio1", s="acessorio1equip", d="d13", p="http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png"},
+                                {c="acessorio2", s="acessorio2equip", d="d14", p="http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png"}
+                            };
+
+                            local conflitos = {}
+                            local nodes = NDB.getChildNodes(ficha.itensEquipamento)
+
+                            -- detectar conflitos
+                            for i=1,#mapa do
+                                local m = mapa[i]
+
+                                if itemNode["vis_"..m.c] == true then
+                                    local ocupado = ficha["id_"..m.s]
+
+                                    if ocupado ~= nil then
+                                        local nodeAntigo = nodes[ocupado]
+
+                                        if nodeAntigo ~= nil and nodeAntigo ~= itemNode then
+                                            conflitos[nodeAntigo] = true
+                                        end
+                                    end
+                                end
+                            end
+
+                            -- transformar em lista de nomes
+                            local nomes = {}
+                            for node,_ in pairs(conflitos) do
+                                table.insert(nomes, node.nomeEquip or "Item")
+                            end
+
+                            local function equiparItem()
+
+                                -- desequipar itens conflitantes
+                                for node,_ in pairs(conflitos) do
+                                    node.isEquipado = false
+
+                                    for i=1,#mapa do
+                                        local m = mapa[i]
+
+                                        if ficha["id_"..m.s] ~= nil then
+                                            if nodes[ficha["id_"..m.s]] == node then
+                                                ficha[m.s] = m.p
+                                                ficha["id_"..m.s] = nil
+                                            end
+                                        end
+                                    end
+                                end
+
+                                -- equipar item novo
+                                local marcouAlgum = false
+                                itemNode.isEquipado = true
+
+                                for i=1,#mapa do
+                                    local m = mapa[i]
+
+                                    if itemNode["vis_"..m.c] == true then
+                                        ficha[m.s] = itemNode.imagemEquip or "https://rebrand.ly/firecast_default_icon"
+                                        ficha[m.d] = itemNode.durabilidadeItem or "100%"
+
+                                        for n=1,#nodes do
+                                            if nodes[n] == itemNode then
+                                                ficha["id_"..m.s] = n
+                                                break
+                                            end
+                                        end
+
+                                        marcouAlgum = true
+                                    end
+                                end
+
+                                if not marcouAlgum then
+                                    showMessage("Selecione os slots onde deseja equipar este item primeiro.")
+                                    itemNode.isEquipado = false
+                                end
+                            end
+
+                            -- se não houver conflitos
+                            if #nomes == 0 then
+                                equiparItem()
+                            else
+
+                                local lista = table.concat(nomes, ", ")
+
+                                local msg = "Para que o item '" .. (itemNode.nomeEquip or "Item") ..
+                                "' seja equipado, os itens '" .. lista ..
+                                "' serão desequipados. Deseja continuar?"
+
+                                Dialogs.confirmYesNo(msg,
+                                    function()
+                                        equiparItem()
+                                    end,
+                                    function()
+                                        -- cancelar
+                                    end)
+                            end
+                        </event>
+                    </button>
+
+                    <button name="btn_desequipar_acao" text="Desequipar" g="col" g-width="1" height="20" fontSize="10" margins="{top=5}" fontColor="red" visible="false">
+                        <event name="onClick">
+                            local itemNode = self.detalheEquipamento.node;
+                            if itemNode == nil then return end;
+                            
+                            local ficha = NDB.getRoot(itemNode);
+                            local mapa = {
+                                {c="cabeca", s="cabecaequip", p="http://blob.firecast.com.br/blobs/VSBKJVLE_3196991/capacete.png"},
+                                {c="maoesquerda", s="maoesquerdaequip", p="http://blob.firecast.com.br/blobs/MHJOGVIJ_3197013/mao_esquerda.png"},
+                                {c="ombro", s="ombroequip", p="http://blob.firecast.com.br/blobs/VWWCJLAI_3197011/ombros.png"},
+                                {c="pescoco", s="pescocoequip", p="http://blob.firecast.com.br/blobs/KQTJSRMC_3196994/colar.png"},
+                                {c="torso", s="torsoequip", p="http://blob.firecast.com.br/blobs/BHSFRPKJ_3197012/torso.png"},
+                                {c="costas", s="costasequip", p="http://blob.firecast.com.br/blobs/PFNJLMSL_3196996/costas.png"},
+                                {c="maodireita", s="maodireitaequip", p="http://blob.firecast.com.br/blobs/KAOFDIWM_3196998/mao_direita.png"},
+                                {c="cinto", s="cintoequip", p="http://blob.firecast.com.br/blobs/VIKSJTAS_3196995/cinto.png"},
+                                {c="armadireita", s="armadireitaequip", p="http://blob.firecast.com.br/blobs/MRUHMKWV_3196993/arma_direita.png"},
+                                {c="armaesquerda", s="armaesquerdaequip", p="http://blob.firecast.com.br/blobs/QQBQUNJS_3196992/arma_esqueda.png"},
+                                {c="bota", s="botaequip", p="http://blob.firecast.com.br/blobs/ODHJPRVJ_3196989/bota.png"},
+                                {c="perna", s="pernaequip", p="http://blob.firecast.com.br/blobs/ADULDOEJ_3196997/cal_a.png"},
+                                {c="acessorio1", s="acessorio1equip", p="http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png"},
+                                {c="acessorio2", s="acessorio2equip", p="http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png"}
+                            };
+
+                            -- 1. Limpar os Slots na ficha principal e remover os IDs de rastreio
+                            for i=1, #mapa do
+                                local m = mapa[i];
+                                if itemNode["vis_" .. m.c] == true then
+                                    ficha[m.s] = m.p;
+                                    ficha["id_" .. m.s] = nil; -- Remove o ID para o slot ficar vazio
+                                end;
+                            end;
+
+                            -- 2. Atualizar o estado do item diretamente (Sem busca manual!)
+                            itemNode.isEquipado = false;
+
+                            -- 3. Fechar o painel se foi aberto pelo slot
+                            if self.abertoPeloSlot then
+                                self.detalheEquipamento.visible = false;
+                                self.abertoPeloSlot = false;
+                            end;
+                            
+                            -- 4. Reorganizar apenas se você tiver um filtro de "Itens Equipados" na lista
+                            -- Caso contrário, pode remover esta linha para ganhar performance.
+                            self.listaequipamento:reorganize();
+                        </event>
+                    </button>
+                    <dataLink field="isEquipado">
+                        <event name="onChange">
+                            local node = self.detalheEquipamento.node;
+                            if node ~= nil then
+                                -- Se estiver equipado, o botão de EQUIPAR some e o de DESEQUIPAR aparece
+                                self.btn_equipar_acao.visible = not node.isEquipado;
+                                self.btn_desequipar_acao.visible = node.isEquipado;
+                            end;
+                        </event>
+                    </dataLink>
+                    <label text="Durabilidade:" g="col" g-width="1" fontSize="10" height="20" horzTextAlign="trailing" fontFamily="Wishes Script Caps Display" margins="{top=10,left=5}"/>
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="1" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}">
+                        <edit field="durabilidadeItem" g="col" g-width="12" transparent="true" fontSize="14" height="20"  horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+                        <dataLink field="durabilidadeItem" defaultValue="100%">
+                            <event name="onChange">
+                                if sheet ~= nil then
+                                    if sheet.durabilidadeItem == nil then 
+                                        sheet.durabilidadeItem = "100%";
+                                    end;
+                                end;
+                            </event>
+                        </dataLink>
+                    </rectangle>
+                    
+                    <label height="20" text="Nome:" fontSize="15" g="col" g-width="1" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" margins="{top=10}"/>
+                    
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="6" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}">
+                        <edit field="nomeEquip" g="col" g-width="12" transparent="true" fontSize="15" height="21" vertTextAlign="center" horzTextAlign="center" fontFamily="Wishes Script Caps Display"  />
+                    </rectangle>
+
+                    <label height="20" text="Rank:" fontSize="15" g="col" g-width="1" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" margins="{top=10}"/>
+                    
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="1" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5,right=10}">
+                        <comboBox field="rankEquip" g="col" g-width="12" height="18" horzTextAlign="center" fontFamily="Cinzel" transparent="true" fontSize="20" items="{'F-', 'F', 'F+', 'E-', 'E', 'E+', 'D-', 'D', 'D+', 'C-', 'C', 'C+', 'B-', 'B', 'B+', 'A-', 'A', 'A+', 'S-', 'S', 'S+'}" margins="{right=3}"/>
+                        <dataLink field="rankEquip" defaultValue="F-" />
+                    </rectangle>
+
+                    <template name="SlotVis">
+                        <imageCheckBox name="chk_$(field)" field="vis_$(field)" checkedImage="$(imgOn)" uncheckedImage="$(imgOff)" g="col" g-width="1" height="20" margins="{top=5,right=2,left=2}" hint="Slot: $(title)" autoChange="false"/>
+                    </template>
+
+                        <layout g="col" g-width="6" height="30" margins="{top=0,left=5}">
+                            <SlotVis field="cabeca" title="Cabeça" imgOn="http://blob.firecast.com.br/blobs/VSBKJVLE_3196991/capacete.png" imgOff="https://blob.firecast.com.br/blobs/OVOHAVFD_4303223/capacete_X.png"/>
+                            <SlotVis field="maoesquerda" title="Mão Esquerda" imgOn="http://blob.firecast.com.br/blobs/MHJOGVIJ_3197013/mao_esquerda.png" imgOff="https://blob.firecast.com.br/blobs/AVBWCAOG_4303232/mao_esquerda_X.png"/>
+                            <SlotVis field="ombro" title="Ombro" imgOn="http://blob.firecast.com.br/blobs/VWWCJLAI_3197011/ombros.png" imgOff="https://blob.firecast.com.br/blobs/RWLIUDVN_4303221/ombros_X.png"/>
+                            <SlotVis field="pescoco" title="Pescoço" imgOn="http://blob.firecast.com.br/blobs/KQTJSRMC_3196994/colar.png" imgOff="https://blob.firecast.com.br/blobs/TGABTBWI_4303225/colar_X.png"/>
+                            <SlotVis field="torso" title="Torso" imgOn="http://blob.firecast.com.br/blobs/BHSFRPKJ_3197012/torso.png" imgOff="https://blob.firecast.com.br/blobs/QGPFTRWO_4303228/torso_X.png"/>
+                            <SlotVis field="costas" title="Costas" imgOn="http://blob.firecast.com.br/blobs/PFNJLMSL_3196996/costas.png" imgOff="https://blob.firecast.com.br/blobs/WOHHHWVR_4303227/costas_X.png"/>
+                            <SlotVis field="maodireita" title="Mão Direita" imgOn="http://blob.firecast.com.br/blobs/KAOFDIWM_3196998/mao_direita.png" imgOff="https://blob.firecast.com.br/blobs/QWTUSKTH_4303231/mao_direita_X.png"/>
+                            <SlotVis field="cinto" title="Cinto" imgOn="http://blob.firecast.com.br/blobs/VIKSJTAS_3196995/cinto.png" imgOff="https://blob.firecast.com.br/blobs/VPNEFCFI_4303224/cinto_X.png"/>
+                            <SlotVis field="armadireita" title="Arma Direita" imgOn="http://blob.firecast.com.br/blobs/MRUHMKWV_3196993/arma_direita.png" imgOff="https://blob.firecast.com.br/blobs/MCLDERJU_4303226/arma_direita_X.png"/>
+                            <SlotVis field="armaesquerda" title="Arma Esquerda" imgOn="http://blob.firecast.com.br/blobs/QQBQUNJS_3196992/arma_esqueda.png" imgOff="https://blob.firecast.com.br/blobs/KCTLNRCM_4303230/arma_esqueda_X.png"/>
+                            <SlotVis field="bota" title="Bota" imgOn="http://blob.firecast.com.br/blobs/ODHJPRVJ_3196989/bota.png" imgOff="https://blob.firecast.com.br/blobs/TFSALMUR_4303219/bota_X.png"/>
+                            <SlotVis field="perna" title="Perna" imgOn="http://blob.firecast.com.br/blobs/ADULDOEJ_3196997/cal_a.png" imgOff="https://blob.firecast.com.br/blobs/FJBJSVUK_4303222/cal_a_X.png"/>
+                        </layout>
+                        <layout g="col" g-width="6" height="30" margins="{top=0,right=5}">
+                            <SlotVis field="acessorio1" title="Acessório 1" imgOn="http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png" imgOff="https://blob.firecast.com.br/blobs/EWPDLRLM_4303220/acessorio_X.png"/>
+                            <SlotVis field="acessorio2" title="Acessório 2" imgOn="http://blob.firecast.com.br/blobs/NQCTGWQW_3196990/acessorio.png" imgOff="https://blob.firecast.com.br/blobs/EWPDLRLM_4303220/acessorio_X.png"/>
+                            <rectangle height="20" color="black" cornerType="round" g="col" g-width="10" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}" >
+                                <edit name="tags_equip" field="tags_equip" g="col" g-width="12" transparent="true" fontSize="14" height="20"  horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+                            </rectangle>        
+                            <dataLink field="tags_equip" defaultValue="Tags">
+                                <event name="onChange">
+                                    if sheet ~= nil then
+                                        if sheet.tags_equip == nil then
+                                            sheet.tags_equip = "Tags"
+                                        end
+                                    end
+                                </event>
+                            </dataLink>
+                        </layout>
+    
+
+                    <richEdit field="descricaoLongaEquip" align="client" backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="14" animateImages="true" margins="{top=60,right=4,left=4,bottom=4}"/>  
+                </dataScopeBox>
+            </rectangle>
+        </scrollBox>    
+    </rectangle >

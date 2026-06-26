@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rectangle 	align="client" 	color="black" >
+        <scrollBox align="client" margins="{left=5,right=5}"> 
+           
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="4" g-max-width="340" g-min-width="300" g-min-height="550" g-max-height="1080" margins="{top=15}">	
+   
+                    <label	height="25"	text="Skills" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=15}"/>
+                
+                    <button name="btnNovaSkill" text="Adicionar Skill" height="30" g="col" g-width="12" margins="{top=5,right=5,left=5}"/>
+
+                    <script>
+                        local filterSkillsArgument = "";
+                        
+                        local function prepFilterSkills(inputStr)
+                            return string.lower(Utils.removerAcentos(inputStr or ""));
+                        end;
+                        
+                        local function runSkillsFilter()           
+                            filterSkillsArgument = prepFilterSkills(self.edtFiltroSkills.text);
+                            self.listaskills:reorganize();
+                        end;        
+                        
+                        local function checkSkillsFilter() 
+                            local newArg = prepFilterSkills(self.edtFiltroSkills.text);
+                            if newArg ~= filterSkillsArgument then
+                                runSkillsFilter();
+                            end;
+                        end;
+                    </script>
+
+                    <timer name="tmrFiltroSkills" interval="1000" onTimer="checkSkillsFilter()"/>
+                    <edit g="row" g-min-height="25" textPrompt="Buscar skill..." name="edtFiltroSkills" onChange="runSkillsFilter()" margins="{top=5,right=5,left=5}" hint="Buscar skill ou tag..."/>
+
+                    <scrollBox g="row" g-vert-tile="true" margins="{top=5,right=2,left=2,bottom=2}" g-cnt-gutter="1">
+                        <gridRecordList name="listaskills" field="itensSkills" templateForm="templateSkills" minQt="0" selectable="true" height="600" g="col" g-width="12">
+                            <event name="onCompare">
+                                return Utils.compareStringPtBr(left.nomeSkill or "", right.nomeSkill or "");
+                            </event>
+                            <event name="onFilter">
+                                if (filterSkillsArgument == nil) or (filterSkillsArgument == "") then
+                                    return true;
+                                end;
+
+                                local nome = prepFilterSkills(node.nomeSkill);
+                                local descCura = prepFilterSkills(node.tagsSkill);
+                                local maestria = prepFilterSkills(node.maestriaSkill);
+
+                                return (nome ~= "" and string.find(nome, filterSkillsArgument, 1, true)) or 
+                                    (descCura ~= "" and string.find(descCura, filterSkillsArgument, 1, true)) or
+                                    (maestria ~= "" and string.find(maestria, filterSkillsArgument, 1, true));
+                            </event>
+                        </gridRecordList>
+                                
+                        <script>
+                            -- Função de reordenação específica para a nova lista
+                            local function reordenarSkills()
+                                local nodes = NDB.getChildNodes(sheet.itensSkills)
+                                table.sort(nodes, function(a, b)
+                                    return (tonumber(a.ordemSkill) or 0) &lt; (tonumber(b.ordemSkill) or 0)
+                                end)
+                                self.listaskills:reorganize()
+                            end
+
+                            -- Configuração do botão de adicionar
+                            self.btnNovaSkill.onClick = function()
+                                local novo = self.listaskills:append()
+                                if novo then
+                                    novo.nomeSkill = "Nova Skill"
+                                    novo.maestriaSkill = "Básica"
+                                    novo.ordemSkill = #NDB.getChildNodes(sheet.itensSkills) + 1
+                                    reordenarSkills()
+                                end
+                            end
+
+                            -- Lógica de seleção: agora aponta para o dataScopeBox 'detalheSkill'
+                            self.listaskills.onSelect = function()
+                                local node = self.listaskills.selectedNode;
+                                self.detalheSkill:setNodeObject(node);
+                                self.detalheSkill.visible = (node ~= nil);
+
+                                self.abertoPeloSlot = false;
+
+                            
+                            end;
+                        </script>
+                    </scrollBox>      
+            </rectangle>
+
+            <rectangle color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="8" g-max-width="1920" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <dataScopeBox name="detalheSkill" align="client" visible="false">
+  
+                    <label text="Maetria:" g="col" g-width="1" fontSize="10" height="20" horzTextAlign="trailing" fontFamily="Wishes Script Caps Display" margins="{top=10,left=5}"/>
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="2" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}">
+                        <comboBox field="maestriaSkill" g="col" g-width="12" height="18" horzTextAlign="center" fontFamily="Cinzel" transparent="true" fontSize="15" items="{'Básica','Intermediária','Avançada', 'Mestra', 'Suprema'}" margins="{right=3}"/>
+                    </rectangle>
+                    
+                    <label height="20" text="Nome:" fontSize="15" g="col" g-width="1" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" margins="{top=10}"/>
+                    
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="8" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}">
+                        <edit field="nomeSkill" g="col" g-width="12" transparent="true" fontSize="15" height="21" vertTextAlign="center" horzTextAlign="center" fontFamily="Wishes Script Caps Display"  />
+                    </rectangle>
+
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="12" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}" >
+                        <edit name="tagsSkill" field="tagsSkill" g="col" g-width="12" transparent="true" fontSize="14" height="20"  horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+                    </rectangle>
+
+                    <dataLink field="tagsSkill" defaultValue="Tags">
+                        <event name="onChange">
+                            if sheet ~= nil then
+                                if sheet.tagsSkill == nil then
+                                    sheet.tagsSkill = "Tags"
+                                end
+                            end
+                        </event>
+                    </dataLink>
+
+                    <richEdit field="descricaoLongaSkill" align="client" backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="14" animateImages="true" margins="{top=60,right=4,left=4,bottom=4}"/>  
+                </dataScopeBox>
+            </rectangle>
+        </scrollBox>    
+    </rectangle >

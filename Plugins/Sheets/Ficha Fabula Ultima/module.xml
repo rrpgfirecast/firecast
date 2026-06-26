@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="Ficha Fabula Ultima.rpk" compilationDate="14082025043356" sdkApiVersion="88" sdkMinorApiVersion="2" compilationDigest="99750d9cc9cbc1f0ea60242393b6817c2aca1244" compilationUniqueID="689d67341fcea56800308145">
+    <id>br.com.rrpg.fabulaultima</id>
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <name>Fabula Ultima</name>
+        <description>Ficha Fabula Ultima</description>
+        <author>Hirobrin</author>
+        <site>https://firecast.app/pt_br/</site>
+        <contact>Hirobrin</contact>
+    </info>
+    <dataTypes>
+        <dataType title="Ficha Fabula Ultima" name="FabulaUltima" lfmFile="Ficha.lfm">br.com.rrpg.fabulaultima</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="br.com.rrpg.fabulaultima" formType="sheetTemplate" lfmFile="Ficha.lfm" formName="FabulaUltima">
+                <info title="Ficha Fabula Ultima"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>Fabula Ultima</name>
+    <description>Ficha Fabula Ultima</description>
+    <author>Hirobrin</author>
+    <site>https://firecast.app/pt_br/</site>
+    <contact>Hirobrin</contact>
+</module>

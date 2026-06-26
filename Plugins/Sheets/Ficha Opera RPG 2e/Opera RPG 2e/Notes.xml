@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Notes" align="client" g-cnt-line-spacing="5">
+	<textEditor g="col" g-width="4" g-vert-tile="true" field="anotacoes1"/>
+	<textEditor g="col" g-width="4" g-vert-tile="true" field="anotacoes2"/>
+	<textEditor g="col" g-width="4" g-vert-tile="true" field="anotacoes3"/>
+	<textEditor g="col" g-width="4" g-vert-tile="true" field="anotacoes4"/>
+	<textEditor g="col" g-width="4" g-vert-tile="true" field="anotacoes5"/>
+	<textEditor g="col" g-width="4" g-vert-tile="true" field="anotacoes6"/>
+	<textEditor g="col" g-width="4" g-vert-tile="true" field="anotacoes7"/>
+	<textEditor g="col" g-width="4" g-vert-tile="true" field="anotacoes8"/>
+	<textEditor g="col" g-width="4" g-vert-tile="true" field="anotacoes9"/>
+</form>

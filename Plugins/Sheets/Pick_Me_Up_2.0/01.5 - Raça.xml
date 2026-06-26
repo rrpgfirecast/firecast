@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rectangle 	align="client" 	color="black" >
+        <scrollBox align="client" margins="{left=5,right=5}">     
+            
+            <!-- Raça -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="5" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <!-- Geral -->
+                <label	height="25"	text="As Raças" fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=15}">
+                    <label g="col" g-width="11"/>
+                    <button g="col" g-width="1" onClick="self.explicacao_raca:show()" text="?" margins="{right=5}"/>
+                </label>
+                <rectangle height="25" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{top=5,right=5,left=5}">
+                    <comboBox name="combo_racas_gerais" field="racas_gerais" g="col" g-width="12" height="30" fontFamily="Wishes Script Caps Display" transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" items="{'Humanos','Altos Humanos','Anões','Aveanos','Brotelis','Elfos', 'Insectoides', 'Merfolk', 'Reptideos', 'Stoneliths', 'Werebeasts', 'Wixilis'}"/>
+                </rectangle> 
+                <image  field="imagem_raca" g="col" g-width="12" height='140' style="proportional" editable="false" margins="{top=5,right=5,left=5}"/>          
+                <dataLink field="racas_gerais" defaultValue="Humanos">
+                    <event name="onChange">
+                        -- Tabela com todos os dados das raças
+                        local dadosRacas = {
+                            ["Humanos"] = {
+                                img = "https://blob.firecast.com.br/blobs/SPLQWHDD_4311999/humano.png",
+                                infos = "Os humanos são uma das raças mais comuns e influentes em diversos mundos, com uma expectativa de vida que varia entre 50 e 100 anos. Sua maior força reside na adaptabilidade, permitindo-lhes prosperar em ambientes variados — desde as terras mais áridas até as cidades mais desenvolvidas. Dotados de uma curiosidade insaciável e uma ambição muitas vezes ilimitada, os humanos se destacam por sua capacidade de inovar e evoluir em campos como tecnologia, magia, combate e diplomacia. Essa versatilidade cultural e habilidade multifacetada os torna uma raça amplamente presente e decisiva na formação de histórias e sociedades. \n\nCulturalmente, os humanos exibem uma enorme diversidade, criando desde impérios poderosos até tribos isoladas, com sistemas políticos que vão do monarquismo à democracia e formas variadas de crenças e costumes. Em muitos locais, eles convivem em harmonia com outras raças, estabelecendo alianças e trocando conhecimentos, mas não raro a ambição humana leva a disputas por territórios e poder. Essa dualidade — entre a busca por coexistência pacífica e a propensão a conflitos — caracteriza a complexidade dos humanos, cuja história é marcada tanto por conquistas grandiosas quanto por momentos de destruição e caos.",
+                                cond = "Nenhuma",
+                                sub = "Não possuem subespécies, mas podem evoluir para Altos Humanos."
+                            },
+                            ["Altos Humanos"] = {
+                                img = "https://blob.firecast.com.br/blobs/UGLDNWNU_4311994/alto_humano.png",
+                                infos = "Os Alto Humanos são considerados uma “evolução” dos humanos comuns, alcançada quando um indivíduo completa certos requisitos especiais ainda envoltos em mistério. Apesar de não apresentarem diferenças físicas visíveis em relação aos humanos normais, os Alto Humanos possuem capacidades e potencialidades superiores, o que os torna raros e reverenciados em algumas culturas. Essa transformação representa um avanço significativo na espécie, elevando suas habilidades e compreensão do mundo. \n\nAlém disso, os Alto Humanos têm a capacidade única de evoluir novamente para subespécies distintas, adquirindo traços especiais, como Saurin, onde sua pele se torna parcialmente escamosa como de um reptil, ou Ventarin, que lhes concedem asas e a liberdade do voo, entre outras possibilidades. Sua expectativa de vida é significativamente aumentada, podendo alcançar até 200 anos, o que lhes permite acumular vasto conhecimento e experiência ao longo dos séculos. Essa linhagem especial simboliza um caminho de evolução, poder e mistério dentro da humanidade.",
+                                cond = "Conquistar qualquer outra raça. \nPara conquistar cada subespécie, é necessário cumprir requisitos em interações com a raça da subespécie desejada após se tornar um Alto Humano.",
+                                sub = "Ferrin, Ventarin, Florin, Faelarin, Chitin, Aquorin, Saurin, Petrin, Bestarin e Wixarin."
+                            },
+                            ["Anões"] = {
+                                img = "https://blob.firecast.com.br/blobs/RQTVSVGE_4311992/an_o.png",
+                                infos = "Os anões são uma raça resistente e determinada, reconhecida por sua força física impressionante, habilidades técnicas excepcionais e profundo apreço pela terra. Originários de vastas redes de montanhas e cavernas subterrâneas, eles se destacam como mestres em metalurgia e engenharia, criando armas, armaduras e estruturas que são admiradas por sua durabilidade e complexidade. Sua ética de trabalho incansável reflete um compromisso quase religioso com o aperfeiçoamento constante de suas habilidades, e sua lealdade aos clãs e tradições é inabalável. Sua afinidade com o subterrâneo os torna habitantes naturais de vastas cidades esculpidas diretamente nas profundezas das montanhas, onde cavaram e entalharam complexas fortalezas e forjas com impressionante precisão e durabilidade. \n\nCom uma expectativa de vida que varia entre 100 e 150 anos, os anões também são exímios guerreiros, treinados desde cedo para defender suas fortalezas subterrâneas contra invasores. No campo de batalha, são conhecidos por sua disciplina, resistência e determinação, sempre lutando lado a lado com seus irmãos de clã. Embora possam ser vistos como reservados ou até mesmo teimosos por outras raças, os anões cultivam um forte senso de comunidade e respeito pela tradição, transmitindo histórias e conhecimentos de geração em geração, mantendo vivas suas raízes e seu legado.",
+                                cond = "Demonstre a um NPC anão um conhecimento de fabricação que ele não possua.",
+                                sub = "Não possuem subespécies."
+                            },
+                            ["Aveanos"] = {
+                                img = "https://blob.firecast.com.br/blobs/FOGUFUOT_4311991/aveano.png",
+                                infos = "Os Aveanos são uma raça de humanoides aviários com uma impressionante diversidade de subespécies, como falcões, corujas, papagaios, pinguins, patos e outras aves, cada uma com traços únicos que influenciam tanto sua aparência quanto sua cultura. Apesar dessa variedade, compartilham traços comuns como ossos leves, olhos aguçados e sentidos apurados. Muitos possuem asas funcionais, enquanto outros, como os descendentes de aves aquáticas, adaptaram-se à terra e à água com igual habilidade. Em todas as suas formas, os birdpeople mantêm um profundo apreço pela sabedoria e pela contemplação. \n\nSua sociedade costuma valorizar intensamente o conhecimento, registrando história, magia e ciência em enormes bibliotecas suspensas ou em espirais de cristal que ecoam com cantos ancestrais. Suas cidades são frequentemente encontradas em picos montanhosos de difícil acesso ou até mesmo flutuando entre as nuvens, sustentadas por magia ou tecnologia arcana. A vida nas alturas reflete não só sua afinidade com o céu, mas também sua busca por perspectivas elevadas — físicas e filosóficas. Embora pacíficos por natureza, os birdpeople defendem ferozmente seus territórios e valores, especialmente contra aqueles que ameaçam o equilíbrio do saber. A expectativa de vida varia conforme a subespécie, indo geralmente de 70 a 120 anos, dependendo do tamanho, metabolismo e condições ambientais. A devoção à mente, aliada à leveza do corpo, faz deles uma raça reverenciada por sua visão ampla — tanto literal quanto espiritual.",
+                                cond = "Descubra uma informação esquecida ou perdida que seja relevante para o conhecimento dos Aveanos e retorne-a a um NPC aveano.",
+                                sub = "Qualquer espécie de ave. "
+                            },
+                            ["Brotelis"] = {
+                                img = "https://blob.firecast.com.br/blobs/CFOGIRNC_4311993/broteli.png",
+                                infos = "Os Brotelis são uma raça de humanoides vegetais que apresentam uma vasta diversidade de subespécies, abrangendo desde cogumelos e bambus até árvores majestosas e delicadas flores. Cada subespécie traz consigo características físicas e habilidades únicas, como resistência, camuflagem ou regeneração, que refletem a complexidade e a riqueza da vida natural que carregam em sua essência. Assim como as árvores mais antigas, muitos Brotelis possuem uma longevidade quase ilimitada, vivendo por eras enquanto testemunham as mudanças do mundo ao seu redor. \n\nSua sociedade é profundamente enraizada na busca pelo equilíbrio com a natureza, colocando a harmonia ecológica acima de ambições pessoais ou políticas. Eles cultivam suas comunidades em sinergia com o ambiente, integrando-se a florestas, pradarias ou pântanos sem jamais perturbar o ciclo natural. Ao contrário de outras raças, os Brotelis não têm uma inclinação universal para um único traço cultural ou filosófico; sua diversidade é refletida também em crenças e modos de vida variados, adaptados às particularidades de seus ecossistemas. Essa conexão visceral com o mundo natural torna os Brotelis guardiões silenciosos da terra, portadores da sabedoria antiga das plantas e da paciência implacável do crescimento.",
+                                cond = "Ajude um NPC Broteli a restaurar ou proteger um ecossistema natural importante",
+                                sub = "Qualquer espécie de planta."
+                            },
+                            ["Elfos"] = {
+                                img = "https://blob.firecast.com.br/blobs/DAWRLSOH_4311996/elfo.png",
+                                infos = "Os elfos são uma raça antiga e elegante, dividida em três subespécies principais: os Elfos Comuns, os Altos e os Negros. Os Elfos Comuns formam a maior parte da população, vivendo em diversas regiões e desempenhando papéis variados na sociedade. Os Altos, de linhagem sanguínea nobre e rara, são tradicionalmente vistos como a elite social e política, responsáveis por liderar e preservar os legados ancestrais. Já os Elfos Negros pertencem à linhagem dos guardiões, encarregados da proteção dos segredos, territórios e tradições élficas mais sagrados. Apesar dessa hierarquia — Altos no topo, seguidos pelos Negros e, por fim, os Comuns — a discriminação entre eles é incomum, sendo a divisão mais uma forma prática de organização do que um motivo de conflito. \n\nSua relação com a natureza é marcada por um equilíbrio cuidadoso: respeitam o ambiente ao seu redor, mas também o utilizam com sabedoria, extraindo seus recursos sem desperdiçar ou causar desequilíbrio. Essa filosofia é refletida em sua arquitetura, conhecida por sua elegância e sofisticação, com construções que harmonizam elementos naturais e artísticos, integrando árvores, pedras e cursos d’água em estruturas graciosas e funcionais. A sociedade é culturalmente rica e refinada, valorizando artes, magia e conhecimento, mantendo uma coexistência pacífica e harmoniosa tanto entre si quanto com o mundo natural que os cerca. A expectativa de vida dos elfos pode chegar a 200 anos, permitindo-lhes acumular conhecimento e experiência que alimentam sua cultura rica e duradoura.",
+                                cond = "Comum: Receba reconhecimento ou confiança verdadeiros de um NPC elfo.\nNegros: Receba reconhecimento ou confiança verdadeiros de um NPC Elfo Negro. \nAltos: Tenha uma façanha grandiosa o bastante para beneficiar a raça élfica como um todo reconhecida por um NPC Alto Elfo.",
+                                sub = "Elfos Comuns, Elfos Negros e Altos Elfos. \nCada subespécie deve ser desbloqueada separadamente."
+                            },
+                            ["Insectoides"] = {
+                                img = "https://blob.firecast.com.br/blobs/FIAIQPNS_4311998/insectoide.png",
+                                infos = "Os Insectoides são uma raça de insetos humanoides que apresentam uma vasta diversidade de subespécies, incluindo besouros, formigas, abelhas e muitas outras. Sua organização social costuma refletir os hábitos naturais de seus ancestrais insetos, vivendo em estruturas que reproduzem colônias, colmeias ou formigueiros, dimensionados para seus tamanhos e necessidades. Além disso, é comum que diferentes subespécies convivam juntas, formando cidades complexas e colaborativas, que às vezes até incluem membros de outras raças, criando uma rede social diversificada e multifuncional. \n\nA expectativa de vida dos Insectoides varia amplamente conforme a subespécie, indo de poucos anos, como 4 anos, até cerca de 60 anos, o que influencia diretamente suas funções e papéis dentro das colônias. Eles são conhecidos por sua disciplina, cooperação e eficiência, características essenciais para o funcionamento harmonioso de suas comunidades. Essa estrutura social coesa, aliada à adaptabilidade, permite que os Insectoides prosperem em diversos ambientes, mantendo um equilíbrio dinâmico entre suas tradições naturais e as exigências dos mundos que habitam.",
+                                cond = "Ajude um NPC insectoide significativamente para o crescimento de uma colônia insectoide",
+                                sub = "Qualquer espécie de inseto."
+                            },
+                            ["Merfolk"] = {
+                                img = "https://blob.firecast.com.br/blobs/POITRHKS_4311997/merfolk.png",
+                                infos = "Os Merfolk são uma raça de humanoides marinhos que apresentam uma vasta diversidade de subespécies, derivadas de diferentes criaturas do oceano, como peixes, tubarões, polvos, baleias, caranguejos e muitas outras. Cada linhagem manifesta características próprias de seu ancestral marinho: alguns possuem caudas poderosas para nadar com grande velocidade, outros apresentam tentáculos ágeis ou carapaças resistentes, enquanto certos grupos se destacam pelo tamanho ou pela força física impressionante. Apesar dessa variedade, todos compartilham uma profunda adaptação ao ambiente aquático, com corpos moldados para viver e se mover com naturalidade nas profundezas dos mares. \n\nA sociedade dos Merfolk valoriza intensamente a força, a coragem e um rígido senso de honra, princípios que guiam tanto seus líderes quanto seus guerreiros. A maior parte de suas cidades está localizada completamente submersa no fundo do oceano, construídas entre recifes, abismos marinhos ou grandes formações de coral, formando vastas metrópoles aquáticas. No entanto, muitos Merfolk também estabelecem cidades semi-submersas próximas às costas, projetadas para servir como pontos de contato e comércio com outras raças terrestres. Esses locais intermediários facilitam trocas culturais e diplomáticas, permitindo que os Merfolk mantenham relações com o mundo da superfície sem abandonar sua profunda conexão com o oceano.",
+                                cond = "Receba reconhecimento de um NPC líder ou guerreiro Merfolk por um ato de coragem abaixo d'água.",
+                                sub = "Qualquer espécie de animal marinho."
+                            },
+                            ["Reptideos"] = {
+                                img = "https://blob.firecast.com.br/blobs/COOSSWAH_4312000/reptideo.png",
+                                infos = "Os Reptideos são uma raça de lagartos humanoides que apresentam uma grande variedade de subespécies e linhagens ancestrais, as quais são altamente valorizadas e respeitadas dentro de sua sociedade. Essa diversidade genética e cultural confere aos Lizardmen uma riqueza histórica e social profunda, onde cada linhagem carrega tradições, poderes e responsabilidades específicas. Sua expectativa de vida é bastante ampla, variando de 80 até impressionantes 400 anos, permitindo que alguns indivíduos acumulem sabedoria e influência por séculos. \n\nSocialmente, os Lizardmen se organizam de formas variadas, indo desde tribos bárbaras e guerreiras que preservam costumes ancestrais, até cidades desenvolvidas com avanços tecnológicos e arquitetônicos próprios. Essa flexibilidade lhes permite adaptar-se a diferentes ambientes e desafios, mantendo sempre um forte senso de identidade e orgulho cultural. A reverência às suas origens ancestrais e a diversidade entre suas subespécies são pilares fundamentais que sustentam a complexa e dinâmica sociedade dos Reptideos.",
+                                cond = "Comum: Ajude um NPC Reptideo a recuperar um custume ancestral de seu povo. \nAncestral: Participe ou auxilie um NPC reptideo na realização de um ritual de uma linhagem ancestral reptídia.",
+                                sub = "Qualquer espécie de réptil. Além disso possuem variantes ancestrais desbloqueadas separadamente."
+
+                            },
+                            ["Stoneliths"] = {
+                                img = "https://blob.firecast.com.br/blobs/WQMETTEE_4311995/stonelith.png",
+                                infos = "Os Stoneliths são imponentes seres humanoides formados inteiramente de pedra, variando entre 4 e 10 metros de altura. De origem desconhecida — até mesmo para eles próprios — esses colossos despertam mais perguntas do que respostas, sendo frequentemente vistos como fragmentos vivos de antigas forças do mundo. Sua expectativa de vida é virtualmente ilimitada, resistindo enquanto a rocha que os compõe permanecer intacta, o que pode significar séculos ou até milênios de existência. \n\nDiferente da maioria das raças, os Stoneliths não formam sociedades. No máximo, pequenos grupos de até cinco indivíduos se unem por curtos períodos, geralmente por propósitos específicos ou afinidades raras. Muitos preferem vagar solitários pelo mundo ou se fixar em um único local, assumindo o papel de guardiões silenciosos — protegendo ruínas, florestas, montanhas ou locais sagrados sem buscar recompensa. Não são ambiciosos nem agressivos por natureza, mas possuem uma força formidável e são perfeitamente capazes de se defender quando ameaçados. Com sua presença monumental e natureza enigmática, os Stoneliths são vistos por muitos como ecos vivos da própria terra.",
+                                cond = "Descubra ou desperte um NPC Stonelith adormecido.",
+                                sub = "Não possuem subespécies."
+                            },
+                            ["Werebeasts"] = {
+                                img = "https://blob.firecast.com.br/blobs/AJWERKVJ_4312001/werebeast.png",
+                                infos = "Os Werebeats são uma espécie de mamíferos humanoides que exibem uma grande diversidade de subespécies, como cães, gatos, cangurus, coalas, raposas e muitos outros. Cada linhagem traz consigo traços físicos e habilidades distintas. Sua aparência são é marcada por suas pelagens e formas animais. \n\nEles tendem a viver em pequenas vilas tribais, onde o senso de comunidade e sobrevivência é forte. Entretanto, em alguns mundos, os Werebeasts já formaram grandes impérios, onde sua cultura de honra e força como guerreiros moldou civilizações poderosas. O respeito à força, à coragem no combate e à lealdade aos seus são os pilares de sua sociedade, e aqueles que demonstram grande habilidade em batalha ganham um status elevado entre seus pares. \n\nDe modo geral, os Werebeasts não possuem conflitos intrínsecos com outras raças, mantendo uma postura neutra na maioria dos casos. Sua inclinação natural a batalha, valorizando a força e a honra acima de tudo, embora sejam vistos como criaturas ferozes, a natureza guerreira dos Werebeasts é balanceada por sua noção de respeito e justiça dentro de suas tribos.",
+                                cond = "Prove sua força ou coragem diante de um NPC Werebeast em combate.",
+                                sub = "Qualquer espécie de mamífero terrestre."
+                            },
+                            ["Wixilis"] = {
+                                img = "https://blob.firecast.com.br/blobs/HVIGTESD_4312007/wixili.png",
+                                infos = "Os Wixilis são uma espécie de humanoides com pele amarela, que pode ser lisa ou coberta por pelos, e alguns indivíduos até apresentam chifres ou outras caracteristicas marcantes. Essa raça é tipicamente de baixa estatura, com altura máxima de 1,2m, e possui uma expectativa de vida de cerca de 50 anos, alcançando a maturidade aos 15 anos. \n\nA sociedade dos Wixilis é complexa e cada membro desempenha um papel importante. Desde o primeiro ano de vida, rituais tradicionais ajudam a descobrir os talentos individuais de cada um, permitindo que sejam treinados na especialidade que mais se adequa a eles. Sempre com um sorriso no rosto, os Wixilis acreditam que essa expressão traz alegria ao mundo e, assim, valorizam seu modo de vida e as tradições da tribo. \n\nEm geral, os Wixilis preferem manter-se afastados de assuntos que não os envolvem diretamente, resultando em uma sociedade um tanto isolada.",
+                                cond = "Vença de um NPC Wixili em um \"Ritual Profissional\" da especialidade dele.",
+                                sub = "Não possuem subespécies."
+                            }
+                        };
+
+                        local selecao = sheet.racas_gerais;
+                        local dados = dadosRacas[selecao];
+
+                        if dados ~= nil then
+                            -- Atualiza imagem (forçando refresh)
+                            sheet.imagem_raca = nil;
+                            sheet.imagem_raca = dados.img;
+
+                            -- Atualiza textos
+                            sheet.infos = dados.infos;
+                            sheet.condicao_conquista = dados.cond;
+                            sheet.subespecies = dados.sub;
+                        end;
+                    </event>
+                </dataLink>
+
+                <label text="Informações:" g="col" g-width="12" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{left=10}"/>
+                <rectangle height="150" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=10,right=10}">
+                    <textEditor readOnly="true"  field="infos" fontSize="12"  align="client" transparent="true"/>
+                </rectangle> 
+                <label text="Condição de Conquista:" g="col" g-width="6" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{left=10,top=5}"/>
+                <rectangle height='70' color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=10,right=10}">
+                    <textEditor readOnly="true"  field="condicao_conquista"  fontSize="12"  align="client" transparent="true"/>
+                </rectangle> 
+                <label text="Subespécies:" g="col" g-width="6" height="20" fontSize="12" fontFamily="Wishes Script Caps Display" margins="{left=10,top=5}"/>
+                <rectangle height="37" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=10,right=10}">
+                    <textEditor readOnly="true"  field="subespecies"  fontSize="12"  align="client" transparent="true"/>
+                </rectangle> 
+
+                <popup name='explicacao_raca' width="400" height="600" backOpacity='0.5'>
+                    <rectangle color="black" left="-5" top="-5" width="410" height="610" />
+                        <rectangle color="#150e16" strokeSize="2" strokeColor="white" left="5" top="5" width="390" height="590" cornerType="round" xradius="5" yradius="5"/>
+                        <label text="Conquistas de Raça" height="30" fontSize="25" g="col" g-width="12" fontFamily="Wishes Script Caps Display" horzTextAlign="center" vertTextAlign="center" margins="{top=10}"/>
+                        <label text="Seu primeiro personagem?" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=10,top=10}"/>
+                        <rectangle height="40" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=10,right=10}">
+                            <textEditor readOnly="true"  text="O seu primeiro personagem será sempre um humano."  fontSize="12"  align="client" transparent="true"/>
+                        </rectangle>   
+                        <label text="Como Desbloquear uma Raça?" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=10,top=10}"/>
+                        <rectangle height="120" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=10,right=10}">
+                            <textEditor readOnly="true"  text="Novas raças são desbloqueadas através de um sistema de conquistas.\n\nFunciona da seguinte maneira: \nVocê precisa cumprir  in game um requisito específico pré-definido. Após cumprir esse requisito, você desbloqueia a raça. \nA conquista da raça é individual e intransferível."  fontSize="12"  align="client" transparent="true"/>
+                        </rectangle> 
+                        <label text="Quando pode usar as Raça que já desbloqueou?" g="col" g-width="12" height="20" fontSize="18" fontFamily="Wishes Script Caps Display" margins="{left=10,top=10}"/>  
+                        <rectangle height="100" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=10,right=10}">
+                            <textEditor readOnly="true"  text="Quando  você morrer, assim como quando criou sua primeira ficha, irá rolar as invocações novamente para ver a origem e estrelas do novo personagem. Adicionalmente pode escolher a raça do seu personagem entre humano e as raças que tiver conquistado."  fontSize="12"  align="client" transparent="true"/>
+                        </rectangle>  
+                        <label text="⚠Importante⚠ Aparência:" g="col" g-width="12" height="20" fontSize="20" fontFamily="Wishes Script Caps Display" margins="{left=10,top=10}"/>
+                        <rectangle height="120" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{left=10,right=10}">
+                            <textEditor readOnly="true"  text="As demais especies não tem aperência humana, um werebeast por exemplo jamais terá a aparencia de um humano normal com apenas caracteristicas animais como orelhas e garras, eles tem a aparência de animais, porém bipedes. \nA unica raça que tem a aparência de um humano misturado com outro animal são as subespecies de Alto Humano."  fontSize="12"  align="client" transparent="true"/>
+                        </rectangle>                  
+                </popup>
+                  
+            </rectangle>
+            
+            <!-- Caracteristicas -->
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="7" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                
+                <!-- Conquistadas -->
+                <label	height="25"	text="Raças Conquistadas" 	fontSize="30" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=10}"/>
+                        
+                <template name="check_raca">
+                        <imageCheckBox name="chk_raca_$(field)" field="vis_raca_$(field)" checkedImage="$(imgOn)" uncheckedImage="$(imgOff)" g="col" g-width="1" height="60" margins="{top=0,right=2,left=2}" hint="$(title)" autoChange="false" />
+                </template>
+                
+                <check_raca field="humano" title="Humanos"   imgOn="https://blob.firecast.com.br/blobs/WGIORNEU_4308186/humano.png" imgOff="https://blob.firecast.com.br/blobs/CASFNBMF_4308184/humano_x.png"/>
+                <check_raca field="alto_humano" title="Altos Humanos"   imgOn="https://blob.firecast.com.br/blobs/CVCBOWEB_4308181/alto_humano.png" imgOff="https://blob.firecast.com.br/blobs/OBQOVTFF_4308182/alto_humano_x.png"/>
+                <check_raca field="anao"        title="Anões"           imgOn="https://blob.firecast.com.br/blobs/HHPDGOWP_4310951/an_o.png"     imgOff="https://blob.firecast.com.br/blobs/DEOWMAEQ_4310954/an_o_x.png"/>
+                <check_raca field="aveano"      title="Aveanos"         imgOn="https://blob.firecast.com.br/blobs/PIWWCSTD_4307911/aveano.png"      imgOff="https://blob.firecast.com.br/blobs/HQWQURGL_4307910/aveano_x.png"/>
+                <check_raca field="broteli"     title="Brotelis"        imgOn="https://blob.firecast.com.br/blobs/WJPCLBOF_4307896/brotelis.png"    imgOff="https://blob.firecast.com.br/blobs/WRARQURB_4307895/brotelis_x.png"/>
+                <check_raca field="elfo"        title="Elfos"           imgOn="https://blob.firecast.com.br/blobs/GJWBMMJE_4310952/elfo.png"     imgOff="https://blob.firecast.com.br/blobs/VNOEDWBP_4310953/elfo_x.png"/>
+                <check_raca field="insectoide"  title="Insectoides"     imgOn="https://blob.firecast.com.br/blobs/OQHGVCWS_4307879/insectoide.png"  imgOff="https://blob.firecast.com.br/blobs/THKNSWRW_4307880/insectoide_x.png"/>
+                <check_raca field="merfolk"     title="Merfolk"         imgOn="https://blob.firecast.com.br/blobs/EBFMVAIF_4307905/merfork.png"     imgOff="https://blob.firecast.com.br/blobs/VMSABNLH_4307903/merfork_x.png"/>
+                <check_raca field="reptideo"    title="Reptídios"       imgOn="https://blob.firecast.com.br/blobs/DJVWTBWP_4307914/reptidio.png"    imgOff="https://blob.firecast.com.br/blobs/MTSEHCFM_4307915/reptidio_x.png"/>
+                <check_raca field="stonelith"   title="Stoneliths"      imgOn="https://blob.firecast.com.br/blobs/STJGSDMU_4308185/stonelith.png"   imgOff="https://blob.firecast.com.br/blobs/OKIRBPLM_4308183/stonelith_x.png"/>
+                <check_raca field="werebeast"   title="Werebeasts"      imgOn="https://blob.firecast.com.br/blobs/JBCJRJAC_4307920/werebeasts.png"  imgOff="https://blob.firecast.com.br/blobs/DDAETAID_4307921/werebeasts_x.png"/>
+                <check_raca field="wixili"      title="Wixilis"         imgOn="https://blob.firecast.com.br/blobs/QWJLVUNW_4311851/wixili.png"     imgOff="https://blob.firecast.com.br/blobs/PNQWJUNT_4311850/wixili_x.png"/>
+                
+                <script>
+                    local function atualizarVisibilidadeRacas()
+                        local mesa = Firecast.getMesaDe(sheet);
+                        if mesa == nil or mesa.meuJogador == nil then return end;
+
+                        local isMestre = mesa.meuJogador.isMestre;
+
+                        local racas = {
+                            "humano","alto_humano","anao","aveano","broteli",
+                            "elfo","insectoide","merfolk","reptideo",
+                            "stonelith","werebeast","wixili"
+                        };
+
+                        for i=1, #racas do
+                            local r = racas[i];
+                            local chk = self:findControlByName("chk_raca_" .. r);
+
+                            if chk ~= nil then
+                                local marcado = (sheet["vis_raca_" .. r] == true);
+
+                                if isMestre then
+                                    chk.visible = true;
+                                    chk.enabled = true;
+                                    chk.autoChange = true;
+                                else
+                                    chk.visible = marcado;
+                                    chk.enabled = true;
+                                    chk.autoChange = false;
+                                end;
+                            end;
+                        end;
+                    end;
+                </script>
+
+                <dataLink fields="{'vis_raca_humano', 'vis_raca_alto_humano', 'vis_raca_anao', 'vis_raca_aveano', 'vis_raca_broteli', 'vis_raca_elfo', 'vis_raca_insectoide', 'vis_raca_merfolk', 'vis_raca_reptideo', 'vis_raca_stonelith', 'vis_raca_werebeast', 'vis_raca_wixili'}" defaultValues="{'true', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false'}">
+                    <event name="onChange">
+                        atualizarVisibilidadeRacas();
+
+                        local novasOpcoes = {};
+                        local novosValores = {};
+
+                        local racaMapeamento = {
+                            {field = "vis_raca_humano",      nome = "Humano"},
+                            {field = "vis_raca_alto_humano", nome = "Alto Humano"},
+                            {field = "vis_raca_anao",        nome = "Anão"},
+                            {field = "vis_raca_aveano",      nome = "Aveano"},
+                            {field = "vis_raca_broteli",     nome = "Broteli"},
+                            {field = "vis_raca_elfo",        nome = "Elfo"},
+                            {field = "vis_raca_insectoide",  nome = "Insectoide"},
+                            {field = "vis_raca_merfolk",     nome = "Merfolk"},
+                            {field = "vis_raca_reptideo",    nome = "Reptídio"},
+                            {field = "vis_raca_stonelith",   nome = "Stonelith"},
+                            {field = "vis_raca_werebeast",   nome = "Werebeast"},
+                            {field = "vis_raca_wixili",      nome = "Wixili"}
+                        };
+
+                        for i=1, #racaMapeamento do
+                            local item = racaMapeamento[i];
+                            if sheet[item.field] == true then
+                                table.insert(novasOpcoes, item.nome);
+                                table.insert(novosValores, item.field);
+                            end
+                        end
+
+                        if #novasOpcoes == 0 then
+                            self.combo_raca.items  = {"Nenhuma raça disponível"};
+                            self.combo_raca.values = {"none"};
+                        else
+                            self.combo_raca.items  = novasOpcoes;
+                            self.combo_raca.values = novosValores;
+                        end;
+
+                        -- ✅ CORREÇÃO: restaura o valor salvo no NDB após remontar os itens
+                        if sheet.raca_atual ~= nil then
+                            self.combo_raca.value = sheet.raca_atual;
+                        else
+                            sheet.raca_atual = "vis_raca_humano";
+                            self.combo_raca.value = "vis_raca_humano";
+                        end;
+                    </event>
+                </dataLink>
+                
+                <!-- Atual -->
+                <label	height="25"	text="Sua Raça" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=10}"/>
+                <rectangle height="25" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{top=5,right=10,left=10}">
+                        <comboBox name="combo_raca" field="raca_atual" align="client" fontFamily="Wishes Script Caps Display" transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center"  text="Humano"/>
+                        <dataLink field="raca_atual" defaultValue="Humano"/>
+                </rectangle>  
+                <rectangle height="380" color="black" g="col" g-width="12" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" margins="{top=5,left=10,right=10}">
+                    <richEdit field="descricao_raca" align="client" backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="14" animateImages="true" margins="{top=4,right=4,left=4,bottom=4}"/>
+                </rectangle>  
+                
+
+            
+            </rectangle>
+
+            
+        </scrollBox>    
+    </rectangle >

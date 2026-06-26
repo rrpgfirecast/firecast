@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabil" height="70">       
+		
+		
+		<image left="40" width="740" height="80" field="habGreenBar" src="/frames/HabGreen.png"/>
+
+		<imageCheckBox left="50" top="18" width="45" height="45" field="habbargreen"
+                               checkedImage="/frames/HabOn.png"
+                               uncheckedImage="/frames/HabOff.png"/>
+							   
+		<dataLink field="habbargreen">
+                <event name="onChange">
+                        if sheet["habbargreen"] == true then
+						
+						self.habilidadeName.fontColor = "white";
+						self.habilidadeAPCost.fontColor = "yellow";
+						else
+						
+						self.habilidadeName.fontColor = "gray";
+						self.habilidadeAPCost.fontColor = "black";
+
+						end
+                </event>
+        </dataLink>
+       
+						<edit name="habilidadeName" hitTest="true" top="17" left="105" width="530" height="54" fontSize="36" fontColor="gray" transparent="true" field="habilidadeName" fontFamily="Minecraft">
+							<dataLink field="habilidadeName"/>
+						<event name="onExit">
+						self.select.opacity = "0";
+                </event>
+						<event name="onMouseDown">
+						self.select.opacity = "1";
+                </event>
+					</edit>
+
+						<edit name="habilidadeAPCost" top="18" left="725" width="60" height="54" fontSize="36" fontColor="black" type="float" transparent="true" field="habilidadeAPCost" fontFamily="Minecraft"/>
+							<dataLink field="habilidadeAPCost" defaultValue="0"/>	
+
+	   				<image name="erase" field="erase" left="788" top="15" width="50" height="50" src="/frames/Erase.png"/>
+					
+					<image name="select" field="select" top="15" width="50" height="50" opacity="0" src="/images/select.png"/>
+
+
+					
+        <button cursor="no" left="790" top="17" width="45" height="45" opacity="0"
+                onClick="NDB.deleteNode(sheet);"/>
+				
+</form>

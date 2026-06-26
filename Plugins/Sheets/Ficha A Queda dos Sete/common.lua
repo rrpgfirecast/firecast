@@ -4,18 +4,18 @@ common = {};
 
 common.atributos = {
 	forca			= Locale.lang("DnD5e.spells.resistance.str"),
-	destreza		= Locale.lang("DnD5e.spells.resistance.dex"),
-	constituicao	= Locale.lang("DnD5e.spells.resistance.con"),
+	destreza		= "Agilidade",
+	constituicao	= "Vitalidade",
 	inteligencia	= Locale.lang("DnD5e.spells.resistance.int"),
-	sabedoria		= Locale.lang("DnD5e.spells.resistance.wis"),
-	carisma			= Locale.lang("DnD5e.spells.resistance.cha")
+	sabedoria		= "Instinto",
+	carisma			= "Energia"
 };
 common.atributos["Força"] = Locale.lang("DnD5e.spells.resistance.str")
-common.atributos["Destreza"] = Locale.lang("DnD5e.spells.resistance.dex")
-common.atributos["Constituição"] = Locale.lang("DnD5e.spells.resistance.con")
+common.atributos["Destreza"] = "Agilidade"
+common.atributos["Constituição"] = "Vitalidade"
 common.atributos["Inteligência"] = Locale.lang("DnD5e.spells.resistance.int")
-common.atributos["Sabedoria"] = Locale.lang("DnD5e.spells.resistance.wis")
-common.atributos["Carisma"] = Locale.lang("DnD5e.spells.resistance.cha")
+common.atributos["Sabedoria"] = "Instinto"
+common.atributos["Carisma"] = "Energia"
 
 common.atributos2 = {
 	forca			= {'FOR', 'STR'},
@@ -31,23 +31,28 @@ common.pericias = {
 	furtividade		= Locale.lang("DnD5e.skills.stealth"),
 	prestidigitacao	= Locale.lang("DnD5e.skills.sleighthand"),
 	arcanismo		= "Abismo",
+	aura 			= "Aura",
 	historia		= Locale.lang("DnD5e.skills.history"),
 	investigacao	= Locale.lang("DnD5e.skills.investigation"),
 	natureza		= "Leitura Labial",
 	religiao		= "Línguas",
-	adestrarAnimais	= "Herbalismo",
+	herbalismo		= "Herbalismo",
 	intuicao		= Locale.lang("DnD5e.skills.insight"),
 	medicina		= Locale.lang("DnD5e.skills.medicine"),
 	percepcao		= Locale.lang("DnD5e.skills.perception"),
 	sobrevivencia	= Locale.lang("DnD5e.skills.survival"),
 	atuacao			= "Visão Elemental",
-	enganacao		= "Sensibilidade",
-	intimidacao		= "Canalização",
-	persuasao		= "Manipulação",
+	sensibilidade	= "Sensibilidade",
+	canalizacao		= "Canalização",
+	manipulacao		= "Manipulação",
 	imobilizar		= "Imobilizar",
 	artesmarciais	= "Artes Marciais",
 	reflexo			= "Reflexo",
 	vontade			= "Vontade",
+	tecnologia		= "Tecnologia",
+	restauracao		= "Restauração",
+	vigor			= "Vigor",
+	visaoelemental		= "Visão Elemental",
 	resilienciamental	= "Resiliência Mental"
 };
 common.armas_propriedades = {
@@ -219,16 +224,12 @@ function common.rolaMagia(node, modo, args, chat)
 		end;
 
 		if args.dano == nil then
-			if args.magia.damageType ~= 'Sem dano' then
-				args.dano = "sim"
-				args.danoRolagem = common.interpreta(node, args.magia.damageValue);
-			else
-				args.dano = "nao"
-			end
+			args.dano = "sim"
+			args.danoRolagem = common.interpreta(node, args.magia.damageValue);
 		end
 
 		if args.resistencia == nil then
-			if args.magia.resistencia and common.hasValue({'Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'}, args.magia.resistencia) then
+			if args.magia.resistencia ~= nil then
 				args.resistencia = args.magia.resistencia;
 				args.resistenciaCD = node.magias.cdDaMagia;
 			else
@@ -261,7 +262,7 @@ function common.rolaMagia(node, modo, args, chat)
 
 	-- Teste de Resistência
 	if args.resistencia ~= 'nao' then
-		chat:enviarAcao(Locale.lang("Dnd5e.messages.saveType") .. common.atributos[args.resistencia] .. ', CD ' .. (args.resistenciaCD or '-') .. ' )');
+		chat:enviarAcao(Locale.lang("Dnd5e.messages.saveType") .. args.resistencia .. ', CD ' .. (args.resistenciaCD or '-') .. ' )');
 	end;
 
 	-- Acerto
@@ -290,11 +291,11 @@ function common.rolaMagia(node, modo, args, chat)
 			end;
 
 			if args.dano ~= "nao" then
-				chat:rolarDados(args.danoRolagem, Locale.lang("DnD5e.spells.damage"))
+				chat:rolarDados(args.danoRolagem, args.magia.ataque)
 			end
 		end);
 	elseif args.ataque == 'nao' and args.dano ~= "nao" then
-		chat:rolarDados(args.danoRolagem, Locale.lang("DnD5e.spells.damage"))
+		chat:rolarDados(args.danoRolagem, args.magia.ataque)
 	end;
 end;
 function common.rolaMagia2(node, modo, args, chat)
@@ -688,6 +689,11 @@ function common.rolaAtaque(node, modo, args, chat)
 							else acerto_rolls[optAttack.nome] = acerto_rolls[optAttack.nome] .. ' + ' .. optAttack.ataque;
 							end;
 						end;
+						if optAttack.prop == "Vantagem"then
+							acerto_rolls[optAttack.nome] = acerto_rolls[optAttack.nome] .. '+1d6'
+						elseif optAttack.prop == "Desvantagem"then
+							acerto_rolls[optAttack.nome] = acerto_rolls[optAttack.nome] .. '-1d6'
+						end
 					end;
 					local tipo = optAttack.tipo or item.tipo or '';
 					if optAttack.dano and optAttack.dano ~= '' then
@@ -698,7 +704,7 @@ function common.rolaAtaque(node, modo, args, chat)
 					end;
 				end;
 			end;
-			if #optsAtivas > 0 then args.text = args.text .. ' (' .. table.concat(optsAtivas, ', ') .. ')'; end;
+			--if #optsAtivas > 0 then args.text = args.text .. ' (' .. table.concat(optsAtivas, ', ') .. ')'; end;
 		end;
 		-- Ajusta o acerto
 		if modo ~= 'dano' then
@@ -714,7 +720,7 @@ function common.rolaAtaque(node, modo, args, chat)
 			elseif modo == 'vantagem' or modo == 'vantagem2' then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.advantage");
 			elseif modo == 'desvantagem' or modo == 'desvantagem2' then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.disadvantage");
 			end;
-			if #nomes > 0 then args.textAcerto = args.textAcerto .. ' - (' .. (acerto_rolls['Padrão'] and 'Padrão, ' or '') .. table.concat(nomes, ', ') .. ')'; end;
+			--if #nomes > 0 then args.textAcerto = args.textAcerto .. ' - (' .. (acerto_rolls['Padrão'] and 'Padrão, ' or '') .. table.concat(nomes, ', ') .. ')'; end;
 
 			args.rollAcerto = common.interpreta(node, acerto_rolls['Padrão']);
 			if #rolls > 0 then args.rollAcerto = common.interpreta(node, args.rollAcerto .. ' + ' .. table.concat(rolls, ' + ')); end;
@@ -732,13 +738,14 @@ function common.rolaAtaque(node, modo, args, chat)
 			if tipo == '' then args.textAcerto = Locale.lang("Dnd5e.messages.damage2");
 			else args.textsDano[tipo] = Locale.lang("Dnd5e.messages.damage3") .. tipo .. ')';
 			end;
-			if #nomes > 0 then args.textsDano[tipo] = args.textsDano[tipo] .. ' - (' .. (dano_rolls[tipo]['Padrão'] and 'Padrão, ' or '') .. table.concat(nomes, ', ') .. ')'; end;
+			--if #nomes > 0 then args.textsDano[tipo] = args.textsDano[tipo] .. ' - (' .. (dano_rolls[tipo]['Padrão'] and 'Padrão, ' or '') .. table.concat(nomes, ', ') .. ')'; end;
 
 			args.rollsDano[tipo] = common.interpreta(node, (dano_rolls[tipo]['Padrão'] or '0'));
 			if #rolls > 0 then args.rollsDano[tipo] = common.interpreta(node, args.rollsDano[tipo] .. ' + ' .. table.concat(rolls, ' + ')); end;
 		end;
 
 		args.falhaCritica, args.acertoCritico = 1, (tonumber(NDB.getRoot(item).critChance) or 20);
+		
 		for i=1,5 do if common.armaTemPropriedade(node, 'Misfire ' .. i) then args.falhaCritica = i; end; end;
 	end;
 
@@ -752,65 +759,68 @@ function common.rolaAtaque(node, modo, args, chat)
 		args.textsDano[tipo] = nil;
 
 		if roll then
+			local excepcional = (tonumber(NDB.getRoot(item).excepChance) or 20)
 			if d20 and d20 >= args.acertoCritico then
 				text = (text or "") .. ' - ' .. Locale.lang("Dnd5e.messages.critical");
 				-- Critico Maximizado
-				if common.armaTemPropriedade(item, 'Crítico Maximizado') or common.fichaTemPropriedade(item, 'maximizedCrit') then
-					roll = roll:gsub('(%d*)d(%d+)', function(c1, c2) return c1 .. 'd' .. c2 .. '+' .. (tonumber(c1) or 1)*tonumber(c2); end);
-				else
-					roll = roll:gsub('(%d*)d(%d+)', function(c1, c2) return tostring(2*(tonumber(c1) or 1)) .. 'd' .. c2; end);
-				end;
-				-- Critico Brutal
-				local critBrutal = NDB.getRoot(item).critDamage;
-				if critBrutal then
-					roll = roll:gsub('(%d+)d(%d+)', function(c1, c2) return math.floor(c1+critBrutal) .. 'd' .. c2; end, 1);
-				end;
-			end;
-			if not Firecast.interpretarRolagem(roll).possuiAlgumDado then roll = '1d1-1 + ' .. roll; end;
-			chat:rolarDados(roll, text, function(_roll)
-				--- Combate com Armas Grandes
-				local minRoll = (tonumber(NDB.getRoot(item).damageReroll) or 0)
-				if	common.armaTemPropriedade(item, 'Duas Mãos') and
-					not common.armaTemPropriedade(item, 'Distância') and
-					minRoll > 0 and
-					dano_rolls[tipo]['Padrão'] then
-						local rolls = dano_rolls[tipo]['Padrão'];
-						rolls = common.interpreta(node, rolls);
-						rolls = Firecast.interpretarRolagem(rolls); -- Só rerola os dados da arma
+				roll = roll:gsub('(%d*)d(%d+)', function(c1, c2) return "" .. 2*(tonumber(c1) or 1)*tonumber(c2); end);
+			elseif d20 and d20 >= excepcional then
+				text = (text or "") .. ' - ( Acerto Excepcional )';
+				roll = roll:gsub('(%d*)d(%d+)', function(c1, c2) return "" .. (tonumber(c1) or 1)*tonumber(c2); end);
+			end
 
-						local novaRolagem;
-						local dadosPraRerolar = {};
-						local soma = _roll.resultado;
-						for i=1,#rolls.ops do
-							local op = _roll.ops[i];
-							if op.tipo == 'dado' then
-								for j=1,#op.resultados do
-									if op.resultados[j] <= minRoll then
-										soma = soma - op.resultados[j];
-										dadosPraRerolar[op.face] = (dadosPraRerolar[op.face] or 0) + 1;
-									end;
-								end;
-							end;
-						end;
-						for face,quant in pairs(dadosPraRerolar) do
-							if novaRolagem then novaRolagem = novaRolagem:concatenar(Firecast.interpretarRolagem(quant..'d'..face));
-							else novaRolagem = Firecast.interpretarRolagem(quant..'d'..face);
-							end;
-						end;
-						if novaRolagem then
-							if soma ~= 0 then novaRolagem = novaRolagem:concatenar(Firecast.interpretarRolagem(soma)); end;
-							chat:rolarDados(novaRolagem, text .. Locale.lang("Dnd5e.messages.bigWeapons") .. minRoll, function() rolaDano(next(args.rollsDano), d20); end);
-						else
-							rolaDano(next(args.rollsDano), d20);
-						end;
-				else
-					rolaDano(next(args.rollsDano), d20);
-				end;
-			end);
+			if Firecast.interpretarRolagem(roll).possuiAlgumDado then 
+                chat:rolarDados(roll, text, function(_roll)
+                    --- Combate com Armas Grandes
+                    local minRoll = (tonumber(NDB.getRoot(item).damageReroll) or 0)
+                    if    common.armaTemPropriedade(item, 'Duas Mãos') and
+                        not common.armaTemPropriedade(item, 'Distância') and
+                        minRoll > 0 and
+                        dano_rolls[tipo]['Padrão'] then
+                            local rolls = dano_rolls[tipo]['Padrão'];
+                            rolls = common.interpreta(node, rolls);
+                            rolls = Firecast.interpretarRolagem(rolls); -- Só rerola os dados da arma
+
+                            local novaRolagem;
+                            local dadosPraRerolar = {};
+                            local soma = _roll.resultado;
+                            for i=1,#rolls.ops do
+                                local op = _roll.ops[i];
+                                if op.tipo == 'dado' then
+                                    for j=1,#op.resultados do
+                                        if op.resultados[j] <= minRoll then
+                                            soma = soma - op.resultados[j];
+                                            dadosPraRerolar[op.face] = (dadosPraRerolar[op.face] or 0) + 1;
+                                        end;
+                                    end;
+                                end;
+                            end;
+                            for face,quant in pairs(dadosPraRerolar) do
+                                if novaRolagem then novaRolagem = novaRolagem:concatenar(Firecast.interpretarRolagem(quant..'d'..face));
+                                else novaRolagem = Firecast.interpretarRolagem(quant..'d'..face);
+                                end;
+                            end;
+                            if novaRolagem then
+                                if soma ~= 0 then novaRolagem = novaRolagem:concatenar(Firecast.interpretarRolagem(soma)); end;
+                                chat:rolarDados(novaRolagem, text .. Locale.lang("Dnd5e.messages.bigWeapons") .. minRoll, function() rolaDano(next(args.rollsDano), d20); end);
+                            else
+                                rolaDano(next(args.rollsDano), d20);
+                            end;
+                    else
+                        rolaDano(next(args.rollsDano), d20);
+                    end
+                end);
+            else
+				chat:enviarMensagem(text .. ": " .. roll)
+			end
 		else
 			rolaDano(next(args.rollsDano), d20);
 		end;
 	end;
+
+	if item.imagem ~= nil then
+		args.text = args.text .. "[§I " .. item.imagem .. "]"
+	end
 
 	-- Comeca rolagem
 	chat:enviarAcao(args.text);

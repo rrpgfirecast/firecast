@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmAcoes" height="25" width="330">
-     <import file="templates.xml"/>
+    <import file="templates.xml"/>
 
-	 <script>
+	<script>
 		<![CDATA[
 		local function askForDelete()
 			Dialogs.confirmYesNo("Deseja realmente apagar essa ação?",
@@ -18,7 +18,8 @@
 
 			if pop ~= nil then
 				pop:setNodeObject(self.sheet);
-				pop:showPopupEx("center", self.sheet);
+				pop:show("bottomCenter", self.actionButton);
+
 			else
 				showMessage("Não encontrei o popup de ações para exibir.");
 			end;
@@ -27,7 +28,7 @@
 	</script>
 
 	<formatLabelEdit left="1" top="0" width="100" height="25" vertTextAlign="center" field="tipoAcao"/>
-	<formatLabelEdit left="101" top="0" width="221" height="25" vertTextAlign="center" field="nomeAcao"/>
-	<button left="322" top="1" width="23" height="23" text="i" onClick="showAcaoInfoPopup();"/>
-	<button left="345" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+	<formatLabelEdit left="101" top="0" width="195" height="25" vertTextAlign="center" field="nomeAcao"/>
+	<button name='actionButton' left="296" top="1" width="23" height="23" text="i" onClick="showAcaoInfoPopup();"/>
+	<button left="319" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
 </form>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRituais" width="340" height="30" theme="light">
+    <import file="templates.xml"/>
+    <import file="styles.xml"/>
+
+	<script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse ritual?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showRitualPopup()
+			local pop = self:findControlByName("popRitual");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Não encontrei o popup do ritual para exibir.");
+			end;
+		end;
+		]]>
+	</script>
+
+	<formatLabelEdit left="2" top="1" width="250" height="25" field="nomeRitualLista"/>
+
+	<rectangle left="255" top="1" width="80" height="25" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="5" yradius="5">
+		<label align="client" vertTextAlign="center" horzTextAlign="center" text="Custo" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+	</rectangle>
+	<formatIntEdit left="334" top="1" width="60" height="25" field="custoRitualLista"/>
+	
+	<button left="394" top="2" width="23" height="23" text="i" onClick="showRitualPopup();"/>
+	<button left="417" top="2" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

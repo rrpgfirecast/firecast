@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Description" align="client" margins="{top=1}">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="12" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<label g="col" g-width="3" height="25" text="TAMANHO" horzTextAlign="center"/>
+				<comboBox g="col" g-width="5" height="25" field="tamanho" fontColor="white" items="{'Minúsculo', 'Diminuto', 'Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'-4','-3','-2','-1','0','1','2','3','4'}" horzTextAlign="center"/>
+				<checkBox g="col" g-width="4" height="25" field="quadrupede" text="Quadrúpede" />
+
+				<Title text="ALTURA" field="altura"/>
+				<Title text="PESO" field="peso"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="IDADE" field="idade"/>
+				<Title text="SEXO" field="sexo"/>
+				<Title text="OUTROS" field="aparenciaOutros"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="OLHOS" field="aparenciaOlhos"/>
+				<Title text="PELE" field="pele"/>
+				<Title text="CABELO" field="cabelo"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="85">
+				<Title text="REGIÃO" field="regiao"/>
+				<Title text="REINO" field="reino"/>
+				<Title text="CIDADE" field="cidade"/>
+			</layout>
+		</rectangle>
+
+		<layout g="col" g-width="12" g-width-lg="3" g-vert-tile="true" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" height="25" text="APARÊNCIA"/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="aparencia"/>
+			</rectangle>
+			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" height="25" text="PERSONALIDADE"/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="personalidade"/>
+			</rectangle>
+		</layout>
+
+		<rectangle g="col" g-width="12" g-width-lg="9" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<label g="col" g-width="12" height="25" text="HISTORIA"/>
+			<richEdit g="col" g-width="12" g-vert-tile="true" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</rectangle>
+	</scrollBox>
+</form>

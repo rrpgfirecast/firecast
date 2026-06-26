@@ -1,178 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group>
-    <popupForm name="popInfo" width="1000" height="440">
-        <rectangle align="client" class="janela2">
-            <image align="client" style="stretch" src="/imagens/Fundo 1.jpg" opacity="1"/>
-
-            <rectangle left="70" top="5" class="janela5">
-                <label left="0" top="0" width="131" height="25" text="Imagens" fontSize="16" vertTextAlign="center" horzTextAlign="center" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <button left="5" top="5" width="23" height="23" text="+">
-                <event name="onClick">
-                    self.rclImagem:append();
-                </event>
-            </button>
-
-            <rectangle  left="5" top="30" width="270" height="402" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-                <recordList name="rclImagem" field="campoImagem" templateForm="frmImagem" left="15" top="0" width="245" height="398" layout="vertical" minQt="0"/>
-            </rectangle>
-
-            <rectangle left="560" top="5" class="janela5">
-                <label left="0" top="0" width="131" height="25" text="Anotações" fontSize="16" vertTextAlign="center" horzTextAlign="center" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <formatTextEdit left="280" top="30" width="710" height="402" field="anotacoes"/>
-        </rectangle>
-    </popupForm>
-
     <popup name="popDeath" width="1000" height="600">
         <rectangle align="client" class="janela2">
             <image align="client" style="autoFit" src="/imagens/Death.gif" margins="{left=2, right=2, top=2, bottom=2}" opacity="1" animate="true"/>
         </rectangle>
     </popup>
 
-    <popupForm name="popTalentos" width="1030" height="587">
-        <image align="client" style="stretch" src="/imagens/Fundo 1.jpg" opacity="1"/>
-
-        <rectangle left="25" top="5" width="310" class="janela5">
-            <label width="310" height="25" text="Características" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-        </rectangle>
-
-        <rectangle  left="25" top="30" width="310" height="255" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="0" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="55" width="232" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <button left="286" top="1" width="23" height="23" text="+">
-                <event name="onClick">
-                    self.rclCaracteristicas:append();
-                </event>
-            </button>
-
-            <recordList left="0" top="25" name="rclCaracteristicas" field="campoCaracteristicas" templateForm="frmTalentos" width="328" height="225" layout="vertical" minQt="0"/>
-        </rectangle>
-
-        <rectangle left="360" top="5" width="310" class="janela5">
-            <label width="310" height="25" text="Talentos de Ancestralidade" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-        </rectangle>
-
-        <rectangle  left="360" top="30" width="310" height="255" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="0" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="55" width="232" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <button left="286" top="1" width="23" height="23" text="+">
-                <event name="onClick">
-                    self.rclTalAncestralidade:append();
-                </event>
-            </button>
-
-            <recordList left="0" top="25" name="rclTalAncestralidade" field="campoTalAncestralidade" templateForm="frmTalentos" width="328" height="225" layout="vertical" minQt="0"/>
-        </rectangle>
-
-        <rectangle left="695" top="5" width="310" class="janela5">
-            <label width="310" height="25" text="Talentos de Perícias" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-        </rectangle>
-
-        <rectangle  left="695" top="30" width="310" height="255" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="0" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="55" width="232" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <button left="286" top="1" width="23" height="23" text="+">
-                <event name="onClick">
-                    self.rclTalPericias:append();
-                </event>
-            </button>
-
-            <recordList left="0" top="25" name="rclTalPericias" field="campoTalPericias" templateForm="frmTalentos" width="328" height="225" layout="vertical" minQt="0"/>
-        </rectangle>
-
-        <rectangle left="25" top="300" width="310" class="janela5">
-            <label width="310" height="25" text="Talentos Gerais" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-        </rectangle>
-
-        <rectangle  left="25" top="325" width="310" height="255" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="0" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="55" width="232" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <button left="286" top="1" width="23" height="23" text="+">
-                <event name="onClick">
-                    self.rclTalGerais:append();
-                </event>
-            </button>
-
-            <recordList left="0" top="25" name="rclTalGerais" field="campoTalGerais" templateForm="frmTalentos" width="328" height="225" layout="vertical" minQt="0"/>
-        </rectangle>
-
-        <rectangle left="360" top="300" width="310" class="janela5">
-            <label width="310" height="25" text="Talentos de Classe" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-        </rectangle>
-
-        <rectangle  left="360" top="325" width="310" height="255" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="0" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="55" width="232" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <button left="286" top="1" width="23" height="23" text="+">
-                <event name="onClick">
-                    self.rclTalClasse:append();
-                </event>
-            </button>
-
-            <recordList left="0" top="25" name="rclTalClasse" field="campoTalClasse" templateForm="frmTalentos" width="328" height="225" layout="vertical" minQt="0"/>
-        </rectangle>
-
-        <rectangle left="695" top="300" width="310" class="janela5">
-            <label width="310" height="25" text="Talentos Bônus" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-        </rectangle>
-
-        <rectangle  left="695" top="325" width="310" height="255" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="0" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="55" width="232" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="252" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <button left="286" top="1" width="23" height="23" text="+">
-                <event name="onClick">
-                    self.rclTalBonus:append();
-                </event>
-            </button>
-
-            <recordList left="0" top="25" name="rclTalBonus" field="campoTalBonus" templateForm="frmTalentos" width="328" height="225" layout="vertical" minQt="0"/>
-        </rectangle>
-
-        <popup name="popTalentoInfo" width="400" height="310">
+    <popup name="popInv" width="600" height="275">
+        <rectangle align="client" class="janela2">
             <image align="client" style="stretch" src="/imagens/Fundo 1.jpg" opacity="1"/>
-            <rectangle left="135" top="10" class="janela5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Traços" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+            <rectangle left="10" top="10" width="250" height="250" color="transparent" strokeColor="Gray" strokeSize="2" margins="{left=10, right=10, top=10, bottom=10}">
+                <image align="client" style="proportional" src="/imagens/Logo.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+                <image align="client" field="imgItem" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+                    <event name="OnStartDrag">
+                        drag:addData("imageURL", sheet.imgItem);
+                    </event>
+                </image>
             </rectangle>
-            <formatLabelEdit left="10" top="35" width="380" height="25" field="talTracos"/>
+            <formatTextEdit left="270" top="5" width="317" height="258" field="descItem"/>
+        </rectangle>
+    </popup>
 
-            <rectangle left="135" top="70" class="janela5">
-                <label width="131" height="25" text="Ações" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <formatLabelEdit left="10" top="95" width="380" height="25" field="talAcoes"/>
+    <popup name="popInfo" width="180" height="80">
+        <image align="client" style="autoFit" src="/imagens/Fundo 1.jpg"/>
+        <!-- Exportar -->
+        <button left="30" top="10" width="120" height="25" text="Exportar Ficha" >
+            <event name="onClick">
+                local xml = NDB.exportXML(sheet);
 
-            <rectangle left="135" top="130" class="janela5">
-                <label width="131" height="25" text="Descrição" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <formatTextEdit left="10" top="155" width="380" height="145" field="talDesc"/>
-        </popup>
-    </popupForm>
+                local export = {};
+                Utils.binaryEncode(export, "utf8", xml);
+
+                local stream = Utils.newMemoryStream();
+                stream:write(export);
+
+                Dialogs.saveFile(LANG("Pathfinder2e.other.save"), stream, "sheet.xml", "application/xml",
+                    function()
+                        stream:close();
+                        showMessage(LANG("Pathfinder2e.other.exported"));
+                    end);
+            </event>
+        </button>
+        <!-- Importar -->
+        <button left="30" top="45" width="120" height="25" text="Importar Ficha" >
+            <event name="onClick">
+                Dialogs.openFile(LANG("Pathfinder2e.other.import"), "application/xml", false, 
+                    function(arquivos)
+                        local arq = arquivos[1];
+
+                        local import = {};
+                        arq.stream:read(import, arq.stream.size);
+
+                        local xml = Utils.binaryDecode(import, "utf8");
+
+                        NDB.importXML(sheet, xml);
+                    end);
+            </event>
+        </button>
+    </popup>
 
     <popup name="popAcaoInfo" width="400" height="400">
         <image align="client" style="stretch" src="/imagens/Fundo 1.jpg" opacity="1"/>
@@ -192,339 +77,59 @@
         <formatTextEdit left="10" top="185" width="380" height="205" field="acaoDesc"/>
     </popup>
 
-    <popupForm name="popItem" width="585" height="330">
+    <popup name="popTalentoInfo" width="400" height="310">
         <image align="client" style="stretch" src="/imagens/Fundo 1.jpg" opacity="1"/>
-
-        <rectangle  left="5" top="5" width="300" height="320" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="0" top="0" width="177" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="177" height="25" text="Item" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <rectangle left="177" top="0" width="100" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="100" height="25" text="Volume" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <button left="277" top="1" width="23" height="23" text="+">
-                <event name="onClick">
-                    self.rclInventario:append();
-                </event>
-            </button>
-
-            <recordList left="0" top="25" name="rclInventario" field="campoInventario" templateForm="frmInventario" width="317" height="290" layout="vertical" minQt="0"/>
+        <rectangle left="135" top="10" class="janela5">
+            <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Traços" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
         </rectangle>
+        <formatLabelEdit left="10" top="35" width="380" height="25" field="talTracos"/>
 
-        <rectangle left="390" top="5" class="janela5">
-            <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Dinheiro" fontColor="Gray" fontFamily="Stencil"/>
+        <rectangle left="135" top="70" class="janela5">
+            <label width="131" height="25" text="Ações" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
         </rectangle>
+        <formatLabelEdit left="10" top="95" width="380" height="25" field="talAcoes"/>
 
-        <rectangle  left="373" top="30" width="164" height="125" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="5" top="5" width="55" class="janela5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PC" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <formatNumEdit left="59" top="5" width="100" height="25" field="pecaCobre"/>
-
-            <rectangle left="5" top="35" width="55" class="janela5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PP" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <formatNumEdit left="59" top="35" width="100" height="25" field="pecaPrata"/>
-
-            <rectangle left="5" top="65" width="55" class="janela5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PO" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <formatNumEdit left="59" top="65" width="100" height="25" field="pecaOuro"/>
-
-            <rectangle left="5" top="95" width="55" class="janela5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="PL" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <formatNumEdit left="59" top="95" width="100" height="25" field="pecaPlatina"/>
+        <rectangle left="135" top="130" class="janela5">
+            <label width="131" height="25" text="Descrição" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
         </rectangle>
+        <formatTextEdit left="10" top="155" width="380" height="145" field="talDesc"/>
+    </popup>
 
-        <rectangle left="390" top="170" class="janela5">
-            <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Volume" fontColor="Gray" fontFamily="Stencil"/>
-        </rectangle>
-
-        <rectangle  left="330" top="195" width="249" height="130" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="95" top="5" width="60" height="60" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="round" xradius="30" yradius="30">
-                <label left="0" top="0" width="60" height="60" field="volumeAtual" fontSize="16" name="volumeAtualLabel" vertTextAlign="center" horzTextAlign="center" formatFloat="0.##" fontStyle="bold" fontColor="Gray"/>
-                <event name="onClick">
-                    self.volumeAtualLabel.visible = false;
-                    self.volumeAtualEdit.visible = true;
-                    self.volumeAtualEdit:setFocus();
-                </event>
-                <edit field="volumeAtual" left="0" top="0" width="60" height="60" type="float" name="volumeAtualEdit" visible="false" fontSize="16">
-                    <event name="onExit">
-                        self.volumeAtualLabel.visible = true;
-                        self.volumeAtualEdit.visible = false;
-                    </event>
-                </edit>
-            </rectangle>
-            <rectangle left="5" top="70" class="janela5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Sobrecarregado" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <rectangle left="135" top="70" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" field="sobrecarga" fontColor="Gray" fontSize="16" fontStyle="bold"/>
-            </rectangle>
-            <formatNumEdit left="189" top="70" width="55" height="25" field="outrosSobrecarga"/>
-
-            <rectangle left="5" top="100" class="janela5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Máximo" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <rectangle left="135" top="100" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" field="maximo" fontColor="Gray" fontSize="16" fontStyle="bold"/>
-            </rectangle>
-            <formatNumEdit left="189" top="100" width="55" height="25" field="outrosMaximo"/>
-
-            <dataLink fields="{'modFor','outrosSobrecarga','outrosMaximo'}">
-                <event name="onChange">
-                    if sheet == nil then return end;
-                    sheet.sobrecarga = 5 + (tonumber(sheet.modFor) or 0) + (tonumber(sheet.outrosSobrecarga) or 0);
-                    sheet.maximo = 10 + (tonumber(sheet.modFor) or 0) + (tonumber(sheet.outrosMaximo) or 0);
-                </event>
-            </dataLink>
-        </rectangle>
-
-        <popup name="popInv" width="320" height="200">
-            <rectangle align="client" class="janela2">
-                <image align="client" style="stretch" src="/imagens/Fundo 1.jpg" opacity="1"/>
-                <formatTextEdit left="5" top="5" width="298" height="178" field="descItem"/>
-            </rectangle>
-        </popup>
-    </popupForm>
-
-    <popupForm name="popMagias" width="1302" height="546">
+    <popup name="popInfoMagia" width="400" height="350">
         <image align="client" style="stretch" src="/imagens/Fundo 1.jpg" opacity="1"/>
+        <rectangle left="135" top="10" class="janela5">
+            <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Ações" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+        </rectangle>
+        <formatLabelEdit left="10" top="35" width="380" height="25" field="magiaAcao"/>
 
-        <rectangle left="50" top="5" width="200" class="janela5">
-            <label width="200" height="25" text="Tradições Mágicas" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+        <rectangle left="50" top="70" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="M" fontColor="Gray" fontFamily="Stencil"/>
+        </rectangle>
+        <rectangle left="95" top="67" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+            <CheckBox left="3" top="3" field="material"/>
         </rectangle>
 
-        <rectangle  left="5" top="30" width="290" height="116" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="5" top="8" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Arcanas" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="110" top="5" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
-                <CheckBox left="3" top="3" field="arcanas"/>
-            </rectangle>
-
-            <rectangle left="5" top="45" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Primais" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="110" top="42" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
-                <CheckBox left="3" top="3" field="primais"/>
-            </rectangle>
-
-            <rectangle left="5" top="82" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Preparadas" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="110" top="79" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
-                <CheckBox left="3" top="3" field="preparadas"/>
-            </rectangle>
-
-            <rectangle left="170" top="8" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Ocultistas" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="150" top="5" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
-                <CheckBox left="3" top="3" field="ocultistas"/>
-            </rectangle>
-
-            <rectangle left="170" top="45" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Divinas" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="150" top="42" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
-                <CheckBox left="3" top="3" field="divinas"/>
-            </rectangle>
-
-            <rectangle left="170" top="82" width="115" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="115" height="25" text="Espontâneas" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="150" top="79" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
-                <CheckBox left="3" top="3" field="espontaneas"/>
-            </rectangle>
+        <rectangle left="162" top="70" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="S" fontColor="Gray" fontFamily="Stencil"/>
+        </rectangle>
+        <rectangle left="207" top="67" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+            <CheckBox left="3" top="3" field="somatico"/>
         </rectangle>
 
-        <rectangle left="50" top="156" width="200" class="janela5">
-            <label width="200" height="25" text="Espaços de Magia" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
+        <rectangle left="274" top="70" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="V" fontColor="Gray" fontFamily="Stencil"/>
+        </rectangle>
+        <rectangle left="319" top="67" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+            <CheckBox left="3" top="3" field="verbal"/>
         </rectangle>
 
-        <rectangle  left="5" top="181" width="290" height="355" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
-            <rectangle left="63" top="5" width="110" class="janela5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Pontos de Foco" fontColor="Gray" fontFamily="Stencil" fontSize="12"/>
-            </rectangle>
-
-            <formatNumEdit left="173" top="5" width="55" height="25" field="pontoFoco" fontStyle="bold"/>
-
-            <rectangle left="63" top="40" width="110" class="janela5">
-                <label  vertTextAlign="center" horzTextAlign="center" width="110" height="25" text="Nível de Truque" fontColor="Gray" fontFamily="Stencil" fontSize="12"/>
-            </rectangle>
-
-            <formatNumEdit left="173" top="40" width="55" height="25" field="nivelTruque" fontStyle="bold"/>
-
-            <rectangle left="63" top="75" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="118" width="55" top="75" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Máximo" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="173" width="55" top="75" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Usados" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <MagiaSlot top="100" nivelSlot="1"  />
-            <MagiaSlot top="125" nivelSlot="2"  />
-            <MagiaSlot top="150" nivelSlot="3"  />
-            <MagiaSlot top="175" nivelSlot="4"  />
-            <MagiaSlot top="200" nivelSlot="5"  />
-            <MagiaSlot top="225" nivelSlot="6"  />
-            <MagiaSlot top="250" nivelSlot="7"  />
-            <MagiaSlot top="275" nivelSlot="8"  />
-            <MagiaSlot top="300" nivelSlot="9"  />
-            <MagiaSlot top="325" nivelSlot="10"  />
+        <rectangle left="135" top="110" class="janela5">
+            <label width="131" height="25" text="Descrição" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
         </rectangle>
+        <formatTextEdit left="10" top="135" width="380" height="205" field="magiaDesc"/>
+    </popup>
 
-        <rectangle left="542" top="5" width="200" class="janela5">
-            <label width="200" height="25" text="Magias Conhecidas" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-        </rectangle>
-
-        <rectangle  left="314" top="30" width="655" height="506" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
-
-            <rectangle left="65" top="10" width="200" class="janela5">
-                <label width="200" height="25" text="Truques Mágicos" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <rectangle  left="25" top="35" width="290" height="203" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
-                <rectangle left="0" width="55" top="0" class="janela6">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <rectangle left="55" width="212" top="0" class="janela6">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="212" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <button left="267" top="1" width="23" height="23" text="+">
-                    <event name="onClick">
-                        self.rclTruquesMagicos:append();
-                    </event>
-                </button>
-
-                <recordList left="0" top="25" name="rclTruquesMagicos" field="campoTruquesMagicos" templateForm="frmMagiasConhecidas" width="308" height="175" layout="vertical" minQt="0"/>
-            </rectangle>
-
-            <rectangle left="385" top="10" width="200" class="janela5">
-                <label width="200" height="25" text="Magias Inatas" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <rectangle  left="340" top="35" width="290" height="203" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
-                <rectangle left="0" width="55" top="0" class="janela6">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <rectangle left="55" width="212" top="0" class="janela6">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="212" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <button left="267" top="1" width="23" height="23" text="+">
-                    <event name="onClick">
-                        self.rclMagiasInatas:append();
-                    </event>
-                </button>
-
-                <recordList left="0" top="25" name="rclMagiasInatas" field="campoMagiasInatas" templateForm="frmMagiasConhecidas" width="308" height="175" layout="vertical" minQt="0"/>
-            </rectangle>
-
-            <rectangle left="65" top="268" width="200" class="janela5">
-                <label width="200" height="25" text="Magias de Foco" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <rectangle  left="25" top="293" width="290" height="203" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
-                <rectangle left="0" width="55" top="0" class="janela6">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <rectangle left="55" width="212" top="0" class="janela6">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="212" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <button left="267" top="1" width="23" height="23" text="+">
-                    <event name="onClick">
-                        self.rclMagiasFoco:append();
-                    </event>
-                </button>
-
-                <recordList left="0" top="25" name="rclMagiasFoco" field="campoMagiasFoco" templateForm="frmMagiasConhecidas" width="308" height="175" layout="vertical" minQt="0"/>
-            </rectangle>
-
-            <rectangle left="385" top="268" width="200" class="janela5">
-                <label width="200" height="25" text="Magias" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-
-            <rectangle  left="340" top="293" width="290" height="203" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
-                <rectangle left="0" width="55" top="0" class="janela6">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <rectangle left="55" width="212" top="0" class="janela6">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="212" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <button left="267" top="1" width="23" height="23" text="+">
-                    <event name="onClick">
-                        self.rclMagias:append();
-                    </event>
-                </button>
-
-                <recordList left="0" top="25" name="rclMagias" field="campoMagias" templateForm="frmMagiasConhecidas" width="308" height="175" layout="vertical" minQt="0"/>
-            </rectangle>
-
-            <popup name="popInfoMagia" width="400" height="350">
-                <image align="client" style="stretch" src="/imagens/Fundo 1.jpg" opacity="1"/>
-                <rectangle left="135" top="10" class="janela5">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="131" height="25" text="Ações" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <formatLabelEdit left="10" top="35" width="380" height="25" field="magiaAcao"/>
-
-                <rectangle left="50" top="70" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="M" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <rectangle left="95" top="67" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
-                    <CheckBox left="3" top="3" field="material"/>
-                </rectangle>
-
-                <rectangle left="162" top="70" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="S" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <rectangle left="207" top="67" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
-                    <CheckBox left="3" top="3" field="somatico"/>
-                </rectangle>
-
-                <rectangle left="274" top="70" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
-                    <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="V" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <rectangle left="319" top="67" width="32" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
-                    <CheckBox left="3" top="3" field="verbal"/>
-                </rectangle>
-
-                <rectangle left="135" top="110" class="janela5">
-                    <label width="131" height="25" text="Descrição" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-                </rectangle>
-                <formatTextEdit left="10" top="135" width="380" height="205" field="magiaDesc"/>
-            </popup>
-        </rectangle>
-
-        <rectangle left="1035" top="5" width="200" class="janela5">
-            <label width="200" height="25" text="Magias Preparadas" vertTextAlign="center" horzTextAlign="center" fontSize="16" fontColor="Gray" fontFamily="Stencil"/>
-        </rectangle>
-
-        <rectangle  left="990" top="30" width="290" height="506" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10">
-            <rectangle left="0" width="157" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="157" height="25" text="Nome" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="157" width="55" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Nível" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <rectangle left="212" width="55" top="0" class="janela6">
-                <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Slots" fontColor="Gray" fontFamily="Stencil"/>
-            </rectangle>
-            <button left="267" top="1" width="23" height="23" text="+">
-                <event name="onClick">
-                    self.rclMagiasPreparadas:append();
-                </event>
-            </button>
-
-            <recordList left="0" top="25" name="rclMagiasPreparadas" field="campoMagiasPreparadas" templateForm="frmMagiasPreparadas" width="307" height="475" layout="vertical" minQt="0"/>
-        </rectangle>
+    <popupForm name="popFundo" align="client">
+        <image align="client" style="stretch" src="/imagens/Fundo 1.jpg" opacity="1"/>
     </popupForm>
 </group>

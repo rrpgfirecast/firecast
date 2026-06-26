@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWeapon" height="50">       
+		
+		
+		<image name="WeaponBar" left="10" width="605" height="50" visible="true" field="WeaponBar" src="/frames/WeaponList.png"/>
+		<image name="WeaponBarOn" left="10" width="605" height="50" visible="false" field="WeaponBarOn" src="/frames/WeaponListOn.png"/>
+		
+		<edit name="WeaponName" field="WeaponName" fontColor="white" top="5" left="50" width="315" height="44" fontSize="26" transparent="true" fontFamily="KHMenu">
+				<dataLink field="WeaponName" defaultValue="???"/>
+				<event name="onExit">
+						self.selectedWea.opacity = "0";
+                </event>
+						<event name="onMouseDown">
+						self.selectedWea.opacity = "1";
+                </event>
+					</edit>
+				
+		<edit name="WeaponAbName" field="WeaponAbName" fontColor="yellow" top="5" left="380" width="225" height="44" fontSize="26" transparent="true" fontFamily="KHMenu"/>
+				<dataLink field="WeaponAbName" defaultValue="-"/>
+		
+		<imageCheckBox name="unequipEquipwep" autoChange="true" left="15" top="8" width="35" height="35" field="unequipEquipwep"
+                               checkedImage="/frames/WeaponOnIcon.png"
+                               uncheckedImage="/frames/WeaponOffIcon.png"/>
+							   <dataLink field="unequipEquipwep">
+				        <event name="onChange">
+						if sheet.unequipEquipwep == false then
+                        self.WeaponBar.visible = true;
+						self.WeaponBarOn.visible = false;
+						else
+						self.WeaponBar.visible = false;
+						self.WeaponBarOn.visible = true;
+						end
+                </event>
+				</dataLink>
+		
+		
+	   	<image name="erasewep" field="erasewep" left="615" top="15" width="20" height="20" src="/frames/Erase.png"/>
+		
+		
+		<image name="selectedWea" field="selectedWea" top="15" width="25" height="25" opacity="0" src="/images/select.png"/>
+		
+		<button cursor="no" left="615" top="15" width="20" height="20" opacity="0"
+                onClick="NDB.deleteNode(sheet);"/>
+
+</form>

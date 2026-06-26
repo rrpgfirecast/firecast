@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Companion" align="client">
+    <scrollBox align="client" g-cnt-line-spacing="5">
+        <!-- Title region -->
+        <rectangle g="col" g-width="12" g-width-lg="12" color="black" strokeColor="white" strokeSize="1" g-min-height="35" padding="{left=5,right=5,top=5,bottom=5}">
+            <Title text="NOME" field="companionNome"/>
+        </rectangle>
+
+        <rectangle g="col" g-width="6" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+            <Title text="FORÇA" field="companionForca"/>
+            <Title text="AGILIDADE" field="companionAgilidade"/>
+            <Title text="INTELIGÊNCIA" field="companionInteligencia"/>
+            <Title text="RESISTÊNCIA" field="companionResistencia"/>
+        </rectangle>
+
+        <rectangle g="col" g-width="6" color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+            <Title text="DA" field="companionDA"/>
+            <Title text="RD" field="companionRD"/>
+            <Title text="DANO" field="companionDano"/>
+            <Title text="VIDA" field="companionVida"/>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+            <label g="col" g-width="12" height="25" text="HABILIDADE / TECNICA"/>
+            <richEdit g="col" g-width="12" g-vert-tile="true" field="companionNotes" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+        </rectangle>
+    </scrollBox>
+</form>

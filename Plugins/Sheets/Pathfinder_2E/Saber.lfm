@@ -20,11 +20,11 @@
     <formatLabelEdit left="155" top="0" width="55" height="25" field="profSaberEx"/>
     <formatLabelEdit left="210" top="0" width="55" height="25" field="outrosSaberEx"/>
 
-    <rectangle left="265" top="0" width="79" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
-        <label width="79" height="25" field="bonusSaberEx" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+    <rectangle left="265" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+        <label width="55" height="25" field="bonusSaberEx" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
     </rectangle>
 
-    <button left="344" top="1" width="23" height="23" text="R">
+    <button left="319" top="1" width="23" height="23" text="🎲">
         <event name="onClick">
                 if sheet.bonusSaberEx ~= nil then
                 local mod = tonumber(sheet.bonusSaberEx);
@@ -39,7 +39,7 @@
         </event>
     </button>
 
-	<button left="367" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+	<button left="342" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
 
     <dataLink fields="{'atrSaberEx', 'profSaberEx', 'outrosSaberEx'}">
         <event name="onChange"><![CDATA[

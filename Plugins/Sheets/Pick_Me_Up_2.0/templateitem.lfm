@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateItem" height="45" g="col" g-width="12" g-cnt-gutter="0">
+    <rectangle	color="black" strokeSize="1" strokeColor="white"  cornerType="round" xradius="5" yradius="5"  g="col" g-width="12" height="45" >
+      <edit field="nome_texto" g="col" g-width="11" transparent="true" fontSize="20" height="40" vertTextAlign="center" horzTextAlign="center" fontFamily="Wishes Script Caps Display" />
+      <rectangle color="none" g="col" g-width="1" cornerType="round" xradius="5" yradius="5" margins="{top=1,bottom=1,right=1}" height="43" >
+        <button name="btnExcluir" text="✖" g="col" g-width="12" fontSize="6" height="21" />    				
+        <imageCheckBox name="cbxInvisivel" g="col" g-width="12"  checkedImage="invisivel.png" uncheckedImage="visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" height="21"/>  
+      <edit field="tags_texto" visible="false" />
+      </rectangle>
+    </rectangle>
+
+   <script>
+      function self:alternarVisibilidade()
+        if self.cbxInvisivel.checked then
+          NDB.setPermission(sheet, "group", "jogadores", "read", nil);
+          NDB.setPermission(sheet, "group", "espectadores", "read", nil);
+        else
+          NDB.setPermission(sheet, "group", "jogadores", "read", "deny");
+          NDB.setPermission(sheet, "group", "espectadores", "read", "deny");
+        end;
+      end; 
+
+      self.btnExcluir.onClick = function (_)
+        local node = sheet
+        if  self.observer ~= nil then
+            self.observer.enabled = false
+            self.observer = nil
+        end
+        if node ~= nil then
+            NDB.deleteNode(node)
+        end
+      end;
+
+      function self:atualizarCbxInvisivel()          
+        if sheet == nil then return end
+        if self.cbxInvisivel == nil then return end
+        self.cbxInvisivel.checked = NDB.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+                                    NDB.getPermission(sheet, "group", "jogadores", "read") == "deny"
+        self.cbxInvisivel.enabled = NDB.testPermission(sheet, "writePermissions");
+      end;
+    </script> 
+  
+    <event name="onScopeNodeChanged">
+      if self.observer ~= nil then   
+          self.observer.enabled = false;
+          self.observer = nil;
+      end;
+
+      if sheet ~= nil then   
+        local obsOk, obsOrErr = pcall(function() return NDB.newObserver(sheet) end)
+        if obsOk and obsOrErr ~= nil then
+            self.observer = obsOrErr
+
+            self.observer.onPermissionListChanged = function(node)
+                if sheet ~= nil then
+                    pcall(function() self:atualizarCbxInvisivel() end)
+                end
+            end;
+
+            self.observer.onFinalPermissionsCouldBeChanged = function(node)
+                if sheet ~= nil then
+                    pcall(function() self:atualizarCbxInvisivel() end)
+                end
+            end;
+        end
+
+        pcall(function() self:atualizarCbxInvisivel() end)
+      end;
+    </event>
+
+    
+</form>
+

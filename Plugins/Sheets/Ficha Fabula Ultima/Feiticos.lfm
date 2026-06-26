@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFeiticos" width="440" height="30" theme="light">
+    <import file="templates.xml"/>
+    <import file="styles.xml"/>
+
+	<script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showMagiaPopup()
+			local pop = self:findControlByName("popMagia");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Não encontrei o popup da magia para exibir.");
+			end;
+		end;
+		]]>
+	</script>
+
+	<formatLabelEdit left="2" top="1" width="316" height="25" field="nomeMagiaLista"/>
+
+	<rectangle left="321" top="1" width="80" height="25" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="5" yradius="5">
+		<label align="client" vertTextAlign="center" horzTextAlign="center" text="Custo" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+	</rectangle>
+	<formatIntEdit left="400" top="1" width="60" height="25" field="custoMagiaLista"/>
+
+	<rectangle left="463" top="1" width="80" height="25" color="transparent" strokeColor="White" strokeSize="2" cornerType="round" xradius="5" yradius="5">
+		<label align="client" vertTextAlign="center" horzTextAlign="center" text="Duração" fontSize="16" fontColor="White" fontFamily="Courier New"/>
+	</rectangle>
+	<formatLabelEdit left="542" top="1" width="180" height="25" field="duracaoMagia"/>
+	
+	<button left="722" top="2" width="23" height="23" text="i" onClick="showMagiaPopup();"/>
+	<button left="745" top="2" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

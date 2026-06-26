@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="WeaponsWeapon" g="col" g-width="12" g-width-lg="12" height="25">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+
+		local function rollTest()
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+			local node = NDB.getRoot(sheet)
+
+			local rolagem = Firecast.interpretarRolagem(sheet.dano or "1d1")
+
+			mesaDoPersonagem.activeChat:rolarDados(rolagem, (sheet.nome or "Arma") .. " de " .. (node.nome or "Nome"))
+		end
+
+		]]>	
+	</script>
+
+	<layout g="col" g-width="10" height="25">
+		<edit g="col" g-width="2" height="25" vertTextAlign="center" field="nome">
+			<event name="onUserChange">
+				local rcl = self:findControlByName("rclWeapons")
+				if rcl~= nil then
+					rcl:reorganize()
+				end
+			</event>
+		</edit>
+		<edit g="col" g-width="2" height="25" vertTextAlign="center" field="preco"/>
+		<edit g="col" g-width="8" height="25" vertTextAlign="center" field="desc"/>
+	</layout>
+
+	<layout g="col" g-width="2" height="25">
+		<edit g="col" g-width="6" height="25" vertTextAlign="center" field="dano"/>
+
+		<button g="col" g-width="3" height="25" text="🎲" onClick="rollTest()" hint="Rolar Teste" textTrimming="none"/>
+		<button g="col" g-width="3" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+	</layout>
+
+	<!-- Calcule o bonus de pericia-->
+	<dataLink fields="{'atributo', 'nivel'}">
+		<event name="onUserChange">
+			if sheet== nil then return end
+
+			sheet.total = 	(tonumber(sheet.atributo) or 0) +
+							(tonumber(sheet.nivel) or 0)
+		</event>
+	</dataLink>
+</form>

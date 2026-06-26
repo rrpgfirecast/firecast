@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+    <image align="client" style="autoFit" src="/imagens/Fundo 1.jpg"/>
+    <scrollBox align="client">
+        <flowLayout class="janela1">
+
+            <script>
+                <![CDATA[
+                local function showInfoPopup()
+                    local pop = self:findControlByName("popInfo");
+
+                    if pop ~= nil then
+                        pop:setNodeObject(self.sheet);
+				        pop:showPopupEx("bottomCenter", self.info);
+                    else
+                        showMessage("Não encontrei o popup de informações para exibir.");
+                    end;
+                end;
+                ]]>
+            </script>
+
+            <flowPart class="janela3" width="791" height="420">
+                <rectangle align="client" class="janela2">
+                    <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                    <label left="0" top="5" width="791" height="25" text="História" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                    <formatTextEdit left="7" top="31" width="773" height="380" field="historia"/>
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="285" height="420">
+                <rectangle align="client" class="janela2">
+                    <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                    <label left="0" top="5" width="270" height="25" text="Personalidade" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                    <formatTextEdit left="6" top="31" width="270" height="380" field="personalidade"/>
+                </rectangle>
+            </flowPart>
+
+            <flowLineBreak/>
+
+            <flowPart class="janela3" width="791" height="440">
+                <rectangle align="client" class="janela2">
+                    <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                    <label left="0" top="5" width="791" height="25" text="Anotações" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                    <button name="info" left="754" top="5" width="25" height="25" text="⚙️" onClick="showInfoPopup();"/>
+                    <formatTextEdit left="7" top="31" width="773" height="400" field="anotacoes"/>
+                </rectangle>
+            </flowPart>
+
+            <flowPart class="janela3" width="285" height="440">
+                <rectangle align="client" class="janela2">
+                    <image align="client" style="stretch" src="/imagens/Fundo 3.png" opacity="0.1"/>
+                    <label left="0" top="5" width="270" height="25" text="Imagens" fontSize="20" vertTextAlign="center" horzTextAlign="center" fontStyle="italic" fontColor="Gray" fontFamily="Stencil"/>
+                </rectangle>
+
+                <button left="255" top="5" width="23" height="23" text="+">
+                    <event name="onClick">
+                        self.rclImagem:append();
+                    </event>
+                </button>
+
+                <rectangle  left="7" top="31" width="270" height="402" color="transparent" strokeColor="Gray" strokeSize="1" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+                    <recordList name="rclImagem" field="campoImagem" templateForm="frmImagem" left="15" top="0" width="245" height="398" layout="vertical" minQt="0"/>
+                </rectangle>
+            </flowPart>
+        </flowLayout>
+    </scrollBox>
+</rectangle>

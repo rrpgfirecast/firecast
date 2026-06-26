@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpConfigsChecksDR" height="33" width="180" padding="{top=3, right=3, left=3}" onShow="lights()">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+	}
+	
+	</style>
+	<script><![CDATA[
+		local function lights()
+			if sheet.flag then
+				self.recFundochb.color = "#303030"
+			else
+				self.recFundochb.color = "#202020"
+			end
+		end
+
+		local function matrizArmor()
+			local matrizDR = {}
+			local nodoPai = NDB.getParent(NDB.getParent(NDB.getParent(NDB.getParent(sheet))))
+			local nodoFilho = nodoPai and NDB.getChildNodes(nodoPai["ConfigsGrupos"]) or {}
+			for i = 1, #nodoFilho do
+				local groupName = nodoFilho[i]["nome"] or "sem_nome"
+				local items = {}
+
+				local nodoNeto = NDB.getChildNodes(nodoFilho[i]["ConfigsChecks"]) or {}
+				for j = 1, #nodoNeto do
+					if nodoNeto[j]["flag"] then
+						table.insert(items, nodoNeto[j]["nome"])
+					end
+				end
+				
+				table.insert(matrizDR, { groupName, items })
+			end
+			return matrizDR
+		end
+		
+		local function itemNoGrupo(item, nomeGrupo, matriz)
+			for i = 1, #matriz do
+				local grupo = matriz[i]
+				local grupoNome = grupo[1]
+				local itens = grupo[2]
+
+				if grupoNome == nomeGrupo then
+					for j = 1, #itens do
+						if itens[j] == item then
+							return true
+						end
+					end
+					return false
+				end
+			end
+			return false
+		end
+		
+		local function gruposQueContem(item, matriz)
+			local resultados = {}
+
+			for i = 1, #matriz do
+				local grupoNome = matriz[i][1]
+				local itens = matriz[i][2]
+
+				for j = 1, #itens do
+					if itens[j] == item then
+						table.insert(resultados, grupoNome)
+						break
+					end
+				end
+			end
+
+			if #resultados > 0 then
+				return resultados
+			else
+				return nil
+			end
+		end
+
+		
+	]]></script>											
+	<rectangle name="recFundochb" align="client" color="#202020" xradius= "3" yradius="3" cornerType="bevel" cursor="handPoint" onClick="sheet.flag = not sheet.flag">
+		<checkBox align="left" width="30" margins="{left=10}" field="flag" name="chbFlag" cursor="handPoint" />
+		<dataLink field="flag" defaultValue="false">
+			<event name="onChange">
+				<![CDATA[	
+				lights()				
+				local nodoPai = NDB.getParent(NDB.getParent(sheet))
+				
+				if sheet.flag then 
+					local matrizDR = matrizArmor()
+					
+					local nodoFilho = NDB.getChildNodes(nodoPai["PopGrupos"]) or {}
+					for i = 1, #nodoFilho do
+						if nodoFilho[i]['flag'] then
+							
+							local nodoNeto = NDB.getChildNodes(nodoPai["PopLocais"]) or {}
+							for j = 1, #nodoNeto do
+								if itemNoGrupo(nodoNeto[j]["nome"], nodoFilho[i]["nome"], matrizDR) then
+									nodoNeto[j]["visivel"] = false
+								end
+							end
+						end
+					end
+				else
+					local matrizDR = {}
+					local nodoP = NDB.getParent(NDB.getParent(NDB.getParent(NDB.getParent(sheet))))
+					local nodoF = nodoP and NDB.getChildNodes(nodoP["ConfigsGrupos"]) or {}
+					for i = 1, #nodoF do
+						local groupName = nodoF[i]["nome"] or "sem_nome"
+						local items = {}
+
+						local nodoN = NDB.getChildNodes(nodoF[i]["ConfigsChecks"]) or {}
+						for j = 1, #nodoN do
+							if nodoN[j]["flag"] then
+								table.insert(items, nodoN[j]["nome"])
+							end
+						end
+						
+						table.insert(matrizDR, { groupName, items })
+					end
+					
+					local nodoFilho = NDB.getChildNodes(nodoPai["PopLocais"]) or {}
+					for i = 1, #nodoFilho do
+						local flag = false
+						local matrizGrupos = gruposQueContem(nodoFilho[i]["nome"], matrizDR)
+						
+						local nodoNeto = NDB.getChildNodes(nodoPai["PopGrupos"]) or {}
+						for j = 1, #nodoNeto do
+							for k = 1, #matrizGrupos do
+								if nodoNeto[j]["nome"] == matrizGrupos[k] then
+									if nodoNeto[j]["flag"] == true then
+										flag = true
+									end
+								end
+							end
+						end
+						
+						if flag == false then nodoFilho[i]["visivel"] = true end
+					end
+				end
+			]]></event>
+		</dataLink>
+		<label align="client" name="lblNome" field="nome" hitTest="true" cursor="handPoint" onClick="sheet.flag = not sheet.flag" />
+	</rectangle>
+	<checkBox field="visivel" visible="false" />
+	<dataLink field="visivel" defaultValue="true">
+		<event name="onChange"><![CDATA[
+			if sheet.visivel then
+				self.recFundochb:getParent().visible = true
+				self.recFundochb:getParent().height = 33
+			else
+				self.recFundochb:getParent().visible = false
+				self.recFundochb:getParent().height = 0
+				sheet.flag = false
+			end
+		]]></event>
+	</dataLink>
+</form>

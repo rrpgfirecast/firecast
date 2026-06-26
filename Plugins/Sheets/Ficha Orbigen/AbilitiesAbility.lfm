@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="AbilitiesAbility" g="col" g-width="12" g-width-lg="12" height="25">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+
+		local function rollTest()
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+			local node = NDB.getRoot(sheet)
+
+			local mod = math.floor(tonumber(sheet.total) or 0)
+			local rolagem = Firecast.interpretarRolagem("3d6 + " .. mod)
+
+			mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nome or "Habilidade") .. " de " .. (node.nome or "Nome"))
+		end
+
+		]]>	
+	</script>
+
+	<layout g="col" g-width="8" height="25">
+		<edit g="col" g-width="9" height="25" vertTextAlign="center" field="nome">
+			<event name="onUserChange">
+				local rcl = self:findControlByName("rclAbilities")
+				if rcl~= nil then
+					rcl:reorganize()
+				end
+			</event>
+		</edit>
+		<comboBox g="col" g-width="3" height="25" vertTextAlign="center" horzTextAlign="center" field="chavePericia" items="{'FOR', 'AGI', 'INT', 'RES', '-'}" values="{'1', '2', '3', '4', '5'}" fontColor="white"/>
+		<dataLink fields="{'chavePericia','forca','agilidade','inteligencia','resistencia'}">
+			<event name="onChange">
+				if sheet == nil then return end
+				local node = NDB.getRoot(sheet)
+				if node == nil then return end
+
+	            local atrTable = {}
+	            atrTable["1"] = tonumber(node.forca) or 0
+	            atrTable["2"] = tonumber(node.agilidade) or 0
+	            atrTable["3"] = tonumber(node.inteligencia) or 0
+	            atrTable["4"] = tonumber(node.resistencia) or 0
+	            atrTable["5"] = 0
+
+				local atributo = atrTable[sheet.chavePericia]
+
+				sheet.atributo = atributo
+			</event>
+		</dataLink>
+	</layout>
+
+	<layout g="col" g-width="4" height="25">
+		<comboBox g="col" g-width="3" height="25" vertTextAlign="center" horzTextAlign="center" field="nivel" items="{'Nv.0', 'Nv.1', 'Nv.2', 'Nv.3'}" values="{'0', '2', '4', '7'}" fontColor="white"/>
+		<rectangle g="col" g-width="3" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="total" horzTextAlign="center"/>
+		</rectangle>
+
+		<button g="col" g-width="2" height="25" text="🎲" onClick="rollTest()" hint="Rolar Teste" textTrimming="none"/>
+		<button g="col" g-width="2" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+	</layout>
+
+	<!-- Calcule o bonus de pericia-->
+	<dataLink fields="{'atributo', 'nivel'}">
+		<event name="onUserChange">
+			if sheet== nil then return end
+
+			sheet.total = 	(tonumber(sheet.atributo) or 0) +
+							(tonumber(sheet.nivel) or 0)
+		</event>
+	</dataLink>
+</form>

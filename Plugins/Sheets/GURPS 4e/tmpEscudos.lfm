@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpEscudos" height="38" align="top" onMouseEnter="select()" onMouseLeave="select()" hitTest="true">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+		readOnly: true;
+		cursor: default;
+		canFocus: false;
+	}
+	
+	edit.invent, button.invent{
+		fontSize: 12;
+	}
+	
+	progressBar.invent{
+		align: left;
+		width: 285;
+		margins: {top=13, right=5, bottom=13};
+		hitTest: true;
+		colorMode: hl;
+		color: GoldenRod; 
+	}
+	</style>
+	<script><![CDATA[	
+		local function formatMoney(value)
+			value = value or 0
+			local inteiro, decimal = math.modf(value)
+			decimal = math.abs(decimal)
+			decimal = string.format("%02d", math.floor(decimal * 100 + 0.5))
+			
+			local formatted = tostring(inteiro)
+			formatted = formatted:reverse():gsub("(%d%d%d)", "%1."):reverse()
+			if formatted:sub(1,1) == "." then
+				formatted = formatted:sub(2)
+			end
+			
+			return string.format("$%s,%s", formatted, decimal)
+		end
+
+		local function parseMoney(str)
+			str = str or "0"
+			local num = str:gsub("[%$%s]", ""):gsub("%.", ""):gsub(",", ".")
+			return tonumber(num)
+		end	
+		
+		local function formatWeight(value)
+			value = value or 0
+			return tostring(value .. " lbs.")
+		end
+
+		local function parseWeight(value)
+			if value == nil then return 0 end
+			local t = type(value)
+			if t == "number" then
+				return value
+			end
+			if t ~= "string" then
+				value = tostring(value)
+			end
+			local ok, s = pcall(function() return value:match("^%s*(.-)%s*$") end)
+			if not ok or not s then s = value end
+			ok, s = pcall(function() return s:gsub("%s*lbs?%.?$", "") end)
+			if not ok or not s then s = value end
+			ok, s = pcall(function() return tonumber(s) end)
+			if not ok then return 0 end
+			return s or 0
+		end
+		
+		local function select()
+			self.recHighlight.visible = not self.recHighlight.visible
+		end
+		
+		local function calcSomaCarga()
+			local nodoPai = NDB.getParent(NDB.getParent(sheet))
+			nodoPai.cbCargaCalc = not nodoPai.cbCargaCalc
+		end
+	]]></script>
+	
+	<rectangle color="#202020" left="0" width="40" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+	<rectangle color="#202020" left="80" width="183" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+	<rectangle color="#202020" left="643" width="330" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" />
+	<rectangle color="#303030" width="2000" height="38" visible="false" name="recHighlight"/>
+	
+	<layout height="35" align="top" margins="{top=3}">
+	
+		<checkBox align="left" width="30" margins="{left=10}" name="chbEquip" field="equipado" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Item Equipado (Para Cálculo de DR e Carga)" />
+		<dataLink field="equipado" defaultValue="true">
+			<event name="onChange"><![CDATA[
+				calcSomaCarga()
+			]]></event>
+		</dataLink>
+		
+		<edit align="left" width="40" class="invent" name="edtTL" field="TL" type="number" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="TL do Escudo">
+			<event name="onEnter"><![CDATA[
+				if sheet.TL == "0" then sheet.TL = nil end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				if sheet.TL == nil then sheet.TL = "0" end
+			]]></event>
+		</edit>
+		<dataLink field="TL" defaultValue="0" />
+		
+		<edit align="left" width="183" class="invent" name="edtNome" field="Nome" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" fontStyle="bold" hint="Nome do Escudo">
+			<event name="onEnter"><![CDATA[
+				if sheet.Nome == "—" then sheet.Nome = nil end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				if sheet.Nome == nil then sheet.Nome = "—" end
+			]]></event>
+		</edit>
+		<dataLink field="Nome" defaultValue="—" />
+		
+		<edit align="left" width="45" class="invent" name="edtDB" field="DB" type="number" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Defensive Bonus do Escudo">
+			<event name="onEnter"><![CDATA[
+				if sheet.DB == "0" then sheet.DB = nil end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				if sheet.DB == nil then sheet.DB = "0" end
+			]]></event>
+		</edit>
+		<dataLink field="DB" defaultValue="0" />
+		
+		<edit align="left" width="45" class="invent" name="edtDR" field="DR" type="number" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Damage Reduction do Escudo">
+			<event name="onEnter"><![CDATA[
+				if sheet.DR == "0" then sheet.DR = nil end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				if sheet.DR == nil then sheet.DR = "0" end
+			]]></event>
+		</edit>
+		<dataLink field="DR" defaultValue="0" />
+		
+		<progressBar class="invent" name="barraHP" onMouseEnter="select()" onMouseLeave="select()" field="posBarraHP" fieldMin="minBarraHP" fieldMax="maxBarraHP" hint="HP do Escudo">
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popUp_Barra")
+						
+				if pop ~= nil then
+					pop:showPopupEx("bottomCenter", self.barraHP)
+					pop:setNodeObject(sheet)
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir")
+				end
+			]]></event>
+		</progressBar>
+		
+		<template name="DivisorM">
+			<layout align="top" height="12" margins="{top=0, bottom=5}">
+				<label align="left" text="$(texto)" width="$(largura)" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+				<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+			</layout>
+		</template>
+		
+		<popup name="popUp_Barra" width="293" height="100" backOpacity="0" drawContainer="false" autoScopeNode="false">
+			<rectangle align="client" color="#353535" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#353535" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<DivisorM texto="H E A L T H   P O I N T S" largura="115" />
+					
+					<edit name="edtPosBarra" align="left" width="40" field="posBarraHP" type="number" hint="HP Atual do Escudo" />
+					<dataLink field="posBarraHP" defaultValue="1">
+						<event name="onChange"><![CDATA[
+							if sheet.posBarraHP <= 0 then
+								self.barraHP.color = "FireBrick"
+							else
+								self.barraHP.color = "GoldenRod"
+							end
+						]]></event>
+					</dataLink>
+					<label align="left" text="H P   A T U A L" fontSize="10" width="80" />
+					
+					<edit align="left" width="40" field="maxBarraHP" type="number" hint="HP Máximo do Escudo" />
+					<dataLink field="maxBarraHP" defaultValue="1">
+						<event name="onChange"><![CDATA[
+							sheet.minBarraHP = sheet.maxBarraHP * -5
+						]]></event>
+					</dataLink>
+					<label align="left" text="H P   M Á X I M O" fontSize="10" width="80" />
+				</rectangle>
+			</rectangle>
+		</popup>
+		
+		<edit align="left" width="30" class="invent" name="edtLC" field="LC" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Legality Class do Escudo">
+			<event name="onEnter"><![CDATA[
+				if sheet.LC == "—" then sheet.LC = nil end
+			]]></event>
+			<event name="onExit"><![CDATA[
+				if sheet.LC == nil then sheet.LC = "—" end
+			]]></event>
+		</edit>
+		<dataLink field="LC" defaultValue="—" />
+		
+		<edit align="left" width="85" class="invent" name="edtCusto" field="Custo" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Custo do Escudo">
+			<event name="onEnter"><![CDATA[
+				sheet.Custo = parseMoney(sheet.Custo or "0")
+				self.edtCusto.type = "float"
+			]]></event>
+			<event name="onExit"><![CDATA[
+				self.edtCusto.type = "text"
+				sheet.Custo = formatMoney(sheet.Custo or 0)
+			]]></event>
+		</edit>
+		<dataLink field="Custo" defaultValue="$0,00" />
+
+		<edit align="left" width="90" class="invent" name="edtPeso" field="Peso" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Peso do Escudo">
+			<event name="onEnter"><![CDATA[
+				sheet.Peso = parseWeight(sheet.Peso or "0")
+				self.edtPeso.type = "float"
+			]]></event>
+			<event name="onExit"><![CDATA[
+				self.edtPeso.type = "text"
+				sheet.Peso = formatWeight(sheet.Peso or 0)
+			]]></event>
+		</edit>
+		<dataLink field="Peso" defaultValue="0 lbs.">
+			<event name="onChange"><![CDATA[
+				calcSomaCarga()
+			]]></event>
+		</dataLink>
+		
+		<button align="left" width="30" name="btnInfo" text="𝐢" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" hint="Informações do Escudo">
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popUp_")
+						
+				if pop ~= nil then
+					pop:showPopupEx("left", self.btnInfo)
+					pop:setNodeObject(sheet)
+					
+					sheet.TLmod = "TL" .. sheet.TL
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir")
+				end
+			]]></event>
+		</button>
+		
+		<popup name="popUp_" width="850" height="700" backOpacity="0" drawContainer="false" autoScopeNode="false">
+			<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=15}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+					<layout align="top" height="40">
+						<label field="TLmod" align="left" textTrimming="character" fontStyle="bold" fontSize="14" width="40" />
+						<label field="Nome" align="client" textTrimming="character" fontStyle="bold" fontColor="white" fontSize="20" />
+						<checkBox text="E Q U I P A D O" align="right" fontSize="10" fontStyle="bold" width="95" field="equipado" hitTest="true" hint="O Peso desse item será contabilizado" />
+					</layout>
+					<flowLayout align="top" autoHeight="true" horzAlign="justify" maxControlsPerLine="4">
+							
+							<layout width="190" height="75">
+								<layout align="left" width="90">
+									<DivisorM texto="D B" largura="20" />
+									<edit align="client" field="DB" vertTextAlign="leading" type="number">
+										<event name="onEnter"><![CDATA[
+											if sheet.DB == "0" then sheet.DB = nil end
+										]]></event>
+										<event name="onExit"><![CDATA[
+											if sheet.DB == nil then sheet.DB = "0" end
+										]]></event>
+									</edit>
+								</layout>
+								<layout align="right" width="90">	
+									<DivisorM texto="D R" largura="20" />
+									<edit align="client" field="DR" vertTextAlign="leading" type="number">
+										<event name="onEnter"><![CDATA[
+											if sheet.DR == "0" then sheet.DR = nil end
+										]]></event>
+										<event name="onExit"><![CDATA[
+											if sheet.DR == nil then sheet.DR = "0" end
+										]]></event>
+									</edit>
+								</layout>
+							</layout>
+							
+							<layout width="190" height="75">	
+								<DivisorM texto="L C" largura="20" />
+								<textEditor field="LC" align="client" hint="Legality Class do Escudo" />
+							</layout>
+							
+							<layout width="190" height="75">
+								<DivisorM texto="C O S T   F A C T O R" largura="100" />
+								<edit field="CF" name="edtPopCF" align="client" vertTextAlign="leading" hint="Cost Factor do Escudo">
+									<event name="onEnter"><![CDATA[
+										sheet.CF = parseMoney(sheet.CF or "0")
+										self.edtPopCF.type = "float"
+									]]></event>
+									<event name="onExit"><![CDATA[
+										self.edtPopCF.type = "text"
+										sheet.CF = formatMoney(sheet.CF or 0)
+									]]></event>
+								</edit>
+								<dataLink field="CF" defaultValue="$0,00" />
+							</layout>
+							
+							<layout width="190" height="75">
+								<DivisorM texto="C U S T O" largura="50" />
+								<edit field="Custo" name="edtPopCusto" align="client" vertTextAlign="leading" hint="Custo do Escudo">
+									<event name="onEnter"><![CDATA[
+										sheet.Custo = parseMoney(sheet.Custo or "0")
+										self.edtPopCusto.type = "float"
+									]]></event>
+									<event name="onExit"><![CDATA[
+										self.edtPopCusto.type = "text"
+										sheet.Custo = formatMoney(sheet.Custo or 0)
+									]]></event>
+								</edit>
+							</layout>
+							
+							<layout width="190" height="75">
+								<DivisorM texto="P E S O" largura="40" />
+								<edit field="Peso" name="edtPopPeso" align="client" vertTextAlign="leading" hint="Peso do Escudo">
+									<event name="onEnter"><![CDATA[
+										sheet.Peso = parseWeight(sheet.Peso or "0")
+										self.edtPopPeso.type = "float"
+									]]></event>
+									<event name="onExit"><![CDATA[
+										self.edtPopPeso.type = "text"
+										sheet.Peso = formatWeight(sheet.Peso or 0)
+									]]></event>
+								</edit>
+							</layout>
+						</flowLayout>
+						<DivisorM texto="D E S C R I Ç Ã O" largura="95" />
+						<textEditor field="Descricao" align="client" hint="Descrição do Escudo" />
+						<button text="💬" align="bottom" height="30" hint="Enviar Descrição no Chat" margins="{right=10}">
+							<event name="onClick"><![CDATA[
+								local function newlineToSlash(str)
+									if not str then return "" end
+									str = str:gsub("\r\n", "/")
+									str = str:gsub("\n", "/")
+									str = str:gsub("\r", "/")
+									return str
+								end
+							
+								local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+								local meuJogador = mesaDoPersonagem.meuJogador
+								local meuNick = meuJogador.nick
+								
+								local msg = "💬 ".. meuNick .."[§R][§K2] destacou o Escudo:"
+								msg = msg .. "\n****\n### [§K1][§B]".. (sheet.Nome or "") .."[§B]\n###### ".. (sheet.TLmod or "")
+								msg = msg .. "\n [§K1][§B]DB:[§B] [§K14]".. (sheet.DB or "")
+								msg = msg .. "\n [§K1][§B]DR:[§B] [§K14]".. (sheet.DR or "")
+								msg = msg .. "\n [§K1][§B]HP:[§B] [§K14]".. (sheet.posBarraHP or "") .. "/" .. (sheet.maxBarraHP or "")
+								msg = msg .. "\n [§K1][§B]LC:[§B] [§K14]".. (newlineToSlash(sheet.LC) or "")
+								msg = msg .. "\n [§K1][§B]Custo:[§B] [§K14]".. (sheet.Custo or "")
+								msg = msg .. "\n [§K1][§B]Peso:[§B] [§K14]".. (sheet.Peso or "")
+								msg = msg .. "\n [§K1][§B]Descrição:[§B] [§K14]".. (sheet.Descricao or "")
+								msg = msg .. "[§T]\n****"
+
+								mesaDoPersonagem.activeChat:enviarMensagem(msg)
+							]]></event>
+						</button>
+				</rectangle>
+			</rectangle>
+		</popup>
+		
+		<button align="left" width="30" text="🞭" onMouseEnter="select()" onMouseLeave="select()" hitTest="true" margins="{left=2}" onClick="NDB.deleteNode(sheet) calcSomaCarga()" hint="Deletar Escudo" />
+		
+	</layout>
+</form>

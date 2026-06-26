@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Inventário -->
+    <rectangle 	align="client" name="inventario" color="black" visible="false" g-cnt-gutter="10">
+        <scrollBox align="client" margins="{left=5,right=5}">     
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="4" g-max-width="1080" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <button name="bntNovacategoria" text="Adicionar Item" height="30" g="col" g-width="12" margins="{top=5,right=5,left=5}"/>
+                
+                <script>
+                    local currentFilterArgument = "";
+                    
+                    local function prepareStrForFilter(inputStr)
+                        return string.lower(Utils.removerAcentos(inputStr or ""));
+                    end;
+                    
+                    local function executeFilterNow()			
+                        currentFilterArgument = prepareStrForFilter(self.edtFiltroCategorias.text);
+                        self.listacategoria:reorganize();
+                    end;		
+                    
+                    local function checkNeedExecuteFilter()	
+                        local newFilterArgument = prepareStrForFilter(self.edtFiltroCategorias.text);
+                        
+                        if newFilterArgument ~= currentFilterArgument then
+                            executeFilterNow();
+                        end;
+                    end;
+                </script>
+
+                <timer name="tmrFiltroCategorias" interval="1000" onTimer="checkNeedExecuteFilter()"/>
+                <edit g="row" g-min-height="25" textPrompt="Filtrar itens..." name="edtFiltroCategorias" onChange="executeFilterNow()" margins="{top=5,right=5,left=5}" />
+
+                <scrollBox g="row" g-vert-tile="true" margins="{top=5,right=2,left=2,bottom=2}" g-cnt-gutter="1">
+                    <gridRecordList name="listacategoria"  field="categorias" templateForm="templateCategoria" minQt="0" selectable="true"  height="550"  g="col" g-width="12" >
+                        <event name="onCompare">
+                            return Utils.compareStringPtBr(left.nome or "", right.nome or "");
+                        </event>
+                        <event name="onFilter">
+                            if (currentFilterArgument == nil) or (currentFilterArgument == "") then
+                                return true;
+                            end;
+
+                            local nome = prepareStrForFilter(node.nome);
+                            local descricao = prepareStrForFilter(node.descricao);
+
+                            return (nome ~= "" and string.find(nome, currentFilterArgument, 1, true)) or 
+                                (descricao ~= "" and string.find(descricao, currentFilterArgument, 1, true));
+                        </event>
+                    </gridRecordList>
+                        <!-- reordenar rcl -->
+                    <script>
+                        local function reordenarLista()
+                        local nodes = NDB.getChildNodes(sheet.categorias)
+                        table.sort(nodes, function(a, b)
+                            return (tonumber(a.ordem) or 0) &lt; (tonumber(b.ordem) or 0)
+                        end)
+                            self.listacategoria:reorganize()
+                        end
+
+                        -- Botão de adicionar item
+                        self.bntNovacategoria.onClick = function()
+                        local novo = self.listacategoria:append()
+                        if novo then
+                            novo.nome = "Novo Item"
+                            novo.quantidade = "1x"
+                            novo.rank = "F-"
+                            novo.descricao = "tags"
+                            novo.ordem = #NDB.getChildNodes(sheet.categorias) + 1
+                            reordenarLista()
+                        end
+                        end
+
+                        -- Quando um item é selecionado, mostra os dados no dataScopeBox
+                        self.listacategoria.onSelect = function()
+                        local node = self.listacategoria.selectedNode
+                        self.textoinventario.node = node
+                        self.textoinventario.visible = (node ~= nil)
+                        end
+                    </script>
+                </scrollBox>      
+            </rectangle>
+
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="8" g-max-width="1920" g-min-width="400" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <dataScopeBox name="textoinventario" align="client">
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="8" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}" >
+                    <edit name="descricao" field="descricao" g="col" g-width="12" transparent="true" fontSize="14" height="20"  horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+                    </rectangle>        
+                    <dataLink field="descricao" >
+                        <event name="onChange">
+                            if sheet ~= nil then
+                                if sheet.descricao == nil then
+                                    sheet.descricao = "Tags"
+                                end
+                            end
+                        </event>
+                    </dataLink>
+                    <label		height="20" text="Rank:" 	fontSize="15" g="col" g-width="2" fontFamily="Wishes Script Caps Display"  horzTextAlign="trailing" 	margins="{top=10,left=10}"/>
+                    <rectangle  height="20"	color="black" cornerType="round"	  g="col" g-width="2" strokeSize="1" strokeColor="white"	xradius="5" yradius="5" margins="{top=5,right=10}">
+                        <comboBox field="rank"   g="col" g-width="12" height="18"	horzTextAlign="center"  fontFamily="Cinzel"	 transparent="true"  fontSize="20"   items="{'F-', 'F', 'F+', 'E-', 'E', 'E+', 'D-', 'D', 'D+', 'C-', 'C', 'C+', 'B-', 'B', 'B+', 'A-', 'A', 'A+', 'S-', 'S', 'S+'}" margins="{right=3}"/>
+                    </rectangle>
+                    <richEdit field="texto_livre" align="client" backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="14" animateImages="true" margins="{top=30,right=4,left=4,bottom=4}"/>  
+                </dataScopeBox>
+            </rectangle>  
+        </scrollBox>
+    </rectangle>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rectangle 	align="client" 	color="black" >
+        <scrollBox align="client" margins="{left=5,right=5}"> 
+           
+            <rectangle	color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="3" g-max-width="340" g-min-width="300" g-min-height="550" g-max-height="1080" margins="{top=15}">	
+   
+                    <label	height="25"	text="Grupos" 	fontSize="50" g="col" g-width="12" fontFamily="Wishes Script Caps Display"  horzTextAlign="center" margins="{top=15}">
+                        <label g="col" g-width="10"/>
+                        <button name="btnNovaVinculo_1" text="+" height="30" g="col" g-width="2" margins="{right=5, top=-10}"/>
+                    </label>
+
+                    <script>
+                        local filterVinculo_1Argument = "";
+                        
+                        local function prepFilterVinculo_1(inputStr)
+                            return string.lower(Utils.removerAcentos(inputStr or ""));
+                        end;
+                        
+                        local function runVinculo_1Filter()           
+                            filterVinculo_1Argument = prepFilterVinculo_1(self.edtFiltroVinculo_1.text);
+                            self.listavinculo_1:reorganize();
+                        end;        
+                        
+                        local function checkVinculo_1Filter() 
+                            local newArg = prepFilterVinculo_1(self.edtFiltroVinculo_1.text);
+                            if newArg ~= filterVinculo_1Argument then
+                                runVinculo_1Filter();
+                            end;
+                        end;
+                    </script>
+
+                    <timer name="tmrFiltroVinculo_1" interval="1000" onTimer="checkVinculo_1Filter()"/>
+                    <edit g="row" g-min-height="25" textPrompt="Buscar Vinculo..." name="edtFiltroVinculo_1" onChange="runVinculo_1Filter()" margins="{top=5,right=5,left=5}" hint="Buscar Vinculo ou tag..."/>
+
+                    <scrollBox g="row" g-vert-tile="true" margins="{top=5,right=2,left=2,bottom=2}" g-cnt-gutter="1">
+                        <gridRecordList name="listavinculo_1" field="itensVinculo_1" templateForm="templateVinculo_1" minQt="0" selectable="true" height="600" g="col" g-width="12" margins="{left=5,right=5}">
+                            <event name="onCompare">
+                                return Utils.compareStringPtBr(left.nomeVinculo_1 or "", right.nomeVinculo_1 or "");
+                            </event>
+                            <event name="onFilter">
+                                if (filterVinculo_1Argument == nil) or (filterVinculo_1Argument == "") then
+                                    return true;
+                                end;
+
+                                local nome = prepFilterVinculo_1(node.nomeVinculo_1);
+                                local descCura = prepFilterVinculo_1(node.tagsVinculo_1);
+
+                                return (nome ~= "" and string.find(nome, filterVinculo_1Argument, 1, true)) or 
+                                    (descCura ~= "" and string.find(descCura, filterVinculo_1Argument, 1, true));
+                            </event>
+                        </gridRecordList>
+                                
+                        <script>
+                            -- Função de reordenação específica para a nova lista
+                            local function reordenarVinculo_1()
+                                local nodes = NDB.getChildNodes(sheet.itensVinculo_1)
+                                table.sort(nodes, function(a, b)
+                                    return (tonumber(a.ordemVinculo_1) or 0) &lt; (tonumber(b.ordemVinculo_1) or 0)
+                                end)
+                                self.listavinculo_1:reorganize()
+                            end
+
+                            -- Configuração do botão de adicionar
+                            self.btnNovaVinculo_1.onClick = function()
+                                local novo = self.listavinculo_1:append()
+                                if novo then
+                                    novo.nomeVinculo_1 = "Novo Grupo"
+                                    novo.ordemVinculo_1 = #NDB.getChildNodes(sheet.itensVinculo_1) + 1
+                                    reordenarVinculo_1()
+                                end
+                            end
+
+                            
+                            -- Lógica de seleção: agora aponta para o dataScopeBox 'detalheSkill'
+                            self.listavinculo_1.onSelect = function()
+                                local node = self.listavinculo_1.selectedNode;
+                                self.detalhe_vinculo_1:setNodeObject(node);
+                                self.detalhe_vinculo_1.visible = (node ~= nil);
+
+                                self.abertoPeloSlot = false;
+
+                            
+                            end;
+                        </script>
+                    </scrollBox>      
+            </rectangle>
+
+            <rectangle color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="3" g-max-width="1920" g-min-width="300" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <dataScopeBox name="detalhe_vinculo_1" align="client" visible="false">
+                    <rectangle height="30" color="black" cornerType="round" g="col" g-width="10" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}">
+                        <edit field="nomeVinculo_1" align="client" transparent="true" fontSize="22"  vertTextAlign="center" horzTextAlign="center" fontFamily="Wishes Script Caps Display"  />
+                    </rectangle>
+                    
+                    <button name="btnNovaVinculo_2" text="+" height="30" g="col" g-width="2" margins="{right=0, top=5}"/>
+                    
+                    <script>
+                        local filterVinculo_2Argument = "";
+                        
+                        local function prepFilterVinculo_2(inputStr)
+                            return string.lower(Utils.removerAcentos(inputStr or ""));
+                        end;
+                        
+                        local function runVinculo_2Filter()           
+                            filterVinculo_2Argument = prepFilterVinculo_2(self.edtFiltroVinculo_2.text);
+                            self.listavinculo_2:reorganize();
+                        end;        
+                        
+                        local function checkVinculo_2Filter() 
+                            local newArg = prepFilterVinculo_2(self.edtFiltroVinculo_2.text);
+                            if newArg ~= filterVinculo_2Argument then
+                                runVinculo_2Filter();
+                            end;
+                        end;
+                    </script>
+
+                    <timer name="tmrFiltroVinculo_2" interval="1000" onTimer="checkVinculo_2Filter()"/>
+                    
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="8" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}" >
+                        <edit name="tagsVinculo_1" field="tagsVinculo_1" g="col" g-width="12" transparent="true" fontSize="14" height="20"  horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+                    </rectangle>
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="4" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=3}">
+                        <colorSelection field="corVinculo_1" height="18" horzTextAlign="center" fontFamily="Wishes Script Caps Display" transparent="true" fontSize="15" margins="{right=3}"/>
+                    </rectangle>
+                    
+                    <edit g="row" g-min-height="25" textPrompt="Buscar Item..." name="edtFiltroVinculo_2" onChange="runVinculo_2Filter()" margins="{top=5,right=5,left=5}" hint="Buscar Item ou Tag..."/>
+                    
+
+                    <dataLink field="tagsVinculo_1" defaultValue="Tags">
+                        <event name="onChange">
+                            if sheet ~= nil then
+                                if sheet.tagsVinculo_1 == nil then
+                                    sheet.tagsVinculo_1 = "Tags"
+                                end
+                            end
+                        </event>
+                    </dataLink>
+
+                    <scrollBox g="row" g-vert-tile="true" margins="{top=5,right=2,left=2,bottom=2}" g-cnt-gutter="1">
+                        <gridRecordList name="listavinculo_2" field="itensVinculo_2" templateForm="templateVinculo_2" minQt="0" selectable="true" height="600" g="col" g-width="12">
+                            <event name="onCompare">
+                                return Utils.compareStringPtBr(left.nomeVinculo_2 or "", right.nomeVinculo_2 or "");
+                            </event>
+                            <event name="onFilter">
+                                if (filterVinculo_2Argument == nil) or (filterVinculo_2Argument == "") then
+                                    return true;
+                                end;
+
+                                local nome = prepFilterVinculo_2(node.nomeVinculo_2);
+                                local descCura = prepFilterVinculo_2(node.tagsVinculo_2);
+
+                                return (nome ~= "" and string.find(nome, filterVinculo_2Argument, 1, true)) or 
+                                    (descCura ~= "" and string.find(descCura, filterVinculo_2Argument, 1, true));
+                            </event>
+                        </gridRecordList>
+                                
+                        <script>
+                            -- Função de reordenação específica para a nova lista
+                            local function reordenarVinculo_2()
+                                local nodes = NDB.getChildNodes(sheet.itensVinculo_2)
+                                table.sort(nodes, function(a, b)
+                                    return (tonumber(a.ordemVinculo_2) or 0) &lt; (tonumber(b.ordemVinculo_2) or 0)
+                                end)
+                                self.listavinculo_2:reorganize()
+                            end
+
+                            -- Configuração do botão de adicionar
+                            self.btnNovaVinculo_2.onClick = function()
+                                local novo = self.listavinculo_2:append()
+                                if novo then
+                                    novo.nomeVinculo_2 = "Novo Item"
+                                    novo.ordemVinculo_2 = #NDB.getChildNodes(sheet.itensVinculo_2) + 1
+                                    reordenarVinculo_2()
+                                end
+                            end
+                            -- Lógica de seleção: agora aponta para o dataScopeBox 'detalheSkill'
+                            self.listavinculo_2.onSelect = function()
+                                local node = self.listavinculo_2.selectedNode;
+                                self.detalhe_vinculo_2:setNodeObject(node);
+                                self.detalhe_vinculo_2.visible = (node ~= nil);
+
+                                self.abertoPeloSlot = false;
+
+                            
+                            end;
+                        </script>
+                    </scrollBox>      
+                </dataScopeBox>
+            </rectangle>
+
+            <rectangle color="#150e16" strokeSize="2" strokeColor="white" g="col" g-width="6" g-max-width="1920" g-min-width="300" g-min-height="550" g-max-height="1080" margins="{top=15}">
+                <dataScopeBox name="detalhe_vinculo_2" align="client" visible="false">
+  
+                    
+                    <label height="20" text="Nome:" fontSize="15" g="col" g-width="1" fontFamily="Wishes Script Caps Display" horzTextAlign="trailing" margins="{top=10}"/>
+                    
+                    <rectangle height="30" color="black" cornerType="round" g="col" g-width="8" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}">
+                        <edit field="nomeVinculo_2" align="client" transparent="true" fontSize="22"  vertTextAlign="center" horzTextAlign="center" fontFamily="Wishes Script Caps Display"  />
+                    </rectangle>
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="3" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=8}">
+                        <colorSelection field="corVinculo_2" height="18" horzTextAlign="center" fontFamily="Wishes Script Caps Display" transparent="true" fontSize="15" margins="{right=3}"/>
+                    </rectangle>
+                    <rectangle height="20" color="black" cornerType="round" g="col" g-width="12" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=5}" >
+                        <edit name="tagsVinculo_2" field="tagsVinculo_2" g="col" g-width="12" transparent="true" fontSize="14" height="20"  horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+                    </rectangle>
+
+                    <dataLink field="tagsVinculo_2" defaultValue="Tags">
+                        <event name="onChange">
+                            if sheet ~= nil then
+                                if sheet.tagsVinculo_2 == nil then
+                                    sheet.tagsVinculo_2 = "Tags"
+                                end
+                            end
+                        </event>
+                    </dataLink>
+
+                    <richEdit field="descricaoLongaSkill" align="client" backgroundColor="#000000" defaultFontColor="white" hideSelection="true" defaultFontSize="14" animateImages="true" margins="{top=65,right=4,left=4,bottom=4}"/>  
+                </dataScopeBox>
+            </rectangle>
+        </scrollBox>    
+    </rectangle >

@@ -24,6 +24,9 @@
 			<label left="145" top="40" width="65" text="Descarte: " horzTextAlign="trailing"/>
 			<label left="215" top="40" width="65" field="numDiscard"/>
 
+			<label left="10" top="65" width="65" text="Mesa: " horzTextAlign="trailing"/>
+			<label left="80" top="65" width="65" field="numTable"/>
+
 		</tab>
 		<tab title="Deck">
 			<recordList align="client" margins="{left=5,right=5,top=5,bottom=5}" field="deckList" name="deckList" templateForm="frmDeckItem">
@@ -61,6 +64,7 @@
 
 		AddCards(sheet.deck,sheet.numCards,"Deck", sheet.deckURL);
 		AddCards(sheet.discard,sheet.numDiscard,"Discard", sheet.deckURL);
+		AddCards(sheet.table,sheet.numTable,"Table", sheet.deckURL);
 
 		for k,v in pairs(sheet.players) do
 			AddCards(sheet.players[k], sheet.hands[k], k, sheet.deckURL)

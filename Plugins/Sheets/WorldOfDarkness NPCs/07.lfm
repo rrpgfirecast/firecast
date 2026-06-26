@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAnotacoesIII" align="client" theme="dark">
+	
+	<scrollBox  align="client" >
+		<richEdit align="client"   field="txtAnotacoesIII_03" backgroundColor="black" defaultFontColor="white" />	
+	</scrollBox>
+	
+</form>

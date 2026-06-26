@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Equipment" align="client">
+	<script>
+        <![CDATA[
+
+            local function newEquip()
+                self.rclEquip:append()
+            end
+    
+            local function newItem()
+                self.rclItem:append()
+            end
+    
+            local function newOther()
+                self.rclOther:append()
+            end
+        ]]> 
+    </script>
+
+    <scrollBox align="client" g-cnt-line-spacing="5">
+        <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="275" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Novo Equipamento" g="col" g-width="12" height="25" onClick="newEquip()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <label g="col" g-width="9" height="25" text="Nome" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Qtd." horzTextAlign="center" textTrimming="none"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclEquip" field="rclEquip" templateForm="Characteristic" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="275" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Novo Item" g="col" g-width="12" height="25" onClick="newItem()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <label g="col" g-width="9" height="25" text="Nome" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Qtd." horzTextAlign="center" textTrimming="none"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclItem" field="rclItem" templateForm="Characteristic" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+
+        <rectangle g="col" g-width="12" g-width-lg="4" g-min-height="275" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-vert-tile-weight="3">
+
+            <button text="Novo Outro" g="col" g-width="12" height="25" onClick="newOther()" hint=""/>
+
+            <layout g="col" g-width="12" g-width-lg="12" height="25" g-cnt-gutter="0" padding="{right=15}">
+                <label g="col" g-width="9" height="25" text="Nome" horzTextAlign="center" textTrimming="none"/>
+                <label g="col" g-width="2" height="25" text="Qtd." horzTextAlign="center" textTrimming="none"/>
+            </layout>
+
+            <scrollBox g="col" g-width="12" g-vert-tile="true">
+                <gridRecordList name="rclOther" field="rclOther" templateForm="Characteristic" g="col" g-width="12" g-cnt-line-spacing="5">
+                    <event name="onCompare">
+                        return Utils.compareStringPtBr(left.nome, right.nome);
+                    </event>
+                </gridRecordList>
+            </scrollBox>
+        </rectangle>
+	</scrollBox>
+</form>

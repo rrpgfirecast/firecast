@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="pesquisaVan" margins="{bottom=10, right=10}" height="75" align="top">
+<style>
+label, edit, radioButton, checkBox, comboBox, button{
+	fontSize: 14;
+	fontFamily: Cambria;
+	textTrimming: character;
+}
+
+label{
+	fontColor: #cdcdcd;
+}
+</style>
+	<rectangle name="recResult" align="client" color="#303030" padding="{top=10, left=20, bottom=10, right=20}" xradius= "10" yradius="10" cornerType="bevel">
+		<layout name="layNomeePts" align="top" height="20">
+			<label name="lblVanNome" field="psqVanNome" align="client" textTrimming="character" fontStyle="bold" fontColor="white" />
+			<label field="psqVanPts" align="right" horzTextAlign="trailing" width="100" />
+		</layout>
+		<label name="lblDesc" field="psqVanDescricao" align="top" height="30" fontSize="10" fontStyle="italic" textTrimming="character" wordWrap="true" />
+		<label name="lblVanPts" field="psqVanPts" visible="false" />
+		<label name="lblVanTipo" field="psqVanTipo" visible="false" />
+		<label name="lblVanCategoria" field="psqVanCategoria" visible="false" />
+	</rectangle>
+	<rectangle align="client" opacity="0" cursor="handPoint">
+		<event name="onMouseEnter">
+			self.recResult.color = '#404040'
+		</event>
+		<event name="onMouseLeave">
+			self.recResult.color = '#303030'
+		</event>
+		<event name="onClick">
+			local pop = self:findControlByName("popUp_");
+					
+			if pop ~= nil then
+				pop:setNodeObject(sheet);
+				pop:showPopupEx("right", self.recResult);
+			else
+				showMessage("Ops, não encontrei o pop-up para exibir");
+			end;
+		</event>
+	</rectangle>
+	
+	<template name="DivisorM">
+		<layout align="top" height="12" margins="{top=0, bottom=5}">
+			<label align="left" text="$(texto)" width="$(largura)" fontSize="10" fontFamily="Constantia" fontStyle="bold" />
+			<horzLine align="client" margins="{top=5}" strokeColor="#424242" />
+		</layout>
+	</template>
+	
+	<popup name="popUp_" width="360" height="540" backOpacity="0" drawContainer="false" autoScopeNode="false">
+		<rectangle align="client" color="#101010" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+			<rectangle align="client" color="#101010" padding="{top=15, left=15, bottom=15, right=0}" xradius= "7" yradius="7" cornerType="bevel" strokeSize="1" strokeColor="#424242">
+				<layout align="top" height="40">
+					<label field="psqVanNome" align="client" textTrimming="character" fontStyle="bold" fontColor="white" fontSize="20" />
+					<label field="psqVanPts" align="right" horzTextAlign="trailing" width="95" margins="{right=15}" />
+				</layout>
+				<scrollBox align="top" height="405" padding="{bottom=40, right=15}">
+					<DivisorM texto="C A T E G O R Y" largura="72" />
+					<label field="psqVanCategoria" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="T Y P E" largura="40" />
+					<label field="psqVanTipo" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM texto="D E S C R I P T I O N" largura="95" />
+					<label field="psqVanDescricao" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM name="divIncrementos" texto="S P E C I A L  E N H A N C E M E N T S" largura="170" />
+					<label name="lblIncrementos" field="psqVanIncrementos" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+					<DivisorM name="divLimitacoes" texto="S P E C I A L  L I M I T A T I O N S" largura="155" />
+					<label name="lblLimitacoes" field="psqVanLimitacoes" align="top" autoSize="true" margins="{bottom=20}" fontColor="#a0a0a0" />
+				</scrollBox>
+				<layout align="top" height="30" margins="{top=20, right=15}">
+					<button text="🞧" align="client" hint="Adicionar Vantagem">
+						<event name="onClick"><![CDATA[
+							
+							local item = self:getParent():getParent():findControlByName('rlVantagens'):append()
+							item.nomeVan = sheet.psqVanNome
+							do
+								local cat = string.match(sheet.psqVanCategoria or "", "^([^%s/]+)") or "—"
+								
+								if cat == "—" then
+									item.catVan = "—"
+								else
+									item.catVan = cat
+								end
+							end
+							item.tipoVan = string.match(sheet.psqVanTipo or "", "^([^%s/]+)") or "—"
+							do
+								local pts = string.match(sheet.psqVanPts or "", "(%d+)")
+								if pts then
+									item.PtsVan = string.format("[%02d]", tonumber(pts))
+								else
+									item.PtsVan = "[00]"
+								end
+							end
+							item.descVan = sheet.psqVanDescricao
+							
+							self:getParent():getParent():findControlByName('rlVantagens').visible = false
+							self:getParent():getParent():findControlByName('rlVantagens').visible = true
+							self:getParent():getParent():findControlByName('rlVantagens'):sort()
+							self:getParent():getParent():findControlByName('parteEsquerda'):needRepaint()
+						]]></event>
+					</button>
+					<button text="💬" align="right" margins="{left=5}" width="30" hint="Enviar Descrição no Chat">
+						<event name="onClick"><![CDATA[
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+							local meuJogador = mesaDoPersonagem.meuJogador
+							local meuNick = meuJogador.nick
+							
+							local msg = "💬 ".. meuNick .." [§R][§K2]destacou a Vantagem:"
+							msg = msg .. "\n****\n### [§K1][§B]".. sheet.psqVanNome .."[§B]\n###### ".. sheet.psqVanPts
+							msg = msg .. "\n [§K1][§B]Description:[§B] [§K14]".. sheet.psqVanDescricao
+							msg = msg .. "[§T]\n****"
+
+							mesaDoPersonagem.activeChat:enviarMensagem(msg)
+						]]></event>
+					</button>
+				</layout>
+			</rectangle>
+		</rectangle>	
+	</popup>		
+</form>

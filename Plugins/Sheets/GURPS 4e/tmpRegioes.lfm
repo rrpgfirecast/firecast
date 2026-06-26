@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpRegioes" height="28" align="top">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 10;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+	}
+	
+	</style>
+	
+	<layout align="top" height="25" margins="{bottom=3}">
+		<label field="valorDR" name="lblvalorDR" width="60" align="left" />
+		<dataLink field="valorDR" defaultValue="0" />
+		<label field="nomeReg" name="lblnomeReg" align="client" fontStyle="Bold" />
+		<dataLink field="nomeReg" defaultValue="Região" />
+	</layout>
+</form>

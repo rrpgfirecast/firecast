@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpGruposMisc" height="70" width="216" margins="{right=10}">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+	}
+	
+	</style>
+
+	<rectangle align="client" color="#202020" xradius= "3" yradius="3" cornerType="bevel" margins="{bottom=3}">
+		<rectangle height="30" align="top" color="#101010" xradius= "3" yradius="3" cornerType="bevel">
+			<button align="left" width="30" text="🞭" margins="{right=10}" onClick="NDB.deleteNode(sheet)" hint="Deletar Grupo de Itens" />
+			<label align="client" fontStyle="bold" text="NOME" />
+			<label align="right" width="60" fontStyle="bold" text="CARGA" />
+		</rectangle>
+		<checkBox align="left" width="30" margins="{left=10}" name="chbEquip" field="equipado" hint="Grupo Equipado (Para Cálculo de Carga)">
+			<event name="onChange"><![CDATA[
+				local function getGrupos()
+					local nodoPai = NDB.getParent(NDB.getParent(sheet))
+					local nodoMisc = NDB.getChildNodes(nodoPai["Misc"])
+					
+					for i = 1, #nodoMisc, 1 do
+						if nodoMisc[i]["Grupo"] == sheet.Nome then
+							nodoMisc[i]["equipado"] = sheet.equipado
+						end
+					end
+				end
+				getGrupos()
+			]]></event>
+		</checkBox>
+		<dataLink field="equipado" defaultValue="true" />
+		<edit align="client" field="Nome" fontSize="12" />
+		<dataLink field="Nome" defaultValue="Mochila" />
+		<label align="right" width="60" field="Carga" formatFloat="0.### lbs." fontSize="10" />
+		<dataLink field="Carga" defaultValue="0" />
+	</rectangle>
+</form>

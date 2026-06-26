@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateSkills" height="140" g="col" g-width="4" g-cnt-gutter="0">
+    <rectangle name="indicador_maetria" color="#150e16" strokeSize="1" strokeColor="white" cornerType="round" xradius="5" yradius="5" g="col" g-width="12" height="140">
+        <dataLink field="maestriaSkill" >
+            <event name="onChange">
+                local maestria = sheet.maestriaSkill
+                if maestria == "Básica" then
+                    self.indicador_maetria.color = "#4e4e4e"
+                elseif maestria == "Intermediária" then
+                    self.indicador_maetria.color = "#00900c"
+                elseif maestria == "Avançada" then
+                    self.indicador_maetria.color = "#0032b0"
+                elseif maestria == "Mestra" then
+                    self.indicador_maetria.color = "#830285"
+                elseif maestria == "Suprema" then
+                    self.indicador_maetria.color = "#ffd000"
+                else
+                    self.indicador_maetria.color = "#ffffff"
+                end
+            </event>
+        </dataLink>
+       
+        <image name="imgSkill" field="imagemSkill" g="col" g-width="12" height="134" style="proportional" editable="true" animate="true" margins="{top=3,left=3,right=3,bottom=3}">
+            
+            <dataLink field="imagemSkill" defaultValue="https://blob.firecast.com.br/blobs/AARNJUKH_4341169/69d1f3310884980d000ee1a3.png">
+                <event name="onChange">
+                    if sheet.imagemSkill == nil then 
+                        sheet.imagemSkill = "https://blob.firecast.com.br/blobs/AARNJUKH_4341169/69d1f3310884980d000ee1a3.png";
+                    end;
+                </event>
+            </dataLink>
+
+            <rectangle height="20" color="black" cornerType="round" g="col" g-width="8" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=3}">
+                <label field="maestriaSkill" g="col" g-width="12" fontSize="10" height="21" vertTextAlign="center" horzTextAlign="center" fontFamily="Cinzel" />
+            </rectangle>
+
+            <imageCheckBox name="cbxInvisivel" g="col" g-width="2" checkedImage="invisivel.png" uncheckedImage="visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" height="21" margins="{top=3}"/>  
+            
+            <button name="btnExcluir" text="✖" g="col" g-width="2" fontSize="6" height="21" margins="{top=3,right=3}"/>          
+
+            <rectangle height="20" color="black" cornerType="round" g="col" g-width="12" strokeSize="1" strokeColor="white" xradius="5" yradius="5" margins="{top=90,right=2,left=2}">
+                <edit field="nomeSkill" g="col" g-width="12" transparent="true" fontSize="15" height="21" vertTextAlign="center" horzTextAlign="center" fontFamily="Wishes Script Caps Display"/>
+            </rectangle>
+        </image>
+    </rectangle>
+  
+    
+
+    <script>
+      function self:alternarVisibilidade()
+        if self.cbxInvisivel.checked then
+          NDB.setPermission(sheet, "group", "jogadores", "read", nil);
+          NDB.setPermission(sheet, "group", "espectadores", "read", nil);
+        else
+          NDB.setPermission(sheet, "group", "jogadores", "read", "deny");
+          NDB.setPermission(sheet, "group", "espectadores", "read", "deny");
+        end;
+      end; 
+
+      self.btnExcluir.onClick = function (_)
+        local node = sheet
+        if  self.observer ~= nil then
+            self.observer.enabled = false
+            self.observer = nil
+        end
+        if node ~= nil then
+            NDB.deleteNode(node)
+        end
+      end;
+
+      function self:atualizarCbxInvisivel()          
+        if sheet == nil then return end
+        if self.cbxInvisivel == nil then return end
+        self.cbxInvisivel.checked = NDB.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+                                    NDB.getPermission(sheet, "group", "jogadores", "read") == "deny"
+        self.cbxInvisivel.enabled = NDB.testPermission(sheet, "writePermissions");
+      end;
+    </script> 
+  
+    <event name="onScopeNodeChanged">
+      if self.observer ~= nil then   
+          self.observer.enabled = false;
+          self.observer = nil;
+      end;
+
+      if sheet ~= nil then   
+        self.observer = NDB.newObserver(sheet);
+
+        self.observer.onPermissionListChanged = function(node)
+            if sheet ~= nil then
+                pcall(function() self:atualizarCbxInvisivel() end)
+            end
+        end;
+
+        self.observer.onFinalPermissionsCouldBeChanged = function(node)
+            if sheet ~= nil then
+                pcall(function() self:atualizarCbxInvisivel() end)
+            end
+        end;
+
+        pcall(function() self:atualizarCbxInvisivel() end)
+      end;
+    </event>
+</form>

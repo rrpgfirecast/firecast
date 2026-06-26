@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <style>
+        flowLayout.janela1{
+        align: top;
+        minScaledWidth: 400;
+        autoHeight: true;
+        width: 800;
+        height: 400;
+        avoidScale: true;
+        horzAlign: center;
+        orientation: horizontal;
+        maxControlsPerLine: 2;
+        margins: {left=2, right=2, top=2, bottom=2};
+        }
+
+        rectangle.janela2{
+        align: client;
+        color: transparent;
+        strokeColor: White;
+        strokeSize: 2;
+        cornerType: round;
+        xradius: 15;
+        yradius: 15;
+        }
+
+        flowPart.janela3{
+        align: top;
+        minScaledWidth: 400;
+        avoidScale: true;
+        margins: {left=2, right=2, top=2, bottom=2};
+        }
+
+        rectangle.janela4{
+        top: 40;
+        width: 50;
+        height: 25;
+        color: transparent;
+        strokeColor: White;
+        strokeSize: 2;
+        cornerType: round;
+        xradius: 5;
+        yradius: 5;
+        }
+
+        rectangle.janela5{
+        width: 131;
+        height: 25;
+        color: transparent;
+        strokeColor: White;
+        strokeSize: 2;
+        cornerType: round;
+        xradius: 5;
+        yradius: 5;
+        }
+
+        rectangle.janela6{
+        top: 40;
+        width: 55;
+        height: 25;
+        color: transparent;
+        strokeColor: White;
+        strokeSize: 2;
+        cornerType: round;
+        xradius: 4;
+        yradius: 4;
+        }
+    </style>
+</group>

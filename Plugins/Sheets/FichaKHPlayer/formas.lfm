@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmForm" height="50">       
+		
+		
+		<image name="FormBar" left="10" width="451" height="50" visible="true" field="FormBar" src="/frames/FormSlcOff.png"/>
+		<image name="FormBarOn" left="10" width="451" height="50" visible="false" field="FormBarOn" src="/frames/FormSlcOn.png"/>
+		
+		<edit name="FormName" field="FormName" fontColor="white" top="5" left="55" width="315" height="44" fontSize="26" transparent="true" fontFamily="KHMenu"/>
+				<dataLink field="FormName" defaultValue="???"/>
+		
+		<imageCheckBox name="unequipEquipForm" autoChange="true" left="15" top="8" width="35" height="35" field="unequipEquipForm"
+                               checkedImage="/frames/SkillOn.png"
+                               uncheckedImage="/frames/SkillOff.png"/>
+							   <dataLink field="unequipEquipForm">
+				        <event name="onChange">
+						if sheet.unequipEquipForm == false then
+                        self.FormBar.visible = true;
+						self.FormBarOn.visible = false;
+						else
+						self.FormBar.visible = false;
+						self.FormBarOn.visible = true;
+						end
+                </event>
+				</dataLink>
+		
+		
+	   	<image name="eraseForm" field="eraseForm" left="395" top="15" width="20" height="20" src="/frames/Erase.png"/>
+		
+		<button cursor="no" left="395" top="15" width="20" height="20" opacity="0"
+                onClick="NDB.deleteNode(sheet);"/>
+
+</form>

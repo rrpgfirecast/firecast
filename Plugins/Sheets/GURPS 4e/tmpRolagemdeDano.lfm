@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="tmpRolagemdeDano" height="33" align="top">
+	<style>
+	label, edit, radioButton, checkBox, comboBox, button{
+		fontSize: 14;
+		fontFamily: Cambria;
+		textTrimming: character;
+	}
+	
+	textEditor{
+		fontSize: 14;
+		fontFamily: Cambria;
+		margins: {bottom=20};
+	}
+	
+	edit, comboBox, textEditor{
+		transparent: true;
+	}
+
+	edit, button {
+		fontColor: white;
+	}
+
+	button {
+		cursor: handPoint;
+	}
+
+	label, radioButton, checkBox, comboBox{
+		fontColor: #cdcdcd;
+	}
+
+	radioButton{
+		vertTextAlign: center;
+		margins: {bottom=7};
+	}
+
+	horzLine{
+		strokeColor: #424242;
+		margins: {top=7, bottom=7};
+		align: top;
+	}
+	
+	.pts{
+		fontFamily: Courier New;
+		fontSize: 10;
+		fontColor: #9e9e9e;
+		align: left;
+		vertTextAlign: leading;
+		width: 40;
+		transparent: true;
+	}
+	
+	</style>
+	<script><![CDATA[
+
+	local function removeWords(str, tokens)
+		if not str then return "", false end
+		tokens = tokens or {}
+		local function escape_pattern(s)
+			return (s:gsub("([^%w])", "%%%1"))
+		end
+		table.sort(tokens, function(a,b) return #a > #b end)
+		local original = str
+		local removed = false
+		for _, tok in ipairs(tokens) do
+			if type(tok) == "string" and tok ~= "" then
+				local pat = escape_pattern(tok)
+				local new, n = str:gsub(pat, "")
+				if n and n > 0 then
+					removed = true
+					str = new
+				end
+			end
+		end
+		str = str:gsub("%s+", " "):gsub("^%s*(.-)%s*$", "%1")
+		return str, removed
+	end
+
+	local function simplifyFlatModifiers(str)
+		local main, mult = str:match("^(.-)%*(%d+)$")
+		if main then
+			return simplifyFlatModifiers(main) .. "*" .. mult
+		end
+		local inside = str:match("^%((.-)%)$")
+		if inside then
+			return "(" .. simplifyFlatModifiers(inside) .. ")"
+		end
+
+		local base = str:match("^(%d+d%d+)")
+		if not base then
+			return str
+		end
+
+		local rest = str:sub(#base + 1)
+		-- Se o resto contém outra expressão de dados (ex: "+1d6"), não tente somar números planos:
+		if rest:find("d") then
+			-- já assumimos que D6() foi chamado antes, então 'd' representa 'd6' ou similar
+			return base .. rest
+		end
+
+		local sum = 0
+		for sign, num in rest:gmatch("([+-])(%d+)") do
+			local n = tonumber(num)
+			if sign == "-" then n = -n end
+			sum = sum + n
+		end
+		if sum == 0 then
+			return base
+		elseif sum > 0 then
+			return base .. "+" .. sum
+		else
+			return base .. sum
+		end
+	end
+	
+	local function danoGurps(str, sw, thr)
+	  local rollFinal = ""
+	  local desc = "[§B]Tipo de Dano:[§B]"
+	  
+		local tiposDano = {
+		  {"aff",   "Affliction"},
+		  {"burn",  "Burning"},
+		  {"cor",   "Corrosion"},
+		  {"cr",    "Crushing"},
+		  {"cut",   "Cutting"},
+		  {"fat",   "Fatigue"},
+		  {"imp",   "Impaling"},
+		  {"pi++",  "Huge Piercing"},
+		  {"pi+",   "Large Piercing"},
+		  {"pi-",   "Small Piercing"},
+		  {"pi",    "Piercing"},
+		  {"spec.", "Special"},
+		  {"tox",   "Toxic"},
+		  {"ex",    "Explosive"}
+		}
+		
+		local function parenteses(str)
+      if not str then return nil end
+      local num = str:match("%(([+-]?%d+%.?%d*)%)")
+      if num then
+          str = str:gsub("%([+-]?%d+%.?%d*%)", "")
+          return tonumber(num), str
+      end
+      return nil, str
+    end
+		
+		local function colchetes(str)
+        if not str then return nil end
+        local xd = str:match("%[(%d+d)%]")
+        if xd then
+            str = str:gsub("%[%d+d%]", "")
+            return xd, str
+        end
+        return nil, str
+		end
+		
+    local function replaceVariables(str, vars)
+        if not str or not vars then return str end
+        for key, value in pairs(vars) do
+            local escaped = key:gsub("([^%w])", "%%%1")
+            str = str:gsub(escaped, value)
+        end
+    
+        return str
+    end
+    
+    local function convertX(str)
+        if not str then return "" end
+        local expr, mult = str:match("^(.-)x(%d+)$")
+        if expr and mult then
+            return "(" .. expr .. ")*" .. mult
+        end
+        return str
+    end
+  
+    local function D6(str)
+        if not str then return "" end
+        str = str:gsub("d([^0-9])", "d6%1")
+        str = str:gsub("d$", "d6")
+        return str
+    end
+		
+		-- Detecta tipos de dano
+		local strRoll = str:gsub("%s+", "")
+		for i = 1, #tiposDano, 1 do
+		  local abr = tiposDano[i][1]
+		  local removed = false
+      strRoll, removed = removeWords(strRoll, {abr})
+      if removed then
+        desc = desc .. " " .. tiposDano[i][2]
+      end
+		end
+		if desc == "[§B]Tipo de Dano:[§B]" then desc = "[§B]Tipo de Dano:[§B] Desconhecido" end
+		
+		-- Detecta Modificador de Armadura
+		local modArmor = nil
+		modArmor, strRoll = parenteses(strRoll)
+		if modArmor ~= nil then  desc = desc .. ", [§B]Modificador de Armadura:[§B] " .. modArmor end
+		
+		-- Detecta Dano de Fragmentação
+		local modFrag = nil
+		modFrag, strRoll = colchetes(strRoll)
+		if modFrag ~= nil then  desc = desc .. ", [§B]Dano de Fragmentação:[§B] " .. modFrag end
+		
+		-- Substitui sw e thr
+		strRoll = replaceVariables(strRoll, {sw = sw, thr = thr})
+		
+		-- Substitui x
+		strRoll = convertX(strRoll)
+		
+		rollFinal = simplifyFlatModifiers(D6(strRoll))
+		return rollFinal, desc
+	end
+	
+	local function g(roll, desc)
+		if not roll then return nil end
+		desc = desc or ""
+
+		local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+		roll = roll:match("^%s*(.-)%s*$") or roll
+
+		local inner, mult = roll:match("^%s*(%b())%s*%*%s*(%d+)%s*$")
+		if not inner then
+			inner, mult = roll:match("^%s*(.-)%s*%*%s*(%d+)%s*$")
+		end
+
+		if not inner or not mult then
+			local rolagem = Firecast.interpretarRolagem(roll)
+			local promise = mesaDoPersonagem.activeChat:asyncRoll(rolagem, desc)
+			local resultado, rollObject, logRec = await(promise)
+			return resultado, rollObject, logRec
+		end
+
+		if inner:sub(1,1) == "(" and inner:sub(-1) == ")" then
+			inner = inner:sub(2, -2)
+		end
+
+		local multiplier = tonumber(mult)
+		if not multiplier or multiplier < 2 then
+			local rolagem = Firecast.interpretarRolagem(inner)
+			local promise = mesaDoPersonagem.activeChat:asyncRoll(rolagem, desc)
+			local resultado, rollObject, logRec = await(promise)
+			return resultado, rollObject, logRec
+		end
+
+		local rolagemInner = Firecast.interpretarRolagem(inner)
+		local promiseInner = mesaDoPersonagem.activeChat:asyncRoll(rolagemInner, desc)
+		local resultadoInner, rollObjectInner, logRecInner = await(promiseInner)
+
+		if not resultadoInner then
+			return resultadoInner, rollObjectInner, logRecInner
+		end
+
+		local total = resultadoInner * multiplier
+
+		local totalRollStr = tostring(total)
+		local finalDesc = desc .. " (x" .. multiplier .. ")"
+
+		local rolagemFinal = Firecast.interpretarRolagem(totalRollStr)
+		local promiseFinal = mesaDoPersonagem.activeChat:asyncRoll(rolagemFinal, finalDesc)
+		local resultadoFinal, rollObjectFinal, logRecFinal = await(promiseFinal)
+
+		return resultadoFinal, rollObjectFinal, logRecFinal
+	end
+
+		
+	]]></script>											
+	<rectangle name="recFundochb" align="client" color="#272727" xradius= "3" yradius="3" cornerType="bevel" margins="{bottom=3}">
+		<button text="🎲" align="left" width="30">
+			<event name="onClick"><![CDATA[
+				if sheet.strRoll ~= nil then
+					local nodoPai = NDB.getParent(NDB.getParent(NDB.getParent(NDB.getParent(sheet))))
+					local nodoNome = NDB.getParent(NDB.getParent(sheet))
+					local roll, desc = danoGurps(sheet.strRoll, nodoPai['SwDmg'], nodoPai['ThrDmg'])
+					g(roll, "[§B]" .. nodoNome['Nome'] .. "[§B] - " .. desc)
+				else
+					showMessage("Favor preencher o campo com uma notação de Dano!")
+				end
+			]]></event>
+		</button>
+		<edit field="strRoll" name="edtstrRoll" margins="{left=5}" align="client" />
+		<button text="🞭" align="right" width="30" onClick="NDB.deleteNode(sheet)" />
+	</rectangle>
+</form>

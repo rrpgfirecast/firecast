@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmOrbigen" formType="sheetTemplate" dataType="Ficha.Ambesek.Orbigen" title="Ficha Orbigen" align="client" theme="dark">
+    <style>
+        label {
+                textTrimming: none;
+        }
+        button {
+                textTrimming: none;
+        }
+    </style> 
+    <script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {}
+            local installedIndex = 0
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1
+                installedVersion[installedIndex] = i
+            end
+
+            local downloadedVersion = {}
+            local downloadedIndex = 0
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1
+                downloadedVersion[downloadedIndex] = i
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true
+                end
+            end
+
+            if downloadedIndex > installedIndex then
+                return true
+            else
+                return false
+            end
+        end
+
+        -- DEBUG FUNCTIONS
+
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+
+        local function write(str)
+            local mesa = Firecast.getMesaDe(sheet)
+            if str~=nil then
+                mesa.activeChat:escrever(str)
+            else
+                mesa.activeChat:escrever("String nula")
+            end
+        end
+        ]]> 
+    </script>
+
+    <import file="Templates.xml"/>
+    
+    <tabControl align="client" g-cnt-gutter="5">
+        <tab title="Geral">
+            <import file="General.xml"/>
+        </tab>
+        <tab title="Equipamentos">
+            <import file="Weapons.xml"/>
+        </tab>
+        <tab title="Companheiro">
+            <import file="Companion.xml"/>
+        </tab>
+        <tab title="Descrição">
+            <import file="Description.xml"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="Notes.xml"/>
+        </tab>
+        <tab title="Creditos">
+            <import file="Credits.xml"/>
+        </tab>
+    </tabControl>
+    <event name="onNodeReady">
+        Internet.download("https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Orbigen/output/Ficha%20Orbigen.rpk?raw=true",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream)
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version
+
+                local installed = Firecast.Plugins.getInstalledPlugins()
+                local myself
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i]
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version
+                    end
+                end
+
+                if sheet.noUpdate==true then return end
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão (".. info.version .. ") da Ficha RPG meister. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                GUI.openInBrowser('https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Orbigen/output/Ficha%20Orbigen.rpk?raw=true')
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true
+                            end
+                        end)
+                end
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg)
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification")
+    </event>
+</form>

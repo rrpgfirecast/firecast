@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWodNPCs" formType="sheetTemplate" dataType="FantasyWarriorsType" title="WOD NPCs" align="client" theme="dark">
+	
+	<tabControl align="client">
+	 
+		<tab title="NPCs I">  
+			  <import file="01.lfm" />  
+		</tab> 
+		
+		<tab title="NPCs II">  
+			  <import file="02.lfm" />  
+		</tab>
+
+		<tab title="NPCs III">  
+			  <import file="03.lfm" />  
+		</tab> 	
+
+		<tab title="NPCs VI">  
+			  <import file="04.lfm" />  
+		</tab> 		
+				
+		 <tab title="Anotações I">  
+			  <import file="05.lfm" />  
+		</tab> 		
+		
+		<tab title="Anotações II"> 
+			 <import file="06.lfm" /> 
+		</tab> 
+		
+		<tab title="Anotações III"> 
+			 <import file="07.lfm" /> 
+		</tab> 
+		
+		<tab title="Anotações IV"> 
+			 <import file="08.lfm" /> 
+		</tab> 
+		
+    </tabControl>
+</form>
+
+
+

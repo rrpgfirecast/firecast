@@ -1301,6 +1301,8 @@ gui.GridRecordList.eves["onGroupShow"] = "id, header";
 gui.GridRecordList.eves["onGroupHide"] = "id, header";
 gui.GridRecordList.eves["onEmptyState"] = "";
 gui.GridRecordList.eves["onPagingStateChange"] = "";
+gui.GridRecordList.eves["onBeginOrganization"] = "";
+gui.GridRecordList.eves["onEndOrganization"] = "";
 
 --[[ Objeto GridRecordListPgCtrl ]]--
 

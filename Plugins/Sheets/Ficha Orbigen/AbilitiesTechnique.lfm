@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="AbilitiesTechnique" g="col" g-width="12" g-width-lg="12" height="25">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+
+		]]>	
+	</script>
+
+	<layout g="col" g-width="11" height="25">
+		<edit g="col" g-width="3" height="25" vertTextAlign="center" field="nome">
+			<event name="onUserChange">
+				local rcl = self:findControlByName("rclTechniques")
+				if rcl~= nil then
+					rcl:reorganize()
+				end
+			</event>
+		</edit>
+		<edit g="col" g-width="9" height="25" vertTextAlign="center" field="efeito"/>
+	</layout>
+
+	<layout g="col" g-width="1" height="25">
+		<edit g="col" g-width="8" height="25" vertTextAlign="center" field="nivel"/>
+
+		<button g="col" g-width="4" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+	</layout>
+
+	<!-- Calcule o bonus de pericia-->
+	<dataLink fields="{'atributo', 'nivel'}">
+		<event name="onUserChange">
+			if sheet== nil then return end
+
+			sheet.total = 	(tonumber(sheet.atributo) or 0) +
+							(tonumber(sheet.nivel) or 0)
+		</event>
+	</dataLink>
+</form>

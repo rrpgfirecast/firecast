@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraInventarioLayout">
+
+			<!-- Itens -->
+
+			<script>
+				<![CDATA[
+					local function recalcularTamanhoEquipsDefesa()
+						self.flwPartEquipDefense.height = self.rclEquipsDefense.height + self.labEquipDefense.height +
+														self.layEquipDefenseBottom.height + 
+														self.flwPartEquipDefense.padding.top + self.flwPartEquipDefense.padding.bottom + 7;
+					end;
+				]]>
+			</script>
+			 
+			<flowPart name="flwPartEquipDefense" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">
+			
+				<label name="labEquipDefense" align="top" autoSize="true" text="ITENS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsDefesa();"/>
+															
+				<recordList name="rclEquipsDefense" align="top" field="equipamentos.itens" templateForm="frmEquipamentoItemDefesa" 
+							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsDefesa();" minQt="1" hitTest="false"/>
+							
+				<layout name="layEquipDefenseBottom" align="top" height="40">
+					<button name="btnEquipDefenseNew" align="left" onClick="self.rclEquipsDefense:append();" text="@@DnD5e.tab.equipament.btn.newItem" width="160" margins="{top=4, bottom=4}"/>
+				</layout>
+			</flowPart>	
+			
+			<flowLineBreak/>
+
+			<script>
+				<![CDATA[
+					local function recalcularTamanhoEquipsPotion()
+						self.flwPartEquipPotion.height = self.rclEquipsPotion.height + self.labEquipPotion.height +
+														self.layEquipPotionBottom.height + 
+														self.flwPartEquipPotion.padding.top + self.flwPartEquipPotion.padding.bottom + 7;
+					end;
+				]]>
+			</script>
+			 
+			<flowPart name="flwPartEquipPotion" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">
+			
+				<label name="labEquipPotion" align="top" autoSize="true" text="POÇÕES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsPotion();"/>
+															
+				<recordList name="rclEquipsPotion" align="top" field="equipamentos.potion" templateForm="frmEquipamentoItemDefesa" 
+							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsPotion();" minQt="1" hitTest="false"/>
+							
+				<layout name="layEquipPotionBottom" align="top" height="40">
+					<button name="btnEquipPotionNew" align="left" onClick="self.rclEquipsPotion:append();" text="@@DnD5e.tab.equipament.btn.newItem" width="160" margins="{top=4, bottom=4}"/>
+				</layout>
+			</flowPart>	
+			
+			<flowLineBreak/>
+
+			<script>
+				<![CDATA[
+					local function recalcularTamanhoEquipsFood()
+						self.flwPartEquipFood.height = self.rclEquipsFood.height + self.labEquipFood.height +
+														self.layEquipFoodBottom.height + 
+														self.flwPartEquipFood.padding.top + self.flwPartEquipFood.padding.bottom + 7;
+					end;
+				]]>
+			</script>
+			 
+			<flowPart name="flwPartEquipFood" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">
+			
+				<label name="labEquipFood" align="top" autoSize="true" text="REFEIÇÕES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsFood();"/>
+															
+				<recordList name="rclEquipsFood" align="top" field="equipamentos.food" templateForm="frmEquipamentoItemDefesa" 
+							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsFood();" minQt="1" hitTest="false"/>
+							
+				<layout name="layEquipFoodBottom" align="top" height="40">
+					<button name="btnEquipFoodNew" align="left" onClick="self.rclEquipsFood:append();" text="@@DnD5e.tab.equipament.btn.newItem" width="160" margins="{top=4, bottom=4}"/>
+				</layout>
+			</flowPart>	
+			
+			<flowLineBreak/>
+
+			<script>
+				<![CDATA[
+					local function recalcularTamanhoEquipsArtifacts()
+						self.flwPartEquipArtifacts.height = self.rclEquipsArtifacts.height + self.labEquipArtifacts.height +
+														self.flwPartEquipArtifacts.padding.top + self.flwPartEquipArtifacts.padding.bottom + 7;
+					end;
+				]]>
+			</script>
+			 
+			<flowPart name="flwPartEquipArtifacts" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">
+			
+				<label name="labEquipArtifacts" align="top" autoSize="true" text="ARTEFATOS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsArtifacts();"/>
+															
+				<recordList name="rclEquipsArtifacts" align="top" field="equipamentos.artifact" templateForm="frmEquipamentoItemDefesa" 
+							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsArtifacts();" minQt="3" hitTest="false"/>
+			</flowPart>	
+			
+			<flowLineBreak/>
+
+			<!-- Outros Equipamentos e DINHEIRO -->
+			<flowPart class="tile" height="100" frameStyle="frames/panel4transp/frame.xml" minScaledWidth="290">
+				<layout align="left" width="140" margins="{left=-20}">
+					<boxDinheiro align="top" text="$" field="equipamento.dinheiro.pc"/>
+					<checkBox align="top" field="equipamento.outros_melhorado" margins="{left=75, top=15}">
+						<event name="onChange">
+							if sheet then
+								self.editorFancy:setVisible(sheet.equipamento.outros_melhorado);
+								self.editorOld:setVisible(not (sheet.equipamento.outros_melhorado));
+							end;
+						</event>
+					</checkBox>
+				</layout>
+
+				<rectangle name="editorFancy" align="client" margins="{left=10, right=10}" color="black" visible="false">
+					<richEdit align="client" margins="{left=0.1, right=0.1, top=0.1, bottom=0.1}" field="equipamento.outros2" 
+						class="tile" backgroundColor="#333333" defaultFontColor="white" hideSelection="false" defaultFontSize="15" animateImages="true"/>
+				</rectangle>
+				<textEditor name="editorOld" align="client" margins="{left=10, right=10}" field="equipamento.outros" fontSize="15" visible="true"/>
+			</flowPart>
+		</flowLayout>
+	</scrollBox>
+</rectangle>

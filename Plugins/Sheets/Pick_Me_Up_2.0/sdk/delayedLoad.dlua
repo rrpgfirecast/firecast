@@ -1,0 +1,42 @@
+﻿local dLoadHelper = {};
+
+function dLoadHelper.new(moduleName)
+	local interface = {};	
+	local moduleObject = nil;
+			
+	local metaTable = {
+		__index = function(table, key)
+			if moduleObject == nil then
+				moduleObject = require(moduleName);
+			end;
+			
+			if moduleObject ~= nil then
+				local r = moduleObject[key];
+				
+				if type(r) == "function" then
+					rawset(table, key, r);
+				end;
+				
+				return r;
+			else
+				return nil;
+			end;
+		end,
+		
+		__newindex = function(table, key, value)
+			if moduleObject == nil then
+				moduleObject = require(moduleName);
+			end;
+			
+			rawset(table, key, value);
+		end;
+	};
+	
+	rawset(interface, "__isDelayedLoad", true);
+	rawset(interface, "__delayedLoadModuleName", moduleName);
+	
+	setmetatable(interface, metaTable);
+	return interface;
+end;
+
+return dLoadHelper;

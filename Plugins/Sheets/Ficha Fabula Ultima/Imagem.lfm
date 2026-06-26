@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmImagem" width="440" height="198" theme="light" margins="{top=1}">
+    <import file="templates.xml"/>
+
+	<script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa imagem?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+		]]>
+	</script>
+
+    <rectangle left="15" top="1" width="195" height="195" color="transparent" strokeColor="White" strokeSize="2" margins="{left=10, right=10, top=10, bottom=10}">
+	    <image align="client" style="proportional" src="/imagens/Logo.png" margins="{left=2, right=2, top=2, bottom=2}" opacity="0.5"/>
+        <image align="client" field="imgEx" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+            <event name="OnStartDrag">
+                drag:addData("imageURL", sheet.imgEx);
+            </event>
+        </image>
+    </rectangle>
+	<button left="187" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

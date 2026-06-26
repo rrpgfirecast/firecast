@@ -53,7 +53,7 @@
 			<flowLayout class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
 				<!-- NOME DO PERSONAGEM -->				
 				
-				<flowPart name="flwNome1" minWidth="320" maxWidth="1600" frameStyle="frames/banner/dragon.xml" height="175" vertAlign="center" avoidScale="true">							
+				<flowPart name="flwNome1" minWidth="320" maxWidth="1600" frameStyle="frames/banner/heroGroup.xml" height="175" vertAlign="center" avoidScale="true">							
 					<layout align="client" name="layNomeHolderFrente">
 							<edit name="edtNome1" field="nome" class="transparente vcenter" fontSize="17" align="client"/>
 							<label margins="{left=3}" name="labNome1" align="bottom" text="@@DnD5e.frente.lab.characterName" class="tituloCampo" autoSize="true"/>
@@ -63,11 +63,11 @@
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
 				<flowLayout  minWidth="320" maxWidth="1600" name="fraUpperGridFrente" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
 						<upperGridCampo field="classeENivel" minWidth="100" titulo="@@DnD5e.frente.lab.classaLevel"/>
-						<upperGridCampo field="antecedentes" titulo="@@DnD5e.frente.lab.background"/>
+						<upperGridCampo field="antecedentes" titulo="@@q7.past"/>
 						<upperGridCampo field="nomeDoJogador" titulo="@@DnD5e.frente.lab.player"/>									
 						<upperGridCampo field="raca" minWidth="100" titulo="@@DnD5e.frente.lab.race"/>
-						<upperGridCampo field="tendencia" titulo="@@DnD5e.frente.lab.trend"/>
-						<upperGridCampo field="experiencia.valor" titulo="@@DnD5e.frente.lab.xp"/>
+						<upperGridCampo field="tendencia" titulo="@@q7.vision"/>
+						<upperGridCampo field="experiencia.valor" titulo="@@q7.city"/>
 				</flowLayout>
 			</flowLayout>							
 			<flowLineBreak/>
@@ -86,30 +86,16 @@
 				
 				<!-- BONUS HABILIDADES -->
 				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
-					<edit align="left" class="pericia" field="bonusHabilidades" width="70"/>
-					<label align="client" text="@@DnD5e.frente.lab.abilityBonus" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+					<edit align="left" class="pericia" field="percepcaoPassiva" width="70"/>
+					<label align="client" text="@@q7.perception" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
 				</flowPart>
 				
 				
 				<!-- BONUS RESISTENCIAS -->
 				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
-					<edit align="left" class="pericia" field="bonusResistencias" width="70"/>
-					<label align="client" text="@@DnD5e.frente.lab.saveBonus" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+					<edit align="left" class="pericia" field="sensibilidadePassiva" width="70"/>
+					<label align="client" text="@@q7.sensitivy" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
 				</flowPart>
-
-				<flowLineBreak/>
-
-				<!-- INSPIRACAO -->
-				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit1/frame.xml">
-					<edit align="left" class="pericia" field="inspiracao" width="65"/>
-					<label align="client" text="@@DnD5e.frente.lab.inspiration" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
-				</flowPart>	
-
-				<!-- SABEDORIA PASSIVA / PERCEPCAO -->
-				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
-					<edit align="left" class="pericia" field="sabedoriaPassiva" width="70"/>
-					<label align="client" text="@@DnD5e.frente.lab.passivawisdom" textTrimming="none" wordWrap="true" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
-				</flowPart>	
 			</flowLayout>
 			
 			<flowLineBreak/>
@@ -123,43 +109,43 @@
 							margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
 					<boxAtributo titulo="@@DnD5e.frente.box.strength" field="forca">
 						{{"@@DnD5e.skills.athletics", "atletismo"},
-						{"Imobilizar", "imobilizar"},
-						{"Artes Marciais", "artesmarciais"}}
+						 {"Artes Marciais", "artesmarciais"}}
 					</boxAtributo>
 					
-					<boxAtributo titulo="@@DnD5e.frente.box.dexterity" field="destreza">
-						{{"@@DnD5e.skills.acrobatics", "acrobacia"}, 
+					<boxAtributo titulo="AGILIDADE" field="destreza">
+						{{"Acrobacia", "acrobacia"},
 						 {"@@DnD5e.skills.stealth", "furtividade"},
 						 {"@@DnD5e.skills.sleighthand", "prestidigitacao"},
 						 {"Reflexo", "reflexo"}}
 					</boxAtributo>
 					
-					<boxAtributo titulo="@@DnD5e.frente.box.constitution" field="constituicao">
-						{{"Vontade", "vontade"},
-						{"Resiliência Mental", "resilienciamental"}}
+					<boxAtributo titulo="VITALIDADE" field="constituicao">
+						{{"Restauração", "restauracao"},
+						{"Vigor", "vigor"}}
 					</boxAtributo>
 
 					<boxAtributo titulo="@@DnD5e.frente.box.intelligence" field="inteligencia">
 						{{"Abismo", "arcanismo"}, 
+						 {"Herbalismo", "herbalismo"},
 						 {"@@DnD5e.skills.history", "historia"},
 						 {"@@DnD5e.skills.investigation", "investigacao"},
-						 {"Leitura Labial", "natureza"},
-						 {"Línguas", "religiao"}}
+						 {"Medicina", "medicina"},
+						 {"Tecnologia", "tecnologia"}}
 					</boxAtributo>
 					
-					<boxAtributo titulo="@@DnD5e.frente.box.wisdom" field="sabedoria">
-						{{"Herbalismo", "adestrarAnimais"}, 
+					<boxAtributo titulo="INSTINTO" field="sabedoria">
+						{{"Aura", "aura"},
 						 {"@@DnD5e.skills.insight", "intuicao"},
-						 {"@@DnD5e.skills.medicine", "medicina"},
 						 {"@@DnD5e.skills.perception", "percepcao"},
+						 {"Resiliência Mental", "resilienciamental"},
 						 {"@@DnD5e.skills.survival", "sobrevivencia"}}
 					</boxAtributo>
 					
-					<boxAtributo titulo="@@DnD5e.frente.box.charisma" field="carisma">
-						{{"Visão Elemental", "atuacao"}, 
-						 {"Sensibilidade", "enganacao"},
-						 {"Canalização", "intimidacao"},
-						 {"Manipulação", "persuasao"}}
+					<boxAtributo titulo="ENERGIA" field="carisma">
+						{{"Visão Elemental", "visaoelemental"}, 
+						 {"Sensibilidade", "sensibilidade"},
+						 {"Canalização", "canalizacao"},
+						 {"Manipulação", "manipulacao"}}
 					</boxAtributo>
 				</flowLayout>
 				
@@ -171,44 +157,34 @@
 				
 				<flowLayout autoHeight="true" horzAlign="center" vertAlign="leading" 
 							class="halfTile" maxControlsPerLine="1">
+					<flowPart class="tileCarac" height="300" frameStyle="frames/panel5/frame.xml" margins="{left = 0, right = 4}">
+						<image align="client" style="proportional" field="imagens.aparencia" class="transparente" margins="{top=2}" editable="true" animate="true"/>
+						<label align="bottom" autoSize="true" text="@@DnD5e.features.appearance" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>
+
 					<!-- CA, Iniciativa e Deslocamento -->
 					
 					<flowLayout minWidth="235" maxWidth="475" autoHeight="true" avoidScale="false" vertAlign="center" horzAlign="justify">
 							<!-- CA -->
 							<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/shield/frame.xml">
-								<label align="top" text="@@DnD5e.frente.lab.CA" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<label align="top" text="DEFESA" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 								<edit align="client" class="atributo transparente" field="CA" fontSize="30"/>	
+								<dataLink fields="{'atributos.moddestrezastr', 'bonusProficiencia'}">
+									<event name="onChange">
+										if sheet==nil then return end
+										if sheet.atributos==nil then return end
+										
+										local modDex = tonumber(sheet.atributos.moddestrezastr) or 0;
+										local prof = tonumber(sheet.bonusProficiencia) or 0;
+										
+										sheet.CA = 10 + modDex + prof;
+									</event>
+								</dataLink>
 							</flowPart>
-							<dataLink fields="{'caEquip', 'atributos.moddestrezastr', 'caEquipDexMode'}">
-								<event name="onChange">
-									if sheet==nil then return end
-									if sheet.atributos==nil then return end
-									
-									local modDex = tonumber(sheet.atributos.moddestrezastr) or 0;
-									local dexBonus;
-									
-									if sheet.caEquipDexMode == "heavyArmor" then
-										dexBonus = 0;
-									elseif sheet.caEquipDexMode == "mediumArmor" then
-										dexBonus = math.min(modDex, 2);
-									else
-										dexBonus = modDex;
-									end;
-									
-									sheet.CA = 12 + (tonumber(sheet.caEquip) or 0) + dexBonus;
-								</event>
-							</dataLink>
 							
 							<!-- INICIATIVA -->
 							<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
-								<button name="initiativeBut" align="top" text="@@DnD5e.frente.lab.initiative" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none" margins="{left=10,right=10}">
-									<event name="onKeyDown"> common.keyDown(sheet, event, self.initiativeVal); </event>
-									<event name="onKeyUp"> common.keyUp(sheet, event, self.initiativeVal); </event>
-									<event name="onClick"> common.onClick(sheet, common.rolaIniciativa, nil, nil, true); </event>
-									<event name="onMenu"> common.onClick(sheet, common.rolaIniciativa, nil, nil, false); </event>
-									<event name="onMouseEnter"> self.initiativeBut:setFocus(); </event>
-									<event name="onExit"> self.initiativeVal.fontColor = "white"; </event>
-								</button>
+								<label align="top" text="INICIATIVA" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 								<edit name="initiativeVal" align="client" class="atributo transparente" field="iniciativa" fontSize="30"/>	
 							</flowPart>		
 
@@ -230,79 +206,11 @@
 									<edit align="client" class="transparente" field="PVMax" vertTextAlign="center" horzTextAlign="center"/>
 									<horzLine align="bottom" strokeColor="gray"/>
 								</layout>
-								<button text="@@DnD5e.generic.damage" align="right" width="50" margins="{right=5}">
-									<event name="onClick">
-										Dialogs.inputQuery(LANG("DnD5e.generic.damage"), LANG("DnD5e.message.textPromptDamage"), "",
-									        function (valorPreenchido)
-									            local dano = math.abs(tonumber(valorPreenchido) or 0)
-									            local pvTemp = tonumber(sheet.PVTemporario) or 0
-									            local pv = tonumber(sheet.PV) or 0
-
-									            if dano > pvTemp then
-									            	dano = dano - pvTemp
-									            	sheet.PVTemporario = 0
-
-									            	pv = pv - dano
-									            	sheet.PV = pv
-									            else
-									            	pvTemp = pvTemp - dano
-									            	sheet.PVTemporario = pvTemp
-									            end
-									        end);
-									</event>
-								</button>
 							</layout>
 							<edit align="client" field="PV" class="transparente" margins="{top=2}" horzTextAlign="center" vertTextAlign="center" fontSize="36" fontStyle="bold"/>
 							<label align="bottom" autoSize="true" text="@@DnD5e.frente.lab.PVCurrent" fontSize="11" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-						</frame>	
-																			
-						<!-- PONTOS DE VIDA TEMPORARIO -->
-						<frame align="bottom" height="70" frameStyle="frames/panel5/bottomPanel.xml" margins="{left = 4, right = 4}">
-							<edit align="client" field="PVTemporario" class="transparente" margins="{top=2}" horzTextAlign="center" vertTextAlign="center" fontSize="36" fontStyle="bold"/>
-							<label align="bottom" autoSize="true" text="@@DnD5e.frente.lab.PVTemp" fontSize="11" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-						</frame>		
-					</flowPart>		
-
-					<!-- TESTES DE VIDA -->
-					<flowLayout autoHeight="true" minWidth="235" maxWidth="475" minScaledWidth="235" horzAlign="justify">
-						<!-- DADOS DE VIDA -->
-						<flowPart frameStyle="frames/panel4transp/frame.xml" stepSizes="{130, 150, 160}" height="100">
-							<layout align="top" height="25">
-								<label align="left" class="tituloCampo" autoSize="true" text="@@DnD5e.frente.lab.total" textTrimming="none" wordWrap="false" fontSize="10" horzTextAlign="trailing"/>
-								<layout align="client" margins="{left=5, right=3}">
-									<edit align="client" class="transparente" field="DadosDeVidaTotal" vertTextAlign="center" horzTextAlign="center"/>
-									<horzLine align="bottom" strokeColor="gray"/>
-								</layout>
-							</layout>
-							<edit align="client" field="DadosDeVida" class="transparente" margins="{top=2}" horzTextAlign="center" vertTextAlign="center" fontSize="21"/>
-							<label align="bottom" autoSize="true" text="@@DnD5e.frente.lab.PVDice" fontSize="11" vertTextAlign="center" horzTextAlign="center"/>
-						</flowPart>	
-																			
-						<!-- TESTES CONTRA MORTE -->
-						<flowPart frameStyle="frames/panel4transp/frame.xml" stepSizes="{170, 170}" height="100">
-							<layout align="top" height="25" margins="{left=2}">
-								<label align="client" autoSize="true" fontSize="10" text="@@DnD5e.frente.lab.sucess" wordWrap="false" vertTextAlign="center" horzTextAlign="trailing" margins="{right=6}"/>
-								<dndCheckBox align="right" width="25" field="testesContraMorte.s0" margins="{right=2}"/>
-								<dndCheckBox align="right" width="25" field="testesContraMorte.s1" margins="{right=2}"/>
-								<dndCheckBox align="right" width="25" field="testesContraMorte.s2" margins="{right=6}"/>
-							</layout>
-							
-							<layout align="top" height="25" margins="{left=2, top = 4}">
-								<label align="client" autoSize="true" fontSize="10" text="@@DnD5e.frente.lab.flaws" vertTextAlign="center" horzTextAlign="trailing" margins="{right=6}"/>
-								<dndCheckBox align="right" width="25" field="testesContraMorte.f0" margins="{right=2}"/>
-								<dndCheckBox align="right" width="25" field="testesContraMorte.f1" margins="{right=2}"/>
-								<dndCheckBox align="right" width="25" field="testesContraMorte.f2" margins="{right=6}"/>
-							</layout>
-							<button align="bottom" name="DeathSave" text="@@DnD5e.frente.lab.deathteste" fontSize="11" vertTextAlign="center" horzTextAlign="center">
-								<event name="onKeyDown"> common.keyDown(sheet, event, self.DeathSave); </event>
-								<event name="onKeyUp"> common.keyUp(sheet, event, self.DeathSave); </event>
-								<event name="onClick"> common.onClick(sheet, common.deathSave, nil, nil, true); </event>
-								<event name="onMenu"> common.onClick(sheet, common.deathSave, nil, nil, false); </event>
-								<event name="onMouseEnter"> self.DeathSave:setFocus(); </event>
-								<event name="onExit"> self.DeathSave.fontColor = "white"; </event>
-							</button>
-						</flowPart>		
-					</flowLayout>										
+						</frame>
+					</flowPart>			
 				</flowLayout>	
 			</flowLayout>
 		</flowLayout>	

@@ -1,0 +1,141 @@
+﻿local BTreeInner = require("btree_private.dlua");
+local BTree = {};
+
+local function DEFAULT_BTREE_COMPARER(left, right)
+	if left < right then
+		return -1;
+	elseif left > right then
+		return 1;
+	else
+		return 0;
+	end;
+end;
+
+function BTree.new(theComparer)
+	local bt = {};
+		
+	-- Atributos privados
+	bt.comparer = theComparer or DEFAULT_BTREE_COMPARER;
+	bt.raiz = nil;
+	bt.count = 0;	
+		
+	local comparer = bt.comparer;
+	
+	-- métodos privados
+	
+	for k, v in pairs(BTreeInner) do
+		bt[k] = v;
+	end;	
+		
+	-- Funções Públicas	
+		
+	function bt:inserir(chave, valor)
+		if self.raiz == nil then
+			self.raiz = self:alocarPagina();
+		end;
+		
+		local inserirEm, indiceInserir = self:innerLocalizarForInsert(self.raiz, chave);
+		
+		if inserirEm == nil then
+			error("InnerLocalizarForInsert retornou nil");
+		end;
+		
+		if (indiceInserir <= inserirEm.countChaves) and (comparer(inserirEm.chaves[indiceInserir].valorChave, chave) == 0) then
+			error("Esta chave já existe");			
+		end;
+				
+		self:innerInsertCollated(inserirEm, indiceInserir, chave, valor);	
+	end;
+	
+	function bt:alterar(chave, valor)
+		local pEncontrado, indice = self:innerLocateCollated(self.raiz, chave);
+		
+		if pEncontrado ~= nil then
+			pEncontrado.chaves[indice].valor = valor;
+		else
+			error("Esta chave não existe para que seu valor seja alterado");
+		end;		
+	end;	
+	
+	function bt:inserirOuAlterar(chave, valor)
+		
+		if self.raiz == nil then
+			self.raiz = self:alocarPagina();
+		end;
+		
+		local inserirEm, indiceInserir = self:innerLocalizarForInsert(self.raiz, chave);
+		
+		if inserirEm == nil then
+			error("InnerLocalizarForInsert retornou nil");
+		end;
+		
+		if (indiceInserir <= inserirEm.countChaves) and (comparer(inserirEm.chaves[indiceInserir].valorChave, chave) == 0) then
+			inserirEm.chaves[indiceInserir].valor = valor;
+		else
+			self:innerInsertCollated(inserirEm, indiceInserir, chave, valor);	
+		end;				
+	end;
+	
+	function bt:remover(chave)
+		local pEncontrado, indice = self:innerLocateCollated(self.raiz, chave);
+		
+		if pEncontrado ~= nil then			
+			pEncontrado.chaves[indice].valorChave = nil;
+			pEncontrado.chaves[indice].valor = nil;					
+			self:innerDelete(pEncontrado, indice);			
+			self.count = self.count - 1;
+		end;
+	end;	
+	
+	function bt:limpar()
+		self.raiz = nil;
+		self.count = 0;
+	end;
+	
+	function bt:existe(chave)
+		local pEncontrado = self:innerLocateCollated(self.raiz, chave);
+		return (pEncontrado ~= nil);
+	end;	
+	
+	function bt:tryGet(chave)
+		local pEncontrado, indice = self:innerLocateCollated(self.raiz, chave);
+		
+		if pEncontrado ~= nil then
+			return true, pEncontrado.chaves[indice].valor;
+		else
+			return false, nil;
+		end;
+	end;
+	
+	function bt:menorChave()
+		if self.root == nil then
+			return nil;
+		end;
+		
+		local pEncontrada, indice = self:innerFindLowest(self.raiz);
+		
+		if pEncontrada ~= nil then
+			return pEncontrada.chaves[indice].valorChave, pEncontrada.chaves[indice].valor;
+		end;
+	end;
+	
+	function bt:maiorChave()
+		if self.root == nil then
+			return nil;
+		end;
+		
+		local pEncontrada, indice = self:innerFindHighest(self.raiz);
+		
+		if pEncontrada ~= nil then
+			return pEncontrada.chaves[indice].valorChave, pEncontrada.chaves[indice].valor;
+		end;
+	end;	
+	
+	function bt:navigator()
+		return self:createNavigator();
+	end;
+			
+	return bt;
+end;
+
+return BTree;

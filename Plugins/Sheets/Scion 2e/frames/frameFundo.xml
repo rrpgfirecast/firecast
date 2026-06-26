@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="138" height="130">
+        <borders />
+        <draw>
+                        <!-- QUINAS -->
+                        <!-- quina superior esquerda -->
+                        <image left="0" top="0" right="29" bottom="32" overflowX="stretch">
+                                <anchors left="true" top="true"/>
+                                <source url="upperEsqR.png" left="0" right="29" top="0" bottom="32"/>
+                        </image>                       
+
+                        <!-- quina superior direita -->
+                       <image left="109" top="0" right="138" bottom="32" overflowX="stretch" overflowY="stretch">
+                                <anchors left="false" right="true" top="true"/>
+                                <source url="upperDirR.png" left="0" right="29" top="0" bottom="32"/>
+                        </image>                                              
+
+                        <!-- quina inferior esquerda -->
+                        <image left="0" top="98" right="29" bottom="130">
+                                <anchors left="true" top="false" bottom="true"/>
+                                <source url="lowerEsqR.png" left="0" right="29" top="0" bottom="32"/>
+                        </image>                      
+
+                        <!-- quina inferior direita -->
+                        <image left="109" top="98" right="138" bottom="130">
+                                <anchors left="false" right="true" top="false" bottom="true"/>
+                                <source url="lowerDirR.png" left="0" right="29" top="0" bottom="32"/>
+                        </image>                                             
+
+                       <!-- LINHAS -->
+                        <!-- linha horizontal superior -->
+                        <image left="29" top="0" right="109" bottom="5" zOrder="10" overflowX="stretch">
+                                <anchors left="true" right="true" top="true"/>
+                                <source url="upperLineR.png" left="0" right="80" top="0" bottom="5"/>
+                        </image>       
+
+                        <!-- linha horizontal inferior -->
+                        <image left="29" top="125" right="109" bottom="130" zOrder="10" overflowX="stretch">
+                                <anchors left="true" right="true" top="false" bottom="true"/>
+                                <source url="lowerLineR.png" left="0" right="80" top="0" bottom="5"/>
+                        </image>       
+
+                         <!-- linha vertical esquerda -->
+                        <image left="0" top="32" right="12" 
+                              bottom="98" zOrder="10" overflowY="stretch" overflowX="stretch">
+                                <anchors left="true" right="false" bottom="true" top="true"/>
+                                <source url="leftLineR.png" left="0" right="12" top="0" bottom="66"/>
+                        </image>                              
+
+                        <!-- linha vertical direita -->
+                        <image left="126" top="32" right="138" bottom="98" 
+                              zOrder="10" overflowY="stretch" overflowX="stretch">
+                                <anchors left="false" right="true" bottom="true" top="true"/>
+                                <source url="rightLineR.png" left="0" right="12" top="0" bottom="66"/>
+                        </image>                       
+        </draw>
+</frame>

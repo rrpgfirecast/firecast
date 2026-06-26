@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <template name="Attribute">
+		<label g="col" g-width="4" text="$(text)" horzTextAlign="center" height="25" fontSize="$(fontSize or 13)" textTrimming="none"/>
+		<edit g="col" g-width="2" field="$(field)" height="25"/>
+		<edit g="col" g-width="2" field="$(field)Mod" height="25"/>
+		<edit g="col" g-width="2" field="$(field)Dmg" height="25"/>
+		<edit g="col" g-width="2" field="$(field)Curr" height="25"/>
+    </template>
+    <template name="Title">
+		<label g="col" g-width="$(widthL or 3)" text="$(text)" horzTextAlign="center" height="25" fontSize="$(fontSize or 13)" textTrimming="none"/>
+		<edit g="col" g-width="$(widthR or 9)" field="$(field)" height="25"/>
+    </template>
+    <template name="TitleLabel">
+    	<label g="col" g-width="$(widthL or 3)" text="$(text)" horzTextAlign="center" height="25" fontSize="$(fontSize or 13)" textTrimming="none"/>
+		<rectangle g="col" g-width="$(widthR or 9)" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="$(field)" horzTextAlign="center" formatFloat="$(formatFloat)"/>
+		</rectangle>
+    </template>
+    <template name="TitleButtonLabel2Edit">
+		<button g="col" g-width="6" text="$(text)" horzTextAlign="center" height="25" onClick="$(onClick)" textTrimming="none"/>
+		<rectangle g="col" g-width="2" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="$(field1)" horzTextAlign="center"/>
+		</rectangle>
+		<rectangle g="col" g-width="2" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="$(field2)" horzTextAlign="center"/>
+		</rectangle>
+		<edit g="col" g-width="2" field="$(field3)" height="25"/>
+    </template>
+    <template name="TitleLabelFormat">
+    	<label g="col" g-width="3" text="$(text)" horzTextAlign="center" height="25" textTrimming="none"/>
+		<rectangle g="col" g-width="9" height="25" color="black" strokeColor="white" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
+			<label align="client" field="$(field)" horzTextAlign="center" formatFloat=",0.## $(unit)"/>)"/>
+			<event name="onClick">
+				self.$(field)Label.visible = false
+				self.$(field)Edit.visible = true
+				self.$(field)Edit:setFocus()
+			</event>
+		</rectangle>
+		<edit g="col" g-width="9" height="25" type="float" fontSize="11" field="$(field)" name="$(field)Edit" visible="false">
+			<event name="onExit">
+				self.$(field)Label.visible = true
+				self.$(field)Edit.visible = false
+			</event>
+		</edit>
+    </template>
+    <template name="TitleButton">
+		<button g="col" g-width="$(widthL or 3)" text="$(text)" horzTextAlign="center" height="25" onClick="$(onClick)" textTrimming="none"/>
+		<edit g="col" g-width="$(widthR or 9)" field="$(field)" height="25"/>
+    </template>
+    <template name="TitleLabelButtonPopUp">
+		<button g="col" g-width="3" text="$(text)" horzTextAlign="center" height="25" onClick="$(onClick)" textTrimming="none"/>
+		<rectangle g="col" g-width="8" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="$(field)" horzTextAlign="center"/>
+		</rectangle>
+		<button g="col" g-width="1" text="ℹ️" name="$(field)But" horzTextAlign="center" height="25" onClick="ShowPopUp('$(popup)', self.$(field)But)" hint="Detalhes" textTrimming="none"/>
+    </template>
+    <template name="TitleLabelButton">
+		<button g="col" g-width="4" text="$(text)" horzTextAlign="center" height="25" onClick="$(onClick)" textTrimming="none"/>
+		<rectangle g="col" g-width="8" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="$(field)" horzTextAlign="center"/>
+		</rectangle>
+    </template>
+    <template name="TitleComboBox">
+		<label g="col" g-width="$(widthL or 3)" text="$(text)" horzTextAlign="center" height="25" textTrimming="none"/>
+		<comboBox g="col" g-width="$(widthR or 9)" field="$(field)" height="25" items="$(items)" values="$(values)" onChange="$(onChange)"/>
+    </template>
+	<template name="TitleEditor">
+		<label g="col" g-width="12" height="25" text="$(text)" horzTextAlign="center" textTrimming="none"/>
+        <textEditor g="col" g-width="12" g-min-height="100" g-vert-tile="true" field="$(field)"/>
+	</template>
+
+    <template name="RecLabel">
+		<rectangle g="col" g-width="$(gwidth)" g-offset="$(goffset or 0)" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="$(field)" horzTextAlign="center" formatFloat="$(formatFloat)"/>
+		</rectangle>
+    </template>
+    <template name="FormatEdit">
+        <rectangle g="col" g-width="$(gwidth)" height="25" color="black" strokeColor="grey" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
+            <label align="client" field="$(field)" horzTextAlign="center" formatFloat="$(formatFloat)"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false
+                self.$(field)Edit.visible = true
+                self.$(field)Edit:setFocus()
+            </event>
+        </rectangle>
+        <edit g="col" g-width="$(gwidth)" height="25" field="$(field)" type="float" vertTextAlign="center" name="$(field)Edit" visible="false">
+			<event name="onExit">
+				self.$(field)Label.visible = true
+				self.$(field)Edit.visible = false
+			</event>
+		</edit>
+    </template>
+
+	<template name="attributeFlowReal">
+		<edit g="col" g-width="2" field="inicial$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="raca$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="nep$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="inerente$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="tamanho$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="outros$(atr)" height="25"/>
+
+		<dataLink fields="{'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}" defaultValues="{'true', 'true', 'true', 'true', 'true', 'true'}"/>
+		<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)', 'magia$(atr)', 'classe$(atr)', 'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}">
+			<event name="onChange"><![CDATA[
+				if sheet~= nil then
+					local real = 	(tonumber(sheet.inicial$(atr)) or 0) + 
+									(tonumber(sheet.raca$(atr)) or 0) + 
+									(tonumber(sheet.nep$(atr)) or 0) + 
+									(tonumber(sheet.inerente$(atr)) or 0) + 
+									(tonumber(sheet.tamanho$(atr)) or 0) + 
+									(tonumber(sheet.outros$(atr)) or 0)
+
+					local bn = { [true]=1, [false]=0 }
+
+					local efetivo = real + (tonumber(sheet.melhoria$(atr)) or 0)*(bn[sheet.isMelhoriaActive] or 0)
+									 + (tonumber(sheet.danoTemp$(atr)) or 0)*(bn[sheet.isDnTempActive] or 0)
+									 + (tonumber(sheet.danoPerm$(atr)) or 0)*(bn[sheet.isDnPermActive] or 0)
+									 + (tonumber(sheet.temporario$(atr)) or 0)*(bn[sheet.isTempActive] or 0)
+									 + (tonumber(sheet.magia$(atr)) or 0)*(bn[sheet.isClasseActive] or 0)
+									 + (tonumber(sheet.classe$(atr)) or 0)*(bn[sheet.isMagiaActive] or 0)
+
+					sheet.real$(atr) = real
+					local mod = math.floor((real/2) - 5)
+					if mod >= 0 then 
+						mod = "+" .. mod
+					end
+					sheet.realMod$(atr) = mod
+
+					sheet.efet$(atr) = efetivo
+					mod = math.floor((efetivo/2) - 5)
+					if mod >= 0 then 
+						mod = "+" .. mod
+					end
+					sheet.efetMod$(atr) = mod
+				end
+				]]>	
+			</event>
+		</dataLink>
+	</template>
+	<template name="attributeFlowEfet">
+		<edit g="col" g-width="2" field="melhoria$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="danoTemp$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="danoPerm$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="temporario$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="magia$(atr)" height="25"/>
+		<edit g="col" g-width="2" field="classe$(atr)" height="25"/>
+	</template>
+
+	<template name="attributeComboBox">
+		<flowPart minWidth="60" maxWidth="60" height="20">
+			<comboBox align="client" fontColor="white" field="$(field)" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+		</flowPart>
+	</template>
+	<template name="AttributeComp">
+		<button g="col" g-width="2" height="25" text="$(ATR)" textTrimming="none">
+			<event name="onClick">
+				local node = self.rclListaDosCompanheiros.selectedNode
+				local dado = "1d20 "
+				local bonus = tonumber(node.$(atr)ModComp) or 0
+				if bonus &gt;= 0 then
+					dado = "1d20 + "
+				end
+				local rolagem = Firecast.interpretarRolagem(dado .. bonus)
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (node.nomeComp or "Companheiro"))
+			</event>
+		</button>
+		<edit g="col" g-width="2" height="25" field="$(atr)Comp">
+			<event name="onUserChange">
+				local node = self.rclListaDosCompanheiros.selectedNode
+				if node~=nil then
+					local mod = (tonumber(node.$(atr)Comp) or 0)
+					mod = math.floor((mod-10)/2)
+					if mod &gt;=0 then
+						mod = "+" .. mod
+					end
+					node.$(atr)ModComp = mod
+				end
+			</event>
+		</edit>
+		<rectangle g="col" g-width="2" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="$(atr)ModComp" horzTextAlign="center"/>
+		</rectangle>
+		<edit g="col" g-width="6" height="25" field="$(atr)CompDesc"/>
+	</template>
+
+	<template name="smallFieldCenter">
+		<flowPart minWidth="50" maxWidth="50" height="20">
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="midFieldCenter">
+		<flowPart minWidth="50" maxWidth="75" height="20">
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="smallTitleCenter">
+		<flowPart minWidth="50" maxWidth="50" height="15">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowPart>
+	</template>
+	<template name="smallCheckboxCenter">
+		<flowPart minWidth="50" maxWidth="75" height="15">
+			<checkBox align="client" class="" field="$(field)" text="$(text)" horzTextAlign="center" fontSize="10"/>
+		</flowPart>
+	</template>
+	<template name="smallLabelCenter">
+		<flowPart minWidth="50" maxWidth="50" height="20">
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+			<label align="client" field="$(field)" horzTextAlign="center" fontSize="12" textTrimming="none"/>
+		</flowPart>
+	</template>
+	<template name="longTextCenter">
+		<flowPart minWidth="140" maxWidth="150" height="20">
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="weaponInfoField">
+		<flowPart minWidth="290" maxWidth="300" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="weaponInfoFieldSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="weaponInfoFieldSmall">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="itemInfoFieldSmall">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="periciaSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+
+    <template name="Speed">
+    	<label g="col" g-width="4" text="$(text)" horzTextAlign="center" height="25"/>
+
+		<rectangle g="col" g-width="4" height="25" color="black" strokeColor="white" strokeSize="1" name="$(mode)Label" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
+			<label align="client" field="desl$(mode)" horzTextAlign="center" formatFloat=",0.## m"/>)"/>
+			<event name="onClick">
+				self.$(mode)Label.visible = false
+				self.$(mode)Edit.visible = true
+				self.$(mode)Edit:setFocus()
+			</event>
+		</rectangle>
+		<edit g="col" g-width="4" height="25" type="float" fontSize="11" field="desl$(mode)" name="$(mode)Edit" visible="false">
+			<event name="onExit">
+				self.$(mode)Label.visible = true
+				self.$(mode)Edit.visible = false
+			</event>
+		</edit>
+
+		<rectangle g="col" g-width="4" height="25" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="desl$(mode)Quadrados" horzTextAlign="center" format="%d q"/>
+		</rectangle>
+
+		<dataLink field="desl$(mode)">
+			<event name="onChange">
+				if sheet == nil then return end
+				if sheet.desl$(mode) == nil or sheet.desl$(mode) == "" then
+					sheet.desl$(mode)Quadrados = nil
+					return
+				end
+
+				mod = math.floor((tonumber(sheet.desl$(mode)) or 0) / 1.5)
+				sheet.desl$(mode)Quadrados = mod
+			</event>
+		</dataLink>
+    </template>
+
+	<template name="resitenceFlow">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
+			<smallFieldCenter field="base$(tr)"/>
+			<smallLabelCenter field="atrMod$(tr)"/>
+			<smallFieldCenter field="magia$(tr)"/>
+			<smallFieldCenter field="variavel$(tr)"/>
+			<smallFieldCenter field="temporario$(tr)"/>
+			<smallFieldCenter field="outros$(tr)"/>
+			<attributeComboBox field="atrTr$(tr)"/>
+		</flowLayout>
+	</template>
+	<template name="SaveEvent">
+		<dataLink fields="{'base$(tr)', 'atrMod$(tr)', 'magia$(tr)', 'variavel$(tr)', 'temporario$(tr)', 'outros$(tr)','buffTR'}">
+			<event name="onUserChange"><![CDATA[
+				if sheet~= nil then
+					local tr = (tonumber(sheet.base$(tr)) or 0) + 
+									(tonumber(sheet.atrMod$(tr)) or 0) + 
+									(tonumber(sheet.magia$(tr)) or 0) + 
+									(tonumber(sheet.variavel$(tr)) or 0) + 
+									(tonumber(sheet.temporario$(tr)) or 0) + 
+									(tonumber(sheet.outros$(tr)) or 0) + 
+									(tonumber(sheet.buffTR) or 0)
+					if tr >= 0 then
+						tr = "+"..tr
+					end
+					sheet.tr$(tr) = tr
+				end
+				]]>
+			</event>
+		</dataLink>
+	</template>
+
+	<template name="SaveComp">
+		<button g="col" g-width="2" height="25" text="$(ATR)" textTrimming="none">
+			<event name="onClick">
+				local node = self.rclListaDosCompanheiros.selectedNode
+				local dado = "1d20 "
+				local bonus = tonumber(node.$(atr)Comp) or 0
+				if bonus &gt;= 0 then
+					dado = "1d20 + "
+				end
+				local rolagem = Firecast.interpretarRolagem(dado .. bonus)
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (node.nomeComp or "Companheiro"))
+			</event>
+		</button>
+		<edit g="col" g-width="2" height="25" field="$(atr)Comp"/>
+		<edit g="col" g-width="8" height="25" field="$(atr)CompDesc"/>
+	</template>
+
+	<template name="Protection">
+		<smallTitleCenter text="$(nome)"/>
+		<smallFieldCenter field="$(field)"/>
+		<longTextCenter field="$(field)2"/>
+		<flowPart minWidth="50" maxWidth="60" height="20">
+			<checkBox field="$(field)Surp" text="Surpresa" fontSize="10" height="20"/>
+		</flowPart>
+		<flowPart minWidth="50" maxWidth="60" height="20">
+			<checkBox field="$(field)Toque" text="Toque" fontSize="10" height="15"/>
+		</flowPart>
+	</template>
+
+	<template name="Attack">
+		<rectangle g="row" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="85">
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="75">
+				<Title text="NOME" field="nome$(num)"/>
+				<Title text="ARMA" field="arma$(num)"/>
+				<Title text="TIPO" field="tipo$(num)"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="75">
+				<button g="col" g-width="3" height="25" text="ATAQUE" fontSize="11">
+					<event name="onClick">
+						i = 1
+						max = 1
+						
+						array = {sheet.ataque$(num)a, sheet.ataque$(num)b, sheet.ataque$(num)c, sheet.ataque$(num)d, sheet.ataque$(num)e, sheet.ataque$(num)f, sheet.ataque$(num)g, sheet.ataque$(num)h, sheet.ataque$(num)i}
+			
+						decisivo = sheet.decisivo$(num) or "20"
+						decisivo = tonumber(string.sub(decisivo, 1, 2))
+						
+						dano = sheet.dano$(num) or "1d1"
+						dano = Firecast.interpretarRolagem(dano)
+						if sheet.buffDano ~= nil then
+							dano = dano:concatenar(sheet.buffDano)
+						end
+						
+						danoCritico = sheet.danoCritico$(num) or "1d1"
+						danoCritico = Firecast.interpretarRolagem(danoCritico)
+						if sheet.buffDanoCritico ~= nil then
+							danoCritico = danoCritico:concatenar(sheet.buffDanoCritico)
+						end
+						
+						armamento = sheet.nome$(num)
+						if armamento==nil then armamento = sheet.arma$(num) end
+						if armamento==nil then armamento = "arma" end
+
+						municao = tonumber(sheet.municao$(num))
+						
+						local mesa = Firecast.getMesaDe(sheet)
+						while array[max]~=nil do
+						    array[max] = array[max] - math.abs(tonumber(sheet.nvNeg) or 0)
+							max = max + 1
+						end
+						
+						local ataque = tonumber(array[1]) or 0
+						if ataque~=nil then
+							rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque)
+							if sheet.buffAtaque ~= nil then
+								rolagem = rolagem:concatenar(sheet.buffAtaque)
+							end
+
+							mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "Nome"), 
+								function (rolado)
+									nextAttack(rolado)
+								end)
+							if municao~=nil then
+								sheet.municao$(num) = municao-max+1
+							end
+						end
+						
+					</event>
+				</button>
+				<edit type="number" vertTextAlign="center"  g="col" g-width="1" height="25" field="ataque$(num)a"/>
+				<edit type="number" vertTextAlign="center"  g="col" g-width="1" height="25" field="ataque$(num)b"/>
+				<edit type="number" vertTextAlign="center"  g="col" g-width="1" height="25" field="ataque$(num)c"/>
+				<edit type="number" vertTextAlign="center"  g="col" g-width="1" height="25" field="ataque$(num)d"/>
+				<edit type="number" vertTextAlign="center"  g="col" g-width="1" height="25" field="ataque$(num)e"/>
+				<edit type="number" vertTextAlign="center"  g="col" g-width="1" height="25" field="ataque$(num)f"/>
+				<edit type="number" vertTextAlign="center"  g="col" g-width="1" height="25" field="ataque$(num)g"/>
+				<edit type="number" vertTextAlign="center"  g="col" g-width="1" height="25" field="ataque$(num)h"/>
+				<edit type="number" vertTextAlign="center"  g="col" g-width="1" height="25" field="ataque$(num)i"/>
+
+				<TitleButton text="DANO" field="dano$(num)" widthR="3" onClick="rollDamage($(num))"/>
+				<TitleButton text="CRITICO" field="danoCritico$(num)" widthR="3" onClick="rollCritDamage($(num))"/>
+				<Title text="DECISIVO" field="decisivo$(num)" widthR="3"/>
+				<Title text="MULTI" field="multiplicador$(num)" widthR="3"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="75">
+				<Title text="CATEGORIA" field="categoria$(num)"/>
+				<Title text="OBS" field="obs$(num)"/>
+				<Title text="MUNIÇÃO" field="municao$(num)" widthR="3"/>
+				<Title text="ALCANCE" field="alcance$(num)" widthR="3"/>
+			</layout>
+			<layout g="col" g-width="6" g-width-lg="3" g-min-height="75">
+				<image g="col" g-width="11" field="imagemArma$(num)" editable="true" height="75"/>
+				<button g="col" g-width="1" height="75" text="🗑️" fontSize="15" hint="Apaga o ataque." textTrimming="none">
+					<event name="onClick">
+						Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+							function (confirmado)
+								if confirmado then
+									sheet.nome$(num) = nil
+									sheet.arma$(num) = nil
+									sheet.tipo$(num) = nil
+									sheet.ataque$(num)a = nil
+									sheet.ataque$(num)b = nil
+									sheet.ataque$(num)c = nil
+									sheet.ataque$(num)d = nil
+									sheet.ataque$(num)e = nil
+									sheet.ataque$(num)f = nil
+									sheet.ataque$(num)g = nil
+									sheet.ataque$(num)h = nil
+									sheet.ataque$(num)i = nil
+									sheet.dano$(num) = nil
+									sheet.danoCritico$(num) = nil
+									sheet.decisivo$(num) = nil
+									sheet.multiplicador$(num) = nil
+									sheet.categoria$(num) = nil
+									sheet.obs$(num) = nil
+									sheet.municao$(num) = nil
+									sheet.alcance$(num) = nil
+									sheet.imagemArma$(num) = nil
+								end
+							end)
+					</event>
+				</button>
+			</layout>
+		</rectangle>
+	</template>
+	
+	<template name="habilidadeSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="habilidadeLarge">
+		<flowPart minWidth="180" maxWidth="200" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="ListaFlexivel">
+		<flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.$(rclName)Part, "_recalcHeight", 					
+						function ()
+							self.$(rclName)Part.height = self.$(rclName).height + 25;
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
+				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<recordList name="$(rclName)" field="$(rclField)" templateForm="CharacteristicsCharacteristic" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="1">
+				<event name="onCompare">
+			        return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+			    </event>
+			</recordList>
+		</flowPart>
+	</template>	
+
+	<template name="colorSelection">
+		<comboBox g="col" g-width="9" height="25" field="$(field)" items="{'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed', 'Indigo', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'}" values="{'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'}"/>	
+	</template>
+	
+	<template name="TitleCenter">
+		<TitleCenterSize fontSize="10" text="$(text)"/>
+	</template>
+	<template name="TitleCenterSize">
+		<flowPart minWidth="50" maxWidth="150" height="15">
+			<label align="top" class="tituloCampo" fontSize="$(fontSize)" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowPart>
+	</template>
+	<template name="FieldCenter">
+		<flowPart minWidth="50" maxWidth="150" height="25">
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="NumericFieldCenter">
+		<flowPart minWidth="50" maxWidth="150" height="25">
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="LabelCenter">
+		<flowPart minWidth="50" maxWidth="150" height="20">
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+			<label align="client" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="ComboFlow">
+		<flowPart minWidth="50" maxWidth="150" height="25">
+			<comboBox align="client" items="$(items)" values="$(values)" field="$(field)" fontColor="white"/>
+		</flowPart>
+	</template>
+	<template name="smallComboFlow">
+		<flowPart minWidth="50" maxWidth="50" height="25">
+			<comboBox align="client" items="$(items)" values="$(values)" field="$(field)" fontColor="white"/>
+		</flowPart>
+	</template>
+	<template name="magicInfoLabel">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+			<label align="client" field="$(field)" horzTextAlign="center" fontSize="12" formatFloat="$(format)"/>
+		</flowPart>
+	</template>
+	<template name="magicInfoField">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="magicListFlow">
+		<flowPart stepSizes="{300, 350, 400, 450, 500, 550, 600}" height="25" minScaledWidth="300" maxScaledWidth="600" name="rclmagicList$(num)Part" adjustHeightToLine="true">
+			<script>
+				<![CDATA[
+					rawset(self.rclmagicList$(num)Part, "_recalcHeight", 					
+						function ()
+							self.rclmagicList$(num)Part.height = self.rclmagicList$(num).height + 50;
+							
+							--self.boxDetalhesDaMagia.height = math.max(self.detalhesDaMagia.height, 550);
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="">
+					<event name="onClick">
+						local item = self.rclmagicList$(num):append();
+						if item then item.id = $(num) end;
+					</event>
+				</button>
+				<label text="Nível $(num)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<layout align="top" height="25">
+				<label text="Preparadas: " align="left" width="55" margins="{right=5}" fontSize="10"/>
+				<label field="prep$(num)" align="left" width="20" margins="{right=5}" fontSize="10"/>/>
+
+				<label text="Usadas: " align="left" width="35" margins="{right=5}" fontSize="10"/>
+				<label field="used$(num)" align="left" width="20" horzTextAlign="center" fontSize="10"/>/>
+				<label text="/" align="left" width="5" margins="{left=5,right=5}" fontSize="10"/>/>
+				<label field="total$(num)" align="left" width="20" horzTextAlign="center" fontSize="10"/>/>
+
+				<label text="PREP" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+				<label text="USO" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+				<label text="CD" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+				<label text="" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+				<label text="" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+			</layout>
+
+			<recordList name="rclmagicList$(num)" field="campoDasMagias$(num)" templateForm="frmMagiasMagia" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.rclmagicList$(num)Part._recalcHeight();" onEndEnumeration="self.rclmagicList$(num)Part._recalcHeight();" minQt="1">
+				<event name="onCompare"><![CDATA[ 
+					local aDisponivel = (tonumber(nodeA.dispMagia) or 0);
+					local bDisponivel = (tonumber(nodeB.dispMagia) or 0);
+					local aUsada = (tonumber(nodeA.prepMagia) or 0);
+					local bUsada = (tonumber(nodeB.prepMagia) or 0);
+
+				    if aDisponivel < bDisponivel then
+				        return 1;
+				    elseif aDisponivel > bDisponivel then
+				        return -1;
+				    elseif aUsada < bUsada then
+				        return 1;
+				    elseif aUsada > bUsada then
+				        return -1;
+				    else
+				        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+				    end;               
+				    ]]>
+				</event>
+			</recordList>
+		</flowPart>
+	</template>
+	<template name="essenceListFlow">
+		<flowPart stepSizes="{300, 350, 400, 450, 500, 550, 600}" height="25" minScaledWidth="300"  maxScaledWidth="600" name="rclessenceList$(num)Part" adjustHeightToLine="true" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.rclessenceList$(num)Part, "_recalcHeight", 					
+						function ()
+							self.rclessenceList$(num)Part.height = self.rclessenceList$(num).height + 50;
+							
+							--self.boxDetalhesDaMagia.height = math.max(self.detalhesDaMagia.height, 550);
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="">
+					<event name="onClick">
+						local item = self.rclessenceList$(num):append();
+						if item then item.id = $(num) end;
+					</event>
+				</button>
+				<label text="Nível $(num)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<layout align="top" height="25">
+				<label text="1" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="2" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="3" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="4" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="5" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="6" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="CD" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+			</layout>
+
+			<recordList name="rclessenceList$(num)" field="campoDasEssencias$(num)" templateForm="frmMagiasEssencia" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.rclessenceList$(num)Part._recalcHeight();" onEndEnumeration="self.rclessenceList$(num)Part._recalcHeight();" minQt="1">
+				<event name="onCompare"><![CDATA[ 
+				    return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);              
+				    ]]>
+				</event>
+			</recordList>
+		</flowPart>
+	</template>
+	<template name="magicGridLevel">
+		<label g="col" g-width="2" text="$(nivel)" horzTextAlign="center" height="25" g-offset="1"/>
+		<RecLabel gwidth="2" field="total$(nivel)"/>
+		<edit g="col" g-width="2" field="base$(nivel)" height="25" horzTextAlign="center" type="number"/>
+		<RecLabel gwidth="2" field="bonus$(nivel)"/>
+		<edit g="col" g-width="2" field="conhecidas$(nivel)" height="25" horzTextAlign="center" type="number" g-break-line-after="true"/>
+
+		<dataLink fields="{'base$(nivel)', 'bonus$(nivel)'}">
+			<event name="onUserChange">
+				local node = self.boxDetalhesDaMagia.node;
+				if node.base$(nivel)==nil then 
+					node.total$(nivel) = nil;
+				else
+					node.total$(nivel) = 	(tonumber(node.base$(nivel)) or 0) + 
+											(tonumber(node.bonus$(nivel)) or 0);
+				end;
+			</event>
+		</dataLink>
+		<dataLink fields="{'atributoBonus', 'updatedATR'}">
+			<event name="onUserChange">
+				if self.boxDetalhesDaMagia.node == nil then return end;
+				local resultado = 0;
+				local mod = 0;
+				local ctrl = self.boxDetalhesDaMagia.node.atributoBonus;
+				
+				if ctrl=='1' then
+					mod = tonumber(sheet.efetModFor) or 0;
+				elseif ctrl=='2' then
+					mod = tonumber(sheet.efetModDes) or 0;
+				elseif ctrl=='3' then
+					mod = tonumber(sheet.efetModCon) or 0;
+				elseif ctrl=='4' then
+					mod = tonumber(sheet.efetModInt) or 0;
+				elseif ctrl=='5' then
+					mod = tonumber(sheet.efetModSab) or 0;
+				elseif ctrl=='6' then
+					mod = tonumber(sheet.efetModCar) or 0;
+				end;
+				local nivel = $(nivel);
+				
+				if nivel==0 then
+					resultado = 0;
+				else 
+					if (nivel>mod) then
+						result = 0;
+					else
+						resultado = mod + 4 - nivel;
+						resultado = math.floor(resultado/4);
+					end;
+				end;
+				
+				self.boxDetalhesDaMagia.node.bonus$(nivel) = resultado;
+			</event>
+		</dataLink>
+		<dataLink fields="{'atributoCD', 'updatedATR'}">
+			<event name="onUserChange">
+				if self.boxDetalhesDaMagia.node == nil then return end;
+				local mod = 0;
+				local node = self.boxDetalhesDaMagia.node;
+				local ctrl = node.atributoCD;
+				
+				if ctrl=='1' then
+					mod = tonumber(sheet.efetModFor) or 0;
+				elseif ctrl=='2' then
+					mod = tonumber(sheet.efetModDes) or 0;
+				elseif ctrl=='3' then
+					mod = tonumber(sheet.efetModCon) or 0;
+				elseif ctrl=='4' then
+					mod = tonumber(sheet.efetModInt) or 0;
+				elseif ctrl=='5' then
+					mod = tonumber(sheet.efetModSab) or 0;
+				elseif ctrl=='6' then
+					mod = tonumber(sheet.efetModCar) or 0;
+				end;
+				local nivel = $(nivel);
+
+				local nodes = NDB.getChildNodes(node.campoDasMagiasEpicas); 
+				for i=1, #nodes, 1 do
+					nodes[i].atr = mod;
+				end
+				
+				mod = 10 + mod + nivel;
+
+				node.cd$(nivel) = mod;
+
+				updateMagicCD($(nivel));
+			</event>
+		</dataLink>
+	</template>
+
+	<template name="InventorySlot">
+		<label g="col" g-width="12" height="25" text="$(text)" horzTextAlign="center"/>
+        <textEditor g="col" g-width="12" g-min-height="100" g-vert-tile="true" field="$(field)"/>
+
+        <label g="col" g-width="1" height="25" text="⚖️" horzTextAlign="center"/>
+        <FormatEdit gwidth="5" field="peso$(field2)" formatFloat=",0.## Kg"/>
+        <label g="col" g-width="1" height="25" text="💰" horzTextAlign="center"/>
+        <FormatEdit gwidth="5" field="preco$(field2)" formatFloat=",0.## PO"/>
+	</template>
+</group>
