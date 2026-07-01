@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" compilationDate="26062026164139" sdkApiVersion="88" originalPluginFileName="Crystal_World_New_Adventure.rpk" compilationDigest="1e9c38bc5c471e75c220818f5e925ac0a7839906" sdkMinorApiVersion="2" compilationUniqueID="6a3eabc32eb5ecb80028be93">
+    <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
+    <id>Alem_do_veu_Hiperion</id>
+    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
+    <version>2.1.0</version>
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>CWNA 2e</name>
+        <description>Ficha com cálculos automáticos para CWNA 2e.</description>
+        <author>Cezar</author>
+        <site>.</site>
+        <contact>.</contact>
+    </info>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dataTypes>
+        <dataType title="Crystal_world_2.0" name="frmOurFichaCrystalWorld" lfmFile="fichaIGuess.lfm">Alem_do_veu_Hiperion</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="Alem_do_veu_Hiperion" formType="sheetTemplate" lfmFile="fichaIGuess.lfm" formName="frmOurFichaCrystalWorld">
+                <info title="Crystal_world_2.0"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>CWNA 2e</name>
+    <description>Ficha com cálculos automáticos para CWNA 2e.</description>
+    <author>Cezar</author>
+    <site>.</site>
+    <contact>.</contact>
+</module>

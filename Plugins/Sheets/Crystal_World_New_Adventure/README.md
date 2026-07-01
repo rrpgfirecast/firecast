@@ -1,0 +1,14 @@
+![Logotipo](https://blob.firecast.com.br/blobs/VWNPTPUN_4458958/1f6ffbd2-943b-4c62-9282-a2410dff5cbc.png)  
+  
+Historia:
+A Maldição de Reino Green
+O mundo mudou no dia em que exploradores encontraram o Reino Green. Uma terra vasta, onde a natureza dominava quase toda a paisagem, lar de criaturas jamais vistas e repleta de dungeons inexploradas. A promessa de riquezas escondidas entre as florestas e ruínas antigas atraiu os olhos gananciosos dos reinos vizinhos. Temendo um conflito pelo controle do território, os reis selaram um pacto: o Reino Green pertenceria a todos, mas caberia às guildas explorá-lo.
+Assim, nasceram as primeiras colônias e, com elas, as guildas de aventureiros, grupos encarregados de mapear, caçar criaturas e recuperar tesouros das profundezas da selva. Entre todas, uma se destacou: Guilda dos Errantes. Liderados pelo lendário guerreiro Edgard Vernoux, a guilda rapidamente tomou as missões mais lucrativas, desbravou os piores calabouços e acumulou fortunas impensáveis. Em apenas alguns anos, a Guilda dos Errantes era tão poderosa que rivalizava com os próprios nobres dos reinos.
+Entretanto, com a ascensão veio a decadência.
+A fama atraiu aventureiros sem escrúpulos, dispostos a tudo por glória e ouro. Assassinatos, traições e alianças sombrias enfraqueceram a guilda. O próprio Edgard começou a mudar, afastando-se dos companheiros mais leais e desaparecendo por longos períodos. E então, no décimo ano da exploração de Reino Green, aconteceu o impensável: Edgard e os membros de alto escalão da guilda roubaram todas as riquezas acumuladas e desapareceram sem deixar rastros.
+O evento ficou conhecido como "A Traição Dourada".
+Com o vácuo de poder deixado pela Guilda dos Errantes, novas guildas surgiram para tomar seu lugar. Porém, ao contrário de seus predecessores, essas guildas não estavam interessadas em heroísmo ou exploração justa. Cobravam taxas exorbitantes dos aventureiros novatos, exigiam contratos abusivos e usavam a força para manter o controle. O que deveria ser um refúgio para aventureiros tornou-se um sistema de opressão, onde apenas os mais ricos e poderosos tinham alguma chance de crescer.
+Enquanto isso, os boatos sobre Edgard e sua guilda nunca cessaram.
+Alguns dizem que ele encontrou um segredo antigo nas profundezas do Reino Green, algo tão poderoso que o fez abandonar tudo. Outros acreditam que foi amaldiçoado e se tornou uma criatura da floresta, condenada a vagar eternamente. O certo é que, desde sua fuga, algo mudou na selva. Criaturas antes desconhecidas passaram a surgir, tempestades estranhas varrem as florestas e uma energia sinistra parece emanar das dungeons mais antigas.
+Agora, cabe a uma nova geração de aventureiros desafiar as guildas corruptas, desvendar o mistério de Edgard Vernoux e talvez, apenas talvez, descobrir o verdadeiro segredo que esconde o Reino Green.
+   

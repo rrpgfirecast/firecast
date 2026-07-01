@@ -8,6 +8,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="Alem_do_veu_Hiperion" name="CWNA 2e" url="https://sdk3.firecast.app/Plugins/Sheets/Crystal_World_New_Adventure/output/Crystal_World_New_Adventure.rpk?raw=true" fileName="Crystal_World_New_Adventure.rpk" repositoryPath="Sheets/Crystal_World_New_Adventure/" author="Cezar" description="Ficha com cálculos automáticos para CWNA 2e." version="2.1.0" compilationDate="01072026231636" compilationDigest="3ebb5ff85fb60da4863590b646ed79bf6188f212">
+        <info lang="pt-BR" name="CWNA 2e" description="Ficha com cálculos automáticos para CWNA 2e." author="Cezar" site="."/>
+        <dataTypes>
+            <dataType id="Alem_do_veu_Hiperion" title="Crystal_world_2.0" formType="sheetTemplate">
+                <info title="Crystal_world_2.0"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.3d6" name="Ficha ReDungeon" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%203d6/output/Ficha%203d6.rpk?raw=true" fileName="Ficha 3d6.rpk" repositoryPath="Sheets/Ficha 3d6/" author="Ambesek" description="Ficha para o sistema 3d6" version="1.1.1" compilationDate="18122023153522" compilationDigest="2ba3115c6b842712138c6c960e50c68cb86f04df">
         <info lang="pt-BR" name="Ficha ReDungeon" description="Ficha para o sistema 3d6" author="Ambesek"/>
         <dataTypes>

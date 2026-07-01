@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateArmas" height="30">  
+<style>
+comboBox{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+edit{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+label{
+	fontFamily: Cambria;
+	fontColor: white;
+	fontStyle: bold;
+}
+</style>
+    <button align="right" text="𝐢" width='30' name="btnArma" margins="{right=2}">
+		<event name="onClick">
+			local pop = self:findControlByName("popArma");
+			if pop ~= nil then
+			pop:setNodeObject(self.sheet);
+			pop:showPopupEx("left", self.btnArma);
+			else
+			showMessage("Ops, bug... Nao encontrei o popup para exibir");
+			end;
+		</event>
+	</button>
+	<popup name="popArma" width="440" height="260" backOpacity="0" drawContainer="false" autoScopeNode="true">
+		<rectangle align="client" color="#0e0e0e" padding="{top=10, left=10, bottom=10, right=10}" xradius= "10" yradius="10" cornerType="bevel">
+			<label fontColor="white" align="top" field="nomeArma" margins="{bottom=5}" fontStyle="bold" fontFamily="Constantia" fontSize="26" height="30"/>
+			<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
+			<layout height="30" align="top">
+				<layout width="210" align="left">
+					<label text="Perícia:" width="50" align="left" margins="{right=2}"/>
+					<edit field="periArma" align="client" margins="{right=2}"/>
+					<dataLink defaultValue="—" field="periArma" />
+					
+				</layout>
+				<layout width="210" align="left">
+					<label text="Ataque:" width="50" align="left" margins="{right=2}"/>
+					<edit field="atkArma" align="client"/>
+					<dataLink defaultValue="—" field="atkArma" />
+				</layout>
+			</layout>
+			<layout height="30" align="top">
+				<layout width="210" align="left">
+					<label text="Dano:" width="40" align="left" margins="{right=2}" />
+					<edit field="danoArma" align="client" margins="{right=2}"/>
+					<dataLink defaultValue="—" field="danoArma" />
+				</layout>
+
+				<layout width="210" align="left">
+					<label text="Quantidade:" width="75" align="left" margins="{right=2}" />
+					<edit field="quantArma" align="client" type="number"/>
+					<dataLink defaultValue="0" field="quantArma" />
+				</layout>
+			</layout>
+			<textEditor field="descriArma" align="client" fontFamily="Cambria" transparent="true" margins="{top=10}" />
+			<dataLink field="descriArma" defaultValue="Descrição." />
+		</rectangle>
+	</popup>
+	
+    <button align="right" text="🞭" width='30' onClick="NDB.deleteNode(sheet);"/>
+	<edit field="nomeArma" align="client" margins="{right=2}" fontStyle="bold" fontColor="white"/>
+	<dataLink defaultValue="—" field="nomeArma" />
+</form>

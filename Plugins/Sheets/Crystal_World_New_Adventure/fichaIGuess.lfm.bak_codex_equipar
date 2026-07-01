@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" dataType="Alem_do_veu_Hiperion" title="Crystal_world_2.0" name="frmOurFichaCrystalWorld">
+
+<!-- ================= CALCULOS ================= -->
+
+<dataLink fields="{'ForV','DesV','ConV','IntV','SabV','CarV',
+'ForA','DesA','ConA','IntA','SabA','CarA',
+'ForB','DesB','ConB','IntB','SabB','CarB',
+'ForM','DesM','ConM','IntM','SabM','CarM',
+
+'NvAcertoDistancia','BAcertoDistancia','ModAcertoDistancia',
+'NvAcertoCurtoAlcance','BAcertoCurtoAlcance','ModAcertoCurtoAlcance',
+
+'NvSobrevivencia','BSobrevivencia','ModSobrevivencia',
+'NvSegurarFolego','BSegurarFolego','ModSegurarFolego',
+'NvResistenciaMental','BResistenciaMental','ModResistenciaMental',
+'NvPrepararEstrategia','BPrepararEstrategia','ModPrepararEstrategia',
+
+'NvAcrobacias','BAcrobacias','ModAcrobacias',
+'NvEmpurrarObstaculo','BEmpurrarObstaculo','ModEmpurrarObstaculo',
+'NvBracoFerro','BBracoFerro','ModBracoFerro',
+
+'NvDanoCurtoAlcance','BDanoCurtoAlcance','ModDanoCurtoAlcance',
+'NvDanoLongoAlcance','BDanoLongoAlcance','ModDanoLongoAlcance',
+'NvArremessarObjetos','BArremessarObjetos','ModArremessarObjetos',
+'NvDesarmarArmadilha','BDesarmarArmadilha','ModDesarmarArmadilha',
+'NvMontaria','BMontaria','ModMontaria',
+
+'NvCorrer','BCorrer','ModCorrer',
+'NvEsquivar','BEsquivar','ModEsquivar',
+'NvFurtividade','BFurtividade','ModFurtividade',
+'NvIdentificarCriatura','BIdentificarCriatura','ModIdentificarCriatura',
+'NvDefender','BDefender','ModDefender',
+'NvDecifrarCodigo','BDecifrarCodigo','ModDecifrarCodigo',
+'NvRoubo','BRoubo','ModRoubo',
+
+'NvSuporteFrioCalor','BSuporteFrioCalor','ModSuporteFrioCalor',
+'NvQuebrarObjetos','BQuebrarObjetos','ModQuebrarObjetos',
+'NvLerManuscrito','BLerManuscrito','ModLerManuscrito',
+'NvHistoria','BHistoria','ModHistoria',
+'NvInvestigacao','BInvestigacao','ModInvestigacao',
+'NvPerceberMentira','BPerceberMentira','ModPerceberMentira',
+'NvPercepcao','BPercepcao','ModPercepcao',
+'NvDetectarMagia','BDetectarMagia','ModDetectarMagia',
+
+'NvResistenciaCansaco','BResistenciaCansaco','ModResistenciaCansaco',
+'NvSentirPerigo','BSentirPerigo','ModSentirPerigo',
+'NvLevantarPeso','BLevantarPeso','ModLevantarPeso',
+
+'NvAcertoMagico','BAcertoMagico','ModAcertoMagico',
+'NvDanoMagico','BDanoMagico','ModDanoMagico',
+'NvMedicina','BMedicina','ModMedicina',
+'NvNatureza','BNatureza','ModNatureza',
+'NvReligiao','BReligiao','ModReligiao',
+
+'NvDiscurso','BDiscurso','ModDiscurso',
+'NvSeducao','BSeducao','ModSeducao',
+'NvIntimidar','BIntimidar','ModIntimidar',
+'NvAtuar','BAtuar','ModAtuar',
+'NvPersuadir','BPersuadir','ModPersuadir',
+'NvMentir','BMentir','ModMentir',
+
+'NvProfissao','BProfissao','ModProfissao',
+'NvResistirVeneno','BResistirVeneno','ModResistirVeneno',
+'NvEscalar','BEscalar','ModEscalar',
+'NvIniciativa','BIniciativa','ModIniciativa',
+
+'PpPersonagem','HpPersonagem','EstaminaPersonagem','Rank',
+'HpRank','PpRank','EstaminaRank','Rd','HpCaixa',
+'Exaustao','DanoArma','Proficiencia','Inventario', 'ImagemArma','ImagemCapacete',
+'ImagemPeitoral','ImagemEscudo','ImagemBota','ImagemCalca',
+'HpCapacete','PpCapacete','CaCapacete','RdCapacete','DanoCapacete','CuraCapacete',}">
+
+
+
+<script>
+        <![CDATA[
+        function onInit()
+            self.sheet.ImagemArma = "/Frames/Arma.png"
+            self.sheet.ImagemCapacete = "/Frames/Capacete.png"
+            self.sheet.ImagemPeitoral = "/Frames/Peitoral.png"
+            self.sheet.ImagemEscudo = "/Frames/Escudo.png"
+            self.sheet.ImagemBota = "/Frames/Bota.png"
+            self.sheet.ImagemCalca = "/Frames/Calca.png"
+        end
+        ]]>
+        </script>
+
+
+
+<event name="onChange"><![CDATA[
+-- SEUS CÁLCULOS (mantidos)
+]]></event>
+
+</dataLink>
+
+
+<script><![CDATA[
+
+]]></script>
+
+
+<layout align="client">
+
+    <scrollBox align="client">
+
+        <layout width="905" height="1195">
+            
+            <tabControl left="5" top="5" width="899" height="1186">
+
+                <tab title="               PERFIL              .">
+
+                    <image width="895" height="1158"
+                    url="https://blob.firecast.com.br/blobs/CRIICLGL_4452526/fundo_perfil.png"/>
+
+                    <image top="35" left="599" field="imagemPJ" style="autofit" editable="true" width="260" height="450"/>
+                    <dataLink field="imagemPJ" defaultValue="/Frames/avatar.jpg"/>
+
+                    <label field="CaPersonagem" left="400" top="129" width="30" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+                    <dataLink field="CaPersonagem" defaultValue="0"/>
+
+                    <label field="RdPersonagem" left="439" top="129" width="30" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+                    <dataLink field="RdPersonagem" defaultValue="0"/>
+
+                    <label field="PpPersonagem" left="420" top="105" width="30" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+                    <dataLink field="PpPersonagem" defaultValue="0"/>
+
+                    <label field="HpPersonagem" left="420" top="79" width="30" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+                    <dataLink field="HpPersonagem" defaultValue="0"/>
+
+                    <label field="NivelPersonagem" left="420" top="53" width="30" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+                    <dataLink field="NivelPersonagem" defaultValue="0"/>
+
+                </tab>
+
+                <tab title="         INVENTÁRIO        .">
+
+    <layout align="client">
+
+        <!-- FUNDO -->
+        <image align="client"
+               style="stretch"
+               url="https://blob.firecast.com.br/blobs/PBQMWISL_4453328/inventario.png"/>
+
+
+
+
+<dataLink field="ImagemCapacete" defaultValue="/Frames/Capacete.png"/>
+<rectangle left="58" top="103" width="84" height="88" color="#40404000">
+
+    <image
+        field="ImagemCapacete"
+        left="0" top="0"
+        width="84" height="88"
+        style="stretch"/>
+
+</rectangle>
+
+
+<dataLink field="ImagemPeitoral" defaultValue="/Frames/Peitoral.png"/>
+<rectangle left="58" top="256" width="84" height="88" color="#40404000">
+
+    <image
+        field="ImagemPeitoral"
+        left="0" top="0"
+        width="84" height="88"
+        style="stretch"/>
+
+</rectangle>
+
+<dataLink field="ImagemCalca" defaultValue="/Frames/Calca.png"/>
+<rectangle left="58" top="407" width="84" height="88" color="#40404000">
+
+    <image
+        field="ImagemCalca"
+        left="0" top="0"
+        width="84" height="88"
+        style="stretch"/>
+
+</rectangle>
+
+
+<dataLink field="ImagemArma" defaultValue="/Frames/Arma.png"/>
+<rectangle left="389" top="103" width="84" height="88" color="#40404000">
+
+    <image
+        field="ImagemArma"
+        left="0" top="0"
+        width="84" height="88"
+        style="stretch"/>
+
+</rectangle>
+
+<dataLink field="ImagemEscudo" defaultValue="/Frames/Escudo.png"/>
+<rectangle left="389" top="256" width="84" height="88" color="#40404000">
+
+    <image
+        field="ImagemEscudo"
+        left="0" top="0"
+        width="84" height="88"
+        style="stretch"/>
+
+</rectangle>
+
+<dataLink field="ImagemBota" defaultValue="/Frames/Bota.png"/>
+<rectangle left="389" top="407" width="84" height="88" color="#40404000">
+
+    <image
+        field="ImagemBota"
+        left="0" top="0"
+        width="84" height="88"
+        style="stretch"/>
+
+</rectangle>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- CONTEÚDO -->
+        <rectangle align="client"
+                   color="#00000000">
+
+            <!-- BARRA SUPERIOR -->
+            <rectangle left="20"
+                       top="566"
+                       width="855"
+                       height="30"
+                       color="#00000000">
+
+                <button left="130"
+                        top="4"
+                        width="30"
+                        text="🞦"
+                        onClick="self.rclMagias2:append();"/>
+
+                                       
+                         
+
+                <label left="20"
+                       top="6"
+                       text="ADICIONAR ITEM"
+                       fontStyle="bold"
+                       fontFamily="Constantia"/>
+
+            </rectangle>
+
+            <!-- LISTA -->
+            <recordList align="client" layout="horizontalTiles" name="rclMagias2" field="magias2" templateForm="templateMagias2" 
+								onSelect="self.rclMagias2:sort();" onItemAdded="self.rclMagias2:sort();" onItemRemoved="self.rclMagias2:sort();" margins="{left = 25, right = 15, top = 602, bottom = 15}">
+									<event name="onCompare">
+									<![CDATA[               
+										if(nodeA.elemMagia == nodeB.elemMagia) then
+										
+											if (nodeA.lvlMagia or 0) > (nodeB.lvlMagia or 0) then
+													return 1;
+											elseif (nodeA.lvlMagia or 0) < (nodeB.lvlMagia or 0) then
+													return -1;
+											else   
+													return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+											end;
+										
+										elseif(nodeA.elemMagia == "Water" and 
+										(nodeB.elemMagia == "Air" or nodeB.elemMagia == "Fire" or nodeB.elemMagia == "Earth" or nodeB.elemMagia == "Void" or nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Air" and 
+										(nodeB.elemMagia == "Fire" or nodeB.elemMagia == "Earth" or nodeB.elemMagia == "Void" or nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Fire" and 
+										(nodeB.elemMagia == "Earth" or nodeB.elemMagia == "Void" or nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Earth" and 
+										(nodeB.elemMagia == "Void" or nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Void" and 
+										(nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Universal" and 
+										(nodeB.elemMagia == "Water" or nodeB.elemMagia == "Air" or nodeB.elemMagia == "Fire" or nodeB.elemMagia == "Earth" or nodeB.elemMagia == "Void")) then
+											return 1;
+										elseif(nodeA.elemMagia == "Void" and 
+										(nodeB.elemMagia == "Water" or nodeB.elemMagia == "Air" or nodeB.elemMagia == "Fire" or nodeB.elemMagia == "Earth")) then
+											return 1;
+										elseif(nodeA.elemMagia == "Earth" and 
+										(nodeB.elemMagia == "Water" or nodeB.elemMagia == "Air" or nodeB.elemMagia == "Fire")) then
+											return 1;
+										elseif(nodeA.elemMagia == "Fire" and 
+										(nodeB.elemMagia == "Water" or nodeB.elemMagia == "Air")) then
+											return 1;
+										elseif(nodeA.elemMagia == "Air" and 
+										(nodeB.elemMagia == "Water")) then
+											return 1;
+										end;
+									]]>
+									</event>
+								</recordList>
+
+        </rectangle>
+
+    </layout>
+
+</tab>
+
+                <tab title="              SKILLS              .">
+                    <image width="895" height="1158"
+                    url="https://blob.firecast.com.br/blobs/ORQKTCOW_4451595/rings.png"/>
+                </tab>
+
+                <tab title="            DIÁRIO            .">
+                    <image width="895" height="1158"
+                    url="https://blob.firecast.com.br/blobs/DJBDCQCU_4450801/fundo_perfil.png"/>
+                </tab>
+
+                <tab title="          ANOTAÇÕES          .">
+                    <image width="895" height="1158"
+                    url="https://blob.firecast.com.br/blobs/DJBDCQCU_4450801/fundo_perfil.png"/>
+                </tab>
+
+                <tab title="         PROFISSÕES         .">
+                    <image width="895" height="1158"
+                    url="https://blob.firecast.com.br/blobs/DJBDCQCU_4450801/fundo_perfil.png"/>
+                </tab>
+
+            </tabControl>
+
+        </layout>
+
+    </scrollBox>
+
+</layout>
+
+<layout align="client" frameStyle="/Frames/frameFundo.xml"/>
+
+</form>

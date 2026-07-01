@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateMagias2" height="78" width="78"
+      margins="{top=3, bottom=3, right=3, left=3}">
+
+<style>
+comboBox{
+    fontFamily: Cambria;
+    transparent: true;
+    fontColor: #c74d14;
+}
+edit{
+    fontFamily: Cambria;
+    transparent: true;
+    fontColor: white;
+}
+label, button{
+    fontFamily: Cambria;
+    fontColor: white;
+    fontStyle: bold;
+}
+</style>
+
+<rectangle align="client" color="#202020"
+           xradius="5" yradius="5" cornerType="round">
+
+    <!-- ITEM -->
+    <image left="0" top="0" width="78" height="78"
+           field="imagemestilo2"
+           style="autoFit"
+           animate="true"/>
+
+    <dataLink field="imagemestilo2"
+              defaultValue="https://blob.firecast.com.br/blobs/HHEWWGHO_4452746/itens.png"/>
+
+    <!-- BOTÃO INVISÍVEL EDITAR -->
+    <button left="0" top="0" width="78" height="78"
+            opacity="0">
+
+        <event name="onClick">
+            local pop = self:findControlByName("popEditor");
+            if pop ~= nil then
+                pop:setNodeObject(self.sheet);
+                pop:showPopupEx("center");
+            end;
+        </event>
+    </button>
+
+    <!-- EXCLUIR -->
+    <button text="x"
+            width="17" height="17"
+            left="54" top="2"
+            onClick="NDB.deleteNode(sheet)"/>
+
+    <!-- QUANTIDADE -->
+    <layout height="18" top="2" left="4" width="80">
+
+        <label field="quantidade"
+               width="25"
+               horzTextAlign="center"
+               left="-5"
+               fontSize="11"
+               fontColor="#FFFF00"/>
+
+        <dataLink field="quantidade" defaultValue="0"/>
+
+    </layout>
+
+    <!-- POPUP EDITOR 400x600 -->
+    <popup name="popEditor"
+           width="400"
+           height="600"
+           backOpacity="0"
+           drawContainer="false">
+
+        <!-- FUNDO (IMAGEM FIXA 400x600) -->
+        <image left="0" top="0"
+               width="400" height="600"
+               src="https://blob.firecast.com.br/blobs/FJSUDTWB_4453149/JANELINHA.png"/>
+
+        <!-- CONTEÚDO POR CIMA (SEM ALTERAR LÓGICA) -->
+        <rectangle align="client" color="#00000000">
+
+			<!-- NOME -->
+			<edit field="nomeItem"
+				left="32" top="62"
+				width="330" height="33"
+				horzTextAlign="center"
+				vertTextAlign="center"
+				fontColor="#c74d14"/>
+
+			<!-- TIPO -->
+			<edit field="tipoItem"
+				left="30" top="128"
+				width="335" height="30"
+				horzTextAlign="center"
+				vertTextAlign="center"
+				fontColor="#c74d14"/>
+
+			<!-- IMAGEM EDITÁVEL -->
+			<image field="imagemestilo2"
+				left="82" top="186"
+				width="226" height="226"
+				style="autoFit"
+				editable="true"/>
+
+			<!-- ATRIBUTOS -->
+
+			<edit field="hp"
+				left="36" top="456"
+				width="80"
+				horzTextAlign="center"
+				vertTextAlign="center"
+				fontColor="#c74d14"/>
+
+			<edit field="pp"
+				left="153" top="456"
+				width="80"
+				horzTextAlign="center"
+				vertTextAlign="center"
+				fontColor="#c74d14"/>
+
+			<edit field="ca"
+				left="273" top="456"
+				width="80"
+				horzTextAlign="center"
+				vertTextAlign="center"
+				fontColor="#c74d14"/>
+
+			<edit field="rd"
+				left="35" top="522"
+				width="68"
+				horzTextAlign="center"
+				vertTextAlign="center"
+				fontColor="#c74d14"/>
+
+			<edit field="dano"
+				left="125" top="522"
+				width="143"
+				horzTextAlign="center"
+				vertTextAlign="center"
+				fontColor="#c74d14"/>
+
+			<edit field="cura"
+				left="289" top="522"
+				width="68"
+				horzTextAlign="center"
+				vertTextAlign="center"
+				fontColor="#c74d14"/>
+
+		</rectangle>
+
+    </popup>
+
+</rectangle>
+</form>
