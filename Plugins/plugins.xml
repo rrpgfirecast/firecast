@@ -413,6 +413,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="AnimonStoryCharacterSheet" name="Ficha Animon Story" url="https://sdk3.firecast.app/Plugins/Sheets/AnimonStory/output/AnimonStory.rpk?raw=true" fileName="AnimonStory.rpk" repositoryPath="Sheets/AnimonStory/" author="Evandr0" description="Ficha para o sistema Animon Story" version="1.0" compilationDate="26052026023834" compilationDigest="ef0b0324ae9f6aa46889d0017f792998fa62a2dd">
+        <info lang="pt-BR" name="Ficha Animon Story" description="Ficha para o sistema Animon Story" author="Evandr0" site="https://github.com/0rdnave"/>
+        <dataTypes>
+            <dataType id="AnimonStoryCharacterSheet" title="Ficha Animon Story" formType="sheetTemplate">
+                <info title="Ficha Animon Story"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="app.firecast.plugins.coyoteandcrow" name="Coyote &amp; Crow" url="https://sdk3.firecast.app/Plugins/Sheets/Coyote%20and%20Crow/output/Coyote%20and%20Crow.rpk?raw=true" fileName="Coyote and Crow.rpk" repositoryPath="Sheets/Coyote and Crow/" author="AlyssonRPG" description="Modelo de ficha para Coyote &amp; Crow" version="1.0" compilationDate="03072024125356" compilationDigest="bb4a84be03e2b817722595e2b42d50d2c088ad54">
         <info lang="pt-BR" name="Coyote &amp; Crow" description="Modelo de ficha para Coyote &amp; Crow" author="AlyssonRPG" site="https://firecast.app"/>
         <info lang="en" description="Character sheet for Coyote &amp; Crow"/>
@@ -454,7 +462,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Beloved.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek, Beloved, Carlins, Py." description="Ficha para o sistema Daggerheart" version="1.0" compilationDate="17052026212204" compilationDigest="d8dc7dd3911be0167dec441de0c769d9f1a5f58f">
+    <element id="Beloved.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek, Beloved, Carlins, Py." description="Ficha para o sistema Daggerheart" version="2.0" compilationDate="25052026180314" compilationDigest="63276bc0f26612794872ac1aa3c83b313be70d16">
         <info lang="pt-BR" name="Ficha Daggerheart" description="Ficha para o sistema Daggerheart" author="Ambesek, Beloved, Carlins, Py." site="NA"/>
         <dataTypes>
             <dataType id="Beloved.daggerheart" title="Ficha Daggerheart" formType="sheetTemplate">
