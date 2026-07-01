@@ -55,8 +55,9 @@
 
 		<rectangle g="col" g-width="12" g-width-lg="4" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="250" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
 			<label g="col" g-width="12" text="QUICK ITEMS" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="15" fontStyle="bold" fontColor="#CDAA57"/>
+			<label g="col" g-width="2" text="QTY." horzTextAlign="center" vertTextAlign="center" height="22" fontSize="10" fontColor="#C8B78E"/>
 			<label g="col" g-width="6" text="ITEM" horzTextAlign="center" vertTextAlign="center" height="22" fontSize="10" fontColor="#C8B78E"/>
-			<label g="col" g-width="5" text="ROLL" horzTextAlign="center" vertTextAlign="center" height="22" fontSize="10" fontColor="#C8B78E"/>
+			<label g="col" g-width="3" text="ROLL" horzTextAlign="center" vertTextAlign="center" height="22" fontSize="10" fontColor="#C8B78E"/>
 			<label g="col" g-width="1"/>
 			<InventorySlot field="slot1"/>
 			<InventorySlot field="slot2"/>
