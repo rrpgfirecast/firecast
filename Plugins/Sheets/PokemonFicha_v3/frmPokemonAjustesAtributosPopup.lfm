@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonAjustesAtributosPopup"
+           width="760"
+           height="600"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.adjustPopupRoot {
+            color: #070A10;
+            strokeColor: #00BFFF;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.adjustPopupHeader {
+            color: #08101A;
+            strokeColor: #6EE6FF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.adjustPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.adjustPreset {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.adjustChip {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.adjustPrimary {
+            color: #00BFFF;
+            strokeColor: #00BFFF;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.adjustDarkButton {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.adjustTitle {
+            fontColor: #00BFFF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 15;
+            vertTextAlign: center;
+        }
+
+        label.adjustCounter {
+            fontColor: #7CFFB2;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 11;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.adjustSectionTitle {
+            fontColor: #D8E7FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 10;
+            vertTextAlign: center;
+        }
+
+        label.adjustHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.adjustSmallLabel {
+            fontColor: #9EB7D0;
+            fontSize: 9;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        label.adjustFieldLabel {
+            fontColor: #9EB7D0;
+            fontSize: 8;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        label.adjustChipText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 8;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.adjustPrimaryText {
+            fontColor: #061018;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.adjustButtonText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        edit.adjustEdit {
+            transparent: true;
+            fontColor: #FFD700;
+            fontSize: 11;
+        }
+
+        textEditor.adjustText {
+            fontColor: #EAF2FF;
+            fontSize: 10;
+        }
+
+        label.adjustPreview {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 10;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local Adjustments = require("PokemonAttributeAdjustments.lua");
+        local dialogs = require("dialogs.lua");
+
+        local targetRects = {
+            vida="rectAdjustTargetVida",
+            poder="rectAdjustTargetPoder",
+            forca="rectAdjustTargetForca",
+            resistencia="rectAdjustTargetResistencia",
+            defesa="rectAdjustTargetDefesa",
+            velocidade="rectAdjustTargetVelocidade",
+            precisao="rectAdjustTargetPrecisao",
+            protecao="rectAdjustTargetProtecao",
+            efeito="rectAdjustTargetEfeito",
+            tenacidade="rectAdjustTargetTenacidade",
+            astucia="rectAdjustTargetAstucia",
+            fisico="rectAdjustTargetFisico",
+            mental="rectAdjustTargetMental",
+            natural="rectAdjustTargetNatural",
+            social="rectAdjustTargetSocial",
+            tecnico="rectAdjustTargetTecnico"
+        };
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local function rootSheet()
+            return Adjustments.rootSheet(sheet);
+        end;
+
+        local function joinTargets(targets)
+            return table.concat(targets or {}, "|");
+        end;
+
+        function self:refreshEditor()
+            local root = rootSheet();
+            if root == nil then return; end;
+
+            local activeCount = Adjustments.activeCount(root);
+            root.ajustePainelContador = "Â± " .. tostring(activeCount) .. " ATIVO(S)";
+            root.ajusteEditorPreview = "Atual: " .. Adjustments.editorPreview(root);
+            root.ajusteEditorAlvosTexto = "Alvos: " .. Adjustments.targetText(root.ajusteEditorAlvos);
+
+            if trim(root.ajusteEditorEditingId) ~= nil and trim(root.ajusteEditorEditingId) ~= "" then
+                root.ajusteEditorMode = "EDITANDO";
+                root.ajusteEditorActionText = "SALVAR";
+            else
+                root.ajusteEditorMode = "NOVO";
+                root.ajusteEditorActionText = "APLICAR";
+            end;
+
+            local isPenalty = Adjustments.isPenalty(root.ajusteEditorValor);
+
+            for key, rectName in pairs(targetRects) do
+                local rect = self[rectName];
+
+                if rect ~= nil then
+                    if Adjustments.containsTarget(root.ajusteEditorAlvos, key) then
+                        if isPenalty then
+                            rect.color = "#241413";
+                            rect.strokeColor = "#FF7A4F";
+                        else
+                            rect.color = "#132319";
+                            rect.strokeColor = "#7CFFB2";
+                        end;
+
+                        rect.strokeSize = 2;
+                    else
+                        rect.color = "#111824";
+                        rect.strokeColor = "#2A3343";
+                        rect.strokeSize = 1;
+                    end;
+                end;
+            end;
+        end;
+
+        function self:toggleTarget(key)
+            local root = rootSheet();
+            if root == nil then return; end;
+
+            local current = Adjustments.targets(root.ajusteEditorAlvos);
+            local nextTargets = {};
+            local found = false;
+
+            for _, target in ipairs(current) do
+                if target == key then
+                    found = true;
+                else
+                    table.insert(nextTargets, target);
+                end;
+            end;
+
+            if not found then
+                table.insert(nextTargets, key);
+            end;
+
+            root.ajusteEditorAlvos = joinTargets(nextTargets);
+            self:refreshEditor();
+        end;
+
+        function self:clearEditor()
+            local root = rootSheet();
+            if root == nil then return; end;
+
+            Adjustments.clearEditingNode(root);
+            root.ajusteEditorNome = "";
+            root.ajusteEditorValor = "";
+            root.ajusteEditorAlvos = "";
+            root.ajusteEditorObservacao = "";
+            root.ajusteEditorEditingNode = "";
+            root.ajusteEditorEditingId = "";
+            self:refreshEditor();
+        end;
+
+        function self:fillPreset(name, value, targets, note)
+            local root = rootSheet();
+            if root == nil then return; end;
+
+            Adjustments.clearEditingNode(root);
+            root.ajusteEditorNome = name or "";
+            root.ajusteEditorValor = value or "";
+            root.ajusteEditorAlvos = targets or "";
+            root.ajusteEditorObservacao = note or "";
+            root.ajusteEditorEditingNode = "";
+            root.ajusteEditorEditingId = "";
+            self:refreshEditor();
+        end;
+        function self:applyEditor()
+            local root = rootSheet();
+            if root == nil then return; end;
+
+            local ok, err = Adjustments.validateEditor(root);
+            if not ok then
+                dialogs.showErrorMessage(err or "Ajuste invÃ¡lido.");
+                return;
+            end;
+
+            local ajusteId = trim(root.ajusteEditorEditingId);
+            local node = Adjustments.editingNode(root, ajusteId);
+
+            if node == nil then
+                if self.rclAjustesAtributos == nil then return; end;
+                node = self.rclAjustesAtributos:append();
+            end;
+
+            if node == nil then return; end;
+
+            if ajusteId == nil or ajusteId == "" then
+                ajusteId = Adjustments.ensureId(node);
+            else
+                node.ajusteId = ajusteId;
+            end;
+
+            node.ajusteNome = trim(root.ajusteEditorNome) or "Ajuste";
+            node.ajusteValor = Adjustments.normalizeValue(root.ajusteEditorValor) or root.ajusteEditorValor;
+            node.ajusteAlvos = joinTargets(Adjustments.targets(root.ajusteEditorAlvos));
+            node.ajusteObservacao = root.ajusteEditorObservacao or "";
+            node.ajusteAtivo = true;
+
+            Adjustments.upsert(root, {
+                id=ajusteId,
+                name=node.ajusteNome,
+                value=node.ajusteValor,
+                targets=node.ajusteAlvos,
+                active=true
+            });
+
+            self:clearEditor();
+            self:refreshEditor();
+        end;
+    ]]></script>
+
+    <event name="onNodeReady"><![CDATA[
+        self:refreshEditor();
+    ]]></event>
+
+    <dataLink fields="{'ajusteEditorNome','ajusteEditorValor','ajusteEditorAlvos','ajusteEditorObservacao','ajusteEditorEditingNode','ajusteEditorEditingId','ajustesRefreshTick'}">
+        <event name="onChange">
+            self:refreshEditor();
+        </event>
+    </dataLink>
+
+    <rectangle align="client" class="adjustPopupRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="58" class="adjustPopupHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <label align="top" height="26" text="± MODIFICADORES // MATRIZ" class="adjustTitle" />
+            <layout align="client">
+                <label align="left" width="390" text="Bônus, penalidades e dados temporários aplicados nas rolagens." class="adjustHint" />
+                <label align="client" field="ajustePainelContador" text="± 0 ATIVO(S)" class="adjustCounter" horzTextAlign="trailing" />
+            </layout>
+        </rectangle>
+
+        <rectangle align="top" height="56" class="adjustPanel" padding="{left=8, top=7, right=8, bottom=7}" margins="{bottom=8}">
+            <label align="left" width="56" text="Presets" class="adjustSmallLabel" fontColor="#00BFFF" />
+            <rectangle align="left" width="76" class="adjustPreset" hitTest="true" margins="{right=5}">
+                <event name="onClick"><![CDATA[self:fillPreset("Ferido", "-2", "defesa", "Penalidade temporária de condição.");]]></event>
+                <label align="client" text="Ferido -2" class="adjustChipText" />
+            </rectangle>
+            <rectangle align="left" width="98" class="adjustPreset" hitTest="true" margins="{right=5}">
+                <event name="onClick"><![CDATA[self:fillPreset("Atordoado", "-1d4", "precisao|protecao", "Reação e mira prejudicadas.");]]></event>
+                <label align="client" text="Atordoado -1d4" class="adjustChipText" />
+            </rectangle>
+            <rectangle align="left" width="98" class="adjustPreset" hitTest="true" margins="{right=5}">
+                <event name="onClick"><![CDATA[self:fillPreset("Inspirado", "+1d4", "social", "Impulso narrativo/social.");]]></event>
+                <label align="client" text="Inspirado +1d4" class="adjustChipText" />
+            </rectangle>
+            <rectangle align="left" width="78" class="adjustPreset" hitTest="true" margins="{right=5}">
+                <event name="onClick"><![CDATA[self:fillPreset("Focado", "+2", "precisao", "Concentração no golpe.");]]></event>
+                <label align="client" text="Focado +2" class="adjustChipText" />
+            </rectangle>
+            <rectangle align="left" width="82" class="adjustPreset" hitTest="true" margins="{right=5}">
+                <event name="onClick"><![CDATA[self:fillPreset("Exposto", "-2", "protecao", "Guarda aberta.");]]></event>
+                <label align="client" text="Exposto -2" class="adjustChipText" />
+            </rectangle>
+            <rectangle align="left" width="84" class="adjustPreset" hitTest="true" margins="{right=5}">
+                <event name="onClick"><![CDATA[self:fillPreset("Cansado", "-1", "velocidade", "Movimento prejudicado.");]]></event>
+                <label align="client" text="Cansado -1" class="adjustChipText" />
+            </rectangle>
+            <layout align="client" />
+            <rectangle align="right" width="74" class="adjustDarkButton" hitTest="true">
+                <event name="onClick">self:clearEditor();</event>
+                <label align="client" text="Limpar" class="adjustButtonText" />
+            </rectangle>
+        </rectangle>
+
+        <layout align="client">
+            <rectangle align="left" width="322" class="adjustPanel" padding="{left=8, top=8, right=8, bottom=8}" margins="{right=8}">
+                <layout align="top" height="24" margins="{bottom=5}">
+                    <label align="left" width="145" text="EFEITOS ATIVOS" class="adjustSectionTitle" />
+                    <label align="client" field="ajustePainelContador" text="± 0 ATIVO(S)" class="adjustHint" horzTextAlign="trailing" />
+                </layout>
+                <scrollBox align="client">
+                    <recordList name="rclAjustesAtributos" field="ajustesAtributos" templateForm="frmPokemonAjusteAtributoItem" align="top" layout="vertical" autoHeight="true" selectable="false" />
+                </scrollBox>
+            </rectangle>
+
+            <rectangle align="client" class="adjustPanel" padding="{left=10, top=8, right=10, bottom=8}">
+                <layout align="top" height="24" margins="{bottom=6}">
+                    <label align="left" width="92" field="ajusteEditorMode" text="NOVO" class="adjustSectionTitle" fontColor="#00BFFF" />
+                    <label align="client" field="ajusteEditorAlvosTexto" text="Alvos: sem alvo" class="adjustHint" horzTextAlign="trailing" />
+                </layout>
+
+                <rectangle align="top" height="95" class="adjustPanel" padding="{left=8, top=7, right=8, bottom=7}" margins="{bottom=8}">
+                    <layout align="top" height="30" margins="{bottom=7}">
+                        <label align="left" width="72" text="Nome" class="adjustFieldLabel" fontColor="#00BFFF" />
+                        <layout align="client">
+                            <edit align="client" field="ajusteEditorNome" class="adjustEdit" />
+                            <rectangle align="bottom" height="1" color="#00BFFF" />
+                        </layout>
+                    </layout>
+
+                    <layout align="client">
+                        <label align="left" width="72" text="Valor" class="adjustFieldLabel" fontColor="#7CFFB2" />
+                        <layout align="left" width="94" margins="{right=10}">
+                            <edit align="client" field="ajusteEditorValor" class="adjustEdit" />
+                            <rectangle align="bottom" height="1" color="#7CFFB2" />
+                        </layout>
+                        <label align="left" width="76" text="Observação" class="adjustFieldLabel" />
+                        <layout align="client">
+                            <edit align="client" field="ajusteEditorObservacao" class="adjustEdit" />
+                            <rectangle align="bottom" height="1" color="#2A3343" />
+                        </layout>
+                    </layout>
+                </rectangle>
+
+                <label align="top" height="16" text="NÚCLEO" class="adjustSmallLabel" fontColor="#00BFFF" />
+                <layout align="top" height="26" margins="{bottom=4}">
+                    <rectangle name="rectAdjustTargetVida" align="left" width="58" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("vida");</event><label align="client" text="Vida" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetPoder" align="left" width="62" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("poder");</event><label align="client" text="Poder" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetForca" align="left" width="62" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("forca");</event><label align="client" text="Força" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetResistencia" align="left" width="78" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("resistencia");</event><label align="client" text="Resist." class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetDefesa" align="left" width="64" class="adjustChip" hitTest="true"><event name="onClick">self:toggleTarget("defesa");</event><label align="client" text="Defesa" class="adjustChipText" hitTest="false" /></rectangle>
+                </layout>
+                <layout align="top" height="26" margins="{bottom=7}">
+                    <rectangle name="rectAdjustTargetVelocidade" align="left" width="88" class="adjustChip" hitTest="true"><event name="onClick">self:toggleTarget("velocidade");</event><label align="client" text="Velocidade" class="adjustChipText" hitTest="false" /></rectangle>
+                </layout>
+
+                <label align="top" height="16" text="COMBATE" class="adjustSmallLabel" fontColor="#FFD700" />
+                <layout align="top" height="26" margins="{bottom=7}">
+                    <rectangle name="rectAdjustTargetPrecisao" align="left" width="78" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("precisao");</event><label align="client" text="Precisão" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetProtecao" align="left" width="78" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("protecao");</event><label align="client" text="Proteção" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetEfeito" align="left" width="62" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("efeito");</event><label align="client" text="Efeito" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetTenacidade" align="left" width="92" class="adjustChip" hitTest="true"><event name="onClick">self:toggleTarget("tenacidade");</event><label align="client" text="Tenacidade" class="adjustChipText" hitTest="false" /></rectangle>
+                </layout>
+
+                <label align="top" height="16" text="APTIDÕES" class="adjustSmallLabel" fontColor="#39FF14" />
+                <layout align="top" height="26" margins="{bottom=4}">
+                    <rectangle name="rectAdjustTargetAstucia" align="left" width="72" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("astucia");</event><label align="client" text="Astúcia" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetFisico" align="left" width="62" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("fisico");</event><label align="client" text="Físico" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetMental" align="left" width="66" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("mental");</event><label align="client" text="Mental" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetNatural" align="left" width="68" class="adjustChip" hitTest="true" margins="{right=4}"><event name="onClick">self:toggleTarget("natural");</event><label align="client" text="Natural" class="adjustChipText" hitTest="false" /></rectangle>
+                    <rectangle name="rectAdjustTargetSocial" align="left" width="62" class="adjustChip" hitTest="true"><event name="onClick">self:toggleTarget("social");</event><label align="client" text="Social" class="adjustChipText" hitTest="false" /></rectangle>
+                </layout>
+                <layout align="top" height="26" margins="{bottom=8}">
+                    <rectangle name="rectAdjustTargetTecnico" align="left" width="68" class="adjustChip" hitTest="true"><event name="onClick">self:toggleTarget("tecnico");</event><label align="client" text="Técnico" class="adjustChipText" hitTest="false" /></rectangle>
+                </layout>
+
+                <rectangle align="top" height="34" color="#090D15" strokeColor="#2A3343" strokeSize="1" xradius="4" yradius="4" padding="{left=8, right=8}" margins="{bottom=8}">
+                    <label align="client" field="ajusteEditorPreview" text="Atual: Ajuste -> sem alvo ?" class="adjustPreview" />
+                </rectangle>
+
+                <layout align="bottom" height="34">
+                    <rectangle align="left" width="118" class="adjustPrimary" hitTest="true" margins="{right=8}">
+                        <event name="onClick">self:applyEditor();</event>
+                        <label align="client" field="ajusteEditorActionText" text="APLICAR" class="adjustPrimaryText" />
+                    </rectangle>
+                    <rectangle align="left" width="84" class="adjustDarkButton" hitTest="true" margins="{right=8}">
+                        <event name="onClick">self:clearEditor();</event>
+                        <label align="client" text="LIMPAR" class="adjustButtonText" />
+                    </rectangle>
+                    <rectangle align="client" class="adjustDarkButton" hitTest="true">
+                        <event name="onClick">self:close();</event>
+                        <label align="client" text="FECHAR" class="adjustButtonText" />
+                    </rectangle>
+                </layout>
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

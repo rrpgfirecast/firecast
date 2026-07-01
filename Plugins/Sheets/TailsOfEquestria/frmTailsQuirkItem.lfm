@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTailsQuirkItem" height="108" theme="light">
+    <script>
+        require("ndb.lua");
+
+        local function toggleFriendshipMark()
+            if sheet == nil then return; end;
+            sheet.earnedFriendship = not (sheet.earnedFriendship == true);
+        end;
+
+        local function applyReduction()
+            if sheet == nil then return; end;
+            local quirksNode = NDB.getParent(sheet);
+            local root = NDB.getParent(quirksNode);
+            if root == nil then return; end;
+            root.pendingDieReduction = true;
+            root.pendingDieReductionSource = sheet.name or "Capricho";
+            showMessage("Redução de dado armada para a próxima rolagem.");
+        end;
+
+        local function deleteItem()
+            NDB.deleteNode(sheet);
+        end;
+    </script>
+
+    <rectangle align="client" margins="{left=2, right=2, top=3, bottom=3}" color="#FFF2D6" strokeColor="#B18CFF" strokeSize="1" cornerType="round" xradius="16" yradius="16"/>
+    <rectangle left="16" top="2" width="84" height="17" color="#E9D9F8" strokeColor="#E9D9F8" opacity="0.74" rotationAngle="-2"/>
+    <label left="16" top="18" width="250" height="12" text="CAPRICHO QUE MOVE A HISTORIA" fontColor="#8067D9" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="14" top="32" width="252" height="31" field="name" fontColor="#5B3A78" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="14" top="68" width="246" height="26" field="trigger" fontColor="#7954C8" fontSize="13"/>
+    <rectangle left="274" top="18" width="114" height="38" color="#D9B8B8" strokeColor="#F05F6A" cornerType="round" xradius="14" yradius="14"
+               cursor="handPoint" hint="Rebaixar um passo dos dados da próxima rolagem" onClick="applyReduction();"/>
+    <label left="274" top="28" width="114" height="18" text="↓ REDUZIR DADO" horzTextAlign="center" fontColor="#C73658" fontSize="13" fontStyle="bold" hitTest="false"/>
+    <rectangle left="274" top="62" width="114" height="32" color="#CEBBDD" strokeColor="#B395E8" cornerType="round" xradius="14" yradius="14"
+               cursor="handPoint" hint="Marcar quando este Capricho render Amizade"
+               onClick="toggleFriendshipMark();"/>
+    <label left="274" top="70" width="114" height="16" text="♥ GANHOU +1" horzTextAlign="center" fontColor="#C0447E" fontSize="13" fontStyle="bold" hitTest="false"/>
+    <rectangle left="400" top="18" width="54" height="76" color="#D8B7C0" strokeColor="#E98A9C" cornerType="round" xradius="14" yradius="14" cursor="handPoint" onClick="deleteItem();"/>
+    <label left="400" top="47" width="54" height="16" text="X" horzTextAlign="center" fontColor="#C73658" fontSize="13" fontStyle="bold" hitTest="false"/>
+    <dataLink field="name" defaultValue="Novo Capricho"/>
+    <dataLink field="trigger" defaultValue="Quando isso atrapalha a personagem..."/>
+</form>
+
+
+
+

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemonInventarioItem" height="84" theme="dark">
+    <style>
+        rectangle.itemCard {
+            color: #0B0E15;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+            cursor: handPoint;
+        }
+
+        rectangle.itemThumb {
+            color: #071019;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.itemChip {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+        }
+
+        rectangle.btnUse {
+            color: #7CFFB2;
+            strokeColor: #7CFFB2;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.btnMore {
+            color: #111824;
+            strokeColor: #3A4252;
+            strokeSize: 1;
+            xradius: 3;
+            yradius: 3;
+            cursor: handPoint;
+        }
+
+        label.itemIcon {
+            fontColor: #7CFFB2;
+            fontSize: 14;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.itemName {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 12;
+            vertTextAlign: center;
+        }
+
+        label.itemSubtitle {
+            fontColor: #BFD2E8;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.itemChipText {
+            fontColor: #D8E7FF;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.btnUseText {
+            fontColor: #091015;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.btnMoreText {
+            fontColor: #BFD2E8;
+            fontStyle: bold;
+            fontSize: 13;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonTextMode = require("PokemonTextMode.lua");
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local function parseNumber(value)
+            local text = trim(value) or "0";
+            text = string.gsub(text, ",", ".");
+            text = string.match(text, "[-]?%d+%.?%d*") or "0";
+            return tonumber(text) or 0;
+        end;
+
+        local function formatNumber(value)
+            if math.floor(value) == value then
+                return tostring(value);
+            end;
+
+            local text = string.format("%.2f", value);
+            text = string.gsub(text, "%.?0+$", "");
+            return text;
+        end;
+
+        local function normalize(value)
+            local normalized = string.lower(tostring(value or ""));
+
+            normalized = string.gsub(normalized, "á", "a");
+            normalized = string.gsub(normalized, "à", "a");
+            normalized = string.gsub(normalized, "â", "a");
+            normalized = string.gsub(normalized, "ã", "a");
+            normalized = string.gsub(normalized, "é", "e");
+            normalized = string.gsub(normalized, "ê", "e");
+            normalized = string.gsub(normalized, "í", "i");
+            normalized = string.gsub(normalized, "ó", "o");
+            normalized = string.gsub(normalized, "ô", "o");
+            normalized = string.gsub(normalized, "õ", "o");
+            normalized = string.gsub(normalized, "ú", "u");
+            normalized = string.gsub(normalized, "ç", "c");
+
+            return normalized;
+        end;
+
+        local function parentOf(node)
+            local ok, parent;
+
+            if ndb ~= nil and ndb.getParent ~= nil then
+                ok, parent = pcall(ndb.getParent, node);
+                if ok then return parent; end;
+            end;
+
+            if NDB ~= nil and NDB.getParent ~= nil then
+                ok, parent = pcall(NDB.getParent, node);
+                if ok then return parent; end;
+            end;
+
+            return nil;
+        end;
+
+        local function rootSheet()
+            local current = sheet;
+            local last = sheet;
+
+            for i = 1, 8 do
+                if current == nil then break; end;
+
+                if current.nomePokemon ~= nil or
+                   current.vidaBase ~= nil or
+                   current.typeSelectionOrder ~= nil then
+                    return current;
+                end;
+
+                last = current;
+                local parent = parentOf(current);
+                if parent == nil or parent == current then break; end;
+                current = parent;
+            end;
+
+            return last;
+        end;
+
+        local function getChildNodesSafe(node)
+            if node == nil or ndb == nil or ndb.getChildNodes == nil then
+                return {};
+            end;
+
+            local ok, children = pcall(ndb.getChildNodes, node);
+            if ok and children ~= nil then return children; end;
+            return {};
+        end;
+
+        local function getNodeNameSafe(node)
+            if node == nil or ndb == nil or ndb.getNodeName == nil then
+                return nil;
+            end;
+
+            local ok, name = pcall(ndb.getNodeName, node);
+            if ok then return name; end;
+            return nil;
+        end;
+
+        local function refreshRootInventorySummary()
+            local root = rootSheet();
+            if root == nil then return; end;
+
+            local itemCount = 0;
+            local totalWeight = 0;
+
+            for _, node in ipairs(getChildNodesSafe(root)) do
+                local nodeName = getNodeNameSafe(node);
+                local isInventoryItem = (nodeName == "inventarioItens") or
+                                        node.peso ~= nil or
+                                        node.pesoTotal ~= nil or
+                                        node.imagemItem ~= nil;
+
+                if isInventoryItem then
+                    itemCount = itemCount + 1;
+
+                    local total = parseNumber(node.pesoTotal);
+                    if total == 0 then
+                        total = parseNumber(node.quantidade) * parseNumber(node.peso);
+                    end;
+
+                    totalWeight = totalWeight + total;
+                end;
+            end;
+
+            root.inventarioResumo = "Itens: " .. tostring(itemCount) ..
+                                    "    Peso total: " .. formatNumber(totalWeight) ..
+                                    "    Botão direito: detalhes";
+        end;
+
+        local function categoryVisuals()
+            local category = normalize(sheet ~= nil and sheet.categoria or "");
+
+            if category == "consumivel" or category == "consumível" then
+                return "🧪", "#7CFFB2";
+            elseif category == "equipamento" then
+                return "🛡", "#00BFFF";
+            elseif category == "ferramenta" then
+                return "⚙", "#FFD700";
+            elseif category == "material" then
+                return "", "#9FB4C5";
+            elseif category == "item-chave" or category == "item chave" or category == "chave" then
+                return "🔑", "#FF9A3D";
+            elseif category == "comida" then
+                return "🍖", "#7CFFB2";
+            elseif category == "medicinal" then
+                return "✚", "#39FF14";
+            elseif category == "documento" then
+                return "📜", "#8FA7BD";
+            elseif category == "raro" or category == "especial" then
+                return "✦", "#8A5CFF";
+            end;
+
+            return "", "#7CFFB2";
+        end;
+
+        function self:ensureDefaults()
+            if sheet == nil then return; end;
+
+            sheet.nome = sheet.nome or "Novo item";
+            sheet.quantidade = sheet.quantidade or "1";
+            sheet.peso = sheet.peso or "0";
+            sheet.categoria = sheet.categoria or "Misc";
+            sheet.descricaoCurta = sheet.descricaoCurta or "Item sem descrição curta";
+            sheet.efeito = sheet.efeito or "";
+            sheet.descricao = sheet.descricao or "";
+            sheet.observacoes = sheet.observacoes or "";
+            self:refreshTotal();
+            self:refreshVisual();
+        end;
+
+        function self:refreshTotal()
+            if sheet == nil then return; end;
+
+            local quantidade = formatNumber(parseNumber(sheet.quantidade));
+            local peso = formatNumber(parseNumber(sheet.peso));
+            local total = formatNumber(parseNumber(sheet.quantidade) * parseNumber(sheet.peso));
+
+            sheet.pesoTotal = total;
+            sheet.qtdChip = "Qtd " .. quantidade;
+            sheet.pesoChip = "Peso " .. peso;
+            sheet.totalChip = "Total " .. total;
+            refreshRootInventorySummary();
+        end;
+
+        function self:refreshVisual()
+            if sheet == nil then return; end;
+
+            local icon, accent = categoryVisuals();
+            sheet.categoriaIcone = icon;
+
+            local category = trim(sheet.categoria) or "Misc";
+            local short = trim(sheet.descricaoCurta);
+            if short == nil or short == "" then
+                sheet.itemResumo = category;
+            else
+                sheet.itemResumo = category .. " · " .. short;
+            end;
+
+            if self.rectItemStripe ~= nil then
+                self.rectItemStripe.color = accent;
+            end;
+            if self.rectItemThumb ~= nil then
+                self.rectItemThumb.strokeColor = accent;
+            end;
+            if self.lblItemName ~= nil then
+                self.lblItemName.fontColor = accent;
+            end;
+            if self.rectItemUse ~= nil then
+                self.rectItemUse.color = accent;
+                self.rectItemUse.strokeColor = accent;
+            end;
+        end;
+
+        function self:useOne()
+            if sheet == nil then return; end;
+
+            local quantidade = parseNumber(sheet.quantidade);
+            if quantidade > 0 then
+                quantidade = quantidade - 1;
+            end;
+
+            sheet.quantidade = formatNumber(quantidade);
+            self:refreshTotal();
+        end;
+
+        function self:openDetails()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonInventarioPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:handleMouseDown(event)
+            if event ~= nil and event.button == "right" then
+                self:openDetails();
+            end;
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">
+        self:ensureDefaults();
+    </event>
+
+    <event name="onNodeReady">
+        self:ensureDefaults();
+    </event>
+
+    <dataLink fields="{'quantidade','peso'}">
+        <event name="onChange">
+            self:refreshTotal();
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <dataLink fields="{'categoria','descricaoCurta','nome','efeito','descricao','observacoes'}">
+        <event name="onChange">
+            self:refreshVisual();
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <rectangle align="client" class="itemCard" padding="{left=0, top=0, right=8, bottom=0}" margins="{bottom=4}" hitTest="true">
+        <event name="onMouseDown"><![CDATA[self:handleMouseDown(event);]]></event>
+        <rectangle name="rectItemStripe" align="left" width="5" color="#7CFFB2" hitTest="false" />
+
+        <rectangle name="rectItemThumb" align="left" width="62" class="itemThumb" padding="{left=4, top=4, right=4, bottom=4}" margins="{left=8, top=9, right=10, bottom=9}">
+            <image align="client" field="imagemItem" editable="true" style="autoFit" />
+        </rectangle>
+
+        <layout align="client" padding="{top=7, bottom=7}" margins="{right=8}">
+            <layout align="top" height="22">
+                <label name="lblItemName" align="client" field="nome" text="Novo item" class="itemName" hitTest="false" />
+            </layout>
+
+            <label align="top" height="20" field="itemResumo" text="Misc · Item sem descrição curta" class="itemSubtitle" hitTest="false" />
+
+            <layout align="client" margins="{top=4}">
+                <rectangle align="left" width="82" class="itemChip" margins="{right=6}">
+                    <label align="client" field="qtdChip" text="Qtd 1" class="itemChipText" />
+                </rectangle>
+                <rectangle align="left" width="92" class="itemChip" margins="{right=6}">
+                    <label align="client" field="pesoChip" text="Peso 0" class="itemChipText" />
+                </rectangle>
+                <rectangle align="left" width="98" class="itemChip">
+                    <label align="client" field="totalChip" text="Total 0" class="itemChipText" />
+                </rectangle>
+            </layout>
+        </layout>
+
+        <layout align="right" width="70" padding="{top=25, bottom=25}" margins="{right=6}">
+            <rectangle name="rectItemUse" align="client" class="btnUse" hitTest="true">
+                <event name="onClick">self:useOne();</event>
+                <label align="client" text="USAR" class="btnUseText" />
+            </rectangle>
+        </layout>
+
+        <layout align="right" width="28" padding="{top=25, bottom=25}">
+            <rectangle align="client" class="btnMore" hitTest="true">
+                <event name="onClick">self:openDetails();</event>
+                <label align="client" text="⋮" class="btnMoreText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</form>

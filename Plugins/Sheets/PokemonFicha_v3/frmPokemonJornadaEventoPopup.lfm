@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonJornadaEventoPopup"
+           width="680"
+           height="560"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.eventPopupRoot {
+            color: #070A10;
+            strokeColor: #FFD700;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.eventPopupHeader {
+            color: #090D15;
+            strokeColor: #FFD700;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.eventPopupPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.btnDark {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.btnDelete {
+            color: #151010;
+            strokeColor: #FF5A5A;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.popupTitle {
+            fontColor: #FFD700;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 17;
+            vertTextAlign: center;
+        }
+
+        label.smallLabel {
+            fontColor: #FFD700;
+            fontSize: 9;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        edit.lineEdit {
+            transparent: true;
+            fontColor: #F4F8FF;
+            fontSize: 11;
+        }
+
+        edit.nameEdit {
+            transparent: true;
+            fontColor: #FFFFFF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 15;
+        }
+
+        textEditor.longText {
+            fontColor: #EAF2FF;
+            fontSize: 10;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.btnDeleteText {
+            fontColor: #FFBDBD;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonTextMode = require("PokemonTextMode.lua");
+
+        function self:deleteSelf()
+            if sheet == nil then return; end;
+            local root = PokemonTextMode.rootSheet(sheet);
+
+            if NDB ~= nil and NDB.deleteNode ~= nil then
+                NDB.deleteNode(sheet);
+            elseif ndb ~= nil and ndb.deleteNode ~= nil then
+                ndb.deleteNode(sheet);
+            end;
+
+            PokemonTextMode.refresh(root);
+            self:close();
+        end;
+    ]]></script>
+
+    <dataLink fields="{'tituloEvento','sessaoEvento','dataEvento','tipoEvento','impactoEmocional','resumoEvento','personagensEnvolvidos','detalhesEvento','consequenciasEvento'}">
+        <event name="onChange">
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <rectangle align="client" class="eventPopupRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="54" class="eventPopupHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <label align="client" text="EVENTO // LINHA DO TEMPO" class="popupTitle" />
+        </rectangle>
+
+        <rectangle align="top" height="130" class="eventPopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <layout align="top" height="34" margins="{bottom=8}">
+                <edit align="client" field="tituloEvento" class="nameEdit" />
+                <rectangle align="bottom" height="1" color="#FFD700" />
+            </layout>
+
+            <layout align="top" height="32" margins="{bottom=8}">
+                <label align="left" width="60" text="Sessão" class="smallLabel" />
+                <layout align="left" width="120" margins="{right=10}">
+                    <edit align="client" field="sessaoEvento" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+                <label align="left" width="46" text="Data" class="smallLabel" fontColor="#7DEBFF" />
+                <layout align="left" width="120" margins="{right=10}">
+                    <edit align="client" field="dataEvento" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#7DEBFF" />
+                </layout>
+                <label align="left" width="46" text="Tipo" class="smallLabel" />
+                <layout align="client">
+                    <edit align="client" field="tipoEvento" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+            </layout>
+
+            <layout align="client">
+                <label align="left" width="124" text="Impacto emocional" class="smallLabel" fontColor="#FF9AD5" />
+                <layout align="client">
+                    <edit align="client" field="impactoEmocional" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FF9AD5" />
+                </layout>
+            </layout>
+        </rectangle>
+
+        <layout align="client" margins="{bottom=8}">
+            <rectangle align="left" width="315" class="eventPopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{right=8}">
+                <label align="top" height="18" text="Resumo rápido" class="smallLabel" />
+                <textEditor align="top" height="86" field="resumoEvento" class="longText" margins="{bottom=8}" />
+                <label align="top" height="18" text="Participantes" class="smallLabel" fontColor="#7DEBFF" />
+                <textEditor align="client" field="personagensEnvolvidos" class="longText" />
+            </rectangle>
+
+            <layout align="client">
+                <rectangle align="top" height="138" class="eventPopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+                    <label align="top" height="18" text="Detalhes" class="smallLabel" />
+                    <textEditor align="client" field="detalhesEvento" class="longText" />
+                </rectangle>
+
+                <rectangle align="client" class="eventPopupPanel" padding="{left=10, top=8, right=10, bottom=8}">
+                    <label align="top" height="18" text="Consequências" class="smallLabel" fontColor="#7CFFB2" />
+                    <textEditor align="client" field="consequenciasEvento" class="longText" />
+                </rectangle>
+            </layout>
+        </layout>
+
+        <layout align="bottom" height="32">
+            <rectangle align="left" width="92" class="btnDelete" hitTest="true">
+                <event name="onClick">self:deleteSelf();</event>
+                <label align="client" text="APAGAR" class="btnDeleteText" />
+            </rectangle>
+            <layout align="client" />
+            <rectangle align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

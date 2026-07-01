@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Description" align="client" margins="{top=1}">
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<rectangle g="col" g-width="12" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<layout g="col" g-width="12" g-width-lg="4" g-min-height="85">
+				<Title text="IDADE" field="idade"/>
+				<Title text="GÊNERO" field="genero"/>
+				<Title text="CASTA" field="casta"/>
+			</layout>
+			<layout g="col" g-width="12" g-width-lg="4" g-min-height="85">
+				<Title text="ARQUÉTIPO" field="arquetipo"/>
+				<Title text="EDUCAÇÃO" field="educacao"/>
+				<Title text="TERRA NATAL" field="terraNatal"/>
+			</layout>
+			<layout g="col" g-width="12" g-width-lg="4" g-min-height="85">
+				<Title text="TRAÇO" field="traco"/>
+				<Title text="NATUREZA" field="natureza"/>
+				<Title text="HIST. DE GUERRA" field="histGuerra"/>
+			</layout>
+		</rectangle>
+
+		<layout g="col" g-width="12" g-width-lg="3" g-vert-tile="true" g-cnt-line-spacing="5">
+			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" height="25" text="APARÊNCIA"/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="aparencia"/>
+			</rectangle>
+			<rectangle g="col" g-width="6" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+				<label g="col" g-width="12" height="25" text="PERSONALIDADE"/>
+				<textEditor g="col" g-width="12" g-vert-tile="true" field="personalidadeDesc"/>
+			</rectangle>
+		</layout>
+
+		<rectangle g="col" g-width="12" g-width-lg="9" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<label g="col" g-width="12" height="25" text="HISTORIA"/>
+			<richEdit g="col" g-width="12" g-vert-tile="true" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</rectangle>
+	</scrollBox>
+</form>

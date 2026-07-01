@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="CombatAttack" g="col" g-width="12" g-width-lg="4" height="110">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+		]]>	
+	</script>
+
+    <import file="Templates.xml"/>
+
+	<rectangle g="col" g-width="12"  color="black" strokeColor="white" strokeSize="1" g-min-height="110" padding="{left=5,right=5,top=5,bottom=5}">
+		<Title text="Nome" field="nome"/>
+
+		<Title text="Porte/Alc." field="porte" widthL="2" widthR="2"/>
+		<Title text="Mão" field="mao" widthL="2" widthR="2"/>
+		<Title text="Tam." field="tamanho" widthL="2" widthR="2"/>
+
+		<Title text="Dano" field="dano" widthL="3" widthR="3"/>
+		<Title2 text="Munição" field="municao" widthL="2" widthR="2" widthR2="2"/>
+
+		<Title text="Qualidades" field="qualidades" widthL="3" widthR="7"/>
+		<button g="col" g-width="2" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+	</rectangle>
+</form>

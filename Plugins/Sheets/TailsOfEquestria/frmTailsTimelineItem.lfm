@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTailsTimelineItem" height="104" theme="light">
+    <script>
+        require("ndb.lua");
+        local function deleteItem()
+            NDB.deleteNode(sheet);
+        end;
+    </script>
+
+    <rectangle align="client" margins="{left=2, right=2, top=3, bottom=3}" color="#FFF2D6" strokeColor="#4BB8E8" strokeSize="1" cornerType="round" xradius="16" yradius="16"/>
+    <rectangle left="14" top="2" width="92" height="17" color="#CFEFFA" strokeColor="#CFEFFA" opacity="0.72" rotationAngle="-2"/>
+    <label left="12" top="9" width="90" height="13" text="MOMENTO" fontColor="#168AB6" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="10" top="24" width="138" height="28" field="moment" fontColor="#0E6C91" fontSize="11" fontStyle="bold"/>
+    <label left="160" top="9" width="190" height="13" text="O QUE ACONTECEU" fontColor="#168AB6" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="158" top="24" width="282" height="28" field="event" fontColor="#0E6C91" fontSize="11"/>
+    <edit transparent="true" left="10" top="60" width="430" height="28" field="impact" fontColor="#168AB6" fontSize="13"/>
+    <rectangle left="450" top="24" width="30" height="64" color="#D8B7C0" strokeColor="#E98A9C" cornerType="round" xradius="10" yradius="10" cursor="handPoint" onClick="deleteItem();"/>
+    <label left="450" top="48" width="30" height="16" text="X" horzTextAlign="center" fontColor="#C73658" fontSize="13" fontStyle="bold" hitTest="false"/>
+    <dataLink field="moment" defaultValue="Nova aventura"/>
+    <dataLink field="event" defaultValue="O que aconteceu?"/>
+    <dataLink field="impact" defaultValue="O que mudou depois disso?"/>
+</form>
+
+
+
+

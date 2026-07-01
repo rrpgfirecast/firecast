@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonTiposPopup"
+           width="420"
+           height="332"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.popupRoot {
+            color: #070A10;
+            strokeColor: #9E4DFF;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        label.popupTitle {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 14;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.popupHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        rectangle.typeChip {
+            color: #0B1016;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.typeChipText {
+            fontColor: #F4F8FF;
+            fontSize: 10;
+            fontStyle: bold;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        rectangle.popupButton {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.popupButtonText {
+            fontColor: #D8F2FF;
+            fontSize: 10;
+            fontStyle: bold;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local typeConfigs = {
+            {key="Normal", field="typeNormalOn", rect="rectTypeNormal", active="#CFCFD4", display="Normal", emoji="⚪"},
+            {key="Fire", field="typeFireOn", rect="rectTypeFire", active="#FF7B39", display="Fogo", emoji="🔥"},
+            {key="Water", field="typeWaterOn", rect="rectTypeWater", active="#4DB8FF", display="Água", emoji="💧"},
+            {key="Grass", field="typeGrassOn", rect="rectTypeGrass", active="#6DDB6D", display="Grama", emoji="🌿"},
+            {key="Electric", field="typeElectricOn", rect="rectTypeElectric", active="#FFD84D", display="Elétrico", emoji="⚡"},
+            {key="Ice", field="typeIceOn", rect="rectTypeIce", active="#9EE7FF", display="Gelo", emoji="❄"},
+            {key="Fighting", field="typeFightingOn", rect="rectTypeFighting", active="#D96C52", display="Lutador", emoji="👊"},
+            {key="Poison", field="typePoisonOn", rect="rectTypePoison", active="#B56DFF", display="Veneno", emoji="☠"},
+            {key="Ground", field="typeGroundOn", rect="rectTypeGround", active="#C89A58", display="Terra", emoji="⛰"},
+            {key="Flying", field="typeFlyingOn", rect="rectTypeFlying", active="#BFD8FF", display="Voador", emoji="🕊"},
+            {key="Psychic", field="typePsychicOn", rect="rectTypePsychic", active="#FF79C8", display="Psíquico", emoji="🔮"},
+            {key="Bug", field="typeBugOn", rect="rectTypeBug", active="#B7E051", display="Inseto", emoji="🐛"},
+            {key="Rock", field="typeRockOn", rect="rectTypeRock", active="#B8A27B", display="Pedra", emoji="🪨"},
+            {key="Ghost", field="typeGhostOn", rect="rectTypeGhost", active="#8B7CFF", display="Fantasma", emoji="👻"},
+            {key="Dragon", field="typeDragonOn", rect="rectTypeDragon", active="#7B8CFF", display="Dragão", emoji="🐉"},
+            {key="Dark", field="typeDarkOn", rect="rectTypeDark", active="#9E4DFF", display="Sombrio", emoji="🌑"},
+            {key="Steel", field="typeSteelOn", rect="rectTypeSteel", active="#9FB4C5", display="Aço", emoji="⚙"},
+            {key="Fairy", field="typeFairyOn", rect="rectTypeFairy", active="#FFB6E6", display="Fada", emoji="✨"}
+        };
+
+        local function isTypeOn(value)
+            return (value == true) or (value == 1) or (value == "1") or (value == "true");
+        end;
+
+        local function splitTypeOrder(raw)
+            local result = {};
+            local source = trim(raw) or "";
+
+            for token in string.gmatch(source, "[^|]+") do
+                local cleaned = trim(token);
+                if cleaned ~= nil and cleaned ~= "" then
+                    table.insert(result, cleaned);
+                end;
+            end;
+
+            return result;
+        end;
+
+        local function findTypeConfigByField(fieldName)
+            for _, cfg in ipairs(typeConfigs) do
+                if cfg.field == fieldName then
+                    return cfg;
+                end;
+            end;
+            return nil;
+        end;
+
+        local function findTypeConfigByKey(typeKey)
+            for _, cfg in ipairs(typeConfigs) do
+                if cfg.key == typeKey then
+                    return cfg;
+                end;
+            end;
+            return nil;
+        end;
+
+        function self:rebuildTypeTextFromOrder()
+            if sheet == nil then return; end;
+
+            local order = splitTypeOrder(sheet.typeSelectionOrder);
+            local displayParts = {};
+
+            for _, typeKey in ipairs(order) do
+                local cfg = findTypeConfigByKey(typeKey);
+                if cfg ~= nil then
+                    table.insert(displayParts, cfg.display);
+                end;
+            end;
+
+            sheet.tipoPokemon = table.concat(displayParts, " | ");
+        end;
+
+        function self:toggleType(fieldName)
+            if sheet == nil then return; end;
+
+            local cfg = findTypeConfigByField(fieldName);
+            if cfg == nil then return; end;
+
+            local order = splitTypeOrder(sheet.typeSelectionOrder);
+
+            if isTypeOn(sheet[fieldName]) then
+                sheet[fieldName] = nil;
+
+                local newOrder = {};
+                for _, typeKey in ipairs(order) do
+                    if typeKey ~= cfg.key then
+                        table.insert(newOrder, typeKey);
+                    end;
+                end;
+                order = newOrder;
+            else
+                sheet[fieldName] = "1";
+
+                local alreadyThere = false;
+                for _, typeKey in ipairs(order) do
+                    if typeKey == cfg.key then
+                        alreadyThere = true;
+                        break;
+                    end;
+                end;
+
+                if not alreadyThere then
+                    table.insert(order, cfg.key);
+                end;
+            end;
+
+            sheet.typeSelectionOrder = table.concat(order, " | ");
+            self:rebuildTypeTextFromOrder();
+            self:updateTypeMarkers();
+        end;
+
+        function self:clearTypes()
+            if sheet == nil then return; end;
+
+            for _, cfg in ipairs(typeConfigs) do
+                sheet[cfg.field] = nil;
+            end;
+
+            sheet.typeSelectionOrder = "";
+            sheet.tipoPokemon = "";
+            self:updateTypeMarkers();
+        end;
+
+        function self:updateTypeMarkers()
+            if sheet == nil then return; end;
+
+            local order = splitTypeOrder(sheet.typeSelectionOrder);
+            local selected = {};
+
+            for _, typeKey in ipairs(order) do
+                local cfg = findTypeConfigByKey(typeKey);
+                if cfg ~= nil and isTypeOn(sheet[cfg.field]) then
+                    table.insert(selected, cfg);
+                end;
+            end;
+
+            for _, cfg in ipairs(typeConfigs) do
+                local rect = self[cfg.rect];
+                if rect ~= nil then
+                    if isTypeOn(sheet[cfg.field]) then
+                        rect.strokeColor = cfg.active;
+                        rect.strokeSize = 2;
+                        rect.color = "#18222D";
+                    else
+                        rect.strokeColor = "#2A3343";
+                        rect.strokeSize = 1;
+                        rect.color = "#0B1016";
+                    end;
+                end;
+            end;
+
+            if self.lblPrimaryType ~= nil then
+                if selected[1] ~= nil then
+                    self.lblPrimaryType.text = "Tipo principal: " .. selected[1].emoji .. " " .. selected[1].display;
+                    self.lblPrimaryType.fontColor = selected[1].active;
+                else
+                    self.lblPrimaryType.text = "Tipo principal: —";
+                    self.lblPrimaryType.fontColor = "#8FA7BD";
+                end;
+            end;
+
+            if self.lblSecondaryType ~= nil then
+                if selected[2] ~= nil then
+                    self.lblSecondaryType.text = "Tipo secundário: " .. selected[2].emoji .. " " .. selected[2].display;
+                    self.lblSecondaryType.fontColor = selected[2].active;
+                else
+                    self.lblSecondaryType.text = "Tipo secundário: —";
+                    self.lblSecondaryType.fontColor = "#8FA7BD";
+                end;
+            end;
+        end;
+    ]]></script>
+
+    <event name="onNodeReady">
+        self:updateTypeMarkers();
+    </event>
+
+    <event name="onScopeNodeChanged">
+        self:updateTypeMarkers();
+    </event>
+
+    <dataLink fields="{'typeNormalOn','typeFireOn','typeWaterOn','typeGrassOn','typeElectricOn','typeIceOn','typeFightingOn','typePoisonOn','typeGroundOn','typeFlyingOn','typePsychicOn','typeBugOn','typeRockOn','typeGhostOn','typeDragonOn','typeDarkOn','typeSteelOn','typeFairyOn','typeSelectionOrder'}">
+        <event name="onChange">
+            self:rebuildTypeTextFromOrder();
+            self:updateTypeMarkers();
+        </event>
+    </dataLink>
+
+    <rectangle align="client" class="popupRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <label align="top" height="22" text="▦ SELETOR DE TIPOS" class="popupTitle" />
+        <label align="top" height="16" text="Escolha o tipo principal e, se houver, o secundário." class="popupHint" margins="{bottom=6}" />
+
+        <layout align="top" height="38" margins="{bottom=8}">
+            <label name="lblPrimaryType" align="top" height="18" text="Tipo principal: —" fontColor="#8FA7BD" fontSize="10" fontStyle="bold" />
+            <label name="lblSecondaryType" align="client" text="Tipo secundário: —" fontColor="#8FA7BD" fontSize="10" fontStyle="bold" />
+        </layout>
+
+        <layout align="top" height="32" margins="{bottom=4}">
+            <rectangle name="rectTypeNormal" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeNormalOn");</event>
+                <label align="client" text="⚪ Normal" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeFire" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeFireOn");</event>
+                <label align="client" text="🔥 Fogo" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeWater" align="client" class="typeChip" hitTest="true">
+                <event name="onClick">self:toggleType("typeWaterOn");</event>
+                <label align="client" text="💧 Água" class="typeChipText" />
+            </rectangle>
+        </layout>
+
+        <layout align="top" height="32" margins="{bottom=4}">
+            <rectangle name="rectTypeGrass" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeGrassOn");</event>
+                <label align="client" text="🌿 Grama" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeElectric" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeElectricOn");</event>
+                <label align="client" text="⚡ Elétrico" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeIce" align="client" class="typeChip" hitTest="true">
+                <event name="onClick">self:toggleType("typeIceOn");</event>
+                <label align="client" text="❄ Gelo" class="typeChipText" />
+            </rectangle>
+        </layout>
+
+        <layout align="top" height="32" margins="{bottom=4}">
+            <rectangle name="rectTypeFighting" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeFightingOn");</event>
+                <label align="client" text="👊 Lutador" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypePoison" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typePoisonOn");</event>
+                <label align="client" text="☠ Veneno" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeGround" align="client" class="typeChip" hitTest="true">
+                <event name="onClick">self:toggleType("typeGroundOn");</event>
+                <label align="client" text="⛰ Terra" class="typeChipText" />
+            </rectangle>
+        </layout>
+
+        <layout align="top" height="32" margins="{bottom=4}">
+            <rectangle name="rectTypeFlying" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeFlyingOn");</event>
+                <label align="client" text="🕊 Voador" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypePsychic" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typePsychicOn");</event>
+                <label align="client" text="🔮 Psíquico" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeBug" align="client" class="typeChip" hitTest="true">
+                <event name="onClick">self:toggleType("typeBugOn");</event>
+                <label align="client" text="🐛 Inseto" class="typeChipText" />
+            </rectangle>
+        </layout>
+
+        <layout align="top" height="32" margins="{bottom=4}">
+            <rectangle name="rectTypeRock" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeRockOn");</event>
+                <label align="client" text="🪨 Pedra" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeGhost" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeGhostOn");</event>
+                <label align="client" text="👻 Fantasma" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeDragon" align="client" class="typeChip" hitTest="true">
+                <event name="onClick">self:toggleType("typeDragonOn");</event>
+                <label align="client" text="🐉 Dragão" class="typeChipText" />
+            </rectangle>
+        </layout>
+
+        <layout align="top" height="32" margins="{bottom=8}">
+            <rectangle name="rectTypeDark" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeDarkOn");</event>
+                <label align="client" text="🌑 Sombrio" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeSteel" align="left" width="126" class="typeChip" margins="{right=6}" hitTest="true">
+                <event name="onClick">self:toggleType("typeSteelOn");</event>
+                <label align="client" text="⚙ Aço" class="typeChipText" />
+            </rectangle>
+            <rectangle name="rectTypeFairy" align="client" class="typeChip" hitTest="true">
+                <event name="onClick">self:toggleType("typeFairyOn");</event>
+                <label align="client" text="✨ Fada" class="typeChipText" />
+            </rectangle>
+        </layout>
+
+        <layout align="client">
+            <rectangle align="left" width="148" class="popupButton" margins="{right=8}" hitTest="true">
+                <event name="onClick">self:clearTypes();</event>
+                <label align="client" text="Limpar tipos" class="popupButtonText" />
+            </rectangle>
+            <layout align="client" />
+            <rectangle align="right" width="104" class="popupButton" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="popupButtonText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="PokemonFicha_FirecastSDK_Project_v1_0_relayout - Copia.rpk" compilationDate="20062026041623" sdkApiVersion="88" sdkMinorApiVersion="2" compilationDigest="cb1935ba00edfa8c7b90911fa58c6d3bf0e260ce" compilationUniqueID="6a3614177c6ea1e00010edd3">
+    <id>br.com.sb2.PokemonBetaVisual</id>
+    <version>4.9</version>
+
+    <settings>
+        <automaticStringLocalization>false</automaticStringLocalization>
+    </settings>
+
+    <info lang="pt-BR">
+        <name>Pokemon Ficha HUD</name>
+        <description>Ficha de Pokémon com HUD visual, listas de habilidades e cálculos derivados automáticos.</description>
+        <author>OpenAI para SuperBolinha2</author>
+        <site>https://superbolinha2.com/</site>
+        <contact>SuperBolinha2</contact>
+    </info>
+
+    <info lang="en">
+        <name>Pokemon HUD Sheet</name>
+        <description>Pokémon sheet with HUD visuals, skill lists, and automatic derived calculations.</description>
+        <author>OpenAI for SuperBolinha2</author>
+    </info>
+    <dataTypes>
+        <dataType title="Pokémon — Ficha HUD" name="frmPokemonFichaMain" lfmFile="frmPokemonFichaMain.lfm">br.com.sb2.pokemonbeta.sheet</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="br.com.sb2.pokemonbeta.sheet" formType="sheetTemplate" lfmFile="frmPokemonFichaMain.lfm" formName="frmPokemonFichaMain">
+                <info title="Pokémon — Ficha HUD"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>Pokemon Ficha HUD</name>
+    <description>Ficha de Pokémon com HUD visual, listas de habilidades e cálculos derivados automáticos.</description>
+    <author>OpenAI para SuperBolinha2</author>
+    <site>https://superbolinha2.com/</site>
+    <contact>SuperBolinha2</contact>
+</module>

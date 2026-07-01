@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemonJornadaVinculoItem" height="96" theme="dark">
+    <style>
+        rectangle.bondCard {
+            color: #0B0E15;
+            strokeColor: #344055;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+            cursor: handPoint;
+        }
+
+        rectangle.bondImage {
+            color: #071019;
+            strokeColor: #FF9AD5;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.detailButton {
+            color: #111824;
+            strokeColor: #3A4252;
+            strokeSize: 1;
+            xradius: 3;
+            yradius: 3;
+            cursor: handPoint;
+        }
+
+        label.bondName {
+            fontColor: #FF9AD5;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 12;
+            vertTextAlign: center;
+        }
+
+        label.bondLine {
+            fontColor: #D8E7FF;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.bondMuted {
+            fontColor: #8FA7BD;
+            fontSize: 8;
+            vertTextAlign: center;
+        }
+
+        label.detailText {
+            fontColor: #BFD2E8;
+            fontStyle: bold;
+            fontSize: 13;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonTextMode = require("PokemonTextMode.lua");
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local function parseInt(value)
+            local number = tonumber(trim(value) or "0") or 0;
+            if number < 0 then number = 0; end;
+            if number > 5 then number = 5; end;
+            return math.floor(number);
+        end;
+
+        local function bar(value)
+            local full = parseInt(value);
+            local parts = {};
+            for i = 1, 5 do
+                if i <= full then
+                    table.insert(parts, "◆");
+                else
+                    table.insert(parts, "◇");
+                end;
+            end;
+            return table.concat(parts, "");
+        end;
+
+        function self:ensureDefaults()
+            if sheet == nil then return; end;
+
+            sheet.nomeVinculo = sheet.nomeVinculo or "Novo vínculo";
+            sheet.tipoRelacao = sheet.tipoRelacao or "Aliado";
+            sheet.estadoRelacao = sheet.estadoRelacao or "Em crescimento";
+            sheet.nivelVinculo = sheet.nivelVinculo or "1";
+            sheet.nivelTensao = sheet.nivelTensao or "0";
+            sheet.ultimaInteracao = sheet.ultimaInteracao or "";
+            self:refreshVisual();
+        end;
+
+        function self:refreshVisual()
+            if sheet == nil then return; end;
+
+            local tipo = trim(sheet.tipoRelacao) or "Relação";
+            local estado = trim(sheet.estadoRelacao) or "Estado não definido";
+            local ultima = trim(sheet.ultimaInteracao);
+
+            sheet.vinculoMeta = tipo .. " · " .. estado;
+            sheet.vinculoBarras = "Vínculo " .. bar(sheet.nivelVinculo) .. "   Tensão " .. bar(sheet.nivelTensao);
+            if ultima == nil or ultima == "" then
+                sheet.vinculoUltima = "Última cena não registrada.";
+            else
+                sheet.vinculoUltima = ultima;
+            end;
+        end;
+
+        function self:openDetails()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonJornadaVinculoPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:handleMouseDown(event)
+            if event ~= nil and event.button == "right" then
+                self:openDetails();
+            end;
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">self:ensureDefaults();</event>
+    <event name="onNodeReady">self:ensureDefaults();</event>
+
+    <dataLink fields="{'nomeVinculo','tipoRelacao','estadoRelacao','nivelVinculo','nivelTensao','ultimaInteracao'}">
+        <event name="onChange">
+            self:refreshVisual();
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <rectangle align="client" class="bondCard" margins="{right=6, bottom=6}" padding="{left=8, top=7, right=7, bottom=7}" hitTest="true">
+        <event name="onMouseDown"><![CDATA[self:handleMouseDown(event);]]></event>
+        <rectangle name="rectBondImage" align="left" width="76" class="bondImage" padding="{left=4, top=4, right=4, bottom=4}" margins="{right=10}">
+            <image align="client" field="imagemVinculo" editable="true" style="autoFit" />
+        </rectangle>
+        <layout align="client" margins="{right=8}">
+            <label align="top" height="22" field="nomeVinculo" text="Novo vínculo" class="bondName" />
+            <label align="top" height="18" field="vinculoMeta" text="Aliado · Em crescimento" class="bondLine" />
+            <label align="top" height="18" field="vinculoBarras" text="Vínculo ◇◇◇◇◇   Tensão ◇◇◇◇◇" class="bondLine" fontColor="#FFD700" />
+            <label align="client" field="vinculoUltima" text="Última cena não registrada." class="bondMuted" />
+        </layout>
+        <layout align="right" width="30" padding="{top=27, bottom=27}">
+            <rectangle align="client" class="detailButton" hitTest="true">
+                <event name="onClick">self:openDetails();</event>
+                <label align="client" text="⋮" class="detailText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</form>

@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemonHabInterpretativaItem" height="138" theme="dark">
+    <style>
+        rectangle.instinctCard {
+            color: #0B0E15;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 7;
+            yradius: 7;
+            cursor: handPoint;
+        }
+
+        rectangle.instinctStripe {
+            color: #9E4DFF;
+        }
+
+        rectangle.instinctBadge {
+            color: #111824;
+            strokeColor: #9E4DFF;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+        }
+
+        rectangle.instinctAction {
+            color: #9E4DFF;
+            strokeColor: #9E4DFF;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.moreBtn {
+            color: #111824;
+            strokeColor: #3A4252;
+            strokeSize: 1;
+            xradius: 3;
+            yradius: 3;
+            cursor: handPoint;
+        }
+
+        label.instinctBadgeText {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.instinctName {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 13;
+            vertTextAlign: center;
+        }
+
+        label.instinctMeta {
+            fontColor: #BFD2E8;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.instinctSummary {
+            fontColor: #D8E7FF;
+            fontSize: 9;
+        }
+
+        label.instinctFooter {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.actionText {
+            fontColor: #091015;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.moreText {
+            fontColor: #BFD2E8;
+            fontStyle: bold;
+            fontSize: 13;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonChat = require("PokemonChat.lua");
+        local PokemonEnergy = require("PokemonEnergy.lua");
+        local PokemonTextMode = require("PokemonTextMode.lua");
+
+        local function roomChat(root)
+            local room = nil;
+
+            if root ~= nil then
+                room = Firecast.getRoomOf(root);
+            end;
+
+            if room == nil and sheet ~= nil then
+                room = Firecast.getRoomOf(sheet);
+            end;
+
+            if room ~= nil then
+                return room.chat;
+            end;
+            return nil;
+        end;
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local function normalize(value)
+            local normalized = string.lower(tostring(value or ""));
+
+            normalized = string.gsub(normalized, "á", "a");
+            normalized = string.gsub(normalized, "à", "a");
+            normalized = string.gsub(normalized, "â", "a");
+            normalized = string.gsub(normalized, "ã", "a");
+            normalized = string.gsub(normalized, "é", "e");
+            normalized = string.gsub(normalized, "ê", "e");
+            normalized = string.gsub(normalized, "í", "i");
+            normalized = string.gsub(normalized, "ó", "o");
+            normalized = string.gsub(normalized, "ô", "o");
+            normalized = string.gsub(normalized, "õ", "o");
+            normalized = string.gsub(normalized, "ú", "u");
+            normalized = string.gsub(normalized, "ç", "c");
+
+            return normalized;
+        end;
+
+        local function normalizeFormula(value)
+            local formula = trim(value);
+
+            if formula == nil or formula == "" then
+                return nil;
+            end;
+
+            if string.match(formula, "[%d]*[dD]%d+") == nil then
+                if string.sub(formula, 1, 1) == "-" then
+                    formula = "1d20 " .. formula;
+                else
+                    formula = "1d20 + " .. formula;
+                end;
+            end;
+
+            return formula;
+        end;
+
+        local function typeVisuals()
+            local tipo = normalize(sheet ~= nil and sheet.tipo or "");
+
+            if tipo == "fogo" then return "▲ FOGO", "#FF6A3D";
+            elseif tipo == "agua" then return "◆ ÁGUA", "#3DA5FF";
+            elseif tipo == "planta" or tipo == "grama" then return "♣ PLANTA", "#39FF14";
+            elseif tipo == "eletrico" then return "✦ ELÉTRICO", "#FFD700";
+            elseif tipo == "gelo" then return "◇ GELO", "#7DEBFF";
+            elseif tipo == "lutador" or tipo == "luta" then return "▲ LUTADOR", "#C84A3D";
+            elseif tipo == "venenoso" or tipo == "veneno" then return "● VENENO", "#B56DFF";
+            elseif tipo == "terrestre" or tipo == "terra" then return "◆ TERRA", "#C8964A";
+            elseif tipo == "voador" then return "◇ VOADOR", "#9BBEFF";
+            elseif tipo == "psiquico" then return "● PSÍQUICO", "#FF66CC";
+            elseif tipo == "inseto" then return "♣ INSETO", "#B8E24A";
+            elseif tipo == "pedra" then return "◆ PEDRA", "#B8A06A";
+            elseif tipo == "fantasma" then return "○ FANTASMA", "#8A5CFF";
+            elseif tipo == "dragao" then return "✦ DRAGÃO", "#6D7CFF";
+            elseif tipo == "sombrio" or tipo == "noturno" then return "● SOMBRIO", "#9E4DFF";
+            elseif tipo == "aco" then return "■ AÇO", "#8FA7BD";
+            elseif tipo == "fada" then return "✦ FADA", "#FF9AD5";
+            elseif tipo == "normal" then return "● NORMAL", "#C7CDD7";
+            end;
+
+            return "TIPO NÃO DEFINIDO", "#9E4DFF";
+        end;
+
+        local function categoryIcon()
+            local categoria = normalize(sheet ~= nil and sheet.categoria or "");
+
+            if categoria == "passiva" then return "◉";
+            elseif categoria == "ativa" then return "▶";
+            elseif categoria == "reacao" then return "↯";
+            elseif categoria == "roleplay" then return "🎭";
+            elseif categoria == "sensorial" then return "👁";
+            elseif categoria == "truque" then return "😼";
+            elseif categoria == "defesa" then return "🛡";
+            elseif categoria == "suporte" then return "✦";
+            elseif categoria == "controle" then return "⌁";
+            elseif categoria == "exploracao" then return "◇";
+            end;
+
+            return "◉";
+        end;
+
+        local function actionLabel()
+            local categoria = normalize(sheet ~= nil and sheet.categoria or "");
+            local acao = normalize(sheet ~= nil and sheet.acao or "");
+
+            if categoria == "passiva" then return "◉ VER";
+            elseif categoria == "sensorial" then return "👁 SENTIR";
+            elseif categoria == "roleplay" then return "🎭 USAR";
+            elseif categoria == "defesa" or categoria == "reacao" or acao == "reacao" then return "↯ REAGIR";
+            elseif categoria == "ativa" then return "▶ ATIVAR";
+            elseif categoria == "truque" then return "😼 USAR";
+            end;
+
+            return "🎲 TESTAR";
+        end;
+
+        local function shortDescription()
+            local short = trim(sheet ~= nil and sheet.resumoCurto or nil);
+            if short ~= nil and short ~= "" then return short; end;
+
+            local long = trim(sheet ~= nil and sheet.descricao or nil);
+            if long ~= nil and long ~= "" then
+                if string.len(long) > 118 then
+                    return string.sub(long, 1, 115) .. "...";
+                end;
+
+                return long;
+            end;
+
+            return "Botão direito: detalhes e edição da habilidade de tipo.";
+        end;
+
+        function self:ensureDefaults()
+            if sheet == nil then return; end;
+
+            sheet.nome = sheet.nome or "Novo instinto";
+            sheet.tipo = sheet.tipo or "";
+            sheet.categoria = sheet.categoria or "";
+            sheet.tags = sheet.tags or "";
+            sheet.fonte = sheet.fonte or "";
+            sheet.acao = sheet.acao or "";
+            sheet.custo = sheet.custo or "";
+            sheet.custoPE = sheet.custoPE or "";
+            sheet.bonus = sheet.bonus or "";
+            sheet.teste = sheet.teste or "";
+            sheet.formula = sheet.formula or "1d20";
+            sheet.resumoCurto = sheet.resumoCurto or "";
+            sheet.descricao = sheet.descricao or "";
+            sheet.usoNarrativo = sheet.usoNarrativo or "";
+
+            self:refreshVisual();
+        end;
+
+        function self:refreshVisual()
+            if sheet == nil then return; end;
+
+            local typeBadge, accent = typeVisuals();
+            local categoria = trim(sheet.categoria);
+            local icon = categoryIcon();
+            local nome = trim(sheet.nome) or "Novo instinto";
+            local fonte = trim(sheet.fonte);
+            local tags = trim(sheet.tags);
+            local acao = trim(sheet.acao);
+            local teste = trim(sheet.teste);
+            local bonus = trim(sheet.bonus);
+            local custo = trim(sheet.custo);
+            local custoPE = PokemonEnergy.costLabel(sheet.custoPE);
+
+            if categoria == nil or categoria == "" then categoria = "Instinto"; end;
+
+            sheet.instinctBadge = typeBadge .. " // " .. string.upper(categoria);
+            sheet.instinctTitle = icon .. " " .. string.upper(nome);
+
+            local meta = {};
+            if acao ~= nil and acao ~= "" then table.insert(meta, acao); end;
+            if tags ~= nil and tags ~= "" then table.insert(meta, tags); end;
+            if teste ~= nil and teste ~= "" then table.insert(meta, "Teste: " .. teste); end;
+            if fonte ~= nil and fonte ~= "" then table.insert(meta, "Fonte: " .. fonte); end;
+            if #meta == 0 then table.insert(meta, "Talento, passiva ou truque de tipo."); end;
+            sheet.instinctMeta = table.concat(meta, " · ");
+
+            sheet.instinctSummary = shortDescription();
+
+            if bonus == nil or bonus == "" then bonus = "--"; end;
+            if custo == nil or custo == "" then custo = "--"; end;
+            if custoPE ~= "" then
+                sheet.instinctFooter = "Bônus: " .. bonus .. "    Custo: " .. custo .. "    PE: " .. custoPE;
+            else
+                sheet.instinctFooter = "Bônus: " .. bonus .. "    Custo: " .. custo;
+            end;
+            sheet.instinctActionLabel = "💥 DANO";
+
+            if self.rectInstinctStripe ~= nil then self.rectInstinctStripe.color = accent; end;
+            if self.rectInstinctBadge ~= nil then self.rectInstinctBadge.strokeColor = accent; end;
+            if self.lblInstinctBadge ~= nil then self.lblInstinctBadge.fontColor = accent; end;
+            if self.lblInstinctName ~= nil then self.lblInstinctName.fontColor = accent; end;
+            if self.rectInstinctAction ~= nil then
+                self.rectInstinctAction.color = accent;
+                self.rectInstinctAction.strokeColor = accent;
+            end;
+            if self.rectInstinctHit ~= nil then
+                self.rectInstinctHit.color = "#164E72";
+                self.rectInstinctHit.strokeColor = accent;
+            end;
+        end;
+
+        function self:openAccuracyPopup()
+            if sheet == nil then return; end;
+
+            local root = PokemonEnergy.rootSheet(sheet);
+            if root == nil then return; end;
+
+            local _, accent = typeVisuals();
+            root.attrBrutoOrigem = "ACERTAR // " .. (sheet.nome or "Golpe Interpretativo");
+            root.attrBrutoTitulo = "🎯 ACERTAR // " .. (sheet.nome or "Golpe Interpretativo");
+            root.attrBrutoCor = accent;
+
+            local popup = gui.newPopupForm("frmPokemonAtributoBrutoPopup");
+            if popup ~= nil then
+                popup:setNodeObject(root);
+                popup:show();
+            end;
+        end;
+
+        function self:openDamagePopup()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonDanoRolagemPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:testSelf()
+            self:openDamagePopup();
+        end;
+
+        function self:openDetails()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonInstintoTipoPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:handleMouseDown(event)
+            if event ~= nil and event.button == "right" then
+                self:openDetails();
+            end;
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">
+        self:ensureDefaults();
+    </event>
+
+    <event name="onNodeReady">
+        self:ensureDefaults();
+    </event>
+
+    <dataLink fields="{'nome','tipo','categoria','tags','fonte','acao','custo','custoPE','bonus','teste','formula','resumoCurto','descricao','usoNarrativo'}">
+        <event name="onChange">
+            self:refreshVisual();
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <rectangle align="client" class="instinctCard" margins="{top=4, bottom=8}" padding="{left=0, top=0, right=8, bottom=0}" hitTest="true">
+        <event name="onMouseDown"><![CDATA[self:handleMouseDown(event);]]></event>
+        <rectangle name="rectInstinctStripe" align="left" width="5" class="instinctStripe" hitTest="false" />
+
+        <layout align="client" padding="{left=10, top=8, right=8, bottom=8}">
+            <layout align="top" height="24" margins="{bottom=6}">
+                <rectangle name="rectInstinctBadge" align="left" width="214" class="instinctBadge" margins="{right=8}">
+                    <label name="lblInstinctBadge" align="client" field="instinctBadge" text="TIPO NÃO DEFINIDO // INSTINTO" class="instinctBadgeText" />
+                </rectangle>
+
+                <label align="client" text="Botão direito: detalhes da habilidade" fontColor="#6E8AA0" fontSize="8" horzTextAlign="trailing" vertTextAlign="center" />
+            </layout>
+
+            <layout align="top" height="28" margins="{bottom=4}">
+                <label name="lblInstinctName" align="client" field="instinctTitle" text="◉ NOVO INSTINTO" class="instinctName" hitTest="false" />
+                <rectangle name="rectInstinctHit" align="right" width="92" class="instinctAction" color="#164E72" strokeColor="#5ED7FF" hitTest="true" margins="{left=8}">
+                    <event name="onClick">self:openAccuracyPopup();</event>
+                    <label align="client" text="🎯 ACERTAR" class="actionText" />
+                </rectangle>
+                <rectangle name="rectInstinctAction" align="right" width="92" class="instinctAction" hitTest="true" margins="{left=8}">
+                    <event name="onClick">self:testSelf();</event>
+                    <label align="client" field="instinctActionLabel" text="💥 DANO" class="actionText" />
+                </rectangle>
+                <rectangle align="right" width="28" class="moreBtn" hitTest="true" margins="{left=6}">
+                    <event name="onClick">self:openDetails();</event>
+                    <label align="client" text="⋮" class="moreText" />
+                </rectangle>
+            </layout>
+
+            <label align="top" height="19" field="instinctMeta" text="Talento, passiva ou truque de tipo." class="instinctMeta" hitTest="false" />
+            <label align="client" field="instinctSummary" text="Botão direito: detalhes e edição da habilidade de tipo." class="instinctSummary" wordWrap="true" hitTest="false" />
+            <label align="bottom" height="18" field="instinctFooter" text="Bônus: --    Custo: --" class="instinctFooter" hitTest="false" />
+        </layout>
+    </rectangle>
+</form>

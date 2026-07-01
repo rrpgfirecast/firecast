@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTailsFriendItem" height="104" theme="light">
+    <script>
+        require("ndb.lua");
+        local function deleteItem()
+            NDB.deleteNode(sheet);
+        end;
+    </script>
+
+    <rectangle align="client" margins="{left=2, right=2, top=3, bottom=3}" color="#FFF2D6" strokeColor="#F77DB8" strokeSize="1" cornerType="round" xradius="16" yradius="16"/>
+    <rectangle left="14" top="2" width="78" height="17" color="#FFD6E9" strokeColor="#FFD6E9" opacity="0.72" rotationAngle="-2"/>
+    <label left="12" top="9" width="54" height="13" text="AMIGO" fontColor="#C0447E" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="10" top="24" width="190" height="28" field="name" fontColor="#C0447E" fontSize="11" fontStyle="bold"/>
+    <label left="214" top="9" width="150" height="13" text="RELACAO / PROMESSA" fontColor="#C0447E" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="212" top="24" width="220" height="28" field="relationship" fontColor="#C0447E" fontSize="11"/>
+    <edit transparent="true" left="10" top="60" width="422" height="28" field="description" fontColor="#8A6477" fontSize="13"/>
+    <rectangle left="442" top="24" width="30" height="64" color="#D8B7C0" strokeColor="#E98A9C" cornerType="round" xradius="10" yradius="10" cursor="handPoint" onClick="deleteItem();"/>
+    <label left="442" top="48" width="30" height="16" text="X" horzTextAlign="center" fontColor="#C73658" fontSize="13" fontStyle="bold" hitTest="false"/>
+    <dataLink field="name" defaultValue="Novo Amigo"/>
+    <dataLink field="relationship" defaultValue="Como nos conhecemos?"/>
+</form>
+
+
+
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Feats" align="client">    
+    <scrollBox g="col" g-width="12" g-vert-tile="true">
+        <button text="Novo Talento" g="col" g-width="12" height="25" onClick="self.rclFeats:append();" textTrimming="none"/>
+        <gridRecordList name="rclFeats" field="rclFeats" templateForm="FeatsFeat" g="col" g-width="12" g-cnt-line-spacing="5">
+            <event name="onCompare">
+                return Utils.compareStringPtBr(left.nome, right.nome);
+            </event>
+        </gridRecordList>
+    </scrollBox>
+</form>

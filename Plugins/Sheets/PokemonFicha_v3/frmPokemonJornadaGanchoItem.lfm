@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemonJornadaGanchoItem" height="58" theme="dark">
+    <style>
+        rectangle.hookCard {
+            color: #111824;
+            strokeColor: #8A5CFF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+            cursor: handPoint;
+        }
+
+        label.hookTitle {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 10;
+            vertTextAlign: center;
+        }
+
+        label.hookLine {
+            fontColor: #BFD2E8;
+            fontSize: 8;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonTextMode = require("PokemonTextMode.lua");
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local function colorForType(value)
+            local tipo = string.lower(tostring(value or ""));
+            if tipo == "trauma" or tipo == "medo" or tipo == "culpa" then
+                return "#FF5A5A";
+            elseif tipo == "sonho" or tipo == "desejo" then
+                return "#3DA5FF";
+            elseif tipo == "segredo" then
+                return "#9E4DFF";
+            elseif tipo == "promessa" or tipo == "objetivo" then
+                return "#7CFFB2";
+            end;
+            return "#FFD700";
+        end;
+
+        function self:ensureDefaults()
+            if sheet == nil then return; end;
+
+            sheet.nomeGancho = sheet.nomeGancho or "Novo gancho";
+            sheet.tipoGancho = sheet.tipoGancho or "Objetivo";
+            sheet.intensidadeGancho = sheet.intensidadeGancho or "Média";
+            sheet.resumoGancho = sheet.resumoGancho or "";
+            self:refreshVisual();
+        end;
+
+        function self:refreshVisual()
+            if sheet == nil then return; end;
+
+            local tipo = trim(sheet.tipoGancho) or "Gancho";
+            local intensidade = trim(sheet.intensidadeGancho) or "Média";
+            local resumo = trim(sheet.resumoGancho);
+
+            sheet.ganchoMetaLinha = tipo .. " · Intensidade: " .. intensidade;
+            if resumo == nil or resumo == "" then
+                sheet.ganchoResumoLinha = "Detalhes no popup.";
+            else
+                sheet.ganchoResumoLinha = resumo;
+            end;
+
+            local accent = colorForType(tipo);
+            if self.rectHookCard ~= nil then self.rectHookCard.strokeColor = accent; end;
+            if self.lblHookTitle ~= nil then self.lblHookTitle.fontColor = accent; end;
+        end;
+
+        function self:openDetails()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonJornadaGanchoPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:handleMouseDown(event)
+            if event ~= nil and event.button == "right" then
+                self:openDetails();
+            end;
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">self:ensureDefaults();</event>
+    <event name="onNodeReady">self:ensureDefaults();</event>
+
+    <dataLink fields="{'nomeGancho','tipoGancho','intensidadeGancho','resumoGancho'}">
+        <event name="onChange">
+            self:refreshVisual();
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <rectangle name="rectHookCard" align="client" class="hookCard" margins="{bottom=6}" padding="{left=8, top=5, right=8, bottom=5}" hitTest="true">
+        <event name="onMouseDown"><![CDATA[self:handleMouseDown(event);]]></event>
+        <label name="lblHookTitle" align="top" height="20" field="nomeGancho" text="Novo gancho" class="hookTitle" />
+        <label align="top" height="15" field="ganchoMetaLinha" text="Objetivo · Intensidade: Média" class="hookLine" />
+        <label align="client" field="ganchoResumoLinha" text="Detalhes no popup." class="hookLine" fontColor="#8FA7BD" />
+    </rectangle>
+</form>

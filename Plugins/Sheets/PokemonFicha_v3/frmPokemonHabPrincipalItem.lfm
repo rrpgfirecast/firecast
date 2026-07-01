@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemonHabPrincipalItem" height="146" theme="dark">
+    <style>
+        rectangle.moveCard {
+            color: #0B0E15;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 7;
+            yradius: 7;
+            cursor: handPoint;
+        }
+
+        rectangle.moveStripe {
+            color: #C7CDD7;
+        }
+
+        rectangle.typeBadge {
+            color: #111824;
+            strokeColor: #C7CDD7;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+        }
+
+        rectangle.rollBtn {
+            color: #C7CDD7;
+            strokeColor: #C7CDD7;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.moreBtn {
+            color: #111824;
+            strokeColor: #3A4252;
+            strokeSize: 1;
+            xradius: 3;
+            yradius: 3;
+            cursor: handPoint;
+        }
+
+        label.typeBadgeText {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.moveName {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 13;
+            vertTextAlign: center;
+        }
+
+        label.moveMeta {
+            fontColor: #BFD2E8;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.moveDamage {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontSize: 10;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        label.moveTags {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.movePreview {
+            fontColor: #D8E7FF;
+            fontSize: 9;
+        }
+
+        label.rollText {
+            fontColor: #091015;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.moreText {
+            fontColor: #BFD2E8;
+            fontStyle: bold;
+            fontSize: 13;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonChat = require("PokemonChat.lua");
+        local PokemonEnergy = require("PokemonEnergy.lua");
+        local PokemonTextMode = require("PokemonTextMode.lua");
+
+        local function roomChat(root)
+            local room = nil;
+
+            if root ~= nil then
+                room = Firecast.getRoomOf(root);
+            end;
+
+            if room == nil and sheet ~= nil then
+                room = Firecast.getRoomOf(sheet);
+            end;
+
+            if room ~= nil then
+                return room.chat;
+            end;
+            return nil;
+        end;
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local function normalize(value)
+            local normalized = string.lower(tostring(value or ""));
+
+            normalized = string.gsub(normalized, "á", "a");
+            normalized = string.gsub(normalized, "à", "a");
+            normalized = string.gsub(normalized, "â", "a");
+            normalized = string.gsub(normalized, "ã", "a");
+            normalized = string.gsub(normalized, "é", "e");
+            normalized = string.gsub(normalized, "ê", "e");
+            normalized = string.gsub(normalized, "í", "i");
+            normalized = string.gsub(normalized, "ó", "o");
+            normalized = string.gsub(normalized, "ô", "o");
+            normalized = string.gsub(normalized, "õ", "o");
+            normalized = string.gsub(normalized, "ú", "u");
+            normalized = string.gsub(normalized, "ç", "c");
+
+            return normalized;
+        end;
+
+        local function normalizeFormula(value)
+            local formula = trim(value);
+
+            if formula == nil or formula == "" then
+                return nil;
+            end;
+
+            if string.match(formula, "[%d]*[dD]%d+") == nil then
+                if string.sub(formula, 1, 1) == "-" then
+                    formula = "1d20 " .. formula;
+                else
+                    formula = "1d20 + " .. formula;
+                end;
+            end;
+
+            return formula;
+        end;
+
+        local function typeVisuals()
+            local tipo = normalize(sheet ~= nil and sheet.tipo or "");
+
+            if tipo == "fogo" then return "▲ FOGO", "#FF6A3D";
+            elseif tipo == "agua" then return "◆ ÁGUA", "#3DA5FF";
+            elseif tipo == "planta" or tipo == "grama" then return "♣ PLANTA", "#39FF14";
+            elseif tipo == "eletrico" then return "✦ ELÉTRICO", "#FFD700";
+            elseif tipo == "gelo" then return "◇ GELO", "#7DEBFF";
+            elseif tipo == "lutador" or tipo == "luta" then return "▲ LUTADOR", "#C84A3D";
+            elseif tipo == "venenoso" or tipo == "veneno" then return "● VENENO", "#B56DFF";
+            elseif tipo == "terrestre" or tipo == "terra" then return "◆ TERRA", "#C8964A";
+            elseif tipo == "voador" then return "◇ VOADOR", "#9BBEFF";
+            elseif tipo == "psiquico" then return "● PSÍQUICO", "#FF66CC";
+            elseif tipo == "inseto" then return "♣ INSETO", "#B8E24A";
+            elseif tipo == "pedra" then return "◆ PEDRA", "#B8A06A";
+            elseif tipo == "fantasma" then return "○ FANTASMA", "#8A5CFF";
+            elseif tipo == "dragao" then return "✦ DRAGÃO", "#6D7CFF";
+            elseif tipo == "sombrio" or tipo == "noturno" then return "● SOMBRIO", "#9E4DFF";
+            elseif tipo == "aco" then return "■ AÇO", "#8FA7BD";
+            elseif tipo == "fada" then return "✦ FADA", "#FF9AD5";
+            elseif tipo == "normal" then return "● NORMAL", "#C7CDD7";
+            end;
+
+            return "TIPO NÃO DEFINIDO", "#C7CDD7";
+        end;
+
+        local function categoryIcon()
+            local categoria = normalize(sheet ~= nil and sheet.categoria or "");
+
+            if categoria == "fisico" then return "⚔";
+            elseif categoria == "especial" then return "✦";
+            elseif categoria == "status" then return "○";
+            elseif categoria == "cura" then return "♥";
+            elseif categoria == "defesa" then return "■";
+            elseif categoria == "movimento" then return "➤";
+            elseif categoria == "truque" then return "☰";
+            end;
+
+            return "⚔";
+        end;
+
+        local function previewDescription()
+            local short = trim(sheet ~= nil and sheet.descricaoCurta or nil);
+            if short ~= nil and short ~= "" then return short; end;
+
+            local long = trim(sheet ~= nil and sheet.descricao or nil);
+            if long ~= nil and long ~= "" then
+                if string.len(long) > 120 then
+                    return string.sub(long, 1, 117) .. "...";
+                end;
+
+                return long;
+            end;
+
+            return "Botão direito: detalhes e edição do golpe.";
+        end;
+
+        function self:ensureDefaults()
+            if sheet == nil then return; end;
+
+            sheet.nome = sheet.nome or "Novo golpe";
+            sheet.nomeOriginal = sheet.nomeOriginal or "";
+            sheet.tipo = sheet.tipo or "";
+            sheet.categoria = sheet.categoria or "";
+            sheet.tags = sheet.tags or "";
+            sheet.acao = sheet.acao or "";
+            sheet.custo = sheet.custo or "";
+            sheet.custoPE = sheet.custoPE or "";
+            sheet.teste = sheet.teste or "";
+            sheet.dano = sheet.dano or "";
+            sheet.formula = sheet.formula or "1d20";
+            sheet.descricaoCurta = sheet.descricaoCurta or "";
+            sheet.descricao = sheet.descricao or "";
+
+            self:refreshVisual();
+        end;
+
+        function self:refreshVisual()
+            if sheet == nil then return; end;
+
+            local typeBadge, accent = typeVisuals();
+            local icon = categoryIcon();
+            local original = trim(sheet.nomeOriginal);
+            local nome = trim(sheet.nome) or "Novo golpe";
+            local titulo = icon .. " " .. string.upper(nome);
+
+            if original ~= nil and original ~= "" then
+                titulo = titulo .. " / " .. original;
+            end;
+
+            local acao = trim(sheet.acao) or "Ação --";
+            local custo = trim(sheet.custo) or "Custo --";
+            local custoPE = PokemonEnergy.costLabel(sheet.custoPE);
+            local teste = trim(sheet.teste) or "--";
+            local dano = trim(sheet.dano) or "--";
+            local formula = trim(sheet.formula) or "--";
+            local categoria = trim(sheet.categoria);
+            local tags = trim(sheet.tags);
+
+            sheet.moveTypeBadge = typeBadge;
+            sheet.moveTitle = titulo;
+            if custoPE ~= "" then
+                sheet.moveMeta = acao .. " · " .. custo .. " · PE: " .. custoPE .. " · Teste: " .. teste;
+            else
+                sheet.moveMeta = acao .. " · " .. custo .. " · Teste: " .. teste;
+            end;
+            sheet.moveDamageLine = "Dano: " .. dano .. "    Fórmula: " .. formula;
+
+            if categoria ~= nil and categoria ~= "" and tags ~= nil and tags ~= "" then
+                sheet.moveTagsLine = categoria .. " · " .. tags;
+            elseif categoria ~= nil and categoria ~= "" then
+                sheet.moveTagsLine = categoria;
+            elseif tags ~= nil and tags ~= "" then
+                sheet.moveTagsLine = tags;
+            else
+                sheet.moveTagsLine = "Categoria e tags não definidas.";
+            end;
+
+            sheet.movePreview = previewDescription();
+
+            if self.rectMoveStripe ~= nil then self.rectMoveStripe.color = accent; end;
+            if self.rectMoveTypeBadge ~= nil then self.rectMoveTypeBadge.strokeColor = accent; end;
+            if self.lblMoveTypeBadge ~= nil then self.lblMoveTypeBadge.fontColor = accent; end;
+            if self.lblMoveName ~= nil then self.lblMoveName.fontColor = accent; end;
+            if self.rectMoveRoll ~= nil then
+                self.rectMoveRoll.color = accent;
+                self.rectMoveRoll.strokeColor = accent;
+            end;
+            if self.rectMoveHit ~= nil then
+                self.rectMoveHit.color = "#164E72";
+                self.rectMoveHit.strokeColor = accent;
+            end;
+        end;
+
+        function self:openAccuracyPopup()
+            if sheet == nil then return; end;
+
+            local root = PokemonEnergy.rootSheet(sheet);
+            if root == nil then return; end;
+
+            local _, accent = typeVisuals();
+            root.attrBrutoOrigem = "ACERTAR // " .. (sheet.nome or "Golpe");
+            root.attrBrutoTitulo = "🎯 ACERTAR // " .. (sheet.nome or "Golpe");
+            root.attrBrutoCor = accent;
+
+            local popup = gui.newPopupForm("frmPokemonAtributoBrutoPopup");
+            if popup ~= nil then
+                popup:setNodeObject(root);
+                popup:show();
+            end;
+        end;
+
+        function self:openDamagePopup()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonDanoRolagemPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:rollSelf()
+            self:openDamagePopup();
+        end;
+
+        function self:openDetails()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonHabPrincipalPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:handleMouseDown(event)
+            if event ~= nil and event.button == "right" then
+                self:openDetails();
+            end;
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">
+        self:ensureDefaults();
+    </event>
+
+    <event name="onNodeReady">
+        self:ensureDefaults();
+    </event>
+
+    <dataLink fields="{'nome','nomeOriginal','tipo','categoria','tags','acao','custo','custoPE','teste','dano','formula','descricaoCurta','descricao'}">
+        <event name="onChange">
+            self:refreshVisual();
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <rectangle align="client" class="moveCard" margins="{top=4, bottom=8}" padding="{left=0, top=0, right=8, bottom=0}" hitTest="true">
+        <event name="onMouseDown"><![CDATA[self:handleMouseDown(event);]]></event>
+        <rectangle name="rectMoveStripe" align="left" width="5" class="moveStripe" hitTest="false" />
+
+        <layout align="client" padding="{left=10, top=8, right=8, bottom=8}">
+            <layout align="top" height="24" margins="{bottom=6}">
+                <rectangle name="rectMoveTypeBadge" align="left" width="158" class="typeBadge" margins="{right=8}">
+                    <label name="lblMoveTypeBadge" align="client" field="moveTypeBadge" text="TIPO NÃO DEFINIDO" class="typeBadgeText" />
+                </rectangle>
+
+                <label align="client" text="Botão direito: detalhes do golpe" fontColor="#6E8AA0" fontSize="8" horzTextAlign="trailing" vertTextAlign="center" />
+            </layout>
+
+            <layout align="top" height="28" margins="{bottom=4}">
+                <label name="lblMoveName" align="client" field="moveTitle" text="⚔ NOVO GOLPE" class="moveName" hitTest="false" />
+                <rectangle name="rectMoveHit" align="right" width="92" class="rollBtn" color="#164E72" strokeColor="#5ED7FF" hitTest="true" margins="{left=8}">
+                    <event name="onClick">self:openAccuracyPopup();</event>
+                    <label align="client" text="🎯 ACERTAR" class="rollText" />
+                </rectangle>
+                <rectangle name="rectMoveRoll" align="right" width="88" class="rollBtn" hitTest="true" margins="{left=8}">
+                    <event name="onClick">self:rollSelf();</event>
+                    <label align="client" text="💥 DANO" class="rollText" />
+                </rectangle>
+                <rectangle align="right" width="28" class="moreBtn" hitTest="true" margins="{left=6}">
+                    <event name="onClick">self:openDetails();</event>
+                    <label align="client" text="⋮" class="moreText" />
+                </rectangle>
+            </layout>
+
+            <label align="top" height="19" field="moveMeta" text="Ação -- · Custo -- · Teste: --" class="moveMeta" hitTest="false" />
+            <label align="top" height="20" field="moveDamageLine" text="Dano: --    Fórmula: 1d20" class="moveDamage" hitTest="false" />
+            <label align="top" height="18" field="moveTagsLine" text="Categoria e tags não definidas." class="moveTags" hitTest="false" />
+            <label align="client" field="movePreview" text="Botão direito: detalhes e edição do golpe." class="movePreview" wordWrap="true" hitTest="false" />
+        </layout>
+    </rectangle>
+</form>

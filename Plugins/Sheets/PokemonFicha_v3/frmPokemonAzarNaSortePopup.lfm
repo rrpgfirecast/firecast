@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonAzarNaSortePopup"
+           width="620"
+           height="650"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.luckRoot {
+            color: #04070B;
+            strokeColor: #506072;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.luckHeader {
+            color: #0A1018;
+            strokeColor: #718399;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.luckPanel {
+            color: #090D13;
+            strokeColor: #293544;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.luckSummary {
+            color: #071119;
+            strokeColor: #356A82;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.luckDice {
+            color: #081318;
+            strokeColor: #287F92;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.luckCritical {
+            color: #140A0E;
+            strokeColor: #77364C;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.luckZika {
+            color: #151007;
+            strokeColor: #967330;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.luckChaos {
+            color: #100E08;
+            strokeColor: #8F793C;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.btnDark {
+            color: #13202C;
+            strokeColor: #426176;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.btnDanger {
+            color: #321519;
+            strokeColor: #B84B55;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.btnGood {
+            color: #103021;
+            strokeColor: #45B879;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.popupTitle {
+            fontColor: #F5F8FC;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 16;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.popupHint {
+            fontColor: #8498AC;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.sectionTitle {
+            fontColor: #DCE8F2;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 10;
+            vertTextAlign: center;
+        }
+
+        label.luckLine {
+            fontColor: #E2ECF6;
+            fontFamily: Consolas;
+            fontSize: 11;
+            vertTextAlign: center;
+        }
+
+        label.luckBody {
+            fontColor: #D5DFE9;
+            fontSize: 10;
+            vertTextAlign: leading;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        textEditor.saiZikaText {
+            transparent: true;
+            fontColor: #F2E9D5;
+            fontFamily: Consolas;
+            fontSize: 9;
+        }
+    </style>
+
+    <script><![CDATA[
+        local Monitor = require("PokemonLuckMonitor.lua");
+        local dialogs = require("dialogs.lua");
+
+        function self:updateLuckVisualState()
+            if sheet == nil or self.rectLuckChaos == nil then return; end;
+
+            local saldoText = string.lower(tostring(sheet.azarSaldoLinha or ""));
+            local panelColor = "#100E08";
+            local accent = "#D8B956";
+            local strong = "#FFE08A";
+
+            if string.find(saldoText, "azar", 1, true) ~= nil then
+                panelColor = "#16090D";
+                accent = "#C84F5C";
+                strong = "#FF7A86";
+            elseif string.find(saldoText, "sorte", 1, true) ~= nil then
+                panelColor = "#07150E";
+                accent = "#3EBC78";
+                strong = "#7CFFB2";
+            end;
+
+            self.rectLuckChaos.color = panelColor;
+            self.rectLuckChaos.strokeColor = accent;
+            self.lblLuckChaosTitle.fontColor = strong;
+            self.lblLuckSaldo.fontColor = strong;
+            self.lblLuckBarra.fontColor = strong;
+            self.lblLuckDiagnostico.fontColor = "#D5DFE9";
+        end;
+
+        function self:refreshLuck()
+            Monitor.refresh(sheet);
+            self:updateLuckVisualState();
+        end;
+
+        function self:cycleProfile()
+            Monitor.cycleProfile(sheet);
+            self:updateLuckVisualState();
+        end;
+
+        function self:resetCurrent()
+            dialogs.confirmOkCancel("Resetar estatísticas da sessão atual?\nA sorte será perdoada. O azar, não.", function(confirmed)
+                if confirmed then
+                    Monitor.resetCurrent(sheet);
+                    self:updateLuckVisualState();
+                end;
+            end);
+        end;
+
+        function self:archiveCurrent()
+            dialogs.confirmOkCancel("Arquivar sessão atual e iniciar uma nova contagem?", function(confirmed)
+                if confirmed then
+                    Monitor.archiveCurrent(sheet);
+                    self:updateLuckVisualState();
+                end;
+            end);
+        end;
+        function self:rollSaiZika()
+            Monitor.rollSaiZika(sheet);
+            self:refreshLuck();
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">self:refreshLuck();</event>
+    <event name="onNodeReady">self:refreshLuck();</event>
+
+    <rectangle align="client" class="luckRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="58" class="luckHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <label align="top" height="28" text="AZAR NA SORTE // DETALHES" class="popupTitle" />
+            <label align="client" text="A caixa-preta dos dados está observando." class="popupHint" />
+        </rectangle>
+
+        <rectangle align="top" height="132" class="luckSummary" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <layout align="top" height="26" margins="{bottom=6}">
+                <label align="left" width="180" text="RESUMO DO PERFIL" class="sectionTitle" fontColor="#8FD7FF" />
+                <layout align="client" />
+                <rectangle name="btnLuckProfile" align="right" width="138" class="btnDark" hitTest="true">
+                    <event name="onClick">self:cycleProfile();</event>
+                    <event name="onMouseEnter">self.btnLuckProfile.color = "#193244"; self.btnLuckProfile.strokeColor = "#D9F5FF";</event>
+                    <event name="onMouseLeave">self.btnLuckProfile.color = "#13202C"; self.btnLuckProfile.strokeColor = "#426176";</event>
+                    <label align="client" field="azarPerfilTexto" text="Sessão atual" class="btnText" />
+                </rectangle>
+            </layout>
+
+            <label align="client" field="azarPopupResumo" text="Perfil: Sessão atual" class="luckBody" />
+        </rectangle>
+
+        <layout align="top" height="166" margins="{bottom=8}">
+            <rectangle align="left" width="294" class="luckDice" padding="{left=10, top=8, right=10, bottom=8}" margins="{right=8}">
+                <label align="top" height="22" text="DADOS MONITORADOS" class="sectionTitle" fontColor="#62D7EB" />
+                <label align="top" height="21" field="azarDetalheD4" text="D4    Rolados: 0    1: 0    Max: 0" class="luckLine" />
+                <label align="top" height="21" field="azarDetalheD6" text="D6    Rolados: 0    1: 0    Max: 0" class="luckLine" />
+                <label align="top" height="21" field="azarDetalheD8" text="D8    Rolados: 0    1: 0    Max: 0" class="luckLine" />
+                <label align="top" height="21" field="azarDetalheD10" text="D10    Rolados: 0    1: 0    Max: 0" class="luckLine" />
+                <label align="top" height="21" field="azarDetalheD20" text="D20    Rolados: 0    1: 0    Max: 0" class="luckLine" />
+                <label align="client" field="azarDetalheD100" text="D100    Rolados: 0    1: 0    Max: 0" class="luckLine" />
+            </rectangle>
+
+            <rectangle align="client" class="luckCritical" padding="{left=10, top=8, right=10, bottom=8}">
+                <label align="top" height="22" text="ÚLTIMOS EVENTOS CRÍTICOS" class="sectionTitle" fontColor="#FF9AD5" />
+                <label align="client" field="azarEventosPerfil" text="Nenhum evento crítico registrado." class="luckBody" />
+            </rectangle>
+        </layout>
+
+        <rectangle align="top" height="168" class="luckZika" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <layout align="top" height="28" margins="{bottom=6}">
+                <label align="left" width="210" text="🧿 SAI ZIKA" class="sectionTitle" fontColor="#FFD878" />
+                <label align="client" field="azarSaiZikaResumo" text="Sem rolagem registrada." fontColor="#B8A47D" fontSize="8" horzTextAlign="trailing" vertTextAlign="center" />
+                <rectangle name="btnLuckRoll" align="right" width="110" class="btnDark" hitTest="true" color="#30230D" strokeColor="#C99B3D" margins="{left=8}">
+                    <event name="onClick">self:rollSaiZika();</event>
+                    <event name="onMouseEnter">self.btnLuckRoll.color = "#4A3512"; self.btnLuckRoll.strokeColor = "#FFE08A";</event>
+                    <event name="onMouseLeave">self.btnLuckRoll.color = "#30230D"; self.btnLuckRoll.strokeColor = "#C99B3D";</event>
+                    <label align="client" text="Rolar" class="btnText" />
+                </rectangle>
+            </layout>
+
+            <textEditor align="client" field="azarSaiZikaResultado" class="saiZikaText" readOnly="true" />
+        </rectangle>
+
+        <rectangle name="rectLuckChaos" align="client" class="luckChaos" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label name="lblLuckChaosTitle" align="top" height="22" text="BALANÇA DO CAOS" class="sectionTitle" fontColor="#FFE08A" />
+            <label name="lblLuckSaldo" align="top" height="26" field="azarSaldoLinha" text="Balança do Caos: aguardando o primeiro desastre." class="luckLine" horzTextAlign="center" />
+            <label name="lblLuckBarra" align="top" height="24" field="azarBarraCaos" text="💀 ◄──────────◆──────────► 🍀" class="luckLine" horzTextAlign="center" fontSize="12" />
+            <label name="lblLuckDiagnostico" align="client" field="azarDiagnostico" text="A caixa-preta aguarda." class="luckBody" horzTextAlign="center" />
+        </rectangle>
+
+        <layout align="bottom" height="32">
+            <rectangle name="btnLuckReset" align="left" width="128" class="btnDanger" hitTest="true" margins="{right=8}">
+                <event name="onClick">self:resetCurrent();</event>
+                <event name="onMouseEnter">self.btnLuckReset.color = "#4A1D22"; self.btnLuckReset.strokeColor = "#FF7A86";</event>
+                <event name="onMouseLeave">self.btnLuckReset.color = "#321519"; self.btnLuckReset.strokeColor = "#B84B55";</event>
+                <label align="client" text="↻ Resetar" class="btnText" />
+            </rectangle>
+            <rectangle name="btnLuckArchive" align="left" width="132" class="btnGood" hitTest="true">
+                <event name="onClick">self:archiveCurrent();</event>
+                <event name="onMouseEnter">self.btnLuckArchive.color = "#16452D"; self.btnLuckArchive.strokeColor = "#7CFFB2";</event>
+                <event name="onMouseLeave">self.btnLuckArchive.color = "#103021"; self.btnLuckArchive.strokeColor = "#45B879";</event>
+                <label align="client" text="📦 Arquivar" class="btnText" />
+            </rectangle>
+            <layout align="client" />
+            <rectangle name="btnLuckClose" align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <event name="onMouseEnter">self.btnLuckClose.color = "#1D2B39"; self.btnLuckClose.strokeColor = "#D9F5FF";</event>
+                <event name="onMouseLeave">self.btnLuckClose.color = "#13202C"; self.btnLuckClose.strokeColor = "#426176";</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonPerfilVisualPopup"
+           width="520"
+           height="420"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.visualRoot {
+            color: #070A10;
+            strokeColor: #00BFFF;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.visualHeader {
+            color: #090D15;
+            strokeColor: #00BFFF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.visualPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.styleButton {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.actionButton {
+            color: #101721;
+            strokeColor: #7CFFB2;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.closeButton {
+            color: #111824;
+            strokeColor: #3A4252;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.popupTitle {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 16;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.popupHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.styleTitle {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 11;
+            vertTextAlign: center;
+        }
+
+        label.styleHint {
+            fontColor: #8FA7BD;
+            fontSize: 8;
+            vertTextAlign: center;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonTokenSync = require("PokemonTokenSync.lua");
+
+        local styleConfigs = {
+            {id="autoFit", rect="rectStyleAutoFit", title="lblStyleAutoFitTitle", color="#00BFFF"},
+            {id="proportional", rect="rectStyleProportional", title="lblStyleProportionalTitle", color="#7CFFB2"},
+            {id="originalSize", rect="rectStyleOriginal", title="lblStyleOriginalTitle", color="#FFD700"},
+            {id="stretch", rect="rectStyleStretch", title="lblStyleStretchTitle", color="#FF9AD5"}
+        };
+
+        local function validStyle(value)
+            local style = tostring(value or "autoFit");
+
+            for _, cfg in ipairs(styleConfigs) do
+                if cfg.id == style then
+                    return style;
+                end;
+            end;
+
+            return "autoFit";
+        end;
+
+        function self:refreshVisual()
+            if sheet == nil then return; end;
+
+            local current = validStyle(sheet.perfilVisualImageStyle);
+
+            if self.imgVisualPreview ~= nil then
+                self.imgVisualPreview.style = current;
+                self.imgVisualPreview.center = true;
+            end;
+
+            for _, cfg in ipairs(styleConfigs) do
+                local rect = self[cfg.rect];
+                local title = self[cfg.title];
+                local active = cfg.id == current;
+
+                if rect ~= nil then
+                    rect.strokeColor = active and cfg.color or "#2A3343";
+                    rect.strokeSize = active and 2 or 1;
+                    rect.color = active and "#12202B" or "#111824";
+                end;
+
+                if title ~= nil then
+                    title.fontColor = active and cfg.color or "#F4F8FF";
+                end;
+            end;
+        end;
+
+        function self:setVisualStyle(style)
+            if sheet == nil then return; end;
+
+            sheet.perfilVisualImageStyle = validStyle(style);
+            self:refreshVisual();
+        end;
+
+        function self:sendPhotoToToken()
+            if sheet == nil then return; end;
+
+            PokemonTokenSync.syncTokenPhoto(sheet, true);
+        end;
+
+        function self:linkSelectedToken()
+            if sheet == nil then return; end;
+
+            PokemonTokenSync.linkSelectedToken(sheet);
+        end;
+
+        function self:openImgBB()
+            gui.openInBrowser("https://pt-br.imgbb.com/");
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">self:refreshVisual();</event>
+    <event name="onNodeReady">self:refreshVisual();</event>
+
+    <dataLink field="perfilVisualImageStyle">
+        <event name="onChange">self:refreshVisual();</event>
+    </dataLink>
+
+    <rectangle align="client" class="visualRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="58" class="visualHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <label align="top" height="28" text="🖼 PERFIL VISUAL // TOKEN" class="popupTitle" />
+            <label align="client" text="Escolha como a imagem aparece na ficha ou envie a foto para o token vinculado." class="popupHint" />
+        </rectangle>
+
+        <layout align="client" margins="{bottom=8}">
+            <rectangle align="left" width="206" class="visualPanel" padding="{left=8, top=8, right=8, bottom=8}" margins="{right=8}">
+                <image name="imgVisualPreview" align="client" field="fotoAptidoes" editable="false" style="autoFit" />
+            </rectangle>
+
+            <layout align="client">
+                <rectangle name="rectStyleAutoFit" align="top" height="58" class="styleButton" hitTest="true" margins="{bottom=7}" padding="{left=10, top=6, right=10, bottom=6}">
+                    <event name="onClick">self:setVisualStyle("autoFit");</event>
+                    <label name="lblStyleAutoFitTitle" align="top" height="22" text="🧩 Preencher" class="styleTitle" />
+                    <label align="client" text="Ocupa tudo e corta excessos." class="styleHint" />
+                </rectangle>
+
+                <rectangle name="rectStyleProportional" align="top" height="58" class="styleButton" hitTest="true" margins="{bottom=7}" padding="{left=10, top=6, right=10, bottom=6}">
+                    <event name="onClick">self:setVisualStyle("proportional");</event>
+                    <label name="lblStyleProportionalTitle" align="top" height="22" text="📐 Conter" class="styleTitle" />
+                    <label align="client" text="Mantém proporção sem cortar." class="styleHint" />
+                </rectangle>
+
+                <rectangle name="rectStyleOriginal" align="top" height="58" class="styleButton" hitTest="true" margins="{bottom=7}" padding="{left=10, top=6, right=10, bottom=6}">
+                    <event name="onClick">self:setVisualStyle("originalSize");</event>
+                    <label name="lblStyleOriginalTitle" align="top" height="22" text="🔎 Original" class="styleTitle" />
+                    <label align="client" text="Usa o tamanho real da imagem." class="styleHint" />
+                </rectangle>
+
+                <rectangle name="rectStyleStretch" align="top" height="58" class="styleButton" hitTest="true" padding="{left=10, top=6, right=10, bottom=6}">
+                    <event name="onClick">self:setVisualStyle("stretch");</event>
+                    <label name="lblStyleStretchTitle" align="top" height="22" text="↔ Esticar" class="styleTitle" />
+                    <label align="client" text="Força a imagem no retângulo." class="styleHint" />
+                </rectangle>
+
+                <layout align="client" />
+            </layout>
+        </layout>
+
+        <layout align="bottom" height="34">
+            <rectangle align="left" width="132" class="actionButton" hitTest="true" margins="{right=8}">
+                <event name="onClick">self:linkSelectedToken();</event>
+                <label align="client" text="🔗 Vincular" class="btnText" fontColor="#7CFFB2" />
+            </rectangle>
+
+            <rectangle align="left" width="120" class="actionButton" hitTest="true" margins="{right=8}">
+                <event name="onClick">self:sendPhotoToToken();</event>
+                <label align="client" text="🖼 Enviar" class="btnText" fontColor="#7CFFB2" />
+            </rectangle>
+
+            <rectangle align="left" width="132" class="actionButton" hitTest="true">
+                <event name="onClick">self:openImgBB();</event>
+                <label align="client" text="🌐 ABRIR IMGBB" class="btnText" fontColor="#7CFFB2" />
+            </rectangle>
+
+            <layout align="client" />
+
+            <rectangle align="right" width="92" class="closeButton" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

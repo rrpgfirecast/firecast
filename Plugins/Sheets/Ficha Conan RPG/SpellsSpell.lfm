@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="SpellsSpell" g="col" g-width="12" g-width-lg="4" height="210">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse feitiço?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+		]]>	
+	</script>
+
+    <import file="Templates.xml"/>
+
+	<rectangle g="col" g-width="12"  color="black" strokeColor="white" strokeSize="1" g-min-height="210" padding="{left=5,right=5,top=5,bottom=5}">
+		<Title text="Nome" field="nome" widthL="2" widthR="8"/>
+		<button g="col" g-width="2" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+
+		<Title text="Dificuldade" field="dificuldade" widthL="2" widthR="2"/>
+		<Title text="Duração" field="duracao" widthL="2" widthR="2"/>
+		<Title text="Custo" field="custo" widthL="2" widthR="2"/>
+
+		<textEditor g="col" g-width="12" g-vert-tile="true" field="efeito"/>
+	</rectangle>
+</form>

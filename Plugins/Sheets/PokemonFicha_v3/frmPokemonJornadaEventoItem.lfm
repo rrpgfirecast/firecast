@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemonJornadaEventoItem" height="82" theme="dark">
+    <style>
+        rectangle.eventCard {
+            color: #0B0E15;
+            strokeColor: #344055;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+            cursor: handPoint;
+        }
+
+        label.eventDot {
+            fontColor: #FFD700;
+            fontSize: 18;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.eventTitle {
+            fontColor: #FFD700;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 11;
+            vertTextAlign: center;
+        }
+
+        label.eventLine {
+            fontColor: #D8E7FF;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.eventMuted {
+            fontColor: #8FA7BD;
+            fontSize: 8;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonTextMode = require("PokemonTextMode.lua");
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        function self:ensureDefaults()
+            if sheet == nil then return; end;
+
+            sheet.sessaoEvento = sheet.sessaoEvento or "Sessão --";
+            sheet.tituloEvento = sheet.tituloEvento or "Novo evento";
+            sheet.tipoEvento = sheet.tipoEvento or "Cena importante";
+            sheet.resumoEvento = sheet.resumoEvento or "";
+            sheet.impactoEmocional = sheet.impactoEmocional or "";
+            self:refreshVisual();
+        end;
+
+        function self:refreshVisual()
+            if sheet == nil then return; end;
+
+            local sessao = trim(sheet.sessaoEvento) or "Sessão --";
+            local titulo = trim(sheet.tituloEvento) or "Novo evento";
+            local tipo = trim(sheet.tipoEvento) or "Cena";
+            local impacto = trim(sheet.impactoEmocional);
+            local resumo = trim(sheet.resumoEvento);
+
+            sheet.eventoTituloLinha = sessao .. " — " .. titulo;
+            if impacto == nil or impacto == "" then
+                sheet.eventoMetaLinha = tipo;
+            else
+                sheet.eventoMetaLinha = tipo .. " · Impacto: " .. impacto;
+            end;
+
+            if resumo == nil or resumo == "" then
+                sheet.eventoResumoLinha = "Resumo ainda não registrado.";
+            else
+                sheet.eventoResumoLinha = resumo;
+            end;
+        end;
+
+        function self:openDetails()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonJornadaEventoPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:handleMouseDown(event)
+            if event ~= nil and event.button == "right" then
+                self:openDetails();
+            end;
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">self:ensureDefaults();</event>
+    <event name="onNodeReady">self:ensureDefaults();</event>
+
+    <dataLink fields="{'sessaoEvento','tituloEvento','tipoEvento','resumoEvento','impactoEmocional'}">
+        <event name="onChange">
+            self:refreshVisual();
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <rectangle align="client" class="eventCard" margins="{bottom=6}" padding="{left=7, top=6, right=8, bottom=6}" hitTest="true">
+        <event name="onMouseDown"><![CDATA[self:handleMouseDown(event);]]></event>
+        <label align="left" width="28" text="●" class="eventDot" />
+        <layout align="client">
+            <label align="top" height="21" field="eventoTituloLinha" text="Sessão -- — Novo evento" class="eventTitle" />
+            <label align="top" height="18" field="eventoMetaLinha" text="Cena importante" class="eventMuted" />
+            <label align="client" field="eventoResumoLinha" text="Resumo ainda não registrado." class="eventLine" />
+        </layout>
+    </rectangle>
+</form>

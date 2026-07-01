@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonHabPrincipalPopup"
+           width="660"
+           height="560"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.movePopupRoot {
+            color: #070A10;
+            strokeColor: #C7CDD7;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.movePopupHeader {
+            color: #090D15;
+            strokeColor: #C7CDD7;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.movePopupPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.typeBadge {
+            color: #111824;
+            strokeColor: #C7CDD7;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+        }
+
+        label.popupTitle {
+            fontColor: #C7CDD7;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 16;
+            vertTextAlign: center;
+        }
+
+        label.popupHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.typeBadgeText {
+            fontColor: #C7CDD7;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.smallLabel {
+            fontColor: #9EB7D0;
+            fontSize: 9;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        edit.lineEdit {
+            transparent: true;
+            fontColor: #F4F8FF;
+            fontSize: 11;
+        }
+
+        edit.nameEdit {
+            transparent: true;
+            fontColor: #FFFFFF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 15;
+        }
+
+        textEditor.longText {
+            fontColor: #EAF2FF;
+            fontSize: 10;
+        }
+
+        rectangle.rollBtn {
+            color: #C7CDD7;
+            strokeColor: #C7CDD7;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.btnDark {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.btnDelete {
+            color: #151010;
+            strokeColor: #FF5A5A;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.rollText {
+            fontColor: #091015;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.btnDeleteText {
+            fontColor: #FFBDBD;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonChat = require("PokemonChat.lua");
+        local PokemonEnergy = require("PokemonEnergy.lua");
+        local PokemonTextMode = require("PokemonTextMode.lua");
+
+        local function roomChat(root)
+            local room = nil;
+
+            if root ~= nil then
+                room = Firecast.getRoomOf(root);
+            end;
+
+            if room == nil and sheet ~= nil then
+                room = Firecast.getRoomOf(sheet);
+            end;
+
+            if room ~= nil then
+                return room.chat;
+            end;
+            return nil;
+        end;
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local function normalize(value)
+            local normalized = string.lower(tostring(value or ""));
+
+            normalized = string.gsub(normalized, "á", "a");
+            normalized = string.gsub(normalized, "à", "a");
+            normalized = string.gsub(normalized, "â", "a");
+            normalized = string.gsub(normalized, "ã", "a");
+            normalized = string.gsub(normalized, "é", "e");
+            normalized = string.gsub(normalized, "ê", "e");
+            normalized = string.gsub(normalized, "í", "i");
+            normalized = string.gsub(normalized, "ó", "o");
+            normalized = string.gsub(normalized, "ô", "o");
+            normalized = string.gsub(normalized, "õ", "o");
+            normalized = string.gsub(normalized, "ú", "u");
+            normalized = string.gsub(normalized, "ç", "c");
+
+            return normalized;
+        end;
+
+        local function normalizeFormula(value)
+            local formula = trim(value);
+
+            if formula == nil or formula == "" then
+                return nil;
+            end;
+
+            if string.match(formula, "[%d]*[dD]%d+") == nil then
+                if string.sub(formula, 1, 1) == "-" then
+                    formula = "1d20 " .. formula;
+                else
+                    formula = "1d20 + " .. formula;
+                end;
+            end;
+
+            return formula;
+        end;
+
+        local function typeVisuals()
+            local tipo = normalize(sheet ~= nil and sheet.tipo or "");
+
+            if tipo == "fogo" then return "▲ FOGO", "#FF6A3D";
+            elseif tipo == "agua" then return "◆ ÁGUA", "#3DA5FF";
+            elseif tipo == "planta" or tipo == "grama" then return "♣ PLANTA", "#39FF14";
+            elseif tipo == "eletrico" then return "✦ ELÉTRICO", "#FFD700";
+            elseif tipo == "gelo" then return "◇ GELO", "#7DEBFF";
+            elseif tipo == "lutador" or tipo == "luta" then return "▲ LUTADOR", "#C84A3D";
+            elseif tipo == "venenoso" or tipo == "veneno" then return "● VENENO", "#B56DFF";
+            elseif tipo == "terrestre" or tipo == "terra" then return "◆ TERRA", "#C8964A";
+            elseif tipo == "voador" then return "◇ VOADOR", "#9BBEFF";
+            elseif tipo == "psiquico" then return "● PSÍQUICO", "#FF66CC";
+            elseif tipo == "inseto" then return "♣ INSETO", "#B8E24A";
+            elseif tipo == "pedra" then return "◆ PEDRA", "#B8A06A";
+            elseif tipo == "fantasma" then return "○ FANTASMA", "#8A5CFF";
+            elseif tipo == "dragao" then return "✦ DRAGÃO", "#6D7CFF";
+            elseif tipo == "sombrio" or tipo == "noturno" then return "● SOMBRIO", "#9E4DFF";
+            elseif tipo == "aco" then return "■ AÇO", "#8FA7BD";
+            elseif tipo == "fada" then return "✦ FADA", "#FF9AD5";
+            elseif tipo == "normal" then return "● NORMAL", "#C7CDD7";
+            end;
+
+            return "TIPO NÃO DEFINIDO", "#C7CDD7";
+        end;
+
+        function self:ensureDefaults()
+            if sheet == nil then return; end;
+
+            sheet.nome = sheet.nome or "Novo golpe";
+            sheet.nomeOriginal = sheet.nomeOriginal or "";
+            sheet.tipo = sheet.tipo or "";
+            sheet.categoria = sheet.categoria or "";
+            sheet.tags = sheet.tags or "";
+            sheet.acao = sheet.acao or "";
+            sheet.custo = sheet.custo or "";
+            sheet.custoPE = sheet.custoPE or "";
+            sheet.teste = sheet.teste or "";
+            sheet.dano = sheet.dano or "";
+            sheet.formula = sheet.formula or "1d20";
+            sheet.descricaoCurta = sheet.descricaoCurta or "";
+            sheet.descricao = sheet.descricao or "";
+
+            self:refreshVisual();
+        end;
+
+        function self:refreshVisual()
+            if sheet == nil then return; end;
+
+            local badge, accent = typeVisuals();
+            sheet.movePopupTypeBadge = badge;
+
+            if self.rectMovePopupRoot ~= nil then self.rectMovePopupRoot.strokeColor = accent; end;
+            if self.rectMovePopupHeader ~= nil then self.rectMovePopupHeader.strokeColor = accent; end;
+            if self.lblMovePopupTitle ~= nil then self.lblMovePopupTitle.fontColor = accent; end;
+            if self.rectMovePopupTypeBadge ~= nil then self.rectMovePopupTypeBadge.strokeColor = accent; end;
+            if self.lblMovePopupTypeBadge ~= nil then self.lblMovePopupTypeBadge.fontColor = accent; end;
+            if self.rectMovePopupRoll ~= nil then
+                self.rectMovePopupRoll.color = accent;
+                self.rectMovePopupRoll.strokeColor = accent;
+            end;
+            if self.rectMovePopupHit ~= nil then
+                self.rectMovePopupHit.color = "#164E72";
+                self.rectMovePopupHit.strokeColor = accent;
+            end;
+        end;
+
+        function self:openAccuracyPopup()
+            if sheet == nil then return; end;
+
+            local root = PokemonEnergy.rootSheet(sheet);
+            if root == nil then return; end;
+
+            local _, accent = typeVisuals();
+            root.attrBrutoOrigem = "ACERTAR // " .. (sheet.nome or "Golpe");
+            root.attrBrutoTitulo = "🎯 ACERTAR // " .. (sheet.nome or "Golpe");
+            root.attrBrutoCor = accent;
+
+            local popup = gui.newPopupForm("frmPokemonAtributoBrutoPopup");
+            if popup ~= nil then
+                popup:setNodeObject(root);
+                popup:show();
+            end;
+        end;
+
+        function self:openDamagePopup()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonDanoRolagemPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:rollSelf()
+            self:openDamagePopup();
+        end;
+
+        function self:openPresetPopup()
+            if sheet == nil then return; end;
+
+            local popup = gui.newPopupForm("frmPokemonMovePresetPopup");
+            if popup ~= nil then
+                popup:setNodeObject(sheet);
+                popup:show();
+            end;
+        end;
+
+        function self:deleteSelf()
+            if sheet == nil then return; end;
+            local root = PokemonEnergy.rootSheet(sheet);
+
+            if NDB ~= nil and NDB.deleteNode ~= nil then
+                NDB.deleteNode(sheet);
+            elseif ndb ~= nil and ndb.deleteNode ~= nil then
+                ndb.deleteNode(sheet);
+            end;
+
+            PokemonTextMode.refresh(root);
+            self:close();
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">
+        self:ensureDefaults();
+    </event>
+
+    <event name="onNodeReady">
+        self:ensureDefaults();
+    </event>
+
+    <dataLink fields="{'nome','nomeOriginal','tipo','categoria','tags','acao','custo','custoPE','teste','dano','formula','descricaoCurta','descricao'}">
+        <event name="onChange">
+            self:refreshVisual();
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <rectangle name="rectMovePopupRoot" align="client" class="movePopupRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle name="rectMovePopupHeader" align="top" height="62" class="movePopupHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <layout align="top" height="28">
+                <label name="lblMovePopupTitle" align="client" text="MOVEDEX // DETALHES DO GOLPE" class="popupTitle" />
+                <rectangle align="right" width="92" class="btnDark" hitTest="true" margins="{left=8}">
+                    <event name="onClick">self:openPresetPopup();</event>
+                    <label align="client" text="Presets" class="btnText" />
+                </rectangle>
+                <rectangle name="rectMovePopupTypeBadge" align="right" width="162" class="typeBadge" margins="{left=8}">
+                    <label name="lblMovePopupTypeBadge" align="client" field="movePopupTypeBadge" text="TIPO NÃO DEFINIDO" class="typeBadgeText" />
+                </rectangle>
+            </layout>
+            <label align="client" text="Ficha completa da técnica. A lista principal mostra só o cartucho de combate." class="popupHint" />
+        </rectangle>
+
+        <rectangle align="top" height="92" class="movePopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <layout align="top" height="34" margins="{bottom=8}">
+                <label align="left" width="70" text="Nome" class="smallLabel" fontColor="#C7CDD7" />
+                <layout align="client" margins="{right=10}">
+                    <edit align="client" field="nome" class="nameEdit" />
+                    <rectangle align="bottom" height="1" color="#C7CDD7" />
+                </layout>
+                <label align="left" width="92" text="Original" class="smallLabel" fontColor="#8FA7BD" />
+                <layout align="right" width="190">
+                    <edit align="client" field="nomeOriginal" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#8FA7BD" />
+                </layout>
+            </layout>
+
+            <layout align="client">
+                <label align="left" width="70" text="Tipo" class="smallLabel" fontColor="#C7CDD7" />
+                <layout align="left" width="120" margins="{right=10}">
+                    <edit align="client" field="tipo" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#C7CDD7" />
+                </layout>
+                <label align="left" width="76" text="Categoria" class="smallLabel" fontColor="#C7CDD7" />
+                <layout align="left" width="130" margins="{right=10}">
+                    <edit align="client" field="categoria" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#C7CDD7" />
+                </layout>
+                <label align="left" width="42" text="Tags" class="smallLabel" fontColor="#8FA7BD" />
+                <layout align="client">
+                    <edit align="client" field="tags" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#8FA7BD" />
+                </layout>
+            </layout>
+        </rectangle>
+
+        <rectangle align="top" height="88" class="movePopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <layout align="top" height="32" margins="{bottom=8}">
+                <label align="left" width="52" text="Ação" class="smallLabel" fontColor="#FFD700" />
+                <layout align="left" width="106" margins="{right=10}">
+                    <edit align="client" field="acao" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+                <label align="left" width="48" text="Custo" class="smallLabel" fontColor="#FFD700" />
+                <layout align="left" width="80" margins="{right=10}">
+                    <edit align="client" field="custo" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+                <label align="left" width="64" text="Custo PE" class="smallLabel" fontColor="#FF5A5A" />
+                <layout align="left" width="68" margins="{right=10}">
+                    <edit align="client" field="custoPE" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FF5A5A" />
+                </layout>
+                <label align="left" width="46" text="Teste" class="smallLabel" fontColor="#FFD700" />
+                <layout align="client">
+                    <edit align="client" field="teste" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+            </layout>
+
+            <layout align="client">
+                <label align="left" width="52" text="Dano" class="smallLabel" fontColor="#FFD700" />
+                <layout align="left" width="150" margins="{right=10}">
+                    <edit align="client" field="dano" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+                <label align="left" width="58" text="Fórmula" class="smallLabel" fontColor="#FFD700" />
+                <layout align="client">
+                    <edit align="client" field="formula" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+            </layout>
+        </rectangle>
+
+        <rectangle align="top" height="74" class="movePopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="16" text="Descrição curta do cartucho" class="smallLabel" fontColor="#7CFFB2" />
+            <textEditor align="client" field="descricaoCurta" class="longText" />
+        </rectangle>
+
+        <rectangle align="client" class="movePopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="16" text="Descrição completa" class="smallLabel" fontColor="#7CFFB2" />
+            <textEditor align="client" field="descricao" class="longText" />
+        </rectangle>
+
+        <layout align="bottom" height="32">
+            <rectangle name="rectMovePopupHit" align="left" width="124" class="rollBtn" color="#164E72" strokeColor="#5ED7FF" hitTest="true" margins="{right=8}">
+                <event name="onClick">self:openAccuracyPopup();</event>
+                <label align="client" text="🎯 ACERTAR" class="rollText" />
+            </rectangle>
+
+            <rectangle name="rectMovePopupRoll" align="left" width="124" class="rollBtn" hitTest="true" margins="{right=8}">
+                <event name="onClick">self:rollSelf();</event>
+                <label align="client" text="💥 DANO" class="rollText" />
+            </rectangle>
+
+            <rectangle align="left" width="92" class="btnDelete" hitTest="true">
+                <event name="onClick">self:deleteSelf();</event>
+                <label align="client" text="APAGAR" class="btnDeleteText" />
+            </rectangle>
+
+            <layout align="client" />
+
+            <rectangle align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

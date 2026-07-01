@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="TailsOfEquestria_Firecast.rpk" compilationDate="18062026183139" sdkApiVersion="88" sdkMinorApiVersion="2" compilationDigest="34960b2a403cf67adb891ffcacd5ddec53284e16" compilationUniqueID="6a34398b6fa0e5290005179d">
+    <id>br.com.vinic.tailsOfEquestria</id>
+    <version>0.17.1</version>
+    <settings>
+        <automaticStringLocalization>false</automaticStringLocalization>
+    </settings>
+    <info lang="pt-BR">
+        <name>Tails of Equestria - Ficha Interativa</name>
+        <description>Livro de aventura interativo para Tails of Equestria, com recursos, talentos, inventário, vínculos e rolagens integradas.</description>
+        <author>Vinic</author>
+        <contact>Projeto local Firecast SDK 3</contact>
+    </info>
+    <dataTypes>
+        <dataType title="Tails of Equestria - Ficha de Aventura" name="frmTailsOfEquestriaMain" lfmFile="frmTailsOfEquestriaMain.lfm">br.com.vinic.tailsOfEquestria</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="br.com.vinic.tailsOfEquestria" formType="sheetTemplate" lfmFile="frmTailsOfEquestriaMain.lfm" formName="frmTailsOfEquestriaMain">
+                <info title="Tails of Equestria - Ficha de Aventura"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>Tails of Equestria - Ficha Interativa</name>
+    <description>Livro de aventura interativo para Tails of Equestria, com recursos, talentos, inventário, vínculos e rolagens integradas.</description>
+    <author>Vinic</author>
+    <contact>Projeto local Firecast SDK 3</contact>
+</module>

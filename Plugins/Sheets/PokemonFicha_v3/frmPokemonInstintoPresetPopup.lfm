@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonInstintoPresetPopup"
+           width="720"
+           height="520"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.presetRoot {
+            color: #070A10;
+            strokeColor: #9E4DFF;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.presetHeader {
+            color: #090D15;
+            strokeColor: #9E4DFF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.presetPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.presetButton {
+            color: #111824;
+            strokeColor: #344055;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+            cursor: handPoint;
+        }
+
+        rectangle.categoryButton {
+            color: #111824;
+            strokeColor: #9E4DFF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+            cursor: handPoint;
+        }
+
+        label.presetTitle {
+            fontColor: #9E4DFF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 15;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.sectionTitle {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 11;
+            vertTextAlign: center;
+        }
+
+        label.presetName {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 10;
+            vertTextAlign: center;
+        }
+
+        label.presetDesc {
+            fontColor: #BFD2E8;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.presetHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        rectangle.btnDark {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local Presets = require("PokemonInstinctPresets.lua");
+
+        function self:applyCategory(key)
+            Presets.applyCategory(sheet, key);
+            self:close();
+        end;
+
+        function self:applyExample(key)
+            Presets.applyExample(sheet, key);
+            self:close();
+        end;
+    ]]></script>
+
+    <rectangle align="client" class="presetRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="50" class="presetHeader" padding="{left=10, top=5, right=10, bottom=5}" margins="{bottom=8}">
+            <label align="top" height="24" text="PRESETS // INSTINTOS DE TIPO" class="presetTitle" />
+            <label align="client" text="Categorias rápidas, exemplos oficiais/roleplay e um preset custom em branco." class="presetHint" horzTextAlign="center" />
+        </rectangle>
+
+        <layout align="client" margins="{bottom=8}">
+            <rectangle align="left" width="304" class="presetPanel" padding="{left=8, top=8, right=8, bottom=8}" margins="{right=8}">
+                <label align="top" height="22" text="CATEGORIAS" class="sectionTitle" fontColor="#9E4DFF" />
+                <label align="top" height="22" text="Aplica só estrutura básica. Não troca o nome." class="presetHint" />
+
+                <rectangle align="top" height="38" class="categoryButton" margins="{bottom=6}" hitTest="true">
+                    <event name="onClick">self:applyCategory("passiva");</event>
+                    <label align="left" width="78" text="◉ Passiva" class="presetName" fontColor="#9E4DFF" margins="{left=8}" />
+                    <label align="client" text="sempre ativa ou quase sempre" class="presetDesc" />
+                </rectangle>
+
+                <rectangle align="top" height="38" class="categoryButton" margins="{bottom=6}" hitTest="true">
+                    <event name="onClick">self:applyCategory("ativa");</event>
+                    <label align="left" width="78" text="▶ Ativa" class="presetName" fontColor="#9E4DFF" margins="{left=8}" />
+                    <label align="client" text="precisa declarar uso" class="presetDesc" />
+                </rectangle>
+
+                <rectangle align="top" height="38" class="categoryButton" margins="{bottom=6}" hitTest="true">
+                    <event name="onClick">self:applyCategory("reacao");</event>
+                    <label align="left" width="78" text="↯ Reação" class="presetName" fontColor="#9E4DFF" margins="{left=8}" />
+                    <label align="client" text="responde a algo" class="presetDesc" />
+                </rectangle>
+
+                <rectangle align="top" height="38" class="categoryButton" margins="{bottom=6}" hitTest="true">
+                    <event name="onClick">self:applyCategory("roleplay");</event>
+                    <label align="left" width="88" text="🎭 Roleplay" class="presetName" fontColor="#9E4DFF" margins="{left=8}" />
+                    <label align="client" text="efeito narrativo/social" class="presetDesc" />
+                </rectangle>
+
+                <rectangle align="top" height="38" class="categoryButton" margins="{bottom=6}" hitTest="true">
+                    <event name="onClick">self:applyCategory("sensorial");</event>
+                    <label align="left" width="88" text="👁 Sensorial" class="presetName" fontColor="#9E4DFF" margins="{left=8}" />
+                    <label align="client" text="percepção, aura, instinto" class="presetDesc" />
+                </rectangle>
+
+                <rectangle align="top" height="38" class="categoryButton" margins="{bottom=6}" hitTest="true">
+                    <event name="onClick">self:applyCategory("truque");</event>
+                    <label align="left" width="78" text="😼 Truque" class="presetName" fontColor="#9E4DFF" margins="{left=8}" />
+                    <label align="client" text="blefe, malícia, distração" class="presetDesc" />
+                </rectangle>
+
+                <rectangle align="top" height="38" class="categoryButton" margins="{bottom=6}" hitTest="true">
+                    <event name="onClick">self:applyCategory("defesa");</event>
+                    <label align="left" width="78" text="🛡 Defesa" class="presetName" fontColor="#9E4DFF" margins="{left=8}" />
+                    <label align="client" text="resistência, proteção, fuga" class="presetDesc" />
+                </rectangle>
+
+                <rectangle align="top" height="38" class="categoryButton" hitTest="true">
+                    <event name="onClick">self:applyCategory("suporte");</event>
+                    <label align="left" width="78" text="✦ Suporte" class="presetName" fontColor="#9E4DFF" margins="{left=8}" />
+                    <label align="client" text="ajuda aliados" class="presetDesc" />
+                </rectangle>
+            </rectangle>
+
+            <rectangle align="client" class="presetPanel" padding="{left=8, top=8, right=8, bottom=8}">
+                <label align="top" height="22" text="EXEMPLOS PRONTOS" class="sectionTitle" fontColor="#7CFFB2" />
+                <label align="top" height="22" text="Aplica um pacote completo. Pode editar tudo depois." class="presetHint" />
+
+                <rectangle align="top" height="74" class="presetButton" margins="{bottom=8}" hitTest="true" strokeColor="#9E4DFF">
+                    <event name="onClick">self:applyExample("auraSinistra");</event>
+                    <label align="top" height="24" text="👁 AURA SINISTRA" class="presetName" fontColor="#9E4DFF" margins="{left=10}" />
+                    <label align="top" height="18" text="Sombrio · Sensorial · Passiva · Manual" class="presetDesc" margins="{left=10}" />
+                    <label align="client" text="Detecta hostilidade, mentira ou intenção ruim. Bônus: +1d4 em Empatia." class="presetDesc" margins="{left=10, right=8}" />
+                </rectangle>
+
+                <rectangle align="top" height="74" class="presetButton" margins="{bottom=8}" hitTest="true" strokeColor="#9E4DFF">
+                    <event name="onClick">self:applyExample("distracaoMaliciosa");</event>
+                    <label align="top" height="24" text="😼 DISTRAÇÃO MALICIOSA" class="presetName" fontColor="#9E4DFF" margins="{left=10}" />
+                    <label align="top" height="18" text="Sombrio · Truque · Ativa · Manual" class="presetDesc" margins="{left=10}" />
+                    <label align="client" text="Provoca confusão para abrir oportunidade. Bônus: +1d4 em Dissimulação/Persuasão." class="presetDesc" margins="{left=10, right=8}" />
+                </rectangle>
+
+                <rectangle align="top" height="74" class="presetButton" margins="{bottom=8}" hitTest="true" strokeColor="#9E4DFF">
+                    <event name="onClick">self:applyExample("sorrisoDeQuemSabe");</event>
+                    <label align="top" height="24" text="🎭 SORRISO DE QUEM SABE DEMAIS" class="presetName" fontColor="#FF66CC" margins="{left=10}" />
+                    <label align="top" height="18" text="Sombrio · Roleplay · Truque · Mesa" class="presetDesc" margins="{left=10}" />
+                    <label align="client" text="O Pokémon age como se já tivesse vencido. Pressão social, blefe e provocação." class="presetDesc" margins="{left=10, right=8}" />
+                </rectangle>
+
+                <rectangle align="top" height="74" class="presetButton" hitTest="true" strokeColor="#8FA7BD">
+                    <event name="onClick">self:applyExample("customBlank");</event>
+                    <label align="top" height="24" text="+ CUSTOM EM BRANCO" class="presetName" fontColor="#8FA7BD" margins="{left=10}" />
+                    <label align="top" height="18" text="Livre · sem categoria fixa" class="presetDesc" margins="{left=10}" />
+                    <label align="client" text="Limpa os campos e deixa só a fórmula base 1d20 para o usuário criar do zero." class="presetDesc" margins="{left=10, right=8}" />
+                </rectangle>
+            </rectangle>
+        </layout>
+
+        <layout align="bottom" height="32">
+            <layout align="client" />
+            <rectangle align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

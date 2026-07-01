@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonJornadaDiarioPopup"
+           width="820"
+           height="660"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="true">
+
+    <style>
+        rectangle.journeyRoot {
+            color: #070A10;
+            strokeColor: #8A5CFF;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.journeyHeader {
+            color: #090D15;
+            strokeColor: #8A5CFF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.journeyPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.btnDark {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.popupTitle {
+            fontColor: #8A5CFF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 17;
+            vertTextAlign: center;
+        }
+
+        label.popupHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.smallLabel {
+            fontColor: #7DEBFF;
+            fontSize: 9;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        textEditor.longText {
+            fontColor: #EAF2FF;
+            fontSize: 10;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <rectangle align="client" class="journeyRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="62" class="journeyHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <label align="top" height="30" text="DIÁRIO COMPLETO // JORNADA &amp; VÍNCULOS" class="popupTitle" />
+            <label align="client" text="Biografia, diário de sessão, cartas, imagens e memórias longas ficam aqui." class="popupHint" />
+        </rectangle>
+
+        <rectangle align="top" height="112" class="journeyPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="18" text="Resumo narrativo visível na ficha" class="smallLabel" />
+            <textEditor align="client" field="resumoNarrativo" class="longText" />
+        </rectangle>
+
+        <rectangle align="client" class="journeyPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="18" text="Biografia / diário completo com formatação" class="smallLabel" fontColor="#8A5CFF" />
+            <richEdit align="client"
+                      field="biografiaCompletaRich"
+                      backgroundColor="#0B0F16"
+                      defaultFontColor="#F4F8FF"
+                      defaultFontSize="12"
+                      showToolbar="true" />
+        </rectangle>
+
+        <layout align="bottom" height="32">
+            <layout align="client" />
+            <rectangle align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

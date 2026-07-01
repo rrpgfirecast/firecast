@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Inventory" align="client">    
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<!-- Title region -->
+		<rectangle g="col" g-width="12"  color="black" strokeColor="white" strokeSize="1" g-min-height="60" padding="{left=5,right=5,top=5,bottom=5}">
+			<label g="col" g-width="12" text="Finanças" horzTextAlign="center" height="25" fontSize="13" textTrimming="none"/>
+			<layout g="col" g-width="8" g-width-lg="8" g-cnt-line-spacing="5">
+				<Title text="Ouro" field="ouro"/>
+			</layout>
+			<layout g="col" g-width="4" g-width-lg="4" g-cnt-line-spacing="5">
+				<Title text="Manutenção" field="manutencao"/>
+			</layout>
+		</rectangle>
+
+		<rectangle g="col" g-width="12" g-width-lg="12" g-vert-tile="true" color="black" strokeColor="white" strokeSize="1" g-min-height="85" padding="{left=5,right=5,top=5,bottom=5}">
+			<label g="col" g-width="12" height="25" text="PERTENCES"/>
+			<richEdit g="col" g-width="12" g-vert-tile="true" field="pertences" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</rectangle>
+
+	</scrollBox>
+</form>

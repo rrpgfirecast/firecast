@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTailsTalentItem" height="136" theme="light">
+    <script>
+        require("rrpg.lua");
+        require("ndb.lua");
+        local ExplodingRolls = require("tails_exploding_rolls.lua");
+
+        local function paint(controlName, color, strokeColor)
+            local control = self[controlName];
+            if control == nil then return; end;
+            control.color = color;
+            control.strokeColor = strokeColor;
+        end;
+
+        local function linkedTraitField()
+            if sheet == nil then return nil, nil; end;
+            if sheet.linkedTrait == "Corpo" then return "bodyDie", "Corpo"; end;
+            if sheet.linkedTrait == "Mente" then return "mindDie", "Mente"; end;
+            if sheet.linkedTrait == "Charme" then return "charmDie", "Charme"; end;
+            return nil, nil;
+        end;
+
+        local function reduceDie(sides)
+            local scale = {4, 6, 8, 10, 12, 20};
+            local numericSides = tonumber(sides) or 4;
+            for index, value in ipairs(scale) do
+                if value == numericSides then
+                    if index &gt; 1 then return scale[index - 1]; end;
+                    return scale[1];
+                end;
+            end;
+            return 4;
+        end;
+
+        local function rollOptions(root)
+            if root == nil then return nil; end;
+            return {
+                palette = root.settingsRollPalette or "colorido",
+                showExplosions = root.settingsRollExplosionText ~= false,
+                showDetails = root.settingsRollShowDetails ~= false,
+                bestFullGold = root.settingsRollBestFullGold == true
+            };
+        end;
+
+        local function rollTalent()
+            if sheet == nil then return; end;
+            local room = Firecast.getMesaDe(sheet);
+            if room == nil then
+                showMessage("Abra a ficha dentro de uma mesa para enviar rolagens ao chat.");
+                return;
+            end;
+            local talentSides = tonumber(sheet.die) or 4;
+            local name = sheet.name or "Talento";
+            local traitField, traitName = linkedTraitField();
+            local talentsNode = NDB.getParent(sheet);
+            local root = NDB.getParent(talentsNode);
+            local reductionActive = root ~= nil and root.pendingDieReduction == true;
+            local reductionSource = root ~= nil and root.pendingDieReductionSource or "Capricho";
+            local options = rollOptions(root);
+            if reductionActive then
+                talentSides = reduceDie(talentSides);
+                root.pendingDieReduction = false;
+                root.pendingDieReductionSource = nil;
+            end;
+            local titleSuffix = reductionActive and (" | ↓ " .. reductionSource) or "";
+            local characterName = root ~= nil and root.characterName or "Personagem";
+            if characterName == nil or characterName == "" then characterName = "Personagem"; end;
+
+            if traitField == nil or root == nil then
+                ExplodingRolls.rollSingleEx(room, talentSides, name .. titleSuffix, characterName, options);
+                return;
+            end;
+
+            local traitSides = tonumber(root[traitField]) or 4;
+            if reductionActive then traitSides = reduceDie(traitSides); end;
+            ExplodingRolls.rollBestOfEx(room, {
+                {sides=traitSides, label=traitName},
+                {sides=talentSides, label=name}
+            }, traitName .. " + " .. name .. titleSuffix, characterName, options);
+        end;
+
+        local function showKindPopup()
+            self.popTalentKind:show("center", self.rctKind);
+        end;
+
+        local function chooseKind(value)
+            if sheet ~= nil then sheet.kind = value; end;
+            self.popTalentKind:close();
+        end;
+
+        local function showTraitPopup()
+            self.popTalentTrait:show("center", self.rctTrait);
+        end;
+
+        local function chooseTrait(value)
+            if sheet ~= nil then sheet.linkedTrait = value; end;
+            self.popTalentTrait:close();
+        end;
+
+        local function showDiePopup()
+            self.popTalentDie:show("center", self.rctDie);
+        end;
+
+        local function chooseDie(value)
+            if sheet ~= nil then sheet.die = value; end;
+            self.popTalentDie:close();
+        end;
+
+        local function showDeletePopup()
+            self.popDeleteTalent:show("center", self.rctDelete);
+        end;
+
+        local function refreshUsedState()
+            if self.rctUsed == nil or self.lblUsed == nil then return; end;
+            local used = sheet ~= nil and sheet.usedThisAdventure == true;
+            if used then
+                self.rctUsed.color = "#FFD469";
+                self.rctUsed.strokeColor = "#F2B84B";
+                self.lblUsed.text = "USADO ★";
+            else
+                self.rctUsed.color = "#DFD5B9";
+                self.rctUsed.strokeColor = "#B6C99B";
+                self.lblUsed.text = "MARCAR USO";
+            end;
+        end;
+
+        local function toggleUsed()
+            if sheet == nil then return; end;
+            sheet.usedThisAdventure = not (sheet.usedThisAdventure == true);
+            refreshUsedState();
+        end;
+
+        local function deleteTalent()
+            self.popDeleteTalent:close();
+            NDB.deleteNode(sheet);
+        end;
+
+        local function ensureLinkedTrait()
+            if sheet == nil or sheet.linkedTrait ~= nil then return; end;
+            if sheet.name == "Coração Intrépido" then
+                sheet.linkedTrait = "Corpo";
+            elseif sheet.name == "Telecinese" then
+                sheet.linkedTrait = "Mente";
+            elseif sheet.name == "Voar" then
+                sheet.linkedTrait = "Corpo";
+            else
+                sheet.linkedTrait = "Livre";
+            end;
+        end;
+    </script>
+
+    <rectangle align="client" margins="{left=2, right=2, top=4, bottom=4}"
+               color="#FFF2D6" strokeColor="#7FCB5C" strokeSize="1"
+               cornerType="round" xradius="16" yradius="16"/>
+    <rectangle left="18" top="2" width="96" height="18" color="#D7EDC2" strokeColor="#D7EDC2"
+               opacity="0.74" rotationAngle="-2"/>
+    <label left="18" top="18" width="250" height="12" text="TALENTO DA HISTORIA"
+           fontColor="#6B8F52" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="16" top="32" width="270" height="34" field="name"
+          fontColor="#33452D" fontSize="13" fontStyle="bold"/>
+    <edit transparent="true" left="16" top="76" width="270" height="42" field="description"
+          fontColor="#5F9F57" fontSize="13"/>
+
+    <rectangle name="rctKind" left="302" top="16" width="110" height="48" color="#C9B9D8"
+               strokeColor="#8067D9" strokeSize="1" cornerType="round" xradius="14" yradius="14"
+               onClick="showKindPopup();"
+               onMouseEnter="paint('rctKind', '#BCA5D6', '#7954C8');"
+               onMouseLeave="paint('rctKind', '#C9B9D8', '#8067D9');"/>
+    <label left="312" top="24" width="90" height="12" text="TIPO"
+           horzTextAlign="center" fontColor="#8067D9" fontSize="11" fontStyle="bold" hitTest="false"/>
+    <label left="312" top="41" width="90" height="16" field="kind"
+           horzTextAlign="center" fontColor="#5C3AA8" fontSize="13" fontStyle="bold" hitTest="false"/>
+
+    <rectangle name="rctDie" left="422" top="16" width="62" height="48" color="#DDC48E"
+               strokeColor="#F2B84B" strokeSize="1" cornerType="round" xradius="14" yradius="14"
+               onClick="showDiePopup();"
+               onMouseEnter="paint('rctDie', '#D4B777', '#8A6420');"
+               onMouseLeave="paint('rctDie', '#DDC48E', '#F2B84B');"/>
+    <label left="422" top="23" width="62" height="12" text="DADO"
+           horzTextAlign="center" fontColor="#A06E1D" fontSize="11" fontStyle="bold" hitTest="false"/>
+    <label left="422" top="38" width="62" height="22" field="die" format="D%d"
+           horzTextAlign="center" fontColor="#8A6420" fontSize="13" fontStyle="bold" hitTest="false"/>
+
+    <rectangle name="rctUsed" left="494" top="16" width="74" height="48" color="#DFD5B9"
+               strokeColor="#B6C99B" strokeSize="1" cornerType="round" xradius="14" yradius="14"
+               onClick="toggleUsed();"/>
+    <label name="lblUsed" left="494" top="31" width="74" height="20" text="MARCAR USO"
+           horzTextAlign="center" wordWrap="true" fontColor="#8A6420" fontSize="13" fontStyle="bold" hitTest="false"/>
+
+    <rectangle name="rctTrait" left="302" top="76" width="116" height="42" color="#BFEAFF"
+               strokeColor="#4BB8E8" strokeSize="1" cornerType="round" xradius="14" yradius="14"
+               cursor="handPoint" hint="Escolher atributo relacionado" onClick="showTraitPopup();"/>
+    <label left="302" top="82" width="116" height="12" text="LIGADO A" horzTextAlign="center" fontColor="#168AB6" fontSize="11" fontStyle="bold" hitTest="false"/>
+    <label left="302" top="98" width="116" height="16" field="linkedTrait" horzTextAlign="center" fontColor="#0E6C91" fontSize="11" fontStyle="bold" hitTest="false"/>
+
+    <rectangle name="rctRollTalent" left="428" top="76" width="86" height="42" color="#BDD3B2"
+               strokeColor="#68B984" strokeSize="1" cornerType="round" xradius="14" yradius="14"
+               onClick="rollTalent();"
+               onMouseEnter="paint('rctRollTalent', '#D3EFC5', '#4C7C38');"
+               onMouseLeave="paint('rctRollTalent', '#BDD3B2', '#68B984');"/>
+    <label left="428" top="88" width="86" height="18" text="✦ ROLAR"
+           horzTextAlign="center" fontColor="#287A52" fontSize="13" fontStyle="bold" hitTest="false"/>
+
+    <rectangle name="rctDelete" left="524" top="76" width="44" height="42" color="#D9B8B8"
+               strokeColor="#F05F6A" strokeSize="1" cornerType="round" xradius="14" yradius="14"
+               onClick="showDeletePopup();"
+               onMouseEnter="paint('rctDelete', '#CEA8A8', '#F05F6A');"
+               onMouseLeave="paint('rctDelete', '#D9B8B8', '#F05F6A');"/>
+    <label left="524" top="88" width="44" height="18" text="X"
+           horzTextAlign="center" fontColor="#C73658" fontSize="13" fontStyle="bold" hitTest="false"/>
+
+    <popup name="popTalentKind" width="620" height="330" backOpacity="0.92"
+           drawContainer="false" autoScopeNode="true">
+        <rectangle align="client" color="#FFE4A8" strokeColor="#8067D9" strokeSize="1"
+                   cornerType="round" xradius="16" yradius="16"/>
+        <label left="30" top="22" width="560" height="18" text="TIPO DO TALENTO"
+               fontColor="#8067D9" fontSize="13" fontStyle="bold"/>
+        <label left="30" top="46" width="560" height="28" text="COMO ESTE TALENTO NASCEU?"
+               fontColor="#405237" fontSize="18" fontStyle="bold"/>
+        <rectangle name="rctKindMain" left="30" top="100" width="170" height="180" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="chooseKind('Principal');"
+                   onMouseEnter="paint('rctKindMain', '#EFE5FA', '#8067D9');"
+                   onMouseLeave="paint('rctKindMain', '#DED7C8', '#B6C99B');"/>
+        <label left="30" top="120" width="170" height="62" text="★" horzTextAlign="center"
+               fontSize="35" hitTest="false"/>
+        <label left="44" top="190" width="142" height="20" text="PRINCIPAL"
+               horzTextAlign="center" fontColor="#8067D9" fontSize="13" fontStyle="bold" hitTest="false"/>
+        <label left="44" top="218" width="142" height="38" text="CUTIE MARK ESPECIAL"
+               horzTextAlign="center" wordWrap="true" fontColor="#5F9F57" fontSize="13" hitTest="false"/>
+
+        <rectangle name="rctKindInherent" left="225" top="100" width="170" height="180" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="chooseKind('Inerente');"
+                   onMouseEnter="paint('rctKindInherent', '#B4CDD9', '#4B9FC4');"
+                   onMouseLeave="paint('rctKindInherent', '#DED7C8', '#B6C99B');"/>
+        <label left="225" top="120" width="170" height="62" text="⚙" horzTextAlign="center"
+               fontSize="35" hitTest="false"/>
+        <label left="239" top="190" width="142" height="20" text="INERENTE"
+               horzTextAlign="center" fontColor="#4B9FC4" fontSize="13" fontStyle="bold" hitTest="false"/>
+        <label left="239" top="218" width="142" height="38" text="PARTE DE QUEM VOCÊ É"
+               horzTextAlign="center" wordWrap="true" fontColor="#5F9F57" fontSize="13" hitTest="false"/>
+
+        <rectangle name="rctKindLearned" left="420" top="100" width="170" height="180" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="chooseKind('Adquirido');"
+                   onMouseEnter="paint('rctKindLearned', '#B9CDA7', '#2F8F72');"
+                   onMouseLeave="paint('rctKindLearned', '#DED7C8', '#B6C99B');"/>
+        <label left="420" top="120" width="170" height="62" text="▣" horzTextAlign="center"
+               fontSize="35" hitTest="false"/>
+        <label left="434" top="190" width="142" height="20" text="ADQUIRIDO"
+               horzTextAlign="center" fontColor="#2F8F72" fontSize="13" fontStyle="bold" hitTest="false"/>
+        <label left="434" top="218" width="142" height="38" text="TREINO E AVENTURA"
+               horzTextAlign="center" wordWrap="true" fontColor="#5F9F57" fontSize="13" hitTest="false"/>
+    </popup>
+
+    <popup name="popTalentTrait" width="680" height="300" backOpacity="0.92"
+           drawContainer="false" autoScopeNode="true">
+        <rectangle align="client" color="#C3C0CE" strokeColor="#4BB8E8" strokeSize="2" cornerType="round" xradius="20" yradius="20"/>
+        <label left="30" top="24" width="620" height="20" text="QUAL ATRIBUTO COMBINA COM ESTE TALENTO?" fontColor="#168AB6" fontSize="13" fontStyle="bold"/>
+        <label left="30" top="52" width="620" height="28" text="Ao rolar o talento, esse atributo também será rolado e a ficha escolherá o maior." fontColor="#596A72" fontSize="13"/>
+
+        <rectangle left="30" top="104" width="140" height="140" color="#BFEAFF" strokeColor="#4BB8E8" cornerType="round" xradius="18" yradius="18" cursor="handPoint" onClick="chooseTrait('Corpo');"/>
+        <label left="30" top="124" width="140" height="42" text="◆" horzTextAlign="center" fontColor="#168AB6" fontSize="27" hitTest="false"/>
+        <label left="30" top="174" width="140" height="22" text="CORPO" horzTextAlign="center" fontColor="#0E6C91" fontSize="13" fontStyle="bold" hitTest="false"/>
+        <label left="42" top="202" width="116" height="28" text="AÇÃO FÍSICA" horzTextAlign="center" wordWrap="true" fontColor="#168AB6" fontSize="13" hitTest="false"/>
+
+        <rectangle left="190" top="104" width="140" height="140" color="#E6D6FF" strokeColor="#B18CFF" cornerType="round" xradius="18" yradius="18" cursor="handPoint" onClick="chooseTrait('Mente');"/>
+        <label left="190" top="124" width="140" height="42" text="✦" horzTextAlign="center" fontColor="#7954C8" fontSize="27" hitTest="false"/>
+        <label left="190" top="174" width="140" height="22" text="MENTE" horzTextAlign="center" fontColor="#5C3AA8" fontSize="13" fontStyle="bold" hitTest="false"/>
+        <label left="202" top="202" width="116" height="28" text="IDEIAS E MAGIA" horzTextAlign="center" wordWrap="true" fontColor="#5B4773" fontSize="13" hitTest="false"/>
+
+        <rectangle left="350" top="104" width="140" height="140" color="#DDC48E" strokeColor="#F4B84A" cornerType="round" xradius="18" yradius="18" cursor="handPoint" onClick="chooseTrait('Charme');"/>
+        <label left="350" top="124" width="140" height="42" text="♥" horzTextAlign="center" fontColor="#B46C00" fontSize="27" hitTest="false"/>
+        <label left="350" top="174" width="140" height="22" text="CHARME" horzTextAlign="center" fontColor="#8A6420" fontSize="13" fontStyle="bold" hitTest="false"/>
+        <label left="362" top="202" width="116" height="28" text="CORAÇÃO E PRESENÇA" horzTextAlign="center" wordWrap="true" fontColor="#6D5529" fontSize="13" hitTest="false"/>
+
+        <rectangle left="510" top="104" width="140" height="140" color="#D4C9BF" strokeColor="#8C8177" cornerType="round" xradius="18" yradius="18" cursor="handPoint" onClick="chooseTrait('Livre');"/>
+        <label left="510" top="124" width="140" height="42" text="★" horzTextAlign="center" fontColor="#665E59" fontSize="27" hitTest="false"/>
+        <label left="510" top="174" width="140" height="22" text="LIVRE" horzTextAlign="center" fontColor="#5F5650" fontSize="13" fontStyle="bold" hitTest="false"/>
+        <label left="522" top="202" width="116" height="28" text="DECIDA NA CENA" horzTextAlign="center" wordWrap="true" fontColor="#6F6258" fontSize="13" hitTest="false"/>
+    </popup>
+
+    <popup name="popTalentDie" width="650" height="470" backOpacity="0.92"
+           drawContainer="false" autoScopeNode="true">
+        <rectangle align="client" color="#FFE4A8" strokeColor="#F4B84A" strokeSize="1"
+                   cornerType="round" xradius="16" yradius="16"/>
+        <label left="30" top="22" width="590" height="18" text="DADO DO TALENTO"
+               fontColor="#F4B84A" fontSize="13" fontStyle="bold"/>
+        <label left="30" top="46" width="590" height="28" text="ESCOLHA O NÍVEL DE DOMÍNIO"
+               fontColor="#405237" fontSize="18" fontStyle="bold"/>
+        <rectangle name="rctDie4" left="30" top="100" width="180" height="140" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="chooseDie(4);"
+                   onMouseEnter="paint('rctDie4', '#DDC48E', '#F4B84A');"
+                   onMouseLeave="paint('rctDie4', '#DED7C8', '#B6C99B');"/>
+        <label left="30" top="116" width="180" height="48" text="◈" horzTextAlign="center"
+               fontSize="29" hitTest="false"/>
+        <label left="30" top="168" width="180" height="30" text="D4" horzTextAlign="center"
+               fontColor="#F4B84A" fontSize="19" fontStyle="bold" hitTest="false"/>
+        <label left="30" top="204" width="180" height="18" text="PRIMEIROS PASSOS" horzTextAlign="center"
+               fontColor="#5F9F57" fontSize="13" hitTest="false"/>
+
+        <rectangle name="rctDie6" left="235" top="100" width="180" height="140" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="chooseDie(6);"
+                   onMouseEnter="paint('rctDie6', '#DDC48E', '#F4B84A');"
+                   onMouseLeave="paint('rctDie6', '#DED7C8', '#B6C99B');"/>
+        <label left="235" top="116" width="180" height="48" text="◈" horzTextAlign="center"
+               fontSize="29" hitTest="false"/>
+        <label left="235" top="168" width="180" height="30" text="D6" horzTextAlign="center"
+               fontColor="#F4B84A" fontSize="19" fontStyle="bold" hitTest="false"/>
+        <label left="235" top="204" width="180" height="18" text="COMPETENTE" horzTextAlign="center"
+               fontColor="#5F9F57" fontSize="13" hitTest="false"/>
+
+        <rectangle name="rctDie8" left="440" top="100" width="180" height="140" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="chooseDie(8);"
+                   onMouseEnter="paint('rctDie8', '#DDC48E', '#F4B84A');"
+                   onMouseLeave="paint('rctDie8', '#DED7C8', '#B6C99B');"/>
+        <label left="440" top="116" width="180" height="48" text="◈" horzTextAlign="center"
+               fontSize="29" hitTest="false"/>
+        <label left="440" top="168" width="180" height="30" text="D8" horzTextAlign="center"
+               fontColor="#F4B84A" fontSize="19" fontStyle="bold" hitTest="false"/>
+        <label left="440" top="204" width="180" height="18" text="EXPERIENTE" horzTextAlign="center"
+               fontColor="#5F9F57" fontSize="13" hitTest="false"/>
+
+        <rectangle name="rctDie10" left="30" top="260" width="180" height="140" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="chooseDie(10);"
+                   onMouseEnter="paint('rctDie10', '#DDC48E', '#F4B84A');"
+                   onMouseLeave="paint('rctDie10', '#DED7C8', '#B6C99B');"/>
+        <label left="30" top="276" width="180" height="48" text="◈" horzTextAlign="center"
+               fontSize="29" hitTest="false"/>
+        <label left="30" top="328" width="180" height="30" text="D10" horzTextAlign="center"
+               fontColor="#F4B84A" fontSize="19" fontStyle="bold" hitTest="false"/>
+        <label left="30" top="364" width="180" height="18" text="ESPECIALISTA" horzTextAlign="center"
+               fontColor="#5F9F57" fontSize="13" hitTest="false"/>
+
+        <rectangle name="rctDie12" left="235" top="260" width="180" height="140" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="chooseDie(12);"
+                   onMouseEnter="paint('rctDie12', '#DDC48E', '#F4B84A');"
+                   onMouseLeave="paint('rctDie12', '#DED7C8', '#B6C99B');"/>
+        <label left="235" top="276" width="180" height="48" text="◈" horzTextAlign="center"
+               fontSize="29" hitTest="false"/>
+        <label left="235" top="328" width="180" height="30" text="D12" horzTextAlign="center"
+               fontColor="#F4B84A" fontSize="19" fontStyle="bold" hitTest="false"/>
+        <label left="235" top="364" width="180" height="18" text="MESTRE" horzTextAlign="center"
+               fontColor="#5F9F57" fontSize="13" hitTest="false"/>
+
+        <rectangle name="rctDie20" left="440" top="260" width="180" height="140" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="chooseDie(20);"
+                   onMouseEnter="paint('rctDie20', '#DDC48E', '#F4B84A');"
+                   onMouseLeave="paint('rctDie20', '#DED7C8', '#B6C99B');"/>
+        <label left="440" top="276" width="180" height="48" text="★" horzTextAlign="center"
+               fontSize="29" hitTest="false"/>
+        <label left="440" top="328" width="180" height="30" text="D20" horzTextAlign="center"
+               fontColor="#F4B84A" fontSize="19" fontStyle="bold" hitTest="false"/>
+        <label left="440" top="364" width="180" height="18" text="LENDÁRIO" horzTextAlign="center"
+               fontColor="#5F9F57" fontSize="13" hitTest="false"/>
+    </popup>
+
+    <popup name="popDeleteTalent" width="520" height="300" backOpacity="0.94"
+           drawContainer="false" autoScopeNode="true">
+        <rectangle align="client" color="#FFE4A8" strokeColor="#F05F6A" strokeSize="1"
+                   cornerType="round" xradius="16" yradius="16"/>
+        <label left="30" top="24" width="460" height="18" text="EXCLUIR TALENTO"
+               fontColor="#F05F6A" fontSize="13" fontStyle="bold"/>
+        <label left="30" top="50" width="460" height="54" text="⚠" horzTextAlign="center"
+               fontSize="33" hitTest="false"/>
+        <label left="30" top="106" width="460" height="28"
+               text="ESTA AÇÃO REMOVE O TALENTO DA FICHA."
+               horzTextAlign="center" fontColor="#405237" fontSize="14" fontStyle="bold"/>
+        <rectangle name="rctCancelDelete" left="42" top="164" width="196" height="104" color="#DED7C8"
+                   strokeColor="#B6C99B" cornerType="round" xradius="18" yradius="18"
+                   onClick="self.popDeleteTalent:close();"
+                   onMouseEnter="paint('rctCancelDelete', '#EEF5E9', '#5F9F57');"
+                   onMouseLeave="paint('rctCancelDelete', '#DED7C8', '#B6C99B');"/>
+        <label left="42" top="176" width="196" height="38" text="↩" horzTextAlign="center"
+               fontSize="24" hitTest="false"/>
+        <label left="42" top="222" width="196" height="20" text="MANTER TALENTO"
+               horzTextAlign="center" fontColor="#405237" fontSize="13" fontStyle="bold" hitTest="false"/>
+        <rectangle name="rctConfirmDelete" left="282" top="164" width="196" height="104" color="#D8B7C0"
+                   strokeColor="#F05F6A" cornerType="round" xradius="18" yradius="18"
+                   onClick="deleteTalent();"
+                   onMouseEnter="paint('rctConfirmDelete', '#FFD0D8', '#C73658');"
+                   onMouseLeave="paint('rctConfirmDelete', '#D8B7C0', '#F05F6A');"/>
+        <label left="282" top="176" width="196" height="38" text="✖" horzTextAlign="center"
+               fontSize="24" hitTest="false"/>
+        <label left="282" top="222" width="196" height="20" text="EXCLUIR AGORA"
+               horzTextAlign="center" fontColor="#C73658" fontSize="13" fontStyle="bold" hitTest="false"/>
+    </popup>
+
+    <dataLink field="name" defaultValue="Novo Talento"/>
+    <dataLink field="kind" defaultValue="Adquirido"/>
+    <dataLink field="die" defaultValue="4"/>
+    <dataLink field="linkedTrait" defaultValue="Livre"/>
+    <dataLink field="usedThisAdventure" defaultValue="false">
+        <event name="onChange">
+            refreshUsedState();
+        </event>
+    </dataLink>
+    <event name="onNodeReady">
+        ensureLinkedTrait();
+        refreshUsedState();
+    </event>
+</form>
+
+
+
+
+

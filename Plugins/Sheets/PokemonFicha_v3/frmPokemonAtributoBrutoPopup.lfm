@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonAtributoBrutoPopup"
+           width="720"
+           height="430"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.rawAttrRoot {
+            color: #070A10;
+            strokeColor: #FFD700;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.rawAttrHeader {
+            color: #090D15;
+            strokeColor: #FFD700;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.rawAttrPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.rawAttrButton {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+            cursor: handPoint;
+        }
+
+        rectangle.rawAttrToggle {
+            color: #153624;
+            strokeColor: #7CFFB2;
+            strokeSize: 2;
+            xradius: 5;
+            yradius: 5;
+            cursor: handPoint;
+        }
+
+        rectangle.rawAttrClose {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.rawAttrTitle {
+            fontColor: #FFD700;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 17;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.rawAttrHint {
+            fontColor: #9EB7D0;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.rawAttrGroup {
+            fontColor: #8FA7BD;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 10;
+            vertTextAlign: center;
+        }
+
+        label.rawAttrText {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 11;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.rawAttrToggleText {
+            fontColor: #7CFFB2;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 11;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.rawAttrCloseText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local AttributeRaw = require("PokemonAttributeRaw.lua");
+
+        function self:refreshModifiersToggle()
+            if self._rawAttrModifiersEnabled == nil then
+                self._rawAttrModifiersEnabled = AttributeRaw.modifiersEnabled(sheet);
+            end;
+
+            local enabled = self._rawAttrModifiersEnabled;
+
+            if self.rectRawAttrModifiers ~= nil then
+                self.rectRawAttrModifiers.color = enabled and "#153624" or "#351719";
+                self.rectRawAttrModifiers.strokeColor = enabled and "#7CFFB2" or "#FF5A5A";
+                self.rectRawAttrModifiers.strokeSize = enabled and 2 or 1;
+            end;
+
+            if self.lblRawAttrModifiers ~= nil then
+                self.lblRawAttrModifiers.text = enabled and "✓ MODIFICADORES ATIVADOS" or "○ MODIFICADORES DESATIVADOS";
+                self.lblRawAttrModifiers.fontColor = enabled and "#7CFFB2" or "#FF8A8A";
+            end;
+        end;
+
+        function self:toggleModifiers()
+            if sheet == nil then return; end;
+            self._rawAttrModifiersEnabled = not self._rawAttrModifiersEnabled;
+            sheet.attrBrutoUsarModificadores = self._rawAttrModifiersEnabled;
+            self:refreshModifiersToggle();
+        end;
+
+        function self:rollRawAttribute(key)
+            if sheet == nil then return; end;
+
+            AttributeRaw.roll(
+                sheet,
+                key,
+                sheet.attrBrutoOrigem or "ACERTAR",
+                sheet.attrBrutoCor or "#FFD700",
+                self._rawAttrModifiersEnabled
+            );
+            self:close();
+        end;
+
+    ]]></script>
+
+    <event name="onNodeReady">
+        self:refreshModifiersToggle();
+    </event>
+
+        <dataLink field="attrBrutoUsarModificadores">
+        <event name="onChange"><![CDATA[
+            self._rawAttrModifiersEnabled = nil;
+            self:refreshModifiersToggle();
+        ]]></event>
+    </dataLink>
+
+    <rectangle align="client" class="rawAttrRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="58" class="rawAttrHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <label align="top" height="28" field="attrBrutoTitulo" text="🎯 ACERTAR // ESCOLHA O ATRIBUTO" class="rawAttrTitle" />
+            <label align="client" text="Rola 1d20 + o atributo escolhido. O controle abaixo inclui ou ignora ajustes ativos." class="rawAttrHint" />
+        </rectangle>
+
+        <rectangle name="rectRawAttrModifiers" align="top" height="38" class="rawAttrToggle" hitTest="true" margins="{bottom=8}">
+            <event name="onClick">self:toggleModifiers();</event>
+            <label name="lblRawAttrModifiers" align="client" text="✓ MODIFICADORES ATIVADOS" class="rawAttrToggleText" />
+        </rectangle>
+
+        <rectangle align="client" class="rawAttrPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="18" text="NÚCLEO" class="rawAttrGroup" fontColor="#00BFFF" />
+            <layout align="top" height="42" margins="{bottom=8}">
+                <rectangle align="left" width="102" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("vida");</event><label align="client" text="Vida" class="rawAttrText" /></rectangle>
+                <rectangle align="left" width="102" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("poder");</event><label align="client" text="Poder" class="rawAttrText" /></rectangle>
+                <rectangle align="left" width="102" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("forca");</event><label align="client" text="Força" class="rawAttrText" /></rectangle>
+                <rectangle align="left" width="122" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("resistencia");</event><label align="client" text="Resistência" class="rawAttrText" fontSize="10" /></rectangle>
+                <rectangle align="left" width="102" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("defesa");</event><label align="client" text="Defesa" class="rawAttrText" /></rectangle>
+                <rectangle align="client" class="rawAttrButton" hitTest="true"><event name="onClick">self:rollRawAttribute("velocidade");</event><label align="client" text="Velocidade" class="rawAttrText" fontSize="10" /></rectangle>
+            </layout>
+
+            <label align="top" height="18" text="COMBATE" class="rawAttrGroup" fontColor="#FFD700" />
+            <layout align="top" height="42" margins="{bottom=8}">
+                <rectangle align="left" width="132" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("precisao");</event><label align="client" text="Precisão" class="rawAttrText" /></rectangle>
+                <rectangle align="left" width="132" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("protecao");</event><label align="client" text="Proteção" class="rawAttrText" /></rectangle>
+                <rectangle align="left" width="132" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("efeito");</event><label align="client" text="Efeito" class="rawAttrText" /></rectangle>
+                <rectangle align="client" class="rawAttrButton" hitTest="true"><event name="onClick">self:rollRawAttribute("tenacidade");</event><label align="client" text="Tenacidade" class="rawAttrText" /></rectangle>
+            </layout>
+
+            <label align="top" height="18" text="APTIDÕES" class="rawAttrGroup" fontColor="#39FF14" />
+            <layout align="top" height="42" margins="{bottom=8}">
+                <rectangle align="left" width="102" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("astucia");</event><label align="client" text="Astúcia" class="rawAttrText" /></rectangle>
+                <rectangle align="left" width="102" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("fisico");</event><label align="client" text="Físico" class="rawAttrText" /></rectangle>
+                <rectangle align="left" width="102" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("mental");</event><label align="client" text="Mental" class="rawAttrText" /></rectangle>
+                <rectangle align="left" width="102" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("natural");</event><label align="client" text="Natural" class="rawAttrText" /></rectangle>
+                <rectangle align="left" width="102" class="rawAttrButton" hitTest="true" margins="{right=8}"><event name="onClick">self:rollRawAttribute("social");</event><label align="client" text="Social" class="rawAttrText" /></rectangle>
+                <rectangle align="client" class="rawAttrButton" hitTest="true"><event name="onClick">self:rollRawAttribute("tecnico");</event><label align="client" text="Técnico" class="rawAttrText" /></rectangle>
+            </layout>
+        </rectangle>
+
+        <layout align="bottom" height="32">
+            <layout align="client" />
+            <rectangle align="right" width="112" class="rawAttrClose" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="FECHAR" class="rawAttrCloseText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

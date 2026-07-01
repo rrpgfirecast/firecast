@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonDanoRolagemPopup"
+           width="560"
+           height="420"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.damageRoot {
+            color: #070A10;
+            strokeColor: #FF5A5A;
+            strokeSize: 1;
+            xradius: 7;
+            yradius: 7;
+        }
+
+        rectangle.damageHeader {
+            color: #100A0D;
+            strokeColor: #FF5A5A;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.damagePanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.damagePrimary {
+            color: #FF5A5A;
+            strokeColor: #FF8A8A;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.damageAccent {
+            color: #164E72;
+            strokeColor: #5ED7FF;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.damageDarkButton {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.damageTitle {
+            fontColor: #FF5A5A;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 16;
+            vertTextAlign: center;
+        }
+
+        label.damageHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.damageLabel {
+            fontColor: #C7CDD7;
+            fontSize: 9;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        label.damagePreview {
+            fontColor: #FFD700;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 11;
+            vertTextAlign: center;
+        }
+
+        edit.damageEdit {
+            transparent: true;
+            fontColor: #F4F8FF;
+            fontSize: 12;
+        }
+
+        textEditor.damageText {
+            fontColor: #EAF2FF;
+            fontSize: 10;
+        }
+
+        label.damagePrimaryText {
+            fontColor: #13080A;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.damageButtonText {
+            fontColor: #F4F8FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonChat = require("PokemonChat.lua");
+        local PokemonEnergy = require("PokemonEnergy.lua");
+        local PokemonRollFormula = require("PokemonRollFormula.lua");
+        local dialogs = require("dialogs.lua");
+
+        local function trim(value)
+            return PokemonRollFormula.trim(value);
+        end;
+
+        local function roomChat(root)
+            local room = nil;
+
+            if root ~= nil then
+                room = Firecast.getRoomOf(root);
+            end;
+
+            if room == nil and sheet ~= nil then
+                room = Firecast.getRoomOf(sheet);
+            end;
+
+            if room ~= nil then return room.chat; end;
+            return nil;
+        end;
+
+        local function rawDamageFormula()
+            local damage = trim(sheet ~= nil and sheet.dano or nil);
+
+            if damage ~= nil and damage ~= "" then
+                return damage;
+            end;
+
+            local formula = trim(sheet ~= nil and sheet.formula or nil);
+            if formula ~= nil and formula ~= "" then return formula; end;
+
+            return "1d4";
+        end;
+
+        local function rollTitle()
+            local name = trim(sheet ~= nil and sheet.nome or nil) or "Golpe";
+            return name .. " · DANO";
+        end;
+
+        local function joinModifier(base, modifier)
+            local mod = trim(modifier);
+            if mod == nil or mod == "" then return trim(base) or "0"; end;
+            return PokemonRollFormula.join(base, mod);
+        end;
+
+        local function costInfo(root)
+            local cost = PokemonEnergy.parse(sheet ~= nil and sheet.custoPE or nil);
+            if cost <= 0 then return "Sem custo de PE"; end;
+
+            local currentText = trim(root ~= nil and root.peAtual or nil);
+            local current = PokemonEnergy.parse(root ~= nil and root.peAtual or nil);
+            local max = PokemonEnergy.parse(root ~= nil and root.peMaximo or nil);
+
+            if (currentText == nil or currentText == "") and max > 0 then
+                current = max;
+            end;
+
+            return "Custo: " .. tostring(cost) .. " PE · Atual: " .. tostring(current) .. "/" .. tostring(max);
+        end;
+
+        function self:refreshPreview()
+            if sheet == nil then return; end;
+
+            local root = PokemonEnergy.rootSheet(sheet);
+            local final = trim(sheet.danoRollFinalFormula) or rawDamageFormula();
+            local normalized = PokemonRollFormula.normalize(root, final);
+
+            sheet.danoRollPreview = "Vai rolar: " .. (normalized or "fórmula inválida");
+            sheet.danoRollCostInfo = costInfo(root);
+        end;
+
+        function self:applyModifier()
+            if sheet == nil then return; end;
+
+            sheet.danoRollFinalFormula = joinModifier(sheet.danoRollBaseFormula, sheet.danoRollModifier);
+            self:refreshPreview();
+        end;
+
+        function self:addModifier(fragment, note)
+            if sheet == nil then return; end;
+
+            local current = trim(sheet.danoRollModifier);
+            if current == nil or current == "" then
+                sheet.danoRollModifier = fragment;
+            else
+                sheet.danoRollModifier = current .. " " .. fragment;
+            end;
+
+            local oldNote = trim(sheet.danoRollNote);
+            if note ~= nil and note ~= "" then
+                if oldNote == nil or oldNote == "" then
+                    sheet.danoRollNote = note;
+                else
+                    sheet.danoRollNote = oldNote .. ", " .. note;
+                end;
+            end;
+
+            self:applyModifier();
+        end;
+
+        function self:clearBattleEffects()
+            if sheet == nil then return; end;
+
+            sheet.danoRollModifier = "";
+            sheet.danoRollNote = "";
+            sheet.danoRollFinalFormula = sheet.danoRollBaseFormula;
+            self:refreshPreview();
+        end;
+
+        function self:rollDamage()
+            if sheet == nil then return; end;
+
+            local root = PokemonEnergy.rootSheet(sheet);
+            local chat = roomChat(root);
+            local final = trim(sheet.danoRollFinalFormula);
+            local formula = PokemonRollFormula.normalize(root, final);
+
+            if formula == nil then
+                dialogs.alert("Informe uma fórmula de dano válida.");
+                return;
+            end;
+
+            if chat == nil then
+                dialogs.alert("Não encontrei o chat da mesa para enviar a rolagem.");
+                return;
+            end;
+
+            if not PokemonEnergy.pay(root, sheet.custoPE, sheet.nome or "Golpe") then return; end;
+
+            PokemonChat.roll(chat, formula, {
+                title = rollTitle(),
+                rawFormula = final,
+                formula = formula,
+                ownerSheet = root or sheet,
+                description = trim(sheet.danoRollNote) or trim(sheet.tipo),
+                accentColor = "#FF5A5A"
+            });
+
+            self:close();
+        end;
+
+        function self:ensureDefaults()
+            if sheet == nil then return; end;
+
+            local base = rawDamageFormula();
+            local name = trim(sheet.nome) or "Golpe";
+            local tipo = trim(sheet.tipo) or "Tipo não definido";
+
+            sheet.danoRollName = name;
+            sheet.danoRollType = tipo;
+            sheet.danoRollBaseFormula = base;
+            sheet.danoRollModifier = "";
+            sheet.danoRollFinalFormula = base;
+            sheet.danoRollNote = "";
+
+            self:refreshPreview();
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">
+        self:ensureDefaults();
+    </event>
+
+    <event name="onNodeReady">
+        self:ensureDefaults();
+    </event>
+
+    <dataLink fields="{'danoRollFinalFormula','danoRollModifier','custoPE'}">
+        <event name="onChange">
+            self:refreshPreview();
+        </event>
+    </dataLink>
+
+    <rectangle name="rectDamageRoot" align="client" class="damageRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="64" class="damageHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <label align="top" height="28" text="💥 DANO // AJUSTES DE BATALHA" class="damageTitle" />
+            <layout align="client">
+                <label align="left" width="300" field="danoRollName" text="Golpe" class="damageHint" />
+                <label align="client" field="danoRollCostInfo" text="Sem custo de PE" class="damageHint" horzTextAlign="trailing" />
+            </layout>
+        </rectangle>
+
+        <rectangle align="top" height="118" class="damagePanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <layout align="top" height="30" margins="{bottom=8}">
+                <label align="left" width="90" text="Fórmula base" class="damageLabel" fontColor="#FFD700" />
+                <layout align="client">
+                    <edit align="client" field="danoRollBaseFormula" class="damageEdit" readOnly="true" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+            </layout>
+
+            <layout align="top" height="30" margins="{bottom=8}">
+                <label align="left" width="90" text="Efeitos" class="damageLabel" fontColor="#00BFFF" />
+                <layout align="client" margins="{right=8}">
+                    <edit align="client" field="danoRollModifier" class="damageEdit" />
+                    <rectangle align="bottom" height="1" color="#00BFFF" />
+                </layout>
+                <rectangle align="right" width="82" class="damageAccent" hitTest="true">
+                    <event name="onClick">self:applyModifier();</event>
+                    <label align="client" text="APLICAR" class="damageButtonText" />
+                </rectangle>
+            </layout>
+
+            <layout align="client">
+                <label align="left" width="90" text="Final" class="damageLabel" fontColor="#FF5A5A" />
+                <layout align="client">
+                    <edit align="client" field="danoRollFinalFormula" class="damageEdit" />
+                    <rectangle align="bottom" height="1" color="#FF5A5A" />
+                </layout>
+            </layout>
+        </rectangle>
+
+        <rectangle align="top" height="64" class="damagePanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="18" field="danoRollPreview" text="Vai rolar: 1d4" class="damagePreview" />
+            <layout align="client" margins="{top=6}">
+                <rectangle align="left" width="74" class="damageDarkButton" hitTest="true" margins="{right=6}">
+                    <event name="onClick">self:addModifier('-1', 'Penalidade -1');</event>
+                    <label align="client" text="-1" class="damageButtonText" />
+                </rectangle>
+                <rectangle align="left" width="74" class="damageDarkButton" hitTest="true" margins="{right=6}">
+                    <event name="onClick">self:addModifier('-2', 'Cego');</event>
+                    <label align="client" text="👁 -2" class="damageButtonText" />
+                </rectangle>
+                <rectangle align="left" width="92" class="damageDarkButton" hitTest="true" margins="{right=6}">
+                    <event name="onClick">self:addModifier('+1d4', 'Encarar');</event>
+                    <label align="client" text="😠 +1d4" class="damageButtonText" />
+                </rectangle>
+                <rectangle align="left" width="74" class="damageDarkButton" hitTest="true" margins="{right=6}">
+                    <event name="onClick">self:addModifier('+1', 'Bônus +1');</event>
+                    <label align="client" text="+1" class="damageButtonText" />
+                </rectangle>
+                <layout align="client" />
+                <rectangle align="right" width="80" class="damageDarkButton" hitTest="true">
+                    <event name="onClick">self:clearBattleEffects();</event>
+                    <label align="client" text="LIMPAR" class="damageButtonText" />
+                </rectangle>
+            </layout>
+        </rectangle>
+
+        <rectangle align="client" class="damagePanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="16" text="Notas rápidas dos efeitos" class="damageLabel" fontColor="#8FA7BD" />
+            <textEditor align="client" field="danoRollNote" class="damageText" />
+        </rectangle>
+
+        <layout align="bottom" height="34">
+            <rectangle align="left" width="126" class="damagePrimary" hitTest="true" margins="{right=8}">
+                <event name="onClick">self:rollDamage();</event>
+                <label align="client" text="💥 ROLAR DANO" class="damagePrimaryText" />
+            </rectangle>
+
+            <rectangle align="left" width="104" class="damageAccent" hitTest="true" margins="{right=8}">
+                <event name="onClick">self:applyModifier();</event>
+                <label align="client" text="🔧 ATUALIZAR" class="damageButtonText" />
+            </rectangle>
+
+            <layout align="client" />
+
+            <rectangle align="right" width="92" class="damageDarkButton" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="CANCELAR" class="damageButtonText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

@@ -52,6 +52,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="Ambesek.Conan.RPG" name="Ficha Conan RPG" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Conan%20RPG/output/Ficha%20Conan%20RPG.rpk?raw=true" fileName="Ficha Conan RPG.rpk" repositoryPath="Sheets/Ficha Conan RPG/" author="Ambesek" description="Ficha para o cenario e sistema Conan RPG." version="1.0" compilationDate="26042026162447" compilationDigest="8056ac3e77c947f690545e9d7b093c695ea82208">
+        <info lang="pt-BR" name="Ficha Conan RPG" description="Ficha para o cenario e sistema Conan RPG." author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.Conan.RPG" title="Ficha Conan RPG" formType="sheetTemplate">
+                <info title="Ficha Conan RPG"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Daemon" name="Ficha Daemon" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daemon/output/Ficha%20Daemon.rpk?raw=true" fileName="Ficha Daemon.rpk" repositoryPath="Sheets/Ficha Daemon/" author="Ambesek" description="Ficha para o sistema Daemon." version="1.3" compilationDate="02092023171033" compilationDigest="ef4b5fc7fd02a54c4242cd9a80cd169d339d3630">
         <info lang="pt-BR" name="Ficha Daemon" description="Ficha para o sistema Daemon." author="Ambesek" site="none"/>
         <dataTypes>
@@ -446,7 +454,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Beloved.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek, Beloved, Carlins, Py." description="Ficha para o sistema Daggerheart" version="1.0" compilationDate="23032026031558" compilationDigest="7b3fe2ba4b7ab2319ae7d89568cd948c5e41f6d7">
+    <element id="Beloved.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek, Beloved, Carlins, Py." description="Ficha para o sistema Daggerheart" version="1.0" compilationDate="17052026212204" compilationDigest="d8dc7dd3911be0167dec441de0c769d9f1a5f58f">
         <info lang="pt-BR" name="Ficha Daggerheart" description="Ficha para o sistema Daggerheart" author="Ambesek, Beloved, Carlins, Py." site="NA"/>
         <dataTypes>
             <dataType id="Beloved.daggerheart" title="Ficha Daggerheart" formType="sheetTemplate">
@@ -566,6 +574,23 @@
             </dataType>
             <dataType id="br.com.RRPG.WTFTV3_S3" title="Lobisomem: O Apocalipse - Ficha do Totem" formType="sheetTemplate">
                 <info title="Lobisomem: O Apocalipse - Ficha do Totem"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="br.com.sb2.PokemonBetaVisual" name="Pokemon Ficha HUD" url="https://sdk3.firecast.app/Plugins/Sheets/PokemonFicha_v3/output/PokemonFicha_v3.rpk?raw=true" fileName="PokemonFicha_v3.rpk" repositoryPath="Sheets/PokemonFicha_v3/" author="OpenAI para SuperBolinha2" description="Ficha de Pokémon com HUD visual, listas de habilidades e cálculos derivados automáticos." version="4.9" compilationDate="01072026023046" compilationDigest="9731d2788b344032a60b8f79b5e52c926205a158">
+        <info lang="en" name="Pokemon HUD Sheet" description="Pokémon sheet with HUD visuals, skill lists, and automatic derived calculations." author="OpenAI for SuperBolinha2"/>
+        <info lang="pt-BR" name="Pokemon Ficha HUD" description="Ficha de Pokémon com HUD visual, listas de habilidades e cálculos derivados automáticos." author="OpenAI para SuperBolinha2" site="https://superbolinha2.com/"/>
+        <dataTypes>
+            <dataType id="br.com.sb2.pokemonbeta.sheet" title="Pokémon — Ficha HUD" formType="sheetTemplate">
+                <info title="Pokémon — Ficha HUD"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="br.com.vinic.tailsOfEquestria" name="Tails of Equestria - Ficha Interativa" url="https://sdk3.firecast.app/Plugins/Sheets/TailsOfEquestria/output/TailsOfEquestria.rpk?raw=true" fileName="TailsOfEquestria.rpk" repositoryPath="Sheets/TailsOfEquestria/" author="Vinic" description="Livro de aventura interativo para Tails of Equestria, com recursos, talentos, inventário, vínculos e rolagens integradas." version="0.17.1" compilationDate="01072026023115" compilationDigest="61febb78d9498767bf52d7017ad748b3d1d96dd8">
+        <info lang="pt-BR" name="Tails of Equestria - Ficha Interativa" description="Livro de aventura interativo para Tails of Equestria, com recursos, talentos, inventário, vínculos e rolagens integradas." author="Vinic"/>
+        <dataTypes>
+            <dataType id="br.com.vinic.tailsOfEquestria" title="Tails of Equestria - Ficha de Aventura" formType="sheetTemplate">
+                <info title="Tails of Equestria - Ficha de Aventura"/>
             </dataType>
         </dataTypes>
     </element>
@@ -767,7 +792,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.2.4" compilationDate="23032025173516" compilationDigest="27117f3644a49aa4056dbb219b4f98402d187ec9">
+    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="1.2.4" compilationDate="27042026002335" compilationDigest="27117f3644a49aa4056dbb219b4f98402d187ec9">
         <info lang="pt-BR" name="Ficha Pathfinder" description="Ficha feita para o sistema Pathfinder." author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder" formType="sheetTemplate">
@@ -807,7 +832,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="4.2.2" compilationDate="28072024185456" compilationDigest="58547a72abdf90de1d2c3f06534a81ed559db43e">
+    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="4.2.2" compilationDate="27042026002300" compilationDigest="58547a72abdf90de1d2c3f06534a81ed559db43e">
         <info lang="pt-BR" name="Ficha RPG meister" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Alterar.DataType.FichaRPGmeister" title="Ficha RPGmeister" formType="sheetTemplate">
@@ -892,7 +917,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GURPS_4e_Otimizado" name="GURPS 4e" url="https://sdk3.firecast.app/Plugins/Sheets/GURPS%204e/output/GURPS%204e.rpk?raw=true" fileName="GURPS 4e.rpk" repositoryPath="Sheets/GURPS 4e/" author="thirteen" description="Ficha de Personagem do sistema GURPS, Quarta edição." version="1.1" compilationDate="13012026094100" compilationDigest="acd30dabce34b7372f20a3f2b5a6420261f1e6f7">
+    <element id="GURPS_4e_Otimizado" name="GURPS 4e" url="https://sdk3.firecast.app/Plugins/Sheets/GURPS%204e/output/GURPS%204e.rpk?raw=true" fileName="GURPS 4e.rpk" repositoryPath="Sheets/GURPS 4e/" author="thirteen" description="Ficha de Personagem do sistema GURPS, Quarta edição." version="1.2" compilationDate="09052026033717" compilationDigest="408ca1c9c4d700dc6addacfe9b92372cbd84ace3">
         <info lang="pt-BR" name="GURPS 4e" description="Ficha de Personagem do sistema GURPS, Quarta edição." author="thirteen" site="https://www.twitter.com/i_am_thirteen"/>
         <dataTypes>
             <dataType id="thirteen.GURPS4e" title="GURPS 4e" formType="sheetTemplate">

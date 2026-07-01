@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Combat" align="client">    
+	<scrollBox align="client" g-cnt-line-spacing="5">
+		<!-- Title region -->
+		<rectangle g="col" g-width="12"  color="black" strokeColor="white" strokeSize="1" g-min-height="60" padding="{left=5,right=5,top=5,bottom=5}">
+			<label g="col" g-width="12" text="DANO EXTRA" horzTextAlign="center" height="25" fontSize="13" textTrimming="none"/>
+			<layout g="col" g-width="12" g-width-lg="4" g-cnt-line-spacing="5">
+				<Title text="Distância" field="distancia"/>
+			</layout>
+			<layout g="col" g-width="12" g-width-lg="4" g-cnt-line-spacing="5">
+				<Title text="Corporal" field="corporal"/>
+			</layout>
+			<layout g="col" g-width="12" g-width-lg="4" g-cnt-line-spacing="5">
+				<Title text="Presença" field="presenca"/>
+			</layout>
+		</rectangle>
+
+        <scrollBox g="col" g-width="12" g-vert-tile="true">
+            <button text="Novo Ataque" g="col" g-width="12" height="25" onClick="self.rclAttacks:append();" textTrimming="none"/>
+            <gridRecordList name="rclAttacks" field="rclAttacks" templateForm="CombatAttack" g="col" g-width="12" g-cnt-line-spacing="5">
+                <event name="onCompare">
+                    return Utils.compareStringPtBr(left.nome, right.nome);
+                </event>
+            </gridRecordList>
+        </scrollBox>
+
+	</scrollBox>
+</form>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonMovePresetPopup"
+           width="620"
+           height="560"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.presetRoot {
+            color: #070A10;
+            strokeColor: #00BFFF;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.presetHeader {
+            color: #090D15;
+            strokeColor: #00BFFF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.presetPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.typeButton {
+            color: #111824;
+            strokeColor: #00BFFF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+            cursor: handPoint;
+        }
+
+        rectangle.btnDark {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.presetTitle {
+            fontColor: #00BFFF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 15;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.presetHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.typeName {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 11;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local Presets = require("PokemonMovePresets.lua");
+
+        function self:applyType(key)
+            Presets.applyType(sheet, key);
+            self:close();
+        end;
+    ]]></script>
+
+    <rectangle align="client" class="presetRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="54" class="presetHeader" padding="{left=10, top=5, right=10, bottom=5}" margins="{bottom=8}">
+            <label align="top" height="26" text="PRESETS // TIPO DO GOLPE" class="presetTitle" />
+            <label align="client" text="Escolhe o tipo da MoveDex sem mexer nos outros campos do golpe." class="presetHint" />
+        </rectangle>
+
+        <layout align="client" margins="{bottom=8}">
+            <rectangle align="left" width="292" class="presetPanel" padding="{left=8, top=8, right=8, bottom=8}" margins="{right=8}">
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#C7CDD7" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("normal");</event>
+                    <label align="client" text="● NORMAL" class="typeName" fontColor="#C7CDD7" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#FF6A3D" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("fogo");</event>
+                    <label align="client" text="▲ FOGO" class="typeName" fontColor="#FF6A3D" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#3DA5FF" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("agua");</event>
+                    <label align="client" text="◆ ÁGUA" class="typeName" fontColor="#3DA5FF" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("planta");</event>
+                    <label align="client" text="♣ PLANTA" class="typeName" fontColor="#39FF14" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("eletrico");</event>
+                    <label align="client" text="✦ ELÉTRICO" class="typeName" fontColor="#FFD700" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#7DEBFF" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("gelo");</event>
+                    <label align="client" text="◇ GELO" class="typeName" fontColor="#7DEBFF" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#C84A3D" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("lutador");</event>
+                    <label align="client" text="▲ LUTADOR" class="typeName" fontColor="#C84A3D" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#B56DFF" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("venenoso");</event>
+                    <label align="client" text="● VENENOSO" class="typeName" fontColor="#B56DFF" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#C8964A" hitTest="true">
+                    <event name="onClick">self:applyType("terrestre");</event>
+                    <label align="client" text="◆ TERRESTRE" class="typeName" fontColor="#C8964A" />
+                </rectangle>
+            </rectangle>
+
+            <rectangle align="client" class="presetPanel" padding="{left=8, top=8, right=8, bottom=8}">
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#9BBEFF" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("voador");</event>
+                    <label align="client" text="◇ VOADOR" class="typeName" fontColor="#9BBEFF" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#FF66CC" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("psiquico");</event>
+                    <label align="client" text="● PSÍQUICO" class="typeName" fontColor="#FF66CC" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#B8E24A" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("inseto");</event>
+                    <label align="client" text="♣ INSETO" class="typeName" fontColor="#B8E24A" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#B8A06A" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("pedra");</event>
+                    <label align="client" text="◆ PEDRA" class="typeName" fontColor="#B8A06A" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#8A5CFF" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("fantasma");</event>
+                    <label align="client" text="○ FANTASMA" class="typeName" fontColor="#8A5CFF" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#6D7CFF" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("dragao");</event>
+                    <label align="client" text="✦ DRAGÃO" class="typeName" fontColor="#6D7CFF" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#9E4DFF" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("sombrio");</event>
+                    <label align="client" text="● SOMBRIO" class="typeName" fontColor="#9E4DFF" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#8FA7BD" hitTest="true" margins="{bottom=7}">
+                    <event name="onClick">self:applyType("aco");</event>
+                    <label align="client" text="■ AÇO" class="typeName" fontColor="#8FA7BD" />
+                </rectangle>
+                <rectangle align="top" height="38" class="typeButton" strokeColor="#FF9AD5" hitTest="true">
+                    <event name="onClick">self:applyType("fada");</event>
+                    <label align="client" text="✦ FADA" class="typeName" fontColor="#FF9AD5" />
+                </rectangle>
+            </rectangle>
+        </layout>
+
+        <layout align="bottom" height="32">
+            <rectangle align="left" width="136" class="btnDark" hitTest="true">
+                <event name="onClick">self:applyType("customBlank");</event>
+                <label align="client" text="Limpar tipo" class="btnText" />
+            </rectangle>
+            <layout align="client" />
+            <rectangle align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonDossieNarrativoPopup"
+           width="520"
+           height="430"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.popupRoot {
+            color: #070A10;
+            strokeColor: #00BFFF;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.popupHeader {
+            color: #090D15;
+            strokeColor: #00BFFF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.popupPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        label.popupTitle {
+            fontColor: #00BFFF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 16;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.smallLabel {
+            fontColor: #9EB7D0;
+            fontSize: 9;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        edit.lineEdit {
+            transparent: true;
+            fontColor: #F4F8FF;
+            fontSize: 11;
+        }
+
+        textEditor.longText {
+            fontColor: #EAF2FF;
+            fontSize: 10;
+        }
+
+        rectangle.btnDark {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontSize: 10;
+            fontStyle: bold;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <rectangle align="client" class="popupRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="42" class="popupHeader" margins="{bottom=8}">
+            <label align="client" text="DOSSIÊ NARRATIVO" class="popupTitle" />
+        </rectangle>
+
+        <rectangle align="top" height="78" class="popupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="16" text="Linha evolutiva" class="smallLabel" fontColor="#FFD700" />
+            <layout align="client">
+                <edit align="client" field="evolucaoPokemon" class="lineEdit" />
+                <rectangle align="bottom" height="1" color="#FFD700" />
+            </layout>
+        </rectangle>
+
+        <rectangle align="client" class="popupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="16" text="Notas de Campo" class="smallLabel" fontColor="#00BFFF" />
+            <textEditor align="client" field="descricaoPokemon" class="longText" />
+        </rectangle>
+
+        <layout align="bottom" height="30">
+            <layout align="client" />
+            <rectangle align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

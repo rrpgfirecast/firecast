@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonJornadaGanchoPopup"
+           width="640"
+           height="560"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.hookPopupRoot {
+            color: #070A10;
+            strokeColor: #8A5CFF;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.hookPopupHeader {
+            color: #090D15;
+            strokeColor: #8A5CFF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.hookPopupPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.btnDark {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.btnDelete {
+            color: #151010;
+            strokeColor: #FF5A5A;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.popupTitle {
+            fontColor: #8A5CFF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 17;
+            vertTextAlign: center;
+        }
+
+        label.smallLabel {
+            fontColor: #8A5CFF;
+            fontSize: 9;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        edit.lineEdit {
+            transparent: true;
+            fontColor: #F4F8FF;
+            fontSize: 11;
+        }
+
+        edit.nameEdit {
+            transparent: true;
+            fontColor: #FFFFFF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 15;
+        }
+
+        textEditor.longText {
+            fontColor: #EAF2FF;
+            fontSize: 10;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.btnDeleteText {
+            fontColor: #FFBDBD;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local PokemonTextMode = require("PokemonTextMode.lua");
+
+        function self:deleteSelf()
+            if sheet == nil then return; end;
+            local root = PokemonTextMode.rootSheet(sheet);
+
+            if NDB ~= nil and NDB.deleteNode ~= nil then
+                NDB.deleteNode(sheet);
+            elseif ndb ~= nil and ndb.deleteNode ~= nil then
+                ndb.deleteNode(sheet);
+            end;
+
+            PokemonTextMode.refresh(root);
+            self:close();
+        end;
+    ]]></script>
+
+    <dataLink fields="{'nomeGancho','tipoGancho','intensidadeGancho','resumoGancho','gatilhos','comoApareceEmCena','comoPodeSerResolvido','notasGancho'}">
+        <event name="onChange">
+            PokemonTextMode.refresh(sheet);
+        </event>
+    </dataLink>
+
+    <rectangle align="client" class="hookPopupRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="54" class="hookPopupHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <label align="client" text="GANCHO INTERNO // DETALHES" class="popupTitle" />
+        </rectangle>
+
+        <rectangle align="top" height="112" class="hookPopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <layout align="top" height="34" margins="{bottom=8}">
+                <edit align="client" field="nomeGancho" class="nameEdit" />
+                <rectangle align="bottom" height="1" color="#8A5CFF" />
+            </layout>
+
+            <layout align="client">
+                <label align="left" width="46" text="Tipo" class="smallLabel" />
+                <layout align="left" width="172" margins="{right=10}">
+                    <edit align="client" field="tipoGancho" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#8A5CFF" />
+                </layout>
+                <label align="left" width="86" text="Intensidade" class="smallLabel" fontColor="#FFD700" />
+                <layout align="client">
+                    <edit align="client" field="intensidadeGancho" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+            </layout>
+        </rectangle>
+
+        <layout align="client" margins="{bottom=8}">
+            <rectangle align="left" width="300" class="hookPopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{right=8}">
+                <label align="top" height="18" text="Resumo" class="smallLabel" />
+                <textEditor align="top" height="80" field="resumoGancho" class="longText" margins="{bottom=8}" />
+                <label align="top" height="18" text="Gatilhos" class="smallLabel" fontColor="#FF5A5A" />
+                <textEditor align="client" field="gatilhos" class="longText" />
+            </rectangle>
+
+            <layout align="client">
+                <rectangle align="top" height="112" class="hookPopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+                    <label align="top" height="18" text="Como aparece em cena" class="smallLabel" fontColor="#7DEBFF" />
+                    <textEditor align="client" field="comoApareceEmCena" class="longText" />
+                </rectangle>
+
+                <rectangle align="top" height="112" class="hookPopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+                    <label align="top" height="18" text="Como pode ser resolvido" class="smallLabel" fontColor="#7CFFB2" />
+                    <textEditor align="client" field="comoPodeSerResolvido" class="longText" />
+                </rectangle>
+
+                <rectangle align="client" class="hookPopupPanel" padding="{left=10, top=8, right=10, bottom=8}">
+                    <label align="top" height="18" text="Notas" class="smallLabel" fontColor="#8FA7BD" />
+                    <textEditor align="client" field="notasGancho" class="longText" />
+                </rectangle>
+            </layout>
+        </layout>
+
+        <layout align="bottom" height="32">
+            <rectangle align="left" width="92" class="btnDelete" hitTest="true">
+                <event name="onClick">self:deleteSelf();</event>
+                <label align="client" text="APAGAR" class="btnDeleteText" />
+            </rectangle>
+            <layout align="client" />
+            <rectangle align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

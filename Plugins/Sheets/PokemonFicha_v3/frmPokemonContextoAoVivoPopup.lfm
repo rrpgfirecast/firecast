@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonContextoAoVivoPopup"
+           width="940"
+           height="720"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="true">
+
+    <style>
+        rectangle.contextRoot {
+            color: #070A10;
+            strokeColor: #40D8FF;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.contextHeader {
+            color: #090D15;
+            strokeColor: #40D8FF;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.contextPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.contextClose {
+            color: #111824;
+            strokeColor: #40D8FF;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.contextTitle {
+            fontColor: #40D8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 18;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.contextHint {
+            fontColor: #9EB7D0;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.contextSmall {
+            fontColor: #D8F2FF;
+            fontSize: 9;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        label.contextButtonText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 11;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <rectangle align="client" class="contextRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="66" class="contextHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <label align="top" height="32" text="📝 CONTEXTO AO VIVO" class="contextTitle" />
+            <label align="client" text="Notas rápidas da narração: nomes, pistas, descobertas, imagens, links e informações importantes." class="contextHint" />
+        </rectangle>
+
+        <rectangle align="client" class="contextPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="18" text="Caderno compartilhado da sessão" class="contextSmall" />
+            <richEdit align="client"
+                      field="contextoAoVivoRich"
+                      backgroundColor="#0B0F16"
+                      defaultFontColor="#F4F8FF"
+                      defaultFontSize="13"
+                      showToolbar="true" />
+        </rectangle>
+
+        <layout align="bottom" height="34">
+            <layout align="client" />
+            <rectangle align="right" width="124" class="contextClose" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="FECHAR" class="contextButtonText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonRolagemPopup"
+           width="520"
+           height="430"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.rollPopupRoot {
+            color: #070A10;
+            strokeColor: #FFD700;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.rollPopupHeader {
+            color: #090D15;
+            strokeColor: #FFD700;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.rollPopupPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        label.popupTitle {
+            fontColor: #FFD700;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 16;
+            vertTextAlign: center;
+        }
+
+        label.popupHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.smallLabel {
+            fontColor: #9EB7D0;
+            fontSize: 9;
+            fontStyle: bold;
+            vertTextAlign: center;
+        }
+
+        edit.lineEdit {
+            transparent: true;
+            fontColor: #F4F8FF;
+            fontSize: 11;
+        }
+
+        edit.centerEdit {
+            transparent: true;
+            fontColor: #F4F8FF;
+            fontSize: 12;
+            horzTextAlign: center;
+        }
+
+        textEditor.longText {
+            fontColor: #EAF2FF;
+            fontSize: 10;
+        }
+
+        rectangle.rollButton {
+            color: #FFD700;
+            strokeColor: #FFD700;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.btnDark {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.rollButtonText {
+            fontColor: #091015;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local rrpg = require("rrpg.lua");
+        local PokemonChat = require("PokemonChat.lua");
+        local PokemonTokenSync = require("PokemonTokenSync.lua");
+        local PokemonAttributeAdjustments = require("PokemonAttributeAdjustments.lua");
+        local dialogs = require("dialogs.lua");
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local function hasDice(formula)
+            if formula == nil then return false; end;
+            return string.match(formula, "[%d]*[dD]%d+") ~= nil;
+        end;
+
+        local function cleanRollExpression(value)
+            local cleaned = trim(value);
+            if cleaned == nil or cleaned == "" then
+                return "0";
+            end;
+
+            cleaned = string.gsub(cleaned, "[%(%)]", "");
+            cleaned = trim(cleaned);
+
+            if cleaned == nil or cleaned == "" then
+                return "0";
+            end;
+
+            return cleaned;
+        end;
+
+        local function parseEnergyNumber(value)
+            local text = trim(value);
+            if text == nil or text == "" then return 0; end;
+
+            text = string.gsub(text, ",", ".");
+
+            local numberText = string.match(text, "[-+]?%d+%.?%d*");
+            local number = tonumber(numberText);
+
+            if number == nil or number < 0 then return 0; end;
+            return math.floor(number);
+        end;
+
+        local function parentOf(node)
+            local ok, parent;
+
+            if ndb ~= nil and ndb.getParent ~= nil then
+                ok, parent = pcall(ndb.getParent, node);
+                if ok then return parent; end;
+            end;
+
+            if NDB ~= nil and NDB.getParent ~= nil then
+                ok, parent = pcall(NDB.getParent, node);
+                if ok then return parent; end;
+            end;
+
+            return nil;
+        end;
+
+        local function rootSheet()
+            local current = sheet;
+            local last = sheet;
+
+            for i = 1, 8 do
+                if current == nil then break; end;
+
+                if current.nomePokemon ~= nil or
+                   current.vidaBase ~= nil or
+                   current.poderBase ~= nil or
+                   current.typeSelectionOrder ~= nil then
+                    return current;
+                end;
+
+                last = current;
+                local parent = parentOf(current);
+                if parent == nil or parent == current then break; end;
+                current = parent;
+            end;
+
+            return last;
+        end;
+
+        local rollAttributeSources = {
+            vida={base="vidaBase", mod="vidaMod"},
+            poder={base="poderBase", mod="poderMod"},
+            forca={base="forcaBase", mod="forcaMod"},
+            resistencia={base="resistenciaBase", mod="resistenciaMod"},
+            defesa={base="defesaBase", mod="defesaMod"},
+            velocidade={base="velocidadeBase", mod="velocidadeMod"},
+            precisao={value="precisaoValor"},
+            protecao={value="protecaoValor"},
+            efeito={value="efeitoValor"},
+            tenacidade={value="tenacidadeValor"},
+            astucia={value="astuciaValor"},
+            fisico={value="fisicoValor"},
+            mental={value="mentalValor"},
+            natural={value="naturalValor"},
+            social={value="socialValor"},
+            tecnico={value="tecnicoValor"}
+        };
+
+        local rollAttributeAliases = {
+            vida="vida", vid="vida", vi="vida",
+            poder="poder", pod="poder", po="poder",
+            forca="forca", forc="forca", ["for"]="forca", fo="forca",
+            resistencia="resistencia", res="resistencia",
+            defesa="defesa", def="defesa", de="defesa",
+            velocidade="velocidade", vel="velocidade",
+            precisao="precisao", pre="precisao",
+            protecao="protecao", prot="protecao", pro="protecao",
+            efeito="efeito", efe="efeito",
+            tenacidade="tenacidade", ten="tenacidade",
+            astucia="astucia", ast="astucia",
+            fisico="fisico", fis="fisico",
+            mental="mental", men="mental",
+            natural="natural", nat="natural",
+            social="social", soc="social",
+            tecnico="tecnico", tec="tecnico"
+        };
+
+        local function normalizeRollToken(token)
+            local normalized = string.lower(tostring(token or ""));
+
+            normalized = string.gsub(normalized, "á", "a");
+            normalized = string.gsub(normalized, "à", "a");
+            normalized = string.gsub(normalized, "â", "a");
+            normalized = string.gsub(normalized, "ã", "a");
+            normalized = string.gsub(normalized, "é", "e");
+            normalized = string.gsub(normalized, "ê", "e");
+            normalized = string.gsub(normalized, "í", "i");
+            normalized = string.gsub(normalized, "ó", "o");
+            normalized = string.gsub(normalized, "ô", "o");
+            normalized = string.gsub(normalized, "õ", "o");
+            normalized = string.gsub(normalized, "ú", "u");
+            normalized = string.gsub(normalized, "ç", "c");
+
+            return normalized;
+        end;
+
+        local function isRollTokenChar(char)
+            local byte = string.byte(char);
+
+            return (byte >= 48 and byte <= 57) or
+                   (byte >= 65 and byte <= 90) or
+                   (byte >= 97 and byte <= 122) or
+                   byte == 95 or
+                   byte >= 128;
+        end;
+
+        local function rollFieldExpression(root, fieldName)
+            if root == nil then return "0"; end;
+            return cleanRollExpression(root[fieldName]);
+        end;
+
+        local function joinRollTerms(left, right)
+            local first = cleanRollExpression(left);
+            local second = cleanRollExpression(right);
+
+            if first == "0" then
+                return second;
+            end;
+
+            if second == "0" then
+                return first;
+            end;
+
+            if string.match(second, "^[%+%-]") then
+                return first .. " " .. second;
+            end;
+
+            return first .. " + " .. second;
+        end;
+
+        local function rollAttributeExpression(root, key)
+            local source = rollAttributeSources[key];
+            if source == nil then return "0"; end;
+
+            local expression;
+
+            if source.value ~= nil then
+                expression = rollFieldExpression(root, source.value);
+            else
+                expression = joinRollTerms(rollFieldExpression(root, source.base), rollFieldExpression(root, source.mod));
+            end;
+
+            return PokemonAttributeAdjustments.expressionFor(root, key, expression);
+        end;
+
+        local function resolveRollToken(root, token)
+            local key = rollAttributeAliases[normalizeRollToken(token)];
+
+            if key ~= nil then
+                return rollAttributeExpression(root, key);
+            end;
+
+            return token;
+        end;
+
+        local function resolveRollAttributes(root, formula)
+            if formula == nil then return formula; end;
+
+            local text = tostring(formula);
+            local parts = {};
+            local token = "";
+
+            for i = 1, string.len(text) do
+                local char = string.sub(text, i, i);
+
+                if isRollTokenChar(char) then
+                    token = token .. char;
+                else
+                    if token ~= "" then
+                        table.insert(parts, resolveRollToken(root, token));
+                        token = "";
+                    end;
+
+                    table.insert(parts, char);
+                end;
+            end;
+
+            if token ~= "" then
+                table.insert(parts, resolveRollToken(root, token));
+            end;
+
+            return table.concat(parts);
+        end;
+
+        local function normalizeFormula(root, value)
+            local formula = trim(resolveRollAttributes(root, value));
+
+            if formula == nil or formula == "" then
+                return nil;
+            end;
+
+            if not hasDice(formula) then
+                if string.sub(formula, 1, 1) == "-" then
+                    formula = "1d20 " .. formula;
+                else
+                    formula = "1d20 + " .. formula;
+                end;
+            end;
+
+            return formula;
+        end;
+
+        local function roomChat(root)
+            local room = nil;
+
+            if root ~= nil then
+                room = Firecast.getRoomOf(root);
+            end;
+
+            if room == nil and sheet ~= nil then
+                room = Firecast.getRoomOf(sheet);
+            end;
+
+            if room ~= nil then
+                return room.chat;
+            end;
+
+            return nil;
+        end;
+
+        local function syncFirecastEnergy(root)
+            if root == nil then return; end;
+
+            local personagem = nil;
+
+            if rrpg ~= nil and rrpg.getPersonagemDe ~= nil then
+                local ok, result = pcall(rrpg.getPersonagemDe, root);
+                if ok then personagem = result; end;
+            end;
+
+            if personagem == nil or personagem.asyncUpdate == nil then return; end;
+
+            local peMaximo = parseEnergyNumber(root.peMaximo);
+            local peAtualTexto = trim(root.peAtual);
+            local peAtual = parseEnergyNumber(root.peAtual);
+
+            if peMaximo <= 0 then peMaximo = peAtual; end;
+            if (peAtualTexto == nil or peAtualTexto == "") and peMaximo > 0 then peAtual = peMaximo; end;
+            pcall(function()
+                personagem:asyncUpdate({
+                    bar1Val = peAtual,
+                    bar1Max = peMaximo
+                });
+            end);
+
+            PokemonTokenSync.syncTokenBars(root, false);
+        end;
+
+        local function payEnergyCost(root)
+            if sheet == nil then return false; end;
+
+            local cost = parseEnergyNumber(sheet.custoPE);
+            if cost <= 0 then return true; end;
+
+            if root == nil then
+                dialogs.alert("Não encontrei a ficha principal para descontar Pontos de Energia.");
+                return false;
+            end;
+
+            local peMaximo = parseEnergyNumber(root.peMaximo);
+            local peAtualTexto = trim(root.peAtual);
+            local peAtual = parseEnergyNumber(root.peAtual);
+
+            if (peAtualTexto == nil or peAtualTexto == "") and peMaximo > 0 then
+                peAtual = peMaximo;
+            end;
+
+            if peAtual < cost then
+                dialogs.alert("Pontos de Energia insuficientes.\n\nAtual: " .. tostring(peAtual) .. " PE\nCusto: " .. tostring(cost) .. " PE");
+                return false;
+            end;
+
+            root.peAtual = tostring(peAtual - cost);
+            syncFirecastEnergy(root);
+            return true;
+        end;
+
+        local function validHexColor(value)
+            local color = trim(value);
+            if color == nil then return nil; end;
+
+            if string.match(color, "^#%x%x%x%x%x%x$") ~= nil then
+                return color;
+            end;
+
+            if string.match(color, "^#%x%x%x$") ~= nil then
+                return color;
+            end;
+
+            return nil;
+        end;
+
+        local function shortcutAccent()
+            if sheet == nil then return "#FFD700"; end;
+
+            local direct = validHexColor(sheet.cor);
+            if direct ~= nil then return direct; end;
+
+            local category = normalizeRollToken(sheet.categoria);
+            if category == "social" then return "#00BFFF"; end;
+            if category == "combate" then return "#FF5A5A"; end;
+            if category == "protecao" or category == "defesa" then return "#39FF14"; end;
+            if category == "pericia" then return "#8A5CFF"; end;
+
+            return "#FFD700";
+        end;
+
+        local function setLastRollFeedback(root, title, rawFormula, result, normalizedFormula)
+            if root == nil then return; end;
+
+            local rollTitle = trim(title) or "Rolagem";
+            local raw = trim(rawFormula) or trim(normalizedFormula) or "";
+            local resultText = "rolando...";
+
+            if result ~= nil then
+                resultText = tostring(result);
+            end;
+
+            root.ultimaRolagemConsoleTitulo = rollTitle;
+            root.ultimaRolagemConsoleRawFormula = raw;
+            root.ultimaRolagemConsoleFormula = trim(normalizedFormula) or raw;
+            root.ultimaRolagemConsole = "Última: " .. rollTitle .. " -> " .. resultText;
+        end;
+
+        function self:ensureDefaults()
+            if sheet == nil then return; end;
+
+            if trim(sheet.nome) == nil or trim(sheet.nome) == "" or sheet.nome == "Nova rolagem" then
+                sheet.nome = "Rolagem rápida";
+            end;
+
+            sheet.formula = sheet.formula or "1d20";
+            sheet.icone = sheet.icone or "🎯";
+            sheet.categoria = sheet.categoria or "Custom";
+            sheet.cor = sheet.cor or "#FFD700";
+            sheet.custoPE = sheet.custoPE or "";
+            sheet.descricao = sheet.descricao or "";
+            self:refreshVisual();
+        end;
+
+        function self:refreshVisual()
+            local accent = shortcutAccent();
+
+            if self.rectRollPopupRoot ~= nil then
+                self.rectRollPopupRoot.strokeColor = accent;
+            end;
+            if self.rectRollPopupHeader ~= nil then
+                self.rectRollPopupHeader.strokeColor = accent;
+            end;
+            if self.lblRollPopupTitle ~= nil then
+                self.lblRollPopupTitle.fontColor = accent;
+            end;
+            if self.rectRollPopupButton ~= nil then
+                self.rectRollPopupButton.color = accent;
+                self.rectRollPopupButton.strokeColor = accent;
+            end;
+        end;
+
+        function self:rollSelf()
+            if sheet == nil then return; end;
+
+            local root = rootSheet();
+            local formula = normalizeFormula(root, sheet.formula);
+            local chat = roomChat(root);
+            local title = (trim(sheet.icone) or "🎲") .. " " .. (trim(sheet.nome) or "Rolagem");
+            local accent = shortcutAccent();
+
+            if formula ~= nil then
+                setLastRollFeedback(root, title, sheet.formula, nil, formula);
+            end;
+
+            if chat ~= nil and formula ~= nil then
+                if not payEnergyCost(root) then return; end;
+
+                PokemonChat.roll(chat, formula, {
+                    title = title,
+                    rawFormula = sheet.formula,
+                    formula = formula,
+                    ownerSheet = root or sheet,
+                    pokemonName = root ~= nil and (root.nomePokemon or root.apelidoPokemon) or nil,
+                    accentColor = accent,
+                    onResult = function(resultNumber, rollObject)
+                        setLastRollFeedback(root, title, sheet.formula, resultNumber, formula);
+                    end
+                });
+            end;
+        end;
+    ]]></script>
+
+    <event name="onScopeNodeChanged">
+        self:ensureDefaults();
+    </event>
+
+    <event name="onNodeReady">
+        self:ensureDefaults();
+    </event>
+
+    <dataLink fields="{'categoria','cor','icone','nome','custoPE'}">
+        <event name="onChange">
+            self:refreshVisual();
+        </event>
+    </dataLink>
+
+    <rectangle name="rectRollPopupRoot" align="client" class="rollPopupRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle name="rectRollPopupHeader" align="top" height="62" class="rollPopupHeader" padding="{left=10, top=6, right=10, bottom=6}" margins="{bottom=8}">
+            <layout align="client">
+                <label name="lblRollPopupTitle" align="top" height="28" text="EDITAR ATALHO DE ROLAGEM" class="popupTitle" />
+                <label align="client" text="A tela principal rola rápido. A configuração fica aqui." class="popupHint" />
+            </layout>
+        </rectangle>
+
+        <rectangle align="top" height="126" class="rollPopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <layout align="top" height="34" margins="{bottom=8}">
+                <label align="left" width="52" text="Ícone" class="smallLabel" fontColor="#FFD700" />
+                <layout align="left" width="64" margins="{right=10}">
+                    <edit align="client" field="icone" class="centerEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+
+                <label align="left" width="48" text="Nome" class="smallLabel" fontColor="#FFD700" />
+                <layout align="client">
+                    <edit align="client" field="nome" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#FFD700" />
+                </layout>
+            </layout>
+
+            <layout align="top" height="34" margins="{bottom=8}">
+                <label align="left" width="72" text="Fórmula" class="smallLabel" fontColor="#00BFFF" />
+                <layout align="client">
+                    <edit align="client" field="formula" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#00BFFF" />
+                </layout>
+            </layout>
+
+            <layout align="client">
+                <label align="left" width="72" text="Categoria" class="smallLabel" fontColor="#8FA7BD" />
+                <layout align="left" width="145" margins="{right=10}">
+                    <edit align="client" field="categoria" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#8FA7BD" />
+                </layout>
+
+                <label align="left" width="68" text="Custo PE" class="smallLabel" fontColor="#FF5A5A" />
+                <layout align="left" width="74" margins="{right=10}">
+                    <edit align="client" field="custoPE" class="centerEdit" />
+                    <rectangle align="bottom" height="1" color="#FF5A5A" />
+                </layout>
+
+                <label align="left" width="36" text="Cor" class="smallLabel" fontColor="#8FA7BD" />
+                <layout align="client">
+                    <edit align="client" field="cor" class="lineEdit" />
+                    <rectangle align="bottom" height="1" color="#8FA7BD" />
+                </layout>
+            </layout>
+        </rectangle>
+
+        <rectangle align="client" class="rollPopupPanel" padding="{left=10, top=8, right=10, bottom=8}" margins="{bottom=8}">
+            <label align="top" height="16" text="Descrição curta" class="smallLabel" fontColor="#FFD700" />
+            <textEditor align="client" field="descricao" class="longText" />
+        </rectangle>
+
+        <layout align="bottom" height="32">
+            <rectangle name="rectRollPopupButton" align="left" width="124" class="rollButton" hitTest="true">
+                <event name="onClick">self:rollSelf();</event>
+                <label align="client" text="🎲 ROLAR AGORA" class="rollButtonText" />
+            </rectangle>
+
+            <layout align="client" />
+
+            <rectangle align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

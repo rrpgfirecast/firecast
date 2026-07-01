@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmPokemonInventarioPresetPopup"
+           width="780"
+           height="620"
+           theme="dark"
+           placement="center"
+           cancelable="true"
+           resizable="false">
+
+    <style>
+        rectangle.presetRoot {
+            color: #070A10;
+            strokeColor: #7CFFB2;
+            strokeSize: 1;
+            xradius: 6;
+            yradius: 6;
+        }
+
+        rectangle.presetHeader {
+            color: #090D15;
+            strokeColor: #7CFFB2;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.presetPanel {
+            color: #0B0F16;
+            strokeColor: #263042;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+        }
+
+        rectangle.itemPresetButton {
+            color: #111824;
+            strokeColor: #344055;
+            strokeSize: 1;
+            xradius: 5;
+            yradius: 5;
+            cursor: handPoint;
+        }
+
+        rectangle.btnDark {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.presetTitle {
+            fontColor: #7CFFB2;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 15;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.sectionTitle {
+            fontColor: #7CFFB2;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 11;
+            vertTextAlign: center;
+        }
+
+        label.itemPresetName {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 10;
+            vertTextAlign: center;
+        }
+
+        label.itemPresetDesc {
+            fontColor: #BFD2E8;
+            fontSize: 9;
+            vertTextAlign: center;
+        }
+
+        label.presetHint {
+            fontColor: #8FA7BD;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.btnText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 10;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local Presets = require("PokemonInventoryPresets.lua");
+
+        function self:applyItem(key)
+            Presets.applyItem(sheet, key);
+            self:close();
+        end;
+    ]]></script>
+
+    <rectangle align="client" class="presetRoot" padding="{left=10, top=10, right=10, bottom=10}">
+        <rectangle align="top" height="54" class="presetHeader" padding="{left=10, top=5, right=10, bottom=5}" margins="{bottom=8}">
+            <label align="top" height="26" text="PRESETS // INVENTÁRIO" class="presetTitle" />
+            <label align="client" text="Itens base do Pokémon Future. Aplica campos e você ajusta quantidade/peso depois." class="presetHint" />
+        </rectangle>
+
+        <scrollBox align="client" margins="{bottom=8}">
+            <layout align="top" height="1620">
+                <rectangle align="left" width="366" class="presetPanel" padding="{left=8, top=8, right=8, bottom=8}" margins="{right=8}">
+                    <label align="top" height="22" text="BASE / CLASSE" class="sectionTitle" />
+
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#8FA7BD" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("customBlank");</event>
+                        <label align="top" height="20" text="+ CUSTOM EM BRANCO" class="itemPresetName" fontColor="#8FA7BD" margins="{left=8}" />
+                        <label align="client" text="Limpa o item para preencher manualmente." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("aiPoke");</event>
+                        <label align="top" height="20" text="AI-POKÉ" class="itemPresetName" fontColor="#FFD700" margins="{left=8}" />
+                        <label align="client" text="Assistente digital ligado ao iPoké." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("armadilhaPredadora");</event>
+                        <label align="top" height="20" text="ARMADILHA PREDADORA" class="itemPresetName" fontColor="#FFD700" margins="{left=8}" />
+                        <label align="client" text="Atrai e prende Pokémon temporariamente." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#00BFFF" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("inibidor");</event>
+                        <label align="top" height="20" text="INIBIDOR" class="itemPresetName" fontColor="#00BFFF" margins="{left=8}" />
+                        <label align="client" text="Reduz desempenho de tipos escolhidos." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#00BFFF" hitTest="true" margins="{bottom=10}">
+                        <event name="onClick">self:applyItem("reprodutor");</event>
+                        <label align="top" height="20" text="REPRODUTOR" class="itemPresetName" fontColor="#00BFFF" margins="{left=8}" />
+                        <label align="client" text="Armazena e replica golpes." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+
+                    <label align="top" height="22" text="FRUTAS / CONSUMÍVEIS" class="sectionTitle" />
+
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#7CFFB2" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("lum");</event>
+                        <label align="top" height="20" text="LUM" class="itemPresetName" fontColor="#7CFFB2" margins="{left=8}" />
+                        <label align="client" text="Corta primeira condição comum por 1 hora." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#7CFFB2" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("custap");</event>
+                        <label align="top" height="20" text="CUSTAP" class="itemPresetName" fontColor="#7CFFB2" margins="{left=8}" />
+                        <label align="client" text="Volta de Incapacitado com 1 PV." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#7CFFB2" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("oran");</event>
+                        <label align="top" height="20" text="ORAN" class="itemPresetName" fontColor="#7CFFB2" margins="{left=8}" />
+                        <label align="client" text="Restaura PV." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#7CFFB2" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("sitrus");</event>
+                        <label align="top" height="20" text="SITRUS" class="itemPresetName" fontColor="#7CFFB2" margins="{left=8}" />
+                        <label align="client" text="Restaura PV com bônus se ferido." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#7CFFB2" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("leppa");</event>
+                        <label align="top" height="20" text="LEPPA" class="itemPresetName" fontColor="#7CFFB2" margins="{left=8}" />
+                        <label align="client" text="Restaura PV e PE." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#7CFFB2" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("tamato");</event>
+                        <label align="top" height="20" text="TAMATO" class="itemPresetName" fontColor="#7CFFB2" margins="{left=8}" />
+                        <label align="client" text="Restaura PE." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#7CFFB2" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("starf");</event>
+                        <label align="top" height="20" text="STARF" class="itemPresetName" fontColor="#7CFFB2" margins="{left=8}" />
+                        <label align="client" text="Restauração forte de PV e PE." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#B8E24A" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("bluk");</event>
+                        <label align="top" height="20" text="BLUK" class="itemPresetName" fontColor="#B8E24A" margins="{left=8}" />
+                        <label align="client" text="Facilita captura por 15 minutos." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#B8E24A" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("nanab");</event>
+                        <label align="top" height="20" text="NANAB" class="itemPresetName" fontColor="#B8E24A" margins="{left=8}" />
+                        <label align="client" text="Diminui deslocamento e impede fuga." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#B8E24A" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pinap");</event>
+                        <label align="top" height="20" text="PINAP" class="itemPresetName" fontColor="#B8E24A" margins="{left=8}" />
+                        <label align="client" text="Pode fazer Pokémon fugir." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FF6A3D" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("occa");</event>
+                        <label align="top" height="20" text="OCCA" class="itemPresetName" fontColor="#FF6A3D" margins="{left=8}" />
+                        <label align="client" text="Fruta típica do Tipo Fogo." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#3DA5FF" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("passho");</event>
+                        <label align="top" height="20" text="PASSHO" class="itemPresetName" fontColor="#3DA5FF" margins="{left=8}" />
+                        <label align="client" text="Fruta típica do Tipo Água." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#C7CDD7" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("chilan");</event>
+                        <label align="top" height="20" text="CHILAN" class="itemPresetName" fontColor="#C7CDD7" margins="{left=8}" />
+                        <label align="client" text="Fruta típica do Tipo Normal." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#9E4DFF" hitTest="true">
+                        <event name="onClick">self:applyItem("colbur");</event>
+                        <label align="top" height="20" text="COLBUR" class="itemPresetName" fontColor="#9E4DFF" margins="{left=8}" />
+                        <label align="client" text="Fruta típica do Tipo Sombrio." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                </rectangle>
+
+                <rectangle align="client" class="presetPanel" padding="{left=8, top=8, right=8, bottom=8}">
+                    <label align="top" height="22" text="MEDICINA / LOÇÕES" class="sectionTitle" fontColor="#39FF14" />
+
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("antiVeneno");</event>
+                        <label align="top" height="20" text="ANTI-VENENO" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Cura Envenenamento." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("antiQueimadura");</event>
+                        <label align="top" height="20" text="ANTI-QUEIMADURA" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Cura Queimadura." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("antiParalisia");</event>
+                        <label align="top" height="20" text="ANTI-PARALISIA" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Cura Paralisia." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("restaurador");</event>
+                        <label align="top" height="20" text="RESTAURADOR" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Cura condições comuns e especiais." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pocao");</event>
+                        <label align="top" height="20" text="POÇÃO" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Restaura 25 PV." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pocaoForte");</event>
+                        <label align="top" height="20" text="POÇÃO FORTE" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Restaura 50 PV." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pocaoConcentrada");</event>
+                        <label align="top" height="20" text="POÇÃO CONCENTRADA" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Restaura 100 PV." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pocaoMaxima");</event>
+                        <label align="top" height="20" text="POÇÃO MÁXIMA" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Restaura todo o PV." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("revitalizador");</event>
+                        <label align="top" height="20" text="REVITALIZADOR" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Cura condições e recupera PV completo." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("elixir");</event>
+                        <label align="top" height="20" text="ELIXIR" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Restaura 25 PE." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=10}">
+                        <event name="onClick">self:applyItem("elixirMaximo");</event>
+                        <label align="top" height="20" text="ELIXIR MÁXIMO" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="Restaura todo o PE." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+
+                    <label align="top" height="22" text="VITAMINAS / MATERIAIS" class="sectionTitle" fontColor="#FFD700" />
+
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("calcio");</event>
+                        <label align="top" height="20" text="CÁLCIO" class="itemPresetName" fontColor="#FFD700" margins="{left=8}" />
+                        <label align="client" text="Aumenta Poder temporariamente." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("carboidratos");</event>
+                        <label align="top" height="20" text="CARBOIDRATOS" class="itemPresetName" fontColor="#FFD700" margins="{left=8}" />
+                        <label align="client" text="Aumenta Velocidade temporariamente." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("ferro");</event>
+                        <label align="top" height="20" text="FERRO" class="itemPresetName" fontColor="#FFD700" margins="{left=8}" />
+                        <label align="client" text="Aumenta Defesa temporariamente." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("gordura");</event>
+                        <label align="top" height="20" text="GORDURA" class="itemPresetName" fontColor="#FFD700" margins="{left=8}" />
+                        <label align="client" text="Aumenta PV temporariamente." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("proteina");</event>
+                        <label align="top" height="20" text="PROTEÍNA" class="itemPresetName" fontColor="#FFD700" margins="{left=8}" />
+                        <label align="client" text="Aumenta Força temporariamente." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("zinco");</event>
+                        <label align="top" height="20" text="ZINCO" class="itemPresetName" fontColor="#FFD700" margins="{left=8}" />
+                        <label align="client" text="Aumenta Resistência temporariamente." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#9FB4C5" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("poLuminosita");</event>
+                        <label align="top" height="20" text="PÓ DE LUMINOSITA" class="itemPresetName" fontColor="#9FB4C5" margins="{left=8}" />
+                        <label align="client" text="Cura qualquer condição negativa." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#9FB4C5" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pedrasEvolutivasComuns");</event>
+                        <label align="top" height="20" text="PEDRAS EVOLUTIVAS COMUNS" class="itemPresetName" fontColor="#9FB4C5" margins="{left=8}" />
+                        <label align="client" text="Fogo, Água, Trovão, Folha e Gelo." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#9FB4C5" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pedrasEvolutivasRaras");</event>
+                        <label align="top" height="20" text="PEDRAS EVOLUTIVAS RARAS" class="itemPresetName" fontColor="#9FB4C5" margins="{left=8}" />
+                        <label align="client" text="Lua, Sol, Luz, Anoitecer e Amanhecer." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#9FB4C5" hitTest="true" margins="{bottom=10}">
+                        <event name="onClick">self:applyItem("pedrasPreciosas");</event>
+                        <label align="top" height="20" text="PEDRAS PRECIOSAS" class="itemPresetName" fontColor="#9FB4C5" margins="{left=8}" />
+                        <label align="client" text="Ouro, Pérola, Diamante, Rubi e afins." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+
+                    <label align="top" height="22" text="COMIDA / SUPORTE" class="sectionTitle" fontColor="#7CFFB2" />
+
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#7CFFB2" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("comidaHumana");</event>
+                        <label align="top" height="20" text="COMIDA HUMANA" class="itemPresetName" fontColor="#7CFFB2" margins="{left=8}" />
+                        <label align="client" text="Uma porção comum de comida humana." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#7CFFB2" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("racaoPokemon");</event>
+                        <label align="top" height="20" text="RAÇÃO POKÉMON" class="itemPresetName" fontColor="#7CFFB2" margins="{left=8}" />
+                        <label align="client" text="Uma porção comum para Pokémon." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FF6A3D" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pokeblocoVermelho");</event>
+                        <label align="top" height="20" text="POKÉBLOCO VERMELHO" class="itemPresetName" fontColor="#FF6A3D" margins="{left=8}" />
+                        <label align="client" text="+1d4 Técnico em torneios." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#3DA5FF" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pokeblocoAzul");</event>
+                        <label align="top" height="20" text="POKÉBLOCO AZUL" class="itemPresetName" fontColor="#3DA5FF" margins="{left=8}" />
+                        <label align="client" text="+1d4 Astúcia em torneios." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FF9AD5" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pokeblocoRosa");</event>
+                        <label align="top" height="20" text="POKÉBLOCO ROSA" class="itemPresetName" fontColor="#FF9AD5" margins="{left=8}" />
+                        <label align="client" text="+1d4 Social em torneios." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#39FF14" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pokeblocoVerde");</event>
+                        <label align="top" height="20" text="POKÉBLOCO VERDE" class="itemPresetName" fontColor="#39FF14" margins="{left=8}" />
+                        <label align="client" text="+1d4 Mental em torneios." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#FFD700" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pokeblocoAmarelo");</event>
+                        <label align="top" height="20" text="POKÉBLOCO AMARELO" class="itemPresetName" fontColor="#FFD700" margins="{left=8}" />
+                        <label align="client" text="+1d4 Físico em torneios." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#8A5CFF" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pokeblocoMulticor");</event>
+                        <label align="top" height="20" text="POKÉBLOCO MULTICOR" class="itemPresetName" fontColor="#8A5CFF" margins="{left=8}" />
+                        <label align="client" text="+1d4 Natural em torneios." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#00BFFF" hitTest="true" margins="{bottom=6}">
+                        <event name="onClick">self:applyItem("pokebola");</event>
+                        <label align="top" height="20" text="POKÉBOLA" class="itemPresetName" fontColor="#00BFFF" margins="{left=8}" />
+                        <label align="client" text="Ajuda recuperação no repouso." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                    <rectangle align="top" height="42" class="itemPresetButton" strokeColor="#8A5CFF" hitTest="true">
+                        <event name="onClick">self:applyItem("centroSaude");</event>
+                        <label align="top" height="20" text="CENTRO DE SAÚDE" class="itemPresetName" fontColor="#8A5CFF" margins="{left=8}" />
+                        <label align="client" text="Serviço utilitário de recuperação." class="itemPresetDesc" margins="{left=8}" />
+                    </rectangle>
+                </rectangle>
+            </layout>
+        </scrollBox>
+
+        <layout align="bottom" height="32">
+            <layout align="client" />
+            <rectangle align="right" width="112" class="btnDark" hitTest="true">
+                <event name="onClick">self:close();</event>
+                <label align="client" text="Fechar" class="btnText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</popupForm>

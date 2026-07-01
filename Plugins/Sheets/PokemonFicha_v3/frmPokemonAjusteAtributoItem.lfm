@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemonAjusteAtributoItem" height="62" theme="dark">
+    <style>
+        rectangle.adjustItemCard {
+            color: #0B0F16;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+        }
+
+        label.adjustItemTitle {
+            fontColor: #F4F8FF;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 10;
+            vertTextAlign: center;
+        }
+
+        label.adjustItemMeta {
+            fontColor: #9EB7D0;
+            fontSize: 8;
+            vertTextAlign: center;
+        }
+
+        label.adjustItemValue {
+            fontColor: #7CFFB2;
+            fontFamily: Consolas;
+            fontStyle: bold;
+            fontSize: 12;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        rectangle.adjustItemButton {
+            color: #111824;
+            strokeColor: #2A3343;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        rectangle.adjustItemDelete {
+            color: #151010;
+            strokeColor: #FF5A5A;
+            strokeSize: 1;
+            xradius: 4;
+            yradius: 4;
+            cursor: handPoint;
+        }
+
+        label.adjustItemButtonText {
+            fontColor: #D8F2FF;
+            fontStyle: bold;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+
+        label.adjustItemDeleteText {
+            fontColor: #FFBDBD;
+            fontStyle: bold;
+            fontSize: 9;
+            horzTextAlign: center;
+            vertTextAlign: center;
+        }
+    </style>
+
+    <script><![CDATA[
+        local Adjustments = require("PokemonAttributeAdjustments.lua");
+        local dialogs = require("dialogs.lua");
+
+        local function trim(value)
+            if value == nil then return nil; end;
+            return tostring(value):match("^%s*(.-)%s*$");
+        end;
+
+        local function valueColor(value)
+            if Adjustments.isPenalty(value) then
+                return "#FF7A4F";
+            end;
+
+            return "#7CFFB2";
+        end;
+
+        function self:refreshAdjustmentItem()
+            if sheet == nil then return; end;
+
+            local value = Adjustments.normalizeValue(sheet.ajusteValor) or trim(sheet.ajusteValor) or "?";
+            local name = trim(sheet.ajusteNome) or "AJUSTE";
+
+            sheet.ajusteCardTitle = string.upper(name);
+            sheet.ajusteCardTargets = "Alvo: " .. Adjustments.targetText(sheet.ajusteAlvos);
+            sheet.ajusteCardValue = value;
+
+            if self.lblAdjustItemValue ~= nil then
+                self.lblAdjustItemValue.fontColor = valueColor(value);
+            end;
+
+            if self.rectAdjustItemCard ~= nil then
+                self.rectAdjustItemCard.strokeColor = valueColor(value);
+            end;
+        end;
+
+        function self:editAdjustment()
+            if sheet == nil then return; end;
+
+            local root = Adjustments.rootSheet(sheet);
+            if root == nil then return; end;
+
+            Adjustments.rememberEditingNode(root, sheet);
+            root.ajusteEditorNome = sheet.ajusteNome or "";
+            root.ajusteEditorValor = Adjustments.normalizeValue(sheet.ajusteValor) or sheet.ajusteValor or "";
+            root.ajusteEditorAlvos = sheet.ajusteAlvos or "";
+            root.ajusteEditorObservacao = sheet.ajusteObservacao or "";
+            root.ajusteEditorEditingNode = "";
+            root.ajusteEditorEditingId = Adjustments.ensureId(sheet);
+            Adjustments.touch(root);
+        end;
+
+        function self:removeAdjustment()
+            if sheet == nil then return; end;
+
+            local node = sheet;
+            local root = Adjustments.rootSheet(node);
+            local ajusteId = Adjustments.ensureId(node);
+
+            dialogs.confirmOkCancel("Remover este ajuste da matriz?", function(confirmed)
+                if not confirmed then return; end;
+
+                local deleted = false;
+                if NDB ~= nil and NDB.deleteNode ~= nil then
+                    deleted = pcall(function()
+                        NDB.deleteNode(node);
+                    end);
+                end;
+
+                if not deleted then
+                    dialogs.showErrorMessage("Não foi possível remover este ajuste.");
+                    return;
+                end;
+
+                if root ~= nil and trim(root.ajusteEditorEditingId) == ajusteId then
+                    Adjustments.clearEditingNode(root);
+                    root.ajusteEditorNome = "";
+                    root.ajusteEditorValor = "";
+                    root.ajusteEditorAlvos = "";
+                    root.ajusteEditorObservacao = "";
+                    root.ajusteEditorEditingNode = "";
+                    root.ajusteEditorEditingId = "";
+                end;
+
+                Adjustments.remove(root, ajusteId);
+            end);
+        end;
+        function self:restoreAdjustmentCache()
+            if sheet == nil then return; end;
+
+            local root = Adjustments.rootSheet(sheet);
+            local ajusteId = Adjustments.ensureId(sheet);
+            if root == nil or Adjustments.hasCachedId(root, ajusteId) then return; end;
+
+            local value = Adjustments.normalizeValue(sheet.ajusteValor);
+            local targets = Adjustments.targets(sheet.ajusteAlvos);
+            if value == nil or #targets == 0 then return; end;
+
+            Adjustments.upsert(root, {
+                id=ajusteId,
+                name=sheet.ajusteNome or "Ajuste",
+                value=value,
+                targets=sheet.ajusteAlvos,
+                active=sheet.ajusteAtivo ~= false
+            });
+        end;
+    ]]></script>
+
+        <event name="onNodeReady"><![CDATA[
+        self:refreshAdjustmentItem();
+        setTimeout(function()
+            self:restoreAdjustmentCache();
+        end, 100);
+    ]]></event>
+
+    <dataLink fields="{'ajusteNome','ajusteValor','ajusteAlvos','ajusteObservacao'}">
+        <event name="onChange">
+            self:refreshAdjustmentItem();
+        </event>
+    </dataLink>
+
+    <rectangle name="rectAdjustItemCard" align="client" class="adjustItemCard" margins="{left=0, top=0, right=0, bottom=5}" padding="{left=7, top=5, right=7, bottom=5}">
+        <layout align="left" width="178">
+            <label align="top" height="18" field="ajusteCardTitle" text="AJUSTE" class="adjustItemTitle" />
+            <label align="client" field="ajusteCardTargets" text="Alvo: sem alvo" class="adjustItemMeta" wordWrap="true" />
+        </layout>
+
+        <label name="lblAdjustItemValue" align="left" width="54" field="ajusteCardValue" text="+0" class="adjustItemValue" margins="{left=4, right=5}" />
+
+        <layout align="client" width="58">
+            <rectangle align="top" height="22" class="adjustItemButton" margins="{bottom=5}" hitTest="true">
+                <event name="onClick">self:editAdjustment();</event>
+                <label align="client" text="EDITAR" class="adjustItemButtonText" />
+            </rectangle>
+            <rectangle align="client" class="adjustItemDelete" hitTest="true">
+                <event name="onClick">self:removeAdjustment();</event>
+                <label align="client" text="REMOVER" class="adjustItemDeleteText" />
+            </rectangle>
+        </layout>
+    </rectangle>
+</form>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTailsInventoryItem" height="112" theme="light">
+    <script>
+        require("ndb.lua");
+
+        local function deleteItem()
+            NDB.deleteNode(sheet);
+        end;
+    </script>
+
+    <rectangle align="client" margins="{left=2, right=2, top=4, bottom=4}"
+               color="#FFF2D6" strokeColor="#F3A64A" strokeSize="1"
+               cornerType="round" xradius="16" yradius="16"/>
+    <rectangle left="16" top="2" width="116" height="18" color="#FFE08A" strokeColor="#FFE08A"
+               opacity="0.72" rotationAngle="-2"/>
+    <label left="18" top="18" width="250" height="13" text="TESOURO NO ALFORGE"
+           fontColor="#B86200" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="16" top="34" width="270" height="34" field="name"
+          fontColor="#51463E" fontSize="13" fontStyle="bold"/>
+    <edit transparent="true" left="16" top="72" width="270" height="25" field="quickUse"
+          fontColor="#9C693C" fontSize="13"/>
+
+    <rectangle left="302" top="18" width="184" height="80" color="#FFD7A3" strokeColor="#EDC88A"
+               cornerType="round" xradius="14" yradius="14"/>
+    <label left="316" top="27" width="156" height="12" text="TIPO DE ITEM"
+           fontColor="#C87900" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="314" top="43" width="160" height="38" field="category"
+          fontColor="#9C693C" fontSize="13" fontStyle="bold"/>
+
+    <rectangle left="502" top="18" width="124" height="80" color="#C7EEFF" strokeColor="#4BB8E8"
+               cornerType="round" xradius="14" yradius="14"/>
+    <label left="510" top="27" width="108" height="12" text="QUANTIDADE"
+           horzTextAlign="center" fontColor="#168AB6" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="510" top="43" width="108" height="38" field="quantity" type="number" min="0" decimalPlaces="0"
+          horzTextAlign="center" fontColor="#0E6C91" fontSize="15" fontStyle="bold"/>
+
+    <rectangle left="642" top="18" width="124" height="80" color="#FFD469" strokeColor="#F4B84A"
+               cornerType="round" xradius="14" yradius="14"/>
+    <label left="650" top="27" width="108" height="12" text="CUSTO / BITS"
+           horzTextAlign="center" fontColor="#B46C00" fontSize="11" fontStyle="bold"/>
+    <edit transparent="true" left="650" top="43" width="108" height="38" field="cost" type="number" min="0" decimalPlaces="0"
+          horzTextAlign="center" fontColor="#B46C00" fontSize="15" fontStyle="bold"/>
+
+    <rectangle left="782" top="18" width="204" height="80" color="#FFD0D8" strokeColor="#F05F6A"
+               cornerType="round" xradius="14" yradius="14" cursor="handPoint"
+               hint="Remover este item do Alforge" onClick="deleteItem();"/>
+    <label left="782" top="39" width="204" height="18" text="X  GUARDAR FORA"
+           horzTextAlign="center" fontColor="#C73658" fontSize="13" fontStyle="bold" hitTest="false"/>
+
+    <dataLink field="name" defaultValue="Novo Item"/>
+    <dataLink field="category" defaultValue="Outro"/>
+    <dataLink field="quantity" defaultValue="1"/>
+    <dataLink field="cost" defaultValue="0"/>
+    <dataLink field="quickUse" defaultValue="Como este item ajuda na aventura?"/>
+</form>
+
+
+

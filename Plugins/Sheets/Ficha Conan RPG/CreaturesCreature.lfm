@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="CreaturesCreature" g="col" g-width="12" g-width-lg="4" height="260">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa criatura?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet)
+									end
+								 end)
+		end
+		]]>	
+	</script>
+
+    <import file="Templates.xml"/>
+
+	<rectangle g="col" g-width="12"  color="black" strokeColor="white" strokeSize="1" g-min-height="260" padding="{left=5,right=5,top=5,bottom=5}">
+		<Title text="Nome" field="nome"/>
+
+		<Title text="Agi" field="agi" widthL="1" widthR="2"/>
+		<Title text="Ate" field="ate" widthL="1" widthR="2"/>
+		<Title text="Coo" field="coo" widthL="1" widthR="2"/>
+		<Title text="Int" field="int" widthL="1" widthR="2"/>
+
+		<Title text="Mús" field="mus" widthL="1" widthR="2"/>
+		<Title text="Per" field="per" widthL="1" widthR="2"/>
+		<Title text="Von" field="von" widthL="1" widthR="2"/>
+		<button g="col" g-width="3" height="25" text="🗑️" onClick="askForDelete()" hint="Apagar" textTrimming="none"/>
+
+		<label g="col" g-width="12" text="Perícias e Detalhes" horzTextAlign="center" height="25" fontSize="13" textTrimming="none"/>
+		<textEditor g="col" g-width="12" g-vert-tile="true" field="efeito"/>
+	</rectangle>
+</form>
