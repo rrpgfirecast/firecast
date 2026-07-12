@@ -615,7 +615,7 @@
 			 -->
 
 			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="150"	field="$(alcanceOuNome)" hint="$(hint)"/>
-			<optAtaqueField height="$(height or 30)" minWidth="110"	maxWidth="200"	field="ataque"			 hint="Modificador para o acerto"/>
+			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="200"	field="ataque"			 hint="Modificador para o acerto"/>
 			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="170"	field="dano"			 hint="Modificador para o dano"/>
 			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="180"	field="tipo"			 hint="Tipo do dano, vazio para o mesmo do ataque"/>
 
