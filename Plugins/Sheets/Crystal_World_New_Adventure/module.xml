@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.7b" compilationDate="26062026164139" sdkApiVersion="88" originalPluginFileName="Crystal_World_New_Adventure.rpk" compilationDigest="1e9c38bc5c471e75c220818f5e925ac0a7839906" sdkMinorApiVersion="2" compilationUniqueID="6a3eabc32eb5ecb80028be93">
+<module sdkVersion="3.7b" compilationDate="11072026150905" sdkApiVersion="88" originalPluginFileName="Crystal_World_New_Adventure.rpk" compilationDigest="0f40f6b028f3451cabf6424a59eb0a35655f100e" sdkMinorApiVersion="2" compilationUniqueID="6a525c91f8cbd9550060ee15">
     <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
     <id>Alem_do_veu_Hiperion</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->

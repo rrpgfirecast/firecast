@@ -183,6 +183,13 @@ end
     ]]></event>
 </dataLink>
 
+<dataLink field="OuroPersonagem">
+    <event name="onChange"><![CDATA[
+        atualizarNivel(self.sheet)
+        recalcularDefesa(self.sheet)
+    ]]></event>
+</dataLink>
+
 
 
 <script><![CDATA[
@@ -256,8 +263,30 @@ end
 
 function atualizarNivel(sheet)
     if not sheet then return end
+
     sheet.NivelPersonagem = calcularNivel(n(sheet.XP))
+
+    atualizarBarraXP(sheet)
+
     recalcularDefesa(sheet)
+end
+
+function atualizarBarraXP(sheet)
+    if not sheet then return end
+
+    local xpAtual = n(sheet.XP)
+    local nivel = calcularNivel(xpAtual)
+
+    local xpProximoNivel = xpNecessarioParaNivel(nivel + 1)
+
+    -- Se estiver no nível máximo
+    if nivel >= 20 then
+        xpProximoNivel = xpAtual
+    end
+
+    sheet.XPBarra = xpAtual
+    sheet.XPBarraMax = xpProximoNivel
+    sheet.XPTexto = xpAtual .. "/" .. xpProximoNivel
 end
 
 function onClasseOuRankChange(sheet)
@@ -595,7 +624,44 @@ end
 <image top="30" left="560" field="imagemPJ" style="autofit" editable="true" width="320" height="475"/>
     <dataLink field="imagemPJ" defaultValue="/Frames/avatar.jpg"/>
 
-    <image width="895" height="1158" url="https://blob.firecast.com.br/blobs/MKLMVMRW_4458971/fundo_perfil.png"/>
+<image width="895" height="1158" url="/Frames/fundo_perfil.png"/>
+
+
+
+
+
+
+
+<progressBar
+    left="160"
+    top="169"
+    width="114"
+    height="18"
+    field="XPBarra"
+    fieldMax="XPBarraMax"
+    color="#c26b08"/>
+
+<label
+    field="XPTexto"
+    left="160"
+    top="169"
+    width="114"
+    height="18"
+    fontColor="black"
+    fontStyle="bold"
+    fontSize="10"
+    horzTextAlign="center"
+    vertTextAlign="center"/>   
+
+<dataLink field="XPBarra" defaultValue="0"/>
+<dataLink field="XPBarraMax" defaultValue="1"/>
+<dataLink field="XPTexto" defaultValue="0/10"/>     
+
+
+
+
+
+
 
    
 
@@ -712,21 +778,30 @@ end
     <edit field="NomePersonagem" align="client"  fontColor="white" horzTextAlign="center"/>
     </rectangle>   
      
-   <rectangle left="110" top="96" width="165" height="20" color="#00000000">
-    <comboBox field="Classe" align="client"
-              items="{'ASSASSINO','CAMPEÃO','COLOSSO','DANÇARINO','ELEMENTARISTA','ESTANDARTE','ESTRATEGISTA','FORJADO','LAMINAS','MONGE','ORACULO','SENTINELA'}"
+    <rectangle left="110" top="96" width="165" height="20" color="#00000000">
+        <comboBox field="Classe" align="client"
+              items="{'-','ASSASSINO','CAMPEÃO','COLOSSO','DANÇARINO','ELEMENTARISTA','ESTANDARTE','ESTRATEGISTA','FORJADO','LAMINAS','MONGE','ORACULO','SENTINELA'}"
               fontColor="white"
               horzTextAlign="center"/>
     </rectangle>
 
-    <dataLink field="Classe" defaultValue="COLOSSO"/>
+    <dataLink field="Classe" defaultValue="-"/>
 
-    <label field="Prof" left="110" top="132" width="44" height="20" fontColor="white" horzTextAlign="center"/>
-
-    <rectangle left="110" top="167" width="44" height="22" color="#000000">
-    <edit field="XP" align="client" type="number" fontColor="white" horzTextAlign="center"/>
+    <rectangle left="110" top="132" width="165" height="20" color="#00000000">
+        <comboBox field="Raca" align="client"
+              items="{'-','HUMANOS','LAGARTOS','FERAIS','KOVAN','VEXARI','FERANIS',}"
+              fontColor="white"
+              horzTextAlign="center"/>
     </rectangle>
-    <dataLink field="XP" defaultValue="0"/>
+
+    <dataLink field="Raca" defaultValue="-"/>
+
+    
+
+
+
+
+<dataLink field="XP" defaultValue="0"/>
 
     <rectangle left="110" top="204" width="44" height="20" color="#00000000">
     <comboBox field="Rank" align="client"
@@ -764,6 +839,9 @@ end
 <radioButton field="AtributoPrincipal" groupName="atributoPrincipal" left="210" top="407" fieldValue="INT" />
 <radioButton field="AtributoPrincipal" groupName="atributoPrincipal" left="210" top="441" fieldValue="SAB" />
 <radioButton field="AtributoPrincipal" groupName="atributoPrincipal" left="210" top="475" fieldValue="CAR" />
+
+<textEditor field="caracteristica1" left="569" top="720" width="299" height="225"  fontStyle="bold" 
+fontColor="#FFFFFF" /><dataLink field="caracteristica1" defaultValue=""/>
 
 
 
@@ -850,6 +928,213 @@ end
 
     <label field="CarismaMod" left="476" top="475" width="80" height="20" fontStyle="bold" fontColor="#000000" horzTextAlign="center" vertTextAlign="center"/>
     <dataLink field="CarismaMod" defaultValue="0"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<rectangle left="110" top="167" width="44" height="22" color="#000000">
+
+    <edit
+        name="edtXP"
+        field="XP"
+        align="client"
+        type="number"
+        fontColor="white"
+        horzTextAlign="center"
+        enabled="false"/>
+
+</rectangle>
+
+<dataLink field="XP" defaultValue="0"/>
+
+<button
+    text="🔒"
+    left="86"
+    top="167"
+    width="22"
+    height="22">
+
+    <event name="onClick"><![CDATA[
+
+        Dialogs.inputQuery(
+            "Senha",
+            "Senha ADM:",
+            "",
+
+            function(senha)
+
+                if senha == nil then
+                    return
+                end
+
+                if senha ~= "151289" then
+                    showMessage("Senha incorreta!")
+                    return
+                end
+
+                local xpEdit = self:findControlByName("edtNovaXP")
+                local painel = self:findControlByName("PainelEditarXP")
+
+                xpEdit.text = tostring(sheet.XP or 0)
+
+                painel.visible = true
+
+            end
+        )
+
+    ]]></event>
+
+</button>
+
+<rectangle
+    name="PainelEditarXP"
+    left="400"
+    top="300"
+    width="220"
+    height="150"
+    color="#111111"
+    visible="false">
+
+    <!-- TOPO -->
+    <rectangle
+        left="0"
+        top="0"
+        width="220"
+        height="30"
+        color="#3A3A3A">
+
+        <label
+            left="0"
+            top="5"
+            width="220"
+            height="20"
+            text="⚜ GERENCIAR XP ⚜"
+            fontColor="white"
+            horzTextAlign="center"/>
+
+    </rectangle>
+
+    <!-- LINHA -->
+    <rectangle
+        left="10"
+        top="35"
+        width="200"
+        height="2"
+        color="#C8A000"/>
+
+    <label
+        left="20"
+        top="55"
+        width="80"
+        height="20"
+        text="XP:"
+        fontColor="#FFD700"/>
+
+    <edit
+        name="edtNovaXP"
+        left="105"
+        top="52"
+        width="90"
+        height="25"
+        type="number"
+        horzTextAlign="center"
+        fontColor="white"/>
+
+    <!-- TRAVAR/DESBLOQUEAR -->
+
+    <button
+        name="btnPermitirEdicaoXP"
+        text="🔒"
+        left="165"
+        top="90"
+        width="30"
+        height="25">
+
+        <event name="onClick"><![CDATA[
+
+            local xp = self:findControlByName("edtXP")
+            local botao = self:findControlByName("btnPermitirEdicaoXP")
+
+            if xp == nil then
+                showMessage("Campo XP não encontrado.")
+                return
+            end
+
+            if sheet.PermitirEditarXP == true then
+
+                sheet.PermitirEditarXP = false
+                xp.enabled = false
+                botao.text = "🔒"
+
+            else
+
+                sheet.PermitirEditarXP = true
+                xp.enabled = true
+                botao.text = "🔓"
+
+            end
+
+        ]]></event>
+
+    </button>
+
+    <!-- CONFIRMAR -->
+
+    <button
+        name="btnConfirmarXP"
+        text="✓ CONFIRMAR"
+        left="55"
+        top="120"
+        width="110"
+        height="22">
+
+        <event name="onClick"><![CDATA[
+
+            local xpEdit = self:findControlByName("edtNovaXP")
+
+            local xp = tonumber(xpEdit.text)
+
+            if xp == nil then
+                showMessage("Digite um valor válido.")
+                return
+            end
+
+            if xp < 0 then
+                xp = 0
+            end
+
+            sheet.XP = xp
+
+            local painel = self:findControlByName("PainelEditarXP")
+            painel.visible = false
+
+        ]]></event>
+
+    </button>
+
+</rectangle>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <imageCheckBox name="botao0" top="553" left="30" width="18" height="18"
@@ -1136,6 +1421,29 @@ end
         end
     </event>
 </imageCheckBox>
+
+<imageCheckBox name="botao188" top="1066" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+                local rolagem = Firecast.interpretarRolagem("1d20 + ")
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Teste de Morte")
+        end
+    </event>
+</imageCheckBox>
+
+ <rectangle left="113" top="1066" width="30" height="18" color="#0000004b">
+    <edit field="MortesPersonagem" align="client"  fontColor="white" horzTextAlign="center"/>
+    <dataLink field="MortesPersonagem" defaultValue="0"/>
+ </rectangle>
+
+
+
+    
 
 
 <!-- BOTÃO COLUNA DIREITA -->
@@ -1652,7 +1960,7 @@ end
     <!-- FUNDO -->
     <image align="client"
            style="stretch"
-           url="https://blob.firecast.com.br/blobs/COHVTIGW_4457504/frame2.png"/>
+           url="Frames/frame.png"/>
 
 
     <label field="ForcaModUsavel" horzTextAlign="center" left="25" top="37" width="80" height="20" fontColor="#e46217" fontStyle="bold" fontSize="20"/>
@@ -2100,9 +2408,7 @@ end
     <layout align="client">
 
         <!-- FUNDO -->
-        <image align="client"
-               style="stretch"
-               url="https://blob.firecast.com.br/blobs/PBQMWISL_4453328/inventario.png"/>
+        <image align="client" style="stretch" url="Frames/inventario.png"/>
 
         <!-- STATUS -->
         <label field="CaPersonagem" left="792" top="482" width="30"
@@ -2112,6 +2418,10 @@ end
         <label field="RdPersonagem" left="792" top="524" width="30"
                fontColor="white" fontStyle="bold" horzTextAlign="center"/>
         <dataLink field="RdPersonagem" defaultValue="0"/>
+
+    
+
+        
 
         <!-- CAPACETE -->
         <dataLink field="ImagemCapacete" defaultValue="/Frames/Capacete.png"/>
@@ -2223,6 +2533,301 @@ end
             </recordList>
 
         </rectangle>
+<rectangle left="230" top="571" width="44" height="22" color="#131313">
+
+    <edit
+    name="edtOuro"
+    field="OuroPersonagem"
+    align="client"
+    horzTextAlign="center"
+    type="number"
+    max="99999"
+    fontColor="white"
+    enabled="false"/>
+
+    <dataLink field="OuroPersonagem" defaultValue="0"/>
+
+</rectangle>
+
+
+<rectangle left="314" top="571" width="44" height="22" color="#131313">
+
+    <edit
+    name="edtPrata"
+    field="PrataPersonagem"
+    align="client"
+    horzTextAlign="center"
+    type="number"
+    max="99999"
+    fontColor="white"
+    enabled="false"/>
+
+    <dataLink field="PrataPersonagem" defaultValue="0"/>
+
+</rectangle>
+
+
+<button text="🔒" left="359" top="571" width="22" height="22">
+    <event name="onClick"><![CDATA[
+
+        Dialogs.inputQuery(
+            "Senha",
+            "senha ADM:",
+            "",
+
+            function(senha)
+
+                if senha == nil then
+                    return
+                end
+
+
+                if senha ~= "151289" then
+                    showMessage("Senha incorreta!")
+                    return
+                end
+
+
+                local ouroEdit = self:findControlByName("edtNovoOuro")
+                local prataEdit = self:findControlByName("edtNovaPrata")
+                local painel = self:findControlByName("PainelEditarDinheiro")
+
+
+                ouroEdit.text = tostring(sheet.OuroPersonagem or 0)
+                prataEdit.text = tostring(sheet.PrataPersonagem or 0)
+
+
+                painel.visible = true
+
+
+            end
+        )
+
+
+    ]]></event>
+</button>
+
+<rectangle name="PainelEditarDinheiro"
+    left="400"
+    top="300"
+    width="220"
+    height="180"
+    color="#111111"
+    visible="false">
+
+
+    <!-- BORDA SUPERIOR -->
+    <rectangle
+        left="0"
+        top="0"
+        width="220"
+        height="30"
+        color="#3A3A3A">
+
+        <label
+            left="0"
+            top="5"
+            width="220"
+            height="20"
+            text="⚜ GERENCIAR MOEDAS ⚜"
+            fontColor="white"
+            horzTextAlign="center"/>
+
+    </rectangle>
+
+
+
+    <!-- LINHA DIVISORIA -->
+    <rectangle
+        left="10"
+        top="35"
+        width="200"
+        height="2"
+        color="#C8A000"/>
+
+
+
+
+    <!-- OURO -->
+
+    <label
+        left="20"
+        top="55"
+        width="80"
+        height="20"
+        text="🪙 Ouro:"
+        fontColor="#FFD700"/>
+
+
+    <edit
+        name="edtNovoOuro"
+        left="105"
+        top="52"
+        width="90"
+        height="25"
+        type="number"
+        horzTextAlign="center"
+        fontColor="white"/>
+
+
+
+
+    <!-- PRATA -->
+
+    <label
+        left="20"
+        top="90"
+        width="80"
+        height="20"
+        text="🥈 Prata:"
+        fontColor="#C0C0C0"/>
+
+
+    <edit
+        name="edtNovaPrata"
+        left="105"
+        top="87"
+        width="90"
+        height="25"
+        type="number"
+        horzTextAlign="center"
+        fontColor="white"/>
+
+
+
+
+    <!-- CADEADO -->
+
+    <button
+        name="btnPermitirEdicaoDinheiro"
+        text="🔒"
+        left="165"
+        top="120"
+        width="30"
+        height="25">
+
+
+        <event name="onClick"><![CDATA[
+
+
+            local ouro = self:findControlByName("edtOuro")
+            local prata = self:findControlByName("edtPrata")
+            local botao = self:findControlByName("btnPermitirEdicaoDinheiro")
+
+
+
+            if ouro == nil or prata == nil then
+
+                showMessage("Erro: campos Ouro/Prata não encontrados.")
+                return
+
+            end
+
+
+
+
+            if sheet.PermitirEditarDinheiro == true then
+
+
+                sheet.PermitirEditarDinheiro = false
+
+
+                ouro.enabled = false
+                prata.enabled = false
+
+
+                botao.text = "🔒"
+
+
+
+            else
+
+
+                sheet.PermitirEditarDinheiro = true
+
+
+                ouro.enabled = true
+                prata.enabled = true
+
+
+                botao.text = "🔓"
+
+
+
+            end
+
+
+
+        ]]></event>
+
+
+    </button>
+
+
+
+
+
+    <!-- BOTAO CONFIRMAR -->
+
+    <button
+        name="btnConfirmarDinheiro"
+        text="✓ CONFIRMAR"
+        left="55"
+        top="150"
+        width="110"
+        height="22">
+
+
+        <event name="onClick"><![CDATA[
+
+
+            local ouroEdit = self:findControlByName("edtNovoOuro")
+            local prataEdit = self:findControlByName("edtNovaPrata")
+
+
+            local ouro = tonumber(ouroEdit.text)
+            local prata = tonumber(prataEdit.text)
+
+
+
+            if ouro == nil or prata == nil then
+
+                showMessage("Digite valores válidos.")
+                return
+
+            end
+
+
+
+            if ouro < 0 then ouro = 0 end
+            if prata < 0 then prata = 0 end
+
+
+            if ouro > 99999 then ouro = 99999 end
+            if prata > 99999 then prata = 99999 end
+
+
+
+            sheet.OuroPersonagem = ouro
+            sheet.PrataPersonagem = prata
+
+
+
+            local painel = self:findControlByName("PainelEditarDinheiro")
+
+            painel.visible = false
+
+
+
+        ]]></event>
+
+
+    </button>
+
+
+
+</rectangle>
+        
 
     </layout>
 
@@ -2230,7 +2835,7 @@ end
 
                 <tab title="              SKILLS              .">
                     <image width="895" height="1158"
-                    url="https://blob.firecast.com.br/blobs/BMUDKVSQ_4455392/SKILLS.png"/>
+                    url="Frames/SKILLS.png"/>
 
                     <rectangle align="top" height="30" xradius="5" yradius="5" cornerType="round" color="#21212100" margins="{left=20, right=20}">
 									
@@ -2289,19 +2894,19 @@ end
 
                 <tab title="            DIÁRIO            .">
                     <image width="895" height="1158"
-                    url="https://blob.firecast.com.br/blobs/WEBIFDEH_4458148/fundo_branco.png"/>
+                    url="Frames/fundo_branco.png"/>
                     <richEdit align="client" field="background2" backgroundColor="#272727" defaultFontColor="white" margins="{left=15, top=20, right=15, bottom=20}"/>
                 </tab>
 
                 <tab title="          ANOTAÇÕES          .">
                     <image width="895" height="1158"
-                    url="https://blob.firecast.com.br/blobs/WEBIFDEH_4458148/fundo_branco.png"/>
+                    url="Frames/fundo_branco.png"/>
                     <richEdit align="client" field="anotacao1" backgroundColor="#272727" defaultFontColor="white" margins="{left=15, top=20, right=15,  bottom=20}"/>
                 </tab>
 
                 <tab title="         PROFISSÕES         .">
                     <image width="895" height="1158"
-                    url="https://blob.firecast.com.br/blobs/JWJUEKPI_4458220/ferreiro.png"/>
+                    url="Frames/ferreiro.png"/>
                 </tab>
 
             </tabControl>
