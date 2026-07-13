@@ -1,0 +1,946 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateMagias2" height="78" width="78"
+      margins="{top=3, bottom=3, right=2.8, left=3}">
+
+<style>
+comboBox{
+    fontFamily: Cambria;
+    transparent: true;
+    fontColor: #c74d14;
+}
+edit{
+    fontFamily: Cambria;
+    transparent: true;
+    fontColor: white;
+}
+label, button{
+    fontFamily: Cambria;
+    fontColor: white;
+    fontStyle: bold;
+}
+</style>
+
+
+
+
+<script>
+<![CDATA[
+local slotsPorTipo = {
+    capacete = "Capacete",
+    peitoral = "Peitoral",
+    escudo = "Escudo",
+    bota = "Bota",
+    calca = "Calca",
+    ["calÃ§a"] = "Calca",
+    arma = "Arma"
+}
+
+local tiposPotion = {
+    ["potion hp"] = "HP",
+    ["potion pp"] = "PP"
+}
+
+local imagensPadrao = {
+    Capacete = "/Frames/Capacete.png",
+    Peitoral = "/Frames/Peitoral.png",
+    Escudo = "/Frames/Escudo.png",
+    Bota = "/Frames/Bota.png",
+    Calca = "/Frames/Calca.png",
+    Arma = "/Frames/Arma.png"
+}
+
+local partesBoneco = {
+    Capacete = "capacete",
+    Peitoral = "peitoral",
+    Bota = "bota",
+    Calca = "calca"
+}
+
+local catalogoVisualEquipamentos = {
+    ["rank e"] = {rank = "e"},
+    ["rank d"] = {rank = "d"},
+    ["rank c"] = {rank = "c"},
+    ["rank b"] = {rank = "b"},
+    ["rank a"] = {rank = "a"},
+    ["rank s"] = {rank = "s"},
+    ["rank ss"] = {rank = "s"},
+
+    ["capacete de pano velho"] = {rank = "e", partes = {Capacete = "capacete_e"}},
+    ["camisa esfarrapada"] = {rank = "e", partes = {Peitoral = "peitoral_e"}},
+    ["calÃ§as rasgadas"] = {rank = "e", partes = {Calca = "calca_e"}},
+    ["sandÃ¡lias de couro gastas"] = {rank = "e", partes = {Bota = "bota_e"}},
+
+    ["chapÃ©u de viagem"] = {rank = "d", partes = {Capacete = "capacete_d"}},
+    ["tÃºnica reforÃ§ada"] = {rank = "d", partes = {Peitoral = "peitoral_d"}},
+    ["calÃ§as de lona"] = {rank = "d", partes = {Calca = "calca_d"}},
+    ["botas de algodÃ£o grosso"] = {rank = "d", partes = {Bota = "bota_d"}},
+
+    ["elmo de couro enrijecido"] = {rank = "c", partes = {Capacete = "capacete_c"}},
+    ["peitoral de couro curtido"] = {rank = "c", partes = {Peitoral = "peitoral_c"}},
+    ["perneiras de couro com fivelas"] = {rank = "c", partes = {Calca = "calca_c"}},
+    ["botas altas de couro"] = {rank = "c", partes = {Bota = "bota_c"}},
+
+    ["elmo de cobre com narigueira"] = {rank = "b", partes = {Capacete = "capacete_b"}},
+    ["peitoral de escamas de cobre"] = {rank = "b", partes = {Peitoral = "peitoral_b"}},
+    ["grevas de cobre leves"] = {rank = "b", partes = {Calca = "calca_b"}},
+    ["botas de cobre reforÃ§adas"] = {rank = "b", partes = {Bota = "bota_b"}}
+}
+
+local atributos = {
+    {campoItem = "hp", prefixoSlot = "Hp"},
+    {campoItem = "pp", prefixoSlot = "Pp"},
+    {campoItem = "ca", prefixoSlot = "Ca"},
+    {campoItem = "rd", prefixoSlot = "Rd"},
+    {campoItem = "dano", prefixoSlot = "Dano"},
+    {campoItem = "cura", prefixoSlot = "Cura"}
+}
+
+local function limparTexto(valor)
+    return string.lower(tostring(valor or "")):gsub("^%s*(.-)%s*$", "%1")
+end
+
+local function slotDoItem(item)
+    return slotsPorTipo[limparTexto(item.tipoItem)]
+end
+
+local function chaveNomeItem(item)
+    local nome = limparTexto(item and item.nomeItem)
+    nome = nome:gsub("[_%-%:]+", " ")
+    nome = nome:gsub("%s+", " ")
+
+    return nome
+end
+
+local function visualDoItem(item)
+    local nome = chaveNomeItem(item)
+    local entrada = catalogoVisualEquipamentos[nome]
+
+    if entrada ~= nil then
+        return entrada
+    end
+
+    local rankNoNome = nome:match("rank%s+(%a+)")
+
+    if rankNoNome ~= nil then
+        return catalogoVisualEquipamentos["rank " .. rankNoNome]
+    end
+
+    return nil
+end
+
+local function imagemBaseBoneco(slot)
+    local parte = partesBoneco[slot]
+
+    if parte == nil then
+        return nil
+    end
+
+    return "/Frames/equipes/" .. parte .. "_base.png"
+end
+
+local function imagemEquipamentoBoneco(item, slot)
+    local parte = partesBoneco[slot]
+    local entrada = visualDoItem(item)
+
+    if parte == nil or entrada == nil then
+        return imagemBaseBoneco(slot)
+    end
+
+    local nomeArquivo = nil
+
+    if entrada.partes ~= nil then
+        nomeArquivo = entrada.partes[slot]
+    end
+
+    if nomeArquivo == nil and entrada.rank ~= nil then
+        nomeArquivo = parte .. "_" .. entrada.rank
+    end
+
+    if nomeArquivo == nil or entrada.rank == nil then
+        return imagemBaseBoneco(slot)
+    end
+
+    return "/Frames/equipes/" .. entrada.rank .. "/" .. nomeArquivo .. ".png"
+end
+
+local function atualizarImagemBoneco(ficha, slot, imagem)
+    local parte = partesBoneco[slot]
+
+    if ficha == nil or parte == nil then
+        return
+    end
+
+    ficha["Boneco" .. slot] = imagem or imagemBaseBoneco(slot)
+end
+
+local function fixNumero(v)
+    if v == nil then return 0 end
+
+    local s = tostring(v)
+    s = s:gsub("%s+", "")
+    s = s:gsub(",", ".")
+
+    return tonumber(s) or 0
+end
+
+local function uidInventario(item)
+    if item == nil then
+        return nil
+    end
+
+    if item.uidInventario == nil or item.uidInventario == "" then
+        item.uidInventario = tostring(os.time()) .. "_" .. tostring(math.random(100000, 999999))
+    end
+
+    return item.uidInventario
+end
+
+local function atualizarItemEquipadoNaFicha(item)
+    if item == nil or item.equipadoEm == nil or item.equipadoEm == "" then
+        return
+    end
+
+    local ficha = NDB.getRoot(item)
+    local slot = slotDoItem(item)
+
+    if ficha == nil or slot == nil or slot ~= item.equipadoEm then
+        return
+    end
+
+    ficha["Imagem" .. slot] = item.imagemestilo2 or imagensPadrao[slot]
+    ficha["ItemEquipado" .. slot] = item.nomeItem or ""
+    ficha["ItemEquipadoHandle" .. slot] = NDB.getNodeHandle(item)
+    ficha["ItemEquipadoUid" .. slot] = uidInventario(item)
+    atualizarImagemBoneco(ficha, slot, imagemEquipamentoBoneco(item, slot))
+
+    for _, atributo in ipairs(atributos) do
+        ficha[atributo.prefixoSlot .. slot] = fixNumero(item[atributo.campoItem])
+    end
+end
+
+local function tipoPotionDoItem(item)
+    return tiposPotion[limparTexto(item.tipoItem)]
+end
+
+local function ehSlotVazio(item)
+    return item ~= nil and tostring(item.slotVazio or "") == "true"
+end
+
+local function valorAtributo(valor)
+    return tonumber(valor) or 0
+end
+
+local function limparSlot(ficha, slot)
+    if ficha == nil or slot == nil then
+        return
+    end
+
+    ficha["Imagem" .. slot] = imagensPadrao[slot] or ""
+    ficha["ItemEquipado" .. slot] = ""
+    ficha["ItemEquipadoHandle" .. slot] = nil
+    ficha["ItemEquipadoUid" .. slot] = nil
+    atualizarImagemBoneco(ficha, slot, imagemBaseBoneco(slot))
+
+    for _, atributo in ipairs(atributos) do
+        ficha[atributo.prefixoSlot .. slot] = 0
+    end
+end
+
+local function desmarcarItemAnterior(itemAtual, slot)
+    local lista = NDB.getParent(itemAtual)
+
+    if lista == nil then
+        return
+    end
+
+    local handleAtual = NDB.getNodeHandle(itemAtual)
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        if NDB.getNodeHandle(item) ~= handleAtual and item.equipadoEm == slot then
+            item.equipadoEm = ""
+        end
+    end
+end
+
+local function desequiparItem(item)
+    local ficha = NDB.getRoot(item)
+    local slot = item.equipadoEm
+
+    if ficha == nil or slot == nil or slot == "" then
+        return
+    end
+
+    -- limpa imagem e nome
+    ficha["Imagem" .. slot] = imagensPadrao[slot] or ""
+    ficha["ItemEquipado" .. slot] = ""
+    ficha["ItemEquipadoHandle" .. slot] = nil
+    ficha["ItemEquipadoUid" .. slot] = nil
+    atualizarImagemBoneco(ficha, slot, imagemBaseBoneco(slot))
+
+    -- zera atributos
+    for _, atributo in ipairs(atributos) do
+        ficha[atributo.prefixoSlot .. slot] = 0
+    end
+
+    item.equipadoEm = ""
+end
+
+
+local function equiparItem(item)
+    if item == nil then return end
+
+    -- SE JÃ ESTIVER EQUIPADO â†’ DESEQUIPA
+    if item.equipadoEm ~= nil and item.equipadoEm ~= "" then
+        desequiparItem(item)
+        return
+    end
+
+    local ficha = NDB.getRoot(item)
+    local slot = slotDoItem(item)
+
+    if ficha == nil then
+        showMessage("Nao encontrei a ficha para equipar este item.")
+        return
+    end
+
+    if slot == nil then
+        showMessage("Escolha um tipo valido: Capacete, Peitoral, Escudo, Bota, Calca ou Arma.")
+        return
+    end
+
+    desmarcarItemAnterior(item, slot)
+	limparSlot(ficha, slot)
+
+    ficha["Imagem" .. slot] = item.imagemestilo2 or imagensPadrao[slot]
+    ficha["ItemEquipado" .. slot] = item.nomeItem or ""
+    ficha["ItemEquipadoHandle" .. slot] = NDB.getNodeHandle(item)
+    ficha["ItemEquipadoUid" .. slot] = uidInventario(item)
+    atualizarImagemBoneco(ficha, slot, imagemEquipamentoBoneco(item, slot))
+
+for _, atributo in ipairs(atributos) do
+    ficha[atributo.prefixoSlot .. slot] = fixNumero(item[atributo.campoItem])
+end
+
+    item.equipadoEm = slot
+end
+
+local function consumirQuantidade(item)
+    local quantidade = tonumber(item.quantidade) or 0
+
+    if quantidade <= 0 then
+        showMessage("Este item nao tem quantidade disponivel.")
+        return false
+    end
+
+    item.quantidade = quantidade - 1
+    return true
+end
+
+local function usarPotion(item)
+
+    local ficha = NDB.getRoot(item)
+    if not ficha then
+        showMessage("Nao encontrei a ficha.")
+        return
+    end
+
+    local tipoPotion = tipoPotionDoItem(item)
+    if not tipoPotion then return end
+
+    local mesa = rrpg.getMesaDe(sheet)
+    local jogador = mesa.me
+    local chat = mesa.chat
+
+    if not jogador or not chat then
+        showMessage("Jogador ou chat nao disponivel.")
+        return
+    end
+
+    -- =========================
+    -- DEFINE BARRA CORRETA
+    -- =========================
+    local indexBarra
+    local valorBase
+    local prefixo
+
+    if tipoPotion == "HP" then
+        indexBarra = 1
+        valorBase = valorAtributo(item.cura)
+        prefixo = "HP"
+
+    elseif tipoPotion == "PP" then
+        indexBarra = 2
+        valorBase = valorAtributo(item.pp)
+        prefixo = "PP"
+
+    else
+        return
+    end
+
+    -- =========================
+    -- LEITURA DA BARRA (ATUAL)
+    -- =========================
+    local atual, maximo, percent = jogador:getBarValue(indexBarra)
+
+    if atual == nil or maximo == nil then
+        showMessage("Barra nao disponivel ou invisivel.")
+        return
+    end
+
+    -- =========================
+    -- CHEIO
+    -- =========================
+    if atual >= maximo then
+        if prefixo == "HP" then
+            showMessage("SEU HP ESTA CHEIO")
+        else
+            showMessage("SEUS PP ESTAO COMPLETOS")
+        end
+        return
+    end
+
+    -- =========================
+    -- CALCULO REAL (sem overflow)
+    -- =========================
+    local falta = maximo - atual
+    local curaReal = math.min(valorBase, falta)
+
+    if curaReal <= 0 then return end
+
+    -- =========================
+    -- CONSUMO
+    -- =========================
+    if not consumirQuantidade(item) then return end
+
+    -- =========================
+    -- CHAT
+    -- =========================
+    local msg = "/" .. prefixo .. " +" .. curaReal
+    pcall(function()
+        chat:enviarMensagem(msg)
+    end)
+
+end
+
+
+
+local coresRank = {
+    E  = "#808080", -- cinza
+    D  = "#00FF00", -- verde
+    C  = "#00BFFF", -- azul
+    B  = "#8000FF", -- roxo
+    A  = "#d6b10e", -- laranja
+    S  = "#FF0000", -- vermelho
+    SS = "#FF0000"
+}
+
+local function atualizarAcoesItem(form)
+    if form == nil or form.sheet == nil then
+        return
+    end
+
+    local item = form.sheet
+    local slotVazio = ehSlotVazio(item)
+    local ehEquipavel = slotDoItem(item) ~= nil
+    local ehPotion = tipoPotionDoItem(item) ~= nil
+    local equipado = item.equipadoEm ~= nil and item.equipadoEm ~= ""
+    local corRank = coresRank[item.RankItem] or "#808080"
+    local assinatura = table.concat({
+        tostring(slotVazio),
+        tostring(ehEquipavel),
+        tostring(ehPotion),
+        tostring(equipado),
+        tostring(corRank)
+    }, "|")
+
+    if form._cwnaAssinaturaVisualItem == assinatura then
+        return
+    end
+
+    form._cwnaAssinaturaVisualItem = assinatura
+
+    if form._cwnaControlesItem == nil then
+        form._cwnaControlesItem = {
+            btnUsar = form:findControlByName("btnUsarPotion"),
+            btnExcluir = form:findControlByName("btnExcluirItem"),
+            btnEditar = form:findControlByName("btnEditarItem"),
+            retAcao = form:findControlByName("retAcaoItem"),
+            retFundo = form:findControlByName("retFundoItem"),
+            imgItem = form:findControlByName("imgItemInventario"),
+            layoutQtd = form:findControlByName("layoutQuantidadeItem"),
+            txtEquipped = form:findControlByName("txtEquipped")
+        }
+    end
+
+    local btnUsar = form._cwnaControlesItem.btnUsar
+    local btnExcluir = form._cwnaControlesItem.btnExcluir
+    local btnEditar = form._cwnaControlesItem.btnEditar
+    local retAcao = form._cwnaControlesItem.retAcao
+    local retFundo = form._cwnaControlesItem.retFundo
+    local imgItem = form._cwnaControlesItem.imgItem
+    local layoutQtd = form._cwnaControlesItem.layoutQtd
+    local txtEquipped = form._cwnaControlesItem.txtEquipped
+
+    if btnUsar ~= nil then
+        btnUsar.visible = ehPotion and not slotVazio
+    end
+
+    if btnExcluir ~= nil then
+        btnExcluir.visible = not slotVazio
+    end
+
+    if btnEditar ~= nil then
+        btnEditar.visible = not slotVazio
+    end
+
+    if imgItem ~= nil then
+        imgItem.visible = not slotVazio
+    end
+
+    if layoutQtd ~= nil then
+        layoutQtd.visible = not slotVazio
+    end
+
+    if retAcao ~= nil then
+        retAcao.visible = ehPotion and not slotVazio
+    end
+
+    if retFundo ~= nil then
+        retFundo.strokeSize = slotVazio and 0 or 1
+        retFundo:setStrokeColor(corRank)
+
+        if slotVazio then
+            retFundo.color = "#00000000"
+        elseif equipado then
+            retFundo.color = "#00000000"
+            
+        else
+            retFundo.color = "#202020"
+        end
+    end
+
+    -- =========================
+    -- EQUIPPED TEXT RENDER
+    -- =========================
+    if txtEquipped ~= nil then
+        txtEquipped.visible = equipado and not slotVazio
+
+        if equipado then
+            txtEquipped.text = "EQUIPPED"
+            txtEquipped.fontColor = corRank
+
+            -- POSIÃ‡ÃƒO EDITÃVEL (AJUSTE AQUI)
+            txtEquipped.left = txtEquipped.left or 10
+            txtEquipped.top = txtEquipped.top or 2
+        end
+    end
+end
+
+local function apagarItem(item)
+    local ficha = NDB.getRoot(item)
+
+    if ficha ~= nil and item.equipadoEm ~= nil and item.equipadoEm ~= "" then
+        local slot = item.equipadoEm
+
+        -- limpa atributos da ficha
+        limparSlot(ficha, slot)
+
+        -- forÃ§a sincronizaÃ§Ã£o visual da ficha (slots)
+        local campos = {
+            "Imagem"..slot,
+            "ItemEquipado"..slot,
+            "ItemEquipadoHandle"..slot,
+            "ItemEquipadoUid"..slot,
+            "Boneco"..slot
+        }
+
+        for _, campo in ipairs(campos) do
+            ficha[campo] = ficha[campo] -- forÃ§a refresh no Firecast
+        end
+    end
+
+    local ordem = tonumber(item.ordemInventario) or 0
+
+    item.slotVazio = "true"
+    item.uidInventario = "slot_" .. tostring(ordem)
+    item.nomeItem = ""
+    item.tipoItem = ""
+    item.RankItem = ""
+    item.imagemestilo2 = ""
+    item.equipadoEm = ""
+    item.quantidade = ""
+    item.hp = 0
+    item.pp = 0
+    item.ca = 0
+    item.rd = 0
+    item.dano = 0
+    item.cura = 0
+end
+
+local function garantirOrdemInventario(lista)
+    if lista == nil then
+        return
+    end
+
+    local usados = {}
+    local ordemValidaPorHandle = {}
+    local maiorOrdem = 0
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        if item.uidInventario == nil or item.uidInventario == "" then
+            item.uidInventario = tostring(os.time()) .. "_" .. tostring(math.random(100000, 999999))
+        end
+
+        local ordem = tonumber(item.ordemInventario)
+
+        if ordem ~= nil and ordem > 0 and usados[ordem] ~= true then
+            usados[ordem] = true
+            ordemValidaPorHandle[NDB.getNodeHandle(item)] = true
+            maiorOrdem = math.max(maiorOrdem, ordem)
+        end
+    end
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        local ordem = tonumber(item.ordemInventario)
+        local handle = NDB.getNodeHandle(item)
+
+        if ordem == nil or ordem <= 0 or ordemValidaPorHandle[handle] ~= true then
+            maiorOrdem = maiorOrdem + 1
+            item.ordemInventario = maiorOrdem
+            usados[maiorOrdem] = true
+            ordemValidaPorHandle[handle] = true
+        end
+    end
+end
+
+local function procurarItemPorUid(lista, uid)
+    if lista == nil or uid == nil then
+        return nil
+    end
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        if item.uidInventario == uid then
+            return item
+        end
+    end
+
+    return nil
+end
+
+local function trocarOrdemInventario(itemAlvo, uidOrigem)
+    if itemAlvo == nil or uidOrigem == nil then
+        return
+    end
+
+    local lista = NDB.getParent(itemAlvo)
+
+    garantirOrdemInventario(lista)
+
+    local itemOrigem = procurarItemPorUid(lista, uidOrigem)
+
+    if lista == nil or itemOrigem == nil then
+        return
+    end
+
+    if NDB.getNodeHandle(itemOrigem) == NDB.getNodeHandle(itemAlvo) then
+        return
+    end
+
+    local ordemOrigem = itemOrigem.ordemInventario
+    itemOrigem.ordemInventario = itemAlvo.ordemInventario
+    itemAlvo.ordemInventario = ordemOrigem
+end
+
+local function soltarEquipadoNoInventario(itemAlvo, info)
+    if itemAlvo == nil or info == nil then
+        return
+    end
+
+    local lista = NDB.getParent(itemAlvo)
+    local ficha = NDB.getRoot(itemAlvo)
+    local itemOrigem = nil
+
+    garantirOrdemInventario(lista)
+
+    if info.uid ~= nil then
+        itemOrigem = procurarItemPorUid(lista, info.uid)
+    end
+
+    if itemOrigem == nil and info.handle ~= nil then
+        local ok, item = pcall(function() return NDB.openNode(info.handle) end)
+
+        if ok then
+            itemOrigem = item
+        end
+    end
+
+    if itemOrigem == nil then
+        return
+    end
+
+    local slot = info.slot or itemOrigem.equipadoEm
+    itemOrigem.equipadoEm = ""
+
+    if ficha ~= nil then
+        if slot ~= nil and slot ~= "" then
+            CWNA_desequiparSlotInventario(ficha, slot)
+        end
+    end
+
+    if NDB.getNodeHandle(itemOrigem) == NDB.getNodeHandle(itemAlvo) then
+        itemOrigem.equipadoEm = ""
+
+        if ficha ~= nil and slot ~= nil and slot ~= "" then
+            CWNA_desequiparSlotInventario(ficha, slot)
+        end
+
+        return
+    end
+
+    local ordemOrigem = itemOrigem.ordemInventario
+    itemOrigem.ordemInventario = itemAlvo.ordemInventario
+    itemAlvo.ordemInventario = ordemOrigem
+    itemOrigem.equipadoEm = ""
+
+    if ficha ~= nil and slot ~= nil and slot ~= "" then
+        CWNA_desequiparSlotInventario(ficha, slot)
+    end
+end
+
+local function prepararDragItemInventario(item, drag)
+    if item == nil or drag == nil or ehSlotVazio(item) then
+        return
+    end
+
+    local imagem = tostring(item.imagemestilo2 or "")
+    local nome = tostring(item.nomeItem or "Item")
+
+    drag:addData("cwnaInventarioUid", uidInventario(item))
+    drag:addData("text", nome)
+
+    if imagem ~= "" then
+        drag:addData("url", imagem)
+        drag:addData("imageURL", imagem)
+        drag:addData("image", imagem)
+        drag:addData("text/uri-list", imagem)
+    end
+end
+
+]]>
+</script>
+
+<rectangle align="client" strokeColor="#00000000" strokeSize="0" color="#00000000"
+           xradius="5" yradius="5" cornerType="round"
+           name="retFundoItem"
+           hitTest="true">
+
+    <event name="onStartDrag"><![CDATA[
+        prepararDragItemInventario(sheet, drag)
+    ]]></event>
+
+    <event name="onStartDrop"><![CDATA[
+        drop:addAction("cwnaSlotEquipado", function(info)
+            soltarEquipadoNoInventario(sheet, info)
+
+            if self.parent ~= nil and self.parent.sort ~= nil then
+                self.parent:sort()
+            end
+        end)
+
+        drop:addAction("cwnaInventarioUid", function(uid)
+            trocarOrdemInventario(sheet, uid)
+
+            if self.parent ~= nil and self.parent.sort ~= nil then
+                self.parent:sort()
+            end
+        end)
+    ]]></event>
+
+    <!-- ITEM -->
+    <image name="imgItemInventario"
+           left="2" top="2" width="74" height="74"
+           field="imagemestilo2"
+           style="proportional"
+           optimize="true"
+           showProgress="false"
+           hitTest="true"
+           visible="false">
+        <event name="onStartDrag"><![CDATA[
+            prepararDragItemInventario(sheet, drag)
+        ]]></event>
+
+        <event name="onStartDrop"><![CDATA[
+            drop:addAction("cwnaSlotEquipado", function(info)
+                soltarEquipadoNoInventario(sheet, info)
+
+                if self.parent ~= nil and self.parent.parent ~= nil and self.parent.parent.sort ~= nil then
+                    self.parent.parent:sort()
+                end
+            end)
+
+            drop:addAction("cwnaInventarioUid", function(uid)
+                trocarOrdemInventario(sheet, uid)
+
+                if self.parent ~= nil and self.parent.parent ~= nil and self.parent.parent.sort ~= nil then
+                    self.parent.parent:sort()
+                end
+            end)
+        ]]></event>
+    </image>
+
+    <!-- BOTÃƒO INVISÃVEL EDITAR -->
+    <button name="btnEditarItem"
+            left="0" top="0" width="78" height="78"
+            opacity="0"
+            visible="false">
+
+        <event name="onStartDrag"><![CDATA[
+            prepararDragItemInventario(sheet, drag)
+        ]]></event>
+
+        <event name="onStartDrop"><![CDATA[
+            drop:addAction("cwnaSlotEquipado", function(info)
+                soltarEquipadoNoInventario(sheet, info)
+
+                local rcl = self:findControlByName("rclMagias2")
+
+                if rcl == nil and self.parent ~= nil then
+                    rcl = self.parent:findControlByName("rclMagias2")
+                end
+
+                if rcl == nil and self.parent ~= nil and self.parent.parent ~= nil then
+                    rcl = self.parent.parent:findControlByName("rclMagias2")
+                end
+
+                if rcl ~= nil then
+                    rcl:sort()
+                end
+            end)
+
+            drop:addAction("cwnaInventarioUid", function(uid)
+                trocarOrdemInventario(sheet, uid)
+
+                local rcl = self:findControlByName("rclMagias2")
+
+                if rcl == nil and self.parent ~= nil then
+                    rcl = self.parent:findControlByName("rclMagias2")
+                end
+
+                if rcl == nil and self.parent ~= nil and self.parent.parent ~= nil then
+                    rcl = self.parent.parent:findControlByName("rclMagias2")
+                end
+
+                if rcl ~= nil then
+                    rcl:sort()
+                end
+            end)
+        ]]></event>
+
+        <event name="onClick">
+            if ehSlotVazio(sheet) then
+                return
+            end
+
+            local pop = self:findControlByName("popEditorInventario");
+
+            local ctrl = self
+            while pop == nil and ctrl ~= nil do
+                ctrl = ctrl.parent
+
+                if ctrl ~= nil and ctrl.findControlByName ~= nil then
+                    pop = ctrl:findControlByName("popEditorInventario")
+                end
+            end
+
+            if pop ~= nil then
+                pop:closePopup(false, true);
+                pop.width = 400;
+                pop.height = 600;
+                pop:setNodeObject(self.sheet);
+                pop:showPopupEx("center");
+            end;
+        </event>
+    </button>
+
+    <!-- EXCLUIR -->
+    <button name="btnExcluirItem"
+            text="x"
+            width="17" height="17"
+            left="59" top="2"
+            visible="false"
+            onClick="apagarItem(sheet)"/>
+
+    <!-- QUANTIDADE -->
+    <layout name="layoutQuantidadeItem" height="18" top="2" left="4" width="80" visible="false">
+
+        <label field="quantidade"
+               width="25"
+               horzTextAlign="center"
+               left="-6"
+               top="0"
+               fontSize="14"
+               fontColor="#000000"/>
+
+        <label field="quantidade"
+               width="25"
+               horzTextAlign="center"
+               left="-4"
+               top="0"
+               fontSize="14"
+               fontColor="#000000"/>
+
+        <label field="quantidade"
+               width="25"
+               horzTextAlign="center"
+               left="-5"
+               top="-1"
+               fontSize="14"
+               fontColor="#000000"/>
+
+        <label field="quantidade"
+               width="25"
+               horzTextAlign="center"
+               left="-5"
+               top="1"
+               fontSize="14"
+               fontColor="#000000"/>
+
+        <label field="quantidade"
+               width="25"
+               horzTextAlign="center"
+               left="-5"
+               fontSize="14"
+               fontColor="#FFFF00"/>
+
+        <dataLink field="quantidade" defaultValue="1"/>
+
+    </layout>
+
+   
+    <rectangle name="retAcaoItem"
+               left="22" top="57"
+               width="15" height="15"
+               color="#00000000"
+               visible="false"/>
+
+<button name="btnUsarPotion"
+        text="U"
+        left="58" top="58"
+        width="18" height="18"
+        fontSize="10"
+        visible="false"
+        onClick="usarPotion(sheet); atualizarAcoesItem(self);"/>
+
+    <dataLink fields="{'tipoItem','RankItem','nomeItem','imagemestilo2','equipadoEm','quantidade','hp','pp','ca','rd','dano','cura','ordemInventario','uidInventario','slotVazio'}">
+        <event name="onChange"><![CDATA[
+            if ehSlotVazio(sheet) then
+                atualizarAcoesItem(self)
+                return
+            end
+
+            atualizarItemEquipadoNaFicha(sheet)
+            atualizarAcoesItem(self)
+        ]]></event>
+    </dataLink>
+</rectangle>
+</form>
