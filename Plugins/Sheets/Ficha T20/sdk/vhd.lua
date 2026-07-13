@@ -5,19 +5,19 @@ VHD = vhd;
 
 function vhd.expandFileName(shortFileName)
 	return __vhd__expandFileName(shortFileName);
-end
+end;
 
 function vhd.addSearchPath(directory)
 	__vhd_addSearchPath(directory);
-end
+end;
 
 function vhd.removeSearchPath(directory)
 	__vhd_removeSearchPath(directory);
-end
+end;
 
 function vhd.fileExists(fileName)
 	return __vhd_fileExists(fileName);
-end
+end;
 
 local rrpgUtils = nil;
 
@@ -62,6 +62,16 @@ end
 
 function VHD.registerAlias(aliases)
 	return __vhd_registerAlias(aliases);
+end;
+
+function VHD.copyFile(srcFileName, dstFileName)
+	local srcFile = VHD.openFile(srcFileName, "r");
+	local dstFile = VHD.openFile(dstFileName, "w+");
+	
+	dstFile:copyFrom(srcFile, srcFile.size);
+	
+	dstFile:close();	
+	srcFile:close();
 end;
 
 return localVHD;

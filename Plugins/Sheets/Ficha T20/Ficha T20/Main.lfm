@@ -66,14 +66,14 @@
         Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true",
             function(stream, contentType)
                 local info = Firecast.Plugins.getRPKDetails(stream);
-                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+                sheet.versionDownloaded = "" .. info.version;
 
                 local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
                         myself = installed[i];
-                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                        sheet.versionInstalled = "" .. installed[i].version;
                     end;
                 end;
 
