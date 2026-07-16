@@ -46,7 +46,7 @@
         <edit left="176" top="917" height="34" width="111" field="weight_curr" transparent="true" fontColor="black" type="number" horzTextAlign="center" fontSize="20"/>
         <edit left="300" top="917" height="34" width="111" field="weight_total" transparent="true" fontColor="black" type="number" horzTextAlign="center" fontSize="20"/>
 
-        <button left="738" top="907" height="67" width="228" opacity="0.5">
+        <button left="738" top="907" height="67" width="228" opacity="0.5" cursor="handPoint" hint="Adicionar Ataque">
                 <event name="onClick">
                     local node = self.rcl_attack:append()
 

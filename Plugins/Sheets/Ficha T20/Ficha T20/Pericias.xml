@@ -8,7 +8,7 @@
         <imageCheckBox left="11" width="20" height="20" checkedImage="imagens/Marcado.png" uncheckedImage="imagens/Nao_Marcado.png" field="$(field)_trained"/>
 
         <label left="258" width="32" height="20" field="$(field)_total" horzTextAlign="center" fontColor="black"/>
-        <button left="258" width="32" height="20" opacity="0.5">
+        <button left="258" width="32" height="20" opacity="0.5" cursor="handPoint" hint="Rolar Perícia">
             <event name="onClick">
                 local roll = Firecast.interpretarRolagem("1d20+" .. (sheet.$(field)_total or 0)); 
 
@@ -47,7 +47,7 @@
         <imageCheckBox left="11" width="20" height="20" checkedImage="imagens/Marcado.png" uncheckedImage="imagens/Nao_Marcado.png" field="$(field)_trained"/>
 
         <label left="255" width="32" height="20" field="$(field)_total" horzTextAlign="center" fontColor="black"/>
-        <button left="255" width="33" height="20" opacity="0.5">
+        <button left="255" width="33" height="20" opacity="0.5" cursor="handPoint" hint="Rolar Perícia">
             <event name="onClick">
                 local roll = Firecast.interpretarRolagem("1d20+" .. (sheet.$(field)_total or 0)); 
 
@@ -243,7 +243,7 @@
                 <label left="388" top="13" width="56" height="42" fontColor="black" field="skills_bonus" fontSize="24" horzTextAlign="center"/>
                 <label left="648" top="13" width="56" height="42" fontColor="black" field="skills_penalty" fontSize="24" horzTextAlign="center"/>
 
-                <button left="739" top="3" width="227" height="67" opacity="0.25">
+                <button left="739" top="3" width="227" height="67" opacity="0.25" cursor="handPoint" hint="Adicionar Perícia">
                     <event name="onClick">
                         local node = self.rcl_custom_skills:append()
 

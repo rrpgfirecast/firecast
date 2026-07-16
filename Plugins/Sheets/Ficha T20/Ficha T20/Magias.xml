@@ -22,7 +22,7 @@
                 elseif (tonumber(nodeA.level) or 0) > (tonumber(nodeB.level) or 0) then
                         return 1;
                 else   
-                        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+                        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
                 end;               
 
                 ]]>

@@ -5,7 +5,7 @@
         ]]> 
     </script>
     <template name="atrBox">
-        <edit left="0" top="0" height="84" width="100" field="$(field)_mod" transparent="true" horzTextAlign="center" fontColor="black" fontSize="36">
+        <edit left="0" top="10" height="84" width="100" field="$(field)_mod" transparent="true" horzTextAlign="center" fontColor="black" fontSize="48">
             <event name="onChange">
                 if sheet==nil then return end
 
@@ -14,19 +14,19 @@
                 sheet.$(field) = num
 
                 -- Update custom skills atr
-                local nodes = NDB.getChildNodes(sheet.rcl_custom_skills); 
-                for i=1, #nodes, 1 do
-                    nodes[i].$(field)_mod = sheet.$(field)_mod
+                local nodesSkills = NDB.getChildNodes(sheet.rcl_custom_skills); 
+                for i=1, #nodesSkills, 1 do
+                    nodesSkills[i].$(field)_mod = sheet.$(field)_mod
                 end
 
                 -- Update custom attacks atr
-                local nodes = NDB.getChildNodes(sheet.rcl_attack); 
-                for i=1, #nodes, 1 do
-                    nodes[i].$(field)_mod = sheet.$(field)_mod
+                local nodesAttacks = NDB.getChildNodes(sheet.rcl_attack); 
+                for i=1, #nodesAttacks, 1 do
+                    nodesAttacks[i].$(field)_mod = sheet.$(field)_mod
                 end
             </event>
         </edit>
-        <edit left="27" top="100" height="35" width="47" field="$(field)" transparent="true" horzTextAlign="center" fontColor="black">
+        <edit left="27" top="100" height="35" width="47" field="$(field)" transparent="true" horzTextAlign="center" fontColor="black" visible="false">
             <event name="onChange">
                 --if sheet==nil then return end
 
@@ -61,7 +61,7 @@
                 <edit left="188" top="113" height="35" width="245" field="race" transparent="true" fontColor="black" fontSize="20"/>
                 <edit left="450" top="113" height="35" width="245" field="origin" transparent="true" fontColor="black" fontSize="20"/>
                 <edit left="711" top="113" height="35" width="205" field="job" transparent="true" fontColor="black" fontSize="20"/>
-                <edit left="921" top="113" height="35" width="35" field="level" transparent="true" fontColor="black" horzTextAlign="center">
+                <edit left="921" top="113" height="35" width="35" field="level" transparent="true" fontColor="black" fontSize="20" horzTextAlign="center">
                     <event name="onChange">
                         if sheet==nil then return end
 
@@ -78,17 +78,17 @@
                         sheet.magic_lvl = math.floor(lvl/2)
 
                         -- Update custom skills bonus
-                        local nodes = NDB.getChildNodes(sheet.rcl_custom_skills); 
-                        for i=1, #nodes, 1 do
-                            nodes[i].skills_bonus = sheet.skills_bonus
-                            nodes[i].level = sheet.magic_lvl
+                        local nodesSkills = NDB.getChildNodes(sheet.rcl_custom_skills); 
+                        for i=1, #nodesSkills, 1 do
+                            nodesSkills[i].skills_bonus = sheet.skills_bonus
+                            nodesSkills[i].level = sheet.magic_lvl
                         end
 
                         -- Update custom attacks bonus
-                        local nodes = NDB.getChildNodes(sheet.rcl_attack); 
-                        for i=1, #nodes, 1 do
-                            nodes[i].skills_bonus = sheet.skills_bonus
-                            nodes[i].level = sheet.magic_lvl
+                        local nodesAttacks = NDB.getChildNodes(sheet.rcl_attack); 
+                        for i=1, #nodesAttacks, 1 do
+                            nodesAttacks[i].skills_bonus = sheet.skills_bonus
+                            nodesAttacks[i].level = sheet.magic_lvl
                         end
                     </event>
                 </edit>
@@ -133,13 +133,13 @@
                 <label left="342" top="105" height="86" width="117" field="refl_total" horzTextAlign="center" fontColor="black" fontSize="36"/>
                 <label left="477" top="105" height="86" width="117" field="will_total" horzTextAlign="center" fontColor="black" fontSize="36"/>
 
-                <edit left="641" top="20" height="30" width="98" field="hp_curr" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
-                <edit left="749" top="20" height="30" width="98" field="hp_total" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
-                <edit left="857" top="20" height="30" width="98" field="hp_temp" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
+                <edit left="641" top="20" height="30" width="98" field="hp_curr" transparent="true" horzTextAlign="center" fontColor="black" fontSize="25"/>
+                <edit left="749" top="20" height="30" width="98" field="hp_total" transparent="true" horzTextAlign="center" fontColor="black" fontSize="25"/>
+                <edit left="857" top="20" height="30" width="98" field="hp_temp" transparent="true" horzTextAlign="center" fontColor="black" fontSize="25"/>
 
-                <edit left="641" top="125" height="30" width="98" field="mp_curr" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
-                <edit left="749" top="125" height="30" width="98" field="mp_total" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
-                <edit left="857" top="125" height="30" width="98" field="mp_temp" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
+                <edit left="641" top="125" height="30" width="98" field="mp_curr" transparent="true" horzTextAlign="center" fontColor="black" fontSize="25"/>
+                <edit left="749" top="125" height="30" width="98" field="mp_total" transparent="true" horzTextAlign="center" fontColor="black" fontSize="25"/>
+                <edit left="857" top="125" height="30" width="98" field="mp_temp" transparent="true" horzTextAlign="center" fontColor="black" fontSize="25"/>
             </layout>
 
             <image left="635" top="616" height="342" width="327" field="avatar" editable="true" style="autoFit">

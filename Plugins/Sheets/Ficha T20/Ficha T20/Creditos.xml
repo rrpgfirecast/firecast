@@ -12,10 +12,10 @@
 
         <imageCheckBox left="78" top="514" width="27" height="27" checkedImage="imagens/Marcado.png" uncheckedImage="imagens/Nao_Marcado.png" field="noUpdate"/>
 
-        <button left="78" top="551" width="119" height="40" opacity="0.5" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/README.md')"/>
-        <button left="208" top="551" width="119" height="40" opacity="0.5" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true')"/>
+        <button left="78" top="551" width="119" height="40" opacity="0.5" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/README.md')" cursor="handPoint"/>
+        <button left="208" top="551" width="119" height="40" opacity="0.5" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true')" cursor="handPoint"/>
 
-        <button left="78" top="804" width="172" height="57" opacity="0.5" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');"/>
-        <button left="78" top="872" width="359" height="57" opacity="0.5" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=164636');"/>
+        <button left="78" top="804" width="172" height="57" opacity="0.5" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" cursor="handPoint"/>
+        <button left="78" top="872" width="359" height="57" opacity="0.5" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=164636');" cursor="handPoint"/>
     </scrollBox>
 </form>
