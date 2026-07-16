@@ -1,0 +1,53 @@
+﻿local objs = require("rrpgObjs.lua");
+local nO = {};
+
+local _transactionProps = {};
+local _transactionEves = {};
+local _transactionMethods = {};
+
+function _transactionMethods.commit(tr)
+	_obj_invoke(tr.handle, "Commit");
+end;
+
+function _transactionMethods.rollback(tr)
+	_obj_invoke(tr.handle, "Rollback");
+end;
+
+function _transactionMethods.createUndoData(tr)
+	local handle = _obj_invoke(tr.handle, "CreateUndoData");
+	local obj = objs.objectFromHandle(handle);
+	objs.registerHandle(handle, obj);	
+	return obj;
+end;
+
+function _transactionMethods.applyUndoData(tr, undoData)
+	_obj_invoke(tr.handle, "ApplyUndoData", undoData.handle);
+end;
+
+local function _transactionFromHandle(handle)
+	local obj = objs.tryFindFromHandle(handle);
+	
+	if obj ~= nil then
+		return obj;
+	end;
+	
+	obj = objs.objectFromHandle(handle);
+	objs.registerHandle(handle, obj);
+	
+	for k, v in pairs(_transactionMethods) do
+		rawset(obj, k, v);
+	end;
+	
+	obj.props = _transactionProps;
+	obj.eves = _transactionEves;	
+	return obj;
+end;
+
+function nO.newTransaction(nodeHandle, nodeObj)
+	local transaction = _transactionFromHandle(_obj_newObject("TLuaNodeTransaction"));
+	_obj_invokeEx(transaction.handle, "InitializeFromNodeHandle", nodeHandle);
+	rawset(transaction, "node", nodeObj);
+	return transaction;
+end;
+
+return nO;
