@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateTecnicas" height="30"> 
+<style>
+comboBox{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+edit{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+label{
+	fontFamily: Cambria;
+	fontColor: #cdcdcd;
+}
+</style>
+	<layout height="30" align="top" margins="{bottom=2}">
+		<edit field="nomeEscola" width="283" align="left" margins="{right=2}" fontStyle="bold" fontColor="white" />
+		<dataLink defaultValue="—" field="nomeEscola" />
+		<rectangle color="#212121" align="left" width="25" margins="{right=2}">
+			<edit field="lvlEscola" horzTextAlign="center" align="client" type="number"/>
+			<dataLink defaultValue="1" field="lvlEscola" />
+		</rectangle>
+		<comboBox width="80" horzTextAlign="center" field="afini" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Maho', 'Nenhum', 'Wards'}" align="left" margins="{right=2}"/>
+		<rectangle color="#212121" align="left" width="162" margins="{right=2}">
+			<comboBox width="80" horzTextAlign="center" field="def1" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Nenhum', 'Craft'}" align="left" margins="{right=2}"/>
+			<comboBox width="80" horzTextAlign="center" field="def2" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Nenhum', 'Travel'}" align="left"/>
+		</rectangle>
+		<button align="left" name="btnTec" text="𝐢" width='30' onClick="">
+			<event name="onClick">
+				local pop = self:findControlByName("popTecnica");
+				if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("left", self.btnTec);
+				else
+				showMessage("Ops, bug... Nao encontrei o popup para exibir");
+				end;
+			</event>
+		</button>
+		
+		<popup name="popTecnica" width="560" height="350" backOpacity="0" drawContainer="false" autoScopeNode="true">
+			<rectangle align="client" color="#0e0e0e" padding="{top=10, left=10, bottom=10, right=10}" xradius= "10" yradius="10" cornerType="bevel">
+				<label fontColor="white" align="top" field="nomeEscola" margins="{bottom=5}" fontStyle="bold" fontFamily="Constantia" fontSize="26" height="30"/>
+				<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
+				<textEditor field="descriEscola" align="client" fontFamily="Cambria" transparent="true" />
+				<dataLink field="descriEscola" defaultValue="—" />
+			</rectangle>
+		</popup>
+		
+		<button align="right" text="🞭" width='30' onClick="NDB.deleteNode(sheet);"/>
+    </layout>
+</form>

@@ -1,38 +1,14 @@
-<p align="center">
-  <img src="https://firecast.app/wp-content/uploads/2021/03/logo1024x1024no_padding-300x300.png" />
-</p>
-
-# Firecast
-
-Esse repositório foi criado com o intuito de armazenar o código de projetos relacionados ao Firecast, o maior programa para jogos online de mesa do Brasil.  
-
-**Subpastas:**
-- **Arts:** Imagens de uso geral para aplicações do firecast. 
-- **Macros:** Códigos de macros de chat. 
-- **Plugins:** Plugins de ficha, chat, janelas acopláveis e outros, feitos com o SDK3.
-- **SDK3:** Informação e detalhes sobre o SDK3.
-
-# Ferramentas
-
-- [**SDK**](https://firecast.app/para-programadores/): Necessário instalar para poder compilar os projetos de plugin. No link há duas versões disponíveis, uma compatível com o RRPG antigo e mobile, o [RDK3.4b](http://www.firecast.com.br/RDK3.4b.exe), e o mais atual, [RDK 3.7b](https://firecast.app/downloads/RDK3.7b.exe).
-- [**Sublime**](https://www.sublimetext.com/3): Um editor de texto, esse ou qualquer outro como [Notepad++](https://notepad-plus-plus.org/), que permita editar os arquivos do projeto. 
-- [**Souce Tree**](https://www.sourcetreeapp.com/): Uma ferramenta para uso do git com interface, essa ou qualquer outra, para facilitar o acesso ao Github. 
-
-# Como colaborar e adicionar seus projetos 
-
-1. Faça uma conta do [GitHub](https://github.com/join?source=login).
-2. Acesse o repositório do [firecast](https://github.com/rrpgfirecast/firecast) e clique em Fork. 
-3. Em seu fork clique em `"Clone or Download"` e copie o URL, vai ser algo como `https://github.com/{Seu_username_do_github}/firecast.git`.
-4. Abra o Source Tree, aperte Ctrl+N, cole o url copiado e clique em Clone. Espere o Source Tree baixar o repositório. 
-5. Quando o Source Tree terminar de baixar o repositório adicione suas alterações, como Macros, Plugins, e etc. Teste suas alterações, tenha certeza que tudo está funcionando e salve. 
-6. No Source Tree vá em File `Status > Working copy`. Verifique as alterações que você fez no projeto. Tudo que tiver sido adicionado vai estar marcado em verde. Tudo que foi removido vai estar em vermelho. Selecione os arquivos que desejar mandar para o repositório e clique em `Stage`. 
-7. Escreva uma mensagem de _commit_ explicando o que você alterou e por quê. Clique em `Commit` e depois `Push`. 
-8. Vá até o topo da janela do _Source Tree_ em `Repository > Create Pull Request` e clique em `Create Pull Request on Web`.
-9. Na janela web que apareceu descreva o que está alterando no seu _pull request_ e clique em `Create pull request`. 
-10. Aguarde os moderadores do repositório avaliarem seu _pull request_ e aprovarem-no, ou caso o reprovem dizer quais são os problemas nele para que você possa corrigí-los. 
-
-# Contato
-
-Se é novo por aqui e deseja conhecer o programa, visite o site do [**RRPG Firecast**](https://firecast.app/pt_br/).  
-Para ajuda com o funcionamento dos plugins, veja a documentação do [**RRPG SDK 3**](https://firecast.app/sdk3/RRPG%20SDK%203.html?Introducao.html).  
-Para dúvidas e ajuda, visite a [**Wiki**](http://wiki.rrpg.com.br) do RPPG Firecast, o nosso grupo do [**Facebook**](https://www.facebook.com/groups/460782814000421/), ou o nosso servidor no [**Discord**](https://discord.gg/dqbJ66Gh95).  
+![Logotipo](https://blob.firecast.com.br/blobs/VWNPTPUN_4458958/1f6ffbd2-943b-4c62-9282-a2410dff5cbc.png)  
+  
+Historia:
+A Maldição de Reino Green
+O mundo mudou no dia em que exploradores encontraram o Reino Green. Uma terra vasta, onde a natureza dominava quase toda a paisagem, lar de criaturas jamais vistas e repleta de dungeons inexploradas. A promessa de riquezas escondidas entre as florestas e ruínas antigas atraiu os olhos gananciosos dos reinos vizinhos. Temendo um conflito pelo controle do território, os reis selaram um pacto: o Reino Green pertenceria a todos, mas caberia às guildas explorá-lo.
+Assim, nasceram as primeiras colônias e, com elas, as guildas de aventureiros, grupos encarregados de mapear, caçar criaturas e recuperar tesouros das profundezas da selva. Entre todas, uma se destacou: Guilda dos Errantes. Liderados pelo lendário guerreiro Edgard Vernoux, a guilda rapidamente tomou as missões mais lucrativas, desbravou os piores calabouços e acumulou fortunas impensáveis. Em apenas alguns anos, a Guilda dos Errantes era tão poderosa que rivalizava com os próprios nobres dos reinos.
+Entretanto, com a ascensão veio a decadência.
+A fama atraiu aventureiros sem escrúpulos, dispostos a tudo por glória e ouro. Assassinatos, traições e alianças sombrias enfraqueceram a guilda. O próprio Edgard começou a mudar, afastando-se dos companheiros mais leais e desaparecendo por longos períodos. E então, no décimo ano da exploração de Reino Green, aconteceu o impensável: Edgard e os membros de alto escalão da guilda roubaram todas as riquezas acumuladas e desapareceram sem deixar rastros.
+O evento ficou conhecido como "A Traição Dourada".
+Com o vácuo de poder deixado pela Guilda dos Errantes, novas guildas surgiram para tomar seu lugar. Porém, ao contrário de seus predecessores, essas guildas não estavam interessadas em heroísmo ou exploração justa. Cobravam taxas exorbitantes dos aventureiros novatos, exigiam contratos abusivos e usavam a força para manter o controle. O que deveria ser um refúgio para aventureiros tornou-se um sistema de opressão, onde apenas os mais ricos e poderosos tinham alguma chance de crescer.
+Enquanto isso, os boatos sobre Edgard e sua guilda nunca cessaram.
+Alguns dizem que ele encontrou um segredo antigo nas profundezas do Reino Green, algo tão poderoso que o fez abandonar tudo. Outros acreditam que foi amaldiçoado e se tornou uma criatura da floresta, condenada a vagar eternamente. O certo é que, desde sua fuga, algo mudou na selva. Criaturas antes desconhecidas passaram a surgir, tempestades estranhas varrem as florestas e uma energia sinistra parece emanar das dungeons mais antigas.
+Agora, cabe a uma nova geração de aventureiros desafiar as guildas corruptas, desvendar o mistério de Edgard Vernoux e talvez, apenas talvez, descobrir o verdadeiro segredo que esconde o Reino Green.
+   

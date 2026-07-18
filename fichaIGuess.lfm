@@ -1,0 +1,4238 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" dataType="Alem_do_veu_Hiperion" title="Crystal_world_2.0" name="frmOurFichaCrystalWorld">
+
+<event name="onNodeReady"><![CDATA[
+    CWNA_inicializarSlotsInventario(sheet)
+]]></event>
+
+
+
+<script><![CDATA[
+contador = 0
+local function compareMagia(nodeA, nodeB)
+
+    if (nodeA.elemMagia == nodeB.elemMagia) then
+
+        if (nodeA.lvlMagia or 0) > (nodeB.lvlMagia or 0) then
+            return 1
+        elseif (nodeA.lvlMagia or 0) < (nodeB.lvlMagia or 0) then
+            return -1
+        else
+            return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia)
+        end
+
+    end
+
+    local ordem = {
+        Water = 1,
+        Air = 2,
+        Fire = 3,
+        Earth = 4,
+        Void = 5,
+        Universal = 6
+    }
+
+    local a = ordem[nodeA.elemMagia] or 999
+    local b = ordem[nodeB.elemMagia] or 999
+
+    if a < b then return -1 end
+    if a > b then return 1 end
+
+    return 0
+end
+]]></script>
+
+<!-- ================= CALCULOS ================= -->
+
+<dataLink fields="{'BracoDeFerro1','BracoDeFerro2','BracoDeFerroTotal',
+'Correr1','Correr2','CorrerTotal',
+'DanoCurtoAlcance1','DanoCurtoAlcance2','DanoCurtoAlcanceTotal',
+'DanoLongoAlcance1','DanoLongoAlcance2','DanoLongoAlcanceTotal',
+'EmpurrarObstaculo1','EmpurrarObstaculo2','EmpurrarObstaculoTotal',
+'Escalar1','Escalar2','EscalarTotal',
+
+'AcertoDistancia1','AcertoDistancia2','AcertoDistanciaTotal',
+'AcertoCurtoAlcance1','AcertoCurtoAlcance2','AcertoCurtoAlcanceTotal',
+'DesarmarArmadilha1','DesarmarArmadilha2','DesarmarArmadilhaTotal',
+'Esquivar1','Esquivar2','EsquivarTotal',
+'Furtividade1','Furtividade2','FurtividadeTotal',
+'Iniciativa1','Iniciativa2','IniciativaTotal',
+'MontariaDirecao1','MontariaDirecao2','MontariaDirecaoTotal',
+'Roubo1','Roubo2','RouboTotal',
+
+'AcertoMagico1','AcertoMagico2','AcertoMagicoTotal',
+'IdentificarCriatura1','IdentificarCriatura2','IdentificarCriaturaTotal',
+'Investigacao1','Investigacao2','InvestigacaoTotal',
+'LerManuscrito1','LerManuscrito2','LerManuscritoTotal',
+'Medicina1','Medicina2','MedicinaTotal',
+'PrepararEstrategia1','PrepararEstrategia2','PrepararEstrategiaTotal',
+'Profissao1','Profissao2','ProfissaoTotal',
+'ResistenciaMental1','ResistenciaMental2','ResistenciaMentalTotal',
+
+'DetectarMagia1','DetectarMagia2','DetectarMagiaTotal',
+'DanoMagico1','DanoMagico2','DanoMagicoTotal',
+'Historia1','Historia2','HistoriaTotal',
+'Natureza1','Natureza2','NaturezaTotal',
+'PerceberMentira1','PerceberMentira2','PerceberMentiraTotal',
+'Percepcao1','Percepcao2','PercepcaoTotal',
+'Religiao1','Religiao2','ReligiaoTotal',
+
+'Atuar1','Atuar2','AtuarTotal',
+'Discurso1','Discurso2','DiscursoTotal',
+'Intimidar1','Intimidar2','IntimidarTotal',
+'Mentir1','Mentir2','MentirTotal',
+'Seducao1','Seducao2','SeducaoTotal',
+
+'ResistenciaCansaco1','ResistenciaCansaco2','ResistenciaCansacoTotal',
+'ResistirVeneno1','ResistirVeneno2','ResistirVenenoTotal',
+'SegurarFolego1','SegurarFolego2','SegurarFolegoTotal',
+'SuporteFrioCalor1','SuporteFrioCalor2','SuporteFrioCalorTotal',
+
+'PpPersonagem','HpPersonagem','Rank',
+'HpRank','PpRank','EstaminaRank','Rd','RdPersonagem','CaPersonagem',
+'Exaustao','DanoArma','Proficiencia','Inventario', 'ImagemArma','ImagemCapacete',
+'ImagemPeitoral','ImagemEscudo','ImagemBota','ImagemCalca',
+'BonecoCapacete','BonecoPeitoral','BonecoBota','BonecoCalca',
+'HpCapacete','PpCapacete','CaCapacete','RdCapacete','DanoCapacete','CuraCapacete',
+'HpPeitoral','PpPeitoral','CaPeitoral','RdPeitoral','DanoPeitoral','CuraPeitoral',
+'HpEscudo','PpEscudo','CaEscudo','RdEscudo','DanoEscudo','CuraEscudo',
+'HpBota','PpBota','CaBota','RdBota','DanoBota','CuraBota',
+'HpCalca','PpCalca','CaCalca','RdCalca','DanoCalca','CuraCalca',
+'HpArma','PpArma','CaArma','RdArma','DanoArma','CuraArma',
+'ItemEquipadoCapacete','ItemEquipadoPeitoral','ItemEquipadoEscudo',
+'ItemEquipadoBota','ItemEquipadoCalca','ItemEquipadoArma',
+'ItemEquipadoHandleCapacete','ItemEquipadoHandlePeitoral','ItemEquipadoHandleEscudo',
+'ItemEquipadoHandleBota','ItemEquipadoHandleCalca','ItemEquipadoHandleArma',
+'ItemEquipadoUidCapacete','ItemEquipadoUidPeitoral','ItemEquipadoUidEscudo',
+'ItemEquipadoUidBota','ItemEquipadoUidCalca','ItemEquipadoUidArma','HpTotal',
+'PpTotal','CaTotal','RdTotal','DanoTotal','CuraTotal',
+'HpBonusExtra','PpBonusExtra','CaBonusExtra','RdBonusExtra',
+'DanoBonusExtra','CuraBonusExtra',
+'ForcaValor','ForcaAdd','ForcaTotal','ForcaMod',
+'DestrezaValor','DestrezaAdd','DestrezaTotal','DestrezaMod',
+'ConstituicaoValor','ConstituicaoAdd','ConstituicaoTotal','ConstituicaoMod',
+'InteligenciaValor','InteligenciaAdd','InteligenciaTotal','InteligenciaMod',
+'SabedoriaValor','SabedoriaAdd','SabedoriaTotal','SabedoriaMod',
+'CarismaValor','CarismaAdd','CarismaTotal','CarismaMod',
+'BracoDeFerro_ativo','BracoDeFerro1','BracoDeFerro2','BracoDeFerroTotal',
+'Correr_ativo','Correr1','Correr2','CorrerTotal',
+'DanoCurtoAlcance_ativo','DanoCurtoAlcance1','DanoCurtoAlcance2','DanoCurtoAlcanceTotal',
+'DanoLongoAlcance_ativo','DanoLongoAlcance1','DanoLongoAlcance2','DanoLongoAlcanceTotal',
+
+'EmpurrarObstaculo_ativo','EmpurrarObstaculo1','EmpurrarObstaculo2','EmpurrarObstaculoTotal',
+'Escalar_ativo','Escalar1','Escalar2','EscalarTotal',
+'AcertoDistancia_ativo','AcertoDistancia1','AcertoDistancia2','AcertoDistanciaTotal',
+'AcertoCurtoAlcance_ativo','AcertoCurtoAlcance1','AcertoCurtoAlcance2','AcertoCurtoAlcanceTotal',
+
+'DesarmarArmadilha_ativo','DesarmarArmadilha1','DesarmarArmadilha2','DesarmarArmadilhaTotal',
+'Esquivar_ativo','Esquivar1','Esquivar2','EsquivarTotal',
+'Furtividade_ativo','Furtividade1','Furtividade2','FurtividadeTotal',
+'Iniciativa_ativo','Iniciativa1','Iniciativa2','IniciativaTotal',
+
+'MontariaDirecao_ativo','MontariaDirecao1','MontariaDirecao2','MontariaDirecaoTotal',
+'Roubo_ativo','Roubo1','Roubo2','RouboTotal',
+'AcertoMagico_ativo','AcertoMagico1','AcertoMagico2','AcertoMagicoTotal',
+'IdentificarCriatura_ativo','IdentificarCriatura1','IdentificarCriatura2','IdentificarCriaturaTotal',
+
+'Investigacao_ativo','Investigacao1','Investigacao2','InvestigacaoTotal',
+'LerManuscrito_ativo','LerManuscrito1','LerManuscrito2','LerManuscritoTotal',
+'Medicina_ativo','Medicina1','Medicina2','MedicinaTotal',
+'PrepararEstrategia_ativo','PrepararEstrategia1','PrepararEstrategia2','PrepararEstrategiaTotal',
+
+'Profissao_ativo','Profissao1','Profissao2','ProfissaoTotal',
+'ResistenciaMental_ativo','ResistenciaMental1','ResistenciaMental2','ResistenciaMentalTotal',
+'DetectarMagia_ativo','DetectarMagia1','DetectarMagia2','DetectarMagiaTotal',
+'DanoMagico_ativo','DanoMagico1','DanoMagico2','DanoMagicoTotal',
+
+'Historia_ativo','Historia1','Historia2','HistoriaTotal',
+'Natureza_ativo','Natureza1','Natureza2','NaturezaTotal',
+'PerceberMentira_ativo','PerceberMentira1','PerceberMentira2','PerceberMentiraTotal',
+'Percepcao_ativo','Percepcao1','Percepcao2','PercepcaoTotal',
+
+'Religiao_ativo','Religiao1','Religiao2','ReligiaoTotal',
+'Sobrevivencia_ativo','Sobrevivencia1','Sobrevivencia2','SobrevivenciaTotal',
+'Atuar_ativo','Atuar1','Atuar2','AtuarTotal',
+'Discurso_ativo','Discurso1','Discurso2','DiscursoTotal',
+
+'Intimidar_ativo','Intimidar1','Intimidar2','IntimidarTotal',
+'Mentir_ativo','Mentir1','Mentir2','MentirTotal',
+'Seducao_ativo','Seducao1','Seducao2','SeducaoTotal',
+'ResistenciaCansaco_ativo','ResistenciaCansaco1','ResistenciaCansaco2','ResistenciaCansacoTotal',
+
+'ResistirVeneno_ativo','ResistirVeneno1','ResistirVeneno2','ResistirVenenoTotal',
+'SegurarFolego_ativo','SegurarFolego1','SegurarFolego2','SegurarFolegoTotal',
+'SuporteFrioCalor_ativo','SuporteFrioCalor1','SuporteFrioCalor2','SuporteFrioCalorTotal',
+'ForcaMod','DestrezaMod','ConstituicaoMod','SabedoriaMod','InteligenciaMod','CarismaMod','ForcaModUsavel',
+'DestrezaModUsavel','ConstituicaoModUsavel','InteligenciaModUsavel','SabedoriaModUsavel','CarismaModUsavel','Prof',
+'HB1','HB2','HB3','HB4', 'PontosRestantes','NomePersonagem'}">
+
+<dataLink field="Classe">
+    <event name="onChange"><![CDATA[
+        recalcularDefesa(self.sheet)
+    ]]></event>
+</dataLink>
+
+<dataLink field="XP">
+    <event name="onChange"><![CDATA[
+        atualizarNivel(self.sheet)
+        recalcularDefesa(self.sheet)
+    ]]></event>
+</dataLink>
+
+<dataLink field="Rank">
+    <event name="onChange"><![CDATA[
+        recalcularDefesa(self.sheet)
+    ]]></event>
+</dataLink>
+
+<dataLink field="AtributoPrincipal">
+    <event name="onChange"><![CDATA[
+        recalcularDefesa(self.sheet)
+    ]]></event>
+</dataLink>
+
+<dataLink field="OuroPersonagem">
+    <event name="onChange"><![CDATA[
+        atualizarNivel(self.sheet)
+        recalcularDefesa(self.sheet)
+    ]]></event>
+</dataLink>
+
+
+
+<script><![CDATA[
+
+--------------------------------------------------
+-- UTILS
+--------------------------------------------------
+
+local slots = {"Capacete", "Peitoral", "Escudo", "Bota", "Calca", "Arma"}
+
+local function n(v)
+    if v == nil then return 0 end
+    local s = tostring(v):gsub(",", ".")
+    return tonumber(s) or 0
+end
+
+local function CWNA_mostrarAvisoPerfil(controle, texto)
+    local ctrl = controle
+    local aviso = nil
+    local label = nil
+
+    while ctrl ~= nil and aviso == nil do
+        if ctrl.findControlByName ~= nil then
+            aviso = ctrl:findControlByName("avisoPerfilFicha")
+            label = ctrl:findControlByName("lblAvisoPerfilFicha")
+        end
+
+        ctrl = ctrl.parent
+    end
+
+    if aviso == nil then
+        showMessage(texto or "")
+        return
+    end
+
+    if label ~= nil then
+        label.text = texto or ""
+    end
+
+    aviso.visible = true
+
+    setTimeout(function()
+        if aviso ~= nil then
+            aviso.visible = false
+        end
+    end, 2600)
+end
+
+local function CWNA_gastarPPAtaque(sheet, campoCustoPP, nomeAtaque, controleOrigem)
+    local custo = math.max(0, n(sheet[campoCustoPP]))
+
+    if custo <= 0 then
+        return true
+    end
+
+    local mesa = Firecast.getMesaDe(sheet)
+
+    if mesa == nil then
+        return false
+    end
+
+    local jogador = mesa.me
+    local chat = mesa.activeChat or mesa.chat
+
+    if jogador == nil or chat == nil then
+        CWNA_mostrarAvisoPerfil(controleOrigem, "Jogador ou chat nao disponivel.")
+        return false
+    end
+
+    local ppAtual = nil
+    pcall(function()
+        ppAtual = jogador:getBarValue(2)
+    end)
+
+    if ppAtual == nil then
+        CWNA_mostrarAvisoPerfil(controleOrigem, "Barra de PP nao disponivel.")
+        return false
+    end
+
+    if ppAtual < custo then
+        CWNA_mostrarAvisoPerfil(controleOrigem, "PP insuficiente para usar " .. nomeAtaque .. ".")
+        return false
+    end
+
+    pcall(function()
+        chat:enviarMensagem("/PP -" .. custo)
+    end)
+
+    return true
+end
+
+local slotsPorTipoInventario = {
+    capacete = "Capacete",
+    peitoral = "Peitoral",
+    escudo = "Escudo",
+    bota = "Bota",
+    calca = "Calca",
+    ["calÃƒÂ§a"] = "Calca",
+    arma = "Arma"
+}
+
+local tiposPotionInventario = {
+    ["potion hp"] = "HP",
+    ["potion pp"] = "PP"
+}
+
+local imagensPadraoInventario = {
+    Capacete = "/Frames/Capacete.png",
+    Peitoral = "/Frames/Peitoral.png",
+    Escudo = "/Frames/Escudo.png",
+    Bota = "/Frames/Bota.png",
+    Calca = "/Frames/Calca.png",
+    Arma = "/Frames/Arma.png"
+}
+
+local partesBonecoInventario = {
+    Capacete = "capacete",
+    Peitoral = "peitoral",
+    Bota = "bota",
+    Calca = "calca"
+}
+
+local catalogoVisualEquipamentosInventario = {
+    ["rank e"] = {rank = "e"},
+    ["rank d"] = {rank = "d"},
+    ["rank c"] = {rank = "c"},
+    ["rank b"] = {rank = "b"},
+    ["rank a"] = {rank = "a"},
+    ["rank s"] = {rank = "s"},
+    ["rank ss"] = {rank = "s"},
+
+    ["capacete de pano velho"] = {rank = "e", partes = {Capacete = "capacete_e"}},
+    ["camisa esfarrapada"] = {rank = "e", partes = {Peitoral = "peitoral_e"}},
+    ["calÃƒÂ§as rasgadas"] = {rank = "e", partes = {Calca = "calca_e"}},
+    ["sandÃƒÂ¡lias de couro gastas"] = {rank = "e", partes = {Bota = "bota_e"}},
+
+    ["chapÃƒÂ©u de viagem"] = {rank = "d", partes = {Capacete = "capacete_d"}},
+    ["tÃƒÂºnica reforÃƒÂ§ada"] = {rank = "d", partes = {Peitoral = "peitoral_d"}},
+    ["calÃƒÂ§as de lona"] = {rank = "d", partes = {Calca = "calca_d"}},
+    ["botas de algodÃƒÂ£o grosso"] = {rank = "d", partes = {Bota = "bota_d"}},
+
+    ["elmo de couro enrijecido"] = {rank = "c", partes = {Capacete = "capacete_c"}},
+    ["peitoral de couro curtido"] = {rank = "c", partes = {Peitoral = "peitoral_c"}},
+    ["perneiras de couro com fivelas"] = {rank = "c", partes = {Calca = "calca_c"}},
+    ["botas altas de couro"] = {rank = "c", partes = {Bota = "bota_c"}},
+
+    ["elmo de cobre com narigueira"] = {rank = "b", partes = {Capacete = "capacete_b"}},
+    ["peitoral de escamas de cobre"] = {rank = "b", partes = {Peitoral = "peitoral_b"}},
+    ["grevas de cobre leves"] = {rank = "b", partes = {Calca = "calca_b"}},
+    ["botas de cobre reforÃƒÂ§adas"] = {rank = "b", partes = {Bota = "bota_b"}}
+}
+
+local atributosInventario = {
+    {campoItem = "hp", prefixoSlot = "Hp"},
+    {campoItem = "pp", prefixoSlot = "Pp"},
+    {campoItem = "ca", prefixoSlot = "Ca"},
+    {campoItem = "rd", prefixoSlot = "Rd"},
+    {campoItem = "dano", prefixoSlot = "Dano"},
+    {campoItem = "cura", prefixoSlot = "Cura"}
+}
+
+local function limparTextoInventario(valor)
+    return string.lower(tostring(valor or "")):gsub("^%s*(.-)%s*$", "%1")
+end
+
+local function slotDoItemInventario(item)
+    return slotsPorTipoInventario[limparTextoInventario(item and item.tipoItem)]
+end
+
+local function tipoPotionDoItemInventario(item)
+    return tiposPotionInventario[limparTextoInventario(item and item.tipoItem)]
+end
+
+local function rotuloTipoItemInventario(item)
+    local tipo = limparTextoInventario(item and item.tipoItem)
+
+    if tipo == "" then
+        return "outros"
+    end
+
+    return tipo
+end
+
+local function chaveNomeItemInventario(item)
+    local nome = limparTextoInventario(item and item.nomeItem)
+    nome = nome:gsub("[_%-%:]+", " ")
+    nome = nome:gsub("%s+", " ")
+
+    return nome
+end
+
+local function visualDoItemInventario(item)
+    local nome = chaveNomeItemInventario(item)
+    local entrada = catalogoVisualEquipamentosInventario[nome]
+
+    if entrada ~= nil then
+        return entrada
+    end
+
+    local rankNoNome = nome:match("rank%s+(%a+)")
+
+    if rankNoNome ~= nil then
+        return catalogoVisualEquipamentosInventario["rank " .. rankNoNome]
+    end
+
+    return nil
+end
+
+local function imagemBaseBonecoInventario(slot)
+    local parte = partesBonecoInventario[slot]
+
+    if parte == nil then
+        return nil
+    end
+
+    return "/Frames/equipes/" .. parte .. "_base.png"
+end
+
+local function imagemEquipamentoBonecoInventario(item, slot)
+    local parte = partesBonecoInventario[slot]
+    local entrada = visualDoItemInventario(item)
+
+    if parte == nil or entrada == nil then
+        return imagemBaseBonecoInventario(slot)
+    end
+
+    local nomeArquivo = nil
+
+    if entrada.partes ~= nil then
+        nomeArquivo = entrada.partes[slot]
+    end
+
+    if nomeArquivo == nil and entrada.rank ~= nil then
+        nomeArquivo = parte .. "_" .. entrada.rank
+    end
+
+    if nomeArquivo == nil or entrada.rank == nil then
+        return imagemBaseBonecoInventario(slot)
+    end
+
+    return "/Frames/equipes/" .. entrada.rank .. "/" .. nomeArquivo .. ".png"
+end
+
+local function fixNumeroInventario(v)
+    if v == nil then return 0 end
+
+    local s = tostring(v)
+    s = s:gsub("%s+", "")
+    s = s:gsub(",", ".")
+
+    return tonumber(s) or 0
+end
+
+local function uidInventarioItem(item)
+    if item == nil then
+        return nil
+    end
+
+    if item.uidInventario == nil or item.uidInventario == "" then
+        item.uidInventario = tostring(os.time()) .. "_" .. tostring(math.random(100000, 999999))
+    end
+
+    return item.uidInventario
+end
+
+local function procurarItemInventarioPorUid(ficha, uid)
+    if ficha == nil or uid == nil then
+        return nil
+    end
+
+    local lista = ficha.magias2
+
+    if lista == nil then
+        return nil
+    end
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        if item.uidInventario == uid then
+            return item
+        end
+    end
+
+    return nil
+end
+
+local function ehSlotVazioInventario(item)
+    return item ~= nil and tostring(item.slotVazio or "") == "true"
+end
+
+local function contarItensReaisInventario(lista)
+    local total = 0
+
+    if lista == nil then
+        return total
+    end
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        if not ehSlotVazioInventario(item) then
+            total = total + 1
+        end
+    end
+
+    return total
+end
+
+local function contarNosInventario(lista)
+    local total = 0
+
+    if lista == nil then
+        return total
+    end
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        total = total + 1
+    end
+
+    return total
+end
+
+local function prepararSlotVazioInventario(slot, ordem)
+    if slot == nil then
+        return
+    end
+
+    slot.slotVazio = "true"
+    slot.ordemInventario = ordem
+    slot.uidInventario = "slot_" .. tostring(ordem)
+    slot.nomeItem = ""
+    slot.tipoItem = ""
+    slot.RankItem = ""
+    slot.imagemestilo2 = ""
+    slot.equipadoEm = ""
+    slot.quantidade = ""
+end
+
+function CWNA_inicializarSlotsInventario(ficha, listaControle)
+    if ficha == nil then
+        return
+    end
+
+    local lista = ficha.magias2
+
+    if lista == nil and listaControle ~= nil then
+        lista = listaControle.node
+    end
+
+    if lista == nil then
+        lista = NDB.createChildNode(ficha, "magias2")
+    end
+
+    if lista == nil then
+        return
+    end
+
+    local totalNos = contarNosInventario(lista)
+
+    if totalNos >= 60 then
+        ficha.SlotsInventarioCriados = "true"
+        return
+    end
+
+    if ficha.SlotsInventarioCriados == "true" then
+        return
+    end
+
+    local usados = {}
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        local ordem = tonumber(item.ordemInventario)
+
+        if ordem ~= nil and ordem >= 1 and ordem <= 60 then
+            usados[ordem] = true
+        end
+    end
+
+    for i = 1, 60 do
+        if totalNos >= 60 then
+            break
+        end
+
+        if usados[i] ~= true then
+            local slot = nil
+
+            if listaControle ~= nil and listaControle.append ~= nil then
+                slot = listaControle:append()
+            end
+
+            if slot == nil then
+                slot = NDB.createChildNode(lista, "item")
+            end
+
+            if slot ~= nil then
+                prepararSlotVazioInventario(slot, i)
+                usados[i] = true
+                totalNos = totalNos + 1
+            end
+        end
+    end
+
+    ficha.SlotsInventarioCriados = "true"
+end
+
+function CWNA_garantirSlotsInventario(ficha, listaControle)
+    if ficha == nil and listaControle == nil then
+        return
+    end
+
+    local lista = ficha and ficha.magias2 or nil
+
+    if lista == nil and listaControle ~= nil then
+        lista = listaControle.node
+    end
+
+    if lista == nil then
+        return
+    end
+
+    local totalNos = 0
+    local slotsVazios = {}
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        totalNos = totalNos + 1
+
+        if ehSlotVazioInventario(item) then
+            table.insert(slotsVazios, item)
+        end
+    end
+
+    if totalNos > 60 then
+        table.sort(slotsVazios, function(a, b)
+            local ordemA = tonumber(a.ordemInventario) or 999999
+            local ordemB = tonumber(b.ordemInventario) or 999999
+
+            if ordemA ~= ordemB then
+                return ordemA > ordemB
+            end
+
+            return tostring(a.uidInventario or "") > tostring(b.uidInventario or "")
+        end)
+
+        for _, slot in ipairs(slotsVazios) do
+            if totalNos <= 60 then
+                break
+            end
+
+            NDB.deleteNode(slot)
+            totalNos = totalNos - 1
+        end
+    end
+
+    local usados = {}
+    local livres = {}
+
+    for i = 1, 60 do
+        livres[i] = true
+    end
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        if item.uidInventario == nil or item.uidInventario == "" then
+            item.uidInventario = tostring(os.time()) .. "_" .. tostring(math.random(100000, 999999))
+        end
+
+        local ordem = tonumber(item.ordemInventario)
+
+        if ordem ~= nil and ordem >= 1 and ordem <= 60 and usados[ordem] == nil then
+            usados[ordem] = item
+            livres[ordem] = nil
+        end
+    end
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        local ordem = tonumber(item.ordemInventario)
+
+        if ordem == nil or ordem < 1 or ordem > 60 or usados[ordem] ~= item then
+            for i = 1, 60 do
+                if livres[i] then
+                    item.ordemInventario = i
+                    usados[i] = item
+                    livres[i] = nil
+                    break
+                end
+            end
+        end
+    end
+
+    for i = 1, 60 do
+        if usados[i] == nil then
+            if totalNos >= 60 then
+                return
+            end
+
+            local slot = nil
+
+            if listaControle ~= nil and listaControle.append ~= nil then
+                slot = listaControle:append()
+            end
+
+            if slot == nil then
+                return
+            end
+
+            slot.slotVazio = "true"
+            slot.ordemInventario = i
+            slot.uidInventario = "slot_" .. tostring(i)
+            slot.nomeItem = ""
+            slot.tipoItem = ""
+            slot.RankItem = ""
+            slot.imagemestilo2 = ""
+            slot.equipadoEm = ""
+            slot.quantidade = ""
+            usados[i] = slot
+            totalNos = totalNos + 1
+        end
+    end
+end
+
+function CWNA_repopularSlotsInventario(ficha, listaControle)
+    if ficha == nil and listaControle == nil then
+        return
+    end
+
+    local lista = ficha and ficha.magias2 or nil
+
+    if lista == nil and listaControle ~= nil then
+        lista = listaControle.node
+    end
+
+    if lista == nil then
+        return
+    end
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        if ehSlotVazioInventario(item) then
+            NDB.deleteNode(item)
+        end
+    end
+
+    CWNA_garantirSlotsInventario(ficha, listaControle)
+
+    if listaControle ~= nil and listaControle.sort ~= nil then
+        listaControle:sort()
+    end
+end
+
+local function procurarPrimeiroSlotVazioInventario(lista)
+    if lista == nil then
+        return nil
+    end
+
+    local melhor = nil
+    local melhorOrdem = 999999
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        if ehSlotVazioInventario(item) then
+            local ordem = tonumber(item.ordemInventario) or 999999
+
+            if ordem < melhorOrdem then
+                melhor = item
+                melhorOrdem = ordem
+            end
+        end
+    end
+
+    return melhor
+end
+
+local function limparSlotInventario(ficha, slot)
+    if ficha == nil or slot == nil then
+        return
+    end
+
+    ficha["Imagem" .. slot] = imagensPadraoInventario[slot] or ""
+    ficha["ItemEquipado" .. slot] = ""
+    ficha["ItemEquipadoHandle" .. slot] = nil
+    ficha["ItemEquipadoUid" .. slot] = nil
+
+    if partesBonecoInventario[slot] ~= nil then
+        ficha["Boneco" .. slot] = imagemBaseBonecoInventario(slot)
+    end
+
+    for _, atributo in ipairs(atributosInventario) do
+        ficha[atributo.prefixoSlot .. slot] = 0
+    end
+end
+
+local function desmarcarItemAnteriorInventario(itemAtual, slot)
+    local lista = NDB.getParent(itemAtual)
+
+    if lista == nil then
+        return
+    end
+
+    local handleAtual = NDB.getNodeHandle(itemAtual)
+
+    for _, item in ipairs(NDB.getChildNodes(lista)) do
+        if NDB.getNodeHandle(item) ~= handleAtual and item.equipadoEm == slot then
+            item.equipadoEm = ""
+        end
+    end
+end
+
+function CWNA_desequiparSlotInventario(ficha, slot)
+    if ficha == nil or slot == nil or slot == "" then
+        return
+    end
+
+    local handle = ficha["ItemEquipadoHandle" .. slot]
+
+    if handle ~= nil then
+        local ok, item = pcall(function() return NDB.openNode(handle) end)
+
+        if ok and item ~= nil then
+            item.equipadoEm = ""
+        end
+    end
+
+    limparSlotInventario(ficha, slot)
+    recalcularDefesa(ficha)
+end
+
+function CWNA_equiparItemInventario(ficha, item, slotAlvo)
+    if ficha == nil or item == nil then
+        return
+    end
+
+    local slotItem = slotDoItemInventario(item)
+
+    if slotItem == nil then
+        showMessage("Este item nao pode ser equipado.")
+        return
+    end
+
+    if slotAlvo ~= nil and slotItem ~= slotAlvo then
+        return
+    end
+
+    if item.equipadoEm ~= nil and item.equipadoEm ~= "" and item.equipadoEm ~= slotItem then
+        limparSlotInventario(ficha, item.equipadoEm)
+    end
+
+    desmarcarItemAnteriorInventario(item, slotItem)
+    limparSlotInventario(ficha, slotItem)
+
+    ficha["Imagem" .. slotItem] = item.imagemestilo2 or imagensPadraoInventario[slotItem]
+    ficha["ItemEquipado" .. slotItem] = item.nomeItem or ""
+    ficha["ItemEquipadoHandle" .. slotItem] = NDB.getNodeHandle(item)
+    ficha["ItemEquipadoUid" .. slotItem] = uidInventarioItem(item)
+
+    if partesBonecoInventario[slotItem] ~= nil then
+        ficha["Boneco" .. slotItem] = imagemEquipamentoBonecoInventario(item, slotItem)
+    end
+
+    for _, atributo in ipairs(atributosInventario) do
+        ficha[atributo.prefixoSlot .. slotItem] = fixNumeroInventario(item[atributo.campoItem])
+    end
+
+    item.equipadoEm = slotItem
+    recalcularDefesa(ficha)
+end
+
+function CWNA_dropItemInventario(ficha, slotAlvo, uid)
+    if uid == nil then
+        return
+    end
+
+    local item = procurarItemInventarioPorUid(ficha, uid)
+
+    if item ~= nil then
+        CWNA_equiparItemInventario(ficha, item, slotAlvo)
+    end
+end
+
+function CWNA_usarPotionArrastadaNoBoneco(ficha, uid, controleOrigem)
+    if ficha == nil or uid == nil then
+        return
+    end
+
+    local item = procurarItemInventarioPorUid(ficha, uid)
+
+    if item == nil then
+        return
+    end
+
+    local tipoPotion = tipoPotionDoItemInventario(item)
+
+    if tipoPotion == nil then
+        CWNA_mostrarAvisoInventario(controleOrigem, "Solte aqui apenas potion HP ou PP")
+        return
+    end
+
+    local mesa = rrpg.getMesaDe(ficha)
+    local jogador = mesa and mesa.me or nil
+    local chat = mesa and mesa.chat or nil
+
+    if jogador == nil or chat == nil then
+        showMessage("Jogador ou chat nao disponivel.")
+        return
+    end
+
+    local indexBarra = nil
+    local valorBase = 0
+    local prefixo = nil
+
+    if tipoPotion == "HP" then
+        indexBarra = 1
+        valorBase = fixNumeroInventario(item.cura)
+        prefixo = "HP"
+    elseif tipoPotion == "PP" then
+        indexBarra = 2
+        valorBase = fixNumeroInventario(item.pp)
+        prefixo = "PP"
+    else
+        return
+    end
+
+    local atual, maximo = jogador:getBarValue(indexBarra)
+
+    if atual == nil or maximo == nil then
+        showMessage("Barra nao disponivel ou invisivel.")
+        return
+    end
+
+    if atual >= maximo then
+        if prefixo == "HP" then
+            showMessage("SEU HP ESTA CHEIO")
+        else
+            showMessage("SEUS PP ESTAO COMPLETOS")
+        end
+
+        return
+    end
+
+    local curaReal = math.min(valorBase, maximo - atual)
+
+    if curaReal <= 0 then
+        return
+    end
+
+    local quantidade = tonumber(item.quantidade) or 0
+
+    if quantidade <= 0 then
+        showMessage("Este item nao tem quantidade disponivel.")
+        return
+    end
+
+    item.quantidade = quantidade - 1
+
+    local nomeJogador = "Jogador"
+    pcall(function()
+        nomeJogador = tostring(jogador.nick or jogador.nickname or jogador.nome or jogador.name or jogador.login or "Jogador")
+    end)
+
+    local nomePotion = tostring(item.nomeItem or item.tipoItem or ("Potion " .. prefixo))
+    if nomePotion == nil or nomePotion == "" then
+        nomePotion = "Potion " .. prefixo
+    end
+
+    pcall(function()
+        chat:enviarMensagem("/" .. prefixo .. " +" .. curaReal)
+    end)
+
+    pcall(function()
+        chat:enviarMensagem("O Jogador " .. nomeJogador .. " utilizou 1x " .. nomePotion .. " e restaurou " .. curaReal .. " de " .. prefixo)
+    end)
+end
+
+function CWNA_registrarDropPotionBoneco(drop, drag, ficha, controleOrigem)
+    if drop == nil or drag == nil or ficha == nil then
+        return
+    end
+
+    local uid = nil
+    local ok = pcall(function()
+        uid = drag:getData("cwnaInventarioUid")
+    end)
+
+    if not ok or uid == nil then
+        return
+    end
+
+    local item = procurarItemInventarioPorUid(ficha, uid)
+
+    if item == nil or tipoPotionDoItemInventario(item) == nil then
+        return
+    end
+
+    drop:addAction("cwnaInventarioUid", function(uidDrop)
+        CWNA_usarPotionArrastadaNoBoneco(ficha, uidDrop, controleOrigem)
+    end)
+end
+
+function CWNA_mostrarAvisoInventario(controle, texto)
+    local ctrl = controle
+    local aviso = nil
+    local label = nil
+
+    while ctrl ~= nil and aviso == nil do
+        if ctrl.findControlByName ~= nil then
+            aviso = ctrl:findControlByName("avisoSlotErradoInventario")
+            label = ctrl:findControlByName("lblAvisoSlotErradoInventario")
+        end
+
+        ctrl = ctrl.parent
+    end
+
+    if aviso == nil then
+        return
+    end
+
+    if label ~= nil then
+        label.text = texto or "Slot errado, confira o tipo do item"
+    end
+
+    aviso.visible = true
+
+    setTimeout(function()
+        if aviso ~= nil then
+            aviso.visible = false
+        end
+    end, 2600)
+end
+
+function CWNA_registrarDropSlotInventario(drop, drag, ficha, slotAlvo, controleOrigem)
+    if drop == nil or drag == nil or ficha == nil or slotAlvo == nil then
+        return
+    end
+
+    local uid = nil
+    local ok = pcall(function()
+        uid = drag:getData("cwnaInventarioUid")
+    end)
+
+    if (not ok or uid == nil) then
+        local info = nil
+        ok = pcall(function()
+            info = drag:getData("cwnaSlotEquipado")
+        end)
+
+        if ok and info ~= nil then
+            uid = info.uid
+        end
+    end
+
+    if not ok or uid == nil then
+        return
+    end
+
+    local item = procurarItemInventarioPorUid(ficha, uid)
+
+    if item == nil then
+        return
+    end
+
+    if slotDoItemInventario(item) ~= slotAlvo then
+        local mensagem = "Você não pode equipar " .. rotuloTipoItemInventario(item) .. " no slote de " .. slotAlvo
+
+        drop:addAction("cwnaInventarioUid", function()
+            CWNA_mostrarAvisoInventario(controleOrigem, mensagem)
+        end)
+
+        drop:addAction("cwnaSlotEquipado", function()
+            CWNA_mostrarAvisoInventario(controleOrigem, mensagem)
+        end)
+
+        return
+    end
+
+    drop:addAction("cwnaInventarioUid", function(uidDrop)
+        CWNA_dropItemInventario(ficha, slotAlvo, uidDrop)
+    end)
+end
+
+function CWNA_dragSlotInventario(ficha, slot, drag)
+    if ficha == nil or slot == nil or drag == nil then
+        return
+    end
+
+    local uid = ficha["ItemEquipadoUid" .. slot]
+    local handle = ficha["ItemEquipadoHandle" .. slot]
+
+    if uid ~= nil then
+        drag:addData("cwnaSlotEquipado", {slot = slot, uid = uid})
+        drag:addData("text", ficha["ItemEquipado" .. slot] or "Item equipado")
+    elseif handle ~= nil then
+        drag:addData("cwnaSlotEquipado", {slot = slot, handle = handle})
+        drag:addData("text", ficha["ItemEquipado" .. slot] or "Item equipado")
+    end
+end
+
+
+--------------------------------------------------
+-- RANK / CLASSE
+--------------------------------------------------
+
+local RankDB = {
+    ["E"]  = {hp = 6,  pp = 2,  atributos = 7},
+    ["D"]  = {hp = 10, pp = 4,  atributos = 9},
+    ["C"]  = {hp = 14, pp = 6,  atributos = 11},
+    ["B"]  = {hp = 20, pp = 8,  atributos = 13},
+    ["A"]  = {hp = 24, pp = 10, atributos = 15},
+    ["S"]  = {hp = 30, pp = 15, atributos = 17},
+    ["SS"] = {hp = 38, pp = 18, atributos = 25}
+}
+
+local ClassHP = {
+    ["COLOSSO"] = 8,
+    ["MONGE"] = 5,
+    ["ESTANDARTE"] = 7,
+    ["CAMPEÃƒO"] = 6,
+    ["DANÃ‡ARINO"] = 5,
+    ["SENTINELA"] = 4,
+    ["LAMINAS"] = 4,
+    ["ESTRATEGISTA"] = 3,
+    ["FORJADO"] = 6,
+    ["ASSASSINO"] = 4,
+    ["ELEMENTARISTA"] = 4,
+    ["ORACULO"] = 3
+}
+
+
+--------------------------------------------------
+-- XP / LEVEL
+--------------------------------------------------
+
+local function xpNecessarioParaNivel(nivel)
+    local xp = 0
+    for i = 2, nivel do
+        xp = xp + (i * 5)
+    end
+    return xp
+end
+
+local function calcularNivel(xp)
+    local nivel = 1
+    for i = 2, 20 do
+        if xp >= xpNecessarioParaNivel(i) then
+            nivel = i
+        else
+            break
+        end
+    end
+    return nivel
+end
+
+function atualizarNivel(sheet)
+    if not sheet then return end
+
+    sheet.NivelPersonagem = calcularNivel(n(sheet.XP))
+
+    atualizarBarraXP(sheet)
+
+    recalcularDefesa(sheet)
+end
+
+function atualizarBarraXP(sheet)
+    if not sheet then return end
+
+    local xpAtual = n(sheet.XP)
+    local nivel = calcularNivel(xpAtual)
+
+    local xpProximoNivel = xpNecessarioParaNivel(nivel + 1)
+
+    -- Se estiver no nÃ­vel mÃ¡ximo
+    if nivel >= 20 then
+        xpProximoNivel = xpAtual
+    end
+
+    sheet.XPBarra = xpAtual
+    sheet.XPBarraMax = xpProximoNivel
+    sheet.XPTexto = xpAtual .. "/" .. xpProximoNivel
+end
+
+function onClasseOuRankChange(sheet)
+    recalcularDefesa(sheet)
+end
+
+
+--------------------------------------------------
+-- PERÃCIAS
+--------------------------------------------------
+
+PERICIAS_FORCA = {
+    "BracoDeFerro","Correr","DanoCurtoAlcance","DanoLongoAlcance",
+    "EmpurrarObstaculo","Escalar"
+}
+
+PERICIAS_DES = {
+    "AcertoDistancia","AcertoCurtoAlcance","DesarmarArmadilha",
+    "Esquivar","Furtividade","Iniciativa","MontariaDirecao","Roubo"
+}
+
+PERICIAS_INT = {
+    "AcertoMagico","IdentificarCriatura","Investigacao","LerManuscrito",
+    "Medicina","PrepararEstrategia","Profissao","ResistenciaMental"
+}
+
+PERICIAS_SAB = {
+    "DetectarMagia","DanoMagico","Historia","Natureza",
+    "PerceberMentira","Percepcao","Religiao","Sobrevivencia"
+}
+
+PERICIAS_CAR = {
+    "Atuar","Discurso","Intimidar","Mentir","Seducao"
+}
+
+PERICIAS_CON = {
+    "ResistenciaCansaco","ResistirVeneno","SegurarFolego","SuporteFrioCalor"
+}
+
+
+--------------------------------------------------
+-- FUNÃ‡Ã•ES BASE
+--------------------------------------------------
+
+local function custoPericia(nivel)
+    return (nivel * (nivel + 1)) / 2
+end
+
+local function gastoTotal(sheet, lista)
+    local total = 0
+    for _, nome in ipairs(lista) do
+        total = total + custoPericia(n(sheet[nome .. "1"]))
+    end
+    return total
+end
+
+local function modDisponivel(sheet, baseMod, lista)
+    return n(baseMod) - gastoTotal(sheet, lista)
+end
+
+function onHBChange()
+    recalcularDefesa(self.sheet)
+end
+--------------------------------------------------
+-- DEFESA PRINCIPAL
+--------------------------------------------------
+
+function recalcularDefesa(sheet)
+    if not sheet then return end
+
+    local ca, rd, hp, pp, dano, cura = 0, 0, 0, 0, 0, 0
+
+    for _, slot in ipairs(slots) do
+        ca = ca + n(sheet["Ca" .. slot])
+        rd = rd + n(sheet["Rd" .. slot])
+        hp = hp + n(sheet["Hp" .. slot])
+        pp = pp + n(sheet["Pp" .. slot])
+        dano = dano + n(sheet["Dano" .. slot])
+        cura = cura + n(sheet["Cura" .. slot])
+    end
+
+    local function calcularProf(level)
+    if level >= 17 then return 6 end
+    if level >= 13 then return 5 end
+    if level >= 9 then return 4 end
+    if level >= 5 then return 3 end
+    return 2
+    end
+
+    local level = n(sheet.NivelPersonagem)
+    local prof = calcularProf(level)
+    sheet.Prof = prof
+
+    local bonusAcertoCurto = 0
+    local bonusAcertoLongo = 0
+    local bonusAcertoMagico = 0
+    bonusResistenciaMental = 0
+
+    local function temHB(hb)
+        return sheet.HB1 == hb
+            or sheet.HB2 == hb
+            or sheet.HB3 == hb
+            or sheet.HB4 == hb
+    end
+
+    if temHB("GOLPE_PESADO") then
+        bonusAcertoCurto = bonusAcertoCurto - 1
+        bonusAcertoLongo = bonusAcertoLongo - 1
+        bonusAcertoMagico = bonusAcertoMagico - 1
+    end
+    if temHB("PELE_MISTICA") then
+    bonusResistenciaMental = bonusResistenciaMental + 1
+    end
+
+    --------------------------------------------------
+    -- ATRIBUTOS
+    --------------------------------------------------
+
+    sheet.ForcaTotal = n(sheet.ForcaValor) + n(sheet.ForcaAdd)
+    sheet.ForcaMod = sheet.ForcaTotal * 2
+
+    sheet.DestrezaTotal = n(sheet.DestrezaValor) + n(sheet.DestrezaAdd)
+    sheet.DestrezaMod = sheet.DestrezaTotal * 2
+
+    sheet.ConstituicaoTotal = n(sheet.ConstituicaoValor) + n(sheet.ConstituicaoAdd)
+    sheet.ConstituicaoMod = sheet.ConstituicaoTotal * 2
+
+    sheet.InteligenciaTotal = n(sheet.InteligenciaValor) + n(sheet.InteligenciaAdd)
+    sheet.InteligenciaMod = sheet.InteligenciaTotal * 2
+
+    sheet.SabedoriaTotal = n(sheet.SabedoriaValor) + n(sheet.SabedoriaAdd)
+    sheet.SabedoriaMod = sheet.SabedoriaTotal * 2
+
+    sheet.CarismaTotal = n(sheet.CarismaValor) + n(sheet.CarismaAdd)
+    sheet.CarismaMod = sheet.CarismaTotal * 2
+
+    --------------------------------------------------
+    -- MODS USÃVEIS
+    --------------------------------------------------
+
+    sheet.ForcaModUsavel = modDisponivel(sheet, sheet.ForcaMod, PERICIAS_FORCA)
+    sheet.DestrezaModUsavel = modDisponivel(sheet, sheet.DestrezaMod, PERICIAS_DES)
+    sheet.InteligenciaModUsavel = modDisponivel(sheet, sheet.InteligenciaMod, PERICIAS_INT)
+    sheet.SabedoriaModUsavel = modDisponivel(sheet, sheet.SabedoriaMod, PERICIAS_SAB)
+    sheet.CarismaModUsavel = modDisponivel(sheet, sheet.CarismaMod, PERICIAS_CAR)
+    sheet.ConstituicaoModUsavel = modDisponivel(sheet, sheet.ConstituicaoMod, PERICIAS_CON)
+
+    --------------------------------------------------
+    -- PERÃCIAS
+    --------------------------------------------------
+
+    local pericias = {
+    "BracoDeFerro","Correr","DanoCurtoAlcance","DanoLongoAlcance",
+    "EmpurrarObstaculo","Escalar","AcertoDistancia","AcertoCurtoAlcance",
+    "DesarmarArmadilha","Esquivar","Furtividade","Iniciativa",
+    "MontariaDirecao","Roubo","AcertoMagico","IdentificarCriatura",
+    "Investigacao","LerManuscrito","Medicina","PrepararEstrategia",
+    "Profissao","ResistenciaMental","DetectarMagia","DanoMagico",
+    "Historia","Natureza","PerceberMentira","Percepcao",
+    "Religiao","Sobrevivencia","Atuar","Discurso",
+    "Intimidar","Mentir","Seducao","ResistenciaCansaco",
+    "ResistirVeneno","SegurarFolego","SuporteFrioCalor"
+}
+
+for _, nome in ipairs(pericias) do
+    local total = n(sheet[nome .. "1"]) + n(sheet[nome .. "2"])
+
+    local ativo = sheet[nome .. "_ativo"]
+    if ativo == 1 or ativo == true or ativo == "true" then
+        total = total + prof
+    end
+
+    -- bÃ´nus por HB
+    if nome == "AcertoCurtoAlcance" then
+        total = total + bonusAcertoCurto
+
+    elseif nome == "AcertoDistancia" then
+        total = total + bonusAcertoLongo
+
+    elseif nome == "AcertoMagico" then
+        total = total + bonusAcertoMagico
+
+    elseif nome == "ResistenciaMental" then
+        total = total + bonusResistenciaMental
+    end
+
+    -- penalidade por exaustão
+    total = total + n(sheet.Exaustao)
+
+    -- salva resultado final
+    sheet[nome .. "Total"] = total
+end
+
+    --------------------------------------------------
+    -- ATRIBUTO PRINCIPAL
+    --------------------------------------------------
+
+    local atributoPrincipal = sheet.AtributoPrincipal
+    local valorPrincipal = 0
+
+    if atributoPrincipal == "FOR" then
+        valorPrincipal = n(sheet.ForcaTotal)
+    elseif atributoPrincipal == "DES" then
+        valorPrincipal = n(sheet.DestrezaTotal)
+    elseif atributoPrincipal == "CON" then
+        valorPrincipal = n(sheet.ConstituicaoTotal)
+    elseif atributoPrincipal == "INT" then
+        valorPrincipal = n(sheet.InteligenciaTotal)
+    elseif atributoPrincipal == "SAB" then
+        valorPrincipal = n(sheet.SabedoriaTotal)
+    elseif atributoPrincipal == "CAR" then
+        valorPrincipal = n(sheet.CarismaTotal)
+    end
+
+    --------------------------------------------------
+    -- BASES
+    --------------------------------------------------
+
+    local rank = RankDB and RankDB[sheet.Rank] or {hp = 0, pp = 0, atributos = 0}
+    local classBonus = ClassHP and ClassHP[sheet.Classe] or 0
+    local AtributosRank = rank.atributos
+    local AtributosNivel = 0
+
+    if level >= 4 then AtributosNivel = AtributosNivel + 3 end
+    if level >= 6 then AtributosNivel = AtributosNivel + 3 end
+    if level >= 8 then AtributosNivel = AtributosNivel + 3 end
+    if level >= 12 then AtributosNivel = AtributosNivel + 3 end
+    if level >= 14 then AtributosNivel = AtributosNivel + 3 end
+    if level >= 16 then AtributosNivel = AtributosNivel + 3 end
+    if level >= 18 then AtributosNivel = AtributosNivel + 3 end
+    local bonusPP = 0
+    local bonusRD = 0
+    local BonusAtributo = 0
+
+    local function temHB(hb)
+        return sheet.HB1 == hb
+            or sheet.HB2 == hb
+            or sheet.HB3 == hb
+            or sheet.HB4 == hb
+    end
+
+    local bonusHP = 0
+    local bonusCA = 0
+    
+
+    if temHB("ROBUSTO") then
+        bonusHP = bonusHP + (level * 3)
+    end
+        if temHB("RECUPERACAO_ARCANA") then
+        bonusPP = bonusPP + math.min(level, 10)
+    end
+    
+    if temHB("OSSOS_DENSOS") then
+        bonusRD = bonusRD + 3
+    end
+
+    if temHB("PELE_ENDURECIDA") then
+        bonusCA = bonusCA + 1
+    end
+
+    if temHB("APRIMORAMENTO_DE_ATRIBUTO") then
+        BonusAtributo = BonusAtributo + 3
+    end
+
+    
+
+    --------------------------------------------------
+    -- RESULTADOS FINAIS
+    --------------------------------------------------
+
+    sheet.CaPersonagem = ca + math.floor(valorPrincipal / 2) + 8 + bonusCA
+    sheet.RdPersonagem = rd + bonusRD
+
+    sheet.HpPersonagem =
+        hp +
+        rank.hp +
+        (classBonus * level) +
+        (sheet.ConstituicaoTotal * level) +
+        bonusHP
+
+    sheet.PpPersonagem =
+        pp +
+        rank.pp +
+        (level * 2) +
+    bonusPP
+
+    local gastoAtributos =
+    n(sheet.ForcaValor) +
+    n(sheet.DestrezaValor) +
+    n(sheet.ConstituicaoValor) +
+    n(sheet.InteligenciaValor) +
+    n(sheet.SabedoriaValor) +
+    n(sheet.CarismaValor)
+
+    sheet.PontosRestantes =
+    (AtributosRank + AtributosNivel + BonusAtributo)
+    - gastoAtributos
+
+    sheet.DanoPersonagem = dano
+    sheet.CuraPersonagem = cura
+end
+
+
+--------------------------------------------------
+-- INIT
+--------------------------------------------------
+
+function onInit()
+    if self and self.sheet then
+        recalcularDefesa(self.sheet)
+    end
+end
+
+]]></script>
+
+<event name="onChange"><![CDATA[
+    recalcularDefesa(self.sheet)
+]]></event>
+
+</dataLink>
+
+
+
+
+
+<layout align="client">
+
+    <scrollBox align="client">
+
+        <layout width="905" height="1195">
+            
+            <tabControl left="5" top="5" width="899" height="1186">
+
+<tab title="               PERFIL              .">
+<image top="30" left="560" field="imagemPJ" style="autofit" editable="true" width="320" height="475"/>
+    <dataLink field="imagemPJ" defaultValue="/Frames/avatar.jpg"/>
+
+<image width="895" height="1158" url="/Frames/fundo_perfil.png"/>
+
+<progressBar
+    left="160"
+    top="169"
+    width="114"
+    height="18"
+    field="XPBarra"
+    fieldMax="XPBarraMax"
+    color="#c26b08"/>
+
+<label
+    field="XPTexto"
+    left="160"
+    top="169"
+    width="114"
+    height="18"
+    fontColor="black"
+    fontStyle="bold"
+    fontSize="10"
+    horzTextAlign="center"
+    vertTextAlign="center"/>   
+
+<dataLink field="XPBarra" defaultValue="0"/>
+<dataLink field="XPBarraMax" defaultValue="1"/>
+<dataLink field="XPTexto" defaultValue="0/10"/>     
+
+
+
+
+
+
+
+   
+
+<!-- HB 1 -->
+<rectangle left="570" top="550" width="300" height="24" color="#00000000">
+    <comboBox field="HB1" fontSize="12" align="client"
+        items="{'-','APRIMORAMENTO DE ATRIBUTO','APRENDIZADO EXCEPCIONAL','ARTESÃƒO PRÃTICO','BENÃ‡ÃƒO PROTETORA',
+'CONTROLE DE RESPIRAÃ‡ÃƒO','CONCENTRAÃ‡ÃƒO INABALÃVEL','CURA EMERGENCIAL','DEFESA OFENSIVA','ECO TEMPORAL','ENGANAR O ALVO',
+'ESCUDO ESPIRITUAL','EFICIÃŠNCIA LETAL','FÃ”LEGO DE FERRO','FOCO ELEMENTAL','GOLPE PESADO','GERENCIAMENTO DE ENERGIA','GOLPE ESTABILIZADO','INTUIÃ‡ÃƒO ARCANA','LUZ RESTAURADORA',
+'MANIPULAÃ‡ÃƒO ESPACIAL','MARCA MÃGICA','MESTRE DA OCULTAÃ‡ÃƒO','MENTE E CORPO','NÃšCLEO ADAPTATIVO','OSSOS DENSOS',
+'PALAVRA DE INCENTIVO','PELE ENDURECIDA','PELE MÃSTICA','POLIGLOTA','PONTO VITAL','PURIFICAÃ‡ÃƒO','RASTREADOR','RECUPERAÃ‡ÃƒO ARCANA',
+'REFLEXO AFIADO','RETOMAR O FÃ”LEGO','ROBUSTO','SALTO TÃTICO','SOBREVIVENTE','VIGOR CONTÃNUO','VIGOR COMPARTILHADO'}"
+
+        values="{0,
+'APRIMORAMENTO_DE_ATRIBUTO','APRENDIZADO_EXCEPCIONAL','ARTESAO_PRATICO','BENCAO_PROTETORA',
+'CONTROLE_DE_RESPIRACAO','CONCENTRACAO_INABALAVEL','CURA_EMERGENCIAL','DEFESA_OFENSIVA','ECO_TEMPORAL','ENGANAR_O_ALVO',
+'ESCUDO_ESPIRITUAL','EFICIENCIA_LETAL','FOLEGO_DE_FERRO','FOCO_ELEMENTAL','GOLPE_PESADO','GERENCIAMENTO_DE_ENERGIA','GOLPE_ESTABILIZADO','INTUICAO_ARCANA','LUZ_RESTAURADORA',
+'MANIPULACAO_ESPACIAL','MARCA_MAGICA','MESTRE_DA_OCULTACAO','MENTE_E_CORPO','NUCLEO_ADAPTATIVO','OSSOS_DENSOS',
+'PALAVRA_DE_INCENTIVO','PELE_ENDURECIDA','PELE_MISTICA','POLIGLOTA','PONTO_VITAL','PURIFICACAO','RASTREADOR','RECUPERACAO_ARCANA',
+'REFLEXO_AFIADO','RETOMAR_O_FOLEGO','ROBUSTO','SALTO_TATICO','SOBREVIVENTE','VIGOR_CONTINUO','VIGOR_COMPARTILHADO'}"
+
+        fontColor="white"
+        fontStyle="bold"
+        horzTextAlign="center"/>
+</rectangle>
+
+<dataLink field="HB1" defaultValue="-"/>
+
+<!-- HB 2 -->
+<rectangle left="570" top="580" width="300" height="24" color="#00000000">
+    <comboBox field="HB2" fontSize="12" align="client"
+        items="{'-','APRIMORAMENTO DE ATRIBUTO','APRENDIZADO EXCEPCIONAL','ARTESÃƒO PRÃTICO','BENÃ‡ÃƒO PROTETORA',
+'CONTROLE DE RESPIRAÃ‡ÃƒO','CONCENTRAÃ‡ÃƒO INABALÃVEL','CURA EMERGENCIAL','DEFESA OFENSIVA','ECO TEMPORAL','ENGANAR O ALVO',
+'ESCUDO ESPIRITUAL','EFICIÃŠNCIA LETAL','FÃ”LEGO DE FERRO','FOCO ELEMENTAL','GOLPE PESADO','GERENCIAMENTO DE ENERGIA','GOLPE ESTABILIZADO','INTUIÃ‡ÃƒO ARCANA','LUZ RESTAURADORA',
+'MANIPULAÃ‡ÃƒO ESPACIAL','MARCA MÃGICA','MESTRE DA OCULTAÃ‡ÃƒO','MENTE E CORPO','NÃšCLEO ADAPTATIVO','OSSOS DENSOS',
+'PALAVRA DE INCENTIVO','PELE ENDURECIDA','PELE MÃSTICA','POLIGLOTA','PONTO VITAL','PURIFICAÃ‡ÃƒO','RASTREADOR','RECUPERAÃ‡ÃƒO ARCANA',
+'REFLEXO AFIADO','RETOMAR O FÃ”LEGO','ROBUSTO','SALTO TÃTICO','SOBREVIVENTE','VIGOR CONTÃNUO','VIGOR COMPARTILHADO'}"
+
+        values="{0,
+'APRIMORAMENTO_DE_ATRIBUTO','APRENDIZADO_EXCEPCIONAL','ARTESAO_PRATICO','BENCAO_PROTETORA',
+'CONTROLE_DE_RESPIRACAO','CONCENTRACAO_INABALAVEL','CURA_EMERGENCIAL','DEFESA_OFENSIVA','ECO_TEMPORAL','ENGANAR_O_ALVO',
+'ESCUDO_ESPIRITUAL','EFICIENCIA_LETAL','FOLEGO_DE_FERRO','FOCO_ELEMENTAL','GOLPE_PESADO','GERENCIAMENTO_DE_ENERGIA','GOLPE_ESTABILIZADO','INTUICAO_ARCANA','LUZ_RESTAURADORA',
+'MANIPULACAO_ESPACIAL','MARCA_MAGICA','MESTRE_DA_OCULTACAO','MENTE_E_CORPO','NUCLEO_ADAPTATIVO','OSSOS_DENSOS',
+'PALAVRA_DE_INCENTIVO','PELE_ENDURECIDA','PELE_MISTICA','POLIGLOTA','PONTO_VITAL','PURIFICACAO','RASTREADOR','RECUPERACAO_ARCANA',
+'REFLEXO_AFIADO','RETOMAR_O_FOLEGO','ROBUSTO','SALTO_TATICO','SOBREVIVENTE','VIGOR_CONTINUO','VIGOR_COMPARTILHADO'}"
+
+        fontColor="white"
+        fontStyle="bold"
+        horzTextAlign="center"/>
+</rectangle>
+
+<dataLink field="HB2" defaultValue="-"/>
+
+<!-- HB 3 -->
+<rectangle left="570" top="610" width="300" height="24" color="#00000000">
+    <comboBox field="HB3" fontSize="12" align="client"
+        items="{'-','APRIMORAMENTO DE ATRIBUTO','APRENDIZADO EXCEPCIONAL','ARTESÃƒO PRÃTICO','BENÃ‡ÃƒO PROTETORA',
+'CONTROLE DE RESPIRAÃ‡ÃƒO','CONCENTRAÃ‡ÃƒO INABALÃVEL','CURA EMERGENCIAL','DEFESA OFENSIVA','ECO TEMPORAL','ENGANAR O ALVO',
+'ESCUDO ESPIRITUAL','EFICIÃŠNCIA LETAL','FÃ”LEGO DE FERRO','FOCO ELEMENTAL','GOLPE PESADO','GERENCIAMENTO DE ENERGIA','GOLPE ESTABILIZADO','INTUIÃ‡ÃƒO ARCANA','LUZ RESTAURADORA',
+'MANIPULAÃ‡ÃƒO ESPACIAL','MARCA MÃGICA','MESTRE DA OCULTAÃ‡ÃƒO','MENTE E CORPO','NÃšCLEO ADAPTATIVO','OSSOS DENSOS',
+'PALAVRA DE INCENTIVO','PELE ENDURECIDA','PELE MÃSTICA','POLIGLOTA','PONTO VITAL','PURIFICAÃ‡ÃƒO','RASTREADOR','RECUPERAÃ‡ÃƒO ARCANA',
+'REFLEXO AFIADO','RETOMAR O FÃ”LEGO','ROBUSTO','SALTO TÃTICO','SOBREVIVENTE','VIGOR CONTÃNUO','VIGOR COMPARTILHADO'}"
+
+        values="{0,
+'APRIMORAMENTO_DE_ATRIBUTO','APRENDIZADO_EXCEPCIONAL','ARTESAO_PRATICO','BENCAO_PROTETORA',
+'CONTROLE_DE_RESPIRACAO','CONCENTRACAO_INABALAVEL','CURA_EMERGENCIAL','DEFESA_OFENSIVA','ECO_TEMPORAL','ENGANAR_O_ALVO',
+'ESCUDO_ESPIRITUAL','EFICIENCIA_LETAL','FOLEGO_DE_FERRO','FOCO_ELEMENTAL','GOLPE_PESADO','GERENCIAMENTO_DE_ENERGIA','GOLPE_ESTABILIZADO','INTUICAO_ARCANA','LUZ_RESTAURADORA',
+'MANIPULACAO_ESPACIAL','MARCA_MAGICA','MESTRE_DA_OCULTACAO','MENTE_E_CORPO','NUCLEO_ADAPTATIVO','OSSOS_DENSOS',
+'PALAVRA_DE_INCENTIVO','PELE_ENDURECIDA','PELE_MISTICA','POLIGLOTA','PONTO_VITAL','PURIFICACAO','RASTREADOR','RECUPERACAO_ARCANA',
+'REFLEXO_AFIADO','RETOMAR_O_FOLEGO','ROBUSTO','SALTO_TATICO','SOBREVIVENTE','VIGOR_CONTINUO','VIGOR_COMPARTILHADO'}"
+
+        fontColor="white"
+        fontStyle="bold"
+        horzTextAlign="center"/>
+</rectangle>
+
+<dataLink field="HB3" defaultValue="-"/>
+
+<!-- HB 4 -->
+<rectangle left="570" top="640" width="300" height="24" color="#00000000">
+    <comboBox field="HB4" fontSize="12" align="client"
+        items="{'-','APRIMORAMENTO DE ATRIBUTO','APRENDIZADO EXCEPCIONAL','ARTESÃƒO PRÃTICO','BENÃ‡ÃƒO PROTETORA',
+'CONTROLE DE RESPIRAÃ‡ÃƒO','CONCENTRAÃ‡ÃƒO INABALÃVEL','CURA EMERGENCIAL','DEFESA OFENSIVA','ECO TEMPORAL','ENGANAR O ALVO',
+'ESCUDO ESPIRITUAL','EFICIÃŠNCIA LETAL','FÃ”LEGO DE FERRO','FOCO ELEMENTAL','GOLPE PESADO','GERENCIAMENTO DE ENERGIA','GOLPE ESTABILIZADO','INTUIÃ‡ÃƒO ARCANA','LUZ RESTAURADORA',
+'MANIPULAÃ‡ÃƒO ESPACIAL','MARCA MÃGICA','MESTRE DA OCULTAÃ‡ÃƒO','MENTE E CORPO','NÃšCLEO ADAPTATIVO','OSSOS DENSOS',
+'PALAVRA DE INCENTIVO','PELE ENDURECIDA','PELE MÃSTICA','POLIGLOTA','PONTO VITAL','PURIFICAÃ‡ÃƒO','RASTREADOR','RECUPERAÃ‡ÃƒO ARCANA',
+'REFLEXO AFIADO','RETOMAR O FÃ”LEGO','ROBUSTO','SALTO TÃTICO','SOBREVIVENTE','VIGOR CONTÃNUO','VIGOR COMPARTILHADO'}"
+
+        values="{0,
+'APRIMORAMENTO_DE_ATRIBUTO','APRENDIZADO_EXCEPCIONAL','ARTESAO_PRATICO','BENCAO_PROTETORA',
+'CONTROLE_DE_RESPIRACAO','CONCENTRACAO_INABALAVEL','CURA_EMERGENCIAL','DEFESA_OFENSIVA','ECO_TEMPORAL','ENGANAR_O_ALVO',
+'ESCUDO_ESPIRITUAL','EFICIENCIA_LETAL','FOLEGO_DE_FERRO','FOCO_ELEMENTAL','GOLPE_PESADO','GERENCIAMENTO_DE_ENERGIA','GOLPE_ESTABILIZADO','INTUICAO_ARCANA','LUZ_RESTAURADORA',
+'MANIPULACAO_ESPACIAL','MARCA_MAGICA','MESTRE_DA_OCULTACAO','MENTE_E_CORPO','NUCLEO_ADAPTATIVO','OSSOS_DENSOS',
+'PALAVRA_DE_INCENTIVO','PELE_ENDURECIDA','PELE_MISTICA','POLIGLOTA','PONTO_VITAL','PURIFICACAO','RASTREADOR','RECUPERACAO_ARCANA',
+'REFLEXO_AFIADO','RETOMAR_O_FOLEGO','ROBUSTO','SALTO_TATICO','SOBREVIVENTE','VIGOR_CONTINUO','VIGOR_COMPARTILHADO'}"
+
+        fontColor="white"
+        fontStyle="bold"
+        horzTextAlign="center"/>
+</rectangle>
+
+<dataLink field="HB4" defaultValue="-"/>
+
+
+
+
+
+    <rectangle left="399" top="200" width="90" height="24" color="#00000000">
+    <comboBox field="Exaustao"  align="client" items="{'-','1','2','3','4','5','6'}" values="{0,-1,-2,-3,-4,-5,-6}" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+    </rectangle>
+    <dataLink field="Exaustao" defaultValue="-"/>
+
+     <rectangle left="110" top="60" width="165" height="20" color="#0000004b">
+    <edit field="NomePersonagem" align="client"  fontColor="white" horzTextAlign="center"/>
+    </rectangle>   
+     
+    <rectangle left="110" top="96" width="165" height="20" color="#00000000">
+        <comboBox field="Classe" align="client"
+              items="{'-','ASSASSINO','CAMPEÃƒO','COLOSSO','DANÃ‡ARINO','ELEMENTARISTA','ESTANDARTE','ESTRATEGISTA','FORJADO','LAMINAS','MONGE','ORACULO','SENTINELA'}"
+              fontColor="white"
+              horzTextAlign="center"/>
+    </rectangle>
+
+    <dataLink field="Classe" defaultValue="-"/>
+
+    <rectangle left="110" top="132" width="165" height="20" color="#00000000">
+        <comboBox field="Raca" align="client"
+              items="{'-','HUMANOS','LAGARTOS','FERAIS','KOVAN','VEXARI','FERANIS',}"
+              fontColor="white"
+              horzTextAlign="center"/>
+    </rectangle>
+
+    <dataLink field="Raca" defaultValue="-"/>
+
+    
+
+
+
+
+<dataLink field="XP" defaultValue="0"/>
+
+    <rectangle left="110" top="204" width="44" height="20" color="#00000000">
+    <comboBox field="Rank" align="client"
+              items="{'E','D','C','B','A','S','SS'}"
+              values="{'E','D','C','B','A','S','SS'}"
+              fontColor="white"
+              horzTextAlign="center"/>
+    </rectangle>
+
+    <dataLink field="Rank" defaultValue="E"/>
+
+    <label field="HpPersonagem" left="424" top="97" width="40" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+    <dataLink field="HpPersonagem" defaultValue="0"/>
+
+    <label field="PpPersonagem" left="424" top="133" width="40" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+    <dataLink field="PpPersonagem" defaultValue="0"/>
+
+    <label field="CaPersonagem" left="399" top="168" width="40" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+    <dataLink field="CaPersonagem" defaultValue="0"/>
+
+    <label field="RdPersonagem" left="448" top="168" width="40" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+    <dataLink field="RdPersonagem" defaultValue="0"/>
+
+    <label field="NivelPersonagem" left="424" top="62" width="40" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+    <dataLink field="NivelPersonagem" defaultValue="1"/>
+
+
+    <label field="PontosRestantes" left="14.5" top="266"
+    width="44" height="20" fontColor="#e46217" fontSize="16" fontStyle="bold" horzTextAlign="center"/>
+
+
+<radioButton field="AtributoPrincipal" groupName="atributoPrincipal" left="210" top="305"  fieldValue="FOR" />
+<radioButton field="AtributoPrincipal" groupName="atributoPrincipal" left="210" top="339" fieldValue="DES" />
+<radioButton field="AtributoPrincipal" groupName="atributoPrincipal" left="210" top="373" fieldValue="CON" />
+<radioButton field="AtributoPrincipal" groupName="atributoPrincipal" left="210" top="407" fieldValue="INT" />
+<radioButton field="AtributoPrincipal" groupName="atributoPrincipal" left="210" top="441" fieldValue="SAB" />
+<radioButton field="AtributoPrincipal" groupName="atributoPrincipal" left="210" top="475" fieldValue="CAR" />
+
+<textEditor field="caracteristica1" left="569" top="720" width="299" height="225"  fontStyle="bold" 
+fontColor="#FFFFFF" /><dataLink field="caracteristica1" defaultValue=""/>
+
+
+
+    <!-- ATRIBUTOS FORÃ‡A-->
+
+    <edit field="ForcaValor" left="227" top="305" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ForcaValor" defaultValue="0"/>
+
+    <edit field="ForcaAdd" left="312" top="305" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ForcaAdd" defaultValue="0"/>
+
+    <label field="ForcaTotal" left="396" top="305" width="80" height="20" fontStyle="bold" fontColor="#e46217" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ForcaTotal" defaultValue="0"/>
+
+    <label field="ForcaMod" left="476" top="305" width="80" height="20" fontStyle="bold" fontColor="#000000" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ForcaMod" defaultValue="0"/>
+
+    <!-- ATRIBUTOS DESTREZA-->
+
+    <edit field="DestrezaValor" left="227" top="339" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DestrezaValor" defaultValue="0"/>
+
+    <edit field="DestrezaAdd" left="312" top="339" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DestrezaAdd" defaultValue="0"/>
+
+    <label field="DestrezaTotal" left="396" top="339" width="80" height="20" fontStyle="bold" fontColor="#e46217" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DestrezaTotal" defaultValue="0"/>
+
+    <label field="DestrezaMod" left="476" top="339" width="80" height="20" fontStyle="bold" fontColor="#000000" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DestrezaMod" defaultValue="0"/>
+
+    <!-- ATRIBUTOS CONSTITUIÃ‡ÃƒO-->
+
+    <edit field="ConstituicaoValor" left="227" top="373" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ConstituicaoValor" defaultValue="0"/>
+
+    <edit field="ConstituicaoAdd" left="312" top="373" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ConstituicaoAdd" defaultValue="0"/>
+
+    <label field="ConstituicaoTotal" left="396" top="373" width="80" height="20" fontStyle="bold" fontColor="#e46217" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ConstituicaoTotal" defaultValue="0"/>
+
+    <label field="ConstituicaoMod" left="476" top="373" width="80" height="20" fontStyle="bold" fontColor="#000000" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ConstituicaoMod" defaultValue="0"/>
+
+    <!-- ATRIBUTOS INTELIGÃŠNCIA-->
+
+    <edit field="InteligenciaValor" left="227" top="407" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="InteligenciaValor" defaultValue="0"/>
+
+    <edit field="InteligenciaAdd" left="312" top="407" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="InteligenciaAdd" defaultValue="0"/>
+
+    <label field="InteligenciaTotal" left="396" top="407" width="80" height="20" fontStyle="bold" fontColor="#e46217" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="InteligenciaTotal" defaultValue="0"/>
+
+    <label field="InteligenciaMod" left="476" top="407" width="80" height="20" fontStyle="bold" fontColor="#000000" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="InteligenciaMod" defaultValue="0"/>
+
+    <!-- ATRIBUTOS SABEDORIA-->
+
+    <edit field="SabedoriaValor" left="227" top="441" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="SabedoriaValor" defaultValue="0"/>
+
+    <edit field="SabedoriaAdd" left="312" top="441" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="SabedoriaAdd" defaultValue="0"/>
+
+    <label field="SabedoriaTotal" left="396" top="441" width="80" height="20" fontStyle="bold" fontColor="#e46217" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="SabedoriaTotal" defaultValue="0"/>
+
+    <label field="SabedoriaMod" left="476" top="441" width="80" height="20" fontStyle="bold" fontColor="#000000" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="SabedoriaMod" defaultValue="0"/>
+
+    <!-- ATRIBUTOS CARISMA-->
+
+    <edit field="CarismaValor" left="227" top="475" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="CarismaValor" defaultValue="0"/>
+
+    <edit field="CarismaAdd" left="312" top="475" width="80" height="20" type="number" fontStyle="bold" transparent="true" fontColor="#FFFFFF" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="CarismaAdd" defaultValue="0"/>
+
+    <label field="CarismaTotal" left="396" top="475" width="80" height="20" fontStyle="bold" fontColor="#e46217" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="CarismaTotal" defaultValue="0"/>
+
+    <label field="CarismaMod" left="476" top="475" width="80" height="20" fontStyle="bold" fontColor="#000000" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="CarismaMod" defaultValue="0"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<rectangle left="110" top="167" width="44" height="22" color="#000000">
+
+    <edit
+        name="edtXP"
+        field="XP"
+        align="client"
+        type="number"
+        fontColor="white"
+        horzTextAlign="center"
+        enabled="false"/>
+
+</rectangle>
+
+<dataLink field="XP" defaultValue="0"/>
+
+<button
+    text="🔒"
+    left="86"
+    top="167"
+    width="22"
+    height="22">
+
+    <event name="onClick"><![CDATA[
+
+        Dialogs.inputQuery(
+            "Senha",
+            "Senha ADM:",
+            "",
+
+            function(senha)
+
+                if senha == nil then
+                    return
+                end
+
+                if senha ~= "151289" then
+                    showMessage("Senha incorreta!")
+                    return
+                end
+
+                local xpEdit = self:findControlByName("edtNovaXP")
+                local painel = self:findControlByName("PainelEditarXP")
+
+                xpEdit.text = tostring(sheet.XP or 0)
+
+                painel.visible = true
+
+            end
+        )
+
+    ]]></event>
+
+</button>
+
+<rectangle
+    name="PainelEditarXP"
+    left="400"
+    top="300"
+    width="220"
+    height="150"
+    color="#111111"
+    visible="false">
+
+    <!-- TOPO -->
+    <rectangle
+        left="0"
+        top="0"
+        width="220"
+        height="30"
+        color="#3A3A3A">
+
+        <label
+            left="0"
+            top="5"
+            width="220"
+            height="20"
+            text="GERENCIAR XP"
+            fontColor="white"
+            horzTextAlign="center"/>
+
+    </rectangle>
+
+    <!-- LINHA -->
+    <rectangle
+        left="10"
+        top="35"
+        width="200"
+        height="2"
+        color="#C8A000"/>
+
+    <label
+        left="20"
+        top="55"
+        width="80"
+        height="20"
+        text="XP:"
+        fontColor="#FFD700"/>
+
+    <edit
+        name="edtNovaXP"
+        left="105"
+        top="52"
+        width="90"
+        height="25"
+        type="number"
+        horzTextAlign="center"
+        fontColor="white"/>
+
+    <!-- TRAVAR/DESBLOQUEAR -->
+
+    <button
+        name="btnPermitirEdicaoXP"
+        text="🔒"
+        left="165"
+        top="90"
+        width="30"
+        height="25">
+
+        <event name="onClick"><![CDATA[
+
+            local xp = self:findControlByName("edtXP")
+            local botao = self:findControlByName("btnPermitirEdicaoXP")
+
+            if xp == nil then
+                showMessage("Campo XP não encontrado.")
+                return
+            end
+
+            if tostring(sheet.PermitirEditarXP or "true") == "true" then
+
+                sheet.PermitirEditarXP = "false"
+                xp.enabled = false
+                botao.text = "🔒"
+
+            else
+
+                sheet.PermitirEditarXP = "true"
+                xp.enabled = true
+                botao.text = "🔓"
+
+            end
+
+        ]]></event>
+
+    </button>
+
+    <!-- CONFIRMAR -->
+
+    <button
+        name="btnConfirmarXP"
+        text="CONFIRMAR"
+        left="55"
+        top="120"
+        width="110"
+        height="22">
+
+        <event name="onClick"><![CDATA[
+
+            local xpEdit = self:findControlByName("edtNovaXP")
+
+            local xp = tonumber(xpEdit.text)
+
+            if xp == nil then
+                showMessage("Digite um valor vÃ¡lido.")
+                return
+            end
+
+            if xp < 0 then
+                xp = 0
+            end
+
+            sheet.XP = xp
+
+            local painel = self:findControlByName("PainelEditarXP")
+            painel.visible = false
+
+        ]]></event>
+
+    </button>
+
+</rectangle>
+
+<dataLink field="PermitirEditarXP" defaultValue="true">
+    <event name="onChange"><![CDATA[
+        local xp = self:findControlByName("edtXP")
+        local botao = self:findControlByName("btnPermitirEdicaoXP")
+        local liberado = tostring(self.sheet.PermitirEditarXP or "true") == "true"
+
+        if xp ~= nil then
+            xp.enabled = liberado
+        end
+
+        if botao ~= nil then
+            botao.text = liberado and "🔓" or "🔒"
+        end
+    ]]></event>
+</dataLink>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<imageCheckBox name="botao0" top="553" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.AcertoDistanciaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Acerto a DistÃ¢ncia")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao1" top="580" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.AcertoCurtoAlcanceTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Acerto Curto Alcance")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao2" top="607" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.AcertoMagicoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Acerto MÃ¡gico")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao3" top="634" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.AtuarTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Atuar")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao4" top="661" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.BracoDeFerroTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "BraÃ§o de Ferro")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao5" top="688" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.CorrerTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Correr")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao6" top="715" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.DanoCurtoAlcanceTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Dano Curto Alcance")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao7" top="742" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.DanoLongoAlcanceTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Dano Longo Alcance")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao8" top="769" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.DanoMagicoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Dano MÃ¡gico")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao9" top="796" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.DesarmarArmadilhaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Desarmar Armadilha")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao10" top="823" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.DetectarMagiaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Detectar Magia")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao11" top="850" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.DiscursoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Discurso")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao12" top="877" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.EmpurrarObstaculoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Empurrar ObstÃ¡culo")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao13" top="904" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.EscalarTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Escalar")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao14" top="931" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.EsquivarTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Esquivar")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao15" top="958" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.FurtividadeTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Furtividade")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao16" top="985" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.HistoriaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Historia!")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao17" top="1012" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.IdentificarCriaturaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Identificar Criatura")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao18" top="1039" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.IniciativaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Iniciativa")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao188" top="1066" left="30" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+                local rolagem = Firecast.interpretarRolagem("1d20 + ")
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Teste de Morte")
+        end
+    </event>
+</imageCheckBox>
+
+ <rectangle left="113" top="1066" width="30" height="18" color="#0000004b">
+    <edit field="MortesPersonagem" align="client"  fontColor="white" horzTextAlign="center"/>
+    <dataLink field="MortesPersonagem" defaultValue="0"/>
+ </rectangle>
+
+
+
+    
+
+
+<!-- BOTÃƒO COLUNA DIREITA -->
+
+<imageCheckBox name="botao19" top="553" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.IntimidarTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Intimidar")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao20" top="580" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.InvestigacaoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Investigação")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao21" top="607" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.LerManuscritoTotalTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Ler Manuscrito")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao22" top="634" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.MedicinaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Medicina")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao23" top="661" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.MentirTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Mentir")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao24" top="688" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.MontariaDirecaoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Montaria/Direção")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao25" top="715" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.NaturezaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Natureza")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao26" top="742" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.PerceberMentiraTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Perceber Mentira")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao27" top="769" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.PercepcaoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "PercepÃ§ao")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao28" top="796" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.PrepararEstrategiaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Preparar EstratÃ©gia")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao29" top="823" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.ProfissaoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Profissão")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao30" top="850" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.ReligiaoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Religião")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao31" top="877" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.ResistenciaCansacoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "ResistÃªncia a CansaÃ§o")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao32" top="904" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.ResistenciaMentalTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "ResistÃªncia Mental")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao33" top="931" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.ResistirVenenoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "ResistÃªncia a Veneno")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao34" top="958" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.RouboTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Roubo")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao35" top="985" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.SegurarFolegoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Segurar FÃ´lego")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao36" top="1012" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.SeducaoTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Sedução")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao37" top="1039" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.SobrevivenciaTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "SobrevivÃªncia")
+        end
+    </event>
+</imageCheckBox>
+
+<imageCheckBox name="botao38" top="1066" left="299" width="18" height="18"
+    checkedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png"
+    uncheckedImage="https://blob.firecast.com.br/blobs/PQLQEJWT_3805070/dado.png">
+
+    <event name="onClick">
+        local total = n(sheet.SuporteFrioCalorTotal)
+        local rolagem = Firecast.interpretarRolagem("1d20 + " .. total)
+
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa ~= nil then
+            mesa.activeChat:rolarDados(rolagem, "Suporte frio calor")
+        end
+    </event>
+</imageCheckBox>
+
+    <rectangle left="678" top="1016" width="34" height="22" color="#00000000">
+        <edit field="CustoPPAtaque1" align="client" type="number" transparent="true" fontColor="#FFFFFF" fontStyle="bold" fontSize="10" horzTextAlign="center"/>
+    </rectangle>
+    <dataLink field="CustoPPAtaque1" defaultValue="0"/>
+
+    <rectangle left="728" top="1016" width="34" height="22" color="#00000000">
+        <edit field="CustoPPAtaque2" align="client" type="number" transparent="true" fontColor="#FFFFFF" fontStyle="bold" fontSize="10" horzTextAlign="center"/>
+    </rectangle>
+    <dataLink field="CustoPPAtaque2" defaultValue="0"/>
+
+	<imageCheckBox name="CURTO"
+		left="577" top="985" width="28" height="55"
+		checkedImage=""
+		uncheckedImage="">
+
+		<event name="onClick">
+
+		local mesa = Firecast.getMesaDe(sheet);
+		if not CWNA_gastarPPAtaque(sheet, "CustoPPAtaque1", "Ataque Curto Alcance", self) then
+			return
+		end;
+
+		local acerto = tonumber(sheet.AcertoCurtoAlcanceTotal) or 0;
+        local prof = tonumber(sheet.Prof) or 0;
+		local r1 = Firecast.interpretarRolagem("1d20+" .. acerto .. "+" .. prof);
+
+		if mesa then
+			mesa.activeChat:rolarDados(r1, "Acerto Curto Alcance");
+		end;
+
+		if sheet.DanoMonstro1 and sheet.DanoMonstro1 ~= "" then
+			local danoBase = tonumber(sheet.DanoCurtoAlcanceTotal) or 0;
+			local prof = tonumber(sheet.Prof) or 0;
+
+			local r2 = Firecast.interpretarRolagem(
+				sheet.DanoMonstro1 .. "+" .. danoBase .. "+" .. prof
+			);
+
+			if mesa then
+				mesa.activeChat:rolarDados(r2, "Dano Curto Alcance");
+			end;
+		end;
+
+		</event>
+
+	</imageCheckBox>
+
+   <imageCheckBox name="LONGO"
+	left="612" top="985" width="28" height="55"
+	checkedImage=""
+	uncheckedImage="">
+
+	<event name="onClick">
+
+		local mesa = Firecast.getMesaDe(sheet);
+		if not CWNA_gastarPPAtaque(sheet, "CustoPPAtaque1", "Ataque a Distância", self) then
+			return
+		end;
+
+		local acerto = tonumber(sheet.AcertoDistanciaTotal) or 0;
+        local prof = tonumber(sheet.Prof) or 0;
+		local r1 = Firecast.interpretarRolagem("1d20+" .. acerto .. "+" .. prof);
+
+		if mesa then
+			mesa.activeChat:rolarDados(r1, "Acerto a DistÃ¢ncia");
+		end;
+
+		if sheet.DanoMonstro1 and sheet.DanoMonstro1 ~= "" then
+			local danoBase = tonumber(sheet.DanoLongoAlcanceTotal) or 0;
+			local prof = tonumber(sheet.Prof) or 0;
+
+			local r2 = Firecast.interpretarRolagem(
+				sheet.DanoMonstro1 .. "+" .. danoBase .. "+" .. prof
+			);
+
+			if mesa then
+				mesa.activeChat:rolarDados(r2, "Dano Longo Alcance");
+			end;
+		end;
+
+	</event>
+
+</imageCheckBox>
+
+    <imageCheckBox name="MAGICO"
+		left="646" top="985" width="28" height="55"
+		checkedImage=""
+		uncheckedImage="">
+
+		<event name="onClick">
+
+		local mesa = Firecast.getMesaDe(sheet);
+		if not CWNA_gastarPPAtaque(sheet, "CustoPPAtaque1", "Ataque Mágico", self) then
+			return
+		end;
+
+		local acerto = tonumber(sheet.AcertoMagicoTotal) or 0;
+        local prof = tonumber(sheet.Prof) or 0;
+		local r1 = Firecast.interpretarRolagem("1d20+" .. acerto .. "+" .. prof);
+
+		if mesa then
+			mesa.activeChat:rolarDados(r1, "Acerto MÃ¡gico");
+		end;
+
+		if sheet.DanoMonstro1 and sheet.DanoMonstro1 ~= "" then
+			local danoBase = tonumber(sheet.DanoMagicoTotal) or 0;
+			local prof = tonumber(sheet.Prof) or 0;
+
+			local r2 = Firecast.interpretarRolagem(
+				sheet.DanoMonstro1 .. "+" .. danoBase .. "+" .. prof
+			);
+
+			if mesa then
+				mesa.activeChat:rolarDados(r2, "Dano MÃ¡gico");
+			end;
+		end;
+
+		</event>
+
+	</imageCheckBox>
+
+    <imageCheckBox name="CURTO2"
+		left="764" top="985" width="28" height="55"
+		checkedImage=""
+		uncheckedImage="">
+
+		<event name="onClick">
+
+		local mesa = Firecast.getMesaDe(sheet);
+		if not CWNA_gastarPPAtaque(sheet, "CustoPPAtaque2", "Ataque Curto Alcance", self) then
+			return
+		end;
+
+		local acerto = tonumber(sheet.AcertoCurtoAlcanceTotal) or 0;
+        local prof = tonumber(sheet.Prof) or 0;
+		local r1 = Firecast.interpretarRolagem("1d20+" .. acerto .. "+" .. prof);
+
+		if mesa then
+			mesa.activeChat:rolarDados(r1, "Acerto Curto Alcance");
+		end;
+
+		if sheet.DanoMonstro2 and sheet.DanoMonstro2 ~= "" then
+			local danoBase = tonumber(sheet.DanoCurtoAlcanceTotal) or 0;
+			local prof = tonumber(sheet.Prof) or 0;
+
+			local r2 = Firecast.interpretarRolagem(
+				sheet.DanoMonstro2 .. "+" .. danoBase .. "+" .. prof
+			);
+
+			if mesa then
+				mesa.activeChat:rolarDados(r2, "Dano Curto Alcance");
+			end;
+		end;
+
+		</event>
+
+	</imageCheckBox>
+
+      <imageCheckBox name="LONGO2"
+	left="799" top="985" width="28" height="55"
+	checkedImage=""
+	uncheckedImage="">
+
+	<event name="onClick">
+
+		local mesa = Firecast.getMesaDe(sheet);
+		if not CWNA_gastarPPAtaque(sheet, "CustoPPAtaque2", "Ataque a Distância", self) then
+			return
+		end;
+
+		local acerto = tonumber(sheet.AcertoDistanciaTotal) or 0;
+        local prof = tonumber(sheet.Prof) or 0;
+		local r1 = Firecast.interpretarRolagem("1d20+" .. acerto .. "+" .. prof);
+
+		if mesa then
+			mesa.activeChat:rolarDados(r1, "Acerto a distÃ¢ncia");
+		end;
+
+		if sheet.DanoMonstro2 and sheet.DanoMonstro2 ~= "" then
+			local danoBase = tonumber(sheet.DanoLongoAlcanceTotal) or 0;
+			local prof = tonumber(sheet.Prof) or 0;
+
+			local r2 = Firecast.interpretarRolagem(
+				sheet.DanoMonstro2 .. "+" .. danoBase .. "+" .. prof
+			);
+
+			if mesa then
+				mesa.activeChat:rolarDados(r2, "Dano Longo Alcance");
+			end;
+		end;
+
+	</event>
+
+</imageCheckBox>
+
+ <imageCheckBox name="MAGICO2"
+		left="834" top="985" width="28" height="55"
+		checkedImage=""
+		uncheckedImage="">
+
+		<event name="onClick">
+
+		local mesa = Firecast.getMesaDe(sheet);
+		if not CWNA_gastarPPAtaque(sheet, "CustoPPAtaque2", "Ataque Mágico", self) then
+			return
+		end;
+
+		local acerto = tonumber(sheet.AcertoMagicoTotal) or 0;
+        local prof = tonumber(sheet.Prof) or 0;
+		local r1 = Firecast.interpretarRolagem("1d20+" .. acerto .. "+" .. prof);
+
+		if mesa then
+			mesa.activeChat:rolarDados(r1, "Acerto MÃ¡gico");
+		end;
+
+		if sheet.DanoMonstro2 and sheet.DanoMonstro2 ~= "" then
+			local danoBase = tonumber(sheet.DanoMagicoTotal) or 0;
+			local prof = tonumber(sheet.Prof) or 0;
+
+			local r2 = Firecast.interpretarRolagem(
+				sheet.DanoMonstro2 .. "+" .. danoBase .. "+" .. prof
+			);
+
+			if mesa then
+				mesa.activeChat:rolarDados(r2, "Dano MÃ¡gico");
+			end;
+		end;
+
+		</event>
+
+	</imageCheckBox>
+
+	<edit field="DanoMonstro1" left="574" top="1048" width="143" height="30" fontStyle="bold"/>
+    <edit field="DanoMonstro2" left="720" top="1048" width="143" height="30" fontStyle="bold"/>
+
+<rectangle name="avisoPerfilFicha"
+           left="282" top="935"
+           width="330" height="42"
+           color="#202020CC"
+           strokeColor="#808080CC"
+           strokeSize="1"
+           xradius="6" yradius="6"
+           cornerType="round"
+           visible="false"
+           hitTest="false">
+    <label name="lblAvisoPerfilFicha"
+           align="client"
+           text="Aviso"
+           fontColor="#FFFFFF"
+           fontFamily="Cambria"
+           fontStyle="bold"
+           fontSize="14"
+           horzTextAlign="center"
+           vertTextAlign="center"/>
+</rectangle>
+
+
+
+
+
+<frame name="popAtributos" width="866" height="587" visible="false">
+
+
+    <!-- FUNDO -->
+    <image align="client"
+           style="stretch"
+           url="Frames/frame.png"/>
+
+
+    <label field="ForcaModUsavel" horzTextAlign="center" left="25" top="37" width="80" height="20" fontColor="#e46217" fontStyle="bold" fontSize="20"/>
+    <label field="DestrezaModUsavel" horzTextAlign="center" left="309" top="37" width="80" height="20" fontColor="#e46217" fontStyle="bold" fontSize="20"/>
+    <label field="InteligenciaModUsavel" horzTextAlign="center" left="585" top="37" width="80" height="20" fontColor="#e46217" fontStyle="bold" fontSize="20"/>
+    <label field="SabedoriaModUsavel" horzTextAlign="center" left="22" top="330" width="80" height="20" fontColor="#e46217" fontStyle="bold" fontSize="20"/>
+    <label field="CarismaModUsavel" horzTextAlign="center" left="308" top="330" width="80" height="20" fontColor="#e46217" fontStyle="bold" fontSize="20"/>
+    <label field="ConstituicaoModUsavel" horzTextAlign="center" left="583" top="330" width="80" height="20" fontColor="#e46217" fontStyle="bold" fontSize="20"/>
+
+
+    <!-- PERICIAS DE FORÃ‡A -->
+    
+    <checkBox field="BracoDeFerro_ativo" left="150" top="88"/>  
+    <edit field="BracoDeFerro1" left="172" top="89" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="BracoDeFerro1" defaultValue="0"/>
+    <edit field="BracoDeFerro2" left="208" top="89" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="BracoDeFerro2" defaultValue="0"/>
+    <label text="0" left="254" top="89" field="BracoDeFerrototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="BracoDeFerroTotal" defaultValue="0"/>
+
+    <checkBox field="Correr_ativo" left="150" top="115"/>  
+    <edit field="Correr1" left="172" top="116" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Correr1" defaultValue="0"/>
+    <edit field="Correr2" left="208" top="116" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Correr2" defaultValue="0"/>
+    <label text="0" left="254" top="116" field="Corrertotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="CorrerTotal" defaultValue="0"/>
+
+    <checkBox field="DanoCurtoAlcance_ativo" left="150" top="141"/>  
+    <edit field="DanoCurtoAlcance1" left="172" top="143" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="DanoCurtoAlcance1" defaultValue="0"/>
+    <edit field="DanoCurtoAlcance2" left="208" top="143" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DanoCurtoAlcance2" defaultValue="0"/>
+    <label text="0" left="254" top="143" field="DanoCurtoAlcancetotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="DanoCurtoAlcancetotal" defaultValue="0"/>
+
+    <checkBox field="DanoLongoAlcance_ativo" left="150" top="170"/>  
+    <edit field="DanoLongoAlcance1" left="171" top="170" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="DanoLongoAlcance1" defaultValue="0"/>
+    <edit field="DanoLongoAlcance2" left="208" top="170" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DanoLongoAlcance2" defaultValue="0"/>
+    <label text="0" left="254" top="170" field="DanoLongoAlcancetotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="DanoLongoAlcancetotal" defaultValue="0"/>
+
+    <checkBox field="EmpurrarObstaculo_ativo" left="150" top="197"/>  
+    <edit field="EmpurrarObstaculo1" left="171" top="198" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="EmpurrarObstaculo1" defaultValue="0"/>
+    <edit field="EmpurrarObstaculo2" left="208" top="198" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="EmpurrarObstaculo2" defaultValue="0"/>
+    <label text="0" left="254" top="198" field="EmpurrarObstaculototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="EmpurrarObstaculototal" defaultValue="0"/>
+
+    <checkBox field="Escalar_ativo" left="150" top="224"/>  
+    <edit field="Escalar1" left="171" top="225" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Escalar1" defaultValue="0"/>
+    <edit field="Escalar2" left="208" top="225" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Escalar2" defaultValue="0"/>
+    <label text="0" left="254" top="225" field="Escalartotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="Escalartotal" defaultValue="0"/>
+
+
+        <!-- PERICIAS DE DESTREZA -->
+    
+    <checkBox field="AcertoDistancia_ativo" left="427" top="89"/>  
+    <edit field="AcertoDistancia1" left="450" top="88" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="AcertoDistancia1" defaultValue="0"/>
+    <edit field="AcertoDistancia2" left="487" top="89" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="AcertoDistancia2" defaultValue="0"/>
+    <label text="0" left="533" top="89" field="AcertoDistanciatotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="AcertoDistanciaTotal" defaultValue="0"/>
+
+    <checkBox field="AcertoCurtoAlcance_ativo" left="427" top="115"/>  
+    <edit field="AcertoCurtoAlcance1" left="450" top="115" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="AcertoCurtoAlcance1" defaultValue="0"/>
+    <edit field="AcertoCurtoAlcance2" left="487" top="115" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="AcertoCurtoAlcance2" defaultValue="0"/>
+    <label text="0" left="533" top="115" field="AcertoCurtoAlcancetotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="AcertoCurtoAlcanceTotal" defaultValue="0"/>
+
+    <checkBox field="DesarmarArmadilha_ativo" left="427" top="142"/>  
+    <edit field="DesarmarArmadilha1" left="450" top="143" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DesarmarArmadilha1" defaultValue="0"/>
+    <edit field="DesarmarArmadilha2" left="487" top="143" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DesarmarArmadilha2" defaultValue="0"/>
+    <label text="0" left="533" top="143" field="DesarmarArmadilhatotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="DesarmarArmadilhaTotal" defaultValue="0"/>
+
+    <checkBox field="Esquivar_ativo" left="427" top="170"/>  
+    <edit field="Esquivar1" left="450" top="171" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Esquivar1" defaultValue="0"/>
+    <edit field="Esquivar2" left="487" top="170" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Esquivar2" defaultValue="0"/>
+    <label text="0" left="533" top="170" field="Esquivartotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="EsquivarTotal" defaultValue="0"/>
+
+    <checkBox field="Furtividade_ativo" left="427" top="197"/>  
+    <edit field="Furtividade1" left="450" top="198" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Furtividade1" defaultValue="0"/>
+    <edit field="Furtividade2" left="487" top="198" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Furtividade2" defaultValue="0"/>
+    <label text="0" left="533" top="198" field="Furtividadetotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="FurtividadeTotal" defaultValue="0"/>
+
+     <checkBox field="Iniciativa_ativo" left="427" top="224"/>  
+    <edit field="Iniciativa1" left="450" top="225" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Iniciativa1" defaultValue="0"/>
+    <edit field="Iniciativa2" left="487" top="225" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Iniciativa2" defaultValue="0"/>
+    <label text="0" left="533" top="225" field="Iniciativatotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="IniciativaTotal" defaultValue="0"/>
+
+    <checkBox field="MontariaDirecao_ativo" left="427" top="251"/>  
+    <edit field="MontariaDirecao1" left="450" top="252" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="MontariaDirecao1" defaultValue="0"/>
+    <edit field="MontariaDirecao2" left="487" top="252" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="MontariaDirecao2" defaultValue="0"/>
+    <label text="0" left="533" top="252" field="MontariaDirecaototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="MontariaDirecaoTotal" defaultValue="0"/>
+
+    <checkBox field="Roubo_ativo" left="427" top="278"/>  
+    <edit field="Roubo1" left="450" top="279" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Roubo1" defaultValue="0"/>
+    <edit field="Roubo2" left="487" top="279" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Roubo2" defaultValue="0"/>
+    <label text="0" left="533" top="279" field="Roubototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="RouboTotal" defaultValue="0"/>
+
+            <!-- PERICIAS DE INTELIGENCIA -->
+    
+    <checkBox field="AcertoMagico_ativo" left="704" top="89"/>  
+    <edit field="AcertoMagico1" left="727" top="88" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="AcertoMagico1" defaultValue="0"/>
+    <edit field="AcertoMagico2" left="766" top="89" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="AcertoMagico2" defaultValue="0"/>
+    <label text="0" left="810" top="89" field="AcertoMagicototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="AcertoMagicoTotal" defaultValue="0"/>
+
+    <checkBox field="IdentificarCriatura_ativo" left="704" top="115"/>  
+    <edit field="IdentificarCriatura1" left="727" top="115" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="IdentificarCriatura1" defaultValue="0"/>
+    <edit field="IdentificarCriatura2" left="766" top="115" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="IdentificarCriatura2" defaultValue="0"/>
+    <label text="0" left="810" top="115" field="IdentificarCriaturatotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="IdentificarCriaturaTotal" defaultValue="0"/>
+
+    <checkBox field="Investigacao_ativo" left="704" top="142"/>  
+    <edit field="Investigacao1" left="727" top="143" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Investigacao1" defaultValue="0"/>
+    <edit field="Investigacao2" left="766" top="143" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Investigacao2" defaultValue="0"/>
+    <label text="0" left="810" top="143" field="Investigacaototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="InvestigacaoTotal" defaultValue="0"/>
+
+    <checkBox field="LerManuscrito_ativo" left="704" top="170"/>  
+    <edit field="LerManuscrito1" left="727" top="171" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="LerManuscrito1" defaultValue="0"/>
+    <edit field="LerManuscrito2" left="766" top="170" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="LerManuscrito2" defaultValue="0"/>
+    <label text="0" left="810" top="170" field="LerManuscritototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="LerManuscritoTotal" defaultValue="0"/>
+
+    <checkBox field="Medicina_ativo" left="704" top="197"/>  
+    <edit field="Medicina1" left="727" top="198" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Medicina1" defaultValue="0"/>
+    <edit field="Medicina2" left="766" top="198" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Medicina2" defaultValue="0"/>
+    <label text="0" left="810" top="198" field="Medicinatotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="MedicinaTotal" defaultValue="0"/>
+
+     <checkBox field="PrepararEstrategia_ativo" left="704" top="224"/>  
+    <edit field="PrepararEstrategia1" left="727" top="225" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="PrepararEstrategia1" defaultValue="0"/>
+    <edit field="PrepararEstrategia2" left="766" top="225" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="PrepararEstrategia2" defaultValue="0"/>
+    <label text="0" left="810" top="225" field="PrepararEstrategiatotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="PrepararEstrategiaTotal" defaultValue="0"/>
+
+    <checkBox field="Profissao_ativo" left="704" top="251"/>  
+    <edit field="Profissao1" left="727" top="252" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Profissao1" defaultValue="0"/>
+    <edit field="Profissao2" left="766" top="252" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Profissao2" defaultValue="0"/>
+    <label text="0" left="810" top="252" field="Profissaototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="ProfissaoTotal" defaultValue="0"/>
+
+    <checkBox field="ResistenciaMental_ativo" left="704" top="278"/>  
+    <edit field="ResistenciaMental1" left="727" top="279" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ResistenciaMental1" defaultValue="0"/>
+    <edit field="ResistenciaMental2" left="766" top="279" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ResistenciaMental2" defaultValue="0"/>
+    <label text="0" left="810" top="279" field="ResistenciaMentaltotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="ResistenciaMentalTotal" defaultValue="0"/>
+
+     <!-- PERICIAS DE SABEDORIA -->
+    
+    <checkBox field="DetectarMagia_ativo" left="150" top="378"/>  
+    <edit field="DetectarMagia1" left="172" top="379" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DetectarMagia1" defaultValue="0"/>
+    <edit field="DetectarMagia2" left="208" top="379" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DetectarMagia2" defaultValue="0"/>
+    <label text="0" left="254" top="379" field="DetectarMagiatotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="DetectarMagiaTotal" defaultValue="0"/>
+
+    <checkBox field="DanoMagico_ativo" left="150" top="398"/>  
+    <edit field="DanoMagico1" left="172" top="399" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="DanoMagico1" defaultValue="0"/>
+    <edit field="DanoMagico2" left="208" top="399" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="DanoMagico2" defaultValue="0"/>
+    <label text="0" left="254" top="399" field="DanoMagicototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="DanoMagicoTotal" defaultValue="0"/>
+
+    <checkBox field="Historia_ativo" left="150" top="417"/>  
+    <edit field="Historia1" left="172" top="418" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Historia1" defaultValue="0"/>
+    <edit field="Historia2" left="208" top="418" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Historia2" defaultValue="0"/>
+    <label text="0" left="254" top="418" field="Historiatotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="Historiatotal" defaultValue="0"/>
+
+    <checkBox field="Natureza_ativo" left="150" top="436"/>  
+    <edit field="Natureza1" left="171" top="437" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Natureza1" defaultValue="0"/>
+    <edit field="Natureza2" left="208" top="437" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Natureza2" defaultValue="0"/>
+    <label text="0" left="254" top="437" field="Naturezatotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="Naturezatotal" defaultValue="0"/>
+
+    <checkBox field="PerceberMentira_ativo" left="150" top="455"/>  
+    <edit field="PerceberMentira1" left="171" top="456" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="PerceberMentira1" defaultValue="0"/>
+    <edit field="PerceberMentira2" left="208" top="456" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="PerceberMentira2" defaultValue="0"/>
+    <label text="0" left="254" top="456" field="PerceberMentiratotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="PerceberMentiratotal" defaultValue="0"/>
+
+    <checkBox field="Percepcao_ativo" left="150" top="475"/>  
+    <edit field="Percepcao1" left="171" top="476" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Percepcao1" defaultValue="0"/>
+    <edit field="Percepcao2" left="208" top="476" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Percepcao2" defaultValue="0"/>
+    <label text="0" left="254" top="476" field="Percepcaototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="Percepcaototal" defaultValue="0"/>
+
+    <checkBox field="Religiao_ativo" left="150" top="494"/>  
+    <edit field="Religiao1" left="171" top="495" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Religiao1" defaultValue="0"/>
+    <edit field="Religiao2" left="208" top="495" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Religiao2" defaultValue="0"/>
+    <label text="0" left="254" top="495" field="Religiaototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="Religiaototal" defaultValue="0"/>
+
+    <checkBox field="Sobrevivencia_ativo" left="150" top="513"/>  
+    <edit field="Sobrevivencia1" left="171" top="514" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Sobrevivencia1" defaultValue="0"/>
+    <edit field="Sobrevivencia2" left="208" top="514" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Sobrevivencia2" defaultValue="0"/>
+    <label text="0" left="254" top="514" field="Sobrevivenciatotal" width="50" fontColor="#000000" fontStyle="bold"/>
+    <dataLink field="Sobrevivenciatotal" defaultValue="0"/>
+
+
+ <!-- PERICIAS DE CARISMA -->
+    
+    <checkBox field="Atuar_ativo" left="418" top="380"/>  
+    <edit field="Atuar1" left="440" top="381" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Atuar1" defaultValue="0"/>
+    <edit field="Atuar2" left="481" top="381" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Atuar2" defaultValue="0"/>
+    <label text="0" left="531" top="381" field="Atuartotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="AtuarTotal" defaultValue="0"/>
+
+    <checkBox field="Discurso_ativo" left="418" top="410"/>  
+    <edit field="Discurso1" left="440" top="411" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Discurso1" defaultValue="0"/>
+    <edit field="Discurso2" left="481" top="411" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Discurso2" defaultValue="0"/>
+    <label text="0" left="531" top="411" field="Discursototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="DiscursoTotal" defaultValue="0"/>
+
+    <checkBox field="Intimidar_ativo" left="418" top="438"/>  
+    <edit field="Intimidar1" left="440" top="439" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Intimidar1" defaultValue="0"/>
+    <edit field="Intimidar2" left="481" top="439" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Intimidar2" defaultValue="0"/>
+    <label text="0" left="531" top="439" field="Intimidartotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="Intimidartotal" defaultValue="0"/>
+
+    <checkBox field="Mentir_ativo" left="418" top="465"/>  
+    <edit field="Mentir1" left="440" top="466" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Mentir1" defaultValue="0"/>
+    <edit field="Mentir2" left="481" top="466" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Mentir2" defaultValue="0"/>
+    <label text="0" left="531" top="466" field="Mentirtotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="Mentirtotal" defaultValue="0"/>
+
+    <checkBox field="Seducao_ativo" left="418" top="494"/>  
+    <edit field="Seducao1" left="440" top="495" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="Seducao1" defaultValue="0"/>
+    <edit field="Seducao2" left="481" top="495" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="Seducao2" defaultValue="0"/>
+    <label text="0" left="531" top="495" field="Seducaototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="Seducaototal" defaultValue="0"/>
+
+
+
+<!-- PERICIAS DE Constituição -->
+    
+    <checkBox field="ResistenciaCansaco_ativo" left="704" top="381"/>  
+    <edit field="ResistenciaCansaco1" left="727" top="382" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ResistenciaCansaco1" defaultValue="0"/>
+    <edit field="ResistenciaCansaco2" left="766" top="382" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ResistenciaCansaco2" defaultValue="0"/>
+    <label text="0" left="815" top="382" field="ResistenciaCansacototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="ResistenciaCansacoTotal" defaultValue="0"/>
+
+    <checkBox field="ResistirVeneno_ativo" left="704" top="411"/>  
+    <edit field="ResistirVeneno1" left="727" top="412" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="ResistirVeneno1" defaultValue="0"/>
+    <edit field="ResistirVeneno2" left="767" top="412" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="ResistirVeneno2" defaultValue="0"/>
+    <label text="0" left="815" top="412" field="ResistirVenenototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="ResistirVenenoTotal" defaultValue="0"/>
+
+    <checkBox field="SegurarFolego_ativo" left="704" top="442"/>  
+    <edit field="SegurarFolego1" left="727" top="442" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="SegurarFolego1" defaultValue="0"/>
+    <edit field="SegurarFolego2" left="766" top="442" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="SegurarFolego2" defaultValue="0"/>
+    <label text="0" left="815" top="442" field="SegurarFolegototal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="SegurarFolegototal" defaultValue="0"/>
+
+    <checkBox field="SuporteFrioCalor_ativo" left="704" top="471"/>  
+    <edit field="SuporteFrioCalor1" left="727" top="471" fontColor="#070707" fontStyle="bold" width="25" height="18" type="number"
+    transparent="true" horzTextAlign="center" vertTextAlign="center" />
+    <dataLink field="SuporteFrioCalor1" defaultValue="0"/>
+    <edit field="SuporteFrioCalor2" left="766" top="471" fontColor="#070707" fontStyle="bold" width="25" height="18"
+    type="number" transparent="true" horzTextAlign="center" vertTextAlign="center"/>
+    <dataLink field="SuporteFrioCalor2" defaultValue="0"/>
+    <label text="0" left="815" top="471" field="SuporteFrioCalortotal" width="50" fontColor="#070707" fontStyle="bold"/>
+    <dataLink field="SuporteFrioCalortotal" defaultValue="0"/>
+
+
+
+
+
+
+</frame>
+
+<button text="✚" top="520" left="20" width="22" height="22" name="labDesc">
+
+    <event name="onClick">
+        local frame=self:findControlByName("popAtributos");
+        if frame then frame.visible=not frame.visible; if frame.visible then 
+        frame.left=15; frame.top=510; end;
+        else showMessage("Ops, bug... Nao encontrei o frame"); end;
+    </event>
+
+</button>
+
+
+
+
+
+
+
+</tab>
+
+<tab title="         INVENTÁRIO        .">
+
+    <layout align="client">
+
+        <!-- FUNDO -->
+        <image align="client" style="stretch" url="Frames/inventario.png"/>
+
+        <!-- STATUS -->
+        <label field="CaPersonagem" left="792" top="482" width="30"
+               fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+        <dataLink field="CaPersonagem" defaultValue="0"/>
+
+        <label field="RdPersonagem" left="792" top="524" width="30"
+               fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+        <dataLink field="RdPersonagem" defaultValue="0"/>
+
+        <!-- BONECO EQUIPADO -->
+        <dataLink field="BonecoPeitoral" defaultValue="/Frames/equipes/peitoral_base.png"/>
+        <dataLink field="BonecoCapacete" defaultValue="/Frames/equipes/capacete_base.png"/>
+        <dataLink field="BonecoBota" defaultValue="/Frames/equipes/bota_base.png"/>
+        <dataLink field="BonecoCalca" defaultValue="/Frames/equipes/calca_base.png"/>
+
+        <rectangle left="115" top="68" width="300" height="450" color="#00000000">
+            <image field="BonecoCalca" left="0" top="0" width="300" height="450" style="stretch"/>
+            <image field="BonecoBota" left="0" top="0" width="300" height="450" style="stretch"/>
+            <image field="BonecoPeitoral" left="0" top="0" width="300" height="450" style="stretch"/>
+            <image field="BonecoCapacete" left="0" top="0" width="300" height="450" style="stretch"/>
+        </rectangle>
+
+        <!-- CAPACETE -->
+        <dataLink field="ImagemCapacete" defaultValue="/Frames/Capacete.png"/>
+        <rectangle left="58" top="103" width="84" height="88" color="#40404000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Capacete", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Capacete", self)
+            ]]></event>
+            <image field="ImagemCapacete"
+                   left="0" top="0"
+                   width="84" height="88"
+                   style="stretch"
+                   hitTest="true">
+                <event name="onStartDrag"><![CDATA[
+                    CWNA_dragSlotInventario(sheet, "Capacete", drag)
+                ]]></event>
+                <event name="onStartDrop"><![CDATA[
+                    CWNA_registrarDropSlotInventario(drop, drag, sheet, "Capacete", self)
+                ]]></event>
+            </image>
+        </rectangle>
+
+        <!-- PEITORAL -->
+        <dataLink field="ImagemPeitoral" defaultValue="/Frames/Peitoral.png"/>
+        <rectangle left="58" top="256" width="84" height="88" color="#40404000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Peitoral", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Peitoral", self)
+            ]]></event>
+            <image field="ImagemPeitoral"
+                   left="0" top="0"
+                   width="84" height="88"
+                   style="stretch"
+                   hitTest="true">
+                <event name="onStartDrag"><![CDATA[
+                    CWNA_dragSlotInventario(sheet, "Peitoral", drag)
+                ]]></event>
+                <event name="onStartDrop"><![CDATA[
+                    CWNA_registrarDropSlotInventario(drop, drag, sheet, "Peitoral", self)
+                ]]></event>
+            </image>
+        </rectangle>
+
+        <!-- CALÃ‡A -->
+        <dataLink field="ImagemCalca" defaultValue="/Frames/Calca.png"/>
+        <rectangle left="58" top="407" width="84" height="88" color="#40404000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Calca", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Calca", self)
+            ]]></event>
+            <image field="ImagemCalca"
+                   left="0" top="0"
+                   width="84" height="88"
+                   style="stretch"
+                   hitTest="true">
+                <event name="onStartDrag"><![CDATA[
+                    CWNA_dragSlotInventario(sheet, "Calca", drag)
+                ]]></event>
+                <event name="onStartDrop"><![CDATA[
+                    CWNA_registrarDropSlotInventario(drop, drag, sheet, "Calca", self)
+                ]]></event>
+            </image>
+        </rectangle>
+
+        <!-- ARMA -->
+        <dataLink field="ImagemArma" defaultValue="/Frames/Arma.png"/>
+        <rectangle left="389" top="103" width="84" height="88" color="#40404000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Arma", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Arma", self)
+            ]]></event>
+            <image field="ImagemArma"
+                   left="0" top="0"
+                   width="84" height="88"
+                   style="stretch"
+                   hitTest="true">
+                <event name="onStartDrag"><![CDATA[
+                    CWNA_dragSlotInventario(sheet, "Arma", drag)
+                ]]></event>
+                <event name="onStartDrop"><![CDATA[
+                    CWNA_registrarDropSlotInventario(drop, drag, sheet, "Arma", self)
+                ]]></event>
+            </image>
+        </rectangle>
+
+        <!-- ESCUDO -->
+        <dataLink field="ImagemEscudo" defaultValue="/Frames/Escudo.png"/>
+        <rectangle left="389" top="256" width="84" height="88" color="#40404000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Escudo", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Escudo", self)
+            ]]></event>
+            <image field="ImagemEscudo"
+                   left="0" top="0"
+                   width="84" height="88"
+                   style="stretch"
+                   hitTest="true">
+                <event name="onStartDrag"><![CDATA[
+                    CWNA_dragSlotInventario(sheet, "Escudo", drag)
+                ]]></event>
+                <event name="onStartDrop"><![CDATA[
+                    CWNA_registrarDropSlotInventario(drop, drag, sheet, "Escudo", self)
+                ]]></event>
+            </image>
+        </rectangle>
+
+        <!-- BOTA -->
+        <dataLink field="ImagemBota" defaultValue="/Frames/Bota.png"/>
+        <rectangle left="389" top="407" width="84" height="88" color="#40404000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Bota", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Bota", self)
+            ]]></event>
+            <image field="ImagemBota"
+                   left="0" top="0"
+                   width="84" height="88"
+                   style="stretch"
+                   hitTest="true">
+                <event name="onStartDrag"><![CDATA[
+                    CWNA_dragSlotInventario(sheet, "Bota", drag)
+                ]]></event>
+                <event name="onStartDrop"><![CDATA[
+                    CWNA_registrarDropSlotInventario(drop, drag, sheet, "Bota", self)
+                ]]></event>
+            </image>
+        </rectangle>
+
+        <!-- ÃREA LISTA -->
+        <rectangle align="client" color="#00000000" hitTest="true">
+            <event name="onStartDrop"><![CDATA[
+                drop:addAction("cwnaSlotEquipado", function(info)
+                    if info ~= nil then
+                        CWNA_desequiparSlotInventario(sheet, info.slot)
+                    end
+                end)
+
+                if x >= 148 and x <= 386 and y >= 68 and y <= 518 then
+                    CWNA_registrarDropPotionBoneco(drop, drag, sheet, self)
+                end
+            ]]></event>
+
+            <!-- BARRA SUPERIOR -->
+            <rectangle left="20" top="566" width="855" height="30" color="#00000000">
+
+                <button left="100" top="4" width="30" text="✚">
+                    <event name="onClick"><![CDATA[
+                        local lista = self.rclMagias2
+                        if lista == nil then return end
+
+                        local node = self.sheet and self.sheet.magias2 or lista.node
+
+                        if contarItensReaisInventario(node) >= 60 then
+                            showMessage("Limite mÃ¡ximo de 60 itens.")
+                            return
+                        end
+
+                        local novoItem = procurarPrimeiroSlotVazioInventario(node)
+
+                        if novoItem == nil then
+                            CWNA_inicializarSlotsInventario(self.sheet, lista)
+                            node = self.sheet and self.sheet.magias2 or lista.node
+                            novoItem = procurarPrimeiroSlotVazioInventario(node)
+                        end
+
+                        if novoItem == nil then
+                            showMessage("Nenhum slot vazio disponÃ­vel.")
+                            return
+                        end
+
+                        novoItem.slotVazio = nil
+                        novoItem.uidInventario = tostring(os.time()) .. "_" .. tostring(math.random(100000, 999999))
+                        novoItem.imagemestilo2 = "https://blob.firecast.com.br/blobs/HHEWWGHO_4452746/itens.png"
+                        novoItem.quantidade = 1
+
+                        lista:sort()
+
+                        -- ATUALIZA STATUS DA FICHA
+                        recalcularDefesa(self.sheet)
+                    ]]></event>
+                </button>
+
+                <label left="20" top="6"
+                       text="ADICIONAR"
+                       fontStyle="bold"
+                       fontFamily="Constantia"/>
+
+                
+            </rectangle>
+
+            <!-- LISTA -->
+            <recordList align="client"
+                        layout="horizontalTiles"
+                        name="rclMagias2"
+                        field="magias2"
+                        templateForm="templateMagias2"
+                        margins="{left = 25, right = 13, top = 602, bottom = 15}">
+
+                <event name="onCompare"><![CDATA[
+                    local ordemA = tonumber(nodeA.ordemInventario) or 999999
+                    local ordemB = tonumber(nodeB.ordemInventario) or 999999
+
+                    if ordemA > ordemB then
+                        return 1;
+                    elseif ordemA < ordemB then
+                        return -1;
+                    else
+                        local uidA = tostring(nodeA.uidInventario or "")
+                        local uidB = tostring(nodeB.uidInventario or "")
+
+                        if uidA > uidB then
+                            return 1;
+                        elseif uidA < uidB then
+                            return -1;
+                        else
+                            return 0;
+                        end;
+                    end;
+                ]]></event>
+
+            </recordList>
+
+            <rectangle name="avisoSlotErradoInventario"
+                       left="100" top="203"
+                       width="330" height="42"
+                       color="#202020CC"
+                       strokeColor="#808080CC"
+                       strokeSize="1"
+                       xradius="6" yradius="6"
+                       cornerType="round"
+                       visible="false"
+                       hitTest="false">
+                <label name="lblAvisoSlotErradoInventario"
+                       align="client"
+                       text="Slot errado, confira o tipo do item"
+                       fontColor="#FFFFFF"
+                       fontFamily="Cambria"
+                       fontStyle="bold"
+                       fontSize="14"
+                       horzTextAlign="center"
+                       vertTextAlign="center"/>
+            </rectangle>
+
+            <!-- POPUP EDITOR UNICO DO INVENTARIO -->
+            <popup name="popEditorInventario"
+                   width="400"
+                   height="600"
+                   backOpacity="0"
+                   drawContainer="false">
+
+                <event name="onCalculateSize"><![CDATA[
+                    width = 400
+                    height = 600
+                ]]></event>
+
+                <image left="0" top="0"
+                       width="400" height="600"
+                       src="https://blob.firecast.com.br/blobs/FJSUDTWB_4453149/JANELINHA.png"/>
+
+                <rectangle align="client" color="#00000000">
+
+                    <button left="255" top="0" width="135" height="62"
+                            opacity="0">
+                        <event name="onClick"><![CDATA[
+                            local pop = self:findControlByName("popEditorInventario")
+
+                            if pop ~= nil then
+                                pop:closePopup(false, true)
+                            end
+                        ]]></event>
+                    </button>
+
+                    <edit field="nomeItem"
+                        left="32" top="62"
+                        width="330" height="33"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"/>
+
+                    <label text="QTD" left="32" top="169" width="30" fontColor="#c74d14" fontStyle="bold"/>
+                    <edit field="quantidade"
+                        left="30" top="184"
+                        width="30" height="30"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"/>
+
+                    <label text="RNK" left="332" top="169" width="30" fontColor="#c74d14" fontStyle="bold"/>
+                    <comboBox field="RankItem"
+                        left="333" top="184"
+                        width="30" height="30"
+                        items="{'E', 'D', 'C', 'B', 'A', 'S', 'SS',}"
+                        values="{'E', 'D', 'C', 'B', 'A', 'S', 'SS'}"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"
+                        fontStyle="bold"/>
+                    <dataLink field="RankItem" defaultValue="E"/>
+
+                    <comboBox field="tipoItem"
+                        left="30" top="128"
+                        width="335" height="30"
+                        items="{'CAPACETE', 'PEITORAL', 'ESCUDO', 'BOTA', 'CALCA', 'ARMA', 'POTION HP', 'POTION PP', 'OUTROS'}"
+                        values="{'CAPACETE', 'PEITORAL', 'ESCUDO', 'BOTA', 'CALCA', 'ARMA', 'POTION HP', 'POTION PP'}"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"
+                        fontStyle="bold"/>
+                    <dataLink field="tipoItem" defaultValue="OUTROS"/>
+
+                    <image field="imagemestilo2"
+                        left="82" top="186"
+                        width="226" height="226"
+                        style="proportional"
+                        optimize="true"
+                        showProgress="false"
+                        editable="true"/>
+
+                    <edit field="hp"
+                        left="36" top="456"
+                        width="80" height="25"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"/>
+
+                    <edit field="pp"
+                        left="153" top="456"
+                        width="80" height="25"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"/>
+
+                    <edit field="ca"
+                        left="273" top="456"
+                        width="80" height="25"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"/>
+
+                    <edit field="rd"
+                        left="35" top="522"
+                        width="68" height="25"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"/>
+
+                    <edit field="dano"
+                        left="125" top="522"
+                        width="143" height="25"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"/>
+
+                    <edit field="cura"
+                        left="289" top="522"
+                        width="68" height="25"
+                        horzTextAlign="center"
+                        vertTextAlign="center"
+                        transparent="true"
+                        fontFamily="Cambria"
+                        fontColor="#c74d14"/>
+
+                </rectangle>
+
+            </popup>
+
+        </rectangle>
+
+        <!-- DROP ZONES DOS SLOTS EQUIPADOS (acima da lista) -->
+        <rectangle left="58" top="103" width="84" height="88" color="#00000000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Capacete", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Capacete", self)
+            ]]></event>
+        </rectangle>
+
+        <rectangle left="58" top="256" width="84" height="88" color="#00000000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Peitoral", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Peitoral", self)
+            ]]></event>
+        </rectangle>
+
+        <rectangle left="58" top="407" width="84" height="88" color="#00000000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Calca", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Calca", self)
+            ]]></event>
+        </rectangle>
+
+        <rectangle left="389" top="103" width="84" height="88" color="#00000000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Arma", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Arma", self)
+            ]]></event>
+        </rectangle>
+
+        <rectangle left="389" top="256" width="84" height="88" color="#00000000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Escudo", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Escudo", self)
+            ]]></event>
+        </rectangle>
+
+        <rectangle left="389" top="407" width="84" height="88" color="#00000000" hitTest="true">
+            <event name="onStartDrag"><![CDATA[
+                CWNA_dragSlotInventario(sheet, "Bota", drag)
+            ]]></event>
+            <event name="onStartDrop"><![CDATA[
+                CWNA_registrarDropSlotInventario(drop, drag, sheet, "Bota", self)
+            ]]></event>
+        </rectangle>
+<rectangle left="230" top="571" width="44" height="22" color="#131313">
+
+    <edit
+    name="edtOuro"
+    field="OuroPersonagem"
+    align="client"
+    horzTextAlign="center"
+    type="number"
+    max="99999"
+    fontColor="white"
+    enabled="false"/>
+
+    <dataLink field="OuroPersonagem" defaultValue="0"/>
+
+</rectangle>
+
+
+<rectangle left="314" top="571" width="44" height="22" color="#131313">
+
+    <edit
+    name="edtPrata"
+    field="PrataPersonagem"
+    align="client"
+    horzTextAlign="center"
+    type="number"
+    max="99999"
+    fontColor="white"
+    enabled="false"/>
+
+    <dataLink field="PrataPersonagem" defaultValue="0"/>
+
+</rectangle>
+
+
+<button text="🔒" left="359" top="571" width="22" height="22">
+    <event name="onClick"><![CDATA[
+
+        Dialogs.inputQuery(
+            "Senha",
+            "senha ADM:",
+            "",
+
+            function(senha)
+
+                if senha == nil then
+                    return
+                end
+
+
+                if senha ~= "151289" then
+                    showMessage("Senha incorreta!")
+                    return
+                end
+
+
+                local ouroEdit = self:findControlByName("edtNovoOuro")
+                local prataEdit = self:findControlByName("edtNovaPrata")
+                local painel = self:findControlByName("PainelEditarDinheiro")
+
+
+                ouroEdit.text = tostring(sheet.OuroPersonagem or 0)
+                prataEdit.text = tostring(sheet.PrataPersonagem or 0)
+
+
+                painel.visible = true
+
+
+            end
+        )
+
+
+    ]]></event>
+</button>
+
+<rectangle name="PainelEditarDinheiro"
+    left="400"
+    top="300"
+    width="220"
+    height="180"
+    color="#111111"
+    visible="false">
+
+
+    <!-- BORDA SUPERIOR -->
+    <rectangle
+        left="0"
+        top="0"
+        width="220"
+        height="30"
+        color="#3A3A3A">
+
+        <label
+            left="0"
+            top="5"
+            width="220"
+            height="20"
+            text="GERENCIAR MOEDAS"
+            fontColor="white"
+            horzTextAlign="center"/>
+
+    </rectangle>
+
+
+
+    <!-- LINHA DIVISORIA -->
+    <rectangle
+        left="10"
+        top="35"
+        width="200"
+        height="2"
+        color="#C8A000"/>
+
+
+
+
+    <!-- OURO -->
+
+    <label
+        left="20"
+        top="55"
+        width="80"
+        height="20"
+        text="🪙 Ouro:"
+        fontColor="#FFD700"/>
+
+
+    <edit
+        name="edtNovoOuro"
+        left="105"
+        top="52"
+        width="90"
+        height="25"
+        type="number"
+        horzTextAlign="center"
+        fontColor="white"/>
+
+
+
+
+    <!-- PRATA -->
+
+    <label
+        left="20"
+        top="90"
+        width="80"
+        height="20"
+        text="⚪ Prata:"
+        fontColor="#C0C0C0"/>
+
+
+    <edit
+        name="edtNovaPrata"
+        left="105"
+        top="87"
+        width="90"
+        height="25"
+        type="number"
+        horzTextAlign="center"
+        fontColor="white"/>
+
+
+
+
+    <!-- CADEADO -->
+
+    <button
+        name="btnPermitirEdicaoDinheiro"
+        text="🔒"
+        left="165"
+        top="120"
+        width="30"
+        height="25">
+
+
+        <event name="onClick"><![CDATA[
+
+
+            local ouro = self:findControlByName("edtOuro")
+            local prata = self:findControlByName("edtPrata")
+            local botao = self:findControlByName("btnPermitirEdicaoDinheiro")
+
+
+
+            if ouro == nil or prata == nil then
+
+                showMessage("Erro: campos Ouro/Prata não encontrados.")
+                return
+
+            end
+
+
+
+
+            if tostring(sheet.PermitirEditarDinheiro or "true") == "true" then
+
+
+                sheet.PermitirEditarDinheiro = "false"
+
+
+                ouro.enabled = false
+                prata.enabled = false
+
+
+                botao.text = "🔒"
+
+
+
+            else
+
+
+                sheet.PermitirEditarDinheiro = "true"
+
+
+                ouro.enabled = true
+                prata.enabled = true
+
+
+                botao.text = "🔓"
+
+
+
+            end
+
+
+
+        ]]></event>
+
+
+    </button>
+
+
+
+
+
+    <!-- BOTAO CONFIRMAR -->
+
+    <button
+        name="btnConfirmarDinheiro"
+        text="CONFIRMAR"
+        left="55"
+        top="150"
+        width="110"
+        height="22">
+
+
+        <event name="onClick"><![CDATA[
+
+
+            local ouroEdit = self:findControlByName("edtNovoOuro")
+            local prataEdit = self:findControlByName("edtNovaPrata")
+
+
+            local ouro = tonumber(ouroEdit.text)
+            local prata = tonumber(prataEdit.text)
+
+
+
+            if ouro == nil or prata == nil then
+
+                showMessage("Digite valores vÃ¡lidos.")
+                return
+
+            end
+
+
+
+            if ouro < 0 then ouro = 0 end
+            if prata < 0 then prata = 0 end
+
+
+            if ouro > 99999 then ouro = 99999 end
+            if prata > 99999 then prata = 99999 end
+
+
+
+            sheet.OuroPersonagem = ouro
+            sheet.PrataPersonagem = prata
+
+
+
+            local painel = self:findControlByName("PainelEditarDinheiro")
+
+            painel.visible = false
+
+
+
+        ]]></event>
+
+
+    </button>
+
+
+
+</rectangle>
+
+<dataLink field="PermitirEditarDinheiro" defaultValue="true">
+    <event name="onChange"><![CDATA[
+        local ouro = self:findControlByName("edtOuro")
+        local prata = self:findControlByName("edtPrata")
+        local botao = self:findControlByName("btnPermitirEdicaoDinheiro")
+        local liberado = tostring(self.sheet.PermitirEditarDinheiro or "true") == "true"
+
+        if ouro ~= nil then
+            ouro.enabled = liberado
+        end
+
+        if prata ~= nil then
+            prata.enabled = liberado
+        end
+
+        if botao ~= nil then
+            botao.text = liberado and "🔓" or "🔒"
+        end
+    ]]></event>
+</dataLink>
+        
+
+    </layout>
+
+</tab>
+
+                <tab title="              SKILLS              .">
+                    <image width="895" height="1158"
+                    url="Frames/SKILLS.png"/>
+
+                    <rectangle align="top" height="30" xradius="5" yradius="5" cornerType="round" color="#21212100" margins="{left=20, right=20}">
+									
+									<button left="225" top="28" text="✚" width="30" onClick='self.rclMagias:append();'/>
+								</rectangle>
+								
+								<recordList align="client" layout="horizontalTiles" name="rclMagias" field="magias" templateForm="templateMagias" 
+								onSelect="self.rclMagias:sort();" onItemAdded="self.rclMagias:sort();" onItemRemoved="self.rclMagias:sort();" margins="{left = 30, right = -20, top = 35, bottom = 30}">
+									<event name="onCompare">
+									<![CDATA[               
+										if(nodeA.elemMagia == nodeB.elemMagia) then
+										
+											if (nodeA.lvlMagia or 0) > (nodeB.lvlMagia or 0) then
+													return 1;
+											elseif (nodeA.lvlMagia or 0) < (nodeB.lvlMagia or 0) then
+													return -1;
+											else   
+													return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+											end;
+										
+										elseif(nodeA.elemMagia == "Water" and 
+										(nodeB.elemMagia == "Air" or nodeB.elemMagia == "Fire" or nodeB.elemMagia == "Earth" or nodeB.elemMagia == "Void" or nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Air" and 
+										(nodeB.elemMagia == "Fire" or nodeB.elemMagia == "Earth" or nodeB.elemMagia == "Void" or nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Fire" and 
+										(nodeB.elemMagia == "Earth" or nodeB.elemMagia == "Void" or nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Earth" and 
+										(nodeB.elemMagia == "Void" or nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Void" and 
+										(nodeB.elemMagia == "Universal")) then
+											return -1;
+										elseif(nodeA.elemMagia == "Universal" and 
+										(nodeB.elemMagia == "Water" or nodeB.elemMagia == "Air" or nodeB.elemMagia == "Fire" or nodeB.elemMagia == "Earth" or nodeB.elemMagia == "Void")) then
+											return 1;
+										elseif(nodeA.elemMagia == "Void" and 
+										(nodeB.elemMagia == "Water" or nodeB.elemMagia == "Air" or nodeB.elemMagia == "Fire" or nodeB.elemMagia == "Earth")) then
+											return 1;
+										elseif(nodeA.elemMagia == "Earth" and 
+										(nodeB.elemMagia == "Water" or nodeB.elemMagia == "Air" or nodeB.elemMagia == "Fire")) then
+											return 1;
+										elseif(nodeA.elemMagia == "Fire" and 
+										(nodeB.elemMagia == "Water" or nodeB.elemMagia == "Air")) then
+											return 1;
+										elseif(nodeA.elemMagia == "Air" and 
+										(nodeB.elemMagia == "Water")) then
+											return 1;
+										end;
+									]]>
+									</event>
+								</recordList>
+                </tab>
+
+                <tab title="            DIÁRIO            .">
+                    <image width="895" height="1158"
+                    url="Frames/fundo_branco.png"/>
+                    <richEdit align="client" field="background2" backgroundColor="#272727" defaultFontColor="white" margins="{left=15, top=20, right=15, bottom=20}"/>
+                </tab>
+
+                <tab title="          ANOTAÇÕES          .">
+                    <image width="895" height="1158"
+                    url="Frames/fundo_branco.png"/>
+                    <richEdit align="client" field="anotacao1" backgroundColor="#272727" defaultFontColor="white" margins="{left=15, top=20, right=15,  bottom=20}"/>
+                </tab>
+
+                <tab title="         PROFISSÕES         .">
+                    <image width="895" height="1158"
+                    url="Frames/ferreiro.png"/>
+                </tab>
+
+            </tabControl>
+
+        </layout>
+
+    </scrollBox>
+
+</layout>
+
+<layout align="client" frameStyle="/Frames/frameFundo.xml"/>
+
+</form>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" compilationDate="12092025221139" sdkApiVersion="86" originalPluginFileName="Crystal_world_ficha.rpk" compilationDigest="4e1244e07b18cae699d73b06fc3ba67c444e20f7" sdkMinorApiVersion="2" compilationUniqueID="68161ba71f3d4a5800206242">
+    <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
+    <id>Alem_do_veu_Hiperion</id>
+    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
+    <version>2.1.1</version>
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>CWNA 2e</name>
+        <description>Ficha com cálculos automáticos para CWNA 2e.</description>
+        <author>Cezar_a</author>
+        <site>.</site>
+        <contact>.</contact>
+    </info>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</module>
+
+
+
