@@ -34,13 +34,60 @@ function lfm_enumEvents(ctrlOrHandle)
 		
 	local eves = {};
 	local qt = 0;
+	local alreadyListedEves = {};
 	
-	for k, v in pairs(obj.eves) do
-		qt = qt + 1;
-		eves[qt] = {name = k, parameters = v};
+	local function processEvent(eventName, eventData)
+		if not alreadyListedEves[eventName] then
+			alreadyListedEves[eventName] = true;
+			
+			local eveRec = {name = eventName};
+			
+			if type(eventData) == "table" then
+				eveRec.parameters = eventData.arguments or "";	
+			else
+				eveRec.parameters = eventData or "";
+			end;
+			
+			qt = qt + 1;					
+			eves[qt] = eveRec;
+		end;	
 	end;
+	
+	-- Instance Defined Events	
+	local definedEves = obj.eves;
+	
+	if definedEves ~= nil then
+		for k, v in pairs(obj.eves) do
+			processEvent(k, v);
+		end;
+	end;
+	
+	-- Class Defined Events
+	local currentClass = rawget(obj, "class");
+		
+	while currentClass ~= nil do
+		definedEves = currentClass.eves;
+	
+		if definedEves ~= nil then
+			for k, v in pairs(definedEves) do
+				processEvent(k, v);
+			end;	
+		end;
+	
+		currentClass = currentClass.super;
+	end;			
 		
 	return eves;
+end;
+
+local function __copyPropTable(propName, prop)
+	local tbl = {name = propName, tipo = prop.tipo, values = prop.values, getter = prop.getter, setter = prop.setter};
+	
+	if (prop.tipo == "obj") and (type(prop.class) == "table") then
+		tbl.refClassTagName = prop.class.tagName;
+	end;
+	
+	return tbl;
 end;
 
 function lfm_enumProps(ctrlOrHandle)
@@ -48,13 +95,116 @@ function lfm_enumProps(ctrlOrHandle)
 		
 	local props = {};
 	local qt = 0;
+	local alreadyListedProps = {};
 	
-	for k, v in pairs(obj.props) do
-		qt = qt + 1;
-		props[qt] = {name = k, tipo = v.tipo, values = v.values, getter = v.getter, setter = v.setter};
+	local function processProp(propName, prop)
+		if not alreadyListedProps[propName] then
+			alreadyListedProps[propName] = true;
+			qt = qt + 1;
+			props[qt] = __copyPropTable(propName, prop);
+		end;
+	end;
+	
+	-- Instance Defined Props		
+	local definedProps = obj.props;
+	
+	if definedProps ~= nil then
+		for k, v in pairs(definedProps) do
+			processProp(k, v);
+		end;	
+	end;
+	
+	-- Class Defined Props	
+	local currentClass = rawget(obj, "class");
+		
+	while currentClass ~= nil do
+		definedProps = currentClass.props;
+	
+		if definedProps ~= nil then
+			for k, v in pairs(definedProps) do
+				processProp(k, v);
+			end;	
+		end;
+	
+		currentClass = currentClass.super;
 	end;
 		
 	return props;
+end;
+
+function lfm_enumGridPropsForCompiler()
+	local gridClass = require("rrpgGUI_grid.dlua");
+		
+	local props = {};
+	local qt = 0;
+	local alreadyListedProps = {};
+	
+	local function processProp(propName, prop)
+		if not alreadyListedProps[propName] then
+			alreadyListedProps[propName] = true;
+			qt = qt + 1;
+			props[qt] = __copyPropTable(propName, prop);
+		end;
+	end;
+	
+	-- Class Defined Props	
+	local currentClass = gridClass;
+		
+	while currentClass ~= nil do
+		definedProps = currentClass.props;
+	
+		if definedProps ~= nil then
+			for k, v in pairs(definedProps) do
+				processProp(k, v);
+			end;	
+		end;
+	
+		currentClass = currentClass.super;
+	end;
+		
+	return props;	
+end;
+
+function lfm_enumGridEventsForCompiler()
+	local gridClass = require("rrpgGUI_grid.dlua");
+		
+	local eves = {};
+	local qt = 0;
+	local alreadyListedEves = {};
+	
+	local function processEvent(eventName, eventData)
+		if not alreadyListedEves[eventName] then
+			alreadyListedEves[eventName] = true;
+			
+			local eveRec = {name = eventName};
+			
+			if type(eventData) == "table" then
+				eveRec.parameters = eventData.arguments or "";	
+			else
+				eveRec.parameters = eventData or "";
+			end;
+			
+			qt = qt + 1;					
+			eves[qt] = eveRec;
+		end;	
+	end;
+		
+	-- Class Defined Events
+	local currentClass = gridClass;
+		
+	while currentClass ~= nil do
+		definedEves = currentClass.eves;
+	
+		if definedEves ~= nil then
+			for k, v in pairs(definedEves) do
+				processEvent(k, v);
+			end;	
+		end;
+	
+		currentClass = currentClass.super;
+	end;			
+		
+	return eves;	
 end;
 
 local function _getStrOfSetTable(value)
@@ -194,33 +344,26 @@ end;
 
 function lfm_setPropAsString(ctrlOrHandle, propName, vAsStr)
 	local obj = lfm_getObject(ctrlOrHandle);
-	local props = obj.props;
-		
-	if props == nil then
-		return nil;
-	end;
+	local prop;
 	
-	local prop = props[propName];
+	if obj.findPropDef ~= nil then
+		prop = obj:findPropDef(propName);
+	end;	
+	
+	if prop == nil then
+		local props = obj.props;
+
+		if props ~= nil then
+			prop = props[propName];
+		end;
+	end;
 	
 	if prop == nil then
 		return nil;
 	end;
 	
 	v = lfm_strToValue(vAsStr, prop.tipo, prop.values);
-	local setterName = prop.setter;
-	
-	if setterName ~= nil then
-		local setter = obj[setterName];
-		setter(obj, v);
-	else
-		local writePropName = prop.writeProp;
-		
-		if writePropName == nil then
-			error(propName .. " is readonly");			
-		end;
-		
-		_obj_setProp(obj.handle, writePropName, v);
-	end;	
+	obj[propName] = v;	
 end;
 
 function lfm_getPropAsStringToUser(ctrlOrHandle, propName)
@@ -250,11 +393,35 @@ function lfm_setParent(ctrlOrHandleFilho, ctrlOrHandlePai)
 	objFilho:setParent(objPai);
 end;
 
+local function walkHierarchyAndGetTagClassName(class)
+	local currentClass = class;
+	
+	while type(currentClass) == "table" do
+		local tagName = rawget(currentClass, "tagName");
+		
+		if type(tagName) == "string" then
+			return tagName;
+		end;
+		
+		currentClass = currentClass.super;
+	end;
+	
+	return nil;
+end;
+
 function lfm_enumerarClasses()
 	local ret = {};
 	
-	for k, v in pairs(gui.guiLoaders) do
-		ret[#ret + 1]= k;
+	for k, v in pairs(gui.guiClasses) do
+		local tagName = rawget(v, "tagName");
+		
+		assert(k == tagName, string.format('k = %s, tagName = %s', k, tagName));
+		assert(ret[tagName] == nil, tagName);
+		
+		local c = {name = tagName, 
+				   parentClassName = walkHierarchyAndGetTagClassName(v.super)};
+	
+		ret[tagName] = c;
 	end;
 	
 	return ret;

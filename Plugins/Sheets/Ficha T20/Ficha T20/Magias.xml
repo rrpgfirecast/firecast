@@ -15,6 +15,18 @@
                 self.dsb_magic.node = node;                       
                 self.dsb_magic.visible = (node ~= nil);
             </event>
+            <event name="onCompare"><![CDATA[               
+
+                if (tonumber(nodeA.level) or 0) < (tonumber(nodeB.level) or 0) then
+                        return -1;
+                elseif (tonumber(nodeA.level) or 0) > (tonumber(nodeB.level) or 0) then
+                        return 1;
+                else   
+                        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+                end;               
+
+                ]]>
+            </event>
         </recordList>
 
         <dataScopeBox left="385" top="59" width="593" height="791" name="dsb_magic" visible="false">

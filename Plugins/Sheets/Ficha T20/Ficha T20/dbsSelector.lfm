@@ -6,7 +6,7 @@
     </script>
     <image width="262" height="42" src="/imagens/Extra_Poder_Magia_Nome.png"/>
 
-    <button left="0" top="0" width="28" height="42" opacity="0.5">
+    <button left="0" top="0" width="28" height="42" opacity="0.5" cursor="handPoint" hint="Apagar">
         <event name="onClick">
             Dialogs.confirmYesNo("Deseja realmente apagar?",
                                  function (confirmado)

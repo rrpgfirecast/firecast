@@ -11,7 +11,7 @@
     <edit left="31" width="178" height="20" field="skill" fontColor="black" transparent="true"/>
 
     <label left="217" top="4" width="32" height="20" field="total" horzTextAlign="center" fontColor="black"/>
-    <button left="217" top="4" width="32" height="20" opacity="0.5">
+    <button left="217" top="4" width="32" height="20" opacity="0.5" cursor="handPoint" hint="Rolar Perícia">
         <event name="onClick">
             local roll = Firecast.interpretarRolagem("1d20+" .. (sheet.total or 0)); 
 
@@ -25,7 +25,7 @@
     <edit left="328" top="4" width="23" height="20" field="other" horzTextAlign="center" fontColor="black" transparent="true"/>
     <edit left="370" top="4" width="23" height="20" field="extra" horzTextAlign="center" fontColor="black" transparent="true"/>
 
-    <button left="400" top="4" width="22" height="22" opacity="0.5">
+    <button left="400" top="4" width="22" height="22" opacity="0.5" cursor="handPoint" hint="Apagar Perícia">
         <event name="onClick">
             Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
                                  function (confirmado)

@@ -13,7 +13,7 @@
     </image>
     <edit left="165" top="4" width="206" height="27" field="nome" transparent="true" fontColor="black" fontSize="20"/>
     <textEditor left="165" top="49" width="247" height="97" field="details" transparent="true" fontColor="black"/>
-    <button left="381" top="0" width="35" height="35" opacity="0.5">
+    <button left="381" top="0" width="35" height="35" opacity="0.5" cursor="handPoint" hint="Apagar Conexão">
         <event name="onClick">
             Dialogs.confirmYesNo("Deseja realmente apagar essa conexão?",
                                  function (confirmado)

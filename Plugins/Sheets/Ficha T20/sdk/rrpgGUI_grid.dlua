@@ -1,0 +1,244 @@
+local Objs = require("rrpgObjs.lua");
+
+local SCREEN_SIZES_ARRAY = {"xs", "sm", "md", "lg", "xl"};
+local VALID_SCREEN_SIZE_STR_DICT = {};
+
+for i = 1, #SCREEN_SIZES_ARRAY, 1 do
+	VALID_SCREEN_SIZE_STR_DICT[SCREEN_SIZES_ARRAY[i]] = true;
+end;
+
+-- Class Declaration
+
+local Grid = Objs.newClass();
+
+function Grid.shouldUseScreenSizeStr(value)
+	return (value ~= nil) and (type(value) == "string") and VALID_SCREEN_SIZE_STR_DICT[value];
+end;
+
+function __registerScreenSizePropFor_specificScreenSize(screenSize, details, outerGetter, outerSetter)
+	local wrappedSetter = 
+		function(instance, value)
+			return outerSetter(instance, screenSize, value);
+		end;
+		
+	local wrappedGetter = 
+		function (instance)
+			return outerGetter(instance, screenSize);
+		end;
+
+	local propDetais = {getter=wrappedGetter, setter=wrappedSetter, tipo=details.tipo, values=details.values};
+	
+	if screenSize ~= nil then
+		if details.lfmName ~= nil then
+			Grid.props[details.lfmName .. "-" .. screenSize] = propDetais;
+		else
+			Grid.props[details.luaName .. "-" .. screenSize] = propDetais;
+		end;	
+	else			
+		if details.lfmName ~= nil then
+			Grid.props[details.lfmName] = propDetais;
+		else
+			Grid.props[details.luaName] = propDetais;
+		end;
+	end;
+end;
+
+local function __registerScreenSizeProp(details)
+	local hostSetterMethodName = "Set" .. details.hostName;
+	local hostGetterMethodName = "Get" .. details.hostName;
+	local luaFirstLetterUpperCasePropName = details.luaName:gsub("^%l", string.upper);
+
+	local setter = 
+		function (instance, screenSizeOrValue, value)
+			if Grid.shouldUseScreenSizeStr(screenSizeOrValue) then		
+				_obj_invokeEx(instance.handle, hostSetterMethodName, screenSizeOrValue, value);	
+			elseif (screenSizeOrValue ~= nil) then
+				if value == nil then
+					_obj_invokeEx(instance.handle, hostSetterMethodName, nil, screenSizeOrValue);						
+				else						
+					error('Invalid ScreenSize: "' .. tostring(screenSizeOrValue) .. '"');
+				end;			
+			else
+				_obj_invokeEx(instance.handle, hostSetterMethodName, nil, value);	
+			end;
+			
+			return instance;
+		end;
+		
+	local getter = 
+		function (instance, screenSize)
+			if Grid.shouldUseScreenSizeStr(screenSize) then		
+				return _obj_invokeEx(instance.handle, hostGetterMethodName, screenSize);	
+			else
+				return _obj_invokeEx(instance.handle, hostGetterMethodName, nil);	
+			end;
+		end;		
+		
+	Grid["set" .. luaFirstLetterUpperCasePropName] = setter;
+	Grid["get" .. luaFirstLetterUpperCasePropName] = getter;
+
+	__registerScreenSizePropFor_specificScreenSize(nil, details, getter, setter)
+
+	for i = 1, #SCREEN_SIZES_ARRAY do
+		__registerScreenSizePropFor_specificScreenSize(SCREEN_SIZES_ARRAY[i], details, getter, setter);
+	end;
+end;
+
+local function __registerNonScreenSizeProp(details)
+	local hostPropertyNamme = details.hostName;	
+	local luaFirstLetterUpperCasePropName = details.luaName:gsub("^%l", string.upper);
+	local useDefaultValue = details.useDefaultValueOnSet;
+	local defaultValue = details.defaultValueOnSet;
+
+	local setter = 
+		function (instance, value)
+			if (value == nil) and useDefaultValue then		
+				_obj_setProp(instance.handle, hostPropertyNamme, defaultValue);
+			else
+				_obj_setProp(instance.handle, hostPropertyNamme, value);
+			end;
+					
+			return instance;
+		end;
+		
+	local getter = 
+		function (instance)
+			return _obj_getProp(instance.handle, hostPropertyNamme);
+		end;		
+		
+	Grid["set" .. luaFirstLetterUpperCasePropName] = setter;
+	Grid["get" .. luaFirstLetterUpperCasePropName] = getter;
+	
+	local propDetais = {getter=getter, setter=setter, tipo=details.tipo, values=details.values};
+	Grid.props[details.luaName] = propDetais;
+	
+	if details.lfmName ~= nil then
+		Grid.props[details.lfmName] = propDetais;
+	end;
+end;
+
+local function __registerScreenSizeEvent_specificScreenSize(screenSize, details, setterWithScreenSizeArgument)
+	local eve = {arguments = details.arguments};	
+			
+	eve.setter = 
+		function(instance, value)
+			setterWithScreenSizeArgument(instance, screenSize, value);			
+		end;	
+
+	if screenSize == nil then			
+		if details.lfmName ~= nil then
+			Grid.eves[details.lfmName] = eve;
+		else
+			Grid.eves[details.luaName] = eve;
+		end;
+	else					
+		if details.lfmName ~= nil then
+			Grid.eves[details.lfmName .. "-" .. screenSize] = eve; 
+		else
+			Grid.eves[details.luaName .. "-" .. screenSize] = eve;
+		end;
+	end;
+end;
+
+local function __registerScreenSizeEvent(details)
+	local hostSetterMethodName = "Set" .. details.hostName;
+
+	local setterWithScreenSizeArgument = 
+		function(instance, screenSize, value)
+			_obj_invokeEx(instance.handle, hostSetterMethodName, screenSize, value);		
+			return instance;			
+		end;
+
+	__registerScreenSizeEvent_specificScreenSize(nil, details, setterWithScreenSizeArgument)
+
+	for i = 1, #SCREEN_SIZES_ARRAY do	
+		__registerScreenSizeEvent_specificScreenSize(SCREEN_SIZES_ARRAY[i], details, setterWithScreenSizeArgument);
+	end;	
+end;
+
+function Grid:invalidate()
+	_obj_invokeEx(self.handle, "Invalidate");
+	return self;
+end;
+
+function Grid:reset()
+	_obj_invokeEx(self.handle, "Reset");
+	return self;
+end;
+
+function Grid:getTxtWidth()
+	return _obj_invokeEx(self.handle, "GetTxtWidth");
+end;
+
+local GRID_VERT_ALIGN_VALUES = {"top", "center", "middle", "bottom"};
+local GRID_HORZ_ALIGN_VALUES = {"start", "center", "end", "around", "between", "left", "right", "middle"};
+local GRID_CONTAINER_HORZ_ALIGN_VALUES = {"start", "center", "end", "left", "right", "middle"};
+
+-- Grid Properties
+
+__registerNonScreenSizeProp({luaName="role", hostName="Role", tipo="enum", values={"none", "row", "col", "block", "container"}});
+__registerNonScreenSizeProp({luaName="root", hostName="Root", tipo="bool", useDefaultValueOnSet=true, defaultValueOnSet=true});
+__registerNonScreenSizeProp({luaName="screenSizeDet", lfmName="screen-size-det", hostName="ScreenSizeDeterminator", tipo="bool", useDefaultValueOnSet=true, defaultValueOnSet=true});
+__registerNonScreenSizeProp({luaName="autoHeight", lfmName="auto-height", hostName="AutoHeight", tipo="bool", useDefaultValueOnSet=true, defaultValueOnSet=true});
+
+__registerScreenSizeProp({luaName="width", hostName="Width", tipo="int"});
+__registerScreenSizeProp({luaName="offset", lfmName="offset", hostName="Offset", tipo="int"});
+__registerScreenSizeProp({luaName="push", lfmName="push", hostName="Push", tipo="int"});
+__registerScreenSizeProp({luaName="pull", lfmName="pull", hostName="Pull", tipo="int"});
+__registerScreenSizeProp({luaName="cntVertAlign", lfmName="cnt-vert-align", hostName="CntVertAlign", tipo="enum", values=GRID_VERT_ALIGN_VALUES});
+__registerScreenSizeProp({luaName="cntHorzAlign", lfmName="cnt-horz-align", hostName="CntHorzAlign", tipo="enum", values=GRID_HORZ_ALIGN_VALUES});
+__registerScreenSizeProp({luaName="cntGutter", lfmName="cnt-gutter", hostName="CntGutter", tipo="double"});
+__registerScreenSizeProp({luaName="cntLineSpacing", lfmName="cnt-line-spacing", hostName="CntLineSpacing", tipo="double"});
+__registerScreenSizeProp({luaName="cntMinGridWidth", lfmName="cnt-min-grid-width", hostName="CntMinGridWidth", tipo="double"});
+__registerScreenSizeProp({luaName="cntMinGridWidthFt", lfmName="cnt-min-grid-width-ft", hostName="CntMinGridWidthFt", tipo="double"});
+__registerScreenSizeProp({luaName="invisibleReserved", lfmName="invisible-reserved", hostName="InvisibleReserved", tipo="bool"});
+__registerScreenSizeProp({luaName="vertAlign", lfmName="vert-align", hostName="SelfVertAlign", tipo="enum", values=GRID_VERT_ALIGN_VALUES});
+__registerScreenSizeProp({luaName="gutter", lfmName="gutter", hostName="SelfGutter", tipo="double"});
+__registerScreenSizeProp({luaName="horzAlign", lfmName="horz-align", hostName="SelfHorzAlign", tipo="enum", values=GRID_CONTAINER_HORZ_ALIGN_VALUES});
+__registerScreenSizeProp({luaName="breakLineBefore", lfmName="break-line-before", hostName="BreakLineBefore", tipo="bool"});
+__registerScreenSizeProp({luaName="breakLineAfter", lfmName="break-line-after", hostName="BreakLineAfter", tipo="bool"});
+__registerScreenSizeProp({luaName="order", lfmName="order", hostName="Order", tipo="int"});
+__registerScreenSizeProp({luaName="group", lfmName="group", hostName="Group", tipo="int"});
+__registerScreenSizeProp({luaName="marginLeft", lfmName="margin-left", hostName="MarginLeft", tipo="double"});
+__registerScreenSizeProp({luaName="marginTop", lfmName="margin-top", hostName="MarginTop", tipo="double"});
+__registerScreenSizeProp({luaName="marginRight", lfmName="margin-right", hostName="MarginRight", tipo="double"});
+__registerScreenSizeProp({luaName="marginBottom", lfmName="margin-bottom", hostName="MarginBottom", tipo="double"});
+__registerScreenSizeProp({luaName="paddingLeft", lfmName="padding-left", hostName="PaddingLeft", tipo="double"});
+__registerScreenSizeProp({luaName="paddingTop", lfmName="padding-top", hostName="PaddingTop", tipo="double"});
+__registerScreenSizeProp({luaName="paddingRight", lfmName="padding-right", hostName="PaddingRight", tipo="double"});
+__registerScreenSizeProp({luaName="paddingBottom", lfmName="padding-bottom", hostName="PaddingBottom", tipo="double"});
+__registerScreenSizeProp({luaName="dynWidthTxt", lfmName="dyn-width-txt", hostName="DynWidthTxt", tipo="bool"});
+__registerScreenSizeProp({luaName="dynHeightTxt", lfmName="dyn-height-txt", hostName="DynHeightTxt", tipo="bool"});
+__registerScreenSizeProp({luaName="postDynWidthTxt", lfmName="post-dyn-width-txt", hostName="PostDynWidthTxt", tipo="bool"});
+__registerScreenSizeProp({luaName="finalOffsetX", lfmName="final-offset-x", hostName="FinalOffsetX", tipo="double"});
+__registerScreenSizeProp({luaName="finalOffsetY", lfmName="final-offset-y", hostName="FinalOffsetY", tipo="double"});
+__registerScreenSizeProp({luaName="vertTile", lfmName="vert-tile", hostName="VertTile", tipo="bool"});
+__registerScreenSizeProp({luaName="vertTileWeight", lfmName="vert-tile-weight", hostName="VertTileWeight", tipo="double"});
+__registerScreenSizeProp({luaName="horzTile", lfmName="horz-tile", hostName="HorzTile", tipo="bool"});
+__registerScreenSizeProp({luaName="minHeight", lfmName="min-height", hostName="MinHeight", tipo="double"});
+__registerScreenSizeProp({luaName="maxHeight", lfmName="max-height", hostName="MaxHeight", tipo="double"});
+__registerScreenSizeProp({luaName="minWidth", lfmName="min-width", hostName="MinWidth", tipo="double"});
+__registerScreenSizeProp({luaName="maxWidth", lfmName="max-width", hostName="MaxWidth", tipo="double"});
+
+__registerScreenSizeProp({luaName="dynWidthSingleLine", lfmName="dyn-width-single-line", hostName="DynWidthSingleLine", tipo="bool"});
+__registerScreenSizeProp({luaName="dynWidthEachLine", lfmName="dyn-width-each-line", hostName="DynWidthEachLine", tipo="bool"});
+__registerScreenSizeProp({luaName="dynWidthMatchHeight", lfmName="dyn-width-match-height", hostName="DynWidthMatchHeight", tipo="bool"});
+
+
+-- Grid Events
+__registerScreenSizeEvent({luaName="onPrepare", lfmName="on-prepare", hostName="OnPrepare", arguments="screenSize"});
+__registerScreenSizeEvent({luaName="onAligned", lfmName="on-aligned", hostName="OnAligned", arguments="screenSize, changedBounds, childChangedBounds"});
+__registerScreenSizeEvent({luaName="onGetWidth", lfmName="on-get-width", hostName="OnGetWidth", arguments="screenSize, width"});
+__registerScreenSizeEvent({luaName="onGetHeight", lfmName="on-get-height", hostName="OnGetHeight", arguments="screenSize, height"});
+__registerScreenSizeEvent({luaName="onGetVertMargins", lfmName="on-get-vert-margins", hostName="OnGetVertMargins", arguments="screenSize, height, top, bottom"});
+
+-- Instance
+
+function Grid.new(ctrl)
+	assert(ctrl ~= nil);
+	
+	local g = Grid.fromHandle(_obj_newObject("TLuaGridControl", ctrl.handle));		
+	return g;
+end;
+
+return Grid;
