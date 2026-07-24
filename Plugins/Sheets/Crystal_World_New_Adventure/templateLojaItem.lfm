@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateLojaItem" width="94" height="112" margins="{top=0,bottom=0,left=0,right=0}">
+
+<style>
+label, button {
+    fontFamily: Cambria;
+    fontColor: white;
+    fontStyle: bold;
+}
+</style>
+
+<script><![CDATA[
+local function atualizarCardLoja(form)
+    if form == nil or form.sheet == nil then return end
+
+    local ficha = NDB.getRoot(form.sheet)
+    local destravada = ficha ~= nil and tostring(ficha.LojaDestravada or "") == "true"
+    local temItem = tostring(form.sheet.LojaCardVisivel or "") == "true" and tostring(form.sheet.uidLoja or "") ~= ""
+    local card = form:findControlByName("cardLojaItemRoot")
+    local btnEditar = form:findControlByName("btnEditarItemLoja")
+    local btnExcluir = form:findControlByName("btnExcluirItemLoja")
+
+    if card ~= nil then card.visible = temItem end
+    if btnEditar ~= nil then btnEditar.visible = destravada and temItem end
+    if btnExcluir ~= nil then btnExcluir.visible = destravada and temItem end
+end
+
+local function prepararDragLoja(item, drag)
+    if item == nil or drag == nil then return end
+
+    local uid = tostring(item.uidLoja or "")
+    local imagem = tostring(item.imagemestilo2 or "")
+    local nome = tostring(item.nomeItem or "Item")
+
+    if uid == "" then
+        item.uidLoja = tostring(os.time()) .. "_" .. tostring(math.random(100000, 999999))
+        uid = item.uidLoja
+    end
+
+    drag:addData("cwnaLojaUid", uid)
+    drag:addData("text", nome)
+
+    if imagem ~= "" then
+        drag:addData("url", imagem)
+        drag:addData("imageURL", imagem)
+        drag:addData("image", imagem)
+        drag:addData("text/uri-list", imagem)
+    end
+end
+]]></script>
+
+<rectangle name="cardLojaItemRoot" align="client" color="#00000000" strokeColor="#00000000" strokeSize="0" hitTest="true" visible="false">
+    <event name="onStartDrag"><![CDATA[
+        prepararDragLoja(sheet, drag)
+    ]]></event>
+
+    <image field="imagemestilo2"
+           left="14" top="16" width="66" height="58"
+           style="autoFit"
+           animate="true"
+           optimize="true"
+           showProgress="false"
+           hitTest="false"/>
+
+    <image left="5" top="0" width="84" height="105"
+           url="Frames/item_loja.png"
+           style="stretch"
+           showProgress="false"
+           hitTest="true">
+        <event name="onStartDrag"><![CDATA[
+            prepararDragLoja(sheet, drag)
+        ]]></event>
+        <event name="onClick"><![CDATA[
+            local ficha = NDB.getRoot(sheet)
+            if ficha ~= nil and tostring(ficha.LojaDestravada or "") == "true" then
+                CWNA_carregarItemLojaNoEditor(sheet)
+            else
+                CWNA_carregarDetalheCompraLoja(sheet)
+            end
+        ]]></event>
+    </image>
+
+    <rectangle left="7" top="4" width="80" height="16" color="#00000088" strokeSize="0"/>
+    <label field="nomeItem" left="7" top="4" width="80" height="16"
+           fontSize="9" horzTextAlign="center" vertTextAlign="center"/>
+
+    <label field="precoPrata" left="40" top="86" width="38" height="15"
+           fontSize="10" horzTextAlign="center"/>
+
+    <button name="btnEditarItemLoja" text="✎" left="6" top="5" width="22" height="20" visible="false">
+        <event name="onClick"><![CDATA[
+            CWNA_carregarItemLojaNoEditor(sheet)
+        ]]></event>
+    </button>
+
+    <button name="btnExcluirItemLoja" text="x" left="67" top="5" width="20" height="18" visible="false">
+        <event name="onClick"><![CDATA[
+            CWNA_excluirItemLoja(sheet)
+        ]]></event>
+    </button>
+
+    <dataLink fields="{'LojaCardVisivel','uidLoja','LojaDestravadaPagina'}">
+        <event name="onChange"><![CDATA[
+            atualizarCardLoja(self)
+        ]]></event>
+    </dataLink>
+</rectangle>
+</form>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="templateDesVantagens" height="30">    
 <style>
 comboBox{
@@ -18,7 +18,7 @@ label{
 </style>
 	<layout align="top" height="30">
 		<edit fontColor="white" field="aqq" align="left" width="230" height="25" margins="{right=2}" fontStyle="bold"/>
-		<dataLink field="aqq" defaultValue="—" />
+		<dataLink field="aqq" defaultValue="â€”" />
 		<button text="" width="0" align="left" name="labNome" margins="{right=2}">
 					<event name="onClick">
 					local pop = self:findControlByName("popDesvantagem");
@@ -37,11 +37,11 @@ label{
 				<label field="atributoSkill" anchors="top right" right="0" top="20" horzTextAlign="trailing" fontStyle="bold" />
 				<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
 				<textEditor name="MinhaVant" field="infoVnt" align="client" fontFamily="Cambria" transparent="true" />
-				<dataLink field="infoVnt" defaultValue="—" />
+				<dataLink field="infoVnt" defaultValue="â€”" />
 			</rectangle>
 		</popup>
 
 
-		<button align="right" text="🞭" width='30' onClick="NDB.deleteNode(sheet);"/>
+		<button align="right" text="ðŸž­" width='30' onClick="NDB.deleteNode(sheet);"/>
 	</layout>
 </form>

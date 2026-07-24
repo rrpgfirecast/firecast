@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="templateArmas" height="30">  
 <style>
 comboBox{
@@ -17,7 +17,7 @@ label{
 	fontStyle: bold;
 }
 </style>
-    <button align="right" text="𝐢" width='30' name="btnArma" margins="{right=2}">
+    <button align="right" text="ð¢" width='30' name="btnArma" margins="{right=2}">
 		<event name="onClick">
 			local pop = self:findControlByName("popArma");
 			if pop ~= nil then
@@ -34,22 +34,22 @@ label{
 			<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
 			<layout height="30" align="top">
 				<layout width="210" align="left">
-					<label text="Perícia:" width="50" align="left" margins="{right=2}"/>
+					<label text="PerÃ­cia:" width="50" align="left" margins="{right=2}"/>
 					<edit field="periArma" align="client" margins="{right=2}"/>
-					<dataLink defaultValue="—" field="periArma" />
+					<dataLink defaultValue="â€”" field="periArma" />
 					
 				</layout>
 				<layout width="210" align="left">
 					<label text="Ataque:" width="50" align="left" margins="{right=2}"/>
 					<edit field="atkArma" align="client"/>
-					<dataLink defaultValue="—" field="atkArma" />
+					<dataLink defaultValue="â€”" field="atkArma" />
 				</layout>
 			</layout>
 			<layout height="30" align="top">
 				<layout width="210" align="left">
 					<label text="Dano:" width="40" align="left" margins="{right=2}" />
 					<edit field="danoArma" align="client" margins="{right=2}"/>
-					<dataLink defaultValue="—" field="danoArma" />
+					<dataLink defaultValue="â€”" field="danoArma" />
 				</layout>
 
 				<layout width="210" align="left">
@@ -59,11 +59,11 @@ label{
 				</layout>
 			</layout>
 			<textEditor field="descriArma" align="client" fontFamily="Cambria" transparent="true" margins="{top=10}" />
-			<dataLink field="descriArma" defaultValue="Descrição." />
+			<dataLink field="descriArma" defaultValue="DescriÃ§Ã£o." />
 		</rectangle>
 	</popup>
 	
-    <button align="right" text="🞭" width='30' onClick="NDB.deleteNode(sheet);"/>
+    <button align="right" text="ðŸž­" width='30' onClick="NDB.deleteNode(sheet);"/>
 	<edit field="nomeArma" align="client" margins="{right=2}" fontStyle="bold" fontColor="white"/>
-	<dataLink defaultValue="—" field="nomeArma" />
+	<dataLink defaultValue="â€”" field="nomeArma" />
 </form>

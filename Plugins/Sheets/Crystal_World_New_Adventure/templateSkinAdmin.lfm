@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateSkinAdmin" width="150" height="220" margins="{top=4,bottom=4,left=4,right=4}">
+<style>
+label, button, edit {
+    fontFamily: Cambria;
+    fontColor: white;
+    fontStyle: bold;
+}
+</style>
+
+<script><![CDATA[
+local function atualizarCard(form)
+    if form == nil or form.sheet == nil then return end
+
+    local btn = form:findControlByName("btnLiberarSkin")
+
+    if btn ~= nil then
+        if tostring(form.sheet.liberada or "") == "true" then
+            btn.text = "ON"
+        else
+            btn.text = "OFF"
+        end
+    end
+end
+]]></script>
+
+<rectangle align="client" color="#202020DD" strokeColor="#A07A2D" strokeSize="1" xradius="6" yradius="6" cornerType="round">
+    <image field="imagemSkin" left="5" top="5" width="140" height="210" style="autoFit" animate="true" showProgress="false">
+        <event name="onClick"><![CDATA[
+            CWNA_carregarSkinNoEditor(sheet)
+        ]]></event>
+    </image>
+
+    <rectangle left="18" top="6" width="114" height="32" color="#00000055" strokeColor="#00000000" strokeSize="0"/>
+
+    <label field="nomeSkin" left="16" top="8" width="114" height="28"
+           horzTextAlign="center" vertTextAlign="center" fontSize="12" fontColor="#000000"/>
+    <label field="nomeSkin" left="20" top="8" width="114" height="28"
+           horzTextAlign="center" vertTextAlign="center" fontSize="12" fontColor="#000000"/>
+    <label field="nomeSkin" left="18" top="6" width="114" height="28"
+           horzTextAlign="center" vertTextAlign="center" fontSize="12" fontColor="#000000"/>
+    <label field="nomeSkin" left="18" top="10" width="114" height="28"
+           horzTextAlign="center" vertTextAlign="center" fontSize="12" fontColor="#000000"/>
+    <label field="nomeSkin" left="18" top="8" width="114" height="28"
+           horzTextAlign="center" vertTextAlign="center" fontSize="12" fontColor="#FFFFFF"/>
+
+    <rectangle left="8" top="186" width="134" height="28" color="#00000077" strokeColor="#A07A2D" strokeSize="1" xradius="4" yradius="4" cornerType="round"/>
+
+    <button name="btnEditarSkin" left="10" top="188" width="52" height="24" text="Editar">
+        <event name="onClick"><![CDATA[
+            CWNA_carregarSkinNoEditor(sheet)
+        ]]></event>
+    </button>
+
+    <button name="btnLiberarSkin" left="65" top="188" width="36" height="24" text="OFF">
+        <event name="onClick"><![CDATA[
+            CWNA_alternarLiberacaoSkin(sheet)
+            atualizarCard(self)
+        ]]></event>
+    </button>
+
+    <button name="btnExcluirSkin" left="104" top="188" width="36" height="24" text="x">
+        <event name="onClick"><![CDATA[
+            CWNA_excluirSkin(sheet)
+        ]]></event>
+    </button>
+
+    <dataLink fields="{'nomeSkin','imagemSkin','liberada','uidSkin','atualizacaoSkin','bonusForca','bonusDestreza','bonusConstituicao','bonusInteligencia','bonusSabedoria','bonusCarisma','bonusCA','bonusRD','bonusHP','bonusPP'}">
+        <event name="onChange"><![CDATA[
+            atualizarCard(self)
+        ]]></event>
+    </dataLink>
+</rectangle>
+</form>
