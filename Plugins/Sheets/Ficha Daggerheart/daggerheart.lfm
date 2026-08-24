@@ -82,7 +82,7 @@
     <rectangle align="top" height="142" color="#13110E" strokeColor="#6E5531" strokeSize="1" padding="{left=12,right=12,top=10,bottom=10}" margins="{left=8,right=8,top=8,bottom=4}" cornerType="round" xradius="8" yradius="8">
         <layout align="left" width="112" margins="{right=12}">
             <rectangle align="client" color="#0B0B0B" strokeColor="#A77B32" strokeSize="1" padding="{left=4,right=4,top=4,bottom=4}" cornerType="round" xradius="6" yradius="6">
-                <image align="client" field="avatar" editable="true" style="proportional">
+                <image align="client" field="avatar" editable="true" style="autoFit">
                     <event name="OnStartDrag">
                         drag:addData("imageURL", sheet.avatar)
                     </event>

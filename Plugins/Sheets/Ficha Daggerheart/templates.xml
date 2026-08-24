@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group>
     <template name="Title">
-		<label g="col" g-width="$(widthL or 3)" text="$(text)" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="$(fontSize or 10)" fontColor="#C8B78E" fontStyle="$(fontStyle or bold)" textTrimming="none"/>
-		<rectangle g="col" g-width="$(widthR or 9)" height="26" color="#181512" strokeColor="#3A3329" strokeSize="1" cornerType="round" xradius="4" yradius="4">
+		<label g="col" g-width="$(widthL or 3)" text="$(text)" horzTextAlign="center" vertTextAlign="center" height="$(heightL or 26)" fontSize="$(fontSize or 10)" fontColor="#C8B78E" fontStyle="$(fontStyle or bold)" textTrimming="none"/>
+		<rectangle g="col" g-width="$(widthR or 9)" height="$(heightR or 26)" color="#181512" strokeColor="#3A3329" strokeSize="1" cornerType="round" xradius="4" yradius="4">
 			<edit align="client" field="$(field)" transparent="true" horzTextAlign="center" vertTextAlign="center" fontColor="#FFF7E8"/>
 		</rectangle>
     </template>
@@ -368,7 +368,7 @@
 		<!-- 	
 			if (prof ~= nil) and (prof ~= "") and (prof == "true") then			
 		-->	
-			<label g="col" g-width="3" text="PROF" horzTextAlign="center" vertTextAlign="center" height="25" fontSize="10" fontColor="#C8B78E" fontStyle="bold"/>
+			<label g="col" g-width="3" text="PROF" horzTextAlign="center" vertTextAlign="center" height="25" fontSize="12" fontColor="#C8B78E" fontStyle="bold"/>
 			<checkBox g="col" g-width="1" field="profCheck1" height="25"/>
 			<checkBox g="col" g-width="1" field="profCheck2" height="25"/>
 			<checkBox g="col" g-width="1" field="profCheck3" height="25"/>
@@ -386,13 +386,13 @@
 			end			
 		-->		
 
-			<Title text="NAME" field="$(field)Name"/>
-			<Title text="TRAIT" field="$(field)Trait" widthL="3" widthR="3"/>
-			<Title text="RANGE" field="$(field)Range" widthL="3" widthR="3"/>
-			<Title text="DAMAGE" field="$(field)Damage" widthL="3" widthR="3"/>
-			<Title text="TYPE" field="$(field)Type" widthL="3" widthR="3"/>
-			<Title text="BURDEN" field="$(field)Burden"/>
-			<label g="col" g-width="12" text="FEATURE" horzTextAlign="center" vertTextAlign="center" height="24" fontSize="10" fontColor="#CDAA57" fontStyle="bold"/>
+			<Title text="NAME" field="$(field)Name" fontSize="12" fontStyle="bold"/>
+			<Title text="TRAIT" field="$(field)Trait" widthL="3" widthR="3" fontSize="12" fontStyle="bold"/>
+			<Title text="RANGE" field="$(field)Range" widthL="3" widthR="3" fontSize="12" fontStyle="bold"/>
+			<Title text="DAMAGE" field="$(field)Damage" widthL="3" widthR="3" fontSize="12" fontStyle="bold"/>
+			<Title text="TYPE" field="$(field)Type" widthL="3" widthR="3" fontSize="12" fontStyle="bold"/>
+			<Title text="BURDEN" field="$(field)Burden" fontSize="12" fontStyle="bold"/>
+			<label g="col" g-width="12" text="FEATURE" horzTextAlign="center" vertTextAlign="center" height="24" fontSize="11" fontColor="#CDAA57" fontStyle="bold"/>
 			<textEditor g="col" g-width="12" g-vert-tile="true" g-min-height="96" field="$(field)Feature" fontColor="#FFF7E8"/>
 
 		</rectangle>

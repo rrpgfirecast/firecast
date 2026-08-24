@@ -2,29 +2,30 @@
 <form name="General" align="client">
     <scrollBox align="client" g-cnt-line-spacing="8" padding="{left=2,right=2,top=2,bottom=8}">
 
-		<label g="col" g-width="12" text="CHARACTER TRAITS" height="24" horzTextAlign="center" vertTextAlign="center" fontSize="16" fontStyle="bold" fontColor="#CDAA57"/>
+		<label g="col" g-width="12" text="CHARACTER TRAITS" height="24" horzTextAlign="center" vertTextAlign="center" fontSize="18" fontStyle="bold" fontColor="#CDAA57"/>
 
-		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="112" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
+		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="124" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
 			<Attribute text="AGILITY" field="agility" text1="Sprint" text2="Leap" text3="Maneuver"/>
 		</rectangle>
-		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="112" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
+		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="124" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
 			<Attribute text="STRENGTH" field="strength" text1="Lift" text2="Smash" text3="Grapple"/>
 		</rectangle>
-		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="112" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
+		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="124" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
 			<Attribute text="FINESSE" field="finesse" text1="Control" text2="Hide" text3="Tinker"/>
 		</rectangle>
-		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="112" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
+		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="124" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
 			<Attribute text="INSTINCT" field="instinct" text1="Perceive" text2="Sense" text3="Navigate"/>
 		</rectangle>
-		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="112" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
+		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="124" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
 			<Attribute text="PRESENCE" field="presence" text1="Charm" text2="Perform" text3="Deceive"/>
 		</rectangle>
-		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="112" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
+		<rectangle g="col" g-width="6" g-width-lg="2" color="#17130F" strokeColor="#5E4930" strokeSize="1" g-min-height="124" padding="{left=8,right=8,top=8,bottom=8}" cornerType="round" xradius="6" yradius="6">
 			<Attribute text="KNOWLEDGE" field="knowledge" text1="Recall" text2="Analyze" text3="Comprehend"/>
 		</rectangle>
 
-		<rectangle g="col" g-width="12" g-width-lg="4" color="#161B18" strokeColor="#577154" strokeSize="1" g-min-height="380" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
-			<label g="col" g-width="12" text="HOPE" horzTextAlign="center" vertTextAlign="center" height="24" fontSize="14" fontStyle="bold" fontColor="#D3C36E"/>
+		<rectangle g="col" g-width="12" g-width-lg="4" color="#161b18" strokeColor="#577154" strokeSize="1" g-min-height="440" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" text="HOPE" horzTextAlign="center" vertTextAlign="center" height="24" fontSize="16" fontStyle="bold" fontColor="#D3C36E"/>
+			<label g="col" g-width="12"/>
 			<label g="col" g-width="3"/>
 			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck1" height="30"/>
 			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck2" height="30"/>
@@ -34,13 +35,13 @@
 			<imageCheckBox g="col" g-width="1" uncheckedImage="images/losangooff.png" checkedImage="images/losango.png" field="hopeCheck6" height="30"/>
 			<label g="col" g-width="3"/>
 
-			<label g="col" g-width="12" text="Hope Feature" horzTextAlign="center" vertTextAlign="center" height="22" fontSize="10" fontStyle="bold" fontColor="#BFD2B7"/>
+			<label g="col" g-width="12"/>
+			<label g="col" g-width="12" text="Hope Feature" horzTextAlign="center" vertTextAlign="center" height="22" fontSize="14" fontStyle="bold" fontColor="#BFD2B7"/>
 			<textEditor g="col" g-width="12" g-min-height="88" field="hopeFeature" horzTextAlign="center" fontColor="#FFF7E8"/>
-
-			<label g="col" g-width="12" text="EXPERIENCES" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="12" fontStyle="bold" fontColor="#D3C36E"/>
-			<label g="col" g-width="1"/>
-			<label g="col" g-width="8" text="Name" horzTextAlign="center" vertTextAlign="center" height="18" fontSize="10" fontStyle="bold" fontColor="#BFD2B7"/>
-			<label g="col" g-width="3" text="Bonus" horzTextAlign="center" vertTextAlign="center" height="18" fontSize="10" fontStyle="bold" fontColor="#BFD2B7"/>
+			
+			<label g="col" g-width="12"/>
+			<label g="col" g-width="12" text="EXPERIENCES" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="18" fontStyle="bold" fontColor="#D3C36E"/>
+			<label g="col" g-width="12"/>
 			<Experience field="exp1"/>
 			<Experience field="exp2"/>
 			<Experience field="exp3"/>
@@ -48,12 +49,13 @@
 			<Experience field="exp5"/>
 		</rectangle>
 
-		<rectangle g="col" g-width="12" g-width-lg="4" color="#151419" strokeColor="#564C76" strokeSize="1" g-min-height="380" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
-			<label g="col" g-width="12" text="DEFENSE" horzTextAlign="center" vertTextAlign="center" height="34" fontSize="12" fontStyle="bold" fontColor="#C5B7EA"/>
+		<rectangle g="col" g-width="12" g-width-lg="4" color="#151419" strokeColor="#564C76" strokeSize="1" g-min-height="440" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" text="DEFENSE" horzTextAlign="center" vertTextAlign="center" height="34" fontSize="16" fontStyle="bold" fontColor="#C5B7EA"/>
+			<label g="col" g-width="12"/>
 			<label g="col" g-width="2"/>
-			<Title text="EVASION" field="evasion" widthL="1" widthR="2"/>
+			<Title text="EVASION" field="evasion" widthL="2" widthR="1" fontSize="14"/>
 			<label g="col" g-width="2"/>
-			<Title text="ARMOR" field="armor" widthL="1" widthR="2"/>
+			<Title text="ARMOR" field="armor" widthL="2" widthR="1" fontSize="14"/>
 			<label g="col" g-width="2"/>
 			<label g="col" g-width="12"/>
 			<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="1" height="28" field="armorCheck1"/>
@@ -70,61 +72,66 @@
 			<imageCheckBox uncheckedImage="images/shieldoff.png" checkedImage="images/shield.png" g="col" g-width="1" height="28" field="armorCheck12"/>
 			
 			<label g="col" g-width="12"/>
-
-			<label g="col" g-width="12" text="DAMAGE &amp; HEALTH" horzTextAlign="center" vertTextAlign="center" height="36" fontSize="14" fontStyle="bold" fontColor="#C5B7EA"/>
-			<label g="col" g-width="3" text="Minor" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="12" fontStyle="bold" fontColor="#C2BDD4"/>
+			<label g="col" g-width="12" text="DAMAGE &amp; HEALTH" horzTextAlign="center" vertTextAlign="center" height="36" fontSize="18" fontStyle="bold" fontColor="#C5B7EA"/>
+			<label g="col" g-width="12"/>
+			<label g="col" g-width="3" text="Minor" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="16" fontStyle="bold" fontColor="#C2BDD4"/>
 			<rectangle g="col" g-width="2" height="26" color="#181512" strokeColor="#3A3329" strokeSize="1" cornerType="round" xradius="4" yradius="4">
 				<edit align="client" field="damage1" transparent="true" horzTextAlign="center" fontColor="#FFF7E8"/>
 			</rectangle>
-			<label g="col" g-width="2" text="Major" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="12" fontStyle="bold" fontColor="#C2BDD4"/>
+			<label g="col" g-width="2" text="Major" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="16" fontStyle="bold" fontColor="#C2BDD4"/>
 			<rectangle g="col" g-width="2" height="26" color="#181512" strokeColor="#3A3329" strokeSize="1" cornerType="round" xradius="4" yradius="4">
 				<edit align="client" field="damage2" transparent="true" horzTextAlign="center" fontColor="#FFF7E8"/>
 			</rectangle>
-			<label g="col" g-width="3" text="Severe" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="12" fontStyle="bold" fontColor="#C2BDD4"/>
+			<label g="col" g-width="3" text="Severe" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="16" fontStyle="bold" fontColor="#C2BDD4"/>
 
 			<label g="col" g-width="12"/>
-			<label g="col" g-width="5"/>
-			<Title text="MAX HP" field="maxHp" widthL="1" widthR="1"/>
-			<label g="col" g-width="5"/>
-			<label g="col" g-width="12"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck1"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck2"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck3"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck4"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck5"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck6"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck7"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck8"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck9"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck10"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck11"/>
-			<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="1" height="28" field="hpCheck12"/>
+			<rectangle g="col" g-width="12" g-width-lg="4" color="#151419" strokeColor="transparent" strokeSize="1" g-min-height="80" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+				<label g="col" g-width="12"/>
+				<Title text="MAX HP" field="maxHp" widthL="9" widthR="3" fontSize="18"/>
+			</rectangle>
+			<rectangle g="col" g-width="8" color="#151419" strokeColor="transparent" strokeSize="1" g-min-height="80" cornerType="round" xradius="6" yradius="6">
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck1"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck2"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck3"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck4"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck5"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck6"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck7"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck8"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck9"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck10"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck11"/>
+				<imageCheckBox uncheckedImage="images/hpoff.png" checkedImage="images/hp.png" g="col" g-width="2" height="40" field="hpCheck12"/>
+			</rectangle>
 
 			<label g="col" g-width="12"/>
-			<label g="col" g-width="5"/>
-			<Title text="MAX STRESS" field="maxStress" widthL="1" widthR="1"/>
-			<label g="col" g-width="5"/>
-			<label g="col" g-width="12"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck1"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck2"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck3"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck4"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck5"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck6"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck7"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck8"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck9"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck10"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck11"/>
-			<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="1" height="28" field="stressCheck12"/>
+			<rectangle g="col" g-width="12" g-width-lg="4" color="#151419" strokeColor="transparent" strokeSize="1" g-min-height="80" padding="{left=10,right=10,top=10,bottom=10}" cornerType="round" xradius="6" yradius="6">
+				<label g="col" g-width="12"/>
+				<Title text="MAX STRESS" field="maxStress" widthL="9" widthR="3" fontSize="18"/>
+			</rectangle>
+			<rectangle g="col" g-width="8" color="#151419" strokeColor="transparent" strokeSize="1" g-min-height="80" cornerType="round" xradius="6" yradius="6">
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck1"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck2"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck3"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck4"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck5"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck6"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck7"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck8"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck9"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck10"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck11"/>
+				<imageCheckBox uncheckedImage="images/stressoff.png" checkedImage="images/stress.png" g="col" g-width="2" height="40" field="stressCheck12"/>
+			</rectangle>
 		</rectangle>
 		
-		<rectangle g="col" g-width="12" g-width-lg="4" color="#17130F" strokeColor="#6E5531" strokeSize="1" padding="{left=10,right=10,top=10,bottom=10}" g-min-height="380" g-auto-height="true" cornerType="round" xradius="6" yradius="6">
-			<label g="col" g-width="12" text="CLASS FEATURE" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="14" fontStyle="bold" fontColor="#CDAA57"/>
-			<textEditor g="col" g-width="12" g-min-height="320" field="classFeature" horzTextAlign="center" fontColor="#FFF7E8"/>
+		<rectangle g="col" g-width="12" g-width-lg="4" color="#17130F" strokeColor="#6E5531" strokeSize="1" padding="{left=10,right=10,top=10,bottom=10}" g-min-height="440" g-auto-height="true" cornerType="round" xradius="6" yradius="6">
+			<label g="col" g-width="12" text="CLASS FEATURE" horzTextAlign="center" vertTextAlign="center" height="26" fontSize="16" fontStyle="bold" fontColor="#CDAA57"/>
+			<label g="col" g-width="12"/>
+			<textEditor g="col" g-width="12" g-min-height="350" field="classFeature" horzTextAlign="center" fontColor="#FFF7E8"/>
 		</rectangle>
 
-		<label g="col" g-width="12" text="PROGRESS" height="26" horzTextAlign="center" vertTextAlign="center" fontSize="16" fontStyle="bold" fontColor="#CDAA57"/>
+		<label g="col" g-width="12" text="PROGRESS" height="26" horzTextAlign="center" vertTextAlign="center" fontSize="18" fontStyle="bold" fontColor="#CDAA57"/>
 		<tabControl g="col" g-width="12" height="480">
 			<tab title="Tier 2">
 				<scrollBox align="client" g-cnt-line-spacing="6" padding="{left=8,right=8,top=8,bottom=8}">
