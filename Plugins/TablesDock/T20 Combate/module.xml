@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b">
+  <id>codex.t20.combate</id>
+  <version>1.8.0</version>
+  <info lang="pt-BR">
+    <name>T20 Combate</name>
+    <description>Gerenciador de combate para Tormenta20 com iniciativa, testes opostos, fichas rapidas de NPC, habilidades, alvos, areas, auras, condicoes, buffs, dano maximo, dano automatico e tokens, integrado a ficha fib.Tormenta20.</description>
+    <author>Luisguilhermelr</author>
+    <site>https://github.com/Luisguilhermelr/firecast/tree/master/Plugins/TablesDock/T20%20Combate</site>
+    <contact/>
+  </info>
+  
+</module>
