@@ -1482,6 +1482,224 @@
             end
             setTimeout(pulse, 420)
         end
+        ConfiguredSpells.AttackAnimations = {
+            CIRCLE_PATH="M 0.5 0 C 0.776 0 1 0.224 1 0.5 " ..
+                        "C 1 0.776 0.776 1 0.5 1 " ..
+                        "C 0.224 1 0 0.776 0 0.5 C 0 0.224 0.224 0 0.5 0 Z",
+            IMPACT_PATH="M 0.5 0.02 L 0.59 0.35 L 0.85 0.15 L 0.66 0.41 " ..
+                        "L 0.98 0.5 L 0.66 0.59 L 0.85 0.85 L 0.59 0.65 " ..
+                        "L 0.5 0.98 L 0.41 0.65 L 0.15 0.85 L 0.34 0.59 " ..
+                        "L 0.02 0.5 L 0.34 0.41 L 0.15 0.15 L 0.41 0.35 Z",
+            SLASH_PATH="M 0.12 0.82 L 0.82 0.12 M 0.34 0.91 L 0.91 0.34",
+            MISS_PATH="M 0.18 0.18 L 0.82 0.82 M 0.82 0.18 L 0.18 0.82"
+        }
+
+        function ConfiguredSpells.AttackAnimations.isEnabled()
+            return sheet ~= nil and sheet.t20cAttackAnimationsEnabled ~= false
+        end
+
+        function ConfiguredSpells.AttackAnimations.isAnimation(item)
+            if item == nil or item.objectType ~= "userDrawing" or item.userData == nil then
+                return false
+            end
+            return item.userData.codexT20AttackAnimation == true or
+                   tostring(item.userData.codexT20AttackAnimation or "") == "true"
+        end
+
+        function ConfiguredSpells.AttackAnimations.delete(item, scene)
+            if item == nil or item.isObjectAlive == false then return end
+            pcall(function() item:delete() end)
+            if scene ~= nil then pcall(function() scene:sendDelayedUpdates() end) end
+        end
+
+        function ConfiguredSpells.AttackAnimations.createDrawing(scene, worldX, worldY, size, path,
+                                                 fillColor, strokeColor, strokeSize)
+            if scene == nil then return nil, nil end
+            local item = nil
+            local op = nil
+            local ok = pcall(function()
+                item = scene.items:addUserDrawing("tokens")
+                if item == nil then error("addUserDrawing retornou nil") end
+                item:markAsMyDrawing()
+                item:beginUpdate()
+                item.layer = "tokens"
+                item.visible = true
+                item.locked = true
+                item.snapToGrid = false
+                item.z = 16000
+                item.width = size
+                item.height = size
+                item.userData.codexT20AttackAnimation = true
+                item.userData.animationCreatedAt = System.getTickCount()
+                item.canvas:clear()
+                op = item.canvas:addPath()
+                if op == nil then error("addPath retornou nil") end
+                op.data = path
+                op.x = 0; op.y = 0; op.width = 1; op.height = 1
+                op.xMetric = "canvasMetric"; op.yMetric = "canvasMetric"
+                op.widthMetric = "canvasMetric"; op.heightMetric = "canvasMetric"
+                op.color = fillColor
+                op.strokeColor = strokeColor
+                op.strokeSize = strokeSize
+                op.strokeSizeMetric = "screenMetric"
+                op.strokeJoin = "round"
+                op.z = 0
+                op.visibility = "everyone"
+                item:endUpdate()
+                item:setCenter(worldX, worldY, false)
+                scene:sendDelayedUpdates()
+            end)
+            if not ok then
+                if item ~= nil then pcall(function() item:delete() end) end
+                return nil, nil
+            end
+            return item, op
+        end
+
+        function ConfiguredSpells.AttackAnimations.styleFor(attackName, forcedStyle)
+            if forcedStyle ~= nil and forcedStyle ~= "" then return forcedStyle end
+            local name = string.lower(tostring(attackName or ""))
+            local magicWords = {"magia", "arcano", "magico", "mágico", "raio", "fogo",
+                "chama", "gelo", "acido", "ácido", "eletr", "explos", "energia",
+                "divino", "sombr", "relamp", "relâmp", "bola", "sopro"}
+            for i = 1, #magicWords do
+                if string.find(name, magicWords[i], 1, true) ~= nil then return "magic" end
+            end
+            local rangedWords = {"arco", "flecha", "besta", "tiro", "disparo", "projetil",
+                "projétil", "mosquete", "pistola", "funda", "zarabat", "azagaia", "dardo"}
+            for i = 1, #rangedWords do
+                if string.find(name, rangedWords[i], 1, true) ~= nil then return "ranged" end
+            end
+            return "melee"
+        end
+
+        function ConfiguredSpells.AttackAnimations.impact(scene, worldX, worldY, outcome, style)
+            if scene == nil then return end
+            local isCritical = outcome == "critical"
+            local isMiss = outcome == "miss"
+            local path = isMiss and ConfiguredSpells.AttackAnimations.MISS_PATH or
+                         (style == "melee" and ConfiguredSpells.AttackAnimations.SLASH_PATH or
+                          ConfiguredSpells.AttackAnimations.IMPACT_PATH)
+            local fill = isMiss and "#00000000" or
+                         (isCritical and "#FFD42A70" or
+                          (style == "magic" and "#36C8FF55" or "#FF633D50"))
+            local stroke = isMiss and "#FF5A5AE8" or
+                           (isCritical and "#FFF3A8FF" or
+                            (style == "magic" and "#9CEBFFFF" or "#FFD0A8FF"))
+            local startSize = isCritical and 0.8 or 0.55
+            local finishSize = isCritical and 2.6 or 1.9
+            local item, op = ConfiguredSpells.AttackAnimations.createDrawing(
+                scene, worldX, worldY, startSize, path, fill, stroke,
+                isCritical and 6 or 4)
+            if item == nil or op == nil then return end
+
+            local step = 0
+            local steps = 5
+            local function expand()
+                if item.isObjectAlive == false or op.isObjectAlive == false then return end
+                step = step + 1
+                local progress = step / steps
+                local size = startSize + (finishSize - startSize) * progress
+                pcall(function()
+                    item.width = size
+                    item.height = size
+                    item:setCenter(worldX, worldY, false)
+                    op.opacity = math.max(0.12, 1 - progress * 0.78)
+                    scene:sendDelayedUpdates()
+                end)
+                if step < steps then
+                    setTimeout(expand, 85)
+                else
+                    setTimeout(function() ConfiguredSpells.AttackAnimations.delete(item, scene) end, 110)
+                end
+            end
+            setTimeout(expand, 45)
+        end
+
+        function ConfiguredSpells.AttackAnimations.projectile(scene, startX, startY, endX, endY,
+                                             outcome, style)
+            local color = style == "magic" and "#55D9FFCC" or "#FFD45ACC"
+            local stroke = outcome == "critical" and "#FFF6B8FF" or
+                           (style == "magic" and "#D8F8FFFF" or "#FFF0B0FF")
+            local size = style == "magic" and 0.5 or 0.28
+            local item, op = ConfiguredSpells.AttackAnimations.createDrawing(scene, startX, startY, size,
+                ConfiguredSpells.AttackAnimations.CIRCLE_PATH, color, stroke, style == "magic" and 4 or 3)
+            if item == nil or op == nil then
+                ConfiguredSpells.AttackAnimations.impact(scene, endX, endY, outcome, style)
+                return
+            end
+
+            local step = 0
+            local steps = 6
+            local function travel()
+                if item.isObjectAlive == false or op.isObjectAlive == false then return end
+                step = step + 1
+                local progress = step / steps
+                local x = startX + (endX - startX) * progress
+                local y = startY + (endY - startY) * progress
+                pcall(function()
+                    item:setCenter(x, y, false)
+                    op.opacity = 0.55 + (progress * 0.45)
+                    scene:sendDelayedUpdates()
+                end)
+                if step < steps then
+                    setTimeout(travel, 65)
+                else
+                    ConfiguredSpells.AttackAnimations.delete(item, scene)
+                    ConfiguredSpells.AttackAnimations.impact(scene, endX, endY, outcome, style)
+                end
+            end
+            setTimeout(travel, 35)
+        end
+
+        function ConfiguredSpells.AttackAnimations.play(attacker, target, outcome, attackName, forcedStyle)
+            if not isLocalGM() or not ConfiguredSpells.AttackAnimations.isEnabled() or target == nil then return false end
+            local targetToken, targetScene = findTokenForCombatant(target)
+            if targetToken == nil or targetScene == nil then return false end
+            local okTarget, targetX, targetY = pcall(function() return targetToken:getCenter(false) end)
+            if not okTarget or targetX == nil or targetY == nil then return false end
+
+            local style = ConfiguredSpells.AttackAnimations.styleFor(attackName, forcedStyle)
+            local attackerToken, attackerScene = findTokenForCombatant(attacker)
+            if (style == "magic" or style == "ranged") and attackerToken ~= nil and
+               attackerScene == targetScene then
+                local okAttacker, attackerX, attackerY =
+                    pcall(function() return attackerToken:getCenter(false) end)
+                if okAttacker and attackerX ~= nil and attackerY ~= nil then
+                    ConfiguredSpells.AttackAnimations.projectile(targetScene, attackerX, attackerY,
+                                                targetX, targetY, outcome, style)
+                    return true
+                end
+            end
+            setTimeout(function()
+                ConfiguredSpells.AttackAnimations.impact(targetScene, targetX, targetY, outcome, style)
+            end, 45)
+            return true
+        end
+
+        function ConfiguredSpells.AttackAnimations.clearAll()
+            if not isLocalGM() then return end
+            local scenes = loadedRoomScenes()
+            for sceneIndex = 1, #scenes do
+                local scene = scenes[sceneIndex]
+                local found = {}
+                for itemIndex = 1, #scene.items do
+                    local item = scene.items[itemIndex]
+                    if ConfiguredSpells.AttackAnimations.isAnimation(item) then found[#found + 1] = item end
+                end
+                for i = 1, #found do ConfiguredSpells.AttackAnimations.delete(found[i], nil) end
+                if #found > 0 then pcall(function() scene:sendDelayedUpdates() end) end
+            end
+        end
+
+        function ConfiguredSpells.AttackAnimations.toggle()
+            if not requireGM() then return end
+            sheet.t20cAttackAnimationsEnabled = sheet.t20cAttackAnimationsEnabled == false
+            local status = sheet.t20cAttackAnimationsEnabled and "ativadas" or "desativadas"
+            sheet.lastCapture = "Animacoes de ataque " .. status
+            showMessage("Animacoes de ataque " .. status .. " para todos na mesa.")
+        end
+
         unlinkCombatantTokens = function(combatant, clearBars, preserveDeathMarker)
             if combatant == nil then return 0 end
             clearAuraVisuals(combatant)
@@ -4541,6 +4759,13 @@
                          tostring(#targetData) .. " alvo(s) com " .. attackName ..
                          ": FALHA CRITICA (1 natural). Nenhum dano aplicado.")
                 sheet.lastCapture = "Falha critica em area: " .. (attacker.name or "Combatente")
+                for i = 1, #targetData do
+                    local missedTarget = findCombatantById(targetData[i].targetId)
+                    if missedTarget ~= nil then
+                        ConfiguredSpells.AttackAnimations.play(attacker, missedTarget,
+                            "miss", attackName, nil)
+                    end
+                end
             end
             return true
         end
@@ -4613,6 +4838,8 @@
                              tostring(defense or "?")))
 
                     if not hit then
+                        ConfiguredSpells.AttackAnimations.play(attacker, target,
+                            "miss", attackName, nil)
                         local missStatus = isCritical and
                             "AMEACA DE CRITICO, mas nao superou a Defesa; ERRO" or "ERRO"
                         postChat((attacker.name or "Combatente") .. " atacou " ..
@@ -4620,6 +4847,8 @@
                                  comparison .. "): " .. missStatus .. ". " .. tostring(damage) ..
                                  " de dano ignorado" .. damageBuffNote .. maximumDamageNote .. ".")
                     else
+                        ConfiguredSpells.AttackAnimations.play(attacker, target,
+                            isCritical and "critical" or "hit", attackName, nil)
                         local character = room:findBibliotecaItem(tonumber(target.characterCode))
                         if character ~= nil then
                             openCharacterSheet(character, function(characterSheet)
@@ -4676,6 +4905,8 @@
                 end
             end
 
+            ConfiguredSpells.AttackAnimations.play(attacker, target,
+                appliedDamage > 0 and "hit" or "miss", effectName, "magic")
             local remaining = tonumber(target.currentHP)
             if appliedDamage > 0 then
                 remaining = applyDamage(target, character, characterSheet, appliedDamage,
@@ -5090,6 +5321,8 @@
 
         function ConfiguredSpells.applyAutomaticDamage(attacker, target, character, characterSheet,
                                                        spellName, damage, suffix)
+            ConfiguredSpells.AttackAnimations.play(attacker, target,
+                "hit", spellName, "magic")
             local remaining = applyDamage(target, character, characterSheet, damage, spellName, true)
             postChat((attacker.name or "Combatente") .. " usou " .. spellName .. " em " ..
                      (target.name or "Combatente") .. ": " .. tostring(damage) ..
@@ -5170,6 +5403,8 @@
                                                 local critical = natural == 20
                                                 local hit = natural ~= 1 and (critical or total >= defense)
                                                 if not hit then
+                                                    ConfiguredSpells.AttackAnimations.play(attacker, target,
+                                                        "miss", definition.spellName, "magic")
                                                     postChat((attacker.name or "Combatente") .. " usou " ..
                                                         definition.spellName .. " contra " ..
                                                         (target.name or "Combatente") .. " (" ..
@@ -5178,6 +5413,9 @@
                                                     return
                                                 end
                                                 local appliedDamage = critical and baseDamage * 2 or baseDamage
+                                                ConfiguredSpells.AttackAnimations.play(attacker, target,
+                                                    critical and "critical" or "hit",
+                                                    definition.spellName, "magic")
                                                 local remaining = applyDamage(target, targetCharacter, targetSheet,
                                                     appliedDamage, definition.spellName, true)
                                                 postChat((attacker.name or "Combatente") .. " usou " ..
@@ -6683,7 +6921,11 @@ if data.addToTracker == false then
                             comparison=comparison,
                             critical=criticalThreat
                         }
+                        ConfiguredSpells.AttackAnimations.play(attacker, target,
+                            criticalThreat and "critical" or "hit", attack.name, nil)
                     else
+                        ConfiguredSpells.AttackAnimations.play(attacker, target,
+                            "miss", attack.name, nil)
                         local reason = criticalThreat and
                             "AMEACA DE CRITICO, mas nao superou a Defesa; ERRO" or "ERRO"
                         postChat(tostring(attacker.name or "Combatente") .. " atacou " ..
@@ -7095,6 +7337,7 @@ if data.addToTracker == false then
                 {"Iniciativa e ordem", "Teste oposto", "Preparar melhor de 2d20",
                  "Preparar dano maximo", "Remover todos do tracker (mestre)",
                  "Sincronizar tokens (mestre)", "Areas de magia",
+                 "Animacoes de ataque (ligar/desligar)",
                  "Reiniciar combate (mestre)", "Fim da cena (mestre)", "Cancelar"},
                 function(selected, selectedIndex)
                     if not selected then return end
@@ -7105,8 +7348,9 @@ if data.addToTracker == false then
                     elseif selectedIndex == 5 then clearInitiative()
                     elseif selectedIndex == 6 then syncAllTokenBars()
                     elseif selectedIndex == 7 then SpellAreas.manageSpellAreas()
-                    elseif selectedIndex == 8 then restartCombat()
-                    elseif selectedIndex == 9 then endScene() end
+                    elseif selectedIndex == 8 then ConfiguredSpells.AttackAnimations.toggle()
+                    elseif selectedIndex == 9 then restartCombat()
+                    elseif selectedIndex == 10 then endScene() end
                 end)
         end
         local function initialize()
@@ -7116,10 +7360,14 @@ if data.addToTracker == false then
             sheet.nextCombatantId = tonumber(sheet.nextCombatantId) or 0
             sheet.currentName = sheet.currentName or "Nenhum"
             sheet.lastCapture = sheet.lastCapture or "Aguardando rolagens de Iniciativa no chat"
+            if sheet.t20cAttackAnimationsEnabled == nil then
+                sheet.t20cAttackAnimationsEnabled = true
+            end
             repairCombatants()
             ConfiguredSpells.InitiativeSync.install()
             registerSceneDragIntegration()
             if isLocalGM() then
+                ConfiguredSpells.AttackAnimations.clearAll()
                 local auraCombatants = getCombatants()
                 for i = 1, #auraCombatants do
                     auraCombatants[i].bestOfTwoArmed = false
@@ -7161,6 +7409,7 @@ if data.addToTracker == false then
             ConfiguredSpells.BestOfTwo.suppressedDamage = {}
             npcRemovalPending = {}
             ConfiguredSpells.InitiativeSync.shutdown()
+            ConfiguredSpells.AttackAnimations.clearAll()
             clearAllTurnHighlights()
             if cancelTokenLink ~= nil then cancelTokenLink() end
             unregisterSceneDragIntegration()

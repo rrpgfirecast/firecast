@@ -11,7 +11,80 @@ Plugin para Firecast SDK 3.7 que adiciona uma janela acoplavel de iniciativa e c
 ## Instalacao e atualizacoes
 
 Depois que o plugin for aceito no catalogo oficial, instale o Plugin Auto Updater, abra-o no Firecast e procure por T20 Combate. As novas versoes aparecerao ali sem que o mestre precise reenviar o arquivo manualmente aos jogadores.
-## Funcionalidades da versao 1.8.0
+## Visao geral das funcoes
+
+### Iniciativa e turnos
+
+- Adiciona jogadores, NPCs da biblioteca e fichas rapidas ao tracker, inclusive varias copias independentes do mesmo monstro.
+- Permite iniciativa individual, rolagem em grupo pelo mestre, valor manual, reordenacao automatica, avancar e voltar turno.
+- Jogadores rolam a propria iniciativa mesmo fora do turno e podem encerrar o proprio turno; o mestre controla toda a ordem.
+- Destaca no mapa o token do turno atual com uma borda amarela cintilante.
+
+### Alvos, ataques, dano e testes
+
+- Marca um ou varios alvos sem trocar o turno e compara ataques da ficha com a Defesa de cada alvo.
+- Reconhece acerto, erro, 20 natural, margem de ameaca e critico conforme as regras do sistema.
+- Desconta PV automaticamente, sincroniza a barra do token e publica o resultado no chat.
+- Oferece teste oposto Ataque x Ataque e teste livre sem CD, comparando diretamente os dois resultados.
+- Permite preparar melhor de 2d20 e dano maximo para o proximo ataque ou magia, inclusive usando os dois efeitos juntos.
+
+### Animacoes de ataque
+
+- Mostra um corte para ataques corpo a corpo, um projetil para ataques a distancia e um efeito magico para magias.
+- Diferencia acerto, critico e erro e reproduz o efeito em cada alvo de ataques multiplos.
+- Usa os tokens vinculados como origem e destino e remove os desenhos temporarios automaticamente.
+- Pode ser ativada ou desativada em `Mais acoes > Animacoes de ataque`.
+
+### Magias, areas e auras
+
+- Cadastra magias reutilizaveis no combatente, com acerto automatico ou ataque contra Defesa e resistencia opcional.
+- Resolve magias em varios alvos, aplica dano total, metade ou nenhum dano e informa cada resultado no chat.
+- Cria e movimenta areas visuais de Esfera, Cilindro, Cone, Linha, Quadrado, Cubo e retangulo personalizado.
+- Cria auras coloridas presas ao token, com tamanho em metros e duracao manual, por rodadas ou ate o fim da cena.
+
+### Condicoes, buffs e debuffs
+
+- Aplica condicoes de Tormenta20 e controla duracao manual, por rodadas ou por cena.
+- Automatiza penalidades, Defesa, pericias e ataques sem apagar bonus que ja existiam na ficha.
+- Permite bonus ou penalidades de Ataque, Dano, Defesa ou Todos no personagem selecionado ou em todos os alvos.
+- Mantem a lista de efeitos ativa sincronizada para mestre e jogadores e resolve efeitos periodicos no inicio do turno.
+
+### PV, PM, queda e morte
+
+- Possui botoes `-1`, `-5`, `+1`, `+5` e `Definir` para PV e PM.
+- Jogadores em 0 PV recebem Caido e fazem Constituicao CD 15; falhas causam 1d6 e repetem o teste no turno seguinte.
+- Jogadores em -10 PV recebem indicador de morte no token e permanecem no tracker.
+- NPCs derrotados recebem o indicador de morte e depois saem automaticamente do tracker.
+
+### Tokens e barras
+
+- Vincula, desvincula e sincroniza tokens; o mestre pode administrar inclusive tokens de jogadores.
+- Permite arrastar combatentes do tracker para o mapa usando o token configurado na ficha.
+- Sincroniza PV na barra 1 verde, PM na barra 2 azul-clara e Defesa na barra 3 amarela.
+- Mantem nomes de copias independentes, como `Goblin A`, `Goblin B` e `Goblin C`.
+
+### NPCs e fichas rapidas
+
+- Cria fichas rapidas `fib.Tormenta20` na pasta `Monstros`, com atributos de combate, token, ataques e quantidade.
+- Permite anotar habilidades com nome, tipo de acao, descricao, custo em PM e rolagem opcional.
+- Exibe e usa as habilidades durante o combate, mantendo PV, PM e condicoes separados para cada copia.
+
+### Permissoes e sincronizacao
+
+- Jogadores controlam seus personagens, iniciativas, alvos, magias, areas, auras, condicoes e efeitos permitidos.
+- O mestre possui acesso total a combatentes, fichas, tokens e controles de combate.
+- Solicitacoes de jogadores sao validadas e aplicadas pelo cliente do mestre para manter todos os clientes sincronizados.
+
+### Conteudo distribuido
+
+A versao publica contem somente o motor de combate e a integracao com a ficha `fib.Tormenta20`. Ela nao inclui textos de livros, catalogos de ameacas ou fichas extraidas de material editorial.
+
+## Funcionalidades da versao 1.9.1
+
+- Adiciona animacoes compartilhadas no mapa para ataques corpo a corpo, ataques a distancia e magias.
+- Exibe impacto diferente para acerto, critico e erro, inclusive em ataques contra varios alvos.
+- A opcao `Mais acoes > Animacoes de ataque` permite ligar ou desligar os efeitos visuais para toda a mesa.
+- A implementacao usa uma tabela interna para respeitar o limite de 200 variaveis locais do Lua 5.1 usado pelo Firecast.
 - Corrige a associacao do dano maximo ao combatente que o preparou, adiciona leitura alternativa da formula exibida pelo Firecast e publica no chat o valor rolado substituido pelo maximo.
 - O menu `Mais acoes > Preparar dano maximo` maximiza todos os dados do proximo ataque ou magia: `1d8` vira 8 e `2d6+4` vira 16. Funciona para jogadores e mestre, combina com melhor de 2d20 e desliga apos um uso.
 - Corrige expressoes como `1d20 + 16.0`: bonus de ataque agora e enviado ao Firecast no formato inteiro aceito pelo rolador de dados.
@@ -120,7 +193,7 @@ Para jogadores, selecione o proprio personagem no tracker e role o painel de det
 
 - `Minha iniciativa`: rola a iniciativa do personagem principal do jogador.
 - `+ Combatente`: adiciona NPC da biblioteca, ficha rapida de NPC ou jogador; exclusivo do mestre.
-- `Mais acoes`: abre iniciativa e ordem, teste oposto, remover todos do tracker, sincronizacao de tokens, areas de magia, reinicio do combate e fim da cena.
+- `Mais acoes`: abre iniciativa e ordem, teste oposto, remover todos do tracker, sincronizacao de tokens, animacoes de ataque, areas de magia, reinicio do combate e fim da cena.
 - `Voltar` e `Proximo`: controles de turno do mestre.
 - `Encerrar meu turno`: permite ao jogador encerrar o proprio turno.
 ## Como ajustar o tamanho do tracker
