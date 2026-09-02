@@ -32,7 +32,8 @@ local slotsPorTipo = {
     bota = "Bota",
     calca = "Calca",
     ["calÃ§a"] = "Calca",
-    arma = "Arma"
+    arma = "Arma",
+    mochila = "Mochila",
 }
 
 local tiposPotion = {
@@ -46,7 +47,7 @@ local imagensPadrao = {
     Escudo = "/Frames/Escudo.png",
     Bota = "/Frames/Bota.png",
     Calca = "/Frames/Calca.png",
-    Arma = "/Frames/Arma.png"
+    Arma = "/Frames/Arma.png",
 }
 
 local partesBoneco = {
@@ -101,6 +102,10 @@ end
 
 local function normalizarChaveCatalogo(valor)
     local texto = limparTexto(valor)
+    texto = texto:gsub("Ã¡", "a"):gsub("Ã ", "a"):gsub("Ã¢", "a"):gsub("Ã£", "a")
+    texto = texto:gsub("Ã©", "e"):gsub("Ãª", "e"):gsub("Ã­", "i")
+    texto = texto:gsub("Ã³", "o"):gsub("Ã´", "o"):gsub("Ãµ", "o")
+    texto = texto:gsub("Ãº", "u"):gsub("Ã§", "c")
     texto = texto:gsub("á", "a"):gsub("à", "a"):gsub("ã", "a"):gsub("â", "a")
     texto = texto:gsub("é", "e"):gsub("ê", "e")
     texto = texto:gsub("í", "i")
@@ -110,7 +115,41 @@ local function normalizarChaveCatalogo(valor)
     return texto
 end
 
+local function textoPotion(valor)
+    local texto = normalizarChaveCatalogo(valor)
+    texto = texto:gsub("[_%-%:]+", " "):gsub("%s+", " "):gsub("^%s*(.-)%s*$", "%1")
+    return texto
+end
+
+local function textoComecaComoPotion(texto)
+    texto = textoPotion(texto)
+    return texto:find("^potion") ~= nil
+        or texto:find("^pocao") ~= nil
+        or texto:find("^parcao") ~= nil
+end
+
+local function tipoPotionDoItem(item)
+    local tipo = textoPotion(item and item.tipoItem)
+    local nome = textoPotion(item and item.nomeItem)
+    local texto = tipo .. " " .. nome
+    if not textoComecaComoPotion(tipo) and not textoComecaComoPotion(nome) then return nil end
+    if texto:find("pp", 1, true) ~= nil then return "PP" end
+    if texto:find("hp", 1, true) ~= nil or texto:find("vida", 1, true) ~= nil or texto:find("cura", 1, true) ~= nil then return "HP" end
+    return nil
+end
+
+local function distanciaLuzItem(item)
+    local nome = normalizarChaveCatalogo(item and item.nomeItem):gsub("[_%-%:]+", " "):gsub("%s+", " ")
+    local tipo = normalizarChaveCatalogo(item and item.tipoItem)
+    local texto = nome .. " " .. tipo
+    if texto:find("lampiao", 1, true) ~= nil or texto:find("lampião", 1, true) ~= nil then return 18 end
+    if texto:find("lamparina", 1, true) ~= nil then return 12 end
+    if texto:find("tocha", 1, true) ~= nil then return 9 end
+    return 0
+end
+
 local function slotDoItem(item)
+    if distanciaLuzItem(item) > 0 then return "Luz" end
     return slotsPorTipo[normalizarChaveCatalogo(item and item.tipoItem)]
 end
 
@@ -123,7 +162,7 @@ local function chaveNomeItem(item)
 end
 
 local function visualDoItem(item)
-    local nome = chaveNomeItem(item)
+    local nome = normalizarChaveCatalogo(item and item.nomeItem):gsub("[_%-%:]+", " "):gsub("%s+", " ")
     local entrada = catalogoVisualEquipamentos[nome]
 
     if entrada ~= nil then
@@ -206,6 +245,24 @@ local function uidInventario(item)
     return item.uidInventario
 end
 
+local function atualizarLuzFichaLocal(ficha, item, slot)
+    if ficha == nil or slot ~= "Luz" then return end
+    local metros = distanciaLuzItem(item)
+    ficha.ItemEquipadoLuzMetros = metros > 0 and (tostring(metros) .. "m") or ""
+    ficha.TokenLuzMetros = metros
+    ficha.TokenLuzItem = metros > 0 and tostring(item and item.nomeItem or "") or ""
+end
+local function corRankSlotEquipado(rank)
+    local r = tostring(rank or ""):upper():gsub("^%s*(.-)%s*$", "%1")
+    if r == "SS" then return "#FFD700" end
+    if r == "S" then return "#FF4D4D" end
+    if r == "A" then return "#FF9F1C" end
+    if r == "B" then return "#B15CFF" end
+    if r == "C" then return "#4DA3FF" end
+    if r == "D" then return "#5DD46F" end
+    if r == "E" then return "#BFC3C7" end
+    return "#4A4032"
+end
 local function atualizarItemEquipadoNaFicha(item)
     if item == nil or item.equipadoEm == nil or item.equipadoEm == "" then
         return
@@ -222,15 +279,13 @@ local function atualizarItemEquipadoNaFicha(item)
     ficha["ItemEquipado" .. slot] = item.nomeItem or ""
     ficha["ItemEquipadoHandle" .. slot] = NDB.getNodeHandle(item)
     ficha["ItemEquipadoUid" .. slot] = uidInventario(item)
+    ficha["ItemEquipadoCorRank" .. slot] = corRankSlotEquipado(item.RankItem)
     atualizarImagemBoneco(ficha, slot, imagemEquipamentoBoneco(item, slot))
+    atualizarLuzFichaLocal(ficha, item, slot)
 
     for _, atributo in ipairs(atributos) do
         ficha[atributo.prefixoSlot .. slot] = fixNumero(item[atributo.campoItem])
     end
-end
-
-local function tipoPotionDoItem(item)
-    return tiposPotion[limparTexto(item.tipoItem)]
 end
 
 local function ehSlotVazio(item)
@@ -250,7 +305,9 @@ local function limparSlot(ficha, slot)
     ficha["ItemEquipado" .. slot] = ""
     ficha["ItemEquipadoHandle" .. slot] = nil
     ficha["ItemEquipadoUid" .. slot] = nil
+    ficha["ItemEquipadoCorRank" .. slot] = "#4A4032"
     atualizarImagemBoneco(ficha, slot, imagemBaseBoneco(slot))
+    atualizarLuzFichaLocal(ficha, nil, slot)
 
     for _, atributo in ipairs(atributos) do
         ficha[atributo.prefixoSlot .. slot] = 0
@@ -286,7 +343,9 @@ local function desequiparItem(item)
     ficha["ItemEquipado" .. slot] = ""
     ficha["ItemEquipadoHandle" .. slot] = nil
     ficha["ItemEquipadoUid" .. slot] = nil
+    ficha["ItemEquipadoCorRank" .. slot] = "#4A4032"
     atualizarImagemBoneco(ficha, slot, imagemBaseBoneco(slot))
+    atualizarLuzFichaLocal(ficha, nil, slot)
 
     -- zera atributos
     for _, atributo in ipairs(atributos) do
@@ -315,7 +374,7 @@ local function equiparItem(item)
     end
 
     if slot == nil then
-        showMessage("Escolha um tipo valido: Capacete, Peitoral, Escudo, Bota, Calca ou Arma.")
+        showMessage("Escolha um tipo valido: Capacete, Peitoral, Escudo, Bota, Calca, Arma, Mochila ou item de Luz.")
         return
     end
 
@@ -326,6 +385,7 @@ local function equiparItem(item)
     ficha["ItemEquipado" .. slot] = item.nomeItem or ""
     ficha["ItemEquipadoHandle" .. slot] = NDB.getNodeHandle(item)
     ficha["ItemEquipadoUid" .. slot] = uidInventario(item)
+    ficha["ItemEquipadoCorRank" .. slot] = corRankSlotEquipado(item.RankItem)
     atualizarImagemBoneco(ficha, slot, imagemEquipamentoBoneco(item, slot))
 
 for _, atributo in ipairs(atributos) do
@@ -471,11 +531,119 @@ local coresRank = {
     SS = "#FF0000"
 }
 
+local function itemUsaQuantidade(item)
+    if item == nil then return true end
+
+    local tipo = limparTexto(item.tipoItem)
+    if tipo == "material" or tipo == "outros" or tipo == "potion hp" or tipo == "potion pp" or tipo:find("^potion") ~= nil or tipo == "minerio" or tipo == "minério" then
+        return true
+    end
+
+    if tostring(item.usaQuantidade or "") == "true" then
+        return true
+    end
+
+    return false
+end
+
+local function itemVendavelLoja(item)
+    if item == nil or ehSlotVazio(item) then return false end
+    if tostring(item.origemLoja or "") == "true" then return true end
+    if tostring(item.uidLojaOrigem or "") ~= "" then return true end
+    if fixNumero(item.precoLojaPrata) > 0 then return true end
+    return false
+end
+local function itemDurabilidadeEhArma(item)
+    local tipo = limparTexto(item and item.tipoItem)
+    return tipo == "arma"
+end
+
+local function itemEquipamentoComDurabilidade(item)
+    local tipo = limparTexto(item and item.tipoItem)
+    return tipo == "capacete" or tipo == "peitoral" or tipo == "escudo" or tipo == "bota" or tipo == "calca" or tipo == "calça" or tipo == "arma"
+end
+
+local function durabilidadeMaximaPorRankItem(item)
+    local rank = string.upper(tostring(item and item.RankItem or "E"))
+    if rank == "D" then return 30 end
+    if rank == "C" then return 40 end
+    if rank == "B" then return 50 end
+    if rank == "A" then return 60 end
+    if rank == "S" or rank == "SS" then return 80 end
+    return 20
+end
+
+local SEGUNDOS_POR_PD_ITEM = 12 * 60 * 60
+
+local function timestampDurabilidadeItem(valor)
+    local numero = tonumber(valor)
+    if numero ~= nil and numero > 100000 then return numero end
+
+    local a, m, d = tostring(valor or ""):match("^(%d+)%-(%d+)%-(%d+)$")
+    if a ~= nil then
+        return os.time({year=tonumber(a), month=tonumber(m), day=tonumber(d), hour=0, min=0, sec=0})
+    end
+
+    return nil
+end
+
+local function atualizarDurabilidadeDisplayItem(item)
+    if item == nil or ehSlotVazio(item) or not itemEquipamentoComDurabilidade(item) then
+        if item ~= nil then item.durabilidadeDisplay = "" end
+        return
+    end
+
+    local maximo = tonumber(item.durabilidadeMaxima) or durabilidadeMaximaPorRankItem(item)
+    local base = tonumber(item.durabilidadeBaseTempo) or tonumber(item.durabilidade) or maximo
+    local dataBase = timestampDurabilidadeItem(item.durabilidadeDataBase)
+
+    if maximo <= 0 then maximo = durabilidadeMaximaPorRankItem(item) end
+    if base > maximo then base = maximo end
+    if base < 0 then base = 0 end
+
+    local atual = base
+    if dataBase ~= nil and not itemDurabilidadeEhArma(item) then
+        local pontosPerdidos = math.floor(math.max(0, os.time() - dataBase) / SEGUNDOS_POR_PD_ITEM)
+        atual = math.max(0, math.min(maximo, base - pontosPerdidos))
+    end
+
+    item.durabilidadeMaxima = maximo
+    item.durabilidade = atual
+    item.durabilidadeDisplay = tostring(math.floor(atual))
+    item.durabilidadeBaseTempo = base
+    item.durabilidadeDataBase = dataBase or ""
+end
+local function atualizarQuantidadeDisplayItem(item)
+    if item == nil then return end
+
+    if ehSlotVazio(item) then
+        item.quantidadeDisplay = ""
+        return
+    end
+
+    if itemUsaQuantidade(item) then
+        local qtd = item.quantidade
+        if qtd == nil or tostring(qtd) == "" then qtd = 1 end
+        item.quantidadeDisplay = tostring(qtd)
+    else
+        local nivel = tonumber(item.nivelUpgrade) or 0
+        item.nivelUpgrade = nivel
+        if item.textoUpgrade == nil or tostring(item.textoUpgrade) == "" then
+            item.textoUpgrade = "+" .. tostring(nivel)
+        else
+            item.textoUpgrade = tostring(item.textoUpgrade)
+        end
+        item.quantidade = ""
+        item.quantidadeDisplay = item.textoUpgrade
+        item.usaQuantidade = "false"
+    end
+end
 local function atualizarAcoesItem(form)
     if form == nil or form.sheet == nil then
         return
     end
 
+    atualizarQuantidadeDisplayItem(form.sheet)
     local item = form.sheet
     local slotVazio = ehSlotVazio(item)
     local ehEquipavel = slotDoItem(item) ~= nil
@@ -505,6 +673,7 @@ local function atualizarAcoesItem(form)
             retFundo = form:findControlByName("retFundoItem"),
             imgItem = form:findControlByName("imgItemInventario"),
             layoutQtd = form:findControlByName("layoutQuantidadeItem"),
+            layoutPd = form:findControlByName("layoutDurabilidadeItem"),
             txtEquipped = form:findControlByName("txtEquipped")
         }
     end
@@ -516,6 +685,7 @@ local function atualizarAcoesItem(form)
     local retFundo = form._cwnaControlesItem.retFundo
     local imgItem = form._cwnaControlesItem.imgItem
     local layoutQtd = form._cwnaControlesItem.layoutQtd
+    local layoutPd = form._cwnaControlesItem.layoutPd
     local txtEquipped = form._cwnaControlesItem.txtEquipped
 
     if btnUsar ~= nil then
@@ -536,6 +706,11 @@ local function atualizarAcoesItem(form)
 
     if layoutQtd ~= nil then
         layoutQtd.visible = not slotVazio
+    end
+
+    if layoutPd ~= nil then
+        atualizarDurabilidadeDisplayItem(item)
+        layoutPd.visible = not slotVazio and itemEquipamentoComDurabilidade(item)
     end
 
     if retAcao ~= nil then
@@ -606,6 +781,10 @@ apagarItem = function(item)
     item.imagemestilo2 = ""
     item.equipadoEm = ""
     item.quantidade = ""
+    item.quantidadeDisplay = ""
+    item.nivelUpgrade = ""
+    item.textoUpgrade = ""
+    item.usaQuantidade = ""
     item.hp = 0
     item.pp = 0
     item.ca = 0
@@ -815,6 +994,43 @@ end
             ordenarListaInventario(self)
         end)
 
+
+        drop:addAction("cwnaForjaSlot", function(slotForja)
+            if CWNA_devolverSlotForjaParaInventario ~= nil then
+                CWNA_devolverSlotForjaParaInventario(NDB.getRoot(sheet), tonumber(slotForja), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
+        drop:addAction("cwnaForjaRepararSlot", function(slotForja)
+            if CWNA_devolverSlotForjaRepararParaInventario ~= nil then
+                CWNA_devolverSlotForjaRepararParaInventario(NDB.getRoot(sheet), tonumber(slotForja), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
+
+        drop:addAction("cwnaForjaForjarSlot", function(slotForja)
+            if CWNA_devolverSlotForjaForjarParaInventario ~= nil then
+                CWNA_devolverSlotForjaForjarParaInventario(NDB.getRoot(sheet), tonumber(slotForja), sheet, self)
+            end
+        end)
+        drop:addAction("cwnaColetorFerramentaSlot", function()
+            if CWNA_devolverFerramentaColetorParaInventario ~= nil then
+                CWNA_devolverFerramentaColetorParaInventario(NDB.getRoot(sheet), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
+        drop:addAction("cwnaMercadorFerramentaSlot", function()
+            if CWNA_devolverFerramentaMercadorParaInventario ~= nil then
+                CWNA_devolverFerramentaMercadorParaInventario(NDB.getRoot(sheet), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
+        drop:addAction("cwnaAlquimistaSlot", function(slotAlquimista)
+            if CWNA_devolverSlotAlquimistaParaInventario ~= nil then
+                CWNA_devolverSlotAlquimistaParaInventario(NDB.getRoot(sheet), tonumber(slotAlquimista), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
         drop:addAction("cwnaInventarioUid", function(uid)
             trocarOrdemInventario(sheet, uid)
             ordenarListaInventario(self)
@@ -864,7 +1080,44 @@ end
                 ordenarListaInventario(self)
             end)
 
-            drop:addAction("cwnaInventarioUid", function(uid)
+    
+        drop:addAction("cwnaForjaSlot", function(slotForja)
+            if CWNA_devolverSlotForjaParaInventario ~= nil then
+                CWNA_devolverSlotForjaParaInventario(NDB.getRoot(sheet), tonumber(slotForja), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
+        drop:addAction("cwnaForjaRepararSlot", function(slotForja)
+            if CWNA_devolverSlotForjaRepararParaInventario ~= nil then
+                CWNA_devolverSlotForjaRepararParaInventario(NDB.getRoot(sheet), tonumber(slotForja), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
+
+        drop:addAction("cwnaForjaForjarSlot", function(slotForja)
+            if CWNA_devolverSlotForjaForjarParaInventario ~= nil then
+                CWNA_devolverSlotForjaForjarParaInventario(NDB.getRoot(sheet), tonumber(slotForja), sheet, self)
+            end
+        end)
+        drop:addAction("cwnaColetorFerramentaSlot", function()
+            if CWNA_devolverFerramentaColetorParaInventario ~= nil then
+                CWNA_devolverFerramentaColetorParaInventario(NDB.getRoot(sheet), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
+        drop:addAction("cwnaMercadorFerramentaSlot", function()
+            if CWNA_devolverFerramentaMercadorParaInventario ~= nil then
+                CWNA_devolverFerramentaMercadorParaInventario(NDB.getRoot(sheet), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
+        drop:addAction("cwnaAlquimistaSlot", function(slotAlquimista)
+            if CWNA_devolverSlotAlquimistaParaInventario ~= nil then
+                CWNA_devolverSlotAlquimistaParaInventario(NDB.getRoot(sheet), tonumber(slotAlquimista), sheet, self)
+                ordenarListaInventario(self)
+            end
+        end)
+        drop:addAction("cwnaInventarioUid", function(uid)
                 trocarOrdemInventario(sheet, uid)
                 ordenarListaInventario(self)
             end)
@@ -875,7 +1128,7 @@ end
                 return
             end
 
-            if tostring(sheet.origemLoja or "") == "true" then
+            if itemVendavelLoja(sheet) then
                 if CWNA_abrirDetalheItemLojaComprado ~= nil then
                     CWNA_abrirDetalheItemLojaComprado(sheet, self)
                 end
@@ -910,7 +1163,7 @@ end
             left="59" top="2"
             visible="false">
         <event name="onClick"><![CDATA[
-            if tostring(sheet.origemLoja or "") == "true" then
+            if itemVendavelLoja(sheet) then
                 if CWNA_abrirDetalheItemLojaComprado ~= nil then
                     CWNA_abrirDetalheItemLojaComprado(sheet, self)
                 end
@@ -924,7 +1177,7 @@ end
     <!-- QUANTIDADE -->
     <layout name="layoutQuantidadeItem" height="18" top="2" left="4" width="80" visible="false">
 
-        <label field="quantidade"
+        <label field="quantidadeDisplay"
                width="25"
                horzTextAlign="center"
                left="-6"
@@ -932,7 +1185,7 @@ end
                fontSize="14"
                fontColor="#000000"/>
 
-        <label field="quantidade"
+        <label field="quantidadeDisplay"
                width="25"
                horzTextAlign="center"
                left="-4"
@@ -940,7 +1193,7 @@ end
                fontSize="14"
                fontColor="#000000"/>
 
-        <label field="quantidade"
+        <label field="quantidadeDisplay"
                width="25"
                horzTextAlign="center"
                left="-5"
@@ -948,7 +1201,7 @@ end
                fontSize="14"
                fontColor="#000000"/>
 
-        <label field="quantidade"
+        <label field="quantidadeDisplay"
                width="25"
                horzTextAlign="center"
                left="-5"
@@ -956,18 +1209,28 @@ end
                fontSize="14"
                fontColor="#000000"/>
 
-        <label field="quantidade"
+        <label field="quantidadeDisplay"
                width="25"
                horzTextAlign="center"
                left="-5"
                fontSize="14"
                fontColor="#FFFF00"/>
 
-        <dataLink field="quantidade" defaultValue="1"/>
+        <dataLink field="quantidadeDisplay" defaultValue="1"/>
 
     </layout>
 
    
+
+    <!-- DURABILIDADE -->
+    <layout name="layoutDurabilidadeItem" height="18" top="58" left="49" width="28" visible="false">
+        <label field="durabilidadeDisplay" width="28" horzTextAlign="center" left="-1" top="0" fontSize="13" fontColor="#000000"/>
+        <label field="durabilidadeDisplay" width="28" horzTextAlign="center" left="1" top="0" fontSize="13" fontColor="#000000"/>
+        <label field="durabilidadeDisplay" width="28" horzTextAlign="center" left="0" top="-1" fontSize="13" fontColor="#000000"/>
+        <label field="durabilidadeDisplay" width="28" horzTextAlign="center" left="0" top="1" fontSize="13" fontColor="#000000"/>
+        <label field="durabilidadeDisplay" width="28" horzTextAlign="center" left="0" top="0" fontSize="13" fontColor="#FFFF00"/>
+        <dataLink field="durabilidadeDisplay" defaultValue=""/>
+    </layout>
     <rectangle name="retAcaoItem"
                left="22" top="57"
                width="15" height="15"
@@ -982,7 +1245,7 @@ end
         visible="false"
         enabled="false"/>
 
-    <dataLink fields="{'tipoItem','RankItem','nomeItem','imagemestilo2','equipadoEm','quantidade','hp','pp','ca','rd','dano','cura','ordemInventario','uidInventario','slotVazio','origemLoja','uidLojaOrigem','precoLojaPrata','descricaoLoja'}">
+    <dataLink fields="{'tipoItem','RankItem','nomeItem','imagemestilo2','equipadoEm','quantidade','quantidadeDisplay','nivelUpgrade','textoUpgrade','usaQuantidade','durabilidade','durabilidadeMaxima','durabilidadeDisplay','durabilidadeBaseTempo','durabilidadeDataBase','hp','pp','ca','rd','dano','cura','ordemInventario','uidInventario','slotVazio','origemLoja','uidLojaOrigem','precoLojaPrata','descricaoLoja'}">
         <event name="onChange"><![CDATA[
             if ehSlotVazio(sheet) then
                 atualizarAcoesItem(self)

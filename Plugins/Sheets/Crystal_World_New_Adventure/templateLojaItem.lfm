@@ -14,7 +14,7 @@ local function atualizarCardLoja(form)
     if form == nil or form.sheet == nil then return end
 
     local ficha = NDB.getRoot(form.sheet)
-    local destravada = ficha ~= nil and tostring(ficha.LojaDestravada or "") == "true"
+    local destravada = ficha ~= nil and CWNA_lojaEditorLocalAberto ~= nil and CWNA_lojaEditorLocalAberto(ficha)
     local temItem = tostring(form.sheet.LojaCardVisivel or "") == "true" and tostring(form.sheet.uidLoja or "") ~= ""
     local card = form:findControlByName("cardLojaItemRoot")
     local btnEditar = form:findControlByName("btnEditarItemLoja")
@@ -72,7 +72,7 @@ end
         ]]></event>
         <event name="onClick"><![CDATA[
             local ficha = NDB.getRoot(sheet)
-            if ficha ~= nil and tostring(ficha.LojaDestravada or "") == "true" then
+            if ficha ~= nil and CWNA_lojaEditorLocalAberto ~= nil and CWNA_lojaEditorLocalAberto(ficha) then
                 CWNA_carregarItemLojaNoEditor(sheet)
             else
                 CWNA_carregarDetalheCompraLoja(sheet)

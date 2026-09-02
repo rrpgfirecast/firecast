@@ -8,8 +8,8 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Alem_do_veu_Hiperion" name="CWNA 2e" url="https://sdk3.firecast.app/Plugins/Sheets/Crystal_World_New_Adventure/output/Crystal_World_New_Adventure.rpk?raw=true" fileName="Crystal_World_New_Adventure.rpk" repositoryPath="Sheets/Crystal_World_New_Adventure/" author="Cezar" description="Ficha com cálculos automáticos para CWNA 2e." version="2.1.0" compilationDate="01072026231636" compilationDigest="3ebb5ff85fb60da4863590b646ed79bf6188f212">
-        <info lang="pt-BR" name="CWNA 2e" description="Ficha com cálculos automáticos para CWNA 2e." author="Cezar" site="."/>
+    <element id="Alem_do_veu_Hiperion" name="CWNA 2e" url="https://sdk3.firecast.app/Plugins/Sheets/Crystal_World_New_Adventure/output/Crystal_World_New_Adventure.rpk?raw=true" fileName="Crystal_World_New_Adventure.rpk" repositoryPath="Sheets/Crystal_World_New_Adventure/" author="Cezar_a" description="Ficha com cálculos automáticos para CWNA 2e." version="2.1.1" compilationDate="02092026235435" compilationDigest="e1d1c77cc00d33dc1b7c089e56f1d1aa63c73519">
+        <info lang="pt-BR" name="CWNA 2e" description="Ficha com cálculos automáticos para CWNA 2e." author="Cezar_a" site="."/>
         <dataTypes>
             <dataType id="Alem_do_veu_Hiperion" title="Crystal_world_2.0" formType="sheetTemplate">
                 <info title="Crystal_world_2.0"/>
@@ -350,8 +350,8 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.T20" name="Ficha T20" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true" fileName="Ficha T20.rpk" repositoryPath="Sheets/Ficha T20/" author="Ambesek" description="Ficha para o cenario e sistema Tormenta 20." version="1.0.1" compilationDate="03032023121119" compilationDigest="bbeca6a2faa31e9ebfcb365f33acc2ce546ab9b0">
-        <info lang="pt-BR" name="Ficha T20" description="Ficha para o cenario e sistema Tormenta 20." author="Ambesek"/>
+    <element id="Ambesek.T20" name="Ficha T20" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true" fileName="Ficha T20.rpk" repositoryPath="Sheets/Ficha T20/" author="Ambesek" description="Ficha para o cenario e sistema Tormenta 20." version="1.1.0" compilationDate="16072026183507" compilationDigest="55c0b1ae6a6d718379239f0fc4f8c0c5bfc6a077">
+        <info lang="pt-BR" name="Ficha T20" description="Ficha para o cenario e sistema Tormenta 20." author="Ambesek" site="https://firecast.app/"/>
         <dataTypes>
             <dataType id="Ambesek.T20" title="Ficha T20" formType="sheetTemplate">
                 <info title="Ficha T20"/>
