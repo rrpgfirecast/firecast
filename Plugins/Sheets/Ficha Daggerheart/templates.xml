@@ -356,7 +356,7 @@
 					if profCount > 1 then
 						roll = roll:gsub("(%d*)d", function(num)
 					        return profCount .. "d"
-					    end, 1)
+					    end)
 					end
 
 					local rolagem = Firecast.interpretarRolagem(roll)
