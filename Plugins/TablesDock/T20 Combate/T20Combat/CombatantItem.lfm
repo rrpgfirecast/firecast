@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmT20CombatantItem" height="64" theme="dark" margins="{top=2,bottom=2,left=2,right=2}">
+    <script><![CDATA[
+        require("firecast.lua")
+        require("dialogs.lua")
+        require("system.lua")
+        local T20DragState = require("T20Combat/DragState.lua")
+
+        local function startTokenDrag(drag)
+            if sheet == nil or drag == nil then return end
+            local room = Firecast.getMesaDe(self) or Firecast.getMesaDe(sheet)
+            if room == nil or room.meuJogador == nil then return end
+
+            local character = room:findBibliotecaItem(tonumber(sheet.characterCode))
+            if character == nil or character.tipo ~= "personagem" then
+                showMessage("O personagem deste combatente nao foi encontrado na biblioteca.")
+                return
+            end
+
+            local isGM = room.meuJogador.isMestre == true
+            local isOwner = character.dono == room.meuJogador
+            local isMain = tonumber(room.meuJogador.personagemPrincipal) == tonumber(character.codigoInterno)
+            if not isGM and not isOwner and not isMain then
+                showMessage("Voce so pode arrastar os tokens dos seus proprios personagens.")
+                return
+            end
+
+            T20DragState.pending = {
+                roomCode = room.codigoInterno,
+                combatantId = tostring(sheet.combatantId or ""),
+                characterCode = character.codigoInterno,
+                startedAt = System.getTickCount()
+            }
+            drag:addData("character", character)
+        end
+    ]]></script>
+    <rectangle align="client" color="#232733" xradius="5" yradius="5" hitTest="false"
+               padding="{left=7,right=7,top=5,bottom=5}">
+        <rectangle align="left" width="18" color="#232733" hitTest="true" cursor="drag"
+                   hint="Arraste este combatente para o tabuleiro">
+            <label align="client" text="≡" hitTest="false" fontSize="14" fontColor="#8f9bad"
+                   horzTextAlign="center" vertTextAlign="center"/>
+            <event name="onStartDrag"><![CDATA[
+                startTokenDrag(drag);
+            ]]></event>
+        </rectangle>
+        <label hitTest="false" align="left" width="24" field="turnMarker"
+               fontSize="17" fontColor="#f4b942" horzTextAlign="center" vertTextAlign="center"/>
+        <layout hitTest="false" align="right" width="104">
+            <label hitTest="false" align="top" height="28" field="initiative"
+                   fontSize="18" fontStyle="bold" fontColor="#f4b942"
+                   horzTextAlign="center" vertTextAlign="center"/>
+            <layout hitTest="false" align="client">
+                <label hitTest="false" align="left" width="22" text="PV" fontSize="10" fontColor="#8f9bad"
+                       horzTextAlign="center" vertTextAlign="center"/>
+                <label hitTest="false" align="left" width="30" field="currentHP" fontSize="11" fontStyle="bold"
+                       fontColor="#f4f4f4" horzTextAlign="center" vertTextAlign="center"/>
+                <label hitTest="false" align="left" width="8" text="/" fontColor="#8f9bad"
+                       horzTextAlign="center" vertTextAlign="center"/>
+                <label hitTest="false" align="client" field="maxHP" fontSize="10" fontColor="#bfc7d5"
+                       horzTextAlign="center" vertTextAlign="center"/>
+            </layout>
+        </layout>
+        <layout hitTest="false" align="client" margins="{left=4,right=4}">
+            <label hitTest="false" align="top" height="27" field="name"
+                   fontSize="15" fontStyle="bold" fontColor="#f4f4f4" textTrimming="character"/>
+            <label hitTest="false" align="client" field="conditionsText"
+                   fontSize="11" fontColor="#bfc7d5" textTrimming="character"/>
+        </layout>
+    </rectangle>
+</form>

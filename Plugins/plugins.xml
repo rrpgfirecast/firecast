@@ -648,6 +648,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="codex.t20.combate" name="T20 Combate" url="https://sdk3.firecast.app/Plugins/TablesDock/T20%20Combate/output/T20%20Combate.rpk?raw=true" fileName="T20 Combate.rpk" repositoryPath="TablesDock/T20 Combate/" author="Luisguilhermelr" description="Gerenciador de combate para Tormenta20 com iniciativa, testes opostos, fichas rapidas de NPC, habilidades, alvos, areas, auras, condicoes, buffs, dano maximo, dano automatico, tokens e animacoes de ataque, integrado a ficha fib.Tormenta20." version="1.9.1" compilationDate="28082026190033" compilationDigest="b9e01c0be5bf5594214be5d96adf3d7f04d99db5">
+        <info lang="pt-BR" name="T20 Combate" description="Gerenciador de combate para Tormenta20 com iniciativa, testes opostos, fichas rapidas de NPC, habilidades, alvos, areas, auras, condicoes, buffs, dano maximo, dano automatico, tokens e animacoes de ataque, integrado a ficha fib.Tormenta20." author="Luisguilhermelr" site="https://github.com/Luisguilhermelr/firecast/tree/master/Plugins/TablesDock/T20%20Combate"/>
+        <dataTypes>
+            <dataType id="codex.t20.combate" title="T20 Combate" formType="tablesDock">
+                <info title="T20 Combate"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="CthulhuSheet7eDarkAges_byHelldemos" name="Ficha de Call of Cthulhu Dark Ages" url="https://sdk3.firecast.app/Plugins/Sheets/Call%20Of%20Cthulhu%20Dark%20Ages/output/Call%20Of%20Cthulhu%20Dark%20Ages.rpk?raw=true" fileName="Call Of Cthulhu Dark Ages.rpk" repositoryPath="Sheets/Call Of Cthulhu Dark Ages/" author="helldemos (DaviCop)" description="Ficha de Call of Cthulhu Dark Ages criada para o RRPG Firecast" version="1.1" compilationDate="03032023113338" compilationDigest="9edd3db4caa90a7535a1be78373a4bb0d79f0be3">
         <info lang="pt-BR" name="Ficha de Call of Cthulhu Dark Ages" description="Ficha de Call of Cthulhu Dark Ages criada para o RRPG Firecast" author="helldemos (DaviCop)" site="http://www.twitter.com/Davi_1437"/>
         <dataTypes>

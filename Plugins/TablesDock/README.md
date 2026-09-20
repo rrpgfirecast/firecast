@@ -7,3 +7,5 @@ Esses plugins permitem a criação de janelas acoplaveis, que podem ser adiciona
   - Ferramenta de calculo de XP e filtro de magias. 
 - [Lista de NPCs](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true): Mia
   - Permite criar avatares similares aos dos Jogadores (com barrinhas e linhas) para NPCs.
+- [T20 Combate](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/T20%20Combate/output/T20%20Combate.rpk?raw=true): Luisguilhermelr
+  - Gerenciador de combate para Tormenta20 com iniciativa, alvos, dano automatico, fichas rapidas de NPC, condicoes, areas, auras e tokens.
