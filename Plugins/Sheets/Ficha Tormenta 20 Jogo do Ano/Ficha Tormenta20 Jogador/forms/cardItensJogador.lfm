@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCardItemJogador" height="130" width="460" class="lista_itens">  
+    <import file='../assets/style/ficha_css.xml'/>
+    <layout width="460" height="130">  
+        <image src='Ficha Tormenta20 Jogador/assets/imgs/quadro_item.png' width="460" height="130"/>
+        <button left="438" width="22" text="X" onclick="NDB.deleteNode(sheet); calcCargaAtual(fichaPrincipal)"/>
+        <label top="20" text='Nome do Item'  width="275" horzTextAlign="center" fontSize="16" fontFamily="Tormenta20"/>
+        <label top="20" text='Quant.' left="300" width="65" horzTextAlign="center" fontSize="16" fontFamily="Tormenta20"/>
+        <label top="20" text='Espaço' left="380" width="65" horzTextAlign="center" fontSize="16" fontFamily="Tormenta20"/>
+        <edit top="40" left="10" width="275" horzTextAlign="leading" field="fldNomeItem"><horzLine/></edit>
+        <edit top="40" left="300" width="65" type="number" field="edt_quantidade">
+            <event name="onChange">
+                calcCargaAtual(fichaPrincipal)
+            </event>
+        <horzLine/></edit>
+        <edit top="40" left="380" width="65" type="float" decimalPlaces="2" field="edt_espaco">
+            <event name="onChange">
+                calcCargaAtual(fichaPrincipal)
+            </event>
+        <horzLine/></edit>
+        <textEditor field="fldObservacaoItem" top="75" left="45" width="400" text='OBS.:' height="40"/>
+        <image src='assets/imgs/seta_icone.png' height='30' left="15" top="70" width="30"/>
+    </layout>
+
+</form>
