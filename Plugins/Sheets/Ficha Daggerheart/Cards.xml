@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="Cards" align="client" onShow="inicializarSlotsDomain()">
+<form name="Cards" align="client" onShow="inicializarSlotsDomain(); inicializarSlotsEspeciais()">
     <style>
         button.btnSlot {
             cursor: handPoint;
@@ -32,11 +32,67 @@
         -- FUNCOES AUXILIARES
         -- ============================================================
 
+        -- Valores especiais que permitem imagem customizada pelo jogador
+        local VALOR_ANCESTRY_CUSTOM = "Mixed Ancestry"
+        local VALOR_TRANSFORMATION_CUSTOM = "Custom Transformation"
+
         local function atualizarImagem(campo, tabela)
             local nome = sheet[campo .. "Nome"] or ""
+
+            -- Opcoes customizadas nao tem imagem na tabela: a imagem exibida
+            -- e' restaurada a partir do campo dedicado "...CustomURL", que
+            -- guarda a imagem enviada pelo jogador de forma independente
+            -- (assim ela nao se perde ao trocar de opcao e voltar).
+            if nome == VALOR_ANCESTRY_CUSTOM or nome == VALOR_TRANSFORMATION_CUSTOM then
+                sheet[campo .. "URL"] = sheet[campo .. "CustomURL"] or ""
+                return
+            end
+
             if nome ~= "" and tabela[nome] and tabela[nome] ~= "" then
                 sheet[campo .. "URL"] = tabela[nome]
             end
+        end
+
+        -- Sempre que a imagem customizada (upload/link) e' alterada, reflete
+        -- o novo valor no campo "URL" que e' o que efetivamente aparece no
+        -- slot (zoom, popup e botao de chat).
+        local function sincronizarImagemCustom(campo)
+            sheet[campo .. "URL"] = sheet[campo .. "CustomURL"] or ""
+        end
+
+        -- Alterna entre a imagem "de exibicao" (nao editavel, com zoom) e a
+        -- imagem "de edicao" (editavel, abre a ferramenta nativa do Firecast
+        -- para inserir link/upload) de acordo com a opcao selecionada.
+        local function atualizarModoImagem(campo, valorCustom, nomeImgView, nomeImgEdit)
+            local nome = sheet[campo .. "Nome"] or ""
+            local ehCustom = (nome == valorCustom)
+
+            local imgView = self:findControlByName(nomeImgView)
+            local imgEdit = self:findControlByName(nomeImgEdit)
+
+            if imgView then imgView.visible = not ehCustom end
+            if imgEdit then imgEdit.visible = ehCustom end
+        end
+
+        -- Chamada no onShow da ficha para restaurar o estado correto
+        -- (view/edit) quando a ficha ja tem "Mixed Ancestry" ou
+        -- "Custom Transformation" salvos.
+        local function inicializarSlotsEspeciais()
+            atualizarModoImagem("cardAncestry", VALOR_ANCESTRY_CUSTOM, "imgAncestryView", "imgAncestryEdit")
+            atualizarModoImagem("cardTransformation", VALOR_TRANSFORMATION_CUSTOM, "imgTransformationView", "imgTransformationEdit")
+        end
+
+        -- Clique no slot de Ancestry: comportamento de zoom normal
+        -- permanece intacto; no modo customizado o clique e' tratado
+        -- pela propria imagem editavel (que fica por cima, visivel).
+        local function cliqueSlotAncestry()
+            if sheet.cardAncestryNome == VALOR_ANCESTRY_CUSTOM then return end
+            self.imageZoom1:show()
+        end
+
+        local function cliqueSlotTransformation()
+            if sheet.cardTransformationNome == VALOR_TRANSFORMATION_CUSTOM then return end
+            self.imageZoom11:show()
         end
 
         local function atualizarImagemClass(campo, tier)
@@ -123,22 +179,31 @@
 
         <!-- SLOT 1: Ancestry -->
         <layout g="col" g-width="4" g-width-lg="4" g-min-height="855">
-            <rectangle g="col" g-width="12" g-width-lg="12" g-min-height="830" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom1:show()">
-                <image align="client" field="cardAncestryURL" style="proportional" editable="false"/>
+            <rectangle g="col" g-width="12" g-width-lg="12" g-min-height="830" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="cliqueSlotAncestry()">
+                <image name="imgAncestryView" align="client" field="cardAncestryURL" style="proportional" editable="false" visible="true"/>
+                <image name="imgAncestryEdit" align="client" field="cardAncestryCustomURL" style="proportional" editable="true" visible="false" hint="Clique para colar o link ou enviar sua imagem de Mixed Ancestry"/>
+                <dataLink field="cardAncestryCustomURL" onChange="sincronizarImagemCustom('cardAncestry')"/>
                    <popup name="imageZoom1" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardAncestryURL"/>       
                     </popup>
             </rectangle>
             <comboBox g="col" g-width="12" g-width-lg="8" field="cardAncestryNome" margins="{top=3, right=3, bottom=3}"
-                items="{'-- Selecione --', 'Aetheris', 'Clank', 'Drakona', 'Dwarf', 'Earthkin', 'Elf', 'Emberkin', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Gnome', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah', 'Skykin', 'Tidekin'}"
-                values="{'', 'Aetheris', 'Clank', 'Drakona', 'Dwarf', 'Earthkin', 'Elf', 'Emberkin', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Gnome', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah', 'Skykin', 'Tidekin'}"
+                items="{'-- Selecione --', 'Mixed Ancestry', 'Aetheris', 'Clank', 'Drakona', 'Dwarf', 'Earthkin', 'Elf', 'Emberkin', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Gnome', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah', 'Skykin', 'Tidekin'}"
+                values="{'', 'Mixed Ancestry', 'Aetheris', 'Clank', 'Drakona', 'Dwarf', 'Earthkin', 'Elf', 'Emberkin', 'Faerie', 'Faun', 'Firbolg', 'Fungril', 'Galapa', 'Giant', 'Gnome', 'Goblin', 'Halfling', 'Human', 'Inferis', 'Katari', 'Orc', 'Ribbet', 'Simiah', 'Skykin', 'Tidekin'}"
                 fontColor="white" fontSize="10"/>
-            <dataLink field="cardAncestryNome" onChange="atualizarImagem('cardAncestry', imagensAncestry)"/>
+            <dataLink field="cardAncestryNome">
+                <event name="onChange">
+                    atualizarImagem('cardAncestry', imagensAncestry)
+                    atualizarModoImagem('cardAncestry', VALOR_ANCESTRY_CUSTOM, 'imgAncestryView', 'imgAncestryEdit')
+                </event>
+            </dataLink>
             <ShowButton field="cardAncestry"/>
             <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardAncestryURL = ""
+                    sheet.cardAncestryCustomURL = ""
                     sheet.cardAncestryNome = "-- Selecione --"
+                    atualizarModoImagem('cardAncestry', VALOR_ANCESTRY_CUSTOM, 'imgAncestryView', 'imgAncestryEdit')
                 </event>
             </button>
         </layout>
@@ -167,22 +232,31 @@
 
         <!-- SLOT 3: Transformation -->
         <layout g="col" g-width="4" g-width-lg="4" g-min-height="855">
-            <rectangle g="col" g-width="12" g-width-lg="12" height="830" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="self.imageZoom11:show()">
-                <image align="client" field="cardTransformationURL" style="proportional" editable="false"/>
+            <rectangle g="col" g-width="12" g-width-lg="12" height="830" class="slotCarta" padding="{left=5,right=5,top=5,bottom=5}" onClick="cliqueSlotTransformation()">
+                <image name="imgTransformationView" align="client" field="cardTransformationURL" style="proportional" editable="false" visible="true"/>
+                <image name="imgTransformationEdit" align="client" field="cardTransformationCustomURL" style="proportional" editable="true" visible="false" hint="Clique para colar o link ou enviar sua imagem de Custom Transformation"/>
+                <dataLink field="cardTransformationCustomURL" onChange="sincronizarImagemCustom('cardTransformation')"/>
                    <popup name="imageZoom11" width="400" height="560" backOpacity="0.5" drawContainer="false">
                         <image align="client" field="cardTransformationURL"/>       
                     </popup>  
             </rectangle>
             <comboBox g="col" g-width="12" g-width-lg="8" field="cardTransformationNome" margins="{top=3, right=3, bottom=3}"
-                items="{'-- Selecione --', 'Demigod', 'Ghost', 'Reanimated', 'Shapeshifter', 'Vampire', 'Werewolf'}"
-                values="{'', 'Demigod', 'Ghost', 'Reanimated', 'Shapeshifter', 'Vampire', 'Werewolf'}"
+                items="{'-- Selecione --', 'Custom Transformation', 'Demigod', 'Ghost', 'Reanimated', 'Shapeshifter', 'Vampire', 'Werewolf'}"
+                values="{'', 'Custom Transformation', 'Demigod', 'Ghost', 'Reanimated', 'Shapeshifter', 'Vampire', 'Werewolf'}"
                 fontColor="white" fontSize="10"/>
-            <dataLink field="cardTransformationNome" onChange="atualizarImagem('cardTransformation', imagensTransformation)"/>
+            <dataLink field="cardTransformationNome">
+                <event name="onChange">
+                    atualizarImagem('cardTransformation', imagensTransformation)
+                    atualizarModoImagem('cardTransformation', VALOR_TRANSFORMATION_CUSTOM, 'imgTransformationView', 'imgTransformationEdit')
+                </event>
+            </dataLink>
             <ShowButton field="cardTransformation"/>
             <button g="col" g-width="12" g-width-lg="2" text="🞭" class="btnSlot" margins="{left=2,right=2,top=2,bottom=2}">
                 <event name="onClick">
                     sheet.cardTransformationURL = ""
+                    sheet.cardTransformationCustomURL = ""
                     sheet.cardTransformationNome = "-- Selecione --"
+                    atualizarModoImagem('cardTransformation', VALOR_TRANSFORMATION_CUSTOM, 'imgTransformationView', 'imgTransformationEdit')
                 </event>
             </button>
         </layout>
