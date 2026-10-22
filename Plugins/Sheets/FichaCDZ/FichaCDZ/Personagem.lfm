@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aba Personagem. Linha 1: 2 colunas responsivas (traços com imagem | personalidade).
+     Linha 2: origem (familiares em lista + detalhe). Linha 3: local de nascimento | motivação.
+     Visual: fundo fixo (images/fundo.jpg) + painéis de vidro com sombra (ver contexto/04-componentes.md).
+     Item da lista de familiares: FamiliarItem.lfm. Fields: ver contexto/10-sistema-cdz.md -->
+<form name="frmPersonagem" align="client">
+    <image align="client" src="images/fundo.jpg" style="stretch" optimize="true"/>
+    <scrollBox align="client">
+        <template name="PsTitulo">
+            <rectangle align="top" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round">
+                <label align="client" text="$(texto)" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center" margins="{left=8}"/>
+            </rectangle>
+        </template>
+        <!-- Sombra de painel dentro de um flowPart: mesmo tamanho do painel, deslocada 4 px à direita e 6 px para baixo -->
+        <template name="PsSombra">
+            <rectangle align="client" margins="{left=8, right=0, top=6, bottom=0}" color="#00000080" strokeSize="0"
+                       xradius="10" yradius="10" cornerType="round"/>
+        </template>
+        <template name="PsCampo">
+            <layout align="top" height="25" margins="{top=4}">
+                <label align="left" width="140" text="$(nome)" horzTextAlign="trailing" vertTextAlign="center" margins="{right=8}" fontSize="13" fontColor="#F2F2F2"/>
+                <edit align="client" field="$(field)" hint="$(dica)" fontSize="13"/>
+            </layout>
+        </template>
+        <template name="PsTexto">
+            <label align="top" height="20" text="$(nome)" fontStyle="bold" margins="{top=6}" fontSize="13" fontColor="#F2F2F2"/>
+            <textEditor align="top" height="48" field="$(field)" fontSize="13"/>
+        </template>
+
+        <!-- Linha 1: traços com imagem | personalidade (50% cada: mesmo minWidth e maxWidth) -->
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="2" horzAlign="center" margins="{left=6, right=6, top=10}">
+            <flowPart minWidth="450" maxWidth="4000" height="448">
+                <PsSombra/>
+                <rectangle align="client" margins="{left=4, right=4, top=0, bottom=6}" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                           xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+                    <PsTitulo texto="TRAÇOS DO PERSONAGEM"/>
+
+                    <!-- Imagem à esquerda, com o link logo abaixo -->
+                    <layout align="left" width="240" margins="{top=6}">
+                        <layout align="bottom" height="49">
+                            <label align="top" height="20" text="Link da imagem" margins="{top=4}" fontSize="13" fontColor="#F2F2F2"/>
+                            <edit align="top" height="25" field="avatar" fontSize="13"/>
+                        </layout>
+                        <!-- Moldura para a área da imagem ficar visível mesmo vazia -->
+                        <rectangle align="client" color="#FFFFFF0D" strokeColor="#E8C76666" strokeSize="1" xradius="6" yradius="6" cornerType="round"/>
+                        <image align="client" field="avatar" editable="true" style="autoFit" hint="Clique para escolher a imagem"/>
+                    </layout>
+
+                    <!-- Campos à direita -->
+                    <layout align="client" margins="{left=12, top=2}">
+                        <PsCampo nome="Nome" field="nome" dica="Nome inteiro"/>
+                        <PsCampo nome="Nome do Avatar" field="avatar_nome" dica="Genérico ou Franquia"/>
+                        <PsCampo nome="Data de Nascimento" field="nascimento" dica="00/00/0000"/>
+                        <PsCampo nome="Idade Atual" field="idade" dica="16 a 20 anos na criação"/>
+                        <PsCampo nome="Nacionalidade" field="nacionalidade" dica="Define o local de nascimento padrão"/>
+                        <layout align="top" height="25" margins="{top=4}">
+                            <label align="left" width="140" text="Signo" horzTextAlign="trailing" vertTextAlign="center" margins="{right=8}" fontSize="13" fontColor="#F2F2F2"/>
+                            <comboBox align="client" field="signo"
+                                      items="{'Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'}"
+                                      values="{'Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'}" fontSize="13"/>
+                        </layout>
+                        <PsCampo nome="Constelação Mãe" field="constelacao_mae" dica="Escolha uma"/>
+                        <!-- Easter Egg: 3 linhas -->
+                        <layout align="top" height="64" margins="{top=4}">
+                            <label align="left" width="140" text="Easter Egg" horzTextAlign="trailing" vertTextAlign="leading" margins="{right=8, top=4}" fontSize="13" fontColor="#F2F2F2"/>
+                            <textEditor align="client" field="easter_egg" hint="Leia o NPC: 3.3.5" fontSize="13"/>
+                        </layout>
+                    </layout>
+                </rectangle>
+            </flowPart>
+
+            <flowPart minWidth="450" maxWidth="4000" height="448">
+                <PsSombra/>
+                <rectangle align="client" margins="{left=4, right=4, top=0, bottom=6}" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                           xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+                    <PsTitulo texto="PERSONALIDADE"/>
+                    <!-- Personalidade Escolhida: rótulo em cima e caixa de 3 linhas (3x a altura de antes); as abas abaixo encolhem -->
+                    <label align="top" height="20" text="Personalidade Escolhida" fontStyle="bold" margins="{top=6}" fontSize="13" fontColor="#F2F2F2"/>
+                    <textEditor align="top" height="75" field="personalidade" margins="{top=2}" fontSize="13" hint="Qual a personalidade do personagem?"/>
+                    <!-- Os 5 traços em abas: cada um ocupa o painel inteiro. Títulos curtos para caber em ~450 px.
+                         Sem label dentro das abas: o fundo da aba segue o tema claro e o texto #F2F2F2 sumiria. -->
+                    <tabControl align="client" margins="{top=8}">
+                        <tab title="Comportamento">
+                            <textEditor align="client" field="pers_comportamento" fontSize="13" hint="Iº: Comportamento Padrão"/>
+                        </tab>
+                        <tab title="Não Gosta">
+                            <textEditor align="client" field="pers_nao_gosta" fontSize="13" hint="IIº: Coisas que Não Gosta"/>
+                        </tab>
+                        <tab title="Gosta">
+                            <textEditor align="client" field="pers_gosta" fontSize="13" hint="IIIº: Coisas que Gosta"/>
+                        </tab>
+                        <tab title="Dificuldades">
+                            <textEditor align="client" field="pers_dificuldades" fontSize="13" hint="IVº: Dificuldades"/>
+                        </tab>
+                        <tab title="Pontos Fortes">
+                            <textEditor align="client" field="pers_pontos_fortes" fontSize="13" hint="Vº: Pontos Fortes"/>
+                        </tab>
+                    </tabControl>
+                </rectangle>
+            </flowPart>
+        </flowLayout>
+
+        <!-- Linha 2: origem (familiares), largura total -->
+        <layout align="top" height="434" margins="{top=4}">
+            <rectangle align="client" margins="{left=14, right=6, top=14, bottom=0}" color="#00000080" strokeSize="0"
+                       xradius="10" yradius="10" cornerType="round"/>
+            <rectangle align="client" margins="{left=10, right=10, top=8, bottom=6}" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                       xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+                <PsTitulo texto="ORIGEM — FAMILIARES"/>
+                <layout align="left" width="260" margins="{top=6}">
+                    <button align="top" height="25" text="+ Adicionar familiar" onClick="self.rclFamiliares:append();" fontSize="13"/>
+                    <recordList name="rclFamiliares" align="client" field="familiares" templateForm="frmFamiliarItem"
+                                layout="vertical" selectable="true" margins="{top=6}">
+                        <event name="onSelect"><![CDATA[
+                            local node = self.rclFamiliares.selectedNode;
+                            self.boxFamiliar.node = node;
+                            self.boxFamiliar.visible = (node ~= nil);
+                        ]]></event>
+                    </recordList>
+                </layout>
+                <layout align="client" margins="{left=12, top=6}">
+                    <label align="top" height="20" fontSize="12" text="Adicione ou selecione um familiar na lista para ver os detalhes." fontColor="#D6DCEB"/>
+                    <dataScopeBox name="boxFamiliar" align="client" visible="false">
+                        <layout align="top" height="25" margins="{top=4}">
+                            <label align="left" width="140" text="Parentesco" horzTextAlign="trailing" vertTextAlign="center" margins="{right=8}" fontSize="13" fontColor="#F2F2F2"/>
+                            <comboBox align="left" width="200" field="parentesco"
+                                      items="{'Pai', 'Mãe', 'Irmão', 'Irmã', 'Outro'}" values="{'Pai', 'Mãe', 'Irmão', 'Irmã', 'Outro'}" fontSize="13"/>
+                        </layout>
+                        <PsCampo nome="Nome" field="nome" dica=""/>
+                        <PsCampo nome="Avatar" field="avatar_nome" dica="Genérico ou Franquia"/>
+                        <PsCampo nome="Link da imagem" field="link" dica="URL da imagem do familiar"/>
+                        <layout align="top" height="130" margins="{top=6}">
+                            <rectangle left="0" top="0" width="130" height="130" color="#FFFFFF0D" strokeColor="#E8C76666" strokeSize="1"
+                                       xradius="6" yradius="6" cornerType="round"/>
+                            <image left="0" top="0" width="130" height="130" field="link" editable="true" style="autoFit" hint="Clique para escolher a imagem"/>
+                            <layout align="client" margins="{left=140}">
+                                <label align="top" height="20" text="Personalidade" fontStyle="bold" fontSize="13" fontColor="#F2F2F2"/>
+                                <textEditor align="client" field="personalidade" fontSize="13"/>
+                            </layout>
+                        </layout>
+                        <label align="top" height="20" text="Interação com o Personagem" fontStyle="bold" margins="{top=6}" fontSize="13" fontColor="#F2F2F2"/>
+                        <textEditor align="client" field="interacao" fontSize="13"/>
+                    </dataScopeBox>
+                </layout>
+            </rectangle>
+        </layout>
+
+        <!-- Linha 3: local de nascimento | motivação -->
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="2" horzAlign="center" margins="{left=6, right=6, top=4, bottom=10}">
+            <flowPart minWidth="300" maxWidth="2000" height="206">
+                <PsSombra/>
+                <rectangle align="client" margins="{left=4, right=4, top=0, bottom=6}" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                           xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+                    <PsTitulo texto="LOCAL DE NASCIMENTO"/>
+                    <label align="top" height="44" fontSize="12" wordWrap="true" margins="{top=2}"
+                           text="O local de nascimento padrão vai de acordo com a nacionalidade. Consulte o mestre em caso de dúvidas." fontColor="#D6DCEB"/>
+                    <textEditor align="client" field="local_nascimento" margins="{top=4}" fontSize="13"/>
+                </rectangle>
+            </flowPart>
+            <flowPart minWidth="300" maxWidth="2000" height="206">
+                <PsSombra/>
+                <rectangle align="client" margins="{left=4, right=4, top=0, bottom=6}" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                           xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+                    <PsTitulo texto="MOTIVAÇÃO DO PERSONAGEM"/>
+                    <label align="top" height="44" fontSize="12" wordWrap="true" margins="{top=2}"
+                           text="A motivação torna o personagem mais profundo: uma noção ideal do que ele está buscando criar ao aprender a usar o cosmo. Normalmente todo personagem tem uma história por trás de seus objetivos. Qual é a sua?" fontColor="#D6DCEB"/>
+                    <textEditor align="client" field="motivacao" margins="{top=4}" fontSize="13"/>
+                </rectangle>
+            </flowPart>
+        </flowLayout>
+    </scrollBox>
+</form>

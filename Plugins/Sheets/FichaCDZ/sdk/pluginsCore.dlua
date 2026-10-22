@@ -1,0 +1,243 @@
+﻿require("rrpgObjs.lua");
+require("utils.lua");
+require("rrpg.lua");
+local plugins = {};
+local serializer = nil;
+
+function plugins.getInstalledDataTypes()
+	local retorno = _rrpg_plugins_getInstalledDataTypes();
+	
+	if type(retorno) == "table" then
+		return retorno;
+	else
+		return {};
+	end;	
+end;
+
+function plugins.getInstalledPlugins()
+	local retorno = _rrpg_plugins_getInstalledPlugins();
+	
+	if type(retorno) == "table" then
+		return retorno;
+	else
+		return {};
+	end;	
+end;
+
+function plugins.getRPKDetails(stream)
+	if type(stream) == "table" then
+		return _rrpg_plugins_getPackageInfos(stream.handle);
+	else
+		return nil;
+	end;
+end;
+
+function plugins.installPlugin(stream, ignoreIfOlder)	
+	if type(stream) ~= "table" then
+		return false, "Invalid stream parameter";
+	end;
+
+	ignoreIfOlder = not (not ignoreIfOlder);
+	return _rrpg_plugins_installPluginPackage(stream.handle, ignoreIfOlder);
+end;
+
+function plugins.uninstallPlugin(moduleId)
+	return _rrpg_plugins_uninstallPluginPackage(moduleId);
+end;
+
+local pmListenersByName = {};
+local pmGeneratorId = 0;
+local pmPrefixID = _rrpg_generateUniqueStrID() .. "_";
+local pmSent = {};
+
+local function __convertIncomingPMData(data)
+	if serializer == nil then
+		serializer = require("utils.serializer.dlua");
+	end;
+	
+	return serializer.deserialize(data);
+end;
+
+local function __convertOutgoingPMData(data)
+	if serializer == nil then
+		serializer = require("utils.serializer.dlua");
+	end;
+	
+	return serializer.serialize(data);	
+end;
+
+function plugins.sendPM(moduleId, pmName, data, returnCallback, failureCallback)
+	pmGeneratorId = pmGeneratorId + 1;
+	local esteId = pmPrefixID .. tostring(pmGeneratorId);
+	local pmObject = {};
+	pmObject.returnCallback = returnCallback;
+	pmObject.failureCallback = failureCallback;
+	
+	--[[if type(data) ~= "table" then
+		data = {data=data};
+	end;]]
+	
+	data = __convertOutgoingPMData(data);
+	pmSent[esteId] = pmObject;
+	
+	local ret, msg = _rrpg_plugins_sendPM(esteId, moduleId, pmName, data);
+	
+	if not ret then
+		pmSent[esteId] = nil;
+		
+		if failureCallback ~= nil then
+			failureCallback(msg);
+		end;
+	end;
+end;
+
+function plugins.replyPM(message, data)
+	if not message.__replied then
+		message.__replied = true;
+		_rrpg_plugins_sendPMReply(message.__msgId, message.moduleId, true, __convertOutgoingPMData(data));
+	end;
+end;
+
+function plugins.replyPMFailure(message, failureData)
+	if not message.__replied then
+		message.__replied = true;
+		_rrpg_plugins_sendPMReply(message.__msgId, message.moduleId, false, __convertOutgoingPMData(failureData));		
+	end;
+end;
+
+function plugins.setLatePMReply(message)
+	message.__isLateReply = true;
+end;
+
+function plugins.listenPM(pmName, callback)
+	local listener = pmListenersByName[pmName];
+	
+	if listener ~= nil then
+		listener.callback = callback;
+		return pmName;
+	end;
+	
+	listener = {};
+	listener.callback = callback;
+	listener.pmName = pmName;
+	pmListenersByName[pmName] = listener;		
+	return pmName;
+end;
+
+function plugins.unlistenPM(listenerId)
+	local listener = pmListenersByName[listenerId]; -- listenerId é o pmName
+	
+	if listener ~= nil then
+		pmListenersByName[listenerId] = nil;
+		listener.callback = nil;			
+	end;
+end;
+
+function plugins.requirePlugin(moduleId)
+	return _rrpg_plugins_requirePlugin(moduleId);
+end;
+
+function __export_plugins_handlePMResponse(msgId, success, data)
+	local pmObject = pmSent[msgId];
+	
+	if pmObject ~= nil then
+		pmSent[msgId] = nil;	
+		data = __convertIncomingPMData(data);
+
+		if success then
+			if pmObject.returnCallback ~= nil then
+				pmObject.returnCallback(data);
+			end;
+		else
+			if pmObject.failureCallback ~= nil then
+				pmObject.failureCallback(data);
+			end;		
+		end;
+	end;
+end;
+
+function __export_plugins_handlePMResponse(msgId, success, data)
+	local pmObject = pmSent[msgId];
+	
+	if pmObject ~= nil then
+		pmSent[msgId] = nil;	
+		data = __convertIncomingPMData(data);
+
+		if success then
+			if pmObject.returnCallback ~= nil then
+				pmObject.returnCallback(data);
+			end;
+		else
+			if pmObject.failureCallback ~= nil then
+				pmObject.failureCallback(data);
+			end;		
+		end;
+		
+		return true;
+	else
+		return false;
+	end;
+end
+
+function __export_plugins_handleIncomingPM(fromModuleId, msgId, pmName, data)
+	local listener = pmListenersByName[pmName];
+		
+	if listener ~= nil and listener.callback ~= nil then
+		local message = {};
+		data = __convertIncomingPMData(data);
+		
+		if type(data) ~= "table" then
+			data = {data=data};
+		end;
+
+		for k, v in pairs(data) do
+			message[k] = v;
+		end;
+		
+		message.moduleId = fromModuleId;
+		message.__msgId = msgId;				
+	
+		setTimeout(
+			function()		
+				local r, ret = pcall(listener.callback, message);
+						
+				if r then						
+					if not message.__isLateReply and not message.__replied then
+						plugins.replyPM(message, ret);				
+					end;
+				else
+					plugins.replyPMFailure(message, ret);
+				end;
+			end, 0);
+		
+		return true;
+	else
+		return false;
+	end;
+end
+
+function plugins.getInstalledTablesDock()
+	return _rrpg_plugins_getInstalledTablesDock();
+end;
+
+function plugins.activateTablesDock(mesa, moduleId, name, storedInfo)
+	return _rrpg_plugins_activateTablesDock(mesa.objectID, moduleId, name, storedInfo or "");
+end;
+
+function plugins.deactivateTablesDock(mesa, moduleId, name)
+	return _rrpg_plugins_deactivateTablesDock(mesa.objectID, moduleId, name);
+end;
+
+function plugins.getIsTablesDockActive(mesa, moduleId, name)
+	return _rrpg_plugins_getIsTablesDockActive(mesa.objectID, moduleId, name);
+end;
+
+function plugins.getActiveTablesDockStoredInfo(mesa, moduleId, name)
+	return _rrpg_plugins_getActiveTablesDockStoredInfo(mesa.objectID, moduleId, name);
+end;
+
+function plugins.getListOfActiveTablesDockOnMesa(mesa)
+	return _rrpg_plugins_getListOfActiveTablesDockOnMesa(mesa.objectID);
+end;
+
+return plugins;

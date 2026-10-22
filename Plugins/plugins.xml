@@ -470,7 +470,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Beloved.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek, Beloved, Carlins, Py." description="Ficha para o sistema Daggerheart" version="2.0" compilationDate="25052026180314" compilationDigest="63276bc0f26612794872ac1aa3c83b313be70d16">
+    <element id="Beloved.daggerheart" name="Ficha Daggerheart" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Daggerheart/output/Ficha%20Daggerheart.rpk?raw=true" fileName="Ficha Daggerheart.rpk" repositoryPath="Sheets/Ficha Daggerheart/" author="Ambesek, Beloved, Carlins, Py." description="Ficha para o sistema Daggerheart" version="2.1.5" compilationDate="26092026131930" compilationDigest="171cc7696da9c6b094ef690c4130389e965b5d48">
         <info lang="pt-BR" name="Ficha Daggerheart" description="Ficha para o sistema Daggerheart" author="Ambesek, Beloved, Carlins, Py." site="NA"/>
         <dataTypes>
             <dataType id="Beloved.daggerheart" title="Ficha Daggerheart" formType="sheetTemplate">
@@ -513,7 +513,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://sdk3.firecast.app/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.4" compilationDate="26022025023931" compilationDigest="5e5be498825c733c8383a8c6e776807fb631c1f2">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://sdk3.firecast.app/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.5" compilationDate="12072026031923" compilationDigest="33ded303e01750dda5977e39c25c5222dc06ad8d">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>
@@ -634,6 +634,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="codex.t20.combate" name="T20 Combate" url="https://sdk3.firecast.app/Plugins/TablesDock/T20%20Combate/output/T20%20Combate.rpk?raw=true" fileName="T20 Combate.rpk" repositoryPath="TablesDock/T20 Combate/" author="Luisguilhermelr" description="Gerenciador de combate para Tormenta20 com iniciativa, testes opostos, fichas rapidas de NPC, habilidades, alvos, areas, auras, condicoes, buffs, dano maximo, dano automatico, tokens e animacoes de ataque, integrado a ficha fib.Tormenta20." version="1.9.1" compilationDate="28082026190033" compilationDigest="b9e01c0be5bf5594214be5d96adf3d7f04d99db5">
+        <info lang="pt-BR" name="T20 Combate" description="Gerenciador de combate para Tormenta20 com iniciativa, testes opostos, fichas rapidas de NPC, habilidades, alvos, areas, auras, condicoes, buffs, dano maximo, dano automatico, tokens e animacoes de ataque, integrado a ficha fib.Tormenta20." author="Luisguilhermelr" site="https://github.com/Luisguilhermelr/firecast/tree/master/Plugins/TablesDock/T20%20Combate"/>
+        <dataTypes>
+            <dataType id="codex.t20.combate" title="T20 Combate" formType="tablesDock">
+                <info title="T20 Combate"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="ConspiracoesRPG_Agente_Oficial" name="Conspirações" url="https://sdk3.firecast.app/Plugins/Sheets/Conspira%C3%A7%C3%B5es%20RPG/output/Conspira%C3%A7%C3%B5es%20RPG.rpk?raw=true" fileName="Conspirações RPG.rpk" repositoryPath="Sheets/Conspirações RPG/" author="Luz Negra Editora" description="Ficha de Conspirações RPG - Agente - Firecast" version="1.0" compilationDate="09042024125909" compilationDigest="839ec36dfa6fba09381df5f86d4e0ff82b593d56">
         <info lang="pt-BR" name="Conspirações" description="Ficha de Conspirações RPG - Agente - Firecast" author="Luz Negra Editora" site="https://luznegra.com.br/"/>
         <dataTypes>
@@ -645,14 +653,6 @@
             </dataType>
             <dataType id="ConspiracoesRPG_Conspiracionista_Oficial" title="Conspirações - Conspiracionista (PDF)" formType="sheetTemplate">
                 <info title="Conspirações - Conspiracionista (PDF)"/>
-            </dataType>
-        </dataTypes>
-    </element>
-    <element id="codex.t20.combate" name="T20 Combate" url="https://sdk3.firecast.app/Plugins/TablesDock/T20%20Combate/output/T20%20Combate.rpk?raw=true" fileName="T20 Combate.rpk" repositoryPath="TablesDock/T20 Combate/" author="Luisguilhermelr" description="Gerenciador de combate para Tormenta20 com iniciativa, testes opostos, fichas rapidas de NPC, habilidades, alvos, areas, auras, condicoes, buffs, dano maximo, dano automatico, tokens e animacoes de ataque, integrado a ficha fib.Tormenta20." version="1.9.1" compilationDate="28082026190033" compilationDigest="b9e01c0be5bf5594214be5d96adf3d7f04d99db5">
-        <info lang="pt-BR" name="T20 Combate" description="Gerenciador de combate para Tormenta20 com iniciativa, testes opostos, fichas rapidas de NPC, habilidades, alvos, areas, auras, condicoes, buffs, dano maximo, dano automatico, tokens e animacoes de ataque, integrado a ficha fib.Tormenta20." author="Luisguilhermelr" site="https://github.com/Luisguilhermelr/firecast/tree/master/Plugins/TablesDock/T20%20Combate"/>
-        <dataTypes>
-            <dataType id="codex.t20.combate" title="T20 Combate" formType="tablesDock">
-                <info title="T20 Combate"/>
             </dataType>
         </dataTypes>
     </element>
@@ -712,7 +712,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FichaMultiaba" name="Ficha Multiaba" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true" fileName="Ficha Multiaba.rpk" repositoryPath="Sheets/Ficha Multiaba/" author="Ambesek" description="Ficha com multiplas abas com o texto rico." version="1.0.2" compilationDate="06062023120229" compilationDigest="f115f1b4720b4b668e7ae5b260f15c651c9bc6e2">
+    <element id="FichaMultiaba" name="Ficha Multiaba" url="https://sdk3.firecast.app/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true" fileName="Ficha Multiaba.rpk" repositoryPath="Sheets/Ficha Multiaba/" author="Ambesek" description="Ficha com multiplas abas com o texto rico." version="1.0.3" compilationDate="01092026012057" compilationDigest="7b3df99f3c86b487dc793433d291c8eb555d7f11">
         <info lang="pt-BR" name="Ficha Multiaba" description="Ficha com multiplas abas com o texto rico." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaMultiaba" title="Ficha Multiaba" formType="sheetTemplate">
@@ -1255,6 +1255,14 @@
         <dataTypes>
             <dataType id="thirteen.Scion2e" title="Scion 2e" formType="sheetTemplate">
                 <info title="Scion 2e"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="soygiro.FichaCDZ" name="Ficha CDZ" url="https://sdk3.firecast.app/Plugins/Sheets/FichaCDZ/output/FichaCDZ.rpk?raw=true" fileName="FichaCDZ.rpk" repositoryPath="Sheets/FichaCDZ/" author="soygiro" description="Ficha de personagem de Cavaleiros do Zodíaco." version="1.4" compilationDate="22102026021805" compilationDigest="6a5182f8ebdf00ff426530b0600db726d16fb51f">
+        <info lang="pt-BR" name="Ficha CDZ" description="Ficha de personagem de Cavaleiros do Zodíaco." author="soygiro" site="https://github.com/streamsuk/ficha-cdz-firecast"/>
+        <dataTypes>
+            <dataType id="soygiro.FichaCDZ" title="Ficha CDZ" formType="sheetTemplate">
+                <info title="Ficha CDZ"/>
             </dataType>
         </dataTypes>
     </element>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Form principal da ficha. dataType definitivo (= id do module.xml): nunca mudar, ou as fichas criadas ficam órfãs. -->
+<form name="frmFichaCDZ" formType="sheetTemplate" dataType="soygiro.FichaCDZ"
+      title="Ficha CDZ" align="client" theme="dark">
+    <script><![CDATA[
+        require("plugins.lua");
+        require("internet.lua");
+
+        -- Atualização automática: ao abrir a ficha, baixa o .rpk publicado no GitHub, compara a versão
+        -- com a instalada e, se for mais nova, pergunta se instala. Para publicar: ver contexto/01-sdk-e-build.md.
+        local FcUrlRpk = "https://raw.githubusercontent.com/streamsuk/ficha-cdz-firecast/main/FichaCDZ.rpk";
+
+        -- true se a versão a for maior que b ("1.10" > "1.9"), comparando os números por partes.
+        local function fcVersaoMaior(a, b)
+            local pa, pb = {}, {};
+            for n in string.gmatch(tostring(a or ""), "%d+") do pa[#pa + 1] = tonumber(n) end;
+            for n in string.gmatch(tostring(b or ""), "%d+") do pb[#pb + 1] = tonumber(n) end;
+            for i = 1, math.max(#pa, #pb) do
+                local x, y = pa[i] or 0, pb[i] or 0;
+                if x ~= y then return x > y end;
+            end;
+            return false;
+        end;
+
+        -- Endereço novo a cada chamada, para o Firecast não reaproveitar um download antigo do cache.
+        local function fcUrlSemCache()
+            local marca = (os ~= nil and os.time ~= nil) and os.time() or math.random(1, 999999999);
+            return FcUrlRpk .. "?v=" .. tostring(marca);
+        end;
+
+        -- Instalação direta (Firecast.Plugins.installPlugin) é só para o núcleo do Firecast: num plugin comum ela
+        -- falha com "Este plug-in não possui autorização para gerenciar plug-ins" (testado na 1.2). Como no Template
+        -- oficial, abre o download no navegador; o jogador abre o FichaCDZ.rpk baixado e o Firecast instala.
+        local FcUrlDownload = "https://github.com/streamsuk/ficha-cdz-firecast/raw/main/FichaCDZ.rpk";
+
+        local function fcInstalar(versaoNova)
+            GUI.openInBrowser(FcUrlDownload);
+            Dialogs.showMessage("O download da Ficha CDZ " .. versaoNova .. " foi aberto no navegador. " ..
+                "Quando terminar, abra o arquivo FichaCDZ.rpk baixado: o Firecast instala a versão nova.");
+        end;
+
+        local function fcVerificarAtualizacao()
+            -- Uma verificação por sessão do Firecast, mesmo com várias fichas abertas.
+            -- Global de propósito (nome único): o estado precisa valer para todas as fichas deste plugin.
+            if FichaCDZ_AtualizacaoVerificada then return end;
+            FichaCDZ_AtualizacaoVerificada = true;
+
+            Internet.download(fcUrlSemCache(),
+                function(stream)
+                    local info = Firecast.Plugins.getRPKDetails(stream);
+                    if info == nil or info.moduleId == nil then return end;
+                    local instalada = nil;
+                    for _, p in ipairs(Firecast.Plugins.getInstalledPlugins()) do
+                        if p.moduleId == info.moduleId then instalada = p.version end;
+                    end;
+                    if instalada == nil or not fcVersaoMaior(info.version, instalada) then return end;
+                    if sheet ~= nil and sheet.atualizacao_pulada == info.version then return end;
+
+                    Dialogs.choose("Há uma versão nova da Ficha CDZ: " .. info.version .. " (instalada: " .. instalada .. "). Instalar agora?",
+                        {"Instalar agora", "Agora não", "Pular esta versão"},
+                        function(selecionou, indice)
+                            if not selecionou then return end;
+                            if indice == 1 then
+                                fcInstalar(info.version);
+                            elseif indice == 3 and sheet ~= nil then
+                                sheet.atualizacao_pulada = info.version;
+                            end;
+                        end);
+                end,
+                function(erro)
+                    -- Sem internet ou GitHub fora do ar: segue sem atualizar e tenta de novo na próxima ficha aberta.
+                    FichaCDZ_AtualizacaoVerificada = false;
+                end);
+        end;
+    ]]></script>
+    <event name="onNodeReady"><![CDATA[ fcVerificarAtualizacao(); ]]></event>
+
+    <tabControl align="client">
+        <tab title="Personagem">
+            <import file="Personagem.lfm"/>
+        </tab>
+        <tab title="Atributos">
+            <import file="Atributos.lfm"/>
+        </tab>
+        <tab title="Interação Cósmica">
+            <import file="InteracaoCosmica.lfm"/>
+        </tab>
+        <tab title="Skills">
+            <import file="Skills.lfm"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="Anotacoes.lfm"/>
+        </tab>
+    </tabControl>
+</form>

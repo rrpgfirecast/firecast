@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aba Anotações: texto livre do jogador. -->
+<form name="frmAnotacoes" align="client">
+    <image align="client" src="images/fundo.jpg" style="stretch" optimize="true"/>
+    <rectangle align="client" margins="{left=14, right=10, top=16, bottom=10}" color="#00000080" strokeSize="0"
+               xradius="10" yradius="10" cornerType="round"/>
+    <rectangle align="client" margins="{left=10, right=14, top=10, bottom=16}" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+               xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+        <rectangle align="top" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round">
+            <label align="client" text="ANOTAÇÕES" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center" margins="{left=8}"/>
+        </rectangle>
+        <textEditor align="client" field="anotacoes" margins="{top=6}" fontSize="13"/>
+    </rectangle>
+</form>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aba Skills: Práticas Base (Iº Elevar o Cosmo fixa + lista), Míticas e Pessoais. Item da lista: SkillItem.lfm
+     Visual: fundo fixo em cada sub-aba + painéis de vidro com sombra. -->
+<form name="frmSkills" align="client">
+    <script><![CDATA[
+        -- Rola o campo Efeito/Bônus da skill, se for uma rolagem válida (ex.: 2d6+3).
+        local function skRolarEfeito(no)
+            if sheet == nil or no == nil then return end;
+            local mesa = Firecast.getMesaDe(sheet);
+            if mesa == nil then return end;
+            local ok, rolagem = pcall(Firecast.interpretarRolagem, no.efeito or "");
+            if not ok or rolagem == nil or not rolagem:getPossuiAlgumDado() then
+                mesa.activeChat:escrever("Efeito/Bônus de '" .. (no.nome or "?") .. "' não é uma rolagem válida (ex.: 2d6+3).");
+                return;
+            end;
+            mesa.activeChat:rolarDados(rolagem, no.nome or "Skill");
+        end;
+    ]]></script>
+
+    <template name="SkTitulo">
+        <rectangle align="top" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round">
+            <label align="client" text="$(texto)" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center" margins="{left=8}"/>
+        </rectangle>
+    </template>
+
+    <!-- Lista + detalhe de skills. Parâmetros: titulo, field (lista no NDB), rcl (nome da lista), box (nome do detalhe).
+         Cada painel fica num layout com a sombra (deslocada 4 px à direita e 6 px para baixo) atrás. -->
+    <template name="SkLista">
+        <layout align="left" width="264">
+            <rectangle align="client" margins="{left=4, top=6}" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+            <rectangle align="client" margins="{right=4, bottom=6}" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                       xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+                <SkTitulo texto="$(titulo)"/>
+                <button align="top" height="25" text="+ Adicionar skill" margins="{top=6}" onClick="self.$(rcl):append();" fontSize="13"/>
+                <recordList name="$(rcl)" align="client" field="$(field)" templateForm="frmSkillItem"
+                            layout="vertical" selectable="true" margins="{top=6}">
+                    <event name="onSelect">
+                        local node = self.$(rcl).selectedNode;
+                        self.$(box).node = node;
+                        self.$(box).visible = (node ~= nil);
+                    </event>
+                </recordList>
+            </rectangle>
+        </layout>
+
+        <layout align="client" margins="{left=6}">
+            <rectangle align="client" margins="{left=4, top=6}" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+            <rectangle align="client" margins="{right=4, bottom=6}" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                       xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+                <SkTitulo texto="DETALHES DA SKILL"/>
+                <label align="top" height="20" fontSize="12" text="Adicione ou selecione uma skill na lista." margins="{top=2}" fontColor="#D6DCEB"/>
+                <dataScopeBox name="$(box)" align="client" visible="false">
+                    <layout align="top" height="25" margins="{top=4}">
+                        <label left="0" top="0" width="110" height="25" text="Nome" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                        <edit left="118" top="0" width="500" height="25" field="nome" fontSize="13"/>
+                    </layout>
+                    <layout align="top" height="25" margins="{top=4}">
+                        <label left="0" top="0" width="110" height="25" text="Tipo" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                        <comboBox left="118" top="0" width="150" height="25" field="tipo"
+                                  items="{'Ofensiva', 'Defensiva', 'Efeito', 'Variável', 'Cosmo'}"
+                                  values="{'Ofensiva', 'Defensiva', 'Efeito', 'Variável', 'Cosmo'}" fontSize="13"/>
+                        <label left="275" top="0" width="65" height="25" text="Custo" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                        <edit left="348" top="0" width="270" height="25" field="custo" fontSize="13"/>
+                    </layout>
+                    <layout align="top" height="25" margins="{top=4}">
+                        <label left="0" top="0" width="110" height="25" text="Efeito/Bônus" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                        <edit left="118" top="0" width="404" height="25" field="efeito" hint="Dados de dano/defesa/esquiva. Ex.: 2d6+3" fontSize="13"/>
+                        <button left="528" top="0" width="90" height="25" text="Rolar" hint="Rola o Efeito/Bônus no chat" fontSize="13">
+                            <event name="onClick">skRolarEfeito(self.$(box).node);</event>
+                        </button>
+                    </layout>
+                    <layout align="top" height="25" margins="{top=4}">
+                        <label left="0" top="0" width="110" height="25" text="Lvl" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                        <edit left="118" top="0" width="60" height="25" field="lvl" type="number" horzTextAlign="center" fontSize="13"/>
+                        <label left="185" top="0" width="100" height="25" text="XP da Skill" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                        <edit left="293" top="0" width="60" height="25" field="xp" type="number" horzTextAlign="center" fontSize="13"/>
+                        <label left="358" top="0" width="50" height="25" text="/ 100" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                        <label left="410" top="0" width="60" height="25" text="PA" horzTextAlign="trailing" vertTextAlign="center" hint="Pontos de Avanço" fontSize="13" fontColor="#F2F2F2"/>
+                        <edit left="478" top="0" width="50" height="25" field="pa" type="number" horzTextAlign="center" hint="Pontos de Avanço" fontSize="13"/>
+                        <label left="533" top="0" width="40" height="25" text="/ 10" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                    </layout>
+                    <label align="top" height="20" text="Descrição da Skill" fontStyle="bold" margins="{top=8}" fontSize="13" fontColor="#F2F2F2"/>
+                    <textEditor align="top" height="120" field="descricao" fontSize="13"/>
+                    <label align="top" height="20" text="Efeitos da Skill" fontStyle="bold" margins="{top=8}" fontSize="13" fontColor="#F2F2F2"/>
+                    <textEditor align="client" field="efeitos" fontSize="13"/>
+                </dataScopeBox>
+            </rectangle>
+        </layout>
+    </template>
+
+    <tabControl align="client">
+        <tab title="Práticas Base">
+            <image align="client" src="images/fundo.jpg" style="stretch" optimize="true"/>
+            <scrollBox align="client">
+                <!-- Iº Elevar o Cosmo: prática fixa do sistema (texto da ficha-modelo). Automação na aba Atributos. -->
+                <rectangle left="14" top="16" width="920" height="350" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+                <rectangle left="10" top="10" width="920" height="350" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                           xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+                    <SkTitulo texto="Iº — ELEVAR O COSMO"/>
+                    <label align="top" height="20" fontStyle="bold" margins="{top=6}"
+                           text="Tipo: Cosmo  ·  Custo: Nenhum  ·  Efeito/Bônus: Aumenta a Barra de Cosmo  ·  Botão na aba Atributos" fontSize="13" fontColor="#F2F2F2"/>
+                    <label align="top" height="85" wordWrap="true" margins="{top=6}"
+                           text="Descrição: O treinamento permitiu, ao longo dos anos, que os cavaleiros aumentem seu cosmo, criando assim a força capaz de explodir átomos, que subjuga as trevas através de puro poder. A técnica permite ao usuário encher sua energia cósmica, o que o permite usar suas técnicas em combate. Todas as vezes em que for usada, aumentará a energia cósmica do personagem, fazendo com que ele fique mais forte a cada momento em que aumentar sua energia; quanto mais energia acumulada, mais difícil será mantê-la." fontSize="13" fontColor="#F2F2F2"/>
+                    <label align="top" height="55" wordWrap="true" margins="{top=4}"
+                           text="Regras de Combate: Quando usada, o usuário faz uma rolagem usando o Atributo Cosmo, adicionando o valor à sua Barra de Cosmo. Quando a barra passar o valor total de cosmo atual do usuário, ele entrará em estado de Frenesi Cósmico, recebendo 1 Ponto de Quebra de Limite." fontSize="13" fontColor="#F2F2F2"/>
+                    <label align="top" height="55" wordWrap="true" margins="{top=4}"
+                           text="Regras de Combate²: A Quebra de Limite poderá ser usada para técnicas mais fortes (Crítico) ou para super ações envolvendo cosmo, consumindo o ponto de Quebra de Limite em questão (mais detalhes no NPC sobre Atributos de Personagem, na Ala de Combate, pasta 1.1)." fontSize="13" fontColor="#F2F2F2"/>
+                    <label align="top" height="55" wordWrap="true" margins="{top=4}"
+                           text="Regras de Combate³: Elevar o Cosmo é uma ação livre de toda rodada. Para cada 1 Ponto de Quebra de Limite, o personagem deverá passar em um teste de Controle, ou recuará 1 Ponto de Quebra de Limite (Falha Crítica), ou não receberá aumento em seu Cosmo durante aquela rodada." fontSize="13" fontColor="#F2F2F2"/>
+                </rectangle>
+                <layout left="10" top="372" width="924" height="466">
+                    <SkLista titulo="OUTRAS PRÁTICAS BASE" field="skills_base" rcl="rclSkillsBase" box="boxSkillBase"/>
+                </layout>
+            </scrollBox>
+        </tab>
+        <tab title="Práticas Míticas">
+            <image align="client" src="images/fundo.jpg" style="stretch" optimize="true"/>
+            <scrollBox align="client">
+                <layout left="10" top="10" width="924" height="566">
+                    <SkLista titulo="PRÁTICAS MÍTICAS" field="skills_miticas" rcl="rclSkillsMiticas" box="boxSkillMitica"/>
+                </layout>
+            </scrollBox>
+        </tab>
+        <tab title="Práticas Pessoais">
+            <image align="client" src="images/fundo.jpg" style="stretch" optimize="true"/>
+            <scrollBox align="client">
+                <layout left="10" top="10" width="924" height="566">
+                    <SkLista titulo="PRÁTICAS PESSOAIS" field="skills_pessoais" rcl="rclSkillsPessoais" box="boxSkillPessoal"/>
+                </layout>
+            </scrollBox>
+        </tab>
+    </tabControl>
+</form>

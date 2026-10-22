@@ -1,0 +1,194 @@
+﻿local Async = require("async.lua");
+local Objs = require("rrpgObjs.lua");
+
+local audioLib = Objs.objectFromHandle(_obj_newObject("TRRPGAudioLibWrapper"));
+assert(audioLib ~= nil);
+
+if audioLib.props == nil then
+	audioLib.props = {};
+end;
+
+-- AudioStream Class wrapper
+
+function audioLib._newAudioStreamWrapperFromStreamReader(streamReader)
+	local objHandle = _obj_invokeEx(audioLib.handle, 'CreateAudioStream', streamReader);
+	return audioLib._newAudioStreamWrapperFromObjectHandle(objHandle);
+end;
+
+function audioLib._newAudioStreamWrapperFromObjectHandle(objHandle)
+	local stream = Objs.objectFromHandle(objHandle);
+	stream.props = stream.props or {};  
+	stream.eves = stream.eves or {};	
+	
+	function stream:getLength()
+		return _obj_invokeEx(self.handle, "GetLengthInSecs");
+	end;
+	
+	function stream:getPosition()
+		return _obj_invokeEx(self.handle, "GetPositionInSecs");
+	end;
+	
+	function stream:setPosition(newPosition)
+		return _obj_invokeEx(self.handle, "SetPositionInSecs", newPosition);
+	end;
+	
+	function stream:waitEOF()
+		return Async.Promise.wrap(_obj_invokeEx(self.handle, 'WaitEOF'));
+	end;	
+	   
+	stream.props["enabled"] = {readProp="Enabled", writeProp="Enabled", tipo="bool"};	 	   
+	stream.props["eof"] = {readProp="IsEOF", tipo="bool"};			
+	stream.props["length"] = {getter="getLength", tipo="float"};		
+	stream.props["position"] = {getter="getPosition", setter="setPosition", tipo="float"};
+	stream.props["volume"] = {readProp="Volume", writeProp="Volume", tipo="float"};	      			
+
+	stream.eves["onEOF"] = "";	
+	return stream;
+end;
+
+-- AudioTrack Class wrapper 
+
+function audioLib._audioTrackWrapperFromHandle(audioStream, objHandle)
+	local track = Objs.objectFromHandle(objHandle);
+	track.props = track.props or {};	
+	track.eves = track.eves or {};
+	
+	rawset(track, "_attachedStream", audioStream);
+
+	function track:getAudioStream()
+		return rawget(self, "_attachedStream");
+	end;
+	
+	function track:remove()
+		return Async.Promise.wrap(_obj_invokeEx(self.handle, 'AsyncRemoveTrack'));
+	end;
+			
+	function track:waitRemoval()
+		return Async.Promise.wrap(_obj_invokeEx(self.handle, 'WaitRemoval'));
+	end;		
+				
+	track.props["audioStream"] = {getter = "getAudioStream", tipo="table"};
+	track.props["removed"] = {readProp = "Removed", tipo="bool"};	
+	
+	track.eves["onRemoved"] = "";	
+	return track;	
+end;
+
+function audioLib._newNullAudioTrackWrapper(audioStream)
+	local track = Objs.newPureLuaObject();	
+	track.props = {};	
+	
+	rawset(track, "audioStream", audioStream);
+	rawset(track, "removed", true);
+	
+	function track:remove()
+		return Async.Promise.resolved();
+	end;	
+	
+	function track:waitRemoval()
+		return Async.Promise.resolved();
+	end;			
+			
+	return track;	
+end;
+
+-- AudioPlayer Class internal utility
+
+local function __keepStrongReferenceToTrackUntilRemoved(track)
+	track:waitRemoval():thenFinally(
+		function()
+			track = nil;
+		end)
+end;
+
+local function __keepStrongReferenceToTrackPromiseUntilRemoved(trackPromise)
+	trackPromise:thenDo(
+		function (track)
+			__keepStrongReferenceToTrackUntilRemoved(track);
+		end);
+end;
+
+-- AudioPlayer Class wrapper
+
+function audioLib._audioPlayerWrapperFromHandle(objHandle)
+	local sa = Objs.objectFromHandle(objHandle);
+		
+	function sa:asyncAddTrack(audioStream, params)			
+		local trackHandlePromise = Async.Promise.wrap(_obj_invokeEx(self.handle, 'AsyncCreateAudioTrack', audioStream.handle, params));
+		
+		return trackHandlePromise:thenDo(
+			function(trackHandle)
+				return audioLib._audioTrackWrapperFromHandle(audioStream, trackHandle);			
+			end);						
+	end;		
+		
+    function sa:play(source, volume)		
+		local streamPromise = audioLib.asyncLoadAudioStream(source);
+		
+		local trackPromise = streamPromise:thenDo(
+			function(audioStream)		
+				if type(volume) == "number" then
+					audioStream.volume = volume;
+				end;
+			
+				local trackPromise = self:asyncAddTrack(audioStream, {autoRemoveOnEOF=true});										
+				__keepStrongReferenceToTrackPromiseUntilRemoved(trackPromise);
+				return trackPromise;
+			end);
+			
+		return trackPromise;		
+	end;
+		
+	return sa;	
+end;
+
+function audioLib._newNullAudioPlayerWrapper(errorMessage)
+	local sa = Objs.newPureLuaObject();
+	
+	if errorMessage == nil then
+		errorMessage = "No API Support"; 
+	end;
+	
+	function sa:asyncAddTrack(audioStream, params)
+		return Async.Promise.failed(errorMessage);
+	end;	
+	
+    function sa:play(source, volume)			
+		return Async.Promise.failed(errorMessage);
+	end;		
+		
+	return sa;	
+end;
+
+-- AudioLib public API
+
+function audioLib.asyncLoadAudioStream(source)
+	local loadPromise = Async.Promise.wrap(_obj_invokeEx(audioLib.handle, 'AsyncLoadStreamReader', source));	
+		
+	return loadPromise:thenDo(
+		function(streamReader)				
+			return audioLib._newAudioStreamWrapperFromStreamReader(streamReader);
+		end);
+end;
+
+function audioLib:getDefaultPlayer()
+	local cachedPlayer = rawget(audioLib, "__cachedDefaultAudioPlayer");
+
+	if cachedPlayer == nil then
+		local handle = _obj_invokeEx(self.handle, 'CreateGlobalAudioPlayer');			
+		cachedPlayer = audioLib._audioPlayerWrapperFromHandle(handle);		
+		
+		assert(cachedPlayer ~= nil);		
+		rawset(audioLib, "__cachedDefaultAudioPlayer", cachedPlayer);
+	end;
+
+	return cachedPlayer;
+end;		
+
+function audioLib.play(source, volume)
+	return audioLib.defaultPlayer:play(source, volume);
+end;
+
+audioLib.props["defaultPlayer"] = {getter="getDefaultPlayer", tipo="table"};
+
+return audioLib;

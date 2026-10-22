@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Item da lista de familiares (templateForm de rclFamiliares em Personagem.lfm). Aqui, "sheet" é o nó do familiar. -->
+<form name="frmFamiliarItem" height="28" margins="{top=2}">
+    <rectangle align="client" color="#FFFFFF14" strokeColor="#E8C76666" strokeSize="1" xradius="5" yradius="5"
+               cornerType="round" hitTest="false">
+        <label left="6" top="2" width="60" height="22" field="parentesco" fontColor="#E8C766" vertTextAlign="center" fontSize="13"/>
+        <label left="68" top="2" width="140" height="22" field="nome" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <button left="214" top="2" width="24" height="22" text="X" hint="Remover familiar" fontSize="13">
+            <event name="onClick"><![CDATA[
+                Dialogs.confirmOkCancel("Remover este familiar?",
+                    function(confirmado)
+                        if confirmado then
+                            NDB.deleteNode(sheet);
+                        end;
+                    end);
+            ]]></event>
+        </button>
+    </rectangle>
+    <dataLink field="nome" defaultValue="Novo familiar"/>
+</form>

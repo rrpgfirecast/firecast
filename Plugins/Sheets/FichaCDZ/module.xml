@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="Ficha CDZ.rpk" compilationDate="20102026212823" sdkApiVersion="88" sdkMinorApiVersion="2" compilationDigest="6d7e79874928609555c2d61881d0a95d363d0857" compilationUniqueID="6ad7dcf7e012d62b00509f32">
+    <!-- id definitivo (2026-10-20). NUNCA mudar: é o que liga as fichas e a atualização automática ao plugin.
+         version: aumentar a cada publicação (1.0, 1.1...); a ficha compara com a do GitHub para oferecer a atualização. -->
+    <id>soygiro.FichaCDZ</id>
+    <version>1.4</version>
+    <info lang="pt-BR">
+        <name>Ficha CDZ</name>
+        <description>Ficha de personagem de Cavaleiros do Zodíaco.</description>
+        <author>soygiro</author>
+        <site>https://github.com/streamsuk/ficha-cdz-firecast</site>
+        <contact>https://github.com/streamsuk/ficha-cdz-firecast</contact>
+    </info>
+    <dataTypes>
+        <dataType title="Ficha CDZ" name="frmFichaCDZ" lfmFile="FichaCDZ/Main.lfm">soygiro.FichaCDZ</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="soygiro.FichaCDZ" formType="sheetTemplate" lfmFile="FichaCDZ/Main.lfm" formName="frmFichaCDZ">
+                <info title="Ficha CDZ"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>Ficha CDZ</name>
+    <description>Ficha de personagem de Cavaleiros do Zodíaco.</description>
+    <author>soygiro</author>
+    <site>https://github.com/streamsuk/ficha-cdz-firecast</site>
+    <contact>https://github.com/streamsuk/ficha-cdz-firecast</contact>
+</module>

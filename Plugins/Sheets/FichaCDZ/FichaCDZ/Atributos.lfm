@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aba Atributos: atributos (teste 1d12 e dados por prioridade × rank), experiência, combate, vida e cosmo.
+     Regras: contexto/10-sistema-cdz.md -->
+<form name="frmAtributos" align="client">
+    <script><![CDATA[
+        local AT_CAMPOS = {"atr_forca", "atr_agilidade", "atr_vitalidade", "atr_espirito",
+                           "atr_cosmo", "atr_mente", "atr_controle", "atr_tecnica"};
+        local AT_DADO_PRIO = {B = 4, M = 6, A = 8};
+
+        local function atMesa()
+            if sheet == nil then return nil end;
+            return Firecast.getMesaDe(sheet);
+        end;
+
+        -- Prata = +50% dos dados, Ouro = +100%. Arredondamento para baixo (interpretação; ver bloco 10).
+        local function atMultRank()
+            if sheet.rank == "Prata" then
+                return 1.5;
+            elseif sheet.rank == "Ouro" then
+                return 2;
+            end;
+            return 1;
+        end;
+
+        -- "Utiliza o atributo X": valor × dado da prioridade (B d4, M d6, A d8), ajustado pelo rank.
+        local function atExprDados(campo, campoPrio)
+            local face = AT_DADO_PRIO[sheet[campoPrio] or ""];
+            if face == nil then
+                return nil, "defina a prioridade (B/M/A) do atributo";
+            end;
+            local qtd = math.floor((tonumber(sheet[campo]) or 0) * atMultRank());
+            if qtd <= 0 then
+                return nil, "o atributo está zerado";
+            end;
+            return qtd .. "d" .. face;
+        end;
+
+        -- d12: 12 = acerto crítico, 1 = falha crítica. Textos fixos definidos pelo usuário (2026-10-20).
+        -- "onde" completa a frase do acerto: "neste ataque", "nesta esquiva" ou "neste teste" (padrão).
+        local function atAvisarCritico(mesa, rolado, onde)
+            for _, op in ipairs(rolado.ops or {}) do
+                if op.tipo == "dado" and op.face == 12 and op.quantidade == 1 then
+                    local d = math.floor(op.resultados[1] or 0);
+                    if d == 12 then
+                        mesa.activeChat:enviarMensagem("[§K9]A deusa Athena te abençoou " .. (onde or "neste teste") .. ". Crítico!");
+                    elseif d == 1 then
+                        mesa.activeChat:enviarMensagem("[§K4]A sua fé na deusa está fraca. Falha crítica!");
+                    end;
+                    return;
+                end;
+            end;
+        end;
+
+        local function atTeste(rotulo, campo, onde)
+            local mesa = atMesa();
+            if mesa == nil then return end;
+            local valor = tonumber(sheet[campo]) or 0;
+            mesa.activeChat:rolarDados(Firecast.interpretarRolagem("1d12+" .. valor), "Teste de " .. rotulo,
+                function(rolado)
+                    atAvisarCritico(mesa, rolado, onde);
+                end);
+        end;
+
+        local function atTesteEscolha(rotulo, nomes, campos, onde)
+            Dialogs.choose(rotulo .. ": usar qual atributo?", nomes,
+                function(selecionou, indice)
+                    if selecionou and indice ~= nil then
+                        atTeste(rotulo .. " (" .. nomes[indice] .. ")", campos[indice], onde);
+                    end;
+                end);
+        end;
+
+        -- somarLimiar: dano cósmico soma Limiar Cósmico / 5 (arredondado para baixo; interpretação, ver bloco 10).
+        local function atDados(rotulo, campo, campoPrio, somarLimiar)
+            local mesa = atMesa();
+            if mesa == nil then return end;
+            local expr, erro = atExprDados(campo, campoPrio);
+            if expr == nil then
+                mesa.activeChat:escrever(rotulo .. ": " .. erro .. ".");
+                return;
+            end;
+            local detalhe = expr .. ", " .. (sheet.rank or "Bronze");
+            if somarLimiar then
+                local bonus = math.floor((tonumber(sheet.limiar_cosmico) or 0) / 5);
+                if bonus > 0 then
+                    expr = expr .. "+" .. bonus;
+                    detalhe = detalhe .. ", Limiar/5 = +" .. bonus;
+                end;
+            end;
+            mesa.activeChat:rolarDados(Firecast.interpretarRolagem(expr), rotulo .. " [" .. detalhe .. "]");
+        end;
+
+        local function atDadosEscolha(rotulo, nomes, campos, prios, somarLimiar)
+            Dialogs.choose(rotulo .. ": usar qual atributo?", nomes,
+                function(selecionou, indice)
+                    if selecionou and indice ~= nil then
+                        atDados(rotulo .. " (" .. nomes[indice] .. ")", campos[indice], prios[indice], somarLimiar);
+                    end;
+                end);
+        end;
+
+        -- Desconta XP (soma em XP's Gastos) depois de confirmar; chama aoPagar() em seguida.
+        local function atPagarXP(custo, descricao, aoPagar)
+            local atuais = tonumber(sheet.xp_atuais) or 0;
+            if atuais < custo then
+                Dialogs.showMessage(descricao .. " custa " .. custo .. " XP, mas você tem " .. atuais .. " XP atuais.");
+                return;
+            end;
+            Dialogs.confirmYesNo(descricao .. " custa " .. custo .. " XP (você tem " .. atuais .. "). Confirmar?",
+                function(sim)
+                    if sim and sheet ~= nil then
+                        sheet.xp_gastos = (tonumber(sheet.xp_gastos) or 0) + custo;
+                        aoPagar();
+                    end;
+                end);
+        end;
+
+        -- Vida: custa XP igual ao HP máximo atual; rola 2d4 + metade da Vitalidade; teto = Vitalidade × 15.
+        local function atAumentarVida()
+            local mesa = atMesa();
+            if mesa == nil then return end;
+            local vit = tonumber(sheet.atr_vitalidade) or 0;
+            local teto = vit * 15;
+            local custo = tonumber(sheet.hp_max) or 0;
+            if custo <= 0 then
+                mesa.activeChat:escrever("Aumentar vida: preencha o HP máximo primeiro (inicial = Vitalidade × 10).");
+                return;
+            end;
+            if custo >= teto then
+                mesa.activeChat:escrever("Aumentar vida: o HP máximo já está no limite (Vitalidade × 15 = " .. teto .. ").");
+                return;
+            end;
+            atPagarXP(custo, "Aumentar a vida", function()
+                local expr = "2d4+" .. math.floor(vit / 2);
+                mesa.activeChat:rolarDados(Firecast.interpretarRolagem(expr), "Aumentar vida [" .. expr .. "]",
+                    function(rolado)
+                        local antes = tonumber(sheet.hp_max) or 0;
+                        local novo = math.min(antes + (tonumber(rolado.resultado) or 0), teto);
+                        sheet.hp_max = novo;
+                        mesa.activeChat:enviarMensagem("Vida máxima: " .. antes .. " → " .. novo .. " (limite " .. teto .. ").");
+                    end);
+            end);
+        end;
+
+        -- Cosmo inicial (valor fixo, no Limiar Cósmico) = atributo Cosmo × 5 + 1d6.
+        local function atCosmoInicial()
+            local mesa = atMesa();
+            if mesa == nil then return end;
+            local base = (tonumber(sheet.atr_cosmo) or 0) * 5;
+            local function rolar()
+                mesa.activeChat:rolarDados(Firecast.interpretarRolagem("1d6+" .. base), "Cosmo inicial (Cosmo × 5 + 1d6)",
+                    function(rolado)
+                        sheet.limiar_cosmico = tonumber(rolado.resultado) or 0;
+                    end);
+            end;
+            if (tonumber(sheet.limiar_cosmico) or 0) > 0 then
+                Dialogs.confirmYesNo("O Limiar Cósmico já tem valor. Rolar de novo e substituir?",
+                    function(sim)
+                        if sim then rolar() end;
+                    end);
+            else
+                rolar();
+            end;
+        end;
+
+        -- Aumentar cosmo: custa XP igual ao cosmo atual; rola 1d4 + 2 e soma.
+        local function atAumentarCosmo()
+            local mesa = atMesa();
+            if mesa == nil then return end;
+            local custo = tonumber(sheet.limiar_cosmico) or 0;
+            if custo <= 0 then
+                mesa.activeChat:escrever("Aumentar cosmo: preencha o Limiar Cósmico primeiro (botão Cosmo inicial).");
+                return;
+            end;
+            atPagarXP(custo, "Aumentar o cosmo", function()
+                mesa.activeChat:rolarDados(Firecast.interpretarRolagem("1d4+2"), "Aumentar cosmo [1d4+2]",
+                    function(rolado)
+                        local antes = tonumber(sheet.limiar_cosmico) or 0;
+                        local novo = antes + (tonumber(rolado.resultado) or 0);
+                        sheet.limiar_cosmico = novo;
+                        mesa.activeChat:enviarMensagem("Cosmo: " .. antes .. " → " .. novo .. ".");
+                    end);
+            end);
+        end;
+
+        -- Elevar o Cosmo: rola os dados de Cosmo (interpretação) e soma à barra.
+        -- Passou do limiar: +1 Quebra de Limite, até o máximo de Nível × 2.
+        local function atElevarCosmo()
+            local mesa = atMesa();
+            if mesa == nil then return end;
+            local expr, erro = atExprDados("atr_cosmo", "prio_cosmo");
+            if expr == nil then
+                mesa.activeChat:escrever("Elevar o Cosmo (atributo Cosmo): " .. erro .. ".");
+                return;
+            end;
+            mesa.activeChat:rolarDados(Firecast.interpretarRolagem(expr), "Elevar o Cosmo [" .. expr .. "]",
+                function(rolado)
+                    local barra = (tonumber(sheet.cosmo_barra) or 0) + (tonumber(rolado.resultado) or 0);
+                    local limiar = tonumber(sheet.limiar_cosmico) or 0;
+                    sheet.cosmo_barra = barra;
+                    if limiar > 0 and barra > limiar then
+                        local ql = tonumber(sheet.quebra_limite) or 0;
+                        local qlMax = (tonumber(sheet.nivel) or 1) * 2;
+                        if ql < qlMax then
+                            ql = ql + 1;
+                            sheet.quebra_limite = ql;
+                            mesa.activeChat:enviarMensagem("[§K9]FRENESI CÓSMICO! Barra de Cosmo " .. barra .. "/" .. limiar ..
+                                " | +1 Quebra de Limite (" .. ql .. "/" .. qlMax .. "). Lembrete: teste de Controle por ponto de Quebra de Limite.");
+                        else
+                            mesa.activeChat:enviarMensagem("Barra de Cosmo " .. barra .. "/" .. limiar ..
+                                ". Quebra de Limite já no máximo (" .. qlMax .. ").");
+                        end;
+                    else
+                        mesa.activeChat:enviarMensagem("Barra de Cosmo: " .. barra .. "/" .. limiar);
+                    end;
+                end);
+        end;
+    ]]></script>
+
+    <image align="client" src="images/fundo.jpg" style="stretch" optimize="true"/>
+    <scrollBox align="client">
+        <!-- Painel de vidro com sombra: sombra (x+4, y+6) e faixa de título (x+8, y+6) escritas à mão em cada painel -->
+        <template name="AtAtributo">
+            <layout left="$(x)" top="$(y)" width="310" height="28">
+                <comboBox left="0" top="0" width="48" height="25" field="prio_$(field)"
+                          items="{'B', 'M', 'A'}" values="{'B', 'M', 'A'}" hint="Prioridade: B = d4 | M = d6 | A = d8" fontSize="13"/>
+                <label left="52" top="0" width="95" height="25" text="$(nome)" fontStyle="bold" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                <edit left="150" top="0" width="45" height="25" field="atr_$(field)" type="number" horzTextAlign="center" fontSize="13"/>
+                <button left="199" top="0" width="52" height="25" text="Teste" hint="1d12 + $(nome)" fontSize="13">
+                    <event name="onClick">atTeste("$(nome)", "atr_$(field)");</event>
+                </button>
+                <button left="255" top="0" width="52" height="25" text="Dados" hint="Valor × dado da prioridade, ajustado pelo rank" fontSize="13">
+                    <event name="onClick">atDados("$(nome)", "atr_$(field)", "prio_$(field)");</event>
+                </button>
+            </layout>
+        </template>
+        <template name="AtLinhaXP">
+            <label left="660" top="$(y)" width="140" height="25" text="$(nome)" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+            <edit left="808" top="$(y)" width="110" height="25" field="$(field)" type="number" horzTextAlign="center" fontSize="13"/>
+        </template>
+
+        <!-- Traços físicos -->
+        <rectangle left="14" top="16" width="632" height="255" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="10" top="10" width="632" height="255" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="18" top="16" width="616" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round"/>
+        <label left="26" top="16" width="300" height="26" text="TRAÇOS FÍSICOS" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center"/>
+        <label left="20" top="45" width="612" height="18" fontSize="12"
+               text="Teste: 1d12 + valor (1 = falha crítica, 12 = sucesso crítico). Dados: valor × d4/d6/d8 (B/M/A), ajustado pelo rank." fontColor="#D6DCEB"/>
+        <label left="20" top="66" width="50" height="25" text="Rank:" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <comboBox left="70" top="66" width="110" height="25" field="rank"
+                  items="{'Bronze', 'Prata', 'Ouro'}" values="{'Bronze', 'Prata', 'Ouro'}" fontSize="13"/>
+        <label left="190" top="66" width="440" height="25" fontSize="12" vertTextAlign="center"
+               text="Prata = +50% dos dados, Ouro = +100% (arredonda para baixo)." fontColor="#D6DCEB"/>
+        <AtAtributo nome="Força" field="forca" x="20" y="95"/>
+        <AtAtributo nome="Agilidade" field="agilidade" x="20" y="127"/>
+        <AtAtributo nome="Vitalidade" field="vitalidade" x="20" y="159"/>
+        <AtAtributo nome="Espírito" field="espirito" x="20" y="191"/>
+        <AtAtributo nome="Cosmo" field="cosmo" x="325" y="95"/>
+        <AtAtributo nome="Mente" field="mente" x="325" y="127"/>
+        <AtAtributo nome="Controle" field="controle" x="325" y="159"/>
+        <AtAtributo nome="Técnica" field="tecnica" x="325" y="191"/>
+        <label left="20" top="228" width="150" height="25" text="Pontos distribuídos:" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <label left="170" top="228" width="50" height="25" field="soma_atributos" fontStyle="bold" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <label left="230" top="228" width="190" height="25" text="Máx. atual (Nível × 10):" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <label left="420" top="228" width="50" height="25" field="max_atributo" fontStyle="bold" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <label left="470" top="228" width="165" height="25" fontSize="12" vertTextAlign="center" text="Criação: 14 pts, máx. 3" fontColor="#D6DCEB"/>
+
+        <!-- Experiência -->
+        <rectangle left="654" top="16" width="280" height="255" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="650" top="10" width="280" height="255" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="658" top="16" width="264" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round"/>
+        <label left="666" top="16" width="250" height="26" text="EXPERIÊNCIA" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center"/>
+        <AtLinhaXP nome="XP's Totais" field="xp_totais" y="45"/>
+        <AtLinhaXP nome="XP's Gastos" field="xp_gastos" y="75"/>
+        <label left="660" top="105" width="140" height="25" text="XP's Atuais" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <rectangle left="808" top="105" width="110" height="25" color="black" strokeColor="#C9A227" strokeSize="1"/>
+        <label left="808" top="105" width="110" height="25" field="xp_atuais" horzTextAlign="center" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <AtLinhaXP nome="Nível" field="nivel" y="135"/>
+        <AtLinhaXP nome="XP's p/ Próximo" field="xp_proximo" y="165"/>
+        <AtLinhaXP nome="XP's Acumulados" field="xp_acumulados" y="195"/>
+        <label left="660" top="228" width="260" height="25" fontSize="12" vertTextAlign="center"
+               text="Por nível: +1 ponto de atributo (até o 10), +2 depois." fontColor="#D6DCEB"/>
+
+        <!-- Combate: linha 1 = testes (1d12), linha 2 = dados (dano e defesa) -->
+        <rectangle left="14" top="281" width="610" height="110" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="10" top="275" width="610" height="110" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="18" top="281" width="594" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round"/>
+        <label left="26" top="281" width="300" height="26" text="COMBATE" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center"/>
+        <button left="20" top="312" width="192" height="28" text="Acerto físico" hint="1d12 + Controle ou Técnica (corpo a corpo e distância)" fontSize="13">
+            <event name="onClick"><![CDATA[ atTesteEscolha("Acerto físico", {"Controle", "Técnica"}, {"atr_controle", "atr_tecnica"}, "neste ataque"); ]]></event>
+        </button>
+        <button left="218" top="312" width="192" height="28" text="Acerto cósmico" hint="1d12 + Controle ou Técnica" fontSize="13">
+            <event name="onClick"><![CDATA[ atTesteEscolha("Acerto cósmico", {"Controle", "Técnica"}, {"atr_controle", "atr_tecnica"}, "neste ataque"); ]]></event>
+        </button>
+        <button left="416" top="312" width="192" height="28" text="Esquiva" hint="1d12 + Agilidade vs 1d12 + Técnica do atacante" fontSize="13">
+            <event name="onClick"><![CDATA[ atTeste("Esquiva (Agilidade)", "atr_agilidade", "nesta esquiva"); ]]></event>
+        </button>
+        <button left="20" top="346" width="192" height="28" text="Dano físico" hint="Dados de Força ou Cosmo (prioridade × rank)" fontSize="13">
+            <event name="onClick"><![CDATA[ atDadosEscolha("Dano físico", {"Força", "Cosmo"}, {"atr_forca", "atr_cosmo"}, {"prio_forca", "prio_cosmo"}, false); ]]></event>
+        </button>
+        <button left="218" top="346" width="192" height="28" text="Dano cósmico" hint="Dados de Força ou Cosmo (prioridade × rank) + Limiar Cósmico ÷ 5" fontSize="13">
+            <event name="onClick"><![CDATA[ atDadosEscolha("Dano cósmico", {"Força", "Cosmo"}, {"atr_forca", "atr_cosmo"}, {"prio_forca", "prio_cosmo"}, true); ]]></event>
+        </button>
+        <button left="416" top="346" width="192" height="28" text="Defesa" hint="Dados de Vitalidade (prioridade × rank) para reduzir dano" fontSize="13">
+            <event name="onClick"><![CDATA[ atDados("Defesa (Vitalidade)", "atr_vitalidade", "prio_vitalidade"); ]]></event>
+        </button>
+
+        <!-- Percepção (painel próprio, ao lado do Combate) -->
+        <rectangle left="634" top="281" width="300" height="110" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="630" top="275" width="300" height="110" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="638" top="281" width="284" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round"/>
+        <label left="646" top="281" width="270" height="26" text="PERCEPÇÃO" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center"/>
+        <button left="640" top="312" width="280" height="28" text="Teste de Percepção" hint="1d12 + Mente ou Agilidade" fontSize="13">
+            <event name="onClick"><![CDATA[ atTesteEscolha("Percepção", {"Mente", "Agilidade"}, {"atr_mente", "atr_agilidade"}); ]]></event>
+        </button>
+        <label left="640" top="346" width="280" height="28" fontSize="12" vertTextAlign="center" horzTextAlign="center"
+               text="Percepção: 1d12 + Mente ou Agilidade" fontColor="#D6DCEB"/>
+
+        <!-- Vida -->
+        <rectangle left="14" top="401" width="455" height="140" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="10" top="395" width="455" height="140" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="18" top="401" width="439" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round"/>
+        <label left="26" top="401" width="300" height="26" text="VIDA" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center"/>
+        <label left="20" top="430" width="40" height="25" text="HP:" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <edit left="65" top="430" width="60" height="25" field="hp_atual" type="number" horzTextAlign="center" hint="HP atual" fontSize="13"/>
+        <label left="128" top="430" width="12" height="25" text="/" horzTextAlign="center" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <edit left="143" top="430" width="60" height="25" field="hp_max" type="number" horzTextAlign="center" hint="HP máximo" fontSize="13"/>
+        <label left="20" top="463" width="150" height="25" text="Inicial (Vit × 10):" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <label left="170" top="463" width="45" height="25" field="hp_inicial" fontStyle="bold" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <label left="225" top="463" width="135" height="25" text="Máx. (Vit × 15):" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <label left="360" top="463" width="50" height="25" field="hp_teto" fontStyle="bold" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <button left="20" top="496" width="140" height="28" text="Aumentar vida" hint="Custa XP igual ao HP máximo atual" fontSize="13">
+            <event name="onClick"><![CDATA[ atAumentarVida(); ]]></event>
+        </button>
+        <label left="168" top="496" width="290" height="28" fontSize="12" vertTextAlign="center"
+               text="Custo = HP máx. em XP. Rola 2d4 + metade da Vitalidade." fontColor="#D6DCEB"/>
+
+        <!-- Cosmo -->
+        <rectangle left="479" top="401" width="455" height="140" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="475" top="395" width="455" height="140" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="483" top="401" width="439" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round"/>
+        <label left="491" top="401" width="300" height="26" text="COSMO" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center"/>
+        <label left="485" top="430" width="125" height="25" text="Limiar Cósmico:" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <edit left="615" top="430" width="60" height="25" field="limiar_cosmico" type="number" horzTextAlign="center"
+              hint="Valor fixo de cosmo (1 a 50 no início)" fontSize="13"/>
+        <button left="685" top="430" width="130" height="25" text="Cosmo inicial" hint="Rola Cosmo × 5 + 1d6 e grava no Limiar" fontSize="13">
+            <event name="onClick"><![CDATA[ atCosmoInicial(); ]]></event>
+        </button>
+        <label left="485" top="463" width="55" height="25" text="Barra:" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <edit left="545" top="463" width="60" height="25" field="cosmo_barra" type="number" horzTextAlign="center" fontSize="13"/>
+        <label left="610" top="463" width="135" height="25" text="Quebra de Limite:" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <edit left="750" top="463" width="45" height="25" field="quebra_limite" type="number" horzTextAlign="center" fontSize="13"/>
+        <label left="798" top="463" width="12" height="25" text="/" horzTextAlign="center" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+        <label left="812" top="463" width="40" height="25" field="ql_max" fontStyle="bold" vertTextAlign="center" hint="Máximo = Nível × 2" fontSize="13" fontColor="#F2F2F2"/>
+        <button left="485" top="496" width="140" height="28" text="Elevar o Cosmo" hint="Ação livre: rola os dados de Cosmo e soma à barra" fontSize="13">
+            <event name="onClick"><![CDATA[ atElevarCosmo(); ]]></event>
+        </button>
+        <button left="630" top="496" width="140" height="28" text="Aumentar cosmo" hint="Custa XP igual ao cosmo atual; rola 1d4 + 2" fontSize="13">
+            <event name="onClick"><![CDATA[ atAumentarCosmo(); ]]></event>
+        </button>
+        <button left="775" top="496" width="110" height="28" text="Zerar barra" hint="Zera a Barra de Cosmo" fontSize="13">
+            <event name="onClick"><![CDATA[
+                Dialogs.confirmYesNo("Zerar a Barra de Cosmo?",
+                    function(sim)
+                        if sim and sheet ~= nil then
+                            sheet.cosmo_barra = 0;
+                        end;
+                    end);
+            ]]></event>
+        </button>
+
+        <rectangle left="14" top="551" width="920" height="46" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="10" top="545" width="920" height="46" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round"/>
+        <label left="20" top="549" width="900" height="38" fontSize="12" wordWrap="true" vertTextAlign="center"
+               text="Elevar o Cosmo: ação livre a cada rodada. Passando do Limiar Cósmico: Frenesi Cósmico, +1 Quebra de Limite (máx. Nível × 2). Teste de Controle por ponto de Quebra de Limite (manual): falha = sem aumento na rodada; falha crítica = perde 1 ponto." fontColor="#D6DCEB"/>
+
+        <!-- Cálculos e valores padrão -->
+        <dataLink fields="{'atr_forca', 'atr_agilidade', 'atr_vitalidade', 'atr_espirito', 'atr_cosmo', 'atr_mente', 'atr_controle', 'atr_tecnica', 'nivel'}">
+            <event name="onChange"><![CDATA[
+                if sheet == nil then return end;
+                local soma = 0;
+                for _, campo in ipairs(AT_CAMPOS) do
+                    soma = soma + (tonumber(sheet[campo]) or 0);
+                end;
+                local nivel = tonumber(sheet.nivel) or 1;
+                local vit = tonumber(sheet.atr_vitalidade) or 0;
+                sheet.soma_atributos = soma;
+                sheet.max_atributo = nivel * 10;
+                sheet.ql_max = nivel * 2;
+                sheet.hp_inicial = vit * 10;
+                sheet.hp_teto = vit * 15;
+            ]]></event>
+        </dataLink>
+        <dataLink fields="{'xp_totais', 'xp_gastos'}">
+            <event name="onChange"><![CDATA[
+                if sheet == nil then return end;
+                sheet.xp_atuais = (tonumber(sheet.xp_totais) or 0) - (tonumber(sheet.xp_gastos) or 0);
+            ]]></event>
+        </dataLink>
+        <dataLink field="nivel" defaultValue="1"/>
+        <dataLink field="xp_proximo" defaultValue="10"/>
+        <dataLink field="rank" defaultValue="Bronze"/>
+    </scrollBox>
+</form>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aba Interação Cósmica: armadura (categoria, versão, Proteção Mítica) e modelo. Regras: contexto/10-sistema-cdz.md -->
+<form name="frmInteracaoCosmica" align="client">
+    <script><![CDATA[
+        -- Catálogo de armaduras → imagem: DESATIVADO até achar uma fonte que o Firecast consiga baixar
+        -- (a Fandom responde 403 ao Firecast; ver contexto/90-estado.md). Para reativar: descomente a tabela
+        -- abaixo e o dataLink field="armadura_catalogo" no fim do arquivo, e complete as chaves das 88.
+        -- A chave é o value do comboBox armadura_catalogo; "outra" não entra de propósito (não mexe no link).
+        --[[
+        local IcFandom = "https://static.wikia.nocookie.net/saintseiya/images/";
+        local IcCatalogoArmaduras = {
+            pegaso = IcFandom .. "1/16/Pegasus_Cloth_V1_%28anime%29.jpg/revision/latest?cb=20130804202229&format=original",
+            dragao = IcFandom .. "7/77/Setshiryu016.jpg/revision/latest?cb=20130517010801&format=original",
+            cisne = IcFandom .. "d/d8/Cygnus_Cloth_V1_%28anime%29.jpg/revision/latest?cb=20130804201957&format=original",
+            andromeda = IcFandom .. "c/c5/Andromeda_Cloth_V1_%28Anime%29.jpg/revision/latest?cb=20130804200425&format=original",
+            fenix = IcFandom .. "5/5d/Anime_Phoenix_Cloth_V1.jpg/revision/latest?cb=20230202125126&format=original"
+        };
+        ]]
+    ]]></script>
+    <image align="client" src="images/fundo.jpg" style="stretch" optimize="true"/>
+    <scrollBox align="client">
+        <template name="IcTitulo">
+            <rectangle align="top" height="26" color="#FFFFFF1A" strokeSize="0" xradius="6" yradius="6" cornerType="round">
+                <label align="client" text="$(texto)" fontSize="16" fontStyle="bold" fontColor="#E8C766" vertTextAlign="center" margins="{left=8}"/>
+            </rectangle>
+        </template>
+        <template name="IcCampo">
+            <layout align="top" height="25" margins="{top=4}">
+                <label left="0" top="0" width="190" height="25" text="$(nome)" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                <edit left="198" top="0" width="378" height="25" field="$(field)" hint="$(dica)" fontSize="13"/>
+            </layout>
+        </template>
+
+        <rectangle left="14" top="16" width="600" height="420" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="10" top="10" width="600" height="420" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+            <IcTitulo texto="INTERAÇÃO CÓSMICA"/>
+            <IcCampo nome="Alcunha" field="alcunha" dica="Ex.: Armadura de Pégaso, Estrela Celeste..."/>
+            <IcCampo nome="Origem" field="origem" dica="Armadura, Sapuris, Escama etc."/>
+            <layout align="top" height="25" margins="{top=4}">
+                <label left="0" top="0" width="190" height="25" text="Categoria" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                <comboBox left="198" top="0" width="130" height="25" field="categoria_armadura"
+                          items="{'Bronze', 'Prata', 'Ouro'}" values="{'Bronze', 'Prata', 'Ouro'}" fontSize="13"/>
+                <label left="338" top="0" width="100" height="25" text="Versão" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                <comboBox left="446" top="0" width="80" height="25" field="estagio_atual"
+                          items="{'V1', 'V2', 'V3', 'V4'}" values="{'V1', 'V2', 'V3', 'V4'}"
+                          hint="Bronze vai até V4; Prata e Ouro até V2" fontSize="13"/>
+            </layout>
+            <layout align="top" height="25" margins="{top=4}">
+                <label left="0" top="0" width="190" height="25" text="Proteção Mítica" horzTextAlign="trailing" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                <edit left="198" top="0" width="60" height="25" field="protecao_mitica" type="number" horzTextAlign="center"
+                      hint="Proteções restantes antes de a armadura quebrar" fontSize="13"/>
+                <label left="262" top="0" width="12" height="25" text="/" horzTextAlign="center" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                <label left="278" top="0" width="40" height="25" field="pm_max" fontStyle="bold" vertTextAlign="center"
+                       hint="Máximo pela categoria e versão" fontSize="13" fontColor="#F2F2F2"/>
+                <label left="322" top="0" width="254" height="25" field="pm_aviso" fontSize="12" fontColor="#E8C766" vertTextAlign="center"/>
+            </layout>
+            <IcCampo nome="Sangue p/ Próximo Estágio" field="sangue_proximo" dica="HP permanente exigido para a próxima versão"/>
+            <label align="top" height="20" fontSize="12" margins="{top=4}"
+                   text="PM na V1: Bronze 2 (+1 por versão, até V4) · Prata 4 (+2, até V2) · Ouro 8 (+2, até V2)" fontColor="#D6DCEB"/>
+            <label align="top" height="20" text="Modelo Atual" fontStyle="bold" margins="{top=8}" fontSize="13" fontColor="#F2F2F2"/>
+            <textEditor align="client" field="modelo_atual" margins="{top=2}" fontSize="13"/>
+        </rectangle>
+
+        <rectangle left="624" top="16" width="300" height="420" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="620" top="10" width="300" height="420" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+            <IcTitulo texto="IMAGEM DO MODELO"/>
+            <layout align="top" height="25" margins="{top=4}">
+                <!-- As 88 constelações oficiais (IAU), em ordem alfabética; nomes da dublagem entre parênteses -->
+                <label left="0" top="0" width="70" height="25" text="Armadura" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                <comboBox left="76" top="0" width="208" height="25" field="armadura_catalogo" fontSize="13"
+                          items="{'Águia', 'Altar', 'Andrômeda', 'Aquário', 'Áries', 'Ave-do-Paraíso', 'Baleia', 'Boieiro', 'Bússola', 'Cabeleira de Berenice', 'Camaleão', 'Câncer', 'Cão Maior', 'Cão Menor', 'Cães de Caça', 'Capricórnio', 'Cassiopeia', 'Cavalo Menor', 'Cefeu', 'Centauro', 'Cinzel', 'Cisne', 'Cocheiro (Auriga)', 'Compasso', 'Coroa Austral', 'Coroa Boreal', 'Corvo', 'Cruzeiro do Sul', 'Dourado', 'Dragão', 'Erídano', 'Escorpião', 'Escudo', 'Escultor', 'Esquadro', 'Fênix', 'Flecha', 'Fornalha', 'Gêmeos', 'Girafa', 'Golfinho', 'Grou', 'Hércules', 'Hidra', 'Hidra Macho', 'Índio', 'Lagarto', 'Lebre', 'Leão', 'Leão Menor', 'Libra', 'Lince', 'Lira', 'Lobo', 'Máquina Pneumática', 'Mesa', 'Microscópio', 'Mosca', 'Ofiúco (Cobra)', 'Oitante', 'Órion', 'Pavão', 'Pégaso', 'Peixe Austral', 'Peixe Voador', 'Peixes', 'Perseu', 'Pintor', 'Pomba', 'Popa', 'Quilha', 'Raposa', 'Relógio', 'Retículo', 'Sagitário', 'Serpente', 'Sextante', 'Taça', 'Telescópio', 'Touro', 'Triângulo', 'Triângulo Austral', 'Tucano', 'Unicórnio', 'Ursa Maior (Urso)', 'Ursa Menor', 'Vela', 'Virgem', 'Outra'}"
+                          values="{'aguia', 'altar', 'andromeda', 'aquario', 'aries', 'ave_do_paraiso', 'baleia', 'boieiro', 'bussola', 'cabeleira_de_berenice', 'camaleao', 'cancer', 'cao_maior', 'cao_menor', 'caes_de_caca', 'capricornio', 'cassiopeia', 'cavalo_menor', 'cefeu', 'centauro', 'cinzel', 'cisne', 'cocheiro', 'compasso', 'coroa_austral', 'coroa_boreal', 'corvo', 'cruzeiro_do_sul', 'dourado', 'dragao', 'eridano', 'escorpiao', 'escudo', 'escultor', 'esquadro', 'fenix', 'flecha', 'fornalha', 'gemeos', 'girafa', 'golfinho', 'grou', 'hercules', 'hidra', 'hidra_macho', 'indio', 'lagarto', 'lebre', 'leao', 'leao_menor', 'libra', 'lince', 'lira', 'lobo', 'maquina_pneumatica', 'mesa', 'microscopio', 'mosca', 'ofiuco', 'oitante', 'orion', 'pavao', 'pegaso', 'peixe_austral', 'peixe_voador', 'peixes', 'perseu', 'pintor', 'pomba', 'popa', 'quilha', 'raposa', 'relogio', 'reticulo', 'sagitario', 'serpente', 'sextante', 'taca', 'telescopio', 'touro', 'triangulo', 'triangulo_austral', 'tucano', 'unicornio', 'ursa_maior', 'ursa_menor', 'vela', 'virgem', 'outra'}"
+                          hint="As 88 constelações. Imagem automática desativada até achar uma fonte; use o Link do Modelo"/>
+            </layout>
+            <layout align="top" height="290" margins="{top=6}">
+                <rectangle align="client" color="#FFFFFF0D" strokeColor="#E8C76666" strokeSize="1" xradius="6" yradius="6" cornerType="round"/>
+                <image align="client" field="modelo_imagem" editable="true" style="autoFit" hint="Clique para escolher a imagem"/>
+            </layout>
+            <label align="top" height="20" text="Link do Modelo" margins="{top=4}" fontSize="13" fontColor="#F2F2F2"/>
+            <edit align="top" height="25" field="modelo_imagem" fontSize="13"/>
+        </rectangle>
+
+        <!-- Elemento: a imagem vem de images/elementos/<value>.png (arquivos do usuário), trocada pelo dataLink abaixo -->
+        <rectangle left="14" top="452" width="480" height="250" color="#00000080" strokeSize="0" xradius="10" yradius="10" cornerType="round"/>
+        <rectangle left="10" top="446" width="480" height="250" color="#0A1430C0" strokeColor="#E8C76699" strokeSize="1"
+                   xradius="10" yradius="10" cornerType="round" padding="{left=8, right=8, top=8, bottom=8}">
+            <IcTitulo texto="ELEMENTO"/>
+            <layout align="client" margins="{top=6}">
+                <layout align="left" width="200">
+                    <rectangle align="client" color="#FFFFFF0D" strokeColor="#E8C76666" strokeSize="1" xradius="6" yradius="6" cornerType="round"/>
+                    <image name="imgIcElemento" align="client" style="autoFit" margins="{left=4, right=4, top=4, bottom=4}"
+                           hint="Muda conforme o elemento escolhido"/>
+                </layout>
+                <layout align="client" margins="{left=12}">
+                    <layout align="top" height="25">
+                        <label left="0" top="0" width="80" height="25" text="Elemento" vertTextAlign="center" fontSize="13" fontColor="#F2F2F2"/>
+                        <comboBox left="86" top="0" width="160" height="25" field="elemento" fontSize="13"
+                                  items="{'Luz', 'Água', 'Terra', 'Fogo', 'Raio', 'Vento', 'Trevas'}"
+                                  values="{'luz', 'agua', 'terra', 'fogo', 'raio', 'vento', 'trevas'}"/>
+                    </layout>
+                    <!-- Kanji do elemento, na cor do ícone; sombra = mesmo texto escuro deslocado 6 px. Texto e cor vêm do dataLink. -->
+                    <layout align="client" margins="{top=4}">
+                        <!-- Legenda: nome do elemento · leitura em japonês -->
+                        <label name="labIcKanjiNome" align="bottom" height="24" fontSize="16" fontStyle="bold"
+                               horzTextAlign="center" vertTextAlign="center" fontColor="#F2F2F2"/>
+                        <label name="labIcKanjiSombra" align="client" margins="{left=6, top=6}" fontSize="96" fontStyle="bold"
+                               horzTextAlign="center" vertTextAlign="center" fontColor="#00000099"/>
+                        <label name="labIcKanji" align="client" margins="{right=6, bottom=6}" fontSize="96" fontStyle="bold"
+                               horzTextAlign="center" vertTextAlign="center" fontColor="#F2F2F2"/>
+                    </layout>
+                </layout>
+            </layout>
+        </rectangle>
+
+        <!-- Proteção Mítica máxima = base da categoria + incremento × (versão − 1), limitado à versão máxima -->
+        <dataLink fields="{'categoria_armadura', 'estagio_atual'}">
+            <event name="onChange"><![CDATA[
+                if sheet == nil then return end;
+                local base = {Bronze = 2, Prata = 4, Ouro = 8};
+                local inc = {Bronze = 1, Prata = 2, Ouro = 2};
+                local vMax = {Bronze = 4, Prata = 2, Ouro = 2};
+                local cat = sheet.categoria_armadura;
+                if base[cat] == nil then
+                    sheet.pm_max = nil;
+                    sheet.pm_aviso = "Escolha a categoria";
+                    return;
+                end;
+                local v = tonumber(string.match(sheet.estagio_atual or "", "%d+")) or 1;
+                if v > vMax[cat] then
+                    sheet.pm_aviso = cat .. " vai só até V" .. vMax[cat];
+                    v = vMax[cat];
+                else
+                    sheet.pm_aviso = "";
+                end;
+                sheet.pm_max = base[cat] + (v - 1) * inc[cat];
+            ]]></event>
+        </dataLink>
+
+        <!-- DESATIVADO junto com a tabela do script (sem fonte de imagem por enquanto). Para reativar, tire este bloco do comentário.
+             Catálogo → Link do Modelo. armadura_catalogo_aplicada evita sobrescrever um link editado à mão
+             quando o dataLink dispara de novo com a mesma escolha (ex.: ao abrir a ficha).
+        <dataLink field="armadura_catalogo">
+            <event name="onChange"><![CDATA[
+                if sheet == nil then return end;
+                local chave = sheet.armadura_catalogo or "";
+                if chave == "" or chave == sheet.armadura_catalogo_aplicada then return end;
+                sheet.armadura_catalogo_aplicada = chave;
+                local url = IcCatalogoArmaduras[chave];
+                if url ~= nil then
+                    sheet.modelo_imagem = url;
+                end;
+            ]]></event>
+        </dataLink>
+        -->
+
+        <!-- Elemento → imagem do painel ELEMENTO (dispara também ao abrir a ficha) -->
+        <dataLink field="elemento">
+            <event name="onChange"><![CDATA[
+                if sheet == nil then return end;
+                -- Kanji (japonês) e cor tirada do ícone de cada elemento
+                local kanji = {luz = "光", agua = "水", terra = "地", fogo = "火", raio = "雷", vento = "風", trevas = "闇"};
+                local cor = {luz = "#FFE680", agua = "#3BA4F0", terra = "#C07A3E", fogo = "#F0501E",
+                             raio = "#F2C200", vento = "#3CC79A", trevas = "#A35BD8"};
+                local legenda = {luz = "Luz · Hikari", agua = "Água · Mizu", terra = "Terra · Chi", fogo = "Fogo · Hi",
+                                 raio = "Raio · Kaminari", vento = "Vento · Kaze", trevas = "Trevas · Yami"};
+                local e = sheet.elemento;
+                if e ~= nil and kanji[e] ~= nil then
+                    self.imgIcElemento.src = "/FichaCDZ/images/elementos/" .. e .. ".png";
+                    self.labIcKanji.text = kanji[e];
+                    self.labIcKanji.fontColor = cor[e];
+                    self.labIcKanjiSombra.text = kanji[e];
+                    self.labIcKanjiNome.text = legenda[e];
+                    self.labIcKanjiNome.fontColor = cor[e];
+                else
+                    self.labIcKanjiNome.text = "";
+                    self.imgIcElemento.src = "";
+                    self.labIcKanji.text = "";
+                    self.labIcKanjiSombra.text = "";
+                end;
+            ]]></event>
+        </dataLink>
+    </scrollBox>
+</form>
