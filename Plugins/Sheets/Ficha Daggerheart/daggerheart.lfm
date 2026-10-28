@@ -1457,7 +1457,7 @@ local PAL = {
         end
         local prof = math.max(1, math.floor(tonumber(sheet.proficiencia) or 1))
         local expr = string.gsub(dano, "%s", "")
-        expr = string.gsub(expr, "^(%d*)[dD](%d+)", function(_, f) return prof .. "d" .. f end, 1)
+        expr = string.gsub(expr, "(%d*)[dD](%d+)", function(_, f) return prof .. "d" .. f end)
         local rolagem = Firecast.interpretarRolagem(expr)
         if not rolagem.possuiAlgumDado then
             showMessage("Não entendi a rolagem de dano: " .. dano)
