@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.7b">
-    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
     <id>Beloved.daggerheart</id>
-    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
-    <version>2.1.5</version>
+    <version>3.1.2</version>
     <info lang="pt-BR">
-        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Ficha Daggerheart</name>
-        <description>Ficha para o sistema Daggerheart</description>
-        <author>Ambesek, Beloved, Carlins, Py.</author>
+        <description>Ficha para Daggerheart (Livro Básico + Hope &amp; Fear)</description>
+        <author>Ambesek e Beloved. Agradecimentos: Carlins, Py_fodinha e Coxinhazord</author>
         <site>NA</site>
         <contact>NA</contact>
     </info>

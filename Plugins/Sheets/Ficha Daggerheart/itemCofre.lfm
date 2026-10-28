@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDHCofre" height="50" margins="{top=0,bottom=0}" theme="dark">
+    <script><![CDATA[
+    -- Formulário de item (recordList) — tema sincronizado com a ficha principal.
+local PAL = {
+    codice = {formTheme="light", bg="#F4EFE4", surface="#FFFCF5", field="#F4EFE4", text="#302936", muted="#726878", border="#D9CEBE", accent="#593B65", accentSoft="#EDE5EF", onAccent="#F4EFE4", gold="#96753E", hp="#AE525E", stress="#8B66B2", rCard=2, rChip=2, rMark=3, corner=true, selo=true, nome="Códice"},
+    vigilia = {formTheme="dark", bg="#171923", surface="#222533", field="#2B2D3D", text="#F1EDF5", muted="#BBB5CA", border="#404254", accent="#C3A5EC", accentSoft="#2B2D3D", onAccent="#171923", gold="#CEAF73", hp="#E998A3", stress="#C3A5EC", rCard=12, rChip=12, rMark=6, corner=false, selo=false, nome="Vigília"},
+}
+
+    local TM = {
+        "it1","color","border","it2","src","img:x","it3","color","accentSoft","it3","xradius","rChip","it3","yradius","rChip","it4","fontColor","accent",
+        "it5","src","img:arrow-up-right","it6","fontColor","accent","it7","color","field","it7","strokeColor","border","it8","fontColor","text","it9","color","field",
+        "it9","strokeColor","border","it10","fontColor","text","it11","fontColor","accent","it12","color","field","it12","strokeColor","border","it13","fontColor","text",
+    }
+
+
+    local function resolverToken(nomeTema, pal, tok, prop)
+        if string.sub(tok, 1, 4) == "img:" then
+            local base = "images/"
+            if prop == "src" then base = "/images/" end
+            return base .. nomeTema .. "/" .. string.sub(tok, 5) .. ".png"
+        end
+        return pal[tok]
+    end
+
+    local function aplicarTabelaTema(form, nomeTema)
+        local pal = PAL[nomeTema] or PAL.vigilia
+        for i = 1, #TM, 3 do
+            local c = form[TM[i]]
+            if c ~= nil then
+                local v = resolverToken(nomeTema, pal, TM[i + 2], TM[i + 1])
+                if v ~= nil then
+                    pcall(function() c[TM[i + 1]] = v end)
+                end
+            end
+        end
+        pcall(function() form.theme = pal.formTheme end)
+        return pal
+    end
+
+
+    local observador = nil
+
+    local function temaDaFicha()
+        if sheet == nil then return "vigilia" end
+        local raiz = NDB.getRoot(sheet)
+        if raiz ~= nil and raiz.temaFicha ~= nil and PAL[raiz.temaFicha] ~= nil then
+            return raiz.temaFicha
+        end
+        return "vigilia"
+    end
+
+    local function desligarTema()
+        if observador ~= nil then
+            observador.enabled = false
+            observador = nil
+        end
+    end
+
+    local function ligarTema()
+        if sheet == nil then return end
+        aplicarTabelaTema(self, temaDaFicha())
+        desligarTema()
+        local raiz = NDB.getRoot(sheet)
+        if raiz ~= nil then
+            observador = NDB.newObserver(raiz)
+            if observador ~= nil then
+                observador.onChanged = function(node, attribute, oldValue)
+                    if attribute == "temaFicha" then
+                        aplicarTabelaTema(self, temaDaFicha())
+                    end
+                end
+            end
+        end
+    end
+
+    local function vazio(v)
+        return v == nil or v == ""
+    end
+
+    local function mesaDoItem()
+        if sheet == nil then return nil end
+        local m = Firecast.getMesaDe(NDB.getRoot(sheet))
+        if m == nil then
+            showMessage("Abra esta ficha dentro de uma mesa para usar o chat.")
+        end
+        return m
+    end
+
+    local function enviarCartaCofre()
+        if sheet == nil then return end
+        local m = mesaDoItem()
+        if m == nil then return end
+        local nick = (m.meuJogador and m.meuJogador.nick) or ""
+        local msg = "[Carta] " .. nick .. "[§R][§K2] consultou do cofre:\n****\n### [§K1][§B]" ..
+                    (sheet.nome or "Carta") .. "[§B]"
+        if not vazio(sheet.url) then msg = msg .. "\n###### [§I" .. sheet.url .. "]" end
+        if not vazio(sheet.texto) then msg = msg .. "\n" .. sheet.texto end
+        m.activeChat:enviarMensagem(msg .. "\n****")
+    end
+
+    local function equiparCarta()
+        if sheet == nil then return end
+        local raiz = NDB.getRoot(sheet)
+        if raiz == nil then return end
+        local livre = nil
+        for i = 1, 5 do
+            local n = raiz["cardDomain" .. i .. "Nome"]
+            if n == nil or n == "" then
+                livre = i
+                break
+            end
+        end
+        if livre == nil then
+            showMessage("A mão já tem 5 cartas. Guarde uma carta antes de equipar outra.")
+            return
+        end
+        local c = "cardDomain" .. livre
+        local chave = sheet.chave
+        if vazio(chave) and not vazio(sheet.dominio) and not vazio(sheet.nome) then
+            chave = "[" .. sheet.dominio .. "] " .. sheet.nome
+        end
+        raiz[c .. "Categoria"] = sheet.dominio or ""
+        raiz[c .. "Nome"] = chave or ""
+        raiz[c .. "Nivel"] = sheet.nivel
+        raiz[c .. "Recall"] = sheet.recall
+        raiz[c .. "Tipo"] = sheet.tipo
+        raiz[c .. "Texto"] = sheet.texto
+        if not vazio(sheet.url) then raiz[c .. "URL"] = sheet.url end
+        local recall = tonumber(sheet.recall) or 0
+        if recall > 0 then
+            showMessage("Carta equipada no espaço " .. livre .. ". Lembre-se: fora de um descanso, marque " ..
+                recall .. " de Estresse (Recall).")
+        end
+        NDB.deleteNode(sheet)
+    end
+
+
+    ]]></script>
+    <rectangle strokeSize="0" color="#00000000" align="client">
+        <rectangle strokeSize="0" color="#404254" align="top" height="1" name="it1"/>
+        <layout align="client">
+            <layout align="client">
+                <rectangle strokeSize="0" color="#00000000" align="right" width="26" hitTest="true" cursor="handPoint" hint="Remover" margins="{left=6}">
+                    <image src="/images/vigilia/x.png" style="proportional" width="14" height="14" hitTest="false" align="client" margins="{left=6,right=6,top=8,bottom=8}" name="it2"/>
+                    <event name="onClick">Dialogs.confirmYesNo("Remover este registro?", function(ok) if ok then NDB.deleteNode(sheet) end end)</event>
+                </rectangle>
+                <layout align="client">
+                    <rectangle strokeSize="0" color="#2B2D3D" height="30" cornerType="round" xradius="12" yradius="12" hitTest="true" cursor="handPoint" width="74" margins="{left=8,top=10,bottom=10}" hint="Mover para um espaço livre da mão" align="right" name="it3">
+                        <label text="Equipar" fontSize="12" fontColor="#C3A5EC" fontFamily="Inter" textTrimming="none" vertTextAlign="center" fontStyle="bold" align="client" horzTextAlign="center" hitTest="false" name="it4"/>
+                        <event name="onClick">equiparCarta()</event>
+                    </rectangle>
+                    <layout align="client">
+                        <rectangle strokeSize="0" color="#00000000" width="30" hitTest="true" cursor="handPoint" hint="Enviar ao chat" margins="{left=8}" align="right">
+                            <image src="/images/vigilia/arrow-up-right.png" style="proportional" width="17" height="17" hitTest="false" align="client" margins="{left=6,right=7,top=16,bottom=16}" name="it5"/>
+                            <event name="onClick">enviarCartaCofre()</event>
+                        </rectangle>
+                        <layout align="client">
+                            <comboBox width="110" field="registro" items="{'No cofre', 'Na mão', 'Exemplo'}" values="{'No cofre', 'Na mão', 'Exemplo'}" fontSize="12" fontColor="#C3A5EC" margins="{left=8,top=10,bottom=10}" align="right" name="it6"/>
+                            <layout align="client">
+                                <rectangle strokeSize="1" color="#2B2D3D" strokeColor="#404254" sides="bottom" cornerType="round" xradius="3" yradius="3" padding="{left=2,right=2,top=0,bottom=0}" width="52" margins="{left=8,top=9,bottom=9}" align="right" name="it7">
+                                    <edit field="recall" fontSize="14" fontColor="#F1EDF5" fontFamily="Inter" transparent="true" vertTextAlign="center" horzTextAlign="center" textPrompt="0" align="client" name="it8"/>
+                                </rectangle>
+                                <layout align="client">
+                                    <rectangle strokeSize="1" color="#2B2D3D" strokeColor="#404254" sides="bottom" cornerType="round" xradius="3" yradius="3" padding="{left=2,right=2,top=0,bottom=0}" width="52" margins="{left=8,top=9,bottom=9}" align="right" name="it9">
+                                        <edit field="nivel" fontSize="14" fontColor="#F1EDF5" fontFamily="Inter" transparent="true" vertTextAlign="center" horzTextAlign="center" textPrompt="1" align="client" name="it10"/>
+                                    </rectangle>
+                                    <layout align="client">
+                                        <comboBox width="120" field="dominio" items="{'—', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}" values="{'', 'Arcana', 'Blade', 'Bone', 'Codex', 'Dread', 'Grace', 'Midnight', 'Sage', 'Splendor', 'Valor'}" fontSize="12" fontColor="#C3A5EC" margins="{left=8,top=10,bottom=10}" align="right" name="it11"/>
+                                        <rectangle strokeSize="1" color="#2B2D3D" strokeColor="#404254" sides="bottom" cornerType="round" xradius="3" yradius="3" padding="{left=8,right=8,top=0,bottom=0}" margins="{top=9,bottom=9}" align="client" name="it12">
+                                            <edit field="nome" fontSize="15" fontColor="#F1EDF5" fontFamily="Inter" transparent="true" vertTextAlign="center" fontStyle="bold" textPrompt="Nome da carta" align="client" name="it13"/>
+                                        </rectangle>
+                                    </layout>
+                                </layout>
+                            </layout>
+                        </layout>
+                    </layout>
+                </layout>
+            </layout>
+        </layout>
+    </rectangle>
+    <event name="onNodeReady">ligarTema()</event>
+    <event name="onNodeUnready">desligarTema()</event>
+</form>
