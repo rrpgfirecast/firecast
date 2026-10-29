@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDHArmaReserva" height="160" margins="{top=0,bottom=0}" theme="dark">
+    <script><![CDATA[
+    -- Formulário de item (recordList) — tema sincronizado com a ficha principal.
+local PAL = {
+    codice = {formTheme="light", bg="#F4EFE4", surface="#FFFCF5", field="#F4EFE4", text="#302936", muted="#726878", border="#D9CEBE", accent="#593B65", accentSoft="#EDE5EF", onAccent="#F4EFE4", gold="#96753E", hp="#AE525E", stress="#8B66B2", rCard=2, rChip=2, rMark=3, corner=true, selo=true, nome="Códice"},
+    vigilia = {formTheme="dark", bg="#171923", surface="#222533", field="#2B2D3D", text="#F1EDF5", muted="#BBB5CA", border="#404254", accent="#C3A5EC", accentSoft="#2B2D3D", onAccent="#171923", gold="#CEAF73", hp="#E998A3", stress="#C3A5EC", rCard=12, rChip=12, rMark=6, corner=false, selo=false, nome="Vigília"},
+}
+
+    local TM = {
+        "it1","color","border","it2","color","field","it2","strokeColor","border","it3","fontColor","text","it4","fontColor","muted","it5","src","img:x",
+        "it6","color","accentSoft","it6","xradius","rChip","it6","yradius","rChip","it7","fontColor","accent","it8","color","field","it8","strokeColor","border",
+        "it9","fontColor","text","it10","color","field","it10","strokeColor","border","it11","fontColor","text","it12","color","field","it12","strokeColor","border",
+        "it13","fontColor","text","it14","color","field","it14","strokeColor","border","it15","fontColor","text","it16","color","field","it16","strokeColor","border",
+        "it17","fontColor","text",
+    }
+
+
+    local function resolverToken(nomeTema, pal, tok, prop)
+        if string.sub(tok, 1, 4) == "img:" then
+            local base = "images/"
+            if prop == "src" then base = "/images/" end
+            return base .. nomeTema .. "/" .. string.sub(tok, 5) .. ".png"
+        end
+        return pal[tok]
+    end
+
+    local function aplicarTabelaTema(form, nomeTema)
+        local pal = PAL[nomeTema] or PAL.vigilia
+        for i = 1, #TM, 3 do
+            local c = form[TM[i]]
+            if c ~= nil then
+                local v = resolverToken(nomeTema, pal, TM[i + 2], TM[i + 1])
+                if v ~= nil then
+                    pcall(function() c[TM[i + 1]] = v end)
+                end
+            end
+        end
+        pcall(function() form.theme = pal.formTheme end)
+        return pal
+    end
+
+
+    local observador = nil
+
+    local function temaDaFicha()
+        if sheet == nil then return "vigilia" end
+        local raiz = NDB.getRoot(sheet)
+        if raiz ~= nil and raiz.temaFicha ~= nil and PAL[raiz.temaFicha] ~= nil then
+            return raiz.temaFicha
+        end
+        return "vigilia"
+    end
+
+    local function desligarTema()
+        if observador ~= nil then
+            observador.enabled = false
+            observador = nil
+        end
+    end
+
+    local function ligarTema()
+        if sheet == nil then return end
+        aplicarTabelaTema(self, temaDaFicha())
+        desligarTema()
+        local raiz = NDB.getRoot(sheet)
+        if raiz ~= nil then
+            observador = NDB.newObserver(raiz)
+            if observador ~= nil then
+                observador.onChanged = function(node, attribute, oldValue)
+                    if attribute == "temaFicha" then
+                        aplicarTabelaTema(self, temaDaFicha())
+                    end
+                end
+            end
+        end
+    end
+
+    local function vazio(v)
+        return v == nil or v == ""
+    end
+
+    local function mesaDoItem()
+        if sheet == nil then return nil end
+        local m = Firecast.getMesaDe(NDB.getRoot(sheet))
+        if m == nil then
+            showMessage("Abra esta ficha dentro de uma mesa para usar o chat.")
+        end
+        return m
+    end
+
+    local function rolarDanoReserva()
+        if sheet == nil then return end
+        local dano = sheet.dano or ""
+        local expr = string.match(dano, "[%d]*[dD]%d+[%d%+%-dD]*")
+        if expr == nil then
+            showMessage("Informe o dano da arma (ex.: 1d8 · Físico).")
+            return
+        end
+        local raiz = NDB.getRoot(sheet)
+        local prof = math.max(1, math.floor(tonumber(raiz and raiz.proficiencia) or 1))
+        expr = string.gsub(expr, "^(%d*)[dD](%d+)", function(_, f) return prof .. "d" .. f end, 1)
+        local rolagem = Firecast.interpretarRolagem(expr)
+        if not rolagem.possuiAlgumDado then return end
+        local m = mesaDoItem()
+        if m == nil then return end
+        m.activeChat:rolarDados(rolagem, "Dano · " .. (sheet.nome or "Arma"))
+    end
+
+
+    ]]></script>
+    <rectangle strokeSize="0" color="#00000000" align="client" padding="{top=10,bottom=12}">
+        <rectangle strokeSize="0" color="#404254" align="bottom" height="1" name="it1"/>
+        <layout align="top" height="48">
+            <layout width="200" margins="{right=12}" align="left">
+                <rectangle strokeSize="1" color="#2B2D3D" strokeColor="#404254" sides="bottom" cornerType="round" xradius="3" yradius="3" padding="{left=8,right=8,top=0,bottom=0}" height="30" align="top" name="it2">
+                    <edit field="nome" fontSize="15" fontColor="#F1EDF5" fontFamily="Inter" transparent="true" vertTextAlign="center" textPrompt="Nome da arma" align="client" name="it3"/>
+                </rectangle>
+                <label text="No inventário · não equipada" fontSize="11" fontColor="#BBB5CA" fontFamily="Inter" textTrimming="none" vertTextAlign="center" align="client" name="it4"/>
+            </layout>
+            <layout align="client">
+                <rectangle strokeSize="0" color="#00000000" align="right" width="26" hitTest="true" cursor="handPoint" hint="Remover" margins="{left=6}">
+                    <image src="/images/vigilia/x.png" style="proportional" width="14" height="14" hitTest="false" align="client" margins="{left=6,right=6,top=8,bottom=8}" name="it5"/>
+                    <event name="onClick">Dialogs.confirmYesNo("Remover este registro?", function(ok) if ok then NDB.deleteNode(sheet) end end)</event>
+                </rectangle>
+                <layout align="client">
+                    <rectangle strokeSize="0" color="#2B2D3D" height="30" cornerType="round" xradius="12" yradius="12" hitTest="true" cursor="handPoint" width="64" margins="{left=8,top=0,bottom=18}" align="right" name="it6">
+                        <label text="Dano" fontSize="12" fontColor="#C3A5EC" fontFamily="Inter" textTrimming="none" vertTextAlign="center" fontStyle="bold" align="client" horzTextAlign="center" hitTest="false" name="it7"/>
+                        <event name="onClick">rolarDanoReserva()</event>
+                    </rectangle>
+                    <layout align="client">
+                        <rectangle strokeSize="1" color="#2B2D3D" strokeColor="#404254" sides="bottom" cornerType="round" xradius="3" yradius="3" padding="{left=8,right=8,top=0,bottom=0}" align="left" width="110" margins="{right=8,bottom=18}" name="it8">
+                            <edit field="atributo" fontSize="13" fontColor="#F1EDF5" fontFamily="Inter" transparent="true" vertTextAlign="center" textPrompt="Atributo" align="client" name="it9"/>
+                        </rectangle>
+                        <rectangle strokeSize="1" color="#2B2D3D" strokeColor="#404254" sides="bottom" cornerType="round" xradius="3" yradius="3" padding="{left=8,right=8,top=0,bottom=0}" align="left" width="110" margins="{right=8,bottom=18}" name="it10">
+                            <edit field="alcance" fontSize="13" fontColor="#F1EDF5" fontFamily="Inter" transparent="true" vertTextAlign="center" textPrompt="Alcance" align="client" name="it11"/>
+                        </rectangle>
+                        <rectangle strokeSize="1" color="#2B2D3D" strokeColor="#404254" sides="bottom" cornerType="round" xradius="3" yradius="3" padding="{left=8,right=8,top=0,bottom=0}" align="left" width="110" margins="{right=8,bottom=18}" name="it12">
+                            <edit field="dano" fontSize="13" fontColor="#F1EDF5" fontFamily="Inter" transparent="true" vertTextAlign="center" textPrompt="1d8 Físico" align="client" name="it13"/>
+                        </rectangle>
+                        <rectangle strokeSize="1" color="#2B2D3D" strokeColor="#404254" sides="bottom" cornerType="round" xradius="3" yradius="3" padding="{left=8,right=8,top=0,bottom=0}" align="client" margins="{bottom=18}" name="it14">
+                            <edit field="empunhadura" fontSize="13" fontColor="#F1EDF5" fontFamily="Inter" transparent="true" vertTextAlign="center" textPrompt="1 Mão" align="client" name="it15"/>
+                        </rectangle>
+                    </layout>
+                </layout>
+            </layout>
+        </layout>
+        <rectangle strokeSize="1" color="#2B2D3D" align="client" margins="{top=8,bottom=4}" strokeColor="#404254" sides="bottom" padding="{left=10,right=10,top=4,bottom=4}" name="it16">
+            <textEditor align="client" field="caracteristica" transparent="true" fontSize="14" fontColor="#F1EDF5" fontFamily="Inter" wordWrap="true" hint="Característica da arma" name="it17"/>
+        </rectangle>
+    </rectangle>
+    <event name="onNodeReady">ligarTema()</event>
+    <event name="onNodeUnready">desligarTema()</event>
+</form>
