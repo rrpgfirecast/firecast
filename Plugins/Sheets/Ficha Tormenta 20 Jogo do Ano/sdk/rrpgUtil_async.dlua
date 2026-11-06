@@ -1,0 +1,78 @@
+﻿local objs = require("rrpgObjs.lua");
+local async = {};
+
+local __asyncsWorking = {};
+
+function async.newAsyncZLibObject()
+	local obj = objs.objectFromHandle(_obj_newObject("asyncZLibObject"));
+	
+	if obj.eves == nil then
+		obj.eves = {};
+	end;
+	
+	obj.eves["onFinish"] = "";
+	obj.eves["onError"] = "";
+	
+	function obj:undoReferenceToStreams()
+		rawset(obj, "__sourceStream", nil);
+		rawset(obj, "__destStream", nil);	
+	end;
+	
+	function obj:setWorking()
+		__asyncsWorking[obj] = true;
+	end;
+	
+	function obj:setNotWorking()
+		obj:undoReferenceToStreams();
+		__asyncsWorking[obj] = nil;
+	end;
+		
+	function obj:zlibCompressAsync(sourceStream, destStream, level, qtBytesInSource, onFinish, onError)	
+		rawset(obj, "__sourceStream", sourceStream);
+		rawset(obj, "__destStream", destStream);
+		
+		obj.onFinish = function (...)
+			if onFinish ~= nil then
+				onFinish(...);
+				obj:setNotWorking();
+			end;
+		end;
+		
+		obj.onError = function (...)
+			if onError ~= nil then
+				onError(...);
+				obj:setNotWorking();
+			end;
+		end;	
+
+		obj:setWorking();
+		_obj_invokeEx(obj.handle, "ZLibCompressAsync", sourceStream.handle, destStream.handle, level, qtBytesInSource);
+	end;
+	
+	function obj:zlibDecompressAsync(sourceStream, destStream, onFinish, onError)
+		rawset(obj, "__sourceStream", sourceStream);
+		rawset(obj, "__destStream", destStream);	
+		
+		obj.onFinish = function ()
+			if onFinish ~= nil then
+				onFinish();
+				obj:setNotWorking();
+			end;
+		end;
+		
+		obj.onError = function (errorMsg)
+			if onError ~= nil then
+				onError(errorMsg);
+				obj:setNotWorking();
+			end;
+		end;		
+
+		obj:setWorking();
+		_obj_invokeEx(obj.handle, "ZLibDecompressAsync", sourceStream.handle, destStream.handle);
+	end;
+	
+	objs.registerHandle(obj.handle, obj);
+	return obj;
+end;
+
+return async;
