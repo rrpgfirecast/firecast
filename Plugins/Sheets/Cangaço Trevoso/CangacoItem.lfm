@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCangacoItem" height="194" theme="dark">
+<script><![CDATA[
+local function n(valor) return tonumber(valor) or 0 end
+
+local function interpretarCritico(rolagem)
+    if rolagem == nil or rolagem.ops == nil then return nil end
+    for _, operacao in ipairs(rolagem.ops) do
+        if operacao.tipo == "dado" and tonumber(operacao.face) == 6 then
+            local faces = operacao.resultados
+            if faces ~= nil and #faces == 2 then
+                if faces[1] == 6 and faces[2] == 6 then return "acerto" end
+                if faces[1] == 1 and faces[2] == 1 then return "falha" end
+            end
+        end
+    end
+    return nil
+end
+
+local function penalidadeFerida(personagem)
+    if personagem.poder_ativo == true and
+       personagem.arquetipo == "Sangue nos Ói" and
+       n(personagem.maledicencia) >= 5 then
+        return 0
+    end
+    if n(personagem.firidas) >= 3 then return -2 end
+    if n(personagem.firidas) == 2 then return -1 end
+    return 0
+end
+
+local function formula(bonus)
+    bonus = math.floor(n(bonus))
+    if bonus > 0 then return "2d6+" .. bonus end
+    if bonus < 0 then return "2d6" .. bonus end
+    return "2d6"
+end
+
+local function criticoNoChat(chat, tipo)
+    local cor, mensagem = "#3586E8", "ACERTO CRÍTICO! Dois 6 naturais (6 + 6)."
+    if tipo == "falha" then
+        cor = "#E14B4B"
+        mensagem = "FALHA CRÍTICA! Dois 1 naturais (1 + 1)."
+    end
+    chat:asyncSendStd(mensagem, {
+        talemarkOptions = {
+            defaultTextStyle = {color = cor, bold = true},
+            parseSmileys = false
+        }
+    })
+end
+
+local function rolarAtaqueItem()
+    if sheet == nil then return end
+    local personagem = NDB.getRoot(sheet)
+    if personagem == nil then return end
+    local mesa = Firecast.getMesaDe(personagem)
+    if mesa == nil or mesa.chat == nil then
+        showMessage("Abra a ficha em uma mesa para rolar dados.")
+        return
+    end
+    local tipo = sheet.tipo_arma or "Arma de Fio"
+    local chave = "arma_fio"
+    if tipo == "Arma de Póiva" then chave = "arma_poiva" end
+
+    local bonus = n(personagem.destreza) + n(personagem.coordenacao)
+    bonus = bonus + n(personagem["comp_" .. chave])
+    bonus = bonus - n(personagem["inc_" .. chave])
+    bonus = bonus + n(sheet.bonus_ataque)
+    bonus = bonus + n(personagem.teste_mod) + penalidadeFerida(personagem)
+    if personagem.poder_ativo == true and
+       personagem.arquetipo == "Sangue nos Ói" and
+       n(personagem.maledicencia) >= 2 then
+        bonus = bonus + 1
+    end
+
+    local nome = sheet.nome or "Arma sem nome"
+    if nome == "" then nome = "Arma sem nome" end
+    local chat = mesa.chat
+    chat:rolarDados(formula(bonus), "Ataque: " .. nome .. " (" .. tipo .. ")", function(rolagem)
+        if personagem == nil or rolagem == nil then return end
+        personagem.ultimo_ataque = n(rolagem.resultado)
+        personagem.ultimo_teste = n(rolagem.resultado)
+        personagem.ultimo_bonus = bonus
+        local critico = interpretarCritico(rolagem)
+        if critico ~= nil then criticoNoChat(chat, critico) end
+    end)
+end
+
+local function iniciarItem()
+    if sheet ~= nil and sheet.tipo_arma == nil then sheet.tipo_arma = "Arma de Fio" end
+end
+]]></script>
+<event name="onNodeReady"><![CDATA[iniciarItem()]]></event>
+<layout align="top" height="34">
+ <label align="left" width="55" text="Arma"/>
+ <edit align="left" width="185" field="nome" hint="Nome da arma"/>
+ <button align="right" width="69" text="Excluir" onClick="NDB.deleteNode(sheet);"/>
+</layout>
+<layout align="top" height="34">
+ <label align="left" width="55" text="Tipo"/>
+ <comboBox align="left" width="210" field="tipo_arma"
+   items="{'Arma de Fio', 'Arma de Póiva'}"/>
+</layout>
+<layout align="top" height="31">
+ <label align="left" width="67" text="Dano"/>
+ <edit align="left" width="55" field="dano"/>
+ <label align="left" width="80" text="Bônus"/>
+ <edit align="left" width="55" field="bonus_ataque"/>
+</layout>
+<layout align="top" height="31">
+ <label align="left" width="67" text="Alcance"/>
+ <edit align="left" width="55" field="alcance"/>
+ <label align="left" width="80" text="Munição"/>
+ <edit align="left" width="55" field="municao"/>
+</layout>
+<layout align="top" height="31">
+ <label align="left" width="67" text="Preparo"/>
+ <edit align="left" width="55" field="preparo"/>
+ <label align="left" width="80" text="Valor"/>
+ <edit align="left" width="55" field="valor"/>
+</layout>
+<layout align="top" height="31">
+ <button align="left" width="211" text="ROLAR ATAQUE">
+  <event name="onClick"><![CDATA[rolarAtaqueItem()]]></event>
+ </button>
+ <edit align="client" field="notas" hint="Propriedades e observações"/>
+</layout>
+</form>

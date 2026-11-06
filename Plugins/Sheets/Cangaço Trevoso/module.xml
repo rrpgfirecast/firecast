@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b">
+  <id>br.com.fichas.CangacoTrevoso</id>
+  <version>1.0.0</version>
+  <info lang="pt-BR">
+    <name>Cangaço Trevoso - Ficha</name>
+    <description>Ficha com retrato editável e moldura do sertão, para RDK 3.7b. Layout geral ajustado ao background temático e sincronização nativa restaurada.</description>
+    <author>Adaptação comunitária não oficial</author>
+    <site>https://github.com/rrpgfirecast/firecast</site>
+    <contact>Entre em contato com o responsavel pela mesa que distribuiu esta ficha.</contact>
+  </info>
+</module>
