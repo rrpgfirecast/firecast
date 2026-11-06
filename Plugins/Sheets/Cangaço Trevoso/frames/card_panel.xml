@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="900" height="560" autoScaleX="true" autoScaleY="true">
+  <draw>
+    <image left="0" top="0" right="900" bottom="560" overflowX="stretch" overflowY="stretch">
+      <anchors left="true" top="true" right="true" bottom="true" />
+      <source url="../assets/card_panel.png" left="0" top="0" right="900" bottom="560" />
+    </image>
+  </draw>
+</frame>

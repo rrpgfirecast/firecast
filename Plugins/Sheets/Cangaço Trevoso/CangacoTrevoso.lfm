@@ -1,0 +1,1117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<form name="frmCangacoTrevoso" formType="sheetTemplate" dataType="br.com.fichas.CangacoTrevoso" title="Cangaço Trevoso" align="client" theme="dark">
+  <script><![CDATA[require("dialogs.lua")
+require("ndb.lua")
+require("system.lua")
+
+local maiores = {"parrudez", "destreza", "esperteza", "presenca"}
+local menores = {
+    "forca", "saude", "coordenacao", "ligeireza",
+    "inteligencia", "percepcao", "simpatia", "valentia"
+}
+local competencias = {
+    "alerta", "arma_fio", "arma_poiva", "artista", "boniteza",
+    "catimbo", "compadres", "cura", "dinheiro", "estudo",
+    "fama", "fineza", "preparo_fisico", "sair_tapa",
+    "sobrevivenca", "surdina"
+}
+
+local mapaMaior = {
+    ["Parrudez"] = "parrudez",
+    ["Destreza"] = "destreza",
+    ["Esperteza"] = "esperteza",
+    ["Presença"] = "presenca"
+}
+local mapaMenor = {
+    ["Fôrça"] = "forca",
+    ["Saúde"] = "saude",
+    ["Coordenação"] = "coordenacao",
+    ["Ligeireza"] = "ligeireza",
+    ["Intiligência"] = "inteligencia",
+    ["Percepção"] = "percepcao",
+    ["Simpatia"] = "simpatia",
+    ["Valentia"] = "valentia"
+}
+local mapaCompetencia = {
+    ["Alerta"] = "alerta",
+    ["Arma de Fio"] = "arma_fio",
+    ["Arma de Póiva"] = "arma_poiva",
+    ["Artista"] = "artista",
+    ["Boniteza"] = "boniteza",
+    ["Catimbó"] = "catimbo",
+    ["Compadres"] = "compadres",
+    ["Cura"] = "cura",
+    ["Dinheiro"] = "dinheiro",
+    ["Estudo"] = "estudo",
+    ["Fama"] = "fama",
+    ["Fineza"] = "fineza",
+    ["Preparo Físico"] = "preparo_fisico",
+    ["Sair na Tapa"] = "sair_tapa",
+    ["Sobrevivênça"] = "sobrevivenca",
+    ["Surdina"] = "surdina"
+}
+
+local function n(v)
+    return tonumber(v) or 0
+end
+
+local function clamp(v, minimo, maximo)
+    return math.max(minimo, math.min(maximo, n(v)))
+end
+
+local function avisar(mensagem)
+    showMessage(mensagem)
+end
+
+local function getMesa()
+    return Firecast.getMesaDe(sheet)
+end
+
+-- Mensagem compartilhada no chat: cor e negrito são enviados com TalemarkOptions.
+local function enviarAoChat(chat, mensagem, cor)
+    local parametros = nil
+    if cor ~= nil then
+        parametros = {
+            talemarkOptions = {
+                defaultTextStyle = {color = cor, bold = true},
+                parseSmileys = false
+            }
+        }
+    end
+    chat:asyncSendStd(mensagem, parametros)
+end
+
+local function expressao2d6(bonus)
+    bonus = math.floor(n(bonus))
+    if bonus > 0 then return "2d6+" .. bonus end
+    if bonus < 0 then return "2d6" .. bonus end
+    return "2d6"
+end
+
+-- Lê os valores naturais dos dois dados, sem considerar qualquer modificador.
+local function tipoCritico(rolagem)
+    if rolagem == nil or rolagem.ops == nil then return nil end
+    for _, op in ipairs(rolagem.ops) do
+        if op.tipo == "dado" and tonumber(op.face) == 6 then
+            local resultados = op.resultados
+            if resultados ~= nil and #resultados == 2 then
+                if resultados[1] == 6 and resultados[2] == 6 then
+                    return "acerto"
+                end
+                if resultados[1] == 1 and resultados[2] == 1 then
+                    return "falha"
+                end
+            end
+        end
+    end
+    return nil
+end
+
+local function modFerimento()
+    local ferimentos = clamp(sheet.firidas, 0, 4)
+    if ferimentos >= 3 then return -2 end
+    if ferimentos == 2 then return -1 end
+    return 0
+end
+
+local function bonusPoder(atributo)
+    if sheet.poder_ativo ~= true then return 0 end
+    local arquetipo = sheet.arquetipo or ""
+    local nivel = n(sheet.maledicencia)
+    if arquetipo == "Besta-fera" and nivel >= 2 then
+        if atributo == "percepcao" then return 2 end
+    end
+    if arquetipo == "Sangue nos Ói" and nivel >= 2 then
+        if atributo == "coordenacao" then return 1 end
+    end
+    return 0
+end
+
+local function complemento(nome)
+    if nome == "carrera" then
+        return n(sheet.saude) + n(sheet.ligeireza)
+    end
+    if nome == "iniciativa" then
+        return n(sheet.ligeireza) + n(sheet.percepcao)
+    end
+    if nome == "leriado" then
+        return n(sheet.inteligencia) + n(sheet.simpatia)
+    end
+    if nome == "cabrerisse" then
+        return n(sheet.percepcao) + n(sheet.valentia)
+    end
+    return 0
+end
+
+-- Evita reenviar ao servidor os mesmos valores em cada abertura/rolagem.
+local function atualizarComplementos()
+    local valores = {
+        valor_carrera = complemento("carrera"),
+        valor_iniciativa = complemento("iniciativa"),
+        valor_leriado = complemento("leriado"),
+        valor_cabrerisse = complemento("cabrerisse")
+    }
+    for campo, valor in pairs(valores) do
+        if tonumber(sheet[campo]) ~= valor then
+            sheet[campo] = valor
+        end
+    end
+end
+
+local function bonusComplemento(nome)
+    if sheet.poder_ativo ~= true then return 0 end
+    local arquetipo = sheet.arquetipo or ""
+    local nivel = n(sheet.maledicencia)
+    if arquetipo == "Raio da Silibrina" and nivel >= 2 then
+        if nome == "carrera" or nome == "iniciativa" then return 2 end
+    end
+    if arquetipo == "Enrrolador" and nivel >= 2 then
+        if nome == "leriado" then return 2 end
+    end
+    return 0
+end
+
+local function penalidadeAtiva()
+    if sheet.poder_ativo == true then
+        if sheet.arquetipo == "Sangue nos Ói" then
+            if n(sheet.maledicencia) >= 5 then return 0 end
+        end
+    end
+    return modFerimento()
+end
+
+local function validar()
+    atualizarComplementos()
+    local sumMaj, sumMen = 0, 0
+    local sumCompet, sumIncompet, numIncompet = 0, 0, 0
+    local erros = {}
+    for _, campo in ipairs(maiores) do
+        local valor = n(sheet[campo])
+        sumMaj = sumMaj + valor
+        if valor < 1 or valor > 5 or valor ~= math.floor(valor) then
+            table.insert(erros, "Atributo maior inválido: " .. campo)
+        end
+    end
+    for _, campo in ipairs(menores) do
+        local valor = n(sheet[campo])
+        sumMen = sumMen + valor
+        if valor < 0 or valor > 5 or valor ~= math.floor(valor) then
+            table.insert(erros, "Atributo menor inválido: " .. campo)
+        end
+    end
+    for _, campo in ipairs(competencias) do
+        local valor = n(sheet["comp_" .. campo])
+        local inc = n(sheet["inc_" .. campo])
+        sumCompet = sumCompet + valor
+        sumIncompet = sumIncompet + inc
+        if inc > 0 then numIncompet = numIncompet + 1 end
+        if valor < 0 or valor > 3 or inc < 0 or inc > 3 then
+            table.insert(erros, "Competência/incompetência inválida: " .. campo)
+        end
+        if valor ~= math.floor(valor) or inc ~= math.floor(inc) then
+            table.insert(erros, "Use valores inteiros: " .. campo)
+        end
+        if valor > 0 and inc > 0 then
+            table.insert(erros, "Competência e incompetência juntas: " .. campo)
+        end
+    end
+    if sumMaj ~= 10 then
+        table.insert(erros, "Atributos maiores: " .. sumMaj .. "/10")
+    end
+    if sumMen ~= 15 then
+        table.insert(erros, "Atributos menores: " .. sumMen .. "/15")
+    end
+    if numIncompet > 3 then
+        table.insert(erros, "No máximo três incompetências iniciais")
+    end
+    local limite = 4 + n(sheet.inteligencia) + sumIncompet
+    if sumCompet ~= limite then
+        table.insert(erros, "Competências: " .. sumCompet .. "/" .. limite)
+    end
+    sheet.resumo_pontos = "MAIORES " .. sumMaj .. "/10 | MENORES " .. sumMen .. "/15"
+    if #erros == 0 then
+        avisar("Distribuição inicial válida! " .. sheet.resumo_pontos)
+    else
+        avisar(table.concat(erros, "\n"))
+    end
+end
+
+
+-- Uma rolagem nativa da mesa. Resultado normal ja aparece automaticamente
+-- no chat; so sao enviadas mensagens adicionais para CRITICOS.
+local function rolar(bonus, descricao, modo, callbackExtra)
+    local mesa = getMesa()
+    if mesa == nil or mesa.chat == nil then
+        avisar("Abra a ficha em uma mesa para rolar os dados.")
+        return
+    end
+    local chat = mesa.chat
+    local expressao = expressao2d6(bonus)
+    chat:rolarDados(expressao, descricao, function(rolada)
+        if sheet == nil or rolada == nil then return end
+        local total = n(rolada.resultado)
+        local critico = tipoCritico(rolada)
+        sheet.ultimo_teste = total
+        sheet.ultimo_bonus = bonus
+        if modo == "ataque" then sheet.ultimo_ataque = total end
+        if critico == "acerto" then
+            enviarAoChat(chat, "ACERTO CRÍTICO! Dois 6 naturais (6 + 6).", "#3586E8")
+        elseif critico == "falha" then
+            enviarAoChat(chat, "FALHA CRÍTICA! Dois 1 naturais (1 + 1).", "#E14B4B")
+        end
+        if callbackExtra ~= nil then callbackExtra(total, critico) end
+    end)
+end
+
+local function bonusCompetencia(chave)
+    if chave == nil then return 0 end
+    return n(sheet["comp_" .. chave]) - n(sheet["inc_" .. chave])
+end
+
+local function rolarAtributos(chaveMaior, chaveMenor, nomeMaior, nomeMenor)
+    local bonus = n(sheet[chaveMaior]) + n(sheet[chaveMenor])
+    bonus = bonus + bonusPoder(chaveMenor)
+    bonus = bonus + penalidadeAtiva() + n(sheet.teste_mod)
+    local descricao = nomeMaior .. " + " .. nomeMenor
+    rolar(bonus, descricao, "teste")
+end
+
+local function rolarComplemento(chave, titulo)
+    atualizarComplementos()
+    local bonus = complemento(chave) + bonusComplemento(chave)
+    bonus = bonus + penalidadeAtiva() + n(sheet.teste_mod)
+    rolar(bonus, titulo, "teste")
+end
+
+-- Cada competencia e rolada com o atributo maior/menor que o usuario
+-- escolheu no painel de configuracao, respeitando a liberdade narrativa.
+local function rolarCompetencia(chave, titulo)
+    local maiorNome = sheet.teste_maior_nome or "Parrudez"
+    local menorNome = sheet.teste_menor_nome or "Fôrça"
+    local maior = mapaMaior[maiorNome]
+    local menor = mapaMenor[menorNome]
+    if maior == nil or menor == nil then
+        avisar("Selecione os atributos para testar esta competência.")
+        return
+    end
+    local bonus = n(sheet[maior]) + n(sheet[menor])
+    bonus = bonus + bonusPoder(menor) + bonusCompetencia(chave)
+    bonus = bonus + penalidadeAtiva() + n(sheet.teste_mod)
+    rolar(bonus, maiorNome .. " + " .. menorNome .. " + " .. titulo, "teste")
+end
+
+-- Ataque sem equipamento cadastrado (equipamentos possui tambem botoes
+-- individuais para cada arma, incluindo seu bonus especifico).
+local function rolarAtaque(chaveCompetencia, nomeCompetencia)
+    local bonus = n(sheet.destreza) + n(sheet.coordenacao)
+    bonus = bonus + bonusPoder("coordenacao")
+    bonus = bonus + bonusCompetencia(chaveCompetencia)
+    bonus = bonus + penalidadeAtiva() + n(sheet.teste_mod)
+    rolar(bonus, "Ataque: " .. nomeCompetencia, "ataque")
+end
+
+local function sofrerDano()
+    local dano = math.max(0, n(sheet.dano_recebido) - n(sheet.protecao))
+    dano = math.max(0, dano - n(sheet.protecao_extra))
+    local saude = n(sheet.saude)
+    if saude <= 0 then
+        avisar("Saúde precisa ser maior que zero para calcular Firidas.")
+        return
+    end
+    local novos = math.floor(dano / saude)
+    local antes = clamp(sheet.firidas, 0, 4)
+    sheet.firidas = math.min(4, antes + novos)
+    sheet.ultimo_dano = dano
+    local texto = "Dano líquido " .. dano .. ": " .. novos .. " Firida(s)."
+    texto = texto .. " Total " .. sheet.firidas .. "/4."
+    avisar(texto)
+end
+
+local function curar()
+    if n(sheet.firidas) < 1 then
+        avisar("Nenhuma Firida para curar.")
+        return
+    end
+    local dificuldade = 10 + n(sheet.parrudez)
+    local bonus = n(sheet.teste_cura_bonus)
+    if sheet.cura_propria then bonus = bonus + penalidadeAtiva() end
+    rolar(bonus, "Cura (dificuldade " .. dificuldade .. ")", "cura", function(total, critico)
+        if critico ~= "falha" and total >= dificuldade then
+            sheet.firidas = math.max(0, n(sheet.firidas) - 1)
+        end
+    end)
+end
+
+local function gastarFicha(poder)
+    if n(sheet.fichas) <= 0 then
+        avisar("Sem fichas narrativas disponíveis.")
+        return
+    end
+    if poder and n(sheet.maledicencia) >= 10 then
+        avisar("Maledicência 10: controle do Mestre.")
+        return
+    end
+    if poder and n(sheet.nivel_poder_uso) > n(sheet.maledicencia) then
+        avisar("Poder ainda não desbloqueado.")
+        return
+    end
+    sheet.fichas = n(sheet.fichas) - 1
+    if poder and n(sheet.nivel_poder_uso) >= 2 then
+        sheet.maledicencia = math.min(10, n(sheet.maledicencia) + 1)
+    end
+    if n(sheet.maledicencia) >= 10 then
+        avisar("Maledicência 10: personagem sob controle do Mestre.")
+    end
+end
+
+local function riquezaInicial()
+    local pontos, maus = 0, 0
+    for _, campo in ipairs(competencias) do
+        pontos = pontos + n(sheet["comp_" .. campo])
+        maus = maus + n(sheet["inc_" .. campo])
+    end
+    sheet.reis = 180 + 60 * pontos - 60 * maus
+    avisar("Réis iniciais estimados: " .. sheet.reis)
+end
+
+local function iniciar()
+    if sheet == nil then return end
+    -- A ficha existente deve ser apenas lida: abrir como mestre não pode
+    -- regravar valores nem disparar dezenas de sincronizações redundantes.
+    if sheet.inicializado then
+        return
+    end
+
+    -- Um único lote SOMENTE na primeira criação: endUpdate libera a
+    -- sincronização logo após os padrões serem preenchidos.
+    NDB.beginUpdate(sheet)
+    local ok, erro = pcall(function()
+    local function padrao(campo, valor)
+        if sheet[campo] == nil then sheet[campo] = valor end
+    end
+    padrao("nivel", 1)
+    padrao("maledicencia", 1)
+    padrao("fichas", 3)
+    padrao("firidas", 0)
+    for _, campo in ipairs(maiores) do padrao(campo, 1) end
+    for _, campo in ipairs(menores) do padrao(campo, 0) end
+    for _, campo in ipairs(competencias) do
+        padrao("comp_" .. campo, 0)
+        padrao("inc_" .. campo, 0)
+    end
+    padrao("protecao", 0)
+    padrao("protecao_extra", 0)
+    padrao("teste_mod", 0)
+    padrao("teste_tipo_nome", "Padrão")
+    padrao("teste_maior_nome", "Parrudez")
+    padrao("teste_menor_nome", "Fôrça")
+    padrao("teste_comp_nome", "Sem competência")
+    padrao("teste_dificuldade", 10)
+    padrao("nivel_poder_uso", 1)
+    padrao("reis", 180)
+    padrao("cura_propria", false)
+    padrao("arma_branca", false)
+    atualizarComplementos()
+    sheet.inicializado = true
+    end)
+    -- Mesmo se algum campo falhar, libera o estado em alterações.
+    NDB.endUpdate(sheet)
+    if not ok then avisar("Falha ao inicializar ficha: " .. tostring(erro)) end
+end
+
+-- A escolha é feita pelo diálogo nativo do Firecast (imagens locais ou URL).
+-- O valor retornado é persistido em foto_personagem e o retrato é atualizado.
+local function escolherFoto()
+    Dialogs.selectImageURL(sheet.foto_personagem or "", function(url)
+        if sheet ~= nil and url ~= nil and url ~= "" then
+            sheet.foto_personagem = url
+        end
+    end)
+end
+
+local function removerFoto()
+    sheet.foto_personagem = nil
+end
+]]></script>
+  <event name="onNodeReady"><![CDATA[iniciar()]]></event>
+  <tabControl align="client" tabIndex="0">
+    <tab title="Geral">
+  <scrollBox align="client">
+    <layout align="top" height="941">
+      <layout align="client" height="941">
+        <image align="client" src="/assets/background_geral.jpg" style="stretch" />
+        <layout width="400" height="200" left="117" top="200">
+          <image src="/assets/01_identificacao_e_retrato.png" align="top" height="58" style="autoFit" margins="{bottom=23}" />
+          <layout align="top" height="124">
+            <layout align="left" width="103" margins="{left=9,right=10}">
+              <image align="top" height="91" field="foto_personagem" editable="true" style="autoFit" hint="Clique para selecionar a foto" />
+              <button text="Trocar foto" align="top" height="24" margins="{top=5}" fontSize="11">
+                <event name="onClick">escolherFoto()</event>
+              </button>
+            </layout>
+            <layout align="client" margins="{right=12}">
+              <layout align="top" height="28">
+                <label text="Nome" align="left" width="62" fontSize="12" />
+                <edit field="nome" align="client" fontSize="12" />
+              </layout>
+              <layout align="top" height="28">
+                <label text="Jogador" align="left" width="62" fontSize="12" />
+                <edit field="jogador" align="client" fontSize="12" />
+              </layout>
+              <layout align="top" height="28">
+                <label text="Bando" align="left" width="62" fontSize="12" />
+                <edit field="bando" align="client" fontSize="12" />
+              </layout>
+              <layout align="top" height="30">
+                <label text="Arquétipo" align="left" width="64" fontSize="12" />
+                <comboBox field="arquetipo" items="{'Quarto de Cela', 'Sangue nos Ói', 'Bileiro', 'Besta-fera', 'Peito de Aço', 'Enrrolador', 'Caixão e Vela Preta', 'Sorrateiro', 'Raio da Silibrina'}" align="client" fontSize="12" />
+              </layout>
+            </layout>
+          </layout>
+        </layout>
+        <layout width="399" height="228" left="115" top="455">
+          <image src="/assets/02_historia_e_complementos.png" align="top" height="50" style="autoFit" margins="{bottom=5}"/>
+          <layout align="top" height="28" margins="{left=35,right=45}">
+            <label text="Virtude" align="left" width="45" fontSize="12" />
+            <edit field="virtude" align="left" fontSize="12" width="100"/>
+          <layout align="left" width="12" />
+            <label text="Fraqueza" align="left" width="60" fontSize="12" />
+            <edit field="fraqueza" align="left" fontSize="12" width="130" />
+          </layout>
+          <layout align="top" height="26" margins="{left=35,right=45}">
+            <label text="Carrêra" align="left" width="93" fontSize="12" />
+            <edit field="valor_carrera" align="left" width="52" fontSize="12" />
+            <button text="Rolar" align="right" height="25" width="79" fontSize="12">
+              <event name="onClick">rolarComplemento("carrera", "Carrêra")</event>
+            </button>
+          </layout>
+          <layout align="top" height="26" margins="{left=35,right=45}">
+            <label text="Iniciativa" align="left" width="93" fontSize="12" />
+            <edit field="valor_iniciativa" align="left" width="52" fontSize="12" />
+            <button text="Rolar" align="right" height="25" width="79" fontSize="12">
+              <event name="onClick">rolarComplemento("iniciativa", "Iniciativa")</event>
+            </button>
+          </layout>
+          <layout align="top" height="26" margins="{left=35,right=45}">
+            <label text="Leriado" align="left" width="93" fontSize="12" />
+            <edit field="valor_leriado" align="left" width="52" fontSize="12" />
+            <button text="Rolar" align="right" height="25" width="79" fontSize="12">
+              <event name="onClick">rolarComplemento("leriado", "Leriado")</event>
+            </button>
+          </layout>
+          <layout align="top" height="26" margins="{left=35,right=45}">
+            <label text="Cabrêrisse" align="left" width="93" fontSize="12" />
+            <edit field="valor_cabrerisse" align="left" width="52" fontSize="12" />
+            <button text="Rolar" align="right" height="25" width="79" fontSize="12">
+              <event name="onClick">rolarComplemento("cabrerisse", "Cabrêrisse")</event>
+            </button>
+          </layout>
+          <button text="Atualizar complementos" align="left" height="24" margins="{left=120,right=14,top=3}" width="190" fontSize="12">
+            <event name="onClick">atualizarComplementos()</event>
+          </button>
+        </layout>
+        <layout width="575" height="500" left="610" top="210">
+          <image src="/assets/03_atributos_e_testes.png" align="top" height="76" style="autoFit" margins="{bottom=1}"/>
+          <layout align="top" height="8" />
+          <layout align="top" height="157" margins="{left=9,right=9}">
+            <layout align="left" width="267" frameStyle="/frames/card_panel.xml">
+              <layout align="client" margins="{left=12,right=12,top=11,bottom=10}">
+                  <image src="/assets/11_parrudez.png" align="top" height="36"  style="autoFit" margins="{bottom=5}" />
+                <layout align="top" height="30">
+                  <label fontStyle="bold" text="Atributo maior" align="left" width="102" fontSize="12" />
+                  <edit fontStyle="bold" field="parrudez" align="left" width="48" fontSize="12" />
+                </layout>
+                <layout align="top" height="30">
+                  <label text="Fôrça" align="left" width="102" fontSize="12" />
+                  <edit field="forca" align="left" width="48" fontSize="12" />
+                  <button text="Rolar" align="right" height="27" width="69" fontSize="11">
+                    <event name="onClick">rolarAtributos("parrudez", "forca", "Parrudez", "Fôrça")</event>
+                  </button>
+                </layout>
+                <layout align="top" height="30">
+                  <label text="Saúde" align="left" width="102" fontSize="12" />
+                  <edit field="saude" align="left" width="48" fontSize="12" />
+                  <button text="Rolar" align="right" height="27" width="69" fontSize="11">
+                    <event name="onClick">rolarAtributos("parrudez", "saude", "Parrudez", "Saúde")</event>
+                  </button>
+                </layout>
+              </layout>
+            </layout>
+            <layout align="left" width="11" />
+            <layout align="left" width="267" frameStyle="/frames/card_panel.xml">
+              <layout align="client" margins="{left=12,right=12,top=11,bottom=10}">
+                <image src="/assets/12_destreza.png" align="top" height="36"  style="autoFit" margins="{bottom=5}" />
+                <layout align="top" height="30">
+                  <label fontStyle="bold" text="Atributo maior" align="left" width="102" fontSize="12" />
+                  <edit fontStyle="bold" field="destreza" align="left" width="48" fontSize="12" />
+                </layout>
+                <layout align="top" height="30">
+                  <label text="Coordenação" align="left" width="102" fontSize="12" />
+                  <edit field="coordenacao" align="left" width="48" fontSize="12" />
+                  <button text="Rolar" align="right" height="27" width="69" fontSize="11">
+                    <event name="onClick">rolarAtributos("destreza", "coordenacao", "Destreza", "Coordenação")</event>
+                  </button>
+                </layout>
+                <layout align="top" height="30">
+                  <label text="Ligeireza" align="left" width="102" fontSize="12" />
+                  <edit field="ligeireza" align="left" width="48" fontSize="12" />
+                  <button text="Rolar" align="right" height="27" width="69" fontSize="11">
+                    <event name="onClick">rolarAtributos("destreza", "ligeireza", "Destreza", "Ligeireza")</event>
+                  </button>
+                </layout>
+              </layout>
+            </layout>
+          </layout>
+          <layout align="top" height="8" />
+          <layout align="top" height="157" margins="{left=9,right=9}">
+            <layout align="left" width="267" frameStyle="/frames/card_panel.xml">
+              <layout align="client" margins="{left=12,right=12,top=11,bottom=10}">
+                <image src="/assets/13_esperteza.png" align="top" height="36"  style="autoFit" margins="{bottom=5}" />
+                <layout align="top" height="30">
+                  <label fontStyle="bold" text="Atributo maior" align="left" width="102" fontSize="12" />
+                  <edit fontStyle="bold" field="esperteza" align="left" width="48" fontSize="12" />
+                </layout>
+                <layout align="top" height="30">
+                  <label text="Intiligência" align="left" width="102" fontSize="12" />
+                  <edit field="inteligencia" align="left" width="48" fontSize="12" />
+                  <button text="Rolar" align="right" height="27" width="69" fontSize="11">
+                    <event name="onClick">rolarAtributos("esperteza", "inteligencia", "Esperteza", "Intiligência")</event>
+                  </button>
+                </layout>
+                <layout align="top" height="30">
+                  <label text="Percepção" align="left" width="102" fontSize="12" />
+                  <edit field="percepcao" align="left" width="48" fontSize="12" />
+                  <button text="Rolar" align="right" height="27" width="69" fontSize="11">
+                    <event name="onClick">rolarAtributos("esperteza", "percepcao", "Esperteza", "Percepção")</event>
+                  </button>
+                </layout>
+              </layout>
+            </layout>
+            <layout align="left" width="11" />
+            <layout align="left" width="267" frameStyle="/frames/card_panel.xml">
+              <layout align="client" margins="{left=12,right=12,top=11,bottom=10}">
+                <image src="/assets/14_presenca.png" align="top" height="36"  style="autoFit" margins="{bottom=5}" />
+                <layout align="top" height="30">
+                  <label fontStyle="bold" text="Atributo maior" align="left" width="102" fontSize="12" />
+                  <edit fontStyle="bold" field="presenca" align="left" width="48" fontSize="12" />
+                </layout>
+                <layout align="top" height="30">
+                  <label text="Simpatia" align="left" width="102" fontSize="12" />
+                  <edit field="simpatia" align="left" width="48" fontSize="12" />
+                  <button text="Rolar" align="right" height="27" width="69" fontSize="11">
+                    <event name="onClick">rolarAtributos("presenca", "simpatia", "Presença", "Simpatia")</event>
+                  </button>
+                </layout>
+                <layout align="top" height="30">
+                  <label text="Valentia" align="left" width="102" fontSize="12" />
+                  <edit field="valentia" align="left" width="48" fontSize="12" />
+                  <button text="Rolar" align="right" height="27" width="69" fontSize="11">
+                    <event name="onClick">rolarAtributos("presenca", "valentia", "Presença", "Valentia")</event>
+                  </button>
+                </layout>
+              </layout>
+            </layout>
+          </layout>
+          <layout align="top" height="8" />
+          <label text="Rolagens: 2d6 + atributos e bônus da ficha." align="top" height="22" horzTextAlign="center" fontSize="12" fontColor="#D8C4A0" fontStyle="italic"/>
+          <layout align="top" height="40" width="300" margins="{left=140,right=10}">
+            <image src="/assets/modificador.png" align="left" height="36" width="230" style="autoFit" />
+            <edit field="teste_mod" align="left" width="35" height="24" fontSize="12" margins="{left=8}"/>
+          </layout>
+        </layout>
+        <layout width="370" height="150" left="1294" top="210">
+          <image src="/assets/04_estado_do_personagem.png" align="top" height="40" style="autoFit" margins="{bottom=23}" />
+          <layout align="top" height="28" margins="{left=7,right=7}">
+            <label text="Nível" align="left" width="38" fontSize="12" />
+            <edit field="nivel" align="left" width="51" fontSize="12" />
+            <layout align="left" width="6" />
+            <label text="XP" align="left" width="25" fontSize="12" />
+            <edit field="xp" align="left" width="54" fontSize="12" />
+            <layout align="left" width="6" />
+            <label text="Réis" align="left" width="36" fontSize="12" />
+            <edit field="reis" align="left" width="63" fontSize="12" />
+          </layout>
+          <layout align="top" height="29" margins="{left=7,right=7}">
+            <label text="Fichas" align="left" width="53" fontSize="12" />
+            <edit field="fichas" align="left" width="56" fontSize="12" />
+            <layout align="left" width="18" />
+            <label text="Maledicência" align="left" width="95" fontSize="12" />
+            <edit field="maledicencia" align="left" width="54" fontSize="12" />
+          </layout>
+        </layout>
+        <layout width="370" height="120" left="1294" top="394">
+          <image src="/assets/05_configuracao_de_teste.png" align="top" height="35" style="autoFit" margins="{bottom=10}" />
+          <layout align="top" height="30" margins="{left=7,right=7}">
+            <label text="Maior" align="left" width="45" fontSize="12" />
+            <comboBox field="teste_maior_nome" items="{'Parrudez', 'Destreza', 'Esperteza', 'Presença'}" align="left" width="124" fontSize="12" />
+            <layout align="left" width="9" />
+            <label text="Menor" align="left" width="48" fontSize="12" />
+            <comboBox field="teste_menor_nome" items="{'Fôrça', 'Saúde', 'Coordenação', 'Ligeireza', 'Intiligência', 'Percepção', 'Simpatia', 'Valentia'}" align="left" width="136" fontSize="12" />
+          </layout>
+          <layout align="top" height="29" margins="{left=7,right=7}">
+            <label text="Último teste" align="left" width="90" fontSize="12" />
+            <edit field="ultimo_teste" align="left" width="57" fontSize="12" />
+            <layout align="left" width="18" />
+            <label text="Bônus" align="left" width="45" fontSize="12" />
+            <edit field="ultimo_bonus" align="left" width="55" fontSize="12" />
+          </layout>
+          <label text="Atributos usados nos testes de competências." align="top" height="22" fontColor="#D8C4A0" fontSize="11" horzTextAlign="center" fontStyle="italic"/>
+        </layout>
+        <layout width="370" height="120" left="1294" top="556">
+          <image src="/assets/06_criacao_e_conferencia.png" align="top" height="40" style="autoFit" margins="{bottom=5}" />
+          <button text="Validar pontos iniciais" align="top" height="20" margins="{left=10,right=10}" fontSize="12">
+            <event name="onClick">validar()</event>
+          </button>
+          <button text="Calcular réis iniciais" align="top" height="20" margins="{left=10,right=10,top=3}" fontSize="12">
+            <event name="onClick">riquezaInicial()</event>
+          </button>
+          <layout align="top" height="20" margins="{left=10,right=10,top=3}">
+            <label text="Resumo" align="left" width="56" fontSize="12" />
+            <edit field="resumo_pontos" align="client" fontSize="11" />
+          </layout>
+        </layout>
+      </layout>
+    </layout>
+    <layout align="top" g="container" g-auto-height="true" g-cnt-gutter="18" g-cnt-line-spacing="22" g-cnt-horz-align="center" g-cnt-min-grid-width="740">
+      <image src="/assets/moldura_competencias.png" align="client" style="stretch"/>
+      <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="444" g-margin-bottom="10" g-max-width="850">
+        <layout align="client" margins="{left=254, top=80, right=68, bottom=24}">
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Alerta" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_alerta" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_alerta" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("alerta", "Alerta")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Arma de Fio" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_arma_fio" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_arma_fio" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("arma_fio", "Arma de Fio")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Arma de Póiva" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_arma_poiva" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_arma_poiva" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("arma_poiva", "Arma de Póiva")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Artista" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_artista" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_artista" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("artista", "Artista")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Boniteza" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_boniteza" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_boniteza" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("boniteza", "Boniteza")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Catimbó" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_catimbo" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_catimbo" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("catimbo", "Catimbó")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Compadres" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_compadres" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_compadres" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("compadres", "Compadres")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Cura" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_cura" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_cura" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("cura", "Cura")</event>
+            </button>
+          </layout>
+        </layout>
+      </layout>
+      <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="444" g-margin-bottom="10" g-max-width="850">
+        <layout align="client" margins="{left=224, top=80, right=68, bottom=24}">
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Dinheiro" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_dinheiro" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_dinheiro" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("dinheiro", "Dinheiro")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Estudo" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_estudo" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_estudo" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("estudo", "Estudo")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Fama" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_fama" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_fama" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("fama", "Fama")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Fineza" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_fineza" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_fineza" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("fineza", "Fineza")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Preparo Físico" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_preparo_fisico" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_preparo_fisico" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("preparo_fisico", "Preparo Físico")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Sair na Tapa" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_sair_tapa" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_sair_tapa" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("sair_tapa", "Sair na Tapa")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Sobrevivênça" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_sobrevivenca" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_sobrevivenca" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("sobrevivenca", "Sobrevivênça")</event>
+            </button>
+          </layout>
+          <layout align="top" height="37">
+            <label align="left" width="148" text="Surdina" />
+            <label align="left" width="18" text="+" />
+            <edit align="left" width="42" field="comp_surdina" />
+            <label align="left" width="18" text="-" margins="{left=8}" />
+            <edit align="left" width="42" field="inc_surdina" />
+            <button align="left" width="90" text="Rolar" margins="{left=18}">
+              <event name="onClick">rolarCompetencia("surdina", "Surdina")</event>
+            </button>
+          </layout>
+        </layout>
+      </layout>
+        <image
+        src="/assets/07_competencias.png"
+        left="696"
+        top="25"
+        width="400"
+        height="55"
+        style="autoFit"/>
+    </layout>
+  </scrollBox>
+</tab>
+    <tab title="Equipamentos">
+      <scrollBox align="client">
+        <layout align="top" g="container" g-auto-height="true" g-cnt-gutter="18" g-cnt-line-spacing="22" g-cnt-horz-align="center" g-cnt-min-grid-width="740">
+            <image src="/assets/background_equipamentos_1.png" align="client" style="stretch"/>
+          <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="920" g-margin-bottom="20" g-max-width="850">
+            <layout align="client" margins="{left=64, top=174, right=64, bottom=105}">
+            <layout align="top" height="70">
+              <image
+                  src="/assets/08_armas_e_ataques.png"
+                  align="left"
+                  width="600"
+                  height="45"
+                  style="autoFit"
+                  margins="{left=80}"/>
+            </layout>             
+              <label align="top" height="42" text="Cadastre armas e role o ataque no próprio item; os dados vão para o chat da mesa." fontColor="#CFCFCF"/>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Adicionar arma / item">
+                  <event name="onClick"><![CDATA[self.listaItens:append()]]></event>
+                </button>
+              </layout>
+              <layout align="top" height="19"/>
+              <recordList name="listaItens" field="itens" templateForm="frmCangacoItem" align="top" height="405" autoHeight="false"/>
+            </layout>
+          </layout>
+          <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="780" g-margin-bottom="20" g-max-width="850">
+            <layout align="client" margins="{left=64, top=174, right=64, bottom=105}">
+              <layout align="top" height="90">
+                <image
+                    src="/assets/15_ataques_rapidos_e_heranca.png"
+                    align="left"
+                    width="600"
+                    height="90"
+                    style="autoFit"
+                    margins="{left=80}"/>
+              </layout> 
+              <label align="top" height="42" text="Atalhos para ataques sem item cadastrado. O Mestre compara a sua rolagem." fontColor="#CFCFCF"/>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Atacar: Arma de Fio">
+                  <event name="onClick"><![CDATA[rolarAtaque("arma_fio", "Arma de Fio")]]></event>
+                </button>
+              </layout>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Atacar: Arma de Póiva">
+                  <event name="onClick"><![CDATA[rolarAtaque("arma_poiva", "Arma de Póiva")]]></event>
+                </button>
+              </layout>
+              <layout align="top" height="26"/>
+              <layout align="top" height="90">
+                <image
+                    src="/assets/herança.png"
+                    align="left"
+                    width="600"
+                    height="90"
+                    style="autoFit"
+                    margins="{left=80}"/>
+              </layout> 
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="82" text="Objeto"/>
+                <edit align="left" width="242" field="heranca"/>
+              </layout>
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="82" text="Efeito"/>
+                <edit align="left" width="242" field="heranca_efeito"/>
+              </layout>
+              <layout align="top" height="18"/>
+              <label align="top" height="42" text="Munição, alcance e dano de cada arma são informados na lista ao lado." fontColor="#CFCFCF"/>
+            </layout>
+          </layout>
+        </layout>
+      </scrollBox>
+    </tab>
+    <tab title="Condições e Cura">
+      <scrollBox align="client">
+        <layout align="top" g="container" g-auto-height="true" g-cnt-gutter="18" g-cnt-line-spacing="22" g-cnt-horz-align="center" g-cnt-min-grid-width="740">
+          <image src="/assets/background_firidas_cura.png" align="client" style="stretch"/>
+
+          <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="900" g-margin-bottom="20" g-max-width="850">
+            <layout align="client" margins="{left=64, top=174, right=64, bottom=105}">
+              <layout align="top" height="90">
+                <image
+                    src="/assets/09_firidas_e_protecao.png"
+                    align="left"
+                    width="600"
+                    height="90"
+                    style="autoFit"
+                    margins="{left=95}"/>
+              </layout>               <label align="top" height="42" text="Quatro caixas de Firidas; proteção descontada de cada ataque recebido." fontColor="#CFCFCF"/>
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="160" text="Firidas (0 a 4)"/>
+                <edit align="left" width="76" field="firidas"/>
+              </layout>
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="160" text="Dano recebido"/>
+                <edit align="left" width="76" field="dano_recebido"/>
+              </layout>
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="160" text="Proteção"/>
+                <edit align="left" width="76" field="protecao"/>
+              </layout>
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="160" text="Prot. extra"/>
+                <edit align="left" width="76" field="protecao_extra"/>
+              </layout>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Aplicar dano e Firidas">
+                  <event name="onClick"><![CDATA[sofrerDano()]]></event>
+                </button>
+              </layout>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Mostrar estado dos ferimentos">
+                  <event name="onClick"><![CDATA[avisar("Firidas: " .. n(sheet.firidas) .. "/4. Penalidade atual: " .. modFerimento())]]></event>
+                </button>
+              </layout>
+            </layout>
+          </layout>
+          <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="800" g-margin-bottom="20" g-max-width="850">
+            <layout align="client" margins="{left=64, top=174, right=64, bottom=105}">
+            <layout align="top" height="80">
+              <image
+                  src="/assets/16_cura.png"
+                  align="left"
+                  width="600"
+                  height="60"
+                  style="autoFit"
+                  margins="{left=80}"/>
+            </layout>               <label align="top" height="42" text="O valor de Cura considera Parrudez do ferido. Teste do curador contra 10 + Parrudez." fontColor="#CFCFCF"/>
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="150" text="Bônus da cura"/>
+                <edit align="left" width="80" field="teste_cura_bonus"/>
+              </layout>
+              <layout align="top" height="38" padding="{left=16}">
+                <label align="left" width="150" text="Cura própria?"/>
+                <checkBox align="left" width="48" field="cura_propria"/>
+              </layout>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Rolar teste de cura">
+                  <event name="onClick"><![CDATA[curar()]]></event>
+                </button>
+              </layout>
+              <label align="top" height="42" text="A cura e a verificação de ferimentos seguem o funcionamento anterior da ficha." fontColor="#CFCFCF"/>
+            </layout>
+          </layout>
+        </layout>
+      </scrollBox>
+    </tab>
+    <tab title="Maledicência">
+      <scrollBox align="client">
+        <layout align="top" g="container" g-auto-height="true" g-cnt-gutter="18" g-cnt-line-spacing="22" g-cnt-horz-align="center" g-cnt-min-grid-width="740">
+
+          <image src="/assets/background_maledicência.png" align="client" style="stretch"/>
+          <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="900" g-margin-bottom="20" g-max-width="850">
+            <layout align="client" margins="{left=89, top=174, right=64, bottom=105}">
+              <layout align="top" height="70" margins="{top=40, bottom=40}">
+                <image
+                    src="/assets/17_fichas_narrativas.png"
+                    align="left"
+                    width="500"
+                    height="45"
+                    style="autoFit"
+                    margins="{left=130}"/>
+              </layout>               
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="155" text="Fichas disponíveis"/>
+                <edit align="left" width="74" field="fichas"/>
+              </layout>
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="155" text="Maledicência"/>
+                <edit align="left" width="74" field="maledicencia"/>
+              </layout>
+              <layout align="top" height="34" padding="{left=12,right=10}">
+                <label align="left" width="155" text="Nível do poder"/>
+                <edit align="left" width="74" field="nivel_poder_uso"/>
+              </layout>
+              <layout align="top" height="38" padding="{left=16}">
+                <label align="left" width="160" text="Poder ativo na cena?"/>
+                <checkBox align="left" width="48" field="poder_ativo"/>
+              </layout>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Gastar ficha narrativa">
+                  <event name="onClick"><![CDATA[gastarFicha(false)]]></event>
+                </button>
+              </layout>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Usar poder de Maledicência">
+                  <event name="onClick"><![CDATA[gastarFicha(true)]]></event>
+                </button>
+              </layout>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Ganhar 1 ficha">
+                  <event name="onClick"><![CDATA[sheet.fichas=n(sheet.fichas)+1]]></event>
+                </button>
+              </layout>
+              <layout align="top" height="40" padding="{left=12,right=12}">
+                <button align="client" text="Redenção: -1 Maledicência">
+                  <event name="onClick"><![CDATA[sheet.maledicencia=math.max(1,n(sheet.maledicencia)-1)]]></event>
+                </button>
+              </layout>
+            </layout>
+          </layout>
+          <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="710" g-margin-bottom="20" g-max-width="850">
+            <layout align="client" margins="{left=64, top=174, right=64, bottom=105}">
+              <layout align="top" height="70" margins="{bottom=40, top=40}">
+                <image
+                    src="/assets/10_maledicencia_regras_e_lembretes.png"
+                    align="left"
+                    width="600"
+                    height="45"
+                    style="autoFit"
+                    margins="{left=60}"/>
+              </layout>              
+              <label align="top" height="42" text="Use os poderes do arquétipo conforme o PDF e a decisão do Mestre." fontColor="#CFCFCF"/>
+              <layout align="top" height="18"/>            
+              <label align="top" height="42" text="Nível de Maledicência 10: personagem deixa o controle do jogador." fontColor="#CFCFCF"/>
+              <label align="top" height="42" text="Crítico: 6+6. Falha crítica: 1+1. A decisão narrativa continua com a mesa." fontColor="#CFCFCF"/>
+              <label align="top" height="42" text="O uso de poder acima do nível 1 pode aumentar a Maledicência." fontColor="#CFCFCF"/>
+            </layout>
+          </layout>
+        </layout>
+      </scrollBox>
+    </tab>
+    <tab title="Anotações">
+      <scrollBox align="client">
+        <layout align="top" g="container" g-auto-height="true" g-cnt-gutter="18" g-cnt-line-spacing="22" g-cnt-horz-align="center" g-cnt-min-grid-width="740">
+          <image src="/assets/background_anotações.png" align="client" style="stretch"/>
+
+          <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="870"  g-margin-bottom="20" g-max-width="850">
+            <layout align="client" margins="{left=64, top=174, right=64, bottom=105}">
+              <layout align="top" height="70" margins="{bottom=50, top=30}">
+                <image
+                    src="/assets/anotações.png"
+                    align="left"
+                    width="600"
+                    height="45"
+                    style="autoFit"
+                    margins="{left=90}"/>
+              </layout>              
+              <textEditor align="top" height="420" margins="{left=30}" field="anotacoes"/>
+            </layout>
+          </layout>
+          <layout g="col" g-width="12" g-width-md="12" g-width-lg="12" g-width-xl="6" height="710" g-margin-bottom="20" g-max-width="850">
+            <layout align="client" margins="{left=64, top=174, right=64, bottom=105}">
+              <layout align="top" height="90" margins="{bottom=40, top=23}">
+                <image
+                    src="/assets/referencias.png"
+                    align="left"
+                    width="600"
+                    height="90"
+                    style="autoFit"
+                    margins="{left=80}"/>
+              </layout>               
+              <label align="top" height="42" text="Dificuldades de referência: 10 padrão, 15 desafiador, 20 difícil." fontColor="#CFCFCF"/>
+              <label align="top" height="42" text="Rolagem padrão: 2d6 + maior + menor + competência. Complemento: 2d6 + complemento + competência." fontColor="#CFCFCF"/>
+              <label align="top" height="42" text="Combate resistido: cada participante rola os próprios dados; o Mestre resolve a disputa." fontColor="#CFCFCF"/>
+              <label align="top" height="42" text="Dano: margem da vitória + dano da arma (+ Fôrça em armas brancas)." fontColor="#CFCFCF"/>
+              <label align="top" height="42" text="Cada Firida equivale a múltiplos de Saúde no mesmo ataque, após a proteção." fontColor="#CFCFCF"/>
+            </layout>
+          </layout>
+        </layout>
+      </scrollBox>
+    </tab>
+  </tabControl>
+</form>
