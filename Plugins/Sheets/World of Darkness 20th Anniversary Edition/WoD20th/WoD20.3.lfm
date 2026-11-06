@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_3" align="client" theme="dark">
+	<script>
+		<![CDATA[
+			-- Display-only trait dots (SPEC T101). Two groups because attributes have no `_1`
+			-- field - dot 1 is a fixed image in the Attribute template - while abilities do.
+			local RO_ATTRS     = {"strength", "dexterity", "stamina", "perception", "wits"};
+			-- wits is a MAGE's fifth row since the 91st batch (SPEC I234a); hidden for anyone else, painted all the same.
+
+			-- Six ability rows mirror a fixed field. The seventh is the era's ranged skill: with
+			-- one field per name (SPEC V74), Archery is `archery` and Firearms is `firearms`, so
+			-- the row is a slot again and the era's own list decides which one it shows.
+			local RO_ABILITIES = {"alertness", "athletics", "awareness", "brawl", "melee", "stealth", "martialArts"};
+			-- martialArts is a MAGE's row after the ranged one since the 91st batch (SPEC I234a, Q149.1).
+
+			-- Virtues joined the display-only side in the 12th round (SPEC V51). Their dot 1 is
+			-- a fixed image, like an attribute, so they take the same firstDot = 2.
+			local RO_VIRTUES   = {"conscience", "selfControl", "courage"};
+
+			-- NINE dots since the 47th batch (SPEC I190e/f, Q109.8): the mirror shows what the Main
+			-- shows. Dots 4..9 answer to the same rule as there - a vampire sees the live dot up to
+			-- the generation's ceiling and the faded twin above it, anyone else sees five. The twin
+			-- is 0.12 because the live dot here is already 0.40 (SPEC V111): the Main's 0.30 ratio.
+			-- It is an EMPTY dot since the 54th batch (user 2026-10-02, SPEC I197b, V543). A MAGE
+			-- wears the nine under a ceiling of 5 (user 2026-10-06, SPEC I216c, Q129.1), and a TENTH
+			-- since the 74th batch - a twin only a mage sees, as on the Main (SPEC I217k, V554f).
+			-- A mage's ABILITY rows (firstDot 1) show their five and no twin since the 87th batch
+			-- (user 2026-10-07, SPEC I230c, V571b); its attribute rows keep the ten.
+			local function paintAs(form, widget, field, firstDot)
+				local vamp = vampLayout();
+				local mage = sheet.game == "Mage";
+				local top  = (sheet.game == "Vampire") and vampGen().disc or 5;
+
+				for d = 1, 10, 1 do
+					local dot = form["ro_" .. widget .. "_" .. d];
+
+					if dot ~= nil then
+						if d < firstDot then
+							dot.checked = true;          -- the fixed dot an attribute always has
+						else
+							dot.checked = sheet[field .. "_" .. d] == true;
+						end;
+
+						if d >= 4 then
+							local twin = form["rocap_" .. widget .. "_" .. d];
+							local live = d <= top;
+							local cap  = vamp and not live and (d <= 9 or mage) and not (mage and firstDot == 1);
+
+							if dot.visible ~= live then dot.visible = live; end;
+							if twin ~= nil and twin.visible ~= cap then twin.visible = cap; end;
+						end;
+					end;
+				end;
+			end;
+
+			local function paint(form, field, firstDot)
+				paintAs(form, field, field, firstDot);
+			end;
+
+			-- Willpower has ten dots, so it does not fit paint()'s five-dot loop. Only the dots
+			-- are painted here: the boxes under them own `willpower_c*` and stay editable, which
+			-- is the whole point of putting willpower on this tab (SPEC V51).
+			--
+			-- The Vampire tab carries a copy since the 57th batch (user 2026-10-02, SPEC I200c/e,
+			-- V545c): roVWp_1..10, painted HERE because that tab has no script of its own (SPEC
+			-- V530b). Found through xpFind from the tab root, the one finder of the cross-tab
+			-- painters (SPEC V143), the way renderVampCaps finds the Vampire tab's dots.
+			-- The Magick tab carries the fourth since the 97th batch (user 2026-10-09, SPEC I240b, V581b):
+			-- mkWp_1..10, found the same way.
+			local function paintWillpower(form)
+				local names = {};
+
+				for d = 1, 10, 1 do names["roVWp_" .. d] = true; names["mkWp_" .. d] = true; end;
+
+				local found = xpFind(tabRootOf(form), names, {});
+
+				for d = 1, 10, 1 do
+					local on  = sheet["willpower_" .. d] == true;
+					local dot = form["roWp_" .. d];
+					local vdot = found["roVWp_" .. d];
+					local mdot = found["mkWp_" .. d];
+
+					if dot ~= nil then dot.checked = on; end;
+					if vdot ~= nil then vdot.checked = on; end;
+					if mdot ~= nil then mdot.checked = on; end;
+				end;
+			end;
+
+			function renderCombatTraits(form)
+				if sheet == nil then return; end;
+
+				for i = 1, #RO_ATTRS, 1 do paint(form, RO_ATTRS[i], 2); end;
+				for i = 1, #RO_ABILITIES, 1 do paint(form, RO_ABILITIES[i], 1); end;
+				for i = 1, #RO_VIRTUES, 1 do paint(form, RO_VIRTUES[i], 2); end;
+
+				-- The ranged row follows the era: Firearms in the modern and Victorian lists,
+				-- Archery in the medieval and classical ones, each with its own field (SPEC V74).
+				-- The name comes off the era's own list, so there is no second table to drift.
+				paintAs(form, "ranged", ABILITY_FIELD[eraRangedName()], 1);
+
+				paintWillpower(form);
+
+				-- The mage's ARETE / SPHERES copy (SPEC I221k): the root's one writer paints it.
+				renderSpheres(form);
+			end;
+
+			-- SPEC I157g, T1005, I159c. The THIRTEEN picker buttons of this tab - eleven Attack
+			-- rows, the ARMOR Class and the SHIELD Class - carry no text of their own: mfLabel
+			-- writes what the slot holds, or the Select line when it holds nothing, which is why
+			-- they are dyn* (SPEC V31, I107a2). mfLabel also SHRINKS the font when the name is
+			-- wider than the button (fitSize, WoD20th.lfm:5956) - which is the whole answer to
+			-- the 150px Class button the 15th batch left behind (SPEC I159f, Q79.2).
+			--
+			-- The bound is ATTACK_ROWS, declared on the ROOT form beside every other row count
+			-- of this sheet (SPEC I157g, V204, V383b). A LITERAL here would be B112: it does not
+			-- follow the family when it grows, and the twelfth row would simply never be painted
+			-- - which is how T870 left eight rows blank with the gate green.
+			function renderCombatButtons(form)
+				if sheet == nil or form == nil then return; end;
+
+				local names = {};
+
+				names["dynarmorClass"] = true;
+				names["btnQarmorClass"] = true;
+				names["dynshieldClass"] = true;
+				names["btnQshieldClass"] = true;
+				names["dynRateHdr"]     = true;
+				names["btnQrate"]       = true;
+
+				for i = 1, ATTACK_ROWS, 1 do names["dynattack_" .. i] = true; names["btnQattack_" .. i] = true; end;
+
+				local found = {};
+
+				xpFind(tabRootOf(form), names, found);
+
+				local lang = (sheet.language == "en") and "en" or "pt";
+
+				for i = 1, ATTACK_ROWS, 1 do
+					mfLabel(found["dynattack_" .. i], sheet["attack_" .. i], "Select Weapon", lang);
+					noteButton(found["btnQattack_" .. i], sheet["attack_" .. i]);
+				end;
+
+				mfLabel(found["dynarmorClass"], sheet.armorClass, "Select Armor", lang);
+				noteButton(found["btnQarmorClass"], sheet.armorClass);
+				mfLabel(found["dynshieldClass"], sheet.shieldClass, "Select Shield", lang);
+				noteButton(found["btnQshieldClass"], sheet.shieldClass);
+
+				-- The Rate column's header and its ? are ONE pair, and the language is the only thing
+				-- that moves them (SPEC I161g, I230d, V471, V571c). In pt the header reads CdT and the
+				-- ? beside it says what that is short for; in en it reads Rate, spelled out, and the ?
+				-- is not on screen at all. Until the 87th batch it was CdT* and an italic legend under
+				-- the protection box (user 2026-10-07: the ? replaced both).
+				--
+				-- The header is dyn*, so applyLanguage skips it and whoever writes the text owns BOTH
+				-- languages for it (SPEC V31). No dataLink of its own: this walk already runs on the
+				-- one that watches `language`, and on onNodeReady (SPEC V123, V19, V33).
+				if translateSheetText ~= nil then
+					local rateHdr = found["dynRateHdr"];
+					local rateQ   = found["btnQrate"];
+
+					if rateHdr ~= nil then rateHdr.text = translateSheetText("Rate of Fire", lang) or "Rate"; end;
+					if rateQ ~= nil then rateQ.visible = (lang == "pt"); end;
+				end;
+
+				-- The CELLS follow the language too, and until the 14th batch they did not: the
+				-- name is a label mfLabel repaints on every walk, but Roll/Damage/Conceal are
+				-- SAVED DATA written once, in whatever language was in force when the row was
+				-- picked. The user found it exactly there - "muda o idioma, o nome do picker e
+				-- traduzido, mas os outros campos nao" (SPEC Q78.2, I158f, V465).
+				--
+				-- This is the SECOND writer of those ten fields and there is no third (SPEC
+				-- V465c): mfConfirm writes them when the row is chosen, this rewrites them when
+				-- the language moves. setField is guarded, so a walk that changes nothing writes
+				-- nothing (WoD20th.lfm:932) - which is what makes it safe on the attack_N
+				-- dataLink as well, where it lands on the values mfConfirm just wrote.
+				--
+				-- The TEST is the module key, never a flag: a custom row carries a name the book
+				-- never had, so data.weapon[name] is nil and the row is left alone. Rewriting it
+				-- would delete what the player typed on the first language switch (SPEC V2, V465b).
+				local any = (sheet.armorClass or "") ~= "" or (sheet.shieldClass or "") ~= "";
+
+				for i = 1, ATTACK_ROWS, 1 do
+					if (sheet["attack_" .. i] or "") ~= "" then any = true; end;
+				end;
+
+				-- An EMPTY combat tab pays nothing: the module is 60KB of book data and a sheet
+				-- with no weapon on it has no cell to derive (SPEC B30 - this runs on every open).
+				if not any then return; end;
+
+				local data = require("combatData.lua");
+
+				for i = 1, ATTACK_ROWS, 1 do
+					local e = data.weapon[sheet["attack_" .. i] or ""];
+
+					if e ~= nil then
+						local L = e[lang];
+
+						for k = 1, #MF_WPN_CELL, 1 do
+							setField(MF_WPN_CELL[k][1] .. i, L[MF_WPN_CELL[k][2]]);
+						end;
+					end;
+				end;
+
+				-- Both protection boxes read the SAME table and the same prefix rule mfConfirm
+				-- uses, so shield and armour cannot drift apart (SPEC I159c, V466d).
+				for p = 1, 2, 1 do
+					local pfx = (p == 1) and "armor" or "shield";
+					local e = data.armor[sheet[pfx .. "Class"] or ""];
+
+					if e ~= nil then
+						local L = e[lang];
+
+						for k = 1, #MF_ARM_CELL, 1 do
+							setField(pfx .. MF_ARM_CELL[k][1], L[MF_ARM_CELL[k][2]]);
+						end;
+
+						setField(pfx .. "Description", L.notes or "");
+					end;
+				end;
+			end;
+		]]>
+	</script>
+	<scrollBox align="client">
+		<!-- Theme backdrop, same arrangement as WoD20.1 (SPEC T158, V56, V57). -->
+		<image name="themePaper3" align="client" style="stretch" hitTest="false" visible="false"/>
+		<!-- Same geometry as the Attribute template on the Main tab, so the virtues keep the
+		     label width and the x=125 dot column (SPEC V26).
+
+		     Display only since the 12th round (SPEC V51): the dots carry no `field=` and are
+		     named ro_* like the combat traits, which is what lets paint() drive them. Virtues
+		     are not something a player changes mid-fight, so the Main tab owns them alone. -->
+		<template name="VirtueMirror">
+			<label name="dynMirror$(field)" left="0" top="5" width="125" height="20" text="$(nome)"/>
+			<image left="125" top="0" width="25" height="25" style="autoFit" src="images/prime_on.png" opacity="0.40"/>
+			<imageCheckBox name="ro_$(field)_2" left="150" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="ro_$(field)_3" left="175" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="ro_$(field)_4" left="200" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="ro_$(field)_5" left="225" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+		</template>
+
+		<!-- No `field=` anywhere: these dots are painted by renderCombatTraits() and own nothing,
+		     so they cannot collide with the real widgets on Main (SPEC I3 SO-LEITURA, V1). -->
+		<template name="ReadOnlyTrait">
+			<label name="dynRo$(field)" left="0" top="5" width="125" height="20" text="$(nome)"/>
+			<imageCheckBox name="ro_$(field)_1" left="125" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="ro_$(field)_2" left="150" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="ro_$(field)_3" left="175" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="ro_$(field)_4" left="200" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="ro_$(field)_5" left="225" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="ro_$(field)_6" left="250" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="ro_$(field)_7" left="275" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="ro_$(field)_8" left="300" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="ro_$(field)_9" left="325" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="ro_$(field)_10" left="350" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="rocap_$(field)_4" left="200" top="0" width="25" height="25" checked="false" autoChange="false" opacity="0.12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="rocap_$(field)_5" left="225" top="0" width="25" height="25" checked="false" autoChange="false" opacity="0.12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="rocap_$(field)_6" left="250" top="0" width="25" height="25" checked="false" autoChange="false" opacity="0.12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="rocap_$(field)_7" left="275" top="0" width="25" height="25" checked="false" autoChange="false" opacity="0.12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="rocap_$(field)_8" left="300" top="0" width="25" height="25" checked="false" autoChange="false" opacity="0.12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="rocap_$(field)_9" left="325" top="0" width="25" height="25" checked="false" autoChange="false" opacity="0.12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+			<imageCheckBox name="rocap_$(field)_10" left="350" top="0" width="25" height="25" checked="false" autoChange="false" opacity="0.12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" visible="false"/>
+		</template>
+
+		<!-- Ten read-only dots over ten real boxes (SPEC V51). The dots carry no `field=` and
+		     are painted by paintWillpower(); only the boxes below own anything.
+
+		     The two rows share their lefts since the 17th batch, and that is the whole of the
+		     user's ask: "cada checkbox de willpower deve ter o centro alinhado com o centro de
+		     cada bolinha que esta em cima". Both controls are 25 wide, so one left IS one centre
+		     and the rule needs no number of its own - the boxes used to open at 2 and hung two
+		     pixels right of every dot (SPEC I161c, V470b, Q81.3).
+
+		     The boxes open 2 under the dots since the 57th batch (user 2026-10-02, SPEC I200b,
+		     V545a) - the same 2 as the Main's row and the Vampire tab's copy; at 20 they used to
+		     sit 5 INTO the dots' rect. -->
+		<template name="WillpowerMirror">
+			<imageCheckBox name="roWp_1" left="0" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="roWp_2" left="25" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="roWp_3" left="50" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="roWp_4" left="75" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="roWp_5" left="100" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="roWp_6" left="125" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="roWp_7" left="150" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="roWp_8" left="175" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="roWp_9" left="200" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+			<imageCheckBox name="roWp_10" left="225" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+
+			<checkBox left="0" top="27" width="25" height="25" field="willpower_c1" onClick="wpSpentClick('willpower_c1');" onChange="wpSpentChange('willpower_c1');"/>
+			<checkBox left="25" top="27" width="25" height="25" field="willpower_c2" onClick="wpSpentClick('willpower_c2');" onChange="wpSpentChange('willpower_c2');"/>
+			<checkBox left="50" top="27" width="25" height="25" field="willpower_c3" onClick="wpSpentClick('willpower_c3');" onChange="wpSpentChange('willpower_c3');"/>
+			<checkBox left="75" top="27" width="25" height="25" field="willpower_c4" onClick="wpSpentClick('willpower_c4');" onChange="wpSpentChange('willpower_c4');"/>
+			<checkBox left="100" top="27" width="25" height="25" field="willpower_c5" onClick="wpSpentClick('willpower_c5');" onChange="wpSpentChange('willpower_c5');"/>
+			<checkBox left="125" top="27" width="25" height="25" field="willpower_c6" onClick="wpSpentClick('willpower_c6');" onChange="wpSpentChange('willpower_c6');"/>
+			<checkBox left="150" top="27" width="25" height="25" field="willpower_c7" onClick="wpSpentClick('willpower_c7');" onChange="wpSpentChange('willpower_c7');"/>
+			<checkBox left="175" top="27" width="25" height="25" field="willpower_c8" onClick="wpSpentClick('willpower_c8');" onChange="wpSpentChange('willpower_c8');"/>
+			<checkBox left="200" top="27" width="25" height="25" field="willpower_c9" onClick="wpSpentClick('willpower_c9');" onChange="wpSpentChange('willpower_c9');"/>
+			<checkBox left="225" top="27" width="25" height="25" field="willpower_c10" onClick="wpSpentClick('willpower_c10');" onChange="wpSpentChange('willpower_c10');"/>
+		</template>
+
+		<!--
+			Same row as HealthRow on the Main tab, with the Combat-tab widget names (SPEC T117).
+			Two templates instead of one because template names are module-global - rdk exits 1
+			with no message if two files declare the same name - and each tab needs its own
+			`dyn` names for the renderer to find.
+
+			Nothing here syncs the two tabs by hand: both mark labels carry `field="health_N"`,
+			so the NDB is the single source and a click on either side updates both (SPEC V36).
+
+			Name and "(-N)" are two labels since the 80th batch, as on Main (SPEC I223c, V563): the
+			penalty is right-aligned 5 before the box since the 83rd batch (SPEC I226e; 2 until then),
+			the name ends 4 before it.
+		-->
+		<template name="HealthRowMirror">
+			<label name="dynHealth3_$(num)" left="0" top="0" width="191" height="20"/>
+			<label name="dynHealth3_pen$(num)" left="195" top="0" width="23" height="20" horzTextAlign="trailing"/>
+			<rectangle left="223" top="0" width="22" height="20" color="#00000000" strokeColor="white" strokeSize="1" xradius="2" yradius="2" hitTest="true" cursor="handPoint" onClick="cycleHealthMark($(num));" onMenu="healHealthMark();">
+				<label align="client" field="health_$(num)" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+		</template>
+
+		<!-- Damage went 50 -> 90 (SPEC T145): "Str+2 (L)" never fit in 50px. The 40 comes from the
+		     10 the box gained on the right plus 30 off Weapon/Attack, still the widest column.
+
+		     The Weapon/Attack column became a PICKER in the 13th batch (SPEC I157a, T1005, user
+		     2026-09-07): ? plus button plus a hidden twin carrying the field, the shape of
+		     HedgePicker on WoD20.7 (SPEC I107a1, V354a). The button owns no field - it is painted
+		     by renderCombatButtons - and the twin is what saves, which is why the field name did
+		     not move (SPEC V2).
+
+		     The other seven are READ-ONLY from here on (SPEC Q77.3, I157k): choosing a weapon
+		     fills them from combatData.lua and the only door left for typing is the picker's own
+		     Custom pane. readOnly + 0.75 + centred is the form the three book cells of MeritPicked
+		     already ship (WoD20.2.lfm:94-96, SPEC R153) - the `field=` stays on all seven, because
+		     a released sheet keeps its data (SPEC V2).
+
+		     30th batch (SPEC I175c/d, V508): the eleven row layouts below are named
+		     dragRow_attack_<num> and the picker is the row's drag handle (onStartDrag into
+		     rowDragStart, list 'attack'); the order is visual, the eight fields of a slot stay
+		     where mfConfirm wrote them (SPEC I175g).
+
+		     NOTHING is commented inside the <template> below: rdk copies the body raw and a
+		     comment in there takes the next line with it (SPEC B19). -->
+		<template name="Attack">
+			<button name="btnQattack_$(num)" left="0" top="2" width="20" height="20" text="?" onClick="popOpen(self, 'Weapon', sheet['attack_$(num)'], nil, 'attack_$(num)');"/>
+			<button name="dynattack_$(num)" left="20" top="0" width="345" height="24" text="Select Weapon" onClick="mfOpen(self, 'attack_$(num)', 'weapon', 'Weapon');" onMenu="mfMenuOpen('attack_$(num)', 'weapon');" onStartDrag="rowDragStart(self, drag, x, y, event, 'attack', 'attack_$(num)');"/>
+			<edit name="edtattack_$(num)" left="20" top="0" width="345" height="24" field="attack_$(num)" visible="false" enabled="false"/>
+			<edit left="365" top="0" width="170" height="24" field="roll_$(num)" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			<edit left="535" top="0" width="50" height="24" field="difficulty_$(num)" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			<edit left="585" top="0" width="90" height="24" field="damage_$(num)" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			<edit left="675" top="0" width="50" height="24" field="range_$(num)" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			<edit left="725" top="0" width="50" height="24" field="rate_$(num)" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			<edit left="775" top="0" width="50" height="24" field="clip_$(num)" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			<edit left="825" top="0" width="70" height="24" field="conceal_$(num)" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+		</template>
+
+		<!-- 965 wide since the 15th batch: ARMOR gave up a quarter of its width so SHIELD could
+		     sit beside it, which pushed the middle column and HEALTH right, and COMBAT TRAITS
+		     followed HEALTH to stay aligned - so the top band had 215px of new room and the user
+		     asked for it here (SPEC I159d, I159e, V467, user 2026-09-07). The two bands now close
+		     on the SAME 1290, which is what V467 measures and nothing measured before.
+
+		     Each header label is as wide as its column and centred on it, so the titles sit over
+		     the fields instead of hugging their left edge. One label per column, no padding
+		     runs (V11). The 215 went to TWO columns and the ruler is 6.5px per character against
+		     the longest value the TSV holds (SPEC V312, V468d): Roll 100 -> 170 for
+		     `Des + Briga/Armas Brancas`, and the picker button 200 -> 345 for
+		     `Escopeta Semiautomatica (Mago)`. Damage stayed at 90 because the user looked at it
+		     and said so (SPEC Q79.3) - which is why V468d carries no floor for it. -->
+		<layout left="0" top="0" width="965" height="351">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="925" height="20" text="COMBAT" horzTextAlign="center"/>
+
+			<label left="35" top="36" width="365" height="20" text="Weapon/Attack" horzTextAlign="center"/>
+			<label left="400" top="36" width="170" height="20" text="Roll" horzTextAlign="center"/>
+			<label left="570" top="36" width="50" height="20" text="Diff." horzTextAlign="center"/>
+			<label left="620" top="36" width="70" height="20" text="Damage" horzTextAlign="center"/>
+			<!-- The legend of the Damage codes, the twin of the Conceal one below and the same
+			     shape: a ? with a FIXED key and no row behind it (SPEC I158e, V464b, R157, user
+			     2026-09-07 ask 5). The label gave up twenty pixels so the two close on 710, which
+			     is where the Range column starts. -->
+			<button name="btnQdamage" left="690" top="36" width="20" height="20" text="?" onClick="popOpen(self, 'Weapon', 'Damage', nil, nil);"/>
+			<label left="710" top="36" width="50" height="20" text="Range" horzTextAlign="center"/>
+			<!-- The Rate column's ? (user 2026-10-07, SPEC I230d, V571c): in pt the header reads CdT and
+			     this says what it is short for - the shape of btnQdamage, a FIXED key and no row behind
+			     it. It replaced the italic legend that sat under ARMOR. Only pt shows it: the English
+			     header spells Rate out (renderCombatButtons). The label gave up twenty pixels so the two
+			     close on 810, where Clip starts. -->
+			<label name="dynRateHdr" left="760" top="36" width="30" height="20" text="Rate" horzTextAlign="center"/>
+			<button name="btnQrate" left="790" top="36" width="20" height="20" text="?" onClick="popOpen(self, 'Weapon', 'Rate', nil, nil);"/>
+			<label left="810" top="36" width="50" height="20" text="Clip" horzTextAlign="center"/>
+			<label left="860" top="36" width="65" height="20" text="Conceal" horzTextAlign="center"/>
+			<!-- The legend of the Conceal letters, and it is a ? with a FIXED key and no row
+			     behind it - the shape of btnQFaith on WoD20.7 (SPEC I157p, V461a, R154, user
+			     2026-09-07 ask 4). The label gave up five pixels so the two close on 945, which
+			     is the box's content edge (965 - 20, SPEC I73). -->
+			<button name="btnQconceal" left="925" top="36" width="20" height="20" text="?" onClick="popOpen(self, 'Weapon', 'Conceal', nil, nil);"/>
+
+			<layout name="dragRow_attack_1" left="35" top="61" width="895" height="25" >
+				<Attack num="1"/>
+			</layout>
+			<layout name="dragRow_attack_2" left="35" top="86" width="895" height="25" >
+				<Attack num="2"/>
+			</layout>
+			<layout name="dragRow_attack_3" left="35" top="111" width="895" height="25" >
+				<Attack num="3"/>
+			</layout>
+			<layout name="dragRow_attack_4" left="35" top="136" width="895" height="25" >
+				<Attack num="4"/>
+			</layout>
+			<layout name="dragRow_attack_5" left="35" top="161" width="895" height="25" >
+				<Attack num="5"/>
+			</layout>
+			<layout name="dragRow_attack_6" left="35" top="186" width="895" height="25" >
+				<Attack num="6"/>
+			</layout>
+			<layout name="dragRow_attack_7" left="35" top="211" width="895" height="25" >
+				<Attack num="7"/>
+			</layout>
+			<layout name="dragRow_attack_8" left="35" top="236" width="895" height="25" >
+				<Attack num="8"/>
+			</layout>
+			<layout name="dragRow_attack_9" left="35" top="261" width="895" height="25" >
+				<Attack num="9"/>
+			</layout>
+			<layout name="dragRow_attack_10" left="35" top="286" width="895" height="25" >
+				<Attack num="10"/>
+			</layout>
+			<layout name="dragRow_attack_11" left="35" top="311" width="895" height="25" >
+				<Attack num="11"/>
+			</layout>
+		</layout>
+		<!--
+			ARMOR belongs on this tab, not on Inventory: armour is combat gear. It went to
+			WoD20.8 in T76/T77 and came back on 2026-08-17, field names untouched both times
+			(SPEC T87 / V35).
+
+			ONE box since the 16th batch, and it carries TWO columns (SPEC I160a, V469, user
+			2026-09-07). ARMOR and SHIELD were two boxes of 315 with the 5px gap of V298 between
+			them; 315 + 5 + 315 was 635, and the 17th batch took it to 645 - the ten VIRTUES and
+			WILLPOWER gave up when they shrank (SPEC I161a, I161d). The band still closes on the
+			same 1290: 645 + 315 + 320 and TWO gaps, which is what V467(a) sums and the only
+			reason nothing outside these three boxes had to move.
+
+			The merge freed SEVENTY-FIVE pixels and not one more: 35 of slack to the right of the
+			ARMOR block, the 5 of the gap, and 35 of inset to the left of the SHIELD one. Twenty
+			stayed as the SEPARATOR between the two columns and fifty-five went to ARMOR. The
+			17th batch came back for the separator: EIGHT of those twenty crossed over - the
+			"about 40%" the user asked for, measured against the 20 that were there - so the gap
+			is 12 and the ARMOR column is 300 + 10 + 8 = 318 (SPEC I161d, Q81.2).
+
+			What the 18 buy, measured, and it is pixels and NOT a font point: the worst PT armour
+			name is 45 characters and fitSize asks for 45 * size * 0.5 px (WoD20th.lfm:6042,
+			SPEC V468f). At 205 it closed at size 9 (202.5); at 223 it closes at size 9 again,
+			because size 10 wants 225 and the column stops two short. The cut ended on the 16th
+			batch and stays ended; what the 17th adds is slack, and one point for every name but
+			the worst - the second longest (39 characters) goes 10 -> 11. The user was told this
+			before choosing the 8 (SPEC Q81.2, I161f), which is why V470(c) locks size NINE and
+			not ten: charging the ten would light the gate over the very number that was asked
+			for (SPEC B106).
+
+			The two titles sit one per column, each as wide as its column and centred on it - the
+			header rule COMBAT already follows (SPEC I159e, V469c). ARMOR is declared FIRST and
+			that is a CONTRACT, not taste: V280, V298 and V418 name a box by the first label they
+			find inside it, so swapping the two renames this box for the gate (SPEC I160b, V469a).
+
+			One input column per column: all three rows of each put their edit at x=75 (SPEC V26 /
+			B.12). V26 groups sibling rows by their `left`, so 35 and 355 are two columns by its
+			own definition and the two label widths never meet.
+
+			The SHIELD column keeps its WIDTH and no longer its left: 245 wide before the merge,
+			245 after it, and 245 now - what the 17th batch changed is that it WALKS ten to the
+			right, 355 -> 365, so the box keeps the same 35 of inset on both edges (SPEC I160e
+			amended, I161d). The width is the half V469(f) measures, and it measures it because
+			everything ARMOR has gained came from dead gaps and never from the shield (Q80.2).
+
+			What is NOT duplicated is the DATA: combatData.armor still holds all thirty-three
+			entries and descArmor_* still describes all thirty-three, because a shield reads the
+			same columns an armour does. Only the LIST splits, on the `kind` column of
+			research/armor.tsv, so ARMOR cannot offer a shield and SHIELD cannot offer a jacket
+			(SPEC I159b, V466c). That is why mfOpen gets the list `shield` and the module
+			`Armor`: they have been separate arguments since I157h.
+		-->
+		<layout left="0" top="356" width="645" height="241">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="35" top="15" width="318" height="20" text="ARMOR" horzTextAlign="center"/>
+			<label left="365" top="15" width="245" height="20" text="SHIELD" horzTextAlign="center"/>
+
+			<!-- Class became a PICKER in the 13th batch (SPEC I157b, T1005). It opens at the
+			     STANDARD size, with the description pane and the Armor module: without a module
+			     the pane would say "No description available" for all twenty-nine book entries,
+			     which is the complaint I151a exists over - and the Custom pane needs that editor
+			     to take the notes in (SPEC Q77.3, I157o).
+
+			     The ? arrived in the 14th batch and REVERSED what stood here: the user had asked
+			     for it in COMBAT only, then asked for it here too (SPEC I158d, V464a, user
+			     2026-09-07 ask 4). It is the shape btnQattack_$(num) already wears - the key is
+			     whatever name the row holds - and it opens exactly where the button closes and
+			     closes exactly on the row's width, where Rating and Penalty close. That is a
+			     RELATION and no longer the literal 225/20 it used to be: the literal went red on
+			     the 16th batch, which is the ask that widened this column (SPEC V469d, B106). -->
+			<layout left="35" top="36" width="318" height="25" >
+				<label left="0" top="5" width="70" height="20" text="Class" horzTextAlign="trailing"/>
+				<button name="dynarmorClass" left="75" top="0" width="223" height="25" text="Select Armor" onClick="mfOpen(self, 'armorClass', 'armor', 'Armor');" onMenu="mfMenuOpen('armorClass', 'armor');"/>
+				<edit name="edtarmorClass" left="75" top="0" width="223" height="25" field="armorClass" visible="false" enabled="false"/>
+				<button name="btnQarmorClass" left="298" top="0" width="20" height="20" text="?" onClick="popOpen(self, 'Armor', sheet['armorClass'], nil, 'armorClass');"/>
+			</layout>
+			<layout left="35" top="61" width="318" height="25" >
+				<label left="0" top="5" width="70" height="20" text="Rating" horzTextAlign="trailing"/>
+				<edit left="75" top="0" width="243" height="25" field="armorRating" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			</layout>
+			<layout left="35" top="86" width="318" height="25" >
+				<label left="0" top="5" width="70" height="20" text="Penalty" horzTextAlign="trailing"/>
+				<edit left="75" top="0" width="243" height="25" field="armorPenalty" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			</layout>
+
+			<!-- readOnly and NO opacity: opacity on a TextControl dims the TEXT itself away
+			     (SPEC V241, I157k), so this one pays for the lock with the lock alone. -->
+			<textEditor left="35" top="116" width="318" height="110" field="armorDescription" readOnly="true"/>
+
+			<!-- The SHIELD column, and it is the ARMOR one with one letter of the field name
+			     changed (SPEC I159a, V466, user 2026-09-07 ask 1: "voce pode usar uma armadura e
+			     um escudo ao mesmo tempo"). Same shape row for row, so nothing here is a second
+			     way of doing what the column beside it already does - and 245 wide because the
+			     16th batch gave ARMOR what the MERGE freed and not what the shield had (SPEC
+			     I160e, Q80.2, V469f).
+
+			     Four NEW data fields since the 15th batch - the first this tab had taken since
+			     the third round (SPEC I3, I159a). A sheet saved before then opens with them empty
+			     and nothing has to migrate, which is the whole of V2 here. -->
+			<layout left="365" top="36" width="245" height="25" >
+				<label left="0" top="5" width="70" height="20" text="Class" horzTextAlign="trailing"/>
+				<button name="dynshieldClass" left="75" top="0" width="150" height="25" text="Select Shield" onClick="mfOpen(self, 'shieldClass', 'shield', 'Armor');" onMenu="mfMenuOpen('shieldClass', 'shield');"/>
+				<edit name="edtshieldClass" left="75" top="0" width="150" height="25" field="shieldClass" visible="false" enabled="false"/>
+				<button name="btnQshieldClass" left="225" top="0" width="20" height="20" text="?" onClick="popOpen(self, 'Armor', sheet['shieldClass'], nil, 'shieldClass');"/>
+			</layout>
+			<layout left="365" top="61" width="245" height="25" >
+				<label left="0" top="5" width="70" height="20" text="Rating" horzTextAlign="trailing"/>
+				<edit left="75" top="0" width="170" height="25" field="shieldRating" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			</layout>
+			<layout left="365" top="86" width="245" height="25" >
+				<label left="0" top="5" width="70" height="20" text="Penalty" horzTextAlign="trailing"/>
+				<edit left="75" top="0" width="170" height="25" field="shieldPenalty" readOnly="true" opacity="0.75" horzTextAlign="center"/>
+			</layout>
+
+			<!-- readOnly and NO opacity, for the reason the ARMOR one carries (SPEC V241). -->
+			<textEditor left="365" top="116" width="245" height="110" field="shieldDescription" readOnly="true"/>
+		</layout>
+
+		<!--
+			Willpower on the Combat tab (SPEC T138 / V51). The two halves are deliberately
+			different: the DOTS are display only - no `field=`, painted by paintWillpower() from
+			the real values, `autoChange="false"` so a click does nothing - while the BOXES
+			underneath carry `field="willpower_c*"` and are a declared mirror of the Main tab
+			(SPEC I3 ESPELHOS, V36). Spending willpower is what a player does mid-fight; raising
+			the permanent rating is not.
+
+			Title, the Main's 8 and the 52 of dots and boxes are ONE object centred in the box since
+			the 61st batch (user 2026-10-02, SPEC I204c, V547): 20 + 8 + 52 = 80 in 110, 15 above.
+		-->
+		<!-- Named in the 74th batch (user 2026-10-06, SPEC I217k): a MAGE's mirror follows the Main -
+		     no VIRTUES, and WILLPOWER in their place, re-centred by MAGE_GEOM. -->
+		<layout name="boxWillpower3" left="650" top="487" width="315" height="110">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblWillpower3" left="20" top="15" width="275" height="20" text="WILLPOWER" horzTextAlign="center"/>
+
+			<layout name="bodyWillpower3" left="32" top="43" width="250" height="52">
+				<WillpowerMirror/>
+			</layout>
+		</layout>
+
+		<!-- A MAGE's ARETE / SPHERES, read-only here (user 2026-10-06, SPEC I221k, V560d). Like WILLPOWER
+		     above, the dots own no field and take no click - renderSpheres (root) paints them from the
+		     Main's fields and swaps each sphere dot for its faded twin over Arete. 0.40 live and 0.12
+		     twin, the Main's 0.30 ratio (SPEC V111). Hidden here: renderGameMode shows it to a mage only.
+		     Since the 87th batch (user 2026-10-07, SPEC I230a/b, V571a) each sits under its neighbour,
+		     5 between: ARETE under the mage's WILLPOWER (650, 315 wide; its 250 of dots centred at 32)
+		     and SPHERES under ARMOR (0, 645 wide; the three columns 10 and 11 apart to fit).
+		     88th batch (user 2026-10-08, SPEC I231d, V572c): ARETE closes on ARMOR's foot (597), so it
+		     is 110 tall; the title keeps the head of 15 every section box has (SPEC V240). -->
+		<layout name="boxArete3" left="650" top="487" width="315" height="110" visible="false">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="275" height="20" text="ARETE" horzTextAlign="center"/>
+			<layout left="32" top="44" width="250" height="25">
+				<imageCheckBox name="roArete_1" left="0" top="0" width="25" height="25" checked="true" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roArete_2" left="25" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roArete_3" left="50" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roArete_4" left="75" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roArete_5" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roArete_6" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roArete_7" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roArete_8" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roArete_9" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roArete_10" left="225" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+			</layout>
+		</layout>
+
+		<layout name="boxSpheres3" left="0" top="602" width="645" height="140" visible="false">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="605" height="20" text="SPHERES" horzTextAlign="center"/>
+			<layout left="20" top="44" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Correspondence"/>
+				<imageCheckBox name="roSph_correspondence_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_correspondence_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_correspondence_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_correspondence_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_correspondence_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="rocapSph_correspondence_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_correspondence_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_correspondence_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_correspondence_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+			</layout>
+			<layout left="20" top="69" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Entropy"/>
+				<imageCheckBox name="roSph_entropy_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_entropy_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_entropy_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_entropy_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_entropy_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="rocapSph_entropy_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_entropy_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_entropy_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_entropy_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+			</layout>
+			<layout left="20" top="94" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Forces"/>
+				<imageCheckBox name="roSph_forces_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_forces_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_forces_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_forces_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_forces_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="rocapSph_forces_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_forces_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_forces_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_forces_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+			</layout>
+			<layout left="255" top="44" width="173" height="25">
+				<label left="0" top="5" width="46" height="20" text="Life"/>
+				<imageCheckBox name="roSph_life_1" left="48" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_life_2" left="73" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_life_3" left="98" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_life_4" left="123" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_life_5" left="148" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="rocapSph_life_2" left="73" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_life_3" left="98" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_life_4" left="123" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_life_5" left="148" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+			</layout>
+			<layout left="255" top="69" width="173" height="25">
+				<label left="0" top="5" width="46" height="20" text="Matter"/>
+				<imageCheckBox name="roSph_matter_1" left="48" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_matter_2" left="73" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_matter_3" left="98" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_matter_4" left="123" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_matter_5" left="148" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="rocapSph_matter_2" left="73" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_matter_3" left="98" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_matter_4" left="123" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_matter_5" left="148" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+			</layout>
+			<layout left="255" top="94" width="173" height="25">
+				<label left="0" top="5" width="46" height="20" text="Mind"/>
+				<imageCheckBox name="roSph_mind_1" left="48" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_mind_2" left="73" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_mind_3" left="98" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_mind_4" left="123" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_mind_5" left="148" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="rocapSph_mind_2" left="73" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_mind_3" left="98" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_mind_4" left="123" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_mind_5" left="148" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+			</layout>
+			<layout left="439" top="44" width="186" height="25">
+				<label left="0" top="5" width="59" height="20" text="Prime"/>
+				<imageCheckBox name="roSph_prime_1" left="61" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_prime_2" left="86" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_prime_3" left="111" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_prime_4" left="136" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_prime_5" left="161" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="rocapSph_prime_2" left="86" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_prime_3" left="111" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_prime_4" left="136" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_prime_5" left="161" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+			</layout>
+			<layout left="439" top="69" width="186" height="25">
+				<label left="0" top="5" width="59" height="20" text="Spirit"/>
+				<imageCheckBox name="roSph_spirit_1" left="61" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_spirit_2" left="86" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_spirit_3" left="111" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_spirit_4" left="136" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_spirit_5" left="161" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="rocapSph_spirit_2" left="86" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_spirit_3" left="111" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_spirit_4" left="136" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_spirit_5" left="161" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+			</layout>
+			<layout left="439" top="94" width="186" height="25">
+				<label left="0" top="5" width="59" height="20" text="Time"/>
+				<imageCheckBox name="roSph_time_1" left="61" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_time_2" left="86" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_time_3" left="111" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_time_4" left="136" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="roSph_time_5" left="161" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="rocapSph_time_2" left="86" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_time_3" left="111" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_time_4" left="136" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+				<imageCheckBox name="rocapSph_time_5" left="161" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.12" visible="false"/>
+			</layout>
+		</layout>
+
+		<!-- ITEMS / GEAR / EQUIPMENT / TRANSPORTATION / OTHER moved to the Inventory tab
+		     (WoD20.8.lfm) with their field names untouched - SPEC T77 / V35. -->
+
+		<!--
+			HEALTH and VIRTUES here are MIRRORS, not copies (SPEC T100 / V36): the widgets carry
+			the same `field=` as the ones on the Main tab, and the NDB is the single source of
+			truth, so editing either side updates both with no Lua involved. SPEC V1 normally
+			forbids two input widgets on one field - these are the declared exception, listed
+			under ESPELHOS in SPEC I3.
+
+			5th round (SPEC T111): the right column now reads COMBAT TRAITS then HEALTH, and
+			VIRTUES left it to sit beside ARMOR. Only left/top/width moved - the three blocks keep
+			their file order because the Lua finds widgets by name (dynHealth3_N, ro_<field>_N),
+			never by position.
+		-->
+		<!-- height=325 is the ten-row case; the renderer shrinks it to the chosen track length
+		     (SPEC V49), so the file declares the tallest this box can ever be.
+		     top=356 opens this box on the same line as ARMOR and VIRTUES - the second row of the
+		     tab starts 5 under the first one, which now closes at 351 (SPEC V418c, V298). -->
+		<layout name="dynHealth3_box" left="970" top="356" width="320" height="325">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<!-- The track length lives on the storyteller's tab since the 82nd round (SPEC I35,
+			     V234). The title spans the box now, so it is centred on the box - and stretches with
+			     it, since a vampire's box is as wide as COMBAT TRAITS above it (SPEC I204g). -->
+			<label left="20" top="15" width="280" height="20" text="HEALTH" horzTextAlign="center" anchors="left top right"/>
+
+			<layout name="dynHealth3_row1" left="37" top="47" width="246" height="20"><HealthRowMirror num="1"/></layout>
+			<layout name="dynHealth3_row2" left="37" top="74" width="246" height="20"><HealthRowMirror num="2"/></layout>
+			<layout name="dynHealth3_row3" left="37" top="101" width="246" height="20"><HealthRowMirror num="3"/></layout>
+			<layout name="dynHealth3_row4" left="37" top="128" width="246" height="20"><HealthRowMirror num="4"/></layout>
+			<layout name="dynHealth3_row5" left="37" top="155" width="246" height="20"><HealthRowMirror num="5"/></layout>
+			<layout name="dynHealth3_row6" left="37" top="182" width="246" height="20"><HealthRowMirror num="6"/></layout>
+			<layout name="dynHealth3_row7" left="37" top="209" width="246" height="20"><HealthRowMirror num="7"/></layout>
+			<layout name="dynHealth3_row8" left="37" top="236" width="246" height="20"><HealthRowMirror num="8"/></layout>
+			<layout name="dynHealth3_row9" left="37" top="263" width="246" height="20"><HealthRowMirror num="9"/></layout>
+			<layout name="dynHealth3_row10" left="37" top="290" width="246" height="20"><HealthRowMirror num="10"/></layout>
+		</layout>
+
+		<!--
+			VIRTUES and WILLPOWER are one column between the protection box and HEALTH, and the
+			17th batch took ten off their width so the ARMOR picker could have it (SPEC I161a,
+			I161b, user 2026-09-07): 325 -> 315, left 640 -> 650, and the band still closes on
+			1290 because the ten went straight into the box on their left.
+
+			Their content is CENTRED on the box now, which is the ask in the user's own words.
+			The content is the 250px template both boxes carry, so the rows open at 32 and close
+			33 short of the right edge: 315 - 250 is 65 and a pixel does not split. That one is
+			the closest 315 allows, and it is why V470(a) charges a difference of at most 1 and
+			not an equality - 314 would have been exact, and the user chose 10px over 11.
+		-->
+		<layout name="boxVirtues3" left="650" top="356" width="315" height="126">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="275" height="20" text="VIRTUES" horzTextAlign="center"/>
+
+			<layout left="32" top="36" width="250" height="25" >
+				<VirtueMirror field="conscience" nome="Conscience"/>
+			</layout>
+			<layout left="32" top="61" width="250" height="25" >
+				<VirtueMirror field="selfControl" nome="Self-Control"/>
+			</layout>
+			<layout left="32" top="86" width="250" height="25" >
+				<VirtueMirror field="courage" nome="Courage"/>
+			</layout>
+		</layout>
+
+		<!--
+			Combat-relevant traits, DISPLAY ONLY (SPEC T101). These dots carry no `field=` at all,
+			so they own nothing and cannot be a second owner of anything (SPEC I3 lists them under
+			SO-LEITURA, deliberately outside the mirror list). renderCombatTraits() reads the real
+			fields and pushes `checked` into them; `autoChange="false"` is what stops a click from
+			toggling one - it is an ImageCheckBox property, not the greying-out `enabled=false`,
+			so these read as normal dots (sdk/rrpgGUI.lua:776-777,786).
+
+			Attributes show five dots with the first always lit, matching the Attribute template
+			where dot 1 is a fixed image and only `_2`..`_5` are real fields.
+
+			NINE for a vampire since the 47th batch (SPEC I190, Q109.8): dots 6..9 and the faded
+			twins rocap_*_4..9 are authored hidden, and renderGameMode on the root widens this box
+			(VAMP_GEOM) - the title, the line and the rows carry anchors="left top right" and
+			stretch with it. Nothing sits to the right to push. Since the 61st batch (user
+			2026-10-02, SPEC I204g, V546d) a vampire's names are as wide as the longest of the
+			eleven needs and the dots start 2 after them: the root's generator places each row's
+			name, dots and twins, and the box is 382.
+
+			A MAGE splits it in two since the 88th batch (user 2026-10-08, SPEC I231a, V572): COMBAT
+			ATTRIBUTES (this box, 151 tall, no line) and COMBAT ABILITIES below. The two titles swap
+			by visibility - renderGameMode shows one, never writes a text.
+		-->
+		<layout name="boxCombatTraits" left="970" top="0" width="320" height="351">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblCombatTraits3" left="20" top="15" width="280" height="20" text="COMBAT TRAITS" horzTextAlign="center" anchors="left top right"/>
+			<label name="lblCombatAttrs3" left="20" top="15" width="280" height="20" text="COMBAT ATTRIBUTES" horzTextAlign="center" anchors="left top right" visible="false"/>
+
+			<layout left="35" top="36" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="strength" nome="Strength"/></layout>
+			<layout left="35" top="61" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="dexterity" nome="Dexterity"/></layout>
+			<layout left="35" top="86" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="stamina" nome="Stamina"/></layout>
+			<layout left="35" top="111" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="perception" nome="Perception"/></layout>
+			<!-- A MAGE's fifth combat attribute (user 2026-10-08, SPEC I234a, V575a): hidden for anyone else, where it would sit on the line below. -->
+			<layout name="roRowWits3" left="35" top="136" width="250" height="25" anchors="left top right" visible="false"><ReadOnlyTrait field="wits" nome="Wits"/></layout>
+
+			<horzLine name="lineCombatTraits3" left="30" top="141" width="260" strokeColor="white" anchors="left top right"/>
+		</layout>
+
+		<!-- The seven ability rows in a box of their own (user 2026-10-08, SPEC I231a, V572a), because
+		     a mage's COMBAT ABILITIES is a real box - the align="client" backdrop is what carries the
+		     era's fill and ornament, and a loose rectangle inside COMBAT TRAITS would carry none.
+		     Everyone else sees no box: backdrop and title are hidden and the layout sits exactly where
+		     the rows always were (115 + 36 = 151), as wide as COMBAT TRAITS (VAMP_GEOM widens both),
+		     so Vampire and Mortal look as before. A mage's is 288 since the 91st batch: 35 + 91 + 2 + 5 x 25 + 35 (SPEC I234f). -->
+		<layout name="boxCombatAbils3" left="970" top="115" width="320" height="236">
+			<rectangle name="rectCombatAbils3" align="client" color="black" xradius="14" yradius="14" cornerType="innerRound" visible="false"/>
+			<label name="lblCombatAbils3" left="20" top="15" width="280" height="20" text="COMBAT ABILITIES" horzTextAlign="center" anchors="left top right" visible="false"/>
+
+			<layout left="35" top="36" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="alertness" nome="Alertness"/></layout>
+			<layout left="35" top="61" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="athletics" nome="Athletics"/></layout>
+			<layout left="35" top="86" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="awareness" nome="Awareness"/></layout>
+			<layout left="35" top="111" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="brawl" nome="Brawl"/></layout>
+			<layout left="35" top="136" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="ranged" nome="Firearms"/></layout>
+			<!-- A MAGE's MARTIAL ARTS right after the ranged row (user 2026-10-08, SPEC I234a, Q149.1, V575a): hidden for anyone
+			     else, on MELEE's authored spot; for a mage renderGameMode moves MELEE and STEALTH 25 down (their top only). -->
+			<layout name="roRowMartialArts3" left="35" top="161" width="250" height="25" anchors="left top right" visible="false"><ReadOnlyTrait field="martialArts" nome="Martial Arts"/></layout>
+			<layout name="roRowMelee3" left="35" top="161" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="melee" nome="Melee"/></layout>
+			<layout name="roRowStealth3" left="35" top="186" width="250" height="25" anchors="left top right" ><ReadOnlyTrait field="stealth" nome="Stealth"/></layout>
+		</layout>
+	</scrollBox>
+
+	<!--
+		Two entry points, same reason as the Main tab: the dataLink catches later edits, the
+		onNodeReady catches the sheet being opened (SPEC V19 / V33).
+
+		TWO links, because they watch different things (SPEC V123). The health track reads the
+		track length and the language and nothing else; the mirror reads the traits and the era.
+		One link over both lists meant that ticking any of the eighty trait dots re-rendered the
+		health track as well - and that render wrote all ten health rows back, which woke
+		everything hanging off THEM. That cascade is what froze a saved sheet on open (SPEC B34).
+	-->
+	<dataLink fields="{'healthLevels', 'language'}" onChange="renderHealthTrack(self, 'dynHealth3_');"/>
+	<dataLink fields="{'sheetTheme', 'strength_2', 'strength_3', 'strength_4', 'strength_5', 'dexterity_2', 'dexterity_3', 'dexterity_4', 'dexterity_5', 'stamina_2', 'stamina_3', 'stamina_4', 'stamina_5', 'perception_2', 'perception_3', 'perception_4', 'perception_5', 'alertness_1', 'alertness_2', 'alertness_3', 'alertness_4', 'alertness_5', 'athletics_1', 'athletics_2', 'athletics_3', 'athletics_4', 'athletics_5', 'awareness_1', 'awareness_2', 'awareness_3', 'awareness_4', 'awareness_5', 'brawl_1', 'brawl_2', 'brawl_3', 'brawl_4', 'brawl_5', 'firearms_1', 'firearms_2', 'firearms_3', 'firearms_4', 'firearms_5', 'melee_1', 'melee_2', 'melee_3', 'melee_4', 'melee_5', 'stealth_1', 'stealth_2', 'stealth_3', 'stealth_4', 'stealth_5', 'archery_1', 'archery_2', 'archery_3', 'archery_4', 'archery_5', 'willpower_1', 'willpower_2', 'willpower_3', 'willpower_4', 'willpower_5', 'willpower_6', 'willpower_7', 'willpower_8', 'willpower_9', 'willpower_10', 'conscience_2', 'conscience_3', 'conscience_4', 'conscience_5', 'selfControl_2', 'selfControl_3', 'selfControl_4', 'selfControl_5', 'courage_2', 'courage_3', 'courage_4', 'courage_5', 'strength_6', 'strength_7', 'strength_8', 'strength_9', 'dexterity_6', 'dexterity_7', 'dexterity_8', 'dexterity_9', 'stamina_6', 'stamina_7', 'stamina_8', 'stamina_9', 'perception_6', 'perception_7', 'perception_8', 'perception_9', 'alertness_6', 'alertness_7', 'alertness_8', 'alertness_9', 'athletics_6', 'athletics_7', 'athletics_8', 'athletics_9', 'awareness_6', 'awareness_7', 'awareness_8', 'awareness_9', 'brawl_6', 'brawl_7', 'brawl_8', 'brawl_9', 'melee_6', 'melee_7', 'melee_8', 'melee_9', 'stealth_6', 'stealth_7', 'stealth_8', 'stealth_9', 'firearms_6', 'firearms_7', 'firearms_8', 'firearms_9', 'archery_6', 'archery_7', 'archery_8', 'archery_9', 'wits_2', 'wits_3', 'wits_4', 'wits_5', 'wits_6', 'wits_7', 'wits_8', 'wits_9', 'martialArts_1', 'martialArts_2', 'martialArts_3', 'martialArts_4', 'martialArts_5', 'martialArts_6', 'martialArts_7', 'martialArts_8', 'martialArts_9', 'game', 'generation'}" onChange="renderCombatTraits(self);"/>
+
+	<!-- The twelve picker buttons of this tab (SPEC I157g, I107a2, V455e). A THIRD link and not
+	     a row added to either of the two above, for the reason the comment up there gives: the
+	     health track and the trait mirror watch different things, and this one watches the
+	     twelve slots plus the language. -->
+	<dataLink fields="{'language', 'attack_1', 'attack_2', 'attack_3', 'attack_4', 'attack_5', 'attack_6', 'attack_7', 'attack_8', 'attack_9', 'attack_10', 'attack_11', 'armorClass', 'shieldClass'}" onChange="renderCombatButtons(self);"/>
+
+	<event name="onNodeReady">
+		renderHealthTrack(self, 'dynHealth3_');
+		renderCombatTraits(self);
+		renderCombatButtons(self);
+	</event>
+</form>

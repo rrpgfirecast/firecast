@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="World of Darkness 20th Anniversary Edition.rpk">
+	<id>AndreOliveira.Styllern.WoD20th</id>
+	<version>0.4.0</version>
+
+    <info lang="pt-BR">
+        <name>WoD 20th</name>
+        <description>Ficha de WoD 20th (mortal, com trilhas de vampiro) para o Storyteller System.</description>
+        <author>Andre Oliveira (Styllern)</author>
+        <site/>
+        <contact>Facebook? Twitter? E-Mail?</contact>
+    </info>
+</module>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_16" align="client" theme="dark">
+	<script><![CDATA[
+		-- Each Magick list item as it is built (81st batch, SPEC I224c, B203): the theme paints by
+		-- walking the controls that exist, and a recordList builds its items after that walk - the
+		-- seven first Foci, every Add, the lists filling on open. So the tab names, translates and
+		-- paints each item itself, through the two functions every other control already goes
+		-- through. `nameText` is the list's own word for a name (user 2026-10-07, SPEC Q138.2).
+		function magickItemPaint(form, nameText)
+			if sheet == nil or form == nil then return; end;
+
+			local lang = sheet.language or "pt";
+
+			if form.dynItemName ~= nil then form.dynItemName.text = translateSheetText(nameText, lang); end;
+			if form.dynItemDesc ~= nil then form.dynItemDesc.text = translateSheetText("Description", lang); end;
+
+			form.confirmText = translateSheetText("Remove this item from the list?", lang);
+
+			themeItem(form);
+		end;
+
+		-- The language switched: every item already built gets its words again. A change of era
+		-- needs nothing here - the whole-sheet walk reaches the items that exist (SPEC R188).
+		function magickRelabel(from)
+			if from == nil then return; end;
+
+			for _, pair in ipairs({ { from.rclFoci, "Focus" }, { from.rclRotes, "Rote" }, { from.rclWonders, "Name" } }) do
+				if pair[1] ~= nil then
+					local items = pair[1]:getChildren();
+
+					for i = 1, #items, 1 do magickItemPaint(items[i], pair[2]); end;
+				end;
+			end;
+		end;
+	]]></script>
+
+	<scrollBox align="client">
+		<!-- Theme backdrop, same arrangement as WoD20.1 (SPEC T158, V56, V57). -->
+		<image name="themePaper16" align="client" style="stretch" hitTest="false" visible="false"/>
+
+		<!--
+			The Magick tab, a MAGE's alone (user 2026-10-07, SPEC I223g/h, V565): FOCI, ROTES and WONDERS,
+			three lists the player grows and shrinks. Each box is 70% of a mage's BACKGROUNDS (509 -> 356)
+			wide and, since the 81st batch, as tall as the Main's Avatar + Skills + Arete (236 + 351 + 244 =
+			831, SPEC I224a, V566a; 856 since the 89th batch, a mage's SKILLS being 376, SPEC I232), 5 between. The list is a recordList - the "delete of a recordList" SPEC C
+			has allowed since the first round, after the Mage20th sheet's WONDERS (SPEC R187): the Add
+			button appends an item, the item's X asks and deletes itself. All three share one item form,
+			frmWoD20_17 (WoD20.17), and the list is 20 wider than it: 16 for the scrollbar and 4 between,
+			so the bar never covers an item and an item never runs under the bar. Each list paints the
+			item it builds (onItemAdded, magickItemPaint above).
+			Since the 85th batch (user 2026-10-07, SPEC I228b, V570b) the cards keep ONE gap, 24, from the
+			box's left, from its right and from each other: the list opens at 24, the card is 308 (356 -
+			2 x 24), and the 20 of the scrollbar's lane fall inside the right-hand 24, 4 either side of the
+			bar. The Add button closes where the cards close (332). Since the 86th batch (SPEC I229b) each
+			card's 24 is above it, so the list opens on the title row's foot (35) and the first card sits
+			24 under it, like every other gap. Since the 98th batch (user 2026-10-09, SPEC I241, V582) the
+			gap between cards is 7 (30% of 24) and the list opens 17 lower (52), so the first card keeps
+			its 24 from the title row (SPEC Q154).
+			Seven empty Foci are seeded once per mage by seedFoci (root, SPEC I223j); Rotes and Wonders
+			start empty.
+		-->
+		<layout name="boxFoci" left="0" top="0" width="356" height="856">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="316" height="20" text="FOCI" horzTextAlign="center" hitTest="false"/>
+			<button name="btnAddFocus" left="252" top="15" width="80" height="20" text="Add" onClick="self.rclFoci:append();"/>
+			<recordList name="rclFoci" left="24" top="52" width="328" height="784" field="magickFoci" templateForm="frmWoD20_17" layout="vertical">
+				<event name="onItemAdded">magickItemPaint(form, "Focus");</event>
+			</recordList>
+		</layout>
+
+		<layout name="boxRotes" left="361" top="0" width="356" height="856">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="316" height="20" text="ROTES" horzTextAlign="center" hitTest="false"/>
+			<button name="btnAddRote" left="252" top="15" width="80" height="20" text="Add" onClick="self.rclRotes:append();"/>
+			<recordList name="rclRotes" left="24" top="52" width="328" height="784" field="magickRotes" templateForm="frmWoD20_17" layout="vertical">
+				<event name="onItemAdded">magickItemPaint(form, "Rote");</event>
+			</recordList>
+		</layout>
+
+		<layout name="boxWonders" left="722" top="0" width="356" height="856">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="316" height="20" text="WONDERS" horzTextAlign="center" hitTest="false"/>
+			<button name="btnAddWonder" left="252" top="15" width="80" height="20" text="Add" onClick="self.rclWonders:append();"/>
+			<recordList name="rclWonders" left="24" top="52" width="328" height="784" field="magickWonders" templateForm="frmWoD20_17" layout="vertical">
+				<event name="onItemAdded">magickItemPaint(form, "Name");</event>
+			</recordList>
+		</layout>
+
+		<!-- ARETE, SPHERES and QUINTESSENCE / PARADOX beside WONDERS (user 2026-10-08, SPEC I233d, V574d, Q147.3):
+		     stacked 5 apart, as wide as WONDERS (356); the spheres 25 a row since the 92nd batch (SPEC I235b). They are COPIES of the Main's and own no field - a field
+		     has one input on the sheet (SPEC V1) - so renderSpheres and renderQpWheel paint them from the
+		     fields, and a click goes where the Main's goes: xpClick by the FIELD's name, cycleQpMark by the
+		     mark (SPEC Q148.1). The two numbers are read-only here; they are edited on the Main.
+		     Since the 99th batch (user 2026-10-09, SPEC I242, V583) the two numbers are edits on qpQuint /
+		     qpParadox, the Main's twins (a declared mirror, SPEC V36), and EXPERIENCE heads the column: it is
+		     103 tall so the column, 108 lower, closes WILLPOWER on the cards' 856. -->
+		<!-- EXPERIENCE as on the Main (SPEC I242b): title and balance ONE object of 50 centred in the box
+		     (SPEC V547), the balance an edit with no field that xpPaint writes and xpSetCurrent reads, like
+		     the Vampire tab's copy. -->
+		<layout name="boxMkXP" left="1083" top="0" width="356" height="103">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblMkXP" left="20" top="26" width="316" height="20" text="EXPERIENCE" horzTextAlign="center"/>
+			<rectangle name="bgCurrentXPMagick" left="133" top="51" width="90" height="25" color="#0A0A0A" xradius="6" yradius="6" cornerType="innerRound" hitTest="false"/>
+			<edit name="edtCurrentXPMagick" type="number" decimalPlaces="0" left="133" top="51" width="90" height="25" horzTextAlign="center" vertTextAlign="center" fontSize="14" onUserChange="xpSetCurrent(self, self.edtCurrentXPMagick.text);" transparent="true"/>
+		</layout>
+
+		<layout name="boxMkArete" left="1083" top="108" width="356" height="89">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="316" height="20" text="ARETE" horzTextAlign="center" hitTest="false"/>
+			<layout name="mkAreteRow" left="53" top="44" width="250" height="25">
+				<image left="0" top="0" width="25" height="25" style="autoFit" src="images/prime_on.png"/>
+				<imageCheckBox name="mkArete_2" left="25" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_2', self);"/>
+				<imageCheckBox name="mkArete_3" left="50" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_3', self);"/>
+				<imageCheckBox name="mkArete_4" left="75" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_4', self);"/>
+				<imageCheckBox name="mkArete_5" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_5', self);"/>
+				<imageCheckBox name="mkArete_6" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_6', self);"/>
+				<imageCheckBox name="mkArete_7" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_7', self);"/>
+				<imageCheckBox name="mkArete_8" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_8', self);"/>
+				<imageCheckBox name="mkArete_9" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_9', self);"/>
+				<imageCheckBox name="mkArete_10" left="225" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_10', self);"/>
+			</layout>
+		</layout>
+
+		<layout name="boxMkSpheres" left="1083" top="202" width="356" height="290">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="316" height="20" text="SPHERES" horzTextAlign="center" hitTest="false"/>
+			<layout name="mkSphRow_correspondence" left="65" top="44" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Correspondence"/>
+				<imageCheckBox name="mkSph_correspondence_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_1', self);"/>
+				<imageCheckBox name="mkSph_correspondence_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_2', self);"/>
+				<imageCheckBox name="mkSph_correspondence_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_3', self);"/>
+				<imageCheckBox name="mkSph_correspondence_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_4', self);"/>
+				<imageCheckBox name="mkSph_correspondence_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_5', self);"/>
+				<imageCheckBox name="mkcapSph_correspondence_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_correspondence_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_correspondence_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_correspondence_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="mkSphRow_entropy" left="65" top="69" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Entropy"/>
+				<imageCheckBox name="mkSph_entropy_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_1', self);"/>
+				<imageCheckBox name="mkSph_entropy_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_2', self);"/>
+				<imageCheckBox name="mkSph_entropy_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_3', self);"/>
+				<imageCheckBox name="mkSph_entropy_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_4', self);"/>
+				<imageCheckBox name="mkSph_entropy_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_5', self);"/>
+				<imageCheckBox name="mkcapSph_entropy_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_entropy_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_entropy_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_entropy_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="mkSphRow_forces" left="65" top="94" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Forces"/>
+				<imageCheckBox name="mkSph_forces_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_1', self);"/>
+				<imageCheckBox name="mkSph_forces_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_2', self);"/>
+				<imageCheckBox name="mkSph_forces_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_3', self);"/>
+				<imageCheckBox name="mkSph_forces_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_4', self);"/>
+				<imageCheckBox name="mkSph_forces_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_5', self);"/>
+				<imageCheckBox name="mkcapSph_forces_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_forces_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_forces_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_forces_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="mkSphRow_life" left="65" top="119" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Life"/>
+				<imageCheckBox name="mkSph_life_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_1', self);"/>
+				<imageCheckBox name="mkSph_life_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_2', self);"/>
+				<imageCheckBox name="mkSph_life_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_3', self);"/>
+				<imageCheckBox name="mkSph_life_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_4', self);"/>
+				<imageCheckBox name="mkSph_life_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_5', self);"/>
+				<imageCheckBox name="mkcapSph_life_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_life_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_life_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_life_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="mkSphRow_matter" left="65" top="144" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Matter"/>
+				<imageCheckBox name="mkSph_matter_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_1', self);"/>
+				<imageCheckBox name="mkSph_matter_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_2', self);"/>
+				<imageCheckBox name="mkSph_matter_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_3', self);"/>
+				<imageCheckBox name="mkSph_matter_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_4', self);"/>
+				<imageCheckBox name="mkSph_matter_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_5', self);"/>
+				<imageCheckBox name="mkcapSph_matter_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_matter_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_matter_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_matter_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="mkSphRow_mind" left="65" top="169" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Mind"/>
+				<imageCheckBox name="mkSph_mind_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_1', self);"/>
+				<imageCheckBox name="mkSph_mind_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_2', self);"/>
+				<imageCheckBox name="mkSph_mind_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_3', self);"/>
+				<imageCheckBox name="mkSph_mind_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_4', self);"/>
+				<imageCheckBox name="mkSph_mind_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_5', self);"/>
+				<imageCheckBox name="mkcapSph_mind_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_mind_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_mind_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_mind_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="mkSphRow_prime" left="65" top="194" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Prime"/>
+				<imageCheckBox name="mkSph_prime_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_1', self);"/>
+				<imageCheckBox name="mkSph_prime_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_2', self);"/>
+				<imageCheckBox name="mkSph_prime_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_3', self);"/>
+				<imageCheckBox name="mkSph_prime_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_4', self);"/>
+				<imageCheckBox name="mkSph_prime_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_5', self);"/>
+				<imageCheckBox name="mkcapSph_prime_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_prime_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_prime_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_prime_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="mkSphRow_spirit" left="65" top="219" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Spirit"/>
+				<imageCheckBox name="mkSph_spirit_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_1', self);"/>
+				<imageCheckBox name="mkSph_spirit_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_2', self);"/>
+				<imageCheckBox name="mkSph_spirit_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_3', self);"/>
+				<imageCheckBox name="mkSph_spirit_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_4', self);"/>
+				<imageCheckBox name="mkSph_spirit_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_5', self);"/>
+				<imageCheckBox name="mkcapSph_spirit_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_spirit_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_spirit_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_spirit_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="mkSphRow_time" left="65" top="244" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Time"/>
+				<imageCheckBox name="mkSph_time_1" left="100" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_1', self);"/>
+				<imageCheckBox name="mkSph_time_2" left="125" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_2', self);"/>
+				<imageCheckBox name="mkSph_time_3" left="150" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_3', self);"/>
+				<imageCheckBox name="mkSph_time_4" left="175" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_4', self);"/>
+				<imageCheckBox name="mkSph_time_5" left="200" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_5', self);"/>
+				<imageCheckBox name="mkcapSph_time_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_time_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_time_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="mkcapSph_time_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+		</layout>
+
+		<layout name="boxMkQp" left="1083" top="497" width="356" height="244">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="98" top="15" width="107" height="20" text="QUINTESSENCE" horzTextAlign="trailing"/>
+			<edit name="edtMkQuint" field="qpQuint" type="number" decimalPlaces="0" left="210" top="15" width="40" height="20" horzTextAlign="center" vertTextAlign="center"/>
+			<layout name="mkQpRing" left="98" top="42" width="160" height="160">
+				<rectangle name="mkQpMark_1" left="0" top="61" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="279" hitTest="true" cursor="handPoint" onClick="cycleQpMark(1);"/>
+				<rectangle name="mkQpMark_2" left="7" top="39" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="297" hitTest="true" cursor="handPoint" onClick="cycleQpMark(2);"/>
+				<rectangle name="mkQpMark_3" left="20" top="20" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="315" hitTest="true" cursor="handPoint" onClick="cycleQpMark(3);"/>
+				<rectangle name="mkQpMark_4" left="39" top="7" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="333" hitTest="true" cursor="handPoint" onClick="cycleQpMark(4);"/>
+				<rectangle name="mkQpMark_5" left="61" top="0" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="351" hitTest="true" cursor="handPoint" onClick="cycleQpMark(5);"/>
+				<rectangle name="mkQpMark_6" left="83" top="0" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="9" hitTest="true" cursor="handPoint" onClick="cycleQpMark(6);"/>
+				<rectangle name="mkQpMark_7" left="105" top="7" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="27" hitTest="true" cursor="handPoint" onClick="cycleQpMark(7);"/>
+				<rectangle name="mkQpMark_8" left="124" top="20" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="45" hitTest="true" cursor="handPoint" onClick="cycleQpMark(8);"/>
+				<rectangle name="mkQpMark_9" left="137" top="39" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="63" hitTest="true" cursor="handPoint" onClick="cycleQpMark(9);"/>
+				<rectangle name="mkQpMark_10" left="144" top="61" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="81" hitTest="true" cursor="handPoint" onClick="cycleQpMark(10);"/>
+				<rectangle name="mkQpMark_11" left="144" top="83" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="99" hitTest="true" cursor="handPoint" onClick="cycleQpMark(11);"/>
+				<rectangle name="mkQpMark_12" left="137" top="105" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="117" hitTest="true" cursor="handPoint" onClick="cycleQpMark(12);"/>
+				<rectangle name="mkQpMark_13" left="124" top="124" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="135" hitTest="true" cursor="handPoint" onClick="cycleQpMark(13);"/>
+				<rectangle name="mkQpMark_14" left="105" top="137" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="153" hitTest="true" cursor="handPoint" onClick="cycleQpMark(14);"/>
+				<rectangle name="mkQpMark_15" left="83" top="144" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="171" hitTest="true" cursor="handPoint" onClick="cycleQpMark(15);"/>
+				<rectangle name="mkQpMark_16" left="61" top="144" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="189" hitTest="true" cursor="handPoint" onClick="cycleQpMark(16);"/>
+				<rectangle name="mkQpMark_17" left="39" top="137" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="207" hitTest="true" cursor="handPoint" onClick="cycleQpMark(17);"/>
+				<rectangle name="mkQpMark_18" left="20" top="124" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="225" hitTest="true" cursor="handPoint" onClick="cycleQpMark(18);"/>
+				<rectangle name="mkQpMark_19" left="7" top="105" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="243" hitTest="true" cursor="handPoint" onClick="cycleQpMark(19);"/>
+				<rectangle name="mkQpMark_20" left="0" top="83" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="261" hitTest="true" cursor="handPoint" onClick="cycleQpMark(20);"/>
+			</layout>
+			<label left="98" top="209" width="87" height="20" text="PARADOX" horzTextAlign="trailing"/>
+			<edit name="edtMkParadox" field="qpParadox" type="number" decimalPlaces="0" left="190" top="209" width="40" height="20" horzTextAlign="center" vertTextAlign="center"/>
+		</layout>
+
+		<!-- WILLPOWER under QUINTESSENCE / PARADOX (user 2026-10-09, SPEC I240a, V581a): the Combat tab's
+		     mirror, the fourth on the sheet. Its dots carry no field and are painted by WoD20.3's
+		     paintWillpower through xpFind, like the Vampire tab's copy; its boxes own willpower_c1..c10, a
+		     declared mirror of the Main's (SPEC V36). Title, the Main's 8 and the 52 of dots and boxes are
+		     ONE object centred in the Combat's 110 (SPEC V547), here 356 wide like the column. The names
+		     carry mk, since this form is pasted into the root (SPEC V530e). -->
+		<layout name="boxMkWillpower" left="1083" top="746" width="356" height="110">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<template name="MkWillpowerMirror">
+				<imageCheckBox name="mkWp_1" left="0" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="mkWp_2" left="25" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="mkWp_3" left="50" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="mkWp_4" left="75" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="mkWp_5" left="100" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="mkWp_6" left="125" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="mkWp_7" left="150" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="mkWp_8" left="175" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="mkWp_9" left="200" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="mkWp_10" left="225" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+
+				<checkBox left="0" top="27" width="25" height="25" field="willpower_c1" onClick="wpSpentClick('willpower_c1');" onChange="wpSpentChange('willpower_c1');"/>
+				<checkBox left="25" top="27" width="25" height="25" field="willpower_c2" onClick="wpSpentClick('willpower_c2');" onChange="wpSpentChange('willpower_c2');"/>
+				<checkBox left="50" top="27" width="25" height="25" field="willpower_c3" onClick="wpSpentClick('willpower_c3');" onChange="wpSpentChange('willpower_c3');"/>
+				<checkBox left="75" top="27" width="25" height="25" field="willpower_c4" onClick="wpSpentClick('willpower_c4');" onChange="wpSpentChange('willpower_c4');"/>
+				<checkBox left="100" top="27" width="25" height="25" field="willpower_c5" onClick="wpSpentClick('willpower_c5');" onChange="wpSpentChange('willpower_c5');"/>
+				<checkBox left="125" top="27" width="25" height="25" field="willpower_c6" onClick="wpSpentClick('willpower_c6');" onChange="wpSpentChange('willpower_c6');"/>
+				<checkBox left="150" top="27" width="25" height="25" field="willpower_c7" onClick="wpSpentClick('willpower_c7');" onChange="wpSpentChange('willpower_c7');"/>
+				<checkBox left="175" top="27" width="25" height="25" field="willpower_c8" onClick="wpSpentClick('willpower_c8');" onChange="wpSpentChange('willpower_c8');"/>
+				<checkBox left="200" top="27" width="25" height="25" field="willpower_c9" onClick="wpSpentClick('willpower_c9');" onChange="wpSpentChange('willpower_c9');"/>
+				<checkBox left="225" top="27" width="25" height="25" field="willpower_c10" onClick="wpSpentClick('willpower_c10');" onChange="wpSpentChange('willpower_c10');"/>
+			</template>
+			<label name="lblMkWillpower" left="20" top="15" width="316" height="20" text="WILLPOWER" horzTextAlign="center"/>
+			<layout name="bodyMkWillpower" left="53" top="43" width="250" height="52">
+				<MkWillpowerMirror/>
+			</layout>
+		</layout>
+	</scrollBox>
+
+	<dataLink field="language" onChange="magickRelabel(self);"/>
+
+	<!-- The WILLPOWER copy's first paint (user 2026-10-09, SPEC I240b, V581b): its dots are WoD20.3's
+	     to paint, on willpower's dataLinks there; this covers a sheet opened on this tab, as the Vampire
+	     tab's onShow does (SPEC V545c). -->
+	<event name="onShow">
+		renderXPBoxes(self);
+		renderCombatTraits(self);
+	</event>
+</form>

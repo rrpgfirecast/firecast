@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_11" align="client" theme="dark">
+	<script>
+		<![CDATA[
+			-- ===== The REVENANT WEAKNESS box of the band (SPEC I143, V412, T936) =====
+			-- It PAINTS and never decides. familyWeakness() on the root form is the ONE reader of
+			-- both the book table and the typed slot, the way familyCap() is the one reader of the
+			-- ceiling (SPEC V412c, V337c, V135) - what is left here is the LANGUAGE, which is the
+			-- caller's job everywhere else on this sheet too.
+			--
+			-- The box never HIDES. Nothing to show is a SENTENCE, and it is the same sentence for a
+			-- clan and for a custom entry answered `No` because the owner decided the two say the
+			-- same thing (SPEC Q60, V412d). A box that came and went would move the band at runtime,
+			-- which is the one thing V57 says this sheet's geometry never does.
+			function renderRevWeakness(form)
+				if sheet == nil or form == nil then return; end;
+
+				-- The Vampire tab carries a copy of the box (SPEC I188f), so the sentence goes to both.
+				local found = xpFind(tabRootOf(form), { dynRevWeakness = true, dynRevWeaknessV = true, weakScrollV = true }, {});
+
+				if found["dynRevWeakness"] == nil and found["dynRevWeaknessV"] == nil then return; end;
+
+				local lang = (sheet.language == "en") and "en" or "pt";
+				local txt  = familyWeakness();
+
+				if txt == nil or txt == "" then txt = "-- no weakness --"; end;
+
+				-- ONE call for both sentences. The book one is authored in English and has a key
+				-- (SPEC V9, V10); the typed one is the player's own words and has none, so the host
+				-- hands it straight back - which is why the fallback is the text itself and not a
+				-- second branch that would have to know which of the two it was holding.
+				-- The Vampire tab's box is the CLAN's since the 47th batch (user 2026-10-01, SPEC I190j,
+				-- V536c): the typed clan's own words when the player typed one (familyWeakness answers
+				-- that), else the Weakness paragraph of the clan's entry in descClan_<lang>.lua - 61 of
+				-- 61 carry one, already in the sheet's language, so nothing new is translated. A ghoul
+				-- does not suffer his domitor's clan weakness, so the Ghoul tab keeps the FAMILY's.
+				local txtV = familyWeakness();
+				local clan = sheet.clanFamily;
+
+				if (txtV == nil or txtV == "") and clan ~= nil and clan ~= "" and descText ~= nil then
+					local body = descText("Clan", clan, nil, lang) or "";
+
+					txtV = string.match(body, "\n" .. ((lang == "en") and "Weakness" or "Fraqueza") .. ": (.*)$");
+				end;
+
+				if txtV == nil or txtV == "" then txtV = "-- no weakness --"; end;
+
+				if translateSheetText ~= nil then
+					txt  = translateSheetText(txt, lang) or txt;
+					txtV = translateSheetText(txtV, lang) or txtV;
+				end;
+
+				if found["dynRevWeakness"]  ~= nil then found["dynRevWeakness"].text  = txt; end;
+				if found["dynRevWeaknessV"] ~= nil then found["dynRevWeaknessV"].text = txtV; end;
+
+				-- The Vampire box SCROLLS since the 57th batch (user 2026-10-02, SPEC I200d, V536c): a
+				-- text that fits the box under the title is centred in it, as the old label did on its
+				-- own; one that does not starts at the top and scrolls. The height is V536c's ruler -
+				-- half the size a character, 4/3 of it a line - with characters counted as fitSize
+				-- counts them, so there is no second ruler.
+				local lv = found["dynRevWeaknessV"];
+				local sv = found["weakScrollV"];
+
+				if lv ~= nil and sv ~= nil then
+					-- The text column follows the scroll: 24 + text + 8 + the bar's 16, so 372 in the
+					-- XML's 420 and 304 in the 352 a vampire with True Faith gets (SPEC I214d).
+					local w = sv.width - 48;
+
+					if lv.width ~= w then lv.width = w; end;
+
+					local _, cont = string.gsub(txtV, "[\128-\191]", "");
+					local fs      = lv.fontSize or 11;
+					local perLine = math.max(1, math.floor(lv.width / (fs * 0.5)));
+					local lines   = math.ceil((#txtV - cont) / perLine);
+
+					lv.top = math.max(0, math.floor((sv.height - lines * fs * 4 / 3) / 2));
+				end;
+			end;
+
+			-- The two copies of every picker row since the 45th batch (SPEC I188f/g): this tab's
+			-- `dyndisc_3` and the Vampire tab's `dynVdisc_3` show the same field. The three painters
+			-- below name both, the Vampire twin on the line under its Ghoul original, in ONE xpFind
+			-- each; the Vampire tab has no painter of its own. Written out and not looped over an
+			-- infix: the gate reads these names to prove painter and sheet agree (SPEC V383, V511).
+
+			-- ===== Disciplines, from WoD20.12.lfm until T909 (SPEC I136i, V397) =====
+			-- The DESCRIPTION pane is gone with this wave (SPEC V365d, I118d): the family gained its
+			-- ? here, and V365d says a pane leaves in the round its own family gets one. What the
+			-- pane used to be - a block whose text followed a MARKED row - is why every row carried a
+			-- radioButton on discSel. With the pane gone the mark had no reader left, so the radio
+			-- went too and the ? took the 0..20 the radio was holding (user 2026-08-31, ask B).
+			-- Nothing else moved: the entry is still at 25 and the dots still at 200 (SPEC V26).
+			--
+			-- The TEXT did not go with the window: descDisc_en.lua / descDisc_pt.lua are on disk and
+			-- the ? reads them through descFor, the one reader (SPEC V381, V365e).
+			-- The ! of a row (SPEC I255d, V601). The storyteller's flag shows it; the table lights it. A
+			-- sorcery, a Discipline the book does not print, a custom name and an empty row all miss the
+			-- table the same way, so there is one test and no list of exceptions.
+			function varButton(btn, name)
+				if btn == nil then return; end;
+
+				btn.visible = sheet.stDiscVariants == true;
+				btn.enabled = name ~= nil and DISC_POWERS[name] ~= nil;
+			end;
+
+			function renderDiscButtons(form)
+				if sheet == nil or form == nil then return; end;
+
+				local names = {};
+				local last  = DISC_ROWS - DISC_FREE_ROWS;
+
+				-- DERIVED and never a literal: a bound written 12 here goes stale the day the box grows
+				-- a row, and nothing says so - the button simply never gets painted (SPEC V383b, B112).
+				for i = 1, last, 1 do names["dyndisc_" .. i] = true; names["btnQdisc_" .. i] = true; names["btnVardisc_" .. i] = true; end;
+				for i = 1, last, 1 do names["dynVdisc_" .. i] = true; names["btnQVdisc_" .. i] = true; names["btnVarVdisc_" .. i] = true; end;
+				for i = 1, CLAN_DISC_ROWS, 1 do names["dynclanDisc_" .. i] = true; names["btnQclanDisc_" .. i] = true; names["btnVarclanDisc_" .. i] = true; end;
+				for i = 1, CLAN_DISC_ROWS, 1 do names["dynVclanDisc_" .. i] = true; names["btnQVclanDisc_" .. i] = true; names["btnVarVclanDisc_" .. i] = true; end;
+
+				local found = {};
+
+				xpFind(tabRootOf(form), names, found);
+
+				local lang = (sheet.language == "en") and "en" or "pt";
+
+				for i = 1, last, 1 do
+					mfLabel(found["dyndisc_" .. i], sheet["disc_" .. i], "Select Discipline", lang);
+					noteButton(found["btnQdisc_" .. i], sheet["disc_" .. i]);
+					varButton(found["btnVardisc_" .. i], sheet["disc_" .. i]);
+					mfLabel(found["dynVdisc_" .. i], sheet["disc_" .. i], "Select Discipline", lang);
+					noteButton(found["btnQVdisc_" .. i], sheet["disc_" .. i]);
+					varButton(found["btnVarVdisc_" .. i], sheet["disc_" .. i]);
+				end;
+
+				for i = 1, CLAN_DISC_ROWS, 1 do
+					mfLabel(found["dynclanDisc_" .. i], sheet["clanDisc_" .. i], "Select Discipline", lang);
+					noteButton(found["btnQclanDisc_" .. i], sheet["clanDisc_" .. i]);
+					varButton(found["btnVarclanDisc_" .. i], sheet["clanDisc_" .. i]);
+					mfLabel(found["dynVclanDisc_" .. i], sheet["clanDisc_" .. i], "Select Discipline", lang);
+					noteButton(found["btnQVclanDisc_" .. i], sheet["clanDisc_" .. i]);
+					varButton(found["btnVarVclanDisc_" .. i], sheet["clanDisc_" .. i]);
+				end;
+			end;
+
+			-- ===== Blood sorcery paths, from WoD20.13.lfm until T909 =====
+			-- The DESCRIPTION pane went with this wave (SPEC V365d, I118d): a pane leaves in the round
+			-- its own family gets the `?`, and both families here got one. The pane was what read a
+			-- MARKED row, which is why every row carried a radioButton on pathSel; with no reader left
+			-- the radio went too and the `?` took the 0..20 it held (user 2026-08-31, ask B). Nothing
+			-- else moved THEN: entry at 25, dots at 375.
+			-- 
+			-- They MOVED in T900 (SPEC I134i): the column took the width of PSYCHIC PHENOMENA, like
+			-- every other box on this tab and on the Numina one, so the row is 426 and the dots open
+			-- at 301 - the three columns WoD20.7 has used all along. V26 asks sibling rows to share an
+			-- entry x; since T900 every picker row on the SHEET shares one, across both tabs.
+			--
+			-- descPath_en.lua / descPath_pt.lua stay on disk and the `?` reads them through descFor,
+			-- the one reader (SPEC V381, V365e). The TEXT did not go with the window.
+			function renderPathButtons(form)
+				if sheet == nil or form == nil then return; end;
+
+				local names = {};
+
+				-- DERIVED, never a literal: a bound typed out here goes stale the day the box grows a row
+				-- and nothing says so - the button simply stops being painted (SPEC V383b, B112).
+				local secLast = SEC_PATH_ROWS - SEC_PATH_FREE_ROWS;
+
+				for i = 1, MAIN_PATH_ROWS, 1 do names["dynmainPath_" .. i] = true; names["btnQmainPath_" .. i] = true; end;
+				for i = 1, MAIN_PATH_ROWS, 1 do names["dynVmainPath_" .. i] = true; names["btnQVmainPath_" .. i] = true; end;
+				for i = 1, secLast, 1 do names["dynsecPath_" .. i] = true; names["btnQsecPath_" .. i] = true; end;
+				for i = 1, secLast, 1 do names["dynVsecPath_" .. i] = true; names["btnQVsecPath_" .. i] = true; end;
+
+				local found = {};
+
+				xpFind(tabRootOf(form), names, found);
+
+				local lang = (sheet.language == "en") and "en" or "pt";
+
+				for i = 1, MAIN_PATH_ROWS, 1 do
+					mfLabel(found["dynmainPath_" .. i], sheet["mainPath_" .. i], "Select Main Path", lang);
+					noteButton(found["btnQmainPath_" .. i], sheet["mainPath_" .. i]);
+					mfLabel(found["dynVmainPath_" .. i], sheet["mainPath_" .. i], "Select Main Path", lang);
+					noteButton(found["btnQVmainPath_" .. i], sheet["mainPath_" .. i]);
+				end;
+
+				for i = 1, secLast, 1 do
+					mfLabel(found["dynsecPath_" .. i], sheet["secPath_" .. i], "Select Secondary Path", lang);
+					noteButton(found["btnQsecPath_" .. i], sheet["secPath_" .. i]);
+					mfLabel(found["dynVsecPath_" .. i], sheet["secPath_" .. i], "Select Secondary Path", lang);
+					noteButton(found["btnQVsecPath_" .. i], sheet["secPath_" .. i]);
+				end;
+			end;
+
+			-- ===== Blood sorcery rituals, from WoD20.14.lfm until T909 =====
+			-- The DESCRIPTION pane went with this wave (SPEC V365d, I118d) and the radioButton on
+			-- ritualSel went with it: the pane was the only thing that read a MARKED row, so the `?`
+			-- took the 0..20 the radio held (user 2026-08-31, ask B). Entry still at 24, and the
+			-- rituals carry no dots to move (SPEC C).
+			--
+			-- The sort went in the 30th batch (SPEC I175e, Q96.1): the rows are ordered by drag now,
+			-- like every other list, so a value stays in the slot it was picked into and nothing
+			-- flashes (SPEC V252/V253 revoked).
+			function renderRitualButtons(form)
+				if sheet == nil or form == nil then return; end;
+
+				local names = {};
+
+				-- The bound is the HIGHEST INDEX and stays that way: T880 put the new rows after the
+				-- hole (ritual_26 is the last since the 62nd batch, SPEC I205), so a bound reduced
+				-- by the five vacancies would stop short and leave it unpainted for good (SPEC B112,
+				-- V263b). RITUAL_VACANT is what skips
+				-- the hole in the middle - here it only saves a lookup, since a name that no row
+				-- carries finds nothing and mfLabel returns on a nil control, but the same guard
+				-- is load-bearing where the root derives the ritual ids for the drag (SPEC I175b).
+				local last  = RITUAL_ROWS - RITUAL_FREE_ROWS;
+
+				for i = 1, last, 1 do
+					if not RITUAL_VACANT[i] then names["dynritual_" .. i] = true; names["btnQritual_" .. i] = true; end;
+					if not RITUAL_VACANT[i] then names["dynVritual_" .. i] = true; names["btnQVritual_" .. i] = true; end;
+				end;
+
+				local found = {};
+
+				xpFind(tabRootOf(form), names, found);
+
+				local lang = (sheet.language == "en") and "en" or "pt";
+
+				for i = 1, last, 1 do
+					if not RITUAL_VACANT[i] then
+						mfLabel(found["dynritual_" .. i], sheet["ritual_" .. i], "Select Ritual", lang);
+						noteButton(found["btnQritual_" .. i], sheet["ritual_" .. i]);
+						mfLabel(found["dynVritual_" .. i], sheet["ritual_" .. i], "Select Ritual", lang);
+						noteButton(found["btnQVritual_" .. i], sheet["ritual_" .. i]);
+					end;
+				end;
+			end;
+
+		]]>
+	</script>
+	<!--
+		Vampire tab (SPEC I16, 51st round). This file is a SHELL: it owns the tabControl and
+		nothing else. The content lives one file per area because the descriptions run to
+		hundreds of book entries, and WoD20.7 already spends 397 KB on 43 numina - one .lfm for
+		all of it would be megabytes (SPEC C).
+
+		    Vampire ─┬─ Disciplines            ─┐
+		             ├─ Blood Sorcery: Paths   ─┼─ all three in THIS file since T909
+		             └─ Blood Sorcery: Rituals ─┘
+
+		THREE SIBLING TABS, one tabControl (SPEC V188, 54th round). It used to be two
+		tabControls, the second nested inside a `Blood Sorcery` tab, which is the shape the
+		tree above is really describing. The nested control drew its tabs but never their
+		labels: the strip came up blank, so the sub-tabs were three unmarked click targets
+		(SPEC R49). Rather than keep probing why a tabControl misbehaves inside a <tab>, the
+		grouping moved into the titles - `Blood Sorcery: Paths` and `Blood Sorcery: Rituals`
+		say the same thing a parent tab said, in a control the host is known to render.
+
+		The tabControl and all three tabs are authored HERE, in the XML, never built by Lua
+		(SPEC V188): a sheet whose script did not run still opens with the structure, the same
+		way the root tabControl does. Default is the first tab, Disciplines.
+
+		The tab is hidden unless the storyteller ticks the flag, which is still the field
+		`stShowDisciplines` even though the tab now reads `Vampire` - a field cannot be renamed
+		after release (SPEC V2/V172), so the name stays and the label moves.
+
+		Still declares no `field` of its own (SPEC V90), and carries NO theme backdrop.
+
+		It used to. That is SPEC B41: the backdrop is align="client", the tabControl is
+		align="client", and two siblings claiming one client rect means the loser is not drawn.
+		applyTheme turns the paper visible on every load - Modern Nights ships paper_present.png
+		- so a stretched image sat over the page area and the sub-tabs opened onto nothing.
+
+		The backdrop belongs to the form that carries CONTENT, not to the tab (SPEC V56, V190).
+
+		⚠ REVERSED in T895, and again in T909 - and the second reversal is the one that worked.
+		T895 found FOUR scrollBoxes and FOUR papers on this tab, three of them stretched over one
+		column each, and killed the three. The user still saw a grey box around Clan Disciplines /
+		Disciplines, around the two Paths and around Rituals, one day later, with the gate green
+		(SPEC I134c, B128).
+
+		The frame had TWO layers. The paper was the top one; underneath it sat the imported FORM
+		itself. <import> compiles to _obj_newObject("form") + setAlign("client") + setTheme("dark")
+		(SPEC R137), so each column was a real form painting its own theme ground over the 466x700
+		rect that held it - and the paper had been covering that ground until T895 took it away.
+		T895 was not neutral: it REVEALED. gui.Form carries ten properties and not one of them is
+		a colour, a background or a transparency (SPEC R136), so there was no attribute to fix,
+		and covering it again would only be the paper back (SPEC V391).
+
+		So T909 dissolved the three forms into this one. WoD20.12/.13/.14 are gone from disk and
+		their templates, script, dataLinks and events live here. NOT ONE BOX MOVED: the three
+		column <layout>s still sit at 0/471/942, at top=133 since T918, and every box inside them opens on
+		the same top it always had (SPEC I136h, I136i, V397). The transfer was of PARENT, which is
+		what the user asked for - "manter a posição deles, sair desse box".
+
+		The paper of this tab is themePaper11, HERE, once (SPEC V56, V391).
+
+		2026-08-22 (SPEC I29): this file stopped being a bare tabControl. It now carries the two
+		ghoul boxes - DOMINATOR and BLOOD POOL - which sit above the sub-tabs so all three read
+		them, and that is why the shape below is a scrollBox with everything absolute inside,
+		the same shape WoD20.12 uses. tabsVamp LOST its align on purpose: an absolute sibling
+		under an align="client" tabControl does not clash by the rule V190 measures, it simply
+		overlaps - B41 by a second door, which is what V221 is for.
+
+		Geometry follows the RULER, not a literal: BLOOD POOL is the box that anchors it and the
+		three DESCRIPTION panes reach it (SPEC I31, I48, I55). Since the 89th round the ruler is
+		980 - DOMINATOR closes on its own content at 620, BLOOD POOL sits 10 to its right and
+		keeps its 350 - and the strip and the three panes are 990, the ruler plus the border the
+		source cannot see (SPEC R94). V259 is what holds the 10 between the two boxes: shrink one
+		and leave the other parked and every other check still passes over 265px of nothing.
+		⚠ that paragraph is HISTORY as of T936 and the three panes it names left in T832. The band
+		is FOUR boxes now - DOMINATOR 578, BLOOD POOL 299, REVENANT WEAKNESS 385, EXPERIENCE 131,
+		with the sheet's 5px gutter between them - and each of the three that were here was
+		squeezed to what its own content measures so the fourth could exist (SPEC I143j, Q59,
+		user 2026-09-03). What holds the band together is no longer a remembered 980: it is that
+		it closes on the SAME number as the three columns below it, which is V414.
+		⚠ the line that closed this comment said "No theme backdrop here". It has been false
+		since B50 put themePaper11 back, and it stayed in the file anyway - which is B119: a
+		sentence that asserts a CATEGORY goes stale in the same commit that makes it false and
+		leaves no symptom. The paper IS here, it is the tab's only one, and B41 is what it has
+		to keep clear of: tabsVamp gave up align="client" and never got it back.
+	-->
+	<scrollBox align="client">
+		<!-- The paper is back (SPEC B50). V56 asks every form that carries CONTENT to carry the
+		     backdrop, and this file stopped being a shell the moment the two boxes landed. It is
+		     safe now for the reason it was not in B41: tabsVamp gave up align="client", so the
+		     image is the ONE child claiming the client rect, exactly as in WoD20.12. applyTheme
+		     finds it by the first ten characters of the name, so the number must stay attached. -->
+		<image name="themePaper11" align="client" style="stretch" hitTest="false" visible="false"/>
+		<!-- Two columns of LABEL (20, 342) and two of INPUT (97, 508), and every row uses the
+		     same four (SPEC I30, V224). The four moved in the 89th round when Name and Clan/Family
+		     lost 40% and Generation 70% (SPEC I55); the label column went 12 -> 15 with them, and
+		     that 3px is V258, not taste - at 12 the entry column closed 12px from the border and
+		     sat inside the 14x14 the concave corner bites out (SPEC R96, B53). That is what makes this a grid instead of four controls
+		     that happen to line up today: B12 and B13 were sibling templates whose entry x drifted
+		     apart, and they survived rounds because nothing measured a COLUMN.
+
+		     T936 SQUEEZED the four columns to what each one MEASURES, and the box went 660 -> 578
+		     (SPEC I143j, Q59): the label columns are what V16 prices their longest translation at -
+		     `Clan/Family` 72 and `Nivel Max. de Disciplina` 156 - the entry column is the 225 the
+		     `Familia: ` prefix pins (SPEC I143i), and the last one is the 50 V196 prices the
+		     generation combo at, 4 characters plus its arrow. The margins went 35 -> 20, which is
+		     V280a's floor and not a taste, and the 49px between the two column pairs went to 20.
+		     What the squeeze paid for is the REVENANT WEAKNESS box further along the band.
+
+		     The two labels on the left say Name and Generation now, and the FIELDS under them did
+		     not change: `dominator` and `dominatorGen` still own the data (SPEC V2 - a rename here
+		     would drop what is already saved on the sheet the user is testing with).
+
+		     TWO rows on the 25 ruler since T972 (SPEC I149b, V433). T954 had split the line into
+		     three rows (Clan, Family); the 5th batch of 2026-09-05 put the ONE line `Clan/Family`
+		     back over the union, so the rows are Name/Generation and Clan/Family/Max Discipline
+		     Level. The box stays 590x128 on purpose: the BAND is the master (SPEC V414) and the
+		     foot is what pays for it (SPEC V280d) - the three columns under it never hear about
+		     any of this.
+
+		     The pair SAT at 39/64 until the user asked for the inside to be organised
+		     (2026-09-07). The box was never going to shrink, so the 40px the foot carried was
+		     dead space under a block glued to the title: the rows moved to 57/82, which is the
+		     SAME 25 step (the ruler is the STEP, never the slack - SPEC V370b) with the pair
+		     CENTRED in the body - 22 between the title and the first row and 22 of foot. Since
+		     the 61st batch (user 2026-10-02, SPEC I204j, V547) title and rows are ONE object
+		     centred in the BOX: 20 + 5 + 49 = 74 in 128, the title at 27 and the rows at 52/77.
+
+		     The four row labels are `trailing` for the same reason ROAD is on the Main tab
+		     (SPEC I124e): a label column is as wide as its LONGEST translation - 156 here, for
+		     `Nivel Max. de Disciplina` - so `Generation` left-aligned floated 91px away from
+		     the combo it names. Right-aligned it touches its own field, and the two label
+		     columns close on one edge each (92 and 510) the way V224 already asks of the entry
+		     columns. Nothing here moves an x: V224 and V407 read the same four columns. -->
+		<layout left="0" top="10" width="590" height="128">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="27" width="550" height="20" text="DOMITOR" horzTextAlign="center"/>
+
+			<label left="20" top="52" width="72" height="24" text="Name" horzTextAlign="trailing"/>
+			<edit left="97" top="52" width="237" height="24" field="dominator"/>
+
+			<!-- cmb, not cbo: pickerItems only touches controls named cbo* (WoD20.6), which is what
+			     lets this one keep an items/values pair that DIFFERS - the ordinal is what the player
+			     reads, the number is what GEN_MAX is keyed by (SPEC I29). Same footing as
+			     cmbHealthLevels: a combo of VALUE, not a picker of prose (SPEC V208 scope). -->
+			<label left="354" top="52" width="156" height="24" text="Generation" horzTextAlign="trailing"/>
+			<comboBox name="cmbDominatorGen" left="520" top="52" width="50" height="24" field="dominatorGen"
+			          items="{'', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th'}"
+			          values="{'', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14'}"/>
+
+			<!-- The tightest pair in the box, both ways. It went 192 -> 210 in the 136th round because
+			     `Bratovich (Idade das Trevas)` prices at 206 and 192 clipped it, and 210 -> 225 in T936:
+			     the name carries the `Familia: ` prefix now, which is 9 characters more and puts the
+			     worst case at 222 (SPEC I143i). THIS is the one column the squeeze had to WIDEN, and
+			     it is why the box could only close at 578 - the prefix and the shrinking of the picker
+			     were both asked for on 2026-09-03 and the prefix wins (SPEC I143i, I143j).
+			     The label opposite is `Nivel Max. de Disciplina` in pt, 24 chars, which V16 prices at
+			     exactly the 156px it now gets - the squeeze took the 9px of slack it used to carry.
+
+			     ONE field, ONE button, ONE list - the UNION (SPEC I149a, V433, user 2026-09-05).
+			     T954 split this into two buttons with a kind each so descFamily_* had an opener;
+			     the 5th batch undid it: the player sees ONE picker, `Clan/Family`, offering both
+			     lists, and the KIND is resolved by the NAME picked - mfKind on the root form
+			     answers `Family` for a name that stands in PICKER_LIST["family"] and the authored
+			     kind otherwise (SPEC V433c). Same pertinence test V412(b) and the weakness box
+			     already ask, one body (isFamilyName), no second owner of the species (SPEC V135).
+			     The button carries no field=: the typed twin below is the one widget bound to
+			     `clanFamily`, so V1 and V2 see exactly what they saw before (SPEC V426b, kept). -->
+			<label left="20" top="77" width="72" height="24" text="Clan/Family" horzTextAlign="trailing"/>
+			<!-- The ? is BACK and the exception of 2026-09-02 is over (SPEC Q71, I151c, T978, user
+			     2026-09-06: "diminuir o botão do picker"). What paid for its absence was the grid -
+			     the entry opened at 97 and closed at 334, the same span as <edit field="dominator" />
+			     above - and the grid is STILL paid: the entry is read as the ? PLUS the button, the
+			     same span V297 reads on the affiliation row, so it opens at 97 and closes at 334 as
+			     it always did. What shrank is the BUTTON, by the 25 the ? and its gutter take.
+			     212 is enough TODAY and that is a measured statement, not a hope: the widest name
+			     the button can carry is `Bratovich (Idade das Trevas)`, and the `Família: ` prefix
+			     that would push the worst case to 222 was never built (SPEC I149f, Q70 still OPEN).
+			     ⚠ answering Q70 with "build the prefix" makes this button truncate - the two
+			     questions are not independent and whoever answers Q70 has to read Q71 first.
+			     The KIND is resolved from the NAME, not authored: one list holds clans and families
+			     (SPEC I149a, V433c), so the ? asks isFamilyName - the same body mfKind calls, so no
+			     second owner of the species is born (SPEC V135). mfKind itself cannot serve here:
+			     it reads MF.list, which is state of the OPEN box. popOpen returns early on an empty
+			     key, so a sheet with no clan picked opens nothing (SPEC I151c). -->
+			<button name="btnQclanFamily" left="97" top="77" width="20" height="24" text="?" onClick="popOpen(self, isFamilyName(sheet['clanFamily']) and 'Family' or 'Clan', sheet['clanFamily'], nil, 'clanFamily');"/>
+			<button name="dynclanFamily" left="122" top="77" width="212" height="24" fontSize="12" text="Select Clan/Family" onClick="mfOpen(self, 'clanFamily', 'clanFamily', 'Clan');" onMenu="mfMenuOpen('clanFamily', 'clanFamily');"/>
+
+			<!-- The typed twin of the two pickers, one field and two widgets with exactly one of
+			     them visible (SPEC I71, V274, user 2026-08-23). It is a DECLARED mirror in SPEC I3
+			     ESPELHOS, not the accidental duplicate V1 refuses.
+
+			     SAME rectangle as the picker button on purpose: the flag swaps the button for this one edit (SPEC V274d), and a second geometry would move the row.
+
+			     Authored state IS the flag off - `visible="false" enabled="false"`, both of them,
+			     for the reason cboClan is authored the same way: a control that is invisible and
+			     still enabled takes Tab focus, which is the bug no screenshot shows (SPEC V274c,
+			     V274d). A sheet that never opened the storyteller's tab paints right with no Lua
+			     at all (SPEC V56). -->
+			<edit name="edtClanFamily" left="122" top="77" width="212" height="24" field="clanFamily" visible="false" enabled="false"/>
+
+			<!-- Derived, so it has no `field` and is never saved (SPEC I3, V29): a number that can be
+			     recomputed must not be able to disagree with what it was computed from. -->
+			<label left="354" top="77" width="156" height="24" text="Max Discipline Level" horzTextAlign="trailing"/>
+			<label name="lblMaxDisc" left="520" top="77" width="50" height="24" text="-"/>
+		</layout>
+
+		<!-- 405 -> 299 in T936, and the number came off the DOTS and not off the box: the step
+		     between two of them went 28 -> 26, which is the closest the 25px art gets to touching,
+		     and twenty of them then close 259 from the margin (SPEC I143j, Q59). The margins are
+		     V280a's 20 on both sides, so nothing here has slack left to give.
+
+		     Title and the two rows are ONE object centred in the box since the 61st batch (user
+		     2026-10-02, SPEC I204j, V547): 20 + 8 + 55 = 83 in 128, the title at 22 and the rows at
+		     50/80 - the odd pixel goes under. -->
+		<layout left="595" top="10" width="307" height="128">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="22" width="267" height="20" text="BLOOD POOL" horzTextAlign="center"/>
+
+			<!-- Twenty FREE dots (SPEC V219). They wear the rating art and they are not rating dots:
+			     blood is spent and regained inside a single scene. Nothing here reaches xpClick,
+			     nothing is declared in XP_TRAIT, and no ledger line is ever written - THAT is what
+			     V219 buys, and it is untouched. willpower_c1..c10 and health_1..10 work the same way.
+			
+			     What CHANGED on 2026-08-28 (SPEC I108c, Q20): they no longer mark THEMSELVES. A
+			     revenant family can be capped at eight blood points (Grimaldi, da p.454) and a cap
+			     has to refuse BEFORE the write (SPEC V337d) - with a self-marking dot there is no
+			     before, because the host has already written by the time any Lua runs. So autoChange
+			     is off and bloodClick does the toggle. It is its OWN refuser and reaches xpClick
+			     from nowhere: the dot is still free, it is only no longer host-driven.
+			
+			     V134 (every rating dot is autoChange="false" + onClick) is what makes B38 stay dead,
+			     so it must NOT be loosened to let these through - the gate names them by field
+			     prefix instead (SPEC T509). applyTheme repaints by CLASS, so they follow the palette
+			     with nothing added (MEASURED: WoD20.6, cls == "imageCheckBox"). -->
+			<imageCheckBox left="24" top="50" width="25" height="25" field="bloodPool_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_1', self);"/>
+			<imageCheckBox left="50" top="50" width="25" height="25" field="bloodPool_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_2', self);"/>
+			<imageCheckBox left="76" top="50" width="25" height="25" field="bloodPool_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_3', self);"/>
+			<imageCheckBox left="102" top="50" width="25" height="25" field="bloodPool_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_4', self);"/>
+			<imageCheckBox left="128" top="50" width="25" height="25" field="bloodPool_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_5', self);"/>
+			<imageCheckBox left="154" top="50" width="25" height="25" field="bloodPool_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_6', self);"/>
+			<imageCheckBox left="180" top="50" width="25" height="25" field="bloodPool_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_7', self);"/>
+			<imageCheckBox left="206" top="50" width="25" height="25" field="bloodPool_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_8', self);"/>
+			<imageCheckBox left="232" top="50" width="25" height="25" field="bloodPool_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_9', self);"/>
+			<imageCheckBox left="258" top="50" width="25" height="25" field="bloodPool_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_10', self);"/>
+
+			<imageCheckBox left="24" top="80" width="25" height="25" field="bloodPool_11" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_11', self);"/>
+			<imageCheckBox left="50" top="80" width="25" height="25" field="bloodPool_12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_12', self);"/>
+			<imageCheckBox left="76" top="80" width="25" height="25" field="bloodPool_13" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_13', self);"/>
+			<imageCheckBox left="102" top="80" width="25" height="25" field="bloodPool_14" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_14', self);"/>
+			<imageCheckBox left="128" top="80" width="25" height="25" field="bloodPool_15" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_15', self);"/>
+			<imageCheckBox left="154" top="80" width="25" height="25" field="bloodPool_16" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_16', self);"/>
+			<imageCheckBox left="180" top="80" width="25" height="25" field="bloodPool_17" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_17', self);"/>
+			<imageCheckBox left="206" top="80" width="25" height="25" field="bloodPool_18" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_18', self);"/>
+			<imageCheckBox left="232" top="80" width="25" height="25" field="bloodPool_19" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_19', self);"/>
+			<imageCheckBox left="258" top="80" width="25" height="25" field="bloodPool_20" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_20', self);"/>
+		</layout>
+
+		<!--
+			REVENANT WEAKNESS, the third box of the band (SPEC I143, V412, T936, user 2026-09-03).
+			It shows the weakness of the FAMILY and never of a clan: `clanFamily` is ONE list with
+			two species inside it, and which one a name came from is answered by pertinence in
+			PICKER_LIST["family"] - not by a second list, a prefix on the name or a saved flag,
+			all three of which would be a second owner of a fact the value already carries
+			(SPEC I143b, V412b, V135).
+
+			It carries NO field. The book sentence belongs to the family and not to the character,
+			and the typed one is read from where the picker wrote it - `clanFamilyCustomWeak` -
+			so nothing here can disagree with what it was computed from (SPEC V29, I143g, V412c).
+
+			The box FICA when there is nothing to show and paints a sentence instead: a box that
+			hides would change the band in runtime, which is the one thing V57 says the geometry
+			never does (SPEC V412d, V375).
+
+			textEditor and not a label: the longest weakness is 207 characters in pt and the widest
+			this band can ever hand it is 345 of text, so it WRAPS and scrolls the way edtMfDesc
+			does. 385 is what the squeeze of the other three paid for, and the band still closes on
+			the 1408 the three columns below close on - V414 measures that equality (SPEC I143j).
+		-->
+		<layout left="907" top="10" width="365" height="128">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="325" height="20" text="REVENANT WEAKNESS" horzTextAlign="center"/>
+
+			<label name="dynRevWeakness" left="20" top="40" width="325" height="73" wordWrap="true" fontSize="12" horzTextAlign="center" vertTextAlign="center"/>
+		</layout>
+
+		<!--
+			EXPERIENCE, the fourth box of the band (SPEC I139h, V399, user 2026-09-02 item 6). It is a
+			REPLICA of the one on Main and not a second owner of the number: nothing here carries a
+			field, xpPaint on the root works the balance out and writes both boxes, so this tab and
+			Main and Progress are three views of one computation (SPEC I11, V100).
+
+			NO "Current Experience" label: the owner asked for the name to go so the typed part gets
+			the room. Title and number are ONE object centred in the box since the 61st batch (user
+			2026-10-02, SPEC I204j, V547): 20 + 5 + 25 = 50 in 128, the title at 39 and the number
+			where V399 already had it, 64.
+
+			91 is the edit and it did NOT move in T936 - the BOX shrank around it, 333 -> 131, which
+			is the 91 plus V280a's 20 on each side. That is this box squeezed to its floor: nothing
+			but the margin is left beside the number (SPEC I143j, Q59). The width is still DERIVED
+			from what the band has left over, and V239 still compares the two side gaps with no
+			tolerance at all - (131-91)/2 is 20 on both.
+		-->
+		<layout left="1277" top="10" width="131" height="128">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="39" width="91" height="20" text="EXPERIENCE" horzTextAlign="center"/>
+
+			<rectangle name="bgCurrentXPGhoul" left="20" top="64" width="91" height="25" color="#0A0A0A" xradius="6" yradius="6" cornerType="innerRound" hitTest="false"/>
+			<edit name="edtCurrentXPGhoul" type="number" decimalPlaces="0" left="20" top="64" width="91" height="25" horzTextAlign="center" vertTextAlign="center" fontSize="14" onUserChange="xpSetCurrent(self, self.edtCurrentXPGhoul.text);" transparent="true"/>
+		</layout>
+
+		<!--
+			THREE COLUMNS, side by side, and no sub-tab strip at all (SPEC I118, I118d, V361,
+			pedido 5). The strip and the stacked panes went out together in T832: the three
+			imported forms ALREADY WERE the three columns I118a asks for - Clan Disciplines over
+			Disciplines, Main Paths over Secondary Paths, and the Rituals - so that was a move,
+			not a redraw. Not one box inside them changed then, and none changed in T909 either,
+			when the three stopped being forms at all (SPEC V397, B128).
+
+			The lefts are the width plus the 5px gutter the sheet uses between section boxes
+			(SPEC V298): 0 + 466 -> 471, 471 + 466 -> 942, and the tab closes on 1408. That width
+			is READ off PSYCHIC PHENOMENA on the Numina tab and never written twice - one number,
+			one owner (SPEC V390). The three stay DISJOINT in x, which is what V221 measures since
+			T832: overlapping columns are not stacking, so the old "panes share one rect" proof
+			would have passed three columns lying on top of each other.
+
+			Each column keeps its own <template> declarations, beside the rows that use them.
+			That is what the imported form gave for free and the whole of what the merge had to
+			preserve - a template is looked up where it is declared.
+
+			top=150 is where the strip used to start: the boxes above close at 138 and the 12px
+			gutter between a bar and a panel is the one I73 measures. Nothing sits between them
+			any more, so the columns inherit the strip's own y.
+
+			They are ABSOLUTE rather than align="client" for the reason the strip was: this
+			scrollBox already spends its client rect on themePaper11 (SPEC V56), and a second
+			visible align="client" sibling fighting for it is precisely B41. Until T909 each held
+			an align="client" form that filled it; now each holds the boxes directly.
+
+			All three VISIBLE, and no name on them: the names existed for selectTab, and with the
+			group gone from SUB_TABS a name nobody reads is a name that outlives its reader.
+
+			Each column is exactly as tall as what it holds since the 62nd batch (user 2026-10-02,
+			SPEC I205a), as on the Vampire tab (SPEC I204d, B193): 582 - 151 + 5 + 426 on the left
+			and in the middle, and RITUALS' 21 rows on the right. They were 680, and the scroll box
+			scrolled 98 nobody could see.
+		-->
+		<layout left="0" top="143" width="466" height="582">
+
+			<!--
+				One row template for BOTH boxes (SPEC V178): clan slots and open slots offer the same
+				list, so a second copy would be a second list to keep in step. The radio sits at x=0,
+				the picker at x=25 and the first dot at x=301 - and since T900 those are the columns
+				WoD20.7 ACTUALLY uses. This line read "the first dot at x=190" while the attribute said
+				200 and WoD20.7 said 301: the arithmetic in the file had been wrong longer than anyone
+				had looked at it, which is the B119 shape the Ghoul shell was carrying too. So the rows of
+				the two boxes line up (SPEC V26, B12).
+
+				items/values carry only the empty first entry for now (SPEC V15); the disciplines
+				themselves arrive in SPEC T460, and nothing but items=/values= changes then.
+
+				30th batch (SPEC I175c/d, V508): the rows of DISCIPLINES, MAIN PATHS, SECONDARY PATHS
+				and RITUALS are named dragRow_<field> and the picker of each template is the row's
+				drag handle (onStartDrag into rowDragStart). CLAN DISCIPLINES stay anonymous and in
+				the book's order: DiscRow is shared, and rowDragStart refuses clanDisc_* because its
+				list does not carry them (SPEC V508e) - one template, as V178 asks.
+			-->
+			<template name="DiscRow">
+				<button name="btnQ$(field)" left="0" top="2" width="20" height="20" text="?" onClick="popOpen(self, 'Disc', sheet['$(field)'], nil, '$(field)');"/>
+				<button name="dyn$(field)" left="25" top="0" width="246" height="25" text="Select Discipline" onClick="mfOpen(self, '$(field)', 'disc', 'Disc');" onMenu="mfMenuOpen('$(field)', 'disc');" onStartDrag="rowDragStart(self, drag, x, y, event, 'disc', '$(field)');"/>
+				<edit name="edt$(field)" left="25" top="0" width="246" height="25" field="$(field)" visible="false" enabled="false"/>
+				<button name="btnVar$(field)" left="276" top="2" width="20" height="20" text="!" visible="false" onClick="dvOpen(self, '$(field)');"/>
+				<imageCheckBox left="301" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_1', self);"/>
+				<imageCheckBox left="326" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);"/>
+				<imageCheckBox left="351" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);"/>
+				<imageCheckBox left="376" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);"/>
+				<imageCheckBox left="401" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);"/>
+			</template>
+
+
+			<!-- 4 slots, editable only while the storyteller ticks Edit Clan Disciplines (SPEC I8g,
+			     V175). Height = 25 title + 4 rows of 25 + 25 foot, the arithmetic WoD20.7 uses. -->
+			<layout left="0" top="0" width="466" height="151">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="426" height="20" text="CLAN DISCIPLINES" horzTextAlign="center"/>
+				<layout left="20" top="36" width="426" height="25">
+					<DiscRow field="clanDisc_1"/>
+				</layout>
+				<layout left="20" top="61" width="426" height="25">
+					<DiscRow field="clanDisc_2"/>
+				</layout>
+				<layout left="20" top="86" width="426" height="25">
+					<DiscRow field="clanDisc_3"/>
+				</layout>
+				<layout left="20" top="111" width="426" height="25">
+					<DiscRow field="clanDisc_4"/>
+				</layout>
+			</layout>
+
+			<!-- 15 open slots. 25 + 15*25 + 25 = 425. -->
+			<layout left="0" top="156" width="466" height="426">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="426" height="20" text="DISCIPLINES" horzTextAlign="center"/>
+				<layout name="dragRow_disc_1" left="20" top="36" width="426" height="25">
+					<DiscRow field="disc_1"/>
+				</layout>
+				<layout name="dragRow_disc_2" left="20" top="61" width="426" height="25">
+					<DiscRow field="disc_2"/>
+				</layout>
+				<layout name="dragRow_disc_3" left="20" top="86" width="426" height="25">
+					<DiscRow field="disc_3"/>
+				</layout>
+				<layout name="dragRow_disc_4" left="20" top="111" width="426" height="25">
+					<DiscRow field="disc_4"/>
+				</layout>
+				<layout name="dragRow_disc_5" left="20" top="136" width="426" height="25">
+					<DiscRow field="disc_5"/>
+				</layout>
+				<layout name="dragRow_disc_6" left="20" top="161" width="426" height="25">
+					<DiscRow field="disc_6"/>
+				</layout>
+				<layout name="dragRow_disc_7" left="20" top="186" width="426" height="25">
+					<DiscRow field="disc_7"/>
+				</layout>
+				<layout name="dragRow_disc_8" left="20" top="211" width="426" height="25">
+					<DiscRow field="disc_8"/>
+				</layout>
+				<layout name="dragRow_disc_9" left="20" top="236" width="426" height="25">
+					<DiscRow field="disc_9"/>
+				</layout>
+				<layout name="dragRow_disc_10" left="20" top="261" width="426" height="25">
+					<DiscRow field="disc_10"/>
+				</layout>
+				<layout name="dragRow_disc_11" left="20" top="286" width="426" height="25">
+					<DiscRow field="disc_11"/>
+				</layout>
+				<layout name="dragRow_disc_12" left="20" top="311" width="426" height="25">
+					<DiscRow field="disc_12"/>
+				</layout>
+				<layout name="dragRow_disc_13" left="20" top="336" width="426" height="25">
+					<DiscRow field="disc_13"/>
+				</layout>
+				<layout name="dragRow_disc_14" left="20" top="361" width="426" height="25">
+					<DiscRow field="disc_14"/>
+				</layout>
+				<layout name="dragRow_disc_15" left="20" top="386" width="426" height="25">
+					<DiscRow field="disc_15"/>
+				</layout>
+			</layout>
+
+		</layout>
+
+		<layout left="471" top="143" width="466" height="582">
+
+			<!--
+				MAIN PATHS carry dots that are DISPLAY ONLY (SPEC V179): no field, no onClick,
+				autoChange off, dimmed like every other read-only widget on the sheet (SPEC V111).
+				A main path's rating IS its blood sorcery's rating (SPEC V180) - the discipline is
+				what was paid for, so charging for the path too would bill one dot twice.
+
+				They are painted from the discipline by renderMainPaths, which arrives with the
+				BLOOD_SORCERY table in SPEC T435/T439. Until then they simply sit dark.
+			-->
+			<template name="MainPathRow">
+				<button name="btnQ$(field)" left="0" top="2" width="20" height="20" text="?" onClick="popOpen(self, 'Path', sheet['$(field)'], nil, '$(field)');"/>
+				<button name="dyn$(field)" left="25" top="0" width="271" height="25" text="Select Main Path" onClick="mfOpen(self, '$(field)', 'mainPath', 'Path');" onMenu="mfMenuOpen('$(field)', 'mainPath');" onStartDrag="rowDragStart(self, drag, x, y, event, 'mainPath', '$(field)');"/>
+				<edit name="edt$(field)" left="25" top="0" width="271" height="25" field="$(field)" visible="false" enabled="false"/>
+				<imageCheckBox name="ro_$(field)_1" left="301" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_$(field)_2" left="326" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_$(field)_3" left="351" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_$(field)_4" left="376" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_$(field)_5" left="401" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+			</template>
+
+			<!-- Secondary paths ARE bought, at the Trilha price of SPEC I9, capped at the blood
+			     sorcery's rating minus one (SPEC V183, enforced in xpClick at SPEC T441). -->
+			<template name="SecPathRow">
+				<button name="btnQ$(field)" left="0" top="2" width="20" height="20" text="?" onClick="popOpen(self, 'Path', sheet['$(field)'], nil, '$(field)');"/>
+				<button name="dyn$(field)" left="25" top="0" width="271" height="25" text="Select Secondary Path" onClick="mfOpen(self, '$(field)', 'secPath', 'Path');" onMenu="mfMenuOpen('$(field)', 'secPath');" onStartDrag="rowDragStart(self, drag, x, y, event, 'secPath', '$(field)');"/>
+				<edit name="edt$(field)" left="25" top="0" width="271" height="25" field="$(field)" visible="false" enabled="false"/>
+				<imageCheckBox left="301" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_1', self);"/>
+				<imageCheckBox left="326" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);"/>
+				<imageCheckBox left="351" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);"/>
+				<imageCheckBox left="376" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);"/>
+				<imageCheckBox left="401" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);"/>
+			</template>
+
+
+			<!-- FOUR slots since T879 (user 2026-09-01), and the box is short ON PURPOSE: V181 gives one
+			     main path per blood sorcery and BLOOD_SORCERY holds six, so the sheet was already one
+			     slot short and is now two. The user decided it with that cost on the table, to buy this
+			     column closing on the same y as column 1 (SPEC I118f).
+
+			     The height comes from the box law of I118f - 41 title band + 25*4 rows + 20 foot = 161 -
+			     and it is spelled that way rather than as a remembered sum: the comment that stood here
+			     read "25 + 5*25 + 25 = 175" while the attribute said 186, so the arithmetic in the file
+			     had been wrong for longer than anyone noticed. -->
+			<layout left="0" top="0" width="466" height="151">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="426" height="20" text="MAIN PATHS" horzTextAlign="center"/>
+				<layout name="dragRow_mainPath_1" left="20" top="36" width="426" height="25">
+					<MainPathRow field="mainPath_1"/>
+				</layout>
+				<layout name="dragRow_mainPath_2" left="20" top="61" width="426" height="25">
+					<MainPathRow field="mainPath_2"/>
+				</layout>
+				<layout name="dragRow_mainPath_3" left="20" top="86" width="426" height="25">
+					<MainPathRow field="mainPath_3"/>
+				</layout>
+				<layout name="dragRow_mainPath_4" left="20" top="111" width="426" height="25">
+					<MainPathRow field="mainPath_4"/>
+				</layout>
+			</layout>
+
+			<layout left="0" top="156" width="466" height="426">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="426" height="20" text="SECONDARY PATHS" horzTextAlign="center"/>
+				<layout name="dragRow_secPath_1" left="20" top="36" width="426" height="25">
+					<SecPathRow field="secPath_1"/>
+				</layout>
+				<layout name="dragRow_secPath_2" left="20" top="61" width="426" height="25">
+					<SecPathRow field="secPath_2"/>
+				</layout>
+				<layout name="dragRow_secPath_3" left="20" top="86" width="426" height="25">
+					<SecPathRow field="secPath_3"/>
+				</layout>
+				<layout name="dragRow_secPath_4" left="20" top="111" width="426" height="25">
+					<SecPathRow field="secPath_4"/>
+				</layout>
+				<layout name="dragRow_secPath_5" left="20" top="136" width="426" height="25">
+					<SecPathRow field="secPath_5"/>
+				</layout>
+				<layout name="dragRow_secPath_6" left="20" top="161" width="426" height="25">
+					<SecPathRow field="secPath_6"/>
+				</layout>
+				<layout name="dragRow_secPath_7" left="20" top="186" width="426" height="25">
+					<SecPathRow field="secPath_7"/>
+				</layout>
+				<layout name="dragRow_secPath_8" left="20" top="211" width="426" height="25">
+					<SecPathRow field="secPath_8"/>
+				</layout>
+				<layout name="dragRow_secPath_9" left="20" top="236" width="426" height="25">
+					<SecPathRow field="secPath_9"/>
+				</layout>
+				<layout name="dragRow_secPath_10" left="20" top="261" width="426" height="25">
+					<SecPathRow field="secPath_10"/>
+				</layout>
+				<layout name="dragRow_secPath_11" left="20" top="286" width="426" height="25">
+					<SecPathRow field="secPath_11"/>
+				</layout>
+				<layout name="dragRow_secPath_12" left="20" top="311" width="426" height="25">
+					<SecPathRow field="secPath_12"/>
+				</layout>
+				<layout name="dragRow_secPath_13" left="20" top="336" width="426" height="25">
+					<SecPathRow field="secPath_13"/>
+				</layout>
+				<layout name="dragRow_secPath_14" left="20" top="361" width="426" height="25">
+					<SecPathRow field="secPath_14"/>
+				</layout>
+				<layout name="dragRow_secPath_15" left="20" top="386" width="426" height="25">
+					<SecPathRow field="secPath_15"/>
+				</layout>
+			</layout>
+		</layout>
+
+		<layout left="942" top="143" width="466" height="582">
+
+			<!--
+				No dot column here, so the picker takes the width the dots would have used. The radio
+				still sits at x=0 and the picker at x=25, which keeps this row reading like the other
+				three areas even though it is the only one that ends there.
+
+				Ritual names arrive prefixed with their level - "3. Name" - so the level is read off
+				the item itself and there is no second table to drift from it (SPEC V184, T460).
+
+				The flash rectangle and the sort that lit it went in the 30th batch (SPEC I175e,
+				Q96.1): a ritual stays in the slot it was picked into, and the rows are ordered by
+				drag like every other list - each row layout is named dragRow_<field> and the picker
+				is the handle (onStartDrag into rowDragStart, list 'ritual').
+
+				⚠ This paragraph is HERE and not inside the template it describes because an XML
+				comment INSIDE a <template> makes rdk -l exit 1 with no message and DELETE the .rpk
+				- the same signature as SPEC B19/B49, through a door nobody had opened before: the
+				sheet has 26 templates and not one of them contained a comment. MEASURED, both ways:
+				the identical text compiles here and kills the build eleven lines lower.
+			-->
+			<template name="RitualRow">
+				<button name="btnQ$(field)" left="0" top="2" width="20" height="20" text="?" onClick="popOpen(self, 'Ritual', sheet['$(field)'], nil, '$(field)');"/>
+				<button name="dyn$(field)" left="25" top="0" width="401" height="25" text="Select Ritual" onClick="mfOpen(self, '$(field)', 'ritual', 'Ritual');" onMenu="mfMenuOpen('$(field)', 'ritual');" onStartDrag="rowDragStart(self, drag, x, y, event, 'ritual', '$(field)');"/>
+				<edit name="edt$(field)" left="25" top="0" width="401" height="25" field="$(field)" visible="false" enabled="false"/>
+			</template>
+
+
+			<!-- 21 slots since the 62nd batch (user 2026-10-02, SPEC I205a, V251): T880 had added
+			     ritual_26 and ritual_27 after the five burned in the 85th round (SPEC I46), and the 27th
+			     left this tab as it left the Vampire one - its name joins the burned (SPEC I3), so the
+			     numbering keeps its hole and RITUAL_ROWS is the highest index, 26.
+
+			     582 like the two columns beside it: 36 + 21 * 25 = 561 and a 21 foot, the same box
+			     the Vampire tab draws (SPEC I204d). -->
+			<layout left="0" top="0" width="466" height="582">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="426" height="20" text="RITUALS" horzTextAlign="center"/>
+				<layout name="dragRow_ritual_1" left="20" top="36" width="426" height="25">
+					<RitualRow field="ritual_1"/>
+				</layout>
+				<layout name="dragRow_ritual_2" left="20" top="61" width="426" height="25">
+					<RitualRow field="ritual_2"/>
+				</layout>
+				<layout name="dragRow_ritual_3" left="20" top="86" width="426" height="25">
+					<RitualRow field="ritual_3"/>
+				</layout>
+				<layout name="dragRow_ritual_4" left="20" top="111" width="426" height="25">
+					<RitualRow field="ritual_4"/>
+				</layout>
+				<layout name="dragRow_ritual_5" left="20" top="136" width="426" height="25">
+					<RitualRow field="ritual_5"/>
+				</layout>
+				<layout name="dragRow_ritual_6" left="20" top="161" width="426" height="25">
+					<RitualRow field="ritual_6"/>
+				</layout>
+				<layout name="dragRow_ritual_7" left="20" top="186" width="426" height="25">
+					<RitualRow field="ritual_7"/>
+				</layout>
+				<layout name="dragRow_ritual_8" left="20" top="211" width="426" height="25">
+					<RitualRow field="ritual_8"/>
+				</layout>
+				<layout name="dragRow_ritual_9" left="20" top="236" width="426" height="25">
+					<RitualRow field="ritual_9"/>
+				</layout>
+				<layout name="dragRow_ritual_10" left="20" top="261" width="426" height="25">
+					<RitualRow field="ritual_10"/>
+				</layout>
+				<layout name="dragRow_ritual_11" left="20" top="286" width="426" height="25">
+					<RitualRow field="ritual_11"/>
+				</layout>
+				<layout name="dragRow_ritual_12" left="20" top="311" width="426" height="25">
+					<RitualRow field="ritual_12"/>
+				</layout>
+				<layout name="dragRow_ritual_13" left="20" top="336" width="426" height="25">
+					<RitualRow field="ritual_13"/>
+				</layout>
+				<layout name="dragRow_ritual_14" left="20" top="361" width="426" height="25">
+					<RitualRow field="ritual_14"/>
+				</layout>
+				<layout name="dragRow_ritual_15" left="20" top="386" width="426" height="25">
+					<RitualRow field="ritual_15"/>
+				</layout>
+				<layout name="dragRow_ritual_16" left="20" top="411" width="426" height="25">
+					<RitualRow field="ritual_16"/>
+				</layout>
+				<layout name="dragRow_ritual_17" left="20" top="436" width="426" height="25">
+					<RitualRow field="ritual_17"/>
+				</layout>
+				<layout name="dragRow_ritual_18" left="20" top="461" width="426" height="25">
+					<RitualRow field="ritual_18"/>
+				</layout>
+				<layout name="dragRow_ritual_19" left="20" top="486" width="426" height="25">
+					<RitualRow field="ritual_19"/>
+				</layout>
+				<layout name="dragRow_ritual_20" left="20" top="511" width="426" height="25">
+					<RitualRow field="ritual_20"/>
+				</layout>
+				<layout name="dragRow_ritual_26" left="20" top="536" width="426" height="25">
+					<RitualRow field="ritual_26"/>
+				</layout>
+			</layout>
+
+			<!-- Grows with the column on its left, never on its own (SPEC V193). -->
+		</layout>
+	</scrollBox>
+
+	<!-- The ceiling label follows the generation on every client at the table, not just the one
+	     that changed it (SPEC V175 is the same reason the clan-discipline lock is wired here). -->
+	<!-- The EXPERIENCE box of this tab follows a purchase made on ANY tab (SPEC I11, V133): the
+	     balance is drawn three times and renderAllXPBoxes climbs the tab it was CLICKED on, so a
+	     tab that does not listen shows the number it had when it was last opened. -->
+	<dataLink field="xpTotal" onChange="renderXPBoxes(self);"/>
+	<dataLink field="dominatorGen" onChange="renderMaxDisc(self);"/>
+
+	<!-- The storyteller flag that swaps this tab's Clan and Family pickers for a typed field
+	     (SPEC I71, V274), wired beside the one above and for the same reason: the flag is set
+	     on another tab and every client at the table has to follow it. -->
+	<dataLink field="stManualClanFamily" onChange="renderManualEntry(self);"/>
+
+	<!-- Watches only what the painter READS (SPEC V123): the family itself, the weakness the
+	     picker typed into the custom slot, and the language the book sentence is shown in.
+	     It is a link of its OWN and not a line added to the root's clanFamily link, because
+	     the other two fields are not on that link and a painter that misses one of them
+	     leaves the box showing the family before (SPEC I143g, V412c). -->
+	<dataLink fields="{'language', 'clanFamily', 'clanFamilyCustomWeak'}" onChange="renderRevWeakness(self);"/>
+
+	<!-- Watches only what the painter READS (SPEC V123): the sixteen rows whose buttons carry
+	     their value, and the language they carry it in. discSel left the list with the pane -
+	     nothing reads a marked row any more (SPEC V365d, user 2026-08-31). -->
+	<dataLink fields="{'language', 'sheetTheme', 'stDiscVariants', 'clanDisc_1', 'clanDisc_2', 'clanDisc_3', 'clanDisc_4', 'disc_1', 'disc_2', 'disc_3', 'disc_4', 'disc_5', 'disc_6', 'disc_7', 'disc_8', 'disc_9', 'disc_10', 'disc_11', 'disc_12', 'disc_13', 'disc_14', 'disc_15'}" onChange="renderDiscButtons(self);"/>
+
+	<!-- The buttons are painted when the tab is SHOWN (SPEC I26 / V206), never on onNodeReady:
+	     that fires on every open and used to drag the whole 502 KB module in with it (SPEC B47).
+	     A button's text is not data, so nothing else brings it back (SPEC I107a2).
+
+	     onNodeReady is gone entirely: the clan lock was the one thing left on it, and the lock
+	     is asked at the moment of opening now rather than painted onto a control (SPEC I8g,
+	     V95, and the shape V161 already gave the granted specialty). -->
+
+	<dataLink fields="{'language', 'sheetTheme', 'mainPath_1', 'mainPath_2', 'mainPath_3', 'mainPath_4', 'secPath_1', 'secPath_2', 'secPath_3', 'secPath_4', 'secPath_5', 'secPath_6', 'secPath_7', 'secPath_8', 'secPath_9', 'secPath_10', 'secPath_11', 'secPath_12', 'secPath_13', 'secPath_14', 'secPath_15'}" onChange="renderPathButtons(self);"/>
+
+	<!--
+		The four main path dots follow the Discipline, recomputed on every render and stored
+		nowhere (SPEC V180), so this link watches what renderMainPaths actually READS and
+		nothing else (SPEC V123): the four path slots, the nineteen Discipline slots, and the
+		dots of those nineteen - the rating is the dots, so a bought dot has to reach here.
+
+		It is a link of its own rather than fields bolted onto the description link above:
+		that one repaints prose from `language` and the picker rows, and hanging ninety-five
+		dot fields on it would repaint the description every time anyone bought anything
+		(SPEC V123, the mistake B34 records).
+	-->
+	<dataLink fields="{'mainPath_1', 'mainPath_2', 'mainPath_3', 'mainPath_4', 'clanDisc_1', 'clanDisc_2', 'clanDisc_3', 'clanDisc_4', 'disc_1', 'disc_2', 'disc_3', 'disc_4', 'disc_5', 'disc_6', 'disc_7', 'disc_8', 'disc_9', 'disc_10', 'disc_11', 'disc_12', 'disc_13', 'disc_14', 'disc_15', 'clanDisc_1_1', 'clanDisc_1_2', 'clanDisc_1_3', 'clanDisc_1_4', 'clanDisc_1_5', 'clanDisc_2_1', 'clanDisc_2_2', 'clanDisc_2_3', 'clanDisc_2_4', 'clanDisc_2_5', 'clanDisc_3_1', 'clanDisc_3_2', 'clanDisc_3_3', 'clanDisc_3_4', 'clanDisc_3_5', 'clanDisc_4_1', 'clanDisc_4_2', 'clanDisc_4_3', 'clanDisc_4_4', 'clanDisc_4_5', 'disc_1_1', 'disc_1_2', 'disc_1_3', 'disc_1_4', 'disc_1_5', 'disc_2_1', 'disc_2_2', 'disc_2_3', 'disc_2_4', 'disc_2_5', 'disc_3_1', 'disc_3_2', 'disc_3_3', 'disc_3_4', 'disc_3_5', 'disc_4_1', 'disc_4_2', 'disc_4_3', 'disc_4_4', 'disc_4_5', 'disc_5_1', 'disc_5_2', 'disc_5_3', 'disc_5_4', 'disc_5_5', 'disc_6_1', 'disc_6_2', 'disc_6_3', 'disc_6_4', 'disc_6_5', 'disc_7_1', 'disc_7_2', 'disc_7_3', 'disc_7_4', 'disc_7_5', 'disc_8_1', 'disc_8_2', 'disc_8_3', 'disc_8_4', 'disc_8_5', 'disc_9_1', 'disc_9_2', 'disc_9_3', 'disc_9_4', 'disc_9_5', 'disc_10_1', 'disc_10_2', 'disc_10_3', 'disc_10_4', 'disc_10_5', 'disc_11_1', 'disc_11_2', 'disc_11_3', 'disc_11_4', 'disc_11_5', 'disc_12_1', 'disc_12_2', 'disc_12_3', 'disc_12_4', 'disc_12_5', 'disc_13_1', 'disc_13_2', 'disc_13_3', 'disc_13_4', 'disc_13_5', 'disc_14_1', 'disc_14_2', 'disc_14_3', 'disc_14_4', 'disc_14_5', 'disc_15_1', 'disc_15_2', 'disc_15_3', 'disc_15_4', 'disc_15_5'}" onChange="renderMainPaths(self);"/>
+
+	<!--
+		The picker guard (SPEC V181/V182/V185). It hangs off a dataLink and NOT off the
+		comboBox onChange, because a write made inside a control's own dispatch does not
+		survive it - that is how B36 and B38 both let a refusal be ignored (SPEC V186).
+
+		Only the nineteen picker fields are watched. Taking a Discipline OFF the sheet does
+		not come through here on purpose: it would clear rows the player already filled,
+		and the main path dots going dark already show that something is missing (V180).
+
+		renderVampPickers USED to ride along here, to rebuild what the dropdowns offered after
+		a row changed (SPEC I25, V200, V181). It went with the wave: it walked cbo* names and
+		there are no combos on this tab any more, so it would have swept an empty set forever -
+		dead code that compiles and lies about what runs (SPEC I130e is the same lesson about
+		templates). The picker box does that work now, rebuilding its pool on every open from
+		PICKER_LIST plus whatever the row is holding, illegal or not (SPEC V200, V346b).
+	-->
+	<dataLink fields="{'mainPath_1', 'mainPath_2', 'mainPath_3', 'mainPath_4', 'secPath_1', 'secPath_2', 'secPath_3', 'secPath_4', 'secPath_5', 'secPath_6', 'secPath_7', 'secPath_8', 'secPath_9', 'secPath_10', 'secPath_11', 'secPath_12', 'secPath_13', 'secPath_14', 'secPath_15'}" onChange="guardPick(field, oldValue, newValue);"/>
+
+	<!-- The description block paints when the tab is SHOWN (SPEC I26 / V206): onNodeReady fires
+	     on every open and dragged the whole 754 KB module in with it (SPEC B47). The other two
+	     stay: they write no book text and pay no parse, and a tab that opened with unpainted
+	     main-path dots or an unfiltered picker would be showing the wrong thing, not a blank
+	     box (SPEC V180, V181). -->
+
+	<dataLink fields="{'language', 'sheetTheme', 'ritual_1', 'ritual_2', 'ritual_3', 'ritual_4', 'ritual_5', 'ritual_6', 'ritual_7', 'ritual_8', 'ritual_9', 'ritual_10', 'ritual_11', 'ritual_12', 'ritual_13', 'ritual_14', 'ritual_15', 'ritual_16', 'ritual_17', 'ritual_18', 'ritual_19', 'ritual_20', 'ritual_26'}" onChange="renderRitualButtons(self);"/>
+
+	<!--
+		The picker guard (SPEC V185). Same door as WoD20.13: a dataLink, never the comboBox
+		onChange (SPEC V186, B36/B38). A ritual asks two questions of its blood sorcery -
+		is it on the sheet at all, and is it high enough - and the two refusals are told
+		apart, because they are different problems with different fixes.
+	-->
+	<dataLink fields="{'ritual_1', 'ritual_2', 'ritual_3', 'ritual_4', 'ritual_5', 'ritual_6', 'ritual_7', 'ritual_8', 'ritual_9', 'ritual_10', 'ritual_11', 'ritual_12', 'ritual_13', 'ritual_14', 'ritual_15', 'ritual_16', 'ritual_17', 'ritual_18', 'ritual_19', 'ritual_20', 'ritual_26'}" onChange="guardPick(field, oldValue, newValue);"/>
+
+	<!-- The description block paints when the tab is SHOWN (SPEC I26 / V206): onNodeReady fires
+	     on every open and dragged the whole 1.1 MB module in with it, the largest of the four
+	     (SPEC B47).
+
+	     The picker filter is NOT wired here any more (SPEC V207, T490). renderVampPickers walks
+	     from the sheet ROOT and refilters all 45 vampire combos in one pass: the filter belongs
+	     to the SHEET, not to this tab (SPEC V203), so one call does the whole job. T484 gave
+	     WoD20.13 and WoD20.14 an onNodeReady each because every tab asked for its own without looking
+	     at its sibling, and the second pass re-walked 1900 controls for nothing (SPEC B48).
+	     The surviving call is WoD20.13's, which already shares its block with renderMainPaths.
+
+	     Dropping THIS one rather than WoD20.13's is safe in both directions. Coverage: the walk
+	     starts at the root, so it reaches this tab's ritual combos from a sibling just as well.
+	     Ordering: the compiled form builds every control inside one constructNew_ and only
+	     THEN registers the onNodeReady listeners, so the ritual combos already exist whichever
+	     sibling fires first - the firing order never had to be known. -->
+
+	<!-- ONE onShow for the tab, where there used to be one per imported form (SPEC I136i).
+	     The buttons are painted when the tab is SHOWN and never on onNodeReady: that fires on
+	     every open and used to drag the whole module in with it (SPEC I26, V206, B47). -->
+	<event name="onShow">
+		wodTrace("WoD20.11.onShow");
+		renderXPBoxes(self);
+		renderDiscButtons(self);
+		renderPathButtons(self);
+		renderRitualButtons(self);
+		renderRevWeakness(self);
+		-- The clan/family pair paints on SHOW too (SPEC V429a, I146g, T962): the root dataLink of
+		-- clanFamily is the only other caller, an EMPTY field never fires it, and a fresh sheet
+		-- used to open on the authored "Select Clan" instead of the dashed invitation.
+		renderClanFamilyButton(self);
+	</event>
+
+	<event name="onNodeReady">
+		renderMaxDisc(self);
+		renderManualEntry(self);
+		renderMainPaths(self);
+	</event>
+</form>

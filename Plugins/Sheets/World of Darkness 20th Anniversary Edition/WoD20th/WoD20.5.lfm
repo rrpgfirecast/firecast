@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_5" align="client" theme="dark">
+    <scrollBox align="client">
+        <!-- Theme backdrop, same arrangement as WoD20.1 (SPEC T158, V56, V57). -->
+        <image name="themePaper5" align="client" style="stretch" hitTest="false" visible="false"/>
+       <layout left="0" top="0" width="440" height="591">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+	        <label left="20" top="15" width="400" height="20" text="NOTES" horzTextAlign="center"/>
+			<textEditor left="35" top="36" width="370" height="540" field="anotacoes1"/>
+        </layout>
+
+		<layout left="445" top="0" width="440" height="591">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+	        <label left="20" top="15" width="400" height="20" text="NOTES" horzTextAlign="center"/>
+			<textEditor left="35" top="36" width="370" height="540" field="anotacoes2"/>
+        </layout>
+
+		<layout left="890" top="0" width="440" height="591">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+	        <label left="20" top="15" width="400" height="20" text="NOTES" horzTextAlign="center"/>
+			<textEditor left="35" top="36" width="370" height="540" field="anotacoes3"/>
+        </layout>
+    </scrollBox>
+</form>

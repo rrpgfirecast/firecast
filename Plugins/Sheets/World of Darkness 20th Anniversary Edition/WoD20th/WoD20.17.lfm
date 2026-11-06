@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_17" width="308" height="139">
+<!--
+	One item of the Magick tab's three lists - a Focus, a Rote or a Wonder (user 2026-10-07, SPEC
+	I223i, V565c). 308 wide since the 85th batch: its recordList is 328, and the 20 left over are the
+	scrollbar's 16 and 4 between, so neither covers the other. A name, a description that scrolls on its own, and an X on
+	the right edge that asks before it removes the item (the Mage20th item's shape, SPEC R187).
+
+	Since the 81st batch (user 2026-10-07, SPEC I224d, V566) the Magick tab writes this item's words
+	and paints it in the era as the list builds it (magickItemPaint, WoD20.16): the name label reads
+	Focus, Rote or Name by list, 40 wide for the longest of them in either language (Rotina), and
+	the X asks in confirmText, which the tab sets. The texts authored here are what shows if that
+	never ran. The description is three lines (3 x ~17 + ~9 of frame, an estimate - SPEC B166).
+
+	Since the 82nd batch (user 2026-10-07, SPEC I225a/b, B204, V567) the item is a SUB-BOX of the era:
+	the box's black, and named magickItemFrame so the theme gives it the era's corner and outline
+	(XP_FRAME) and NOT a section box's filigree, which plain black would earn it (sectionBox). Its
+	content keeps 10 from every edge, the X included.
+
+	Since the 85th batch (user 2026-10-07, SPEC I228a, B207, V570a) the card is a FIXED 308 x 132 and
+	nothing in it is anchored. The 83rd and 84th batches anchored the right and bottom controls to a
+	client-aligned frame, and the host sizes that frame only after its children are placed: every
+	anchored control grew by what the frame grew, out past the right edge and down over the next
+	card. A frame of its own size cannot do that, whatever width the list hands the form. The form
+	is 24 taller than the card - the same 24 the list keeps from the box's left and right
+	(WoD20.16) - and since the 86th batch (user 2026-10-07, SPEC I229b) those 24 are ABOVE the card
+	and nothing is under it: the next card's 24 are the gap, and the first card keeps 24 from the
+	title row. Since the 98th batch (user 2026-10-09, SPEC I241a, V582) the gap is 7 - 30% of 24 -
+	and the form 7 taller than the card; the list opens 17 lower so the first card stays put.
+-->
+	<rectangle name="magickItemFrame" left="0" top="7" width="308" height="132" color="black" xradius="6" yradius="6" cornerType="innerRound">
+		<label name="dynItemName" left="10" top="12" width="40" height="20" text="Name"/>
+		<edit left="54" top="10" width="213" height="25" field="itemName"/>
+		<button left="273" top="10" width="25" height="25" text="X">
+			<event name="onClick">
+				Dialogs.confirmOkCancel(self.confirmText or "Remove this item from the list?",
+					function(confirmed)
+						if confirmed then ndb.deleteNode(sheet); end;
+					end);
+			</event>
+		</button>
+
+		<label name="dynItemDesc" left="10" top="41" width="288" height="20" text="Description"/>
+		<textEditor left="10" top="62" width="288" height="60" field="itemDesc"/>
+	</rectangle>
+</form>
