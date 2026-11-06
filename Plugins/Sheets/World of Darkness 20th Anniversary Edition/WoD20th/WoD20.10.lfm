@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_10" align="client" theme="dark">
+	<script>
+		<![CDATA[
+			-- Storyteller tab (SPEC I8, 27th round). Only the storyteller of the room sees it;
+			-- the gate that decides that lives on the root form (SPEC I8a/V79), because WoD20.6
+			-- calls it too.
+			--
+			-- Saving the initial character freezes the sheet, so it asks first (SPEC R30) and
+			-- refuses to run twice (SPEC V81). revertBaseline below is the one way back (SPEC I262).
+			function saveBaseline(form)
+				if sheet == nil then return; end;
+
+				-- The button is disabled once a baseline exists, so reaching this with one
+				-- already saved means a second client had the tab open when the first saved.
+				if sheet.baseline ~= nil and sheet.baseline ~= "" then
+					renderBaselineState(form);
+					return;
+				end;
+
+				local lang = sheet.language or "pt";
+
+				Dialogs.confirmOkCancel(
+					translateSheetText("Save the initial character?", lang),
+					function(confirmed)
+						if not confirmed then return; end;
+
+						-- Checked again on the way in: the dialog is modal for this client only.
+						if sheet.baseline ~= nil and sheet.baseline ~= "" then return; end;
+
+						-- The whole sheet, as it stands, in one field (SPEC R32). `baseline` is
+						-- empty at this moment, which is what stops the snapshot from nesting.
+						setField("powSunkN", 0);
+						setField("baseline", ndb.exportXML(sheet));
+
+						renderBaselineState(form);
+					end);
+			end;
+
+			-- Undoes the save and only the save (SPEC I262, Q172): the points stay on the sheet, and
+			-- with no baseline the log is gone and what it charged is back on the balance. The
+			-- stamps come back from the SNAPSHOT and are not blanked (SPEC I262d): xpFree already
+			-- held the gifts earned during creation, and a blank would unlock them (SPEC V161).
+			function revertBaseline(form)
+				if sheet == nil then return; end;
+
+				if sheet.baseline == nil or sheet.baseline == "" then
+					renderBaselineState(form);
+					return;
+				end;
+
+				local lang = sheet.language or "pt";
+
+				Dialogs.confirmOkCancel(
+					translateSheetText("Revert the initial character? The experience log is erased and all spent experience returns to the balance. The points bought stay on the sheet.", lang),
+					function(confirmed)
+						if not confirmed then return; end;
+
+						-- Checked again on the way in: the dialog is modal for this client only.
+						if sheet.baseline == nil or sheet.baseline == "" then return; end;
+
+						local base = ndb.newMemNodeDatabase();
+						local stamps = { "xpFree", "xpOrder", "xpWhen", "xpSunk", "xpApplied", "xpManual", "powSunkN", "roadFloor" };
+
+						ndb.importXML(base, sheet.baseline);
+
+						for i = 1, #stamps, 1 do setField(stamps[i], base[stamps[i]] or ""); end;
+
+						-- LAST: this is what wakes the log and the boxes (SPEC I262d).
+						setField("baseline", "");
+
+						renderBaselineState(form);
+					end);
+			end;
+
+			-- SPEC V82: once saved, the button goes dead. The dead button IS the message now
+			-- (SPEC I42, V243, user 2026-08-22): the sentence that used to sit under it said
+			-- what the Experience tab already says in the log it belongs to (SPEC I10, V33),
+			-- and two places saying one thing is one place too many.
+			function renderBaselineState(form)
+				if sheet == nil then return; end;
+
+				local saved = sheet.baseline ~= nil and sheet.baseline ~= "";
+
+				-- Dead controls read dead, exactly like the read-only fields the XML dims
+				-- (SPEC V111/V112). Written in the same breath as `enabled`, so the look and
+				-- the state cannot come apart.
+				form.btnSaveBaseline.enabled = not saved;
+				form.btnSaveBaseline.opacity = saved and 0.75 or 1;
+				form.btnRevertBaseline.visible = saved;
+			end;
+		]]>
+	</script>
+	<scrollBox align="client">
+		<!-- Theme backdrop, same arrangement as every other tab (SPEC T158, V56, V57). -->
+		<image name="themePaper10" align="client" style="stretch" hitTest="false" visible="false"/>
+
+		<!-- The storyteller's own notes (SPEC I8e, V144). Three boxes, laid out exactly like
+		     the player's on WoD20.5 - same size, same gutter, same title - but on their own
+		     fields: one `field` in two tabs would be two owners of one text (SPEC V1), and
+		     what the storyteller wrote would turn up inside the player's Notes tab.
+
+		     The tab is hidden by ROLE (SPEC V79), and this text lives in the sheet's NDB like
+		     `baseline` does. That is visibility, not secrecy. -->
+		<layout left="0" top="0" width="440" height="591">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="400" height="20" text="NOTES" horzTextAlign="center"/>
+			<textEditor left="35" top="36" width="370" height="540" field="stNotes1"/>
+		</layout>
+
+		<layout left="445" top="0" width="440" height="591">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="400" height="20" text="NOTES" horzTextAlign="center"/>
+			<textEditor left="35" top="36" width="370" height="540" field="stNotes2"/>
+		</layout>
+
+
+		<!--
+			The storyteller's own box, in the column the third Notes used to fill (SPEC I35, user
+			2026-08-22). It sat UNDER the notes until the 82nd round, which made this the tallest
+			tab on the sheet for the sake of a box that is mostly empty.
+
+			405 wide and not the column's 400: it opened at 540 for a checkbox whose pt label ran
+			59 characters, and the 87th round shrank it when that flag became a combo (SPEC I49).
+			What holds the width now is the price column - x=190 plus 150 of combo - not a label.
+
+			The height is the last row plus 10 - the gap V240 asks of every box on the sheet -
+			and NOT the column's 580: 213px of dead black is the very thing two other items of
+			an earlier request were raised about. The 88th round RE-ORDERED the rows and added a
+			third price without moving Save, so the number did not change (SPEC I51, V240). The 94th
+			round added two flags and Save moved 60 with everything under them, so the box went
+			339 -> 399 and the gap under it is still 10 (SPEC I71, V274e). Later rounds grew
+			it to 469 without a comment of their own; this one (24th batch, SPEC I169a) moves
+			the whole box into stSharedScope and adds an eighth flag, and the three prices and
+			Save move down 30, so the box goes 469 -> 499 and the gap under Save stays 10
+			(SPEC I169a, V240). The 41st batch (SPEC I185b) takes the rows back out of that
+			scope - only the eighth flag keeps one - and moves nothing, so the box stays 499.
+		-->
+		<layout left="890" top="0" width="445" height="529">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="405" height="20" text="STORYTELLER SETTINGS" horzTextAlign="center"/>
+
+			<!-- Every row from Game to Save binds to the ACTIVE character (SPEC I185b, V526a, user
+			     2026-09-26): mcShow re-points the whole form at the clicked character's node, so
+			     each character keeps its own era, flags, prices and health track. The 24th batch
+			     had pinned this whole box to the root inside one stSharedScope (SPEC I169e, Q88.8 -
+			     "change one, change all"); the user reversed that, and the column's own Settings
+			     window is now only the setup the NEXT Add Character copies (SPEC I185c). A sheet
+			     saved before this round needs nothing: the old mirror already wrote these fields
+			     onto every character, so each one simply keeps what it had (SPEC I185a).
+
+			     The one row here that is the SHEET's and not the character's is Multiple
+			     Characters - it turns the column itself on - so it alone sits in a small
+			     stSharedScope that mcInit pins to the root (below). -->
+
+			<!--
+				`Game` and `Era` open the box, and they are the FIRST two rows top to bottom
+				(user 2026-09-06, item 2 of the 11th batch, SPEC I156b). They came off the
+				Settings tab: what the table is playing and which era it plays in is the
+				storyteller's call, not something a player changes mid-session.
+
+				Their two <dataLink>s stayed on WoD20.6 (SPEC I156c). A dataLink watches a
+				FIELD, not a widget (SPEC V1), so these two answer through them - and the one
+				on `sheetTheme` is what calls sheetReveal, which cannot live on a tab the
+				player never instantiates (SPEC V79, V95, I15, B40).
+
+				They join the box's entry column - x=210, 150 wide, exactly like the three
+				price combos below (SPEC V243, V26). 150 and not the 300 they had: the longest
+				item in either language is `Idade das Trevas`, 16 characters on the body ruler
+				plus the arrow, which is 128 (SPEC V196, V16).
+
+				`Game` is a CHOICE since the 45th batch (user 2026-10-01, SPEC I188a, V528): it
+				was locked as information until then (SPEC V109, T75). `Mortal` is the sheet as
+				it always was; `Vampire` swaps three header rows on Main, gives Modern Nights its
+				own ability lists and opens the Vampire tab in place of Ghoul (SPEC I188). A
+				sheet holding a value outside the three is still normalised on load by the ROOT
+				form (SPEC V110). Both are named
+				cbo* so the language switch rebuilds what they SHOW while `values` stay English
+				(SPEC V24), and both are the declared exception to V15 - a state combo with a
+				real default has no empty first row to clear.
+
+				`Era` PAINTS (SPEC I5/I6): its four values are the keys the palette table is
+				looked up by, so changing this list means changing THEMES and defaultValue in
+				the same commit (SPEC V12). The field is `sheetTheme` and NOT `theme`: sheets
+				saved from the Mage plugin still carry theme="Dark" (SPEC V2).
+			-->
+			<label left="35" top="54" width="170" height="20" text="Character Sheet"/>
+			<comboBox name="cboGame" left="210" top="51" width="150" height="25" field="game" fontColor="white" horzTextAlign="center" items="{'Vampire', 'Mortal', 'Mage'}" values="{'Vampire', 'Mortal', 'Mage'}"/>
+
+			<label left="35" top="84" width="170" height="20" text="Era"/>
+			<comboBox name="cboSheetTheme" left="210" top="81" width="150" height="25" field="sheetTheme" fontColor="white" horzTextAlign="center" items="{'Modern Nights', 'Victorian Age', 'Dark Ages', 'Classical Age'}" values="{'Modern Nights', 'Victorian Age', 'Dark Ages', 'Classical Age'}"/>
+
+			<!-- The NINE flags come first, then the three prices, then Save (SPEC I51, I71, V238,
+			     user 2026-08-22). Until the 88th round the box alternated the two kinds and a
+			     reader had to hold both in mind at once; now the tick answers come first and
+			     the dropdowns answer second.
+
+			     The two flags that hide a TAB open the block (SPEC V238a): they are the settings
+			     that change what the table can see at all.
+
+			     `Free dots` hides no tab and is read in exactly one place - xpClick, at the
+			     moment a dot is clicked (SPEC I8d, V137). Ticking it now does nothing to what
+			     was bought before, and unticking it later does nothing to what was bought
+			     while it was on: the price is settled at the click and stamped (SPEC V138).
+
+			     `Show Magika` stood at top=180 until the 39th round, when the user had the
+			     empty tab removed (SPEC V128). `stShowMagika`, `stFreeDots` and `freeDots` all
+			     stay burned (SPEC I3, orphans): a sheet saved with them still carries the value,
+			     and nothing may reuse the name - which is why the flag here is `stFreeBuy` and
+			     the stamp is `xpFree` (SPEC V2, V138). `stNotes3` joins them in the 82nd round,
+			     and `stBackgroundsXP` in the 88th, when the flag became a price (SPEC I51).
+
+			     `Show Ghoul` is the LABEL only - the field stays `stShowDisciplines`, and the tab
+			     it hides is still `tabDisciplines` (SPEC V2, V172, V233). -->
+			<checkBox name="chkShowNumina" left="35" top="111" width="375" height="25" field="stShowNumina" text="Show Numina"/>
+			<checkBox name="chkShowDisciplines" left="35" top="141" width="375" height="25" field="stShowDisciplines" text="Show Ghoul"/>
+			<!-- 111th batch (SPEC I255a, V600). Same fail-closed default as every flag in this box: OFF authored,
+			     OFF when nil, no defaultValue. It only lights the ! of a Discipline row: turning it off takes
+			     no power and no experience back, because the ledger never reads it. -->
+			<checkBox name="chkDiscVariants" left="35" top="171" width="375" height="25" field="stDiscVariants" text="Allow Discipline Variations"/>
+			<checkBox name="chkFreeBuy" left="35" top="201" width="375" height="25" field="stFreeBuy" text="Edit dots freely"/>
+
+			<!-- 51st round (SPEC I8g, V175). OFF by default and OFF when nil - the four clan slots
+			     stay locked unless the storyteller opens them, which is the fail-closed default the
+			     other Show flags use (SPEC V89, V80). -->
+			<checkBox name="chkEditClanDisc" left="35" top="231" width="375" height="25" field="stEditClanDisc" text="Edit Clan Disciplines"/>
+
+			<!-- 85th round (SPEC I42, V245). Same fail-closed default as every other flag in this
+			     box: OFF authored, OFF when nil, so a sheet saved before this round and a sheet
+			     whose storyteller never touched it read the same (SPEC V80, V89, V175).
+
+			     It opens ONE box on the Experience tab - Spent - and what typing there does is
+			     write a line into the log, not a second number beside it (SPEC I44, V246). -->
+			<checkBox name="chkEditSpentXP" left="35" top="261" width="375" height="25" field="stEditSpentXP" text="Edit Spent XP"/>
+
+			<!-- 94th round (SPEC I71, V274, user 2026-08-23). Two flags that swap a PICKER for a
+			     typed field: the storyteller who runs homebrew needs an affiliation or a clan the
+			     books never printed, and a dropdown cannot offer what nobody wrote down.
+
+			     Same fail-closed default as every other flag in this box - OFF authored, OFF when
+			     nil (SPEC V80, V89, V175) - and no <dataLink defaultValue> for either: nil already
+			     reads false, and a declared default would be a second answer to the same question.
+
+			     They enter AFTER the five that were here and BEFORE the three prices, so the two
+			     tab-hiding flags keep the smallest tops and Save keeps the largest (SPEC V238a,
+			     V238b). Everything under them moved down 60 and the box grew 339 -> 399, which
+			     leaves V240's gap of 10 under Save exactly where it was. -->
+			<checkBox name="chkManualAffiliation" left="35" top="291" width="375" height="25" field="stManualAffiliation" text="Edit Affiliation"/>
+			<checkBox name="chkManualClanFamily" left="35" top="321" width="375" height="25" field="stManualClanFamily" text="Edit Clan/Family"/>
+
+			<!-- 24th batch (SPEC I169a, V488, user 2026-09-23). The EIGHTH and LAST flag, not a
+			     ninth price: it turns the multi-character column on - a SHEET setting, not a
+			     character's - so it is the one row of this box that stays on the root while the
+			     rest follow the active character (SPEC I185b, V526a). Its own small stSharedScope,
+			     pinned to the root by mcInit, spans this row only; BoxKids adds the scope's offset,
+			     so the box still reads the checkbox at 35/351. Same fail-closed default as every
+			     flag above - OFF authored, OFF when nil (SPEC V80, V89, V175) - and NO onChange of
+			     its own: the scope's <dataLink> reacts for it (SPEC V488d). Field name is the
+			     user's own word for it (SPEC Q88.8), not one this round chose.
+
+			     A <dataLink> declared inside a dataScopeBox watches the BOX's node, not the active
+			     one (official precedent Plugins/Core/rrpginlua/ConfigDice/ConfigDice.lfm:82-148,
+			     SPEC R169h) - which is why the mcShared trigger lives INSIDE this scope. It reacts
+			     to the two fields that are still the sheet's - language (written by WoD20.6's
+			     langScope, also pinned to the root) and this flag - and mcShared copies the
+			     language onto every mcChar and re-applies the column. It is the ONLY
+			     <dataLink onChange="mcShared(...)"> in the sheet (SPEC V526a, V492d). -->
+			<dataScopeBox name="stSharedScope" left="0" top="351" width="445" height="25">
+				<checkBox name="chkMultipleChars" left="35" top="0" width="375" height="25" field="multipleCharacters" text="Multiple Characters"/>
+				<dataLink fields="{'language', 'multipleCharacters'}" onChange="mcShared(self);"/>
+			</dataScopeBox>
+
+			<!-- The three prices, one column at x=190 and all three the same width (SPEC I51,
+			     V243): the box measures DISTINCT x across every entry widget it holds, so a
+			     fourth one cannot join off-column without saying so.
+
+			     How long the health track is came here from the two HEALTH boxes in the 82nd
+			     round (SPEC I35, V234, user 2026-08-22). It is the storyteller's call, and until
+			     then it was two combos on one field - a declared mirror (SPEC I3, V36) that the
+			     player could reach from either the Main tab or Combat.
+
+			     SAME widget, SAME field, same ten values and the same default: it changed owner,
+			     not identity, so a saved sheet keeps its number (SPEC V2). renderHealthTrack
+			     still reads `tonumber(sheet.healthLevels) or 7`, so the default declared here and
+			     the fallback in the Lua cannot disagree about what seven means. The width went
+			     58 -> 150 in the 88th round to join the column, not to fit anything wider. -->
+			<label left="35" top="389" width="170" height="20" text="Health Levels"/>
+			<comboBox name="cmbHealthLevels" left="210" top="386" width="150" height="25" field="healthLevels" fontSize="12" horzTextAlign="center" items="{'1','2','3','4','5','6','7','8','9','10'}" values="{'1','2','3','4','5','6','7','8','9','10'}"/>
+			<dataLink field="healthLevels" defaultValue="7"/>
+
+			<!-- What a speciality costs, as ONE value instead of two flags (SPEC I49, V254, user
+			     2026-08-22). The list is six prices and a closed door, and `0` is a PRICE: a table
+			     that hands specialities out for free is not the same table as one that does not sell
+			     them at all, and the two flags could not tell those apart - both off meant both.
+
+			     `cmb`, not `cbo`: a combo of VALUE like cmbHealthLevels, so pickerItems leaves it
+			     alone and it needs no PICKER_LIST key (SPEC V211a, V208). Its one prose item is
+			     translated by the cmb* branch of applyLanguage, off the VALUE, which is why the
+			     value is the English text itself (SPEC I52, V257).
+
+			     Free specialities are unaffected: what a trait hands out at one dot or at four is the
+			     book's, not the storyteller's, and it costs nothing either way. -->
+			<label left="35" top="419" width="170" height="20" text="Specialty Cost"/>
+			<comboBox name="cmbSpecCost" left="210" top="416" width="150" height="25" field="stSpecCost" fontSize="12" horzTextAlign="center" items="{'0','1','2','3','4','5','Purchase Forbidden'}" values="{'0','1','2','3','4','5','Purchase Forbidden'}"/>
+			<dataLink field="stSpecCost" defaultValue="3"/>
+
+			<!-- What a background dot costs, a PRICE where the 88th round found a flag (SPEC I51,
+			     I9, user 2026-08-22). `stBackgroundsXP` was a yes/no that meant "three or nothing",
+			     and it could not say two, so the storyteller who wanted cheap backgrounds had to
+			     hand them out free.
+
+			     No prose item here and no closed door: a background can always be bought, and what
+			     the storyteller sets is only how much (SPEC C). `0` prices the line at zero and
+			     still writes it into the log - it happened, and the storyteller is who reads that
+			     table - which is exactly what the unticked flag used to do, so the default of 0
+			     keeps a sheet saved before this round reading the same (SPEC I51).
+
+			     The default is declared HERE and nowhere else in the XML; the Lua answers for a
+			     sheet that arrives with the field empty with the same 0 (SPEC V12). -->
+			<label left="35" top="449" width="170" height="20" text="Background Cost"/>
+			<comboBox name="cmbBgCost" left="210" top="446" width="150" height="25" field="stBackgroundCost" fontSize="12" horzTextAlign="center" items="{'0','1','2','3','4','5'}" values="{'0','1','2','3','4','5'}"/>
+			<dataLink field="stBackgroundCost" defaultValue="0"/>
+
+			<!-- Saving the initial character is LAST, after everything (SPEC V238b, user
+			     2026-08-22): it freezes the sheet (SPEC R30), and it spent five rounds sitting
+			     above the settings it snapshots.
+
+			     The button sits at the SAME x as the three combos above it (SPEC I42, I51, V243):
+			     either all four entry widgets make one column or the box has none (SPEC V26 - B12
+			     and B13 are this same drift, one round of nobody measuring a column apart).
+
+			     `dynBaselineState` used to close the box with a sentence of its own. It is gone
+			     for good (SPEC V243b): the dead button says "saved", and the Experience tab says
+			     "not saved yet" inside the log that sentence was about (SPEC I10, V33). -->
+			<label left="35" top="491" width="200" height="20" text="Save Initial Character"/>
+			<button name="btnRevertBaseline" left="315" top="488" width="100" height="26" text="Revert" visible="false" onClick="revertBaseline(self);"/>
+			<button name="btnSaveBaseline" left="210" top="488" width="100" height="26" text="Save" onClick="saveBaseline(self);"/>
+		</layout>
+	</scrollBox>
+
+	<dataLink field="baseline">
+		<event name="onChange">
+			renderBaselineState(self);
+		</event>
+	</dataLink>
+
+	<!--
+		The three show-a-tab flags are OWNED here and watched from the root form (SPEC V95,
+		28th round). This tab is itself one of the four the switch hides, so it cannot be
+		the thing that runs the switch: on a sheet where it never came up, nothing hid the
+		other three (SPEC B26). What is left here only renders this tab's own state.
+	-->
+	<event name="onNodeReady">
+		renderBaselineState(self);
+	</event>
+</form>

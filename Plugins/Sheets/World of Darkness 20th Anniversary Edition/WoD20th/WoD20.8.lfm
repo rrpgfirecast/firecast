@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_8" align="client" theme="dark">
+	<scrollBox align="client">
+		<!-- Theme backdrop, same arrangement as WoD20.1 (SPEC T158, V56, V57). -->
+		<image name="themePaper8" align="client" style="stretch" hitTest="false" visible="false"/>
+		<!--
+			Inventory tab. Six boxes, 380x300 on a 20px gutter, so the row ends at x=1180 -
+			inside the ~1210 the other tabs already use (SPEC R.15). All six share one shape:
+			a title and a single textEditor. Repeated literally rather than templated - one
+			rectangle plus one label plus one editor is not worth an abstraction.
+
+			ARMOR is NOT here. It went back to the Combat tab on 2026-08-17 because armour is
+			combat gear (SPEC T87 / V35).
+
+			The third box on the top row is titled TRANSPORTATION but owns the field `items`.
+			That is deliberate: the request was to relabel the old ITEMS box, and the field name
+			was kept on purpose, so a sheet saved earlier still shows whatever was typed there
+			(SPEC C / V2 - the same pattern as `retainers` rendering GUIDES).
+
+			The former TRANSPORTATION and OTHER boxes were dropped in that same change. Their
+			fields `transportation` and `other` are declared orphans in SPEC I3: the text
+			survives in already-saved sheets but nothing displays it any more. Those two names
+			must never be reused for a new field, or an old sheet would pour stale content into
+			an unrelated box - the build gate asserts they own no widget.
+		-->
+		<layout left="0" top="0" width="420" height="311">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="380" height="20" text="GEAR (CARRIED)" horzTextAlign="center"/>
+
+			<textEditor left="35" top="36" width="350" height="260" field="gear"/>
+		</layout>
+
+		<layout left="425" top="0" width="420" height="311">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="380" height="20" text="EQUIPMENT (OWNED)" horzTextAlign="center"/>
+
+			<textEditor left="35" top="36" width="350" height="260" field="equipment"/>
+		</layout>
+
+		<layout left="850" top="0" width="420" height="311">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="380" height="20" text="TRANSPORTATION" horzTextAlign="center"/>
+
+			<textEditor left="35" top="36" width="350" height="260" field="items"/>
+		</layout>
+
+		<layout left="0" top="316" width="420" height="311">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="380" height="20" text="BASE OF OPERATIONS (DEFENSES)" horzTextAlign="center"/>
+
+			<textEditor left="35" top="36" width="350" height="260" field="baseDefenses"/>
+		</layout>
+
+		<layout left="425" top="316" width="420" height="311">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="380" height="20" text="BASE OF OPERATIONS (ARMAMENTS)" horzTextAlign="center"/>
+
+			<textEditor left="35" top="36" width="350" height="260" field="baseArmaments"/>
+		</layout>
+
+		<layout left="850" top="316" width="420" height="311">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="380" height="20" text="BASE OF OPERATIONS (OTHER)" horzTextAlign="center"/>
+
+			<textEditor left="35" top="36" width="350" height="260" field="baseOther"/>
+		</layout>
+	</scrollBox>
+</form>

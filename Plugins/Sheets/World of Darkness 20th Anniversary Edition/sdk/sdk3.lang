@@ -1,0 +1,11 @@
+﻿[pt]
+sdk3.err.ndb.functionAssign=Tentativa de armazenar uma função Lua na propriedade "%s", porém não é possível salvar funções em NodeDatabases
+sdk3.err.ndb.func.exportToXML.invalidPar=Não foi passado um objeto Nodo válido no parâmetro da função NDB.exportXML
+sdk3.err.ndb.func.importXML.invalidPar=Não foi passado um objeto Nodo válido no primeiro parâmetro da função NDB.importXML
+sdk3.err.ndb.func.copy.invalidPar2=Não foi passado um objeto Nodo válido no segundo parâmetro da função NDB.copy
+
+[en]
+sdk3.err.ndb.functionAssign=Attempting to store a Lua function in the property "%s", but it is not possible to store functions in NodeDatabases
+sdk3.err.ndb.func.exportToXML.invalidPar=A valid Node object was not passed in the NDB.exportXML's first parameter
+sdk3.err.ndb.func.importXML.invalidPar=A valid Node object was not passed in the NDB.importXML's first parameter
+sdk3.err.ndb.func.copy.invalidPar2=A valid Node object was not passed in the NDB.copy's second parameter

@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_15" align="client" theme="dark">
+	<!--
+		The VAMPIRE tab (user 2026-10-01, SPEC I188e/f, V530). It began as a copy of the Ghoul tab
+		(WoD20.11.lfm) without the DOMITOR box, and it edits the SAME fields: clanDisc_*, disc_*,
+		mainPath_*, secPath_*, ritual_*, bloodPool_*. The two are never open together - Vampire opens
+		when the game is Vampire, and Ghoul closes then (SPEC Q107.1) - so one set of data never shows
+		under two sets of limits.
+
+		Every NAME here carries a V after its role prefix: dynV, btnQV, edtV, ro_V, dragRow_V, plus
+		vdot and vcap. The import is pasted into the ROOT constructor (measured in the generated Lua),
+		so a name repeated from WoD20.11 would be the same self.<name> and xpFind would keep one of the
+		two (SPEC V530e). The role prefix stays first on purpose: the language traversal leaves dyn*
+		alone (SPEC V31), and so it does here.
+
+		No <script> and no dataLink. The painters are WoD20.11's and the root's and walk both infixes
+		(SPEC I188g); the two events at the bottom call those same painters for this tab's first show.
+		The WILLPOWER copy's dots (roVWp_) are WoD20.3's to paint - paintWillpower, through xpFind
+		(57th batch, SPEC I200e, V545c).
+
+		NINE dots a row, and the generation is the ceiling (SPEC I188h, V529): every live dot vdot has
+		a twin vcap on the same spot - no field, EMPTY, at 30%. renderVampCaps shows the live dot up to
+		the generation's level and the twin above it, so a dot out of reach reads as an empty faded dot,
+		like a trait never bought (54th batch, user 2026-10-02, SPEC I197b, V543), and takes no click.
+		The pool's twins are empty too (SPEC Q115.1). The main paths' read-only dots (ro_V) get the same twin. Nothing is erased: a dot bought above a ceiling that came down later stays
+		in the sheet, under its twin (SPEC V220c, V187). Rituals carry no dots, as on Ghoul (SPEC Q107.2).
+	-->
+	<scrollBox align="client">
+		<image name="themePaper15" align="client" style="stretch" hitTest="false" visible="false"/>
+
+		<!-- BLOOD POOL takes the left of the band the DOMITOR box left behind: fifty dots in FIVE rows of
+		     ten since the 46th batch (user 2026-10-01, SPEC I189f, V533), on the step and margins of the
+		     Ghoul's twenty (26 apart, 30 down, 24 from the edge) - so the box is 307 x 218 and the whole
+		     band grew to 218 with it. The generation caps it (SPEC I188c): bloodClick reads bloodCap, and
+		     the dots past the pool show their faded twin. The Main draws the same block (SPEC I189d).
+
+		     Since the 50th batch (user 2026-10-02, SPEC I193f) the rows are 25 down, the step of the
+		     ability rows. The Main's block keeps its 30 (SPEC Q111.2).
+
+		     Since the 53rd batch (user 2026-10-02, SPEC I196c, V533a) the box is TIGHT on the grid:
+		     first row 1 below the title, like every titled box (SPEC Q112.2), and the house foot of
+		     15 (SPEC V393) - 36 + 125 + 15 = 176, and the whole band came down to 176 with it.
+
+		     A vampire with the True Faith merit takes a band of 204 (user 2026-10-06, SPEC I214, V551):
+		     VTF_GEOM grows the box and moves the title and the hundred dots down 14, so the block stays
+		     centred. Without the merit GEOM_XML puts them back where they stand here. -->
+		<layout name="boxVPool" left="0" top="10" width="307" height="176">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblVPool" left="20" top="15" width="267" height="20" text="BLOOD POOL" horzTextAlign="center"/>
+			<imageCheckBox name="vdotbloodPool_1" left="24" top="36" width="25" height="25" field="bloodPool_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_1', self);"/>
+			<imageCheckBox name="vdotbloodPool_2" left="50" top="36" width="25" height="25" field="bloodPool_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_2', self);"/>
+			<imageCheckBox name="vdotbloodPool_3" left="76" top="36" width="25" height="25" field="bloodPool_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_3', self);"/>
+			<imageCheckBox name="vdotbloodPool_4" left="102" top="36" width="25" height="25" field="bloodPool_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_4', self);"/>
+			<imageCheckBox name="vdotbloodPool_5" left="128" top="36" width="25" height="25" field="bloodPool_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_5', self);"/>
+			<imageCheckBox name="vdotbloodPool_6" left="154" top="36" width="25" height="25" field="bloodPool_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_6', self);"/>
+			<imageCheckBox name="vdotbloodPool_7" left="180" top="36" width="25" height="25" field="bloodPool_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_7', self);"/>
+			<imageCheckBox name="vdotbloodPool_8" left="206" top="36" width="25" height="25" field="bloodPool_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_8', self);"/>
+			<imageCheckBox name="vdotbloodPool_9" left="232" top="36" width="25" height="25" field="bloodPool_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_9', self);"/>
+			<imageCheckBox name="vdotbloodPool_10" left="258" top="36" width="25" height="25" field="bloodPool_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_10', self);"/>
+			<imageCheckBox name="vdotbloodPool_11" left="24" top="61" width="25" height="25" field="bloodPool_11" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_11', self);"/>
+			<imageCheckBox name="vdotbloodPool_12" left="50" top="61" width="25" height="25" field="bloodPool_12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_12', self);"/>
+			<imageCheckBox name="vdotbloodPool_13" left="76" top="61" width="25" height="25" field="bloodPool_13" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_13', self);"/>
+			<imageCheckBox name="vdotbloodPool_14" left="102" top="61" width="25" height="25" field="bloodPool_14" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_14', self);"/>
+			<imageCheckBox name="vdotbloodPool_15" left="128" top="61" width="25" height="25" field="bloodPool_15" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_15', self);"/>
+			<imageCheckBox name="vdotbloodPool_16" left="154" top="61" width="25" height="25" field="bloodPool_16" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_16', self);"/>
+			<imageCheckBox name="vdotbloodPool_17" left="180" top="61" width="25" height="25" field="bloodPool_17" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_17', self);"/>
+			<imageCheckBox name="vdotbloodPool_18" left="206" top="61" width="25" height="25" field="bloodPool_18" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_18', self);"/>
+			<imageCheckBox name="vdotbloodPool_19" left="232" top="61" width="25" height="25" field="bloodPool_19" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_19', self);"/>
+			<imageCheckBox name="vdotbloodPool_20" left="258" top="61" width="25" height="25" field="bloodPool_20" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_20', self);"/>
+			<imageCheckBox name="vdotbloodPool_21" left="24" top="86" width="25" height="25" field="bloodPool_21" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_21', self);"/>
+			<imageCheckBox name="vdotbloodPool_22" left="50" top="86" width="25" height="25" field="bloodPool_22" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_22', self);"/>
+			<imageCheckBox name="vdotbloodPool_23" left="76" top="86" width="25" height="25" field="bloodPool_23" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_23', self);"/>
+			<imageCheckBox name="vdotbloodPool_24" left="102" top="86" width="25" height="25" field="bloodPool_24" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_24', self);"/>
+			<imageCheckBox name="vdotbloodPool_25" left="128" top="86" width="25" height="25" field="bloodPool_25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_25', self);"/>
+			<imageCheckBox name="vdotbloodPool_26" left="154" top="86" width="25" height="25" field="bloodPool_26" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_26', self);"/>
+			<imageCheckBox name="vdotbloodPool_27" left="180" top="86" width="25" height="25" field="bloodPool_27" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_27', self);"/>
+			<imageCheckBox name="vdotbloodPool_28" left="206" top="86" width="25" height="25" field="bloodPool_28" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_28', self);"/>
+			<imageCheckBox name="vdotbloodPool_29" left="232" top="86" width="25" height="25" field="bloodPool_29" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_29', self);"/>
+			<imageCheckBox name="vdotbloodPool_30" left="258" top="86" width="25" height="25" field="bloodPool_30" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_30', self);"/>
+			<imageCheckBox name="vdotbloodPool_31" left="24" top="111" width="25" height="25" field="bloodPool_31" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_31', self);"/>
+			<imageCheckBox name="vdotbloodPool_32" left="50" top="111" width="25" height="25" field="bloodPool_32" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_32', self);"/>
+			<imageCheckBox name="vdotbloodPool_33" left="76" top="111" width="25" height="25" field="bloodPool_33" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_33', self);"/>
+			<imageCheckBox name="vdotbloodPool_34" left="102" top="111" width="25" height="25" field="bloodPool_34" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_34', self);"/>
+			<imageCheckBox name="vdotbloodPool_35" left="128" top="111" width="25" height="25" field="bloodPool_35" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_35', self);"/>
+			<imageCheckBox name="vdotbloodPool_36" left="154" top="111" width="25" height="25" field="bloodPool_36" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_36', self);"/>
+			<imageCheckBox name="vdotbloodPool_37" left="180" top="111" width="25" height="25" field="bloodPool_37" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_37', self);"/>
+			<imageCheckBox name="vdotbloodPool_38" left="206" top="111" width="25" height="25" field="bloodPool_38" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_38', self);"/>
+			<imageCheckBox name="vdotbloodPool_39" left="232" top="111" width="25" height="25" field="bloodPool_39" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_39', self);"/>
+			<imageCheckBox name="vdotbloodPool_40" left="258" top="111" width="25" height="25" field="bloodPool_40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_40', self);"/>
+			<imageCheckBox name="vdotbloodPool_41" left="24" top="136" width="25" height="25" field="bloodPool_41" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_41', self);"/>
+			<imageCheckBox name="vdotbloodPool_42" left="50" top="136" width="25" height="25" field="bloodPool_42" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_42', self);"/>
+			<imageCheckBox name="vdotbloodPool_43" left="76" top="136" width="25" height="25" field="bloodPool_43" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_43', self);"/>
+			<imageCheckBox name="vdotbloodPool_44" left="102" top="136" width="25" height="25" field="bloodPool_44" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_44', self);"/>
+			<imageCheckBox name="vdotbloodPool_45" left="128" top="136" width="25" height="25" field="bloodPool_45" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_45', self);"/>
+			<imageCheckBox name="vdotbloodPool_46" left="154" top="136" width="25" height="25" field="bloodPool_46" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_46', self);"/>
+			<imageCheckBox name="vdotbloodPool_47" left="180" top="136" width="25" height="25" field="bloodPool_47" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_47', self);"/>
+			<imageCheckBox name="vdotbloodPool_48" left="206" top="136" width="25" height="25" field="bloodPool_48" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_48', self);"/>
+			<imageCheckBox name="vdotbloodPool_49" left="232" top="136" width="25" height="25" field="bloodPool_49" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_49', self);"/>
+			<imageCheckBox name="vdotbloodPool_50" left="258" top="136" width="25" height="25" field="bloodPool_50" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_50', self);"/>
+			<imageCheckBox name="vcapbloodPool_1" left="24" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_2" left="50" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_3" left="76" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_4" left="102" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_5" left="128" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_6" left="154" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_7" left="180" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_8" left="206" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_9" left="232" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_10" left="258" top="36" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_11" left="24" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_12" left="50" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_13" left="76" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_14" left="102" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_15" left="128" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_16" left="154" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_17" left="180" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_18" left="206" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_19" left="232" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_20" left="258" top="61" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_21" left="24" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_22" left="50" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_23" left="76" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_24" left="102" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_25" left="128" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_26" left="154" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_27" left="180" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_28" left="206" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_29" left="232" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_30" left="258" top="86" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_31" left="24" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_32" left="50" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_33" left="76" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_34" left="102" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_35" left="128" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_36" left="154" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_37" left="180" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_38" left="206" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_39" left="232" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_40" left="258" top="111" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_41" left="24" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_42" left="50" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_43" left="76" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_44" left="102" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_45" left="128" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_46" left="154" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_47" left="180" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_48" left="206" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_49" left="232" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="vcapbloodPool_50" left="258" top="136" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+		</layout>
+
+		<!-- The rest of the band follows the pool at 176 since the 53rd batch (user 2026-10-02, SPEC
+		     I196, V533b): every box is as tall as the pool, and the weakness box is the one stretched
+		     so the band still closes on 1408, the third column's edge. FIVE columns since the 57th
+		     batch (user 2026-10-02, SPEC I200f, V533b): pool, the stack, WILLPOWER, the weakness and
+		     experience.
+
+		     ONE STACK since the 53rd batch: the second column is two boxes, 85 + 5 + 86, on exactly
+		     the room the one box had (SPEC V533b). The blood a turn on top and MAX TRAIT LEVEL under
+		     it - the generation's ceiling, the same number that locks the Disciplines and, for a
+		     vampire, the attributes and abilities too; both come off vampGen() through renderVampCaps
+		     (SPEC V529b, V536a). The titles that cannot hold one line at these widths wrap to two:
+		     wordWrap, centred in a rect tall enough for two lines (SPEC V16).
+
+		     In both boxes title and number are ONE object centred in the box (user 2026-10-02, SPEC
+		     I204b, V547), and since the 63rd batch (user 2026-10-03, SPEC I206) the number sits 70%
+		     closer to its title AS SEEN: the rects overlap by 8 (gap -8), the letters do not - a 22
+		     number in its 30 rect leaves ~9 blank above the digits and a title leaves ~4-5 under its
+		     last line, so ~6 shows between them where ~19 did. Font-model numbers, not measured -
+		     the screen decides (SPEC Q123.3).
+
+		     With True Faith (SPEC I214d, B198) the stack is 113 + 5 + 86, row for row with WILLPOWER and
+		     TRUE FAITH beside it: BLOOD PER TURN takes the 28 and its object moves down 14; MAX TRAIT
+		     LEVEL only moves, so renderVampCaps keeps writing the same numbers inside it. -->
+		<layout name="boxVTurn" left="312" top="10" width="200" height="85">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblVTurn" left="20" top="21" width="160" height="20" text="BLOOD PER TURN" horzTextAlign="center"/>
+			<label name="dynBloodTurn" left="20" top="33" width="160" height="30" fontSize="22" horzTextAlign="center" vertTextAlign="center"/>
+		</layout>
+
+		<layout name="boxVMaxT" left="312" top="100" width="200" height="86">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblMaxTraitV" left="20" top="15" width="160" height="34" text="MAX TRAIT LEVEL" wordWrap="true" horzTextAlign="center" vertTextAlign="center"/>
+			<!-- Both numbers are 22 since the 53rd batch (SPEC I196d, Q114.3): a 30 rect holds the ~29
+			     line. The title is two lines in pt, so this is pt's object: a 34 rect with the text
+			     centred in it, 34 - 8 + 30 = 56 in 86, 15 above and under (SPEC I206c). In en it is one
+			     line, and renderVampCaps on the root gives it BLOOD PER TURN's 20 rect and re-centres
+			     both off MAXT_GEOM (user 2026-10-03, SPEC I207) - named for that, not dyn* so
+			     applyLanguage still translates it. -->
+			<label name="dynMaxTraitV" left="20" top="41" width="160" height="30" fontSize="22" horzTextAlign="center" vertTextAlign="center"/>
+		</layout>
+
+		<!-- WILLPOWER on the Vampire tab (user 2026-10-02, SPEC I200c, V545b), the Combat tab's box:
+		     read-only dots painted from willpower_1..10 by WoD20.3's paintWillpower, over ten boxes
+		     that own willpower_c1..c10 - a declared mirror of the Main's, the third (SPEC V36). Names
+		     carry the V like every name here (SPEC V530e). 290 is the dots' 250 and the house's 20 a
+		     side (SPEC Q117.2); as tall as the band; the boxes 2 under the dots as on the Main and the
+		     Combat tab (SPEC V545a). Title, the Main's 8 and the 52 of dots and boxes are ONE object
+		     centred in the box since the 61st batch (user 2026-10-02, SPEC I204c, V547): 20 + 8 + 52 =
+		     80 in 176, 48 above and below.
+
+		     With True Faith (user 2026-10-06, SPEC I214) VTF_GEOM makes this box the Main's 113 and 358
+		     wide - TRUE FAITH's width under it - title at 16 and the dots at 54,44: the same 16 above
+		     and 17 under as the Main's boxWillpower. -->
+		<layout name="boxVWillpower" left="517" top="10" width="290" height="176">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<template name="VWillpowerMirror">
+				<imageCheckBox name="roVWp_1" left="0" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="roVWp_2" left="25" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="roVWp_3" left="50" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="roVWp_4" left="75" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="roVWp_5" left="100" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="roVWp_6" left="125" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="roVWp_7" left="150" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="roVWp_8" left="175" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="roVWp_9" left="200" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+				<imageCheckBox name="roVWp_10" left="225" top="0" width="25" height="25" autoChange="false" opacity="0.40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png"/>
+
+				<checkBox left="0" top="27" width="25" height="25" field="willpower_c1" onClick="wpSpentClick('willpower_c1');" onChange="wpSpentChange('willpower_c1');"/>
+				<checkBox left="25" top="27" width="25" height="25" field="willpower_c2" onClick="wpSpentClick('willpower_c2');" onChange="wpSpentChange('willpower_c2');"/>
+				<checkBox left="50" top="27" width="25" height="25" field="willpower_c3" onClick="wpSpentClick('willpower_c3');" onChange="wpSpentChange('willpower_c3');"/>
+				<checkBox left="75" top="27" width="25" height="25" field="willpower_c4" onClick="wpSpentClick('willpower_c4');" onChange="wpSpentChange('willpower_c4');"/>
+				<checkBox left="100" top="27" width="25" height="25" field="willpower_c5" onClick="wpSpentClick('willpower_c5');" onChange="wpSpentChange('willpower_c5');"/>
+				<checkBox left="125" top="27" width="25" height="25" field="willpower_c6" onClick="wpSpentClick('willpower_c6');" onChange="wpSpentChange('willpower_c6');"/>
+				<checkBox left="150" top="27" width="25" height="25" field="willpower_c7" onClick="wpSpentClick('willpower_c7');" onChange="wpSpentChange('willpower_c7');"/>
+				<checkBox left="175" top="27" width="25" height="25" field="willpower_c8" onClick="wpSpentClick('willpower_c8');" onChange="wpSpentChange('willpower_c8');"/>
+				<checkBox left="200" top="27" width="25" height="25" field="willpower_c9" onClick="wpSpentClick('willpower_c9');" onChange="wpSpentChange('willpower_c9');"/>
+				<checkBox left="225" top="27" width="25" height="25" field="willpower_c10" onClick="wpSpentClick('willpower_c10');" onChange="wpSpentChange('willpower_c10');"/>
+			</template>
+			<label name="lblVWillpower" left="20" top="48" width="250" height="20" text="WILLPOWER" horzTextAlign="center"/>
+			<layout name="bodyVWpDots" left="20" top="76" width="250" height="52">
+				<VWillpowerMirror/>
+			</layout>
+		</layout>
+
+		<!-- TRUE FAITH under WILLPOWER, for a vampire with the True Faith merit only (user 2026-10-06,
+		     SPEC I214c, V551): hidden here, and renderGameMode shows it when vampFaith() says so. The
+		     row is the Numina tab's (WoD20.7) x for x in the same 358, the title 16 + 20 + 8 above it,
+		     16 above and 17 under like the Main's WILLPOWER. faith and faith_1..5 are a declared mirror
+		     of the Numina's (SPEC V36). The dots are FREE here (user, SPEC Q127.3): poolClick marks
+		     them without a price, and xpLedgerRows leaves True Faith out of a vampire's ledger. -->
+		<layout name="boxVFaith" left="517" top="128" width="358" height="86" visible="false">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="16" width="318" height="20" text="TRUE FAITH" horzTextAlign="center"/>
+
+			<button name="btnQVFaith" left="20" top="46" width="20" height="20" text="?" onClick="popOpen(self, 'Numina', 'True Faith', nil, nil);"/>
+			<label left="45" top="44" width="52" height="24" text="Religion"/>
+			<edit left="102" top="44" width="90" height="24" field="faith" fontSize="12"/>
+			<imageCheckBox left="197" top="44" width="25" height="25" field="faith_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="poolClick('faith_', 5, 'faith_1', nil);"/>
+			<imageCheckBox left="226" top="44" width="25" height="25" field="faith_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="poolClick('faith_', 5, 'faith_2', nil);"/>
+			<imageCheckBox left="255" top="44" width="25" height="25" field="faith_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="poolClick('faith_', 5, 'faith_3', nil);"/>
+			<imageCheckBox left="284" top="44" width="25" height="25" field="faith_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="poolClick('faith_', 5, 'faith_4', nil);"/>
+			<imageCheckBox left="313" top="44" width="25" height="25" field="faith_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="poolClick('faith_', 5, 'faith_5', nil);"/>
+		</layout>
+
+		<!-- The weakness of the vampire's CLAN since the 47th batch (SPEC I190j, user 2026-10-01): the
+		     clan picked on the Main writes clanFamily, and renderRevWeakness hands this label the clan's
+		     Weakness paragraph out of descClan_<lang>.lua. The Ghoul tab's copy keeps the revenant
+		     FAMILY's (SPEC Q107.5).
+
+		     At 176 tall the longest paragraph - Gangrel, 949 characters in pt - does not fit at 12,
+		     so the text is 11 since the 53rd batch (SPEC I196e, Q114.4).
+
+		     Since the 57th batch (user 2026-10-02, SPEC I200d, Q117.3, V536c) the box gives 295 to
+		     WILLPOWER and the text SCROLLS, built like the note tooltip (noteTip): a scrollBox with an
+		     autoSized, word-wrapped label in it, in three bands kept apart whether the bar shows or not -
+		     the text 24..396, a gap of 8, the bar's 16 at 404..420 - so the text never runs
+		     under the bar and the bar never covers text. 24 = 8 + 16 keeps the column centred in the
+		     box. renderRevWeakness centres a text that fits and leaves one that scrolls at the top.
+
+		     With True Faith (SPEC I214d) the box gives 68 more to WILLPOWER and takes the band's 28:
+		     392 x 204, the scroll 352 x 149 and the text 304 - the same three bands, 24 + 304 + 8 + 16. -->
+		<layout name="boxVWeak" left="812" top="10" width="460" height="176">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblVWeak" left="20" top="15" width="420" height="20" text="CLAN/BLOODLINE WEAKNESS" horzTextAlign="center"/>
+
+			<scrollBox name="weakScrollV" left="20" top="40" width="420" height="121">
+				<label name="dynRevWeaknessV" left="24" top="0" width="372" height="20" wordWrap="true" autoSize="true" fontSize="11" horzTextAlign="center"/>
+			</scrollBox>
+		</layout>
+
+		<!-- Current, mirroring the Progress tab's (SPEC I191g/h, user 2026-10-01). Spent left this box
+		     in the 61st batch (user 2026-10-02, SPEC I204f) and lives on the Progress tab only.
+
+		     As tall as the pool (SPEC I196f): the title is two lines in en and pt, so its rect is 34
+		     with the text centred in it, 5 above the field - 34 + 5 + 25 = 64 in 176, one object
+		     centred in the box (SPEC V547). With True Faith the box is 204 and its three move down 14
+		     (SPEC I214d). -->
+		<layout name="boxVXP" left="1277" top="10" width="131" height="176">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblVXP" left="20" top="56" width="91" height="34" text="CURRENT EXPERIENCE" wordWrap="true" horzTextAlign="center" vertTextAlign="center"/>
+
+			<rectangle name="bgCurrentXPVampire" left="20" top="95" width="91" height="25" color="#0A0A0A" xradius="6" yradius="6" cornerType="innerRound" hitTest="false"/>
+			<edit name="edtCurrentXPVampire" type="number" decimalPlaces="0" left="20" top="95" width="91" height="25" horzTextAlign="center" vertTextAlign="center" fontSize="14" onUserChange="xpSetCurrent(self, self.edtCurrentXPVampire.text);" transparent="true"/>
+		</layout>
+
+		<!-- The three columns stand at 0, 496 and 967, 5 under the band: the band
+		     above them is 176 since the 53rd batch (SPEC I196g, V533c), so they stand at 191 and the
+		     tab closes on 773. A row of nine is 451 since the 111th batch: the ? at
+		     0, the name 171 wide at 25, the ! at 201 (SPEC I255e), the dots from 226 to 451. The Disciplines took their 25
+		     from RITUALS, which is 441 now, and the tab still closes on 1408.
+
+		     Each column is exactly as tall as what it holds since the 50th batch (user 2026-10-02, SPEC
+		     I193h, V539, B193) - the copy of the Ghoul tab brought 680, and the scroll box scrolled the
+		     79 nobody could see. 582 since the 61st batch (user 2026-10-02, SPEC I204d, Q121.2): two
+		     boxes of 151 + 5 + 426, fifteen rows with the 15 foot, and RITUALS down to 21 rows (the
+		     27th left this tab; the field and the Ghoul tab's row stay) with a 21 foot.
+
+		     With True Faith the band is 204 and the three stand at 219, the tab closing on 801 (SPEC
+		     I214d). -->
+		<layout name="boxVDisc" left="0" top="191" width="491" height="582">
+			<template name="VDiscRow">
+				<button name="btnQV$(field)" left="0" top="2" width="20" height="20" text="?" onClick="popOpen(self, 'Disc', sheet['$(field)'], nil, '$(field)');"/>
+				<button name="dynV$(field)" left="25" top="0" width="171" height="25" fontSize="12" text="Select Discipline" onClick="mfOpen(self, '$(field)', 'disc', 'Disc');" onMenu="mfMenuOpen('$(field)', 'disc');" onStartDrag="rowDragStart(self, drag, x, y, event, 'disc', '$(field)');"/>
+				<edit name="edtV$(field)" left="25" top="0" width="171" height="25" field="$(field)" visible="false" enabled="false"/>
+				<button name="btnVarV$(field)" left="201" top="2" width="20" height="20" text="!" visible="false" onClick="dvOpen(self, '$(field)');"/>
+				<imageCheckBox name="vdot$(field)_1" left="226" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_1', self);"/>
+				<imageCheckBox name="vdot$(field)_2" left="251" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);"/>
+				<imageCheckBox name="vdot$(field)_3" left="276" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);"/>
+				<imageCheckBox name="vdot$(field)_4" left="301" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);"/>
+				<imageCheckBox name="vdot$(field)_5" left="326" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);"/>
+				<imageCheckBox name="vdot$(field)_6" left="351" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_6', self);"/>
+				<imageCheckBox name="vdot$(field)_7" left="376" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_7', self);"/>
+				<imageCheckBox name="vdot$(field)_8" left="401" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_8', self);"/>
+				<imageCheckBox name="vdot$(field)_9" left="426" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_9', self);"/>
+				<imageCheckBox name="vcap$(field)_1" left="226" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_2" left="251" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_3" left="276" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_4" left="301" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_5" left="326" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_6" left="351" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_7" left="376" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_8" left="401" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_9" left="426" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</template>
+
+			<layout left="0" top="0" width="491" height="151">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="451" height="20" text="CLAN DISCIPLINES" horzTextAlign="center"/>
+				<layout left="20" top="36" width="451" height="25">
+					<VDiscRow field="clanDisc_1"/>
+				</layout>
+				<layout left="20" top="61" width="451" height="25">
+					<VDiscRow field="clanDisc_2"/>
+				</layout>
+				<layout left="20" top="86" width="451" height="25">
+					<VDiscRow field="clanDisc_3"/>
+				</layout>
+				<layout left="20" top="111" width="451" height="25">
+					<VDiscRow field="clanDisc_4"/>
+				</layout>
+			</layout>
+
+			<layout left="0" top="156" width="491" height="426">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="451" height="20" text="DISCIPLINES" horzTextAlign="center"/>
+				<layout name="dragRow_Vdisc_1" left="20" top="36" width="451" height="25">
+					<VDiscRow field="disc_1"/>
+				</layout>
+				<layout name="dragRow_Vdisc_2" left="20" top="61" width="451" height="25">
+					<VDiscRow field="disc_2"/>
+				</layout>
+				<layout name="dragRow_Vdisc_3" left="20" top="86" width="451" height="25">
+					<VDiscRow field="disc_3"/>
+				</layout>
+				<layout name="dragRow_Vdisc_4" left="20" top="111" width="451" height="25">
+					<VDiscRow field="disc_4"/>
+				</layout>
+				<layout name="dragRow_Vdisc_5" left="20" top="136" width="451" height="25">
+					<VDiscRow field="disc_5"/>
+				</layout>
+				<layout name="dragRow_Vdisc_6" left="20" top="161" width="451" height="25">
+					<VDiscRow field="disc_6"/>
+				</layout>
+				<layout name="dragRow_Vdisc_7" left="20" top="186" width="451" height="25">
+					<VDiscRow field="disc_7"/>
+				</layout>
+				<layout name="dragRow_Vdisc_8" left="20" top="211" width="451" height="25">
+					<VDiscRow field="disc_8"/>
+				</layout>
+				<layout name="dragRow_Vdisc_9" left="20" top="236" width="451" height="25">
+					<VDiscRow field="disc_9"/>
+				</layout>
+				<layout name="dragRow_Vdisc_10" left="20" top="261" width="451" height="25">
+					<VDiscRow field="disc_10"/>
+				</layout>
+				<layout name="dragRow_Vdisc_11" left="20" top="286" width="451" height="25">
+					<VDiscRow field="disc_11"/>
+				</layout>
+				<layout name="dragRow_Vdisc_12" left="20" top="311" width="451" height="25">
+					<VDiscRow field="disc_12"/>
+				</layout>
+				<layout name="dragRow_Vdisc_13" left="20" top="336" width="451" height="25">
+					<VDiscRow field="disc_13"/>
+				</layout>
+				<layout name="dragRow_Vdisc_14" left="20" top="361" width="451" height="25">
+					<VDiscRow field="disc_14"/>
+				</layout>
+				<layout name="dragRow_Vdisc_15" left="20" top="386" width="451" height="25">
+					<VDiscRow field="disc_15"/>
+				</layout>
+			</layout>
+		</layout>
+
+		<layout name="boxVPaths" left="496" top="191" width="466" height="582">
+			<template name="VMainPathRow">
+				<button name="btnQV$(field)" left="0" top="2" width="20" height="20" text="?" onClick="popOpen(self, 'Path', sheet['$(field)'], nil, '$(field)');"/>
+				<button name="dynV$(field)" left="25" top="0" width="171" height="25" fontSize="12" text="Select Main Path" onClick="mfOpen(self, '$(field)', 'mainPath', 'Path');" onMenu="mfMenuOpen('$(field)', 'mainPath');" onStartDrag="rowDragStart(self, drag, x, y, event, 'mainPath', '$(field)');"/>
+				<edit name="edtV$(field)" left="25" top="0" width="171" height="25" field="$(field)" visible="false" enabled="false"/>
+				<imageCheckBox name="ro_V$(field)_1" left="201" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_V$(field)_2" left="226" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_V$(field)_3" left="251" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_V$(field)_4" left="276" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_V$(field)_5" left="301" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_V$(field)_6" left="326" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_V$(field)_7" left="351" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_V$(field)_8" left="376" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="ro_V$(field)_9" left="401" top="0" width="25" height="25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.40"/>
+				<imageCheckBox name="vcap$(field)_1" left="201" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_2" left="226" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_3" left="251" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_4" left="276" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_5" left="301" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_6" left="326" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_7" left="351" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_8" left="376" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_9" left="401" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</template>
+
+			<template name="VSecPathRow">
+				<button name="btnQV$(field)" left="0" top="2" width="20" height="20" text="?" onClick="popOpen(self, 'Path', sheet['$(field)'], nil, '$(field)');"/>
+				<button name="dynV$(field)" left="25" top="0" width="171" height="25" fontSize="12" text="Select Secondary Path" onClick="mfOpen(self, '$(field)', 'secPath', 'Path');" onMenu="mfMenuOpen('$(field)', 'secPath');" onStartDrag="rowDragStart(self, drag, x, y, event, 'secPath', '$(field)');"/>
+				<edit name="edtV$(field)" left="25" top="0" width="171" height="25" field="$(field)" visible="false" enabled="false"/>
+				<imageCheckBox name="vdot$(field)_1" left="201" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_1', self);"/>
+				<imageCheckBox name="vdot$(field)_2" left="226" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);"/>
+				<imageCheckBox name="vdot$(field)_3" left="251" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);"/>
+				<imageCheckBox name="vdot$(field)_4" left="276" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);"/>
+				<imageCheckBox name="vdot$(field)_5" left="301" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);"/>
+				<imageCheckBox name="vdot$(field)_6" left="326" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_6', self);"/>
+				<imageCheckBox name="vdot$(field)_7" left="351" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_7', self);"/>
+				<imageCheckBox name="vdot$(field)_8" left="376" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_8', self);"/>
+				<imageCheckBox name="vdot$(field)_9" left="401" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_9', self);"/>
+				<imageCheckBox name="vcap$(field)_1" left="201" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_2" left="226" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_3" left="251" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_4" left="276" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_5" left="301" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_6" left="326" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_7" left="351" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_8" left="376" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="vcap$(field)_9" left="401" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</template>
+
+			<layout left="0" top="0" width="466" height="151">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="426" height="20" text="MAIN PATHS" horzTextAlign="center"/>
+				<layout name="dragRow_VmainPath_1" left="20" top="36" width="426" height="25">
+					<VMainPathRow field="mainPath_1"/>
+				</layout>
+				<layout name="dragRow_VmainPath_2" left="20" top="61" width="426" height="25">
+					<VMainPathRow field="mainPath_2"/>
+				</layout>
+				<layout name="dragRow_VmainPath_3" left="20" top="86" width="426" height="25">
+					<VMainPathRow field="mainPath_3"/>
+				</layout>
+				<layout name="dragRow_VmainPath_4" left="20" top="111" width="426" height="25">
+					<VMainPathRow field="mainPath_4"/>
+				</layout>
+			</layout>
+
+			<layout left="0" top="156" width="466" height="426">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="426" height="20" text="SECONDARY PATHS" horzTextAlign="center"/>
+				<layout name="dragRow_VsecPath_1" left="20" top="36" width="426" height="25">
+					<VSecPathRow field="secPath_1"/>
+				</layout>
+				<layout name="dragRow_VsecPath_2" left="20" top="61" width="426" height="25">
+					<VSecPathRow field="secPath_2"/>
+				</layout>
+				<layout name="dragRow_VsecPath_3" left="20" top="86" width="426" height="25">
+					<VSecPathRow field="secPath_3"/>
+				</layout>
+				<layout name="dragRow_VsecPath_4" left="20" top="111" width="426" height="25">
+					<VSecPathRow field="secPath_4"/>
+				</layout>
+				<layout name="dragRow_VsecPath_5" left="20" top="136" width="426" height="25">
+					<VSecPathRow field="secPath_5"/>
+				</layout>
+				<layout name="dragRow_VsecPath_6" left="20" top="161" width="426" height="25">
+					<VSecPathRow field="secPath_6"/>
+				</layout>
+				<layout name="dragRow_VsecPath_7" left="20" top="186" width="426" height="25">
+					<VSecPathRow field="secPath_7"/>
+				</layout>
+				<layout name="dragRow_VsecPath_8" left="20" top="211" width="426" height="25">
+					<VSecPathRow field="secPath_8"/>
+				</layout>
+				<layout name="dragRow_VsecPath_9" left="20" top="236" width="426" height="25">
+					<VSecPathRow field="secPath_9"/>
+				</layout>
+				<layout name="dragRow_VsecPath_10" left="20" top="261" width="426" height="25">
+					<VSecPathRow field="secPath_10"/>
+				</layout>
+				<layout name="dragRow_VsecPath_11" left="20" top="286" width="426" height="25">
+					<VSecPathRow field="secPath_11"/>
+				</layout>
+				<layout name="dragRow_VsecPath_12" left="20" top="311" width="426" height="25">
+					<VSecPathRow field="secPath_12"/>
+				</layout>
+				<layout name="dragRow_VsecPath_13" left="20" top="336" width="426" height="25">
+					<VSecPathRow field="secPath_13"/>
+				</layout>
+				<layout name="dragRow_VsecPath_14" left="20" top="361" width="426" height="25">
+					<VSecPathRow field="secPath_14"/>
+				</layout>
+				<layout name="dragRow_VsecPath_15" left="20" top="386" width="426" height="25">
+					<VSecPathRow field="secPath_15"/>
+				</layout>
+			</layout>
+		</layout>
+
+		<layout name="boxVRituals" left="967" top="191" width="441" height="582">
+			<template name="VRitualRow">
+				<button name="btnQV$(field)" left="0" top="2" width="20" height="20" text="?" onClick="popOpen(self, 'Ritual', sheet['$(field)'], nil, '$(field)');"/>
+				<button name="dynV$(field)" left="25" top="0" width="376" height="25" text="Select Ritual" onClick="mfOpen(self, '$(field)', 'ritual', 'Ritual');" onMenu="mfMenuOpen('$(field)', 'ritual');" onStartDrag="rowDragStart(self, drag, x, y, event, 'ritual', '$(field)');"/>
+				<edit name="edtV$(field)" left="25" top="0" width="376" height="25" field="$(field)" visible="false" enabled="false"/>
+			</template>
+
+			<layout left="0" top="0" width="441" height="582">
+				<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+				<label left="20" top="15" width="401" height="20" text="RITUALS" horzTextAlign="center"/>
+				<layout name="dragRow_Vritual_1" left="20" top="36" width="401" height="25">
+					<VRitualRow field="ritual_1"/>
+				</layout>
+				<layout name="dragRow_Vritual_2" left="20" top="61" width="401" height="25">
+					<VRitualRow field="ritual_2"/>
+				</layout>
+				<layout name="dragRow_Vritual_3" left="20" top="86" width="401" height="25">
+					<VRitualRow field="ritual_3"/>
+				</layout>
+				<layout name="dragRow_Vritual_4" left="20" top="111" width="401" height="25">
+					<VRitualRow field="ritual_4"/>
+				</layout>
+				<layout name="dragRow_Vritual_5" left="20" top="136" width="401" height="25">
+					<VRitualRow field="ritual_5"/>
+				</layout>
+				<layout name="dragRow_Vritual_6" left="20" top="161" width="401" height="25">
+					<VRitualRow field="ritual_6"/>
+				</layout>
+				<layout name="dragRow_Vritual_7" left="20" top="186" width="401" height="25">
+					<VRitualRow field="ritual_7"/>
+				</layout>
+				<layout name="dragRow_Vritual_8" left="20" top="211" width="401" height="25">
+					<VRitualRow field="ritual_8"/>
+				</layout>
+				<layout name="dragRow_Vritual_9" left="20" top="236" width="401" height="25">
+					<VRitualRow field="ritual_9"/>
+				</layout>
+				<layout name="dragRow_Vritual_10" left="20" top="261" width="401" height="25">
+					<VRitualRow field="ritual_10"/>
+				</layout>
+				<layout name="dragRow_Vritual_11" left="20" top="286" width="401" height="25">
+					<VRitualRow field="ritual_11"/>
+				</layout>
+				<layout name="dragRow_Vritual_12" left="20" top="311" width="401" height="25">
+					<VRitualRow field="ritual_12"/>
+				</layout>
+				<layout name="dragRow_Vritual_13" left="20" top="336" width="401" height="25">
+					<VRitualRow field="ritual_13"/>
+				</layout>
+				<layout name="dragRow_Vritual_14" left="20" top="361" width="401" height="25">
+					<VRitualRow field="ritual_14"/>
+				</layout>
+				<layout name="dragRow_Vritual_15" left="20" top="386" width="401" height="25">
+					<VRitualRow field="ritual_15"/>
+				</layout>
+				<layout name="dragRow_Vritual_16" left="20" top="411" width="401" height="25">
+					<VRitualRow field="ritual_16"/>
+				</layout>
+				<layout name="dragRow_Vritual_17" left="20" top="436" width="401" height="25">
+					<VRitualRow field="ritual_17"/>
+				</layout>
+				<layout name="dragRow_Vritual_18" left="20" top="461" width="401" height="25">
+					<VRitualRow field="ritual_18"/>
+				</layout>
+				<layout name="dragRow_Vritual_19" left="20" top="486" width="401" height="25">
+					<VRitualRow field="ritual_19"/>
+				</layout>
+				<layout name="dragRow_Vritual_20" left="20" top="511" width="401" height="25">
+					<VRitualRow field="ritual_20"/>
+				</layout>
+				<layout name="dragRow_Vritual_26" left="20" top="536" width="401" height="25">
+					<VRitualRow field="ritual_26"/>
+				</layout>
+			</layout>
+		</layout>
+	</scrollBox>
+
+	<!-- The first paint of THIS tab (SPEC I188f/g). The painters already walk both infixes and their
+	     dataLinks live on WoD20.11; these two events cover a sheet whose Ghoul tab never shows. -->
+	<event name="onShow">
+		renderXPBoxes(self);
+		renderDiscButtons(self);
+		renderPathButtons(self);
+		renderRitualButtons(self);
+		renderRevWeakness(self);
+		renderVampCaps(self);
+		renderCombatTraits(self);
+	</event>
+
+	<event name="onNodeReady">
+		renderMainPaths(self);
+		renderVampCaps(self);
+	</event>
+</form>

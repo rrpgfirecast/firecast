@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_2" align="client" theme="dark">
+	<scrollBox align="client">
+		<!-- Theme backdrop, same arrangement as WoD20.1 (SPEC T158, V56, V57). -->
+		<image name="themePaper2" align="client" style="stretch" hitTest="false" visible="false"/>
+		<!--
+			Traits grid (SPEC T45). Numina moved to the Powers tab, so merits/flaws and
+			derangements moved up into the space they left. Everything closes on x=1362.
+
+			  BACKGROUNDS 0..384      y 0..679
+			  MERITS 389..1132        y   0..337      DERANGEMENTS 1137..1362   y   0..337
+			  FLAWS  389..1132        y 342..679      OTHER        1137..1362   y 342..679
+
+			47th batch (SPEC I190, user 2026-10-01): that is the MORTAL tab. A vampire's backgrounds
+			have NINE dots, so renderGameMode on the root widens BACKGROUNDS by four dots (484) and
+			moves the other four boxes 100 right - the tab then closes on 1462 (VAMP_GEOM, SPEC
+			V534e, Q109.9). The title and the 21 rows carry anchors="left top right" and stretch
+			with the box; dots 6..9 are authored hidden and only a vampire sees them.
+
+			42nd batch (SPEC I186), on the user's ask: BOOK and PAGE doubled (117 -> 234, 45 -> 90)
+			and COST grew half (50 -> 75), so a row closes on 703 and MERITS/FLAWS on 743. The nine
+			note boxes on the right (ALLIES, MENTOR, RESOURCES, GUIDES, CONTACTS, FAME, ARTIFACTS,
+			INFLUENCE, BASE OF OPERATIONS) left; their fields are ORPHANS, so a saved sheet keeps the
+			text (SPEC I3, V362b). OTHER grew up to where ARTIFACTS opened (342) and both survivors
+			sit 5px right of the tables, the twins of MERITS and FLAWS on the Y axis (SPEC V392b).
+			The paragraphs below are the history of the older layouts.
+			25th batch (SPEC I170g): BACKGROUNDS grew 20 for the ! column between picker and dots,
+			and MERITS/FLAWS grew 20 for theirs between name and BOOK - the widest name with its (N) cost
+			needs all 264 (SPEC V349c, B171). Every box right of each moved with it; the tab closes on 1635.
+
+			2026-09-02, T901 and T902 (SPEC I134j, I134k): MERITS and FLAWS are ONE height and FLAWS
+			closes where BACKGROUNDS closes; every box right of them is ONE height with DERANGEMENTS
+			the single exception; and all three right-hand columns end on that same line. Three
+			closing lines for the whole tab - 345, 520, 695 - where there used to be six.
+
+			The floor went 693 -> 695 and that is ARITHMETIC, not taste, which is why 2px show up in
+			a round that changed no content: MERITS = FLAWS closing on BACKGROUNDS wants 2h+5 = floor,
+			and the ten right-hand boxes on one height want 4h+15 = floor. At 693 the second gives
+			169.5. At 695 they give 345 and 170, both whole. BACKGROUNDS pays for it in FOOT - its
+			last row still closes at 666, so the margin goes 27 -> 29 and no row moves.
+
+			125th round, on the user's ask: FLAWS dropped under MERITS and ALLIES / MENTOR /
+			RESOURCES / GUIDES rose into the hole it left, and DERANGEMENTS did not move. Their
+			HEIGHT is what changed there, 186 -> 153, and that is what makes two rows fit in the
+			311 the hole gives.
+
+			Width is the axis V298 rules: every gap between two boxes is 5, on both axes, so a box
+			narrows only if the ones beside it move by exactly what it gave up. That is why the
+			136th round walked all three right-hand columns left TOGETHER - the hole the two rows
+			above sit in is 455 = 225 + 5 + 225 now, the way it was 485 = 240 + 5 + 240 then.
+
+			136th round, on the user's ask (SPEC T790): the tab redistributes WIDTH into the
+			merit/flaw NAME. BACKGROUNDS gave 6 - three off each side of its content, which is
+			AIR and not content: the rows keep their 300 and moved 35 -> 32, because the picker
+			inside cannot narrow. V312c holds every 12pt picker to the OLD 6.5 ruler and
+			"Identidade Alternativa" wants 167 of its 170 - the slack R116 measured is not
+			permission to spend it. The eleven boxes on
+			the right gave 15 each, three columns of them. The tables took all of 6 + 3x15 = 51
+			and every pixel of it went to the NAME column: 195 -> 246. The tab still closes on
+			1595 and every gap is still 5: 364 + 5 + 536 + 5 + 225 + 5 + 225 + 5 + 225.
+
+			The name is what the width was FOR. A picker CLIPS - it does not wrap - and at 195
+			two of the 646 merit/flaw names did not fit in Portuguese; at 246 none of them does,
+			because the longest asks 240 (SPEC V196, I107a4). The 20 the name gives back on its
+			left is the column the ? button of I102b will stand in.
+
+			The right block closes on 695 with BACKGROUNDS, which is what V289 measures - it used
+			to name RESOURCES and now names OTHER, because RESOURCES went up into the hole. V290b
+			was re-aimed the same way: Merit/Flaw, MENTOR/FAME and DERANGEMENTS/ARTIFACTS are the
+			pairs standing over each other now.
+
+			The 46th round put BACKGROUNDS in front of all of it and pushed the rest 330 right
+			(SPEC I3, V145). The tab closes 330 further out than it did, and 160 further out
+			than Main - it is the tab that reaches for a horizontal scrollbar first, which is
+			the price of the box being wide enough to hold a picker and five dots.
+
+			The outer MERITS AND FLAWS frame was removed on request (SPEC T102). The two tables
+			it wrapped are unchanged in shape, just promoted to top level, and each grew from 8
+			to 10 rows inside the space the frame's title and margins gave back.
+
+			143rd round, on the user's ask: ONE more PICKED row at the TOP of each table. It is
+			merit_m0 / merit_f0 and NOT a renumbering: renaming m1..m10 would drop what every
+			saved sheet already holds (SPEC V2), so the new row takes the number BEFORE the
+			first one and the ten keep theirs. Each table went 311 -> 336 and FLAWS fell the 25
+			MERITS took, keeping the 5px gap V298 rules. T901 took the pair to 345 each and the column
+			closes on 695 now, exactly where BACKGROUNDS does - the 18px of slack it used to leave under FLAWS is what the user asked to spend.
+		-->
+		<!--
+			Two templates where there was one (SPEC I100a, T756), and the picked half carries the
+			search button of I107a instead of a combo: keyboard writes NOTHING into it, only
+			mfConfirm does, which makes V13's guarantee stronger here than a readOnly edit would.
+
+			The name is dyn* on purpose (SPEC I107a3): the language traversal in WoD20.6 covers
+			<button> since T14 and snapshots the AUTHORED text, so without the prefix it would
+			restore `Select Merit` over the name Lua wrote, on the first language switch.
+
+			The data does not live on the button - a button has no field. It lives in the hidden
+			edt* beside it: ONE field, TWO widgets, ONE visible, which is exactly the pair the
+			sheet already runs for cboClanFamily/edtClanFamily (SPEC I107a1, I71, V274).
+
+			The picker is also the row's drag HANDLE, in both templates (SPEC I174b, V508b): the
+			host's own drag-and-drop starts on it - onStartDrag hands rowDragStart the drag - and
+			the whole dragRow_<field> layout around it follows, up or down only. The click stays
+			the click: the host fires no onClick after a drag (SPEC R174e), so mfOpen needs no
+			guard - the one it had ate the next real click (SPEC B177). The tooltip's onMouseMove
+			is gated by rowDragMove: one stray move slips through right after the drag starts.
+
+			NOTHING may be commented INSIDE a <template> - rdk exits 1 with an empty message and
+			deletes the .rpk (SPEC B19).
+
+			hit* (33rd batch, SPEC I178e, V519) is the FIRST child of both templates, behind
+			everything and filling the row's layout: the tip shows anywhere on the row, gaps
+			included. It is no drag handle - only the picker starts a drag (SPEC V508).
+		-->
+		<template name="MeritPicked">
+			<rectangle name="hitmerit_$(num)" align="contents" color="#00000000" strokeColor="#00000000" hitTest="true" onMouseMove="noteTipMove(self, event, '$(sub)', 'merit_$(num)', 'hitmerit_$(num)');" onMouseLeave="noteTipLeave(self);"/>
+			<button name="btnQmerit_$(num)" left="0" top="0" width="20" height="20" text="?" onClick="popOpen(self, 'Merit', sheet['merit_$(num)'], '$(sub)', 'merit_$(num)');" onMouseMove="noteTipMove(self, event, '$(sub)', 'merit_$(num)', 'btnQmerit_$(num)');" onMouseLeave="noteTipLeave(self);"/>
+			<button name="dynMerit_$(num)" left="20" top="0" width="264" height="24" text="$(lbl)" onClick="mfOpen(self, 'merit_$(num)', '$(sub)', 'Merit');" onMenu="mfMenuOpen('merit_$(num)', '$(sub)');" onStartDrag="rowDragStart(self, drag, x, y, event, '$(sub)', 'merit_$(num)');" onMouseMove="if not rowDragMove(self, event) then noteTipMove(self, event, '$(sub)', 'merit_$(num)', 'dynMerit_$(num)'); end;" onMouseLeave="noteTipLeave(self);"/>
+			<edit name="edtMerit_$(num)" left="20" top="0" width="264" height="24" field="merit_$(num)" visible="false" enabled="false"/>
+			<button name="btnNmerit_$(num)" left="284" top="0" width="20" height="20" text="!" fontColor="white" onClick="noteOpen(self, '$(sub)', 'merit_$(num)');" onMouseMove="noteTipMove(self, event, '$(sub)', 'merit_$(num)', 'btnNmerit_$(num)');" onMouseLeave="noteTipLeave(self);"/>
+			<edit name="edtBook_$(num)" left="304" top="0" width="234" height="24" field="book_$(num)" readOnly="true" opacity="0.75" onMouseMove="noteTipMove(self, event, '$(sub)', 'merit_$(num)', 'edtBook_$(num)');" onMouseLeave="noteTipLeave(self);"/>
+			<edit name="edtType_$(num)" left="538" top="0" width="90" height="24" field="type_$(num)" readOnly="true" opacity="0.75" horzTextAlign="center" onMouseMove="noteTipMove(self, event, '$(sub)', 'merit_$(num)', 'edtType_$(num)');" onMouseLeave="noteTipLeave(self);"/>
+			<edit name="edtCost_$(num)" left="628" top="0" width="75" height="24" field="costy_$(num)" readOnly="true" opacity="0.75" horzTextAlign="center" onMouseMove="noteTipMove(self, event, '$(sub)', 'merit_$(num)', 'edtCost_$(num)');" onMouseLeave="noteTipLeave(self);"/>
+		</template>
+		<!--
+			PILOT of SPEC I113 (Q30, T808) - the first family to lose its dropdown for the search
+			box. The row keeps its x and its five dots; what changed is the entry: a visible
+			<button> named dyn* so the WoD20.6 traversal leaves the text Lua writes alone
+			(I107a3), and the FIELD on a hidden <edit> beside it - one field, two widgets, one
+			visible, exactly the pair MeritPicked already runs (I107a1, I71, V274).
+		
+			The three arguments are the whole of I113a: FIELD to write, LIST to read out of
+			PICKER_LIST, and the description MODULE the pane and the ? both read.
+		
+			NOTHING may be commented INSIDE a <template> - rdk exits 1 with an empty message and
+			deletes the .rpk (SPEC B19).
+		-->
+		<template name="OpenAbility">
+			<rectangle name="hit$(field)" align="contents" color="#00000000" strokeColor="#00000000" hitTest="true" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'hit$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<button name="btnQ$(field)" left="0" top="0" width="20" height="20" text="?" onClick="popOpen(self, 'Background', sheet['$(field)'], nil, '$(field)');" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'btnQ$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<button name="dyn$(field)" left="20" top="0" width="170" height="25" text="Select Background" onClick="mfOpen(self, '$(field)', 'background', 'Background');" onMenu="mfMenuOpen('$(field)', 'background');" onStartDrag="rowDragStart(self, drag, x, y, event, 'background', '$(field)');" onMouseMove="if not rowDragMove(self, event) then noteTipMove(self, event, 'background', '$(field)', 'dyn$(field)'); end;" onMouseLeave="noteTipLeave(self);"/>
+			<edit name="edt$(field)" left="20" top="0" width="170" height="25" field="$(field)" visible="false" enabled="false"/>
+			<button name="btnN$(field)" left="190" top="0" width="20" height="20" text="!" fontColor="white" onClick="noteOpen(self, 'background', '$(field)');" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'btnN$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_1" left="215" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_1', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_1');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_2" left="240" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_2');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_3" left="265" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_3');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_4" left="290" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_4');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_5" left="315" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_5');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_6" left="340" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_6', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_6');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_7" left="365" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_7', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_7');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_8" left="390" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_8', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_8');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_9" left="415" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_9', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_9');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_10" left="440" top="0" width="25" height="25" field="$(field)_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_10', self);" onMouseMove="noteTipMove(self, event, 'background', '$(field)', 'dot$(field)_10');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+		</template>
+
+		<!--
+			The last five rows are TYPED, not picked (SPEC I50, V255, user 2026-08-22): the same
+			shape the Ghoul tab got in the 85th round and SPECIALTIES got beside it - same entry x,
+			same five dots at the same prices, `edt` instead of `cbo` so pickerItems and PICKER_LIST
+			never reach them (SPEC V211a, V26).
+
+			A typed background is still a background: it keeps xpClick on every dot, so what the
+			storyteller writes is bought and priced exactly like what the book offers (SPEC I9).
+
+			No comment lives INSIDE the template - one there makes rdk -l exit 1 with no message and
+			delete the .rpk (SPEC B19, the fifth door, 85th round).
+		-->
+
+		<!-- The storyteller's backgrounds moved here from the Main tab in the 46th round
+		     (SPEC I3, V145): to the LEFT of the merit table, bottom flush with FLAWS and OTHER
+		     (y=679 since SPEC I186, V289, V392c). The height bought eleven more rows - twenty at the same 30px pitch, the
+		     twenty-first would need 650 and there is only 640. Every other box on the tab
+		     moved 330 right: 320 wide plus the 10px gutter the tab already keeps.
+
+		     320 is the width the box had on Main and cannot shrink: the row inside is 290 -
+		     a 160px picker and five 25px dots.
+
+		     The row count lives in BACKGROUND_ROWS on the root form (SPEC V145). A row added
+		     here and nowhere else would be a background nothing prices: free, and invisible
+		     in the log.
+
+		     Every row layout here, in MERITS and in FLAWS is named dragRow_<field> (SPEC I174a):
+		     a drag moves it by top and never moves its data, and the top written here is the
+		     factory order - what a sheet with no orderBackground/orderMerit/orderFlaw shows.
+		     One pitch per box (30 here, 25 in the other two), the one ROW_LISTS reads. -->
+		<layout name="boxBackgrounds" left="0" top="0" width="384" height="679">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="344" height="20" text="BACKGROUNDS" horzTextAlign="center" anchors="left top right"/>
+
+			<layout name="dragRow_background_1" left="20" top="36" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_1"/>
+			</layout>
+			<layout name="dragRow_background_2" left="20" top="66" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_2"/>
+			</layout>
+			<layout name="dragRow_background_3" left="20" top="96" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_3"/>
+			</layout>
+			<layout name="dragRow_background_4" left="20" top="126" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_4"/>
+			</layout>
+			<layout name="dragRow_background_5" left="20" top="156" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_5"/>
+			</layout>
+			<layout name="dragRow_background_6" left="20" top="186" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_6"/>
+			</layout>
+			<layout name="dragRow_background_7" left="20" top="216" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_7"/>
+			</layout>
+			<layout name="dragRow_background_8" left="20" top="246" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_8"/>
+			</layout>
+			<layout name="dragRow_background_9" left="20" top="276" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_9"/>
+			</layout>
+			<layout name="dragRow_background_10" left="20" top="306" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_10"/>
+			</layout>
+			<layout name="dragRow_background_11" left="20" top="336" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_11"/>
+			</layout>
+			<layout name="dragRow_background_12" left="20" top="366" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_12"/>
+			</layout>
+			<layout name="dragRow_background_13" left="20" top="396" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_13"/>
+			</layout>
+			<layout name="dragRow_background_14" left="20" top="426" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_14"/>
+			</layout>
+			<layout name="dragRow_background_15" left="20" top="456" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_15"/>
+			</layout>
+			<layout name="dragRow_background_16" left="20" top="486" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_16"/>
+			</layout>
+			<layout name="dragRow_background_17" left="20" top="516" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_17"/>
+			</layout>
+			<layout name="dragRow_background_18" left="20" top="546" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_18"/>
+			</layout>
+			<layout name="dragRow_background_19" left="20" top="576" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_19"/>
+			</layout>
+			<layout name="dragRow_background_20" left="20" top="606" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_20"/>
+			</layout>
+			<layout name="dragRow_background_21" left="20" top="636" width="340" height="25" anchors="left top right" >
+				<OpenAbility field="background_21"/>
+			</layout>
+		</layout>
+
+		<layout name="boxMerits" left="389" top="0" width="743" height="337">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="40" top="15" width="264" height="20" text="MERITS" horzTextAlign="center"/>
+			<label left="324" top="15" width="234" height="20" text="BOOK" horzTextAlign="center"/>
+			<!-- Column renamed to Page on request. The field is still type_* : renaming a
+			     field drops what is already saved in existing sheets (SPEC V2). -->
+			<label left="558" top="15" width="90" height="20" text="PAGE" horzTextAlign="center"/>
+			<label left="648" top="15" width="75" height="20" text="COST" horzTextAlign="center"/>
+
+			<layout name="dragRow_merit_m0" left="20" top="36" width="703" height="25" >
+				<MeritPicked sub="merit" num="m0" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m1" left="20" top="61" width="703" height="25" >
+				<MeritPicked sub="merit" num="m1" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m2" left="20" top="86" width="703" height="25" >
+				<MeritPicked sub="merit" num="m2" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m3" left="20" top="111" width="703" height="25" >
+				<MeritPicked sub="merit" num="m3" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m4" left="20" top="136" width="703" height="25" >
+				<MeritPicked sub="merit" num="m4" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m5" left="20" top="161" width="703" height="25" >
+				<MeritPicked sub="merit" num="m5" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m6" left="20" top="186" width="703" height="25" >
+				<MeritPicked sub="merit" num="m6" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m7" left="20" top="211" width="703" height="25" >
+				<MeritPicked sub="merit" num="m7" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m8" left="20" top="236" width="703" height="25" >
+				<MeritPicked sub="merit" num="m8" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m9" left="20" top="261" width="703" height="25" >
+				<MeritPicked sub="merit" num="m9" lbl="Select Merit"/>
+			</layout>
+			<layout name="dragRow_merit_m10" left="20" top="286" width="703" height="25" >
+				<MeritPicked sub="merit" num="m10" lbl="Select Merit"/>
+			</layout>
+		</layout>
+
+		<layout name="boxFlaws" left="389" top="342" width="743" height="337">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="40" top="15" width="264" height="20" text="FLAWS" horzTextAlign="center"/>
+			<label left="324" top="15" width="234" height="20" text="BOOK" horzTextAlign="center"/>
+			<label left="558" top="15" width="90" height="20" text="PAGE" horzTextAlign="center"/>
+			<label left="648" top="15" width="75" height="20" text="COST" horzTextAlign="center"/>
+
+			<layout name="dragRow_merit_f0" left="20" top="36" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f0" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f1" left="20" top="61" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f1" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f2" left="20" top="86" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f2" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f3" left="20" top="111" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f3" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f4" left="20" top="136" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f4" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f5" left="20" top="161" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f5" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f6" left="20" top="186" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f6" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f7" left="20" top="211" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f7" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f8" left="20" top="236" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f8" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f9" left="20" top="261" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f9" lbl="Select Flaw"/>
+			</layout>
+			<layout name="dragRow_merit_f10" left="20" top="286" width="703" height="25" >
+				<MeritPicked sub="flaw" num="f10" lbl="Select Flaw"/>
+			</layout>
+		</layout>
+
+		<!-- 42nd batch (SPEC I186b/c): the nine note boxes beside these two left on request and their
+		     fields are declared ORPHANS (SPEC I3) - a saved sheet keeps the text, nothing shows it.
+		     DERANGEMENTS and OTHER are the twins of MERITS and FLAWS on the Y axis now (SPEC V392b),
+		     5px right of them. -->
+		<layout name="boxDerangements" left="1137" top="0" width="225" height="337">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="185" height="20" text="DERANGEMENTS" horzTextAlign="center"/>
+
+			<textEditor left="35" top="36" width="155" height="284" field="derangements"/>
+		</layout>
+
+		<layout name="boxOther" left="1137" top="342" width="225" height="337">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="185" height="20" text="OTHER" horzTextAlign="center"/>
+
+			<!-- ponytail: the plain "other" field name is already owned by WoD20.3.lfm sheet-wide; renamed to bgOther per SPEC V1 -->
+			<textEditor left="35" top="36" width="155" height="284" field="bgOther"/>
+		</layout>
+
+
+		<!--
+			SPEC I170h, T1077 - the ! note's tooltip. LAST child of the scrollBox, so it paints over
+			every box and scrolls with them: its left/top are CONTENT coordinates, the same space the
+			box layouts' own left/top live in, and noteTipMove reaches them in two parent hops from
+			the control under the pointer (control -> row layout -> box). The era's box colour at 80% -
+			authored black, which applyTheme maps to the fill of every box, plus opacity - with NO
+			outline and NO title, the text alone (SPEC V501a, I177a, I178c); no xradius, so it is no box; contents, not client, for the background, so it does not compete
+			with the scrollBox for the client rect (SPEC V190). Since the 66th batch (user 2026-10-03,
+			SPEC I209) it has NO scrollBox: the label sits straight in the tip, 5 from each edge, and
+			a long note is broken and cut by tipLayout (at most 480 x 270, "...") instead of scrolling. Entering holds
+			the tip open while leaving hides it (SPEC V501b/d).
+		-->
+		<layout name="noteTip" left="0" top="0" width="300" height="60" visible="false" onMouseEnter="noteTipHold(self);" onMouseLeave="noteTipHide(self);">
+			<rectangle align="contents" color="black" opacity="0.80" strokeColor="#00000000" hitTest="false"/>
+			<label name="dynNoteTip" left="5" top="5" width="276" height="20" fontSize="12" wordWrap="false" autoSize="true" textTrimming="none" onResize="noteTipFit(self, 'noteTip', 'dynNoteTip');"/>
+		</layout>
+	</scrollBox>
+</form>

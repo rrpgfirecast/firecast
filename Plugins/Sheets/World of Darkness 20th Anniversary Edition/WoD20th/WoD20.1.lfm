@@ -1,0 +1,1395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_1" align="client" theme="dark">
+	<scrollBox align="client">
+		<!--
+			Theme backdrop (SPEC T158). Declared FIRST so it paints behind the boxes, and
+			hitTest="false" so it can never eat a click. It carries no field and no
+			left/top/width/height: it is not part of the data contract and the gate keeps
+			measuring the real boxes for overlap (SPEC V57).
+
+			Hidden here and switched on only by a Victorian theme - and if the art is ever
+			missing it simply stays hidden, which is a sheet without an ornament rather than
+			a half-painted one (SPEC V56).
+
+			The name carries the tab number because a control name is global across the
+			sheet's files: eight tabs sharing one name killed the compile with no message at
+			all (SPEC B19 / V59). The Lua matches on the prefix.
+		-->
+		<image name="themePaper1" align="client" style="stretch" hitTest="false" visible="false"/>
+
+		<!--
+			The clan, born ASLEEP (SPEC V173, T432): invisible AND disabled, and no Lua on any
+			tab writes the field, so nothing can fill it. It exists now only so the roster of
+			CLANS (SPEC I17) has one owner of `clan` the day a round wakes it up - and so V8
+			closes, since a widget that is hidden is still a widget.
+
+			Outside every box on purpose: it draws nothing, so it belongs to no layout and it
+			cannot push a sibling around. Dimmed like every other read-only widget (SPEC V111)
+			- unobservable while it is hidden, but the rule is about what the XML says.
+
+			Sixty entries, the thirteen clans plus the bloodlines the core lists in its tenth
+			chapter, with Gargoyles as four rows (SPEC I17). The empty first entry is the one
+			every picker carries (SPEC V15).
+		-->
+		<comboBox name="cboClan" left="0" top="0" width="230" height="25" visible="false" enabled="false" field="clan"/>
+		<!--
+			Layout grid (SPEC T41, V26, V27). Everything closes on x=1345 / y=866.
+
+			The bottom line moved 852 -> 878 in the 125th round and 878 -> 853 in the 141st, and
+			both moves are the same rule: V69 reads all three bottom boxes closing on ONE y, so
+			they travel together or the check reddens. The 125th GREW them 26 to seat the road
+			picker over the dot track (SPEC I99i, user Q8); the 141st took 25 back, because Q27
+			put the ROAD label on the picker's own line and the box no longer needs a title row
+			(SPEC I99k, I99l).
+
+			  header  0..1010      EXPERIENCE 1015..1345                y   0..105
+			  ATTRIBUTES 0..340                                        y 110..406
+			                       TALENTS 345..675 | SKILLS 680..1010 | KNOWLEDGES 1015..1345   y 110..536
+			  avatar     0..340                                   y 411..785
+			                       VIRTUES 345..675                    y 541..667
+			                       ROAD + BEARING 680..1010            y 541..667
+			                       WILLPOWER 680..1010                 y 672..785 (52nd batch; 56th: ROAD as tall as VIRTUES)
+			                       HEALTH  1015..1345                  y 541..866 at ten rows
+
+			That is the sheet AS AUTHORED, and since the 47th batch it is the MORTAL sheet (SPEC
+			I190a, user 2026-10-01): ROAD sits between VIRTUES and HEALTH again. A VAMPIRE gets a
+			different Main, and the XML cannot hold two - renderGameMode on the root moves the named
+			boxes to VAMP_GEOM and back to these numbers (SPEC I190c, V534):
+
+			  header  0..1010      EXPERIENCE 1015..1300                y   0..105   avatar 1305..1543  y 0..236
+			  ATTRIBUTES 0..1300 (Physical | Social | Mental)          y 110..236
+			  TALENTS 0..430 | SKILLS 435..865 | KNOWLEDGES 870..1300  y 241..592
+			  VIRTUES 0..340 | ROAD 345..675 | BLOOD POOL 680..1010 | HEALTH 1015..1300   y 597..
+			                   ROAD y 597..723, WILLPOWER (boxWillpower) y 728..841 under it
+
+			The 48th batch (SPEC I191, user 2026-10-01) put the rotated group names back, each one
+			before its third of the band, and took the 25px the headings used off the band; and the
+			Main closes on KNOWLEDGES' edge, so EXPERIENCE and HEALTH are 285 there.
+
+			The 50th batch (SPEC I193, user 2026-10-02) took one typed row off each ability column -
+			ten names and two - so everything under them rose 25; the avatar went up beside
+			EXPERIENCE at twice its height, VIRTUES took its place under TALENTS (ten wider, its rows
+			re-centred by VAMP_GEOM) and ROAD, no longer stacked, closes up on the abilities.
+
+			Nine dots a row is why the ability boxes are 430 there: the row grows by four dots and the
+			box with it, pushing the next one along (SPEC Q109.2). Titles and rows that span a box
+			carry anchors="left top right", so they stretch with it and no Lua walks them.
+
+			Read it as a FOUR-BAND GRID, which is what V375 measures since T908: every box on
+			the tab starts and ends on a band edge - 0/340, 345/675, 680/1010, 1015/1345 - with
+			a 5px gutter between bands, and each box on the bottom row shares both x edges with
+			the column above it. The FIFTH band lasted two days: the 157th round moved
+			SPECIALTIES into the grid row beside KNOWLEDGES (SPEC I126) and T908 put it back
+			under SKILLS, which is where V168 had it.
+
+			44th batch (SPEC I187, user 2026-09-26): SPECIALTIES is GONE and ROAD took its place
+			under SKILLS, at its own 184. The avatar closes where HEALTH closes at SEVEN levels -
+			541 + 7 * HEALTH_ROW_PITCH + HEALTH_BOX_PAD = 785 - and HEALTH itself is only READ for
+			it, never moved (SPEC V415, I187c).
+
+			46th batch (SPEC I189c/d, user 2026-10-01): ROAD went back UNDER VIRTUES, a stack in
+			the 345..675 band again (SPEC V393), and the band under SKILLS holds the BLOOD POOL of
+			a vampire - shown only when the game is Vampire, closing on the same seven-level line
+			as the avatar (SPEC V532). Any other game sees that band empty.
+
+			The bottom row does not close on ONE line, and that is the ask rather than drift:
+			VIRTUES and ROAD end on their own content plus the 15px foot (SPEC V393), the avatar
+			on HEALTH's seven-row floor (SPEC V415) - while HEALTH alone ends at 866. Which box
+			does NOT close the line is DERIVED from the V393 and V415 rosters and never typed into
+			the gate - a box that quietly stops closing it leaves no other trace (SPEC V376,
+			I136d, Q47, Q49).
+
+			HEALTH being the ONLY closer is why V376 had to be re-formed in the same commit that
+			moved the avatar (SPEC Q63, T939): an equality over one element is true for whatever
+			height that element has, so the guard moved off the closers and onto the roster - if
+			the names drain away there is nothing left to excuse, and three is the measured floor
+			(SPEC B7, B145). The owner chose that shape deliberately: HEALTH is the one box on the
+			sheet whose height is decided at RUNTIME (SPEC V49), so it cannot be pinned to a line
+			the other three write into the XML.
+
+			The 157th round traded HEIGHT for WIDTH - 891 -> 888 high and 1345 -> 1680 wide -
+			and T908 gave the width back. The sheet does NOT shrink with it: TRAITS closes on
+			1595 and always has, so it is the widest tab and popScrim measures the widest TAB
+			rather than this box (SPEC V396, B127). The old rule tied the scrim to this box right
+			edge; it was green while Main was WIDER than Traits, and leaving it would have cut
+			the scrim to 1345 and left 250px of Traits unable to close the overlay (SPEC I136g,
+			B124, B129).
+
+			The line moved 853 -> 928 -> 895 in the 154th round and 895 -> 891 in the 155th.
+			It went DOWN 75 because the ability columns went from twelve rows to FIFTEEN (SPEC
+			I123, I123a) - seven names the user asked for, plus the typed rows that square the
+			three columns off - and then back UP 33 when one vertical ruler of 25 replaced the
+			three the tab had inherited: the header went 30 -> 25, VIRTUES 29 -> 25, SPECIALTIES
+			30 -> 25 (SPEC I124, V370).
+
+			The last 4 are VIRTUES opening its first row on the title HAIRLINE, which every other
+			titled box on the tab already did and nothing was checking (SPEC V374, I125c). It is
+			the only ruler slack the tab had left: the user asked for three boxes to shrink and
+			I125 measured all ten, box by box - the other two were already at the floor, 20px of
+			margin on four sides and rows that touch.
+
+			SPECIALTIES used to carry that difference as FOLGA under its last row, until the owner
+			aligned its floor to ROAD (SPEC V402) - and the 44th batch took the box out of the
+			sheet altogether, V402 with it (SPEC I187a).
+
+			The columns are 436 tall, not 340: fifteen rows from 41 at a pitch of 25 close at
+			416, and the 20px under the last one is the margin ATTRIBUTES sets (SPEC V171). The
+			height is DERIVED from the row count, so a sixteenth ability has to grow the box
+			instead of moving into slack nobody declared.
+
+			HEALTH used to be the one box that did not close on the bottom line, and since the
+			157th round it is the box that SETS it. What is AUTHORED is the ten-row case, which
+			ends at 896, and the renderer shrinks it to the chosen track length (SPEC V49); ROAD
+			and the avatar close on 896 with it, so the overhang V69 let it off with is ZERO
+			(SPEC V376). The number stays in the gate at 0 rather than being deleted: 0 is what
+			PROVES the exception died, and a rule with no literal left is a rule that can no
+			longer fail (SPEC V20).
+
+			It reached zero by the tab moving to it, not by HEALTH moving: the left chain used to
+			end at 891 and I125g measured that HEALTH's floor was 888 all along - 561 + 10*27 +
+			57, a 27px track that follows no ruler of ours. T904 then moved the floor to 896 by
+			taking HEALTH_BOX_PAD from 57 to 65, because the VIRTUES + ROAD stack needed 335 in a
+			band of 327 and both boxes were already at their own minimum (SPEC I134m, B125).
+			Below the floor the sign of V69 FLIPS and HEALTH starts overhanging instead of
+			falling short, which is a different box and not what that rule was written to
+			tolerate.
+
+			Label widths are sized for the LONGER of [en] and [pt]: "Animal Ken" is
+			"Empatia com Animais" (19 chars) in pt, so the ability label is 135px, not 80.
+			It was 125 until the 49th round, when the ABILITIES frame came off and handed the
+			three columns 10px apiece: the point of that request was the names, so the width
+			went to the label and the dots moved right with it (SPEC T408, V170).
+
+			Ability / CustomAbility put their first dot at x=135 and Attribute at x=125. V26
+			compares rows that are SIBLINGS, and those two never share a box, so each column
+			still lines up with itself. Advantages / Willpower carry no label and start at
+			x=0 - they live alone in their own box and are centred by the caller.
+		-->
+		<!-- The input sits at 132, not 112, and the 20px before it is the ? COLUMN: nature and
+		     demeanor draw a ? there (T846, I102h) and concept - a typed field - leaves it empty,
+		     exactly as MeritFree leaves the slot MeritPicked fills (SPEC I102f). V26 compares
+		     SIBLINGS, and left=326 holds two HeaderPicker rows and one Header, so the gap has to
+		     exist in BOTH templates or the column stops lining up (SPEC V26, B12). The label keeps
+		     its 105 - that width is what `Comportamento` needs in pt, and the 20 came out of the
+		     input, which had 215 for a field nobody fills to the edge. -->
+		<template name="Header">
+			<label left="0" top="5" width="105" height="20" text="$(nome)" horzTextAlign="trailing"/>
+			<edit left="132" top="0" width="195" height="25" field="$(field)"/>
+		</template>
+		<!-- Same row, shorter label. The 105px of `Header` is what `Demeanor` needs in pt
+		     ("Comportamento", ~86px) and Demeanor lives in the middle column - keeping that
+		     width in the first one is what pushed Nome / Jogador / Cronica to the right.
+		     Here the longest pt label is "Jogador", so 75 is room to spare (SPEC V16/V25).
+		     V26 compares rows that share a `left`, i.e. rows of the same column, so columns
+		     may carry different label widths; all three rows of column one use this one. -->
+		<template name="HeaderNarrow">
+			<label left="0" top="5" width="75" height="20" text="$(nome)" horzTextAlign="trailing"/>
+			<edit left="82" top="0" width="215" height="25" field="$(field)"/>
+		</template>
+		<template name="HeaderPicker">
+			<label left="0" top="5" width="105" height="20" text="$(nome)" horzTextAlign="trailing"/>
+			<button name="btnQ$(field)" left="108" top="0" width="20" height="20" text="?" onClick="popOpen(self, 'Nature', sheet['$(field)'], nil, '$(field)');"/>
+			<button name="dyn$(field)" left="132" top="0" width="195" height="25" text="Select $(nome)" onClick="mfOpen(self, '$(field)', '$(field)', 'Nature');" onMenu="mfMenuOpen('$(field)', '$(field)');"/>
+			<edit name="edt$(field)" left="132" top="0" width="195" height="25" field="$(field)" visible="false" enabled="false"/>
+		</template>
+		<!-- The ! of a trait opens its specialities (SPEC I172c/d, V504). It sits LEFT of the dots,
+		     5 before the first one, and the label gave the room up: the dots do not move, so every
+		     column still lines up (SPEC V26). Every ! hands over the field of its row's FIRST dot
+		     and specOpen drops the "_1" - here dot 1 is a fixed image with no field, so the
+		     '$(field)_1' is only that convention (SPEC I172c). The three Virtues used this template
+		     and get no ! : they have one of their own, Virtue, which is this row as it was. -->
+		<template name="Virtue">
+			<button name="btnQ$(field)" left="0" top="0" width="20" height="20" text="?" onClick="popOpen(self, 'Virtue', virtueName('$(field)'));"/>
+			<label left="25" top="5" width="135" height="20" text="$(nome)"/>
+			<image left="165" top="0" width="25" height="25" style="autoFit" src="images/prime_on.png"/>
+			<imageCheckBox left="190" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);"/>
+			<imageCheckBox left="215" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);"/>
+			<imageCheckBox left="240" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);"/>
+			<imageCheckBox left="265" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);"/>
+		</template>
+		<!-- The two Virtues a Road can replace (SPEC I250b): the same row with a picker where Virtue
+		     has its label. The dots keep the field they always had, so no sheet has to migrate; the
+		     NAME lives in $(field)Name and renderVirtueButtons paints it through virtueName.
+		     dynName is that label, for a Road that dictates the Virtue: renderVirtueButtons shows it
+		     or the button, never both (SPEC I252a/b, V595). -->
+		<template name="VirtuePicker">
+			<button name="btnQ$(field)" left="0" top="0" width="20" height="20" text="?" onClick="popOpen(self, 'Virtue', virtueName('$(field)'), nil, '$(field)Name');"/>
+			<label name="dynName$(field)" left="25" top="5" width="135" height="20" text="$(nome)" visible="false"/>
+			<button name="dyn$(field)" left="25" top="0" width="135" height="25" text="$(nome)" onClick="mfOpen(self, '$(field)Name', '$(list)', 'Virtue');"/>
+			<edit name="edt$(field)" left="25" top="0" width="135" height="25" field="$(field)Name" visible="false" enabled="false"/>
+			<image left="165" top="0" width="25" height="25" style="autoFit" src="images/prime_on.png"/>
+			<imageCheckBox left="190" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);"/>
+			<imageCheckBox left="215" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);"/>
+			<imageCheckBox left="240" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);"/>
+			<imageCheckBox left="265" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);"/>
+		</template>
+		<!-- Two rectangles ride every row that has a ! (33rd batch). hit* is the FIRST child, behind
+		     everything, filling the row's own layout - which runs from the name's start to the last
+		     dot's end - so the tip shows on the name and on the 5px gaps too (SPEC I178e, V519).
+		     blinkSp* sits right AFTER the !, over it, hidden and deaf to the mouse: the red that
+		     specBangPaint and bangBlink flash while the ! is starred - a <button> has no
+		     background colour of its own (SPEC I178b, V518, R178b). -->
+		<!-- The numbers below are the MORTAL's. In a vampire's Main the root tightens each row - label 79,
+		     ? and dots 16 to the left - through VAMP_GEOM (SPEC I202a, V546), so this template does not move. -->
+		<template name="Attribute">
+			<rectangle name="hit$(field)" align="contents" color="#00000000" strokeColor="#00000000" hitTest="true" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'hit$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<label name="lbl$(field)" left="0" top="5" width="95" height="20" text="$(nome)" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'lbl$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<button name="btnSp$(field)" left="100" top="2" width="20" height="20" text="!" fontColor="white" onClick="specOpen(self, '$(field)_1');" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'btnSp$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<rectangle name="blinkSp$(field)" left="100" top="2" width="20" height="20" color="#99D32F2F" strokeColor="#00000000" hitTest="false" visible="false"/>
+			<image name="dot$(field)_1" left="125" top="0" width="25" height="25" style="autoFit" src="images/prime_on.png" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_1');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_2" left="150" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_2');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_3" left="175" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_3');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_4" left="200" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_4');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_5" left="225" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_5');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_6" left="250" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_6', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_6');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_7" left="275" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_7', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_7');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_8" left="300" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_8', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_8');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_9" left="325" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_9', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_9');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_10" left="350" top="0" width="25" height="25" field="$(field)_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_10', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_10');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="mcap$(field)_4" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_5" left="225" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_6" left="250" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_7" left="275" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_8" left="300" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_9" left="325" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_10" left="350" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+		</template>
+		<!-- Attribute, but dot 1 is a real checkbox instead of a fixed image, so the rating can
+		     drop to zero. Only Appearance uses it (SPEC T95). -->
+		<template name="AttributeZeroable">
+			<rectangle name="hit$(field)" align="contents" color="#00000000" strokeColor="#00000000" hitTest="true" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'hit$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<label name="lbl$(field)" left="0" top="5" width="95" height="20" text="$(nome)" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'lbl$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<button name="btnSp$(field)" left="100" top="2" width="20" height="20" text="!" fontColor="white" onClick="specOpen(self, '$(field)_1');" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'btnSp$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<rectangle name="blinkSp$(field)" left="100" top="2" width="20" height="20" color="#99D32F2F" strokeColor="#00000000" hitTest="false" visible="false"/>
+			<imageCheckBox name="dot$(field)_1" left="125" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_1', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_1');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_2" left="150" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_2');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_3" left="175" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_3');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_4" left="200" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_4');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_5" left="225" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_5');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_6" left="250" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_6', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_6');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_7" left="275" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_7', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_7');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_8" left="300" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_8', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_8');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_9" left="325" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_9', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_9');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_10" left="350" top="0" width="25" height="25" field="$(field)_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_10', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_10');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="mcap$(field)_4" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_5" left="225" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_6" left="250" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_7" left="275" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_8" left="300" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_9" left="325" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_10" left="350" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+		</template>
+		<template name="Ability">
+			<rectangle name="hit$(col)$(num)" align="contents" color="#00000000" strokeColor="#00000000" hitTest="true" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'hit$(col)$(num)');" onMouseLeave="noteTipLeave(self);"/>
+			<label name="dynAbil$(col)$(num)" left="0" top="5" width="135" height="20" text="$(nome)" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'dynAbil$(col)$(num)');" onMouseLeave="noteTipLeave(self);"/>
+			<button name="btnSp$(col)$(num)" left="140" top="2" width="20" height="20" text="!" fontColor="white" onClick="specOpen(self, self.abil$(col)$(num)_1.field);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'btnSp$(col)$(num)');" onMouseLeave="noteTipLeave(self);"/>
+			<rectangle name="blinkSp$(col)$(num)" left="140" top="2" width="20" height="20" color="#99D32F2F" strokeColor="#00000000" hitTest="false" visible="false"/>
+			<imageCheckBox name="abil$(col)$(num)_1" left="165" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_1.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_1');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="abil$(col)$(num)_2" left="190" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_2.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_2');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="abil$(col)$(num)_3" left="215" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_3.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_3');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="abil$(col)$(num)_4" left="240" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_4.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_4');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="abil$(col)$(num)_5" left="265" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_5.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_5');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="abil$(col)$(num)_6" left="290" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_6.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_6');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="abil$(col)$(num)_7" left="315" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_7.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_7');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="abil$(col)$(num)_8" left="340" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_8.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_8');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="abil$(col)$(num)_9" left="365" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_9.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_9');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="abil$(col)$(num)_10" left="390" top="0" width="25" height="25" field="$(field)_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick(self.abil$(col)$(num)_10.field, self);" onMouseMove="noteTipMove(self, event, 'spec', self.abil$(col)$(num)_1.field, 'abil$(col)$(num)_10');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="mcap$(col)$(num)_4" left="240" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(col)$(num)_5" left="265" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(col)$(num)_6" left="290" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(col)$(num)_7" left="315" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(col)$(num)_8" left="340" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(col)$(num)_9" left="365" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(col)$(num)_10" left="390" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+		</template>
+		<!-- Blank rows at the bottom of each ability column, for abilities the book does not list.
+		     Their ! keys the specialities by the row's FIELD, not the typed name, so renaming the
+		     ability keeps them in place (SPEC I172d, Q92.3). The Ability row above hands over the
+		     LIVE field of its first dot instead, because the era re-binds it (SPEC R171c). -->
+		<template name="CustomAbility">
+			<rectangle name="hit$(field)" align="contents" color="#00000000" strokeColor="#00000000" hitTest="true" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'hit$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<edit name="edt$(field)" left="0" top="2" width="135" height="21" field="$(field)" fontSize="12" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'edt$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<button name="btnSp$(field)" left="140" top="2" width="20" height="20" text="!" fontColor="white" onClick="specOpen(self, '$(field)_1');" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'btnSp$(field)');" onMouseLeave="noteTipLeave(self);"/>
+			<rectangle name="blinkSp$(field)" left="140" top="2" width="20" height="20" color="#99D32F2F" strokeColor="#00000000" hitTest="false" visible="false"/>
+			<imageCheckBox name="dot$(field)_1" left="165" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_1', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_1');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_2" left="190" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_2');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_3" left="215" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_3');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_4" left="240" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_4');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_5" left="265" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_5');" onMouseLeave="noteTipLeave(self);"/>
+			<imageCheckBox name="dot$(field)_6" left="290" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_6', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_6');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_7" left="315" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_7', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_7');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_8" left="340" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_8', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_8');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_9" left="365" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_9', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_9');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="dot$(field)_10" left="390" top="0" width="25" height="25" field="$(field)_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_10', self);" onMouseMove="noteTipMove(self, event, 'spec', '$(field)_1', 'dot$(field)_10');" onMouseLeave="noteTipLeave(self);" visible="false"/>
+			<imageCheckBox name="mcap$(field)_4" left="240" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_5" left="265" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_6" left="290" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_7" left="315" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_8" left="340" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_9" left="365" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcap$(field)_10" left="390" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+		</template>
+		<!-- No label: HUMANITY / WILLPOWER are titled above the track, so "FORCA DE VONTADE"
+		     cannot be clipped.
+
+		     The dots start at x=0, not x=125. That 125 origin existed only to line these two
+		     tracks up with the 125px row label of Attribute/Ability, back when Virtues and
+		     Humanity shared a single box (SPEC B12, T41). T79 split them into separate boxes,
+		     so nothing sits to the left of these tracks any more and the offset survived as
+		     125px of dead space that pushed the dots against the right edge. The track is now
+		     250px wide and the caller centres it with its own left margin. -->
+		<template name="Advantages">
+			<imageCheckBox left="0" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_1', self);"/>
+			<imageCheckBox left="25" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);"/>
+			<imageCheckBox left="50" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);"/>
+			<imageCheckBox left="75" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);"/>
+			<imageCheckBox left="100" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);"/>
+			<imageCheckBox left="125" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_6', self);"/>
+			<imageCheckBox left="150" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_7', self);"/>
+			<imageCheckBox left="175" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_8', self);"/>
+			<imageCheckBox left="200" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_9', self);"/>
+			<imageCheckBox left="225" top="0" width="25" height="25" field="$(field)_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_10', self);"/>
+		</template>
+		<!--
+			One health row: level name on the left, damage mark box on the right edge (SPEC T116).
+
+			The mark is NOT a checkBox any more - it holds one of four symbols and cycles on
+			click. Emptying a box is healing, so both the wrap and the right-click clear the
+			BOTTOM-most marked row, not this one (SPEC V44). The box is a `rectangle`
+			with `hitTest="true"` so it takes mouse events, and the `label` inside carries
+			`field=` so the NDB renders the stored symbol with no Lua involved - which is also
+			what keeps this row and its Combat-tab twin in sync (SPEC V36).
+
+			The level label is 215 wide: the longest pt level is "Ferido Gravemente (-2)"
+			(~143px), so it fits with room to spare (SPEC V16 / B17).
+		-->
+		<!-- The name ends 5 before its box and both ride the row's RIGHT edge (user 2026-10-07, SPEC I222a, V561a):
+		     a mage's HEALTH is narrowed to its longest name, and the row shrinks with it. At the
+		     vampire's and mortal's 246 nothing on screen moves - the name is left-aligned. -->
+		<!-- Name and penalty are two labels since the 80th batch (user 2026-10-07, SPEC I223c, V563): the
+		     name starts on the row's left edge in every row, and "(-N)" is right-aligned 2 before its box,
+		     4 after the name. renderHealthTrack splits the text it used to write whole. Since the 83rd
+		     batch (user 2026-10-07, SPEC I226e, V568d) the number sits 5 from its box: the label is 23, not
+		     26 - the 3 come off the room left of "-5", and the row keeps its width. -->
+		<template name="HealthRow">
+			<label name="dynHealth_$(num)" left="0" top="0" width="191" height="20" anchors="left top right"/>
+			<label name="dynHealth_pen$(num)" left="195" top="0" width="23" height="20" anchors="top right" horzTextAlign="trailing"/>
+			<rectangle left="223" top="0" width="22" height="20" anchors="top right" color="#00000000" strokeColor="white" strokeSize="1" xradius="2" yradius="2" hitTest="true" cursor="handPoint" onClick="cycleHealthMark($(num));" onMenu="healHealthMark();">
+				<label align="client" field="health_$(num)" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+		</template>
+
+
+		<!--
+			The last three rows are TYPED, not picked (SPEC I50, V255, user 2026-08-22) - the same
+			arrangement the Ghoul tab got in the 85th round: same entry x, same free-text field, same
+			dot, and `edt` instead of `cbo` so pickerItems and PICKER_LIST never reach them
+			(SPEC V211a, V26).
+
+			The gift a trait hands out stops at the picker rows (SPEC V255d): what locks a granted
+			row is the combo's `enabled`, and a typed row has no combo to lock.
+
+			No comment lives INSIDE the template: one there makes rdk -l exit 1 with no message and
+			delete the .rpk (SPEC B19, the fifth door, 85th round).
+		-->
+
+		<template name="Willpower">
+			<imageCheckBox left="0" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_1', self);"/>
+			<imageCheckBox left="25" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_2', self);"/>
+			<imageCheckBox left="50" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_3', self);"/>
+			<imageCheckBox left="75" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_4', self);"/>
+			<imageCheckBox left="100" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_5', self);"/>
+			<imageCheckBox left="125" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_6', self);"/>
+			<imageCheckBox left="150" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_7', self);"/>
+			<imageCheckBox left="175" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_8', self);"/>
+			<imageCheckBox left="200" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_9', self);"/>
+			<imageCheckBox left="225" top="0" width="25" height="25" field="$(field)_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('$(field)_10', self);"/>
+
+			<checkBox left="2" top="27" width="25" height="25" field="$(field)_c1" onClick="wpSpentClick('$(field)_c1');" onChange="wpSpentChange('$(field)_c1');"/>
+			<checkBox left="27" top="27" width="25" height="25" field="$(field)_c2" onClick="wpSpentClick('$(field)_c2');" onChange="wpSpentChange('$(field)_c2');"/>
+			<checkBox left="52" top="27" width="25" height="25" field="$(field)_c3" onClick="wpSpentClick('$(field)_c3');" onChange="wpSpentChange('$(field)_c3');"/>
+			<checkBox left="77" top="27" width="25" height="25" field="$(field)_c4" onClick="wpSpentClick('$(field)_c4');" onChange="wpSpentChange('$(field)_c4');"/>
+			<checkBox left="102" top="27" width="25" height="25" field="$(field)_c5" onClick="wpSpentClick('$(field)_c5');" onChange="wpSpentChange('$(field)_c5');"/>
+			<checkBox left="127" top="27" width="25" height="25" field="$(field)_c6" onClick="wpSpentClick('$(field)_c6');" onChange="wpSpentChange('$(field)_c6');"/>
+			<checkBox left="152" top="27" width="25" height="25" field="$(field)_c7" onClick="wpSpentClick('$(field)_c7');" onChange="wpSpentChange('$(field)_c7');"/>
+			<checkBox left="177" top="27" width="25" height="25" field="$(field)_c8" onClick="wpSpentClick('$(field)_c8');" onChange="wpSpentChange('$(field)_c8');"/>
+			<checkBox left="202" top="27" width="25" height="25" field="$(field)_c9" onClick="wpSpentClick('$(field)_c9');" onChange="wpSpentChange('$(field)_c9');"/>
+			<checkBox left="227" top="27" width="25" height="25" field="$(field)_c10" onClick="wpSpentClick('$(field)_c10');" onChange="wpSpentChange('$(field)_c10');"/>
+		</template>
+
+
+		<!-- The header box has a name since the 58th batch (SPEC I201d, user 2026-10-02): a vampire's slides
+		     right to open on ATTRIBUTES' edge (VAMP_GEOM) and its six unnamed cells are named so the table
+		     can spread them. A mortal reads the numbers below. -->
+		<layout name="boxHeader" left="0" top="0" width="1010" height="105">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+
+			<layout name="hdrName" left="20" top="15" width="297" height="25" >
+				<HeaderNarrow field="name" nome="Name"/>
+			</layout>
+			<layout name="hdrNature" left="326" top="15" width="327" height="25" >
+				<HeaderPicker field="nature" nome="Nature"/>
+			</layout>
+			<!-- Column three answers to the GAME (user 2026-10-01, SPEC I188b, V528): each of its
+			     three rows is a PAIR on one rectangle, and renderGameMode on the root shows the
+			     mortal row or the vampire row. The hidden one keeps its field - switching back
+			     to Mortal finds Motivation, Occupation and Residence as they were.
+
+			     The clan is `clanFamily`, the field the Ghoul tab's picker writes: renderClanDisc,
+			     clanEntry, the ? and the custom clan all read it already, so a second field would
+			     be a second truth. The list is `clan` - clans only, no revenant families. The row
+			     has no hidden twin: the Ghoul tab's edtClanFamily is the one widget bound to the
+			     field, and a second would be a double V274 refuses (SPEC V1, V2).
+
+			     `cmbGeneration` stores "4".."15" and shows `4th`..`15th`, like the domitor's
+			     combo (SPEC I30, Q107.6), and it has no empty first row: a state combo with a
+			     real default, the exception V15 already declares for the era. -->
+			<layout name="hdrMotivation" left="663" top="15" width="327" height="25" >
+				<Header field="motivation" nome="Motivation"/>
+			</layout>
+			<layout name="hdrClan" left="663" top="15" width="327" height="25" visible="false">
+				<label left="0" top="5" width="105" height="20" text="Clan" horzTextAlign="trailing"/>
+				<button name="btnQmainClan" left="108" top="0" width="20" height="20" text="?" onClick="popOpen(self, 'Clan', sheet['clanFamily'], nil, 'clanFamily');"/>
+				<button name="dynmainClan" left="132" top="0" width="195" height="25" text="Select Clan" onClick="mfOpen(self, 'clanFamily', 'clan', 'Clan');" onMenu="mfMenuOpen('clanFamily', 'clan');"/>
+			</layout>
+			<!-- The MAGE's column three (user 2026-10-06, SPEC I216f/g): Affiliation, Sect, then
+			     Concept moved in from column two, where Essence takes its place. Hidden here like
+			     the vampire's; renderGameMode shows the game's own. No ? yet (SPEC Q129.5). -->
+			<layout name="hdrAffiliation" left="663" top="15" width="327" height="25" visible="false">
+				<label left="0" top="5" width="105" height="20" text="Affiliation" horzTextAlign="trailing"/>
+				<button name="dynmainAffiliation" left="132" top="0" width="195" height="25" text="Select Affiliation" onClick="mfOpen(self, 'mageAffiliation', 'affiliation', 'Affiliation');" onMenu="mfMenuOpen('mageAffiliation', 'affiliation');"/>
+			</layout>
+
+			<layout name="hdrPlayer" left="20" top="40" width="297" height="25" >
+				<HeaderNarrow field="player" nome="Player"/>
+			</layout>
+			<layout name="hdrDemeanor" left="326" top="40" width="327" height="25" >
+				<HeaderPicker field="demeanor" nome="Demeanor"/>
+			</layout>
+			<layout name="hdrOccupation" left="663" top="40" width="327" height="25" >
+				<Header field="occupation" nome="Occupation"/>
+			</layout>
+			<layout name="hdrGeneration" left="663" top="40" width="327" height="25" visible="false">
+				<label left="0" top="5" width="105" height="20" text="Generation" horzTextAlign="trailing"/>
+				<comboBox name="cmbGeneration" left="132" top="0" width="195" height="25" field="generation"
+				          items="{'4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th'}"
+				          values="{'4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'}"/>
+			</layout>
+			<layout name="hdrSect" left="663" top="40" width="327" height="25" visible="false">
+				<label left="0" top="5" width="105" height="20" text="Sect" horzTextAlign="trailing"/>
+				<button name="dynmainSect" left="132" top="0" width="195" height="25" text="Select Sect" onClick="mfOpen(self, 'mageSect', 'sect', 'Sect');" onMenu="mfMenuOpen('mageSect', 'sect');"/>
+			</layout>
+
+			<layout name="hdrChronicle" left="20" top="65" width="297" height="25" >
+				<HeaderNarrow field="chronicle" nome="Chronicle"/>
+			</layout>
+			<layout name="hdrConcept" left="326" top="65" width="327" height="25" >
+				<Header field="concept" nome="Concept"/>
+			</layout>
+			<layout name="hdrEssence" left="326" top="65" width="327" height="25" visible="false">
+				<label left="0" top="5" width="105" height="20" text="Essence" horzTextAlign="trailing"/>
+				<comboBox name="cmbMageEssence" left="132" top="0" width="195" height="25" field="mageEssence"
+				          items="{'', 'Dynamic', 'Pattern', 'Primordial', 'Questing'}"
+				          values="{'', 'Dynamic', 'Pattern', 'Primordial', 'Questing'}"/>
+			</layout>
+			<layout name="hdrResidence" left="663" top="65" width="327" height="25" >
+				<Header field="residence" nome="Residence"/>
+			</layout>
+			<layout name="hdrSire" left="663" top="65" width="327" height="25" visible="false">
+				<Header field="sire" nome="Sire"/>
+			</layout>
+		</layout>
+
+		<!-- Closes on 1345 with the grid, not on the 1680 it kept for the two days SPECIALTIES
+		     spent in the grid row (SPEC V375, T862, T908): the header row and the grid share the
+		     tab's right edge, and a box standing still while its column moves opens the dead
+		     strip V168 was written to see and V375 inherited.
+
+		     ONE number again, not three (SPEC I136e, T908, user 2026-09-02 item 6), and since T919 it T863 put
+		     Total and Spent here because the fifth band paid for them; with the band gone the box
+		     is 330 wide and only Current fits. Nothing was lost: Progress (WoD20.9.lfm) has had
+		     all three the whole time and is where I11 computes them, so this tab gave up the VIEW
+		     and not the data.
+
+		     Not one field in the box (SPEC I11): the number is WORKED OUT by xpPaint on the root,
+		     and this tab and Progress are two views of the same computation. So the round removes
+		     four control names and zero NDB fields, and V1 never sees a second owner.
+
+		     Those four names came OUT of renderXPBoxes in the same commit (SPEC I136f). Both
+		     writes were nil-guarded, so the box would have looked right without touching one line
+		     of Lua - which is exactly why they had to go: a widget name in a Lua roster with no
+		     widget in the XML is the orphan field of V2 one floor up, and it makes no sound
+		     (SPEC B111, B123).
+
+		     Named since the 48th batch (SPEC I191d, user 2026-10-01): a vampire's EXPERIENCE stood where
+		     KNOWLEDGES closes, 285 wide; since the 58th batch (SPEC I201c) it sits under VIRTUES, 340 x 113.
+		     The title stretches with the box; the number is moved by VAMP_GEOM, since a fixed child of a box that changes shape is what B191 was made of.
+		     Title and number are ONE object centred in the box since the 61st batch (user 2026-10-02,
+		     SPEC I204e, V547): 20 + 5 + 25 = 50, so 27/52 in this 105 and 31/56 in a vampire's 113 -
+		     which is why the title is named now, VAMP_GEOM moves it too. -->
+		<layout name="boxExperience" left="1015" top="0" width="330" height="105">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblXPMain" left="20" top="27" width="290" height="20" text="EXPERIENCE" horzTextAlign="center" anchors="left top right"/>
+
+			<rectangle name="bgCurrentXPMain" left="120" top="52" width="90" height="25" color="#0A0A0A" xradius="6" yradius="6" cornerType="innerRound" hitTest="false"/>
+			<edit name="edtCurrentXPMain" type="number" decimalPlaces="0" left="120" top="52" width="90" height="25" horzTextAlign="center" vertTextAlign="center" fontSize="14" onUserChange="xpSetCurrent(self, self.edtCurrentXPMain.text);" transparent="true"/>
+		</layout>
+
+		<layout name="boxAttributes" left="0" top="110" width="340" height="296">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="300" height="20" text="ATTRIBUTES" horzTextAlign="center" anchors="left top right"/>
+
+			<label name="attrRotPhysical" left="-20" top="63" width="100" height="20" text="Physical" horzTextAlign="center" rotationAngle="270"/>
+
+			<layout name="attrRow_strength" left="55" top="36" width="250" height="25" >
+				<Attribute field="strength" nome="Strength"/>
+			</layout>
+			<layout name="attrRow_dexterity" left="55" top="61" width="250" height="25" >
+				<Attribute field="dexterity" nome="Dexterity"/>
+			</layout>
+			<layout name="attrRow_stamina" left="55" top="86" width="250" height="25" >
+				<Attribute field="stamina" nome="Stamina"/>
+			</layout>
+
+			<!-- The two rules between the groups are a MORTAL column's: across a vampire's band they
+			     would cut the rows, so renderGameMode hides them there (SPEC I191c, B191, V537a). -->
+			<horzLine name="attrSepSocial" left="30" top="116" width="280" strokeColor="white"/>
+
+			<label name="attrRotSocial" left="-20" top="148" width="100" height="20" text="Social" horzTextAlign="center" rotationAngle="270"/>
+
+			<layout name="attrRow_charisma" left="55" top="121" width="250" height="25" >
+				<Attribute field="charisma" nome="Charisma"/>
+			</layout>
+			<layout name="attrRow_manipulation" left="55" top="146" width="250" height="25" >
+				<Attribute field="manipulation" nome="Manipulation"/>
+			</layout>
+			<!-- Appearance is the one attribute whose first dot can be switched off, by request
+			     (SPEC T95). Every other attribute keeps dot 1 as a fixed <image>. Same x for
+			     the first dot as the Attribute template, so the column still lines up (V26). -->
+			<layout name="attrRow_appearance" left="55" top="171" width="250" height="25" >
+				<AttributeZeroable field="appearance" nome="Appearance"/>
+			</layout>
+
+			<horzLine name="attrSepMental" left="30" top="201" width="280" strokeColor="white"/>
+
+			<label name="attrRotMental" left="-20" top="233" width="100" height="20" text="Mental" horzTextAlign="center" rotationAngle="270"/>
+
+			<layout name="attrRow_perception" left="55" top="206" width="250" height="25" >
+				<Attribute field="perception" nome="Perception"/>
+			</layout>
+			<layout name="attrRow_inteligence" left="55" top="231" width="250" height="25" >
+				<Attribute field="inteligence" nome="Intelligence"/>
+			</layout>
+			<layout name="attrRow_wits" left="55" top="256" width="250" height="25" >
+				<Attribute field="wits" nome="Wits"/>
+			</layout>
+		</layout>
+
+		<!-- The picture closes the left column where HEALTH closes at SEVEN levels, the y the map
+		     above declares (SPEC V415, I187c, user 2026-09-26) - HEALTH is only read for it.
+
+		     The FRAME is the rectangle below, and it carries the same four numbers as the image
+		     on purpose (SPEC V309, B71): it is a loose <rectangle>, so the box collector of I73
+		     never sees it, and three rounds of gap tightening moved the image while it stayed at
+		     top=471 - thirty pixels of grey hanging under the photo, green in the gate the whole
+		     time. V309 is what makes that impossible to repeat; do not move one without the other.
+
+		     It keeps color="DimGray" and is the only carrier of that key in the four palettes
+		     (SPEC V53, T653). The radius matches the section boxes so the corner reads as one
+		     frame family. -->
+		<rectangle name="avatarFrame" left="0" top="411" width="340" height="374" color="DimGray" xradius="14" yradius="14" cornerType="innerRound"/>
+		<image name="avatarImage" left="0" top="411" width="340" height="374" field="avatar" editable="true" style="autoFit"/>
+
+		<!-- The ornament CARRIER (SPEC I84d, I92, V309, V287, V320). Transparent in both senses
+		      and holding no content of its own: it exists so the era's drawing has somewhere to hang
+		      ABOVE the photo, which is what declaring it AFTER the image buys.
+
+		      It is one of the TWO names sectionBox answers for (SPEC I92a, V320a). By CONSTRUCTION it
+		      is indistinguishable from the nineteen tabOn<X> carriers - transparent both ways, its own
+		      radius, hitTest false - so a fill-based arm would bevel the tab pills along with it, and
+		      their width is priced for the concave arc (SPEC V228, V316d). That is why the arm is a
+		      declared roster and not a rule about shape.
+
+		      It is also the only one of the avatar's three controls that DRAWS. The frame above sits
+		      UNDER the image, so a path hung on it lands behind the photo - which is exactly B75, the
+		      round where this carrier was authored for a mechanism that refused it and drew nothing at
+		      all for five rounds.
+
+		      It carries the picture's own four numbers, which V309 measures across all THREE controls.
+		      THREE palettes declare ornament - Victorian filigree, Dark Ages filete, Modern Nights
+		      corrente - so the Classical Age shows no drawing here and that is correct (SPEC V277,
+		      V320f). -->
+		<rectangle name="ornAvatar" left="0" top="411" width="340" height="374" color="#00000000" strokeColor="#00000000" xradius="14" yradius="14" cornerType="innerRound" hitTest="false"/>
+
+		<!--
+			The three ability columns stand loose (SPEC T407, V168, V169). Until the 49th round
+			they sat inside one ABILITIES box, whose frame and title spent 30px of width on a
+			heading that named what the three titles below it already said. The user asked for
+			the heading gone so the names could breathe, so the box the columns were nested in
+			is now the row they form: TALENTS starts where VIRTUES starts and KNOWLEDGES closes
+			where EXPERIENCE closes. V168 measures it against those two boxes, not against a
+			literal, so moving either one without the other turns the gate red.
+
+			Each column still fills black under a centred title of its own width, so V27 and V48
+			read them exactly as before. What changed is V40: it now weighs them against every
+			box on the tab instead of against the two siblings they shared a frame with - which
+			is the check the old nesting was hiding (SPEC B18 is the same lesson from the fill
+			side, and the frame that carried that note went out with this comment).
+
+			The gap between columns is 20, the gap I73 gives every pair of boxes, and each row inside
+			a column is 290 wide at left=20 - the width the column gained arrives as NAME, never as air
+			between the last dot and the border (SPEC V170, I73).
+		-->
+		<layout name="boxTalents" left="345" top="110" width="330" height="426">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="290" height="20" text="TALENTS" horzTextAlign="center" anchors="left top right"/>
+
+			<layout left="20" top="36" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="1" field="alertness" nome="Alertness"/>
+			</layout>
+			<layout left="20" top="61" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="2" field="arts" nome="Arts"/>
+			</layout>
+			<layout left="20" top="86" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="3" field="athletics" nome="Athletics"/>
+			</layout>
+			<layout left="20" top="111" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="4" field="awareness" nome="Awareness"/>
+			</layout>
+			<layout left="20" top="136" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="5" field="brawl" nome="Brawl"/>
+			</layout>
+			<layout left="20" top="161" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="6" field="empathy" nome="Empathy"/>
+			</layout>
+			<layout left="20" top="186" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="7" field="expression" nome="Expression"/>
+			</layout>
+			<layout left="20" top="211" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="8" field="intimidation" nome="Intimidation"/>
+			</layout>
+			<layout left="20" top="236" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="9" field="leadership" nome="Leadership"/>
+			</layout>
+			<layout left="20" top="261" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="10" field="streetwise" nome="Streetwise"/>
+			</layout>
+			<!-- A vampire names ten a column in every era - eleven in the Classical knowledges
+			     (user 2026-10-01, SPEC I188d, I189a/b, V531): the slot a list does not fill shows its
+			     typed twin on the same top - the pair the 154th round authored for knowledges_13
+			     (SPEC I123b, V371) - and rows 14 and 15 are the TAIL the list cuts past its names plus
+			     two (`typed = 2` since the 50th batch, SPEC I193a): row 13 goes too, by its Tail name
+			     here and by the Fill branch in the two columns where it is a pair. Authored visibility is the Victorian list of a mortal, the base
+			     era the XML draws (SPEC V19); every other game shows exactly what it did. -->
+			<layout name="dynAbilRow_talents_11" left="20" top="286" width="290" height="25" anchors="left top right" >
+				<Ability col="talents" num="11" field="subterfuge" nome="Subterfuge"/>
+			</layout>
+			<layout name="dynAbilFill_talents_11" visible="false" left="20" top="286" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customTalent_5"/>
+			</layout>
+			<layout left="20" top="311" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customTalent_1"/>
+			</layout>
+			<layout name="dynAbilTail_talents_13" left="20" top="336" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customTalent_2"/>
+			</layout>
+			<layout name="dynAbilTail_talents_14" left="20" top="361" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customTalent_3"/>
+			</layout>
+			<layout name="dynAbilTail_talents_15" left="20" top="386" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customTalent_4"/>
+			</layout>
+		</layout>
+
+		<layout name="boxSkills" left="680" top="110" width="330" height="426">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="290" height="20" text="SKILLS" horzTextAlign="center" anchors="left top right"/>
+
+			<layout left="20" top="36" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="1" field="animalKen" nome="Animal Ken"/>
+			</layout>
+			<layout left="20" top="61" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="2" field="crafts" nome="Crafts"/>
+			</layout>
+			<layout left="20" top="86" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="3" field="etiquette" nome="Etiquette"/>
+			</layout>
+			<layout left="20" top="111" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="4" field="firearms" nome="Firearms"/>
+			</layout>
+			<layout left="20" top="136" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="5" field="larceny" nome="Larceny"/>
+			</layout>
+			<layout left="20" top="161" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="6" field="martialArts" nome="Martial Arts"/>
+			</layout>
+			<layout left="20" top="186" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="7" field="meditation" nome="Meditation"/>
+			</layout>
+			<layout left="20" top="211" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="8" field="melee" nome="Melee"/>
+			</layout>
+			<layout left="20" top="236" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="9" field="performance" nome="Performance"/>
+			</layout>
+			<layout left="20" top="261" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="10" field="research" nome="Research"/>
+			</layout>
+			<layout name="dynAbilRow_skills_11" left="20" top="286" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="11" field="ride" nome="Ride"/>
+			</layout>
+			<layout name="dynAbilFill_skills_11" visible="false" left="20" top="286" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customSkill_3"/>
+			</layout>
+			<layout name="dynAbilRow_skills_12" left="20" top="311" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="12" field="stealth" nome="Stealth"/>
+			</layout>
+			<layout name="dynAbilFill_skills_12" visible="false" left="20" top="311" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customSkill_4"/>
+			</layout>
+			<layout name="dynAbilRow_skills_13" left="20" top="336" width="290" height="25" anchors="left top right" >
+				<Ability col="skills" num="13" field="survival" nome="Survival"/>
+			</layout>
+			<layout name="dynAbilFill_skills_13" visible="false" left="20" top="336" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customSkill_5"/>
+			</layout>
+			<layout name="dynAbilTail_skills_14" left="20" top="361" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customSkill_1"/>
+			</layout>
+			<layout name="dynAbilTail_skills_15" left="20" top="386" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customSkill_2"/>
+			</layout>
+		</layout>
+
+		<layout name="boxKnowledges" left="1015" top="110" width="330" height="426">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="290" height="20" text="KNOWLEDGES" horzTextAlign="center" anchors="left top right"/>
+
+			<layout left="20" top="36" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="1" field="academics" nome="Academics"/>
+			</layout>
+			<layout left="20" top="61" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="2" field="cosmology" nome="Cosmology"/>
+			</layout>
+			<layout left="20" top="86" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="3" field="enigmas" nome="Enigmas"/>
+			</layout>
+			<layout left="20" top="111" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="4" field="esoterica" nome="Esoterica"/>
+			</layout>
+			<layout left="20" top="136" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="5" field="finance" nome="Finance"/>
+			</layout>
+			<layout left="20" top="161" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="6" field="investigation" nome="Investigation"/>
+			</layout>
+			<layout left="20" top="186" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="7" field="law" nome="Law"/>
+			</layout>
+			<layout left="20" top="211" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="8" field="medicine" nome="Medicine"/>
+			</layout>
+			<layout left="20" top="236" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="9" field="occult" nome="Occult"/>
+			</layout>
+			<layout left="20" top="261" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="10" field="politics" nome="Politics"/>
+			</layout>
+			<layout name="dynAbilRow_knowledges_11" left="20" top="286" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="11" field="science" nome="Science"/>
+			</layout>
+			<layout name="dynAbilFill_knowledges_11" visible="false" left="20" top="286" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customKnowledge_4"/>
+			</layout>
+			<layout name="dynAbilRow_knowledges_12" left="20" top="311" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="12" field="technology" nome="Technology"/>
+			</layout>
+			<layout name="dynAbilFill_knowledges_12" visible="false" left="20" top="311" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customKnowledge_5"/>
+			</layout>
+			<!--
+				The thirteenth knowledge and a typed row on ONE top, and the renderer shows exactly
+				one of them (SPEC I123b, V371b). Knowledges is the only column an era changes the
+				length of: Modern Nights and the Classical Age list thirteen, the Victorian era and
+				the Dark Ages twelve. An era borrows a trait from no other era (Q34), so the two
+				short eras pay for the row with a name the player types instead.
+
+				One top and not two: a second top would leave 25px of hole in whichever era hides
+				the upper row, which is the gap this pairing exists to close. It is the hidden pair
+				MeritPicked already runs (SPEC V354a), one row wider.
+
+				Authored state is the Victorian era like every other row here (SPEC V76), so the
+				named half ships hidden and the typed half ships visible. Its field is `computer`
+				because that is the one knowledge no twelve-name era lists: the authored column
+				stays one field per row even with the hidden one counted.
+			-->
+			<layout name="dynAbilRow_knowledges_13" visible="false" left="20" top="336" width="290" height="25" anchors="left top right" >
+				<Ability col="knowledges" num="13" field="computer" nome="Computer"/>
+			</layout>
+			<layout name="dynAbilFill_knowledges_13" left="20" top="336" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customKnowledge_3"/>
+			</layout>
+			<layout name="dynAbilTail_knowledges_14" left="20" top="361" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customKnowledge_1"/>
+			</layout>
+			<layout name="dynAbilTail_knowledges_15" left="20" top="386" width="290" height="25" anchors="left top right" >
+				<CustomAbility field="customKnowledge_2"/>
+			</layout>
+		</layout>
+
+		<!--
+			Bottom row since the 46th batch (SPEC I189c/d) - the map at the top of the file has
+			the numbers: VIRTUES over ROAD + BEARING + WILLPOWER | BLOOD POOL | HEALTH.
+
+			Every one of them takes its x from the column above it since the 50th round
+			(SPEC V168, V375): VIRTUES and ROAD from TALENTS, BLOOD POOL from SKILLS (the place
+			SPECIALTIES held until the 44th batch, and ROAD until the 46th), HEALTH from
+			KNOWLEDGES. They rose 50 with the 50th
+			round, which is what the ability columns gave back when they stopped carrying a
+			black tail (SPEC V171).
+
+			Virtues and Humanity are 290 wide, not 410: their content is a 250px track (a 125px
+			label plus 5 dots, or 10 bare dots), so 410 left a wide empty margin and made the
+			Humanity/Willpower dots read as right-aligned. 290 = 250 + a 20px margin each side,
+			which centres both tracks. The 120px freed went to HEALTH.
+
+			HEALTH is 290 wide because 150 was not enough for its own labels: "Wounded (-2)" is
+			"Ferido Gravemente (-2)" in pt, ~143px in a 125px checkBox. V16 only measures
+			<label>, never <checkBox>, so that overflow was never flagged by the gate.
+
+			Faith is gone from this tab on purpose: `faith_1`..`_5` are now the dots of the
+			TRUE FAITH row on the Powers tab, so a saved sheet keeps its rating (SPEC V35).
+		-->
+		<layout name="boxVirtues" left="345" top="541" width="330" height="126">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="290" height="20" text="VIRTUES" horzTextAlign="center" anchors="left top right"/>
+
+			<!-- Named for a vampire (SPEC I193d, V537a): there the box is 340 wide, under TALENTS,
+			     and VAMP_GEOM re-centres the three rows - a fixed child left behind in a box that
+			     changes shape is B191. -->
+			<layout name="virtueRow_conscience" left="20" top="36" width="290" height="25" >
+				<VirtuePicker field="conscience" list="virtue1" nome="Conscience"/>
+			</layout>
+			<layout name="virtueRow_selfControl" left="20" top="61" width="290" height="25" >
+				<VirtuePicker field="selfControl" list="virtue2" nome="Self-Control"/>
+			</layout>
+			<layout name="virtueRow_courage" left="20" top="86" width="290" height="25" >
+				<Virtue field="courage" nome="Courage"/>
+			</layout>
+		</layout>
+
+		<!-- Between VIRTUES and HEALTH, under SKILLS, for a mortal (47th batch, SPEC I190a, user
+		     2026-10-01) - where the 44th batch had put it. A vampire's BLOOD POOL needs that band, so
+		     for a vampire renderGameMode moves this box to 345..675 instead (VAMP_GEOM, SPEC V534c):
+		     the box keeps its size and its children, only left/top move. Since the 50th batch it is
+		     not stacked under VIRTUES any more - VIRTUES went under TALENTS - and closes up on the
+		     abilities (SPEC I193e).
+
+		     Since the 52nd batch (user 2026-10-02, SPEC I195, V541) ROAD holds the road alone and
+		     WILLPOWER is boxWillpower under it, in BOTH games: the two together are as tall as the
+		     Main's BLOOD POOL box (126 + 5 + 113 = 244), so a mortal's close on HEALTH's seven-level
+		     line with the avatar and a vampire's with the pool. Since the 56th batch (user 2026-10-02,
+		     SPEC I199a, V541a) ROAD is as tall as VIRTUES beside it, and WILLPOWER paid the 4.
+
+		     Inside (56th batch, SPEC I199b, V541c): the dots sit at the box's vertical CENTRE, 50
+		     above and 51 under (the odd pixel under, SPEC V399), and the picker line and the bearing
+		     line come in to 6 of them - half the 11 / 12 the 53rd batch spaced them by. -->
+		<layout name="boxRoad" left="680" top="541" width="330" height="126">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+
+			<!--
+				HUMANITY became ROAD in the 125th round (SPEC I99a). Only the LABEL moved: the ten
+				dots are still `humanity_1`..`_10`, so a saved sheet keeps its rating (SPEC V2, V5) -
+				the same trade `retainers`->GUIDES and `items`->TRANSPORTATION already made.
+
+				`cboRoad` sits ABOVE the track, so the box title says what the track IS and the combo
+				says WHICH road. It leads on `Humanity` and carries no empty item: a character with no
+				road IS on Humanity, which is the V15 exception SPEC C declares (SPEC I99b).
+
+				The bearing line is glued to the bottom of the dots at top=99 - the dots close exactly
+				there - because the request asked for it with no gap. Two labels and not one padded
+				string: V11 forbids padding to line a column up, and the modifier is its own column
+				(SPEC I99e). They carry the `dyn` prefix and NO text=: that prefix is what keeps the
+				WoD20.6 language traversal off a Lua-written label, which would otherwise snapshot the
+				authored English and restore it stale (SPEC V31) - the same reason the health rows use
+				it. SPEC I99e names them lbl*, and that spelling is wrong for a Lua-written label.
+
+				cboRoad is 290 and not 250: the ruler wants 241px for `The Path of Power and the Inner
+				Voice` plus the 24px arrow (SPEC V312), so the dot track's width would clip it. It
+				spans the box interior instead.
+
+				WILLPOWER fell 49 and the box grew 26 to fit, which is the second branch the user chose
+				in Q8. SPECIALTIES and the avatar grew the SAME 26 in the same commit - V69 reads all
+				three closing on one y, and moving one alone turns it red (SPEC I99i, I99j).
+			-->
+			<!-- The pair is CENTRED as a group, and the group's width moves with the language:
+			     `ROAD` is four characters and `CAMINHO` is seven (SPEC I128b/I128c, V380, T864,
+			     user 2026-08-31 ask 6). renderRoadPair writes both lefts and the label's width
+			     from ROAD_LABEL_W at every language change.
+
+			     What is AUTHORED here is the LONGER of the two - pt, 80px at left=30 - and not
+			     the English the sheet is written in: V16/V25 and V351(c) read the XML, and a
+			     label authored at the English width would be a clipped `CAMINHO` sitting in the
+			     file waiting for someone to open the sheet in pt. Declaring the worst case and
+			     letting the renderer shrink it is what HEALTH already does with its ten-row
+			     height (SPEC V49) - the file says the biggest it can ever be, and Lua takes it
+			     down. Nothing is measured against the English case except the screen. -->
+			<label name="lblRoad" left="30" top="20" width="80" height="24" text="ROAD" horzTextAlign="trailing" vertTextAlign="center"/>
+			<!-- The Classical Age calls this box PHILOSOPHY (SPEC I251). It is a label of
+			     its own, authored at its widest case (en, 114) the way lblRoad authors pt;
+			     renderRoadPair shows one of the two. -->
+			<label name="lblPhilosophy" left="13" top="20" width="114" height="24" text="PHILOSOPHY" horzTextAlign="trailing" vertTextAlign="center" visible="false"/>
+			<button name="btnQroad" left="115" top="20" width="20" height="24" text="?" onClick="popOpen(self, 'Road', sheet['road'], nil, 'road');"/>
+			<button name="dynroad" left="140" top="20" width="160" height="24" fontSize="12" text="Select Road" onClick="mfOpen(self, 'road', 'road', 'Road');" onMenu="mfMenuOpen('road', 'road');"/>
+			<!-- The typed twin, one field and two widgets with exactly one visible (SPEC I71, V274).
+			     Authored state IS the flag off - visible AND enabled - because invisible-and-enabled
+			     still takes Tab focus, which no screenshot shows (SPEC V274c, V274d). -->
+			<edit name="edtRoad" left="140" top="20" width="160" height="24" field="road" visible="false" enabled="false"/>
+			<layout left="40" top="50" width="250" height="25" >
+				<Advantages field="humanity"/>
+			</layout>
+			<!-- ONE label and not two (user 2026-08-29): the bearing and its modifier read as a
+			     single centred sentence, which two labels cannot do - each would centre in its own
+			     half and the pair would drift off centre as the name grows. This REVOKES the
+			     "the modifier is its own column" half of I99e; V11 is untouched, because what
+			     joins them is a real space and a real parenthesis, not padding.
+			
+			     0.80 is neither of the two dimming numbers of I43/V244 and is not trying to be:
+			     those two say "read-only", this one is the emphasis the user asked for on a line
+			     that was never editable. Authored, so no runtime write reaches V244. -->
+			<label name="dynBearingName" left="20" top="81" width="290" height="20" horzTextAlign="center" opacity="0.80"/>
+		</layout>
+
+		<!-- WILLPOWER, a box of its own under ROAD in every game since the 52nd batch (user 2026-10-02,
+		     SPEC I195, V540, V541): the 51st had split it for a vampire only, with a second copy of the
+		     row hidden inside ROAD for a mortal; once the mortal split too there was nothing left for
+		     the copy to do, and this is again the ONE willpower row of the tab (SPEC V1). For a
+		     vampire VAMP_GEOM moves it with ROAD. Title, dots and checkboxes: 8 from the title to the
+		     dots and 2 from the dots to the checkboxes in the template - the user's 2px, the same on
+		     the Combat tab and on the Vampire tab's copy (57th batch, user 2026-10-02, SPEC I200a,
+		     V545a). The three are ONE object centred in the box since the 61st batch (user
+		     2026-10-02, SPEC I204c, V547): 20 + 8 + 52 = 80 in the 113 of V541a, 16 above and 17 under. -->
+		<!-- Title and body named in the 74th batch (user 2026-10-06, SPEC I217d): a MAGE's WILLPOWER
+		     takes VIRTUES' 340 x 126 and MAGE_GEOM re-centres the two as one object. -->
+		<layout name="boxWillpower" left="680" top="672" width="330" height="113">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label name="lblWillpower" left="20" top="16" width="290" height="20" text="WILLPOWER" horzTextAlign="center"/>
+			<layout name="bodyWillpower" left="40" top="44" width="250" height="52" >
+				<Willpower field="willpower"/>
+			</layout>
+		</layout>
+
+		<!-- A MAGE's Quintessence / Paradox wheel (user 2026-10-06, SPEC I218, V555), in the slot ROAD left
+		     beside WILLPOWER: 200 x 244 since the 78th batch (SPEC I221b, V558b - the ring's 160 and 20 a
+		     side; it was 330), WILLPOWER's top to EXPERIENCE's foot. Twenty marks on a circle of
+		     radius 73 round (100, 122), one every 18 degrees from 171 (left, a touch up) clockwise to the
+		     twentieth just under the first - Quintessence fills clockwise from 1, Paradox counter-
+		     clockwise from 20. Each mark is Health's: a stroked square whose label carries the field, so
+		     the NDB paints the symbol; 16 x 16 and not Health's 22 x 20: an upright square on the diagonal
+		     of a circle this size needs 16 or less to clear its neighbour (SPEC B200). The
+		     positions are generated (left = round(100 + 73 cos t) - 8, top = round(122 - 73 sin t) - 8, the
+		     ring's own top taken off). The ring is a layout of its own: titles 15 from the edges (V240)
+		     and the clickable marks off the box's ground rectangle (V68).
+		     80th batch (user 2026-10-07, SPEC I223a/b, V562): the mark is PAINTED, not lettered - no label
+		     child; renderQpWheel colours it gold for "/" and dark purple for "X". Each mark turns its
+		     base to the ring's centre: rotationAngle = (18 N - 99) mod 360, generated; the host turns a
+		     control about its own centre, so the positions above do not move (SPEC B61).
+		     Hidden here: renderGameMode shows it to a mage only. Since the 95th batch (user 2026-10-08,
+		     SPEC I238c, V579c) it swaps places with WILLPOWER: on the Main's left edge, under SPHERES. Since the
+		     96th batch (user 2026-10-08, SPEC I239b, V580b) it is SPHERES' 370 wide and its five children
+		     stand 85 right of the 200 they were drawn for, centred on 185. Since the 100th batch (user
+		     2026-10-09, SPEC I243d, V584c) it stands 5 under ATTRIBUTES and is its 434 wide, the five
+		     children 117 right of the 200, centred on 217. -->
+		<layout name="boxQuintParadox" left="0" top="411" width="434" height="244" visible="false">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<!-- Each title shares its line with the number it names (user 2026-10-06, SPEC I219a): the
+			     numbers are the truth and the ring draws them (renderQpWheel). Since the 77th batch
+			     (SPEC I220, V557) the title is right-aligned and ends 5 before its number, and the pair
+			     sits about the box's middle - centred on the pt name, the longer: QUINTESSENCIA ~98 +
+			     5 + 40 = 143 from 29, PARADOXO ~60 + 5 + 40 = 105 from 47 (centre 100 since the 78th batch,
+			     SPEC I221b). -->
+			<label left="137" top="15" width="107" height="20" text="QUINTESSENCE" horzTextAlign="trailing"/>
+			<edit name="edtQpQuint" field="qpQuint" type="number" decimalPlaces="0" left="249" top="15" width="40" height="20" horzTextAlign="center" vertTextAlign="center"/>
+			<layout name="qpRing" left="137" top="42" width="160" height="160">
+				<rectangle name="qpMark_1" left="0" top="61" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="279" hitTest="true" cursor="handPoint" onClick="cycleQpMark(1);"/>
+				<rectangle name="qpMark_2" left="7" top="39" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="297" hitTest="true" cursor="handPoint" onClick="cycleQpMark(2);"/>
+				<rectangle name="qpMark_3" left="20" top="20" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="315" hitTest="true" cursor="handPoint" onClick="cycleQpMark(3);"/>
+				<rectangle name="qpMark_4" left="39" top="7" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="333" hitTest="true" cursor="handPoint" onClick="cycleQpMark(4);"/>
+				<rectangle name="qpMark_5" left="61" top="0" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="351" hitTest="true" cursor="handPoint" onClick="cycleQpMark(5);"/>
+				<rectangle name="qpMark_6" left="83" top="0" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="9" hitTest="true" cursor="handPoint" onClick="cycleQpMark(6);"/>
+				<rectangle name="qpMark_7" left="105" top="7" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="27" hitTest="true" cursor="handPoint" onClick="cycleQpMark(7);"/>
+				<rectangle name="qpMark_8" left="124" top="20" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="45" hitTest="true" cursor="handPoint" onClick="cycleQpMark(8);"/>
+				<rectangle name="qpMark_9" left="137" top="39" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="63" hitTest="true" cursor="handPoint" onClick="cycleQpMark(9);"/>
+				<rectangle name="qpMark_10" left="144" top="61" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="81" hitTest="true" cursor="handPoint" onClick="cycleQpMark(10);"/>
+				<rectangle name="qpMark_11" left="144" top="83" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="99" hitTest="true" cursor="handPoint" onClick="cycleQpMark(11);"/>
+				<rectangle name="qpMark_12" left="137" top="105" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="117" hitTest="true" cursor="handPoint" onClick="cycleQpMark(12);"/>
+				<rectangle name="qpMark_13" left="124" top="124" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="135" hitTest="true" cursor="handPoint" onClick="cycleQpMark(13);"/>
+				<rectangle name="qpMark_14" left="105" top="137" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="153" hitTest="true" cursor="handPoint" onClick="cycleQpMark(14);"/>
+				<rectangle name="qpMark_15" left="83" top="144" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="171" hitTest="true" cursor="handPoint" onClick="cycleQpMark(15);"/>
+				<rectangle name="qpMark_16" left="61" top="144" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="189" hitTest="true" cursor="handPoint" onClick="cycleQpMark(16);"/>
+				<rectangle name="qpMark_17" left="39" top="137" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="207" hitTest="true" cursor="handPoint" onClick="cycleQpMark(17);"/>
+				<rectangle name="qpMark_18" left="20" top="124" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="225" hitTest="true" cursor="handPoint" onClick="cycleQpMark(18);"/>
+				<rectangle name="qpMark_19" left="7" top="105" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="243" hitTest="true" cursor="handPoint" onClick="cycleQpMark(19);"/>
+				<rectangle name="qpMark_20" left="0" top="83" width="16" height="16" color="#00000000" strokeColor="white" strokeSize="2" xradius="2" yradius="2" rotationAngle="261" hitTest="true" cursor="handPoint" onClick="cycleQpMark(20);"/>
+			</layout>
+			<label left="137" top="209" width="87" height="20" text="PARADOX" horzTextAlign="trailing"/>
+			<edit name="edtQpParadox" field="qpParadox" type="number" decimalPlaces="0" left="229" top="209" width="40" height="20" horzTextAlign="center" vertTextAlign="center"/>
+		</layout>
+
+		<!-- ARETE over SPHERES, a MAGE's alone (user 2026-10-06, SPEC I221c, V559, V560): the slot between
+		     the wheel and HEALTH, 664 x 244 since the 80th batch (SPEC I223f) - the wheel's height, the "double box". Two boxes
+		     since the 82nd batch (user 2026-10-07, SPEC I225e, V567e): ARETE 89 over SPHERES 150, 5 between. Arete's first dot is
+		     a fixed image, as a Virtue's (it starts at 1); the nine after it buy with XP. Since the 80th
+		     batch (user 2026-10-07, SPEC I223e/f, Q137.1b, V564) a sphere row is an ability's: body font
+		     and 25px dots. Each column is as wide as its longest name (98, 46, 59 by the gate's ruler) +
+		     2 + 125 = 225, 173, 186, and the four gaps - edge, between, between, edge - are 20 each, which
+		     is what closes the bottom row on 1375 with HEALTH at 206. Each dot from the 2nd has a
+		     faded EMPTY twin (scap_) for the levels over Arete, the mcap pair of the attributes, swapped
+		     by renderSpheres (SPEC I221j). Hidden here: renderGameMode shows it to a mage only. Since the 90th batch (user 2026-10-08,
+		     SPEC I233b, V574b) the two stack under WILLPOWER right of KNOWLEDGES, 1005 to ATTRIBUTES' edge at 1375 (370),
+		     and the nine spheres are ONE column: every name 98 wide, the row 225 centred at 72, 25 a row from 44 (30 until the 92nd batch, SPEC I235b - the abilities' step). Since
+		     the 91st batch (SPEC I234c) WILLPOWER is back under TALENTS and the two rise to KNOWLEDGES' top. Since the 93rd batch
+		     (user 2026-10-08, SPEC I236a, V577) ARETE is 81 (the track at 41, 15 under it - SPEC V240) so SPHERES closes on 617,
+		     the foot of TALENTS and SKILLS in every era. Since the 95th batch (user 2026-10-08, SPEC I238b, V579b)
+		     the two stand on the Main's left edge, before TALENTS. Since the 100th batch (user 2026-10-09,
+		     SPEC I243d, V584c) they part: ARETE 5 under WILLPOWER and its 290 wide (the track 20 a side),
+		     SPHERES between WILLPOWER and HEALTH, its right edge on SKILLS'. -->
+		<layout name="boxArete" left="439" top="622" width="290" height="81" visible="false">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="250" height="20" text="ARETE" horzTextAlign="center"/>
+			<layout name="areteRow" left="20" top="41" width="250" height="25">
+				<image left="0" top="0" width="25" height="25" style="autoFit" src="images/prime_on.png"/>
+				<imageCheckBox name="arete_2" left="25" top="0" width="25" height="25" field="arete_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_2', self);"/>
+				<imageCheckBox name="arete_3" left="50" top="0" width="25" height="25" field="arete_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_3', self);"/>
+				<imageCheckBox name="arete_4" left="75" top="0" width="25" height="25" field="arete_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_4', self);"/>
+				<imageCheckBox name="arete_5" left="100" top="0" width="25" height="25" field="arete_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_5', self);"/>
+				<imageCheckBox name="arete_6" left="125" top="0" width="25" height="25" field="arete_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_6', self);"/>
+				<imageCheckBox name="arete_7" left="150" top="0" width="25" height="25" field="arete_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_7', self);"/>
+				<imageCheckBox name="arete_8" left="175" top="0" width="25" height="25" field="arete_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_8', self);"/>
+				<imageCheckBox name="arete_9" left="200" top="0" width="25" height="25" field="arete_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_9', self);"/>
+				<imageCheckBox name="arete_10" left="225" top="0" width="25" height="25" field="arete_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('arete_10', self);"/>
+			</layout>
+		</layout>
+
+		<layout name="boxSpheres" left="734" top="491" width="370" height="290" visible="false">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="330" height="20" text="SPHERES" horzTextAlign="center"/>
+			<layout name="sphRow_correspondence" left="72" top="44" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Correspondence"/>
+				<imageCheckBox name="sphere_correspondence_1" left="100" top="0" width="25" height="25" field="sphere_correspondence_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_1', self);"/>
+				<imageCheckBox name="sphere_correspondence_2" left="125" top="0" width="25" height="25" field="sphere_correspondence_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_2', self);"/>
+				<imageCheckBox name="sphere_correspondence_3" left="150" top="0" width="25" height="25" field="sphere_correspondence_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_3', self);"/>
+				<imageCheckBox name="sphere_correspondence_4" left="175" top="0" width="25" height="25" field="sphere_correspondence_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_4', self);"/>
+				<imageCheckBox name="sphere_correspondence_5" left="200" top="0" width="25" height="25" field="sphere_correspondence_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_correspondence_5', self);"/>
+				<imageCheckBox name="scap_correspondence_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_correspondence_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_correspondence_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_correspondence_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="sphRow_entropy" left="72" top="69" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Entropy"/>
+				<imageCheckBox name="sphere_entropy_1" left="100" top="0" width="25" height="25" field="sphere_entropy_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_1', self);"/>
+				<imageCheckBox name="sphere_entropy_2" left="125" top="0" width="25" height="25" field="sphere_entropy_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_2', self);"/>
+				<imageCheckBox name="sphere_entropy_3" left="150" top="0" width="25" height="25" field="sphere_entropy_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_3', self);"/>
+				<imageCheckBox name="sphere_entropy_4" left="175" top="0" width="25" height="25" field="sphere_entropy_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_4', self);"/>
+				<imageCheckBox name="sphere_entropy_5" left="200" top="0" width="25" height="25" field="sphere_entropy_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_entropy_5', self);"/>
+				<imageCheckBox name="scap_entropy_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_entropy_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_entropy_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_entropy_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="sphRow_forces" left="72" top="94" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Forces"/>
+				<imageCheckBox name="sphere_forces_1" left="100" top="0" width="25" height="25" field="sphere_forces_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_1', self);"/>
+				<imageCheckBox name="sphere_forces_2" left="125" top="0" width="25" height="25" field="sphere_forces_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_2', self);"/>
+				<imageCheckBox name="sphere_forces_3" left="150" top="0" width="25" height="25" field="sphere_forces_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_3', self);"/>
+				<imageCheckBox name="sphere_forces_4" left="175" top="0" width="25" height="25" field="sphere_forces_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_4', self);"/>
+				<imageCheckBox name="sphere_forces_5" left="200" top="0" width="25" height="25" field="sphere_forces_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_forces_5', self);"/>
+				<imageCheckBox name="scap_forces_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_forces_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_forces_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_forces_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="sphRow_life" left="72" top="119" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Life"/>
+				<imageCheckBox name="sphere_life_1" left="100" top="0" width="25" height="25" field="sphere_life_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_1', self);"/>
+				<imageCheckBox name="sphere_life_2" left="125" top="0" width="25" height="25" field="sphere_life_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_2', self);"/>
+				<imageCheckBox name="sphere_life_3" left="150" top="0" width="25" height="25" field="sphere_life_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_3', self);"/>
+				<imageCheckBox name="sphere_life_4" left="175" top="0" width="25" height="25" field="sphere_life_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_4', self);"/>
+				<imageCheckBox name="sphere_life_5" left="200" top="0" width="25" height="25" field="sphere_life_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_life_5', self);"/>
+				<imageCheckBox name="scap_life_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_life_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_life_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_life_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="sphRow_matter" left="72" top="144" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Matter"/>
+				<imageCheckBox name="sphere_matter_1" left="100" top="0" width="25" height="25" field="sphere_matter_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_1', self);"/>
+				<imageCheckBox name="sphere_matter_2" left="125" top="0" width="25" height="25" field="sphere_matter_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_2', self);"/>
+				<imageCheckBox name="sphere_matter_3" left="150" top="0" width="25" height="25" field="sphere_matter_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_3', self);"/>
+				<imageCheckBox name="sphere_matter_4" left="175" top="0" width="25" height="25" field="sphere_matter_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_4', self);"/>
+				<imageCheckBox name="sphere_matter_5" left="200" top="0" width="25" height="25" field="sphere_matter_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_matter_5', self);"/>
+				<imageCheckBox name="scap_matter_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_matter_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_matter_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_matter_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="sphRow_mind" left="72" top="169" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Mind"/>
+				<imageCheckBox name="sphere_mind_1" left="100" top="0" width="25" height="25" field="sphere_mind_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_1', self);"/>
+				<imageCheckBox name="sphere_mind_2" left="125" top="0" width="25" height="25" field="sphere_mind_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_2', self);"/>
+				<imageCheckBox name="sphere_mind_3" left="150" top="0" width="25" height="25" field="sphere_mind_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_3', self);"/>
+				<imageCheckBox name="sphere_mind_4" left="175" top="0" width="25" height="25" field="sphere_mind_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_4', self);"/>
+				<imageCheckBox name="sphere_mind_5" left="200" top="0" width="25" height="25" field="sphere_mind_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_mind_5', self);"/>
+				<imageCheckBox name="scap_mind_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_mind_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_mind_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_mind_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="sphRow_prime" left="72" top="194" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Prime"/>
+				<imageCheckBox name="sphere_prime_1" left="100" top="0" width="25" height="25" field="sphere_prime_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_1', self);"/>
+				<imageCheckBox name="sphere_prime_2" left="125" top="0" width="25" height="25" field="sphere_prime_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_2', self);"/>
+				<imageCheckBox name="sphere_prime_3" left="150" top="0" width="25" height="25" field="sphere_prime_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_3', self);"/>
+				<imageCheckBox name="sphere_prime_4" left="175" top="0" width="25" height="25" field="sphere_prime_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_4', self);"/>
+				<imageCheckBox name="sphere_prime_5" left="200" top="0" width="25" height="25" field="sphere_prime_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_prime_5', self);"/>
+				<imageCheckBox name="scap_prime_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_prime_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_prime_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_prime_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="sphRow_spirit" left="72" top="219" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Spirit"/>
+				<imageCheckBox name="sphere_spirit_1" left="100" top="0" width="25" height="25" field="sphere_spirit_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_1', self);"/>
+				<imageCheckBox name="sphere_spirit_2" left="125" top="0" width="25" height="25" field="sphere_spirit_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_2', self);"/>
+				<imageCheckBox name="sphere_spirit_3" left="150" top="0" width="25" height="25" field="sphere_spirit_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_3', self);"/>
+				<imageCheckBox name="sphere_spirit_4" left="175" top="0" width="25" height="25" field="sphere_spirit_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_4', self);"/>
+				<imageCheckBox name="sphere_spirit_5" left="200" top="0" width="25" height="25" field="sphere_spirit_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_spirit_5', self);"/>
+				<imageCheckBox name="scap_spirit_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_spirit_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_spirit_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_spirit_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+			<layout name="sphRow_time" left="72" top="244" width="225" height="25">
+				<label left="0" top="5" width="98" height="20" text="Time"/>
+				<imageCheckBox name="sphere_time_1" left="100" top="0" width="25" height="25" field="sphere_time_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_1', self);"/>
+				<imageCheckBox name="sphere_time_2" left="125" top="0" width="25" height="25" field="sphere_time_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_2', self);"/>
+				<imageCheckBox name="sphere_time_3" left="150" top="0" width="25" height="25" field="sphere_time_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_3', self);"/>
+				<imageCheckBox name="sphere_time_4" left="175" top="0" width="25" height="25" field="sphere_time_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_4', self);"/>
+				<imageCheckBox name="sphere_time_5" left="200" top="0" width="25" height="25" field="sphere_time_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="xpClick('sphere_time_5', self);"/>
+				<imageCheckBox name="scap_time_2" left="125" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_time_3" left="150" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_time_4" left="175" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+				<imageCheckBox name="scap_time_5" left="200" top="0" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			</layout>
+		</layout>
+
+		<!-- The vampire's BLOOD POOL on the Main (user 2026-10-01, SPEC I189d, V532): the same block
+		     as the Vampire tab's - the same fifty fields, the same 26 x 30 step, the same faded twin
+		     above the generation's pool, painted by renderVampCaps - in the band under SKILLS, between
+		     VIRTUES and HEALTH. It closes where HEALTH closes at SEVEN levels, the avatar's line
+		     (SPEC V415): 541 + 7 * 27 + 55 = 785, so the box is 244 tall and the 259 x 145 grid sits
+		     CENTRED under the title (first row at 67, a 32 foot). Hidden unless the game is Vampire
+		     (renderGameMode, SPEC Q108.3). Since the 47th batch the XML spot is the MORTAL sheet's,
+		     shared with ROAD and never seen; a vampire's Main moves the box to VAMP_GEOM, still
+		     closing on the seven-level line (SPEC I190c, V534c). dynBloodTurnMain is the faded
+		     "Blood per Turn X" between title and dots, written by renderVampCaps (SPEC I190h). Names carry m where the tab's carry v: the imports are
+		     pasted into one constructor, so a repeated name would be one self.<name> (SPEC V530e). -->
+		<layout name="mainBloodPool" left="680" top="541" width="330" height="244" visible="false">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="290" height="20" text="BLOOD POOL" horzTextAlign="center"/>
+			<label name="dynBloodTurnMain" left="20" top="40" width="290" height="20" horzTextAlign="center" opacity="0.80"/>
+			<imageCheckBox name="mdotbloodPool_1" left="35" top="67" width="25" height="25" field="bloodPool_1" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_1', self);"/>
+			<imageCheckBox name="mdotbloodPool_2" left="61" top="67" width="25" height="25" field="bloodPool_2" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_2', self);"/>
+			<imageCheckBox name="mdotbloodPool_3" left="87" top="67" width="25" height="25" field="bloodPool_3" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_3', self);"/>
+			<imageCheckBox name="mdotbloodPool_4" left="113" top="67" width="25" height="25" field="bloodPool_4" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_4', self);"/>
+			<imageCheckBox name="mdotbloodPool_5" left="139" top="67" width="25" height="25" field="bloodPool_5" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_5', self);"/>
+			<imageCheckBox name="mdotbloodPool_6" left="165" top="67" width="25" height="25" field="bloodPool_6" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_6', self);"/>
+			<imageCheckBox name="mdotbloodPool_7" left="191" top="67" width="25" height="25" field="bloodPool_7" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_7', self);"/>
+			<imageCheckBox name="mdotbloodPool_8" left="217" top="67" width="25" height="25" field="bloodPool_8" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_8', self);"/>
+			<imageCheckBox name="mdotbloodPool_9" left="243" top="67" width="25" height="25" field="bloodPool_9" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_9', self);"/>
+			<imageCheckBox name="mdotbloodPool_10" left="269" top="67" width="25" height="25" field="bloodPool_10" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_10', self);"/>
+			<imageCheckBox name="mdotbloodPool_11" left="35" top="97" width="25" height="25" field="bloodPool_11" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_11', self);"/>
+			<imageCheckBox name="mdotbloodPool_12" left="61" top="97" width="25" height="25" field="bloodPool_12" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_12', self);"/>
+			<imageCheckBox name="mdotbloodPool_13" left="87" top="97" width="25" height="25" field="bloodPool_13" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_13', self);"/>
+			<imageCheckBox name="mdotbloodPool_14" left="113" top="97" width="25" height="25" field="bloodPool_14" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_14', self);"/>
+			<imageCheckBox name="mdotbloodPool_15" left="139" top="97" width="25" height="25" field="bloodPool_15" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_15', self);"/>
+			<imageCheckBox name="mdotbloodPool_16" left="165" top="97" width="25" height="25" field="bloodPool_16" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_16', self);"/>
+			<imageCheckBox name="mdotbloodPool_17" left="191" top="97" width="25" height="25" field="bloodPool_17" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_17', self);"/>
+			<imageCheckBox name="mdotbloodPool_18" left="217" top="97" width="25" height="25" field="bloodPool_18" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_18', self);"/>
+			<imageCheckBox name="mdotbloodPool_19" left="243" top="97" width="25" height="25" field="bloodPool_19" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_19', self);"/>
+			<imageCheckBox name="mdotbloodPool_20" left="269" top="97" width="25" height="25" field="bloodPool_20" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_20', self);"/>
+			<imageCheckBox name="mdotbloodPool_21" left="35" top="127" width="25" height="25" field="bloodPool_21" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_21', self);"/>
+			<imageCheckBox name="mdotbloodPool_22" left="61" top="127" width="25" height="25" field="bloodPool_22" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_22', self);"/>
+			<imageCheckBox name="mdotbloodPool_23" left="87" top="127" width="25" height="25" field="bloodPool_23" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_23', self);"/>
+			<imageCheckBox name="mdotbloodPool_24" left="113" top="127" width="25" height="25" field="bloodPool_24" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_24', self);"/>
+			<imageCheckBox name="mdotbloodPool_25" left="139" top="127" width="25" height="25" field="bloodPool_25" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_25', self);"/>
+			<imageCheckBox name="mdotbloodPool_26" left="165" top="127" width="25" height="25" field="bloodPool_26" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_26', self);"/>
+			<imageCheckBox name="mdotbloodPool_27" left="191" top="127" width="25" height="25" field="bloodPool_27" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_27', self);"/>
+			<imageCheckBox name="mdotbloodPool_28" left="217" top="127" width="25" height="25" field="bloodPool_28" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_28', self);"/>
+			<imageCheckBox name="mdotbloodPool_29" left="243" top="127" width="25" height="25" field="bloodPool_29" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_29', self);"/>
+			<imageCheckBox name="mdotbloodPool_30" left="269" top="127" width="25" height="25" field="bloodPool_30" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_30', self);"/>
+			<imageCheckBox name="mdotbloodPool_31" left="35" top="157" width="25" height="25" field="bloodPool_31" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_31', self);"/>
+			<imageCheckBox name="mdotbloodPool_32" left="61" top="157" width="25" height="25" field="bloodPool_32" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_32', self);"/>
+			<imageCheckBox name="mdotbloodPool_33" left="87" top="157" width="25" height="25" field="bloodPool_33" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_33', self);"/>
+			<imageCheckBox name="mdotbloodPool_34" left="113" top="157" width="25" height="25" field="bloodPool_34" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_34', self);"/>
+			<imageCheckBox name="mdotbloodPool_35" left="139" top="157" width="25" height="25" field="bloodPool_35" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_35', self);"/>
+			<imageCheckBox name="mdotbloodPool_36" left="165" top="157" width="25" height="25" field="bloodPool_36" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_36', self);"/>
+			<imageCheckBox name="mdotbloodPool_37" left="191" top="157" width="25" height="25" field="bloodPool_37" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_37', self);"/>
+			<imageCheckBox name="mdotbloodPool_38" left="217" top="157" width="25" height="25" field="bloodPool_38" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_38', self);"/>
+			<imageCheckBox name="mdotbloodPool_39" left="243" top="157" width="25" height="25" field="bloodPool_39" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_39', self);"/>
+			<imageCheckBox name="mdotbloodPool_40" left="269" top="157" width="25" height="25" field="bloodPool_40" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_40', self);"/>
+			<imageCheckBox name="mdotbloodPool_41" left="35" top="187" width="25" height="25" field="bloodPool_41" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_41', self);"/>
+			<imageCheckBox name="mdotbloodPool_42" left="61" top="187" width="25" height="25" field="bloodPool_42" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_42', self);"/>
+			<imageCheckBox name="mdotbloodPool_43" left="87" top="187" width="25" height="25" field="bloodPool_43" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_43', self);"/>
+			<imageCheckBox name="mdotbloodPool_44" left="113" top="187" width="25" height="25" field="bloodPool_44" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_44', self);"/>
+			<imageCheckBox name="mdotbloodPool_45" left="139" top="187" width="25" height="25" field="bloodPool_45" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_45', self);"/>
+			<imageCheckBox name="mdotbloodPool_46" left="165" top="187" width="25" height="25" field="bloodPool_46" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_46', self);"/>
+			<imageCheckBox name="mdotbloodPool_47" left="191" top="187" width="25" height="25" field="bloodPool_47" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_47', self);"/>
+			<imageCheckBox name="mdotbloodPool_48" left="217" top="187" width="25" height="25" field="bloodPool_48" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_48', self);"/>
+			<imageCheckBox name="mdotbloodPool_49" left="243" top="187" width="25" height="25" field="bloodPool_49" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_49', self);"/>
+			<imageCheckBox name="mdotbloodPool_50" left="269" top="187" width="25" height="25" field="bloodPool_50" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" onClick="bloodClick('bloodPool_50', self);"/>
+			<imageCheckBox name="mcapbloodPool_1" left="35" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_2" left="61" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_3" left="87" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_4" left="113" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_5" left="139" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_6" left="165" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_7" left="191" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_8" left="217" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_9" left="243" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_10" left="269" top="67" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_11" left="35" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_12" left="61" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_13" left="87" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_14" left="113" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_15" left="139" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_16" left="165" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_17" left="191" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_18" left="217" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_19" left="243" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_20" left="269" top="97" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_21" left="35" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_22" left="61" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_23" left="87" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_24" left="113" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_25" left="139" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_26" left="165" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_27" left="191" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_28" left="217" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_29" left="243" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_30" left="269" top="127" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_31" left="35" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_32" left="61" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_33" left="87" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_34" left="113" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_35" left="139" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_36" left="165" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_37" left="191" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_38" left="217" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_39" left="243" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_40" left="269" top="157" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_41" left="35" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_42" left="61" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_43" left="87" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_44" left="113" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_45" left="139" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_46" left="165" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_47" left="191" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_48" left="217" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_49" left="243" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+			<imageCheckBox name="mcapbloodPool_50" left="269" top="187" width="25" height="25" checked="false" checkedImage="images/prime_on.png" uncheckedImage="images/prime_off.png" autoChange="false" opacity="0.30" visible="false"/>
+		</layout>
+
+		<!--
+			HEALTH is positional now (SPEC T96): row N is the Nth damage box, `health_1`..`_10`.
+			The old semantic names (bruised/hurt/injured/...) are gone - they could not express a
+			track where the label repeats (four "Bruised" rows at 10 levels), so they are declared
+			orphans in SPEC I3 and a sheet saved before this loses its health marks. Requested.
+
+			The labels carry NO text= here: renderHealthTrack() on the root form writes them from
+			HEALTH_LEVELS, already translated, and hides the rows past the chosen length. The
+			`dyn` name prefix is what keeps the WoD20.6 language traversal off them - it snapshots
+			authored English once, and would restore a stale label after a length change (V31).
+
+			Each row is a named layout so the renderer can hide label and mark box together; the
+			mark itself is a four-symbol box, see the HealthRow template (SPEC T116).
+
+			height=306 is the TEN-row case on purpose (SPEC V49): the renderer shrinks the box to
+			fit the chosen track length, so the file always declares the tallest it can ever be
+			and the box-overlap check (V40), which reads this file and not the running sheet,
+			keeps measuring the worst case.
+
+			Title is 205 wide, not 280, to leave room for the level combo. That is under the 80%
+			the gate treats as a full-width section title, so V27 still holds for this box.
+			245px per row because "Wounded (-2)" is "Ferido Gravemente (-2)" in pt (V38 / B17).
+		-->
+		<layout name="dynHealth_box" left="1015" top="541" width="330" height="325">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<!-- How long the track is moved to the storyteller's box in the 82nd round (SPEC I35,
+			     V234): it was never the player's call, and it was the last thing on this sheet
+			     held by two widgets on one field. The title spans the whole box now that it no
+			     longer shares the row with a combo, so horzTextAlign centres it on the BOX. -->
+			<label left="20" top="15" width="290" height="20" text="HEALTH" horzTextAlign="center" anchors="left top right"/>
+
+			<layout name="dynHealth_row1" left="42" top="47" width="246" height="20"><HealthRow num="1"/></layout>
+			<layout name="dynHealth_row2" left="42" top="74" width="246" height="20"><HealthRow num="2"/></layout>
+			<layout name="dynHealth_row3" left="42" top="101" width="246" height="20"><HealthRow num="3"/></layout>
+			<layout name="dynHealth_row4" left="42" top="128" width="246" height="20"><HealthRow num="4"/></layout>
+			<layout name="dynHealth_row5" left="42" top="155" width="246" height="20"><HealthRow num="5"/></layout>
+			<layout name="dynHealth_row6" left="42" top="182" width="246" height="20"><HealthRow num="6"/></layout>
+			<layout name="dynHealth_row7" left="42" top="209" width="246" height="20"><HealthRow num="7"/></layout>
+			<layout name="dynHealth_row8" left="42" top="236" width="246" height="20"><HealthRow num="8"/></layout>
+			<layout name="dynHealth_row9" left="42" top="263" width="246" height="20"><HealthRow num="9"/></layout>
+			<layout name="dynHealth_row10" left="42" top="290" width="246" height="20"><HealthRow num="10"/></layout>
+		</layout>
+
+		<!--
+			SPEC I176a, T1110 - the Main tab's own tooltip, the twin of WoD20.2's noteTip attribute
+			for attribute. Its NAMES are its own: the tabs are <import>ed into ONE form, and every
+			named control of every tab is a field of that one root object (SPEC R176) - a second
+			noteTip here would overwrite the first. LAST child of the scrollBox, so it paints over
+			every box in CONTENT coordinates; the era's box colour at 80%, no outline, no title (SPEC
+			V501a, V510a, I177a, I178c).
+		-->
+		<layout name="specTip" left="0" top="0" width="300" height="60" visible="false" onMouseEnter="noteTipHold(self);" onMouseLeave="noteTipHide(self);">
+			<rectangle align="contents" color="black" opacity="0.80" strokeColor="#00000000" hitTest="false"/>
+			<label name="dynSpecTip" left="5" top="5" width="276" height="20" fontSize="12" wordWrap="false" autoSize="true" textTrimming="none" onResize="noteTipFit(self, 'specTip', 'dynSpecTip');"/>
+		</layout>
+	</scrollBox>
+
+	<!--
+		The health labels are written by Lua, so they need re-rendering whenever the track length
+		or the language changes. Two independent entry points on purpose (SPEC V19 / V33): the
+		dataLink covers later edits, onNodeReady covers the sheet simply being opened.
+	-->
+	<dataLink fields="{'healthLevels', 'language', 'sheetTheme'}" onChange="renderHealthTrack(self, 'dynHealth_'); renderRoadPair(self);"/>
+
+	<!-- The experience box is worked out, not stored (SPEC I11): it follows the one saved
+	     number, and every dot on this tab redraws it through the guard. -->
+	<dataLink field="xpTotal" onChange="renderXPBoxes(self);"/>
+
+	<!-- A gift writes the stamps, and the ! of its trait stars (SPEC V512, V527c). Watching them
+	     covers the grant that happened on ANOTHER client at the table: the field arrives over
+	     the NDB, and the ! repaints here too.
+
+	     `xpFree` carries no widget by design - it is Lua-owned, the declared exception to
+	     V8 (SPEC I3, B25). -->
+	<dataLink field="xpFree" onChange="specBangPaint(self);"/>
+
+	<event name="onShow">
+		wodTrace("WoD20.1.onShow");
+		renderXPBoxes(self);
+		-- Both events, like renderXPBoxes (SPEC V429b, I146g, T962): onNodeReady alone leaves the
+		-- ! unpainted whenever the sheet is not bound yet, and showing the tab again is what
+		-- catches a speciality undone from the Experience log (SPEC V527c).
+		specBangPaint(self);
+	</event>
+
+	<event name="onNodeReady">
+		renderHealthTrack(self, 'dynHealth_');
+		renderRoadPair(self);
+		renderXPBoxes(self);
+		specBangPaint(self);
+	</event>
+</form>

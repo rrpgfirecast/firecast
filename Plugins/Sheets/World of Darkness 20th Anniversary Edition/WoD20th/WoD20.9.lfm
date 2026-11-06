@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_9" align="client" theme="dark">
+	<script>
+		<![CDATA[
+			-- The three experience numbers are drawn by renderXPBoxes on the root form (SPEC
+			-- I11): the Main tab shows the balance too, so the routine that writes it cannot
+			-- live on either tab (SPEC R.9 / B.9). None of the three owns a `field=` any more -
+			-- only the total behind them is saved, and Spent and the balance are worked out
+			-- from it and the log (SPEC V100).
+
+			-- The box no longer grows with the rows (SPEC I57, user 2026-08-23): it stands at
+			-- the height the XML gives it and the COLUMNS grow inside a scrollBox of their own,
+			-- so what runs past the frame is scrolled instead of pushing the frame down the tab.
+			--
+			-- The four columns share that one scrollBox rather than each carrying a bar, which
+			-- is the whole reason the box used to grow: four bars scroll four different amounts
+			-- and line N stops being line N across the row. One parent, one bar, one offset.
+			--
+			-- XP_LOG_MIN_H is the floor of the CONTENT now, not of the box - it keeps the empty
+			-- log the same shape as a full one (SPEC V235).
+			-- The height of the revert button, and NOTHING about rendered text (SPEC I167b, V486a,
+			-- B166). It used to be declared as "the rendered line height of the five columns,
+			-- MEASURED and not chosen" - it was neither measured nor the line height, and the log
+			-- drifted for it. See XP_ROW_H below for what replaced that claim.
+			local XP_LINE_H   = 16;
+
+			-- A log row is TWICE the button, and BOTH numbers are ours (SPEC I167b, V486a, V486b).
+			--
+			-- These two used to claim to be a text metric: XP_LINE_H was "the rendered line height
+			-- of the five columns, MEASURED and not chosen", and the rows were five text blocks
+			-- joined with "\n\n" so a record occupied two of those lines. It was never measured.
+			-- The screen says the pair is near 27 and the step said 32, so the X walked about 5px
+			-- further from its record every row and by the thirteenth it pointed at a different
+			-- purchase (SPEC B166). The rendered line height belongs to the HOST - this SDK
+			-- reports no text metric at all (SPEC R165b) - so no integer here could ever have been
+			-- right, and any authored step accumulates.
+			--
+			-- So the record stopped being text laid out by the host and became a control laid out
+			-- by us: <layout name="xpRow_N" height="32"> with its five labels vertTextAlign=center.
+			-- What these two constants name now is AUTHORED XML, measured on both sides by the
+			-- gate (SPEC V486a, V486d):
+			--
+			--     XP_LINE_H == btnXpRev_N.height       XP_ROW_H == xpRow_N.height
+			--     2 * btnXpRev_N.top-inside-its-row + XP_LINE_H == XP_ROW_H
+			--
+			-- and that second line is the whole of "the record's centre and the X's centre are one
+			-- centre" (user 2026-09-08): both are the centre of the same layout, for row 1 and for
+			-- row 60 by the same construction, with nothing left to drift.
+			local XP_ROW_H    = 2 * XP_LINE_H;
+
+			-- The floor the five columns never go under. They are GROUND now (SPEC I167c) - no
+			-- text, just the grey band each column reads on, which is the control's own default
+			-- shade and has no palette key that could reproduce it (SPEC R167a, V53) - but they
+			-- are still what gives the scroll its reach, because gui.ScrollBox has no range
+			-- property of its own and the children own it (SPEC R104, R167c).
+			local XP_LOG_MIN_H = 470;
+
+			-- What the storyteller's column of X buttons is worth in width (SPEC I163b, V478b).
+			-- The XML authors the PLAYER - the narrow one - and this is what the log, its title,
+			-- the APPLY box and its button all grow by when the reader turns out to be the
+			-- storyteller. It is a RELATION and the gate measures it against the XML: the buttons
+			-- close exactly this far past the last column.
+			local XP_REV_W = 30;
+
+			-- The two state sentences used to live IN the Type column, which was widened to 442 so
+			-- it would cover its three empty neighbours. That is what made an empty log read as
+			-- something broken instead of as an empty log (SPEC I39, V235, user 2026-08-22): the
+			-- columns moved when there was nothing in them. The sentence has a label of its own
+			-- now (dynXpEmpty) and no column ever changes width.
+
+			-- ---- Experience log (SPEC I10, 27th round) ---------------------------------
+			--
+			-- Four columns, all four written from ONE row list, so a line reads across. They
+			-- own no `field` (SPEC V84): the log is derived from the saved initial character
+			-- and the sheet as it stands, exactly like the total above is derived from the two
+			-- numbers beside it. A stored third copy could only drift.
+			--
+			-- The rows come from xpLedgerRows() on the root form (SPEC I9/I10); this routine
+			-- only formats them.
+			--
+			-- `rows` is optional. A caller that has just built the list hands it over rather
+			-- than making this walk the ledger a second time for the same click (SPEC V125) -
+			-- that second walk is half of what made the sheet freeze (SPEC B34). Left out, the
+			-- list is built here, and a nil coming back out of xpLedgerRows still means what it
+			-- always did: no initial character has been saved yet.
+			-- The five controls this routine writes. Found by name from whatever node it is
+			-- handed (SPEC V143), so the same call works from this tab's own events and from
+			-- the root, which is how a purchase made on ANY tab reaches the log without the
+			-- tab having registered itself first (SPEC V133, B39).
+			local XP_LOG = { dynXpType = true, dynXpTrait = true, dynXpLevel = true, dynXpCost = true, dynXpWhen = true, dynXpEmpty = true, xpApplyBox = true, btnXpApply = true, xpLogBox = true, xpLogScroll = true, lblXpLogTitle = true,
+			                 xpHiRow = true, dynXpHiType = true, dynXpHiTrait = true, dynXpHiLevel = true, dynXpHiCost = true, dynXpHiWhen = true };
+
+			-- The four columns take the SAME height, in one call: four heights written apart
+			-- from each other scroll four different amounts inside the shared box, which is the
+			-- misalignment the shared parent exists to stop (SPEC V261b/d). The box itself is not
+			-- here on purpose - nothing writes its height any more (SPEC I57, V261a).
+			--
+			-- Declared local and ABOVE its caller, which is not a matter of reading order: Lua
+			-- resolves a non-local name at COMPILE time, so a body written above the declaration
+			-- compiles a GETGLOBAL and calls nil (SPEC B51, V223).
+			local function xpColsHeight(form, h)
+				form.dynXpType.height  = h;
+				form.dynXpTrait.height = h;
+				form.dynXpLevel.height = h;
+				form.dynXpCost.height  = h;
+				form.dynXpWhen.height  = h;
+			end;
+
+			-- 23rd batch (SPEC I167a, V486d, B166): the five columns carry no text any more, so
+			-- what a state of the log takes down is the sixty ROWS. All sixty, unconditionally,
+			-- and not the ones the caller happens to know about: a row left standing is a record
+			-- on screen that the ledger no longer has - V473c coming through the text door, the
+			-- same reason xpHiDrop runs above all three branches.
+			local function xpRowsHide(form)
+				for i = 1, XP_REV_POOL, 1 do
+					local r = form["xpRow_" .. i];
+
+					if r ~= nil then r.visible = false; end;
+				end;
+			end;
+
+			-- The two empty states differ by their sentence and by NOTHING else, so they are
+			-- written once. Two copies is how one of them keeps a stale height - which used to
+			-- mean a box that had grown to forty rows stayed that tall and empty the moment the
+			-- baseline came off, and now means a scroll range with nothing in it.
+			local function xpEmptyLog(form, why)
+				xpRowsHide(form);
+
+				form.dynXpEmpty.text    = why;
+				form.dynXpEmpty.visible = true;
+
+				xpColsHeight(form, XP_LOG_MIN_H);
+			end;
+
+			-- The storyteller's revert buttons, one per row (SPEC I162d, V473, V474a). Lit only
+			-- for the storyteller, only where there is a row, and never on a MANUAL or Ritual
+			-- line - those the storyteller already owns directly (SPEC V474f, Q82.3). Every
+			-- state of the log passes through here, so a button never outlives its row. The
+			-- bound is the root's constant, the same one the gate measures the XML against
+			-- (SPEC V383b); a row past it - the oldest, at the bottom - simply has no button.
+			-- Where the template put the buttons, read ONCE and before anything writes over it
+			-- (SPEC I163c). The number lives in the XML and nowhere else: repeating it here would
+			-- be a second owner of a coordinate, which is what V478b exists to stop.
+			local xpRevX = nil;
+
+			local function xpRevButtons(form, rows, st)
+				-- `st` arrives from renderXPLedger now (SPEC I163d, V474a as amended): the width of
+				-- the two boxes asks the same question about the same person, and asking it twice
+				-- per render is the second reading that leg refuses.
+				if xpRevX == nil then xpRevX = form.btnXpRev_1.left; end;
+
+				for i = 1, XP_REV_POOL, 1 do
+					local r = (st and rows ~= nil) and rows[i] or nil;
+					local b = form["btnXpRev_" .. i];
+
+					b.visible = (r ~= nil and r.kind ~= "MANUAL" and r.kind ~= "Ritual" and r.kind ~= "Power");
+
+					-- Out of the player's scroll RANGE, not merely out of sight (SPEC I163c,
+					-- V478d): his box closes 30px earlier and a child sitting past that edge can
+					-- hand the box a horizontal bar - gui.ScrollBox carries no property that would
+					-- say otherwise (SPEC R104). Written inside the loop that was already here, so
+					-- it costs no walk of its own.
+					b.left = st and xpRevX or 0;
+				end;
+			end;
+
+			-- The two boxes are narrower for a PLAYER, by exactly the column of X buttons he does
+			-- not have (SPEC I163b, V478). The XML authors the PLAYER for the same reason the
+			-- buttons are authored hidden (SPEC V473c): the sheet has to read right before any Lua
+			-- runs, and a player is what most openings are.
+			--
+			-- Five widths and ONE number: the log box, the scroll inside it, the title over it,
+			-- the APPLY box beside it and the button inside that one. They move together or the
+			-- two bands stop closing on the same x (SPEC V247 as amended).
+			--
+			-- The authored widths are stamped on the first render rather than read back every time:
+			-- adding to a width that has already been added to compounds, and the box would walk
+			-- right across the tab one render at a time.
+			local xpWidth0 = nil;
+
+			local function xpLogWidth(form, st)
+				if form.xpLogBox == nil then return; end;
+
+				if xpWidth0 == nil then
+					xpWidth0 = {
+						box    = form.xpLogBox.width,
+						scroll = form.xpLogScroll.width,
+						title  = form.lblXpLogTitle.width,
+						apply  = form.xpApplyBox.width,
+						button = form.btnXpApply.width,
+					};
+				end;
+
+				local add = st and XP_REV_W or 0;
+
+				form.xpLogBox.width      = xpWidth0.box + add;
+				form.xpLogScroll.width   = xpWidth0.scroll + add;
+				form.lblXpLogTitle.width = xpWidth0.title + add;
+				form.xpApplyBox.width    = xpWidth0.apply + add;
+				form.btnXpApply.width    = xpWidth0.button + add;
+
+				-- The ornament is drawn PER BOX, from the size the box had when it was painted
+				-- (SPEC I72d, V284): the two boxes just changed size and the filigree would keep
+				-- the shape it was born with, with nothing raised anywhere (SPEC B163). I72d used
+				-- to say the health track was the only box that moves at runtime; the 19th batch
+				-- made that false and no check noticed, which is why V482 counts these two.
+				--
+				-- The WIDTH is HANDED OVER rather than read back (SPEC V285c, B62): asking the box
+				-- how wide it is on this side of the write can still answer with the role it is
+				-- leaving, and the redraw then compares equal and skips. The HEIGHT is authored and
+				-- never written, so reading it is safe - the exact inverse of renderHealthTrack,
+				-- which hands the height it just wrote and reads the width it never touches.
+				--
+				-- Guarded because refreshOrnament is a GLOBAL living in WoD20.6's chunk, and that
+				-- script may not have run when this one did (SPEC V480e, T1044).
+				if refreshOrnament ~= nil then
+					refreshOrnament(form.xpLogBox, xpWidth0.box + add, form.xpLogBox.height);
+					refreshOrnament(form.xpApplyBox, xpWidth0.apply + add, form.xpApplyBox.height);
+				end;
+			end;
+
+			-- The APPLY box (SPEC I162f, I162h, V475d/e): shown once the initial character is
+			-- saved, and its button lives only while a purchase is still pending - a line whose
+			-- key is not in the applied stamp. Dims in the same breath it locks (SPEC V112), at
+			-- the user's own number (SPEC V476). Called from renderXPLedger and nowhere else:
+			-- the log already redraws on every event that could change the answer.
+			local function renderXPApply(form, rows)
+				-- The box itself is never written any more (SPEC I163e, V479b): it stands where the
+				-- XML put it and it is always on screen, so what speaks is the BUTTON. With no
+				-- baseline there is nothing pending, and nothing pending is already the dimmed,
+				-- disabled state this routine writes.
+				local pending = false;
+
+				if rows ~= nil then
+					for i = 1, #rows, 1 do
+						if string.find(sheet.xpApplied or "", "|" .. rows[i].key .. "|", 1, true) == nil then
+							pending = true;
+							break;
+						end;
+					end;
+				end;
+
+				form.btnXpApply.enabled = pending;
+				form.btnXpApply.opacity = pending and 1 or 0.50;
+			end;
+
+			-- ---- The row highlight (SPEC I165, V484; user 2026-09-07) ----------------------
+			--
+			-- What the last render put on screen, kept so a hover can read row N without walking
+			-- the ledger for it (SPEC I165e, V484e). renderXPLedger builds these five lists
+			-- already, for the five table.concat below; holding on to them costs one assignment
+			-- and saves a ledger walk PER BUTTON THE MOUSE CROSSES, which is the arithmetic that
+			-- froze the sheet in B34 (SPEC V125).
+			local xpHiKinds, xpHiTraits, xpHiLevels, xpHiCosts, xpHiWhens = nil, nil, nil, nil, nil;
+
+			-- What the confirm dialog holds (SPEC I165d): the storyteller clicks the X, the modal
+			-- takes the pointer off the button, and the leave that follows must NOT undo the
+			-- highlight the click just fixed. Cleared in the first line of the answer, so OK and
+			-- Cancel come out of it the same way.
+			local xpHiArmed = false;
+
+			-- The ONE place the band is taken down, and it is unconditional: renderXPLedger calls
+			-- it above all three of its states (SPEC I165g), and xpHiHide/xpHiClear reach it after
+			-- their own lookup. A highlight that outlives its render is a highlight sitting on
+			-- somebody else's record - V473c coming through the text door.
+			--
+			-- Declared local and ABOVE its callers, which is not reading order: Lua resolves a
+			-- non-local name at COMPILE time, so a body written above the declaration compiles a
+			-- GETGLOBAL and calls nil (SPEC B51, V223).
+			local function xpHiDrop(form)
+				xpHiArmed = false;
+
+				if form.xpHiRow ~= nil then form.xpHiRow.visible = false; end;
+			end;
+
+			-- Lit from the button's own onMouseEnter (SPEC I165c). GLOBAL because that is how the
+			-- .lfm resolves a handler, exactly as onClick reaches xpRevert on the root.
+			--
+			-- Nothing here writes a font property: the band AUTHORS its size, weight and colour,
+			-- and applyTheme paints the colour on the walk it already makes (SPEC I165f, B165).
+			-- That is also why B21 cannot be reached from this routine - there is no font setter
+			-- in it to detach anything from the form theme.
+			function xpHiShow(node, i)
+				-- The click outranks the pointer (SPEC I165d): while a revert waits on its answer,
+				-- nothing the mouse does moves the band.
+				if xpHiArmed or xpHiKinds == nil or xpHiKinds[i] == nil then return; end;
+
+				local form = xpFind(node, XP_LOG, {});
+
+				-- The tab is not on the sheet yet, or an older sheet has no band: nothing to draw
+				-- on, and nothing to raise about it either (SPEC V56, V79).
+				if form.xpHiRow == nil then return; end;
+
+				form.dynXpHiType.text  = xpHiKinds[i];
+				form.dynXpHiTrait.text = xpHiTraits[i];
+				form.dynXpHiLevel.text = xpHiLevels[i];
+				form.dynXpHiCost.text  = xpHiCosts[i];
+				form.dynXpHiWhen.text  = xpHiWhens[i];
+
+				-- The SAME step the columns and the sixty buttons are laid out on (SPEC V483c,
+				-- V483d, V484d): row i of the band, row i of the text and row i of the X are one
+				-- number, or they are three that drift apart sixty rows down.
+				form.xpHiRow.top     = (i - 1) * XP_ROW_H;
+				form.xpHiRow.visible = true;
+			end;
+
+			function xpHiHide(node)
+				if xpHiArmed then return; end;
+
+				xpHiDrop(xpFind(node, XP_LOG, {}));
+			end;
+
+			-- The two the ROOT calls (SPEC I165d, T1056): xpRevert arms one line before it asks
+			-- and clears in the first line of the answer. Guarded there with `~= nil`, the way
+			-- refreshOrnament and repaintXpDots are reached across chunks (SPEC V480e).
+			function xpHiArm(node, i)
+				xpHiShow(node, i);
+				xpHiArmed = true;
+			end;
+
+			function xpHiClear(node)
+				xpHiDrop(xpFind(node, XP_LOG, {}));
+			end;
+
+			function renderXPLedger(node, rows)
+				if sheet == nil then return; end;
+
+				-- The pool joins the roster on the first render and not at load (SPEC V473e): its
+				-- count is the root's constant, and the root's script may not have run when this
+				-- tab's did. Sixty names typed out here would drift from it (SPEC V383b).
+				if XP_LOG.btnXpRev_1 == nil then
+					for i = 1, XP_REV_POOL, 1 do
+						-- EVERY control of row i, and that is not thoroughness - it is what the
+						-- roster IS (SPEC B167, V486f). xpFind does not return the form: it walks
+						-- the tree and returns a TABLE holding exactly the controls whose names
+						-- are in here (WoD20th.lfm, `out[nm] = c`). A name left off is not a slow
+						-- lookup, it is nil, and `form["dynXpType_1"].text = ...` is an index of
+						-- nil the moment the first record is drawn.
+						--
+						-- All of them on ONE walk and off the constant (SPEC I167a, V473e): the
+						-- pool bounds the buttons AND what the log can show, so a second loop
+						-- here would be a second owner of one count (SPEC V383b).
+						XP_LOG["btnXpRev_" .. i]   = true;
+						XP_LOG["xpRow_" .. i]      = true;
+						XP_LOG["dynXpType_" .. i]  = true;
+						XP_LOG["dynXpTrait_" .. i] = true;
+						XP_LOG["dynXpLevel_" .. i] = true;
+						XP_LOG["dynXpCost_" .. i]  = true;
+						XP_LOG["dynXpWhen_" .. i]  = true;
+					end;
+				end;
+
+				local form = xpFind(node, XP_LOG, {});
+
+				-- The tab is not on the sheet yet: nothing to draw on, and nothing to raise
+				-- about it either.
+				if form.dynXpType == nil then return; end;
+
+				-- ABOVE all three states of the log, so every one of them takes the band down in
+				-- the same line (SPEC I165g, V484): no baseline, nothing bought, and rows to read.
+				-- The rows are about to be rebuilt, so a band still standing is a band standing on
+				-- a record that may no longer be there.
+				xpHiDrop(form);
+
+				local lang = sheet.language or "pt";
+
+				-- Read ONCE per render and handed to both routines that ask it (SPEC I163d, V474a
+				-- as amended): whether the X column exists and whether the two boxes are 30px wider
+				-- are the same question about the same person.
+				local st = isStoryteller();
+
+				-- Before the empty-log branch below, so the boxes are the shape of the ROLE in all
+				-- three states - exactly what V235c already asks of the height (SPEC V478e).
+				xpLogWidth(form, st);
+
+				if rows == nil then rows = xpLedgerRows(); end;
+
+				-- SPEC V33 and V98: say WHY it is empty rather than show four blank columns. The two
+				-- states differ in the sentence and in nothing else, and neither of them moves a
+				-- column: an empty log has the shape of a full one (SPEC V235).
+				if rows == nil or #rows == 0 then
+					local why = "Nothing bought yet";
+
+					if rows == nil then why = "Initial character not saved yet"; end;
+
+					xpEmptyLog(form, translateSheetText(why, lang));
+
+					-- An empty log has no record to highlight, and the cache says so (SPEC I165e):
+					-- a hover arriving on a button that has not been taken down yet finds nothing
+					-- to read and draws nothing, rather than the row that used to be there.
+					xpHiKinds, xpHiTraits, xpHiLevels, xpHiCosts, xpHiWhens = nil, nil, nil, nil, nil;
+
+					-- The two side controls follow every state of the log (SPEC V474f, V475e):
+					-- no rows, no buttons, and the APPLY box only once a baseline exists.
+					xpRevButtons(form, nil, st);
+					renderXPApply(form, rows);
+					return;
+				end;
+
+				local kinds, traits, levels, costs, whens = {}, {}, {}, {}, {};
+
+				for i = 1, #rows, 1 do
+					local r = rows[i];
+
+					-- Both columns are written by Lua, so they are translated here (SPEC V70,
+					-- same arrangement as the era ability labels): whoever writes a text owns
+					-- both languages for it.
+					kinds[i]  = translateSheetText(r.kind, lang);
+					traits[i] = translateSheetText(r.name, lang);
+
+					if r.gone then traits[i] = traits[i] .. " " .. translateSheetText("(removed, no refund)", lang); end;
+					levels[i] = tostring(r.level);
+
+					-- Just the figure, in every row (SPEC V120): the log prints what the point
+					-- cost and nothing else - no word to keep in two languages.
+					costs[i] = tostring(r.cost);
+
+					-- The hour, in the reader's own order (SPEC I162c, Q82.2): stored ISO so it
+					-- sorts and needs no key, shown day-first in Portuguese. A line with no stamp
+					-- - bought before the 18th batch - reads a dash, not an invented hour.
+					if r.when == nil then
+						whens[i] = "-";
+					elseif lang == "pt" then
+						whens[i] = (string.gsub(r.when, "^(%d+)-(%d+)-(%d+)", "%3/%2/%1"));
+					else
+						whens[i] = r.when;
+					end;
+				end;
+
+				-- Rows to read: the sentence steps aside and the columns stay exactly where they
+				-- are. Nothing here writes a width (SPEC V235a).
+				form.dynXpEmpty.visible = false;
+
+				-- ONE ROW, ONE CONTROL (SPEC I167a, V486d, B166). The five columns used to be five
+				-- text blocks joined with a blank line between records, and where line i LANDED
+				-- was the HOST's answer: the rendered line height is not a number this SDK will
+				-- tell anyone (SPEC R165b). XP_LINE_H = 16 was never measured, the real pair came
+				-- out near 27, and the X drifted about 5px further from its record every row -
+				-- by the thirteenth it was pointing at a different purchase. A row is a layout of
+				-- XP_ROW_H now, so row i is where the arithmetic says it is and nowhere else.
+				--
+				-- The pool is also the CEILING of what the log can show (SPEC I167d, Q87): the SDK
+				-- builds no control at runtime (SPEC R162), and xpLedgerRows() hands the newest
+				-- first, so past XP_REV_POOL what falls off the end is the OLDEST - and it had no
+				-- revert button to lose either (SPEC V473b).
+				for i = 1, XP_REV_POOL, 1 do
+					local row = form["xpRow_" .. i];
+
+					if row ~= nil then
+						if kinds[i] ~= nil then
+							form["dynXpType_"  .. i].text = kinds[i];
+							form["dynXpTrait_" .. i].text = traits[i];
+							form["dynXpLevel_" .. i].text = levels[i];
+							form["dynXpCost_"  .. i].text = costs[i];
+							form["dynXpWhen_"  .. i].text = whens[i];
+
+							row.visible = true;
+						else
+							row.visible = false;
+						end;
+					end;
+				end;
+
+				-- The SAME five lists the columns were just written from, kept for the highlight
+				-- (SPEC I165e, V484e). Written here rather than rebuilt on hover: what the band
+				-- shows for row i has to be what row i of the columns says, and two places that
+				-- format the same row are two that can disagree about it (SPEC V125).
+				xpHiKinds, xpHiTraits, xpHiLevels, xpHiCosts, xpHiWhens = kinds, traits, levels, costs, whens;
+
+				-- The columns grow, the box does not (SPEC I57). Past the floor this runs longer
+				-- than the scrollBox holding it, which is what puts a bar on the side instead of
+				-- pushing the frame down the tab. The five columns are GROUND now (SPEC I167c) and
+				-- carry no text, but they are still what the scroll measures its reach by: a
+				-- gui.ScrollBox has no range property of its own, so the children own it (R104).
+				--
+				-- The reach is what the pool can SHOW and not what the ledger holds (SPEC I167d):
+				-- a 61st record has no row to scroll down to.
+				local shown = #rows;
+
+				if shown > XP_REV_POOL then shown = XP_REV_POOL; end;
+
+				local h = XP_LOG_MIN_H;
+
+				if shown * XP_ROW_H > h then h = shown * XP_ROW_H; end;
+
+				xpColsHeight(form, h);
+
+				-- The two side controls follow every state of the log (SPEC V474f, V475d).
+				xpRevButtons(form, rows, st);
+				renderXPApply(form, rows);
+			end;
+
+			-- Apply Spent Experience (SPEC I162g, V475a; user 2026-09-07). Every line the log
+			-- shows becomes a floor the player cannot sell under (SPEC V103 as amended); the
+			-- stamp is REPLACED, not appended to, so a key is never carried twice. Asks first,
+			-- the way saveBaseline does (SPEC V81, R161), and writes only inside the answer.
+			-- One walk per click (SPEC V125): the rows priced before the question are the rows
+			-- applied after it.
+			function xpApply(form)
+				if sheet == nil then return; end;
+
+				local rows = xpLedgerRows();
+
+				if rows == nil then return; end;
+
+				local lang = sheet.language or "pt";
+
+				Dialogs.confirmOkCancel(
+					translateSheetText("Apply the spent experience? The points bought stay on the sheet and can no longer be removed.", lang),
+					function(ok)
+						if not ok or sheet == nil then return; end;
+
+						local keys = {};
+
+						for i = 1, #rows, 1 do keys[i] = "|" .. rows[i].key .. "|"; end;
+
+						setField("xpApplied", table.concat(keys));
+
+						-- The dots stop being pending in the same breath (SPEC I163h, V480e). It
+						-- is a call of its own and not a side effect of the line below: the dots
+						-- live on the trait tabs, and renderXPLedger only ever draws this one.
+						-- The rows priced before the question are the rows repainted after it
+						-- (SPEC V125).
+						if repaintXpDots ~= nil then repaintXpDots(form, rows); end;
+
+						-- The whole log again rather than the box alone: one path finds the
+						-- controls (SPEC V143), and the log is where the answer is read from.
+						renderXPLedger(form, rows);
+					end);
+			end;
+		]]>
+	</script>
+	<scrollBox align="client">
+		<!-- Theme backdrop, same arrangement as WoD20.1 (SPEC T158, V56, V57). -->
+		<image name="themePaper9" align="client" style="stretch" hitTest="false" visible="false"/>
+
+		<!-- One revert button per ledger row, for the storyteller (SPEC I162d, V473, R162). A
+		     pool authored here rather than built at runtime: the SDK has no gui.newButton, and
+		     building a form per row is the probe T496 never ran. Born hidden - the XML has to
+		     read right for a PLAYER before any Lua runs - and lit by renderXPLedger after
+		     isStoryteller(). `top` is (num - 1) * XP_ROW_H + PAD, so button N sits on row N of
+		     the columns beside it; `X` is the glyph the ? box already closes with (SPEC Q82.5).
+
+		     PAD is the SAME 8 the five columns open at (SPEC I166b, V485c). That is the whole
+		     of "the button's centre is aligned with the text's centre": the button and the line
+		     it reverts are two controls of XP_LINE_H at the same `top`, and two controls of one
+		     height at one top share a centre. Said as a RELATION the gate measures on both
+		     sides, never as a centre somebody computed here (SPEC V383b) - which is also what
+		     keeps it true if PAD is ever amended.
+
+		     The button is also what HIGHLIGHTS the record it would revert (SPEC I165c, V484,
+		     user 2026-09-07): the pointer lands on the X and the whole row - all five columns -
+		     comes up bigger, bold and in the era's accent. The events are the SDK's own, declared
+		     on gui.Control and bound by name exactly as onClick is (SPEC R165a), so a button
+		     inside a template takes them the same way. Record 61 and past it carry no button, so
+		     they carry no highlight either: the highlight follows the BUTTON, not the row.
+
+		     23rd batch (SPEC I167a, V486, B166): the record itself is a LAYOUT now, one per row,
+		     and the five labels inside it are vertTextAlign="center". The columns used to be five
+		     tall textEditors carrying every record as text joined with a blank line, and where
+		     record i landed was then the HOST's answer - the rendered line height, which this SDK
+		     reports to nobody (SPEC R165b). The step said 32, the screen said about 27, and the X
+		     walked ~5px further from its record every row. Now the row is 32 because the XML says
+		     32, the label is centred in it and the button is centred beside it, so record 1 and
+		     record 60 line up for the same reason and nothing accumulates.
+
+		     The button stays a SIBLING of the row rather than a child of it, and that is the one
+		     thing here that is not tidiness: a layout wide enough to hold it would be 765 inside
+		     the player's 751-wide scroll, and gui.ScrollBox has no property that would refuse the
+		     horizontal bar that follows (SPEC R104, V478d). So the row closes on the last column
+		     at 735 and the button is placed by the same arithmetic from outside it. -->
+		<template name="XpLogRow">
+			<layout name="xpRow_$(num)" left="0" top="$(top)" width="735" height="32" visible="false">
+				<label name="dynXpType_$(num)" left="15" top="0" width="133" height="32" vertTextAlign="center" fontSize="12" opacity="0.75"/>
+				<label name="dynXpTrait_$(num)" left="158" top="0" width="200" height="32" vertTextAlign="center" fontSize="12" opacity="0.75"/>
+				<label name="dynXpLevel_$(num)" left="368" top="0" width="82" height="32" vertTextAlign="center" horzTextAlign="center" fontSize="12" opacity="0.75"/>
+				<label name="dynXpCost_$(num)" left="460" top="0" width="45" height="32" vertTextAlign="center" horzTextAlign="center" fontSize="12" opacity="0.75"/>
+				<label name="dynXpWhen_$(num)" left="515" top="0" width="220" height="32" vertTextAlign="center" horzTextAlign="center" fontSize="12" opacity="0.75"/>
+			</layout>
+		</template>
+		<template name="XpRevRow">
+			<button name="btnXpRev_$(num)" left="745" top="$(top)" width="20" height="16" text="X" visible="false" onClick="xpRevert(self, $(num));" onMouseEnter="xpHiShow(self, $(num));" onMouseLeave="xpHiHide(self);"/>
+		</template>
+		<!--
+			Progress tab (SPEC T106). Current Experience used to be an NDB mirror of the box on
+			the Main tab, both owning `field="experience"`. Neither owns a field now (SPEC I11):
+			both are written by renderXPBoxes and both hand what the player types to
+			xpSetCurrent, so they stay in step through the one number that IS saved.
+		-->
+		<!--
+			The three numbers sit side by side (SPEC T140): one column each, same label width and
+			same edit column, so the three edits line up (SPEC V26). The box spans the full tab
+			width, which is what the log box below is aligned to.
+		-->
+		<!--
+			Three columns of 336, each holding its label with the number CENTRED UNDER IT rather than
+			beside it (SPEC T151). The title sits 10 off the top edge and the data starts 8 under it:
+			room above the heading, none wasted between the heading and what it names.
+
+			Stacking costs height - the box went 75 -> 95 - which is why the log below starts at 105
+			and still closes the tab on 640.
+		-->
+		<layout left="0" top="0" width="561" height="120">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<label left="20" top="15" width="521" height="20" text="EXPERIENCE" horzTextAlign="center"/>
+
+			<label left="36" top="50" width="141" height="20" text="Total Experience" horzTextAlign="center"/>
+			<!-- All SIX experience numbers stand on a darker ground than the box (SPEC V256 as
+			     amended, V417, user 2026-09-04). It takes THREE things and any one of them alone
+			     does nothing: the rectangle declared BEFORE the edit so it paints behind it,
+			     transparent="true" on the edit so its own ground stops covering it, and a colour
+			     with a key in all four palettes so the theme owns the shade (SPEC V53). gui.Edit has
+			     no background colour of its own - MEASURED in the SDK, its props are textPrompt/
+			     transparent/field/frameRegion/type/min/max/decimalPlaces/asNumber - so the rectangle
+			     is the only way to say this.
+
+			     Current used to be left OUT of this, on the reading that a dark ground was a LOCK
+			     cue. The owner asked for the same border on every Experience field, so the ground
+			     is a FIELD frame now - "you type the number here" - and the lock cue is opacity
+			     alone (SPEC V111a): the two locked ones keep 0.75 and the four editable ones carry
+			     no opacity at all, which is what V111(b) already asked for. -->
+			<rectangle name="bgTotalXP" left="61" top="80" width="90" height="25" color="#0A0A0A" xradius="6" yradius="6" cornerType="innerRound" hitTest="false"/>
+			<edit name="edtTotalXP" type="number" decimalPlaces="0" left="61" top="80" width="90" height="25" readOnly="true" opacity="0.75" horzTextAlign="center" vertTextAlign="center" fontSize="14" transparent="true"/>
+
+			<label left="210" top="50" width="141" height="20" text="Spent Experience" horzTextAlign="center"/>
+			<!-- Authored LOCKED, and the lock moves at runtime with the storyteller's flag
+			     (SPEC I44, V245): the sheet has to read right before any Lua runs, and OFF is
+			     what the flag defaults to. Typing here writes a MANUAL line into the log, never
+			     a second number beside it (SPEC V246). -->
+			<rectangle name="bgSpentXP" left="235" top="80" width="90" height="25" color="#0A0A0A" xradius="6" yradius="6" cornerType="innerRound" hitTest="false"/>
+			<edit name="edtSpentXP" type="number" decimalPlaces="0" left="235" top="80" width="90" height="25" readOnly="true" opacity="0.75" horzTextAlign="center" vertTextAlign="center" fontSize="14" transparent="true" onUserChange="xpSetSpent(self, self.edtSpentXP.text);"/>
+
+			<label left="384" top="50" width="141" height="20" text="Current Experience" horzTextAlign="center"/>
+			<rectangle name="bgCurrentXP" left="409" top="80" width="90" height="25" color="#0A0A0A" xradius="6" yradius="6" cornerType="innerRound" hitTest="false"/>
+			<edit name="edtCurrentXP" type="number" decimalPlaces="0" left="409" top="80" width="90" height="25" horzTextAlign="center" vertTextAlign="center" fontSize="14" onUserChange="xpSetCurrent(self, self.edtCurrentXP.text);" transparent="true"/>
+		</layout>
+
+		<!--
+			The Apply box (SPEC I162f as amended, I163e, user 2026-09-07): to the right of
+			EXPERIENCE with the 5px gap every pair of section boxes keeps (SPEC V298, I76a - the
+			20 of V280b was revoked, SPEC B160), and closing on the same x the log box below
+			closes on (SPEC V247 as amended).
+
+			No TITLE, on the owner's word (SPEC I163e): one button needs no heading over it. That
+			takes it out of the definition of a section box, which is a layout with a rectangle
+			AND a centred title (SPEC V48), so it is a declared exception there instead - by
+			construction, exactly as the tab strip's floor is (SPEC V68, I163f). Its fill and its
+			corner stay identical to its sisters': what changed is which check owns it.
+
+			ALWAYS visible (SPEC I163e, V479b). Nothing writes the box any more - what speaks is
+			the button, lit only while a purchase is still unapplied (SPEC V475e), dimmed at 0.50,
+			the user's own number and the one place on the sheet it is allowed (SPEC V476). It is
+			authored disabled all the same: most openings have no baseline, and the sheet has to
+			read right before any Lua runs.
+
+			The width is the PLAYER'S (SPEC I163b, V478a): 791 - 561 - 5. The storyteller's log is
+			30 wider for his column of X buttons, and xpLogWidth grows this box and the button
+			inside it by the same 30, so the two bands close on one x for both readers.
+		-->
+		<layout name="xpApplyBox" left="566" top="0" width="225" height="120">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<!-- Centred in the box now that no title sits over it: (120 - 26) / 2 (SPEC I163e,
+			     V479d). The 20 either side is the margin every box keeps (SPEC V280a). -->
+			<button name="btnXpApply" left="20" top="47" width="185" height="26" text="Apply Spent Experience" enabled="false" opacity="0.50" onClick="xpApply(self);"/>
+		</layout>
+
+		<!--
+			The log is now four columns instead of one free-text box (SPEC I10, 27th round):
+			what was raised, which trait, the rating it reached, and what that point cost.
+			`xpLog` is gone with the box that owned it and is an ORPHAN from here on (SPEC I3 /
+			V91) - the name is never reused, so text typed into the old sheet cannot come back
+			up inside a column that means something else.
+
+			The four editors are read-only and carry no `field`: the rows are derived on every
+			render (SPEC V83/V84).
+
+			The box is a FIXED height from the 90th round on (SPEC I57): the title and the four
+			column headings belong to it, the rows belong to the scrollBox below them, and
+			nothing in Lua writes this height any more.
+		-->
+		<layout name="xpLogBox" left="0" top="125" width="791" height="550">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+			<!-- The title needs a NAME from the 19th batch on (SPEC I163b, V478a): it is one of the
+			     five widths that follow the reader's role, or it would sit 15px off centre in the
+			     storyteller's wider box. Its width is the scroll's, in both states. -->
+			<label name="lblXpLogTitle" left="20" top="15" width="751" height="20" text="EXPERIENCE LOG" horzTextAlign="center"/>
+
+			<!--
+				Widths asked for by the user on top of the measured ones (33rd round): Type -30%,
+				Trait -20%, Level -10%, Cost -50%. The two text columns read from the left, the two
+				short ones are CENTRED - a rating and a price are read as a column of figures, not
+				as a sentence.
+
+				What the measurements say has to fit, at the widest of the four theme fonts (Georgia
+				and Book Antiqua run wider than Segoe UI at the same size): "FORÇA DE VONTADE" 134px
+				at a 12px body and 157px at 14px, "Empatia com Animais" 126/147px, "Grátis" 38/44px.
+				Type and Cost are now UNDER their 14px figure - the trim was asked for with the
+				sheet on screen, so what renders is the judge; if a kind name or the word Grátis
+				comes up cut in the Dark Ages or Classical paper, these two are what to widen.
+
+				85th round: Level went 54 -> 82 to hold the word MANUAL, the one row whose Level
+				is a word and not a rating (SPEC I44, V246). Cost moved with it and both boxes
+				grew by the same 26, so the four columns keep their gaps and the two boxes still
+				close on the same x (SPEC V247) - a column that grows while its box stands still
+				is how the log would have started poking out of its own frame.
+			-->
+			<label left="35" top="40" width="133" height="20" text="Type" horzTextAlign="center"/>
+			<label left="178" top="40" width="200" height="20" text="Trait" horzTextAlign="center"/>
+			<label left="388" top="40" width="82" height="20" text="Level" horzTextAlign="center"/>
+			<label left="480" top="40" width="45" height="20" text="Cost" horzTextAlign="center"/>
+			<!-- The fifth column's heading, over dynXpWhen (515 inside the scroll, 535 here), and
+			     OUTSIDE the scrollBox like the four beside it (SPEC I162c, V261c). -->
+			<label left="535" top="40" width="220" height="20" text="Date/Time" horzTextAlign="center"/>
+
+			<!--
+				The four columns scroll TOGETHER, inside one box of their own (SPEC I57, user
+				2026-08-23). Giving each column a bar would let them scroll four different
+				amounts and line N would stop reading across the row - which is exactly why the
+				log used to grow the frame instead of scrolling it.
+
+				It sits at left=20 top=70 since I73 gave every box a 20px margin, so a column's x is
+				read INSIDE the scrolling box and not against the frame: V247 measures the Cost
+				column against this box, and this box against the frame (SPEC I73, V247).
+
+				The 16 to the right of the Cost column is the room the vertical bar has to come
+				out of. gui.ScrollBox carries no properties of its own - no axis, no bar width,
+				nothing to hide the horizontal one - so whether 16 is enough is a question for
+				the screen, not for the XML (SPEC R104).
+			-->
+			<scrollBox name="xpLogScroll" left="20" top="65" width="751" height="470">
+				<textEditor name="dynXpType" left="15" top="0" width="133" height="470" readOnly="true" opacity="0.75" fontSize="12"/>
+				<textEditor name="dynXpTrait" left="158" top="0" width="200" height="470" readOnly="true" opacity="0.75" fontSize="12"/>
+				<textEditor name="dynXpLevel" left="368" top="0" width="82" height="470" readOnly="true" opacity="0.75" fontSize="12" horzTextAlign="center"/>
+				<textEditor name="dynXpCost" left="460" top="0" width="45" height="470" readOnly="true" opacity="0.75" fontSize="12" horzTextAlign="center"/>
+				<!-- The hour of the purchase (SPEC I162c, V472e): centred like the two figures, and
+				     220 wide so this band and the one above close on the same x (SPEC V247). -->
+				<textEditor name="dynXpWhen" left="515" top="0" width="220" height="470" readOnly="true" opacity="0.75" fontSize="12" horzTextAlign="center"/>
+				<!-- The storyteller's revert buttons, XP_REV_POOL of them, one per row (SPEC I162d,
+				     V473b): the rightmost children of the scroll, and what the 16px bar reserve
+				     and the box width are measured from (SPEC V247). -->
+				<XpLogRow num="1" top="0"/>
+				<XpLogRow num="2" top="32"/>
+				<XpLogRow num="3" top="64"/>
+				<XpLogRow num="4" top="96"/>
+				<XpLogRow num="5" top="128"/>
+				<XpLogRow num="6" top="160"/>
+				<XpLogRow num="7" top="192"/>
+				<XpLogRow num="8" top="224"/>
+				<XpLogRow num="9" top="256"/>
+				<XpLogRow num="10" top="288"/>
+				<XpLogRow num="11" top="320"/>
+				<XpLogRow num="12" top="352"/>
+				<XpLogRow num="13" top="384"/>
+				<XpLogRow num="14" top="416"/>
+				<XpLogRow num="15" top="448"/>
+				<XpLogRow num="16" top="480"/>
+				<XpLogRow num="17" top="512"/>
+				<XpLogRow num="18" top="544"/>
+				<XpLogRow num="19" top="576"/>
+				<XpLogRow num="20" top="608"/>
+				<XpLogRow num="21" top="640"/>
+				<XpLogRow num="22" top="672"/>
+				<XpLogRow num="23" top="704"/>
+				<XpLogRow num="24" top="736"/>
+				<XpLogRow num="25" top="768"/>
+				<XpLogRow num="26" top="800"/>
+				<XpLogRow num="27" top="832"/>
+				<XpLogRow num="28" top="864"/>
+				<XpLogRow num="29" top="896"/>
+				<XpLogRow num="30" top="928"/>
+				<XpLogRow num="31" top="960"/>
+				<XpLogRow num="32" top="992"/>
+				<XpLogRow num="33" top="1024"/>
+				<XpLogRow num="34" top="1056"/>
+				<XpLogRow num="35" top="1088"/>
+				<XpLogRow num="36" top="1120"/>
+				<XpLogRow num="37" top="1152"/>
+				<XpLogRow num="38" top="1184"/>
+				<XpLogRow num="39" top="1216"/>
+				<XpLogRow num="40" top="1248"/>
+				<XpLogRow num="41" top="1280"/>
+				<XpLogRow num="42" top="1312"/>
+				<XpLogRow num="43" top="1344"/>
+				<XpLogRow num="44" top="1376"/>
+				<XpLogRow num="45" top="1408"/>
+				<XpLogRow num="46" top="1440"/>
+				<XpLogRow num="47" top="1472"/>
+				<XpLogRow num="48" top="1504"/>
+				<XpLogRow num="49" top="1536"/>
+				<XpLogRow num="50" top="1568"/>
+				<XpLogRow num="51" top="1600"/>
+				<XpLogRow num="52" top="1632"/>
+				<XpLogRow num="53" top="1664"/>
+				<XpLogRow num="54" top="1696"/>
+				<XpLogRow num="55" top="1728"/>
+				<XpLogRow num="56" top="1760"/>
+				<XpLogRow num="57" top="1792"/>
+				<XpLogRow num="58" top="1824"/>
+				<XpLogRow num="59" top="1856"/>
+				<XpLogRow num="60" top="1888"/>
+
+				<XpRevRow num="1" top="8"/>
+				<XpRevRow num="2" top="40"/>
+				<XpRevRow num="3" top="72"/>
+				<XpRevRow num="4" top="104"/>
+				<XpRevRow num="5" top="136"/>
+				<XpRevRow num="6" top="168"/>
+				<XpRevRow num="7" top="200"/>
+				<XpRevRow num="8" top="232"/>
+				<XpRevRow num="9" top="264"/>
+				<XpRevRow num="10" top="296"/>
+				<XpRevRow num="11" top="328"/>
+				<XpRevRow num="12" top="360"/>
+				<XpRevRow num="13" top="392"/>
+				<XpRevRow num="14" top="424"/>
+				<XpRevRow num="15" top="456"/>
+				<XpRevRow num="16" top="488"/>
+				<XpRevRow num="17" top="520"/>
+				<XpRevRow num="18" top="552"/>
+				<XpRevRow num="19" top="584"/>
+				<XpRevRow num="20" top="616"/>
+				<XpRevRow num="21" top="648"/>
+				<XpRevRow num="22" top="680"/>
+				<XpRevRow num="23" top="712"/>
+				<XpRevRow num="24" top="744"/>
+				<XpRevRow num="25" top="776"/>
+				<XpRevRow num="26" top="808"/>
+				<XpRevRow num="27" top="840"/>
+				<XpRevRow num="28" top="872"/>
+				<XpRevRow num="29" top="904"/>
+				<XpRevRow num="30" top="936"/>
+				<XpRevRow num="31" top="968"/>
+				<XpRevRow num="32" top="1000"/>
+				<XpRevRow num="33" top="1032"/>
+				<XpRevRow num="34" top="1064"/>
+				<XpRevRow num="35" top="1096"/>
+				<XpRevRow num="36" top="1128"/>
+				<XpRevRow num="37" top="1160"/>
+				<XpRevRow num="38" top="1192"/>
+				<XpRevRow num="39" top="1224"/>
+				<XpRevRow num="40" top="1256"/>
+				<XpRevRow num="41" top="1288"/>
+				<XpRevRow num="42" top="1320"/>
+				<XpRevRow num="43" top="1352"/>
+				<XpRevRow num="44" top="1384"/>
+				<XpRevRow num="45" top="1416"/>
+				<XpRevRow num="46" top="1448"/>
+				<XpRevRow num="47" top="1480"/>
+				<XpRevRow num="48" top="1512"/>
+				<XpRevRow num="49" top="1544"/>
+				<XpRevRow num="50" top="1576"/>
+				<XpRevRow num="51" top="1608"/>
+				<XpRevRow num="52" top="1640"/>
+				<XpRevRow num="53" top="1672"/>
+				<XpRevRow num="54" top="1704"/>
+				<XpRevRow num="55" top="1736"/>
+				<XpRevRow num="56" top="1768"/>
+				<XpRevRow num="57" top="1800"/>
+				<XpRevRow num="58" top="1832"/>
+				<XpRevRow num="59" top="1864"/>
+				<XpRevRow num="60" top="1896"/>
+
+				<!--
+					The row highlight (SPEC I165a, V484): ONE band that moves, not sixty rows of
+					controls. Font properties in this SDK belong to the whole control and
+					gui.TextEditor carries no rich text, so a single line inside a five-column
+					block cannot be styled on its own (SPEC R165b) - the band is drawn OVER the
+					line instead. Sixty rows of labels was the other way out and I164c already
+					refused it: it would cap the log at sixty records, and the columns show every
+					record - only the X buttons stop at XP_REV_POOL.
+
+					DECLARED LAST inside the scroll because the host paints in document order,
+					which is the same reason dynXpEmpty sits where it does.
+
+					The rectangle is what makes the band possible at all: the 12px line is still
+					THERE, underneath, and would read through the bold 14px one. `color="black"`
+					is the key xpLogBox itself authors, so the palette paints the two the same
+					shade in all four eras (SPEC V53) and the band leaves no seam. No xradius, so
+					sectionBox says no and the band takes neither filigree nor bevel (SPEC I89b,
+					V316d).
+
+					The five labels ARE the five columns, shifted by the layout's own 15: 0/143/
+					353/445/500 against 15/158/368/460/515, at the same widths and the same
+					alignment. It is a RELATION the gate measures on both sides (SPEC V484b) and
+					not a second owner of a coordinate (SPEC V383b, V478b).
+
+					fontColor is AUTHORED and that is the whole colour story (SPEC I165f, B165):
+					`#C2A14D` is the era's TEXT accent - the key the open sub-tab's label already
+					wears (SPEC I78c, V305d) - so applyTheme paints it on the walk it already
+					makes and no Lua ever writes a font property here. The first draft published
+					the STROKE accent instead, which is `#3A4150` over a `#12141A` ground in
+					Modern Nights: a highlight darker than the text it highlights.
+
+					No fontFamily, for V483b's reason one floor up: the era's serif does not reach
+					the log, so the highlight changes SIZE, WEIGHT and COLOUR - never the face.
+
+					The height is XP_ROW_H and the top is (i - 1) * XP_ROW_H, both unchanged since
+					the 21st batch: the band IS the box the record sits in (SPEC I166d, V484d).
+
+					vertTextAlign is CENTRE, and that is the 22nd batch (SPEC I166d, V485e). It
+					used to be leading, on the reading that the 12px line underneath started at
+					the top of the band - which it did, back when the columns opened at 0. They
+					open at PAD now and the line falls in the MIDDLE of the box, so leading would
+					stand the 14px text 8px above the 12px text it is covering, on every row. Two
+					bodies centred in one box of 32 share that centre by construction, so the
+					question T1058(a) was going to put to the screen dies in the arithmetic.
+
+					The rectangle is also the BOX MADE VISIBLE (SPEC I166e, V485f, user
+					2026-09-08). Outside the hover there is nothing to hide: it lives inside
+					xpHiRow, which is authored visible="false", so "an invisible box, with no
+					outline and no ornament" is the state the XML already ships. Under the
+					pointer it is a 2px line in the colour the era draws its box ORNAMENTS with -
+					#A83232, #D8BC72, #C0C6CC, #BFA05A (SPEC R166e, Q86.1).
+
+					strokeColor="black" here is NOT that colour. It is the WITNESS that the XML
+					authored the property at all, without which paint() returns early and never
+					writes - the guard B21 left behind (SPEC R166b) - and it is what the box
+					reads as before any theme has run. The colour that lands is t.ornament, and
+					it lands from applyTheme because t.ornament is a VALUE and not a key: there
+					is no strokeColor a palette could map to it (SPEC I166e).
+
+					strokeSize="2" survives for one reason only: applyTheme writes THEME_STROKE=3
+					over EVERY rectangle on the sheet, and WoD20.6 fences this one name out of
+					that write (SPEC V485f, Q86.2). Without the fence the XML says 2, the screen
+					says 3, rdk -l exits 0 and the gate stays green - B58 and B62 on a fifth axis.
+				-->
+				<layout name="xpHiRow" left="15" top="0" width="720" height="32" visible="false">
+					<rectangle name="xpHiEdge" align="client" color="black" strokeColor="black" strokeSize="2"/>
+					<label name="dynXpHiType" left="0" top="0" width="133" height="32" fontSize="14" fontStyle="bold" fontColor="#C2A14D" opacity="1" vertTextAlign="center"/>
+					<label name="dynXpHiTrait" left="143" top="0" width="200" height="32" fontSize="14" fontStyle="bold" fontColor="#C2A14D" opacity="1" vertTextAlign="center"/>
+					<label name="dynXpHiLevel" left="353" top="0" width="82" height="32" fontSize="14" fontStyle="bold" fontColor="#C2A14D" opacity="1" vertTextAlign="center" horzTextAlign="center"/>
+					<label name="dynXpHiCost" left="445" top="0" width="45" height="32" fontSize="14" fontStyle="bold" fontColor="#C2A14D" opacity="1" vertTextAlign="center" horzTextAlign="center"/>
+					<label name="dynXpHiWhen" left="500" top="0" width="220" height="32" fontSize="14" fontStyle="bold" fontColor="#C2A14D" opacity="1" vertTextAlign="center" horzTextAlign="center"/>
+				</layout>
+			</scrollBox>
+
+			<!-- Why the log is empty, on a line of its own (SPEC I39, V235). Declared LAST because
+			     it sits over the scrolling columns and the host paints in document order - the
+			     same reason the Type column used to be last, now carried by the control that
+			     actually needs it. Authored hidden: a log with rows never shows it, and the dyn*
+			     prefix keeps the language traversal off it (SPEC V31).
+
+			     OUTSIDE the scrollBox, and that is the point: it is the state of the BLOCK, not a
+			     row in it, so it must not scroll away from the only state it is ever shown in
+			     (SPEC V261c).
+
+			     19th batch (SPEC I163a, V477, user 2026-09-07): it reads as a TRAIT now instead of
+			     as a banner across the block. left is where the Trait column's text begins - the
+			     scroll's own left plus that column's - and the width closes on the right edge of
+			     the Cost column, which is why it needs no runtime write and does not grow with the
+			     storyteller's log (SPEC V477b, V478c). Leading-aligned for the same reason: the
+			     sentence starts where a trait name would start. The longest of the two, in pt,
+			     wants about 215px of the 347. -->
+			<label name="dynXpEmpty" left="178" top="65" width="347" height="20" text="" horzTextAlign="leading" opacity="0.75" visible="false"/>
+
+		</layout>
+	</scrollBox>
+
+	<!-- Two entry points, as everywhere else on this sheet: the link catches later edits, the
+	     onNodeReady catches the sheet being opened (SPEC V19 / V33). -->
+	<dataLink field="xpTotal" onChange="renderXPBoxes(self);"/>
+
+	<!-- Every one of these four moves the prices, so the three numbers are rebuilt with the log:
+	     free-buy and the backgrounds rule change what a point costs, the snapshot changes what
+	     counts as bought at all, and the language changes the two text columns.
+	     What the ledger reads directly: the snapshot itself, the rule that prices backgrounds,
+	     and the language its two text columns are written in. This tab watches `language`
+	     itself rather than being called from WoD20.6, because the four columns are declared here
+	     and only this form can address them. The dots are NOT watched from here - there are
+	     some four hundred and sixty of them and no list of that size stays correct. What
+	     redraws the log when one of them is clicked is the click itself: xpClick already runs
+	     on every dot that costs experience and already holds the rows (SPEC V121/V125). -->
+	<dataLink fields="{'baseline', 'stBackgroundCost', 'language'}" onChange="renderXPLedger(self); renderXPBoxes(self);"/>
+
+	<!-- The storyteller's correction and the flag that allows it (SPEC I44, V245/V246). Both
+	     are owned on WoD20.10 and watched from here, so a tick or a figure entered by ANOTHER
+	     client at the table reaches this tab too - the same reason the clan lock hangs off a
+	     dataLink rather than off the checkbox that writes it (SPEC V175, V95).
+
+	     `xpManual` moves a LINE of the log and the Spent box with it; `stEditSpentXP` moves
+	     only the lock, but it is painted by the same routine that writes the number, so the
+	     two cannot come apart (SPEC V112). -->
+	<dataLink fields="{'xpManual', 'stEditSpentXP'}" onChange="renderXPLedger(self); renderXPBoxes(self);"/>
+
+	<!-- The tab is a REPORT, so it is rebuilt every time it comes up (SPEC V97). -->
+	<event name="onShow">
+		wodTrace("WoD20.9.onShow");
+		renderXPBoxes(self);
+		renderXPLedger(self);
+	</event>
+
+	<event name="onNodeReady">
+		renderXPBoxes(self);
+		renderXPLedger(self);
+
+		-- Nothing is handed over any more (SPEC V133, 44th round). This tab used to register
+		-- itself twice - once for the log and once for the three numbers - and a purchase
+		-- reached neither until it had (SPEC B39). xpClick now walks from the sheet root and
+		-- finds both by name, so a tab that was never opened costs nothing and a tab that is
+		-- open is drawn whether or not it ever announced itself.
+		--
+		-- What DID have to leave for good is the whole-node ndb.newObserver that sat here
+		-- until the 39th round (SPEC V121): it fired on EVERY attribute written - including
+		-- the hundreds the sheet writes to itself while loading - and it did not pass through
+		-- xpQuiet, so the shield that fixed B30 never covered it. On a sheet with a saved
+		-- baseline that was a full walk of the ledger per write, and the sheet froze on open
+		-- (SPEC B34).
+	</event>
+</form>

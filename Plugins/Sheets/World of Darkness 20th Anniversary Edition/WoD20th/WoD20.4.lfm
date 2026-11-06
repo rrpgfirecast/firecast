@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWoD20_4" align="client" theme="dark">
+	<scrollBox align="client">
+		<!-- Theme backdrop, same arrangement as WoD20.1 (SPEC T158, V56, V57). -->
+		<image name="themePaper4" align="client" style="stretch" hitTest="false" visible="false"/>
+	   <template name="Descricao">
+        	<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+        	<edit left="110" top="0" width="240" height="25" field="desc_$(field)"/>
+        </template>
+
+		<!--
+			Descriptor grid, 1040 wide so it closes on the same edge as Prelude (410..1040), which
+			is the alignment the user asked for when the columns moved (SPEC I53). The width is not
+			decoration: three 310px blocks inside a 960 box leave 30px, so the 15 of clearance V258
+			asks for on each side would leave ZERO gutter between columns. At 1040 there are 110 to
+			spend - 15 + 40 + 40 + 15.
+			
+			The 15 is V258, not taste. cornerType="innerRound" bites a 14x14 square out of every
+			corner, and at left=5 the third column edit sat 2.8px INSIDE the arc on the top row and
+			again on the bottom one - nothing was clipped, so no overflow check ever saw it (SPEC
+			B53, R96). The old 5 / 320 / 645 came from SPEC B16, where a column at 585 drew 45px
+			inside the previous column edit; 15 / 365 / 715 leaves V37 far more room than that fix
+			ever did - 40px between blocks where it used to be 5 and 15.
+			
+			The identity column is LAST as of SPEC I53. The three columns rotated one place and the
+			order INSIDE each one is untouched, as is every field name (SPEC V2) - only the
+			field=/nome= pair on each <Descricao> call moved.
+		-->
+		<layout left="0" top="0" width="1180" height="115">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+
+			<layout left="20" top="15" width="350" height="25" >
+				<Descricao field="altura" nome="Height"/>
+			</layout>
+			<layout left="415" top="15" width="350" height="25" >
+				<Descricao field="olhos" nome="Eyes"/>
+			</layout>
+			<layout left="810" top="15" width="350" height="25" >
+				<Descricao field="sexo" nome="Sex"/>
+			</layout>
+
+			<layout left="20" top="45" width="350" height="25" >
+				<Descricao field="peso" nome="Weight"/>
+			</layout>
+			<layout left="415" top="45" width="350" height="25" >
+				<Descricao field="cabelo" nome="Hair"/>
+			</layout>
+			<layout left="810" top="45" width="350" height="25" >
+				<Descricao field="idade" nome="Age"/>
+			</layout>
+
+			<layout left="20" top="75" width="350" height="25" >
+				<Descricao field="nacionalidade" nome="Nationality"/>
+			</layout>
+			<layout left="415" top="75" width="350" height="25" >
+				<Descricao field="etinicidade" nome="Ethnicity"/>
+			</layout>
+			<layout left="810" top="75" width="350" height="25" >
+				<Descricao field="idadeAparente" nome="Apparent Age"/>
+			</layout>
+		</layout>
+
+		<!--
+			Label renames on request (SPEC T104). The FIELDS are untouched: renaming one drops
+			whatever an existing sheet already saved (SPEC V2), which is the same call made for
+			`retainers` rendering GUIDES. The cost is that two field names now lie about their
+			contents - `aparencia` holds languages and `idiomas` holds goals. Recorded in SPEC C
+			so nobody "fixes" the names later and silently drops player text.
+		-->
+		<layout left="0" top="120" width="490" height="186">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+	        <label left="20" top="15" width="450" height="20" text="LANGUAGES" horzTextAlign="center"/>
+			<textEditor left="35" top="36" width="420" height="135" field="aparencia"/>
+        </layout>
+
+		<!-- New boxes, not renames: the tab never had a Goals box to rename onward from, so
+		     Moral Flaws and Fears get their own fields (SPEC C, confirmed with the user).
+
+		     They sit where Concept and Nature used to (SPEC T127). Those two boxes were removed
+		     by request, so `personalidade` and `natureza` keep whatever an existing sheet saved
+		     in them but own no widget any more - SPEC I3 lists them as declared orphans, and the
+		     gate fails if either name is ever reused for something else. The `Concept` and
+		     `Nature` .lang keys stay: the Main tab still renders both. -->
+		<layout left="0" top="311" width="235" height="186">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+	        <label left="20" top="15" width="195" height="20" text="MORAL FLAWS" horzTextAlign="center"/>
+			<textEditor left="35" top="36" width="165" height="135" field="moralFlaws"/>
+        </layout>
+        <layout left="240" top="311" width="250" height="186">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+	        <label left="20" top="15" width="210" height="20" text="FEARS" horzTextAlign="center"/>
+			<textEditor left="35" top="36" width="180" height="135" field="fears"/>
+        </layout>
+
+		<layout left="0" top="502" width="490" height="206">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+	        <label left="20" top="15" width="450" height="20" text="GOALS" horzTextAlign="center"/>
+			<textEditor left="35" top="36" width="420" height="135" field="idiomas"/>
+        </layout>
+
+		<layout left="495" top="120" width="685" height="588">
+			<rectangle align="client" color="black" xradius="14" yradius="14" cornerType="innerRound"/>
+	        <label left="20" top="15" width="645" height="20" text="PRELUDE" horzTextAlign="center"/>
+			<richEdit left="35" top="36" width="615" height="537" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+        </layout>
+	</scrollBox>
+</form>
